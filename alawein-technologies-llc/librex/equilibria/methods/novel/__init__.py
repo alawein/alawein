@@ -1,1 +1,0 @@
-"""Novel optimization methods"""

@@ -13,9 +13,11 @@ Build all 10 next-level capabilities in detailed phases.
 ## Phase 1: Meta-Prompt Generator (Week 1)
 
 ### Goal
+
 Generate prompts from natural language requirements.
 
 ### Deliverables
+
 1. Prompt template engine
 2. Requirement parser
 3. Example generator
@@ -24,6 +26,7 @@ Generate prompts from natural language requirements.
 ### Implementation
 
 #### 1.1 Core Engine
+
 ```python
 # tools/meta-prompt/generator.py
 class PromptGenerator:
@@ -36,23 +39,25 @@ class PromptGenerator:
 ```
 
 #### 1.2 Templates
+
 ```yaml
 # templates/prompt-templates.yaml
 optimization:
   structure: |
     # {title}
-    
+
     ## Purpose
     {purpose}
-    
+
     ## When to Use
     {use_cases}
-    
+
     ## Prompt
     {prompt_content}
 ```
 
 #### 1.3 CLI
+
 ```bash
 python tools/meta-prompt/generate.py \
   --requirement "optimize database queries" \
@@ -60,6 +65,7 @@ python tools/meta-prompt/generate.py \
 ```
 
 ### Success Metrics
+
 - Generate 10 prompts in 10 minutes
 - 80% quality score
 - Usable without editing
@@ -69,9 +75,11 @@ python tools/meta-prompt/generate.py \
 ## Phase 2: Workflow Orchestrator (Week 2)
 
 ### Goal
+
 Chain workflows with dependencies and parallel execution.
 
 ### Deliverables
+
 1. Workflow DAG engine
 2. Dependency resolver
 3. Parallel executor
@@ -80,23 +88,25 @@ Chain workflows with dependencies and parallel execution.
 ### Implementation
 
 #### 2.1 Workflow Definition
+
 ```yaml
 # workflows/chains/full-development-cycle.yaml
 name: full-development-cycle
 steps:
   - id: test
     run: python workflows/development/test-driven-refactor.py
-    
+
   - id: benchmark
     run: python workflows/development/benchmark.py
     depends_on: [test]
-    
+
   - id: deploy
     run: python workflows/deployment/deploy.py
     depends_on: [test, benchmark]
 ```
 
 #### 2.2 Orchestrator
+
 ```python
 # tools/orchestrator/engine.py
 class WorkflowOrchestrator:
@@ -106,6 +116,7 @@ class WorkflowOrchestrator:
 ```
 
 #### 2.3 CLI
+
 ```bash
 python tools/orchestrator/run.py \
   --workflow workflows/chains/full-development-cycle.yaml \
@@ -113,6 +124,7 @@ python tools/orchestrator/run.py \
 ```
 
 ### Success Metrics
+
 - Execute 5-step workflow in < 5 minutes
 - Handle failures gracefully
 - Parallel execution where possible
@@ -122,9 +134,11 @@ python tools/orchestrator/run.py \
 ## Phase 3: Prompt Analytics (Week 3)
 
 ### Goal
+
 Track prompt usage, success rates, and impact.
 
 ### Deliverables
+
 1. Usage tracker
 2. Analytics dashboard
 3. Success metrics
@@ -133,19 +147,21 @@ Track prompt usage, success rates, and impact.
 ### Implementation
 
 #### 3.1 Tracking
+
 ```python
 # tools/analytics/tracker.py
 class PromptTracker:
     def log_usage(self, prompt_id: str, context: dict):
         # Log to SQLite
         pass
-    
+
     def log_outcome(self, prompt_id: str, success: bool, metrics: dict):
         # Track success/failure
         pass
 ```
 
 #### 3.2 Dashboard
+
 ```python
 # tools/analytics/dashboard.py
 def generate_dashboard():
@@ -158,11 +174,13 @@ def generate_dashboard():
 ```
 
 #### 3.3 CLI
+
 ```bash
 python tools/analytics/report.py --period last-30-days
 ```
 
 ### Success Metrics
+
 - Track 100% of prompt usage
 - Generate insights automatically
 - Identify improvement opportunities
@@ -172,9 +190,11 @@ python tools/analytics/report.py --period last-30-days
 ## Phase 4: Pattern Extractor (Week 4)
 
 ### Goal
+
 Analyze codebases and auto-generate prompts from patterns.
 
 ### Deliverables
+
 1. Code pattern analyzer
 2. Prompt synthesizer
 3. Pattern library
@@ -183,6 +203,7 @@ Analyze codebases and auto-generate prompts from patterns.
 ### Implementation
 
 #### 4.1 Pattern Detection
+
 ```python
 # tools/pattern-extractor/analyzer.py
 class PatternAnalyzer:
@@ -194,6 +215,7 @@ class PatternAnalyzer:
 ```
 
 #### 4.2 Prompt Synthesis
+
 ```python
 # tools/pattern-extractor/synthesizer.py
 class PromptSynthesizer:
@@ -205,13 +227,15 @@ class PromptSynthesizer:
 ```
 
 #### 4.3 CLI
+
 ```bash
 python tools/pattern-extractor/extract.py \
-  --repo alawein-technologies-llc/librex \
+  --repo organizations/alawein-technologies-llc/librex \
   --output-dir prompts/extracted/
 ```
 
 ### Success Metrics
+
 - Extract 20+ patterns per repo
 - Generate usable prompts
 - Identify unique patterns
@@ -221,9 +245,11 @@ python tools/pattern-extractor/extract.py \
 ## Phase 5: Cross-IDE Sync Service (Week 5)
 
 ### Goal
+
 Real-time sync to all IDEs automatically.
 
 ### Deliverables
+
 1. File watcher
 2. Sync engine
 3. Conflict resolver
@@ -232,6 +258,7 @@ Real-time sync to all IDEs automatically.
 ### Implementation
 
 #### 5.1 Watcher
+
 ```python
 # tools/sync/watcher.py
 class PromptWatcher:
@@ -242,6 +269,7 @@ class PromptWatcher:
 ```
 
 #### 5.2 Sync Engine
+
 ```python
 # tools/sync/engine.py
 class SyncEngine:
@@ -251,11 +279,13 @@ class SyncEngine:
 ```
 
 #### 5.3 CLI
+
 ```bash
 python tools/sync/watch.py --daemon
 ```
 
 ### Success Metrics
+
 - Sync in < 1 second
 - Support 5+ IDEs
 - Zero data loss
@@ -265,9 +295,11 @@ python tools/sync/watch.py --daemon
 ## Phase 6: Prompt Composition (Week 6)
 
 ### Goal
+
 Combine multiple prompts into super-prompts.
 
 ### Deliverables
+
 1. Composition engine
 2. Conflict resolver
 3. Optimizer
@@ -276,6 +308,7 @@ Combine multiple prompts into super-prompts.
 ### Implementation
 
 #### 6.1 Composer
+
 ```python
 # tools/composer/engine.py
 class PromptComposer:
@@ -288,18 +321,20 @@ class PromptComposer:
 ```
 
 #### 6.2 DSL
+
 ```yaml
 # compositions/physics-optimization.yaml
 compose:
   - chain-of-thought-reasoning
   - flow-optimization
   - physics-first
-  
+
 merge_strategy: intelligent
 optimize: true
 ```
 
 #### 6.3 CLI
+
 ```bash
 python tools/composer/compose.py \
   --prompts chain-of-thought-reasoning flow-optimization \
@@ -307,6 +342,7 @@ python tools/composer/compose.py \
 ```
 
 ### Success Metrics
+
 - Compose 5+ prompts seamlessly
 - No conflicts
 - Better than individual prompts
@@ -316,9 +352,11 @@ python tools/composer/compose.py \
 ## Phase 7: AI Recommendation Engine (Week 7)
 
 ### Goal
+
 AI suggests the right prompt for the task.
 
 ### Deliverables
+
 1. Context analyzer
 2. Similarity engine
 3. Recommendation API
@@ -327,6 +365,7 @@ AI suggests the right prompt for the task.
 ### Implementation
 
 #### 7.1 Analyzer
+
 ```python
 # tools/recommender/analyzer.py
 class ContextAnalyzer:
@@ -338,6 +377,7 @@ class ContextAnalyzer:
 ```
 
 #### 7.2 Recommender
+
 ```python
 # tools/recommender/engine.py
 class PromptRecommender:
@@ -349,12 +389,14 @@ class PromptRecommender:
 ```
 
 #### 7.3 CLI
+
 ```bash
 python tools/recommender/suggest.py \
   --file librex/equilibria/algorithms/gradient_descent.py
 ```
 
 ### Success Metrics
+
 - 90% accuracy
 - < 100ms response time
 - Learn from feedback
@@ -364,9 +406,11 @@ python tools/recommender/suggest.py \
 ## Phase 8: Prompt Testing Framework (Week 8)
 
 ### Goal
+
 Test prompts like code with pytest.
 
 ### Deliverables
+
 1. Test framework
 2. Assertion library
 3. Coverage reporter
@@ -375,6 +419,7 @@ Test prompts like code with pytest.
 ### Implementation
 
 #### 8.1 Test Framework
+
 ```python
 # tools/testing/framework.py
 class PromptTest:
@@ -385,6 +430,7 @@ class PromptTest:
 ```
 
 #### 8.2 Test Cases
+
 ```yaml
 # tests/prompts/flow-optimization.yaml
 test_cases:
@@ -396,11 +442,13 @@ test_cases:
 ```
 
 #### 8.3 CLI
+
 ```bash
 pytest tests/prompts/ -v
 ```
 
 ### Success Metrics
+
 - 100% prompt coverage
 - Automated testing
 - Quality gates
@@ -410,9 +458,11 @@ pytest tests/prompts/ -v
 ## Phase 9: Community Marketplace (Week 9)
 
 ### Goal
+
 Share and discover prompts.
 
 ### Deliverables
+
 1. Marketplace API
 2. Rating system
 3. Discovery engine
@@ -421,6 +471,7 @@ Share and discover prompts.
 ### Implementation
 
 #### 9.1 Marketplace
+
 ```python
 # tools/marketplace/api.py
 class PromptMarketplace:
@@ -429,7 +480,7 @@ class PromptMarketplace:
         # Upload
         # Index
         pass
-    
+
     def discover(self, query: str) -> List[Prompt]:
         # Search
         # Rank
@@ -438,6 +489,7 @@ class PromptMarketplace:
 ```
 
 #### 9.2 CLI
+
 ```bash
 # Publish
 python tools/marketplace/publish.py \
@@ -450,6 +502,7 @@ python tools/marketplace/discover.py \
 ```
 
 ### Success Metrics
+
 - 100+ prompts published
 - Active community
 - High-quality content
@@ -459,9 +512,11 @@ python tools/marketplace/discover.py \
 ## Phase 10: Adaptive Prompts (Week 10)
 
 ### Goal
+
 Context-aware prompts that understand your project.
 
 ### Deliverables
+
 1. Context engine
 2. Adaptation system
 3. Learning mechanism
@@ -470,6 +525,7 @@ Context-aware prompts that understand your project.
 ### Implementation
 
 #### 10.1 Context Engine
+
 ```python
 # tools/adaptive/context.py
 class ContextEngine:
@@ -481,6 +537,7 @@ class ContextEngine:
 ```
 
 #### 10.2 Adaptive Prompt
+
 ```python
 # tools/adaptive/prompt.py
 class AdaptivePrompt:
@@ -492,6 +549,7 @@ class AdaptivePrompt:
 ```
 
 #### 10.3 CLI
+
 ```bash
 python tools/adaptive/run.py \
   --prompt flow-optimization \
@@ -499,6 +557,7 @@ python tools/adaptive/run.py \
 ```
 
 ### Success Metrics
+
 - 50% better results
 - Learns from usage
 - Personalized experience
@@ -538,18 +597,21 @@ python tools/adaptive/run.py \
 ## Success Criteria
 
 ### Technical
+
 - All 10 phases complete
 - 90% test coverage
 - < 100ms response times
 - Zero data loss
 
 ### User Experience
+
 - Intuitive CLI
 - Clear documentation
 - Helpful error messages
 - Fast feedback loops
 
 ### Business
+
 - 10x productivity improvement
 - Community adoption
 - Reusable across projects
@@ -560,11 +622,13 @@ python tools/adaptive/run.py \
 ## Risk Mitigation
 
 ### Technical Risks
+
 - **Complexity**: Start simple, iterate
 - **Performance**: Profile early, optimize
 - **Integration**: Test continuously
 
 ### Process Risks
+
 - **Scope creep**: Stick to MVP
 - **Time**: Timebox each phase
 - **Quality**: Automated testing

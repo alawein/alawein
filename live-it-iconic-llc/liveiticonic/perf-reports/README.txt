@@ -1,1 +1,0 @@
-This directory stores Lighthouse reports (HTML and JSON).

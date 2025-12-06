@@ -2,9 +2,9 @@
 # Defines what files and directories are allowed at the repository root level
 # Enforced by structure_validator.py and GitHub Actions
 
-version: "3.2"
-last_updated: "2025-12-05"
-updated_by: "repository-cleanup-audit"
+version: "3.3"
+last_updated: "2025-12-06"
+updated_by: "repository-consolidation-migration"
 
 # =============================================================================
 # ALLOWED ROOT-LEVEL FILES
@@ -118,6 +118,11 @@ allowed_directories:
       purpose: "Demo dashboards, scenarios, test repos, examples"
     - name: "config"
       purpose: "Centralized configuration files (TypeScript, linting, CI/CD)"
+
+  # LLC Organization (canonical location for all projects)
+  organization:
+    - name: "organizations"
+      purpose: "Canonical location for all LLC projects (Alawein Technologies, Live It Iconic, REPZ)"
 
   # Tool Configuration (allowed, should be hidden)
   tooling:

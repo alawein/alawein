@@ -10,7 +10,7 @@ GitHub/
 ├── package-lock.json         # Root lockfile
 ├── apps/                     # Deployable applications
 │   ├── attributa/           # ✅ In workspace
-│   ├── llmworks/            # ✅ In workspace  
+│   ├── llmworks/            # ✅ In workspace
 │   ├── portfolio/           # ✅ In workspace
 │   ├── qmlab/               # ✅ In workspace
 │   ├── liveiticonic/        # ❌ Excluded (dependency conflicts)
@@ -59,12 +59,14 @@ npm run lint:all     # Lint all packages
 ## Adding New Packages
 
 ### 1. Create Package Directory
+
 ```bash
 mkdir packages/my-package
 cd packages/my-package
 ```
 
 ### 2. Create package.json
+
 ```json
 {
   "name": "@monorepo/my-package",
@@ -79,6 +81,7 @@ cd packages/my-package
 ```
 
 ### 3. Add to Workspace
+
 The `packages/*` wildcard in root package.json automatically includes it.
 
 ## Importing Between Packages
@@ -102,45 +105,48 @@ import { ApiResponse } from '@monorepo/types';
 ## Migrating Existing Apps
 
 ### Apps Currently Excluded
-- `apps/liveiticonic` - Storybook version conflicts
-- `apps/simcore` - Complex dependency tree
+
+- `organizations/live-it-iconic-llc/ecommerce/liveiticonic` - Storybook version conflicts
+- `organizations/alawein-technologies-llc/mobile-apps/simcore` - Complex dependency tree
 
 ### Migration Steps
+
 1. **Resolve dependency conflicts** in the app's package.json
 2. **Update package name** to use @monorepo prefix (optional)
 3. **Add to workspace** in root package.json
 4. **Test** with `npm install --legacy-peer-deps`
 
 Example migration:
+
 ```diff
 // Before
 "workspaces": [
-  "apps/attributa",
-  "apps/llmworks", 
-  "apps/portfolio",
-  "apps/qmlab",
+  "organizations/alawein-technologies-llc/saas/attributa",
+  "organizations/alawein-technologies-llc/saas/llmworks",
+  "organizations/alawein-technologies-llc/saas/portfolio",
+  "organizations/alawein-technologies-llc/saas/qmlab",
   "packages/*"
 ]
 
-// After  
+// After
 "workspaces": [
-  "apps/attributa",
-  "apps/llmworks", 
-  "apps/portfolio",
-  "apps/qmlab",
-+ "apps/liveiticonic",
+  "organizations/alawein-technologies-llc/saas/attributa",
+  "organizations/alawein-technologies-llc/saas/llmworks",
+  "organizations/alawein-technologies-llc/saas/portfolio",
+  "organizations/alawein-technologies-llc/saas/qmlab",
++ "organizations/live-it-iconic-llc/ecommerce/liveiticonic",
   "packages/*"
 ]
 ```
 
 ## Workspace Scripts
 
-| Script | Purpose | Scope |
-|--------|---------|-------|
-| `build:all` | Build all packages | All workspaces |
-| `test:all` | Test all packages | All workspaces |
-| `lint:all` | Lint all packages | All workspaces |
-| `dev:all` | Start all dev servers | Apps only |
+| Script      | Purpose               | Scope          |
+| ----------- | --------------------- | -------------- |
+| `build:all` | Build all packages    | All workspaces |
+| `test:all`  | Test all packages     | All workspaces |
+| `lint:all`  | Lint all packages     | All workspaces |
+| `dev:all`   | Start all dev servers | Apps only      |
 
 ## Best Practices
 
@@ -153,6 +159,7 @@ Example migration:
 ## Troubleshooting
 
 ### Dependency Conflicts
+
 ```bash
 # Use legacy peer deps for initial setup
 npm install --legacy-peer-deps
@@ -162,6 +169,7 @@ npm ls --workspaces
 ```
 
 ### Package Not Found
+
 ```bash
 # Verify workspace configuration
 npm ls --workspaces --depth=0
@@ -172,6 +180,7 @@ npm install
 ```
 
 ### Build Issues
+
 ```bash
 # Clean build
 npm run clean && npm run build:all

@@ -52,6 +52,7 @@ GitHub/                              # alawein/alawein
 ```
 
 **What to DELETE from root:**
+
 - All planning docs (move to `docs/planning/` or delete)
 - Duplicate configs
 - Old status files
@@ -64,29 +65,29 @@ Each product gets its own repo on GitHub:
 
 #### Active Products (Create Now)
 
-| Repo Name | Domain | Source Location | Priority |
-|-----------|--------|-----------------|----------|
-| `talai` | talai.dev | `.archive/organizations/AlaweinOS/TalAI/` | P0 |
-| `librex` | librex.dev | `.archive/organizations/AlaweinOS/Librex/` | P1 |
-| `repz` | getrepz.app | `C:\Users\mesha\Desktop\REPZ` (already exists!) | P0 |
+| Repo Name | Domain      | Source Location                                 | Priority |
+| --------- | ----------- | ----------------------------------------------- | -------- |
+| `talai`   | talai.dev   | `.archive/organizations/AlaweinOS/TalAI/`       | P0       |
+| `librex`  | librex.dev  | `.archive/organizations/AlaweinOS/Librex/`      | P1       |
+| `repz`    | getrepz.app | `C:\Users\mesha\Desktop\REPZ` (already exists!) | P0       |
 
 #### Future Products (Create When Ready)
 
-| Repo Name | Domain | Source Location | Priority |
-|-----------|--------|-----------------|----------|
-| `mezan` | - | `.archive/organizations/AlaweinOS/MEZAN/` | P2 |
-| `simcore` | simcore.dev | `.archive/organizations/AlaweinOS/SimCore/` | P2 |
-| `qmlab` | qmlab.online | `.archive/organizations/AlaweinOS/QMLab/` | P2 |
-| `attributa` | attributa.dev | `.archive/organizations/AlaweinOS/Attributa/` | P2 |
-| `liveiticonic` | liveiticonic.com | `.archive/organizations/alawein-business/LiveItIconic/` | P3 |
+| Repo Name      | Domain           | Source Location                                         | Priority |
+| -------------- | ---------------- | ------------------------------------------------------- | -------- |
+| `mezan`        | -                | `.archive/organizations/AlaweinOS/MEZAN/`               | P2       |
+| `simcore`      | simcore.dev      | `.archive/organizations/AlaweinOS/SimCore/`             | P2       |
+| `qmlab`        | qmlab.online     | `.archive/organizations/AlaweinOS/QMLab/`               | P2       |
+| `attributa`    | attributa.dev    | `.archive/organizations/AlaweinOS/Attributa/`           | P2       |
+| `liveiticonic` | liveiticonic.com | `.archive/organizations/alawein-business/LiveItIconic/` | P3       |
 
 #### Research/Personal (Keep Archived)
 
-| Project | Status | Notes |
-|---------|--------|-------|
-| MagLogic, SpinCirc, QMatSim, QubeML, SciComp | Archive | Activate when research resumes |
-| MeatheadPhysicist | Archive | Physics education content |
-| Portfolio, DrMalawein, Rounaq | `.personal/` | Personal sites |
+| Project                                      | Status       | Notes                          |
+| -------------------------------------------- | ------------ | ------------------------------ |
+| MagLogic, SpinCirc, QMatSim, QubeML, SciComp | Archive      | Activate when research resumes |
+| MeatheadPhysicist                            | Archive      | Physics education content      |
+| Portfolio, DrMalawein, Rounaq                | `.personal/` | Personal sites                 |
 
 ---
 
@@ -96,7 +97,7 @@ Each product gets its own repo on GitHub:
 
 ```
 talai/
-├── apps/                            # Deployable applications
+├── organizations/alawein-technologies-llc/apps/                            # Deployable applications
 │   ├── web/                         # Main web app (Next.js)
 │   ├── api/                         # FastAPI backend
 │   └── docs/                        # Documentation site
@@ -122,6 +123,7 @@ talai/
 ```
 
 **Modules to consolidate from archive:**
+
 - `adversarial-review/` → `tools/adversarial-review/`
 - `lit-review-bot/` → `tools/lit-review-bot/`
 - `grant-writer/` → `tools/grant-writer/`
@@ -153,13 +155,13 @@ librex/
 
 ### 5. Domain Mapping
 
-| Domain | Points To | Type |
-|--------|-----------|------|
-| `alawein.github.io` | Hub landing pages | GitHub Pages |
-| `talai.dev` | TalAI web app | Vercel |
-| `librex.dev` | Librex docs | GitHub Pages |
-| `getrepz.app` | Repz app | Vercel |
-| `malawein.com` | Personal portfolio | Vercel |
+| Domain              | Points To          | Type         |
+| ------------------- | ------------------ | ------------ |
+| `alawein.github.io` | Hub landing pages  | GitHub Pages |
+| `talai.dev`         | TalAI web app      | Vercel       |
+| `librex.dev`        | Librex docs        | GitHub Pages |
+| `getrepz.app`       | Repz app           | Vercel       |
+| `malawein.com`      | Personal portfolio | Vercel       |
 
 ---
 
@@ -195,6 +197,7 @@ librex/
 ## What Gets Deleted
 
 ### From Root (Safe to Delete)
+
 - `REFACTOR_STATUS.md` - temporary
 - `START_HERE.md` - move to docs
 - `projects/` - just a README, info in docs
@@ -203,6 +206,7 @@ librex/
 - `scripts/` - move to tools/
 
 ### From Archive (After Migration)
+
 - Everything in `.archive/organizations/` after copying to new repos
 
 ---

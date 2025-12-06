@@ -12,7 +12,7 @@ This document provides a comprehensive analysis of the repository organization i
 
 ```
 ├── ddg_qplib.html                 (33.7 KB) - DuckDuckGo search results
-├── qplib_dir.html                 (97.3 KB) - QPLIB directory listing  
+├── qplib_dir.html                 (97.3 KB) - QPLIB directory listing
 ├── qplib_home.html                (12.2 KB) - QPLIB homepage
 ├── qplib_instances.html           (284.6 KB) - QPLIB instance listings
 ├── qplib_inst_0001.html           (196 B)   - 404 error page
@@ -26,27 +26,32 @@ This document provides a comprehensive analysis of the repository organization i
 **Issue**: Different projects use varying folder conventions:
 
 **Alawein Technologies LLC Projects**:
+
 - `foundry/` - Mixed research + development files
 - `simcore/` - TypeScript/Node.js project
 - `talai/` - Python-based AI research platform
 - `librex/` - Scientific computing library
 
 **Live-IT-Iconic LLC**:
+
 - Single project structure
 
 **Repz-LLC**:
+
 - Large monolithic project
 
 ### 3. Mixed Concerns in Directories
 
 **Problem Areas**:
-- `alawein-technologies-llc/foundry/` contains both pitch decks AND testing files
-- `alawein-technologies-llc/talai/` has research AND validation frameworks
+
+- `organizations/alawein-technologies-llc/foundry/` contains both pitch decks AND testing files
+- `organizations/alawein-technologies-llc/talai/` has research AND validation frameworks
 - Research directories contain both project files AND documentation
 
 ### 4. Scattered Documentation
 
 **Current Issues**:
+
 - Documentation files in root-level `/docs/`
 - Project-specific docs scattered across multiple locations
 - No unified documentation structure
@@ -55,6 +60,7 @@ This document provides a comprehensive analysis of the repository organization i
 ### 5. Incomplete/Placeholder Directories
 
 **Examples**:
+
 - `automation/core/` contains only placeholder files
 - `tools/` directory has incomplete structure
 - Various `.gitkeep` files indicating unfinished organization
@@ -62,6 +68,7 @@ This document provides a comprehensive analysis of the repository organization i
 ### 6. Configuration File Inconsistencies
 
 **Root-level config files**:
+
 - `.editorconfig`, `.prettierrc`, `.yamllint.yaml` (development tools)
 - `Dockerfile`, `docker-compose.yml` (containerization)
 - `.env.example` (environment templates)
@@ -70,17 +77,20 @@ This document provides a comprehensive analysis of the repository organization i
 ## Impact Assessment
 
 ### High Impact Issues
+
 1. **Developer Experience**: New developers struggle to understand project boundaries
 2. **Maintainability**: Inconsistent patterns increase cognitive load
 3. **Build/Deployment**: Scattered configs complicate automation
 4. **Documentation**: No clear entry points or navigation
 
 ### Medium Impact Issues
+
 1. **Code Organization**: Mixed concerns make code harder to navigate
 2. **Testing**: Inconsistent test organization across projects
 3. **Dependencies**: Unclear dependency management strategies
 
 ### Low Impact Issues
+
 1. **Performance**: File location doesn't affect runtime performance
 2. **Functionality**: Current projects still function despite organizational issues
 
@@ -89,6 +99,7 @@ This document provides a comprehensive analysis of the repository organization i
 ### Phase 1: Immediate Fixes (High Priority)
 
 #### 1.1 Root Directory Cleanup
+
 ```bash
 # Create organized research/benchmark directory
 mkdir -p research/benchmarks/qplib
@@ -100,6 +111,7 @@ mv qplib_*.html research/benchmarks/qplib/documentation/
 ```
 
 #### 1.2 Configuration Consolidation
+
 ```bash
 # Move tool configs to proper locations
 mkdir -p config/{linters,formatters,pre-commit}
@@ -109,6 +121,7 @@ mv .pre-commit-config.yaml config/pre-commit/
 ```
 
 #### 1.3 Documentation Reorganization
+
 ```bash
 # Create centralized documentation structure
 mkdir -p docs/{architecture,guides,api,references}
@@ -119,7 +132,9 @@ mkdir -p docs/api/{auto-generated,manual}
 ### Phase 2: Project Structure Standardization (Medium Priority)
 
 #### 2.1 Standard Project Template
+
 Every project should follow this structure:
+
 ```
 project-name/
 ├── README.md                   # Project overview
@@ -134,7 +149,9 @@ project-name/
 ```
 
 #### 2.2 Mixed Concern Separation
+
 For projects like `foundry` and `talai`:
+
 ```
 foundry/
 ├── products/research-prison/   # Product code
@@ -146,12 +163,14 @@ foundry/
 ### Phase 3: Documentation System (Medium Priority)
 
 #### 3.1 Unified Documentation
+
 - Create master documentation index
 - Implement consistent documentation patterns
 - Add navigation and search capabilities
 - Link related projects and dependencies
 
 #### 3.2 API Documentation
+
 - Auto-generate API docs where possible
 - Create integration guides
 - Document data flows and architectures
@@ -159,11 +178,13 @@ foundry/
 ### Phase 4: Quality Assurance (Low Priority)
 
 #### 4.1 Validation Scripts
+
 - Create scripts to validate project structure
 - Add checks for consistent naming conventions
 - Validate documentation completeness
 
 #### 4.2 Migration Assistance
+
 - Provide scripts to help with project reorganization
 - Create conversion utilities for project templates
 - Maintain backward compatibility where possible
@@ -171,24 +192,28 @@ foundry/
 ## Implementation Timeline
 
 ### Week 1: Critical Fixes
+
 - [x] Complete root directory analysis
 - [ ] Move orphaned HTML files
 - [ ] Consolidate configuration files
 - [ ] Create research benchmarks directory
 
 ### Week 2: Project Standardization
+
 - [ ] Define project templates
 - [ ] Refactor foundry project structure
 - [ ] Refactor talai project structure
 - [ ] Update documentation standards
 
 ### Week 3: Documentation System
+
 - [ ] Create unified documentation structure
 - [ ] Write migration documentation
 - [ ] Add project navigation
 - [ ] Create getting started guides
 
 ### Week 4: Validation & Testing
+
 - [ ] Create validation scripts
 - [ ] Test migration procedures
 - [ ] Update project READMEs
@@ -197,6 +222,7 @@ foundry/
 ## Success Metrics
 
 ### Quantitative Metrics
+
 - ✅ Reduce root-level files from 6 HTML files to 0 orphaned files
 - ✅ Standardize 100% of project structures to follow templates
 - ✅ Consolidate 5 scattered documentation locations into unified system
@@ -204,6 +230,7 @@ foundry/
 - ✅ Reduce configuration duplication by 80%
 
 ### Qualitative Metrics
+
 - ✅ New developers can find relevant documentation within 2 clicks
 - ✅ Project structure is immediately understandable
 - ✅ Consistent patterns reduce cognitive load
@@ -212,14 +239,17 @@ foundry/
 ## Risk Assessment
 
 ### Low Risk
+
 - Configuration file movement (well-defined file types)
 - Documentation reorganization (no code changes)
 
 ### Medium Risk
+
 - Project structure changes (require testing)
 - Mixed concern separation (requires careful code review)
 
 ### Mitigation Strategies
+
 1. **Backup Strategy**: Create branch for reorganization work
 2. **Incremental Changes**: Apply changes in small, testable batches
 3. **Rollback Plan**: Maintain ability to revert changes if needed

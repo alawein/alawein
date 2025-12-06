@@ -7,6 +7,7 @@ This document defines the standards, conventions, and governance for the GitHub 
 ## 🏗️ Repository Structure Standards
 
 ### Root Level (< 10 files only)
+
 ```
 GitHub/
 ├── README.md              # Main repository documentation
@@ -15,7 +16,7 @@ GitHub/
 ├── LICENSE               # License file
 ├── .metaHub/             # Centralized infrastructure
 ├── organizations/        # Company/LLC scoped projects
-├── platforms/            # Cross-organization applications
+├── organizations/alawein-technologies-llc/platforms/            # Cross-organization applications
 ├── packages/             # Shared libraries
 ├── docs/                 # Documentation hub
 ├── tools/                # Development tools
@@ -23,17 +24,19 @@ GitHub/
 ```
 
 ### Organization Structure
+
 ```
 organizations/{org-name}/
-├── apps/                 # Organization-specific applications
+├── organizations/alawein-technologies-llc/apps/                 # Organization-specific applications
 ├── packages/             # Org-specific shared packages
 ├── docs/                 # Organization documentation
 └── tools/                # Organization-specific tools
 ```
 
 ### Platform Structure
+
 ```
-platforms/{platform-name}/
+organizations/alawein-technologies-llc/platforms/{platform-name}/
 ├── src/                  # Source code
 ├── public/               # Static assets
 ├── tests/                # Test files
@@ -42,6 +45,7 @@ platforms/{platform-name}/
 ```
 
 ### Package Structure
+
 ```
 packages/{package-name}/
 ├── src/                  # Source code
@@ -54,25 +58,31 @@ packages/{package-name}/
 ## 📦 Naming Conventions
 
 ### Organizations
+
 - **Format**: `{llc-name}/` (kebab-case)
-- **Examples**: `repz-llc/`, `alawein-technologies-llc/`, `live-it-iconic-llc/`
+- **Examples**: `organizations/repz-llc/`, `organizations/alawein-technologies-llc/`, `organizations/live-it-iconic-llc/`
 
 ### Platforms
+
 - **Format**: `{platform-name}/` (kebab-case)
 - **Examples**: `portfolio/`, `qmlab/`, `shared/`
 
 ### Packages
+
 - **Format**: `@monorepo/{package-name}` (npm package naming)
 - **Examples**: `@monorepo/ui`, `@monorepo/utils`, `@monorepo/types`
 
 ### Applications
+
 - **Format**: `{app-name}/` (kebab-case)
 - **Examples**: `repz-coach/`, `attributa/`, `simcore/`
 
 ## 🔧 Development Standards
 
 ### Workspace Configuration
+
 All workspaces must include:
+
 ```json
 {
   "name": "@monorepo/{package-name}",
@@ -89,7 +99,9 @@ All workspaces must include:
 ```
 
 ### TypeScript Configuration
+
 All TypeScript projects must extend:
+
 ```json
 {
   "extends": "@monorepo/typescript-config/base.json",
@@ -101,7 +113,9 @@ All TypeScript projects must extend:
 ```
 
 ### ESLint Configuration
+
 All projects must use:
+
 ```json
 {
   "extends": ["@monorepo/eslint-config"]
@@ -111,12 +125,14 @@ All projects must use:
 ## 📋 Dependency Management
 
 ### Workspace Dependencies
+
 - **Root level**: Shared dev dependencies (TypeScript, ESLint, etc.)
 - **Organization level**: Org-specific shared dependencies
 - **Platform level**: Application-specific dependencies
 - **Package level**: Library-specific dependencies
 
 ### Dependency Rules
+
 1. **No duplicate dependencies** across workspaces
 2. **Use workspace references** for internal packages
 3. **Peer dependencies** for shared libraries
@@ -125,12 +141,14 @@ All projects must use:
 ## 🚀 Build & Deployment Standards
 
 ### Build System
+
 - **Turborepo**: Primary build orchestrator
 - **TypeScript**: Compilation and type checking
 - **Vite**: Development server and bundling
 - **Vitest**: Unit testing framework
 
 ### Deployment Pipeline
+
 1. **Lint**: `npm run lint` across all packages
 2. **Type Check**: `npm run type-check` across all packages
 3. **Test**: `npm run test` across all packages
@@ -138,6 +156,7 @@ All projects must use:
 5. **Deploy**: Platform-specific deployment
 
 ### Environment Management
+
 - **Development**: Local development with hot reload
 - **Staging**: Preview deployments for testing
 - **Production**: Optimized builds with caching
@@ -145,32 +164,37 @@ All projects must use:
 ## 📚 Documentation Standards
 
 ### Required Documentation
+
 - **README.md**: Every package and platform must have one
 - **API Documentation**: For all public APIs
 - **Architecture Docs**: For complex systems
 - **Contributing Guidelines**: For open source components
 
 ### Documentation Location
+
 - **Repository-level**: `docs/` directory
 - **Organization-level**: `organizations/{org}/docs/`
-- **Platform-level**: `platforms/{platform}/docs/`
+- **Platform-level**: `organizations/alawein-technologies-llc/platforms/{platform}/docs/`
 - **Package-level**: Package root `README.md`
 
 ## 🔒 Security & Governance
 
 ### Access Control
+
 - **MetaHub**: Admin access only
 - **Organizations**: Org-specific access controls
 - **Platforms**: Cross-org collaboration
 - **Packages**: Public or private as needed
 
 ### Code Standards
+
 1. **Conventional Commits**: All commits must follow convention
 2. **PR Templates**: Must use provided PR templates
 3. **Code Review**: All changes require review
 4. **Automated Checks**: CI/CD must pass before merge
 
 ### Compliance Requirements
+
 - **License Headers**: All source files must include headers
 - **Security Scanning**: Regular vulnerability scans
 - **Dependency Audits**: Monthly dependency reviews
@@ -179,13 +203,16 @@ All projects must use:
 ## 🔄 Change Management
 
 ### Structural Changes
+
 Any changes to repository structure require:
+
 1. **Proposal**: Create RFC in `docs/governance/`
 2. **Review**: Team review and approval
 3. **Migration Plan**: Detailed migration steps
 4. **Rollback Plan**: Emergency rollback procedures
 
 ### Package Lifecycle
+
 1. **Creation**: Follow package template
 2. **Development**: Follow coding standards
 3. **Maintenance**: Regular updates and patches
@@ -194,12 +221,14 @@ Any changes to repository structure require:
 ## 📊 Quality Metrics
 
 ### Success Metrics
+
 - **Build Time**: < 5 minutes for full monorepo build
 - **Test Coverage**: > 80% across all packages
 - **Type Coverage**: > 95% TypeScript coverage
 - **Documentation**: 100% API documentation coverage
 
 ### Monitoring
+
 - **Build Performance**: Track build times and failures
 - **Dependency Health**: Monitor for vulnerabilities
 - **Code Quality**: Automated quality gates
@@ -208,12 +237,14 @@ Any changes to repository structure require:
 ## 🚨 Enforcement
 
 ### Automated Enforcement
+
 - **Pre-commit hooks**: Format and lint checks
 - **CI/CD pipelines**: Structure validation
 - **Dependency checks**: Automated security scanning
 - **Documentation checks**: Required docs validation
 
 ### Manual Enforcement
+
 - **Code Review**: Structure and standards review
 - **Regular Audits**: Monthly compliance audits
 - **Team Training**: Regular standards training

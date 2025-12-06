@@ -8,16 +8,16 @@ Build a cohesive ecosystem of scientific, productivity, and lifestyle platforms 
 
 ## 📊 Platform Registry
 
-| Platform | Status | Port | Description | Priority |
-|----------|--------|------|-------------|----------|
-| **SimCore** | ✅ Active | 5175 | Scientific computing & physics simulations | High |
-| **QMLab** | ✅ Active | 5180 | Quantum computing education & tools | High |
-| **LLMWorks** | ✅ Active | 5181 | Open-source LLM benchmarking & tools | High |
-| **Attributa** | ✅ Active | 5179 | AI content attribution detection | High |
-| **LiveItIconic** | ✅ Active | 5177 | Statement jewelry e-commerce | Medium |
-| **REPZ** | 🔄 Needs Work | 5176 | Fitness tracking & workout logging | Medium |
-| **Portfolio** | ✅ Active | 5174 | Personal portfolio website | Low |
-| **Studios Hub** | ✅ Active | 5173 | Central navigation hub | High |
+| Platform         | Status        | Port | Description                                | Priority |
+| ---------------- | ------------- | ---- | ------------------------------------------ | -------- |
+| **SimCore**      | ✅ Active     | 5175 | Scientific computing & physics simulations | High     |
+| **QMLab**        | ✅ Active     | 5180 | Quantum computing education & tools        | High     |
+| **LLMWorks**     | ✅ Active     | 5181 | Open-source LLM benchmarking & tools       | High     |
+| **Attributa**    | ✅ Active     | 5179 | AI content attribution detection           | High     |
+| **LiveItIconic** | ✅ Active     | 5177 | Statement jewelry e-commerce               | Medium   |
+| **REPZ**         | 🔄 Needs Work | 5176 | Fitness tracking & workout logging         | Medium   |
+| **Portfolio**    | ✅ Active     | 5174 | Personal portfolio website                 | Low      |
+| **Studios Hub**  | ✅ Active     | 5173 | Central navigation hub                     | High     |
 
 ---
 
@@ -51,9 +51,9 @@ platforms/
 
 #### 1.2 Cleanup Old Structure
 
-- Remove `alawein-technologies-llc/` after migration
-- Remove `live-it-iconic-llc/` after migration
-- Remove `repz-llc/` after migration
+- Remove `organizations/alawein-technologies-llc/` after migration
+- Remove `organizations/live-it-iconic-llc/` after migration
+- Remove `organizations/repz-llc/` after migration
 - Archive unused folders
 
 #### 1.3 Shared Library
@@ -172,13 +172,13 @@ shared/
 
 ## 📈 Success Metrics
 
-| Metric | Target |
-|--------|--------|
-| Lighthouse Performance | > 90 |
-| Lighthouse Accessibility | > 95 |
-| Build Time | < 60s |
-| Bundle Size | < 500KB (initial) |
-| Test Coverage | > 70% |
+| Metric                   | Target            |
+| ------------------------ | ----------------- |
+| Lighthouse Performance   | > 90              |
+| Lighthouse Accessibility | > 95              |
+| Build Time               | < 60s             |
+| Bundle Size              | < 500KB (initial) |
+| Test Coverage            | > 70%             |
 
 ---
 

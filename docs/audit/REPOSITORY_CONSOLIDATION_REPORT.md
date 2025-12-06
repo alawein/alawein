@@ -15,24 +15,24 @@ Consolidated repository root from **30 directories + 24 files** to **19 director
 
 ### Directories Merged/Removed
 
-| Original | Destination | Reason |
-|----------|-------------|--------|
-| `.ai/` | `.config/ai/` | Consolidated (kept minimal shim for test compat) |
-| `.ai-knowledge/` | `docs/ai-knowledge/` | Move knowledge base to docs |
-| `.cline/` | `.config/ai/cline/` | Consolidate AI tool configs |
-| `.windsurf/` | `.config/ai/windsurf/` | Consolidate AI tool configs |
-| `business/` | `docs/planning/business/` | Move planning docs |
-| `config/` | `.config/infrastructure/` | Consolidate configs |
-| `scripts/` | `tools/scripts/` | Consolidate tooling |
-| `templates/` | `tools/templates/` | Consolidate tooling |
-| `projects/` | `docs/PROJECT_REGISTRY.md` | Only had README |
+| Original         | Destination                | Reason                                           |
+| ---------------- | -------------------------- | ------------------------------------------------ |
+| `.ai/`           | `.config/ai/`              | Consolidated (kept minimal shim for test compat) |
+| `.ai-knowledge/` | `docs/ai-knowledge/`       | Move knowledge base to docs                      |
+| `.cline/`        | `.config/ai/cline/`        | Consolidate AI tool configs                      |
+| `.windsurf/`     | `.config/ai/windsurf/`     | Consolidate AI tool configs                      |
+| `business/`      | `docs/planning/business/`  | Move planning docs                               |
+| `config/`        | `.config/infrastructure/`  | Consolidate configs                              |
+| `scripts/`       | `tools/scripts/`           | Consolidate tooling                              |
+| `templates/`     | `tools/templates/`         | Consolidate tooling                              |
+| `projects/`      | `docs/PROJECT_REGISTRY.md` | Only had README                                  |
 
 ### Files Removed/Moved
 
-| File | Action | Reason |
-|------|--------|--------|
-| `qplib_search.json` | Deleted | Stale API error response |
-| `START_HERE.md` | Moved to `docs/` | Reduce root clutter |
+| File                | Action           | Reason                   |
+| ------------------- | ---------------- | ------------------------ |
+| `qplib_search.json` | Deleted          | Stale API error response |
+| `START_HERE.md`     | Moved to `docs/` | Reduce root clutter      |
 
 ### Gitignore Updates
 
@@ -59,9 +59,9 @@ Consolidated repository root from **30 directories + 24 files** to **19 director
 ├── .personal/             # Private content (gitignored)
 ├── .vscode/               # IDE settings
 │
-├── alawein-technologies-llc/  # Primary LLC
-├── live-it-iconic-llc/        # Secondary LLC
-├── repz-llc/                  # REPZ platform
+├── organizations/alawein-technologies-llc/  # Primary LLC
+├── organizations/live-it-iconic-llc/        # Secondary LLC
+├── organizations/repz-llc/                  # REPZ platform
 ├── research/                  # Research projects
 │
 ├── automation/            # Python automation

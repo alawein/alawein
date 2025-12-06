@@ -108,7 +108,7 @@ alawein-quantum-forge/
 │   │       └── Footer.tsx
 │   │
 │   ├── features/                   # Feature-based pages (legacy)
-│   │   ├── apps/                   # Productivity apps
+│   │   ├── organizations/alawein-technologies-llc/apps/                   # Productivity apps
 │   │   ├── auth/                   # Auth pages
 │   │   ├── commerce/               # E-commerce
 │   │   ├── content/                # Blog, docs

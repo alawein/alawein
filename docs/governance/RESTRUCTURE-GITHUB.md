@@ -6,9 +6,9 @@
 
 #### **Active Organizations**
 
-- ✅ **alawein-technologies-llc/** - Commercial tech development
-- ✅ **live-it-iconic-llc/** - Fashion e-commerce  
-- ✅ **repz-llc/** - AI coaching platform (PRODUCTION)
+- ✅ **organizations/alawein-technologies-llc/** - Commercial tech development
+- ✅ **organizations/live-it-iconic-llc/** - Fashion e-commerce
+- ✅ **organizations/repz-llc/** - AI coaching platform (PRODUCTION)
 - ✅ **research/** - Academic research projects
 - ✅ **family-platforms/** - New family digital presence
 
@@ -91,7 +91,7 @@ gh team add-member core-developers --org repz-llc --member meshal.alawein
 gh team add-member family-members --org family-platforms --member meshal.alawein
 
 # Set team permissions
-gh api --method PUT orgs/repz-llc/teams/core-developers/permissions \
+gh api --method PUT orgs/organizations/repz-llc/teams/core-developers/permissions \
   --field permission=pull
 ```
 
@@ -101,14 +101,14 @@ gh api --method PUT orgs/repz-llc/teams/core-developers/permissions \
 
 ```bash
 # Production repositories
-gh repo edit repz-llc/repz --add-label "production,critical,security-high"
-gh repo edit live-it-iconic-llc/liveiticonic --add-label "production,critical,security-high"
+gh repo edit organizations/repz-llc/repz --add-label "production,critical,security-high"
+gh repo edit organizations/live-it-iconic-llc/liveiticonic --add-label "production,critical,security-high"
 gh repo edit family-platforms/family-platforms --add-label "production,developing,security-medium"
 
 # Development repositories
-gh repo edit alawein-technologies-llc/simcore --add-label "development,maintained,security-medium"
-gh repo edit alawein-technologies-llc/qmlab --add-label "development,maintained,security-medium"
-gh repo edit alawein-technologies-llc/attributa --add-label "development,maintained,security-medium"
+gh repo edit organizations/alawein-technologies-llc/simcore --add-label "development,maintained,security-medium"
+gh repo edit organizations/alawein-technologies-llc/qmlab --add-label "development,maintained,security-medium"
+gh repo edit organizations/alawein-technologies-llc/attributa --add-label "development,maintained,security-medium"
 
 # Research repositories
 gh repo edit research/spincirc --add-label "research,active,security-low"
@@ -118,14 +118,14 @@ gh repo edit research/spincirc --add-label "research,active,security-low"
 
 ```bash
 # Production repositories - strict protection
-gh api --method PUT repos/repz-llc/repz/branches/main/protection \
+gh api --method PUT repos/organizations/repz-llc/repz/branches/main/protection \
   --field 'required_status_checks={"strict":true,"contexts":["ci/build","ci/test","security/scan"]}' \
   --field enforce_admins=true \
   --field 'required_pull_request_reviews={"required_approving_review_count":2,"dismiss_stale_reviews":true}' \
   --field restrictions=null
 
 # Development repositories - moderate protection
-gh api --method PUT repos/alawein-technologies-llc/simcore/branches/main/protection \
+gh api --method PUT repos/organizations/alawein-technologies-llc/simcore/branches/main/protection \
   --field 'required_status_checks={"strict":false,"contexts":["ci/build","ci/test"]}' \
   --field enforce_admins=false \
   --field 'required_pull_request_reviews={"required_approving_review_count":1}'
@@ -210,7 +210,7 @@ find . -name "*.json" -mtime +180 -exec echo "Old file: {}" \;
 # Move inactive projects to archive
 projects_to_archive=(
   "automation-ts"
-  "benchmarks-consolidation" 
+  "benchmarks-consolidation"
   "business-planning"
   "config-placeholder"
 )
@@ -219,7 +219,7 @@ for project in "${projects_to_archive[@]}"; do
   if [ -d "$project" ]; then
     echo "Archiving $project..."
     mv "$project" ".archive/projects/"
-    
+
     # Create archive metadata
     cat > ".archive/projects/$project/ARCHIVE_INFO.md" << EOF
 # Archive Information
@@ -270,17 +270,17 @@ echo ""
 # Check organization health
 for org in alawein-technologies-llc live-it-iconic-llc repz-llc family-platforms; do
   echo "=== $org ==="
-  
+
   # Count repositories
   repo_count=$(gh repo list --org $org --limit 100 --json name | jq length)
   echo "Repositories: $repo_count"
-  
+
   # Check for inactive repos
   inactive_count=$(gh repo list --org $org --limit 100 --json name,pushedAt | \
     jq --arg date "$(date -d '180 days ago' -Iseconds)" \
     '[.[] | select(.pushedAt < $date)] | length')
   echo "Inactive (>180 days): $inactive_count"
-  
+
   # Check for repos without branch protection
   unprotected_count=$(gh repo list --org $org --limit 100 --json name,defaultBranch | \
     jq -r '.[] | "\(.name):\(.defaultBranch)"' | \
@@ -315,14 +315,14 @@ cat > scripts/generate-governance-report.md << 'EOF'
 
 ## Organization Details
 ### Production Systems (Tier 1)
-- repz-llc/repz: Status [check]
-- live-it-iconic-llc/liveiticonic: Status [check]
+- organizations/repz-llc/repz: Status [check]
+- organizations/live-it-iconic-llc/liveiticonic: Status [check]
 - family-platforms/family-platforms: Status [check]
 
 ### Development Systems (Tier 2)
-- alawein-technologies-llc/simcore: Status [check]
-- alawein-technologies-llc/qmlab: Status [check]
-- alawein-technologies-llc/attributa: Status [check]
+- organizations/alawein-technologies-llc/simcore: Status [check]
+- organizations/alawein-technologies-llc/qmlab: Status [check]
+- organizations/alawein-technologies-llc/attributa: Status [check]
 
 ### Research Systems (Tier 3)
 - research/spincirc: Status [check]
@@ -351,22 +351,22 @@ EOF
 
 ### **Repository Tiers & Requirements**
 
-| Tier | Repositories | Approvals | Security | Monitoring | Retention |
-|------|--------------|-----------|----------|------------|-----------|
-| Production | repz, liveiticonic, family-platforms | 2 | Maximum | 24/7 | Indefinite |
-| Development | simcore, qmlab, attributa | 1 | High | Business Hours | 2 years |
-| Research | spincirc, materials-science | 1 | Standard | Weekly | 7 years |
-| Archived | automation-ts, benchmarks | N/A | Restricted | On-demand | 7 years |
+| Tier        | Repositories                         | Approvals | Security   | Monitoring     | Retention  |
+| ----------- | ------------------------------------ | --------- | ---------- | -------------- | ---------- |
+| Production  | repz, liveiticonic, family-platforms | 2         | Maximum    | 24/7           | Indefinite |
+| Development | simcore, qmlab, attributa            | 1         | High       | Business Hours | 2 years    |
+| Research    | spincirc, materials-science          | 1         | Standard   | Weekly         | 7 years    |
+| Archived    | automation-ts, benchmarks            | N/A       | Restricted | On-demand      | 7 years    |
 
 ### **Team Access Levels**
 
-| Team | Production | Development | Research | Archive |
-|------|------------|-------------|----------|---------|
-| Executive | Admin | Admin | Admin | Admin |
-| Tech Leads | Write/Maintain | Write/Maintain | Write | Read |
-| Core Developers | Write/Triage | Write/Triage | Write | None |
-| Security Team | Write/Security | Write/Security | Read | Read |
-| Compliance Team | Read/Policy | Read/Policy | Read/Policy | Read/Audit |
+| Team            | Production     | Development    | Research    | Archive    |
+| --------------- | -------------- | -------------- | ----------- | ---------- |
+| Executive       | Admin          | Admin          | Admin       | Admin      |
+| Tech Leads      | Write/Maintain | Write/Maintain | Write       | Read       |
+| Core Developers | Write/Triage   | Write/Triage   | Write       | None       |
+| Security Team   | Write/Security | Write/Security | Read        | Read       |
+| Compliance Team | Read/Policy    | Read/Policy    | Read/Policy | Read/Audit |
 
 ---
 

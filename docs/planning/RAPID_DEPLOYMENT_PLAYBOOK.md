@@ -4,18 +4,19 @@
 
 ## Quick Start Matrix
 
-| Project Type | Template | Deploy Target | Time |
-|--------------|----------|---------------|------|
-| Python Library | `templates/python-library/` | PyPI | 15 min |
-| React SaaS | `templates/landing-page/` | Vercel | 10 min |
-| Full-Stack App | Lovable → GitHub | Vercel + Supabase | 30 min |
-| API Service | FastAPI template | Railway/Render | 20 min |
+| Project Type   | Template                    | Deploy Target     | Time   |
+| -------------- | --------------------------- | ----------------- | ------ |
+| Python Library | `templates/python-library/` | PyPI              | 15 min |
+| React SaaS     | `templates/landing-page/`   | Vercel            | 10 min |
+| Full-Stack App | Lovable → GitHub            | Vercel + Supabase | 30 min |
+| API Service    | FastAPI template            | Railway/Render    | 20 min |
 
 ---
 
 ## Pre-Deployment Checklist
 
 ### Required Files
+
 - [ ] `README.md` - Project description
 - [ ] `LICENSE` - MIT/Apache-2.0
 - [ ] `.meta/repo.yaml` - Project metadata
@@ -23,6 +24,7 @@
 - [ ] `SECURITY.md` - Security policy
 
 ### CI/CD Requirements
+
 - [ ] `.github/workflows/ci.yml` - Lint + Test
 - [ ] `.github/workflows/deploy.yml` - Auto-deploy
 - [ ] `CODEOWNERS` - Review assignments
@@ -35,7 +37,7 @@
 
 ```bash
 # From project root
-cd alawein-technologies-llc/<project>
+cd organizations/alawein-technologies-llc/<project>
 
 # Build and test
 pip install -e ".[dev]"
@@ -83,41 +85,43 @@ vercel --prod
 
 ### Required for All Projects
 
-| Variable | Source | Description |
-|----------|--------|-------------|
-| `SUPABASE_URL` | Supabase Dashboard | Project URL |
-| `SUPABASE_ANON_KEY` | Supabase Dashboard | Public anon key |
+| Variable                    | Source             | Description      |
+| --------------------------- | ------------------ | ---------------- |
+| `SUPABASE_URL`              | Supabase Dashboard | Project URL      |
+| `SUPABASE_ANON_KEY`         | Supabase Dashboard | Public anon key  |
 | `SUPABASE_SERVICE_ROLE_KEY` | Supabase Dashboard | Server-side only |
 
 ### Project-Specific
 
-| Project | Variables |
-|---------|-----------|
-| REPZ | `STRIPE_KEY`, `RESEND_API_KEY` |
-| TalAI | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
-| Librex | `PYPI_TOKEN` |
+| Project | Variables                             |
+| ------- | ------------------------------------- |
+| REPZ    | `STRIPE_KEY`, `RESEND_API_KEY`        |
+| TalAI   | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
+| Librex  | `PYPI_TOKEN`                          |
 
 ---
 
 ## Domain Configuration
 
-| Project | Domain | Status |
-|---------|--------|--------|
-| Librex | `librex.dev` | Owned |
-| TalAI | `talai.dev` | Owned |
-| REPZ | `repz.app` | TBD |
-| LiveItIconic | `liveiticonic.com` | TBD |
+| Project      | Domain             | Status |
+| ------------ | ------------------ | ------ |
+| Librex       | `librex.dev`       | Owned  |
+| TalAI        | `talai.dev`        | Owned  |
+| REPZ         | `repz.app`         | TBD    |
+| LiveItIconic | `liveiticonic.com` | TBD    |
 
 ---
 
 ## Monitoring & Alerts
 
 ### Vercel
+
 - Automatic deployment previews on PR
 - Production deployment on merge to `main`
 - Error tracking via Sentry integration
 
 ### Supabase
+
 - Database health in dashboard
 - Edge function logs
 - Auth analytics
@@ -127,6 +131,7 @@ vercel --prod
 ## Rollback Procedures
 
 ### Vercel
+
 ```bash
 # List deployments
 vercel ls
@@ -136,6 +141,7 @@ vercel rollback <deployment-url>
 ```
 
 ### Supabase
+
 ```bash
 # Rollback migration
 supabase db reset --db-url <url>
@@ -162,4 +168,3 @@ git push origin v1.0.0
 - [LLC Registry](../LLC_PROJECT_REGISTRY.md) - Project ownership
 - [Master AI Spec](../MASTER_AI_SPECIFICATION.md) - AI configuration
 - [Architecture](../ARCHITECTURE.md) - System design
-

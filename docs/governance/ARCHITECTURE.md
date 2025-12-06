@@ -1,136 +1,107 @@
 # Monorepo Architecture
 
+> **Last Updated:** 2024-12-06 (Post-Migration)
+
 ## Final Directory Structure
 
 ```
 GitHub/
 │
-├── 📁 platforms/                    # FULL-STACK WEB APPLICATIONS
-│   ├── portfolio/                   # Cyberpunk portfolio (Jules design)
-│   ├── simcore/                     # Scientific computing platform
-│   ├── repz/                        # Fitness coaching app
-│   ├── liveiticonic/                # Lifestyle brand store
-│   ├── attributa/                   # AI content attribution
-│   ├── talai/                       # AI research assistant
-│   ├── qmlab/                       # Quantum ML lab
-│   ├── llmworks/                    # LLM tooling platform
-│   ├── librex/                      # Optimization library + docs
-│   ├── helios/                      # Energy/physics platform
-│   └── mezan/                       # Financial/analytics platform
+├── 📁 organizations/                            # LLC-ORGANIZED PROJECTS
+│   │
+│   ├── 📁 alawein-technologies-llc/             # ALAWEIN TECHNOLOGIES LLC
+│   │   │
+│   │   ├── 📁 saas/                             # SaaS Platforms (React/Vite + Supabase)
+│   │   │   ├── attributa/                       # AI content attribution
+│   │   │   ├── llmworks/                        # LLM evaluation platform
+│   │   │   ├── portfolio/                       # Portfolio monorepo
+│   │   │   └── qmlab/                           # Quantum ML lab
+│   │   │
+│   │   ├── 📁 mobile-apps/                      # Hybrid Apps (Capacitor iOS/Android + Web)
+│   │   │   └── simcore/                         # Scientific computing platform
+│   │   │
+│   │   ├── 📁 packages/                         # Python Libraries (PyPI)
+│   │   │   ├── design-system/                   # Shared UI components
+│   │   │   ├── helios/                          # Research discovery engine
+│   │   │   ├── librex/                          # QAP optimization solver
+│   │   │   └── mezan/                           # ML/AI DevOps platform
+│   │   │
+│   │   ├── 📁 research/                         # Research Platforms
+│   │   │   └── talai/                           # 40+ module research system
+│   │   │
+│   │   ├── 📁 incubator/                        # Product Incubators
+│   │   │   └── foundry/                         # Startup concepts & templates
+│   │   │
+│   │   ├── 📁 services/                         # Backend Services
+│   │   │   └── marketing-automation/            # Marketing automation service
+│   │   │
+│   │   └── 📁 data/                             # Datasets
+│   │       └── datasets/                        # Benchmarks, training data
+│   │
+│   ├── 📁 live-it-iconic-llc/                   # LIVE IT ICONIC LLC
+│   │   └── 📁 ecommerce/                        # E-commerce Platforms
+│   │       └── liveiticonic/                    # Main e-commerce store
+│   │
+│   └── 📁 repz-llc/                             # REPZ LLC
+│       └── 📁 apps/                             # Fitness Apps
+│           └── repz/                            # Fitness tracking platform
 │
-├── 📁 packages/                     # SHARED LIBRARIES & UTILITIES
-│   ├── ui/                          # Shared UI components (shadcn)
-│   ├── config/                      # Shared configs (eslint, ts, etc.)
-│   ├── utils/                       # Shared utilities
-│   └── types/                       # Shared TypeScript types
+├── 📁 docs/                                     # DOCUMENTATION
+│   ├── guides/                                  # User & developer guides
+│   ├── api/                                     # API documentation
+│   ├── architecture/                            # Architecture docs
+│   ├── governance/                              # Governance & standards
+│   └── developer/                               # Developer workflows
 │
-├── 📁 automation/                   # AI & AUTOMATION SYSTEM
-│   ├── cli/                         # CLI tools (Python + TypeScript)
-│   ├── prompts/                     # All AI prompts consolidated
-│   │   ├── system/                  # System prompts
-│   │   ├── project/                 # Project-specific prompts
-│   │   └── tasks/                   # Task prompts
-│   ├── agents/                      # Agent definitions
-│   ├── workflows/                   # Workflow definitions
-│   ├── orchestration/               # Orchestration patterns
-│   └── tools/                       # AI tools & integrations
-│
-├── 📁 research/                     # ACADEMIC RESEARCH PROJECTS
-│   ├── scicomp/                     # Scientific computing scripts
-│   ├── qubeml/                      # Quantum ML research
-│   ├── qmatsim/                     # Quantum materials simulation
-│   ├── maglogic/                    # Magnetic logic research
-│   └── spincirc/                    # Spintronics circuits
-│
-├── 📁 family/                       # FAMILY PROJECTS
-│   └── apps/                        # Family website apps
-│
-├── 📁 docs/                         # DOCUMENTATION & STATIC PAGES
-│   ├── guides/                      # User & developer guides
-│   ├── api/                         # API documentation
-│   ├── architecture/                # Architecture docs
-│   ├── app/                         # Studios Hub (React app)
-│   └── pages/                       # Static web pages
-│       ├── templates/               # HTML page templates
-│       │   ├── product-landing.html
-│       │   ├── research-project.html
-│       │   ├── persona-page.html
-│       │   └── family-site.html
-│       ├── brands/                  # Brand landing pages
-│       │   ├── simcore/
-│       │   ├── repz/
-│       │   ├── liveiticonic/
-│       │   └── ...
-│       └── styles/                  # Shared CSS
-│           └── design-system.css
-│
-├── 📁 archive/                      # ARCHIVED/COMPLETED DOCS
-│   ├── phases/                      # Phase completion docs
-│   ├── plans/                       # Old planning docs
-│   └── reports/                     # Historical reports
-│
-├── 📁 .github/                      # GITHUB CONFIGURATION
-│   ├── workflows/                   # CI/CD workflows
+├── 📁 .github/                                  # GITHUB CONFIGURATION
+│   ├── workflows/                               # CI/CD workflows
 │   ├── ISSUE_TEMPLATE/
 │   └── PULL_REQUEST_TEMPLATE/
 │
-├── 📄 README.md                     # Main repository readme
-├── 📄 CLAUDE.md                     # AI assistant instructions
-├── 📄 ARCHITECTURE.md               # This file
-├── 📄 package.json                  # Root package.json (workspaces)
-├── 📄 turbo.json                    # Turborepo config
-└── 📄 [config files]                # eslint, prettier, tsconfig, etc.
+├── 📄 README.md                                 # Main repository readme
+├── 📄 CLAUDE.md                                 # AI assistant instructions
+└── 📄 package.json                              # Root package.json
 ```
 
-## Platform Registry
+## Project Registry
 
-| ID | Name | Port | Type | Tech Stack |
-|----|------|------|------|------------|
-| portfolio | Portfolio | 5174 | Personal | React, Framer Motion, Jules Design |
-| simcore | SimCore | 5175 | SaaS | React, Supabase, WebGL |
-| repz | REPZ Coach | 5176 | SaaS | React, Supabase, Stripe |
-| liveiticonic | Live It Iconic | 5177 | E-commerce | React, Supabase, Stripe |
-| attributa | Attributa | 5178 | SaaS | React, Supabase, AI |
-| talai | TalAI | 5179 | SaaS | React, Supabase, LangChain |
-| qmlab | QMLab | 5180 | Research | React, Supabase, Python |
-| llmworks | LLMWorks | 5181 | Tools | React, Supabase |
-| librex | Librex | 5182 | Library | React, Python, CUDA |
-| helios | Helios | 5183 | Research | React, Python |
-| mezan | MEZAN | 5184 | Analytics | React, Supabase |
+| Project      | Location                  | Category   | Tech Stack                 |
+| ------------ | ------------------------- | ---------- | -------------------------- |
+| attributa    | `saas/attributa/`         | SaaS       | React, Supabase, AI        |
+| llmworks     | `saas/llmworks/`          | SaaS       | React, Supabase            |
+| portfolio    | `saas/portfolio/`         | SaaS       | React, Framer Motion       |
+| qmlab        | `saas/qmlab/`             | SaaS       | React, Supabase, Python    |
+| simcore      | `mobile-apps/simcore/`    | Mobile     | React, Capacitor, WebGL    |
+| librex       | `packages/librex/`        | Package    | Python, CUDA               |
+| helios       | `packages/helios/`        | Package    | Python                     |
+| mezan        | `packages/mezan/`         | Package    | Python                     |
+| talai        | `research/talai/`         | Research   | Python, FastAPI            |
+| foundry      | `incubator/foundry/`      | Incubator  | Mixed                      |
+| liveiticonic | `ecommerce/liveiticonic/` | E-commerce | React, Supabase, Stripe    |
+| repz         | `apps/repz/`              | App        | React, Capacitor, Supabase |
 
 ## Quick Commands
 
 ```bash
-# Start any platform
-cd platforms/<name> && npm install && npm run dev
+# Start a SaaS platform
+cd organizations/alawein-technologies-llc/saas/<name> && npm run dev
 
-# Start Studios Hub
-cd docs/app && npm run dev
+# Start mobile app
+cd organizations/alawein-technologies-llc/mobile-apps/<name> && npm run dev
 
-# Run automation CLI
-cd automation && python cli.py <command>
+# Install Python package (editable)
+cd organizations/alawein-technologies-llc/packages/<name> && pip install -e .
 
-# Build all platforms
-npm run build --workspaces
+# Run research platform
+cd organizations/alawein-technologies-llc/research/talai && python -m talai
 ```
 
-## Migration Checklist
+## Migration Status (2024-12-06)
 
-- [x] Archive old planning docs → `archive/`
-- [x] Remove empty hidden directories (`.ai/`, `.cascade/`, etc.)
-- [x] Portfolio moved to `platforms/portfolio/`
-- [x] Studios Hub updated with dev server links
-- [ ] Move remaining platforms from LLC folders to `platforms/`
-- [ ] Consolidate AI tools into `automation/`
-- [ ] Update all import paths
-- [ ] Update CI/CD workflows
-
-## Currently Running Dev Servers
-
-| Platform | Port | Status |
-|----------|------|--------|
-| Portfolio | 5174 | ✅ Running |
-| SimCore | 5175 | ✅ Running |
-| REPZ | 5176 | ✅ Running |
-| LiveItIconic | 5177 | ✅ Running |
-| Studios Hub | 5173 | ✅ Running |
+- [x] Canonical structure established under `organizations/`
+- [x] All projects moved to category-based directories
+- [x] Root-level LLC duplicates removed
+- [x] `apps/` and `platforms/` directories removed
+- [x] All TypeScript projects pass type checks
+- [x] Documentation paths updated
+- [x] Lovable.dev workflow documented

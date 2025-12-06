@@ -3,12 +3,14 @@
 ## What We Built
 
 ### Core System
+
 - **7 prompts** across 3 categories (superprompts, code-review, refactoring)
 - **1 automated workflow** (test-driven-refactor)
 - **3 rules** (physics-first, numpy-style, conservation-laws)
 - **4 automation tools** (migrate, update-catalog, create-workflow, sync)
 
 ### Key Features
+
 1. **Centralized Knowledge**: Single source of truth for all AI interactions
 2. **Cross-Tool Sync**: Works with Amazon Q, Claude, Windsurf, Cline
 3. **Searchable Catalog**: JSON + Markdown index
@@ -18,16 +20,21 @@
 ## What Just Happened
 
 ### 1. Migration Scan ✓
+
 Scanned your existing documentation and found potential prompts to migrate.
 Check: `.ai-knowledge/migration-report.md`
 
 ### 2. Catalog Updated ✓
+
 Auto-generated catalog from filesystem:
+
 - 2 prompts indexed
 - 0 workflows indexed (test-driven-refactor.py ready to use)
 
 ### 3. Tools Synced ✓
+
 Prompts synced to:
+
 - Amazon Q: `~/.aws/amazonq/prompts/`
 - Claude: `.config/claude/prompts/`
 - Windsurf: `.windsurf/prompts/`
@@ -36,6 +43,7 @@ Prompts synced to:
 ## Try It Now
 
 ### Use a Prompt
+
 ```
 @prompt optimization-refactor
 
@@ -45,17 +53,20 @@ Context:
 ```
 
 ### Run the Workflow
+
 ```bash
 python .ai-knowledge/workflows/development/test-driven-refactor.py \
-  --target alawein-technologies-llc/librex/equilibria/algorithms/gradient_descent.py
+  --target organizations/alawein-technologies-llc/librex/equilibria/algorithms/gradient_descent.py
 ```
 
 ### Create New Workflow
+
 ```bash
 python .ai-knowledge/tools/create-workflow.py
 ```
 
 ### Check Migration Report
+
 ```bash
 cat .ai-knowledge/migration-report.md
 ```

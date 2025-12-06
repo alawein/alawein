@@ -3,62 +3,83 @@
 ## For Each of Your Projects:
 
 ### 1. **Optilibria** (Optimization Library)
+
 ```bash
-cd alawein-technologies-llc/optilibria
+cd organizations/alawein-technologies-llc/optilibria
 ```
+
 **Prompts to use:**
+
 - `@optimization-framework`
 - `@gpu-optimization`
 - `@optilibria-optimization`
 
 ### 2. **Mezan** (Quantum ML)
+
 ```bash
-cd alawein-technologies-llc/mezan
+cd organizations/alawein-technologies-llc/mezan
 ```
+
 **Prompts to use:**
+
 - `@quantum-ml-framework`
 - `@optimization-framework`
 - `@gpu-optimization`
 
 ### 3. **Librex** (Physics Computing)
+
 ```bash
-cd alawein-technologies-llc/librex
+cd organizations/alawein-technologies-llc/librex
 ```
+
 **Prompts to use:**
+
 - `@scientific-computing-library`
 - `@physics-simulation-engine`
 
 ### 4. **SimCore** (Simulation)
+
 ```bash
-cd alawein-technologies-llc/simcore
+cd organizations/alawein-technologies-llc/simcore
 ```
+
 **Prompts to use:**
+
 - `@SIMCORE_SUPERPROMPT`
 - `@physics-simulation-engine`
 
 ### 5. **TalAI** (AI Platform)
+
 ```bash
-cd alawein-technologies-llc/talai
+cd organizations/alawein-technologies-llc/talai
 ```
+
 **Prompts to use:**
+
 - `@ai-research-platform`
 - `@ai-ml-integration`
 - `@api-design-development`
 
 ### 6. **REPZ** (Fitness Platform)
+
 ```bash
-cd repz-llc/repz
+cd organizations/repz-llc/repz
 ```
+
 **Prompts to use:**
+
 - `@fitness-platform-development`
 - `@api-design-development`
 - `@testing-qa-strategy`
 
 ### 7. **LiveItIconic** (E-commerce)
+
 ```bash
-cd live-it-iconic-llc/liveiticonic
+cd organizations/live-it-iconic-llc/liveiticonic
 ```
+
 **Prompts to use:**
+
 - `@fullstack-saas-template`
 - `@api-design-development`
 - `@ui-ux-design`

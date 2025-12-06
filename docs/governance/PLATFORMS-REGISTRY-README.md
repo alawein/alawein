@@ -86,26 +86,33 @@ Desktop\GitHub/
 ### Types
 
 ```typescript
-type PlatformStatus = "active" | "backend" | "planned";
-type PlatformTier = "scientific" | "ai-ml" | "cultural" | "business" | "lifestyle" | "family" | "portfolio";
-type PlatformAppType = "spa" | "backend";
+type PlatformStatus = 'active' | 'backend' | 'planned';
+type PlatformTier =
+  | 'scientific'
+  | 'ai-ml'
+  | 'cultural'
+  | 'business'
+  | 'lifestyle'
+  | 'family'
+  | 'portfolio';
+type PlatformAppType = 'spa' | 'backend';
 
 interface PlatformDefinition {
-  id: string;                      // Stable ID for routing
-  name: string;                    // Display name
-  tier: PlatformTier;              // Category
-  status: PlatformStatus;          // Development status
-  repoPath?: string;               // Path in monorepo
-  appType?: PlatformAppType;       // SPA or backend
-  primaryColorToken?: string;      // Design token
-  hasAuth?: boolean;               // Requires authentication
-  hasAdminArea?: boolean;          // Has admin dashboard
-  tags?: string[];                 // Searchable tags
-  notes?: string;                  // Integration notes
-  domainUrl?: string;              // Live domain (e.g. https://simcore.dev)
-  brandPageUrl?: string;           // Brand page path
-  githubUrl?: string;              // GitHub repository
-  tagline?: string;                // Short description
+  id: string; // Stable ID for routing
+  name: string; // Display name
+  tier: PlatformTier; // Category
+  status: PlatformStatus; // Development status
+  repoPath?: string; // Path in monorepo
+  appType?: PlatformAppType; // SPA or backend
+  primaryColorToken?: string; // Design token
+  hasAuth?: boolean; // Requires authentication
+  hasAdminArea?: boolean; // Has admin dashboard
+  tags?: string[]; // Searchable tags
+  notes?: string; // Integration notes
+  domainUrl?: string; // Live domain (e.g. https://simcore.dev)
+  brandPageUrl?: string; // Brand page path
+  githubUrl?: string; // GitHub repository
+  tagline?: string; // Short description
   gradientColors?: [string, string]; // Card gradient
 }
 ```
@@ -229,14 +236,14 @@ function PlatformCard({ platform }: { platform: PlatformDefinition }) {
 
 ### Individual Apps
 
-| Platform | Domain | Hosting |
-|----------|--------|---------|
-| SimCore | simcore.dev | Vercel |
-| QMLab | qmlab.online | Vercel |
-| LLMWorks | llmworks.dev | Vercel |
-| Attributa | attributa.dev | Vercel |
-| REPZ | getrepz.app | Vercel |
-| LiveItIconic | liveiticonic.com | Vercel |
+| Platform     | Domain           | Hosting |
+| ------------ | ---------------- | ------- |
+| SimCore      | simcore.dev      | Vercel  |
+| QMLab        | qmlab.online     | Vercel  |
+| LLMWorks     | llmworks.dev     | Vercel  |
+| Attributa    | attributa.dev    | Vercel  |
+| REPZ         | getrepz.app      | Vercel  |
+| LiveItIconic | liveiticonic.com | Vercel  |
 
 ---
 
@@ -275,7 +282,7 @@ function PlatformCard({ platform }: { platform: PlatformDefinition }) {
      name: "New Platform",
      tier: "business",
      status: "planned",
-     repoPath: "alawein-technologies-llc/newplatform",
+     repoPath: "organizations/alawein-technologies-llc/newplatform",
      appType: "spa",
      tags: ["new", "platform"],
      tagline: "Description of the new platform",

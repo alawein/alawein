@@ -7,6 +7,7 @@ With the monorepo restructuring complete, the repository is now optimized for Bl
 ## ✅ Current State Assessment
 
 ### Monorepo Readiness
+
 - **Structure**: ✅ Optimized for multi-platform development
 - **Components**: ✅ Shared UI packages ready (`@monorepo/ui-components`)
 - **Design System**: ✅ REPZ cyberpunk theme implemented
@@ -14,6 +15,7 @@ With the monorepo restructuring complete, the repository is now optimized for Bl
 - **Governance**: ✅ Standards and enforcement in place
 
 ### Existing UI Assets
+
 - **REPZ Platform**: Cyberpunk orange theme with comprehensive styling
 - **Design Tokens**: Centralized color palette and typography
 - **Component Library**: Shared React components with cyberpunk styling
@@ -22,9 +24,10 @@ With the monorepo restructuring complete, the repository is now optimized for Bl
 ## 🚀 Blackbox Integration Strategy
 
 ### Phase 1: Environment Setup
+
 ```bash
 # Navigate to target platform
-cd platforms/portfolio  # or platforms/qmlab, etc.
+cd platforms/portfolio  # or organizations/alawein-technologies-llc/saas/qmlab, etc.
 
 # Install dependencies
 npm install
@@ -34,6 +37,7 @@ npm run dev
 ```
 
 ### Phase 2: Design System Enhancement
+
 1. **Extend Design Tokens**
    - Add Blackbox-optimized color variants
    - Enhance typography scales
@@ -52,16 +56,19 @@ npm run dev
 ### Phase 3: Platform-Specific Optimization
 
 #### Portfolio Platform
+
 - **Focus**: Professional presentation with subtle cyberpunk accents
 - **Components**: Enhanced project showcases, interactive timelines
 - **UX**: Smooth transitions, micro-interactions
 
-#### QMLab Platform  
+#### QMLab Platform
+
 - **Focus**: Scientific visualization with data-driven UI
 - **Components**: Interactive charts, quantum circuit visualizers
 - **UX**: Complex data interfaces, real-time updates
 
 #### REPZ Platform
+
 - **Focus**: Fitness coaching with gamification elements
 - **Components**: Progress trackers, achievement systems
 - **UX**: Motivational design, engagement loops
@@ -69,13 +76,16 @@ npm run dev
 ## 🛠️ Development Workflow
 
 ### Blackbox Integration Steps
+
 1. **Visual Analysis**
+
    ```bash
    # Use Blackbox for UI audit
    npx blackbox analyze platforms/portfolio/src
    ```
 
 2. **Component Enhancement**
+
    ```bash
    # Generate enhanced components
    npx blackbox generate --component=Hero --theme=cyberpunk
@@ -88,6 +98,7 @@ npm run dev
    ```
 
 ### Design System Integration
+
 ```typescript
 // Enhanced theme configuration
 export const blackboxTheme = {
@@ -95,22 +106,23 @@ export const blackboxTheme = {
     primary: cyberpunkColors.primary,
     accent: cyberpunkColors.accent,
     neutrals: enhancedNeutralScale,
-    gradients: cyberpunkGradients
+    gradients: cyberpunkGradients,
   },
   typography: {
     fontFamily: ['Space Grotesk', 'JetBrains Mono'],
-    scale: enhancedTypeScale
+    scale: enhancedTypeScale,
   },
   animations: {
     transitions: smoothTransitions,
-    microInteractions: interactionLibrary
-  }
+    microInteractions: interactionLibrary,
+  },
 };
 ```
 
 ## 📦 Package Structure for Blackbox
 
 ### Enhanced UI Components
+
 ```
 packages/ui-components/
 ├── src/
@@ -128,6 +140,7 @@ packages/ui-components/
 ```
 
 ### Design System Packages
+
 ```
 packages/design-tokens/
 ├── src/
@@ -145,21 +158,25 @@ packages/design-tokens/
 ## 🎨 Visual Enhancement Areas
 
 ### 1. Typography & Readability
+
 - **Font Optimization**: Enhanced font loading and rendering
 - **Text Hierarchy**: Improved heading scales and body text
 - **Responsive Typography**: Fluid typography across devices
 
 ### 2. Color & Visual Hierarchy
+
 - **Extended Palette**: Additional cyberpunk-inspired colors
 - **Gradient Systems**: Advanced gradient libraries
 - **Accessibility**: Enhanced contrast ratios and color blind support
 
 ### 3. Interactions & Animations
+
 - **Micro-interactions**: Subtle hover states and transitions
 - **Page Transitions**: Smooth navigation between sections
 - **Loading States**: Engaging loading animations
 
 ### 4. Component Enhancement
+
 - **Advanced Components**: Data tables, forms, navigation
 - **Interactive Elements**: Charts, graphs, visualizations
 - **Responsive Design**: Mobile-first approach
@@ -167,6 +184,7 @@ packages/design-tokens/
 ## 🔧 Technical Implementation
 
 ### CSS Architecture
+
 ```css
 /* Enhanced cyberpunk system */
 :root {
@@ -174,7 +192,7 @@ packages/design-tokens/
   --blackbox-primary: hsl(14, 87%, 54%);
   --blackbox-secondary: hsl(192, 70%, 48%);
   --blackbox-accent: hsl(280, 70%, 60%);
-  
+
   /* Enhanced animations */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -193,6 +211,7 @@ packages/design-tokens/
 ```
 
 ### TypeScript Integration
+
 ```typescript
 // Enhanced component props
 interface BlackboxComponentProps {
@@ -206,7 +225,7 @@ interface BlackboxComponentProps {
 export const useBlackboxEnhancements = () => {
   const [theme, setTheme] = useState<'cyberpunk' | 'professional'>('cyberpunk');
   const [animations, setAnimations] = useState(true);
-  
+
   return { theme, setTheme, animations, setAnimations };
 };
 ```
@@ -214,12 +233,14 @@ export const useBlackboxEnhancements = () => {
 ## 📊 Success Metrics
 
 ### Visual Quality Metrics
+
 - **Performance**: < 2s load time for enhanced UI
 - **Accessibility**: WCAG 2.1 AA compliance across all platforms
 - **Responsive**: 100% mobile compatibility
 - **User Engagement**: 25% increase in interaction time
 
 ### Development Metrics
+
 - **Component Reusability**: 80% shared component usage
 - **Design Consistency**: 95% adherence to design system
 - **Build Performance**: < 30s build times with enhancements
@@ -228,12 +249,14 @@ export const useBlackboxEnhancements = () => {
 ## 🚀 Getting Started
 
 ### Immediate Actions
+
 1. **Choose Target Platform**: Start with portfolio for quick wins
 2. **Set Up Blackbox**: Install and configure Blackbox tools
 3. **Audit Current UI**: Identify enhancement opportunities
 4. **Create Design Variants**: Develop multiple visual options
 
 ### Development Commands
+
 ```bash
 # Start enhanced development
 npm run dev:enhanced
@@ -251,16 +274,19 @@ npm run test:a11y
 ## 🔄 Iterative Process
 
 ### Week 1-2: Foundation
+
 - Set up Blackbox environment
 - Enhance design tokens
 - Create component variants
 
 ### Week 3-4: Implementation
+
 - Apply enhancements to target platform
 - Implement animations and interactions
 - Test responsive behavior
 
 ### Week 5-6: Refinement
+
 - User testing and feedback
 - Performance optimization
 - Cross-platform consistency

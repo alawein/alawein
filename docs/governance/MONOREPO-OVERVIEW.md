@@ -7,7 +7,7 @@
 ```
 GitHub/                           # Root monorepo
 ├── 📁 LLCs (Business Platforms)
-│   ├── alawein-technologies-llc/ # 11 projects, 3160 items
+│   ├── organizations/alawein-technologies-llc/ # 11 projects, 3160 items
 │   │   ├── attributa/            # AI content attribution
 │   │   ├── foundry/              # ???
 │   │   ├── helios/               # ???
@@ -19,10 +19,10 @@ GitHub/                           # Root monorepo
 │   │   ├── simcore/              # Scientific computing
 │   │   └── talai/                # AI assistant
 │   │
-│   ├── live-it-iconic-llc/       # 1 project, 622 items
+│   ├── organizations/live-it-iconic-llc/       # 1 project, 622 items
 │   │   └── liveiticonic/         # Lifestyle brand
 │   │
-│   └── repz-llc/                 # 1 project, 885 items
+│   └── organizations/repz-llc/                 # 1 project, 885 items
 │       └── repz/                 # Fitness coaching
 │
 ├── 📁 Research (Academic)
@@ -35,12 +35,12 @@ GitHub/                           # Root monorepo
 │       └── spincirc/             # Spintronics circuits
 │
 ├── 📁 Platforms (Full-stack Apps)
-│   └── platforms/
+│   └── organizations/alawein-technologies-llc/platforms/
 │       └── portfolio/            # Cyberpunk portfolio (moved from Desktop)
 │
 ├── 📁 Family
-│   └── family-platforms/         # Family websites
-│       └── apps/                 # 10 family apps
+│   └── family-organizations/alawein-technologies-llc/platforms/         # Family websites
+│       └── organizations/alawein-technologies-llc/apps/                 # 10 family apps
 │
 ├── 📁 Documentation & Templates
 │   └── docs/                     # 324 items
@@ -101,6 +101,7 @@ GitHub/                           # Root monorepo
 ## Issues Identified
 
 ### 1. **AI Systems Scattered**
+
 - `automation/` - Python CLI for AI automation
 - `tools/ai/` - TypeScript AI tools
 - `tools/orchex/` - Orchestration system
@@ -112,28 +113,33 @@ GitHub/                           # Root monorepo
 - Empty dirs: `.ai/`, `.ai-system/`, `.cascade/`, `.orchex/`
 
 ### 2. **Templates Scattered**
+
 - `docs/pages/templates/` - HTML templates (4)
 - `tools/templates/` - 21 items
 - `docs/ai-knowledge/templates/` - AI templates
 - `docs/templates/` - 1 item
 
 ### 3. **Root Directory Cluttered**
+
 - 30+ markdown files at root level
 - Many are planning/phase documents that should be archived
 - Config files mixed with documentation
 
 ### 4. **Duplicate/Overlapping Concerns**
+
 - `scicomp/` in research vs `simcore/` in alawein-technologies
 - Multiple prompt systems
 - Multiple template systems
 
 ### 5. **Empty Hidden Directories**
+
 - `.ai/`, `.ai-system/`, `.cascade/`, `.metaHub/`, `.orchex/`
 - Should be removed or populated
 
 ### 6. **Missing Full-Stack Implementations**
+
 - Most LLC projects lack web frontends
-- Only `platforms/portfolio` has a full React app
+- Only `organizations/alawein-technologies-llc/platforms/portfolio` has a full React app
 - Brand pages in `docs/pages/brands/` are static HTML only
 
 ---
@@ -150,7 +156,7 @@ GitHub/
 │   ├── workflows/                # Workflow definitions
 │   └── orchestration/            # Orchestration patterns
 │
-├── platforms/                    # FULL-STACK IMPLEMENTATIONS
+├── organizations/alawein-technologies-llc/platforms/                    # FULL-STACK IMPLEMENTATIONS
 │   ├── portfolio/                # ✅ Done - Cyberpunk portfolio
 │   ├── simcore/                  # Scientific computing app
 │   ├── repz/                     # Fitness coaching app
@@ -193,22 +199,26 @@ GitHub/
 ## Action Items
 
 ### Phase 1: Consolidate AI Systems
+
 - [ ] Merge `tools/ai/`, `tools/orchex/`, `tools/meta-prompt/`, etc. into `automation/`
 - [ ] Consolidate all prompts into `automation/prompts/`
 - [ ] Remove empty hidden directories
 - [ ] Create single AI CLI entry point
 
 ### Phase 2: Clean Root Directory
+
 - [ ] Move phase/planning docs to `archive/`
 - [ ] Move technical specs to `docs/architecture/`
 - [ ] Keep only essential files at root
 
 ### Phase 3: Organize Platforms
-- [ ] Move full-stack apps to `platforms/`
+
+- [ ] Move full-stack apps to `organizations/alawein-technologies-llc/platforms/`
 - [ ] Keep libraries in `packages/`
 - [ ] Keep research separate
 
 ### Phase 4: Consolidate Templates
+
 - [ ] Merge all template systems
 - [ ] Create clear template categories:
   - HTML page templates
@@ -216,6 +226,7 @@ GitHub/
   - Project scaffolding templates
 
 ### Phase 5: Full-Stack Development
+
 - [ ] Create web apps for key platforms:
   - SimCore (interactive simulations)
   - REPZ (fitness tracking)
@@ -228,25 +239,26 @@ GitHub/
 
 **ALL PLATFORMS ARE FULLY BUILT!** They're just buried in LLC folders:
 
-| Platform | Location | Frontend | Backend | Status |
-|----------|----------|----------|---------|--------|
-| **Portfolio** | `platforms/portfolio/` | ✅ React (src: 100+ files) | - | **Ready** |
-| **SimCore** | `alawein-technologies-llc/simcore/` | ✅ React (src: 258 items) | ✅ Supabase | **Ready** |
-| **REPZ** | `repz-llc/repz/` | ✅ React (src: 484 items!) | ✅ Supabase | **Ready** |
-| **LiveItIconic** | `live-it-iconic-llc/liveiticonic/` | ✅ React (src: 425 items) | ✅ Supabase | **Ready** |
-| **Attributa** | `alawein-technologies-llc/attributa/` | ✅ React (src: 165 items) | ✅ Supabase | **Ready** |
-| **TalAI** | `alawein-technologies-llc/talai/` | ✅ React (src: 708 items!) | ✅ Supabase | **Ready** |
-| **QMLab** | `alawein-technologies-llc/qmlab/` | ✅ React | ✅ Supabase | **Ready** |
-| **LLMWorks** | `alawein-technologies-llc/llmworks/` | ✅ React | ✅ Supabase | **Ready** |
-| **Librex** | `alawein-technologies-llc/librex/` | ✅ React | ✅ Python | **Ready** |
-| **Helios** | `alawein-technologies-llc/helios/` | ✅ React | ✅ Python | **Ready** |
-| **MEZAN** | `alawein-technologies-llc/mezan/` | ✅ React | ✅ Supabase | **Ready** |
+| Platform         | Location                                                      | Frontend                   | Backend     | Status    |
+| ---------------- | ------------------------------------------------------------- | -------------------------- | ----------- | --------- |
+| **Portfolio**    | `organizations/alawein-technologies-llc/platforms/portfolio/` | ✅ React (src: 100+ files) | -           | **Ready** |
+| **SimCore**      | `organizations/alawein-technologies-llc/simcore/`             | ✅ React (src: 258 items)  | ✅ Supabase | **Ready** |
+| **REPZ**         | `organizations/repz-llc/repz/`                                | ✅ React (src: 484 items!) | ✅ Supabase | **Ready** |
+| **LiveItIconic** | `organizations/live-it-iconic-llc/liveiticonic/`              | ✅ React (src: 425 items)  | ✅ Supabase | **Ready** |
+| **Attributa**    | `organizations/alawein-technologies-llc/attributa/`           | ✅ React (src: 165 items)  | ✅ Supabase | **Ready** |
+| **TalAI**        | `organizations/alawein-technologies-llc/talai/`               | ✅ React (src: 708 items!) | ✅ Supabase | **Ready** |
+| **QMLab**        | `organizations/alawein-technologies-llc/qmlab/`               | ✅ React                   | ✅ Supabase | **Ready** |
+| **LLMWorks**     | `organizations/alawein-technologies-llc/llmworks/`            | ✅ React                   | ✅ Supabase | **Ready** |
+| **Librex**       | `organizations/alawein-technologies-llc/librex/`              | ✅ React                   | ✅ Python   | **Ready** |
+| **Helios**       | `organizations/alawein-technologies-llc/helios/`              | ✅ React                   | ✅ Python   | **Ready** |
+| **MEZAN**        | `organizations/alawein-technologies-llc/mezan/`               | ✅ React                   | ✅ Supabase | **Ready** |
 
 ### To Run Any Platform:
+
 ```bash
-cd alawein-technologies-llc/simcore && npm install && npm run dev
-cd repz-llc/repz && npm install && npm run dev
-cd live-it-iconic-llc/liveiticonic && npm install && npm run dev
+cd organizations/alawein-technologies-llc/simcore && npm install && npm run dev
+cd organizations/repz-llc/repz && npm install && npm run dev
+cd organizations/live-it-iconic-llc/liveiticonic && npm install && npm run dev
 # etc.
 ```
 

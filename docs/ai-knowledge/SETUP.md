@@ -5,6 +5,7 @@ Your AI Knowledge Management System is ready.
 ## ✅ What's Been Created
 
 ### 📁 Directory Structure
+
 - `prompts/` - 3 superprompts, 1 code review prompt
 - `workflows/` - 1 automated workflow (test-driven-refactor)
 - `rules/` - 3 rules (physics-first, numpy-style, conservation-laws)
@@ -13,45 +14,53 @@ Your AI Knowledge Management System is ready.
 - `templates/` - Template for new prompts
 
 ### 🔧 Tools Created
+
 1. **migrate-prompts.py** - Scan existing docs for reusable prompts
 2. **update-catalog.py** - Auto-update catalog from filesystem
 3. **create-workflow.py** - Interactive workflow generator
 4. **sync-across-tools.py** - Sync to Amazon Q, Claude, etc.
 
 ### 📝 Prompts Ready to Use
+
 - `optimization-refactor` - Refactor with physics constraints
 - `gpu-optimization` - Convert NumPy to JAX for GPU
 - `physics-code-review` - Review with physics correctness
 
 ### 🔄 Workflows Ready to Run
+
 - `test-driven-refactor.py` - TDD refactoring with validation
 
 ## 🚀 Quick Start Commands
 
 ### 1. Migrate Existing Prompts
+
 ```bash
 python .ai-knowledge/tools/migrate-prompts.py
 # Check: .ai-knowledge/migration-report.md
 ```
 
 ### 2. Use a Prompt
+
 ```
 @prompt optimization-refactor
 ```
 
 ### 3. Run a Workflow
+
 ```bash
 python .ai-knowledge/workflows/development/test-driven-refactor.py \
-  --target alawein-technologies-llc/librex/equilibria/algorithms/
+  --target organizations/alawein-technologies-llc/librex/equilibria/algorithms/
 ```
 
 ### 4. Create New Workflow
+
 ```bash
 python .ai-knowledge/tools/create-workflow.py
 # Follow interactive prompts
 ```
 
 ### 5. Sync to All Tools
+
 ```bash
 python .ai-knowledge/tools/sync-across-tools.py
 ```

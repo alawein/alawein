@@ -121,7 +121,7 @@ import { useAuthStore } from '@/templates/shared/utils/stores';
 Reference this repo as a submodule:
 
 ```bash
-git submodule add https://github.com/alaweimm90-testing/quantum-dev-profile.git templates
+git submodule add https://github.com/alawein-testing/quantum-dev-profile.git templates
 ```
 
 ### Method 4: Documentation Reference

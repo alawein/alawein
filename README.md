@@ -1,142 +1,111 @@
-# GitHub Monorepo
+# Alawein Technologies Monorepo
 
-Centralized repository for all organizations, platforms, and shared packages.
+**Multi-LLC enterprise monorepo** for Alawein Technologies LLC, Live It Iconic LLC, and REPZ LLC.
+
+[![CI](https://github.com/alawein/alawein/workflows/CI/badge.svg)](https://github.com/alawein/alawein/actions)
+[![Security](https://github.com/alawein/alawein/workflows/CodeQL/badge.svg)](https://github.com/alawein/alawein/security)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🏗️ Structure
 
 ```text
-GitHub/
-├── .metaHub/              # Centralized CI/CD, tooling, automation
-├── organizations/         # Company/LLC scoped projects
-│   ├── repz-llc/         # REPZ applications and services
-│   ├── alawein-technologies-llc/  # Scientific platforms
-│   └── live-it-iconic-llc/        # Live event platforms
-├── platforms/             # Cross-organization applications
-│   ├── portfolio/        # Portfolio website
-│   ├── qmlab/            # Quantum laboratory
-│   └── shared/           # Shared platform code
-├── packages/              # Reusable libraries and configs
-│   ├── ui/               # Shared UI components
-│   ├── utils/            # Common utilities
-│   ├── types/            # TypeScript definitions
-│   ├── eslint-config/    # ESLint configurations
-│   └── typescript-config/ # TypeScript configurations
-├── docs/                  # Documentation hub
-│   ├── architecture/     # System architecture
-│   ├── guides/          # Development guides
-│   ├── api/             # API documentation
-│   └── governance/      # Policies and standards
-├── tools/                 # Development tools and scripts
-└── archive/              # Archived projects
+organizations/
+├── alawein-technologies-llc/     # Scientific & Technical Platforms
+│   ├── saas/                     # Subscription web apps (React/Vite/Supabase)
+│   │   ├── attributa/            # Attribution analytics platform
+│   │   ├── llmworks/             # LLM evaluation & benchmarking
+│   │   ├── portfolio/            # Professional portfolio
+│   │   └── qmlab/                # Quantum computing laboratory
+│   ├── mobile-apps/              # Hybrid mobile apps (Capacitor)
+│   │   └── simcore/              # Physics simulation mobile app
+│   ├── packages/                 # pip-installable Python libraries
+│   │   ├── librex/               # QAP optimization solver
+│   │   ├── helios/               # ML/AI DevOps framework
+│   │   └── mezan/                # ML research utilities
+│   ├── research/                 # Multi-module research systems
+│   │   └── talai/                # TAL AI research platform
+│   ├── incubator/                # Pre-release products
+│   │   └── foundry/              # Startup concepts
+│   └── services/                 # Backend services
+│       └── marketing-automation/
+├── live-it-iconic-llc/           # E-commerce Business
+│   └── ecommerce/
+│       └── liveiticonic/         # Clothing & fashion e-commerce
+└── repz-llc/                     # Fitness & Wellness
+    └── apps/
+        └── repz/                 # AI fitness coaching platform
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- npm 9+
-
-### Installation
-
-```bash
-# Install dependencies for all workspaces
-npm install
-
-# Install dependencies for specific workspace
-npm install --workspace=@monorepo/ui
-```
+- Node.js 18+ / Python 3.11+
+- npm 9+ / pip
 
 ### Development
 
 ```bash
-# Start all development servers
-npm run dev
+# Clone the repository
+git clone https://github.com/alawein/alawein.git
+cd alawein
 
-# Start specific workspace
-npm run dev --workspace=portfolio
+# Start a specific platform
+cd organizations/alawein-technologies-llc/saas/llmworks
+npm install && npm run dev
 
-# Build all projects
-npm run build
-
-# Run tests across all projects
-npm run test
-
-# Lint all code
-npm run lint
-
-# Format all code
-npm run format
+# Work with Python packages
+cd organizations/alawein-technologies-llc/packages/librex
+pip install -e ".[dev]"
+pytest
 ```
 
-## 📦 Workspaces
+## 📦 Projects
 
-### Organizations
+### 🔬 Alawein Technologies LLC
 
-- **repz-llc**: Fitness coaching platform with cyberpunk theme
-- **alawein-technologies-llc**: Scientific computing and simulation platforms
-- **live-it-iconic-llc**: Live event and streaming platforms
+| Category | Project | Description | Stack |
+|----------|---------|-------------|-------|
+| **SaaS** | [LLMWorks](organizations/alawein-technologies-llc/saas/llmworks) | LLM evaluation & benchmarking | React, Vite, Supabase |
+| **SaaS** | [QMLab](organizations/alawein-technologies-llc/saas/qmlab) | Quantum computing laboratory | React, Vite |
+| **SaaS** | [Attributa](organizations/alawein-technologies-llc/saas/attributa) | Attribution analytics | React, Vite |
+| **Mobile** | [SimCore](organizations/alawein-technologies-llc/mobile-apps/simcore) | Physics simulations | Capacitor, React |
+| **Package** | [Librex](organizations/alawein-technologies-llc/packages/librex) | QAP optimization solver | Python |
+| **Package** | [MEZAN](organizations/alawein-technologies-llc/packages/mezan) | ML/AI DevOps | Python |
+| **Research** | [TalAI](organizations/alawein-technologies-llc/research/talai) | AI research platform | Python |
 
-### Platforms
+### 🛍️ Live It Iconic LLC
 
-- **portfolio**: Professional portfolio website
-- **qmlab**: Quantum computing laboratory
-- **shared**: Common platform utilities
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [LiveItIconic](organizations/live-it-iconic-llc/ecommerce/liveiticonic) | Fashion e-commerce platform | React, Vite, Stripe |
 
-### Packages
+### 💪 REPZ LLC
 
-- **@monorepo/ui**: Shared React components
-- **@monorepo/utils**: Common utility functions
-- **@monorepo/types**: TypeScript type definitions
-- **@monorepo/eslint-config**: ESLint configurations
-- **@monorepo/typescript-config**: TypeScript configurations
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [REPZ](organizations/repz-llc/apps/repz) | AI fitness coaching platform | Capacitor, React, Supabase |
 
-## 🛠️ Tooling
+## 🛠️ Infrastructure
 
-### MetaHub
-
-- **CI/CD**: GitHub Actions, Docker configurations
-- **Automation**: Python and TypeScript automation systems
-- **Templates**: Project and component templates
-- **Governance**: Code standards and policies
-
-### Build System
-
-- **Turborepo**: Monorepo build system
-- **TypeScript**: Type checking across all packages
-- **ESLint**: Linting with shared configurations
-- **Prettier**: Code formatting
+- **CI/CD**: 29 GitHub Actions workflows
+- **Security**: CodeQL, Trivy, Dependabot, SLSA provenance
+- **Governance**: CODEOWNERS, pre-commit hooks, policy enforcement
+- **Documentation**: MkDocs, architecture guides
 
 ## 📚 Documentation
 
-- **Architecture**: System design and technical decisions
-- **Guides**: Development workflows and best practices
-- **API**: API documentation and examples
-- **Governance**: Policies, standards, and compliance
+| Resource | Description |
+|----------|-------------|
+| [Architecture](docs/governance/ARCHITECTURE.md) | System design & decisions |
+| [Lovable Workflow](docs/developer/LOVABLE-DEV-WORKFLOW.md) | Lovable.dev integration guide |
+| [Contributing](docs/governance/CONTRIBUTING.md) | Contribution guidelines |
+| [Security](SECURITY.md) | Security policy |
 
-## 🔧 Development Workflow
+## 👤 Author
 
-1. **Create Feature Branch**: `git checkout -b feature/name`
-2. **Make Changes**: Work in appropriate workspace
-3. **Run Validation**: `npm run validate`
-4. **Commit Changes**: Follow conventional commits
-5. **Push & PR**: Automated checks run on PR
-
-## 📊 Metrics
-
-- **Organizations**: 3 active LLCs
-- **Platforms**: 5+ applications
-- **Packages**: 10+ shared libraries
-- **Automation**: Centralized in MetaHub
-
-## 🤝 Contributing
-
-See [docs/governance/CONTRIBUTING.md](docs/governance/CONTRIBUTING.md) for contribution guidelines.
+**Meshaal Alawein** - [@alawein](https://github.com/alawein)
 
 ## 📄 License
 
-MIT License - See individual package licenses for details.
-
----
-
-**MetaHub** - Centralized Infrastructure for Modern Development
+MIT License - See [LICENSE](LICENSE) for details.

@@ -199,7 +199,7 @@ export const PLATFORMS: PlatformDefinition[] = [
     repoPath: "platforms/portfolio",
     domainUrl: "https://malawein.com",
     brandPageUrl: "/pages/brands/portfolio/",
-    githubUrl: "https://github.com/alaweimm90/Portfolio",
+    githubUrl: "https://github.com/alawein/Portfolio",
     tagline: "Professional Portfolio & Resume Generator",
     devPort: 5174,
     gradientColors: ["#38bdf8", "#0284c7"],

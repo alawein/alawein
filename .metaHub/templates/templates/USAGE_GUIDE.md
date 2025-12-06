@@ -191,7 +191,7 @@ export default {
 
 ```bash
 # In your project root
-git submodule add https://github.com/alaweimm90-testing/quantum-dev-profile.git templates
+git submodule add https://github.com/alawein-testing/quantum-dev-profile.git templates
 ```
 
 This clones the templates repo into a `templates/` folder in your project.
@@ -330,7 +330,7 @@ export function MyComponent() {
 **Use Method 3 (Git Submodule)**
 
 ```bash
-git submodule add https://github.com/alaweimm90-testing/quantum-dev-profile.git templates
+git submodule add https://github.com/alawein-testing/quantum-dev-profile.git templates
 # Now all team members pull the same templates
 ```
 

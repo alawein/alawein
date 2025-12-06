@@ -48,10 +48,10 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alaweimm90/QMatSim"
-Repository = "https://github.com/alaweimm90/QMatSim"
-Documentation = "https://github.com/alaweimm90/QMatSim/docs"
-"Bug Tracker" = "https://github.com/alaweimm90/QMatSim/issues"
+Homepage = "https://github.com/alawein/QMatSim"
+Repository = "https://github.com/alawein/QMatSim"
+Documentation = "https://github.com/alawein/QMatSim/docs"
+"Bug Tracker" = "https://github.com/alawein/QMatSim/issues"
 
 [project.scripts]
 qmatsim = "qmatsim.__main__:main"

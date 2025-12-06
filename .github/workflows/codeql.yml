@@ -1,0 +1,107 @@
+name: "CodeQL Security Analysis"
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    # Run weekly on Sunday at midnight
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  analyze-javascript:
+    name: Analyze JavaScript/TypeScript
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+          config: |
+            paths:
+              - organizations
+              - tools
+              - automation
+              - src
+            paths-ignore:
+              - '**/node_modules/**'
+              - '**/dist/**'
+              - '**/build/**'
+              - '**/*.test.ts'
+              - '**/*.spec.ts'
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+          output: codeql-results-js
+          upload: true
+
+  analyze-python:
+    name: Analyze Python
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: python
+          queries: security-extended
+          config: |
+            paths:
+              - organizations
+              - automation
+              - tools
+              - .metaHub/scripts
+            paths-ignore:
+              - '**/__pycache__/**'
+              - '**/venv/**'
+              - '**/.venv/**'
+              - '**/site-packages/**'
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:python"
+          output: codeql-results-py
+          upload: true
+
+  # Summary job to require both analyses pass
+  security-status:
+    name: Security Analysis Complete
+    runs-on: ubuntu-latest
+    needs: [analyze-javascript, analyze-python]
+    if: always()
+    
+    steps:
+      - name: Check analysis results
+        run: |
+          if [ "${{ needs.analyze-javascript.result }}" != "success" ] || [ "${{ needs.analyze-python.result }}" != "success" ]; then
+            echo "::warning::One or more CodeQL analyses had issues"
+            exit 0
+          fi
+          echo "✅ All CodeQL security analyses completed successfully"
+

@@ -54,7 +54,7 @@ Reference templates in your own project:
 
 ```bash
 # Add this repo as a submodule
-git submodule add https://github.com/alaweimm90-testing/quantum-dev-profile.git templates
+git submodule add https://github.com/alawein-testing/quantum-dev-profile.git templates
 
 # Import components in your code
 import { GlassCard } from './templates/shared/components'
@@ -327,7 +327,7 @@ npm run dev
 For projects that want to stay in sync with template updates:
 
 ```bash
-git submodule add https://github.com/alaweimm90-testing/quantum-dev-profile.git templates
+git submodule add https://github.com/alawein-testing/quantum-dev-profile.git templates
 git submodule update --remote
 ```
 

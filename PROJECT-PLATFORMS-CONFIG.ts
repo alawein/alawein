@@ -258,7 +258,7 @@ export const PLATFORMS: PlatformDefinition[] = [
     notes: "Main portfolio lives in quantum-dev-profile repo.",
     domainUrl: "https://malawein.com",
     brandPageUrl: "/pages/brands/portfolio/",
-    githubUrl: "https://github.com/alaweimm90/Portfolio",
+    githubUrl: "https://github.com/alawein/Portfolio",
     tagline: "Professional Portfolio & Resume Generator",
     gradientColors: ["#38bdf8", "#0284c7"],
   },

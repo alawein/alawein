@@ -73,11 +73,11 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alaweimm90/SpinCirc"
+Homepage = "https://github.com/alawein/SpinCirc"
 Documentation = "https://docs.spincirc.org"
-Repository = "https://github.com/alaweimm90/SpinCirc"
-"Bug Tracker" = "https://github.com/alaweimm90/SpinCirc/issues"
-Discussions = "https://github.com/alaweimm90/SpinCirc/discussions"
+Repository = "https://github.com/alawein/SpinCirc"
+"Bug Tracker" = "https://github.com/alawein/SpinCirc/issues"
+Discussions = "https://github.com/alawein/SpinCirc/discussions"
 Website = "https://malawein.com"
 LinkedIn = "https://www.linkedin.com/in/meshal-alawein"
 Research = "https://simcore.dev"

@@ -4,8 +4,8 @@ site_author: Meshal Alawein
 site_url: https://docs.github-alawein.com
 
 # Repository configuration
-repo_name: alaweimm90/alaweimm90
-repo_url: https://github.com/alaweimm90/alaweimm90
+repo_name: alawein/alawein
+repo_url: https://github.com/alawein/alawein
 edit_uri: edit/main/docs/
 
 # Navigation structure
@@ -133,8 +133,8 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.magiclink:
       repo_url_shorthand: true
-      user: alaweimm90
-      repo: alaweimm90
+      user: alawein
+      repo: alawein
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.superfences:
@@ -161,7 +161,7 @@ extra:
     property: G-XXXXXXXXXX
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/alaweimm90
+      link: https://github.com/alawein
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/meshal_alawein
     - icon: fontawesome/solid/paper-plane

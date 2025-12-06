@@ -99,13 +99,13 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alaweimm90/MagLogic"
-Documentation = "https://alaweimm90.github.io/MagLogic/"
-Repository = "https://github.com/alaweimm90/MagLogic"
+Homepage = "https://github.com/alawein/MagLogic"
+Documentation = "https://alawein.github.io/MagLogic/"
+Repository = "https://github.com/alawein/MagLogic"
 Website = "https://malawein.com"
 LinkedIn = "https://www.linkedin.com/in/meshal-alawein"
 Research = "https://simcore.dev"
-"Bug Reports" = "https://github.com/alaweimm90/MagLogic/issues"
+"Bug Reports" = "https://github.com/alawein/MagLogic/issues"
 "Research Paper" = "https://doi.org/10.1109/LMAG.2019.2912398"
 
 [project.scripts]

@@ -4,8 +4,8 @@
 
 ### 1. Repository Loss
 ```bash
-git clone https://github.com/alaweimm90/alaweimm90.git
-cd alaweimm90
+git clone https://github.com/alawein/alawein.git
+cd alawein
 npm install
 ```
 

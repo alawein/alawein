@@ -94,7 +94,7 @@ export default function StudioSelector() {
         <p className="text-sm text-muted-foreground mb-4">Quick Links</p>
         <div className="flex justify-center gap-4 flex-wrap">
           <a
-            href="https://github.com/alaweimm90"
+            href="https://github.com/alawein"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"

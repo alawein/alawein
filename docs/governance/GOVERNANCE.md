@@ -212,4 +212,4 @@ Scope: platform name or 'monorepo'
 
 - **Repository Owner**: Meshal Alawein
 - **Email**: meshal@berkeley.edu
-- **GitHub**: @alaweimm90
+- **GitHub**: @alawein

@@ -36,7 +36,7 @@ updates:
 
   # Librex QAP solver dependencies
   - package-ecosystem: 'pip'
-    directory: '/alawein-technologies-llc/librex'
+    directory: '/organizations/alawein-technologies-llc/packages/librex'
     schedule:
       interval: 'weekly'
       day: 'monday'

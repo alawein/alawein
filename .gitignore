@@ -48,6 +48,18 @@ tslint-report.*
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Repository cleanup
+*.broken
+.dead-links
+old-*/
+legacy-*/
+temp-*/
+*.tmp
+
+# Prevent symlink issues
+*.lnk
+*.url
 *.swp
 *.swo
 *~

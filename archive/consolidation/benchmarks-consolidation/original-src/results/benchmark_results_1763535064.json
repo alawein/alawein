@@ -1,0 +1,333 @@
+{
+  "timestamp": 1763535064.5871933,
+  "mezan_version": "4.1.0",
+  "results": [
+    {
+      "solver": "Heuristic (Random)",
+      "problem_type": "QAP",
+      "size": 5,
+      "status": "fallback_used",
+      "time": 3.361701965332031e-05,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Random)",
+      "problem_type": "QAP",
+      "size": 10,
+      "status": "fallback_used",
+      "time": 1.3828277587890625e-05,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Random)",
+      "problem_type": "QAP",
+      "size": 15,
+      "status": "fallback_used",
+      "time": 8.58306884765625e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Random)",
+      "problem_type": "QAP",
+      "size": 20,
+      "status": "fallback_used",
+      "time": 8.344650268554688e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Greedy)",
+      "problem_type": "FLOW",
+      "size": 5,
+      "status": "fallback_used",
+      "time": 7.3909759521484375e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Greedy)",
+      "problem_type": "FLOW",
+      "size": 10,
+      "status": "fallback_used",
+      "time": 9.5367431640625e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Greedy)",
+      "problem_type": "FLOW",
+      "size": 15,
+      "status": "fallback_used",
+      "time": 4.0531158447265625e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Greedy)",
+      "problem_type": "FLOW",
+      "size": 20,
+      "status": "fallback_used",
+      "time": 7.3909759521484375e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Equal)",
+      "problem_type": "ALLOC",
+      "size": 5,
+      "status": "fallback_used",
+      "time": 6.4373016357421875e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Equal)",
+      "problem_type": "ALLOC",
+      "size": 10,
+      "status": "fallback_used",
+      "time": 5.9604644775390625e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Equal)",
+      "problem_type": "ALLOC",
+      "size": 15,
+      "status": "fallback_used",
+      "time": 3.814697265625e-06,
+      "objective": null
+    },
+    {
+      "solver": "Heuristic (Equal)",
+      "problem_type": "ALLOC",
+      "size": 20,
+      "status": "fallback_used",
+      "time": 3.814697265625e-06,
+      "objective": null
+    }
+  ],
+  "summary": {
+    "total_benchmarks": 12,
+    "by_problem_type": {
+      "QAP": [
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 3.361701965332031e-05,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 1.3828277587890625e-05,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 8.58306884765625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 8.344650268554688e-06,
+          "objective": null
+        }
+      ],
+      "FLOW": [
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 7.3909759521484375e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 9.5367431640625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 4.0531158447265625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 7.3909759521484375e-06,
+          "objective": null
+        }
+      ],
+      "ALLOC": [
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 6.4373016357421875e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 5.9604644775390625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 3.814697265625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 3.814697265625e-06,
+          "objective": null
+        }
+      ]
+    },
+    "by_solver": {
+      "Heuristic (Random)": [
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 3.361701965332031e-05,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 1.3828277587890625e-05,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 8.58306884765625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Random)",
+          "problem_type": "QAP",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 8.344650268554688e-06,
+          "objective": null
+        }
+      ],
+      "Heuristic (Greedy)": [
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 7.3909759521484375e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 9.5367431640625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 4.0531158447265625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Greedy)",
+          "problem_type": "FLOW",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 7.3909759521484375e-06,
+          "objective": null
+        }
+      ],
+      "Heuristic (Equal)": [
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 5,
+          "status": "fallback_used",
+          "time": 6.4373016357421875e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 10,
+          "status": "fallback_used",
+          "time": 5.9604644775390625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 15,
+          "status": "fallback_used",
+          "time": 3.814697265625e-06,
+          "objective": null
+        },
+        {
+          "solver": "Heuristic (Equal)",
+          "problem_type": "ALLOC",
+          "size": 20,
+          "status": "fallback_used",
+          "time": 3.814697265625e-06,
+          "objective": null
+        }
+      ]
+    },
+    "avg_time_by_type": {
+      "QAP": {
+        "mean": 1.609325408935547e-05,
+        "std": 1.0352007312948456e-05,
+        "min": 8.344650268554688e-06,
+        "max": 3.361701965332031e-05
+      },
+      "FLOW": {
+        "mean": 7.092952728271484e-06,
+        "std": 1.9615271892433564e-06,
+        "min": 4.0531158447265625e-06,
+        "max": 9.5367431640625e-06
+      },
+      "ALLOC": {
+        "mean": 5.0067901611328125e-06,
+        "std": 1.20395480851675e-06,
+        "min": 3.814697265625e-06,
+        "max": 6.4373016357421875e-06
+      }
+    }
+  }
+}

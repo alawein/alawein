@@ -1,0 +1,13 @@
+{
+  "name": "@alawein/prettier-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'ok'",
+    "dev": "echo 'ok'",
+    "lint": "echo 'ok'",
+    "type-check": "echo 'ok'"
+  }
+}

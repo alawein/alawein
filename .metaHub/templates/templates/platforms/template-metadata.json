@@ -1,0 +1,147 @@
+[
+  {
+    "id": "simcore",
+    "name": "SimCore",
+    "title": "Scientific Computing Platform",
+    "description": "A comprehensive scientific computing and simulation platform with data analysis, visualization, and experiment management capabilities.",
+    "category": "platforms",
+    "version": "1.0.0",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Recharts", "Three.js"],
+    "features": [
+      "Data visualization",
+      "Experiment runners",
+      "Result analysis",
+      "Real-time computing",
+      "Data export"
+    ],
+    "components": [
+      "Dashboard",
+      "Data Tables",
+      "Charts & Graphs",
+      "3D Visualization",
+      "Parameter Input Forms"
+    ],
+    "usage": "copy-paste",
+    "difficulty": "advanced",
+    "author": "AlaweinOS",
+    "created": "2024-12-05",
+    "path": "/templates/platforms/simcore",
+    "readme": "/templates/platforms/simcore/README.md"
+  },
+  {
+    "id": "mezan",
+    "name": "MEZAN",
+    "title": "Enterprise Automation Platform",
+    "description": "Enterprise workflow automation and business process management system with task tracking and process monitoring.",
+    "category": "platforms",
+    "version": "1.0.0",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Zustand", "TanStack Query"],
+    "features": [
+      "Workflow builder",
+      "Task management",
+      "Process monitoring",
+      "Automation rules",
+      "Reporting & Analytics"
+    ],
+    "components": [
+      "Workflow Dashboard",
+      "Task Lists",
+      "Process Builder",
+      "Status Monitoring",
+      "Reports"
+    ],
+    "usage": "copy-paste",
+    "difficulty": "intermediate",
+    "author": "AlaweinOS",
+    "created": "2024-12-05",
+    "path": "/templates/platforms/mezan",
+    "readme": "/templates/platforms/mezan/README.md"
+  },
+  {
+    "id": "talai",
+    "name": "TalAI",
+    "title": "AI Research Platform",
+    "description": "AI model research, experimentation, and deployment platform with experiment tracking and results analysis.",
+    "category": "platforms",
+    "version": "1.0.0",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "API Integration"],
+    "features": [
+      "Model training UI",
+      "Experiment tracking",
+      "Results dashboard",
+      "Model comparison",
+      "Deployment interface"
+    ],
+    "components": [
+      "Experiment Dashboard",
+      "Model Manager",
+      "Results Viewer",
+      "Comparison Tools",
+      "Metrics Display"
+    ],
+    "usage": "copy-paste",
+    "difficulty": "advanced",
+    "author": "AlaweinOS",
+    "created": "2024-12-05",
+    "path": "/templates/platforms/talai",
+    "readme": "/templates/platforms/talai/README.md"
+  },
+  {
+    "id": "optilibria",
+    "name": "OptiLibria",
+    "title": "Optimization Algorithms Platform",
+    "description": "Algorithm optimization and performance testing platform with benchmarking and comparison tools.",
+    "category": "platforms",
+    "version": "1.0.0",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Data Visualization"],
+    "features": [
+      "Algorithm runner",
+      "Performance metrics",
+      "Comparison tools",
+      "Benchmarking",
+      "Result analysis"
+    ],
+    "components": [
+      "Algorithm Dashboard",
+      "Input Forms",
+      "Performance Charts",
+      "Comparison View",
+      "Export Tools"
+    ],
+    "usage": "copy-paste",
+    "difficulty": "intermediate",
+    "author": "AlaweinOS",
+    "created": "2024-12-05",
+    "path": "/templates/platforms/optilibria",
+    "readme": "/templates/platforms/optilibria/README.md"
+  },
+  {
+    "id": "qmlab",
+    "name": "QMLab",
+    "title": "Quantum Mechanics Laboratory",
+    "description": "Quantum computing education and simulation platform with circuit builder and visualization.",
+    "category": "platforms",
+    "version": "1.0.0",
+    "tech": ["React", "TypeScript", "Tailwind CSS", "Three.js"],
+    "features": [
+      "Quantum circuit builder",
+      "Simulation engine",
+      "3D visualization",
+      "Educational content",
+      "Result analysis"
+    ],
+    "components": [
+      "Circuit Builder",
+      "Simulator",
+      "3D Visualization",
+      "State Display",
+      "Tutorial Panel"
+    ],
+    "usage": "copy-paste",
+    "difficulty": "advanced",
+    "author": "AlaweinOS",
+    "created": "2024-12-05",
+    "path": "/templates/platforms/qmlab",
+    "readme": "/templates/platforms/qmlab/README.md"
+  }
+]

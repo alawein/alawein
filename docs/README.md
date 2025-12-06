@@ -1,56 +1,124 @@
-# Documentation Index
+# AlaweinOS Documentation
 
-## 🎯 Quick Start
-- [**USE-NOW-GUIDE.md**](USE-NOW-GUIDE.md) - Start using the system immediately
-- [**PROMPT-CHEATSHEET.md**](PROMPT-CHEATSHEET.md) - Quick reference for daily use
-- [**README-SYSTEM.md**](README-SYSTEM.md) - System overview and status
+Complete documentation for AI assistants (Claude, Cline, Cursor, etc.) and developers.
 
-## 📦 Consolidation
-- [**CONSOLIDATION-COMPLETE.md**](CONSOLIDATION-COMPLETE.md) - What was done
-- [**CONSOLIDATION-PLAN.md**](CONSOLIDATION-PLAN.md) - Original plan
-- [**EXECUTE-CONSOLIDATION.md**](EXECUTE-CONSOLIDATION.md) - Step-by-step process
-- [**POST-CONSOLIDATION-UPDATES.md**](POST-CONSOLIDATION-UPDATES.md) - Manual updates needed
+## Table of Contents
 
-## 🔧 Implementation
-- [**IMPLEMENTATION_GUIDE.md**](IMPLEMENTATION_GUIDE.md) - Technical implementation details
-- [**UNIVERSAL-PROMPTS-GUIDE.md**](UNIVERSAL-PROMPTS-GUIDE.md) - How prompts work across projects
-- [**consolidate.bat**](consolidate.bat) - Consolidation script
-- [**update-all-paths.py**](update-all-paths.py) - Path updater script
+1. [Architecture Overview](./ARCHITECTURE.md)
+2. [Project Structure](./STRUCTURE.md)
+3. [Platform APIs](./APIS.md)
+4. [Design System](./DESIGN_SYSTEM.md)
+5. [Development Guide](./DEVELOPMENT.md)
 
-## 🤖 AI System Guides
-- [**AI-AUTO-APPROVE-GUIDE.md**](AI-AUTO-APPROVE-GUIDE.md) - Auto-approval rules
-- [**GOVERNANCE_SYSTEM_GUIDE.md**](GOVERNANCE_SYSTEM_GUIDE.md) - Governance framework
+---
 
-## 📂 Structure
+## Quick Overview
+
+### What is AlaweinOS?
+
+AlaweinOS is a **unified platform** that hosts multiple specialized applications:
+
+| Platform     | Route         | Purpose                           | Status      |
+| ------------ | ------------- | --------------------------------- | ----------- |
+| Portfolio    | `/`           | Personal portfolio site           | Active      |
+| Projects Hub | `/projects`   | Central hub for all platforms     | Active      |
+| SimCore      | `/simcore`    | Scientific computing & simulation | Active      |
+| MEZAN        | `/mezan`      | Enterprise workflow automation    | Development |
+| TalAI        | `/talai`      | AI research & model training      | Beta        |
+| OptiLibria   | `/optilibria` | Optimization algorithms (31+)     | Active      |
+| QMLab        | `/qmlab`      | Quantum mechanics laboratory      | Beta        |
+
+### Key Concepts
+
+1. **Root is Portfolio**: The `/` route IS the portfolio. Don't confuse it with other pages.
+2. **Projects Hub**: `/projects` shows all available platforms as cards.
+3. **Independent Platforms**: Each platform (`/simcore`, `/mezan`, etc.) has its own dashboard,
+   routes, and backend API.
+4. **Shared Design System**: All platforms use a unified design system defined in `src/index.css`
+   and `tailwind.config.ts`.
+
+### File Organization
 
 ```
-docs/
-├── README.md                           # This file
-├── USE-NOW-GUIDE.md                    # Start here
-├── PROMPT-CHEATSHEET.md                # Daily reference
-├── README-SYSTEM.md                    # System status
-├── CONSOLIDATION-COMPLETE.md           # Consolidation results
-├── CONSOLIDATION-PLAN.md               # Original plan
-├── EXECUTE-CONSOLIDATION.md            # Execution steps
-├── POST-CONSOLIDATION-UPDATES.md       # Manual updates
-├── IMPLEMENTATION_GUIDE.md             # Technical details
-├── UNIVERSAL-PROMPTS-GUIDE.md          # Cross-project usage
-├── AI-AUTO-APPROVE-GUIDE.md            # Auto-approval
-├── GOVERNANCE_SYSTEM_GUIDE.md          # Governance
-├── consolidate.bat                     # Consolidation script
-└── update-all-paths.py                 # Path updater
+src/
+├── pages/Index.tsx          # Portfolio (root /)
+├── projects/                # Unified projects module
+│   ├── types.ts             # Platform type definitions
+│   ├── config.ts            # Platform registry & config
+│   ├── components/          # Shared platform components
+│   └── pages/               # Platform dashboards
+│       ├── ProjectsHub.tsx  # /projects route
+│       ├── simcore/         # /simcore routes
+│       ├── mezan/           # /mezan routes
+│       ├── talai/           # /talai routes
+│       ├── optilibria/      # /optilibria routes
+│       └── qmlab/           # /qmlab routes
+├── components/
+│   ├── design-engines/      # 5 design engine component sets
+│   ├── layout/              # Layout components
+│   ├── shared/              # Shared utilities
+│   └── ui/                  # Shadcn UI components
+└── features/                # Legacy feature pages (templates)
+
+supabase/
+├── functions/               # Edge Functions (one per platform)
+│   ├── simcore-api/
+│   ├── mezan-api/
+│   ├── talai-api/
+│   ├── optilibria-api/
+│   └── qmlab-api/
+└── config.toml              # Supabase configuration
 ```
 
-## 🚀 Getting Started
+### Database Tables
 
-1. Read [USE-NOW-GUIDE.md](USE-NOW-GUIDE.md)
-2. Keep [PROMPT-CHEATSHEET.md](PROMPT-CHEATSHEET.md) handy
-3. Check [README-SYSTEM.md](README-SYSTEM.md) for status
-4. Review [CONSOLIDATION-COMPLETE.md](CONSOLIDATION-COMPLETE.md) for what changed
+Each platform has its own data table:
 
-## 💡 Need Help?
+- `simcore_simulations` - Simulation runs
+- `mezan_workflows` - Workflow definitions
+- `talai_experiments` - ML experiments
+- `optilibria_runs` - Optimization runs
+- `qmlab_experiments` - Quantum experiments
 
-- **Quick answers**: Check PROMPT-CHEATSHEET.md
-- **System status**: Check README-SYSTEM.md
-- **Technical details**: Check IMPLEMENTATION_GUIDE.md
-- **Consolidation info**: Check CONSOLIDATION-COMPLETE.md
+Shared tables:
+
+- `projects` - Platform metadata
+- `project_features` - Platform features
+- `project_tech_stack` - Technology associations
+- `user_project_preferences` - User settings per platform
+- `profiles` - User profiles
+
+---
+
+## For AI Assistants
+
+### Important Rules
+
+1. **Never modify the portfolio at `/`** unless explicitly asked
+2. **Platform routes are at root level**: `/simcore`, not `/projects/simcore`
+3. **Use the project registry** in `src/projects/config.ts` for platform data
+4. **Backend APIs** are Edge Functions in `supabase/functions/{platform}-api/`
+5. **Design tokens** are in `src/index.css` - use semantic variables, not raw colors
+
+### Common Tasks
+
+**Adding a new feature to a platform:**
+
+1. Check `src/projects/pages/{platform}/` for the dashboard
+2. Check `supabase/functions/{platform}-api/` for the API
+3. Check `src/projects/config.ts` for route configuration
+
+**Modifying the design system:**
+
+1. Update CSS variables in `src/index.css`
+2. Update Tailwind config in `tailwind.config.ts`
+3. Use semantic tokens like `bg-background`, `text-foreground`
+
+**Adding a new platform:**
+
+1. Add type to `src/projects/types.ts`
+2. Add config to `src/projects/config.ts`
+3. Create dashboard in `src/projects/pages/{slug}/`
+4. Create API in `supabase/functions/{slug}-api/`
+5. Add routes to `src/App.tsx`
+6. Create database migration for platform data

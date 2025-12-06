@@ -1,217 +1,463 @@
-# Meta-Governance Architecture
+# Alawein Platform - System Architecture
 
-## Overview
+**Purpose:** Comprehensive guide to the system architecture, data flow, and component hierarchy
 
-This repository implements a **Golden Path** / **Internal Developer Platform (IDP)** pattern - a centralized source of truth for DevOps templates, governance policies, and shared tooling.
+---
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     META-GOVERNANCE REPO                        │
-│                    (alawein/alawein)                       │
-├─────────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
-│  │  Templates  │  │  Policies   │  │   Tools     │              │
-│  │  (Golden    │  │  (Policy    │  │  (CLI &     │              │
-│  │   Path)     │  │   as Code)  │  │   Automation)│             │
-│  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘              │
-│         │                │                │                      │
-│         └────────────────┼────────────────┘                      │
-│                          │                                       │
-│                          ▼                                       │
-│              ┌───────────────────────┐                           │
-│              │   Reusable Workflows  │                           │
-│              │   (.github/workflows) │                           │
-│              └───────────────────────┘                           │
-└─────────────────────────────────────────────────────────────────┘
-                           │
-           ┌───────────────┼───────────────┐
-           │               │               │
-           ▼               ▼               ▼
-    ┌────────────┐  ┌────────────┐  ┌────────────┐
-    │ Project A  │  │ Project B  │  │ Project C  │
-    │ (Consumer) │  │ (Consumer) │  │ (Consumer) │
-    └────────────┘  └────────────┘  └────────────┘
-```
-
-## Industry Terms
-
-| Term                     | Definition                          | Our Implementation   |
-| ------------------------ | ----------------------------------- | -------------------- |
-| **Golden Path**          | Opinionated, supported way to build | `templates/devops/`  |
-| **Paved Road**           | Pre-built infrastructure patterns   | Reusable workflows   |
-| **Policy as Code**       | Codified governance rules           | `.metaHub/policies/` |
-| **Platform Engineering** | Building internal dev platforms     | This entire repo     |
-| **Inner Source**         | Open source within org              | Shared across orgs   |
-
-## Directory Structure
-
-```
-alawein/
-├── .github/
-│   └── workflows/           # Reusable workflows (called by other repos)
-│       ├── reusable-ci.yml
-│       ├── reusable-cd.yml
-│       └── reusable-release.yml
-│
-├── .metaHub/
-│   └── policies/            # Policy as Code
-│       ├── protected-files.yaml
-│       └── governance.yaml
-│
-├── templates/
-│   └── devops/              # Golden Path templates
-│       ├── ci-cd/
-│       ├── kubernetes/
-│       ├── terraform/
-│       └── monitoring/
-│
-├── tools/
-│   ├── ORCHEX/               # AI-powered refactoring
-│   ├── devops/              # Template CLI tools
-│   └── governance/          # Policy validators
-│
-├── docs/
-│   ├── ARCHITECTURE.md      # This file
-│   ├── FRAMEWORK.md         # User guide
-│   └── ai-coding-tools/     # AI tool documentation
-│
-├── CLAUDE.md                # AI tool instructions
-└── README.md                # Personal profile (protected)
-```
-
-## How Consumer Repos Use This
-
-### 1. Reusable Workflows
-
-Consumer repos reference workflows from this repo:
-
-```yaml
-# In consumer repo: .github/workflows/ci.yml
-name: CI
-on: [push, pull_request]
-
-jobs:
-  build:
-    uses: alawein/alawein/.github/workflows/reusable-ci.yml@main
-    with:
-      node-version: '20'
-    secrets: inherit
-```
-
-### 2. Template Bootstrapping
-
-Use the DevOps CLI to scaffold new projects:
-
-```bash
-# From consumer repo
-npx @alawein/devops-cli init --template=node-service
-```
-
-### 3. Policy Inheritance
-
-Consumer repos can reference policies:
-
-```yaml
-# In consumer repo: .metaHub/config.yaml
-extends: alawein/alawein/.metaHub/policies/governance.yaml
-```
-
-## Enforcement Layers
+## 🏗️ System Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     ENFORCEMENT STACK                           │
+│                    ALAWEIN PLATFORM (MONOREPO)                  │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
-│  Layer 4: GitHub Branch Protection                              │
-│  ├── Required status checks                                     │
-│  ├── Required reviews                                           │
-│  └── Restrict who can push                                      │
+│  ┌───────────────────┐  ┌──────────────────┐  ┌─────────────┐ │
+│  │   APPLICATIONS    │  │  DESIGN SYSTEM   │  │  PACKAGES   │ │
+│  │                   │  │                  │  │             │ │
+│  │ • SimCore         │  │ • Tokens (500+)  │  │ • API Types │ │
+│  │ • MEZAN           │  │ • Themes (4)     │  │ • UI Comps  │ │
+│  │ • TalAI           │  │ • Components     │  │ • Infra     │ │
+│  │ • OptiLibria      │  │ • React Context  │  │ • Feature   │ │
+│  │ • QMLab           │  │                  │  │   Flags     │ │
+│  │                   │  │                  │  │ • Config    │ │
+│  └─────────┬─────────┘  └────────┬─────────┘  └──────┬──────┘ │
+│            │                     │                   │        │
+│            └─────────────────────┼───────────────────┘        │
+│                                  │                            │
+│                        ┌─────────▼────────┐                  │
+│                        │  SHARED LAYERS   │                  │
+│                        │                  │                  │
+│                        │ • State (Zustand)│                  │
+│                        │ • API (Zod types)│                  │
+│                        │ • Routing        │                  │
+│                        │ • Services       │                  │
+│                        └──────────────────┘                  │
 │                                                                 │
-│  Layer 3: GitHub Actions (CI/CD)                                │
-│  ├── Reusable workflows enforce standards                       │
-│  ├── Security scanning (npm audit, secret detection)            │
-│  └── Code quality gates (lint, test, type-check)                │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │                  INFRASTRUCTURE                          │ │
+│  │  ┌────────────────┐  ┌──────────────┐  ┌──────────────┐ │ │
+│  │  │  Turborepo     │  │   Git Hooks  │  │  Validation  │ │ │
+│  │  │  (Orchestration│  │              │  │  Scripts     │ │ │
+│  │  │   & Caching)   │  │  Enforcement │  │              │ │ │
+│  │  └────────────────┘  └──────────────┘  └──────────────┘ │ │
+│  │                                                            │ │
+│  │  ┌────────────────┐  ┌──────────────┐  ┌──────────────┐ │ │
+│  │  │  TypeScript    │  │  ESLint      │  │  Prettier    │ │ │
+│  │  │  Strict Mode   │  │  Enforced    │  │  Formatted   │ │ │
+│  │  └────────────────┘  └──────────────┘  └──────────────┘ │ │
+│  └──────────────────────────────────────────────────────────┘ │
 │                                                                 │
-│  Layer 2: Pre-commit Hooks (Local)                              │
-│  ├── Protected files check                                      │
-│  ├── Lint-staged (format, lint)                                 │
-│  ├── YAML validation                                            │
-│  └── File size limits                                           │
-│                                                                 │
-│  Layer 1: AI Tool Instructions                                  │
-│  ├── CLAUDE.md (Claude Code)                                    │
-│  ├── .cursorrules (Cursor)                                      │
-│  └── .kilorc (Kilo Code)                                        │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │              BACKEND INTEGRATION                         │ │
+│  │         Supabase Edge Functions & DB                    │ │
+│  └──────────────────────────────────────────────────────────┘ │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## GitHub Organization Pattern
+---
 
-For multi-repo organizations, create a `.github` repository:
+## 📦 Workspace & Dependency Structure
 
-```
-org-name/.github/
-├── profile/
-│   └── README.md            # Org profile displayed on GitHub
-├── ISSUE_TEMPLATE/
-│   ├── bug_report.md
-│   └── feature_request.md
-├── PULL_REQUEST_TEMPLATE.md
-├── CODEOWNERS                # Default code owners
-├── CONTRIBUTING.md           # Default contributing guide
-├── SECURITY.md               # Security policy
-└── workflow-templates/       # Starter workflows for new repos
-    ├── ci.yml
-    └── ci.properties.json
-```
-
-## Sync Strategy
+### Foundation Layer (Zero Dependencies)
 
 ```
-Meta-Governance Repo          Consumer Repos
-       │                            │
-       │  1. Manual (use template)  │
-       ├───────────────────────────►│
-       │                            │
-       │  2. Auto (reusable wf)     │
-       ├───────────────────────────►│
-       │                            │
-       │  3. CLI (scaffold/update)  │
-       ├───────────────────────────►│
-       │                            │
-       │  4. Renovate/Dependabot    │
-       ◄────────────────────────────┤
-       │  (version bumps)           │
+@alawein/design-tokens     → Colors, typography, spacing, effects, animations
+@alawein/api-schema        → Zod type definitions for APIs
+@alawein/infrastructure    → Deployment utilities & monitoring
 ```
 
-## Protected Files
+### Composition Layer
 
-See `.metaHub/policies/protected-files.yaml` for the complete policy.
+```
+@alawein/ui-components     → Reusable React atoms & molecules
+@alawein/feature-flags     → Feature flag system with React provider
+@alawein/eslint-config     → Shared ESLint configuration
+@alawein/prettier-config   → Shared Prettier configuration
+@alawein/typescript-config → Shared TypeScript configuration
+```
 
-| Category    | Files                         | Enforcement                   |
-| ----------- | ----------------------------- | ----------------------------- |
-| Strict      | README.md, LICENSE, workflows | Pre-commit warning, CLAUDE.md |
-| Conditional | package.json, tsconfig.json   | Can modify if task requires   |
-| Forbidden   | .env\*, secrets, keys         | Never modify, blocked         |
+### Design System Layer
 
-## Adding New Templates
+```
+@alawein/design-system
+├── Theme definitions (Quantum, Dark, Glassmorphism, Light)
+├── ThemeProvider component with React Context
+├── Hooks (useTheme, useThemeColors, useThemeSpacing, useThemeTypography)
+└── Theme-aware UI components
+```
 
-1. Create template in `templates/devops/<category>/`
-2. Add manifest: `templates/devops/<category>/manifest.json`
-3. Register in CLI: `tools/devops/templates.ts`
-4. Document in `docs/templates/<category>.md`
+### Application Layer
 
-## Version Strategy
+```
+Root Application (depends on design-system)
+├── src/App.tsx                    (Router & provider setup)
+├── src/pages/                     (3 essential pages)
+├── src/projects/                  (5 platform dashboards)
+├── src/components/                (UI library)
+├── src/stores/                    (Zustand stores)
+├── src/services/                  (API integration)
+├── src/hooks/                     (Custom React hooks)
+└── src/integrations/supabase/     (Supabase client)
+```
 
-- **Workflows**: Semantic versioning via git tags (`@v1`, `@v2`)
-- **Templates**: Version in manifest.json
-- **CLI**: npm package versioning
-- **Policies**: Date-based versioning in YAML header
+---
 
-## Related Documentation
+## 🎨 Design System Hierarchy
 
-- [Framework Overview](FRAMEWORK.md)
-- [Quick Start](../KILO-QUICK-START.md)
-- [Contributing](../CONTRIBUTING.md)
+### Tokens (Foundation)
+
+```
+Colors
+├── Primary: #6B5B95 (Quantum Purple)
+├── Secondary: #00D9FF (Cyan)
+├── Success: #00FF87
+├── Warning: #FFB800
+├── Error: #FF006E
+├── Background: #0A0E27
+└── Text: #E0E0FF
+
+Typography
+├── Fonts: Inter, JetBrains, Courier Prime, Space Grotesk, IBM
+├── Weights: 400, 500, 600, 700, 800
+├── Sizes: 12px to 48px scale
+└── Line heights: 1.2x to 1.8x
+
+Spacing (8px base)
+├── Scale: 0, 4, 8, 12, 16, 24, 32, 48, 64px
+
+Effects
+├── Shadows: sm, md, lg, xl, 2xl
+├── Glows: primary, secondary, success, warning
+└── Blur: sm, md, lg
+
+Animation
+├── Durations: fast, normal, slow, slower
+├── Easing: ease-in, ease-out, ease-in-out
+└── Special: orbital quantum animations
+```
+
+### Themes (4 Variations)
+
+```
+Quantum Theme
+├── Base color: #6B5B95
+├── Accent: #00D9FF
+├── Background: Space-like dark blue
+├── Typography: Futuristic fonts
+└── Effects: Glow, orbital animations
+
+Glassmorphism Theme
+├── Backdrop blur: 10px
+├── Opacity: 0.8
+├── Border: 1px rgba white
+└── Soft shadows
+
+Dark Theme
+├── High contrast
+├── Pure blacks
+├── Bright whites
+└── Minimal effects
+
+Light Theme
+├── Clean whites
+├── Dark text
+├── Minimal shadows
+└── Soft interactions
+```
+
+---
+
+## 📂 Directory Structure
+
+```
+quantum-dev-profile/
+│
+├── design-system/              (Theme + tokens package)
+│   ├── src/
+│   │   ├── tokens/            (Color, typography, spacing, etc.)
+│   │   ├── themes/            (quantum, dark, glassmorphism, light)
+│   │   ├── context/           (ThemeContext with hooks)
+│   │   └── components/        (Theme-aware UI)
+│   └── package.json
+│
+├── packages/                   (Shared packages)
+│   ├── api-schema/            (Zod type definitions)
+│   ├── design-tokens/         (Foundation tokens)
+│   ├── ui-components/         (Reusable atoms/molecules)
+│   ├── feature-flags/         (Feature management)
+│   ├── infrastructure/        (Deployment utilities)
+│   ├── eslint-config/         (Shared ESLint)
+│   ├── prettier-config/       (Shared Prettier)
+│   └── typescript-config/     (Shared TypeScript)
+│
+├── src/                        (Main application)
+│   ├── App.tsx                (Root with router)
+│   ├── pages/                 (3 essential pages)
+│   │   ├── Index.tsx          (Portfolio home)
+│   │   ├── InteractiveResume.tsx
+│   │   └── NotFound.tsx
+│   │
+│   ├── projects/              (5 platform dashboards)
+│   │   ├── config.ts          (Platform registry)
+│   │   ├── types.ts           (Interfaces)
+│   │   └── pages/
+│   │       ├── ProjectsHub.tsx
+│   │       ├── simcore/SimCoreDashboard.tsx
+│   │       ├── mezan/MEZANDashboard.tsx
+│   │       ├── talai/TalAIDashboard.tsx
+│   │       ├── optilibria/OptiLibriaDashboard.tsx
+│   │       └── qmlab/QMLabDashboard.tsx
+│   │
+│   ├── components/            (UI library)
+│   │   ├── ui/               (40+ Shadcn/ui components)
+│   │   ├── layout/           (Page layouts)
+│   │   └── shared/           (Common patterns)
+│   │
+│   ├── hooks/                (Custom React hooks)
+│   │   ├── useAuth.ts
+│   │   ├── useLocalStorage.ts
+│   │   ├── useMediaQuery.ts
+│   │   └── [others]
+│   │
+│   ├── stores/               (Zustand state)
+│   │   ├── authStore.ts
+│   │   ├── themeStore.ts
+│   │   ├── uiStore.ts
+│   │   └── index.ts
+│   │
+│   ├── services/             (API integration)
+│   │   ├── auth.service.ts
+│   │   ├── user.service.ts
+│   │   └── index.ts
+│   │
+│   ├── integrations/         (Third-party)
+│   │   └── supabase/
+│   │       ├── client.ts
+│   │       └── types.ts (auto-generated)
+│   │
+│   ├── types/                (Type definitions)
+│   │   ├── auth.types.ts
+│   │   ├── theme.types.ts
+│   │   ├── user.types.ts
+│   │   └── index.ts
+│   │
+│   ├── utils/                (Utilities)
+│   │   ├── cn.ts            (Class merge helper)
+│   │   ├── helpers.ts
+│   │   └── constants.ts
+│   │
+│   ├── config/               (Configuration)
+│   │   ├── constants.ts
+│   │   ├── env.ts
+│   │   ├── routes.ts
+│   │   └── index.ts
+│   │
+│   └── index.css            (Global styles with Tailwind)
+│
+├── templates/               (Template library)
+│   ├── config.json
+│   ├── README.md
+│   └── [template files]
+│
+├── docs/                    (Documentation)
+│   ├── README.md
+│   ├── ARCHITECTURE.md      (this file)
+│   ├── STRUCTURE.md
+│   ├── DEVELOPMENT.md
+│   ├── DESIGN_SYSTEM.md
+│   ├── APIS.md
+│   ├── AI_GUIDE.md
+│   ├── SOLO_DEVELOPMENT.md
+│   └── templates/
+│       ├── DEVELOPMENT.md
+│       ├── INTEGRATION.md
+│       └── REGISTRY.md
+│
+├── scripts/                 (Automation)
+│   ├── validate-structure.js
+│   ├── check-imports.js
+│   └── [others]
+│
+├── CLAUDE.md               (AI assistant context)
+├── README.md               (Main entry point)
+└── REPOSITORY_GOVERNANCE.md (Governance rules)
+```
+
+---
+
+## 🔗 Data Flow Architecture
+
+### Component Rendering Flow
+
+```
+USER INTERACTION
+    ↓
+REACT COMPONENT
+    ↓
+THEME CONTEXT (design-system)
+    ↓
+DOM UPDATES (CSS variables)
+    ↓
+ALL COMPONENTS RE-RENDER
+    ↓
+localStorage PERSISTENCE
+```
+
+### API Request Flow
+
+```
+COMPONENT (useQuery hook)
+    ↓
+SERVICE LAYER (user.service, auth.service)
+    ↓
+SUPABASE CLIENT (auto-typed)
+    ↓
+SUPABASE EDGE FUNCTIONS
+    ↓
+POSTGRESQL DATABASE
+    ↓
+RESPONSE (Zod validated)
+    ↓
+ZUSTAND STORE (global state)
+    ↓
+COMPONENT RE-RENDER (TanStack Query cache)
+```
+
+---
+
+## 🚀 Build & Deployment Pipeline
+
+```
+DEVELOPER PUSH
+    ↓
+PRE-COMMIT HOOKS
+  ✓ Structure validation
+  ✓ Import validation
+  ✓ Prettier formatting
+  ✓ ESLint linting
+  ✓ TypeScript types
+    ↓
+COMMIT MESSAGE VALIDATION
+  ✓ Conventional commits format
+  ✓ Valid type & scope
+    ↓
+PRE-PUSH HOOKS
+  ✓ Run tests
+  ✓ Check circular dependencies
+    ↓
+TURBOREPO BUILD
+  ✓ Parallel package builds
+  ✓ Cached outputs
+    ↓
+VITE BUILD
+  ✓ Fast ESM bundling
+  ✓ Tree-shaking
+    ↓
+DEPLOYMENT
+  → Staging / Production
+```
+
+---
+
+## 🎓 State Management
+
+### Global State (Zustand)
+
+```
+authStore       → User authentication & permissions
+themeStore      → Theme preferences
+uiStore         → UI state (modals, sidebars, etc.)
+```
+
+### Server State (TanStack Query)
+
+```
+useQuery()      → Fetching platform data
+useMutation()   → Creating/updating data
+```
+
+### Local State (React)
+
+```
+useState()      → Component-level state
+```
+
+---
+
+## 🔒 Security & Enforcement
+
+### Pre-commit Enforcement
+
+- ✅ Structure validation (no orphaned files)
+- ✅ Import validation (no ../../../ relative imports)
+- ✅ Prettier formatting (consistency)
+- ✅ ESLint linting (best practices)
+- ✅ TypeScript strict mode (type safety)
+
+### Type Safety
+
+- ✅ TypeScript strict mode enabled
+- ✅ No `any` types allowed
+- ✅ Zod schemas for runtime validation
+- ✅ Auto-generated Supabase types
+
+---
+
+## 📈 Performance Optimizations
+
+### Build Time
+
+- **Turborepo**: Caches build outputs, parallel execution
+- **Vite**: Fast ESM-based bundling
+- **Tree-shaking**: Unused code removed
+
+### Runtime Performance
+
+- **Code splitting**: Dynamic imports for pages
+- **Lazy loading**: Components loaded on demand
+- **TanStack Query**: API response caching
+- **Theme caching**: localStorage persistence
+
+### Development Experience
+
+- **Hot Module Replacement**: Instant updates
+- **IDE feedback**: Real-time type checking
+- **Git hooks**: Instant validation before commit
+
+---
+
+## 🔄 Integration Points
+
+### 1. Theme Integration
+
+Every styled component uses `useThemeColors()` hook which automatically applies the active theme
+(Quantum, Dark, Glassmorphism, or Light).
+
+### 2. Component Reusability
+
+- 40+ Shadcn UI components
+- Design system provides styling
+- Common logic in shared utilities
+
+### 3. State Management
+
+- Zustand for global state
+- TanStack Query for server state
+- React Context for theme
+
+### 4. Type Safety
+
+- All API calls are typed via @alawein/api-schema
+- Supabase types auto-generated
+- No `any` types in codebase
+
+### 5. API Integration
+
+- Supabase client (auto-typed)
+- Edge functions for each platform
+- Zod validation on request/response
+
+---
+
+**For more details, see other documentation in `docs/` folder.**

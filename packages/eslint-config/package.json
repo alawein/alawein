@@ -1,0 +1,26 @@
+{
+  "name": "@monorepo/eslint-config",
+  "version": "1.0.0",
+  "description": "Shared ESLint configuration for the monorepo",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "base.js",
+    "react.js",
+    "typescript.js",
+    "next.js"
+  ],
+  "keywords": [
+    "eslint",
+    "config",
+    "monorepo"
+  ],
+  "author": "MetaHub",
+  "license": "MIT",
+  "private": true,
+  "peerDependencies": {
+    "eslint": "^8.0.0 || ^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  }
+}

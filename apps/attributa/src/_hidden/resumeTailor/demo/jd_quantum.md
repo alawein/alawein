@@ -1,1 +1,0 @@
-# Quantum Research JD\n\nResponsibilities\n- Conduct research in quantum computation.\n- Publish findings and collaborate across teams.\n\nRequirements\n- Strong background in physics and ML.\n

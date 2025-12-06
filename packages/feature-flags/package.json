@@ -1,5 +1,5 @@
 {
-  "name": "@alawein/feature-flags",
+  "name": "@monorepo/feature-flags",
   "version": "1.0.0",
   "private": true,
   "type": "module",

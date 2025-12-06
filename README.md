@@ -4,7 +4,7 @@ Centralized repository for all organizations, platforms, and shared packages.
 
 ## 🏗️ Structure
 
-```
+```text
 GitHub/
 ├── .metaHub/              # Centralized CI/CD, tooling, automation
 ├── organizations/         # Company/LLC scoped projects
@@ -33,10 +33,12 @@ GitHub/
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - npm 9+
 
 ### Installation
+
 ```bash
 # Install dependencies for all workspaces
 npm install
@@ -46,6 +48,7 @@ npm install --workspace=@monorepo/ui
 ```
 
 ### Development
+
 ```bash
 # Start all development servers
 npm run dev
@@ -69,16 +72,19 @@ npm run format
 ## 📦 Workspaces
 
 ### Organizations
+
 - **repz-llc**: Fitness coaching platform with cyberpunk theme
 - **alawein-technologies-llc**: Scientific computing and simulation platforms
 - **live-it-iconic-llc**: Live event and streaming platforms
 
 ### Platforms
+
 - **portfolio**: Professional portfolio website
 - **qmlab**: Quantum computing laboratory
 - **shared**: Common platform utilities
 
 ### Packages
+
 - **@monorepo/ui**: Shared React components
 - **@monorepo/utils**: Common utility functions
 - **@monorepo/types**: TypeScript type definitions
@@ -88,12 +94,14 @@ npm run format
 ## 🛠️ Tooling
 
 ### MetaHub
+
 - **CI/CD**: GitHub Actions, Docker configurations
 - **Automation**: Python and TypeScript automation systems
 - **Templates**: Project and component templates
 - **Governance**: Code standards and policies
 
 ### Build System
+
 - **Turborepo**: Monorepo build system
 - **TypeScript**: Type checking across all packages
 - **ESLint**: Linting with shared configurations

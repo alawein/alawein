@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/product/ProductCard';
+import { Recommendations } from '@/components/product/Recommendations';
 import { products } from '@/data/products';
 
 const categories = [
@@ -108,6 +109,11 @@ export default function Home() {
             <ProductCard key={product.id} {...product} />
           ))}
         </div>
+      </section>
+
+      {/* AI-Powered Recommendations */}
+      <section className="container px-4">
+        <Recommendations />
       </section>
 
       {/* CTA Banner */}

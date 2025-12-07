@@ -5,7 +5,7 @@ import { Heart, Minus, Plus, ShoppingBag, ChevronLeft, Truck, RotateCcw, Shield 
 import { products } from '@/data/products';
 import { useCartStore } from '@/stores/cartStore';
 import { formatPrice } from '@/lib/utils';
-import { ProductCard } from '@/components/product/ProductCard';
+import { Recommendations } from '@/components/product/Recommendations';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -14,6 +14,7 @@ export default function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const addItem = useCartStore((state) => state.addItem);
+  const productId = id;
 
   if (!product) {
     return (
@@ -25,8 +26,6 @@ export default function ProductDetail() {
       </div>
     );
   }
-
-  const relatedProducts = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {
@@ -134,17 +133,8 @@ export default function ProductDetail() {
         </motion.div>
       </div>
 
-      {/* Related Products */}
-      {relatedProducts.length > 0 && (
-        <section className="mt-16">
-          <h2 className="text-2xl font-serif font-bold mb-8">You May Also Like</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {relatedProducts.map((p) => (
-              <ProductCard key={p.id} {...p} />
-            ))}
-          </div>
-        </section>
-      )}
+      {/* AI-Powered Recommendations */}
+      <Recommendations currentProductId={productId} />
     </div>
   );
 }

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://lovable.dev/schemas/config.json",
+  "name": "cyberpunk-portfolio",
+  "description": "Cyberpunk-themed developer portfolio with neon aesthetics",
+  "version": "0.1.0",
+  "framework": "react-vite",
+  "styling": "tailwindcss",
+  "boundaries": {
+    "lovable_owned": [
+      "src/components/ui/**",
+      "src/components/layout/**",
+      "src/pages/**/*.tsx"
+    ],
+    "local_owned": [
+      "src/services/**",
+      "src/stores/**",
+      "src/hooks/**",
+      "src/lib/**",
+      "src/types/**",
+      "src/integrations/**"
+    ],
+    "shared": [
+      "src/App.tsx",
+      "src/main.tsx",
+      "src/index.css",
+      "tailwind.config.ts"
+    ]
+  },
+  "sync": {
+    "auto_sync": true,
+    "conflict_strategy": "local_wins_for_logic",
+    "ignore_patterns": [
+      "node_modules/**",
+      "dist/**",
+      ".env*"
+    ]
+  },
+  "theme": {
+    "preset": "cyberpunk",
+    "colors": {
+      "primary": "#00ff9f",
+      "secondary": "#ff00ff",
+      "accent": "#00d4ff",
+      "background": "#0a0a0f"
+    }
+  }
+}
+

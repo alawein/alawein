@@ -1,12 +1,42 @@
 # Lovable.dev Integration Workflow
 
-> **Last Updated:** 2024-12-06  
-> **Status:** Active  
+> **Last Updated:** 2024-12-07
+> **Status:** Active
 > **Applies To:** All Lovable.dev compatible projects
 
 ## Overview
 
-This document describes the standardized workflow for integrating Lovable.dev templates with our canonical repository structure.
+This document describes the **bidirectional workflow** for working with Lovable.dev and local IDEs.
+
+### The Golden Rule
+
+```
+┌─────────────┐         ┌──────────────┐         ┌─────────────┐
+│ Lovable.dev │ ──push──►│   GitHub     │◄──push── │ Local IDE   │
+│ (UI Design) │         │ (Truth)      │         │ (Logic)     │
+└─────────────┘         └──────┬───────┘         └─────────────┘
+                               │
+                               ▼ auto-deploy
+                        ┌──────────────┐
+                        │   Vercel     │
+                        │ (Preview)    │
+                        └──────────────┘
+```
+
+**GitHub is the single source of truth.** Both Lovable.dev and local IDEs push to the same repo.
+
+### Clear Boundaries
+
+| Directory                | Owner       | Purpose                     |
+| ------------------------ | ----------- | --------------------------- |
+| `src/components/ui/`     | Lovable.dev | shadcn/ui base components   |
+| `src/components/layout/` | Lovable.dev | Layout components           |
+| `src/pages/`             | Shared      | Page components             |
+| `src/services/`          | Local IDE   | API clients, business logic |
+| `src/stores/`            | Local IDE   | Zustand state management    |
+| `src/hooks/`             | Local IDE   | Custom React hooks          |
+| `src/types/`             | Local IDE   | TypeScript types            |
+| `src/integrations/`      | Local IDE   | Supabase, Stripe, etc.      |
 
 ## Project Compatibility Matrix
 
@@ -20,36 +50,56 @@ This document describes the standardized workflow for integrating Lovable.dev te
 | Product Incubators | `incubator/`   | ❌ No       | Prototypes/concepts    |
 | Services           | `services/`    | ⚠️ Partial  | Backend only           |
 
-## Workflow: Creating New Lovable.dev Projects
+## Quick Start: New Project
 
-### Step 1: Create Template in Lovable.dev
-
-1. Open [lovable.dev](https://lovable.dev)
-2. Create your UI/platform template
-3. Use one of the starter templates:
-   - **SaaS Dashboard** - For `saas/` projects
-   - **E-commerce Store** - For `ecommerce/` projects
-   - **Mobile-First App** - For `mobile-apps/` projects
-
-### Step 2: Export/Clone the Project
-
-```bash
-# Clone from Lovable.dev GitHub integration
-git clone https://github.com/lovable-dev/your-project-name temp-project
-```
-
-### Step 3: Move to Canonical Location
+### Option A: Start in Lovable.dev (Recommended for UI-heavy projects)
 
 ```powershell
-# Determine the correct LLC and category
-# Example: New SaaS platform for Alawein Technologies
+# 1. Create in Lovable.dev, connect to GitHub
+# 2. Clone locally
+git clone https://github.com/alawein/your-project temp-project
 
-$projectName = "your-project-name"
+# 3. Move to canonical location
+$llc = "alawein-technologies-llc"
+$category = "saas"  # or ecommerce, mobile-apps
+Move-Item temp-project "organizations/$llc/$category/your-project"
+
+# 4. Install & run
+cd "organizations/$llc/$category/your-project"
+npm install
+npm run dev
+
+# 5. Connect Vercel for auto-deploy
+# Go to vercel.com → Import from GitHub → Select repo
+```
+
+### Option B: Start from Template (Recommended for logic-heavy projects)
+
+```powershell
+# 1. Copy the lovable-react template
 $llc = "alawein-technologies-llc"
 $category = "saas"
+$name = "my-new-project"
 
-# Move to canonical location
-Move-Item -Path "temp-project" -Destination "organizations\$llc\$category\$projectName"
+Copy-Item -Recurse "templates/lovable-react" "organizations/$llc/$category/$name"
+
+# 2. Update package.json name
+cd "organizations/$llc/$category/$name"
+# Edit package.json: "name": "@alawein/my-new-project"
+
+# 3. Install & run
+npm install
+npm run dev
+
+# 4. Push to GitHub
+git init
+git add .
+git commit -m "Initial commit from lovable-react template"
+git remote add origin https://github.com/alawein/$name
+git push -u origin main
+
+# 5. Connect to Lovable.dev (optional)
+# Go to lovable.dev → Import existing GitHub repo
 ```
 
 ### Step 4: Standardize Configuration
@@ -123,7 +173,7 @@ All Lovable.dev compatible projects should use:
 
 ## Directory Structure (Standard)
 
-```
+```text
 {project-name}/
 ├── src/
 │   ├── components/     # UI components (Lovable.dev primary)
@@ -166,7 +216,7 @@ All Lovable.dev compatible projects should use:
 
 For Python packages that need web interfaces:
 
-```
+```text
 organizations/{llc}/
 ├── packages/
 │   └── librex/              # Python library (pip install)

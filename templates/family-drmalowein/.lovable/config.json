@@ -1,0 +1,36 @@
+{
+  "$schema": "https://lovable.dev/schemas/config.json",
+  "name": "classic-portfolio",
+  "description": "Clean, professional portfolio with interactive particles and smooth scroll transitions",
+  "version": "1.0.0",
+  "template": "react-vite",
+  "theme": "classic",
+  "boundaries": {
+    "lovable_owned": [
+      "src/components/ui/**",
+      "src/components/layout/**",
+      "src/components/sections/**"
+    ],
+    "local_owned": [
+      "src/data/**",
+      "src/hooks/**",
+      "src/utils/**",
+      "src/lib/**"
+    ],
+    "shared": [
+      "src/components/effects/**"
+    ]
+  },
+  "features": {
+    "routing": true,
+    "styling": "tailwind",
+    "animations": "framer-motion",
+    "icons": "lucide-react"
+  },
+  "deployment": {
+    "platform": "vercel",
+    "build_command": "npm run build",
+    "output_directory": "dist"
+  }
+}
+

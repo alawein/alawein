@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <defs>
+    <linearGradient id="alawein-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#4CC9F0"/>
+    </linearGradient>
+  </defs>
+  <!-- Quantum Symbol -->
+  <g transform="translate(5, 10)">
+    <circle cx="20" cy="20" r="18" stroke="url(#alawein-grad)" stroke-width="2" fill="none"/>
+    <ellipse cx="20" cy="20" rx="18" ry="8" stroke="url(#alawein-grad)" stroke-width="1.5" fill="none" transform="rotate(60, 20, 20)"/>
+    <ellipse cx="20" cy="20" rx="18" ry="8" stroke="url(#alawein-grad)" stroke-width="1.5" fill="none" transform="rotate(-60, 20, 20)"/>
+    <circle cx="20" cy="20" r="4" fill="url(#alawein-grad)"/>
+  </g>
+  <!-- Text -->
+  <text x="50" y="35" font-family="Inter, sans-serif" font-weight="700" font-size="20" fill="#A855F7">
+    ALAWEIN
+  </text>
+  <text x="50" y="50" font-family="Inter, sans-serif" font-weight="400" font-size="10" letter-spacing="2" fill="#4CC9F0">
+    TECHNOLOGIES
+  </text>
+</svg>
+

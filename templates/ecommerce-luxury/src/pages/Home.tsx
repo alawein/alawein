@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Car, Watch, Briefcase, Shirt } from 'lucide-react';
 import { ProductCard } from '@/components/product/ProductCard';
 import { Recommendations } from '@/components/product/Recommendations';
 import { products } from '@/data/products';
 
+// Live It Iconic LLC - Luxury Automotive Lifestyle Brand
 const categories = [
-  { name: 'Outerwear', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400' },
-  { name: 'Accessories', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400' },
-  { name: 'Footwear', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
-  { name: 'Bags', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400' },
+  { name: 'Driving Apparel', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400', icon: Shirt },
+  { name: 'Luxury Watches', image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400', icon: Watch },
+  { name: 'Travel Bags', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400', icon: Briefcase },
+  { name: 'Car Accessories', image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400', icon: Car },
 ];
 
 export default function Home() {
@@ -18,12 +19,12 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero */}
+      {/* Hero - Live It Iconic Branding */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
         <img
-          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920"
-          alt="Hero"
+          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920"
+          alt="Luxury Automotive Lifestyle"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="container relative z-20 px-4">
@@ -33,17 +34,19 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="max-w-xl"
           >
+            <p className="text-primary font-medium tracking-widest mb-4">LIVE IT ICONIC</p>
             <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
-              Live Your <span className="text-primary">Iconic</span> Life
+              Luxury <span className="text-primary">Automotive</span> Lifestyle
             </h1>
             <p className="text-lg text-muted-foreground mb-8">
-              Discover premium lifestyle products crafted for those who dare to stand out.
+              Premium apparel and accessories for automotive enthusiasts who demand excellence.
+              Crafted for those who live life in the fast lane.
             </p>
             <Link
               to="/shop"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
             >
-              Shop Now
+              Explore Collection
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌲 FOREST THEME - Earthy greens with warm amber accents */
+@layer base {
+  :root {
+    --background: 90 15% 98%;
+    --foreground: 100 30% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 100 30% 10%;
+    --primary: 142 60% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 90 20% 92%;
+    --secondary-foreground: 100 30% 10%;
+    --muted: 90 15% 90%;
+    --muted-foreground: 100 15% 45%;
+    --accent: 35 85% 50%;
+    --accent-foreground: 100 30% 10%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 90 20% 88%;
+    --input: 90 20% 88%;
+    --ring: 142 60% 35%;
+    --radius: 0.5rem;
+    --sidebar: 90 25% 95%;
+    --sidebar-foreground: 100 30% 10%;
+    --sidebar-border: 90 20% 88%;
+    --chart-1: 142 60% 40%;
+    --chart-2: 35 85% 50%;
+    --chart-3: 180 50% 45%;
+    --chart-4: 280 50% 50%;
+    --chart-5: 0 70% 55%;
+  }
+
+  .dark {
+    --background: 100 30% 6%;
+    --foreground: 90 15% 95%;
+    --card: 100 25% 10%;
+    --card-foreground: 90 15% 95%;
+    --primary: 142 65% 45%;
+    --primary-foreground: 100 30% 6%;
+    --secondary: 100 25% 15%;
+    --secondary-foreground: 90 15% 95%;
+    --muted: 100 20% 15%;
+    --muted-foreground: 90 12% 60%;
+    --accent: 35 90% 55%;
+    --accent-foreground: 100 30% 6%;
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 100 25% 18%;
+    --input: 100 25% 18%;
+    --ring: 142 65% 45%;
+    --sidebar: 100 30% 5%;
+    --sidebar-foreground: 90 15% 95%;
+    --sidebar-border: 100 25% 15%;
+    --chart-1: 142 70% 50%;
+    --chart-2: 35 90% 55%;
+    --chart-3: 180 55% 50%;
+    --chart-4: 280 55% 55%;
+    --chart-5: 0 75% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+

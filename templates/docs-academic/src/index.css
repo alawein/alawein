@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 📚 ACADEMIC THEME - Scholarly burgundy/navy, formal and authoritative */
+@layer base {
+  :root {
+    --background: 30 20% 98%;
+    --foreground: 345 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 345 30% 15%;
+    --primary: 345 60% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 18% 94%;
+    --secondary-foreground: 345 30% 15%;
+    --muted: 30 15% 92%;
+    --muted-foreground: 345 15% 50%;
+    --accent: 215 60% 40%;
+    --accent-foreground: 0 0% 100%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 345 60% 35%;
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 345 30% 7%;
+    --foreground: 30 15% 95%;
+    --card: 345 28% 11%;
+    --card-foreground: 30 15% 95%;
+    --primary: 345 65% 50%;
+    --primary-foreground: 345 30% 7%;
+    --secondary: 345 25% 14%;
+    --secondary-foreground: 30 15% 95%;
+    --muted: 345 22% 14%;
+    --muted-foreground: 30 10% 58%;
+    --accent: 215 65% 55%;
+    --accent-foreground: 345 30% 7%;
+    --border: 345 25% 17%;
+    --input: 345 25% 17%;
+    --ring: 345 65% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Prose styling for documentation */
+.prose {
+  @apply text-foreground;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mb-4 mt-8;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mb-3 mt-6 pb-2 border-b;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mb-2 mt-4;
+}
+
+.prose p {
+  @apply mb-4 leading-7;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mb-4 space-y-2;
+}
+
+.prose a {
+  @apply text-primary hover:underline;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+

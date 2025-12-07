@@ -1,0 +1,35 @@
+{
+  "name": "landing-page",
+  "description": "Conversion-focused landing page with hero, features, pricing, and CTA sections",
+  "version": "1.0.0",
+  "template": true,
+  "framework": "react",
+  "styling": "tailwindcss",
+  "features": [
+    "hero-section",
+    "features-grid",
+    "pricing-table",
+    "testimonials",
+    "faq-accordion",
+    "cta-sections",
+    "newsletter-signup"
+  ],
+  "boundaries": {
+    "lovable_owned": [
+      "src/components/ui/**",
+      "src/components/sections/**"
+    ],
+    "local_owned": [
+      "src/pages/**",
+      "src/lib/**",
+      "tailwind.config.js",
+      "vite.config.ts"
+    ]
+  },
+  "theme": {
+    "primary": "violet",
+    "style": "modern-gradient",
+    "radius": "0.75rem"
+  }
+}
+

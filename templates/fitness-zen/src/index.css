@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🧘 ZEN THEME - Soft lavender/sage, calming and meditative */
+@layer base {
+  :root {
+    --background: 270 15% 98%;
+    --foreground: 270 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 20% 15%;
+    --primary: 270 40% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 20% 94%;
+    --secondary-foreground: 270 20% 15%;
+    --muted: 270 15% 92%;
+    --muted-foreground: 270 12% 50%;
+    --accent: 145 35% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 15% 88%;
+    --input: 270 15% 88%;
+    --ring: 270 40% 55%;
+    --radius: 1.5rem;
+    --success: 145 50% 45%;
+    --warning: 45 75% 55%;
+  }
+
+  .dark {
+    --background: 270 20% 8%;
+    --foreground: 270 10% 95%;
+    --card: 270 18% 12%;
+    --card-foreground: 270 10% 95%;
+    --primary: 270 45% 65%;
+    --primary-foreground: 270 20% 8%;
+    --secondary: 270 18% 16%;
+    --secondary-foreground: 270 10% 95%;
+    --muted: 270 15% 16%;
+    --muted-foreground: 270 10% 58%;
+    --accent: 145 40% 55%;
+    --accent-foreground: 270 20% 8%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 18% 18%;
+    --input: 270 18% 18%;
+    --ring: 270 45% 65%;
+    --success: 145 55% 50%;
+    --warning: 45 80% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/50;
+}
+

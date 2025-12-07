@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🚀 STARTUP THEME - Vibrant gradient, modern SaaS feel */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 230 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 10%;
+    --primary: 250 95% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 25% 95%;
+    --secondary-foreground: 230 25% 10%;
+    --muted: 230 20% 94%;
+    --muted-foreground: 230 15% 50%;
+    --accent: 175 80% 45%;
+    --accent-foreground: 0 0% 100%;
+    --border: 230 20% 90%;
+    --input: 230 20% 90%;
+    --ring: 250 95% 60%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 230 30% 6%;
+    --foreground: 0 0% 98%;
+    --card: 230 28% 10%;
+    --card-foreground: 0 0% 98%;
+    --primary: 250 100% 68%;
+    --primary-foreground: 230 30% 6%;
+    --secondary: 230 25% 14%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 230 22% 14%;
+    --muted-foreground: 230 12% 58%;
+    --accent: 175 85% 50%;
+    --accent-foreground: 230 30% 6%;
+    --border: 230 25% 17%;
+    --input: 230 25% 17%;
+    --ring: 250 100% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom selection */
+::selection {
+  @apply bg-primary/20 text-primary;
+}
+

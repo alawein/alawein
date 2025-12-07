@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔌 TECH THEME - Modern tech gadget store, electric blue accents */
+@layer base {
+  :root {
+    --background: 220 20% 98%;
+    --foreground: 220 25% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 8%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 18% 94%;
+    --secondary-foreground: 220 25% 8%;
+    --muted: 220 16% 92%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 160 85% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 85% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 16% 88%;
+    --input: 220 16% 88%;
+    --ring: 210 100% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 30% 5%;
+    --foreground: 220 15% 96%;
+    --card: 220 28% 9%;
+    --card-foreground: 220 15% 96%;
+    --primary: 210 100% 55%;
+    --primary-foreground: 220 30% 5%;
+    --secondary: 220 26% 13%;
+    --secondary-foreground: 220 15% 96%;
+    --muted: 220 24% 13%;
+    --muted-foreground: 220 12% 55%;
+    --accent: 160 90% 50%;
+    --accent-foreground: 220 30% 5%;
+    --destructive: 0 80% 45%;
+    --destructive-foreground: 220 15% 96%;
+    --border: 220 26% 15%;
+    --input: 220 26% 15%;
+    --ring: 210 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/40;
+}
+

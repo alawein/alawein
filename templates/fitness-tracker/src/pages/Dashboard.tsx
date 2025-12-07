@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Flame, Dumbbell, Clock, Trophy, Plus } from 'lucide-react';
+import { Flame, Dumbbell, Clock, Trophy, Plus, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { StatsCard } from '@/components/ui/StatsCard';
 import { StreakBadge } from '@/components/ui/StreakBadge';
@@ -8,6 +8,11 @@ import { WeeklyChart } from '@/components/charts/WeeklyChart';
 import { useWorkoutStore } from '@/stores/workoutStore';
 import { formatDuration } from '@/lib/utils';
 
+/**
+ * REPZ Coach Dashboard
+ * AI-Powered Fitness Coaching Platform by REPZ LLC
+ * Tagline: Train Smarter. Get Stronger.
+ */
 export default function Dashboard() {
   const { currentStreak, totalWorkouts, getRecentWorkouts, getWeeklyStats } = useWorkoutStore();
   const recentWorkouts = getRecentWorkouts(3);
@@ -17,11 +22,15 @@ export default function Dashboard() {
 
   return (
     <div className="p-4 space-y-6">
-      {/* Header */}
+      {/* REPZ Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Welcome back! 💪</h1>
-          <p className="text-muted-foreground">Let's crush today's workout</p>
+          <div className="flex items-center gap-2 mb-1">
+            <Zap className="w-5 h-5 text-primary" />
+            <span className="text-xs font-bold tracking-widest text-primary">REPZ COACH</span>
+          </div>
+          <h1 className="text-2xl font-bold">Train Smarter. Get Stronger. 💪</h1>
+          <p className="text-muted-foreground">Your AI coach is ready to push your limits</p>
         </div>
         <StreakBadge streak={currentStreak} />
       </div>

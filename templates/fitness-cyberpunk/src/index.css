@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🤖 CYBERPUNK FITNESS - Neon pink/cyan, futuristic gym vibes */
+@layer base {
+  :root {
+    --background: 270 25% 5%;
+    --foreground: 180 100% 95%;
+    --card: 270 22% 9%;
+    --card-foreground: 180 100% 95%;
+    --primary: 330 100% 60%;
+    --primary-foreground: 270 25% 5%;
+    --secondary: 270 20% 14%;
+    --secondary-foreground: 180 100% 95%;
+    --muted: 270 18% 14%;
+    --muted-foreground: 180 30% 60%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 270 25% 5%;
+    --destructive: 0 90% 55%;
+    --destructive-foreground: 180 100% 95%;
+    --border: 270 20% 18%;
+    --input: 270 20% 18%;
+    --ring: 330 100% 60%;
+    --radius: 0.25rem;
+    --success: 160 100% 45%;
+    --warning: 45 100% 55%;
+  }
+
+  .dark {
+    --background: 270 30% 3%;
+    --foreground: 180 100% 96%;
+    --card: 270 26% 7%;
+    --card-foreground: 180 100% 96%;
+    --primary: 330 100% 65%;
+    --primary-foreground: 270 30% 3%;
+    --secondary: 270 24% 11%;
+    --secondary-foreground: 180 100% 96%;
+    --muted: 270 22% 11%;
+    --muted-foreground: 180 25% 58%;
+    --accent: 180 100% 55%;
+    --accent-foreground: 270 30% 3%;
+    --destructive: 0 95% 50%;
+    --destructive-foreground: 180 100% 96%;
+    --border: 270 24% 14%;
+    --input: 270 24% 14%;
+    --ring: 330 100% 65%;
+    --success: 160 100% 50%;
+    --warning: 45 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/50;
+}
+

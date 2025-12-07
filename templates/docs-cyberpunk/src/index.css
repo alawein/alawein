@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌃 CYBERPUNK DOCS - Neon green terminal, hacker aesthetic */
+@layer base {
+  :root {
+    --background: 120 30% 4%;
+    --foreground: 120 100% 80%;
+    --card: 120 28% 7%;
+    --card-foreground: 120 100% 80%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 120 30% 4%;
+    --secondary: 120 25% 11%;
+    --secondary-foreground: 120 100% 80%;
+    --muted: 120 22% 11%;
+    --muted-foreground: 120 40% 55%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 120 30% 4%;
+    --destructive: 0 90% 55%;
+    --destructive-foreground: 120 100% 80%;
+    --border: 120 25% 15%;
+    --input: 120 25% 15%;
+    --ring: 120 100% 50%;
+    --radius: 0rem;
+  }
+
+  .dark {
+    --background: 120 35% 2%;
+    --foreground: 120 100% 82%;
+    --card: 120 32% 5%;
+    --card-foreground: 120 100% 82%;
+    --primary: 120 100% 55%;
+    --primary-foreground: 120 35% 2%;
+    --secondary: 120 28% 9%;
+    --secondary-foreground: 120 100% 82%;
+    --muted: 120 26% 9%;
+    --muted-foreground: 120 35% 52%;
+    --accent: 180 100% 55%;
+    --accent-foreground: 120 35% 2%;
+    --destructive: 0 95% 50%;
+    --destructive-foreground: 120 100% 82%;
+    --border: 120 28% 12%;
+    --input: 120 28% 12%;
+    --ring: 120 100% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Prose styling for documentation */
+.prose {
+  @apply text-foreground;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold mb-4 mt-8;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold mb-3 mt-6 pb-2 border-b;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold mb-2 mt-4;
+}
+
+.prose p {
+  @apply mb-4 leading-7;
+}
+
+.prose ul {
+  @apply list-disc pl-6 mb-4 space-y-2;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 mb-4 space-y-2;
+}
+
+.prose a {
+  @apply text-primary hover:underline;
+}
+
+.prose code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono;
+}
+
+.prose pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-primary pl-4 italic my-4;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+

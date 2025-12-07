@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" fill="none">
+  <defs>
+    <linearGradient id="talai-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+  <!-- Brain/Neural Network Icon -->
+  <g transform="translate(5, 8)">
+    <circle cx="17" cy="17" r="14" stroke="url(#talai-grad)" stroke-width="2" fill="none"/>
+    <!-- Neural connections -->
+    <circle cx="10" cy="12" r="2.5" fill="url(#talai-grad)"/>
+    <circle cx="24" cy="12" r="2.5" fill="url(#talai-grad)"/>
+    <circle cx="17" cy="8" r="2" fill="url(#talai-grad)"/>
+    <circle cx="17" cy="22" r="3" fill="url(#talai-grad)"/>
+    <circle cx="10" cy="22" r="2" fill="url(#talai-grad)"/>
+    <circle cx="24" cy="22" r="2" fill="url(#talai-grad)"/>
+    <!-- Connections -->
+    <line x1="10" y1="12" x2="17" y2="22" stroke="url(#talai-grad)" stroke-width="1"/>
+    <line x1="24" y1="12" x2="17" y2="22" stroke="url(#talai-grad)" stroke-width="1"/>
+    <line x1="17" y1="8" x2="17" y2="22" stroke="url(#talai-grad)" stroke-width="1"/>
+  </g>
+  <!-- Text -->
+  <text x="45" y="33" font-family="Inter, sans-serif" font-weight="700" font-size="24" fill="#F97316">
+    TalAI
+  </text>
+  <text x="108" y="33" font-family="Inter, sans-serif" font-weight="300" font-size="10" fill="#A855F7">™</text>
+</svg>
+

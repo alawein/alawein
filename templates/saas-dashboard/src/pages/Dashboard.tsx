@@ -1,17 +1,22 @@
-import { Users, DollarSign, ShoppingCart, TrendingUp } from 'lucide-react';
+import { Users, DollarSign, Cpu, TrendingUp, Atom, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { StatsCard } from '@/components/ui/StatsCard';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { AreaChart } from '@/components/charts/AreaChart';
 
+/**
+ * Alawein Technologies Dashboard
+ * Advancing Science Through Code
+ * Products: TalAI, Librex, MEZAN, QMLab, LLMWorks
+ */
 const stats = [
-  { title: 'Total Revenue', value: '$45,231', change: 12.5, icon: DollarSign, trend: 'up' as const },
+  { title: 'API Calls', value: '1.2M', change: 18.5, icon: Cpu, trend: 'up' as const },
   { title: 'Active Users', value: '2,350', change: 8.2, icon: Users, trend: 'up' as const },
-  { title: 'Orders', value: '1,247', change: -3.1, icon: ShoppingCart, trend: 'down' as const },
-  { title: 'Growth Rate', value: '24.5%', change: 4.3, icon: TrendingUp, trend: 'up' as const },
+  { title: 'Experiments', value: '847', change: 12.1, icon: Atom, trend: 'up' as const },
+  { title: 'Model Accuracy', value: '94.5%', change: 2.3, icon: TrendingUp, trend: 'up' as const },
 ];
 
-const revenueData = [
+const usageData = [
   { name: 'Jan', value: 4000 },
   { name: 'Feb', value: 3000 },
   { name: 'Mar', value: 5000 },
@@ -22,20 +27,24 @@ const revenueData = [
 ];
 
 const recentActivity = [
-  { user: 'John Doe', action: 'Completed purchase', time: '2 min ago' },
-  { user: 'Jane Smith', action: 'Signed up', time: '5 min ago' },
-  { user: 'Mike Johnson', action: 'Updated profile', time: '12 min ago' },
-  { user: 'Sarah Wilson', action: 'Submitted ticket', time: '25 min ago' },
-  { user: 'Tom Brown', action: 'Upgraded plan', time: '1 hour ago' },
+  { user: 'TalAI Agent', action: 'Completed research task', time: '2 min ago' },
+  { user: 'Librex Solver', action: 'Optimized QAP instance', time: '5 min ago' },
+  { user: 'MEZAN Pipeline', action: 'Deployed model v2.3', time: '12 min ago' },
+  { user: 'QMLab Sim', action: 'Quantum simulation complete', time: '25 min ago' },
+  { user: 'LLMWorks', action: 'Benchmark report generated', time: '1 hour ago' },
 ];
 
 export default function Dashboard() {
   return (
     <div className="space-y-6">
-      {/* Page header */}
+      {/* Alawein Technologies Header */}
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back! Here's what's happening.</p>
+        <div className="flex items-center gap-2 mb-1">
+          <Sparkles className="w-5 h-5 text-primary" />
+          <span className="text-xs font-bold tracking-widest text-primary">ALAWEIN TECHNOLOGIES</span>
+        </div>
+        <h1 className="text-3xl font-bold">Platform Dashboard</h1>
+        <p className="text-muted-foreground">Advancing Science Through Code — Your unified control center.</p>
       </div>
 
       {/* Stats grid */}
@@ -56,10 +65,10 @@ export default function Dashboard() {
       <div className="grid gap-6 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Revenue Overview</CardTitle>
+            <CardTitle>Platform Usage</CardTitle>
           </CardHeader>
           <CardContent>
-            <AreaChart data={revenueData} />
+            <AreaChart data={usageData} />
           </CardContent>
         </Card>
 

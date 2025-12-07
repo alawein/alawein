@@ -11,6 +11,8 @@ import { AuroraBorealis } from "@/components/effects/AuroraBorealis";
 import { CursorTrail } from "@/components/effects/CursorTrail";
 import { ParticleCollision } from "@/components/effects/ParticleCollision";
 import { WormholeTransition } from "@/components/effects/WormholeTransition";
+import { SoundProvider } from "@/contexts/SoundContext";
+import { SoundToggle } from "@/components/ui/SoundToggle";
 
 // Lazy load pages
 const Home = lazy(() => import("@/pages/Home"));
@@ -38,7 +40,7 @@ export default function App() {
   };
 
   return (
-    <>
+    <SoundProvider>
       <AnimatePresence>
         {isBooting && <BootSequence onComplete={handleBootComplete} />}
       </AnimatePresence>
@@ -76,7 +78,10 @@ export default function App() {
           </WormholeTransition>
         </Layout>
       )}
-    </>
+
+      {/* Sound toggle button */}
+      {!isBooting && <SoundToggle />}
+    </SoundProvider>
   );
 }
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mock Backend Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .success { color: green; }
+        .error { color: red; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>REPZ Mock Backend Test</h1>
+    
+    <div>
+        <h2>Quick Test</h2>
+        <button onclick="testSignup()">1. Test Signup</button>
+        <button onclick="testLogin()">2. Test Login</button>
+        <button onclick="testWorkouts()">3. Get Workouts</button>
+        <button onclick="testStats()">4. Get Stats</button>
+    </div>
+    
+    <div id="results"></div>
+    
+    <script>
+        // Mock Backend Implementation (simplified for testing)
+        const mockDB = {
+            users: new Map([
+                ['coach-1', { id: 'coach-1', email: 'coach@repz.com', password: 'TestPass123!', fullName: 'Sarah Coach', role: 'coach' }],
+                ['client-1', { id: 'client-1', email: 'client@repz.com', password: 'TestPass123!', fullName: 'Mike Client', role: 'client' }]
+            ]),
+            currentUser: null
+        };
+        
+        function addResult(message, isSuccess = true) {
+            const div = document.createElement('div');
+            div.className = 'result ' + (isSuccess ? 'success' : 'error');
+            div.textContent = message;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        function testSignup() {
+            const email = 'newuser@example.com';
+            const userId = 'user-' + Date.now();
+            mockDB.users.set(userId, {
+                id: userId,
+                email: email,
+                fullName: 'New User',
+                role: 'client'
+            });
+            mockDB.currentUser = mockDB.users.get(userId);
+            addResult(`✅ Signup successful! Created user: ${email}`);
+        }
+        
+        function testLogin() {
+            const user = mockDB.users.get('client-1');
+            if (user) {
+                mockDB.currentUser = user;
+                addResult(`✅ Login successful! Logged in as: ${user.fullName} (${user.email})`);
+            } else {
+                addResult('❌ Login failed', false);
+            }
+        }
+        
+        function testWorkouts() {
+            if (!mockDB.currentUser) {
+                addResult('❌ Please login first', false);
+                return;
+            }
+            const workouts = [
+                { name: 'Upper Body Day', exercises: 5, duration: 45 },
+                { name: 'Leg Day', exercises: 6, duration: 60 },
+                { name: 'Cardio Session', exercises: 3, duration: 30 }
+            ];
+            addResult(`✅ Found ${workouts.length} workouts: ${workouts.map(w => w.name).join(', ')}`);
+        }
+        
+        function testStats() {
+            if (!mockDB.currentUser) {
+                addResult('❌ Please login first', false);
+                return;
+            }
+            const stats = {
+                totalWorkouts: 12,
+                completedWorkouts: 8,
+                weekStreak: 3,
+                currentWeight: 75,
+                unreadMessages: 2
+            };
+            addResult(`✅ Dashboard stats: ${JSON.stringify(stats, null, 2)}`);
+        }
+    </script>
+</body>
+</html>

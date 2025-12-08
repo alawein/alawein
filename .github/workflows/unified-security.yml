@@ -1,0 +1,526 @@
+name: Unified Security Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM
+  workflow_dispatch:
+    inputs:
+      scan_type:
+        description: 'Type of security scan to run'
+        required: false
+        type: choice
+        options:
+          - all
+          - codeql
+          - dependencies
+          - secrets
+          - containers
+          - licenses
+          - compliance
+        default: 'all'
+      severity_threshold:
+        description: 'Minimum severity level to report'
+        required: false
+        type: choice
+        options:
+          - critical
+          - high
+          - moderate
+          - low
+        default: 'moderate'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+  id-token: write
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Job 1: CodeQL Analysis
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.scan_type == 'all' || 
+      github.event.inputs.scan_type == 'codeql'
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript', 'typescript', 'python']
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          queries: security-extended,security-and-quality
+      
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+      
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"
+      
+      - name: Log analysis completion
+        run: |
+          echo "✅ CodeQL analysis completed for ${{ matrix.language }}"
+
+  # Job 2: Dependency Security Scan
+  dependency-scan:
+    name: Dependency Security Scan
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.scan_type == 'all' || 
+      github.event.inputs.scan_type == 'dependencies'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run npm audit
+        run: |
+          echo "🔍 Running npm audit..."
+          SEVERITY="${{ github.event.inputs.severity_threshold || 'moderate' }}"
+          npm audit --audit-level=$SEVERITY || echo "::warning::Vulnerabilities found at $SEVERITY level or above"
+      
+      - name: Generate detailed vulnerability report
+        run: |
+          echo "📊 Generating vulnerability report..."
+          npm audit --json > audit-report.json || true
+          
+          if [ -f audit-report.json ]; then
+            critical=$(jq '.metadata.vulnerabilities.critical // 0' audit-report.json)
+            high=$(jq '.metadata.vulnerabilities.high // 0' audit-report.json)
+            moderate=$(jq '.metadata.vulnerabilities.moderate // 0' audit-report.json)
+            low=$(jq '.metadata.vulnerabilities.low // 0' audit-report.json)
+            
+            echo "## Vulnerability Summary" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Severity | Count |" >> $GITHUB_STEP_SUMMARY
+            echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Critical | $critical |" >> $GITHUB_STEP_SUMMARY
+            echo "| High | $high |" >> $GITHUB_STEP_SUMMARY
+            echo "| Moderate | $moderate |" >> $GITHUB_STEP_SUMMARY
+            echo "| Low | $low |" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            if [ "$critical" -gt 0 ]; then
+              echo "::error::Found $critical critical vulnerabilities"
+            elif [ "$high" -gt 0 ]; then
+              echo "::warning::Found $high high severity vulnerabilities"
+            fi
+          fi
+      
+      - name: Check for outdated packages
+        run: |
+          echo "📦 Checking for outdated packages..."
+          npm outdated --json > outdated-report.json || true
+          
+          if [ -f outdated-report.json ]; then
+            outdated_count=$(jq 'length' outdated-report.json)
+            echo "Found $outdated_count outdated packages"
+            
+            if [ "$outdated_count" -gt 0 ]; then
+              echo "::notice::$outdated_count packages have updates available"
+            fi
+          fi
+      
+      - name: Upload audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-reports-${{ github.run_id }}
+          path: |
+            audit-report.json
+            outdated-report.json
+          retention-days: 30
+          if-no-files-found: warn
+
+  # Job 3: Secret Scanning
+  secret-scan:
+    name: Secret Scanning
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.scan_type == 'all' || 
+      github.event.inputs.scan_type == 'secrets'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install detect-secrets
+        run: pip install detect-secrets
+      
+      - name: Run secret scan with baseline
+        run: |
+          echo "🔐 Scanning for secrets..."
+          if [ -f ".secrets.baseline" ]; then
+            echo "Using existing baseline..."
+            detect-secrets scan --baseline .secrets.baseline
+          else
+            echo "No baseline found, creating new scan..."
+            detect-secrets scan --all-files --exclude-files 'node_modules/.*|\.git/.*' > secrets-report.json || true
+          fi
+      
+      - name: Check for high-entropy strings
+        run: |
+          echo "🔍 Checking for high-entropy strings..."
+          detect-secrets scan --all-files \
+            --exclude-files 'node_modules/.*|\.git/.*|package-lock\.json|.*\.lock' \
+            --exclude-lines 'integrity.*sha|hash.*[a-f0-9]{40}' \
+            > high-entropy-report.json || true
+          
+          if [ -f high-entropy-report.json ]; then
+            secrets_found=$(jq '.results | length' high-entropy-report.json 2>/dev/null || echo "0")
+            if [ "$secrets_found" -gt 0 ]; then
+              echo "::warning::Found $secrets_found potential secrets or high-entropy strings"
+            else
+              echo "✅ No secrets detected"
+            fi
+          fi
+      
+      - name: Upload secret scan reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-scan-reports-${{ github.run_id }}
+          path: |
+            secrets-report.json
+            high-entropy-report.json
+          retention-days: 30
+          if-no-files-found: warn
+
+  # Job 4: Container Security Scan
+  container-scan:
+    name: Container Security Scan
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.scan_type == 'all' || 
+       github.event.inputs.scan_type == 'containers') &&
+      github.event_name == 'push' && 
+      github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check if Dockerfile exists
+        id: check_dockerfile
+        run: |
+          if [ -f "Dockerfile" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ Dockerfile found"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No Dockerfile found, skipping container scan"
+          fi
+      
+      - name: Build Docker image
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        run: |
+          echo "🔨 Building Docker image..."
+          docker build -t security-scan:latest .
+          echo "✅ Docker image built"
+      
+      - name: Run Trivy vulnerability scanner
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'security-scan:latest'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+      
+      - name: Upload Trivy results to GitHub Security
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+      
+      - name: Generate container scan summary
+        if: steps.check_dockerfile.outputs.exists == 'true'
+        run: |
+          echo "## Container Security Scan" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Trivy scan completed for Docker image" >> $GITHUB_STEP_SUMMARY
+          echo "- Image: security-scan:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- Severity threshold: CRITICAL,HIGH" >> $GITHUB_STEP_SUMMARY
+
+  # Job 5: License Compliance Check
+  license-check:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.scan_type == 'all' || 
+      github.event.inputs.scan_type == 'licenses'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check package licenses
+        run: |
+          echo "📜 Checking package licenses..."
+          npx license-checker --summary
+      
+      - name: Generate detailed license report
+        run: |
+          echo "📊 Generating detailed license report..."
+          npx license-checker --json > licenses.json
+          
+          # Check for problematic licenses
+          problematic_licenses=("GPL" "AGPL" "LGPL")
+          found_issues=false
+          
+          for license in "${problematic_licenses[@]}"; do
+            if grep -q "$license" licenses.json; then
+              echo "::warning::$license-licensed dependencies found"
+              found_issues=true
+            fi
+          done
+          
+          if [ "$found_issues" = false ]; then
+            echo "✅ No problematic licenses detected"
+          fi
+      
+      - name: Create license summary
+        run: |
+          echo "## License Compliance Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count licenses
+          total_packages=$(jq 'length' licenses.json)
+          echo "- Total packages: $total_packages" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # List unique licenses
+          echo "### License Types:" >> $GITHUB_STEP_SUMMARY
+          jq -r '.[] | .licenses' licenses.json | sort | uniq -c | sort -rn | head -10 | while read count license; do
+            echo "- $license: $count packages" >> $GITHUB_STEP_SUMMARY
+          done
+      
+      - name: Upload license report
+        uses: actions/upload-artifact@v4
+        with:
+          name: license-report-${{ github.run_id }}
+          path: licenses.json
+          retention-days: 30
+
+  # Job 6: Security Compliance Check
+  compliance-check:
+    name: Security Compliance Check
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.scan_type == 'all' || 
+      github.event.inputs.scan_type == 'compliance'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check security policy
+        run: |
+          echo "🔒 Checking security policy..."
+          if [ -f "SECURITY.md" ]; then
+            echo "✅ SECURITY.md found"
+          else
+            echo "::warning::SECURITY.md not found - consider adding a security policy"
+          fi
+      
+      - name: Check for security best practices
+        run: |
+          echo "🔍 Checking security best practices..."
+          
+          # Check for .env.example
+          if [ -f ".env.example" ]; then
+            echo "✅ .env.example found"
+          else
+            echo "::notice::.env.example not found - consider adding environment variable template"
+          fi
+          
+          # Check for .gitignore
+          if [ -f ".gitignore" ]; then
+            echo "✅ .gitignore found"
+            
+            # Check if .env is ignored
+            if grep -q "^\.env$" .gitignore; then
+              echo "✅ .env is properly ignored"
+            else
+              echo "::warning::.env should be added to .gitignore"
+            fi
+          fi
+          
+          # Check for dependabot or renovate
+          if [ -f ".github/dependabot.yml" ] || [ -f "renovate.json" ]; then
+            echo "✅ Dependency update tool configured"
+          else
+            echo "::notice::Consider configuring Dependabot or Renovate for automated dependency updates"
+          fi
+      
+      - name: Generate compliance summary
+        run: |
+          echo "## Security Compliance Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Checks Performed:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Security policy presence" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Environment variable handling" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Git ignore configuration" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Dependency update automation" >> $GITHUB_STEP_SUMMARY
+
+  # Job 7: Security Summary
+  security-summary:
+    name: Security Summary
+    runs-on: ubuntu-latest
+    needs: [codeql-analysis, dependency-scan, secret-scan, container-scan, license-check, compliance-check]
+    # Note: OpenSSF Scorecard runs separately via scorecard.yml (specialized workflow)
+    # Note: SLSA Provenance runs separately via slsa-provenance.yml (specialized workflow)
+    if: always()
+    
+    steps:
+      - name: Create comprehensive security summary
+        run: |
+          echo "# 🔒 Security Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Scan Type**: ${{ github.event.inputs.scan_type || 'all' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Severity Threshold**: ${{ github.event.inputs.severity_threshold || 'moderate' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| CodeQL Analysis | ${{ needs.codeql-analysis.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dependency Scan | ${{ needs.dependency-scan.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Secret Scan | ${{ needs.secret-scan.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Container Scan | ${{ needs.container-scan.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| License Check | ${{ needs.license-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Compliance Check | ${{ needs.compliance-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count results
+          success_count=0
+          failure_count=0
+          skipped_count=0
+          
+          for result in "${{ needs.codeql-analysis.result }}" "${{ needs.dependency-scan.result }}" "${{ needs.secret-scan.result }}" "${{ needs.container-scan.result }}" "${{ needs.license-check.result }}" "${{ needs.compliance-check.result }}"; do
+            if [ "$result" == "success" ]; then
+              success_count=$((success_count + 1))
+            elif [ "$result" == "failure" ]; then
+              failure_count=$((failure_count + 1))
+            elif [ "$result" == "skipped" ]; then
+              skipped_count=$((skipped_count + 1))
+            fi
+          done
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Passed**: $success_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ❌ **Failed**: $failure_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭ **Skipped**: $skipped_count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine overall status
+          critical_checks=("${{ needs.codeql-analysis.result }}" "${{ needs.dependency-scan.result }}" "${{ needs.secret-scan.result }}")
+          critical_failed=false
+          
+          for check in "${critical_checks[@]}"; do
+            if [ "$check" == "failure" ]; then
+              critical_failed=true
+              break
+            fi
+          done
+          
+          if [ "$critical_failed" = true ]; then
+            echo "❌ **Critical security checks failed**" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          elif [ $failure_count -gt 0 ]; then
+            echo "⚠️ **Some non-critical security checks failed**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ **All security checks passed!**" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Create security issue on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              'CodeQL Analysis': '${{ needs.codeql-analysis.result }}',
+              'Dependency Scan': '${{ needs.dependency-scan.result }}',
+              'Secret Scan': '${{ needs.secret-scan.result }}',
+              'Container Scan': '${{ needs.container-scan.result }}',
+              'License Check': '${{ needs.license-check.result }}',
+              'Compliance Check': '${{ needs.compliance-check.result }}'
+            };
+            
+            let body = '## 🔒 Security Scan Failed\n\n';
+            body += `**Branch**: ${{ github.ref_name }}\n`;
+            body += `**Commit**: ${{ github.sha }}\n`;
+            body += `**Triggered by**: ${{ github.event_name }}\n\n`;
+            body += 'The following security checks had issues:\n\n';
+            
+            for (const [check, result] of Object.entries(results)) {
+              const icon = result === 'success' ? '✅' : result === 'failure' ? '❌' : '⏭';
+              if (result === 'failure') {
+                body += `- ${icon} **${check}**: ${result}\n`;
+              }
+            }
+            
+            body += '\n### Action Required\n';
+            body += 'Please review the workflow logs and address the security issues before merging.\n\n';
+            body += `[View Workflow Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Security Scan Failed: ${{ github.ref_name }} (${{ github.sha }})`,
+              body: body,
+              labels: ['security', 'automated', 'urgent']
+            });

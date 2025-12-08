@@ -1,10 +1,54 @@
-// Shared utility functions
+/**
+ * @alawein/utils
+ * 
+ * Shared utility functions for the Alawein monorepo.
+ * Provides common utilities for class names, performance optimization,
+ * formatting, and validation.
+ * 
+ * @packageDocumentation
+ */
 
-export * from './cn';
-export * from './file';
-export * from './string';
-export * from './array';
-export * from './validation';
-export * from './seo';
-export * from './scroll';
-export * from './feature-flags';
+// Class name utilities
+export { cn, type ClassValue } from './cn'
+
+// Performance utilities
+export {
+  debounce,
+  throttle,
+  memoize,
+  sleep,
+  retry,
+} from './performance'
+
+// Formatting utilities
+export {
+  formatCurrency,
+  formatDate,
+  formatRelativeTime,
+  formatNumber,
+  formatPercent,
+  formatBytes,
+  formatPhoneNumber,
+  truncate,
+  capitalize,
+  titleCase,
+} from './format'
+
+// Validation utilities
+export {
+  validateEmail,
+  validatePhone,
+  validateUrl,
+  validatePassword,
+  validateCreditCard,
+  validateZipCode,
+  validateSSN,
+  validateDateRange,
+  validateNumberRange,
+  validateLength,
+  validateRequired,
+  validatePattern,
+  validateUsername,
+  validateHexColor,
+  validateIPv4,
+} from './validation'

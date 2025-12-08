@@ -205,7 +205,7 @@ python tools/cross-ide-sync/cli.py sync
 
 ### Validate Prompts
 ```bash
-python tools/prompt-testing/cli.py validate --all
+python tools/prompts/testing/cli.py validate --all
 ```
 
 ### Get Recommendations
@@ -215,7 +215,7 @@ python tools/recommendation-engine/cli.py recommend "optimize API"
 
 ### Compose Prompt
 ```bash
-python tools/prompt-composer/cli.py templates/fullstack-workflow.md vars.json
+python tools/prompts/composer/cli.py templates/fullstack-workflow.md vars.json
 ```
 
 ### View Analytics
@@ -230,7 +230,7 @@ python tools/marketplace/cli.py search testing
 
 ### Generate Prompt
 ```bash
-python tools/meta-prompt/generator.py "Create optimization prompt"
+python tools/prompts/meta/generator.py "Create optimization prompt"
 ```
 
 ### Run Workflow

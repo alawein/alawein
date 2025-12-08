@@ -10,7 +10,7 @@ python tools/cross-ide-sync/cli.py sync
 python tools/recommendation-engine/cli.py recommend "your task"
 
 # Validate prompts
-python tools/prompt-testing/cli.py validate --all
+python tools/prompts/testing/cli.py validate --all
 
 # View analytics
 python tools/analytics/dashboard.py
@@ -61,7 +61,7 @@ python tools/recommendation-engine/cli.py recommend "code review"
 python tools/recommendation-engine/cli.py workflow "build feature"
 
 # 2. Compose custom workflow
-python tools/prompt-composer/cli.py templates/fullstack-workflow.md vars.json
+python tools/prompts/composer/cli.py templates/fullstack-workflow.md vars.json
 
 # 3. Follow phases
 ```
@@ -77,7 +77,7 @@ daily-prompt-routine.bat
 ### Weekly
 ```bash
 # Save regression baseline
-python tools/prompt-testing/cli.py regression --save
+python tools/prompts/testing/cli.py regression --save
 
 # Check patterns
 python tools/pattern-extractor/extractor.py
@@ -109,7 +109,7 @@ python tools/cross-ide-sync/cli.py sync
 
 **Validation failing?**
 ```bash
-python tools/prompt-testing/cli.py validate path/to/prompt.md
+python tools/prompts/testing/cli.py validate path/to/prompt.md
 # Check output for issues
 ```
 

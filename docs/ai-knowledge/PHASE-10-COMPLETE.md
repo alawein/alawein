@@ -10,13 +10,13 @@ Built adaptive prompt system that learns from user feedback and personalizes pro
 
 ## Components Delivered
 
-### 1. Adaptive Learner (`tools/adaptive-prompts/learner.py`)
+### 1. Adaptive Learner (`tools/prompts/adaptive/learner.py`)
 - Record user feedback (positive/negative)
 - Analyze feedback patterns
 - Suggest improvements
 - Adapt prompts based on learning
 
-### 2. Personalizer (`tools/adaptive-prompts/personalizer.py`)
+### 2. Personalizer (`tools/prompts/adaptive/personalizer.py`)
 - User preference management
 - Style customization (concise, detailed, technical)
 - Language/framework substitution

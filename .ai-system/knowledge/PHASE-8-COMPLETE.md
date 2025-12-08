@@ -10,25 +10,25 @@ Built comprehensive testing framework for automated prompt validation, quality m
 
 ## Components Delivered
 
-### 1. Validator (`tools/prompt-testing/validator.py`)
+### 1. Validator (`tools/prompts/testing/validator.py`)
 - Quality scoring (0-1.0 scale)
 - Structure validation (title, sections, code, examples)
 - Batch validation for all prompts
 - Issue detection and reporting
 
-### 2. Tester (`tools/prompt-testing/tester.py`)
+### 2. Tester (`tools/prompts/testing/tester.py`)
 - Test case management
 - Automated test execution
 - Performance benchmarking
 - Duration tracking
 
-### 3. Regression Tester (`tools/prompt-testing/regression.py`)
+### 3. Regression Tester (`tools/prompts/testing/regression.py`)
 - Baseline management
 - Quality regression detection
 - Content change detection (MD5 hashing)
 - Delta tracking
 
-### 4. CLI (`tools/prompt-testing/cli.py`)
+### 4. CLI (`tools/prompts/testing/cli.py`)
 - `validate <prompt>` - Validate single prompt
 - `validate --all` - Validate all prompts
 - `benchmark <prompt>` - Benchmark performance
@@ -210,9 +210,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate Prompts
-        run: python tools/prompt-testing/cli.py validate --all
+        run: python tools/prompts/testing/cli.py validate --all
       - name: Check Regressions
-        run: python tools/prompt-testing/cli.py regression --check
+        run: python tools/prompts/testing/cli.py regression --check
 ```
 
 ## Future Enhancements

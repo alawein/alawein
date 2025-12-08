@@ -92,6 +92,7 @@ pytest
 - **Security**: CodeQL, Trivy, Dependabot, SLSA provenance
 - **Governance**: CODEOWNERS, pre-commit hooks, policy enforcement
 - **Documentation**: MkDocs, architecture guides
+- **Consolidation**: 87% root cleanup, 67% UI package reduction ([See Details](README-CONSOLIDATION.md))
 
 ## 📚 Documentation
 
@@ -101,6 +102,10 @@ pytest
 | [Lovable Workflow](docs/developer/LOVABLE-DEV-WORKFLOW.md) | Lovable.dev integration guide |
 | [Contributing](docs/governance/CONTRIBUTING.md) | Contribution guidelines |
 | [Security](SECURITY.md) | Security policy |
+| [**Consolidation System**](README-CONSOLIDATION.md) | **Repository consolidation & cleanup** ⭐ |
+| [Quick Start Guide](QUICK-START-GUIDE.md) | Quick reference for consolidation changes |
+| [Master Index](CONSOLIDATION-MASTER-INDEX.md) | Complete documentation index |
+| [Future Roadmap](CONSOLIDATION-ROADMAP-FUTURE-PHASES.md) | Planned future improvements |
 
 ## 👤 Author
 

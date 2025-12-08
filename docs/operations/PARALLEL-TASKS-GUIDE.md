@@ -15,7 +15,7 @@ cd .ai-system/tools/analytics
 python dashboard.py
 
 # 3. Validate all prompts (5s)
-cd .ai-system/tools/prompt-testing
+cd .ai-system/tools/prompts/testing
 python cli.py validate --all
 
 # 4. Extract patterns (10s)
@@ -124,7 +124,7 @@ python -m cProfile your_script.py
 tail -f logs/app.log
 
 # Terminal 4: Validate prompts
-cd .ai-system/tools/prompt-testing
+cd .ai-system/tools/prompts/testing
 python cli.py validate --all
 ```
 
@@ -142,7 +142,7 @@ python extractor.py
 eslint . --fix
 
 # Terminal 4: Update docs
-cd .ai-system/tools/meta-prompt
+cd .ai-system/tools/prompts/meta
 python generator.py
 ```
 
@@ -212,7 +212,7 @@ python tools/marketplace/cli.py search "keyword"
 python tools/analytics/insights.py
 
 # Compose workflow (2s)
-python tools/prompt-composer/cli.py templates/fullstack-workflow.md vars.json
+python tools/prompts/composer/cli.py templates/fullstack-workflow.md vars.json
 ```
 
 **Background tasks:**
@@ -327,7 +327,7 @@ python -c "from parallel_executor import ResourceMonitor; m = ResourceMonitor();
 ## 🔗 Related Tools
 
 - **Parallel Executor**: `.ai-system/automation/parallel_executor.py`
-- **Workflow Engine**: `.ai-system/tools/orchestrator/engine.py`
+- **Workflow Engine**: `tools/orchestration/engine.py`
 - **Resource Monitor**: Built into parallel_executor
 - **Background Manager**: Built into parallel_executor
 - **Task Queue**: Built into parallel_executor

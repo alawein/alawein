@@ -105,9 +105,9 @@ GitHub/                           # Root monorepo
 - `automation/` - Python CLI for AI automation
 - `tools/ai/` - TypeScript AI tools
 - `tools/orchex/` - Orchestration system
-- `tools/meta-prompt/` - Prompt tools
-- `tools/prompt-composer/` - More prompt tools
-- `tools/adaptive-prompts/` - Even more prompt tools
+- `tools/prompts/meta/` - Prompt tools
+- `tools/prompts/composer/` - More prompt tools
+- `tools/prompts/adaptive/` - Even more prompt tools
 - `docs/ai-knowledge/` - AI prompts and rules
 - `docs/ai-knowledge/prompts/` - 75 prompts!
 - Empty dirs: `.ai/`, `.ai-system/`, `.cascade/`, `.orchex/`
@@ -200,7 +200,7 @@ GitHub/
 
 ### Phase 1: Consolidate AI Systems
 
-- [ ] Merge `tools/ai/`, `tools/orchex/`, `tools/meta-prompt/`, etc. into `automation/`
+- [ ] Merge `tools/ai/`, `tools/orchex/`, `tools/prompts/meta/`, etc. into `automation/`
 - [ ] Consolidate all prompts into `automation/prompts/`
 - [ ] Remove empty hidden directories
 - [ ] Create single AI CLI entry point

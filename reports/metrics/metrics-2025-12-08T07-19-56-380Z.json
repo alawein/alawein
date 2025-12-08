@@ -1,0 +1,3018 @@
+{
+  "costStatistics": {
+    "totalTasks": 500,
+    "totalCost": 0.8169000000000058,
+    "averageCost": 0.0016338000000000116,
+    "budgetRemaining": 9.183099999999994
+  },
+  "performanceStatistics": {
+    "totalTasks": 500,
+    "averageLatency": 1500,
+    "successRate": 1,
+    "modelUsage": {
+      "GPT-4o Mini": 500
+    }
+  },
+  "tasks": [
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0014999999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0015, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0015749999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.377Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.378Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    },
+    {
+      "selectedModel": "GPT-4o Mini",
+      "estimatedCost": 0.0016499999999999998,
+      "reasoning": "Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0016, Quality: 0.85, Latency: 1000ms",
+      "timestamp": "2025-12-08T07:19:56.379Z"
+    }
+  ]
+}

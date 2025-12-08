@@ -1,0 +1,411 @@
+name: Unified Deployment Pipeline
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'organizations/**'
+      - 'packages/**'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: true
+        type: choice
+        options:
+          - production
+          - staging
+          - preview
+        default: 'production'
+      project:
+        description: 'Project to deploy'
+        required: true
+        type: choice
+        options:
+          - all
+          - llmworks
+          - portfolio
+          - qmlab
+          - attributa
+          - liveiticonic
+          - repz
+          - docs
+          - pages
+        default: 'all'
+      skip_build:
+        description: 'Skip build step (use existing artifacts)'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-${{ github.ref }}-${{ inputs.environment || 'production' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  deployments: write
+
+jobs:
+  # Job 1: Detect Changes
+  detect-changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      llmworks: ${{ steps.filter.outputs.llmworks }}
+      portfolio: ${{ steps.filter.outputs.portfolio }}
+      qmlab: ${{ steps.filter.outputs.qmlab }}
+      attributa: ${{ steps.filter.outputs.attributa }}
+      liveiticonic: ${{ steps.filter.outputs.liveiticonic }}
+      repz: ${{ steps.filter.outputs.repz }}
+      docs: ${{ steps.filter.outputs.docs }}
+      packages: ${{ steps.filter.outputs.packages }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Detect changed paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            llmworks:
+              - 'organizations/alawein-technologies-llc/saas/llmworks/**'
+              - 'packages/**'
+            portfolio:
+              - 'organizations/alawein-technologies-llc/saas/portfolio/**'
+              - 'packages/**'
+            qmlab:
+              - 'organizations/alawein-technologies-llc/saas/qmlab/**'
+              - 'packages/**'
+            attributa:
+              - 'organizations/alawein-technologies-llc/saas/attributa/**'
+              - 'packages/**'
+            liveiticonic:
+              - 'organizations/live-it-iconic-llc/ecommerce/liveiticonic/**'
+              - 'packages/**'
+            repz:
+              - 'organizations/repz-llc/apps/repz/**'
+              - 'packages/**'
+            docs:
+              - 'docs/**'
+              - 'mkdocs.yaml'
+            packages:
+              - 'packages/**'
+      
+      - name: Log detected changes
+        run: |
+          echo "## Detected Changes" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- LLMWorks: ${{ steps.filter.outputs.llmworks }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Portfolio: ${{ steps.filter.outputs.portfolio }}" >> $GITHUB_STEP_SUMMARY
+          echo "- QMLab: ${{ steps.filter.outputs.qmlab }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Attributa: ${{ steps.filter.outputs.attributa }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Live It Iconic: ${{ steps.filter.outputs.liveiticonic }}" >> $GITHUB_STEP_SUMMARY
+          echo "- REPZ: ${{ steps.filter.outputs.repz }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Documentation: ${{ steps.filter.outputs.docs }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Packages: ${{ steps.filter.outputs.packages }}" >> $GITHUB_STEP_SUMMARY
+
+  # Job 2: Build for Deployment
+  build:
+    name: Build for ${{ inputs.environment || 'Production' }}
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: |
+      github.event.inputs.skip_build != 'true' &&
+      (needs.detect-changes.outputs.llmworks == 'true' ||
+       needs.detect-changes.outputs.portfolio == 'true' ||
+       needs.detect-changes.outputs.qmlab == 'true' ||
+       needs.detect-changes.outputs.attributa == 'true' ||
+       needs.detect-changes.outputs.liveiticonic == 'true' ||
+       needs.detect-changes.outputs.repz == 'true' ||
+       github.event_name == 'workflow_dispatch')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build changed projects (Turbo)
+        run: |
+          echo "🔨 Building projects for deployment..."
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            if [ "${{ github.event.inputs.project }}" == "all" ]; then
+              npx turbo build
+            else
+              npx turbo build --filter=${{ github.event.inputs.project }}
+            fi
+          else
+            npx turbo build --filter='[HEAD^1]'
+          fi
+          echo "✅ Build completed"
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts-${{ github.run_id }}
+          path: |
+            organizations/**/dist
+            organizations/**/.next
+            organizations/**/build
+          retention-days: 1
+          if-no-files-found: warn
+
+  # Job 3: Deploy LLMWorks
+  deploy-llmworks:
+    name: Deploy LLMWorks
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.llmworks == 'true' || 
+       github.event.inputs.project == 'llmworks' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/alawein-technologies-llc/saas/llmworks
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 4: Deploy Portfolio
+  deploy-portfolio:
+    name: Deploy Portfolio
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.portfolio == 'true' || 
+       github.event.inputs.project == 'portfolio' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/alawein-technologies-llc/saas/portfolio
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 5: Deploy QMLab
+  deploy-qmlab:
+    name: Deploy QMLab
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.qmlab == 'true' || 
+       github.event.inputs.project == 'qmlab' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/alawein-technologies-llc/saas/qmlab
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 6: Deploy Attributa
+  deploy-attributa:
+    name: Deploy Attributa
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.attributa == 'true' || 
+       github.event.inputs.project == 'attributa' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/alawein-technologies-llc/saas/attributa
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 7: Deploy Live It Iconic
+  deploy-liveiticonic:
+    name: Deploy Live It Iconic
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.liveiticonic == 'true' || 
+       github.event.inputs.project == 'liveiticonic' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/live-it-iconic-llc/ecommerce/liveiticonic
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 8: Deploy REPZ
+  deploy-repz:
+    name: Deploy REPZ
+    needs: [detect-changes, build]
+    if: |
+      always() &&
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (needs.detect-changes.outputs.repz == 'true' || 
+       github.event.inputs.project == 'repz' || 
+       github.event.inputs.project == 'all')
+    uses: ./.github/workflows/reusable-deploy.yml
+    with:
+      working-directory: organizations/repz-llc/apps/repz
+      environment: ${{ inputs.environment || 'production' }}
+    secrets: inherit
+
+  # Job 9: Deploy Documentation (MkDocs)
+  deploy-docs:
+    name: Deploy Documentation
+    needs: detect-changes
+    if: |
+      needs.detect-changes.outputs.docs == 'true' || 
+      github.event.inputs.project == 'docs' || 
+      github.event.inputs.project == 'all'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install MkDocs and plugins
+        run: |
+          echo "📚 Installing MkDocs..."
+          pip install mkdocs-material mkdocs-mermaid2-plugin mkdocs-minify-plugin
+          echo "✅ MkDocs installed"
+      
+      - name: Build documentation
+        run: |
+          echo "🔨 Building documentation..."
+          mkdocs build --strict
+          echo "✅ Documentation built"
+      
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
+      - name: Log deployment
+        run: |
+          echo "📄 Documentation deployed to: ${{ steps.deployment.outputs.page_url }}"
+
+  # Job 10: Deployment Summary
+  deployment-summary:
+    name: Deployment Summary
+    runs-on: ubuntu-latest
+    needs: [detect-changes, build, deploy-llmworks, deploy-portfolio, deploy-qmlab, deploy-attributa, deploy-liveiticonic, deploy-repz, deploy-docs]
+    if: always()
+    
+    steps:
+      - name: Create deployment summary
+        run: |
+          echo "# 🚀 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment**: ${{ inputs.environment || 'production' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Build Status" >> $GITHUB_STEP_SUMMARY
+          echo "- Build: ${{ needs.build.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Deployment Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Project | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|---------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| LLMWorks | ${{ needs.deploy-llmworks.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Portfolio | ${{ needs.deploy-portfolio.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| QMLab | ${{ needs.deploy-qmlab.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Attributa | ${{ needs.deploy-attributa.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Live It Iconic | ${{ needs.deploy-liveiticonic.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| REPZ | ${{ needs.deploy-repz.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Documentation | ${{ needs.deploy-docs.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count results
+          success_count=0
+          failure_count=0
+          skipped_count=0
+          
+          for result in "${{ needs.deploy-llmworks.result }}" "${{ needs.deploy-portfolio.result }}" "${{ needs.deploy-qmlab.result }}" "${{ needs.deploy-attributa.result }}" "${{ needs.deploy-liveiticonic.result }}" "${{ needs.deploy-repz.result }}" "${{ needs.deploy-docs.result }}"; do
+            if [ "$result" == "success" ]; then
+              success_count=$((success_count + 1))
+            elif [ "$result" == "failure" ]; then
+              failure_count=$((failure_count + 1))
+            elif [ "$result" == "skipped" ]; then
+              skipped_count=$((skipped_count + 1))
+            fi
+          done
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Successful**: $success_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ❌ **Failed**: $failure_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭ **Skipped**: $skipped_count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $failure_count -eq 0 ] && [ $success_count -gt 0 ]; then
+            echo "✅ **All deployments successful!**" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          elif [ $failure_count -gt 0 ]; then
+            echo "⚠️ **Some deployments failed**" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          else
+            echo "ℹ️ **No deployments executed**" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+      
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              'LLMWorks': '${{ needs.deploy-llmworks.result }}',
+              'Portfolio': '${{ needs.deploy-portfolio.result }}',
+              'QMLab': '${{ needs.deploy-qmlab.result }}',
+              'Attributa': '${{ needs.deploy-attributa.result }}',
+              'Live It Iconic': '${{ needs.deploy-liveiticonic.result }}',
+              'REPZ': '${{ needs.deploy-repz.result }}',
+              'Documentation': '${{ needs.deploy-docs.result }}'
+            };
+            
+            let body = '## ⚠️ Deployment Failed\n\n';
+            body += `**Environment**: ${{ inputs.environment || 'production' }}\n`;
+            body += `**Branch**: ${{ github.ref_name }}\n`;
+            body += `**Commit**: ${{ github.sha }}\n\n`;
+            body += 'The following deployments had issues:\n\n';
+            
+            for (const [project, result] of Object.entries(results)) {
+              const icon = result === 'success' ? '✅' : result === 'failure' ? '❌' : '⏭️';
+              if (result === 'failure') {
+                body += `- ${icon} **${project}**: ${result}\n`;
+              }
+            }
+            
+            body += '\nPlease review the workflow logs for details.';
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Deployment Failed: ${{ inputs.environment || 'production' }} (${{ github.ref_name }})`,
+              body: body,
+              labels: ['deployment', 'automated', 'urgent']
+            });

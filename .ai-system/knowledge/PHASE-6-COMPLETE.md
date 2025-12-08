@@ -10,13 +10,13 @@ Built prompt composition system that combines multiple prompts, reusable compone
 
 ## Components Delivered
 
-### 1. Composer (`tools/prompt-composer/composer.py`)
+### 1. Composer (`tools/prompts/composer/composer.py`)
 - Variable substitution: `{{variable_name}}`
 - Include directives: `{{include:path/to/prompt.md}}`
 - Component directives: `{{component:name|param=value}}`
 - Template loading and saving
 
-### 2. Component Library (`tools/prompt-composer/components.py`)
+### 2. Component Library (`tools/prompts/composer/components.py`)
 - 5 reusable components:
   - code-review-header
   - testing-requirements
@@ -25,7 +25,7 @@ Built prompt composition system that combines multiple prompts, reusable compone
   - documentation-standards
 - Parameterized components (language, coverage, style, etc.)
 
-### 3. CLI (`tools/prompt-composer/cli.py`)
+### 3. CLI (`tools/prompts/composer/cli.py`)
 - Compose from templates
 - Load variables from JSON
 - Output to file or stdout

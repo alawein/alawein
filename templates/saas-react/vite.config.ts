@@ -14,6 +14,8 @@ export default defineConfig({
     port: 5173,
   },
   build: {
+    target: 'esnext',
+    minify: 'esbuild',
     sourcemap: true,
     rollupOptions: {
       output: {
@@ -24,6 +26,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
   },
 });
 

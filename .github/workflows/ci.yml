@@ -1,10 +1,24 @@
-name: CI
+name: CI - Python & Governance
+
+# NOTE: TypeScript CI is handled by ci-main.yml (Turbo-based)
+# This workflow focuses on Python scripts and governance validation
 
 on:
   push:
     branches: [main, master, develop]
+    paths:
+      - '.metaHub/scripts/**'
+      - 'automation/**'
+      - 'tools/**/*.py'
+      - 'tests/**'
+      - '.github/workflows/ci.yml'
   pull_request:
     branches: [main, master]
+    paths:
+      - '.metaHub/scripts/**'
+      - 'automation/**'
+      - 'tools/**/*.py'
+      - 'tests/**'
   workflow_dispatch:
 
 permissions:
@@ -51,44 +65,7 @@ jobs:
           files: coverage.xml
           fail_ci_if_error: false
 
-  # TypeScript linting, type-checking, and testing for DevOps CLI
-  typescript-ci:
-    name: TypeScript CI
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Type check
-        run: npm run type-check
-
-      - name: Run tests with coverage
-        run: npm run test:coverage
-
-      - name: Upload TypeScript coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage-final.json
-          flags: typescript
-          name: typescript-coverage
-          fail_ci_if_error: false
-
-      - name: Verify DevOps CLI
-        run: |
-          npm run devops:list
-          echo "DevOps CLI works"
+  # NOTE: TypeScript CI moved to ci-main.yml (uses Turbo for faster builds)
 
   # Validate governance scripts work correctly
   governance-validation:
@@ -149,32 +126,7 @@ jobs:
           globs: '**/*.md'
         continue-on-error: true
 
-  # Security scanning
-  security:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-        continue-on-error: true
-
-      - name: Upload Trivy scan results
-        uses: github/codeql-action/upload-sarif@v3
-        if: always()
-        with:
-          sarif_file: 'trivy-results.sarif'
-        continue-on-error: true
+  # NOTE: Security scanning moved to security.yml (comprehensive scans)
 
   # Workflow validation
   actionlint:

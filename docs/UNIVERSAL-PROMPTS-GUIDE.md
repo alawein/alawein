@@ -124,19 +124,19 @@ python ../../.ai-system/tools/recommendation-engine/cli.py recommend "build e-co
 #### For Mezan:
 ```bash
 # Create mezan-specific.md
-python .ai-system/tools/meta-prompt/generator.py "quantum circuit optimization for Mezan"
+python .ai-system/tools/prompts/meta/generator.py "quantum circuit optimization for Mezan"
 ```
 
 #### For REPZ:
 ```bash
 # Create repz-specific.md
-python .ai-system/tools/meta-prompt/generator.py "fitness tracking API for REPZ"
+python .ai-system/tools/prompts/meta/generator.py "fitness tracking API for REPZ"
 ```
 
 #### For LiveItIconic:
 ```bash
 # Create liveiticonic-specific.md
-python .ai-system/tools/meta-prompt/generator.py "e-commerce platform for LiveItIconic"
+python .ai-system/tools/prompts/meta/generator.py "e-commerce platform for LiveItIconic"
 ```
 
 ---
@@ -189,10 +189,10 @@ python .ai-system/tools/analytics/dashboard.py --project optilibria
 ### 2. **Create Project Workflows**
 ```bash
 # Mezan workflow
-python .ai-system/tools/prompt-composer/cli.py templates/quantum-workflow.md mezan-vars.json
+python .ai-system/tools/prompts/composer/cli.py templates/quantum-workflow.md mezan-vars.json
 
 # REPZ workflow
-python .ai-system/tools/prompt-composer/cli.py templates/api-workflow.md repz-vars.json
+python .ai-system/tools/prompts/composer/cli.py templates/api-workflow.md repz-vars.json
 ```
 
 ### 3. **Share Across Projects**

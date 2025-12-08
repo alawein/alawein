@@ -3,7 +3,7 @@
  */
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+ 
 // CLI utils handle dynamic data structures and formatting
 
 import { OrchexServices, initializeOrchexServices } from '@ORCHEX/services/index.js';

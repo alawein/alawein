@@ -29,19 +29,19 @@
 ### Test Cases
 ```bash
 # Optimization domain
-python tools/meta-prompt/generator.py "optimize database queries"
+python tools/prompts/meta/generator.py "optimize database queries"
 ✓ Generated, Quality: 0.85
 
 # Testing domain
-python tools/meta-prompt/generator.py "write tests for REST API"
+python tools/prompts/meta/generator.py "write tests for REST API"
 ✓ Generated, Quality: 0.90
 
 # Architecture domain
-python tools/meta-prompt/generator.py "design microservices architecture"
+python tools/prompts/meta/generator.py "design microservices architecture"
 ✓ Generated, Quality: 0.88
 
 # Debugging domain
-python tools/meta-prompt/generator.py "debug memory leak"
+python tools/prompts/meta/generator.py "debug memory leak"
 ✓ Generated, Quality: 0.82
 ```
 
@@ -55,12 +55,12 @@ python tools/meta-prompt/generator.py "debug memory leak"
 
 ### Basic Generation
 ```bash
-python tools/meta-prompt/generator.py "your requirement here"
+python tools/prompts/meta/generator.py "your requirement here"
 ```
 
 ### Save to File
 ```bash
-python tools/meta-prompt/generator.py \
+python tools/prompts/meta/generator.py \
   "optimize database queries" \
   --output docs/ai-knowledge/prompts/superprompts/database-optimization.md
 ```
@@ -68,7 +68,7 @@ python tools/meta-prompt/generator.py \
 ### Batch Generation
 ```bash
 for req in "optimize queries" "write tests" "design system"; do
-  python tools/meta-prompt/generator.py "$req" \
+  python tools/prompts/meta/generator.py "$req" \
     --output "prompts/$(echo $req | tr ' ' '-').md"
 done
 ```
@@ -111,7 +111,7 @@ Ready to start building workflow chains!
 ## Files Created
 
 ```
-tools/meta-prompt/
+tools/prompts/meta/
 ├── generator.py              # Core generator
 ├── test_generator.py         # Test suite
 ├── README.md                 # Documentation

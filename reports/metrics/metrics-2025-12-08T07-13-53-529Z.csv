@@ -1,0 +1,6 @@
+Model,Cost,Timestamp,Reasoning
+"GPT-4o Mini",0.0033749999999999995,"2025-12-08T07:13:53.329Z","Selected GPT-4o Mini (score: 0.95) for documentation task. Cost: $0.0034, Quality: 0.85, Latency: 1000ms"
+"GPT-4o Mini",0.0027749999999999997,"2025-12-08T07:13:53.329Z","Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0028, Quality: 0.85, Latency: 1000ms"
+"GPT-4o Mini",0.0032249999999999996,"2025-12-08T07:13:53.329Z","Selected GPT-4o Mini (score: 0.95) for debugging task. Cost: $0.0032, Quality: 0.85, Latency: 1000ms"
+"Claude Sonnet 4",0.0525,"2025-12-08T07:13:53.329Z","Selected Claude Sonnet 4 (score: 0.94) for refactoring task. Cost: $0.0525, Quality: 0.93, Latency: 1500ms"
+"GPT-4o Mini",0.0027749999999999997,"2025-12-08T07:13:53.329Z","Selected GPT-4o Mini (score: 0.95) for code_generation task. Cost: $0.0028, Quality: 0.85, Latency: 1000ms"

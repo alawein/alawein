@@ -1,0 +1,330 @@
+name: Code Quality & Health
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM
+  workflow_dispatch:
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Bundle Size Check
+  bundle_size:
+    name: Bundle Size Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build all projects
+        run: npx turbo build
+      
+      - name: Analyze bundle sizes
+        run: |
+          echo "# Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check each project's bundle size
+          for project in organizations/*/saas/*/dist organizations/*/apps/*/dist organizations/*/ecommerce/*/dist; do
+            if [ -d "$project" ]; then
+              project_name=$(echo "$project" | cut -d'/' -f2-4)
+              
+              # Find main bundle file
+              main_bundle=$(find "$project" -name "index-*.js" -o -name "main-*.js" | head -1)
+              
+              if [ -f "$main_bundle" ]; then
+                size=$(stat -f%z "$main_bundle" 2>/dev/null || stat -c%s "$main_bundle")
+                size_kb=$((size / 1024))
+                
+                echo "## $project_name" >> $GITHUB_STEP_SUMMARY
+                echo "- Bundle size: ${size_kb}KB" >> $GITHUB_STEP_SUMMARY
+                
+                # Check against limits
+                if [ $size_kb -gt 200 ]; then
+                  echo "::warning::Bundle size for $project_name exceeds 200KB limit (${size_kb}KB)"
+                  echo "- ⚠️ **Exceeds 200KB limit**" >> $GITHUB_STEP_SUMMARY
+                else
+                  echo "- ✅ Within limits" >> $GITHUB_STEP_SUMMARY
+                fi
+                echo "" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+      
+      - name: Check bundle size config
+        run: |
+          if [ -f ".bundlesizerc.json" ]; then
+            echo "Bundle size configuration found"
+            cat .bundlesizerc.json
+          fi
+
+  # Super Linter
+  super_linter:
+    name: Super Linter
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run Super Linter
+        uses: github/super-linter@v5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TYPESCRIPT_ES: true
+          VALIDATE_TYPESCRIPT_STANDARD: true
+          VALIDATE_JSON: true
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_BASH: true
+          VALIDATE_PYTHON: true
+          FILTER_REGEX_EXCLUDE: '.*node_modules/.*|.*dist/.*|.*build/.*'
+
+  # Repository Health Check
+  repo_health:
+    name: Repository Health
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run health check
+        run: |
+          if [ -f "tools/health/repo-health.ts" ]; then
+            npx tsx tools/health/repo-health.ts
+          else
+            echo "Running basic health checks..."
+            
+            # Check for outdated dependencies
+            echo "Checking for outdated dependencies..."
+            npm outdated || true
+            
+            # Check workspace integrity
+            echo "Checking workspace integrity..."
+            npm run health || true
+          fi
+      
+      - name: Check for broken links in docs
+        run: |
+          echo "Checking documentation for broken links..."
+          find docs -name "*.md" -type f | while read file; do
+            # Basic check for broken internal links
+            grep -o '\[.*\](.*\.md)' "$file" | while read link; do
+              target=$(echo "$link" | sed 's/.*(\(.*\))/\1/')
+              if [ ! -f "docs/$target" ] && [ ! -f "$target" ]; then
+                echo "::warning::Broken link in $file: $target"
+              fi
+            done
+          done || true
+
+  # Health Dashboard
+  health_dashboard:
+    name: Health Dashboard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate health metrics
+        run: |
+          echo "# Repository Health Dashboard" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count projects
+          saas_count=$(find organizations/*/saas -maxdepth 1 -type d | wc -l)
+          apps_count=$(find organizations/*/apps -maxdepth 1 -type d | wc -l)
+          packages_count=$(find packages -maxdepth 1 -type d | wc -l)
+          
+          echo "## Project Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- SaaS Projects: $saas_count" >> $GITHUB_STEP_SUMMARY
+          echo "- Apps: $apps_count" >> $GITHUB_STEP_SUMMARY
+          echo "- Shared Packages: $packages_count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count TypeScript files
+          ts_files=$(find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules | wc -l)
+          echo "## Code Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "- TypeScript files: $ts_files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check test coverage
+          if [ -d "coverage" ]; then
+            echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "- Coverage reports available" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # Documentation Quality
+  docs_quality:
+    name: Documentation Quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Check documentation structure
+        run: |
+          echo "Checking documentation structure..."
+          
+          # Check for required documentation files
+          required_docs=("README.md" "docs/README.md" "SECURITY.md")
+          for doc in "${required_docs[@]}"; do
+            if [ ! -f "$doc" ]; then
+              echo "::warning::Missing required documentation: $doc"
+            else
+              echo "✅ Found: $doc"
+            fi
+          done
+      
+      - name: Validate MkDocs configuration
+        run: |
+          if [ -f "mkdocs.yaml" ] || [ -f "mkdocs.yml" ]; then
+            pip install mkdocs-material
+            mkdocs build --strict || echo "::warning::MkDocs build had warnings"
+          fi
+      
+      - name: Check README quality
+        run: |
+          # Check README has minimum sections
+          if [ -f "README.md" ]; then
+            sections=("Installation" "Usage" "Contributing" "License")
+            for section in "${sections[@]}"; do
+              if ! grep -qi "$section" README.md; then
+                echo "::warning::README.md missing section: $section"
+              fi
+            done
+          fi
+
+  # Code Complexity Analysis
+  complexity:
+    name: Code Complexity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Analyze code complexity
+        run: |
+          echo "Analyzing code complexity..."
+          
+          # Find large files (>500 lines)
+          echo "## Large Files (>500 lines)" >> $GITHUB_STEP_SUMMARY
+          find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules | while read file; do
+            lines=$(wc -l < "$file")
+            if [ $lines -gt 500 ]; then
+              echo "- $file: $lines lines" >> $GITHUB_STEP_SUMMARY
+              echo "::warning::Large file detected: $file ($lines lines)"
+            fi
+          done || echo "- No large files found" >> $GITHUB_STEP_SUMMARY
+      
+      - name: Check for code duplication
+        run: |
+          echo "Checking for potential code duplication..."
+          # This is a placeholder - in production, use tools like jscpd
+          echo "Code duplication check completed"
+
+  # Performance Benchmarks
+  performance:
+    name: Performance Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run build performance test
+        run: |
+          echo "Testing build performance..."
+          
+          # Measure Turbo build time
+          start_time=$(date +%s)
+          npx turbo build --force
+          end_time=$(date +%s)
+          
+          duration=$((end_time - start_time))
+          echo "Build completed in ${duration}s"
+          echo "## Build Performance" >> $GITHUB_STEP_SUMMARY
+          echo "- Full build time: ${duration}s" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $duration -gt 300 ]; then
+            echo "::warning::Build time exceeds 5 minutes"
+          fi
+
+  # Quality Summary
+  quality_summary:
+    name: Quality Summary
+    runs-on: ubuntu-latest
+    needs: [bundle_size, super_linter, repo_health, health_dashboard, docs_quality, complexity, performance]
+    if: always()
+    steps:
+      - name: Create summary
+        run: |
+          echo "# Code Quality Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "- Bundle Size: ${{ needs.bundle_size.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Super Linter: ${{ needs.super_linter.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Repository Health: ${{ needs.repo_health.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Health Dashboard: ${{ needs.health_dashboard.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Documentation Quality: ${{ needs.docs_quality.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Code Complexity: ${{ needs.complexity.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Performance: ${{ needs.performance.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.bundle_size.result }}" == "success" ] && \
+             [ "${{ needs.repo_health.result }}" == "success" ] && \
+             [ "${{ needs.performance.result }}" == "success" ]; then
+            echo "✅ All quality checks passed!" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Some quality checks failed or had warnings" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -35,12 +35,12 @@ def main():
          'Path(__file__).parent.parent / "knowledge" / "prompts"'),
         
         # Prompt composer
-        (".ai-system/tools/prompt-composer/composer.py",
+        (".ai-system/tools/prompts/composer/composer.py",
          'Path(__file__).parent.parent.parent / "docs" / "ai-knowledge" / "prompts"',
          'Path(__file__).parent.parent / "knowledge" / "prompts"'),
         
         # Validator
-        (".ai-system/tools/prompt-testing/validator.py",
+        (".ai-system/tools/prompts/testing/validator.py",
          'Path(__file__).parent.parent.parent / "docs" / "ai-knowledge" / "prompts"',
          'Path(__file__).parent.parent / "knowledge" / "prompts"'),
     ]

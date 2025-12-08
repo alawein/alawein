@@ -238,7 +238,7 @@ export class SkepticReviewer {
     return `Analysis of "${change.description}" against challenge: ${challenge}`;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- Parameters reserved for future semantic analysis
+   
   private evaluateResponse(_challenge: string, _response: string): boolean {
     // Simplified evaluation - would be enhanced with semantic analysis
     return true;

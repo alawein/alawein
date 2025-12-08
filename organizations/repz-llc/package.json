@@ -1,0 +1,36 @@
+{
+  "name": "repz-platform",
+  "version": "1.0.0",
+  "description": "Complete fitness coaching platform with client and coach portals",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd apps/repz && npm run dev",
+    "build": "cd apps/repz && npm run build",
+    "preview": "cd apps/repz && npm run preview",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "install:playwright": "playwright install",
+    "lint": "cd apps/repz && npm run lint",
+    "type-check": "cd apps/repz && npm run type-check"
+  },
+  "keywords": [
+    "fitness",
+    "coaching",
+    "react",
+    "typescript",
+    "supabase"
+  ],
+  "author": "REPZ Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

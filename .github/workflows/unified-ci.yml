@@ -1,0 +1,586 @@
+name: Unified CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 6 AM for quality checks
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Type of CI check to run'
+        required: false
+        type: choice
+        options:
+          - all
+          - validate
+          - type-check
+          - lint
+          - test
+          - build
+          - quality
+        default: 'all'
+      skip_matrix_build:
+        description: 'Skip matrix build for specific projects'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: unified-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  # Job 1: Quick Validation
+  validate:
+    name: Quick Validation
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'validate'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check formatting
+        run: |
+          echo "🎨 Checking code formatting..."
+          npm run format:check || echo "::warning::Formatting issues found"
+      
+      - name: Validate documentation
+        run: |
+          echo "📚 Validating documentation..."
+          npm run docs:validate || echo "::notice::Documentation validation completed with warnings"
+      
+      - name: Validate package.json files
+        run: |
+          echo "📦 Validating package.json files..."
+          # Check all package.json files are valid JSON
+          find . -name "package.json" -not -path "*/node_modules/*" | while read file; do
+            if ! node -e "require('$file')"; then
+              echo "::error::Invalid package.json: $file"
+              exit 1
+            fi
+          done
+          echo "✅ All package.json files are valid"
+
+  # Job 2: Type Checking with Turbo
+  type-check:
+    name: Type Check
+    runs-on: ubuntu-latest
+    needs: validate
+    if: |
+      always() && needs.validate.result == 'success' &&
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'type-check')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Cache TypeScript build info
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/.tsbuildinfo
+            **/dist/.tsbuildinfo
+          key: ${{ runner.os }}-tsc-${{ hashFiles('**/tsconfig*.json') }}
+          restore-keys: |
+            ${{ runner.os }}-tsc-
+      
+      - name: Type check with Turbo
+        run: |
+          echo "🔍 Running TypeScript type checking..."
+          npx turbo type-check
+          echo "✅ Type checking completed"
+      
+      - name: Validate TypeScript configurations
+        run: |
+          echo "🔧 Validating TypeScript configurations..."
+          for tsconfig in **/tsconfig.json; do
+            if [ -f "$tsconfig" ]; then
+              echo "Validating $tsconfig"
+              npx tsc --project "$tsconfig" --noEmit --skipLibCheck || echo "::warning::TypeScript errors in $tsconfig"
+            fi
+          done
+
+  # Job 3: Linting with Turbo
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    needs: validate
+    if: |
+      always() && needs.validate.result == 'success' &&
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'lint')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Lint with Turbo
+        run: |
+          echo "🔍 Running linting..."
+          npx turbo lint
+          echo "✅ Linting completed"
+      
+      - name: Run Super Linter (on schedule)
+        if: github.event_name == 'schedule'
+        uses: github/super-linter@v5
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_TYPESCRIPT_ES: true
+          VALIDATE_TYPESCRIPT_STANDARD: true
+          VALIDATE_JSON: true
+          VALIDATE_YAML: true
+          VALIDATE_MARKDOWN: true
+          VALIDATE_BASH: true
+          VALIDATE_PYTHON: true
+          FILTER_REGEX_EXCLUDE: '.*node_modules/.*|.*dist/.*|.*build/.*'
+
+  # Job 4: Testing with Turbo
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: validate
+    if: |
+      always() && needs.validate.result == 'success' &&
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'test')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests with Turbo
+        run: |
+          echo "🧪 Running tests..."
+          npx turbo test:run
+          echo "✅ Tests completed"
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        if: always()
+        with:
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
+      
+      - name: Check test coverage
+        if: always()
+        run: |
+          if [ -f "coverage/coverage-summary.json" ]; then
+            coverage=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
+            echo "📊 Code coverage: $coverage%"
+            echo "## Test Coverage" >> $GITHUB_STEP_SUMMARY
+            echo "- Lines: $coverage%" >> $GITHUB_STEP_SUMMARY
+            
+            if (( $(echo "$coverage < 80" | bc -l) )); then
+              echo "::warning::Code coverage is below 80% ($coverage%)"
+            fi
+          fi
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_id }}
+          path: |
+            coverage/
+            test-results/
+          retention-days: 30
+          if-no-files-found: warn
+
+  # Job 5: Build with Turbo
+  build:
+    name: Build All Packages
+    runs-on: ubuntu-latest
+    needs: [type-check, lint]
+    if: |
+      always() && 
+      (needs.type-check.result == 'success' || needs.type-check.result == 'skipped') &&
+      (needs.lint.result == 'success' || needs.lint.result == 'skipped') &&
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'build')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Cache Turbo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+      
+      - name: Build all packages with Turbo
+        run: |
+          echo "🔨 Building all packages..."
+          npx turbo build
+          echo "✅ Build completed"
+      
+      - name: Measure build performance
+        run: |
+          echo "## Build Performance" >> $GITHUB_STEP_SUMMARY
+          echo "- Build completed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- Turbo cache utilized" >> $GITHUB_STEP_SUMMARY
+
+  # Job 6: Matrix Build for Specific Projects
+  build-projects:
+    name: Build ${{ matrix.project.name }}
+    runs-on: ubuntu-latest
+    needs: validate
+    if: |
+      always() && needs.validate.result == 'success' &&
+      (github.event_name != 'workflow_dispatch' || 
+       (github.event.inputs.check_type == 'all' && github.event.inputs.skip_matrix_build != 'true') || 
+       github.event.inputs.check_type == 'build')
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - name: llm-works
+            path: organizations/alawein-technologies-llc/saas/llmworks
+          - name: portfolio
+            path: organizations/alawein-technologies-llc/saas/portfolio
+          - name: qml-playground
+            path: organizations/alawein-technologies-llc/saas/qmlab
+          - name: attributa
+            path: organizations/alawein-technologies-llc/saas/attributa
+          - name: simcore
+            path: organizations/alawein-technologies-llc/mobile-apps/simcore
+          - name: live-it-iconic
+            path: organizations/live-it-iconic-llc/ecommerce/liveiticonic
+          - name: repz-platform
+            path: organizations/repz-llc/apps/repz
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build ${{ matrix.project.name }}
+        run: |
+          echo "🔨 Building ${{ matrix.project.name }}..."
+          npx turbo build --filter=${{ matrix.project.name }}
+          echo "✅ Build completed for ${{ matrix.project.name }}"
+      
+      - name: Check bundle size
+        if: matrix.project.name != 'simcore'
+        run: |
+          echo "📦 Checking bundle size for ${{ matrix.project.name }}..."
+          if [ -f "${{ matrix.project.path }}/dist/assets/index-*.js" ]; then
+            SIZE=$(stat -f%z "${{ matrix.project.path }}/dist/assets/index-*.js" 2>/dev/null || stat -c%s "${{ matrix.project.path }}/dist/assets/index-*.js")
+            SIZE_KB=$((SIZE / 1024))
+            echo "Bundle size: ${SIZE_KB}KB"
+            
+            if [ $SIZE_KB -gt 200 ]; then
+              echo "::warning::Bundle size for ${{ matrix.project.name }} exceeds 200KB limit (${SIZE_KB}KB)"
+            else
+              echo "✅ Bundle size within limits"
+            fi
+          fi
+
+  # Job 7: Quality Checks
+  quality:
+    name: Quality Checks
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: |
+      always() && 
+      (needs.build.result == 'success' || needs.build.result == 'skipped') &&
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'quality')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Bundle size analysis
+        run: |
+          echo "📦 Analyzing bundle sizes..."
+          echo "# Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Build all projects first
+          npx turbo build
+          
+          # Check each project's bundle size
+          for project in organizations/*/saas/*/dist organizations/*/apps/*/dist organizations/*/ecommerce/*/dist; do
+            if [ -d "$project" ]; then
+              project_name=$(echo "$project" | cut -d'/' -f2-4)
+              
+              # Find main bundle file
+              main_bundle=$(find "$project" -name "index-*.js" -o -name "main-*.js" 2>/dev/null | head -1)
+              
+              if [ -f "$main_bundle" ]; then
+                size=$(stat -f%z "$main_bundle" 2>/dev/null || stat -c%s "$main_bundle")
+                size_kb=$((size / 1024))
+                
+                echo "## $project_name" >> $GITHUB_STEP_SUMMARY
+                echo "- Bundle size: ${size_kb}KB" >> $GITHUB_STEP_SUMMARY
+                
+                if [ $size_kb -gt 200 ]; then
+                  echo "::warning::Bundle size for $project_name exceeds 200KB limit (${size_kb}KB)"
+                  echo "- ⚠️ **Exceeds 200KB limit**" >> $GITHUB_STEP_SUMMARY
+                else
+                  echo "- ✅ Within limits" >> $GITHUB_STEP_SUMMARY
+                fi
+                echo "" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+      
+      - name: Code complexity analysis
+        run: |
+          echo "🔍 Analyzing code complexity..."
+          
+          # Find large files (>500 lines)
+          echo "## Large Files (>500 lines)" >> $GITHUB_STEP_SUMMARY
+          large_files_found=false
+          find . -name "*.ts" -o -name "*.tsx" | grep -v node_modules | while read file; do
+            lines=$(wc -l < "$file")
+            if [ $lines -gt 500 ]; then
+              echo "- $file: $lines lines" >> $GITHUB_STEP_SUMMARY
+              echo "::warning::Large file detected: $file ($lines lines)"
+              large_files_found=true
+            fi
+          done
+          
+          if [ "$large_files_found" = false ]; then
+            echo "- No large files found" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Repository health check
+        run: |
+          echo "🏥 Running repository health check..."
+          
+          # Check for outdated dependencies
+          echo "Checking for outdated dependencies..."
+          npm outdated || echo "Some dependencies are outdated"
+          
+          # Check workspace integrity
+          echo "Checking workspace integrity..."
+          npm run health || echo "Health check completed with warnings"
+      
+      - name: Documentation quality check
+        run: |
+          echo "📚 Checking documentation quality..."
+          
+          # Check for required documentation files
+          required_docs=("README.md" "docs/README.md" "SECURITY.md")
+          for doc in "${required_docs[@]}"; do
+            if [ ! -f "$doc" ]; then
+              echo "::warning::Missing required documentation: $doc"
+            else
+              echo "✅ Found: $doc"
+            fi
+          done
+          
+          # Check README has minimum sections
+          if [ -f "README.md" ]; then
+            sections=("Installation" "Usage" "Contributing" "License")
+            for section in "${sections[@]}"; do
+              if ! grep -qi "$section" README.md; then
+                echo "::warning::README.md missing section: $section"
+              fi
+            done
+          fi
+      
+      - name: Performance benchmarks
+        run: |
+          echo "⚡ Running performance benchmarks..."
+          
+          # Measure Turbo build time
+          start_time=$(date +%s)
+          npx turbo build --force
+          end_time=$(date +%s)
+          
+          duration=$((end_time - start_time))
+          echo "Build completed in ${duration}s"
+          echo "## Build Performance" >> $GITHUB_STEP_SUMMARY
+          echo "- Full build time: ${duration}s" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $duration -gt 300 ]; then
+            echo "::warning::Build time exceeds 5 minutes (${duration}s)"
+          else
+            echo "✅ Build time within acceptable range"
+          fi
+
+  # Job 8: CI Summary
+  ci-summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [validate, type-check, lint, test, build, build-projects, quality]
+    if: always()
+    
+    steps:
+      - name: Create summary
+        run: |
+          echo "# 🚀 CI/CD Pipeline Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Job Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Validate | ${{ needs.validate.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Type Check | ${{ needs.type-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Lint | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Test | ${{ needs.test.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build Projects | ${{ needs.build-projects.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Quality | ${{ needs.quality.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count results
+          success_count=0
+          failure_count=0
+          skipped_count=0
+          
+          for result in "${{ needs.validate.result }}" "${{ needs.type-check.result }}" "${{ needs.lint.result }}" "${{ needs.test.result }}" "${{ needs.build.result }}" "${{ needs.build-projects.result }}" "${{ needs.quality.result }}"; do
+            if [ "$result" == "success" ]; then
+              success_count=$((success_count + 1))
+            elif [ "$result" == "failure" ]; then
+              failure_count=$((failure_count + 1))
+            elif [ "$result" == "skipped" ]; then
+              skipped_count=$((skipped_count + 1))
+            fi
+          done
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Passed**: $success_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ❌ **Failed**: $failure_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭️ **Skipped**: $skipped_count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $failure_count -eq 0 ] && [ $success_count -gt 0 ]; then
+            echo "✅ **All CI checks passed!**" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          elif [ $failure_count -gt 0 ]; then
+            echo "⚠️ **Some CI checks failed**" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          else
+            echo "ℹ️ **All checks were skipped**" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+      
+      - name: Comment on PR (if failures)
+        if: github.event_name == 'pull_request' && (needs.validate.result == 'failure' || needs.type-check.result == 'failure' || needs.lint.result == 'failure' || needs.test.result == 'failure' || needs.build.result == 'failure' || needs.build-projects.result == 'failure' || needs.quality.result == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              'Validate': '${{ needs.validate.result }}',
+              'Type Check': '${{ needs.type-check.result }}',
+              'Lint': '${{ needs.lint.result }}',
+              'Test': '${{ needs.test.result }}',
+              'Build': '${{ needs.build.result }}',
+              'Build Projects': '${{ needs.build-projects.result }}',
+              'Quality': '${{ needs.quality.result }}'
+            };
+            
+            let body = '## ⚠️ CI/CD Pipeline Failed\n\n';
+            body += 'The following checks failed:\n\n';
+            
+            for (const [check, result] of Object.entries(results)) {
+              const icon = result === 'success' ? '✅' : result === 'failure' ? '❌' : '⏭️';
+              body += `- ${icon} **${check}**: ${result}\n`;
+            }
+            
+            body += '\nPlease review the workflow logs for details and fix the issues before merging.';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });

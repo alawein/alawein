@@ -3,20 +3,14 @@
  * Hooks and components for React applications
  */
 
-export { FeatureFlagProvider } from './FeatureFlagProvider';
-export { useFeatureFlag } from './useFeatureFlag';
+export { FeatureFlagProvider, FeatureFlagContext } from './FeatureFlagProvider';
 export { useFeatureFlags } from './useFeatureFlags';
 export { useFeatureFlagVariant } from './useFeatureFlagVariant';
-export { FeatureGate } from './FeatureGate';
 export { VariantSwitch } from './VariantSwitch';
-export { ExperimentProvider } from './ExperimentProvider';
+export { ExperimentProvider, useExperimentContext } from './ExperimentProvider';
 export { useExperiment } from './useExperiment';
 
 export type {
+  FeatureFlagContextValue,
   FeatureFlagProviderProps,
-  UseFeatureFlagResult,
-  FeatureGateProps,
-  VariantSwitchProps,
-  ExperimentProviderProps,
-  UseExperimentResult,
 } from './types';

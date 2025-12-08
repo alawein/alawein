@@ -1,11 +1,17 @@
-// Shared UI components for the monorepo
+// Unified UI Package - Consolidated from ui, ui-components, and shared-ui
+// Version 2.0.0
 
-export * from './components/Button';
-export * from './components/Card';
-export * from './utils/cn';
+// Components
+export * from './components';
 
-// TODO: Add these components when needed
-// export * from './components/Input';
-// export * from './components/Modal';
-// export * from './components/Loading';
-// export * from './hooks/useTheme';
+// Utilities
+export { cn } from './utils/cn';
+
+// Tokens
+export * from './tokens';
+
+// Types
+export * from './types';
+
+// Styles
+import './styles/globals.css';

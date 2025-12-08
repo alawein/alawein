@@ -11,10 +11,17 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "typecheck": "tsc --noEmit"
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "start:test": "vite --port 4173",
+    "typecheck": "tsc --noEmit",
+    "generate:icons": "node scripts/generate-icons.js",
+    "prepare": "node -e \"try { require('husky').install() } catch (e) {}\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",

@@ -92,10 +92,11 @@ function evaluateConditions(
         return Number(fieldValue) > Number(condition.value);
       case 'less':
         return Number(fieldValue) < Number(condition.value);
-      case 'between':
+      case 'between': {
         const [min, max] = condition.value as [number, number];
         const num = Number(fieldValue);
         return num >= min && num <= max;
+      }
       case 'regex':
         return new RegExp(String(condition.value)).test(String(fieldValue));
       default:

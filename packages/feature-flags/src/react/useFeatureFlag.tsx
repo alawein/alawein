@@ -63,12 +63,22 @@ export function useFeatureFlag(flagId: string): UseFeatureFlagResult {
     result: EvaluationResult | null;
   }>({
     enabled: false,
-    loading: true,
+    loading: manager ? true : false,
     error: null,
     result: null,
   });
 
   const evaluateFlag = async () => {
+    if (!manager) {
+      setState({
+        enabled: context.flags?.[flagId] ?? false,
+        loading: false,
+        error: null,
+        result: null,
+      });
+      return;
+    }
+
     try {
       setState((prev) => ({ ...prev, loading: true, error: null }));
 
@@ -96,7 +106,7 @@ export function useFeatureFlag(flagId: string): UseFeatureFlagResult {
 
   useEffect(() => {
     evaluateFlag();
-  }, [flagId, userContext.id, userContext.tier, userContext.role]);
+  }, [flagId, userContext?.id, userContext?.tier, userContext?.role]);
 
   const refresh = async () => {
     await evaluateFlag();

@@ -11,7 +11,7 @@ python cli.py sync
 
 ### Step 2: Validate Your Prompts
 ```bash
-cd tools/prompt-testing
+cd tools/prompts/testing
 python cli.py validate --all
 ```
 **Result**: Quality report for all 67 prompts
@@ -32,7 +32,7 @@ python dashboard.py
 
 ### Step 5: Compose a Workflow
 ```bash
-cd tools/prompt-composer
+cd tools/prompts/composer
 python cli.py templates/fullstack-workflow.md example-vars.json > my-workflow.md
 ```
 **Result**: Custom workflow prompt
@@ -44,7 +44,7 @@ python cli.py templates/fullstack-workflow.md example-vars.json > my-workflow.md
 ### Add a New Prompt
 1. Create prompt in `docs/ai-knowledge/prompts/category/`
 2. Run: `python tools/cross-ide-sync/cli.py sync`
-3. Validate: `python tools/prompt-testing/cli.py validate your-prompt.md`
+3. Validate: `python tools/prompts/testing/cli.py validate your-prompt.md`
 
 ### Search Marketplace
 ```bash
@@ -98,7 +98,7 @@ cat > my-vars.json << EOF
 EOF
 
 # 2. Compose workflow
-python tools/prompt-composer/cli.py templates/fullstack-workflow.md my-vars.json > my-workflow.md
+python tools/prompts/composer/cli.py templates/fullstack-workflow.md my-vars.json > my-workflow.md
 
 # 3. Use the workflow
 # Open my-workflow.md in your IDE
@@ -126,7 +126,7 @@ python tools/marketplace/cli.py install your-username/my-prompt
 python tools/cross-ide-sync/cli.py sync
 
 # Check for updates
-python tools/prompt-testing/cli.py regression --check
+python tools/prompts/testing/cli.py regression --check
 ```
 
 ### During Development
@@ -143,7 +143,7 @@ python tools/recommendation-engine/cli.py recommend "your task"
 python tools/analytics/dashboard.py
 
 # Save regression baseline
-python tools/prompt-testing/cli.py regression --save
+python tools/prompts/testing/cli.py regression --save
 ```
 
 ---
@@ -159,7 +159,7 @@ python cli.py watch
 
 ### Generate New Prompt
 ```bash
-cd tools/meta-prompt
+cd tools/prompts/meta
 python generator.py "Create a prompt for database optimization"
 ```
 
@@ -171,7 +171,7 @@ python extractor.py
 
 ### Run Tests
 ```bash
-cd tools/prompt-testing
+cd tools/prompts/testing
 python cli.py validate --all
 python cli.py benchmark optimization-framework 10
 ```
@@ -183,7 +183,7 @@ python cli.py benchmark optimization-framework 10
 ### Check System Health
 ```bash
 # Validation status
-python tools/prompt-testing/cli.py validate --all
+python tools/prompts/testing/cli.py validate --all
 
 # Analytics overview
 python tools/analytics/dashboard.py
@@ -233,7 +233,7 @@ python tools/cross-ide-sync/cli.py sync --force
 ### Validation failing?
 ```bash
 # Check specific prompt
-python tools/prompt-testing/cli.py validate path/to/prompt.md
+python tools/prompts/testing/cli.py validate path/to/prompt.md
 
 # View issues
 # Output shows what's missing

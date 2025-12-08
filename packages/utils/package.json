@@ -1,28 +1,58 @@
 {
-  "name": "@monorepo/utils",
+  "name": "@alawein/utils",
   "version": "1.0.0",
-  "description": "Shared utility functions for the monorepo",
-  "private": true,
+  "description": "Shared utility functions for Alawein monorepo",
   "type": "module",
-  "main": "src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./file": "./src/file.ts",
-    "./string": "./src/string.ts",
-    "./array": "./src/array.ts",
-    "./validation": "./src/validation.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./cn": {
+      "import": "./dist/cn.js",
+      "types": "./dist/cn.d.ts"
+    },
+    "./performance": {
+      "import": "./dist/performance.js",
+      "types": "./dist/performance.d.ts"
+    },
+    "./format": {
+      "import": "./dist/format.js",
+      "types": "./dist/format.d.ts"
+    },
+    "./validation": {
+      "import": "./dist/validation.js",
+      "types": "./dist/validation.d.ts"
+    }
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint src --ext .ts",
-    "test": "vitest"
+    "clean": "rm -rf dist",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "utils",
+    "utilities",
+    "helpers",
+    "shared"
+  ],
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.2.0"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
-    "vitest": "^3.2.4"
+    "typescript": "^5.6.3"
   },
-  "dependencies": {
-    "zod": "^3.0.0"
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
   }
 }

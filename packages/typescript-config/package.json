@@ -1,20 +1,11 @@
 {
-  "name": "@monorepo/typescript-config",
+  "name": "@alawein/typescript-config",
   "version": "1.0.0",
-  "description": "Shared TypeScript configuration for the monorepo",
-  "main": "base.json",
+  "private": true,
+  "main": "index.js",
   "files": [
     "base.json",
-    "next.json",
     "react.json",
     "node.json"
-  ],
-  "keywords": [
-    "typescript",
-    "config",
-    "monorepo"
-  ],
-  "author": "MetaHub",
-  "license": "MIT",
-  "private": true
+  ]
 }

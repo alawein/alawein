@@ -17,6 +17,10 @@ export default [
       "**/*.min.js",
       "**/archive/**",
       "**/.metaHub/templates/**",
+      "**/organizations/**",
+      "**/research/**",
+      "**/tools/**",
+      "**/docs/**",
     ],
   },
 

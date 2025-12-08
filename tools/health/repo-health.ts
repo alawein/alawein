@@ -68,7 +68,9 @@ function findFiles(dir: string, pattern: RegExp, skipArchive = true): string[] {
         results.push(fullPath);
       }
     }
-  } catch { }
+  } catch {
+    // Intentionally empty
+  }
   return results;
 }
 
@@ -83,7 +85,9 @@ async function checkDependencies(): Promise<HealthResult> {
   let auditData: any = {};
   try {
     auditData = JSON.parse(audit);
-  } catch { }
+  } catch {
+    // Intentionally empty
+  }
 
   const vulns = auditData.metadata?.vulnerabilities || {};
   const total = (vulns.high || 0) + (vulns.critical || 0);
@@ -92,7 +96,9 @@ async function checkDependencies(): Promise<HealthResult> {
   let outdatedData: any = {};
   try {
     outdatedData = JSON.parse(outdated);
-  } catch { }
+  } catch {
+    // Intentionally empty
+  }
   const outdatedCount = Object.keys(outdatedData).length;
 
   if (total > 0) {
@@ -172,7 +178,9 @@ async function checkDocHealth(): Promise<HealthResult> {
           }
         }
       }
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   // Check for stale docs (not modified in 90+ days)
@@ -185,7 +193,9 @@ async function checkDocHealth(): Promise<HealthResult> {
       if (stat.mtimeMs < staleThreshold) {
         staleDocs++;
       }
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   if (brokenLinks > 0) {
@@ -234,7 +244,9 @@ async function checkSecrets(): Promise<HealthResult> {
           break;
         }
       }
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   if (issues.length > 0) {
@@ -261,7 +273,9 @@ async function checkTypeHealth(): Promise<HealthResult> {
       const content = fs.readFileSync(file, 'utf8');
       const matches = content.match(/:\s*any/g);
       if (matches) anyTypes += matches.length;
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   // Run tsc --noEmit
@@ -299,7 +313,9 @@ async function checkGitHealth(): Promise<HealthResult> {
       if (stat.size > 1000000) {
         largeFileList.push(path.relative(ROOT, file));
       }
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   // Check for uncommitted changes
@@ -337,7 +353,9 @@ async function checkAssets(): Promise<HealthResult> {
       if (stat.size > 500 * 1024) { // 500KB
         largeImages.push(path.relative(ROOT, file));
       }
-    } catch { }
+    } catch {
+    // Intentionally empty
+  }
   }
 
   if (largeImages.length > 0) {

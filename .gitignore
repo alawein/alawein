@@ -169,7 +169,7 @@ docs/api/auto-generated/
 
 # Local working copies of external repos
 alawein/
-organizations/
+# organizations/ - removed to allow tracking repz-llc
 
 # Local tool data (AI configs are now tracked)
 # .trae/ - now tracked for AI config sharing

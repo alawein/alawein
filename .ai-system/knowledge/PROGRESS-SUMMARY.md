@@ -172,13 +172,13 @@ tools/
 python tools/cross-ide-sync/cli.py sync
 
 # Validate all prompts
-python tools/prompt-testing/cli.py validate --all
+python tools/prompts/testing/cli.py validate --all
 
 # Get recommendations
 python tools/recommendation-engine/cli.py recommend "optimize API"
 
 # Compose prompt
-python tools/prompt-composer/cli.py templates/fullstack-workflow.md vars.json
+python tools/prompts/composer/cli.py templates/fullstack-workflow.md vars.json
 
 # View analytics
 python tools/analytics/dashboard.py

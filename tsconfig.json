@@ -1,11 +1,38 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "files": [],
+  "references": [
+    { "path": "./packages/api-schema" },
+    { "path": "./packages/config" },
+    { "path": "./packages/design-tokens" },
+    { "path": "./packages/eslint-config" },
+    { "path": "./packages/feature-flags" },
+    { "path": "./packages/infrastructure" },
+    { "path": "./packages/monitoring" },
+    { "path": "./packages/prettier-config" },
+    { "path": "./packages/security-headers" },
+    { "path": "./packages/shared-ui" },
+    { "path": "./packages/types" },
+    { "path": "./packages/typescript-config" },
+    { "path": "./packages/ui" },
+    { "path": "./packages/ui-components" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/vite-config" },
+    { "path": "./organizations/alawein-technologies-llc/saas/llmworks" },
+    { "path": "./organizations/alawein-technologies-llc/saas/portfolio" },
+    { "path": "./organizations/alawein-technologies-llc/saas/qmlab" },
+    { "path": "./organizations/alawein-technologies-llc/saas/attributa" },
+    { "path": "./organizations/alawein-technologies-llc/mobile-apps/simcore" },
+    { "path": "./organizations/live-it-iconic-llc/ecommerce/liveiticonic" },
+    { "path": "./organizations/repz-llc/apps/repz" }
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@ORCHEX/*": ["tools/ORCHEX/*"],
+      "@orchestration/*": ["tools/orchestration/*"],
       "@ai/*": ["tools/ai/*"],
       "@automation/*": ["automation/*"],
       "@lib/*": ["tools/lib/*"],
@@ -17,25 +44,9 @@
       "@metaHub/*": [".metaHub/*"]
     },
     "strict": true,
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["ES2022"],
-    "types": ["node"],
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": ["tools/**/*.ts", "tests/**/*.ts", "automation/**/*.ts"],
-  "exclude": ["node_modules", "dist", ".metaHub", "tools/config", "tools/docker"]
+    "forceConsistentCasingInFileNames": true
+  }
 }

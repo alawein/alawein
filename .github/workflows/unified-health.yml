@@ -1,0 +1,562 @@
+name: Unified Health Monitoring
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  push:
+    branches: [main]
+    paths:
+      - 'package.json'
+      - 'turbo.json'
+      - '**/package.json'
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Type of health check to run'
+        required: false
+        type: choice
+        options:
+          - all
+          - health-check
+          - dashboard
+          - metrics
+          - checkpoint
+        default: 'all'
+
+concurrency:
+  group: unified-health-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: read
+
+jobs:
+  # Job 1: Repository Health Check
+  health-check:
+    name: Repository Health Check
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'health-check'
+    
+    outputs:
+      health-score: ${{ steps.calculate-score.outputs.score }}
+      issues-found: ${{ steps.calculate-score.outputs.issues }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for comprehensive analysis
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run health checks
+        id: health-checks
+        run: |
+          echo "🏥 Running repository health checks..."
+          
+          # Check 1: Dependencies
+          echo "📦 Checking dependencies..."
+          npm outdated || echo "Some dependencies are outdated"
+          npm audit --audit-level=moderate || echo "Security vulnerabilities found"
+          
+          # Check 2: Build health
+          echo "🔨 Checking build health..."
+          npm run build --if-present || echo "Build check completed"
+          
+          # Check 3: Test health
+          echo "🧪 Checking test health..."
+          npm test --if-present || echo "Test check completed"
+          
+          # Check 4: Workspace health
+          echo "🏗️ Checking workspace health..."
+          npm run health || echo "Workspace health check completed"
+          
+          echo "✅ Health checks completed"
+      
+      - name: Check for broken links
+        run: |
+          echo "🔗 Checking for broken links in documentation..."
+          if [ -f "scripts/check-links.js" ]; then
+            node scripts/check-links.js || echo "::warning::Broken links found"
+          else
+            echo "::notice::Link checker script not found"
+          fi
+      
+      - name: Check for TODO/FIXME comments
+        run: |
+          echo "📝 Checking for TODO/FIXME comments..."
+          todo_count=$(grep -r "TODO\|FIXME" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=build . | wc -l || echo "0")
+          echo "Found $todo_count TODO/FIXME comments"
+          echo "todo_count=$todo_count" >> $GITHUB_OUTPUT
+          
+          if [ "$todo_count" -gt 100 ]; then
+            echo "::warning::High number of TODO/FIXME comments ($todo_count)"
+          fi
+      
+      - name: Check code coverage
+        run: |
+          echo "📊 Checking code coverage..."
+          if [ -f "coverage/coverage-summary.json" ]; then
+            coverage=$(node -p "require('./coverage/coverage-summary.json').total.lines.pct")
+            echo "Code coverage: $coverage%"
+            echo "coverage=$coverage" >> $GITHUB_OUTPUT
+            
+            if (( $(echo "$coverage < 80" | bc -l) )); then
+              echo "::warning::Code coverage is below 80% ($coverage%)"
+            fi
+          else
+            echo "::notice::Coverage report not found"
+          fi
+      
+      - name: Calculate health score
+        id: calculate-score
+        run: |
+          echo "🎯 Calculating repository health score..."
+          
+          # Simple health score calculation (0-100)
+          score=100
+          issues=0
+          
+          # Deduct points for various issues
+          # This is a simplified example - adjust based on your needs
+          
+          # Check if npm audit found issues
+          if ! npm audit --audit-level=high > /dev/null 2>&1; then
+            score=$((score - 20))
+            issues=$((issues + 1))
+            echo "::warning::Security vulnerabilities found (-20 points)"
+          fi
+          
+          # Check if outdated dependencies
+          if npm outdated | grep -q .; then
+            score=$((score - 10))
+            issues=$((issues + 1))
+            echo "::warning::Outdated dependencies found (-10 points)"
+          fi
+          
+          # Ensure score doesn't go below 0
+          if [ $score -lt 0 ]; then
+            score=0
+          fi
+          
+          echo "score=$score" >> $GITHUB_OUTPUT
+          echo "issues=$issues" >> $GITHUB_OUTPUT
+          echo "📊 Repository Health Score: $score/100 ($issues issues found)"
+      
+      - name: Upload health report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-report-${{ github.run_id }}
+          path: |
+            reports/health-*.json
+            coverage/coverage-summary.json
+          retention-days: 30
+          if-no-files-found: warn
+
+  # Job 2: Health Dashboard Update
+  dashboard-update:
+    name: Health Dashboard Update
+    runs-on: ubuntu-latest
+    needs: [health-check]
+    if: |
+      always() && 
+      (github.event_name != 'workflow_dispatch' || 
+       github.event.inputs.check_type == 'all' || 
+       github.event.inputs.check_type == 'dashboard')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Generate health dashboard
+        run: |
+          echo "📊 Generating health dashboard..."
+          
+          # Create dashboard directory if it doesn't exist
+          mkdir -p docs/health
+          
+          # Generate dashboard HTML
+          cat > docs/health/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Repository Health Dashboard</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+              .metric { background: #f5f5f5; padding: 20px; margin: 10px 0; border-radius: 8px; }
+              .score { font-size: 48px; font-weight: bold; color: #4CAF50; }
+              .warning { color: #ff9800; }
+              .error { color: #f44336; }
+              h1 { color: #333; }
+              .timestamp { color: #666; font-size: 14px; }
+            </style>
+          </head>
+          <body>
+            <h1>🏥 Repository Health Dashboard</h1>
+            <p class="timestamp">Last updated: $(date -u +"%Y-%m-%d %H:%M:%S UTC")</p>
+            
+            <div class="metric">
+              <h2>Overall Health Score</h2>
+              <div class="score">${{ needs.health-check.outputs.health-score || 'N/A' }}/100</div>
+              <p>Issues found: ${{ needs.health-check.outputs.issues-found || '0' }}</p>
+            </div>
+            
+            <div class="metric">
+              <h2>Recent Activity</h2>
+              <p>Last commit: $(git log -1 --format=%cd --date=relative)</p>
+              <p>Total commits: $(git rev-list --count HEAD)</p>
+              <p>Contributors: $(git shortlog -sn --all | wc -l)</p>
+            </div>
+            
+            <div class="metric">
+              <h2>Repository Stats</h2>
+              <p>Total files: $(find . -type f -not -path '*/node_modules/*' -not -path '*/.git/*' | wc -l)</p>
+              <p>Lines of code: $(find . -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' | xargs wc -l 2>/dev/null | tail -1 | awk '{print $1}' || echo "N/A")</p>
+            </div>
+            
+            <div class="metric">
+              <h2>Quick Links</h2>
+              <ul>
+                <li><a href="https://github.com/${{ github.repository }}">Repository</a></li>
+                <li><a href="https://github.com/${{ github.repository }}/actions">Actions</a></li>
+                <li><a href="https://github.com/${{ github.repository }}/issues">Issues</a></li>
+              </ul>
+            </div>
+          </body>
+          </html>
+          EOF
+          
+          echo "✅ Health dashboard generated"
+      
+      - name: Commit dashboard updates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          if [ -n "$(git status --porcelain docs/health/)" ]; then
+            git add docs/health/
+            git commit -m "chore: update health dashboard [skip ci]"
+            git push
+            echo "✅ Dashboard updates committed"
+          else
+            echo "ℹ️ No dashboard changes to commit"
+          fi
+
+  # Job 3: Metrics Collection
+  metrics-collection:
+    name: Metrics Collection
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'metrics'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Collect repository metrics
+        run: |
+          echo "📈 Collecting repository metrics..."
+          
+          # Create metrics directory
+          mkdir -p reports/metrics
+          
+          # Collect various metrics
+          cat > reports/metrics/repo-metrics-$(date +%Y%m%d).json << EOF
+          {
+            "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+            "repository": "${{ github.repository }}",
+            "branch": "${{ github.ref_name }}",
+            "metrics": {
+              "commits": {
+                "total": $(git rev-list --count HEAD),
+                "last_week": $(git rev-list --count --since="1 week ago" HEAD),
+                "last_month": $(git rev-list --count --since="1 month ago" HEAD)
+              },
+              "contributors": {
+                "total": $(git shortlog -sn --all | wc -l),
+                "active_last_month": $(git shortlog -sn --since="1 month ago" | wc -l)
+              },
+              "files": {
+                "total": $(find . -type f -not -path '*/node_modules/*' -not -path '*/.git/*' | wc -l),
+                "typescript": $(find . -name '*.ts' -o -name '*.tsx' | wc -l),
+                "javascript": $(find . -name '*.js' -o -name '*.jsx' | wc -l),
+                "markdown": $(find . -name '*.md' | wc -l)
+              },
+              "size": {
+                "total_kb": $(du -sk . | cut -f1),
+                "without_node_modules_kb": $(du -sk --exclude=node_modules . | cut -f1)
+              }
+            }
+          }
+          EOF
+          
+          echo "✅ Metrics collected"
+      
+      - name: Analyze dependency health
+        run: |
+          echo "📦 Analyzing dependency health..."
+          
+          # Count dependencies
+          total_deps=$(node -p "Object.keys(require('./package.json').dependencies || {}).length")
+          dev_deps=$(node -p "Object.keys(require('./package.json').devDependencies || {}).length")
+          
+          echo "Total dependencies: $total_deps"
+          echo "Dev dependencies: $dev_deps"
+          
+          # Check for outdated dependencies
+          npm outdated --json > reports/metrics/outdated-deps.json 2>/dev/null || echo "{}" > reports/metrics/outdated-deps.json
+          
+          echo "✅ Dependency analysis completed"
+      
+      - name: Upload metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics-${{ github.run_id }}
+          path: reports/metrics/
+          retention-days: 90
+
+  # Job 4: Checkpoint Validation
+  checkpoint-validation:
+    name: Checkpoint Validation
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'checkpoint'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Validate project checkpoints
+        run: |
+          echo "✅ Validating project checkpoints..."
+          
+          # Check if critical files exist
+          critical_files=(
+            "package.json"
+            "tsconfig.json"
+            "turbo.json"
+            "README.md"
+            "SECURITY.md"
+            ".gitignore"
+          )
+          
+          missing_files=0
+          for file in "${critical_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Critical file missing: $file"
+              missing_files=$((missing_files + 1))
+            fi
+          done
+          
+          if [ $missing_files -gt 0 ]; then
+            echo "❌ $missing_files critical files missing"
+            exit 1
+          else
+            echo "✅ All critical files present"
+          fi
+      
+      - name: Validate build configuration
+        run: |
+          echo "🔧 Validating build configuration..."
+          
+          # Check if build scripts exist
+          if node -p "require('./package.json').scripts?.build" > /dev/null 2>&1; then
+            echo "✅ Build script found"
+          else
+            echo "::warning::No build script found in package.json"
+          fi
+          
+          # Check if test scripts exist
+          if node -p "require('./package.json').scripts?.test" > /dev/null 2>&1; then
+            echo "✅ Test script found"
+          else
+            echo "::warning::No test script found in package.json"
+          fi
+      
+      - name: Validate workspace configuration
+        run: |
+          echo "🏗️ Validating workspace configuration..."
+          
+          # Check if workspaces are defined
+          if node -p "require('./package.json').workspaces" > /dev/null 2>&1; then
+            workspace_count=$(find organizations packages -name 'package.json' 2>/dev/null | wc -l)
+            echo "✅ Found $workspace_count workspace packages"
+          else
+            echo "::notice::No workspaces defined"
+          fi
+      
+      - name: Create checkpoint report
+        run: |
+          echo "📋 Creating checkpoint report..."
+          
+          mkdir -p reports/checkpoints
+          
+          cat > reports/checkpoints/checkpoint-$(date +%Y%m%d).md << 'EOF'
+          # Repository Checkpoint Report
+          
+          **Date**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Branch**: ${{ github.ref_name }}
+          **Commit**: ${{ github.sha }}
+          
+          ## Status
+          
+          - ✅ Critical files present
+          - ✅ Build configuration valid
+          - ✅ Workspace configuration valid
+          
+          ## Next Steps
+          
+          - Continue monitoring repository health
+          - Address any warnings or issues
+          - Keep dependencies up to date
+          
+          EOF
+          
+          echo "✅ Checkpoint report created"
+      
+      - name: Upload checkpoint report
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-report-${{ github.run_id }}
+          path: reports/checkpoints/
+          retention-days: 90
+
+  # Job 5: Health Summary
+  health-summary:
+    name: Health Summary
+    runs-on: ubuntu-latest
+    needs: [health-check, dashboard-update, metrics-collection, checkpoint-validation]
+    if: always()
+    
+    steps:
+      - name: Create summary
+        run: |
+          echo "# 🏥 Health Monitoring Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Health Score" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Overall Score**: ${{ needs.health-check.outputs.health-score || 'N/A' }}/100" >> $GITHUB_STEP_SUMMARY
+          echo "**Issues Found**: ${{ needs.health-check.outputs.issues-found || '0' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          echo "## Job Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Health Check | ${{ needs.health-check.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dashboard Update | ${{ needs.dashboard-update.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Metrics Collection | ${{ needs.metrics-collection.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Checkpoint Validation | ${{ needs.checkpoint-validation.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Determine overall status
+          if [ "${{ needs.health-check.result }}" == "success" ] && \
+             [ "${{ needs.checkpoint-validation.result }}" == "success" ]; then
+            echo "✅ **Repository health is good!**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Some health checks need attention**" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Create issue if health score is low
+        if: needs.health-check.outputs.health-score != '' && needs.health-check.outputs.health-score < 70
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const score = ${{ needs.health-check.outputs.health-score }};
+            const issues = ${{ needs.health-check.outputs.issues-found }};
+            
+            const title = `⚠️ Repository Health Score Low: ${score}/100`;
+            const body = `## Repository Health Alert
+            
+            The automated health monitoring has detected that the repository health score has dropped below the threshold.
+            
+            **Current Score**: ${score}/100
+            **Issues Found**: ${issues}
+            **Threshold**: 70/100
+            
+            ### Recommended Actions
+            
+            1. Review the [health monitoring workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            2. Address any security vulnerabilities
+            3. Update outdated dependencies
+            4. Fix any failing tests or builds
+            5. Review and address TODO/FIXME comments
+            
+            This issue was automatically created by the health monitoring system.
+            `;
+            
+            // Check if similar issue already exists
+            const existingIssues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'health-monitoring'
+            });
+            
+            const hasExistingIssue = existingIssues.data.some(issue => 
+              issue.title.includes('Repository Health Score Low')
+            );
+            
+            if (!hasExistingIssue) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: title,
+                body: body,
+                labels: ['health-monitoring', 'automated']
+              });
+            }

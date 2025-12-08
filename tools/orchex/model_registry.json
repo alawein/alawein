@@ -1,0 +1,57 @@
+[
+  {
+    "id": "gpt-4o",
+    "name": "GPT-4o",
+    "capabilities": ["code_generation", "debugging", "refactoring", "documentation", "architecture"],
+    "costPer1kTokens": 0.005,
+    "performance": {
+      "latency": 2000,
+      "quality": 0.95
+    },
+    "availability": 0.99
+  },
+  {
+    "id": "claude-sonnet-4",
+    "name": "Claude Sonnet 4",
+    "capabilities": ["code_generation", "debugging", "refactoring", "documentation", "architecture"],
+    "costPer1kTokens": 0.003,
+    "performance": {
+      "latency": 1500,
+      "quality": 0.93
+    },
+    "availability": 0.98
+  },
+  {
+    "id": "gpt-4o-mini",
+    "name": "GPT-4o Mini",
+    "capabilities": ["code_generation", "debugging", "documentation"],
+    "costPer1kTokens": 0.00015,
+    "performance": {
+      "latency": 1000,
+      "quality": 0.85
+    },
+    "availability": 0.99
+  },
+  {
+    "id": "claude-haiku",
+    "name": "Claude Haiku",
+    "capabilities": ["code_generation", "documentation"],
+    "costPer1kTokens": 0.00025,
+    "performance": {
+      "latency": 800,
+      "quality": 0.80
+    },
+    "availability": 0.99
+  },
+  {
+    "id": "gemini-pro",
+    "name": "Gemini Pro",
+    "capabilities": ["code_generation", "debugging", "refactoring"],
+    "costPer1kTokens": 0.00125,
+    "performance": {
+      "latency": 1200,
+      "quality": 0.88
+    },
+    "availability": 0.97
+  }
+]

@@ -1,0 +1,603 @@
+name: Unified Governance & Policy Enforcement
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 0 * * 1'  # Weekly on Monday at midnight UTC
+  workflow_dispatch:
+    inputs:
+      check_type:
+        description: 'Type of governance check to run'
+        required: false
+        type: choice
+        options:
+          - all
+          - ai-governance
+          - structure
+          - policy
+          - docs
+          - orchestration
+          - security
+        default: 'all'
+
+concurrency:
+  group: unified-governance-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  # Job 1: AI Governance Audit
+  ai-governance:
+    name: AI Governance Audit
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'ai-governance'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run AI governance checks
+        run: |
+          echo "🤖 Running AI governance audit..."
+          if [ -f "tools/ai/governance.ts" ]; then
+            npx tsx tools/ai/governance.ts audit
+            echo "✅ AI governance audit completed"
+          else
+            echo "⚠️ AI governance tool not found, skipping"
+          fi
+      
+      - name: Upload AI governance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-governance-report-${{ github.run_id }}
+          path: reports/ai-governance-*.json
+          retention-days: 30
+          if-no-files-found: warn
+
+  # Job 2: Repository Structure Validation
+  structure-validation:
+    name: Repository Structure Validation
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'structure'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install Python dependencies
+        run: |
+          pip install pyyaml
+      
+      - name: Validate root structure
+        id: validate-root
+        run: |
+          echo "📁 Validating repository structure..."
+          python << 'EOF'
+          import os
+          import sys
+          import yaml
+          from pathlib import Path
+
+          # Load policy
+          policy_path = Path('.metaHub/policies/root-structure.yaml')
+          if not policy_path.exists():
+              print("::warning::Policy file not found, using default checks")
+              policy = {'allowed_directories': {}, 'forbidden': {}}
+          else:
+              with open(policy_path) as f:
+                  policy = yaml.safe_load(f)
+
+          errors = []
+          warnings = []
+
+          # Get all allowed directories
+          allowed_dirs = set()
+          for category in policy.get('allowed_directories', {}).values():
+              if isinstance(category, list):
+                  for item in category:
+                      if isinstance(item, dict) and 'name' in item:
+                          allowed_dirs.add(item['name'])
+
+          # Get forbidden patterns
+          forbidden = policy.get('forbidden', {})
+          forbidden_files = forbidden.get('file_patterns', [])
+          forbidden_dirs = forbidden.get('directory_patterns', [])
+          forbidden_specific = forbidden.get('specific_items', [])
+
+          # Check root level items
+          root_items = os.listdir('.')
+
+          for item in root_items:
+              item_path = Path(item)
+
+              # Skip hidden files that are allowed
+              if item.startswith('.') and item in allowed_dirs:
+                  continue
+
+              # Check for forbidden specific items
+              if item in forbidden_specific:
+                  errors.append(f"Forbidden item at root: {item}")
+                  continue
+
+              # Check for forbidden patterns
+              import fnmatch
+              for pattern in forbidden_files:
+                  if fnmatch.fnmatch(item, pattern):
+                      errors.append(f"Forbidden file pattern at root: {item} (matches {pattern})")
+
+              for pattern in forbidden_dirs:
+                  if item_path.is_dir() and fnmatch.fnmatch(item, pattern):
+                      errors.append(f"Forbidden directory pattern at root: {item} (matches {pattern})")
+
+              # Check for malformed names
+              if item.endswith('}') or item.endswith('{'):
+                  errors.append(f"Malformed name at root: {item}")
+
+              if item.startswith('-') and len(item) <= 3:
+                  errors.append(f"Invalid name at root: {item}")
+
+          # Output results
+          if errors:
+              print("::group::Errors")
+              for error in errors:
+                  print(f"::error::{error}")
+              print("::endgroup::")
+
+          if warnings:
+              print("::group::Warnings")
+              for warning in warnings:
+                  print(f"::warning::{warning}")
+              print("::endgroup::")
+
+          if errors:
+              print(f"\n❌ Validation failed with {len(errors)} error(s)")
+              sys.exit(1)
+          else:
+              print(f"\n✅ Validation passed ({len(warnings)} warning(s))")
+              sys.exit(0)
+          EOF
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install Node dependencies
+        run: npm ci
+      
+      - name: Validate required directories
+        run: |
+          echo "📂 Checking required directories..."
+          required_dirs=("docs" "packages" "organizations" "tools" "scripts")
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "::error::Required directory '$dir' not found"
+              exit 1
+            fi
+          done
+          echo "✅ All required directories exist"
+      
+      - name: Validate required files
+        run: |
+          echo "📄 Checking required files..."
+          required_files=("package.json" "tsconfig.json" "turbo.json" "README.md" "SECURITY.md")
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Required file '$file' not found"
+              exit 1
+            fi
+          done
+          echo "✅ All required files exist"
+      
+      - name: Validate workspace structure
+        run: |
+          echo "🏗️ Validating workspace structure..."
+          # Validate all workspaces have package.json
+          for workspace in organizations/*/apps/* organizations/*/saas/* organizations/*/ecommerce/* packages/*; do
+            if [ -d "$workspace" ] && [ ! -f "$workspace/package.json" ]; then
+              echo "::warning::Workspace '$workspace' missing package.json"
+            fi
+          done
+          echo "✅ Workspace structure validation completed"
+      
+      - name: Comment on PR (if failed)
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ **Structure Validation Failed**\n\nPlease check the workflow logs for details on forbidden files or directories at the root level.\n\nRefer to `.metaHub/policies/root-structure.yaml` for allowed items.'
+            })
+
+  # Job 3: Policy Enforcement
+  policy-enforcement:
+    name: Policy Enforcement
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'policy'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Check naming conventions
+        run: |
+          echo "📝 Checking naming conventions..."
+          # Check for proper naming in packages
+          for pkg in packages/*; do
+            if [ -d "$pkg" ]; then
+              pkg_name=$(basename "$pkg")
+              if [[ ! "$pkg_name" =~ ^[a-z][a-z0-9-]*$ ]]; then
+                echo "::error::Package '$pkg_name' violates naming convention (lowercase, hyphens only)"
+                exit 1
+              fi
+            fi
+          done
+          echo "✅ Naming conventions check passed"
+      
+      - name: Check for duplicate dependencies
+        run: |
+          echo "🔍 Checking for duplicate dependencies..."
+          npm run health || echo "::warning::Health check completed with warnings"
+      
+      - name: Validate TypeScript configs
+        run: |
+          echo "🔧 Validating TypeScript configurations..."
+          # Ensure all TypeScript projects have proper configs
+          for tsconfig in **/tsconfig.json; do
+            if [ -f "$tsconfig" ]; then
+              echo "Validating $tsconfig"
+              npx tsc --project "$tsconfig" --noEmit --skipLibCheck || echo "::warning::TypeScript errors in $tsconfig"
+            fi
+          done
+          echo "✅ TypeScript config validation completed"
+      
+      - name: Check package.json consistency
+        run: |
+          echo "📦 Checking package.json consistency..."
+          # Check for consistent Node.js version
+          node_version=$(node -p "require('./package.json').engines?.node || 'not specified'")
+          echo "Node.js version requirement: $node_version"
+          
+          # Check for consistent npm version
+          npm_version=$(node -p "require('./package.json').engines?.npm || 'not specified'")
+          echo "npm version requirement: $npm_version"
+          
+          echo "✅ Package.json consistency check completed"
+
+  # Job 4: Documentation Governance
+  docs-governance:
+    name: Documentation Governance
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'docs'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for checking file ages
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Check README files
+        run: |
+          echo "📚 Checking README coverage..."
+          # Ensure all major directories have README files
+          for dir in organizations/* packages/*; do
+            if [ -d "$dir" ] && [ ! -f "$dir/README.md" ]; then
+              echo "::warning::Directory '$dir' missing README.md"
+            fi
+          done
+          echo "✅ README check completed"
+      
+      - name: Check README coverage in tool directories
+        run: |
+          echo "🔧 Checking tool directory README coverage..."
+          dirs=(
+            "tools/ai"
+            "tools/lib"
+            "tools/devops"
+            "tools/atlas"
+            "tests"
+            "src"
+            ".metaHub/scripts"
+          )
+
+          missing=0
+          for dir in "${dirs[@]}"; do
+            if [ -d "$dir" ] && [ ! -f "$dir/README.md" ]; then
+              echo "::warning::Missing README.md in $dir"
+              missing=$((missing + 1))
+            fi
+          done
+
+          if [ $missing -gt 0 ]; then
+            echo "::notice::$missing directories are missing README.md files"
+          else
+            echo "✅ All checked directories have README.md"
+          fi
+      
+      - name: Validate documentation links
+        run: |
+          echo "🔗 Validating documentation links..."
+          if [ -f "scripts/validate-docs.js" ]; then
+            node scripts/validate-docs.js || echo "::warning::Documentation validation script found issues"
+          else
+            echo "::notice::Documentation validation script not found, skipping link validation"
+          fi
+      
+      - name: Check for outdated docs
+        run: |
+          echo "📅 Checking for outdated documentation..."
+          # Find docs that haven't been updated in 90 days
+          if [ -d "docs" ]; then
+            find docs -name "*.md" -mtime +90 -type f | while read file; do
+              echo "::warning::Documentation file '$file' hasn't been updated in 90+ days"
+            done
+          fi
+          echo "✅ Outdated docs check completed"
+
+  # Job 5: Orchestration Governance
+  orchestration-governance:
+    name: Orchestration Governance
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'orchestration'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Validate Turbo configuration
+        run: |
+          echo "⚡ Validating Turbo configuration..."
+          if [ -f "turbo.json" ]; then
+            echo "Validating turbo.json..."
+            node -e "const config = require('./turbo.json'); console.log('✅ Turbo config valid');"
+          else
+            echo "::error::turbo.json not found"
+            exit 1
+          fi
+      
+      - name: Check workspace dependencies
+        run: |
+          echo "🔗 Checking workspace dependency graph..."
+          npm run health || echo "::warning::Health check completed with warnings"
+      
+      - name: Validate CI/CD workflows
+        run: |
+          echo "🔄 Validating CI/CD workflows..."
+          # Check all workflows are valid YAML
+          for workflow in .github/workflows/*.yml; do
+            echo "Validating $workflow"
+            python -c "import yaml; yaml.safe_load(open('$workflow'))" || echo "::error::Invalid YAML in $workflow"
+          done
+          echo "✅ Workflow validation completed"
+      
+      - name: Check for circular dependencies
+        run: |
+          echo "🔄 Checking for circular dependencies..."
+          # This would require a more sophisticated tool, but we can do basic checks
+          if command -v madge &> /dev/null; then
+            madge --circular --extensions ts,tsx,js,jsx . || echo "::warning::Circular dependencies detected"
+          else
+            echo "::notice::madge not installed, skipping circular dependency check"
+          fi
+
+  # Job 6: Security Policy Check
+  security-policy:
+    name: Security Policy Check
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.check_type == 'all' || 
+      github.event.inputs.check_type == 'security'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Check security files
+        run: |
+          echo "🔒 Checking security files..."
+          required_security_files=("SECURITY.md" ".gitignore" ".secrets.baseline")
+          for file in "${required_security_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "::error::Required security file '$file' not found"
+              exit 1
+            fi
+          done
+          echo "✅ Security files check passed"
+      
+      - name: Check for exposed secrets (basic)
+        run: |
+          echo "🔍 Checking for potential exposed secrets..."
+          # Basic check for common secret patterns (not comprehensive)
+          if grep -r -E "(api[_-]?key|password|secret|token).*=.*['\"][^'\"]{20,}" \
+            --exclude-dir=node_modules \
+            --exclude-dir=.git \
+            --exclude-dir=dist \
+            --exclude-dir=build \
+            --exclude="*.md" \
+            . 2>/dev/null; then
+            echo "::warning::Potential exposed secrets found - please review"
+          else
+            echo "✅ No obvious exposed secrets found"
+          fi
+      
+      - name: Validate .gitignore
+        run: |
+          echo "📝 Validating .gitignore..."
+          required_ignores=("node_modules" ".env" "dist" "build" ".DS_Store")
+          for pattern in "${required_ignores[@]}"; do
+            if ! grep -q "$pattern" .gitignore; then
+              echo "::warning::.gitignore missing pattern: $pattern"
+            fi
+          done
+          echo "✅ .gitignore validation completed"
+      
+      - name: Check for sensitive files
+        run: |
+          echo "🔐 Checking for sensitive files..."
+          # Check for common sensitive file patterns
+          sensitive_patterns=(".env" "*.pem" "*.key" "*.p12" "*.pfx" "id_rsa" "id_dsa")
+          found_sensitive=0
+          for pattern in "${sensitive_patterns[@]}"; do
+            if find . -name "$pattern" -not -path "*/node_modules/*" -not -path "*/.git/*" | grep -q .; then
+              echo "::warning::Found files matching sensitive pattern: $pattern"
+              found_sensitive=1
+            fi
+          done
+          if [ $found_sensitive -eq 0 ]; then
+            echo "✅ No sensitive files found"
+          fi
+
+  # Job 7: Governance Summary
+  governance-summary:
+    name: Governance Summary
+    runs-on: ubuntu-latest
+    needs: [ai-governance, structure-validation, policy-enforcement, docs-governance, orchestration-governance, security-policy]
+    if: always()
+    
+    steps:
+      - name: Create summary
+        run: |
+          echo "# 📊 Governance Check Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID**: ${{ github.run_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| AI Governance | ${{ needs.ai-governance.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Structure Validation | ${{ needs.structure-validation.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Policy Enforcement | ${{ needs.policy-enforcement.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Documentation Governance | ${{ needs.docs-governance.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Orchestration Governance | ${{ needs.orchestration-governance.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security Policy | ${{ needs.security-policy.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count results
+          success_count=0
+          failure_count=0
+          skipped_count=0
+          
+          for result in "${{ needs.ai-governance.result }}" "${{ needs.structure-validation.result }}" "${{ needs.policy-enforcement.result }}" "${{ needs.docs-governance.result }}" "${{ needs.orchestration-governance.result }}" "${{ needs.security-policy.result }}"; do
+            if [ "$result" == "success" ]; then
+              success_count=$((success_count + 1))
+            elif [ "$result" == "failure" ]; then
+              failure_count=$((failure_count + 1))
+            elif [ "$result" == "skipped" ]; then
+              skipped_count=$((skipped_count + 1))
+            fi
+          done
+          
+          echo "## Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **Passed**: $success_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ❌ **Failed**: $failure_count" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏭️ **Skipped**: $skipped_count" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ $failure_count -eq 0 ] && [ $success_count -gt 0 ]; then
+            echo "✅ **All governance checks passed!**" >> $GITHUB_STEP_SUMMARY
+          elif [ $failure_count -gt 0 ]; then
+            echo "⚠️ **Some governance checks failed or had warnings**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **All checks were skipped**" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Comment on PR (if failures)
+        if: github.event_name == 'pull_request' && (needs.ai-governance.result == 'failure' || needs.structure-validation.result == 'failure' || needs.policy-enforcement.result == 'failure' || needs.docs-governance.result == 'failure' || needs.orchestration-governance.result == 'failure' || needs.security-policy.result == 'failure')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const results = {
+              'AI Governance': '${{ needs.ai-governance.result }}',
+              'Structure Validation': '${{ needs.structure-validation.result }}',
+              'Policy Enforcement': '${{ needs.policy-enforcement.result }}',
+              'Documentation Governance': '${{ needs.docs-governance.result }}',
+              'Orchestration Governance': '${{ needs.orchestration-governance.result }}',
+              'Security Policy': '${{ needs.security-policy.result }}'
+            };
+            
+            let body = '## ⚠️ Governance Checks Failed\n\n';
+            body += 'The following governance checks failed:\n\n';
+            
+            for (const [check, result] of Object.entries(results)) {
+              const icon = result === 'success' ? '✅' : result === 'failure' ? '❌' : '⏭️';
+              body += `- ${icon} **${check}**: ${result}\n`;
+            }
+            
+            body += '\nPlease review the workflow logs for details and fix the issues before merging.';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });

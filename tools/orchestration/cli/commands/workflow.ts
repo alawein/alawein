@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
+ 
 // CLI commands handle dynamic options and use inline color functions
 
 import { Command } from 'commander';

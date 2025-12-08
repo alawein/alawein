@@ -25,14 +25,14 @@
 
 ### 4. Update Prompt Composer
 ```bash
-# Edit: .ai-system/tools/prompt-composer/composer.py
+# Edit: .ai-system/tools/prompts/composer/composer.py
 # Change: prompts_dir = Path(__file__).parent.parent.parent / "docs" / "ai-knowledge" / "prompts"
 # To:     prompts_dir = Path(__file__).parent.parent / "knowledge" / "prompts"
 ```
 
 ### 5. Update Validator
 ```bash
-# Edit: .ai-system/tools/prompt-testing/validator.py
+# Edit: .ai-system/tools/prompts/testing/validator.py
 # Change: prompts_dir = Path(__file__).parent.parent.parent / "docs" / "ai-knowledge" / "prompts"
 # To:     prompts_dir = Path(__file__).parent.parent / "knowledge" / "prompts"
 ```

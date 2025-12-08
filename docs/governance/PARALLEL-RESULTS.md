@@ -77,7 +77,7 @@ python -c "from tracker import PromptTracker; t = PromptTracker(); print('DB ini
 
 ### Run Full Validation
 ```bash
-cd .ai-system/tools/prompt-testing
+cd .ai-system/tools/prompts/testing
 python cli.py validate .ai-system/knowledge/prompts/superprompts/
 ```
 

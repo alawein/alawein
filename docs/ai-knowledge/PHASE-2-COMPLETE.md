@@ -71,19 +71,19 @@ python engine.py workflow.yaml --context target=librex/
 
 ### Basic
 ```bash
-python tools/orchestrator/engine.py workflow.yaml
+python tools/orchestration/engine.py workflow.yaml
 ```
 
 ### With Context
 ```bash
-python tools/orchestrator/engine.py workflow.yaml \
+python tools/orchestration/engine.py workflow.yaml \
   --context target=librex/equilibria \
   --context env=staging
 ```
 
 ### Control Parallelism
 ```bash
-python tools/orchestrator/engine.py workflow.yaml --parallel 8
+python tools/orchestration/engine.py workflow.yaml --parallel 8
 ```
 
 ## Performance
@@ -124,7 +124,7 @@ Ready to build usage tracking and analytics!
 ## Files Created
 
 ```
-tools/orchestrator/
+tools/orchestration/
 ├── engine.py                 # Execution engine
 ├── dag.py                    # DAG data structure
 ├── README.md                 # Documentation

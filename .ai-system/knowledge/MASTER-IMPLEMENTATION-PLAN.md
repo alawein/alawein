@@ -25,7 +25,7 @@ Generate prompts from natural language requirements.
 
 #### 1.1 Core Engine
 ```python
-# tools/meta-prompt/generator.py
+# tools/prompts/meta/generator.py
 class PromptGenerator:
     def generate(self, requirement: str) -> Prompt:
         # Parse requirement
@@ -54,7 +54,7 @@ optimization:
 
 #### 1.3 CLI
 ```bash
-python tools/meta-prompt/generate.py \
+python tools/prompts/meta/generate.py \
   --requirement "optimize database queries" \
   --output prompts/superprompts/database-query-optimization.md
 ```

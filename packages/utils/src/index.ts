@@ -56,9 +56,13 @@ export {
 // React hooks (requires React as peer dependency)
 export {
   useUserPreferences,
+  usePlatformStatus,
   type UserPreferences,
   type UseUserPreferencesOptions,
   type UseUserPreferencesReturn,
+  type PlatformStatus,
+  type UsePlatformStatusOptions,
+  type UsePlatformStatusReturn,
 } from './hooks'
 
 // Error handling utilities
@@ -76,3 +80,21 @@ export {
   tryCatchSync,
   type ErrorContext,
 } from './error'
+
+// Cross-platform notification system
+export {
+  useNotifications,
+  createNotificationStore,
+  getNotificationStore,
+  DEFAULT_CONFIG as NOTIFICATION_DEFAULT_CONFIG,
+  type Notification,
+  type NotificationType,
+  type NotificationPriority,
+  type NotificationAction,
+  type NotificationOptions,
+  type NotificationState,
+  type NotificationStore,
+  type NotificationConfig,
+  type UseNotificationsOptions,
+  type UseNotificationsReturn,
+} from './notifications'

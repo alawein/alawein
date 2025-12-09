@@ -31,7 +31,7 @@ deployable via Lovable.dev.
 - [x] Fix vite configurations (SWC → Babel)
 - [x] Establish governance rules
 - [x] Migrate platforms to `/platforms/` folder
-- [ ] Create shared component library
+- [x] Create shared component library (packages/ui: Button, Card, ErrorBoundary, Input, Badge, Spinner)
 - [ ] Standardize all package.json files
 
 ### Completed Tasks
@@ -105,7 +105,7 @@ shared/
       components)
 - [x] Tutorial system (TutorialOverlay.tsx, TutorialTrigger.tsx,
       QuantumLearningTracker.tsx)
-- [ ] Save/load circuits (pending - needs localStorage/Supabase integration)
+- [x] Save/load circuits (useCircuitStorage hook with localStorage, import/export JSON)
 
 ### LLMWorks Improvements
 
@@ -120,7 +120,7 @@ shared/
 
 - [x] Improve detection accuracy (multiple analyzers: GLTR, DetectGPT,
       watermark, NLP)
-- [ ] Add batch processing (pending - needs queue system)
+- [x] Add batch processing (BatchProcessor class with queue, concurrency, useBatchProcessor hook)
 - [x] Export reports (export.ts: JSON, CSV export functions)
 - [x] API endpoint (documented in Documentation.tsx, SDK planned)
 

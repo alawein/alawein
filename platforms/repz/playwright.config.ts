@@ -4,7 +4,8 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests/e2e',
+  testDir: './tests',
+  testMatch: ['**/*.spec.ts'],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -27,16 +28,16 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    
+
     /* Take screenshot on failure */
     screenshot: 'only-on-failure',
-    
+
     /* Record video on failure */
     video: 'retain-on-failure',
-    
+
     /* Global timeout for each action */
     actionTimeout: 30000,
-    
+
     /* Global timeout for navigation */
     navigationTimeout: 30000,
   },
@@ -47,10 +48,10 @@ export default defineConfig({
       name: 'setup',
       testMatch: /.*\.setup\.ts/,
     },
-    
+
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         // Use prepared auth state
         storageState: 'tests/fixtures/auth/client-auth.json',
@@ -60,7 +61,7 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      use: { 
+      use: {
         ...devices['Desktop Firefox'],
         storageState: 'tests/fixtures/auth/client-auth.json',
       },
@@ -69,7 +70,7 @@ export default defineConfig({
 
     {
       name: 'webkit',
-      use: { 
+      use: {
         ...devices['Desktop Safari'],
         storageState: 'tests/fixtures/auth/client-auth.json',
       },
@@ -79,7 +80,7 @@ export default defineConfig({
     /* Test against mobile viewports. */
     {
       name: 'Mobile Chrome',
-      use: { 
+      use: {
         ...devices['Pixel 5'],
         storageState: 'tests/fixtures/auth/client-auth.json',
       },
@@ -87,7 +88,7 @@ export default defineConfig({
     },
     {
       name: 'Mobile Safari',
-      use: { 
+      use: {
         ...devices['iPhone 12'],
         storageState: 'tests/fixtures/auth/client-auth.json',
       },
@@ -113,11 +114,15 @@ export default defineConfig({
   /* Expect timeout */
   expect: {
     timeout: 10 * 1000,
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.05,
+    },
   },
+  snapshotDir: './tests/visual/__snapshots__',
 
   /* Output directories */
   outputDir: 'test-results/',
-  
+
   /* Test metadata */
   metadata: {
     'test-environment': process.env.NODE_ENV || 'test',

@@ -5,7 +5,8 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests/e2e',
+  testDir: './tests',
+  testMatch: ['**/*.spec.ts'],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -45,7 +46,11 @@ export default defineConfig({
   timeout: 60 * 1000,
   expect: {
     timeout: 10 * 1000,
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.05,
+    },
   },
+  snapshotDir: './tests/visual/__snapshots__',
   outputDir: 'test-results/',
 });
 

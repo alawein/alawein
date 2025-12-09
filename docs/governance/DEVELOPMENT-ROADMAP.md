@@ -200,7 +200,7 @@ shared/
 
 1. ~~Storybook for components~~ ✅ (packages/ui with Button, Badge, Input, Spinner stories)
 2. Visual regression tests
-3. Accessibility audit
+3. ~~Accessibility audit~~ ✅ (ACCESSIBILITY-GUIDELINES.md, skip links, ARIA in all platforms)
 4. SEO optimization
 
 ---

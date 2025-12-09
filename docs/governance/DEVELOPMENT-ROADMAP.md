@@ -17,7 +17,7 @@ deployable via Lovable.dev.
 | **LLMWorks**     | ✅ Active     | 5181 | Open-source LLM benchmarking & tools       | High     |
 | **Attributa**    | ✅ Active     | 5179 | AI content attribution detection           | High     |
 | **LiveItIconic** | ✅ Active     | 5177 | Statement jewelry e-commerce               | Medium   |
-| **REPZ**         | 🔄 Needs Work | 5176 | Fitness tracking & workout logging         | Medium   |
+| **REPZ**         | ✅ Active     | 5176 | Fitness tracking & workout logging         | Medium   |
 | **Portfolio**    | ✅ Active     | 5174 | Personal portfolio website                 | Low      |
 | **Studios Hub**  | ✅ Active     | 5173 | Central navigation hub                     | High     |
 

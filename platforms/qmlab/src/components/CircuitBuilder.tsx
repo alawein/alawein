@@ -5,8 +5,9 @@ import { StatusChip } from '@/components/ui/status-chip';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { useAccessibilityContext } from '@/components/AccessibilityProvider';
-import { Play, Square, RotateCcw, Zap, Cpu, Activity, Plus, HelpCircle, GraduationCap, Settings, Undo, Redo, Trash2, CheckCircle, AlertCircle, Info } from 'lucide-react';
+import { Play, Square, RotateCcw, Zap, Cpu, Activity, Plus, HelpCircle, GraduationCap, Settings, Undo, Redo, Trash2, CheckCircle, AlertCircle, Info, Save, FolderOpen, Download, Upload } from 'lucide-react';
 import { trackQuantumEvents } from '@/lib/analytics';
+import { useCircuitStorage, SavedCircuit } from '@/hooks/useCircuitStorage';
 
 type DifficultyLevel = 'beginner' | 'intermediate' | 'advanced';
 
@@ -33,7 +34,57 @@ export const CircuitBuilder = () => {
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [feedback, setFeedback] = useState<FeedbackMessage | null>(null);
   const [draggedGate, setDraggedGate] = useState<string | null>(null);
+  const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const [showLoadDialog, setShowLoadDialog] = useState(false);
+  const [circuitName, setCircuitName] = useState('');
   const { announce } = useAccessibilityContext();
+  const { savedCircuits, saveCircuit, loadCircuit, deleteCircuit, exportCircuits, importCircuits } = useCircuitStorage();
+
+  // Save/Load circuit handlers
+  const handleSaveCircuit = () => {
+    if (!circuitName.trim()) {
+      showFeedback('error', 'Please enter a circuit name');
+      return;
+    }
+    saveCircuit(circuitName, circuitGates, difficultyLevel);
+    showFeedback('success', `Circuit "${circuitName}" saved!`);
+    setCircuitName('');
+    setShowSaveDialog(false);
+    announce(`Circuit ${circuitName} saved`);
+  };
+
+  const handleLoadCircuit = (circuit: SavedCircuit) => {
+    setCircuitGates([...circuit.gates]);
+    setDifficultyLevel(circuit.difficultyLevel);
+    saveToHistory(circuitGates);
+    showFeedback('success', `Loaded circuit "${circuit.name}"`);
+    setShowLoadDialog(false);
+    announce(`Loaded circuit ${circuit.name}`);
+  };
+
+  const handleExportCircuits = () => {
+    const json = exportCircuits();
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'qmlab-circuits.json';
+    link.click();
+    URL.revokeObjectURL(url);
+    showFeedback('success', 'Circuits exported!');
+  };
+
+  const handleImportCircuits = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const content = e.target?.result as string;
+      const count = importCircuits(content);
+      showFeedback('success', `Imported ${count} circuits!`);
+    };
+    reader.readAsText(file);
+  };
 
   // Progressive gate sets based on difficulty
   const allGates = {
@@ -273,6 +324,26 @@ export const CircuitBuilder = () => {
             </div>
           </div>
           <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowSaveDialog(true)}
+              disabled={circuitGates.length === 0 || isRunning}
+              className="hover:bg-green-500/10 hover:border-green-400/50"
+              title="Save circuit"
+            >
+              <Save className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowLoadDialog(true)}
+              disabled={isRunning}
+              className="hover:bg-blue-500/10 hover:border-blue-400/50"
+              title="Load circuit"
+            >
+              <FolderOpen className="w-4 h-4" />
+            </Button>
             <StatusChip
               variant={isRunning ? "running" : "idle"}
               icon={isRunning ? <Activity className="w-3 h-3" /> : <Cpu className="w-3 h-3" />}
@@ -282,6 +353,80 @@ export const CircuitBuilder = () => {
           </div>
         </div>
       </CardHeader>
+
+      {/* Save Dialog */}
+      {showSaveDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-slate-800 rounded-lg p-6 w-96 border border-slate-600">
+            <h3 className="text-lg font-semibold text-slate-200 mb-4">Save Circuit</h3>
+            <input
+              type="text"
+              placeholder="Circuit name..."
+              value={circuitName}
+              onChange={(e) => setCircuitName(e.target.value)}
+              className="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded-lg text-slate-200 placeholder-slate-400 mb-4"
+              autoFocus
+            />
+            <div className="flex gap-2 justify-end">
+              <Button variant="outline" size="sm" onClick={() => setShowSaveDialog(false)}>Cancel</Button>
+              <Button variant="primary" size="sm" onClick={handleSaveCircuit}>Save</Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Load Dialog */}
+      {showLoadDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-slate-800 rounded-lg p-6 w-[28rem] max-h-[80vh] border border-slate-600 flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-slate-200">Load Circuit</h3>
+              <div className="flex gap-2">
+                <label className="cursor-pointer">
+                  <input type="file" accept=".json" onChange={handleImportCircuits} className="hidden" />
+                  <Button variant="outline" size="sm" asChild><span><Upload className="w-4 h-4 mr-1" />Import</span></Button>
+                </label>
+                <Button variant="outline" size="sm" onClick={handleExportCircuits} disabled={savedCircuits.length === 0}>
+                  <Download className="w-4 h-4 mr-1" />Export
+                </Button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-auto">
+              {savedCircuits.length === 0 ? (
+                <p className="text-muted-foreground text-center py-8">No saved circuits yet</p>
+              ) : (
+                <div className="space-y-2">
+                  {savedCircuits.map((circuit) => (
+                    <div
+                      key={circuit.id}
+                      className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg border border-slate-700/30 hover:border-blue-400/30 cursor-pointer"
+                      onClick={() => handleLoadCircuit(circuit)}
+                    >
+                      <div>
+                        <div className="font-medium text-slate-200">{circuit.name}</div>
+                        <div className="text-xs text-muted-foreground">
+                          {circuit.gates.length} gates • {circuit.difficultyLevel} • {new Date(circuit.createdAt).toLocaleDateString()}
+                        </div>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => { e.stopPropagation(); deleteCircuit(circuit.id); }}
+                        className="text-red-400 hover:text-red-300 hover:bg-red-500/10"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="flex justify-end mt-4 pt-4 border-t border-slate-700">
+              <Button variant="outline" size="sm" onClick={() => setShowLoadDialog(false)}>Close</Button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <CardContent className="space-y-6">
         {/* Difficulty Level Selector */}

@@ -13,13 +13,13 @@
     { "path": "./packages/types" },
     { "path": "./packages/ui" },
     { "path": "./packages/utils" },
-    { "path": "./organizations/alawein-technologies-llc/saas/llmworks" },
-    { "path": "./organizations/alawein-technologies-llc/saas/portfolio" },
-    { "path": "./organizations/alawein-technologies-llc/saas/qmlab" },
-    { "path": "./organizations/alawein-technologies-llc/saas/attributa" },
-    { "path": "./organizations/alawein-technologies-llc/mobile-apps/simcore" },
-    { "path": "./organizations/live-it-iconic-llc/ecommerce/liveiticonic" },
-    { "path": "./organizations/repz-llc/apps/repz" }
+    { "path": "./platforms/llmworks" },
+    { "path": "./platforms/portfolio" },
+    { "path": "./platforms/qmlab" },
+    { "path": "./platforms/attributa" },
+    { "path": "./platforms/simcore" },
+    { "path": "./platforms/liveiticonic" },
+    { "path": "./platforms/repz" }
   ],
   "compilerOptions": {
     "target": "ES2022",

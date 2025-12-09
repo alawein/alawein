@@ -16,7 +16,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "security:check": "bash scripts/security-check.sh",
+    "security:check": "bash scripts/audit/security-check.sh",
     "security:audit": "npm audit --audit-level=moderate",
     "security:outdated": "npm outdated",
     "licenses:generate": "echo 'See LICENSES.md for license information'",
@@ -112,10 +112,10 @@
     "backup:list": "tsx tools/backup/backup.ts list",
     "a11y:audit": "tsx tools/accessibility/audit.ts audit",
     "a11y:check": "tsx tools/accessibility/audit.ts checklist",
-    "docs:validate": "node scripts/validate-docs.js",
-    "docs:validate:docs": "node scripts/validate-docs.js docs",
-    "docs:validate:governance": "node scripts/validate-docs.js docs/governance",
-    "docs:validate:templates": "node scripts/validate-docs.js docs/templates",
+    "docs:validate": "node scripts/docs/validate-docs.js",
+    "docs:validate:docs": "node scripts/docs/validate-docs.js docs",
+    "docs:validate:governance": "node scripts/docs/validate-docs.js docs/governance",
+    "docs:validate:templates": "node scripts/docs/validate-docs.js docs/templates",
     "docs:check": "npm run docs:validate && npm run a11y:check",
     "governance:validate": "npm run docs:validate:governance",
     "governance:check": "npm run governance:validate && npm run security:check"

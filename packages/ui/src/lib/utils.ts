@@ -1,5 +1,5 @@
 /**
- * UI Utility Functions
+ * UI Components Utility Functions
  */
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';

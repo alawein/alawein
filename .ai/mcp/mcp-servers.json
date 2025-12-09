@@ -18,7 +18,12 @@
         "MAX_CONTEXT_MB": "50",
         "RETENTION_HOURS": "168"
       },
-      "capabilities": ["context_storage", "memory_bank", "handoff_state", "session_persistence"],
+      "capabilities": [
+        "context_storage",
+        "memory_bank",
+        "handoff_state",
+        "session_persistence"
+      ],
       "tags": ["infrastructure", "orchestration", "priority-1"]
     },
     "github": {
@@ -38,10 +43,20 @@
     },
     "filesystem": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "--allowed-directories", "."],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "--allowed-directories",
+        "."
+      ],
       "description": "Secure file system access for AI tools",
       "env": {},
-      "capabilities": ["file_read", "file_write", "directory_listing", "file_search"],
+      "capabilities": [
+        "file_read",
+        "file_write",
+        "directory_listing",
+        "file_search"
+      ],
       "tags": ["code_management", "priority-1"]
     },
     "puppeteer": {
@@ -80,7 +95,11 @@
       "env": {
         "POSTGRES_CONNECTION_STRING": "${POSTGRES_URL}"
       },
-      "capabilities": ["sql_queries", "schema_management", "connection_pooling"],
+      "capabilities": [
+        "sql_queries",
+        "schema_management",
+        "connection_pooling"
+      ],
       "tags": ["data_processing", "priority-2"]
     },
     "brave-search": {
@@ -185,7 +204,12 @@
       "args": ["-y", "@modelcontextprotocol/server-git"],
       "description": "Git operations for local repository management and analysis",
       "env": {},
-      "capabilities": ["git_operations", "commit_history", "diff_analysis", "branch_management"],
+      "capabilities": [
+        "git_operations",
+        "commit_history",
+        "diff_analysis",
+        "branch_management"
+      ],
       "tags": ["code_management", "version_control", "priority-1", "devops"]
     },
     "kubernetes": {
@@ -209,7 +233,12 @@
         "service_discovery",
         "namespace_management"
       ],
-      "tags": ["infrastructure", "container_orchestration", "priority-2", "devops"]
+      "tags": [
+        "infrastructure",
+        "container_orchestration",
+        "priority-2",
+        "devops"
+      ]
     },
     "prometheus": {
       "command": "python",
@@ -241,19 +270,106 @@
         "compliance_check"
       ],
       "tags": ["security", "quality_assurance", "priority-1", "devops"]
+    },
+    "supabase": {
+      "command": "npx",
+      "args": ["-y", "@supabase/mcp-server"],
+      "description": "Supabase database, auth, and storage management",
+      "env": {
+        "SUPABASE_URL": "${VITE_SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+      },
+      "capabilities": [
+        "database_queries",
+        "auth_management",
+        "storage_operations",
+        "realtime_subscriptions",
+        "rls_policies"
+      ],
+      "tags": ["data_processing", "auth", "storage", "priority-1"]
+    },
+    "stripe": {
+      "command": "npx",
+      "args": ["-y", "@stripe/mcp-server"],
+      "description": "Stripe payments and subscription management",
+      "env": {
+        "STRIPE_SECRET_KEY": "${STRIPE_SECRET_KEY}"
+      },
+      "capabilities": [
+        "payment_processing",
+        "subscription_management",
+        "customer_management",
+        "invoice_operations",
+        "webhook_handling"
+      ],
+      "tags": ["payments", "subscriptions", "priority-1"]
+    },
+    "resend": {
+      "command": "npx",
+      "args": ["-y", "@resend/mcp-server"],
+      "description": "Transactional email via Resend API",
+      "env": {
+        "RESEND_API_KEY": "${RESEND_API_KEY}"
+      },
+      "capabilities": [
+        "email_sending",
+        "template_management",
+        "domain_verification",
+        "email_analytics"
+      ],
+      "tags": ["email", "notifications", "priority-2"]
+    },
+    "sentry": {
+      "command": "npx",
+      "args": ["-y", "@sentry/mcp-server"],
+      "description": "Error monitoring and performance tracking",
+      "env": {
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+        "SENTRY_ORG": "${SENTRY_ORG}",
+        "SENTRY_PROJECT": "${SENTRY_PROJECT}"
+      },
+      "capabilities": [
+        "error_tracking",
+        "performance_monitoring",
+        "release_management",
+        "issue_management"
+      ],
+      "tags": ["monitoring", "observability", "priority-1"]
+    },
+    "vercel": {
+      "command": "npx",
+      "args": ["-y", "@vercel/mcp-server"],
+      "description": "Vercel deployment and project management",
+      "env": {
+        "VERCEL_TOKEN": "${VERCEL_TOKEN}"
+      },
+      "capabilities": [
+        "deployment_management",
+        "project_configuration",
+        "domain_management",
+        "environment_variables",
+        "analytics_access"
+      ],
+      "tags": ["deployment", "infrastructure", "priority-1"]
     }
   },
   "serverGroups": {
     "core": ["context", "github", "filesystem", "git"],
     "automation": ["puppeteer", "fetch"],
-    "data": ["sqlite", "postgres"],
+    "data": ["sqlite", "postgres", "supabase"],
     "search": ["brave-search"],
-    "communication": ["slack"],
+    "communication": ["slack", "resend"],
     "orchestration": ["context", "github", "filesystem", "memory"],
-    "devops-critical": ["playwright", "sequential-thinking", "terraform", "git", "semgrep"],
+    "devops-critical": [
+      "playwright",
+      "sequential-thinking",
+      "terraform",
+      "git",
+      "semgrep"
+    ],
     "testing": ["playwright", "puppeteer"],
-    "infrastructure": ["terraform", "kubernetes"],
-    "monitoring": ["prometheus"],
+    "infrastructure": ["terraform", "kubernetes", "vercel"],
+    "monitoring": ["prometheus", "sentry"],
     "security": ["semgrep"],
     "error-free-pipeline": [
       "git",
@@ -261,10 +377,19 @@
       "playwright",
       "terraform",
       "sequential-thinking",
-      "prometheus"
+      "prometheus",
+      "sentry"
     ],
     "governance": ["filesystem", "git", "semgrep", "sequential-thinking"],
-    "multi-agent-review": ["filesystem", "git", "sequential-thinking", "memory"]
+    "multi-agent-review": [
+      "filesystem",
+      "git",
+      "sequential-thinking",
+      "memory"
+    ],
+    "saas-stack": ["supabase", "stripe", "resend", "sentry", "vercel"],
+    "payments": ["stripe"],
+    "backend": ["supabase", "postgres", "stripe", "resend"]
   },
   "providerConfig": {
     "anthropic": {

@@ -1,0 +1,350 @@
+metadata:
+  title: "Blackbox Consolidation - Complete Implementation"
+  version: "1.0.0"
+  author: "Alawein Technologies"
+  description: "Comprehensive prompt for Augment to implement the complete Blackbox Consolidation System"
+  priority: "CRITICAL"
+  estimated_duration: "9 weeks"
+  target_completion: "100% repository transformation"
+
+mission_objective: |
+  Implement the complete Blackbox Consolidation System for the Alawein Technologies monorepo. Transform the repository from its current cluttered state (100+ root files, scattered documentation, disorganized scripts, duplicate packages) into a clean, organized, and maintainable structure.
+
+  Expected Outcomes:
+  - 73% reduction in root directory files (100+ → 27 files)
+  - 100% documentation centralized in docs/
+  - 100% scripts organized in categorized subdirectories
+  - 35% package consolidation (17 → 11 packages)
+  - Zero breaking changes to existing functionality
+  - All builds successful and tested
+
+execution_framework:
+  phase_structure:
+    - "PHASE 1-2: Discovery & Analysis (Week 1)"
+    - "PHASE 3-8: Implementation (Weeks 2-6)"
+    - "PHASE 9-12: Consolidation & Testing (Weeks 7-9)"
+  priority_hierarchy:
+    - "CRITICAL: Root directory cleanup (80% target)"
+    - "HIGH: Script organization (100% completion)"
+    - "HIGH: Documentation consolidation (100% centralized)"
+    - "MEDIUM: Configuration consolidation (80% reduction)"
+    - "MEDIUM: Package consolidation (35% reduction)"
+
+phases:
+  phase_1:
+    title: "Repository Structure Audit"
+    objectives:
+      - Analyze 32,783+ files in the monorepo
+      - Identify 100+ root-level files requiring organization
+      - Document current structure and issues
+      - Create comprehensive audit report
+    steps:
+      - "File Analysis: Count total files, identify file types, analyze root directory"
+      - "Structure Documentation: Create audit report, document distributions, identify opportunities"
+      - "Root Directory Analysis: List all files, categorize by function, identify files to move"
+    success_criteria:
+      - "Comprehensive audit report created"
+      - "File counts and distributions documented"
+      - "Root directory issues identified"
+      - "Consolidation roadmap outlined"
+
+  phase_2:
+    title: "Duplication Detection"
+    objectives:
+      - Identify 15-20% overall duplication
+      - Analyze duplication across 5 categories
+      - Create detailed consolidation roadmap
+      - Prioritize opportunities by impact
+    steps:
+      - "Duplication Analysis: Analyze documentation, config, package, and script duplication"
+      - "Impact Assessment: Calculate duplication percentages, identify opportunities"
+      - "Roadmap Creation: Document findings and recommendations"
+    success_criteria:
+      - "Duplication analysis completed"
+      - "Impact assessment documented"
+      - "Consolidation roadmap created"
+      - "Priorities established"
+
+  phase_3:
+    title: "Directory Structure Creation"
+    objectives:
+      - Create organized directory structure
+      - Establish consistent organization patterns
+      - Prepare for file migration
+    steps:
+      - "Create docs/reports/ subdirectories"
+      - "Create scripts/ subdirectories"
+      - "Create reports/, config/, data/ directories"
+    success_criteria:
+      - "Directory structure created"
+      - "Organization patterns established"
+      - "Ready for file migration"
+
+  phase_4:
+    title: "Quick Wins Implementation"
+    objectives:
+      - Move 28 test-related files from root
+      - Organize metrics and logs
+      - Achieve initial cleanup momentum
+    steps:
+      - "Move test result files to reports/test-results/"
+      - "Move metrics files to reports/metrics/"
+      - "Move log files to reports/logs/"
+    success_criteria:
+      - "28 files moved from root"
+      - "Test results organized"
+      - "Metrics and logs categorized"
+      - "28% root cleanup achieved"
+
+  phase_5:
+    title: "Documentation Consolidation"
+    objectives:
+      - Move 47 documentation files from root
+      - Remove 1 duplicate file
+      - Centralize all documentation in docs/
+    steps:
+      - "Move phase documentation to docs/reports/phases/"
+      - "Move blackbox documentation to docs/reports/blackbox-consolidation/"
+      - "Move optimization docs to docs/reports/optimization/"
+      - "Move deployment docs to docs/reports/deployment/"
+      - "Move testing docs to docs/reports/testing/"
+      - "Move architecture docs to docs/architecture/"
+      - "Move audit docs to docs/audit/"
+      - "Move infrastructure docs to docs/reports/infrastructure/"
+      - "Move remaining docs to docs/reports/"
+    success_criteria:
+      - "47 documentation files moved"
+      - "1 duplicate removed"
+      - "All docs in docs/ subdirectories"
+      - "96% documentation cleanup"
+
+  phase_6:
+    title: "Script Organization"
+    objectives:
+      - Move 10 scripts from root
+      - Organize by function (audit, deployment, testing, optimization, validation)
+      - Create clear categorization
+    steps:
+      - "Move audit scripts to scripts/audit/"
+      - "Move deployment scripts to scripts/deployment/"
+      - "Move testing scripts to scripts/testing/"
+      - "Move validation scripts to scripts/validation/"
+    success_criteria:
+      - "10 scripts moved from root"
+      - "Scripts organized by function"
+      - "Clear categorization established"
+      - "100% scripts organized"
+
+  phase_7:
+    title: "Configuration Organization"
+    objectives:
+      - Move configuration files to appropriate locations
+      - Organize platform configs in config/
+      - Move data files to data/
+    steps:
+      - "Move platform configs to config/"
+      - "Move data files to data/"
+      - "Move report files to reports/"
+    success_criteria:
+      - "Configuration files organized"
+      - "Platform configs in config/"
+      - "Data files in data/"
+      - "Report files in reports/"
+
+  phase_8:
+    title: "Root Directory Cleanup"
+    objectives:
+      - Remove invalid files
+      - Verify final root directory state
+      - Confirm 80% cleanup target achieved
+    steps:
+      - "Remove invalid files (nul)"
+      - "Verify root directory count"
+      - "Confirm essential files remain"
+    success_criteria:
+      - "Invalid files removed"
+      - "Root directory cleaned"
+      - "80% cleanup target achieved"
+      - "Essential files preserved"
+
+  phase_9:
+    title: "Package Consolidation"
+    objectives:
+      - Consolidate UI packages (3 → 1)
+      - Consolidate config packages (5 → 1)
+      - Remove duplicate packages
+      - Update package references
+    steps:
+      - "Copy ui-components and shared-ui to ui package"
+      - "Update ui/src/index.ts with proper exports"
+      - "Copy config packages to consolidated structure"
+      - "Remove duplicate packages"
+      - "Update package.json references in consuming apps"
+    success_criteria:
+      - "UI packages consolidated (3 → 1)"
+      - "Config packages consolidated (5 → 1)"
+      - "Duplicate packages removed"
+      - "References updated in consuming apps"
+      - "All builds successful"
+
+  phase_10:
+    title: "Build & Integration Testing"
+    objectives:
+      - Test all consolidated packages
+      - Verify Turbo build works
+      - Confirm integration is successful
+    steps:
+      - "Test individual package builds"
+      - "Run Turbo build"
+      - "Verify integration and imports"
+    success_criteria:
+      - "All packages build successfully"
+      - "Turbo build passes"
+      - "Integration verified"
+      - "No breaking changes"
+
+  phase_11:
+    title: "Reference Updates"
+    objectives:
+      - Update all package.json references
+      - Ensure consuming apps use consolidated packages
+      - Verify all references are correct
+    steps:
+      - "Update package.json files in organizations/"
+      - "Replace old package references"
+      - "Verify builds after updates"
+    success_criteria:
+      - "All package references updated"
+      - "No old package references remain"
+      - "Builds successful after updates"
+
+  phase_12:
+    title: "Final Validation & Reporting"
+    objectives:
+      - Create comprehensive completion report
+      - Validate all targets achieved
+      - Document final state
+    steps:
+      - "Verify final repository structure"
+      - "Create completion report"
+      - "Document impact metrics"
+    success_criteria:
+      - "Comprehensive report created"
+      - "All targets validated"
+      - "Success metrics documented"
+      - "Next steps outlined"
+
+success_metrics:
+  primary_targets:
+    - "Root Cleanup: 80% reduction (100+ → <20 files)"
+    - "Documentation: 100% centralized"
+    - "Scripts: 100% organized"
+    - "Packages: 20-30% consolidation"
+    - "Quality: Zero breaking changes"
+  quality_assurance:
+    - "Build Success: All packages build"
+    - "TypeScript: No compilation errors"
+    - "Integration: All references work"
+    - "Testing: Comprehensive validation"
+  impact_metrics:
+    - "Files Moved: 83+ files organized"
+    - "Root Reduction: 73% achieved"
+    - "Package Reduction: 35% achieved"
+    - "Time Savings: Significant under budget"
+
+implementation_guidelines:
+  code_quality:
+    - "Zero Breaking Changes: Preserve all existing functionality"
+    - "TypeScript Compliance: All code compiles without errors"
+    - "Import Preservation: Maintain backward compatibility"
+    - "Build Success: All packages build successfully"
+  organization_principles:
+    - "Logical Grouping: Files organized by function"
+    - "Clear Naming: Descriptive directory and file names"
+    - "Consistent Structure: Standardized patterns throughout"
+    - "Scalability: Structure supports future growth"
+  testing_requirements:
+    - "Build Testing: Individual and monorepo builds"
+    - "Integration Testing: Package references and imports"
+    - "TypeScript Validation: Compilation verification"
+    - "Reference Checking: All consuming apps verified"
+
+critical_success_factors:
+  must_achieve:
+    - "Zero Breaking Changes - All existing functionality preserved"
+    - "Build Success - All packages build without errors"
+    - "Reference Updates - All consuming apps updated correctly"
+    - "Quality Maintenance - No degradation in code quality"
+  quality_gates:
+    - "Phase Completion - Each phase validated before proceeding"
+    - "Build Verification - Builds tested after each major change"
+    - "Integration Testing - Package relationships verified"
+    - "Documentation - All changes documented"
+
+deliverables:
+  reports:
+    - "reports/PHASE-1-REPOSITORY-STRUCTURE-AUDIT.md"
+    - "reports/PHASE-2-DUPLICATION-DETECTION.md"
+    - "reports/IMPLEMENTATION-PROGRESS-WEEK-1.md"
+    - "reports/CONSOLIDATION-COMPLETE-SUMMARY.md"
+  directories:
+    - "docs/ - All documentation centralized"
+    - "scripts/ - Scripts organized by function"
+    - "reports/ - Reports and metrics organized"
+    - "config/ - Platform configurations"
+    - "data/ - Data files"
+    - "packages/ - Consolidated packages (11 total)"
+  packages:
+    - "@monorepo/ui - Consolidated UI components"
+    - "@monorepo/config - Consolidated configurations"
+    - "9 other core packages maintained"
+
+timeline:
+  week_1: "Discovery (Phases 1-2)"
+  weeks_2_6: "Implementation (Phases 3-8)"
+  weeks_7_9: "Consolidation (Phases 9-12)"
+
+validation_checklist:
+  repository_structure:
+    - "Root directory: 27 files or fewer"
+    - "All documentation in docs/"
+    - "All scripts in scripts/ subdirectories"
+    - "All reports in reports/ subdirectories"
+    - "Platform configs in config/"
+    - "Data files in data/"
+  package_consolidation:
+    - "UI packages: 3 → 1 consolidated"
+    - "Config packages: 5 → 1 consolidated"
+    - "Total packages: 17 → 11 (35% reduction)"
+    - "All duplicate packages removed"
+  quality_assurance:
+    - "All packages build successfully"
+    - "Turbo build passes"
+    - "TypeScript compilation successful"
+    - "No breaking changes introduced"
+    - "All references updated correctly"
+  documentation:
+    - "All phases documented"
+    - "Comprehensive completion report"
+    - "Next steps outlined"
+    - "Impact metrics calculated"
+
+final_success_criteria:
+  primary_objectives:
+    - "Root Directory: 73% cleanup (exceeded 80% target)"
+    - "Documentation: 100% centralized"
+    - "Scripts: 100% organized"
+    - "Packages: 35% consolidated (exceeded 20-30% target)"
+    - "Quality: Zero breaking changes maintained"
+  quality_metrics:
+    - "Build Success: All packages build"
+    - "Integration: All references work"
+    - "TypeScript: No compilation errors"
+    - "Testing: Comprehensive validation completed"
+  impact_achieved:
+    - "Files Organized: 83+ files moved from root"
+    - "Structure: Clean, logical organization"
+    - "Maintainability: Improved developer experience"
+    - "Scalability: Foundation for future growth"
+
+execution_status: "READY - This comprehensive prompt contains everything needed for Augment to implement the complete Blackbox Consolidation System. Follow the phases sequentially, validate at each step, and achieve 100% repository transformation."

@@ -14,13 +14,15 @@
 @import './styles/advanced-effects.css';
 @import './styles/performance-optimizations.css';
 @import './styles/accessibility-enhancements.css';
+
+/* Enhanced design system (must be before @tailwind) */
+@import './styles/design-system/enhanced-colors.css';
+@import './styles/design-system/micro-interactions.css';
+@import './styles/design-system/blackbox-enhancements.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import enhanced design system */
-@import './styles/design-system/enhanced-colors.css';
-@import './styles/design-system/micro-interactions.css';
 
 /* Skip to main content link for accessibility */
 .skip-to-main {
@@ -163,7 +165,7 @@ a:focus-visible {
     --border-primary: #ffffff;
     --color-primary: #60a5fa;
   }
-  
+
   .glass-panel,
   .glass-subtle,
   .glass-minimal {
@@ -209,30 +211,30 @@ a:focus-visible {
     --surface-1: 222 40% 10%;
     --surface-2: 222 32% 14%;
     --border: 220 30% 35%; /* Raised for 3:1 contrast against surfaces */
-    
+
     /* Text colors - WCAG 2.2 AA compliant */
     --text: 210 18% 92%;
     --muted: 215 12% 85%; /* Raised to 85% for 4.5:1+ contrast ratio */
     --muted-light: 215 12% 80%; /* Secondary muted text - 4.5:1+ contrast */
-    
+
     /* Brand colors */
     --primary: 196 100% 52%;
     --primary-foreground: 210 100% 98%;
     --primary-glow: 196 100% 62%;
     --accent: 262 85% 64%;
     --accent-foreground: 210 100% 98%;
-    
+
     /* Status colors */
     --success: 162 72% 41%;
     --warn: 38 100% 54%;
     --error: 350 84% 56%;
     --info: 218 14% 55%;
-    
+
     /* Quantum state colors */
     --state-pure: 196 100% 52%;
     --state-mixed: 200 20% 60%;
     --state-entangled: 262 85% 64%;
-    
+
     /* Legacy compatibility */
     --background: var(--bg);
     --foreground: var(--text);
@@ -248,42 +250,42 @@ a:focus-visible {
     --input: var(--surface-2);
     --ring: var(--primary);
     --radius: 0.625rem;
-    
+
     /* Chart colors */
     --chart-1: var(--primary);
     --chart-2: var(--accent);
     --chart-3: var(--success);
     --chart-4: var(--warn);
     --chart-5: var(--error);
-    
+
     /* Gradients using semantic tokens */
     --gradient-quantum: linear-gradient(135deg, hsl(var(--bg)) 0%, hsl(var(--surface-1)) 50%, hsl(var(--bg)) 100%);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
     --gradient-secondary: linear-gradient(135deg, hsl(var(--accent)), hsl(262 85% 74%));
     --gradient-accent: linear-gradient(135deg, hsl(var(--state-pure)), hsl(var(--state-mixed)));
-    
+
     /* Shadows using semantic tokens */
     --glow-primary: 0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary) / 0.1);
     --glow-secondary: 0 0 20px hsl(var(--accent) / 0.3), 0 0 40px hsl(var(--accent) / 0.1);
     --glow-accent: 0 0 20px hsl(var(--state-pure) / 0.3), 0 0 40px hsl(var(--state-pure) / 0.1);
-    
+
     /* Elevation shadows */
     --shadow-low: 0 1px 0 hsl(0 0% 100%/0.02), 0 1px 2px hsl(220 40% 2% / 0.4);
     --shadow-high: 0 8px 30px hsl(220 60% 2% / 0.55);
-    
+
     /* Quantum transitions */
     --transition-quantum: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Quantum keyframes for enhanced animations */
     --quantum-orbit-duration: 4s;
     --quantum-pulse-duration: 2s;
     --quantum-float-duration: 3s;
-    
+
     /* Enhanced CTA animations */
     --quantum-glow-subtle-duration: 4s;
     --quantum-shimmer-duration: 2s;
-    
+
     /* Sidebar compatibility */
     --sidebar-background: var(--surface-1);
     --sidebar-foreground: var(--text);
@@ -361,32 +363,32 @@ a:focus-visible {
     font-family: 'Inter', system-ui, sans-serif;
     line-height: 1.6;
   }
-  
+
   /* Typography base styles */
   .font-display {
     font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   }
-  
+
   /* Monospace for metrics */
   .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', monospace;
     font-variant-numeric: tabular-nums;
   }
-  
+
   /* WCAG 2.2 SC 2.4.11/12/13 Focus Management */
   .focus-ring {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
     border-radius: 4px;
-    box-shadow: 
+    box-shadow:
       0 0 0 1px hsl(var(--background)),
       0 0 0 4px hsl(var(--primary) / 0.3);
   }
-  
+
   :focus-visible {
     @apply focus-ring;
   }
-  
+
   /* High-contrast focus for critical interactive elements */
   button:focus-visible,
   a:focus-visible,
@@ -399,14 +401,14 @@ a:focus-visible {
     z-index: 100;
     position: relative;
   }
-  
+
   /* Skip link enhanced visibility */
   .skip-to-main:focus-visible {
     @apply focus-ring;
     outline-offset: 4px;
     z-index: 1000;
   }
-  
+
   /* High contrast mode support */
   @media (prefers-contrast: high) {
     :root {
@@ -414,7 +416,7 @@ a:focus-visible {
       --ring: 208 100% 70%;
     }
   }
-  
+
   /* Motion Preferences - Full Three.js Support */
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -425,7 +427,7 @@ a:focus-visible {
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-    
+
     /* Disable quantum animations */
     .animate-quantum-pulse,
     .animate-quantum-glow,
@@ -433,12 +435,12 @@ a:focus-visible {
     .animate-bloch-rotate {
       animation: none !important;
     }
-    
+
     /* Reduce Three.js canvas opacity */
     canvas[data-animated="true"] {
       opacity: 0.6 !important;
     }
-    
+
     /* Disable glow effects for performance */
     [style*="drop-shadow"],
     [style*="box-shadow"] {
@@ -446,8 +448,8 @@ a:focus-visible {
       box-shadow: 0 1px 3px hsl(var(--border)) !important;
     }
   }
-    
-  
+
+
   /* Performance optimizations */
   .gpu-accelerated {
     will-change: transform;
@@ -455,28 +457,28 @@ a:focus-visible {
     backface-visibility: hidden;
     perspective: 1000px;
   }
-  
+
   /* Only apply will-change when actually animating */
   .animating {
     will-change: transform, opacity;
   }
-  
+
   .not-animating {
     will-change: auto;
   }
-  
+
   /* Optimize glow effects */
   .quantum-glow {
     filter: drop-shadow(0 0 4px currentColor);
   }
-  
+
   @media (max-width: 768px) {
     /* Reduce expensive effects on mobile */
     .quantum-glow {
       filter: none;
       box-shadow: 0 0 0 1px currentColor;
     }
-    
+
     /* Disable complex transforms on mobile */
     .animate-quantum-pulse,
     .animate-quantum-glow {
@@ -484,23 +486,23 @@ a:focus-visible {
       animation-timing-function: ease-in-out;
     }
   }
-  
+
   /* Container queries for performance */
   @container (width < 600px) {
     .performance-heavy {
       display: none;
     }
   }
-  
+
   /* Skip to main content link for screen readers */
   .skip-to-main {
     @apply absolute left-[-9999px] top-2 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md;
   }
-  
+
   .skip-to-main:focus {
     @apply left-2;
   }
-  
+
   /* Screen reader only content */
   .sr-only {
     position: absolute;
@@ -513,7 +515,7 @@ a:focus-visible {
     white-space: nowrap;
     border: 0;
   }
-  
+
   /* Enhanced focus indicators for complex widgets */
   [role="tablist"] [role="tab"]:focus,
   [role="menu"] [role="menuitem"]:focus,
@@ -522,14 +524,14 @@ a:focus-visible {
     /* Higher z-index for complex widgets */
     z-index: 1000;
   }
-  
+
   /* Roving tabindex support */
   [role="tab"][tabindex="-1"],
   [role="menuitem"][tabindex="-1"],
   [role="gridcell"][tabindex="-1"] {
     outline: none;
   }
-  
+
   /* WCAG 2.2 Target Size Requirements */
   button,
   a,
@@ -540,7 +542,7 @@ a:focus-visible {
     min-height: 44px; /* iOS minimum */
     min-width: 44px;
   }
-  
+
   /* Desktop can be smaller with fine pointer */
   @media (pointer: fine) {
     .chip,
@@ -548,7 +550,7 @@ a:focus-visible {
       min-height: 28px;
     }
   }
-  
+
   /* Mobile requires full touch targets */
   @media (pointer: coarse) {
     .chip,
@@ -558,7 +560,7 @@ a:focus-visible {
       min-width: 44px;
     }
   }
-  
+
   /* Improve form field visibility */
   input:not([type="checkbox"]):not([type="radio"]),
   textarea,
@@ -754,7 +756,7 @@ a:focus-visible {
   .quantum-animation {
     animation: none;
   }
-  
+
   .bloch-sphere-rotation {
     animation: none;
   }
@@ -851,9 +853,9 @@ a:focus-visible {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      hsl(var(--primary)) 50%, 
+    background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--primary)) 50%,
       transparent 100%);
     opacity: 0.3;
   }
@@ -874,14 +876,14 @@ a:focus-visible {
 
 @keyframes quantum-pulse-glow {
   0%, 100% {
-    box-shadow: 
+    box-shadow:
       0 0 5px hsl(var(--primary) / 0.4),
       0 0 15px hsl(var(--primary) / 0.2),
       0 0 30px hsl(var(--primary) / 0.1);
     transform: scale(1);
   }
   50% {
-    box-shadow: 
+    box-shadow:
       0 0 8px hsl(var(--primary) / 0.6),
       0 0 25px hsl(var(--primary) / 0.4),
       0 0 45px hsl(var(--primary) / 0.2);
@@ -1016,11 +1018,11 @@ a:focus-visible {
     animation: quantum-pulse-glow 1.5s ease-in-out 3;
     transition: var(--transition-glow);
   }
-  
+
   .quantum-hover-float:hover {
     animation: quantum-float-gentle 2s ease-in-out infinite;
   }
-  
+
   .quantum-hover-drift:hover {
     animation: quantum-particle-drift 3s ease-in-out infinite;
   }
@@ -1036,7 +1038,7 @@ a:focus-visible {
   .animate-quantum-border-dance {
     animation: none !important;
   }
-  
+
   /* Provide subtle static alternatives */
   .animate-quantum-pulse-glow {
     box-shadow: 0 0 3px hsl(var(--primary) / 0.3) !important;

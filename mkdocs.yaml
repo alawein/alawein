@@ -7,18 +7,20 @@ repo_url: https://github.com/alawein/alawein
 repo_name: alawein/alawein
 
 nav:
-  - Home: index.md
+  - Home: README.md
   - Governance:
       - Overview: .metaHub/README.md
       - Policies: .metaHub/policies/README.md
       - Schemas: .metaHub/schemas/README.md
   - Operations:
-      - Runbook: docs/OPERATIONS_RUNBOOK.md
+      - Runbook: docs/operations/OPERATIONS_RUNBOOK.md
+      - DevOps Agents: docs/operations/DEVOPS-AGENTS.md
+      - Monitoring: docs/operations/MONITORING-SETUP.md
   - Architecture:
-      - ADR Index: docs/adr/README.md
-      - ADR-001 Monorepos: docs/adr/ADR-001-organization-monorepos.md
-      - ADR-002 OPA: docs/adr/ADR-002-opa-policy-enforcement.md
-      - ADR-003 Schema: docs/adr/ADR-003-json-schema-metadata.md
+      - Overview: docs/architecture/ARCHITECTURE.md
+      - Framework: docs/architecture/FRAMEWORK.md
+      - Structure: docs/architecture/STRUCTURE.md
+      - Code Map: docs/architecture/CODEMAP.md
 
 theme:
   name: material

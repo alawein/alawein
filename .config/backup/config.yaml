@@ -1,0 +1,44 @@
+version: "1.0"
+backup:
+  enabled: true
+
+  schedules:
+    daily:
+      time: "02:00"
+      retention_days: 7
+    weekly:
+      day: "sunday"
+      time: "03:00"
+      retention_days: 30
+    monthly:
+      day: 1
+      time: "04:00"
+      retention_days: 365
+
+  targets:
+    configs:
+      paths:
+        - ".config/"
+        - ".metaHub/policies/"
+        - "package.json"
+        - "tsconfig.json"
+      destination: ".backups/configs/"
+
+    databases:
+      # Handled by Supabase automatic backups
+      supabase_projects:
+        - "repz-prod"
+        - "liveiticonic-prod"
+      note: "Supabase handles DB backups automatically"
+
+    secrets:
+      # Never backup actual secrets - just track their existence
+      audit_only: true
+
+  exclusions:
+    - "node_modules/"
+    - ".git/"
+    - "dist/"
+    - ".next/"
+    - "__pycache__/"
+    - "*.log"

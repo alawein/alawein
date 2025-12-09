@@ -1,112 +1,121 @@
 version: 2
+
+# Global configuration for all ecosystems
+registries: {}
+
 updates:
   # Root npm dependencies
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 10
+    rebase-strategy: "auto"
     commit-message:
-      prefix: 'deps(npm)'
-    labels: ['dependencies', 'javascript']
+      prefix: "deps(npm)"
+    labels: ["dependencies", "javascript"]
     groups:
       npm-production:
-        dependency-type: 'production'
-        update-types: ['minor', 'patch']
+        dependency-type: "production"
+        update-types: ["minor", "patch"]
       npm-development:
-        dependency-type: 'development'
-        update-types: ['minor', 'patch']
+        dependency-type: "development"
+        update-types: ["minor", "patch"]
+    ignore:
+      # Ignore Vite 7.x until Storybook v8 compatibility
+      - dependency-name: "vite"
+        versions: [">=7.0.0"]
 
   # Python automation dependencies
-  - package-ecosystem: 'pip'
-    directory: '/automation'
+  - package-ecosystem: "pip"
+    directory: "/automation"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(python)'
-    labels: ['dependencies', 'python', 'automation']
+      prefix: "deps(python)"
+    labels: ["dependencies", "python", "automation"]
     groups:
       python-minor:
-        update-types: ['minor', 'patch']
+        update-types: ["minor", "patch"]
 
   # Librex QAP solver dependencies
-  - package-ecosystem: 'pip'
-    directory: '/organizations/alawein-technologies-llc/packages/librex'
+  - package-ecosystem: "pip"
+    directory: "/organizations/alawein-technologies-llc/packages/librex"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(python)'
-    labels: ['dependencies', 'python', 'librex']
+      prefix: "deps(python)"
+    labels: ["dependencies", "python", "librex"]
     groups:
       python-minor:
-        update-types: ['minor', 'patch']
+        update-types: ["minor", "patch"]
 
   # MagLogic simulator dependencies
-  - package-ecosystem: 'pip'
-    directory: '/research/maglogic'
+  - package-ecosystem: "pip"
+    directory: "/research/maglogic"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(python)'
-    labels: ['dependencies', 'python', 'research']
+      prefix: "deps(python)"
+    labels: ["dependencies", "python", "research"]
     groups:
       python-minor:
-        update-types: ['minor', 'patch']
+        update-types: ["minor", "patch"]
 
   # MetaHub scripts dependencies
-  - package-ecosystem: 'pip'
-    directory: '/.metaHub/scripts'
+  - package-ecosystem: "pip"
+    directory: "/.metaHub/scripts"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(python)'
-    labels: ['dependencies', 'python']
+      prefix: "deps(python)"
+    labels: ["dependencies", "python"]
     groups:
       python-minor:
-        update-types: ['minor', 'patch']
+        update-types: ["minor", "patch"]
 
   # GitHub Actions
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(actions)'
-    labels: ['dependencies', 'ci']
+      prefix: "deps(actions)"
+    labels: ["dependencies", "ci"]
     groups:
       actions:
-        patterns: ['*']
-        update-types: ['minor', 'patch']
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # Docker dependencies
-  - package-ecosystem: 'docker'
-    directory: '/'
+  - package-ecosystem: "docker"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      day: 'monday'
-      time: '09:00'
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
     open-pull-requests-limit: 5
     commit-message:
-      prefix: 'deps(docker)'
-    labels: ['dependencies', 'docker']
+      prefix: "deps(docker)"
+    labels: ["dependencies", "docker"]
     groups:
       docker:
-        patterns: ['*']
-        update-types: ['minor', 'patch']
+        patterns: ["*"]
+        update-types: ["minor", "patch"]

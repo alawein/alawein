@@ -9,3 +9,6 @@ export type { UserPreferences, UseUserPreferencesOptions, UseUserPreferencesRetu
 
 export { usePlatformStatus } from './usePlatformStatus';
 export type { PlatformStatus, UsePlatformStatusOptions, UsePlatformStatusReturn } from './usePlatformStatus';
+
+export { useSSE } from './useSSE';
+export type { UseSSEOptions, UseSSEReturn } from './useSSE';

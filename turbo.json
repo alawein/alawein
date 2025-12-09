@@ -1,14 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    ".env",
-    "tsconfig.json",
-    "package.json"
-  ],
-  "globalEnv": [
-    "NODE_ENV",
-    "CI"
-  ],
+  "globalDependencies": [".env", "tsconfig.json", "package.json"],
+  "globalEnv": ["NODE_ENV", "CI"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "type-check"],
@@ -46,6 +39,16 @@
       "cache": true
     },
     "clean": {
+      "cache": false
+    },
+    "typegen:supabase": {
+      "dependsOn": [],
+      "outputs": ["src/types/database.ts"],
+      "cache": false
+    },
+    "typegen:api": {
+      "dependsOn": [],
+      "outputs": ["src/types/generated.ts"],
       "cache": false
     }
   }

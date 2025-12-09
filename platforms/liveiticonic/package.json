@@ -182,7 +182,6 @@
     "husky": "^9.1.7",
     "jsdom": "^24.0.0",
     "lint-staged": "^16.2.6",
-    "lovable-tagger": "^1.1.10",
     "node-fetch": "^3.3.2",
     "playwright": "^1.44.0",
     "postcss": "^8.5.6",

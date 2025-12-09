@@ -118,18 +118,8 @@ export async function getUser(): Promise<{
   return supabase.auth.getUser();
 }
 
-/**
- * React hook for auth state (to be used with React)
- * Returns current user and loading state
- */
-export function useAuth() {
-  // This is a placeholder - actual implementation depends on React
-  // Projects should implement their own hook using onAuthStateChange
-  throw new Error(
-    'useAuth must be implemented in your project. ' +
-      'Use supabase.auth.onAuthStateChange() to listen for auth changes.',
-  );
-}
+// Note: useAuth React hook is available in './hooks.js'
+// import { useAuth } from '@alawein/integrations/supabase/hooks';
 
 /**
  * Refresh the current session

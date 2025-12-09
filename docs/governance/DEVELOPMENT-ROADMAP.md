@@ -130,8 +130,8 @@ shared/
 
 ### Cross-Platform Features
 
-- [ ] Unified authentication (Supabase)
-- [ ] Shared user preferences
+- [x] Unified authentication (Supabase) - `useAuth` hook in packages/integrations
+- [x] Shared user preferences - `useUserPreferences` hook in packages/utils
 - [ ] Cross-platform notifications
 - [ ] Analytics dashboard
 
@@ -167,9 +167,9 @@ shared/
 ### High Priority
 
 1. Remove duplicate code across platforms
-2. Standardize error handling
+2. ~~Standardize error handling~~ ✅ (packages/utils, packages/ui ErrorBoundary)
 3. Implement proper TypeScript types
-4. Add unit tests for critical paths
+4. ~~Add unit tests for critical paths~~ ✅ (37 tests in packages/utils)
 
 ### Medium Priority
 

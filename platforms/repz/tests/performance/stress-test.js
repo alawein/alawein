@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Rate, Trend, Counter } from 'k6/metrics';
@@ -51,22 +52,22 @@ const stressScenarios = {
 export function setup() {
   console.log(`🔥 Starting REPZ stress test against ${BASE_URL}`);
   console.log(`⚠️  This test will push the system to its limits`);
-  
+
   const healthCheck = http.get(`${BASE_URL}/health`);
   if (healthCheck.status !== 200) {
     console.error('❌ Server not ready for stress test');
     return null;
   }
-  
+
   return { baseUrl: BASE_URL };
 }
 
 export default function (data) {
   if (!data) return;
-  
+
   const baseUrl = data.baseUrl;
   const user = testUsers[Math.floor(Math.random() * testUsers.length)];
-  
+
   // Determine stress scenario
   const rand = Math.random();
   let scenario;
@@ -77,7 +78,7 @@ export default function (data) {
   } else {
     scenario = 'mixed_chaos';
   }
-  
+
   // Execute stress scenario
   switch (scenario) {
     case 'concurrent_api':
@@ -94,10 +95,10 @@ export default function (data) {
 
 function concurrentApiStress(baseUrl, user) {
   // Hammers API endpoints with concurrent requests
-  
+
   const authHeaders = authenticateUser(baseUrl, user);
   if (!authHeaders) return;
-  
+
   // Rapid-fire API requests
   const apiEndpoints = [
     '/api/nutrition/food-search?q=protein',
@@ -107,66 +108,66 @@ function concurrentApiStress(baseUrl, user) {
     '/api/user/preferences',
     '/api/dashboard/stats',
   ];
-  
+
   // Hit all endpoints rapidly
   apiEndpoints.forEach((endpoint, index) => {
     requestCount.add(1);
-    
-    const response = http.get(`${baseUrl}${endpoint}`, { 
+
+    const response = http.get(`${baseUrl}${endpoint}`, {
       headers: authHeaders,
       timeout: '10s'  // Allow more time under stress
     });
-    
+
     const success = check(response, {
       [`API ${index + 1} responds`]: (r) => r.status === 200 || r.status === 429, // Accept rate limiting
       [`API ${index + 1} not server error`]: (r) => r.status < 500,
     });
-    
+
     errorRate.add(!success);
     apiErrors.add(response.status >= 400);
     responseTime.add(response.timings.duration);
-    
+
     sleep(0.1); // Minimal sleep for stress
   });
-  
+
   // Performance+ tier users stress AI endpoints
   if (user.tier === 'performance' || user.tier === 'longevity') {
     for (let i = 0; i < 5; i++) {
       requestCount.add(1);
-      
+
       const response = http.post(`${baseUrl}/api/ai/chat`, JSON.stringify({
         message: `Stress test query ${i}`,
         context: 'performance'
       }), {
-        headers: { 
+        headers: {
           ...authHeaders,
           'Content-Type': 'application/json'
         },
         timeout: '30s'  // AI requests can take longer
       });
-      
+
       const success = check(response, {
         'AI API handles stress': (r) => r.status === 200 || r.status === 429 || r.status === 503,
         'AI API not crashing': (r) => r.status !== 500,
       });
-      
+
       errorRate.add(!success);
       apiErrors.add(response.status >= 400 && response.status !== 429);
       responseTime.add(response.timings.duration);
-      
+
       sleep(0.2);
     }
   }
-  
+
   sleep(1);
 }
 
 function databaseHeavyStress(baseUrl, user) {
   // Performs database-intensive operations
-  
+
   const authHeaders = authenticateUser(baseUrl, user);
   if (!authHeaders) return;
-  
+
   // Heavy search operations
   const complexSearches = [
     'chicken breast protein high quality organic',
@@ -175,31 +176,31 @@ function databaseHeavyStress(baseUrl, user) {
     'salmon wild caught omega 3 fatty acids',
     'broccoli cruciferous vegetables fiber vitamins'
   ];
-  
+
   complexSearches.forEach((query, index) => {
     requestCount.add(1);
-    
+
     const response = http.get(`${baseUrl}/api/nutrition/food-search?q=${encodeURIComponent(query)}&limit=100&detailed=true`, {
       headers: authHeaders,
       timeout: '15s'
     });
-    
+
     const success = check(response, {
       [`Complex search ${index + 1} works`]: (r) => r.status === 200 || r.status === 429,
       [`Complex search ${index + 1} not timeout`]: (r) => r.status !== 408,
     });
-    
+
     errorRate.add(!success);
     apiErrors.add(response.status >= 400);
     responseTime.add(response.timings.duration);
-    
+
     sleep(0.5);
   });
-  
+
   // Recipe creation with complex calculations
   if (user.tier !== 'core') {
     requestCount.add(1);
-    
+
     const complexRecipe = {
       name: `Stress Test Recipe ${Date.now()}`,
       ingredients: Array.from({ length: 20 }, (_, i) => ({
@@ -209,27 +210,27 @@ function databaseHeavyStress(baseUrl, user) {
       })),
       servings: Math.floor(Math.random() * 8) + 1
     };
-    
+
     const response = http.post(`${baseUrl}/api/nutrition/recipes`, JSON.stringify(complexRecipe), {
-      headers: { 
+      headers: {
         ...authHeaders,
         'Content-Type': 'application/json'
       },
       timeout: '20s'
     });
-    
+
     const success = check(response, {
       'Complex recipe creation handles stress': (r) => r.status === 200 || r.status === 201 || r.status === 429,
       'Recipe API not crashing': (r) => r.status < 500,
     });
-    
+
     errorRate.add(!success);
     apiErrors.add(response.status >= 400 && response.status !== 429);
     responseTime.add(response.timings.duration);
-    
+
     sleep(1);
   }
-  
+
   // Protocol data queries for Performance+ users
   if (user.tier === 'performance' || user.tier === 'longevity') {
     const protocolQueries = [
@@ -239,56 +240,56 @@ function databaseHeavyStress(baseUrl, user) {
       '/api/medical/consultations/history',
       '/api/biomarkers/trends'
     ];
-    
+
     protocolQueries.forEach((endpoint, index) => {
       requestCount.add(1);
-      
+
       const response = http.get(`${baseUrl}${endpoint}?limit=1000&detailed=true`, {
         headers: authHeaders,
         timeout: '25s'
       });
-      
+
       const success = check(response, {
         [`Protocol query ${index + 1} handles load`]: (r) => r.status === 200 || r.status === 429,
         [`Protocol query ${index + 1} not server error`]: (r) => r.status < 500,
       });
-      
+
       errorRate.add(!success);
       apiErrors.add(response.status >= 400 && response.status !== 429);
       responseTime.add(response.timings.duration);
-      
+
       sleep(0.3);
     });
   }
-  
+
   sleep(2);
 }
 
 function mixedChaosStress(baseUrl, user) {
   // Random mix of operations to create unpredictable load
-  
+
   const authHeaders = authenticateUser(baseUrl, user);
   if (!authHeaders) return;
-  
+
   // Random page loads
   const pages = ['/dashboard', '/nutrition', '/progress', '/settings'];
   const randomPage = pages[Math.floor(Math.random() * pages.length)];
-  
+
   requestCount.add(1);
-  const response = http.get(`${baseUrl}${randomPage}`, { 
+  const response = http.get(`${baseUrl}${randomPage}`, {
     headers: authHeaders,
     timeout: '10s'
   });
-  
+
   const success = check(response, {
     'Random page loads under stress': (r) => r.status === 200 || r.status === 429,
     'Page not server error': (r) => r.status < 500,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(Math.random() * 2);
-  
+
   // Random API operations
   const operations = [
     () => {
@@ -300,40 +301,40 @@ function mixedChaosStress(baseUrl, user) {
           headers: authHeaders,
           timeout: '8s'
         });
-        
+
         const success = check(response, {
           [`Rapid search ${i + 1} works`]: (r) => r.status === 200 || r.status === 429,
         });
-        
+
         errorRate.add(!success);
         apiErrors.add(response.status >= 400 && response.status !== 429);
         responseTime.add(response.timings.duration);
         sleep(0.1);
       }
     },
-    
+
     () => {
       // Profile updates
       requestCount.add(1);
       const response = http.patch(`${baseUrl}/api/user/profile`, JSON.stringify({
         preferences: { theme: Math.random() > 0.5 ? 'dark' : 'light' }
       }), {
-        headers: { 
+        headers: {
           ...authHeaders,
           'Content-Type': 'application/json'
         },
         timeout: '10s'
       });
-      
+
       const success = check(response, {
         'Profile update under stress': (r) => r.status === 200 || r.status === 429,
       });
-      
+
       errorRate.add(!success);
       apiErrors.add(response.status >= 400 && response.status !== 429);
       responseTime.add(response.timings.duration);
     },
-    
+
     () => {
       // File uploads simulation
       if (user.tier === 'performance' || user.tier === 'longevity') {
@@ -344,18 +345,18 @@ function mixedChaosStress(baseUrl, user) {
           headers: authHeaders,
           timeout: '15s'
         });
-        
+
         const success = check(response, {
           'File upload handles stress': (r) => r.status === 200 || r.status === 413 || r.status === 429,
         });
-        
+
         errorRate.add(!success);
         apiErrors.add(response.status >= 500);
         responseTime.add(response.timings.duration);
       }
     }
   ];
-  
+
   // Execute random operations
   const numOps = Math.floor(Math.random() * 3) + 1;
   for (let i = 0; i < numOps; i++) {
@@ -363,13 +364,13 @@ function mixedChaosStress(baseUrl, user) {
     randomOp();
     sleep(Math.random() * 1);
   }
-  
+
   sleep(Math.random() * 3);
 }
 
 function authenticateUser(baseUrl, user) {
   requestCount.add(1);
-  
+
   const response = http.post(`${baseUrl}/api/auth/login`, JSON.stringify({
     email: user.email,
     password: user.password,
@@ -377,18 +378,18 @@ function authenticateUser(baseUrl, user) {
     headers: { 'Content-Type': 'application/json' },
     timeout: '10s'
   });
-  
+
   const success = check(response, {
     'auth works under stress': (r) => r.status === 200 || r.status === 429,
     'auth not server error': (r) => r.status < 500,
   });
-  
+
   errorRate.add(!success);
   apiErrors.add(response.status >= 400 && response.status !== 429);
   responseTime.add(response.timings.duration);
-  
+
   if (!success) return null;
-  
+
   const authHeaders = {};
   if (response.headers['Set-Cookie']) {
     authHeaders['Cookie'] = response.headers['Set-Cookie'];
@@ -396,7 +397,7 @@ function authenticateUser(baseUrl, user) {
   if (response.json && response.json().token) {
     authHeaders['Authorization'] = `Bearer ${response.json().token}`;
   }
-  
+
   return authHeaders;
 }
 

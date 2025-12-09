@@ -1,3 +1,4 @@
+/* eslint-env serviceworker */
 // Service Worker for SimCore Physics Platform
 // Provides offline functionality, caching, and background sync
 
@@ -18,7 +19,7 @@ const STATIC_ASSETS = [
 // Physics modules to cache for offline use
 const PHYSICS_MODULES = [
   '/tdse-solver',
-  '/llg-dynamics', 
+  '/llg-dynamics',
   '/quantum-tunneling',
   '/bloch-sphere',
   '/graphene-band-structure',
@@ -49,7 +50,7 @@ const CACHE_FIRST_ROUTES = [
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
   console.log('[SW] Installing SimCore Service Worker');
-  
+
   event.waitUntil(
     Promise.all([
       // Cache static assets
@@ -57,13 +58,13 @@ self.addEventListener('install', (event) => {
         console.log('[SW] Caching static assets');
         return cache.addAll(STATIC_ASSETS);
       }),
-      
+
       // Cache physics modules
       caches.open(OFFLINE_CACHE).then((cache) => {
         console.log('[SW] Caching physics modules');
         return Promise.allSettled(
-          PHYSICS_MODULES.map(url => 
-            cache.add(url).catch(err => 
+          PHYSICS_MODULES.map(url =>
+            cache.add(url).catch(err =>
               console.warn(`[SW] Failed to cache ${url}:`, err)
             )
           )
@@ -79,15 +80,15 @@ self.addEventListener('install', (event) => {
 // Activate event - cleanup old caches
 self.addEventListener('activate', (event) => {
   console.log('[SW] Activating SimCore Service Worker');
-  
+
   event.waitUntil(
     Promise.all([
       // Clean up old caches
       caches.keys().then((cacheNames) => {
         return Promise.all(
           cacheNames
-            .filter(cacheName => 
-              cacheName.startsWith('simcore-') && 
+            .filter(cacheName =>
+              cacheName.startsWith('simcore-') &&
               cacheName !== CACHE_NAME &&
               cacheName !== OFFLINE_CACHE &&
               cacheName !== DYNAMIC_CACHE
@@ -98,7 +99,7 @@ self.addEventListener('activate', (event) => {
             })
         );
       }),
-      
+
       // Take control of all clients
       self.clients.claim()
     ]).then(() => {
@@ -111,17 +112,17 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
-  
+
   // Skip non-GET requests
   if (request.method !== 'GET') {
     return;
   }
-  
+
   // Skip cross-origin requests (except for known APIs)
   if (url.origin !== location.origin && !isAllowedOrigin(url.origin)) {
     return;
   }
-  
+
   event.respondWith(handleFetch(request));
 });
 
@@ -129,31 +130,31 @@ self.addEventListener('fetch', (event) => {
 async function handleFetch(request) {
   const url = new URL(request.url);
   const pathname = url.pathname;
-  
+
   try {
     // API routes - Network first with cache fallback
     if (API_ROUTES.some(route => pathname.startsWith(route))) {
       return await networkFirstStrategy(request);
     }
-    
+
     // Static assets - Cache first
     if (CACHE_FIRST_ROUTES.some(route => pathname.startsWith(route))) {
       return await cacheFirstStrategy(request);
     }
-    
+
     // Physics modules - Stale while revalidate
     if (PHYSICS_MODULES.some(module => pathname.startsWith(module))) {
       return await staleWhileRevalidateStrategy(request);
     }
-    
+
     // HTML pages - Network first with offline fallback
     if (request.headers.get('accept')?.includes('text/html')) {
       return await htmlNetworkFirstStrategy(request);
     }
-    
+
     // Default - Network first
     return await networkFirstStrategy(request);
-    
+
   } catch (error) {
     console.error('[SW] Fetch error:', error);
     return await offlineResponse(request);
@@ -164,12 +165,12 @@ async function handleFetch(request) {
 async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     const cachedResponse = await caches.match(request);
@@ -182,24 +183,24 @@ async function networkFirstStrategy(request) {
 
 async function cacheFirstStrategy(request) {
   const cachedResponse = await caches.match(request);
-  
+
   if (cachedResponse) {
     return cachedResponse;
   }
-  
+
   const networkResponse = await fetch(request);
-  
+
   if (networkResponse.ok) {
     const cache = await caches.open(CACHE_NAME);
     cache.put(request, networkResponse.clone());
   }
-  
+
   return networkResponse;
 }
 
 async function staleWhileRevalidateStrategy(request) {
   const cachedResponse = await caches.match(request);
-  
+
   const networkPromise = fetch(request).then(async (networkResponse) => {
     if (networkResponse.ok) {
       const cache = await caches.open(DYNAMIC_CACHE);
@@ -210,19 +211,19 @@ async function staleWhileRevalidateStrategy(request) {
     // Network failed, return cached version if available
     return cachedResponse;
   });
-  
+
   return cachedResponse || await networkPromise;
 }
 
 async function htmlNetworkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
-    
+
     if (networkResponse.ok) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     // Try cache first
@@ -230,13 +231,13 @@ async function htmlNetworkFirstStrategy(request) {
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     // Return offline page
     const offlinePage = await caches.match('/');
     if (offlinePage) {
       return offlinePage;
     }
-    
+
     throw error;
   }
 }
@@ -249,7 +250,7 @@ async function offlineResponse(request) {
       return offlinePage;
     }
   }
-  
+
   return new Response('Offline - Content not available', {
     status: 503,
     statusText: 'Service Unavailable',
@@ -266,14 +267,14 @@ function isAllowedOrigin(origin) {
     'https://unpkg.com',
     'https://cdn.jsdelivr.net'
   ];
-  
+
   return allowedOrigins.includes(origin);
 }
 
 // Background sync for when connection is restored
 self.addEventListener('sync', (event) => {
   console.log('[SW] Background sync triggered:', event.tag);
-  
+
   if (event.tag === 'background-sync-physics-data') {
     event.waitUntil(syncPhysicsData());
   }
@@ -283,10 +284,10 @@ async function syncPhysicsData() {
   try {
     // Sync any pending physics calculations or data
     console.log('[SW] Syncing physics data...');
-    
+
     // Get pending data from IndexedDB
     const pendingData = await getPendingData();
-    
+
     for (const data of pendingData) {
       try {
         await uploadPhysicsData(data);
@@ -295,7 +296,7 @@ async function syncPhysicsData() {
         console.error('[SW] Failed to sync data:', error);
       }
     }
-    
+
     console.log('[SW] Physics data sync complete');
   } catch (error) {
     console.error('[SW] Background sync failed:', error);
@@ -327,9 +328,9 @@ async function markDataAsSynced(id) {
 // Push notifications for physics simulation completion
 self.addEventListener('push', (event) => {
   if (!event.data) return;
-  
+
   const data = event.data.json();
-  
+
   const options = {
     body: data.body || 'Your physics simulation has completed',
     icon: '/icon-192.png',
@@ -352,7 +353,7 @@ self.addEventListener('push', (event) => {
       simulationType: data.simulationType
     }
   };
-  
+
   event.waitUntil(
     self.registration.showNotification(
       data.title || 'SimCore',
@@ -364,17 +365,17 @@ self.addEventListener('push', (event) => {
 // Handle notification clicks
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
+
   const { action, data } = event;
-  
+
   let url = data?.url || '/';
-  
+
   if (action === 'view') {
     url = data?.url || '/';
   } else if (action === 'download') {
     url = `/download/${data?.simulationType || 'results'}`;
   }
-  
+
   event.waitUntil(
     clients.openWindow(url)
   );
@@ -383,28 +384,28 @@ self.addEventListener('notificationclick', (event) => {
 // Message handling for communication with main thread
 self.addEventListener('message', (event) => {
   const { type, payload } = event.data;
-  
+
   switch (type) {
     case 'SKIP_WAITING':
       self.skipWaiting();
       break;
-      
+
     case 'GET_VERSION':
       event.ports[0].postMessage({ version: CACHE_NAME });
       break;
-      
+
     case 'CLEAR_CACHE':
       clearAllCaches().then(() => {
         event.ports[0].postMessage({ success: true });
       });
       break;
-      
+
     case 'CACHE_PHYSICS_DATA':
       cachePhysicsData(payload).then(() => {
         event.ports[0].postMessage({ success: true });
       });
       break;
-      
+
     default:
       console.warn('[SW] Unknown message type:', type);
   }

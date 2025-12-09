@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Rate, Trend, Counter } from 'k6/metrics';
@@ -50,23 +51,23 @@ const userScenarios = {
 export function setup() {
   console.log(`🚀 Starting REPZ load test against ${BASE_URL}`);
   console.log(`📊 Test will simulate realistic user behavior patterns`);
-  
+
   // Verify server is ready
   const healthCheck = http.get(`${BASE_URL}/health`);
   if (healthCheck.status !== 200) {
     console.error('❌ Server health check failed');
     return null;
   }
-  
+
   return { baseUrl: BASE_URL };
 }
 
 export default function (data) {
   if (!data) return;
-  
+
   const baseUrl = data.baseUrl;
   const user = testUsers[Math.floor(Math.random() * testUsers.length)];
-  
+
   // Determine user behavior type
   const rand = Math.random();
   let behaviorType;
@@ -77,7 +78,7 @@ export default function (data) {
   } else {
     behaviorType = 'power';
   }
-  
+
   // Execute scenario based on behavior type
   switch (behaviorType) {
     case 'browsing':
@@ -95,18 +96,18 @@ export default function (data) {
 function browsingUserScenario(baseUrl, user) {
   // Simulates casual browsing behavior
   requestCount.add(1);
-  
+
   // Visit homepage
   let response = http.get(baseUrl);
   let success = check(response, {
     'homepage loads': (r) => r.status === 200,
     'homepage performance': (r) => r.timings.duration < 2000,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(2);
-  
+
   // Browse pricing
   requestCount.add(1);
   response = http.get(`${baseUrl}/pricing`);
@@ -114,34 +115,34 @@ function browsingUserScenario(baseUrl, user) {
     'pricing page loads': (r) => r.status === 200,
     'pricing performance': (r) => r.timings.duration < 1500,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(3);
-  
+
   // Maybe sign up (20% chance)
   if (Math.random() < 0.2) {
     response = http.get(`${baseUrl}/auth/signup`);
     success = check(response, {
       'signup page loads': (r) => r.status === 200,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
   }
-  
+
   sleep(5); // Browsing pause
 }
 
 function activeUserScenario(baseUrl, user) {
   // Simulates regular user activity
-  
+
   // Authenticate
   const authHeaders = authenticateUser(baseUrl, user);
   if (!authHeaders) return;
-  
+
   sleep(1);
-  
+
   // Visit dashboard
   requestCount.add(1);
   let response = http.get(`${baseUrl}/dashboard`, { headers: authHeaders });
@@ -149,11 +150,11 @@ function activeUserScenario(baseUrl, user) {
     'dashboard loads': (r) => r.status === 200,
     'dashboard performance': (r) => r.timings.duration < 2000,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(2);
-  
+
   // Activity based on tier
   if (user.tier === 'adaptive' || user.tier === 'performance' || user.tier === 'longevity') {
     // Use nutrition features
@@ -162,11 +163,11 @@ function activeUserScenario(baseUrl, user) {
     success = check(response, {
       'nutrition page loads': (r) => r.status === 200,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(1);
-    
+
     // Search food database
     requestCount.add(1);
     response = http.get(`${baseUrl}/api/nutrition/food-search?q=chicken&limit=20`, { headers: authHeaders });
@@ -174,11 +175,11 @@ function activeUserScenario(baseUrl, user) {
       'food search API works': (r) => r.status === 200,
       'food search is fast': (r) => r.timings.duration < 1500,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(2);
-    
+
     // View meal planning
     if (Math.random() < 0.6) {
       requestCount.add(1);
@@ -186,13 +187,13 @@ function activeUserScenario(baseUrl, user) {
       success = check(response, {
         'meal planning loads': (r) => r.status === 200,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(3);
     }
   }
-  
+
   // Check progress/analytics
   if (Math.random() < 0.4) {
     requestCount.add(1);
@@ -200,35 +201,35 @@ function activeUserScenario(baseUrl, user) {
     success = check(response, {
       'progress page loads': (r) => r.status === 200,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(2);
   }
-  
+
   sleep(3);
 }
 
 function powerUserScenario(baseUrl, user) {
   // Simulates heavy usage by advanced users
-  
+
   // Authenticate
   const authHeaders = authenticateUser(baseUrl, user);
   if (!authHeaders) return;
-  
+
   sleep(0.5);
-  
+
   // Dashboard
   requestCount.add(1);
   let response = http.get(`${baseUrl}/dashboard`, { headers: authHeaders });
   let success = check(response, {
     'dashboard loads': (r) => r.status === 200,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(1);
-  
+
   // Heavy API usage
   if (user.tier === 'performance' || user.tier === 'longevity') {
     // Multiple protocol requests
@@ -239,12 +240,12 @@ function powerUserScenario(baseUrl, user) {
       success = check(response, {
         [`${protocol} API works`]: (r) => r.status === 200,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(0.5);
     });
-    
+
     // AI interactions
     for (let i = 0; i < 3; i++) {
       requestCount.add(1);
@@ -252,22 +253,22 @@ function powerUserScenario(baseUrl, user) {
         message: `AI query ${i + 1}`,
         context: 'training'
       }), {
-        headers: { 
+        headers: {
           ...authHeaders,
           'Content-Type': 'application/json'
         },
       });
-      
+
       success = check(response, {
         'AI API responds': (r) => r.status === 200,
         'AI response time reasonable': (r) => r.timings.duration < 8000,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(1);
     }
-    
+
     // Form analysis upload simulation
     if (Math.random() < 0.3) {
       requestCount.add(1);
@@ -275,23 +276,23 @@ function powerUserScenario(baseUrl, user) {
         exercise: 'squat',
         videoData: 'base64_mock_data'
       }), {
-        headers: { 
+        headers: {
           ...authHeaders,
           'Content-Type': 'application/json'
         },
       });
-      
+
       success = check(response, {
         'form analysis API works': (r) => r.status === 200 || r.status === 202,
         'form analysis accepts request': (r) => r.timings.duration < 3000,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(2);
     }
   }
-  
+
   // Extensive nutrition usage
   if (user.tier !== 'core') {
     // Multiple food searches
@@ -303,12 +304,12 @@ function powerUserScenario(baseUrl, user) {
         [`${query} search works`]: (r) => r.status === 200,
         [`${query} search is fast`]: (r) => r.timings.duration < 1200,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(0.3);
     });
-    
+
     // Recipe creation
     if (Math.random() < 0.4) {
       requestCount.add(1);
@@ -319,56 +320,56 @@ function powerUserScenario(baseUrl, user) {
           { foodId: 'quinoa', quantity: 100 }
         ]
       }), {
-        headers: { 
+        headers: {
           ...authHeaders,
           'Content-Type': 'application/json'
         },
       });
-      
+
       success = check(response, {
         'recipe creation works': (r) => r.status === 200 || r.status === 201,
       });
-      
+
       errorRate.add(!success);
       responseTime.add(response.timings.duration);
       sleep(1);
     }
-    
+
     // Meal plan operations
     requestCount.add(1);
     response = http.get(`${baseUrl}/api/nutrition/meal-plan/current`, { headers: authHeaders });
     success = check(response, {
       'meal plan API works': (r) => r.status === 200,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(1);
   }
-  
+
   sleep(2);
 }
 
 function authenticateUser(baseUrl, user) {
   requestCount.add(1);
-  
+
   const response = http.post(`${baseUrl}/api/auth/login`, JSON.stringify({
     email: user.email,
     password: user.password,
   }), {
     headers: { 'Content-Type': 'application/json' },
   });
-  
+
   const success = check(response, {
     'authentication succeeds': (r) => r.status === 200 || r.status === 302,
     'auth response time acceptable': (r) => r.timings.duration < 3000,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
-  
+
   if (!success) return null;
-  
+
   // Extract auth headers
   const authHeaders = {};
   if (response.headers['Set-Cookie']) {
@@ -377,7 +378,7 @@ function authenticateUser(baseUrl, user) {
   if (response.json && response.json().token) {
     authHeaders['Authorization'] = `Bearer ${response.json().token}`;
   }
-  
+
   return authHeaders;
 }
 

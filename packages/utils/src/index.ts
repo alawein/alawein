@@ -9,7 +9,7 @@
  */
 
 // Class name utilities
-export { cn, type ClassValue } from './cn'
+export { cn, type ClassValue } from './cn';
 
 // Performance utilities
 export {
@@ -18,7 +18,11 @@ export {
   memoize,
   sleep,
   retry,
-} from './performance'
+  retryWithBackoff,
+  calculateBackoffDelay,
+  isRetryableHttpError,
+  type BackoffOptions,
+} from './performance';
 
 // Formatting utilities
 export {
@@ -32,7 +36,7 @@ export {
   truncate,
   capitalize,
   titleCase,
-} from './format'
+} from './format';
 
 // Validation utilities
 export {
@@ -51,19 +55,22 @@ export {
   validateUsername,
   validateHexColor,
   validateIPv4,
-} from './validation'
+} from './validation';
 
 // React hooks (requires React as peer dependency)
 export {
   useUserPreferences,
   usePlatformStatus,
+  useSSE,
   type UserPreferences,
   type UseUserPreferencesOptions,
   type UseUserPreferencesReturn,
   type PlatformStatus,
   type UsePlatformStatusOptions,
   type UsePlatformStatusReturn,
-} from './hooks'
+  type UseSSEOptions,
+  type UseSSEReturn,
+} from './hooks';
 
 // Error handling utilities
 export {
@@ -79,7 +86,7 @@ export {
   tryCatch,
   tryCatchSync,
   type ErrorContext,
-} from './error'
+} from './error';
 
 // Cross-platform notification system
 export {
@@ -97,4 +104,4 @@ export {
   type NotificationConfig,
   type UseNotificationsOptions,
   type UseNotificationsReturn,
-} from './notifications'
+} from './notifications';

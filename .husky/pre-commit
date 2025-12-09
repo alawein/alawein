@@ -56,7 +56,23 @@ if command -v markdownlint &> /dev/null; then
     git diff --cached --name-only | grep -E '\.md$' | xargs markdownlint 2>/dev/null || true
 fi
 
-# 6. Check file sizes (KILO enforcement - max 500 lines per file)
+# 6. Validate documentation links (check for broken internal links)
+if [ -f "scripts/docs/validate-links.js" ]; then
+    # Check if any markdown files are being committed in docs/
+    if git diff --cached --name-only | grep -qE '^docs/.*\.md$'; then
+        echo "🔗 Validating documentation links..."
+        # Run link validation silently - just capture the exit code
+        node scripts/docs/validate-links.js docs >/dev/null 2>&1
+        LINK_STATUS=$?
+        if [ $LINK_STATUS -ne 0 ]; then
+            echo "⚠️  WARNING: Some documentation links may be broken"
+            echo "Run 'npm run docs:validate-links' to see details"
+        fi
+        # Don't block commit - just warn
+    fi
+fi
+
+# 7. Check file sizes (KILO enforcement - max 500 lines per file)
 echo "📏 Checking file sizes..."
 MAX_LINES=500
 violations=0

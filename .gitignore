@@ -419,3 +419,45 @@ temp_*.ts
 
 # Personal/private content
 .personal/
+
+# =============================================================================
+# CLIENT DELIVERABLES & LOCAL-ONLY FILES
+# =============================================================================
+# Client-specific work that should never be committed
+# Each LLC may have client deliverables stored locally
+
+# Client deliverables directories (per-LLC)
+organizations/*/client-deliverables/
+!organizations/*/client-deliverables/.gitkeep
+
+# Generic client work patterns
+client-work/
+client-files/
+client-assets/
+
+# Local-only configuration files
+*.local.*
+*.local
+!.env.local.example
+
+# Private configuration (use .example for templates)
+*.private.*
+*.private
+!*.private.example
+
+# Client-specific environment overrides
+.env.client.*
+.env.*.client
+
+# White-label configurations (client-specific branding)
+white-label/
+whitelabel-*/
+
+# Client exports and reports
+client-exports/
+client-reports/
+*-client-report.*
+
+# Temporary client staging
+staging-client-*/
+temp-client-*/

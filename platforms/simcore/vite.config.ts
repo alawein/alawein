@@ -32,6 +32,7 @@ export default defineConfig(({ mode }) => ({
     global: 'globalThis',
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       external: [],
       onwarn(warning, warn) {
@@ -40,6 +41,15 @@ export default defineConfig(({ mode }) => ({
           return;
         }
         warn(warning);
+      },
+      output: {
+        manualChunks: {
+          // Vendor chunks for better caching
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-three': ['three'],
+          'vendor-plotly': ['plotly.js', 'react-plotly.js'],
+          'vendor-ui': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-tabs'],
+        }
       }
     }
   }

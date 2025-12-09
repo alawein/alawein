@@ -177,6 +177,8 @@ shared/
 
 - [x] Consolidated duplicate `cn` utility across 6 platforms to use `@alawein/utils`
 - [x] Standardized utils.ts re-exports (formatCurrency, formatDate, debounce, etc.)
+- [x] Bundle size optimization - all platforms have manualChunks, vendor splitting
+- [x] SimCore vite.config.ts enhanced with proper chunk splitting
 
 ### Remaining
 

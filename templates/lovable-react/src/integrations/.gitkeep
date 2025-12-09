@@ -1,9 +1,0 @@
-# Integrations Directory
-# 
-# Place your API integrations here:
-# - supabase.ts - Supabase client
-# - stripe.ts - Stripe integration
-# - analytics.ts - Analytics (Posthog, Mixpanel, etc.)
-# 
-# 🔒 LOCAL IDE TERRITORY
-

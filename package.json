@@ -118,7 +118,7 @@
     "docs:check": "npm run docs:validate && npm run docs:validate-links && npm run a11y:check",
     "governance:validate": "npm run docs:validate:governance",
     "governance:check": "npm run governance:validate && npm run security:check",
-    "backup": "pwsh scripts/backup/create-backup.ps1",
+    "backup:pwsh": "pwsh scripts/backup/create-backup.ps1",
     "backup:unix": "bash scripts/backup/create-backup.sh"
   },
   "devDependencies": {

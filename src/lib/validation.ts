@@ -166,4 +166,4 @@ export function validateAndSanitizeInput(
   }
 
   return { isValid: true, sanitized };
-}${update}
+}

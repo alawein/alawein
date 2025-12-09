@@ -41,7 +41,7 @@ const mockOrderItems: OrderItem[] = [
     quantity: 1,
     image: '/images/cap-black.webp',
   },
-};
+];
 
 const mockOrder: Order = {
   id: 'order-123',

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 import { Rate, Trend } from 'k6/metrics';
@@ -31,24 +32,24 @@ const testUsers = [
 
 export function setup() {
   console.log(`🚀 Starting REPZ smoke test against ${BASE_URL}`);
-  
+
   // Health check
   const healthCheck = http.get(`${BASE_URL}/health`);
   if (healthCheck.status !== 200) {
     console.error('❌ Health check failed, aborting test');
     return null;
   }
-  
+
   console.log('✅ Health check passed');
   return { baseUrl: BASE_URL };
 }
 
 export default function (data) {
   if (!data) return;
-  
+
   const baseUrl = data.baseUrl;
   const user = testUsers[Math.floor(Math.random() * testUsers.length)];
-  
+
   // Test 1: Homepage load
   let response = http.get(baseUrl);
   let success = check(response, {
@@ -56,11 +57,11 @@ export default function (data) {
     'homepage loads in reasonable time': (r) => r.timings.duration < 2000,
     'homepage contains expected content': (r) => r.body.includes('REPZ'),
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(1);
-  
+
   // Test 2: Authentication flow
   response = http.post(`${baseUrl}/api/auth/login`, JSON.stringify({
     email: user.email,
@@ -68,23 +69,23 @@ export default function (data) {
   }), {
     headers: { 'Content-Type': 'application/json' },
   });
-  
+
   success = check(response, {
     'login request succeeds': (r) => r.status === 200 || r.status === 302,
     'login response time acceptable': (r) => r.timings.duration < 3000,
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
-  
+
   // Extract auth token or session
   const authHeaders = {};
   if (response.headers['Set-Cookie']) {
     authHeaders['Cookie'] = response.headers['Set-Cookie'];
   }
-  
+
   sleep(1);
-  
+
   // Test 3: Dashboard load (authenticated)
   response = http.get(`${baseUrl}/dashboard`, { headers: authHeaders });
   success = check(response, {
@@ -92,11 +93,11 @@ export default function (data) {
     'dashboard loads quickly': (r) => r.timings.duration < 2500,
     'dashboard shows user content': (r) => r.body.includes('dashboard') || r.body.includes('Dashboard'),
   });
-  
+
   errorRate.add(!success);
   responseTime.add(response.timings.duration);
   sleep(1);
-  
+
   // Test 4: API endpoints based on tier
   if (user.tier === 'adaptive' || user.tier === 'performance') {
     // Test nutrition API
@@ -106,12 +107,12 @@ export default function (data) {
       'nutrition API is fast': (r) => r.timings.duration < 1500,
       'nutrition API returns data': (r) => r.json() && r.json().length > 0,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(1);
   }
-  
+
   if (user.tier === 'performance') {
     // Test protocols API
     response = http.get(`${baseUrl}/api/protocols/available`, { headers: authHeaders });
@@ -119,51 +120,51 @@ export default function (data) {
       'protocols API responds': (r) => r.status === 200,
       'protocols API is fast': (r) => r.timings.duration < 2000,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(1);
-    
+
     // Test AI chat API
     response = http.post(`${baseUrl}/api/ai/chat`, JSON.stringify({
       message: 'What is optimal protein intake?',
       context: 'nutrition'
     }), {
-      headers: { 
+      headers: {
         ...authHeaders,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       },
     });
-    
+
     success = check(response, {
       'AI API responds': (r) => r.status === 200,
       'AI API response time acceptable': (r) => r.timings.duration < 5000,
       'AI API returns response': (r) => r.json() && r.json().response,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
     sleep(2);
   }
-  
+
   // Test 5: Static asset loading
   const staticAssets = [
     '/assets/logo.svg',
     '/assets/main.css',
     '/assets/main.js',
   ];
-  
+
   staticAssets.forEach(asset => {
     response = http.get(`${baseUrl}${asset}`);
     success = check(response, {
       [`${asset} loads successfully`]: (r) => r.status === 200 || r.status === 304,
       [`${asset} loads quickly`]: (r) => r.timings.duration < 1000,
     });
-    
+
     errorRate.add(!success);
     responseTime.add(response.timings.duration);
   });
-  
+
   sleep(1);
 }
 

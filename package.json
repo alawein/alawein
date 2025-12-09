@@ -6,10 +6,7 @@
   "type": "module",
   "packageManager": "npm@10.9.2",
   "workspaces": [
-    "organizations/alawein-technologies-llc/saas/*",
-    "organizations/alawein-technologies-llc/mobile-apps/*",
-    "organizations/live-it-iconic-llc/ecommerce/*",
-    "organizations/repz-llc/apps/*",
+    "platforms/*",
     "packages/*"
   ],
   "engines": {

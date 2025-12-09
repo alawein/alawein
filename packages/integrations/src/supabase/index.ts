@@ -18,9 +18,8 @@
  * ```
  */
 
-export { supabase, createSupabaseClient, createServerClient } from './client.js';
+export { supabase, createSupabaseClient, createServerClient, getSupabaseClient } from './client.js';
 export {
-  useAuth,
   signIn,
   signUp,
   signOut,
@@ -29,6 +28,10 @@ export {
   updatePassword,
   getSession,
   getUser,
+  refreshSession,
+  exchangeCodeForSession,
 } from './auth.js';
+export { useAuth } from './hooks.js';
+export type { AuthState, UseAuthReturn } from './hooks.js';
 export { uploadFile, downloadFile, deleteFile, getPublicUrl, listFiles } from './storage.js';
 export type { Database, Tables, Enums } from './types.js';

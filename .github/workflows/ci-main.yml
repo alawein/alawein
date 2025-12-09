@@ -18,19 +18,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Check formatting
         run: npm run format:check
-      
+
       - name: Validate docs
         run: npm run docs:validate
 
@@ -41,19 +41,19 @@ jobs:
     needs: validate
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Type check (Turbo + TypeScript Project References)
         run: npx turbo type-check
-      
+
       - name: Cache TypeScript build info
         uses: actions/cache@v4
         with:
@@ -69,16 +69,16 @@ jobs:
     needs: validate
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Lint (Turbo)
         run: npx turbo lint
 
@@ -89,19 +89,19 @@ jobs:
     needs: validate
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run tests (Turbo)
         run: npx turbo test:run
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         if: always()
@@ -116,19 +116,19 @@ jobs:
     needs: [type-check, lint]
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build all packages (Turbo)
         run: npx turbo build
-      
+
       - name: Cache Turbo
         uses: actions/cache@v4
         with:
@@ -146,36 +146,36 @@ jobs:
       fail-fast: false
       matrix:
         project:
-          - name: llm-works
-            path: organizations/alawein-technologies-llc/saas/llmworks
+          - name: llmworks
+            path: platforms/llmworks
           - name: portfolio
-            path: organizations/alawein-technologies-llc/saas/portfolio
-          - name: qml-playground
-            path: organizations/alawein-technologies-llc/saas/qmlab
+            path: platforms/portfolio
+          - name: qmlab
+            path: platforms/qmlab
           - name: attributa
-            path: organizations/alawein-technologies-llc/saas/attributa
+            path: platforms/attributa
           - name: simcore
-            path: organizations/alawein-technologies-llc/mobile-apps/simcore
-          - name: live-it-iconic
-            path: organizations/live-it-iconic-llc/ecommerce/liveiticonic
-          - name: repz-platform
-            path: organizations/repz-llc/apps/repz
-    
+            path: platforms/simcore
+          - name: liveiticonic
+            path: platforms/liveiticonic
+          - name: repz
+            path: platforms/repz
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: '20'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Build ${{ matrix.project.name }}
         run: npx turbo build --filter=${{ matrix.project.name }}
-      
+
       - name: Check bundle size
         if: matrix.project.name != 'simcore'
         run: |

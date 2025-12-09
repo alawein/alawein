@@ -32,7 +32,7 @@ deployable via Lovable.dev.
 - [x] Establish governance rules
 - [x] Migrate platforms to `/platforms/` folder
 - [x] Create shared component library (packages/ui: Button, Card, ErrorBoundary, Input, Badge, Spinner)
-- [ ] Standardize all package.json files
+- [x] Standardize all package.json files (type-check, format, format:check scripts)
 
 ### Completed Tasks
 
@@ -133,7 +133,7 @@ shared/
 - [x] Unified authentication (Supabase) - `useAuth` hook in packages/integrations
 - [x] Shared user preferences - `useUserPreferences` hook in packages/utils
 - [x] Cross-platform notifications - `useNotifications` hook in packages/utils (50 tests)
-- [ ] Analytics dashboard
+- [x] Analytics dashboard - `AnalyticsDashboard.tsx` in Studios Hub with platform metrics
 
 ### Studios Hub Enhancement
 

@@ -1,8 +1,9 @@
 import { Routes, Route, Link, useLocation } from 'react-router-dom'
-import { Home, Layers, FileCode, ExternalLink } from 'lucide-react'
+import { Home, Layers, FileCode, ExternalLink, BarChart3 } from 'lucide-react'
 import StudioSelector from './pages/StudioSelector'
 import PlatformsHub from './pages/PlatformsHub'
 import TemplatesHub from './pages/TemplatesHub'
+import AnalyticsDashboard from './pages/AnalyticsDashboard'
 
 function NavLink({ to, icon: Icon, children, external }: { to: string; icon: React.ElementType; children: React.ReactNode; external?: boolean }) {
   const location = useLocation()
@@ -54,6 +55,7 @@ export default function App() {
             <nav className="flex items-center gap-1">
               <NavLink to="/" icon={Home}>Home</NavLink>
               <NavLink to="/platforms" icon={Layers}>Platforms</NavLink>
+              <NavLink to="/analytics" icon={BarChart3}>Analytics</NavLink>
               <NavLink to="/templates" icon={FileCode}>Templates</NavLink>
               <NavLink to="https://alawein.com" icon={ExternalLink} external>Portfolio</NavLink>
             </nav>
@@ -66,6 +68,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<StudioSelector />} />
           <Route path="/platforms" element={<PlatformsHub />} />
+          <Route path="/analytics" element={<AnalyticsDashboard />} />
           <Route path="/templates" element={<TemplatesHub />} />
         </Routes>
       </main>

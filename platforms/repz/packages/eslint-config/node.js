@@ -53,7 +53,6 @@ module.exports = {
 
     // Error Handling
     'no-throw-literal': 'error',
-    'prefer-promise-reject-errors': 'error',
 
     // Import/Export Rules for Node.js
     'no-duplicate-imports': 'error',

@@ -33,35 +33,13 @@ const TOKEN_MAPPINGS = {
   '#FB923C': 'var(--color-brand-primary-light)',
   '#D4460A': 'var(--color-brand-primary-dark)',
   '#000000': 'var(--color-brand-black)',
-  '#FFFFFF': 'var(--color-brand-white)',
   '#141414': 'var(--color-surface-base)',
   '#1F1F1F': 'var(--color-surface-elevated)',
   '#2E2E2E': 'var(--color-surface-overlay)',
-  
-  // Spacing (common px values to token equivalents)
-  '4px': 'var(--spacing-xs)',
-  '8px': 'var(--spacing-sm)',
-  '16px': 'var(--spacing-md)',
-  '24px': 'var(--spacing-lg)',
-  '32px': 'var(--spacing-xl)',
-  '48px': 'var(--spacing-2xl)',
-  '64px': 'var(--spacing-3xl)',
-  
-  // Border radius
-  '4px': 'var(--radius-xs)', // Note: Will conflict with spacing, handled contextually
-  '8px': 'var(--radius-sm)',
-  '12px': 'var(--radius-md)',
-  '16px': 'var(--radius-lg)',
-  
-  // Font sizes
-  '12px': 'var(--font-size-xs)',
-  '14px': 'var(--font-size-sm)',
-  '16px': 'var(--font-size-base)',
-  '18px': 'var(--font-size-lg)',
-  '20px': 'var(--font-size-xl)',
-  '24px': 'var(--font-size-2xl)',
-  '30px': 'var(--font-size-3xl)',
-  
+
+  // Note: Pixel values like 4px, 8px, 12px, 16px, 24px are context-dependent
+  // Use SPACING_TOKENS, RADIUS_TOKENS, or FONT_SIZE_TOKENS maps below for context-aware replacement
+
   // Font weights
   '300': 'var(--font-weight-light)',
   '400': 'var(--font-weight-normal)',
@@ -79,7 +57,7 @@ const TAILWIND_MAPPINGS = {
   'text-black': 'text-[var(--color-brand-black)]',
   'text-orange-500': 'text-[var(--color-brand-primary)]',
   'text-orange-600': 'text-[var(--color-brand-primary-dark)]',
-  
+
   // Background colors
   'bg-white': 'bg-[var(--color-brand-white)]',
   'bg-black': 'bg-[var(--color-brand-black)]',
@@ -88,20 +66,20 @@ const TAILWIND_MAPPINGS = {
   'bg-gray-900': 'bg-[var(--color-surface-base)]',
   'bg-gray-800': 'bg-[var(--color-surface-elevated)]',
   'bg-gray-700': 'bg-[var(--color-surface-overlay)]',
-  
+
   // Spacing
   'p-1': 'p-[var(--spacing-xs)]',
   'p-2': 'p-[var(--spacing-sm)]',
   'p-4': 'p-[var(--spacing-md)]',
   'p-6': 'p-[var(--spacing-lg)]',
   'p-8': 'p-[var(--spacing-xl)]',
-  
+
   'm-1': 'm-[var(--spacing-xs)]',
   'm-2': 'm-[var(--spacing-sm)]',
   'm-4': 'm-[var(--spacing-md)]',
   'm-6': 'm-[var(--spacing-lg)]',
   'm-8': 'm-[var(--spacing-xl)]',
-  
+
   // Border radius
   'rounded': 'rounded-[var(--radius-sm)]',
   'rounded-md': 'rounded-[var(--radius-md)]',
@@ -126,32 +104,32 @@ class TokenMigrator {
   async migrate() {
     console.log('🎨 REPZ Design System Migration Tool');
     console.log('=====================================');
-    
+
     if (CONFIG.dryRun) {
       console.log('🔍 DRY RUN MODE - No files will be modified');
     }
-    
+
     try {
       // Load design tokens
       await this.loadTokens();
-      
+
       // Create backup
       if (!CONFIG.dryRun) {
         await this.createBackup();
       }
-      
+
       // Find files to process
       const files = await this.findFiles();
       console.log(`📁 Found ${files.length} files to process`);
-      
+
       // Process each file
       for (const file of files) {
         await this.processFile(file);
       }
-      
+
       // Generate report
       this.generateReport();
-      
+
     } catch (error) {
       console.error('💥 Migration failed:', error.message);
       process.exit(1);
@@ -176,17 +154,17 @@ class TokenMigrator {
    */
   async createBackup() {
     if (this.backupCreated) return;
-    
+
     try {
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
       const backupPath = `${CONFIG.backupDir}-${timestamp.split('T')[0]}`;
-      
+
       console.log(`💾 Creating backup at: ${backupPath}`);
-      
+
       // Copy src directory to backup
       await fs.mkdir(backupPath, { recursive: true });
       await this.copyDirectory(CONFIG.srcDir, join(backupPath, 'src'));
-      
+
       this.backupCreated = true;
       console.log('✅ Backup created successfully');
     } catch (error) {
@@ -200,11 +178,11 @@ class TokenMigrator {
   async copyDirectory(src, dest) {
     await fs.mkdir(dest, { recursive: true });
     const entries = await fs.readdir(src, { withFileTypes: true });
-    
+
     for (const entry of entries) {
       const srcPath = join(src, entry.name);
       const destPath = join(dest, entry.name);
-      
+
       if (entry.isDirectory()) {
         await this.copyDirectory(srcPath, destPath);
       } else {
@@ -219,15 +197,15 @@ class TokenMigrator {
   async findFiles() {
     const patterns = CONFIG.extensions.map(ext => `${CONFIG.srcDir}/**/*.${ext}`);
     const files = [];
-    
+
     for (const pattern of patterns) {
       const matches = await glob(pattern);
       files.push(...matches);
     }
-    
+
     // Filter out node_modules and test files
-    return files.filter(file => 
-      !file.includes('node_modules') && 
+    return files.filter(file =>
+      !file.includes('node_modules') &&
       !file.includes('.test.') &&
       !file.includes('.spec.') &&
       !file.includes('__tests__')
@@ -240,7 +218,7 @@ class TokenMigrator {
   async processFile(filePath) {
     try {
       this.stats.filesProcessed++;
-      
+
       const content = await fs.readFile(filePath, 'utf8');
       const originalContent = content;
       let modifiedContent = content;
@@ -250,7 +228,7 @@ class TokenMigrator {
       for (const [hardcoded, token] of Object.entries(TOKEN_MAPPINGS)) {
         const regex = new RegExp(this.escapeRegex(hardcoded), 'g');
         const matches = modifiedContent.match(regex);
-        
+
         if (matches) {
           // Context-aware replacement (avoid conflicts)
           modifiedContent = this.contextAwareReplace(modifiedContent, hardcoded, token, filePath);
@@ -263,7 +241,7 @@ class TokenMigrator {
         for (const [tailwindClass, tokenClass] of Object.entries(TAILWIND_MAPPINGS)) {
           const regex = new RegExp(`\\b${this.escapeRegex(tailwindClass)}\\b`, 'g');
           const matches = modifiedContent.match(regex);
-          
+
           if (matches) {
             modifiedContent = modifiedContent.replace(regex, tokenClass);
             fileReplacements += matches.length;
@@ -275,11 +253,11 @@ class TokenMigrator {
       if (modifiedContent !== originalContent) {
         this.stats.filesModified++;
         this.stats.replacements += fileReplacements;
-        
+
         if (CONFIG.verbose) {
           console.log(`🔧 ${filePath} - ${fileReplacements} replacements`);
         }
-        
+
         if (!CONFIG.dryRun) {
           await fs.writeFile(filePath, modifiedContent, 'utf8');
         }
@@ -298,9 +276,9 @@ class TokenMigrator {
     // For spacing values, determine context (margin, padding, border-radius, etc.)
     if (hardcoded.endsWith('px')) {
       const value = hardcoded.slice(0, -2);
-      
+
       // Check if it's in a border-radius context
-      if (content.includes(`border-radius: ${hardcoded}`) || 
+      if (content.includes(`border-radius: ${hardcoded}`) ||
           content.includes(`borderRadius: '${hardcoded}'`) ||
           content.includes(`rounded-[${hardcoded}]`)) {
         const radiusToken = this.getRadiusToken(value);
@@ -308,9 +286,9 @@ class TokenMigrator {
           return content.replace(new RegExp(this.escapeRegex(hardcoded), 'g'), radiusToken);
         }
       }
-      
+
       // Check if it's in a font-size context
-      if (content.includes(`font-size: ${hardcoded}`) || 
+      if (content.includes(`font-size: ${hardcoded}`) ||
           content.includes(`fontSize: '${hardcoded}'`)) {
         const fontSizeToken = this.getFontSizeToken(value);
         if (fontSizeToken) {
@@ -318,7 +296,7 @@ class TokenMigrator {
         }
       }
     }
-    
+
     // Default replacement
     return content.replace(new RegExp(this.escapeRegex(hardcoded), 'g'), token);
   }
@@ -374,7 +352,7 @@ class TokenMigrator {
     console.log(`🔧 Files modified: ${this.stats.filesModified}`);
     console.log(`🔄 Total replacements: ${this.stats.replacements}`);
     console.log(`❌ Errors: ${this.stats.errors}`);
-    
+
     if (CONFIG.dryRun) {
       console.log('\n🔍 DRY RUN - No files were actually modified');
       console.log('Run without --dry-run to apply changes');
@@ -386,7 +364,7 @@ class TokenMigrator {
     } else {
       console.log('\n✨ No files needed migration - already using tokens!');
     }
-    
+
     // Recommendations
     console.log('\n💡 NEXT STEPS:');
     console.log('1. Run tests: npm run test');

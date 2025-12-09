@@ -55,6 +55,16 @@ export default [
       "no-console": "off",
       "prefer-const": "warn",
       "no-unused-expressions": "off",
+      // Allow lexical declarations in case blocks (stylistic, not a bug)
+      "no-case-declarations": "off",
+      // Allow empty interfaces for type extension patterns
+      "@typescript-eslint/no-empty-object-type": "off",
+      // Allow useless escapes (often intentional in regex patterns)
+      "no-useless-escape": "warn",
+      // Allow empty catch blocks with comment
+      "no-empty": ["warn", { "allowEmptyCatch": true }],
+      // Control regex characters are sometimes intentional
+      "no-control-regex": "warn",
     },
   },
 

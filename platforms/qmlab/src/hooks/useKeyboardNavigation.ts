@@ -47,7 +47,7 @@ export const useKeyboardNavigation = () => {
   // Roving tabindex for complex widgets
   const setRovingTabIndex = useCallback((container: HTMLElement, activeElement: HTMLElement) => {
     const focusableChildren = container.querySelectorAll('[role="tab"], [role="menuitem"], [role="gridcell"]');
-    
+
     focusableChildren.forEach((child) => {
       (child as HTMLElement).tabIndex = child === activeElement ? 0 : -1;
     });
@@ -56,7 +56,7 @@ export const useKeyboardNavigation = () => {
   // Skip links enhancement
   const enhanceSkipLinks = useCallback(() => {
     const skipLinks = document.querySelectorAll('.skip-to-main, [href^="#"]');
-    
+
     skipLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -69,10 +69,10 @@ export const useKeyboardNavigation = () => {
             if (!targetElement.hasAttribute('tabindex')) {
               targetElement.tabIndex = -1;
             }
-            
+
             targetElement.focus();
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            
+
             // Track skip link usage
             trackQuantumEvents.featureDiscovery('skip_link_used', 'keyboard');
           }
@@ -86,7 +86,7 @@ export const useKeyboardNavigation = () => {
     const focusableElements = container.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
     ) as NodeListOf<HTMLElement>;
-    
+
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -106,7 +106,7 @@ export const useKeyboardNavigation = () => {
           }
         }
       }
-      
+
       // Escape to close
       if (e.key === 'Escape') {
         const closeButton = container.querySelector('[data-close], [aria-label*="close"]') as HTMLElement;
@@ -126,11 +126,11 @@ export const useKeyboardNavigation = () => {
   const handleArrowNavigation = useCallback((e: KeyboardEvent, container: HTMLElement, orientation: 'horizontal' | 'vertical' | 'grid' = 'horizontal') => {
     const items = Array.from(container.querySelectorAll('[role="tab"], [role="menuitem"], [role="gridcell"]')) as HTMLElement[];
     const currentIndex = items.indexOf(document.activeElement as HTMLElement);
-    
+
     if (currentIndex === -1) return;
-    
+
     let nextIndex = currentIndex;
-    
+
     switch (e.key) {
       case 'ArrowRight':
         if (orientation === 'horizontal' || orientation === 'grid') {
@@ -161,7 +161,7 @@ export const useKeyboardNavigation = () => {
       default:
         return;
     }
-    
+
     e.preventDefault();
     items[nextIndex]?.focus();
     setRovingTabIndex(container, items[nextIndex]);
@@ -171,25 +171,25 @@ export const useKeyboardNavigation = () => {
   useEffect(() => {
     const handleFocusChange = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
-      
+
       if (target && target !== currentFocusRef.current) {
         // Track focus history for better navigation
         if (currentFocusRef.current) {
           focusHistoryRef.current.push(currentFocusRef.current);
-          
+
           // Keep history manageable
           if (focusHistoryRef.current.length > 10) {
             focusHistoryRef.current.shift();
           }
         }
-        
+
         currentFocusRef.current = target;
-        
+
         // Announce focus changes for screen readers
-        const announcement = target.getAttribute('aria-label') || 
-                           target.getAttribute('title') || 
+        const announcement = target.getAttribute('aria-label') ||
+                           target.getAttribute('title') ||
                            target.textContent?.slice(0, 50);
-        
+
         if (announcement && target.matches('button, [role="button"], [role="tab"]')) {
           // Use aria-live region for announcements
           const announcer = document.getElementById('focus-announcer');
@@ -204,16 +204,17 @@ export const useKeyboardNavigation = () => {
       // Global keyboard shortcuts
       if (e.ctrlKey || e.metaKey) {
         switch (e.key) {
-          case '/':
+          case '/': {
             // Focus search (if available)
             e.preventDefault();
             const searchInput = document.querySelector('input[type="search"], input[placeholder*="search"]') as HTMLElement;
             searchInput?.focus();
             trackQuantumEvents.featureDiscovery('keyboard_shortcut_search', 'keyboard');
             break;
+          }
         }
       }
-      
+
       // Alt + number for quick navigation
       if (e.altKey && /^[1-9]$/.test(e.key)) {
         e.preventDefault();
@@ -228,7 +229,7 @@ export const useKeyboardNavigation = () => {
 
     document.addEventListener('focusin', handleFocusChange);
     document.addEventListener('keydown', handleKeyDown);
-    
+
     // Initialize enhancements
     enhanceSkipLinks();
 
@@ -276,7 +277,7 @@ export const useScreenReaderOptimizations = () => {
   const announceToScreenReader = useCallback((message: string, priority: 'polite' | 'assertive' = 'polite') => {
     const announcerId = priority === 'assertive' ? 'status-announcer' : 'focus-announcer';
     const announcer = document.getElementById(announcerId);
-    
+
     if (announcer) {
       // Clear first to ensure the message is announced
       announcer.textContent = '';

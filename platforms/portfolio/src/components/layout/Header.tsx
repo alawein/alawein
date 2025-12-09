@@ -9,7 +9,7 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function Header() {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -72,3 +72,5 @@ export function Header() {
   );
 }
 
+export { Header };
+export default Header;

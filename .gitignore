@@ -141,7 +141,7 @@ env/
 # Archive and backup
 .archive/
 .archives/
-backup/
+/backup/
 *.bak
 *.old
 .backup_*/

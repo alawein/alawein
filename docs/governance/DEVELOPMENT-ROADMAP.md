@@ -132,15 +132,15 @@ shared/
 
 - [x] Unified authentication (Supabase) - `useAuth` hook in packages/integrations
 - [x] Shared user preferences - `useUserPreferences` hook in packages/utils
-- [ ] Cross-platform notifications
+- [x] Cross-platform notifications - `useNotifications` hook in packages/utils (50 tests)
 - [ ] Analytics dashboard
 
 ### Studios Hub Enhancement
 
-- [ ] Real-time platform status
-- [ ] Quick actions
-- [ ] Recent activity feed
-- [ ] Search across platforms
+- [x] Real-time platform status - `usePlatformStatus` hook in packages/utils
+- [x] Quick actions - Added to PlatformsHub
+- [x] Recent activity feed - Added to PlatformsHub
+- [x] Search across platforms - Added to PlatformsHub
 
 ---
 

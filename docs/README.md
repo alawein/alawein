@@ -1,14 +1,17 @@
 # AlaweinOS Documentation
 
-Complete documentation for AI assistants (Claude, Cline, Cursor, etc.) and developers.
+Complete documentation for AI assistants (Claude, Cline, Cursor, etc.) and
+developers.
 
 ## Table of Contents
 
-1. [Architecture Overview](./ARCHITECTURE.md)
-2. [Project Structure](./STRUCTURE.md)
-3. [Platform APIs](./APIS.md)
-4. [Design System](./DESIGN_SYSTEM.md)
-5. [Development Guide](./DEVELOPMENT.md)
+1. [Architecture Overview](./architecture/ARCHITECTURE.md)
+2. [Project Structure](./architecture/STRUCTURE.md)
+3. [Platform APIs](./api/APIS.md)
+4. [Design System](./guides/DESIGN_SYSTEM.md)
+5. [Development Guide](./developer/DEVELOPMENT.md)
+6. [Governance](./governance/README.md)
+7. [Security](./security/SECURITY-IMPLEMENTATION.md)
 
 ---
 
@@ -16,7 +19,8 @@ Complete documentation for AI assistants (Claude, Cline, Cursor, etc.) and devel
 
 ### What is AlaweinOS?
 
-AlaweinOS is a **unified platform** that hosts multiple specialized applications:
+AlaweinOS is a **unified platform** that hosts multiple specialized
+applications:
 
 | Platform     | Route         | Purpose                           | Status      |
 | ------------ | ------------- | --------------------------------- | ----------- |
@@ -30,16 +34,17 @@ AlaweinOS is a **unified platform** that hosts multiple specialized applications
 
 ### Key Concepts
 
-1. **Root is Portfolio**: The `/` route IS the portfolio. Don't confuse it with other pages.
+1. **Root is Portfolio**: The `/` route IS the portfolio. Don't confuse it with
+   other pages.
 2. **Projects Hub**: `/projects` shows all available platforms as cards.
-3. **Independent Platforms**: Each platform (`/simcore`, `/mezan`, etc.) has its own dashboard,
-   routes, and backend API.
-4. **Shared Design System**: All platforms use a unified design system defined in `src/index.css`
-   and `tailwind.config.ts`.
+3. **Independent Platforms**: Each platform (`/simcore`, `/mezan`, etc.) has its
+   own dashboard, routes, and backend API.
+4. **Shared Design System**: All platforms use a unified design system defined
+   in `src/index.css` and `tailwind.config.ts`.
 
 ### File Organization
 
-```
+```text
 src/
 ├── pages/Index.tsx          # Portfolio (root /)
 ├── projects/                # Unified projects module
@@ -98,7 +103,8 @@ Shared tables:
 2. **Platform routes are at root level**: `/simcore`, not `/projects/simcore`
 3. **Use the project registry** in `src/projects/config.ts` for platform data
 4. **Backend APIs** are Edge Functions in `supabase/functions/{platform}-api/`
-5. **Design tokens** are in `src/index.css` - use semantic variables, not raw colors
+5. **Design tokens** are in `src/index.css` - use semantic variables, not raw
+   colors
 
 ### Common Tasks
 

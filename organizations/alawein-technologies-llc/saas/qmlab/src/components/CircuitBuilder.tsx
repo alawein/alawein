@@ -87,18 +87,18 @@ export const CircuitBuilder = () => {
       showFeedback('error', 'Please select a gate first');
       return;
     }
-    
+
     const targetQubit = qubit !== undefined ? qubit : selectedQubit;
     const newGate = {
       id: `${gateName}-${Date.now()}`,
       name: gateName,
       qubit: targetQubit
     };
-    
+
     const updatedGates = [...circuitGates, newGate];
     saveToHistory(circuitGates); // Save current state before changing
     setCircuitGates(updatedGates);
-    
+
     const gateInfo = gates.find(g => g.name === gateName);
     showFeedback('success', `Added ${gateInfo?.label || gateName} to qubit |${targetQubit}⟩`);
     announce(`Added ${gateName} gate to qubit |${targetQubit}⟩`);
@@ -108,11 +108,11 @@ export const CircuitBuilder = () => {
   const removeGateFromCircuit = (gateId: string) => {
     const gateToRemove = circuitGates.find(g => g.id === gateId);
     if (!gateToRemove) return;
-    
+
     saveToHistory(circuitGates);
     const updatedGates = circuitGates.filter(g => g.id !== gateId);
     setCircuitGates(updatedGates);
-    
+
     const gateInfo = gates.find(g => g.name === gateToRemove.name);
     showFeedback('info', `Removed ${gateInfo?.label || gateToRemove.name} from circuit`);
     announce(`Removed ${gateToRemove.name} gate from circuit`);
@@ -157,18 +157,18 @@ export const CircuitBuilder = () => {
       showFeedback('error', 'Add some gates to the circuit first!');
       return;
     }
-    
+
     setIsRunning(true);
     setProgress(0);
     showFeedback('info', 'Starting quantum circuit simulation...');
     trackQuantumEvents.circuitRun(circuitGates.length, 1000);
-    
+
     // Simulate circuit execution with progress
     for (let i = 0; i <= 100; i += 10) {
       setProgress(i);
       await new Promise(resolve => setTimeout(resolve, 100));
     }
-    
+
     setTimeout(() => {
       setIsRunning(false);
       setProgress(0);
@@ -180,7 +180,7 @@ export const CircuitBuilder = () => {
   // Keyboard shortcuts
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (isRunning) return;
-    
+
     // Prevent default only for our shortcuts
     switch (event.key.toLowerCase()) {
       case 'z':
@@ -247,10 +247,10 @@ export const CircuitBuilder = () => {
       role="application"
       aria-label="Quantum Circuit Builder"
     >
-      <Card className="relative rounded-2xl border border-blue-400/30 bg-slate-900/80 shadow-xl hover:border-blue-400/50 transition-all duration-300">
-        {/* Primary accent bar */}
-        <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-400 rounded-r-full"></div>
-      
+      <Card className="relative rounded-2xl border border-blue-400/30 bg-slate-900/80 shadow-xl hover:border-blue-400/50 transition-all duration-300 circuit-builder-enhanced">
+        {/* Primary accent bar with quantum glow */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-blue-400 rounded-r-full animate-quantum-pulse"></div>
+
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -273,8 +273,8 @@ export const CircuitBuilder = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <StatusChip 
-              variant={isRunning ? "running" : "idle"} 
+            <StatusChip
+              variant={isRunning ? "running" : "idle"}
               icon={isRunning ? <Activity className="w-3 h-3" /> : <Cpu className="w-3 h-3" />}
             >
               {isRunning ? "Running" : "Ready"}
@@ -370,7 +370,7 @@ export const CircuitBuilder = () => {
                 </>
               )}
             </Button>
-            
+
             <Button
               onClick={clearCircuit}
               variant="outline"
@@ -382,7 +382,7 @@ export const CircuitBuilder = () => {
               Clear
             </Button>
           </div>
-          
+
           {/* Undo/Redo buttons */}
           <div className="flex gap-2">
             <Button
@@ -396,7 +396,7 @@ export const CircuitBuilder = () => {
               <Undo className="w-4 h-4 mr-2" />
               Undo
             </Button>
-            
+
             <Button
               onClick={redoLastAction}
               variant="outline"
@@ -411,14 +411,16 @@ export const CircuitBuilder = () => {
           </div>
         </div>
 
-        {/* Progress indicator */}
+        {/* Progress indicator with BLACKBOX enhancement */}
         {isRunning && (
-          <div className="space-y-2">
+          <div className="space-y-2 data-viz-container">
             <div className="flex justify-between text-small text-muted">
               <span>Executing circuit...</span>
-              <span className="font-mono">{progress}%</span>
+              <span className="font-mono param-value-display changing">{progress}%</span>
             </div>
-            <Progress value={progress} className="h-2" />
+            <div className="probability-bar">
+              <div className="probability-bar-fill" style={{ width: `${progress}%` }} />
+            </div>
           </div>
         )}
 
@@ -449,7 +451,7 @@ export const CircuitBuilder = () => {
         {/* Gate palette with educational descriptions */}
         <div>
           <h4 className="text-sm font-medium text-slate-300 mb-3">Available Gates</h4>
-          <div className={`grid gap-3 ${
+          <div className={`grid gap-3 data-list-staggered ${
             difficultyLevel === 'beginner' ? 'grid-cols-1' :
             difficultyLevel === 'intermediate' ? 'grid-cols-2' :
             'grid-cols-3'
@@ -457,11 +459,12 @@ export const CircuitBuilder = () => {
             {gates.map((gate) => (
               <div
                 key={gate.name}
-                className={`relative group p-3 rounded-lg border transition-all duration-200 ${
-                  selectedGate === gate.name 
-                    ? 'border-blue-400/50 bg-blue-500/10' 
+                className={`relative group p-3 rounded-lg border transition-all duration-200 quantum-gate-enhanced ${
+                  selectedGate === gate.name
+                    ? 'border-blue-400/50 bg-blue-500/10'
                     : 'border-slate-600/50 hover:border-slate-500/60 bg-slate-800/30'
                 }`}
+                data-selected={selectedGate === gate.name}
               >
                 <Button
                   onClick={() => selectGate(gate.name)}
@@ -525,11 +528,11 @@ export const CircuitBuilder = () => {
               <div className="space-y-3">
                 {/* Qubit lines */}
                 {Array.from({ length: maxQubits + 1 }, (_, i) => i).map((qubit) => (
-                  <div 
-                    key={qubit} 
+                  <div
+                    key={qubit}
                     className={`flex items-center gap-2 p-2 rounded-lg border transition-all duration-200 ${
-                      selectedQubit === qubit 
-                        ? 'border-blue-400/50 bg-blue-500/10' 
+                      selectedQubit === qubit
+                        ? 'border-blue-400/50 bg-blue-500/10'
                         : 'border-transparent hover:border-slate-500/60 hover:bg-slate-800/50'
                     }`}
                     onClick={() => setSelectedQubit(qubit)}
@@ -540,16 +543,16 @@ export const CircuitBuilder = () => {
                     onDragOver={handleDragOver}
                     style={{ cursor: 'pointer' }}
                   >
-                    <span className={`text-sm font-mono w-8 ${
+                    <span className={`text-sm font-mono w-8 param-value-display ${
                       selectedQubit === qubit ? 'text-blue-400 font-semibold' : 'text-muted-foreground'
                     }`}>|{qubit}⟩</span>
-                    <div className="flex-1 h-0.5 bg-slate-600/50 relative">
+                    <div className={`flex-1 h-0.5 bg-slate-600/50 relative ${circuitGates.filter(g => g.qubit === qubit).length > 0 ? 'circuit-wire-enhanced' : ''}`}>
                       {circuitGates
                         .filter(gate => gate.qubit === qubit)
                         .map((gate, index) => (
                           <div
                             key={gate.id}
-                            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-blue-500 text-white rounded border border-blue-400 flex items-center justify-center text-xs font-mono font-semibold hover:scale-110 transition-all cursor-pointer group shadow-lg"
+                            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-blue-500 text-white rounded border border-blue-400 flex items-center justify-center text-xs font-mono font-semibold hover:scale-110 transition-all cursor-pointer group shadow-lg quantum-gate-enhanced"
                             style={{ left: `${(index + 1) * 60}px` }}
                             title={`${gates.find(g => g.name === gate.name)?.label} on qubit |${qubit}⟩ - Click to remove`}
                             onClick={(e) => {
@@ -580,7 +583,7 @@ export const CircuitBuilder = () => {
                     </Button>
                   </div>
                 ))}
-                
+
                 {/* Add gate button */}
                 <div className="flex justify-center pt-2">
                   <Button
@@ -615,7 +618,7 @@ export const CircuitBuilder = () => {
               <div className="text-sm text-muted-foreground">Depth</div>
             </div>
           </div>
-          
+
           {/* Keyboard shortcuts help */}
           <div className="p-3 rounded-lg bg-slate-800/50 border border-slate-700/30">
             <h5 className="text-xs font-medium text-slate-300 mb-2">💡 Keyboard Shortcuts:</h5>

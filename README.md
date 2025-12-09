@@ -1,6 +1,7 @@
 # Alawein Technologies Monorepo
 
-**Multi-LLC enterprise monorepo** for Alawein Technologies LLC, Live It Iconic LLC, and REPZ LLC.
+**Multi-LLC enterprise monorepo** for Alawein Technologies LLC, Live It Iconic
+LLC, and REPZ LLC.
 
 [![CI](https://github.com/alawein/alawein/workflows/CI/badge.svg)](https://github.com/alawein/alawein/actions)
 [![Security](https://github.com/alawein/alawein/workflows/CodeQL/badge.svg)](https://github.com/alawein/alawein/security)
@@ -64,26 +65,26 @@ pytest
 
 ### 🔬 Alawein Technologies LLC
 
-| Category | Project | Description | Stack |
-|----------|---------|-------------|-------|
-| **SaaS** | [LLMWorks](organizations/alawein-technologies-llc/saas/llmworks) | LLM evaluation & benchmarking | React, Vite, Supabase |
-| **SaaS** | [QMLab](organizations/alawein-technologies-llc/saas/qmlab) | Quantum computing laboratory | React, Vite |
-| **SaaS** | [Attributa](organizations/alawein-technologies-llc/saas/attributa) | Attribution analytics | React, Vite |
-| **Mobile** | [SimCore](organizations/alawein-technologies-llc/mobile-apps/simcore) | Physics simulations | Capacitor, React |
-| **Package** | [Librex](organizations/alawein-technologies-llc/packages/librex) | QAP optimization solver | Python |
-| **Package** | [MEZAN](organizations/alawein-technologies-llc/packages/mezan) | ML/AI DevOps | Python |
-| **Research** | [TalAI](organizations/alawein-technologies-llc/research/talai) | AI research platform | Python |
+| Category     | Project                                                               | Description                   | Stack                 |
+| ------------ | --------------------------------------------------------------------- | ----------------------------- | --------------------- |
+| **SaaS**     | [LLMWorks](organizations/alawein-technologies-llc/saas/llmworks)      | LLM evaluation & benchmarking | React, Vite, Supabase |
+| **SaaS**     | [QMLab](organizations/alawein-technologies-llc/saas/qmlab)            | Quantum computing laboratory  | React, Vite           |
+| **SaaS**     | [Attributa](organizations/alawein-technologies-llc/saas/attributa)    | Attribution analytics         | React, Vite           |
+| **Mobile**   | [SimCore](organizations/alawein-technologies-llc/mobile-apps/simcore) | Physics simulations           | Capacitor, React      |
+| **Package**  | [Librex](organizations/alawein-technologies-llc/packages/librex)      | QAP optimization solver       | Python                |
+| **Package**  | [MEZAN](organizations/alawein-technologies-llc/packages/mezan)        | ML/AI DevOps                  | Python                |
+| **Research** | [TalAI](organizations/alawein-technologies-llc/research/talai)        | AI research platform          | Python                |
 
 ### 🛍️ Live It Iconic LLC
 
-| Project | Description | Stack |
-|---------|-------------|-------|
+| Project                                                                 | Description                 | Stack               |
+| ----------------------------------------------------------------------- | --------------------------- | ------------------- |
 | [LiveItIconic](organizations/live-it-iconic-llc/ecommerce/liveiticonic) | Fashion e-commerce platform | React, Vite, Stripe |
 
 ### 💪 REPZ LLC
 
-| Project | Description | Stack |
-|---------|-------------|-------|
+| Project                                  | Description                  | Stack                      |
+| ---------------------------------------- | ---------------------------- | -------------------------- |
 | [REPZ](organizations/repz-llc/apps/repz) | AI fitness coaching platform | Capacitor, React, Supabase |
 
 ## 🛠️ Infrastructure
@@ -92,20 +93,21 @@ pytest
 - **Security**: CodeQL, Trivy, Dependabot, SLSA provenance
 - **Governance**: CODEOWNERS, pre-commit hooks, policy enforcement
 - **Documentation**: MkDocs, architecture guides
-- **Consolidation**: 87% root cleanup, 67% UI package reduction ([See Details](README-CONSOLIDATION.md))
+- **Consolidation**: 87% root cleanup, 67% UI package reduction
+  ([See Details](reports/README-CONSOLIDATION.md))
 
 ## 📚 Documentation
 
-| Resource | Description |
-|----------|-------------|
-| [Architecture](docs/governance/ARCHITECTURE.md) | System design & decisions |
-| [Lovable Workflow](docs/developer/LOVABLE-DEV-WORKFLOW.md) | Lovable.dev integration guide |
-| [Contributing](docs/governance/CONTRIBUTING.md) | Contribution guidelines |
-| [Security](SECURITY.md) | Security policy |
-| [**Consolidation System**](README-CONSOLIDATION.md) | **Repository consolidation & cleanup** ⭐ |
-| [Quick Start Guide](QUICK-START-GUIDE.md) | Quick reference for consolidation changes |
-| [Master Index](CONSOLIDATION-MASTER-INDEX.md) | Complete documentation index |
-| [Future Roadmap](CONSOLIDATION-ROADMAP-FUTURE-PHASES.md) | Planned future improvements |
+| Resource                                                         | Description                               |
+| ---------------------------------------------------------------- | ----------------------------------------- |
+| [Architecture](docs/governance/ARCHITECTURE.md)                  | System design & decisions                 |
+| [Lovable Workflow](docs/developer/LOVABLE-DEV-WORKFLOW.md)       | Lovable.dev integration guide             |
+| [Contributing](docs/governance/CONTRIBUTING.md)                  | Contribution guidelines                   |
+| [Security](SECURITY.md)                                          | Security policy                           |
+| [**Consolidation System**](reports/README-CONSOLIDATION.md)      | **Repository consolidation & cleanup** ⭐ |
+| [Quick Start Guide](reports/QUICK-START-GUIDE.md)                | Quick reference for consolidation changes |
+| [Master Index](reports/CONSOLIDATION-MASTER-INDEX.md)            | Complete documentation index              |
+| [Future Roadmap](reports/CONSOLIDATION-ROADMAP-FUTURE-PHASES.md) | Planned future improvements               |
 
 ## 👤 Author
 
@@ -113,4 +115,4 @@ pytest
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) for details.
+MIT License - See [LICENSES.md](LICENSES.md) for details.

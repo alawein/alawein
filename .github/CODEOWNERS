@@ -1,30 +1,92 @@
 # CODEOWNERS - Enforce Review Requirements
 # https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+#
+# Multi-LLC Monorepo Code Ownership
+# Each LLC has designated ownership with clear boundaries
+# Last Updated: December 2024
 
+# =============================================================================
+# DEFAULT OWNERSHIP
+# =============================================================================
 # Default owner for everything in the repo
 * @alawein
 
-# Governance & Infrastructure - Requires security team review
+# =============================================================================
+# LLC-SPECIFIC OWNERSHIP BOUNDARIES
+# =============================================================================
+# Each LLC directory is owned by its respective team
+# Cross-LLC changes require explicit approval from @alawein
+
+# Alawein Technologies LLC - Scientific Computing & AI/ML
+/organizations/alawein-technologies-llc/ @alawein
+/organizations/alawein-technologies-llc/saas/ @alawein
+/organizations/alawein-technologies-llc/mobile-apps/ @alawein
+/organizations/alawein-technologies-llc/packages/ @alawein
+/organizations/alawein-technologies-llc/research/ @alawein
+/organizations/alawein-technologies-llc/services/ @alawein
+/organizations/alawein-technologies-llc/IP-MANIFEST.md @alawein
+
+# Live It Iconic LLC - E-commerce
+/organizations/live-it-iconic-llc/ @alawein
+/organizations/live-it-iconic-llc/ecommerce/ @alawein
+/organizations/live-it-iconic-llc/packages/ @alawein
+/organizations/live-it-iconic-llc/IP-MANIFEST.md @alawein
+
+# REPZ LLC - Fitness & Wellness Platform
+/organizations/repz-llc/ @alawein
+/organizations/repz-llc/apps/ @alawein
+/organizations/repz-llc/apps/repz/ @alawein
+/organizations/repz-llc/supabase/ @alawein
+/organizations/repz-llc/packages/ @alawein
+/organizations/repz-llc/tests/ @alawein
+/organizations/repz-llc/IP-MANIFEST.md @alawein
+
+# =============================================================================
+# SHARED PACKAGES - Requires Cross-LLC Approval
+# =============================================================================
+# Changes to shared packages affect all LLCs and require explicit approval
+/packages/ @alawein
+/packages/LICENSE-INTERNAL.md @alawein
+
+# =============================================================================
+# GOVERNANCE & INFRASTRUCTURE
+# =============================================================================
+# Governance policies and infrastructure require security review
 .metaHub/ @alawein
 .metaHub/policies/ @alawein
 .metaHub/security/ @alawein
 .metaHub/backstage/ @alawein
 
+# =============================================================================
+# GITHUB CONFIGURATION
+# =============================================================================
 # GitHub Workflows & Actions - Requires DevOps review
 .github/workflows/ @alawein
 .github/actions/ @alawein
 .github/CODEOWNERS @alawein
 
+# =============================================================================
+# REPOSITORY POLICY FILES
+# =============================================================================
 # Repository Policy Files - Requires governance approval
 SECURITY.md @alawein
 LICENSE @alawein
+LICENSES.md @alawein
 .gitignore @alawein
 
+# =============================================================================
+# DEPENDENCY MANAGEMENT
+# =============================================================================
 # Dependency Management - Requires security review
 .metaHub/renovate.json @alawein
 package.json @alawein
+package-lock.json @alawein
 pnpm-workspace.yaml @alawein
+pnpm-lock.yaml @alawein
 
+# =============================================================================
+# INFRASTRUCTURE
+# =============================================================================
 # Docker & Infrastructure - Requires platform team review
 docker-compose*.yml @alawein
 Dockerfile @alawein
@@ -33,7 +95,11 @@ Dockerfile @alawein
 # Monorepo Configuration - Requires architecture review
 turbo.json @alawein
 Makefile @alawein
+tsconfig.json @alawein
 
-# Organization Workspaces - Respective owners
-alawein/ @alawein
-organizations/ @alawein
+# =============================================================================
+# IP & LEGAL DOCUMENTS
+# =============================================================================
+# All IP manifests require explicit owner approval
+**/IP-MANIFEST.md @alawein
+**/LICENSE*.md @alawein

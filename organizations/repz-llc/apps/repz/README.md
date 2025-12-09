@@ -2,6 +2,8 @@
 
 > AI-powered fitness coaching platform connecting certified personal trainers with clients through tiered subscriptions.
 
+**Part of REPZ LLC** | [IP Manifest](../../IP-MANIFEST.md) | [Organization README](../../README.md)
+
 ## Quick Start
 
 ```bash
@@ -10,6 +12,16 @@ npm run dev          # Start dev server (port 8080)
 npm run build        # Production build
 npm run test         # Run tests
 ```
+
+## Deployment
+
+| Setting | Value |
+|---------|-------|
+| **Vercel Root Directory** | `organizations/repz-llc/apps/repz` |
+| **Build Command** | `npm run build:production` |
+| **Output Directory** | `dist` |
+| **Framework** | Vite |
+| **Region** | iad1 (US East) |
 
 ## Tech Stack
 
@@ -25,22 +37,19 @@ npm run test         # Run tests
 ```text
 repz/
 ├── src/                 # Application source
-│   ├── components/      # React components (261 items)
+│   ├── components/      # React components (261+ items)
+│   ├── features/        # Feature modules (17 domains)
 │   ├── pages/           # Route pages
 │   ├── hooks/           # Custom React hooks
 │   ├── lib/             # Utilities
 │   └── integrations/    # Supabase client
-├── supabase/            # Backend
-│   ├── functions/       # 30+ Edge Functions
-│   └── migrations/      # Database migrations
-├── tests/               # E2E & integration tests
-├── packages/            # Shared packages (monorepo)
+├── api/                 # Vercel serverless functions
+├── public/              # Static assets
 ├── scripts/             # Build & maintenance scripts
-└── docs/                # Documentation
-    ├── archive/         # Historical docs
-    ├── deployment/      # Deployment guides
-    └── reports/         # Audit reports
+└── vercel.json          # Deployment configuration
 ```
+
+For backend configuration, see [../../supabase/](../../supabase/).
 
 ## Tier System
 
@@ -83,6 +92,16 @@ See `docs/deployment/PRODUCTION-CONFIG.md` for complete setup.
 - **[docs/INTEGRATIONS.md](./docs/INTEGRATIONS.md)** - Third-party integrations
 - **[SECURITY.md](./SECURITY.md)** - Security policies
 
+## Monorepo Integration
+
+This app is part of the [alawein/alawein](https://github.com/alawein/alawein) monorepo:
+
+- **Shared Packages**: Uses `@monorepo/*` packages from root `/packages/`
+- **Internal License**: See [LICENSE-INTERNAL.md](../../../../packages/LICENSE-INTERNAL.md)
+- **CI/CD**: Shared GitHub Actions workflows in `/.github/workflows/`
+
 ## License
 
 Proprietary - REPZ LLC
+
+See [IP-MANIFEST.md](../../IP-MANIFEST.md) for intellectual property details.

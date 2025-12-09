@@ -9,9 +9,12 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview --host :: --port 4173",
+    "type-check": "tsc --noEmit",
     "test": "playwright test",
     "test:a11y": "playwright test --config=playwright-a11y.config.ts",
     "test:mobile": "playwright test --config=playwright-mobile.config.ts",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "audit:a11y": "echo 'Note: Pa11y requires server running at localhost:4173'",
     "audit:lighthouse": "echo 'Note: Lighthouse requires server running at localhost:4173'",
     "audit:axe": "echo 'Note: Axe requires server running at localhost:4173'"

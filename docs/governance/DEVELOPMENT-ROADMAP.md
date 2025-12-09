@@ -198,7 +198,7 @@ shared/
 
 ### Low Priority
 
-1. Storybook for components
+1. ~~Storybook for components~~ ✅ (packages/ui with Button, Badge, Input, Spinner stories)
 2. Visual regression tests
 3. Accessibility audit
 4. SEO optimization

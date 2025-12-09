@@ -23,17 +23,17 @@ module.exports = {
   },
   rules: {
     // Code Quality
-    'no-unused-vars': ['error', { 
+    'no-unused-vars': ['error', {
       argsIgnorePattern: '^_',
       varsIgnorePattern: '^_',
-      ignoreRestSiblings: true 
+      ignoreRestSiblings: true
     }],
-    'no-console': ['warn', { 
-      allow: ['warn', 'error', 'info'] 
+    'no-console': ['warn', {
+      allow: ['warn', 'error', 'info']
     }],
     'no-debugger': 'error',
     'no-alert': 'error',
-    
+
     // Best Practices
     'eqeqeq': ['error', 'always'],
     'curly': ['error', 'all'],
@@ -50,7 +50,7 @@ module.exports = {
     'no-useless-return': 'error',
     'prefer-promise-reject-errors': 'error',
     'radix': 'error',
-    
+
     // ES6+ Features
     'prefer-const': 'error',
     'prefer-arrow-callback': 'error',
@@ -64,7 +64,7 @@ module.exports = {
     'no-var': 'error',
     'object-shorthand': 'error',
     'arrow-body-style': ['error', 'as-needed'],
-    
+
     // Import Organization
     'sort-imports': ['error', {
       ignoreCase: true,
@@ -73,20 +73,19 @@ module.exports = {
       memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
       allowSeparatedGroups: true
     }],
-    
+
     // Formatting (handled by Prettier)
     'prettier/prettier': 'error',
-    
+
     // Performance
     'no-loop-func': 'error',
     'no-new-object': 'error',
     'no-new-wrappers': 'error',
-    
+
     // Security
-    'no-new-func': 'error',
     'no-script-url': 'error'
   },
-  
+
   // Override for specific file patterns
   overrides: [
     {

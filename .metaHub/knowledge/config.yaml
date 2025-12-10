@@ -1,0 +1,30 @@
+version: "1.0"
+knowledge:
+  categories:
+    - decisions
+    - learnings
+    - patterns
+    - troubleshooting
+
+  storage:
+    path: "docs/knowledge/"
+    format: "markdown"
+
+  search:
+    enabled: true
+    index_on_save: true
+
+  templates:
+    decision:
+      required_fields:
+        - title
+        - context
+        - decision
+        - consequences
+
+    learning:
+      required_fields:
+        - title
+        - problem
+        - solution
+        - tags

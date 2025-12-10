@@ -1,0 +1,29 @@
+version: "1.0"
+documentation:
+  auto_generation:
+    enabled: true
+    triggers:
+      - file_changed
+      - pr_merged
+
+  templates:
+    readme:
+      required_sections:
+        - overview
+        - installation
+        - usage
+        - api
+        - contributing
+
+    api_docs:
+      format: "markdown"
+      include_examples: true
+
+  validation:
+    check_links: true
+    check_freshness: true
+    max_age_days: 90
+
+  output:
+    directory: "docs/"
+    format: "markdown"

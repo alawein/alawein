@@ -1,0 +1,42 @@
+version: "1.0"
+smart_testing:
+  strategies:
+    affected_tests:
+      enabled: true
+      method: "git_diff"
+      fallback: "run_all"
+
+    priority_tests:
+      enabled: true
+      criteria:
+        - recently_failed
+        - high_coverage_impact
+        - critical_paths
+
+    parallel_execution:
+      enabled: true
+      max_workers: 4
+
+  coverage:
+    minimum: 80
+    target: 90
+    exclude:
+      - "**/*.test.ts"
+      - "**/*.spec.ts"
+      - "**/mocks/**"
+      - "**/fixtures/**"
+
+  impact_analysis:
+    enabled: true
+    track_dependencies: true
+    generate_report: true
+
+  flaky_detection:
+    enabled: true
+    retry_count: 3
+    quarantine_after: 5
+
+  reporting:
+    format: "json"
+    output: "coverage/"
+    badge: true

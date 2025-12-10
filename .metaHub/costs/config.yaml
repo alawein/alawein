@@ -1,0 +1,34 @@
+version: "1.0"
+costs:
+  tracking:
+    enabled: true
+    currency: "USD"
+
+  services:
+    vercel:
+      type: "hosting"
+      billing: "usage"
+      budget_monthly: 100
+
+    supabase:
+      type: "database"
+      billing: "usage"
+      budget_monthly: 50
+
+    github:
+      type: "scm"
+      billing: "subscription"
+      cost_monthly: 4
+
+    openai:
+      type: "ai"
+      billing: "usage"
+      budget_monthly: 100
+
+  alerts:
+    threshold_percent: 80
+    notify_on_exceed: true
+
+  reporting:
+    frequency: "monthly"
+    destination: "docs/costs/"

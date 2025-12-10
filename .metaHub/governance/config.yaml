@@ -1,0 +1,44 @@
+version: "1.0"
+governance:
+  classification:
+    tiers:
+      critical:
+        repos: ["platforms/repz", "platforms/liveiticonic"]
+        approvals_required: 2
+        ci_required: true
+        security_scan: true
+
+      standard:
+        repos: ["platforms/*", "packages/*"]
+        approvals_required: 1
+        ci_required: true
+
+      research:
+        repos: ["research/*"]
+        approvals_required: 0
+        ci_required: false
+
+  policies:
+    branch_protection:
+      main:
+        require_pr: true
+        require_reviews: 1
+        dismiss_stale_reviews: true
+        require_status_checks: ["ci", "lint", "type-check"]
+
+    commit_signing:
+      required_for: ["critical"]
+      recommended_for: ["standard"]
+
+    code_review:
+      auto_assign: true
+      require_codeowners: true
+
+  audit:
+    enabled: true
+    log_path: ".logs/governance-audit.jsonl"
+    retention_days: 90
+
+  notifications:
+    slack_webhook: "${SLACK_WEBHOOK_URL}"
+    email: "governance@alawein.com"

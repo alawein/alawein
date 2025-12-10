@@ -1,6 +1,54 @@
+# Security Policy
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 1.x.x   | :white_check_mark: |
+| < 1.0   | :x:                |
+
+## Reporting a Vulnerability
+
+We take security vulnerabilities seriously. If you discover a security issue,
+please report it responsibly.
+
+### How to Report
+
+1. **DO NOT** create a public GitHub issue for security vulnerabilities
+2. Email security concerns to: **security@alawein.com**
+3. Include:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Potential impact
+   - Any suggested fixes (optional)
+
+### Response Timeline
+
+- **Initial Response**: Within 48 hours
+- **Status Update**: Within 7 days
+- **Resolution Target**: Within 90 days (depending on severity)
+
+### Disclosure Policy
+
+- We follow a 90-day disclosure timeline
+- We will coordinate with you on disclosure timing
+- Credit will be given to reporters (unless anonymity is requested)
+
+### Severity Levels
+
+| Level    | Response Time | Examples                               |
+| -------- | ------------- | -------------------------------------- |
+| Critical | 24 hours      | RCE, auth bypass, data breach          |
+| High     | 72 hours      | XSS, CSRF, privilege escalation        |
+| Medium   | 7 days        | Information disclosure, DoS            |
+| Low      | 30 days       | Minor issues, best practice violations |
+
+---
+
 # Security Implementation
 
-This repository provides a comprehensive security system for web applications with unified configuration, utilities, and templates.
+This repository provides a comprehensive security system for web applications
+with unified configuration, utilities, and templates.
 
 ## 🛡️ Security Components
 
@@ -9,10 +57,15 @@ This repository provides a comprehensive security system for web applications wi
 Unified security configuration with environment-based settings:
 
 ```typescript
-import { securityConfig, getSecurityHeaders, securityService } from '@/config/security.config';
+import {
+  securityConfig,
+  getSecurityHeaders,
+  securityService,
+} from '@/config/security.config';
 ```
 
 **Features:**
+
 - Environment-based security headers (CSP, HSTS, X-Frame-Options)
 - Rate limiting configuration
 - CORS origin management
@@ -20,6 +73,7 @@ import { securityConfig, getSecurityHeaders, securityService } from '@/config/se
 - Encryption and logging configuration
 
 **Usage:**
+
 ```typescript
 // Get security headers for HTTP responses
 const headers = getSecurityHeaders();
@@ -29,7 +83,9 @@ const config = securityConfig;
 console.log(config.auth.tokenExpiry); // 15 minutes
 
 // Use configured security service
-const sanitized = securityService.sanitizeInput('<script>alert("xss")</script>');
+const sanitized = securityService.sanitizeInput(
+  '<script>alert("xss")</script>',
+);
 ```
 
 ### 2. Security Service (`src/lib/security.ts`)
@@ -41,12 +97,14 @@ import { security } from '@/lib/security';
 ```
 
 **Features:**
+
 - **Input Sanitization**: XSS prevention for user inputs
 - **File Upload Validation**: Type and size limits for file uploads
 - **JWT Token Validation**: Expiration checking for authentication tokens
 - **CSP Header Generation**: Content Security Policy for browser protection
 
 **Usage:**
+
 ```typescript
 // Sanitize user input
 const cleanInput = security.sanitizeInput(userInput);
@@ -69,14 +127,15 @@ const cspHeader = security.generateCSPHeader();
 Production-ready Next.js middleware for automatic security header application:
 
 **Features:**
+
 - Edge runtime compatible
 - Environment-aware security headers
 - HTTPS detection for HSTS
 - Comprehensive CSP directives
 - Development debug logging
 
-**Usage:**
-Copy `templates/nextjs/middleware.ts` to the root of your Next.js application to automatically apply security headers to all HTTP responses.
+**Usage:** Copy `templates/nextjs/middleware.ts` to the root of your Next.js
+application to automatically apply security headers to all HTTP responses.
 
 ## 🔧 Configuration
 
@@ -112,6 +171,7 @@ npm test
 ```
 
 The tests cover:
+
 - Security header generation in different environments
 - Input sanitization effectiveness
 - File upload validation
@@ -159,6 +219,7 @@ app.use((req, res, next) => {
 ## 🔒 Security Best Practices
 
 ### Input Validation
+
 Always sanitize user inputs before processing or displaying:
 
 ```typescript
@@ -168,6 +229,7 @@ const cleanInput = securityService.sanitizeInput(userInput);
 ```
 
 ### File Upload Security
+
 Validate all file uploads before processing:
 
 ```typescript
@@ -178,6 +240,7 @@ if (!validation.valid) {
 ```
 
 ### Authentication Security
+
 Use the configured token settings for secure authentication:
 
 ```typescript
@@ -190,14 +253,18 @@ const refreshTokenExpiry = securityConfig.auth.refreshTokenExpiry;
 
 ## 🚨 Important Notes
 
-- **This is a tools monorepo**: The security utilities are libraries, not a running application
-- **Middleware is a template**: Use `templates/nextjs/middleware.ts` as a starting point for actual Next.js applications
-- **Environment-based**: Security headers are only applied in production environment
+- **This is a tools monorepo**: The security utilities are libraries, not a
+  running application
+- **Middleware is a template**: Use `templates/nextjs/middleware.ts` as a
+  starting point for actual Next.js applications
+- **Environment-based**: Security headers are only applied in production
+  environment
 - **HTTPS required**: HSTS headers are only applied when serving over HTTPS
 
 ## 📞 Support
 
 For security issues or questions:
+
 1. Check the test suite for usage examples
 2. Review the implementation in `src/config/security.config.ts`
 3. Use the middleware template as a reference for integration

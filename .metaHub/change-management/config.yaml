@@ -1,0 +1,84 @@
+version: "1.0"
+change_management:
+  rfc_process:
+    required_for:
+      - breaking_changes
+      - new_features
+      - architecture_changes
+      - security_changes
+      - api_changes
+
+    approval_required:
+      critical: 2
+      standard: 1
+
+    discussion_period_days: 7
+    implementation_deadline_days: 90
+
+  change_types:
+    breaking:
+      requires_rfc: true
+      requires_migration_plan: true
+      announcement_required: true
+      deprecation_period_days: 90
+
+    feature:
+      requires_rfc: true
+      documentation_required: true
+      test_coverage_required: 80
+
+    bugfix:
+      requires_rfc: false
+      test_required: true
+      regression_test_required: true
+
+    hotfix:
+      requires_rfc: false
+      post_mortem_required: true
+      max_review_time_hours: 4
+
+    security:
+      requires_rfc: false
+      security_review_required: true
+      disclosure_timeline_days: 90
+
+  rollback:
+    automatic_triggers:
+      - error_rate_spike: "> 5%"
+      - latency_spike: "> 2x baseline"
+      - failed_health_check: "3 consecutive"
+
+    manual_command: "npm run rollback:now"
+    max_rollback_time_minutes: 5
+    rollback_retention_count: 10
+
+  deployment:
+    environments:
+      - name: development
+        auto_deploy: true
+        approval_required: false
+
+      - name: staging
+        auto_deploy: true
+        approval_required: false
+        smoke_tests_required: true
+
+      - name: production
+        auto_deploy: false
+        approval_required: true
+        canary_percentage: 10
+        canary_duration_minutes: 30
+
+  notifications:
+    channels:
+      - type: slack
+        webhook: "${SLACK_WEBHOOK_URL}"
+        events: ["deployment", "rollback", "rfc_approved"]
+
+      - type: email
+        recipients: ["team@alawein.com"]
+        events: ["breaking_change", "security_update"]
+
+  audit:
+    log_path: ".logs/change-audit.jsonl"
+    retention_days: 365

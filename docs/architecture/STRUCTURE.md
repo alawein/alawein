@@ -1,3 +1,10 @@
+---
+title: 'Project Structure'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Project Structure
 
 ## Directory Overview

@@ -1,9 +1,16 @@
+---
+title: 'REPZ Platform - Complete Deployment Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REPZ Platform - Complete Deployment Guide
 
 ## 🎯 **$800 Credit Utilization Strategy**
 
-This guide will help you deploy the REPZ platform and activate all integrations using your $800
-credit efficiently.
+This guide will help you deploy the REPZ platform and activate all integrations
+using your $800 credit efficiently.
 
 ---
 

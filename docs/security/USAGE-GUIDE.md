@@ -1,3 +1,10 @@
+---
+title: 'Security Implementation Usage Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Security Implementation Usage Guide
 
 ## Quick Start
@@ -56,7 +63,7 @@ export function SecureComponent() {
       .then(res => res.json())
       .then(data => console.log(data));
   }, []);
-  
+
   return <div>Secure Component</div>;
 }
 ```

@@ -4,13 +4,15 @@ version: '1.0'
 category: 'project'
 tags: ['ui', 'ux', 'design', 'accessibility', 'prototyping', 'user-research']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # UI/UX Design Superprompt
 
 ## Purpose
 
-Comprehensive framework for user interface design, user experience optimization, accessibility standards, and design system implementation.
+Comprehensive framework for user interface design, user experience optimization,
+accessibility standards, and design system implementation.
 
 ---
 
@@ -231,11 +233,13 @@ const buttonVariants = cva(
       variant: 'primary',
       size: 'md',
     },
-  }
+  },
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
@@ -243,8 +247,18 @@ export interface ButtonProps
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { className, variant, size, isLoading, leftIcon, rightIcon, children, disabled, ...props },
-    ref
+    {
+      className,
+      variant,
+      size,
+      isLoading,
+      leftIcon,
+      rightIcon,
+      children,
+      disabled,
+      ...props
+    },
+    ref,
   ) => {
     return (
       <button
@@ -255,21 +269,21 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading ? (
-          <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+          <Loader2 className='mr-2 h-4 w-4 animate-spin' aria-hidden='true' />
         ) : leftIcon ? (
-          <span className="mr-2" aria-hidden="true">
+          <span className='mr-2' aria-hidden='true'>
             {leftIcon}
           </span>
         ) : null}
         {children}
         {rightIcon && !isLoading && (
-          <span className="ml-2" aria-hidden="true">
+          <span className='ml-2' aria-hidden='true'>
             {rightIcon}
           </span>
         )}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';
@@ -291,27 +305,43 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type = 'text', label, error, hint, leftAddon, rightAddon, id, ...props }, ref) => {
+  (
+    {
+      className,
+      type = 'text',
+      label,
+      error,
+      hint,
+      leftAddon,
+      rightAddon,
+      id,
+      ...props
+    },
+    ref,
+  ) => {
     const inputId = id || `input-${React.useId()}`;
     const errorId = `${inputId}-error`;
     const hintId = `${inputId}-hint`;
 
     return (
-      <div className="w-full">
+      <div className='w-full'>
         {label && (
-          <label htmlFor={inputId} className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor={inputId}
+            className='block text-sm font-medium text-gray-700 mb-1'
+          >
             {label}
             {props.required && (
-              <span className="text-red-500 ml-1" aria-hidden="true">
+              <span className='text-red-500 ml-1' aria-hidden='true'>
                 *
               </span>
             )}
           </label>
         )}
 
-        <div className="relative">
+        <div className='relative'>
           {leftAddon && (
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
               {leftAddon}
             </div>
           )}
@@ -329,30 +359,32 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
               leftAddon && 'pl-10',
               rightAddon && 'pr-10',
               error && 'border-red-500 focus:border-red-500 focus:ring-red-500',
-              className
+              className,
             )}
             {...props}
           />
 
           {rightAddon && (
-            <div className="absolute inset-y-0 right-0 pr-3 flex items-center">{rightAddon}</div>
+            <div className='absolute inset-y-0 right-0 pr-3 flex items-center'>
+              {rightAddon}
+            </div>
           )}
         </div>
 
         {error && (
-          <p id={errorId} className="mt-1 text-sm text-red-600" role="alert">
+          <p id={errorId} className='mt-1 text-sm text-red-600' role='alert'>
             {error}
           </p>
         )}
 
         {hint && !error && (
-          <p id={hintId} className="mt-1 text-sm text-gray-500">
+          <p id={hintId} className='mt-1 text-sm text-gray-500'>
             {hint}
           </p>
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = 'Input';
@@ -605,7 +637,7 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
         cols.md && `md:${gridCols[cols.md as keyof typeof gridCols]}`,
         cols.lg && `lg:${gridCols[cols.lg as keyof typeof gridCols]}`,
         cols.xl && `xl:${gridCols[cols.xl as keyof typeof gridCols]}`,
-        className
+        className,
       )}
     >
       {children}

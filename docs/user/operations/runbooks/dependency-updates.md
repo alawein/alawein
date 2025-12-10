@@ -1,8 +1,14 @@
+---
+title: 'Runbook: Dependency Updates'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Runbook: Dependency Updates
 
-**Purpose:** Safely update project dependencies
-**Frequency:** Weekly (automated via Dependabot)
-**Duration:** 15-30 minutes
+**Purpose:** Safely update project dependencies **Frequency:** Weekly (automated
+via Dependabot) **Duration:** 15-30 minutes
 
 ---
 
@@ -76,7 +82,8 @@ npm run dev
 - [ ] All tests pass: `npm test`
 - [ ] No lint errors: `npm run lint`
 - [ ] No type errors: `npm run type-check`
-- [ ] Technical debt gate passes: `python automation/debt_gate.py --scan automation/debt_scan.json`
+- [ ] Technical debt gate passes:
+      `python automation/debt_gate.py --scan automation/debt_scan.json`
 - [ ] Build succeeds: `npm run build` (if applicable)
 
 ### 5. Commit Changes

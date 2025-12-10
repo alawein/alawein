@@ -1,3 +1,10 @@
+---
+title: 'alawein Governance System'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # alawein Governance System
 
 Welcome to the governance documentation for the alawein portfolio.
@@ -10,14 +17,18 @@ Welcome to the governance documentation for the alawein portfolio.
 
 ## AI & LLM Documentation
 
-- [LLM Model Catalog](governance/LLM-MODEL-CATALOG.md) - 500+ models across 8 IDEs
+- [LLM Model Catalog](governance/LLM-MODEL-CATALOG.md) - 500+ models across 8
+  IDEs
 - [AI Tool Profiles](AI-TOOL-PROFILES.md) - 13 coding assistants profiled
-- [AI Tools Orchestration](AI-TOOLS-ORCHESTRATION.md) - Multi-agent orchestration
-- [Architectural Codemaps](governance/CODEMAPS.md) - 24 trace diagrams across 6 systems
+- [AI Tools Orchestration](AI-TOOLS-ORCHESTRATION.md) - Multi-agent
+  orchestration
+- [Architectural Codemaps](governance/CODEMAPS.md) - 24 trace diagrams across 6
+  systems
 
 ## Development Guides
 
-- [CLI Migration Guide](guides/CLI_MIGRATION_GUIDE.md) - Migrating to unified CLI
+- [CLI Migration Guide](guides/CLI_MIGRATION_GUIDE.md) - Migrating to unified
+  CLI
 - [Codemap Generation](guides/CODEMAP-GENERATION-GUIDE.md) - Generating codemaps
 - [Quick Start](guides/QUICK_START_NEXT_STEPS.md) - Getting started quickly
 

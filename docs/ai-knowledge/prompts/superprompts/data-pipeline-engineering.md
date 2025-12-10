@@ -1,3 +1,10 @@
+---
+title: 'Data Engineering Pipeline Framework'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Data Engineering Pipeline Framework
 
 ## Purpose

@@ -1,8 +1,17 @@
+---
+title: 'Instructions for Claude Opus: Repository Consolidation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Instructions for Claude Opus: Repository Consolidation
 
 ## Your Mission
 
-Execute a comprehensive repository consolidation to transform 47 root folders into 10 streamlined directories while maintaining zero data loss and full functionality.
+Execute a comprehensive repository consolidation to transform 47 root folders
+into 10 streamlined directories while maintaining zero data loss and full
+functionality.
 
 ## Available Prompts
 
@@ -208,23 +217,15 @@ Create consolidation report:
 
 ### DO
 
-✅ Use `git mv` to preserve history
-✅ Commit after each phase
-✅ Test after each major change
-✅ Update import paths immediately
-✅ Document all changes
-✅ Create backup branches
-✅ Verify before deleting
+✅ Use `git mv` to preserve history ✅ Commit after each phase ✅ Test after
+each major change ✅ Update import paths immediately ✅ Document all changes ✅
+Create backup branches ✅ Verify before deleting
 
 ### DON'T
 
-❌ Copy files (use move)
-❌ Delete without verification
-❌ Skip testing
-❌ Make multiple phases in one commit
-❌ Ignore broken imports
-❌ Rush through validation
-❌ Forget to update documentation
+❌ Copy files (use move) ❌ Delete without verification ❌ Skip testing ❌ Make
+multiple phases in one commit ❌ Ignore broken imports ❌ Rush through
+validation ❌ Forget to update documentation
 
 ## Error Handling
 

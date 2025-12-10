@@ -1,8 +1,16 @@
+---
+title: 'Chain-of-Thought Meta-Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Chain-of-Thought Meta-Prompt
 
 ## Purpose
 
-Enable structured reasoning for complex problems through visible thought processes.
+Enable structured reasoning for complex problems through visible thought
+processes.
 
 ## Source
 

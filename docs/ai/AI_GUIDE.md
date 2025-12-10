@@ -1,3 +1,10 @@
+---
+title: 'AI Assistant Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Assistant Guide
 
 > Instructions for Claude, Cursor, Cline, and other AI coding assistants.

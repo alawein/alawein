@@ -1,3 +1,10 @@
+---
+title: 'ADR-NNNN: [Short Title of Decision]'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-NNNN: [Short Title of Decision]
 
 **Date:** YYYY-MM-DD
@@ -23,7 +30,8 @@ Describe the forces at play:
 - Cost considerations
 - Risk factors
 
-Include relevant background information that helps understand why this decision matters.
+Include relevant background information that helps understand why this decision
+matters.
 
 ---
 

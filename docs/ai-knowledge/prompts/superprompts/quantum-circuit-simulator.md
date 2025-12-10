@@ -1,8 +1,14 @@
+---
+title: '🤖 SPIN-CIRC - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 SPIN-CIRC - Master Superprompt & AI Orchestration
 
-**Project:** SPIN-CIRC (Spin Circuits)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
+**Project:** SPIN-CIRC (Spin Circuits) **Status:** ACTIVE - Ready for Claude
+Code **Config:** Enterprise-grade with sequential thinking + parallel agents
 **Date:** 2025-11-17
 
 ---
@@ -24,11 +30,9 @@
 
 5 parallel agent teams optimized for SPIN-CIRC:
 
-**Team 1:** Circuit design & optimization
-**Team 2:** Spin dynamics simulation
-**Team 3:** API & integration
-**Team 4:** Infrastructure & CI/CD
-**Team 5:** Research & improvements
+**Team 1:** Circuit design & optimization **Team 2:** Spin dynamics simulation
+**Team 3:** API & integration **Team 4:** Infrastructure & CI/CD **Team 5:**
+Research & improvements
 
 ### Execution Style
 

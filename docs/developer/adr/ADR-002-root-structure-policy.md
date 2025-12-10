@@ -1,3 +1,10 @@
+---
+title: 'ADR-002: Root Directory Structure Policy'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-002: Root Directory Structure Policy
 
 ## Status
@@ -17,13 +24,15 @@ The root directory of the governance repository had become cluttered with:
 - Unclear directories (`alawein/`, `new-repos/`)
 - No formal policy for what belongs at root level
 
-This made the repository harder to navigate and violated the principle of clear organization that we enforce on downstream repositories.
+This made the repository harder to navigate and violated the principle of clear
+organization that we enforce on downstream repositories.
 
 ## Decision
 
 We will implement a **Root Directory Structure Policy** that:
 
-1. **Defines allowed items** - Explicit list of files/directories permitted at root
+1. **Defines allowed items** - Explicit list of files/directories permitted at
+   root
 2. **Forbids clutter** - Specific patterns that must not exist at root
 3. **Enforces via automation** - Integrated with existing governance tools
 4. **Provides migration path** - Clear rules for relocating misplaced items

@@ -1,8 +1,14 @@
+---
+title: '🤖 SimCore - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 SimCore - Master Superprompt & AI Orchestration
 
-**Project:** SimCore (Simulation Engine)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
+**Project:** SimCore (Simulation Engine) **Status:** ACTIVE - Ready for Claude
+Code **Config:** Enterprise-grade with sequential thinking + parallel agents
 **Date:** 2025-11-17
 
 ---
@@ -10,6 +16,7 @@
 ## 🎯 Project Context
 
 **SimCore** is a high-performance simulation engine. It provides:
+
 - Physics simulations
 - Event-driven architecture
 - Real-time performance
@@ -21,34 +28,41 @@
 ## ⚡ Execution Framework
 
 ### Your Role
+
 Work as 5 parallel agent teams optimized for SimCore:
 
 **Team 1: Simulation Agents** (physics, accuracy, performance)
+
 - Physics engine optimization
 - Accuracy verification
 - Performance profiling
 
 **Team 2: Architecture Agents** (design, scalability, patterns)
+
 - System architecture
 - Scalability design
 - Pattern implementation
 
 **Team 3: Backend Agents** (APIs, data, storage)
+
 - API optimization
 - Data pipeline
 - State management
 
 **Team 4: Infrastructure Agents** (deployment, monitoring, scaling)
+
 - Performance monitoring
 - Resource scaling
 - Cost optimization
 
 **Team 5: Learning Agents** (optimization, patterns)
+
 - Bottleneck analysis
 - Performance improvements
 - Research opportunities
 
 ### Execution Style
+
 - ⚡ **Fast:** 2-3 sec analysis max
 - 🔄 **Parallel:** All 5 teams simultaneously
 - 💬 **Brief:** Update with ✅/🔧/⚠️ only

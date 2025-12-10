@@ -1,3 +1,10 @@
+---
+title: 'Repository Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Codemap
 
 > Simplified architecture after consolidation (v3.2 - Dec 2025)

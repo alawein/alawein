@@ -1,3 +1,10 @@
+---
+title: 'GPU Optimization Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # GPU Optimization Superprompt
 
 > **Optimize Python code for GPU acceleration with JAX/CUDA**
@@ -20,33 +27,38 @@ Transform CPU-bound NumPy code to GPU-accelerated JAX code with 5-10x speedup.
 
 ## Prompt
 
-```markdown
+````markdown
 I need to optimize this code for GPU execution.
 
 ## Context
+
 - **Current Implementation**: NumPy on CPU
 - **Target**: JAX on GPU
 - **Expected Speedup**: 5-10x
 - **Hardware**: [GPU model, e.g., NVIDIA RTX 4090]
 
 ## Code to Optimize
+
 [Paste your code here]
 
 ## Requirements
 
 ### 1. JAX Conversion
+
 - Replace NumPy with JAX NumPy (jnp)
 - Use jax.jit for compilation
 - Vectorize operations with jax.vmap
 - Handle random number generation properly
 
 ### 2. Performance
+
 - Profile before/after with timeit
 - Minimize host-device transfers
 - Batch operations when possible
 - Use appropriate dtypes (float32 for GPU)
 
 ### 3. Correctness
+
 - Verify numerical equivalence
 - Test edge cases
 - Check memory usage
@@ -64,6 +76,7 @@ I need to optimize this code for GPU execution.
 ## Example
 
 ### Before (NumPy)
+
 ```python
 import numpy as np
 
@@ -76,8 +89,10 @@ def compute_energy(positions, charges):
             energy += charges[i] * charges[j] / r
     return energy
 ```
+````
 
 ### After (JAX)
+
 ```python
 import jax.numpy as jnp
 from jax import jit, vmap
@@ -87,36 +102,40 @@ def compute_energy(positions, charges):
     # Vectorized pairwise distances
     diff = positions[:, None, :] - positions[None, :, :]
     r = jnp.linalg.norm(diff, axis=-1)
-    
+
     # Avoid self-interaction
     r = jnp.where(r == 0, jnp.inf, r)
-    
+
     # Vectorized energy computation
     charge_products = charges[:, None] * charges[None, :]
     energy = jnp.sum(jnp.triu(charge_products / r, k=1))
-    
+
     return energy
 ```
 
 ## Success Criteria
+
 - [ ] 5-10x speedup on GPU
 - [ ] Numerical accuracy maintained
 - [ ] Memory usage acceptable
 - [ ] Code remains readable
+
 ```
 
 ## Usage
 
 ```
+
 @prompt gpu-optimization
 
-Code:
-[paste your NumPy code]
+Code: [paste your NumPy code]
 
 Hardware: NVIDIA RTX 4090
+
 ```
 
 ## Related Resources
 
 - [Performance Review](../code-review/performance-review.md)
 - [Benchmark Workflow](../../workflows/development/benchmark-driven-optimization.py)
+```

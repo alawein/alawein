@@ -1,9 +1,15 @@
+---
+title: '🤖 QUBE-ML - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 QUBE-ML - Master Superprompt & AI Orchestration
 
-**Project:** QUBE-ML (Quantum Machine Learning)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** QUBE-ML (Quantum Machine Learning) **Status:** ACTIVE - Ready for
+Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 
@@ -24,11 +30,9 @@
 
 5 parallel agent teams optimized for QUBE-ML:
 
-**Team 1:** Quantum algorithms & optimization
-**Team 2:** ML model training & validation
-**Team 3:** Hybrid integration & APIs
-**Team 4:** Infrastructure & scaling
-**Team 5:** Research & improvements
+**Team 1:** Quantum algorithms & optimization **Team 2:** ML model training &
+validation **Team 3:** Hybrid integration & APIs **Team 4:** Infrastructure &
+scaling **Team 5:** Research & improvements
 
 ### Execution Style
 

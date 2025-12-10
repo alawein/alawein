@@ -1,17 +1,27 @@
+---
+title: 'Librex.Flow Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Flow Implementation Superprompt
 
-**Version**: 1.0
-**Target**: AAMAS 2026 / AAAI 2026
-**Priority**: High (2 strong contributions)
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: AAMAS 2026 / AAAI 2026 **Priority**: High (2 strong
+contributions) **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Flow implements confidence-aware workflow routing with validation quality objectives for multi-agent orchestration. Unlike classical routing policies that only optimize for speed or cost, Librex.Flow learns routing policies that explicitly balance validation quality, confidence calibration, and execution efficiency.
+Librex.Flow implements confidence-aware workflow routing with validation quality
+objectives for multi-agent orchestration. Unlike classical routing policies that
+only optimize for speed or cost, Librex.Flow learns routing policies that
+explicitly balance validation quality, confidence calibration, and execution
+efficiency.
 
-**Core Innovation**: Confidence-aware routing + validation quality objectives (🟢 STRONG novelty)
+**Core Innovation**: Confidence-aware routing + validation quality objectives
+(🟢 STRONG novelty)
 
 **Research Contributions**:
 
@@ -26,8 +36,7 @@ Librex.Flow implements confidence-aware workflow routing with validation quality
 
 ### 1.1 Problem Statement
 
-**Workflow Routing**:
-Given:
+**Workflow Routing**: Given:
 
 - Workflow W = (s₀, s₁, ..., sₜ) with current state sₜ
 - Available agents A = {a₁, a₂, ..., aₙ}
@@ -549,8 +558,10 @@ class WorkflowRouter:
 
 **FLOW-C1: Confidence-Aware Workflow Routing with Quality Objectives**
 
-- **Gap**: Existing routing (MasRouter, Nexus) only optimize speed/cost, ignore confidence calibration
-- **Approach**: Multi-objective reward with validation quality (ECE) as explicit objective
+- **Gap**: Existing routing (MasRouter, Nexus) only optimize speed/cost, ignore
+  confidence calibration
+- **Approach**: Multi-objective reward with validation quality (ECE) as explicit
+  objective
 - **Impact**: 20-30% improvement in confidence calibration + 10-15% quality gain
 
 **FLOW-C2: Multi-Objective LinUCB for Agent Selection**
@@ -634,9 +645,8 @@ class WorkflowRouter:
 
 ### Phase 3: Paper Writing (Weeks 6-8)
 
-**Week 6**: Draft
-**Week 7**: Results + Ablations
-**Week 8**: Submission to AAMAS 2026 (deadline ~Nov 2025)
+**Week 6**: Draft **Week 7**: Results + Ablations **Week 8**: Submission to
+AAMAS 2026 (deadline ~Nov 2025)
 
 ---
 
@@ -782,7 +792,8 @@ def test_workflow_routing():
 
 ### 6.1 Target Venues
 
-**Primary**: AAMAS 2026 (International Conference on Autonomous Agents and Multiagent Systems)
+**Primary**: AAMAS 2026 (International Conference on Autonomous Agents and
+Multiagent Systems)
 
 - Deadline: ~November 2025
 - Notification: February 2026
@@ -859,7 +870,5 @@ def test_workflow_routing():
 
 **END OF Librex.Flow SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: November 2025 (AAMAS 2026 submission)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: November 2025 (AAMAS 2026 submission)

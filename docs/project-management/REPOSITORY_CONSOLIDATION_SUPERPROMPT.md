@@ -1,14 +1,23 @@
+---
+title: 'Repository Consolidation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Consolidation Superprompt
 
-> **Purpose:** Complete context for AI agents to understand and work with the entire Alawein ecosystem
-> **Created:** December 5, 2025
-> **Status:** ACTIVE - Use this for all consolidation work
+> **Purpose:** Complete context for AI agents to understand and work with the
+> entire Alawein ecosystem **Created:** December 5, 2025 **Status:** ACTIVE -
+> Use this for all consolidation work
 
 ---
 
 ## Mission Statement
 
-Consolidate the scattered monorepo into a clean multi-repo structure while **preserving ALL features** developed over weeks of work. Nothing gets deleted - everything gets properly organized.
+Consolidate the scattered monorepo into a clean multi-repo structure while
+**preserving ALL features** developed over weeks of work. Nothing gets deleted -
+everything gets properly organized.
 
 ---
 
@@ -87,145 +96,154 @@ GitHub/                              # Root: alawein/alawein
 
 ### Tier 1: Revenue-Ready Products (P0)
 
-| Project | Location | Modules | Status | Domain |
-|---------|----------|---------|--------|--------|
-| **TalAI** | `.archive/organizations/AlaweinOS/TalAI/` | 50 | Development | talai.dev |
-| **Repz** | `C:\Users\mesha\Desktop\REPZ` + archive | Full app | Development | getrepz.app |
-| **Librex** | `.archive/organizations/AlaweinOS/Librex/` | 10 | Development | librex.dev |
+| Project    | Location                                   | Modules  | Status      | Domain      |
+| ---------- | ------------------------------------------ | -------- | ----------- | ----------- |
+| **TalAI**  | `.archive/organizations/AlaweinOS/TalAI/`  | 50       | Development | talai.dev   |
+| **Repz**   | `C:\Users\mesha\Desktop\REPZ` + archive    | Full app | Development | getrepz.app |
+| **Librex** | `.archive/organizations/AlaweinOS/Librex/` | 10       | Development | librex.dev  |
 
 ### Tier 2: Platform Products (P1)
 
-| Project | Location | Modules | Status | Domain |
-|---------|----------|---------|--------|--------|
-| **MEZAN** | `.archive/organizations/AlaweinOS/MEZAN/` | 30 | Development | - |
-| **Attributa** | `.archive/organizations/AlaweinOS/Attributa/` | 6 | Development | attributa.dev |
-| **LLMWorks** | `.archive/organizations/AlaweinOS/LLMWorks/` | 7 | Development | llmworks.dev |
-| **LiveItIconic** | `.archive/organizations/alawein-business/LiveItIconic/` | 13 | Development | liveiticonic.com |
+| Project          | Location                                                | Modules | Status      | Domain           |
+| ---------------- | ------------------------------------------------------- | ------- | ----------- | ---------------- |
+| **MEZAN**        | `.archive/organizations/AlaweinOS/MEZAN/`               | 30      | Development | -                |
+| **Attributa**    | `.archive/organizations/AlaweinOS/Attributa/`           | 6       | Development | attributa.dev    |
+| **LLMWorks**     | `.archive/organizations/AlaweinOS/LLMWorks/`            | 7       | Development | llmworks.dev     |
+| **LiveItIconic** | `.archive/organizations/alawein-business/LiveItIconic/` | 13      | Development | liveiticonic.com |
 
 ### Tier 3: Research/Future (P2)
 
-| Project | Location | Modules | Status |
-|---------|----------|---------|--------|
-| **SimCore** | `.archive/organizations/AlaweinOS/SimCore/` | - | Research |
-| **QMLab** | `.archive/organizations/AlaweinOS/QMLab/` | - | Research |
-| **HELIOS** | `.archive/organizations/AlaweinOS/HELIOS/` | 4 | Research |
-| **Foundry** | `.archive/organizations/AlaweinOS/Foundry/` | 14 | Incubator |
+| Project     | Location                                    | Modules | Status    |
+| ----------- | ------------------------------------------- | ------- | --------- |
+| **SimCore** | `.archive/organizations/AlaweinOS/SimCore/` | -       | Research  |
+| **QMLab**   | `.archive/organizations/AlaweinOS/QMLab/`   | -       | Research  |
+| **HELIOS**  | `.archive/organizations/AlaweinOS/HELIOS/`  | 4       | Research  |
+| **Foundry** | `.archive/organizations/AlaweinOS/Foundry/` | 14      | Incubator |
 
 ### Tier 4: Science Projects (P3)
 
-| Project | Location | Focus |
-|---------|----------|-------|
+| Project      | Location                                           | Focus                   |
+| ------------ | -------------------------------------------------- | ----------------------- |
 | **MagLogic** | `.archive/organizations/alawein-science/MagLogic/` | Magnetic logic circuits |
-| **SpinCirc** | `.archive/organizations/alawein-science/SpinCirc/` | Spintronics circuits |
-| **QMatSim** | `.archive/organizations/alawein-science/QMatSim/` | Quantum materials |
-| **QubeML** | `.archive/organizations/alawein-science/QubeML/` | Quantum ML |
-| **SciComp** | `.archive/organizations/alawein-science/SciComp/` | Scientific computing |
+| **SpinCirc** | `.archive/organizations/alawein-science/SpinCirc/` | Spintronics circuits    |
+| **QMatSim**  | `.archive/organizations/alawein-science/QMatSim/`  | Quantum materials       |
+| **QubeML**   | `.archive/organizations/alawein-science/QubeML/`   | Quantum ML              |
+| **SciComp**  | `.archive/organizations/alawein-science/SciComp/`  | Scientific computing    |
 
 ---
 
 ## TalAI Complete Module Inventory (50 Modules)
 
 ### Core Tools (Revenue-Ready)
-| Module | Purpose | Priority |
-|--------|---------|----------|
-| `adversarial-review/` | AI peer review simulation | P0 |
-| `lit-review-bot/` | Literature review automation | P0 |
-| `grant-writer/` | Grant proposal assistance | P0 |
-| `paper-miner/` | Paper data extraction | P0 |
-| `hypothesis-match/` | Hypothesis generation | P1 |
+
+| Module                | Purpose                      | Priority |
+| --------------------- | ---------------------------- | -------- |
+| `adversarial-review/` | AI peer review simulation    | P0       |
+| `lit-review-bot/`     | Literature review automation | P0       |
+| `grant-writer/`       | Grant proposal assistance    | P0       |
+| `paper-miner/`        | Paper data extraction        | P0       |
+| `hypothesis-match/`   | Hypothesis generation        | P1       |
 
 ### Research Tools
-| Module | Purpose |
-|--------|---------|
-| `abstract-writer/` | Publication abstract generation |
-| `active-learning/` | Active learning pipelines |
-| `analytics/` | Research analytics dashboard |
-| `causal-inference/` | Causal analysis tools |
-| `citation-predictor/` | Citation impact prediction |
-| `data-cleaner/` | Automated data cleaning |
-| `experiment-designer/` | Optimal experiment design |
-| `failure-db/` | Database of failed experiments |
-| `ghost-researcher/` | Autonomous exploration agent |
-| `idea-calculus/` | Idea combination engine |
-| `ideaforge/` | Creative ideation tools |
-| `knowledge-graph/` | Research knowledge graphs |
-| `research-pricer/` | Research cost estimation |
+
+| Module                 | Purpose                         |
+| ---------------------- | ------------------------------- |
+| `abstract-writer/`     | Publication abstract generation |
+| `active-learning/`     | Active learning pipelines       |
+| `analytics/`           | Research analytics dashboard    |
+| `causal-inference/`    | Causal analysis tools           |
+| `citation-predictor/`  | Citation impact prediction      |
+| `data-cleaner/`        | Automated data cleaning         |
+| `experiment-designer/` | Optimal experiment design       |
+| `failure-db/`          | Database of failed experiments  |
+| `ghost-researcher/`    | Autonomous exploration agent    |
+| `idea-calculus/`       | Idea combination engine         |
+| `ideaforge/`           | Creative ideation tools         |
+| `knowledge-graph/`     | Research knowledge graphs       |
+| `research-pricer/`     | Research cost estimation        |
 
 ### Prompt Engineering
-| Module | Purpose |
-|--------|---------|
-| `prompt-marketplace/` | Prompt trading platform |
-| `promptforge/` | Prompt engineering tools |
-| `promptforge-lite/` | Lightweight prompt tools |
+
+| Module                | Purpose                  |
+| --------------------- | ------------------------ |
+| `prompt-marketplace/` | Prompt trading platform  |
+| `promptforge/`        | Prompt engineering tools |
+| `promptforge-lite/`   | Lightweight prompt tools |
 
 ### Infrastructure
-| Module | Purpose |
-|--------|---------|
-| `atlas-autonomous-research/` | Autonomous research agent |
-| `atlas-orchestrator/` | Multi-agent orchestration |
-| `buildforge/` | Build automation |
-| `chaos-engine/` | Stress-testing research methods |
-| `data-pipeline/` | Data processing pipelines |
-| `edge/` | Edge deployment |
-| `enterprise/` | Enterprise features |
-| `federated/` | Federated learning |
-| `k8s/` | Kubernetes configs |
-| `monitoring/` | Monitoring & observability |
-| `nginx/` | Web server configs |
-| `performance/` | Performance optimization |
-| `validation/` | Research validation |
+
+| Module                       | Purpose                         |
+| ---------------------------- | ------------------------------- |
+| `atlas-autonomous-research/` | Autonomous research agent       |
+| `atlas-orchestrator/`        | Multi-agent orchestration       |
+| `buildforge/`                | Build automation                |
+| `chaos-engine/`              | Stress-testing research methods |
+| `data-pipeline/`             | Data processing pipelines       |
+| `edge/`                      | Edge deployment                 |
+| `enterprise/`                | Enterprise features             |
+| `federated/`                 | Federated learning              |
+| `k8s/`                       | Kubernetes configs              |
+| `monitoring/`                | Monitoring & observability      |
+| `nginx/`                     | Web server configs              |
+| `performance/`               | Performance optimization        |
+| `validation/`                | Research validation             |
 
 ### Domain-Specific
-| Module | Purpose |
-|--------|---------|
-| `materials-science/` | Materials research tools |
-| `meta-science/` | Meta-science analysis |
-| `multimodal/` | Multimodal AI tools |
-| `neuroscience/` | Neuroscience tools |
-| `synthetic-biology/` | Synthetic bio tools |
-| `turing-features/` | AI testing (8 sub-modules) |
-| `turingo/` | Turing test tools |
+
+| Module               | Purpose                    |
+| -------------------- | -------------------------- |
+| `materials-science/` | Materials research tools   |
+| `meta-science/`      | Meta-science analysis      |
+| `multimodal/`        | Multimodal AI tools        |
+| `neuroscience/`      | Neuroscience tools         |
+| `synthetic-biology/` | Synthetic bio tools        |
+| `turing-features/`   | AI testing (8 sub-modules) |
+| `turingo/`           | Turing test tools          |
 
 ### Other
-| Module | Purpose |
-|--------|---------|
-| `alaweinos/` | AlaweinOS integration |
-| `brand/` | Branding assets |
-| `consortia/` | Research consortia tools |
-| `docs/` | Documentation |
-| `examples/` | Example code |
+
+| Module           | Purpose                    |
+| ---------------- | -------------------------- |
+| `alaweinos/`     | AlaweinOS integration      |
+| `brand/`         | Branding assets            |
+| `consortia/`     | Research consortia tools   |
+| `docs/`          | Documentation              |
+| `examples/`      | Example code               |
 | `PEDs-Playbook/` | Research performance guide |
-| `src/` | Core source code |
-| `tests/` | Test suites |
+| `src/`           | Core source code           |
+| `tests/`         | Test suites                |
 
 ---
 
 ## MEZAN/Libria Solver Inventory
 
 ### MEZAN Core
-| Component | Purpose |
-|-----------|---------|
-| `ATLAS/` | Orchestration core (→ Orchex) |
-| `MEZAN/` | Meta-solver core |
-| `core/` | Shared core utilities |
-| `visualization/` | Visualization tools |
+
+| Component        | Purpose                       |
+| ---------------- | ----------------------------- |
+| `ATLAS/`         | Orchestration core (→ Orchex) |
+| `MEZAN/`         | Meta-solver core              |
+| `core/`          | Shared core utilities         |
+| `visualization/` | Visualization tools           |
 
 ### Libria Solvers (7 Solvers)
-| Solver | Problem Domain |
-|--------|----------------|
-| `libria-qap/` | Quadratic Assignment Problem |
-| `libria-flow/` | Network Flow |
-| `libria-alloc/` | Resource Allocation |
-| `libria-evo/` | Evolutionary Optimization |
-| `libria-graph/` | Graph Optimization |
-| `libria-dual/` | Dual Problems |
-| `libria-meta/` | Meta-optimization |
+
+| Solver          | Problem Domain               |
+| --------------- | ---------------------------- |
+| `libria-qap/`   | Quadratic Assignment Problem |
+| `libria-flow/`  | Network Flow                 |
+| `libria-alloc/` | Resource Allocation          |
+| `libria-evo/`   | Evolutionary Optimization    |
+| `libria-graph/` | Graph Optimization           |
+| `libria-dual/`  | Dual Problems                |
+| `libria-meta/`  | Meta-optimization            |
 
 ---
 
 ## Active Infrastructure (DO NOT ARCHIVE)
 
 ### automation/ (Python)
+
 ```
 automation/
 ├── prompts/
@@ -252,6 +270,7 @@ automation/
 ```
 
 ### tools/orchex/ (TypeScript)
+
 ```
 tools/orchex/
 ├── cli/                     # 11 CLI modules
@@ -276,6 +295,7 @@ tools/orchex/
 ## Existing Superprompts (28 Total)
 
 ### Project Superprompts
+
 1. `TALAI_SUPERPROMPT.md` - TalAI platform
 2. `REPZ_SUPERPROMPT.md` - Repz fitness app
 3. `SIMCORE_CLAUDE_CODE_SUPERPROMPT.md` - SimCore simulation
@@ -286,12 +306,14 @@ tools/orchex/
 8. `SCI_COMP_SUPERPROMPT.md` - Scientific computing
 
 ### Architecture Superprompts
+
 9. `MONOREPO_ARCHITECTURE_SUPERPROMPT.md`
 10. `PLATFORM_DEPLOYMENT_SUPERPROMPT.md`
 11. `GOVERNANCE_COMPLIANCE_SUPERPROMPT.md`
 12. `SECURITY_CYBERSECURITY_SUPERPROMPT.md`
 
 ### Development Superprompts
+
 13. `AI_ML_INTEGRATION_SUPERPROMPT.md`
 14. `CICD_PIPELINE_SUPERPROMPT.md`
 15. `TESTING_QA_SUPERPROMPT.md`
@@ -300,6 +322,7 @@ tools/orchex/
 18. `PROMPT_OPTIMIZATION_SUPERPROMPT.md`
 
 ### Template Superprompts
+
 19. `LOVABLE_FULLSTACK_TEMPLATE_SYSTEM.md` (81KB - comprehensive!)
 20. `LOVABLE_TEMPLATE_SUPERPROMPT.md` (52KB)
 21. `KILO_CONSOLIDATION_SUPERPROMPT.md`
@@ -307,6 +330,7 @@ tools/orchex/
 23. `ENTERPRISE_AGENTIC_AI_SUPERPROMPT.md`
 
 ### Technical Superprompts
+
 24. `api-development.md`
 25. `automation-ts-implementation.md`
 26. `data-engineering-pipeline.md`
@@ -318,32 +342,35 @@ tools/orchex/
 ## Domain Inventory
 
 ### Owned Domains (11)
-| Domain | Product | Status |
-|--------|---------|--------|
-| getrepz.app | Repz | ✅ Active |
-| attributa.dev | Attributa | ✅ Active |
-| simcore.dev | SimCore | ✅ Owned |
-| qmlab.online | QMLab | ✅ Owned |
-| llmworks.dev | LLMWorks | ✅ Owned |
-| malawein.com | Portfolio | 🔴 Setup needed |
-| malawein.info | Redirect | 🔴 Configure |
-| meshal.ai | Professional | 🔴 Setup needed |
-| repzapp.com | Redirect | 🔴 Configure |
-| repzcoach.com | Repz Coach | 🔴 Future |
-| aiclarity.com | (Unused) | Consider selling |
+
+| Domain        | Product      | Status           |
+| ------------- | ------------ | ---------------- |
+| getrepz.app   | Repz         | ✅ Active        |
+| attributa.dev | Attributa    | ✅ Active        |
+| simcore.dev   | SimCore      | ✅ Owned         |
+| qmlab.online  | QMLab        | ✅ Owned         |
+| llmworks.dev  | LLMWorks     | ✅ Owned         |
+| malawein.com  | Portfolio    | 🔴 Setup needed  |
+| malawein.info | Redirect     | 🔴 Configure     |
+| meshal.ai     | Professional | 🔴 Setup needed  |
+| repzapp.com   | Redirect     | 🔴 Configure     |
+| repzcoach.com | Repz Coach   | 🔴 Future        |
+| aiclarity.com | (Unused)     | Consider selling |
 
 ### Needed Domains (3)
-| Domain | Product | Priority |
-|--------|---------|----------|
-| talai.dev | TalAI | P0 |
-| librex.dev | Librex | P0 |
-| alawein.tech | Parent company | P0 |
+
+| Domain       | Product        | Priority |
+| ------------ | -------------- | -------- |
+| talai.dev    | TalAI          | P0       |
+| librex.dev   | Librex         | P0       |
+| alawein.tech | Parent company | P0       |
 
 ---
 
 ## Consolidation Rules
 
 ### NEVER DELETE
+
 1. Any code in `.archive/organizations/`
 2. Any file in `automation/`
 3. Any file in `tools/`
@@ -351,12 +378,14 @@ tools/orchex/
 5. Any landing page in `docs/pages/`
 
 ### SAFE TO CONSOLIDATE
+
 1. Duplicate configs across projects
 2. Redundant documentation
 3. Empty placeholder directories
 4. Build artifacts (dist/, node_modules/)
 
 ### MIGRATION PATTERN
+
 ```
 1. Identify source in .archive/organizations/
 2. Create target repo or folder
@@ -371,6 +400,7 @@ tools/orchex/
 ## Recommended Final Structure
 
 ### Option A: Multi-Repo (Recommended)
+
 ```
 GitHub Organizations:
 ├── alawein/alawein     # Hub: automation, tools, docs
@@ -382,6 +412,7 @@ GitHub Organizations:
 ```
 
 ### Option B: Organized Monorepo
+
 ```
 GitHub/
 ├── products/                 # All products (restored from archive)
@@ -404,6 +435,7 @@ GitHub/
 ## Action Items for AI Agents
 
 ### Immediate (Before Any Work)
+
 1. Read this superprompt completely
 2. Check `.archive/organizations/` for source files
 3. Never delete without explicit confirmation
@@ -411,6 +443,7 @@ GitHub/
 5. Preserve all 7 Libria solvers
 
 ### When Consolidating
+
 1. Create codemaps for each project
 2. Document dependencies between modules
 3. Identify shared code that can be extracted
@@ -418,6 +451,7 @@ GitHub/
 5. Update superprompts as needed
 
 ### When Deploying
+
 1. Use existing landing pages in `docs/pages/brands/`
 2. Reference deployment configs in `automation/deployment/`
 3. Follow patterns in existing superprompts
@@ -434,5 +468,4 @@ GitHub/
 
 ---
 
-_Last Updated: December 5, 2025_
-_Version: 1.0_
+_Last Updated: December 5, 2025_ _Version: 1.0_

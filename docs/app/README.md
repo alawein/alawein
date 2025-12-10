@@ -1,3 +1,10 @@
+---
+title: 'Alawein Studios'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Alawein Studios
 
 Consolidated React app for platforms, templates, and portfolio.
@@ -56,8 +63,10 @@ This app is part of the consolidated `docs/` structure:
 
 ## Deployment
 
-The app is configured with `base: '/app/'` for deployment alongside the static pages.
+The app is configured with `base: '/app/'` for deployment alongside the static
+pages.
 
 When deployed to GitHub Pages:
+
 - Static pages: `https://<user>.github.io/<repo>/pages/`
 - Studios app: `https://<user>.github.io/<repo>/app/`

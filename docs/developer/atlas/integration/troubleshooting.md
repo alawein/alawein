@@ -1,6 +1,15 @@
+---
+title: 'Troubleshooting Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Troubleshooting Guide
 
-This guide provides solutions for common issues encountered when using the ORCHEX-KILO integration, along with diagnostic procedures and preventive measures.
+This guide provides solutions for common issues encountered when using the
+ORCHEX-KILO integration, along with diagnostic procedures and preventive
+measures.
 
 ## Quick Diagnosis
 
@@ -695,4 +704,6 @@ tail -100 ~/.orchex/logs/ORCHEX.log
 ORCHEX doctor --report issue-report.json
 ```
 
-This comprehensive troubleshooting guide should help resolve most issues encountered with the ORCHEX-KILO integration. For persistent problems, consider reaching out to the support community or professional services.
+This comprehensive troubleshooting guide should help resolve most issues
+encountered with the ORCHEX-KILO integration. For persistent problems, consider
+reaching out to the support community or professional services.

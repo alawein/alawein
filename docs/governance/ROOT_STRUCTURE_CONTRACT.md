@@ -1,16 +1,22 @@
+---
+title: 'Root Directory Structure Contract'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Root Directory Structure Contract
 
-> **Version:** 2.1.0
-> **Status:** Active
-> **Last Updated:** 2025-11-27
-> **Migration Status:** Complete
-> **Supersedes:** ADR-002-root-structure-policy.md (to be updated)
+> **Version:** 2.1.0 **Status:** Active **Last Updated:** 2025-11-27 **Migration
+> Status:** Complete **Supersedes:** ADR-002-root-structure-policy.md (to be
+> updated)
 
 ---
 
 ## 1. Overview and Goals
 
-This document defines the **authoritative contract** for the root directory structure of the `alawein` portfolio governance repository. It establishes:
+This document defines the **authoritative contract** for the root directory
+structure of the `alawein` portfolio governance repository. It establishes:
 
 1. **What MUST exist** at root (required items)
 2. **What MAY exist** at root (optional items with governance)
@@ -215,7 +221,8 @@ The root directory is the **first impression** of the repository. It MUST:
 #### MUST NOT (Forbidden)
 
 1. **MUST NOT** have application source code (`src/`, `app/`, `lib/`)
-2. **MUST NOT** have organization monorepos at root (use `organizations/` gitignored)
+2. **MUST NOT** have organization monorepos at root (use `organizations/`
+   gitignored)
 3. **MUST NOT** have binary files (`.pdf`, `.zip`, `.tar.gz`)
 4. **MUST NOT** have generated reports (`*-report.json`, `*-results.json`)
 5. **MUST NOT** have temporary directories (`temp-*`, `new-*`, `backup*`)
@@ -242,14 +249,12 @@ The root directory is the **first impression** of the repository. It MUST:
 
 ```yaml
 # In .gitignore
-ai-audit-report.json
-enforcement-report.json
-audit-results.json
-*-report.json
+ai-audit-report.json enforcement-report.json audit-results.json *-report.json
 *-results.json
 ```
 
-Reports MUST be gitignored. If needed for CI artifacts, use `docs/reports/` with explicit commits.
+Reports MUST be gitignored. If needed for CI artifacts, use `docs/reports/` with
+explicit commits.
 
 #### PDF/Binary Deliverables
 
@@ -283,9 +288,12 @@ All AI configs SHOULD migrate to `.ai/` within 4 weeks. During migration:
 
 ### 4.2 Where Changes Are Recorded
 
-1. **ADR Update:** Modify [`docs/adr/ADR-002-root-structure-policy.md`](adr/ADR-002-root-structure-policy.md)
-2. **Policy Update:** Modify [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml)
-3. **Template Update:** Modify [`.metaHub/templates/structures/portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml)
+1. **ADR Update:** Modify
+   [`docs/adr/ADR-002-root-structure-policy.md`](adr/ADR-002-root-structure-policy.md)
+2. **Policy Update:** Modify
+   [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml)
+3. **Template Update:** Modify
+   [`.metaHub/templates/structures/portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml)
 4. **Contract Update:** Modify this document
 
 ### 4.3 Step-by-Step Change Procedure
@@ -299,37 +307,48 @@ All AI configs SHOULD migrate to `.ai/` within 4 weeks. During migration:
 #### Step 2: Proposal Creation
 
 - [ ] Create branch: `root-structure/<change-name>`
-- [ ] Update [`ADR-002-root-structure-policy.md`](adr/ADR-002-root-structure-policy.md) with decision
-- [ ] Update [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml):
+- [ ] Update
+      [`ADR-002-root-structure-policy.md`](adr/ADR-002-root-structure-policy.md)
+      with decision
+- [ ] Update
+      [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml):
   - Add to `allowed_files` or `allowed_directories` if adding
   - Add to `forbidden` if removing
   - Update `migration` section if relocating
-- [ ] Update [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml) `required_structure` section
+- [ ] Update
+      [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml)
+      `required_structure` section
 - [ ] Update this contract document
 
 #### Step 3: Enforcement Updates
 
-- [ ] Update [`structure_validator.py`](../.metaHub/scripts/structure_validator.py):
+- [ ] Update
+      [`structure_validator.py`](../.metaHub/scripts/structure_validator.py):
   - Modify category lists in `validate_root_structure()`
   - Add/remove patterns as needed
-- [ ] Update [`enforce.py`](../.metaHub/scripts/enforce.py) if root-level checks needed
+- [ ] Update [`enforce.py`](../.metaHub/scripts/enforce.py) if root-level checks
+      needed
 - [ ] Verify changes don't break existing validation
 
 #### Step 4: Test Updates
 
 - [ ] Add/update tests in [`tests/`](../tests/) for new rules
-- [ ] Run local validation: `python .metaHub/scripts/structure_validator.py --root`
+- [ ] Run local validation:
+      `python .metaHub/scripts/structure_validator.py --root`
 - [ ] Verify CI passes with changes
 
 #### Step 5: Workflow Updates
 
-- [ ] Update [`weekly-governance-check.yml`](../.github/workflows/weekly-governance-check.yml) if needed
+- [ ] Update
+      [`weekly-governance-check.yml`](../.github/workflows/weekly-governance-check.yml)
+      if needed
 - [ ] Ensure root structure check is included in validation jobs
 - [ ] Verify actionable error messages for failures
 
 #### Step 6: Review and Approval
 
-- [ ] Request review from platform maintainers (per [`GOVERNANCE.md`](../GOVERNANCE.md))
+- [ ] Request review from platform maintainers (per
+      [`GOVERNANCE.md`](../GOVERNANCE.md))
 - [ ] Address review feedback
 - [ ] Optionally request KILO/AI audit confirmation
 - [ ] Merge after approval
@@ -389,7 +408,8 @@ For critical security or compliance issues:
 
 ### 5.3 Structure Validator Integration
 
-The [`structure_validator.py`](../.metaHub/scripts/structure_validator.py) `validate_root_structure()` method:
+The [`structure_validator.py`](../.metaHub/scripts/structure_validator.py)
+`validate_root_structure()` method:
 
 ```python
 # Current implementation reads from root-structure.yaml
@@ -400,13 +420,15 @@ DIR_CATEGORIES = ["required", "recommended", "optional", "tooling", "cache", "ai
 
 **Proposed Enhancement:**
 
-Add explicit `portfolio_root` section to [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml):
+Add explicit `portfolio_root` section to
+[`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml):
 
 ```yaml
 portfolio_root:
   description: 'Root directory contract for governance repo'
   required:
-    files: ['README.md', 'LICENSE', 'SECURITY.md', 'GOVERNANCE.md', '.gitignore']
+    files:
+      ['README.md', 'LICENSE', 'SECURITY.md', 'GOVERNANCE.md', '.gitignore']
     dirs: ['.github/', '.metaHub/', 'docs/']
   recommended:
     files: ['CONTRIBUTING.md', '.pre-commit-config.yaml', 'mkdocs.yml']
@@ -417,7 +439,8 @@ portfolio_root:
 
 ### 5.4 Workflow Integration
 
-**Weekly Governance Check ([`weekly-governance-check.yml`](../.github/workflows/weekly-governance-check.yml)):**
+**Weekly Governance Check
+([`weekly-governance-check.yml`](../.github/workflows/weekly-governance-check.yml)):**
 
 ```yaml
 jobs:
@@ -516,7 +539,8 @@ governance:
 
 **Step 2: Update policy files**
 
-In [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml):
+In
+[`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml):
 
 ```yaml
 allowed_directories:
@@ -561,7 +585,8 @@ tools:
 - A: Helper scripts should go in `.metaHub/scripts/` (already exists)
 - Decision: Do not create `scripts/` at root
 
-**Alternative Use Case:** Add `infra/` for Terraform governance of cloud resources
+**Alternative Use Case:** Add `infra/` for Terraform governance of cloud
+resources
 
 **Step 1: Create ADR**
 
@@ -570,8 +595,8 @@ tools:
 
 ## Decision
 
-Add `infra/` directory at root for Terraform configurations
-that govern cloud resources for the portfolio.
+Add `infra/` directory at root for Terraform configurations that govern cloud
+resources for the portfolio.
 
 ## Rationale
 
@@ -588,10 +613,12 @@ In [`root-structure.yaml`](../.metaHub/policies/root-structure.yaml):
 allowed_directories:
   optional:
     - name: 'infra'
-      purpose: 'Infrastructure-as-code (Terraform) for portfolio cloud resources'
+      purpose:
+        'Infrastructure-as-code (Terraform) for portfolio cloud resources'
 ```
 
-In [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml):
+In
+[`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml):
 
 ```yaml
 portfolio:
@@ -633,8 +660,12 @@ def test_infra_directory_allowed():
 ### Short-term (Weeks 2-3) - COMPLETE
 
 - [x] Update all AI tools to read from `.ai/`
-- [x] Update [`structure_validator.py`](../.metaHub/scripts/structure_validator.py) with consolidated AI check
-- [x] Update [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml) with `portfolio_root` section
+- [x] Update
+      [`structure_validator.py`](../.metaHub/scripts/structure_validator.py)
+      with consolidated AI check
+- [x] Update
+      [`portfolio-structure.yaml`](../.metaHub/templates/structures/portfolio-structure.yaml)
+      with `portfolio_root` section
 - [x] Add root structure validation to weekly workflow
 
 ### Medium-term (Week 4) - COMPLETE
@@ -729,9 +760,8 @@ Root Structure: COMPLIANT | Violations: 0 | Warnings: 0
 
 ---
 
-**Document Maintainers:** Platform Team
-**Review Cycle:** Quarterly
-**Related Documents:**
+**Document Maintainers:** Platform Team **Review Cycle:** Quarterly **Related
+Documents:**
 
 - [`ADR-002-root-structure-policy.md`](adr/ADR-002-root-structure-policy.md)
 - [`.metaHub/policies/root-structure.yaml`](../.metaHub/policies/root-structure.yaml)

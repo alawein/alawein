@@ -1,15 +1,25 @@
+---
+title: 'Librex.QAP Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.QAP Implementation Superprompt
 
-**Version**: 1.0
-**Target**: European Journal of Operational Research (EJOR) / INFORMS Journal on Computing
-**Priority**: High (3 strong contributions)
+**Version**: 1.0 **Target**: European Journal of Operational Research (EJOR) /
+INFORMS Journal on Computing **Priority**: High (3 strong contributions)
 **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.QAP implements contextual Quadratic Assignment Problem (QAP) solving with learned cost functions for multi-agent task assignment. Unlike classical QAP solvers that assume static cost matrices, Librex.QAP learns agent-task affinity from historical execution data and uses spectral initialization + Sinkhorn projection for efficient assignment.
+Librex.QAP implements contextual Quadratic Assignment Problem (QAP) solving with
+learned cost functions for multi-agent task assignment. Unlike classical QAP
+solvers that assume static cost matrices, Librex.QAP learns agent-task affinity
+from historical execution data and uses spectral initialization + Sinkhorn
+projection for efficient assignment.
 
 **Core Innovation**: Contextual QAP with learned costs (🟢 STRONG novelty)
 
@@ -27,8 +37,7 @@ Librex.QAP implements contextual Quadratic Assignment Problem (QAP) solving with
 
 ### 1.1 Problem Statement
 
-**Classical QAP**:
-Given:
+**Classical QAP**: Given:
 
 - n agents, m tasks
 - Flow matrix F (n × n): interaction strength between agents
@@ -40,8 +49,7 @@ Find permutation π: {1,...,n} → {1,...,m} minimizing:
 min ∑ᵢ ∑ⱼ F[i,j] × D[π(i), π(j)]
 ```
 
-**Contextual QAP (Librex.QAP)**:
-Given:
+**Contextual QAP (Librex.QAP)**: Given:
 
 - Agent features: A ∈ ℝⁿˣᵈ (skills, workload, history)
 - Task features: B ∈ ℝᵐˣᵈ (complexity, requirements, deadline)
@@ -1061,7 +1069,5 @@ libria-qap/
 
 **END OF Librex.QAP SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: Month 9 (September 2026)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: Month 9 (September 2026)

@@ -1,3 +1,10 @@
+---
+title: 'LLC & Project Registry'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # LLC & Project Registry
 
 > Clear mapping of all projects to their owning LLCs with business goals.

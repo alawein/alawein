@@ -1,3 +1,10 @@
+---
+title: 'ADR-003: JSON Schema for Metadata Validation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-003: JSON Schema for Metadata Validation
 
 <img src="https://img.shields.io/badge/Status-Accepted-10B981?style=flat-square&labelColor=1a1b27" alt="Accepted"/>
@@ -105,4 +112,5 @@ JSON Schema provides:
 
 ---
 
-**See also:** [ADR-002](./ADR-002-opa-policy-enforcement.md) · [Schema README](../../.metaHub/schemas/README.md)
+**See also:** [ADR-002](./ADR-002-opa-policy-enforcement.md) ·
+[Schema README](../../.metaHub/schemas/README.md)

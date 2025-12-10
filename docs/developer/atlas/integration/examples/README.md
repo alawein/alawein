@@ -1,12 +1,22 @@
+---
+title: 'Workflow Examples'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Workflow Examples
 
-This section provides practical examples of common workflows that leverage the ORCHEX-KILO integration. Each example includes step-by-step instructions, expected outputs, and integration benefits.
+This section provides practical examples of common workflows that leverage the
+ORCHEX-KILO integration. Each example includes step-by-step instructions,
+expected outputs, and integration benefits.
 
 ## Code Quality Assurance Workflow
 
 ### Scenario
 
-A development team wants to ensure all code changes meet quality standards and organizational policies before merging.
+A development team wants to ensure all code changes meet quality standards and
+organizational policies before merging.
 
 ### Workflow Steps
 
@@ -65,7 +75,8 @@ A development team wants to ensure all code changes meet quality standards and o
 
 ### Integration Benefits
 
-- **Unified Analysis**: Single command combines ORCHEX analysis with KILO governance
+- **Unified Analysis**: Single command combines ORCHEX analysis with KILO
+  governance
 - **Policy Enforcement**: Automatic validation against organizational standards
 - **Consistent Quality**: Standardized quality checks across all repositories
 
@@ -73,7 +84,8 @@ A development team wants to ensure all code changes meet quality standards and o
 
 ### Scenario
 
-Integrate quality checks and automated deployment preparation into CI/CD pipelines.
+Integrate quality checks and automated deployment preparation into CI/CD
+pipelines.
 
 ### GitHub Actions Example
 
@@ -102,7 +114,8 @@ jobs:
           ORCHEX config set kilo.apiKey ${{ secrets.KILO_API_KEY }}
 
       - name: Code Analysis & Governance Check
-        run: ORCHEX analyze repo . --governance-check --format json > analysis.json
+        run:
+          ORCHEX analyze repo . --governance-check --format json > analysis.json
 
       - name: Compliance Verification
         run: ORCHEX compliance check . --strict --format json > compliance.json
@@ -610,4 +623,6 @@ ORCHEX bridge test --performance --report integration-performance.json
 ORCHEX bridge test --load-test --duration 300 --concurrency 10
 ```
 
-These examples demonstrate the power and flexibility of the ORCHEX-KILO integration for various development scenarios. Each workflow can be customized and extended based on specific project requirements.
+These examples demonstrate the power and flexibility of the ORCHEX-KILO
+integration for various development scenarios. Each workflow can be customized
+and extended based on specific project requirements.

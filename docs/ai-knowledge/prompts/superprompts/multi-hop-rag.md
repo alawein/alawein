@@ -1,8 +1,16 @@
+---
+title: 'Multi-Hop RAG Query Processing'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Multi-Hop RAG Query Processing
 
 ## Purpose
 
-Complex retrieval with reasoning chains for questions requiring multiple evidence pieces.
+Complex retrieval with reasoning chains for questions requiring multiple
+evidence pieces.
 
 ## Source
 
@@ -17,7 +25,9 @@ RAG research 2024
 Break complex query into sub-questions:
 
 ```yaml
-original_query: "What was the revenue impact of the product launch in Q3 compared to the previous year's Q3?"
+original_query:
+  "What was the revenue impact of the product launch in Q3 compared to the
+  previous year's Q3?"
 
 decomposed:
   - sub_query_1: 'What was the Q3 revenue this year?'
@@ -269,14 +279,12 @@ verification:
 
 ### Step 1: [Sub-question 1]
 
-**Retrieved**: [Source document excerpt]
-**Finding**: [Extracted answer]
+**Retrieved**: [Source document excerpt] **Finding**: [Extracted answer]
 **Confidence**: 0.92
 
 ### Step 2: [Sub-question 2]
 
-**Retrieved**: [Source document excerpt]
-**Finding**: [Extracted answer]
+**Retrieved**: [Source document excerpt] **Finding**: [Extracted answer]
 **Confidence**: 0.87
 
 ### Synthesis

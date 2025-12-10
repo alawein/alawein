@@ -4,13 +4,16 @@ version: '1.0'
 category: 'project'
 tags: ['prompt-engineering', 'optimization', 'llm', 'blackbox', 'ide']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Prompt Optimization Superprompt
 
 ## Purpose
 
-Comprehensive framework for optimizing prompts for length, formatting, code generation quality, and IDE-specific features including Blackbox AI, Cursor, and other AI coding assistants.
+Comprehensive framework for optimizing prompts for length, formatting, code
+generation quality, and IDE-specific features including Blackbox AI, Cursor, and
+other AI coding assistants.
 
 ---
 
@@ -385,7 +388,9 @@ export class ContextManager {
 
   private orderByType(items: ContextItem[]): ContextItem[] {
     const typeOrder = ['system', 'code', 'example', 'history'];
-    return items.sort((a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type));
+    return items.sort(
+      (a, b) => typeOrder.indexOf(a.type) - typeOrder.indexOf(b.type),
+    );
   }
 
   private estimateTokens(text: string): number {
@@ -466,7 +471,9 @@ export class PromptTester {
   }
 
   async runTest(test: PromptTest): Promise<TestResult> {
-    const response = await this.llmClient.chat([{ role: 'user', content: test.prompt }]);
+    const response = await this.llmClient.chat([
+      { role: 'user', content: test.prompt },
+    ]);
 
     const content = response.content;
 

@@ -1,10 +1,18 @@
+---
+title: 'Prompt Migration Report'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Prompt Migration Report
 
 Found 71 potential prompts to migrate.
 
 ## Sources
 
-- `.archive\chat-exports\ChatGPT-Branch · Optilibria project overview.md`: 17 prompts
+- `.archive\chat-exports\ChatGPT-Branch ï¿½ Optilibria project overview.md`: 17
+  prompts
 - `docs\user\governance\automation-guide.md`: 11 prompts
 - `docs\AI-AUTO-APPROVE-GUIDE.md`: 8 prompts
 - `docs\GOVERNANCE_SYSTEM_GUIDE.md`: 8 prompts

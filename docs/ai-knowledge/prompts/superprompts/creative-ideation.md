@@ -1,10 +1,21 @@
+---
+title:
+  '🚀 CRAZY IDEAS MASTER PROMPT - Ready-to-Deploy Project Repository Generator'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🚀 CRAZY IDEAS MASTER PROMPT - Ready-to-Deploy Project Repository Generator
 
-**Purpose**: Transform brainstorming ideas into production-ready project repositories with golden template governance.
+**Purpose**: Transform brainstorming ideas into production-ready project
+repositories with golden template governance.
 
-**Usage**: Copy this entire document into Claude/ChatGPT/Gemini with the command:
+**Usage**: Copy this entire document into Claude/ChatGPT/Gemini with the
+command:
 
-> "Deploy project #[NUMBER] as a complete repository following the golden template structure"
+> "Deploy project #[NUMBER] as a complete repository following the golden
+> template structure"
 
 ---
 
@@ -22,7 +33,8 @@
 
 ### What This Is
 
-A comprehensive collection of **crazy, novel, paradigm-shifting ideas** that can be instantly deployed as fully-structured GitHub repositories with:
+A comprehensive collection of **crazy, novel, paradigm-shifting ideas** that can
+be instantly deployed as fully-structured GitHub repositories with:
 
 - Complete project scaffolding (following golden template)
 - Governance rules (85% coverage, pre-commit hooks, CI/CD)
@@ -176,7 +188,8 @@ project-name/
 
 **Tagline**: "Swipe right on science. Match with breakthroughs."
 
-**Core Concept**: Gamified research collaboration platform where researchers swipe on hypotheses like Tinder profiles.
+**Core Concept**: Gamified research collaboration platform where researchers
+swipe on hypotheses like Tinder profiles.
 
 **Key Features**:
 
@@ -186,7 +199,8 @@ project-name/
   - Left = "Already disproven"
   - Up = "Needs funding"
   - Down = "Ethical concerns"
-- **Smart Matching**: When 2+ researchers swipe right → instant collaboration room with video chat, shared docs, grant templates
+- **Smart Matching**: When 2+ researchers swipe right → instant collaboration
+  room with video chat, shared docs, grant templates
 - **Success Tracking**: Track matches → publications (measure collaboration ROI)
 - **Trending Page**: "Hottest hypotheses this week" leaderboard
 
@@ -211,8 +225,7 @@ project-name/
 - University competitions: Harvard vs Stanford swipe battles
 - Weekly challenges: "Can you match 5 hypotheses this week?"
 
-**Repo Name**: `hypothesis-dating-platform`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `hypothesis-dating-platform` **Repo Type**: Portfolio (🎯)
 **Tech**: Python, FastAPI, React Native, PostgreSQL
 
 ---
@@ -221,7 +234,8 @@ project-name/
 
 **Tagline**: "The stock market for scientific skepticism."
 
-**Core Concept**: Prediction market where users trade futures contracts on whether hypotheses will be validated or refuted.
+**Core Concept**: Prediction market where users trade futures contracts on
+whether hypotheses will be validated or refuted.
 
 **Key Features**:
 
@@ -237,7 +251,8 @@ project-name/
   - Volume indicators
   - Volatility measures
 - **Settlement**: Quarterly when experiments complete
-- **Oracle System**: Top 1% predictors get "Oracle" badge + governance voting power
+- **Oracle System**: Top 1% predictors get "Oracle" badge + governance voting
+  power
 - **AI Training Data**: Use market prices to improve hypothesis generators
 
 **Tech Stack**:
@@ -261,8 +276,7 @@ project-name/
 - Journals display "market confidence" for submitted papers
 - Researchers can hedge their own claims
 
-**Repo Name**: `scientific-futures-exchange`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `scientific-futures-exchange` **Repo Type**: Portfolio (🎯)
 **Tech**: Rust, Solana, PostgreSQL, Next.js
 
 ---
@@ -271,7 +285,8 @@ project-name/
 
 **Tagline**: "If your research survives this, it can survive anything."
 
-**Core Concept**: Brutal adversarial AI that attacks research from 200+ angles trying to destroy it.
+**Core Concept**: Brutal adversarial AI that attacks research from 200+ angles
+trying to destroy it.
 
 **Key Features**:
 
@@ -316,8 +331,7 @@ project-name/
 - Boss battles: Quarterly events where AI gets upgraded
 - Leaderboard: Top-surviving hypotheses of all time
 
-**Repo Name**: `nightmare-mode-validator`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `nightmare-mode-validator` **Repo Type**: Portfolio (🎯)
 **Tech**: Python, FastAPI, Multi-model AI, Next.js
 
 ---
@@ -326,7 +340,8 @@ project-name/
 
 **Tagline**: "See what 2030 will say about your 2025 research."
 
-**Core Concept**: AI generates simulated future papers that cite your current work (positive, negative, or ignore).
+**Core Concept**: AI generates simulated future papers that cite your current
+work (positive, negative, or ignore).
 
 **Key Features**:
 
@@ -370,8 +385,7 @@ project-name/
 - PhD students: Validate dissertation direction
 - Journals: Display "predicted 10-year impact" for papers
 
-**Repo Name**: `temporal-impact-simulator`
-**Repo Type**: Research (🔬)
+**Repo Name**: `temporal-impact-simulator` **Repo Type**: Research (🔬)
 **Tech**: Python, GPT-4, Neo4j, Next.js
 
 ---
@@ -380,7 +394,8 @@ project-name/
 
 **Tagline**: "Systematizing serendipity. Forcing the impossible."
 
-**Core Concept**: Deliberately slam together unrelated fields to generate breakthrough hypotheses.
+**Core Concept**: Deliberately slam together unrelated fields to generate
+breakthrough hypotheses.
 
 **Key Features**:
 
@@ -403,7 +418,8 @@ project-name/
 
 - **Community Voting**: Weekly challenge to test craziest idea
 - **Accidental Nobel Archive**: Track which collisions led to real breakthroughs
-- **Chaos Roulette**: Spin wheel → get 3 random domains → forced to generate hypothesis
+- **Chaos Roulette**: Spin wheel → get 3 random domains → forced to generate
+  hypothesis
 
 **Tech Stack**:
 
@@ -426,9 +442,8 @@ project-name/
 - Competitions: "Most absurd idea that actually worked"
 - Meme potential: Share ridiculous collisions
 
-**Repo Name**: `chaos-collision-engine`
-**Repo Type**: Tools (🔧)
-**Tech**: Python, Claude, Neo4j, Next.js
+**Repo Name**: `chaos-collision-engine` **Repo Type**: Tools (🔧) **Tech**:
+Python, Claude, Neo4j, Next.js
 
 ---
 
@@ -436,7 +451,8 @@ project-name/
 
 **Tagline**: "Fortnite meets peer review. Science as spectator sport."
 
-**Core Concept**: 100-player battle royale where hypotheses compete, fail, and get eliminated in real-time.
+**Core Concept**: 100-player battle royale where hypotheses compete, fail, and
+get eliminated in real-time.
 
 **Key Features**:
 
@@ -451,7 +467,8 @@ project-name/
 - **Spectator Mode**:
   - 10,000+ watch live on Twitch
   - Real-time stats dashboard (survival rate, confidence scores)
-  - Commentator AI narrates eliminations ("Hypothesis #47 just failed replication!")
+  - Commentator AI narrates eliminations ("Hypothesis #47 just failed
+    replication!")
   - Chat votes on which hypothesis to stress-test
 
 - **Power-Ups**:
@@ -487,8 +504,7 @@ project-name/
 - Clip-worthy eliminations
 - University rivalries
 
-**Repo Name**: `hypothesis-battle-royale`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `hypothesis-battle-royale` **Repo Type**: Portfolio (🎯)
 **Tech**: Node.js, Kubernetes, Next.js, Twitch API
 
 ---
@@ -497,7 +513,8 @@ project-name/
 
 **Tagline**: "Get your paper reviewed by Einstein. Literally."
 
-**Core Concept**: AI models trained on historical scientists' complete works to simulate their review style.
+**Core Concept**: AI models trained on historical scientists' complete works to
+simulate their review style.
 
 **Key Features**:
 
@@ -512,7 +529,8 @@ project-name/
 - **Review Modes**:
   - Single Review: One scientist, 2000-word detailed critique
   - Panel Review: 5 scientists debate your work (simulated roundtable)
-  - Historical Timeline: See how Darwin (1850), Einstein (1920), Hawking (1990) each view your idea
+  - Historical Timeline: See how Darwin (1850), Einstein (1920), Hawking (1990)
+    each view your idea
   - Adversarial: Newton vs Leibniz argue about your calculus
 
 - **Accuracy Validation**:
@@ -546,9 +564,8 @@ project-name/
 - Clear disclaimer: "This is a model, not channeling spirits"
 - Family consent required for recently deceased (<50 years)
 
-**Repo Name**: `ghost-scientist-reviews`
-**Repo Type**: Learning (📚)
-**Tech**: Python, Fine-tuned GPT-4, Next.js
+**Repo Name**: `ghost-scientist-reviews` **Repo Type**: Learning (📚) **Tech**:
+Python, Fine-tuned GPT-4, Next.js
 
 ---
 
@@ -556,7 +573,8 @@ project-name/
 
 **Tagline**: "Watch your idea evolve from primordial soup to perfection."
 
-**Core Concept**: Genetic algorithm for hypotheses. Submit seed idea, watch 1000 generations evolve.
+**Core Concept**: Genetic algorithm for hypotheses. Submit seed idea, watch 1000
+generations evolve.
 
 **Key Features**:
 
@@ -610,17 +628,18 @@ project-name/
 - Time-lapse export: 60-second video of evolution (shareable)
 - Custom fitness functions: Define what "success" means
 
-**Repo Name**: `hypothesis-evolution-engine`
-**Repo Type**: Research (🔬)
+**Repo Name**: `hypothesis-evolution-engine` **Repo Type**: Research (🔬)
 **Tech**: Python, Claude, MongoDB, D3.js
 
 ---
 
 #### **IDEA #9: RESEARCH PRISON - Interrogate Your Hypothesis Until It Breaks**
 
-**Tagline**: "Good cop, bad cop, AI cop. Your hypothesis won't leave until it confesses."
+**Tagline**: "Good cop, bad cop, AI cop. Your hypothesis won't leave until it
+confesses."
 
-**Core Concept**: Put hypothesis in AI interrogation room. Doesn't leave until it breaks or proves innocence.
+**Core Concept**: Put hypothesis in AI interrogation room. Doesn't leave until
+it breaks or proves innocence.
 
 **Key Features**:
 
@@ -664,9 +683,8 @@ project-name/
 - Betting: Predict how long until confession
 - Leaderboard: Hypotheses with longest survival time
 
-**Repo Name**: `hypothesis-interrogator`
-**Repo Type**: Tools (🔧)
-**Tech**: Python, Multi-AI, Next.js, WebSockets
+**Repo Name**: `hypothesis-interrogator` **Repo Type**: Tools (🔧) **Tech**:
+Python, Multi-AI, Next.js, WebSockets
 
 ---
 
@@ -674,7 +692,8 @@ project-name/
 
 **Tagline**: "How would your hypothesis fare in 100 alternate universes?"
 
-**Core Concept**: Simulate hypothesis testing across alternate realities with different physics, history, or social structures.
+**Core Concept**: Simulate hypothesis testing across alternate realities with
+different physics, history, or social structures.
 
 **Key Features**:
 
@@ -731,8 +750,7 @@ project-name/
 - Generalization: "Is this human-specific or universal?"
 - SciFi validation: "Would this tech work in Star Trek universe?"
 
-**Repo Name**: `multiverse-hypothesis-tester`
-**Repo Type**: Research (🔬)
+**Repo Name**: `multiverse-hypothesis-tester` **Repo Type**: Research (🔬)
 **Tech**: Python, Claude, Neo4j, Three.js
 
 ---
@@ -743,7 +761,8 @@ project-name/
 
 **Tagline**: "Turn your research paper into a Billboard Top 40 hit."
 
-**Core Concept**: AI transforms research findings into catchy songs, making science go viral through music.
+**Core Concept**: AI transforms research findings into catchy songs, making
+science go viral through music.
 
 **Key Features**:
 
@@ -789,9 +808,8 @@ project-name/
 - Spotify charts: "Top Science Songs"
 - Grammy category: Best Research Paper Song
 
-**Repo Name**: `research-music-generator`
-**Repo Type**: Tools (🔧)
-**Tech**: Python, GPT-4, AudioCraft, Next.js
+**Repo Name**: `research-music-generator` **Repo Type**: Tools (🔧) **Tech**:
+Python, GPT-4, AudioCraft, Next.js
 
 ---
 
@@ -799,7 +817,8 @@ project-name/
 
 **Tagline**: "Need a quantum physicist for 2 hours? Rent one."
 
-**Core Concept**: Uber-style platform for on-demand expert consultations. Bid on expert time in real-time auctions.
+**Core Concept**: Uber-style platform for on-demand expert consultations. Bid on
+expert time in real-time auctions.
 
 **Key Features**:
 
@@ -850,17 +869,18 @@ project-name/
 - More seekers → more expert income
 - Reviews → quality signal
 
-**Repo Name**: `expertise-auction-platform`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `expertise-auction-platform` **Repo Type**: Portfolio (🎯)
 **Tech**: Node.js, PostgreSQL, Twilio, Stripe
 
 ---
 
 #### **IDEA #13: RESEARCH DUNGEON - Roguelike Research Quest**
 
-**Tagline**: "Descend into the dungeon of unknown knowledge. Each floor is a new research challenge."
+**Tagline**: "Descend into the dungeon of unknown knowledge. Each floor is a new
+research challenge."
 
-**Core Concept**: Turn research into a roguelike dungeon crawler game where each floor presents scientific puzzles.
+**Core Concept**: Turn research into a roguelike dungeon crawler game where each
+floor presents scientific puzzles.
 
 **Key Features**:
 
@@ -914,17 +934,18 @@ project-name/
 - Adaptive difficulty (gets harder as you improve)
 - Could replace boring methodology courses
 
-**Repo Name**: `research-dungeon-crawler`
-**Repo Type**: Learning (📚)
-**Tech**: Python, Phaser.js, GPT-4, Next.js
+**Repo Name**: `research-dungeon-crawler` **Repo Type**: Learning (📚) **Tech**:
+Python, Phaser.js, GPT-4, Next.js
 
 ---
 
 #### **IDEA #14: CITATION CITY - SimCity for Research Impact**
 
-**Tagline**: "Build a thriving research metropolis. Each building is a publication."
+**Tagline**: "Build a thriving research metropolis. Each building is a
+publication."
 
-**Core Concept**: City-building game where publications are buildings, citations are resources, collaborations are roads.
+**Core Concept**: City-building game where publications are buildings, citations
+are resources, collaborations are roads.
 
 **Key Features**:
 
@@ -975,17 +996,18 @@ project-name/
 - Gamify scientific productivity
 - Teach importance of collaboration (connected cities grow faster)
 
-**Repo Name**: `citation-city-builder`
-**Repo Type**: Learning (📚)
-**Tech**: Node.js, Three.js, OpenAlex API
+**Repo Name**: `citation-city-builder` **Repo Type**: Learning (📚) **Tech**:
+Node.js, Three.js, OpenAlex API
 
 ---
 
 #### **IDEA #15: RESEARCH ESCAPE ROOM - 60-Minute Science Puzzles**
 
-**Tagline**: "You have 60 minutes to solve the scientific mystery. Clock's ticking."
+**Tagline**: "You have 60 minutes to solve the scientific mystery. Clock's
+ticking."
 
-**Core Concept**: Timed escape room challenges based on real scientific breakthroughs and mysteries.
+**Core Concept**: Timed escape room challenges based on real scientific
+breakthroughs and mysteries.
 
 **Key Features**:
 
@@ -1041,17 +1063,18 @@ project-name/
 - Custom rooms based on company's research
 - Could replace boring trust falls
 
-**Repo Name**: `research-escape-room`
-**Repo Type**: Learning (📚)
-**Tech**: Python, Next.js, WebSockets, GPT-4
+**Repo Name**: `research-escape-room` **Repo Type**: Learning (📚) **Tech**:
+Python, Next.js, WebSockets, GPT-4
 
 ---
 
 #### **IDEA #16: PAPER SOMMELIER - AI Wine Tasting for Research**
 
-**Tagline**: "This paper has notes of Bayesian oak with a hint of replication crisis."
+**Tagline**: "This paper has notes of Bayesian oak with a hint of replication
+crisis."
 
-**Core Concept**: Wine sommelier-style reviews of research papers with pretentious descriptions and pairing suggestions.
+**Core Concept**: Wine sommelier-style reviews of research papers with
+pretentious descriptions and pairing suggestions.
 
 **Key Features**:
 
@@ -1100,17 +1123,18 @@ project-name/
 - Social media: "My paper got 95 points!"
 - Meme potential: Over-the-top descriptions
 
-**Repo Name**: `paper-sommelier-ai`
-**Repo Type**: Tools (🔧)
-**Tech**: Python, GPT-4, Next.js
+**Repo Name**: `paper-sommelier-ai` **Repo Type**: Tools (🔧) **Tech**: Python,
+GPT-4, Next.js
 
 ---
 
 #### **IDEA #17: HYPOTHESIS HEIST - Ocean's Eleven Meets Science**
 
-**Tagline**: "Assemble your crew. Plan the perfect experiment. Execute the heist."
+**Tagline**: "Assemble your crew. Plan the perfect experiment. Execute the
+heist."
 
-**Core Concept**: Cinematic research planning game where you recruit expert team members to "steal" scientific breakthroughs.
+**Core Concept**: Cinematic research planning game where you recruit expert team
+members to "steal" scientific breakthroughs.
 
 **Key Features**:
 
@@ -1167,9 +1191,8 @@ project-name/
 - Shows importance of team composition
 - Realistic complications (unlike Hollywood heists)
 
-**Repo Name**: `hypothesis-heist-game`
-**Repo Type**: Learning (📚)
-**Tech**: Python, Unity, GPT-4
+**Repo Name**: `hypothesis-heist-game` **Repo Type**: Learning (📚) **Tech**:
+Python, Unity, GPT-4
 
 ---
 
@@ -1177,7 +1200,8 @@ project-name/
 
 **Tagline**: "We read your paper so you don't have to. Then we roast it."
 
-**Core Concept**: Comedy roast-style reviews of published papers, exposing flaws with humor.
+**Core Concept**: Comedy roast-style reviews of published papers, exposing flaws
+with humor.
 
 **Key Features**:
 
@@ -1230,9 +1254,8 @@ project-name/
 - "My paper got roasted" = badge of honor?
 - Journals will denounce it (free press!)
 
-**Repo Name**: `research-roast-show`
-**Repo Type**: Tools (🔧)
-**Tech**: Python, GPT-4, D-ID, Next.js
+**Repo Name**: `research-roast-show` **Repo Type**: Tools (🔧) **Tech**: Python,
+GPT-4, D-ID, Next.js
 
 ---
 
@@ -1240,7 +1263,8 @@ project-name/
 
 **Tagline**: "Swipe right on someone who also loves differential topology."
 
-**Core Concept**: Dating app for academics where matching is based on research compatibility, not photos.
+**Core Concept**: Dating app for academics where matching is based on research
+compatibility, not photos.
 
 **Key Features**:
 
@@ -1292,8 +1316,7 @@ project-name/
 - "Married because of shared love for graph theory"
 - Could be legitimate academic networking tool (with romance as side effect)
 
-**Repo Name**: `academic-dating-platform`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `academic-dating-platform` **Repo Type**: Portfolio (🎯)
 **Tech**: Node.js, React Native, PostgreSQL
 
 ---
@@ -1302,7 +1325,8 @@ project-name/
 
 **Tagline**: "The perfect playlist of papers, curated for your research vibe."
 
-**Core Concept**: Spotify-style algorithmic recommendations but for research papers.
+**Core Concept**: Spotify-style algorithmic recommendations but for research
+papers.
 
 **Key Features**:
 
@@ -1323,7 +1347,8 @@ project-name/
   - Share playlists: "My Quals Reading List"
   - Collaborative playlists: Lab reading group
   - Follow other researchers' playlists
-  - "Wrapped": Year-end stats (1,247 papers read, top 0.1% of neuroscience readers)
+  - "Wrapped": Year-end stats (1,247 papers read, top 0.1% of neuroscience
+    readers)
 
 - **Listening Modes**:
   - Text-to-speech: "Listen" to papers while commuting
@@ -1351,8 +1376,7 @@ project-name/
 - Share "My top 10 papers of 2025"
 - Social proof: "500,000 researchers use this"
 
-**Repo Name**: `research-mixtape-platform`
-**Repo Type**: Portfolio (🎯)
+**Repo Name**: `research-mixtape-platform` **Repo Type**: Portfolio (🎯)
 **Tech**: Python, GPT-4, ElevenLabs, Next.js
 
 ---
@@ -1542,13 +1566,18 @@ git push origin feat/initial-implementation
 1. Research Remix (4 weeks) - Quick win, viral potential
 2. Research Roast (4 weeks) - Quick win, viral potential
 
-**Phase 2 - Core Products (Weeks 9-20)**: 3. Hypothesis Dating (8 weeks) - Core collaboration platform 4. Nightmare Mode (6 weeks) - Core validation platform
+**Phase 2 - Core Products (Weeks 9-20)**: 3. Hypothesis Dating (8 weeks) - Core
+collaboration platform 4. Nightmare Mode (6 weeks) - Core validation platform
 
-**Phase 3 - Ecosystem (Weeks 21-32)**: 5. Expertise Auction (8 weeks) - Monetization engine 6. Research Mixtape (6 weeks) - Discovery platform
+**Phase 3 - Ecosystem (Weeks 21-32)**: 5. Expertise Auction (8 weeks) -
+Monetization engine 6. Research Mixtape (6 weeks) - Discovery platform
 
-**Phase 4 - Flagship (Weeks 33-44)**: 7. Battle Royale (12 weeks) - Flagship spectacle event
+**Phase 4 - Flagship (Weeks 33-44)**: 7. Battle Royale (12 weeks) - Flagship
+spectacle event
 
-**Phase 5 - Advanced (Weeks 45+)**: 8. Failure Futures (12 weeks) - Advanced prediction market 9. Academic Dating (8 weeks) - Social layer 10. Others as demand indicates
+**Phase 5 - Advanced (Weeks 45+)**: 8. Failure Futures (12 weeks) - Advanced
+prediction market 9. Academic Dating (8 weeks) - Social layer 10. Others as
+demand indicates
 
 ---
 
@@ -1630,7 +1659,8 @@ git push origin feat/matching-algorithm
 ```markdown
 You are the Project Architect for [PROJECT_NAME].
 
-**Role**: Design system architecture, scalability patterns, documentation structure.
+**Role**: Design system architecture, scalability patterns, documentation
+structure.
 
 **Current Task**: [SPECIFIC_TASK]
 
@@ -1807,9 +1837,12 @@ python golden.py validate-compliance /path/to/repo
 
 ### Documentation
 
-- **Golden Template**: `/mnt/c/Users/mesha/Desktop/GitHub/.meta-main/tools/cli/golden.py`
-- **Governance Handbook**: See ARCHIVE/golden-meta-docs/.meta/REFERENCE-MATERIALS/.meta-main/docs/06-governance-handbook.md
-- **Agents Template**: See ARCHIVE/golden-meta-docs/.meta/governance/AGENTS-template.md
+- **Golden Template**:
+  `/mnt/c/Users/mesha/Desktop/GitHub/.meta-main/tools/cli/golden.py`
+- **Governance Handbook**: See
+  ARCHIVE/golden-meta-docs/.meta/REFERENCE-MATERIALS/.meta-main/docs/06-governance-handbook.md
+- **Agents Template**: See
+  ARCHIVE/golden-meta-docs/.meta/governance/AGENTS-template.md
 
 ### Tools
 
@@ -1860,8 +1893,5 @@ Each deployed project will have:
 
 ---
 
-**Version**: 1.0.0
-**Last Updated**: 2025-11-15
-**Status**: ✅ Ready for Deployment
-**License**: MIT
-**Author**: Meshal Alawein (alawein)
+**Version**: 1.0.0 **Last Updated**: 2025-11-15 **Status**: ✅ Ready for
+Deployment **License**: MIT **Author**: Meshal Alawein (alawein)

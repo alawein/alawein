@@ -1,3 +1,10 @@
+---
+title: 'REST API Reference'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REST API Reference
 
 > HTTP REST API for AI Tools

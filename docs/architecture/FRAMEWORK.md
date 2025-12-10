@@ -1,3 +1,10 @@
+---
+title: 'Meta-Governance Framework'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Meta-Governance Framework
 
 **Enterprise-grade governance, DevOps templates, and automation tools**

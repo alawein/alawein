@@ -1,3 +1,10 @@
+---
+title: 'Dynamic Model Selection Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Dynamic Model Selection Guide
 
 **How to Save Tokens with Intelligent Model Routing**
@@ -6,21 +13,26 @@
 
 ## 🎯 Overview
 
-Yes! You can dynamically change models based on task requirements to optimize token usage and costs. This guide explains how the token optimization system works and how to leverage it across your workflow.
+Yes! You can dynamically change models based on task requirements to optimize
+token usage and costs. This guide explains how the token optimization system
+works and how to leverage it across your workflow.
 
 ---
 
 ## 💡 The Problem
 
 Different AI tasks have different requirements:
+
 - **Simple tasks** (documentation, boilerplate) → Don't need expensive models
 - **Complex tasks** (architecture, refactoring) → Benefit from premium models
 - **Budget constraints** → Need to stay within daily/monthly limits
 - **Performance requirements** → Balance speed vs quality
 
-**Without dynamic routing:** You pay premium prices for all tasks, even simple ones.
+**Without dynamic routing:** You pay premium prices for all tasks, even simple
+ones.
 
-**With dynamic routing:** Each task gets the optimal model, saving 60-80% on costs.
+**With dynamic routing:** Each task gets the optimal model, saving 60-80% on
+costs.
 
 ---
 
@@ -72,11 +84,11 @@ Score = (Capability × 0.4) +      // Can it do the task?
 
 **Example Scoring:**
 
-| Model | Capability | Performance | Availability | Cost | **Total Score** |
-|-------|------------|-------------|--------------|------|-----------------|
-| GPT-4o | 1.0 | 0.95 | 0.99 | 0.5 | **0.938** |
-| Claude Sonnet 4 | 1.0 | 0.93 | 0.98 | 0.7 | **0.942** |
-| GPT-4o Mini | 1.0 | 0.85 | 0.99 | 0.985 | **0.950** ✅ |
+| Model           | Capability | Performance | Availability | Cost  | **Total Score** |
+| --------------- | ---------- | ----------- | ------------ | ----- | --------------- |
+| GPT-4o          | 1.0        | 0.95        | 0.99         | 0.5   | **0.938**       |
+| Claude Sonnet 4 | 1.0        | 0.93        | 0.98         | 0.7   | **0.942**       |
+| GPT-4o Mini     | 1.0        | 0.85        | 0.99         | 0.985 | **0.950** ✅    |
 
 For simple tasks, GPT-4o Mini wins due to excellent cost efficiency.
 
@@ -139,11 +151,13 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 ### Scenario 1: Documentation Generation
 
 **Without Dynamic Routing:**
+
 - Model: GPT-4o (premium)
 - Cost per task: $0.025
 - 100 tasks/day: **$2.50/day**
 
 **With Dynamic Routing:**
+
 - Model: GPT-4o Mini (selected automatically)
 - Cost per task: $0.0015
 - 100 tasks/day: **$0.15/day**
@@ -153,15 +167,18 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 ### Scenario 2: Mixed Workload
 
 **Daily Tasks:**
+
 - 50 simple tasks (docs, boilerplate)
 - 20 medium tasks (debugging, refactoring)
 - 5 complex tasks (architecture, design)
 
 **Without Dynamic Routing:**
+
 - All tasks use GPT-4o
 - Total cost: **$1.875/day**
 
 **With Dynamic Routing:**
+
 - Simple → GPT-4o Mini: $0.075
 - Medium → Claude Sonnet 4: $0.180
 - Complex → GPT-4o: $0.125
@@ -171,11 +188,11 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 
 ### Annual Savings
 
-| Scenario | Without Routing | With Routing | Annual Savings |
-|----------|----------------|--------------|----------------|
-| Documentation | $912.50 | $54.75 | **$857.75** |
-| Mixed Workload | $684.38 | $138.70 | **$545.68** |
-| Heavy Usage | $2,737.50 | $547.50 | **$2,190.00** |
+| Scenario       | Without Routing | With Routing | Annual Savings |
+| -------------- | --------------- | ------------ | -------------- |
+| Documentation  | $912.50         | $54.75       | **$857.75**    |
+| Mixed Workload | $684.38         | $138.70      | **$545.68**    |
+| Heavy Usage    | $2,737.50       | $547.50      | **$2,190.00**  |
 
 ---
 
@@ -186,6 +203,7 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 Configure your IDE to use the routing service:
 
 **Cursor/Cline/Windsurf:**
+
 ```json
 {
   "ai.modelRouter": {
@@ -218,7 +236,7 @@ const service = new TokenOptimizationService();
 const tasks = [
   { type: 'code_generation', description: 'Create API endpoint', budget: 0.5 },
   { type: 'documentation', description: 'Generate README', budget: 0.2 },
-  { type: 'refactoring', description: 'Optimize algorithm', budget: 1.0 }
+  { type: 'refactoring', description: 'Optimize algorithm', budget: 1.0 },
 ];
 
 // Process 8 tasks concurrently
@@ -237,7 +255,7 @@ console.log(`Budget remaining: $${stats.budgetRemaining.toFixed(2)}`);
 const agents = [
   { agent: 'Planner', task: 'architecture', budget: 2.0 },
   { agent: 'Executor', task: 'code_generation', budget: 0.5 },
-  { agent: 'Critic', task: 'code_review', budget: 0.3 }
+  { agent: 'Critic', task: 'code_review', budget: 0.3 },
 ];
 
 for (const { agent, task, budget } of agents) {
@@ -258,6 +276,7 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts stats
 ```
 
 **Output:**
+
 ```json
 {
   "costStatistics": {
@@ -292,21 +311,23 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export csv
 ### Optimization Tips
 
 1. **Adjust Weights:** Modify scoring weights based on your priorities
+
    ```typescript
-   const totalScore = 
-     capabilityScore * 0.5 +    // Increase if quality is critical
+   const totalScore =
+     capabilityScore * 0.5 + // Increase if quality is critical
      performanceScore * 0.2 +
      availabilityScore * 0.2 +
-     costScore * 0.1;            // Increase to prioritize cost savings
+     costScore * 0.1; // Increase to prioritize cost savings
    ```
 
 2. **Set Task-Specific Budgets:**
+
    ```typescript
    const budgets = {
      documentation: 0.1,
      code_generation: 0.5,
      architecture: 2.0,
-     refactoring: 1.0
+     refactoring: 1.0,
    };
    ```
 
@@ -330,26 +351,30 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export csv
 ## 🎓 Best Practices
 
 ### 1. Start Conservative
+
 - Begin with higher budgets
 - Monitor actual costs
 - Gradually reduce budgets as you understand patterns
 
 ### 2. Task Classification
+
 - **Tier 1 (Simple):** Documentation, boilerplate, formatting
 - **Tier 2 (Medium):** Debugging, testing, refactoring
 - **Tier 3 (Complex):** Architecture, design, optimization
 
 ### 3. Budget Allocation
+
 ```typescript
 const dailyBudget = 10.0;
 const allocation = {
-  tier1: dailyBudget * 0.2,  // $2 for simple tasks
-  tier2: dailyBudget * 0.5,  // $5 for medium tasks
-  tier3: dailyBudget * 0.3   // $3 for complex tasks
+  tier1: dailyBudget * 0.2, // $2 for simple tasks
+  tier2: dailyBudget * 0.5, // $5 for medium tasks
+  tier3: dailyBudget * 0.3, // $3 for complex tasks
 };
 ```
 
 ### 4. Regular Audits
+
 ```bash
 # Weekly audit
 node quick-audit.js
@@ -363,16 +388,19 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 ## 🔒 Security & Compliance
 
 ### Budget Enforcement
+
 - Hard limits prevent overspending
 - Alerts when approaching budget
 - Automatic degradation to cheaper models
 
 ### Data Privacy
+
 - No sensitive data in model selection
 - Task descriptions sanitized
 - Metrics anonymized
 
 ### Audit Trail
+
 - All routing decisions logged
 - Cost tracking per task
 - Model performance metrics
@@ -391,9 +419,12 @@ npx tsx tools/orchex/orchestration/deployment-wrapper.ts export json
 ## 🤝 Support
 
 For questions or issues:
-1. Check the [deployment summary](../../TOKEN-OPTIMIZATION-DEPLOYMENT-SUMMARY.md)
+
+1. Check the
+   [deployment summary](../../TOKEN-OPTIMIZATION-DEPLOYMENT-SUMMARY.md)
 2. Review test cases in `test-deployment-wrapper.js`
-3. Run diagnostics: `npx tsx tools/orchex/orchestration/deployment-wrapper.ts stats`
+3. Run diagnostics:
+   `npx tsx tools/orchex/orchestration/deployment-wrapper.ts stats`
 
 ---
 

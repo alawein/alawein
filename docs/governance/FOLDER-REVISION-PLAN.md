@@ -1,13 +1,21 @@
+---
+title: 'Comprehensive Folder Revision Plan (A-Z)'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Comprehensive Folder Revision Plan (A-Z)
 
-> Generated: 2024-12-06
-> Status: **✅ COMPLETED**
+> Generated: 2024-12-06 Status: **✅ COMPLETED**
 
 ---
 
 ## Executive Summary
 
-This document provides a complete A-Z revision of 18 folders in the monorepo. The analysis identifies:
+This document provides a complete A-Z revision of 18 folders in the monorepo.
+The analysis identifies:
+
 - **5 folders to DELETE** (caches, empty, redundant)
 - **2 folders to MERGE** (duplicate archives)
 - **8 folders to REORGANIZE** (improve structure)
@@ -18,25 +26,27 @@ This document provides a complete A-Z revision of 18 folders in the monorepo. Th
 ## Folder Analysis (Alphabetical)
 
 ### 1. `.allstar/` ✅ KEEP AS-IS
-**Purpose**: GitHub Allstar security app configuration
-**Files**: 4 (allstar.yaml, branch_protection.yaml, SETUP.md, ALLSTAR_SETUP.md)
-**Verdict**: Well-organized, standard Allstar structure
-**Action**: None required
+
+**Purpose**: GitHub Allstar security app configuration **Files**: 4
+(allstar.yaml, branch_protection.yaml, SETUP.md, ALLSTAR_SETUP.md) **Verdict**:
+Well-organized, standard Allstar structure **Action**: None required
 
 ---
 
 ### 2. `.amazonq/` ⚠️ MERGE INTO .config/ai/
-**Purpose**: Amazon Q AI assistant rules
-**Files**: 1 empty folder (rules/)
+
+**Purpose**: Amazon Q AI assistant rules **Files**: 1 empty folder (rules/)
 **Issue**: Empty folder, should be consolidated with other AI configs
-**Action**: Move to `.config/ai/amazonq/` (already exists there - DELETE this one)
+**Action**: Move to `.config/ai/amazonq/` (already exists there - DELETE this
+one)
 
 ---
 
 ### 3. `.archive/` 🔄 MERGE WITH archive/
-**Purpose**: Historical/archived content
-**Files**: 54+ files across 16 subdirectories
-**Contents**:
+
+**Purpose**: Historical/archived content **Files**: 54+ files across 16
+subdirectories **Contents**:
+
 - `automation-ts/` - Archived TypeScript automation
 - `benchmarks-consolidation/` - Migrated benchmark code
 - `business-planning/` - Business analysis documents
@@ -51,16 +61,17 @@ This document provides a complete A-Z revision of 18 folders in the monorepo. Th
 ---
 
 ### 4. `.backups/` ✅ KEEP AS-IS
-**Purpose**: Configuration backups with timestamps
-**Files**: 2 timestamped backup folders
-**Verdict**: Useful for recovery, properly timestamped
+
+**Purpose**: Configuration backups with timestamps **Files**: 2 timestamped
+backup folders **Verdict**: Useful for recovery, properly timestamped
 **Action**: Add to .gitignore if not already
 
 ---
 
 ### 5. `.config/` 🔄 REORGANIZE
-**Purpose**: Centralized configuration for all tools
-**Current Structure**:
+
+**Purpose**: Centralized configuration for all tools **Current Structure**:
+
 ```
 .config/
 ├── accessibility/     # WCAG config
@@ -98,11 +109,13 @@ This document provides a complete A-Z revision of 18 folders in the monorepo. Th
 ```
 
 **Issues**:
+
 1. `.config/claude/` duplicates `.config/ai/claude/`
 2. Root `.amazonq/` duplicates `.config/ai/amazonq/`
 3. `ai/` folder is well-organized but could use README
 
 **Action**:
+
 - Remove duplicate `.config/claude/` (merge into `.config/ai/claude/`)
 - Add `.config/ai/README.md` index file
 - Move `.config/ai/logs/` to `.config/telemetry/ai-logs/`
@@ -110,9 +123,10 @@ This document provides a complete A-Z revision of 18 folders in the monorepo. Th
 ---
 
 ### 6. `.github/` ✅ KEEP AS-IS
-**Purpose**: GitHub-specific configuration
-**Files**: 51 files (workflows, templates, governance)
-**Structure**:
+
+**Purpose**: GitHub-specific configuration **Files**: 51 files (workflows,
+templates, governance) **Structure**:
+
 ```
 .github/
 ├── ISSUE_TEMPLATE/   # 5 issue templates
@@ -120,61 +134,63 @@ This document provides a complete A-Z revision of 18 folders in the monorepo. Th
 ├── workflows/        # 29 workflow files
 ├── CODEOWNERS, dependabot.yml, etc.
 ```
-**Verdict**: Standard GitHub structure, well-organized
-**Action**: None required
+
+**Verdict**: Standard GitHub structure, well-organized **Action**: None required
 
 ---
 
 ### 7. `.husky/` ✅ KEEP AS-IS
-**Purpose**: Git hooks
-**Files**: pre-commit hook + _/ folder
-**Verdict**: Standard Husky structure
-**Action**: None required
+
+**Purpose**: Git hooks **Files**: pre-commit hook + \_/ folder **Verdict**:
+Standard Husky structure **Action**: None required
 
 ---
 
 ### 8. `.personal/` 🔄 CONSIDER MOVING
-**Purpose**: Personal/family website projects
-**Files**: 4 README.md files (drmalawein, portfolio, rounaq)
-**Issue**: Personal projects mixed with monorepo infrastructure
-**Options**:
+
+**Purpose**: Personal/family website projects **Files**: 4 README.md files
+(drmalawein, portfolio, rounaq) **Issue**: Personal projects mixed with monorepo
+infrastructure **Options**:
+
 1. Keep as hidden folder (current)
 2. Move to `family-platforms/` (already exists at root)
 3. Keep separate but add to .gitignore
 
-**Recommendation**: Merge with existing `family-platforms/` folder
-**Action**: Move contents to `family-platforms/` and delete `.personal/`
+**Recommendation**: Merge with existing `family-platforms/` folder **Action**:
+Move contents to `family-platforms/` and delete `.personal/`
 
 ---
 
 ### 9. `.pytest_cache/` 🗑️ DELETE (add to .gitignore)
-**Purpose**: Python test cache
-**Files**: Auto-generated cache files
-**Verdict**: Should never be committed
-**Action**: Delete and ensure in .gitignore
+
+**Purpose**: Python test cache **Files**: Auto-generated cache files
+**Verdict**: Should never be committed **Action**: Delete and ensure in
+.gitignore
 
 ---
 
 ### 10. `.ruff_cache/` 🗑️ DELETE (add to .gitignore)
-**Purpose**: Ruff linter cache
-**Files**: Auto-generated cache files
-**Verdict**: Should never be committed
-**Action**: Delete and ensure in .gitignore
+
+**Purpose**: Ruff linter cache **Files**: Auto-generated cache files
+**Verdict**: Should never be committed **Action**: Delete and ensure in
+.gitignore
 
 ---
 
 ### 11. `.vscode/` ✅ KEEP AS-IS
-**Purpose**: VS Code workspace settings
-**Files**: 4 files (extensions.json, settings.json, tasks.json, workspace)
-**Verdict**: Standard VS Code structure
+
+**Purpose**: VS Code workspace settings **Files**: 4 files (extensions.json,
+settings.json, tasks.json, workspace) **Verdict**: Standard VS Code structure
 **Action**: None required
 
 ---
 
 ### 12. `archive/` 🔄 MERGE & REORGANIZE
-**Purpose**: Archived planning documents
-**Current Files**: 23 files in 3 folders (phases, plans, reports)
-**Action**: Merge with `.archive/` into unified structure:
+
+**Purpose**: Archived planning documents **Current Files**: 23 files in 3
+folders (phases, plans, reports) **Action**: Merge with `.archive/` into unified
+structure:
+
 ```
 archive/
 ├── automation/       # From .archive/automation-ts
@@ -190,15 +206,17 @@ archive/
 ---
 
 ### 13. `automation/` 🔄 REORGANIZE
-**Purpose**: AI automation system (Python + TypeScript)
-**Current Files**: 61+ files
-**Issues**:
+
+**Purpose**: AI automation system (Python + TypeScript) **Current Files**: 61+
+files **Issues**:
+
 1. Mixed Python (.py) and TypeScript (.ts) at root
 2. `__pycache__/` should be gitignored
 3. Multiple report files at root (debt_scan.md, remediation_plan.md, etc.)
 4. Duplicate test folders (`__tests__/` and tests in subfolders)
 
 **Proposed Structure**:
+
 ```
 automation/
 ├── README.md
@@ -235,15 +253,16 @@ automation/
 ---
 
 ### 14. `docs/` 🔄 REORGANIZE
-**Purpose**: Documentation hub
-**Current Files**: 67+ files
-**Issues**:
+
+**Purpose**: Documentation hub **Current Files**: 67+ files **Issues**:
+
 1. Too many root-level .md files (30+)
-2. Duplicate/overlapping content (CONSOLIDATION-*.md, PHASE-*.md)
+2. Duplicate/overlapping content (CONSOLIDATION-_.md, PHASE-_.md)
 3. `app/` folder contains a mini web app (should be in tools/)
 4. `consolidate.bat` and `update-all-paths.py` are scripts (should be in tools/)
 
 **Proposed Structure**:
+
 ```
 docs/
 ├── README.md                  # Entry point
@@ -281,31 +300,30 @@ docs/
 ---
 
 ### 15. `node_modules/` 🗑️ NEVER COMMIT
-**Purpose**: NPM dependencies
-**Files**: 300+ packages
-**Verdict**: Should NEVER be in git
-**Action**: Verify in .gitignore, delete if committed
+
+**Purpose**: NPM dependencies **Files**: 300+ packages **Verdict**: Should NEVER
+be in git **Action**: Verify in .gitignore, delete if committed
 
 ---
 
 ### 16. `templates/` ⚠️ EXPAND OR MERGE
-**Purpose**: Project templates
-**Current Files**: 1 file (components.json)
-**Issue**: Nearly empty, underutilized
-**Options**:
+
+**Purpose**: Project templates **Current Files**: 1 file (components.json)
+**Issue**: Nearly empty, underutilized **Options**:
+
 1. Expand with actual templates
 2. Merge into `tools/templates/` (already exists)
 3. Merge into `.config/` as config templates
 
-**Recommendation**: Merge with `tools/templates/`
-**Action**: Move components.json to `tools/templates/` and delete root `templates/`
+**Recommendation**: Merge with `tools/templates/` **Action**: Move
+components.json to `tools/templates/` and delete root `templates/`
 
 ---
 
 ### 17. `tests/` 🔄 REORGANIZE
-**Purpose**: Test suite
-**Current Files**: 40 files
-**Current Structure**:
+
+**Purpose**: Test suite **Current Files**: 40 files **Current Structure**:
+
 ```
 tests/
 ├── ai/           # AI tool tests (7 .test.ts)
@@ -319,10 +337,12 @@ tests/
 ```
 
 **Issues**:
+
 1. Mixed Python and TypeScript at root level
 2. `__pycache__/` should be gitignored
 
 **Proposed Structure**:
+
 ```
 tests/
 ├── README.md
@@ -348,9 +368,10 @@ tests/
 ---
 
 ### 18. `tools/` 🔄 REORGANIZE
-**Purpose**: Development tools and utilities
-**Current Files**: 72+ files in 25 subdirectories
-**Current Structure**:
+
+**Purpose**: Development tools and utilities **Current Files**: 72+ files in 25
+subdirectories **Current Structure**:
+
 ```
 tools/
 ├── accessibility/    # Accessibility audit
@@ -381,11 +402,13 @@ tools/
 ```
 
 **Issues**:
+
 1. Some folders may be empty or have minimal content
 2. Overlap between `orchestrator/` and `orchex/`
 3. Multiple prompt-related folders could consolidate
 
 **Proposed Structure**:
+
 ```
 tools/
 ├── README.md
@@ -397,7 +420,7 @@ tools/
 │   ├── backup/
 │   ├── docker/
 │   └── health/
-├── prompts/               # Merge: adaptive-prompts, meta-prompt, 
+├── prompts/               # Merge: adaptive-prompts, meta-prompt,
 │   │                      #        prompt-composer, prompt-testing
 │   ├── adaptive/
 │   ├── composer/
@@ -417,6 +440,7 @@ tools/
 ## Execution Order
 
 ### Phase 1: Cleanup (Safe, Reversible)
+
 1. ✅ Delete `.pytest_cache/`
 2. ✅ Delete `.ruff_cache/`
 3. ✅ Verify `node_modules/` in .gitignore
@@ -424,29 +448,35 @@ tools/
 5. ✅ Update .gitignore
 
 ### Phase 2: Merge Archives
+
 1. Merge `.archive/` → `archive/`
 2. Reorganize `archive/` structure
 3. Delete `.archive/`
 
 ### Phase 3: Consolidate Configs
+
 1. Merge `.config/claude/` → `.config/ai/claude/`
 2. Move `.config/ai/logs/` → `.config/telemetry/`
 3. Add `.config/ai/README.md`
 
 ### Phase 4: Reorganize Personal
+
 1. Merge `.personal/` → `family-platforms/`
 2. Delete `.personal/`
 
 ### Phase 5: Merge Templates
+
 1. Move `templates/components.json` → `tools/templates/`
 2. Delete root `templates/`
 
 ### Phase 6: Reorganize Code Folders
+
 1. Reorganize `automation/` (Python/TypeScript separation)
 2. Reorganize `tests/` (Python/TypeScript separation)
 3. Consolidate `tools/` subfolders
 
 ### Phase 7: Reorganize Docs
+
 1. Create subdirectory structure
 2. Move files to appropriate locations
 3. Update cross-references
@@ -477,32 +507,33 @@ node_modules/
 
 ## Summary
 
-| Folder | Action | Priority |
-|--------|--------|----------|
-| `.allstar/` | Keep | - |
-| `.amazonq/` | Delete (duplicate) | High |
-| `.archive/` | Merge → archive/ | High |
-| `.backups/` | Keep | - |
-| `.config/` | Reorganize | Medium |
-| `.github/` | Keep | - |
-| `.husky/` | Keep | - |
-| `.personal/` | Merge → family-platforms/ | Medium |
-| `.pytest_cache/` | Delete | High |
-| `.ruff_cache/` | Delete | High |
-| `.vscode/` | Keep | - |
-| `archive/` | Reorganize | Medium |
-| `automation/` | Reorganize | Low |
-| `docs/` | Reorganize | Low |
-| `node_modules/` | Gitignore | High |
-| `templates/` | Merge → tools/templates/ | Medium |
-| `tests/` | Reorganize | Low |
-| `tools/` | Consolidate | Low |
+| Folder           | Action                    | Priority |
+| ---------------- | ------------------------- | -------- |
+| `.allstar/`      | Keep                      | -        |
+| `.amazonq/`      | Delete (duplicate)        | High     |
+| `.archive/`      | Merge → archive/          | High     |
+| `.backups/`      | Keep                      | -        |
+| `.config/`       | Reorganize                | Medium   |
+| `.github/`       | Keep                      | -        |
+| `.husky/`        | Keep                      | -        |
+| `.personal/`     | Merge → family-platforms/ | Medium   |
+| `.pytest_cache/` | Delete                    | High     |
+| `.ruff_cache/`   | Delete                    | High     |
+| `.vscode/`       | Keep                      | -        |
+| `archive/`       | Reorganize                | Medium   |
+| `automation/`    | Reorganize                | Low      |
+| `docs/`          | Reorganize                | Low      |
+| `node_modules/`  | Gitignore                 | High     |
+| `templates/`     | Merge → tools/templates/  | Medium   |
+| `tests/`         | Reorganize                | Low      |
+| `tools/`         | Consolidate               | Low      |
 
 ---
 
 ## Next Steps
 
 Run the following command to begin Phase 1:
+
 ```powershell
 # Review and approve, then execute
 ```

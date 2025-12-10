@@ -1,7 +1,14 @@
+---
+title: 'Incident Response Playbook'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Incident Response Playbook
 
-**Purpose:** Structured approach to handling production incidents
-**Last Updated:** 2025-12-03
+**Purpose:** Structured approach to handling production incidents **Last
+Updated:** 2025-12-03
 
 ---
 
@@ -193,10 +200,8 @@ After resolving P0/P1 incidents:
 ```markdown
 # Postmortem: [Incident Title]
 
-**Date:** YYYY-MM-DD
-**Severity:** P0/P1
-**Duration:** X hours
-**Status:** Resolved
+**Date:** YYYY-MM-DD **Severity:** P0/P1 **Duration:** X hours **Status:**
+Resolved
 
 ## Summary
 

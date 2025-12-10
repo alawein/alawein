@@ -1,6 +1,15 @@
+---
+title: 'Migration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Migration Guide
 
-This guide provides step-by-step instructions for migrating from separate ORCHEX and KILO systems to the integrated ORCHEX-KILO workflow, ensuring minimal disruption and maximum benefit realization.
+This guide provides step-by-step instructions for migrating from separate ORCHEX
+and KILO systems to the integrated ORCHEX-KILO workflow, ensuring minimal
+disruption and maximum benefit realization.
 
 ## Migration Overview
 
@@ -8,8 +17,10 @@ This guide provides step-by-step instructions for migrating from separate ORCHEX
 
 The ORCHEX-KILO integration offers several advantages over separate systems:
 
-- **Unified Workflow**: Single command interface for both analysis and governance
-- **Automated Validation**: ORCHEX operations automatically validated against KILO policies
+- **Unified Workflow**: Single command interface for both analysis and
+  governance
+- **Automated Validation**: ORCHEX operations automatically validated against
+  KILO policies
 - **Seamless Templates**: Direct access to KILO DevOps templates from ORCHEX
 - **Enhanced Governance**: Real-time compliance checking during development
 - **Improved Efficiency**: Reduced context switching and manual processes
@@ -228,13 +239,15 @@ jobs:
           ORCHEX config set kilo.apiKey ${{ secrets.KILO_API_KEY }}
 
       - name: Integrated Analysis
-        run: ORCHEX analyze repo . --governance-check --format json > analysis.json
+        run:
+          ORCHEX analyze repo . --governance-check --format json > analysis.json
 
       - name: Compliance Check
         run: ORCHEX compliance check . --format json > compliance.json
 
       - name: Generate Report
-        run: ORCHEX compliance report --output compliance-report.html --format html
+        run:
+          ORCHEX compliance report --output compliance-report.html --format html
 
       - name: Quality Gate
         run: |
@@ -572,10 +585,9 @@ ORCHEX config set bridges.a2k.validation.enabled true
 
 ### Enterprise Migration Success
 
-**Company:** TechCorp (500+ developers)
-**Challenge:** Managing multiple development tools across teams
-**Solution:** ORCHEX-KILO integration with custom workflows
-**Results:**
+**Company:** TechCorp (500+ developers) **Challenge:** Managing multiple
+development tools across teams **Solution:** ORCHEX-KILO integration with custom
+workflows **Results:**
 
 - 40% reduction in development cycle time
 - 60% improvement in code compliance
@@ -584,9 +596,8 @@ ORCHEX config set bridges.a2k.validation.enabled true
 
 ### Startup Scaling Story
 
-**Company:** DevStart (50 developers)
-**Challenge:** Rapid growth requiring better governance
-**Solution:** Phased migration starting with CI/CD integration
+**Company:** DevStart (50 developers) **Challenge:** Rapid growth requiring
+better governance **Solution:** Phased migration starting with CI/CD integration
 **Results:**
 
 - Maintained development velocity during migration
@@ -594,4 +605,7 @@ ORCHEX config set bridges.a2k.validation.enabled true
 - Better compliance with industry standards
 - Easier hiring and onboarding
 
-This migration guide provides a comprehensive roadmap for successfully transitioning to the ORCHEX-KILO integrated system. Each organization should adapt the approach based on their specific needs, team size, and existing processes.
+This migration guide provides a comprehensive roadmap for successfully
+transitioning to the ORCHEX-KILO integrated system. Each organization should
+adapt the approach based on their specific needs, team size, and existing
+processes.

@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant U as User
+    participant R as React App
+    participant RQ as React Query
+    participant API as Edge Function
+    participant DB as PostgreSQL
+
+    U->>R: User Action
+    R->>RQ: useQuery/useMutation
+    RQ->>RQ: Check Cache
+    alt Cache Hit
+        RQ-->>R: Return Cached Data
+    else Cache Miss
+        RQ->>API: HTTP Request + JWT
+        API->>API: Validate Token
+        API->>DB: SQL Query (RLS)
+        DB-->>API: Results
+        API-->>RQ: JSON Response
+        RQ->>RQ: Update Cache
+        RQ-->>R: Return Data
+    end
+    R-->>U: Update UI

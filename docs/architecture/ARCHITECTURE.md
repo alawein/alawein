@@ -1,3 +1,10 @@
+---
+title: 'Alawein Platform - System Architecture'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Alawein Platform - System Architecture
 
 **Purpose:** Comprehensive guide to the system architecture, data flow, and

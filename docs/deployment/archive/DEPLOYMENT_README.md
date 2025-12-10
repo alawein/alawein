@@ -1,3 +1,10 @@
+---
+title: 'REPZ Platform - Deployment Guide 🚀'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REPZ Platform - Deployment Guide 🚀
 
 ## Project Overview
@@ -61,7 +68,8 @@ VITE_SUPABASE_ANON_KEY=eyJhbGci...
 
 1. Go to https://supabase.com/dashboard/project/lvmcumsfpjjcgnnovvzs
 2. Navigate to SQL Editor
-3. Copy contents of `supabase/migrations/20250725000001_create_non_portal_clients.sql`
+3. Copy contents of
+   `supabase/migrations/20250725000001_create_non_portal_clients.sql`
 4. Run the SQL
 
 ### Option 2: Via Supabase CLI

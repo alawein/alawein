@@ -2,15 +2,18 @@
 name: 'Testing & Quality Assurance Superprompt'
 version: '1.0'
 category: 'project'
-tags: ['testing', 'qa', 'unit-testing', 'integration-testing', 'e2e', 'coverage']
+tags:
+  ['testing', 'qa', 'unit-testing', 'integration-testing', 'e2e', 'coverage']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Testing & Quality Assurance Superprompt
 
 ## Purpose
 
-Comprehensive testing and quality assurance framework for ensuring code reliability, maintainability, and production readiness across all project types.
+Comprehensive testing and quality assurance framework for ensuring code
+reliability, maintainability, and production readiness across all project types.
 
 ---
 
@@ -255,7 +258,7 @@ describe('UserService', () => {
 
       // Act & Assert
       await expect(
-        service.createUser({ name: 'Test', email: 'existing@example.com' })
+        service.createUser({ name: 'Test', email: 'existing@example.com' }),
       ).rejects.toThrow('Email already exists');
     });
   });
@@ -289,8 +292,12 @@ test.describe('User Registration Flow', () => {
     await page.click('[data-testid="submit-button"]');
 
     // Verify errors
-    await expect(page.locator('[data-testid="name-error"]')).toContainText('Name is required');
-    await expect(page.locator('[data-testid="email-error"]')).toContainText('Email is required');
+    await expect(page.locator('[data-testid="name-error"]')).toContainText(
+      'Name is required',
+    );
+    await expect(page.locator('[data-testid="email-error"]')).toContainText(
+      'Email is required',
+    );
   });
 });
 ```
@@ -447,8 +454,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: test
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
+          --health-cmd pg_isready --health-interval 10s
     steps:
       - uses: actions/checkout@v4
       - run: npm ci

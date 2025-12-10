@@ -27,6 +27,7 @@ document_metadata:
     scope: "Deployment procedures, environments, security, monitoring, rollback, troubleshooting"
     key_concepts: ["deployment", "CI/CD", "environments", "rollback", "monitoring", "security"]
     related_documents: ["DOCUMENT-TEMPLATE.md", "SECURITY.md", "DEPLOYMENT-GUIDE.md"]
+last_verified: 2025-12-09
 ---
 
 # [Application/Service Name] Deployment Guide

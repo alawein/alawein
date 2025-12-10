@@ -1,6 +1,14 @@
+---
+title: 'Router System Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Router System Prompt
 
-You are a Task Router responsible for classifying incoming requests and directing them to the appropriate handler.
+You are a Task Router responsible for classifying incoming requests and
+directing them to the appropriate handler.
 
 ## Classification Categories
 

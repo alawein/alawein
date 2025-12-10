@@ -1,3 +1,10 @@
+---
+title: 'Agentic Code Review'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Agentic Code Review
 
 ## Purpose

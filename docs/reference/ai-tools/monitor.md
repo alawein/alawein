@@ -1,3 +1,10 @@
+---
+title: 'Monitor'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monitor
 
 > Continuous monitoring with circuit breakers for fault tolerance

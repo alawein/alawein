@@ -1,9 +1,15 @@
+---
+title: '🤖 SCI-COMP - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 SCI-COMP - Master Superprompt & AI Orchestration
 
-**Project:** SCI-COMP (Scientific Computing)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** SCI-COMP (Scientific Computing) **Status:** ACTIVE - Ready for
+Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 
@@ -24,10 +30,8 @@
 
 5 parallel agent teams optimized for SCI-COMP:
 
-**Team 1:** Numerical methods & algorithms
-**Team 2:** Performance optimization
-**Team 3:** API design & integration
-**Team 4:** Infrastructure & deployment
+**Team 1:** Numerical methods & algorithms **Team 2:** Performance optimization
+**Team 3:** API design & integration **Team 4:** Infrastructure & deployment
 **Team 5:** Research & improvements
 
 ### Execution Style

@@ -1,3 +1,10 @@
+---
+title: 'ML/AI Pipeline Development Framework'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ML/AI Pipeline Development Framework
 
 ## Purpose
@@ -194,9 +201,9 @@ rollback:
     - error_rate > 5%
     - latency_p99 > 500ms
     - data_drift_score > 0.3
-  procedure: 1. automatic_rollback_to_previous
-    2. alert_on_call
-    3. preserve_logs_for_analysis
+  procedure:
+    1. automatic_rollback_to_previous 2. alert_on_call 3.
+    preserve_logs_for_analysis
 ```
 
 ---

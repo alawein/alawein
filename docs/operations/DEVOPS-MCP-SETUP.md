@@ -1,12 +1,19 @@
+---
+title: 'DevOps MCP Server Setup Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # DevOps MCP Server Setup Guide
 
-**Status:** Production Ready
-**Last Updated:** 2025-11-28
-**Coverage:** 100% (8/8 DevOps phases)
+**Status:** Production Ready **Last Updated:** 2025-11-28 **Coverage:** 100%
+(8/8 DevOps phases)
 
 ## Overview
 
-This document outlines the comprehensive Model Context Protocol (MCP) server setup for **error-free DevOps development** across the alawein GitHub workspace.
+This document outlines the comprehensive Model Context Protocol (MCP) server
+setup for **error-free DevOps development** across the alawein GitHub workspace.
 
 ---
 
@@ -34,20 +41,19 @@ This document outlines the comprehensive Model Context Protocol (MCP) server set
 
 ### Main MCP Configuration
 
-**Location:** `.ai/mcp/mcp-servers.json`
-**Servers Registered:** 16 total (10 original + 6 new DevOps MCPs)
-**Server Groups:**
+**Location:** `.ai/mcp/mcp-servers.json` **Servers Registered:** 16 total (10
+original + 6 new DevOps MCPs) **Server Groups:**
 
 - `devops-critical`: [playwright, sequential-thinking, terraform, git]
 - `testing`: [playwright, puppeteer]
 - `infrastructure`: [terraform, kubernetes]
 - `monitoring`: [prometheus]
-- **`error-free-pipeline`**: [git, playwright, terraform, sequential-thinking, prometheus]
+- **`error-free-pipeline`**: [git, playwright, terraform, sequential-thinking,
+  prometheus]
 
 ### Server Registry
 
-**Location:** `.ai/mcp/server-registry.yaml`
-**Updated Categories:**
+**Location:** `.ai/mcp/server-registry.yaml` **Updated Categories:**
 
 - `testing` (priority 1): Playwright, Puppeteer
 - `debugging` (priority 1): Sequential Thinking
@@ -69,13 +75,15 @@ This document outlines the comprehensive Model Context Protocol (MCP) server set
 #### **Turingo** (Code Optimization)
 
 - **Added MCPs:** git, playwright, sequential_thinking
-- **Total MCPs:** github, git, filesystem, sqlite, playwright, sequential_thinking
+- **Total MCPs:** github, git, filesystem, sqlite, playwright,
+  sequential_thinking
 - **New Capabilities:** Automated testing, error-free code validation
 
 #### **ORCHEX** (Task Orchestration)
 
 - **Added MCPs:** git, sequential_thinking, terraform, kubernetes
-- **Total MCPs:** context, filesystem, github, git, sequential_thinking, terraform, kubernetes
+- **Total MCPs:** context, filesystem, github, git, sequential_thinking,
+  terraform, kubernetes
 - **New Capabilities:** Infrastructure automation, DevOps workflows
 
 ---
@@ -304,17 +312,16 @@ All MCPs follow the **principle of least privilege**:
 
 ### Common Issues
 
-**Issue:** `npx: command not found`
-**Solution:** Install Node.js v18+ and npm
+**Issue:** `npx: command not found` **Solution:** Install Node.js v18+ and npm
 
-**Issue:** Docker MCPs fail to start
-**Solution:** Ensure Docker daemon is running: `docker ps`
+**Issue:** Docker MCPs fail to start **Solution:** Ensure Docker daemon is
+running: `docker ps`
 
-**Issue:** Playwright browsers not installed
-**Solution:** `npx playwright install chromium firefox webkit`
+**Issue:** Playwright browsers not installed **Solution:**
+`npx playwright install chromium firefox webkit`
 
-**Issue:** Terraform MCP authentication fails
-**Solution:** Set `TERRAFORM_TOKEN` or configure `TFE_ADDRESS` for self-hosted
+**Issue:** Terraform MCP authentication fails **Solution:** Set
+`TERRAFORM_TOKEN` or configure `TFE_ADDRESS` for self-hosted
 
 ### Getting Help
 
@@ -333,6 +340,5 @@ All MCPs follow the **principle of least privilege**:
 
 ---
 
-**Maintained by:** alawein
-**Organization:** AlaweinOS, MeatheadPhysicist, alawein-business
-**GitHub Workspace:** `/mnt/c/Users/mesha/Desktop/GitHub/`
+**Maintained by:** alawein **Organization:** AlaweinOS, MeatheadPhysicist,
+alawein-business **GitHub Workspace:** `/mnt/c/Users/mesha/Desktop/GitHub/`

@@ -1,17 +1,26 @@
+---
+title: 'Librex.Graph Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Graph Implementation Superprompt
 
-**Version**: 1.0
-**Target**: NeurIPS 2025 / ICML 2026
-**Priority**: High (2 strong contributions)
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: NeurIPS 2025 / ICML 2026 **Priority**: High (2
+strong contributions) **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Graph implements information-theoretic network topology optimization for multi-agent communication. Unlike heuristic topology design, Librex.Graph uses mutual information maximization to discover optimal communication patterns that balance information flow and network efficiency.
+Librex.Graph implements information-theoretic network topology optimization for
+multi-agent communication. Unlike heuristic topology design, Librex.Graph uses
+mutual information maximization to discover optimal communication patterns that
+balance information flow and network efficiency.
 
-**Core Innovation**: Information-theoretic topology optimization (🟢 STRONG novelty)
+**Core Innovation**: Information-theoretic topology optimization (🟢 STRONG
+novelty)
 
 **Research Contributions**:
 
@@ -26,8 +35,7 @@ Librex.Graph implements information-theoretic network topology optimization for 
 
 ### 1.1 Problem Statement
 
-**Network Topology Optimization**:
-Given:
+**Network Topology Optimization**: Given:
 
 - n agents with state variables {s₁, s₂, ..., sₙ}
 - Historical communication logs: {(i, j, message_ij, outcome)}
@@ -45,7 +53,8 @@ Subject to:
 - Budget: ∑ᵢⱼ A[i,j] × cost[i,j] ≤ B
 - Connectivity: Graph is connected
 
-**Key Insight**: Communication topology should maximize information transfer about task-relevant state variables.
+**Key Insight**: Communication topology should maximize information transfer
+about task-relevant state variables.
 
 ### 1.2 Core Algorithm
 
@@ -463,13 +472,16 @@ class BinningMIEstimator:
 
 **GRAPH-C1: Mutual Information Maximization for Topology Design**
 
-- **Gap**: Existing work (ARG-DESIGNER, G-Designer) use heuristics or RL, no explicit MI objective
-- **Approach**: Direct MI maximization using neural estimation + spectral optimization
+- **Gap**: Existing work (ARG-DESIGNER, G-Designer) use heuristics or RL, no
+  explicit MI objective
+- **Approach**: Direct MI maximization using neural estimation + spectral
+  optimization
 - **Impact**: 20-30% improvement in task performance via better information flow
 
 **GRAPH-C2: Spectral Graph Learning with Communication Constraints**
 
-- **Gap**: Spectral methods for graph learning don't handle degree/budget constraints
+- **Gap**: Spectral methods for graph learning don't handle degree/budget
+  constraints
 - **Approach**: Projected gradient descent with Fiedler value regularization
 - **Impact**: Guarantees connectivity while optimizing MI
 
@@ -563,7 +575,5 @@ print(f"Clustering: {metrics['clustering_coefficient']:.4f}")
 
 **END OF Librex.Graph SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: Month 9-10 (NeurIPS 2025 or ICML 2026)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: Month 9-10 (NeurIPS 2025 or ICML 2026)

@@ -1,3 +1,10 @@
+---
+title: 'Catalog'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Catalog
 
 Searchable index of all AI knowledge resources.
@@ -11,9 +18,11 @@ Searchable index of all AI knowledge resources.
 ## Usage
 
 ### Browse Catalog
+
 Open [INDEX.md](INDEX.md) and use Ctrl+F to search.
 
 ### Search by Tag
+
 ```bash
 # Find all optimization-related resources
 grep -r "optimization" .ai-knowledge/catalog/
@@ -23,6 +32,7 @@ grep -r "physics" .ai-knowledge/catalog/prompts.json
 ```
 
 ### Update Catalog
+
 ```bash
 # Auto-update from filesystem
 python ../tools/update-catalog.py
@@ -31,6 +41,7 @@ python ../tools/update-catalog.py
 ## Catalog Structure
 
 ### prompts.json
+
 ```json
 {
   "prompts": [
@@ -46,6 +57,7 @@ python ../tools/update-catalog.py
 ```
 
 ### workflows.json
+
 ```json
 {
   "workflows": [
@@ -63,6 +75,7 @@ python ../tools/update-catalog.py
 ## Metadata Fields
 
 ### Prompts
+
 - `id`: Unique identifier
 - `name`: Display name
 - `category`: superprompt, code-review, refactoring, etc.
@@ -70,6 +83,7 @@ python ../tools/update-catalog.py
 - `path`: Relative path from `.ai-knowledge/`
 
 ### Workflows
+
 - `id`: Unique identifier
 - `name`: Display name
 - `category`: development, testing, deployment, research

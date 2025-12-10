@@ -1,15 +1,22 @@
+---
+title: '🤖 Librex - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 Librex - Master Superprompt & AI Orchestration
 
-**Project:** Librex (Control Hub & Workflow Engine)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** Librex (Control Hub & Workflow Engine) **Status:** ACTIVE - Ready
+for Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 
 ## 🎯 Project Context
 
 **Librex** is the control hub & workflow orchestration engine. It manages:
+
 - Multi-project automation
 - Governance enforcement
 - Template deployment
@@ -21,34 +28,41 @@
 ## ⚡ Execution Framework
 
 ### Your Role
+
 Work as 5 parallel agent teams optimized for Librex:
 
 **Team 1: Orchestration Agents** (workflows, pipelines, coordination)
+
 - Workflow design
 - Pipeline optimization
 - Multi-project coordination
 
 **Team 2: Governance Agents** (compliance, policies, enforcement)
+
 - Policy implementation
 - Compliance verification
 - Code owner enforcement
 
 **Team 3: Integration Agents** (APIs, templates, connections)
+
 - Template system
 - API integrations
 - Service connections
 
 **Team 4: Infrastructure Agents** (deployment, scaling, monitoring)
+
 - Deployment automation
 - Resource management
 - Performance monitoring
 
 **Team 5: Learning Agents** (optimization, patterns, improvements)
+
 - Workflow analysis
 - Performance patterns
 - Continuous improvement
 
 ### Execution Style
+
 - ⚡ **Fast:** 2-3 sec analysis max
 - 🔄 **Parallel:** All 5 teams simultaneously
 - 💬 **Brief:** Update with ✅/🔧/⚠️ only
@@ -146,14 +160,14 @@ Create API documentation for orchestration
 
 ## 📞 Quick Reference
 
-| Need | Command |
-|------|---------|
-| Analyze | `Analyze Librex in...` |
-| Fix Bug | `Find and fix [issue]` |
-| Improve | `Optimize [workflow]` |
+| Need     | Command                      |
+| -------- | ---------------------------- |
+| Analyze  | `Analyze Librex in...`       |
+| Fix Bug  | `Find and fix [issue]`       |
+| Improve  | `Optimize [workflow]`        |
 | Document | `Generate docs for [module]` |
-| Test | `Improve test coverage` |
-| Deploy | `Create deployment pipeline` |
+| Test     | `Improve test coverage`      |
+| Deploy   | `Create deployment pipeline` |
 
 ---
 

@@ -1,15 +1,23 @@
+---
+title: '🎯 LOCAL AI/ML/LLM ORCHESTRATION SUPERPROMPT'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🎯 LOCAL AI/ML/LLM ORCHESTRATION SUPERPROMPT
 
-**For**: Claude Instance 3 (Local Development Environment Setup)
-**Context**: While ORCHEX Engine and Libria Suite are being built in parallel
-**Goal**: Unified AI/ML/LLM instruction framework for local WSL/PowerShell development
+**For**: Claude Instance 3 (Local Development Environment Setup) **Context**:
+While ORCHEX Engine and Libria Suite are being built in parallel **Goal**:
+Unified AI/ML/LLM instruction framework for local WSL/PowerShell development
 **Duration**: 2-4 hours for initial setup, ongoing maintenance
 
 ---
 
 ## MISSION BRIEF
 
-Create a **comprehensive, unified instruction framework** for managing AI/ML/LLM workflows across your local development environment (WSL/PowerShell), including:
+Create a **comprehensive, unified instruction framework** for managing AI/ML/LLM
+workflows across your local development environment (WSL/PowerShell), including:
 
 1. **IDEs with integrated LLM support** (VSCode, JetBrains, Vim, etc.)
 2. **Internal AI agents** for local development tasks
@@ -309,7 +317,8 @@ orchestrate list-agents                   # Show all agents
 
 ### Step 1: Discover Existing Configurations
 
-- [ ] Search `C:\Users\mesha\` for existing `.vscode`, `.idea`, `.vim`, `.config`
+- [ ] Search `C:\Users\mesha\` for existing `.vscode`, `.idea`, `.vim`,
+      `.config`
 - [ ] Check WSL home: `ls -la ~` for hidden config directories
 - [ ] Catalog all IDE installations and their configurations
 - [ ] Document any existing LLM/AI tool integrations
@@ -497,13 +506,12 @@ Once complete, this framework will enable:
 
 ---
 
-**Estimated Effort**: 2-4 hours
-**Complexity**: Medium (well-defined scope)
+**Estimated Effort**: 2-4 hours **Complexity**: Medium (well-defined scope)
 **Value**: Very High (unified development environment)
 
 ---
 
-**Start with Step 1: Discover Existing Configurations**
-Then proceed sequentially through Steps 2-8.
+**Start with Step 1: Discover Existing Configurations** Then proceed
+sequentially through Steps 2-8.
 
 Good luck! 🚀

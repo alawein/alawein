@@ -1,3 +1,10 @@
+---
+title: 'Phase 10: Adaptive Prompts - COMPLETE ✅'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Phase 10: Adaptive Prompts - COMPLETE ✅
 
 **Completion Date**: 2025-01-XX  
@@ -6,17 +13,20 @@
 
 ## Overview
 
-Built adaptive prompt system that learns from user feedback and personalizes prompts based on preferences.
+Built adaptive prompt system that learns from user feedback and personalizes
+prompts based on preferences.
 
 ## Components Delivered
 
 ### 1. Adaptive Learner (`tools/prompts/adaptive/learner.py`)
+
 - Record user feedback (positive/negative)
 - Analyze feedback patterns
 - Suggest improvements
 - Adapt prompts based on learning
 
 ### 2. Personalizer (`tools/prompts/adaptive/personalizer.py`)
+
 - User preference management
 - Style customization (concise, detailed, technical)
 - Language/framework substitution
@@ -47,6 +57,7 @@ Test 4: Preference Persistence
 ## Usage Examples
 
 ### Record Feedback
+
 ```python
 from learner import AdaptiveLearner
 
@@ -57,12 +68,14 @@ learner.record_feedback("code-review", "positive", {
 ```
 
 ### Get Improvements
+
 ```python
 improvements = learner.get_improvements("code-review")
 # Returns: ["Add more examples to improve clarity"]
 ```
 
 ### Adapt Prompt
+
 ```python
 original = "# Code Review\n\nReview the code."
 adapted = learner.adapt_prompt("code-review", original)
@@ -70,6 +83,7 @@ adapted = learner.adapt_prompt("code-review", original)
 ```
 
 ### Set Preferences
+
 ```python
 from personalizer import PromptPersonalizer
 
@@ -80,6 +94,7 @@ personalizer.set_preference('framework', 'react')
 ```
 
 ### Personalize Prompt
+
 ```python
 prompt = "Write {{language}} code using {{framework}}"
 personalized = personalizer.personalize(prompt)
@@ -99,17 +114,21 @@ personalized = personalizer.personalize(prompt)
 ## Preference Options
 
 ### Style
+
 - `concise`: Brief, to-the-point responses
 - `detailed`: Comprehensive explanations
 - `technical`: Deep technical details
 
 ### Language
+
 - python, typescript, rust, go, java, etc.
 
 ### Framework
+
 - fastapi, react, actix, gin, spring, etc.
 
 ### Tone
+
 - professional, casual, educational
 
 ## Adaptation Algorithm

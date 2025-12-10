@@ -1,6 +1,14 @@
+---
+title: 'Codemap Generation Guide for Claude Opus'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Codemap Generation Guide for Claude Opus
 
-> Instructions for generating and maintaining architectural codemaps using MCP tools and context providers.
+> Instructions for generating and maintaining architectural codemaps using MCP
+> tools and context providers.
 
 **Target Audience:** Claude Opus (or any LLM with MCP access)  
 **Output Location:** `docs/governance/CODEMAPS.md`  
@@ -420,9 +428,11 @@ Use mcp9_create_relations to link to Telemetry
 ## Related Documentation
 
 - [CODEMAPS.md](../governance/CODEMAPS.md) - The actual codemaps
-- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Orchestration details
+- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Orchestration
+  details
 - [LLM-MODEL-CATALOG.md](../governance/LLM-MODEL-CATALOG.md) - Available models
 
 ---
 
-_This guide enables any LLM with MCP access to maintain accurate architectural documentation._
+_This guide enables any LLM with MCP access to maintain accurate architectural
+documentation._

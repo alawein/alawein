@@ -1,3 +1,10 @@
+---
+title: 'ADR-001: Organization-Level Monorepos'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-001: Organization-Level Monorepos
 
 <img src="https://img.shields.io/badge/Status-Accepted-10B981?style=flat-square&labelColor=1a1b27" alt="Accepted"/>
@@ -16,7 +23,8 @@ Managing 80+ repositories across 5 organizations creates significant overhead:
 
 ## Decision
 
-**Adopt organization-level monorepos** where each organization directory contains related projects as subdirectories.
+**Adopt organization-level monorepos** where each organization directory
+contains related projects as subdirectories.
 
 ```
 organizations/
@@ -64,4 +72,5 @@ organizations/
 
 ---
 
-**See also:** [GOVERNANCE.md](../../GOVERNANCE.md) · [ADR-002](./ADR-002-opa-policy-enforcement.md)
+**See also:** [GOVERNANCE.md](../../GOVERNANCE.md) ·
+[ADR-002](./ADR-002-opa-policy-enforcement.md)

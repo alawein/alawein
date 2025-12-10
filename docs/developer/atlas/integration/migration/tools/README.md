@@ -1,6 +1,14 @@
+---
+title: 'Migration Tools and Automation Scripts'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Migration Tools and Automation Scripts
 
-This directory contains tools and scripts to automate various aspects of the ORCHEX-KILO integration migration process.
+This directory contains tools and scripts to automate various aspects of the
+ORCHEX-KILO integration migration process.
 
 ## Tool Categories
 
@@ -187,7 +195,8 @@ All tools include comprehensive error handling:
 - **Permission Errors**: Insufficient permissions for operations
 - **Resource Errors**: Disk space, memory, or other resource constraints
 
-Tools will exit with appropriate error codes and provide detailed error messages.
+Tools will exit with appropriate error codes and provide detailed error
+messages.
 
 ## Logging
 

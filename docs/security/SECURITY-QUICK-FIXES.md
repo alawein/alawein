@@ -1,3 +1,10 @@
+---
+title: 'Security Quick Fixes'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Security Quick Fixes
 
 ## Immediate Actions (< 1 hour)
@@ -57,8 +64,10 @@ Update `packages/typescript-config/base.json`:
 Update `index.html` in SaaS projects:
 
 ```html
-<meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+/>
 ```
 
 ## Verification
@@ -78,4 +87,5 @@ npx turbo build
 ```
 
 ## Total Time: ~1 hour
+
 ## Impact: High security improvement

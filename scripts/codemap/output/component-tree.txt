@@ -1,0 +1,22 @@
+REACT COMPONENT TREE
+══════════════════════════════════════════════════
+
+App
+├── QueryClientProvider
+│   └── AuthProvider
+│       └── ThemeProvider
+│           └── BrowserRouter
+│               ├── MainLayout
+│               │   ├── Navbar
+│               │   └── Footer
+│               ├── DashboardLayout
+│               │   ├── Sidebar
+│               │   └── Header
+│               └── Routes
+│                   ├── / (Portfolio)
+│                   ├── /simcore/*
+│                   ├── /repz/*
+│                   ├── /qmlab/*
+│                   └── /liveiticonic/*
+
+📊 10 components | 1 hooks | 1 providers

@@ -1,3 +1,10 @@
+---
+title: 'Conservation Laws Rule'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Conservation Laws Rule
 
 ## Principle
@@ -7,6 +14,7 @@ All physics simulations must respect conservation laws.
 ## Required Checks
 
 ### Energy Conservation
+
 ```python
 def validate_energy_conservation(system, tolerance=1e-6):
     """Verify total energy is conserved."""
@@ -17,6 +25,7 @@ def validate_energy_conservation(system, tolerance=1e-6):
 ```
 
 ### Momentum Conservation
+
 ```python
 def validate_momentum_conservation(system, tolerance=1e-6):
     """Verify total momentum is conserved."""
@@ -36,6 +45,7 @@ def validate_momentum_conservation(system, tolerance=1e-6):
 ## Testing
 
 Add conservation tests to every physics module:
+
 ```python
 def test_energy_conservation():
     system = PhysicsSystem()

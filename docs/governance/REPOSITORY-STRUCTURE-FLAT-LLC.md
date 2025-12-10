@@ -1,8 +1,16 @@
+---
+title: '**🏢 FLAT LLC REPOSITORY STRUCTURE**'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # **🏢 FLAT LLC REPOSITORY STRUCTURE**
 
 ## **📋 UPDATED ORGANIZATION MODEL**
 
-Moving away from GitHub organizations to a practical flat LLC structure with clear repository naming and governance.
+Moving away from GitHub organizations to a practical flat LLC structure with
+clear repository naming and governance.
 
 ---
 
@@ -131,8 +139,10 @@ GitHub/
 
 ### **LLC Security Policies**
 
-- **Production LLCs** (repz-llc, live-it-iconic-llc, family-platforms-llc): SSO required, 2FA enforced, real-time monitoring
-- **Development LLC** (alawein-technologies-llc): SSO required, 2FA enforced, standard monitoring
+- **Production LLCs** (repz-llc, live-it-iconic-llc, family-platforms-llc): SSO
+  required, 2FA enforced, real-time monitoring
+- **Development LLC** (alawein-technologies-llc): SSO required, 2FA enforced,
+  standard monitoring
 - **Research LLC** (research-llc): Flexible access, basic monitoring
 - **Archive**: Restricted access, audit logging only
 

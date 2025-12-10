@@ -1,10 +1,18 @@
+---
+title: 'Architecture Decision Records (ADRs)'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Architecture Decision Records (ADRs)
 
 **Purpose:** Document significant architectural decisions in the project
 
 ## What is an ADR?
 
-An **Architecture Decision Record (ADR)** is a document that captures an important architectural decision made along with its context and consequences.
+An **Architecture Decision Record (ADR)** is a document that captures an
+important architectural decision made along with its context and consequences.
 
 ## When to Write an ADR
 
@@ -17,7 +25,8 @@ Write an ADR when making decisions about:
 - Security architecture (authentication, authorization, encryption)
 - Data architecture (storage, caching, message queues)
 
-**Rule of thumb:** If the decision will be hard to reverse or significantly impacts the project, document it.
+**Rule of thumb:** If the decision will be hard to reverse or significantly
+impacts the project, document it.
 
 ## ADR Workflow
 
@@ -76,8 +85,7 @@ When an ADR is superseded or deprecated:
 
 or
 
-~~Accepted~~ → **Deprecated** (as of 2025-12-04)
-Reason: [Brief explanation]
+~~Accepted~~ → **Deprecated** (as of 2025-12-04) Reason: [Brief explanation]
 ```
 
 ## ADR Numbering

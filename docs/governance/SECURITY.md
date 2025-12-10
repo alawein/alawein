@@ -1,3 +1,10 @@
+---
+title: 'Security Policy'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Security Policy
 
 <img src="https://img.shields.io/badge/OpenSSF-Scorecard-A855F7?style=flat-square&labelColor=1a1b27" alt="OpenSSF"/>
@@ -8,14 +15,14 @@
 
 ## Reporting a Vulnerability
 
-| Action       | Details                                                         |
-| ------------ | --------------------------------------------------------------- |
-| **Do NOT**   | Create public GitHub issues for security vulnerabilities        |
-| **Do**       | Use GitHub's private vulnerability reporting                    |
-| **Include**  | Detailed reproduction steps, impact assessment, and affected versions |
-| **Response** | Acknowledgment within 48 hours, detailed response within 7 days |
-| **Disclosure** | 90-day disclosure timeline for coordinated vulnerability disclosure |
-| **Contact**  | security@alaweintechnologies.com for urgent security matters |
+| Action         | Details                                                               |
+| -------------- | --------------------------------------------------------------------- |
+| **Do NOT**     | Create public GitHub issues for security vulnerabilities              |
+| **Do**         | Use GitHub's private vulnerability reporting                          |
+| **Include**    | Detailed reproduction steps, impact assessment, and affected versions |
+| **Response**   | Acknowledgment within 48 hours, detailed response within 7 days       |
+| **Disclosure** | 90-day disclosure timeline for coordinated vulnerability disclosure   |
+| **Contact**    | security@alaweintechnologies.com for urgent security matters          |
 
 ---
 
@@ -33,7 +40,8 @@
 
 ### Policy Enforcement
 
-- **OPA/Rego Policies**: Security best practices for Dockerfiles, K8s manifests, repo structure
+- **OPA/Rego Policies**: Security best practices for Dockerfiles, K8s manifests,
+  repo structure
 - **SLSA Level 3**: Cryptographic attestation for governance artifacts
 - **Branch Protection**: Required reviews, status checks, linear history
 
@@ -81,7 +89,8 @@
 3. **Require code reviews** before merging
 4. **Run security scans** in CI pipelines
 5. **Keep dependencies updated** via Renovate/Dependabot
-6. **Follow Docker security policies** (non-root user, healthchecks, pinned versions)
+6. **Follow Docker security policies** (non-root user, healthchecks, pinned
+   versions)
 
 ---
 

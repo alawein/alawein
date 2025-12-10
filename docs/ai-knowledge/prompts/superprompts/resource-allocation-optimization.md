@@ -1,17 +1,26 @@
+---
+title: 'Librex.Alloc Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Alloc Implementation Superprompt
 
-**Version**: 1.0
-**Target**: ICML 2026 / NeurIPS 2025
-**Priority**: High (2 strong contributions)
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: ICML 2026 / NeurIPS 2025 **Priority**: High (2
+strong contributions) **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Alloc implements constrained Thompson Sampling for multi-agent resource allocation with budget constraints and fairness objectives. Unlike classical Thompson Sampling that assumes unlimited resources, Librex.Alloc handles hard budget constraints, fairness requirements, and multi-agent coordination.
+Librex.Alloc implements constrained Thompson Sampling for multi-agent resource
+allocation with budget constraints and fairness objectives. Unlike classical
+Thompson Sampling that assumes unlimited resources, Librex.Alloc handles hard
+budget constraints, fairness requirements, and multi-agent coordination.
 
-**Core Innovation**: Constrained Thompson Sampling with fairness (🟢 MODERATE-STRONG novelty)
+**Core Innovation**: Constrained Thompson Sampling with fairness (🟢
+MODERATE-STRONG novelty)
 
 **Research Contributions**:
 
@@ -26,8 +35,7 @@ Librex.Alloc implements constrained Thompson Sampling for multi-agent resource a
 
 ### 1.1 Problem Statement
 
-**Resource Allocation**:
-Given:
+**Resource Allocation**: Given:
 
 - n agents requiring resources
 - K resource types (e.g., compute, memory, bandwidth)
@@ -522,13 +530,15 @@ class BudgetTracker:
 
 **ALLOC-C1: Constrained Thompson Sampling for Resource Allocation**
 
-- **Gap**: Standard TS assumes unlimited resources; no work on multi-dimensional budget constraints
+- **Gap**: Standard TS assumes unlimited resources; no work on multi-dimensional
+  budget constraints
 - **Approach**: Combine TS with integer programming for constrained optimization
 - **Impact**: 15-25% improvement over UCB-based allocation
 
 **ALLOC-C2: Fairness-Aware Bandits with Budget Constraints**
 
-- **Gap**: Fairness bandits (Patil et al. 2021) don't handle budgets; budget bandits don't handle fairness
+- **Gap**: Fairness bandits (Patil et al. 2021) don't handle budgets; budget
+  bandits don't handle fairness
 - **Approach**: Proportional fairness + max-min fairness in constrained TS
 - **Impact**: 30-40% reduction in Gini coefficient while maintaining 90%+ reward
 
@@ -625,7 +635,5 @@ def allocate_resources(budget: np.ndarray):
 
 **END OF Librex.Alloc SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: Month 8-9 (ICML 2026 or NeurIPS 2025)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: Month 8-9 (ICML 2026 or NeurIPS 2025)

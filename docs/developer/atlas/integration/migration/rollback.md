@@ -1,12 +1,22 @@
+---
+title: 'Rollback Procedures'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Rollback Procedures
 
-This document provides detailed procedures for rolling back ORCHEX-KILO integration at various stages of the migration process. Rollback procedures are designed to be safe, quick, and minimize disruption to development workflows.
+This document provides detailed procedures for rolling back ORCHEX-KILO
+integration at various stages of the migration process. Rollback procedures are
+designed to be safe, quick, and minimize disruption to development workflows.
 
 ## Rollback Strategy Overview
 
 ### Principles
 
-- **Safety First**: Rollback procedures prioritize data integrity and system stability
+- **Safety First**: Rollback procedures prioritize data integrity and system
+  stability
 - **Minimal Disruption**: Rollback should not break existing workflows
 - **Incremental**: Multiple rollback levels allow for partial reversions
 - **Documented**: All rollback actions are logged and auditable
@@ -246,7 +256,8 @@ done < "$REPO_LIST"
 
 ### Phase 1: Reduce Integration Scope (1-2 weeks)
 
-**Objective**: Gradually reduce integration usage while maintaining basic functionality
+**Objective**: Gradually reduce integration usage while maintaining basic
+functionality
 
 ```bash
 # Week 1: Disable advanced features
@@ -429,4 +440,6 @@ echo "=== Rollback Validation Complete ==="
 5. **Decision**: Make informed rollback decision
 6. **Communication**: Clearly communicate decision and rationale
 
-This rollback documentation ensures that ORCHEX-KILO integration can be safely reversed at any point in the migration process, providing confidence for organizations to proceed with integration initiatives.
+This rollback documentation ensures that ORCHEX-KILO integration can be safely
+reversed at any point in the migration process, providing confidence for
+organizations to proceed with integration initiatives.

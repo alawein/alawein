@@ -1,8 +1,16 @@
+---
+title: 'Claude Code Instructions'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Claude Code Instructions
 
 ## Repository Overview
 
-Meta-governance repository with DevOps templates, governance tools, and AI coding documentation.
+Meta-governance repository with DevOps templates, governance tools, and AI
+coding documentation.
 
 ## Protected Files Policy
 
@@ -10,7 +18,8 @@ Meta-governance repository with DevOps templates, governance tools, and AI codin
 
 1. Read `.metaHub/policies/protected-files.yaml` first
 2. Confirm with user before making changes
-3. For README.md specifically: Only modify if user says "update README" or "edit README"
+3. For README.md specifically: Only modify if user says "update README" or "edit
+   README"
 
 ### Strict Protection (Never modify without explicit request)
 
@@ -34,7 +43,8 @@ Meta-governance repository with DevOps templates, governance tools, and AI codin
 
 ## FORBIDDEN DELETION OPERATIONS
 
-**CRITICAL: NEVER delete these directories without EXPLICIT written user confirmation:**
+**CRITICAL: NEVER delete these directories without EXPLICIT written user
+confirmation:**
 
 ### Protected Directories (NEVER DELETE)
 
@@ -53,7 +63,8 @@ organizations/        # All business/science projects
 2. **List what will be lost** (files, configs, node_modules)
 3. **Wait for explicit user confirmation** (e.g., "yes, delete it")
 4. **Never delete parent directories** of code projects
-5. **Never run cleanup scripts** that recursively delete without listing targets first
+5. **Never run cleanup scripts** that recursively delete without listing targets
+   first
 
 ### Forbidden Commands Without Confirmation
 

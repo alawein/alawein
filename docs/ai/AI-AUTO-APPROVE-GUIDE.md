@@ -1,6 +1,14 @@
+---
+title: 'AI Tools Auto-Approve Configuration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Tools Auto-Approve Configuration Guide
 
-This document details how to configure each AI coding assistant for maximum autonomous operation ("YOLO mode").
+This document details how to configure each AI coding assistant for maximum
+autonomous operation ("YOLO mode").
 
 ## Quick Reference
 
@@ -169,7 +177,8 @@ export OPENAI_API_KEY="sk-..."
 
 ## Windows PowerShell Profile
 
-Location: `$PROFILE` (usually `~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`)
+Location: `$PROFILE` (usually
+`~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`)
 
 ```powershell
 $env:AIDER_YES = "1"

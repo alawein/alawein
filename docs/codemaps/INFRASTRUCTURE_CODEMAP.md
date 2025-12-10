@@ -1,7 +1,14 @@
+---
+title: 'Infrastructure Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Infrastructure Codemap
 
-> **Active Systems:** automation/, tools/, docs/
-> **Status:** ACTIVE - Do not archive
+> **Active Systems:** automation/, tools/, docs/ **Status:** ACTIVE - Do not
+> archive
 
 ---
 

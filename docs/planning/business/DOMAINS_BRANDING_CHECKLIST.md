@@ -1,7 +1,13 @@
+---
+title: 'Domains & Branding Checklist'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Domains & Branding Checklist
 
-**Last Updated:** December 5, 2025
-**Status:** Ready for Execution
+**Last Updated:** December 5, 2025 **Status:** Ready for Execution
 
 ---
 

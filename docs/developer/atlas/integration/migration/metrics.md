@@ -1,6 +1,16 @@
+---
+title: 'Success Metrics and KPIs'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Success Metrics and KPIs
 
-This document defines comprehensive metrics and key performance indicators (KPIs) for measuring the success of ORCHEX-KILO integration migration. Metrics are categorized by stakeholder group and provide quantitative and qualitative measures of integration effectiveness.
+This document defines comprehensive metrics and key performance indicators
+(KPIs) for measuring the success of ORCHEX-KILO integration migration. Metrics
+are categorized by stakeholder group and provide quantitative and qualitative
+measures of integration effectiveness.
 
 ## Metric Framework Overview
 
@@ -280,4 +290,6 @@ jq -s '{
 - **Challenges**: Adjust targets or processes for underperforming metrics
 - **New Metrics**: Add metrics for newly identified success factors
 
-This metrics framework provides comprehensive visibility into migration success and enables data-driven decision making throughout the ORCHEX-KILO integration process.
+This metrics framework provides comprehensive visibility into migration success
+and enables data-driven decision making throughout the ORCHEX-KILO integration
+process.

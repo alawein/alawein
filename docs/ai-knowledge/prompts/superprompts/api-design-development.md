@@ -1,3 +1,10 @@
+---
+title: 'API Development & Integration Standards'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # API Development & Integration Standards
 
 ## Purpose

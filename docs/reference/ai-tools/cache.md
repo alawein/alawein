@@ -1,3 +1,10 @@
+---
+title: 'Cache'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Cache
 
 > Multi-layer caching with semantic similarity for AI operations

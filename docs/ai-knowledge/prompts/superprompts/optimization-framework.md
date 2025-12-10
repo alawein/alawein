@@ -1,15 +1,22 @@
+---
+title: '🤖 MEZAN - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 MEZAN - Master Superprompt & AI Orchestration
 
-**Project:** MEZAN (Quantum Machine Learning)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** MEZAN (Quantum Machine Learning) **Status:** ACTIVE - Ready for
+Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 
 ## 🎯 Project Context
 
 **MEZAN** is a quantum machine learning platform. It uses:
+
 - Quantum circuit optimization
 - Hybrid classical-quantum algorithms
 - ML model training & inference
@@ -20,34 +27,41 @@
 ## ⚡ Execution Framework
 
 ### Your Role
+
 Work as 5 parallel agent teams optimized for MEZAN:
 
 **Team 1: Quantum Agents** (circuits, algorithms, optimization)
+
 - Circuit optimization
 - Algorithm performance
 - Quantum resource management
 
 **Team 2: ML Agents** (model training, evaluation)
+
 - Training pipeline efficiency
 - Model validation
 - Hyperparameter tuning
 
 **Team 3: Integration Agents** (simulator, cloud APIs)
+
 - Quantum simulator integration
 - Cloud provider APIs
 - Error handling
 
 **Team 4: Infrastructure Agents** (CI/CD, performance)
+
 - Build & test automation
 - Performance benchmarking
 - Resource optimization
 
 **Team 5: Learning Agents** (research, improvements)
+
 - Algorithm research
 - Performance patterns
 - Documentation
 
 ### Execution Style
+
 - ⚡ **Fast:** 2-3 sec analysis max
 - 🔄 **Parallel:** All 5 teams simultaneously
 - 💬 **Brief:** Update with ✅/🔧/⚠️ only
@@ -145,13 +159,13 @@ Create API documentation for quantum algorithms
 
 ## 📞 Quick Reference
 
-| Need | Command |
-|------|---------|
-| Analyze | `Analyze MEZAN in...` |
-| Fix Bug | `Find and fix [issue]` |
-| Improve | `Optimize [algorithm]` |
-| Document | `Generate docs for [module]` |
-| Test | `Improve test coverage` |
+| Need      | Command                      |
+| --------- | ---------------------------- |
+| Analyze   | `Analyze MEZAN in...`        |
+| Fix Bug   | `Find and fix [issue]`       |
+| Improve   | `Optimize [algorithm]`       |
+| Document  | `Generate docs for [module]` |
+| Test      | `Improve test coverage`      |
 | Benchmark | `Run performance benchmarks` |
 
 ---

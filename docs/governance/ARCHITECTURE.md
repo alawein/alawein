@@ -1,3 +1,10 @@
+---
+title: 'Monorepo Architecture'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monorepo Architecture
 
 > **Last Updated:** 2024-12-06 (Post-Migration)

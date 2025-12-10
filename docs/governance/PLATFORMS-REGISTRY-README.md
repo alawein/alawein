@@ -1,8 +1,18 @@
+---
+title: 'Platforms Registry & Brand Pages'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Platforms Registry & Brand Pages
 
-> **Central registry for all Alawein platforms, products, and research projects.**
+> **Central registry for all Alawein platforms, products, and research
+> projects.**
 
-This document describes the architecture connecting the **meta-monorepo** (`Desktop\GitHub`), the **Studios app** (`quantum-dev-profile`), and the **brand landing pages** (`docs/pages/brands/`).
+This document describes the architecture connecting the **meta-monorepo**
+(`Desktop\GitHub`), the **Studios app** (`quantum-dev-profile`), and the **brand
+landing pages** (`docs/pages/brands/`).
 
 ---
 
@@ -125,11 +135,18 @@ export const PLATFORMS: PlatformDefinition[];
 
 // Helpers
 export const getPlatformsByTier: (tier: PlatformTier) => PlatformDefinition[];
-export const getActivePlatformsByTier: (tier: PlatformTier) => PlatformDefinition[];
+export const getActivePlatformsByTier: (
+  tier: PlatformTier,
+) => PlatformDefinition[];
 export const getAllActiveSpaPlatforms: () => PlatformDefinition[];
 export const getPlatformById: (id: string) => PlatformDefinition | undefined;
-export const getPlatformsGroupedByTier: () => Record<PlatformTier, PlatformDefinition[]>;
-export const getPlatformPrimaryUrl: (platform: PlatformDefinition) => string | undefined;
+export const getPlatformsGroupedByTier: () => Record<
+  PlatformTier,
+  PlatformDefinition[]
+>;
+export const getPlatformPrimaryUrl: (
+  platform: PlatformDefinition,
+) => string | undefined;
 
 // Constants
 export const TIER_LABELS: Record<PlatformTier, string>;
@@ -142,7 +159,8 @@ export const TIER_ORDER: PlatformTier[];
 
 ### Option 1: Direct Import (Recommended for Development)
 
-Copy `PROJECT-PLATFORMS-CONFIG.ts` to `quantum-dev-profile/src/data/platforms.ts`:
+Copy `PROJECT-PLATFORMS-CONFIG.ts` to
+`quantum-dev-profile/src/data/platforms.ts`:
 
 ```typescript
 // src/studios/platforms/PlatformsHub.tsx

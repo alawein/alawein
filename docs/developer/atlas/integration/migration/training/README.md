@@ -1,6 +1,15 @@
+---
+title: 'ORCHEX-KILO Integration Training Materials'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX-KILO Integration Training Materials
 
-This directory contains comprehensive training materials for teams adopting the ORCHEX-KILO integrated workflow. Materials are designed for different learning styles and experience levels.
+This directory contains comprehensive training materials for teams adopting the
+ORCHEX-KILO integrated workflow. Materials are designed for different learning
+styles and experience levels.
 
 ## Training Overview
 
@@ -243,9 +252,11 @@ graph TD
 
 ### Adapting for Organization Size
 
-- **Small Teams (< 50 developers)**: Focus on developer workflows, 1-day training
+- **Small Teams (< 50 developers)**: Focus on developer workflows, 1-day
+  training
 - **Medium Teams (50-200 developers)**: Include administration, 2-day training
-- **Large Teams (> 200 developers)**: Add advanced topics, train-the-trainer model
+- **Large Teams (> 200 developers)**: Add advanced topics, train-the-trainer
+  model
 
 ### Industry-Specific Customization
 
@@ -282,4 +293,6 @@ graph TD
 - Change logs for significant updates
 - Backward compatibility maintained
 
-This training program ensures teams can effectively adopt and utilize ORCHEX-KILO integration, maximizing the benefits of unified development workflows.
+This training program ensures teams can effectively adopt and utilize
+ORCHEX-KILO integration, maximizing the benefits of unified development
+workflows.

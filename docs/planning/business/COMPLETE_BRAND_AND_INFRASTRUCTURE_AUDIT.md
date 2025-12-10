@@ -1,10 +1,17 @@
+---
+title: 'Complete Brand & Infrastructure Audit'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Complete Brand & Infrastructure Audit
 
-**Last Updated:** December 5, 2025
-**Status:** Single Source of Truth (SSOT)
+**Last Updated:** December 5, 2025 **Status:** Single Source of Truth (SSOT)
 **Owner:** Meshal Alawein
 
-> ✅ **Archive Complete:** `organizations/` moved to `.archive/organizations/` (47,805 files preserved)
+> ✅ **Archive Complete:** `organizations/` moved to `.archive/organizations/`
+> (47,805 files preserved)
 
 ---
 
@@ -236,7 +243,8 @@ Employees or contractors → LLC required
 
 ### Current Situation
 
-Lovable.dev generates multiple website designs within a single project. These need to be:
+Lovable.dev generates multiple website designs within a single project. These
+need to be:
 
 1. Separated into individual repositories
 2. Mapped to correct brands/LLCs
@@ -383,11 +391,14 @@ Step 5: Update Registry
 ## Quick Links
 
 - [MASTER_PLAN.md](../MASTER_PLAN.md) - Strategic overview
-- [DOMAINS_BRANDING_CHECKLIST.md](./DOMAINS_BRANDING_CHECKLIST.md) - Domain registration guide
-- [EXTERNAL_VALIDATION_PROMPT.md](./EXTERNAL_VALIDATION_PROMPT.md) - AI validation prompt
+- [DOMAINS_BRANDING_CHECKLIST.md](./DOMAINS_BRANDING_CHECKLIST.md) - Domain
+  registration guide
+- [EXTERNAL_VALIDATION_PROMPT.md](./EXTERNAL_VALIDATION_PROMPT.md) - AI
+  validation prompt
 - [USPTO TESS](https://tmsearch.uspto.gov) - Trademark search
 - [California bizfile](https://bizfileonline.sos.ca.gov) - LLC filing
 
 ---
 
-_This is the Single Source of Truth for all branding and infrastructure decisions._
+_This is the Single Source of Truth for all branding and infrastructure
+decisions._

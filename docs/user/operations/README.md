@@ -1,3 +1,10 @@
+---
+title: 'Operations Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Operations Documentation
 
 Operational guides, runbooks, and procedures for maintaining the repository.

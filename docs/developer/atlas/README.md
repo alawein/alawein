@@ -1,18 +1,25 @@
+---
+title: 'ORCHEX Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX Documentation
 
 **ORCHEX (Autonomous Technical Leadership & Adaptive System)**
 
-**Version:** 0.1.0-alpha
-**Status:** Development / Alpha
-**License:** MIT
+**Version:** 0.1.0-alpha **Status:** Development / Alpha **License:** MIT
 
-> **Important:** See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) for an honest assessment of what features are actually implemented vs documented.
+> **Important:** See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) for an
+> honest assessment of what features are actually implemented vs documented.
 
 ---
 
 ## Current Reality vs Vision
 
-This documentation describes the **vision** for ORCHEX. The current implementation is a **development-stage CLI tool** with:
+This documentation describes the **vision** for ORCHEX. The current
+implementation is a **development-stage CLI tool** with:
 
 | Category      | Documented                       | Implemented         |
 | ------------- | -------------------------------- | ------------------- |
@@ -27,15 +34,24 @@ See [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) for full details.
 
 ## What is ORCHEX?
 
-ORCHEX is an enterprise-grade multiagent LLM orchestration platform that provides intelligent agent routing, resilient execution, continuous repository optimization, and adaptive learning capabilities. Built on the KILO foundation, ORCHEX enables organizations to harness the power of multiple AI agents while maintaining governance, observability, and reliability.
+ORCHEX is an enterprise-grade multiagent LLM orchestration platform that
+provides intelligent agent routing, resilient execution, continuous repository
+optimization, and adaptive learning capabilities. Built on the KILO foundation,
+ORCHEX enables organizations to harness the power of multiple AI agents while
+maintaining governance, observability, and reliability.
 
 ### Key Features
 
-- **🤖 Multi-Agent Orchestration**: Route tasks to Claude, GPT-4, Gemini, or local models based on capabilities and performance
-- **🛡️ Resilient Execution**: 3-tier fallback chains ensure task completion even when primary agents fail
-- **🔄 Continuous Optimization**: Automated repository analysis and refactoring to reduce technical debt
-- **📊 Enterprise Observability**: Comprehensive telemetry, metrics, and audit trails
-- **🔗 KILO Integration**: Seamless integration with governance, validation, and DevOps automation
+- **🤖 Multi-Agent Orchestration**: Route tasks to Claude, GPT-4, Gemini, or
+  local models based on capabilities and performance
+- **🛡️ Resilient Execution**: 3-tier fallback chains ensure task completion even
+  when primary agents fail
+- **🔄 Continuous Optimization**: Automated repository analysis and refactoring
+  to reduce technical debt
+- **📊 Enterprise Observability**: Comprehensive telemetry, metrics, and audit
+  trails
+- **🔗 KILO Integration**: Seamless integration with governance, validation, and
+  DevOps automation
 
 ### Quick Start
 
@@ -63,17 +79,24 @@ ORCHEX task submit \
 
 ### 🚀 Getting Started
 
-- **[Quick Start Guide](getting-started/quick-start.md)** - Get up and running in 5 minutes
-- **[Installation Guide](getting-started/installation.md)** - Complete installation instructions
-- **[First Tasks](getting-started/first-tasks.md)** - Your first ORCHEX operations
-- **[Configuration](getting-started/configuration.md)** - Basic configuration setup
+- **[Quick Start Guide](getting-started/quick-start.md)** - Get up and running
+  in 5 minutes
+- **[Installation Guide](getting-started/installation.md)** - Complete
+  installation instructions
+- **[First Tasks](getting-started/first-tasks.md)** - Your first ORCHEX
+  operations
+- **[Configuration](getting-started/configuration.md)** - Basic configuration
+  setup
 
 ### 🏗️ Architecture
 
-- **[System Overview](architecture/overview.md)** - High-level system architecture
-- **[Component Details](architecture/components.md)** - Detailed component specifications
+- **[System Overview](architecture/overview.md)** - High-level system
+  architecture
+- **[Component Details](architecture/components.md)** - Detailed component
+  specifications
 - **[Data Models](architecture/data-models.md)** - Data structures and schemas
-- **[Integration Points](architecture/integration.md)** - How ORCHEX integrates with other systems
+- **[Integration Points](architecture/integration.md)** - How ORCHEX integrates
+  with other systems
 
 ### 🔌 API Reference
 
@@ -92,23 +115,33 @@ ORCHEX task submit \
 
 ### 🔗 Integration Guides
 
-- **[KILO Integration](integration/kilo-integration.md)** - Complete ORCHEX-KILO integration
-- **[CI/CD Integration](integration/cicd-integration.md)** - Integrate with CI/CD pipelines
-- **[IDE Integration](integration/ide-integration.md)** - IDE plugins and extensions
+- **[KILO Integration](integration/kilo-integration.md)** - Complete ORCHEX-KILO
+  integration
+- **[CI/CD Integration](integration/cicd-integration.md)** - Integrate with
+  CI/CD pipelines
+- **[IDE Integration](integration/ide-integration.md)** - IDE plugins and
+  extensions
 - **[Custom Agents](integration/custom-agents.md)** - Building custom AI agents
 
 ### ✅ Best Practices
 
-- **[Agent Selection](best-practices/agent-selection.md)** - Choosing the right agent for tasks
-- **[Performance Optimization](best-practices/performance.md)** - Optimizing for speed and cost
-- **[Security Guidelines](best-practices/security.md)** - Security best practices
-- **[Monitoring & Alerting](best-practices/monitoring.md)** - Observability and alerting
+- **[Agent Selection](best-practices/agent-selection.md)** - Choosing the right
+  agent for tasks
+- **[Performance Optimization](best-practices/performance.md)** - Optimizing for
+  speed and cost
+- **[Security Guidelines](best-practices/security.md)** - Security best
+  practices
+- **[Monitoring & Alerting](best-practices/monitoring.md)** - Observability and
+  alerting
 
 ### 🔧 Troubleshooting
 
-- **[Common Issues](troubleshooting/common-issues.md)** - Frequently encountered problems
-- **[Debugging Guide](troubleshooting/debugging.md)** - Debugging ORCHEX operations
-- **[Performance Issues](troubleshooting/performance.md)** - Resolving performance problems
+- **[Common Issues](troubleshooting/common-issues.md)** - Frequently encountered
+  problems
+- **[Debugging Guide](troubleshooting/debugging.md)** - Debugging ORCHEX
+  operations
+- **[Performance Issues](troubleshooting/performance.md)** - Resolving
+  performance problems
 - **[Support Resources](troubleshooting/support.md)** - Getting help and support
 
 ---
@@ -188,10 +221,14 @@ ORCHEX task submit \
 
 ## License & Attribution
 
-ORCHEX is released under the MIT License. See [LICENSE](../../LICENSE) for details.
+ORCHEX is released under the MIT License. See [LICENSE](../../LICENSE) for
+details.
 
-Built on the [KILO](https://github.com/your-org/kilo) foundation for governance and DevOps automation.
+Built on the [KILO](https://github.com/your-org/kilo) foundation for governance
+and DevOps automation.
 
 ---
 
-**Ready to get started?** Head to the [Quick Start Guide](getting-started/quick-start.md) to begin your ORCHEX journey!</instructions>
+**Ready to get started?** Head to the
+[Quick Start Guide](getting-started/quick-start.md) to begin your ORCHEX
+journey!</instructions>

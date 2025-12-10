@@ -1,6 +1,14 @@
+---
+title: 'First Tasks with ORCHEX'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # First Tasks with ORCHEX
 
-Learn how to perform your first tasks with ORCHEX, from registering agents to submitting various types of development tasks.
+Learn how to perform your first tasks with ORCHEX, from registering agents to
+submitting various types of development tasks.
 
 ---
 
@@ -21,7 +29,8 @@ Before starting, ensure you have:
 ORCHEX agents are AI models configured for specific tasks. Each agent has:
 
 - **Provider**: Anthropic (Claude), OpenAI (GPT), Google (Gemini), or Local
-- **Capabilities**: What the agent can do (code generation, review, debugging, etc.)
+- **Capabilities**: What the agent can do (code generation, review, debugging,
+  etc.)
 - **Constraints**: Rate limits, cost limits, token limits
 
 ### Registering Your First Agent
@@ -465,9 +474,11 @@ Always review AI-generated code:
 Now that you've completed your first tasks:
 
 1. **[Configuration](configuration.md)** - Learn advanced configuration options
-2. **[Multi-Agent Orchestration](../architecture/components.md#task-router)** - Understand how ORCHEX selects agents
+2. **[Multi-Agent Orchestration](../architecture/components.md#task-router)** -
+   Understand how ORCHEX selects agents
 3. **[Repository Analysis](../cli/analysis.md)** - Analyze entire codebases
-4. **[Integration Guides](../integration/)** - Integrate ORCHEX into your workflow
+4. **[Integration Guides](../integration/)** - Integrate ORCHEX into your
+   workflow
 
 ---
 

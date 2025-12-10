@@ -1,3 +1,10 @@
+---
+title: 'AI TOOLS AUTO-APPROVE CHEATSHEET'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI TOOLS AUTO-APPROVE CHEATSHEET
 
 ## 🚀 COMMANDS TO USE
@@ -32,18 +39,20 @@ source ~/.bashrc
 
 ## 📚 STRATEGY & WORKFLOWS
 
-For a deep dive into how to combine these tools for maximum efficiency (e.g., Architect-Builder pipelines), see:
-`cat ~/AI_WORKFLOW_STRATEGY.md`
+For a deep dive into how to combine these tools for maximum efficiency (e.g.,
+Architect-Builder pipelines), see: `cat ~/AI_WORKFLOW_STRATEGY.md`
 
 ## 🤖 AUTOMATED WORKFLOWS WITH ORCHESTRATION
 
 ### Multi-LLM Orchestration Workflow
 
-This workflow demonstrates how to orchestrate multiple LLMs for different contexts and purposes, ensuring optimal performance and accuracy.
+This workflow demonstrates how to orchestrate multiple LLMs for different
+contexts and purposes, ensuring optimal performance and accuracy.
 
 #### Workflow: Context-Aware Multi-LLM Pipeline
 
-1. **Objective**: Use specialized LLMs for distinct tasks in a development pipeline.
+1. **Objective**: Use specialized LLMs for distinct tasks in a development
+   pipeline.
 2. **Tools Involved**:
    - **Cline**: For executing system-level tasks and managing dependencies.
    - **Kilo**: For architectural planning and high-level design.
@@ -89,24 +98,30 @@ This workflow demonstrates how to orchestrate multiple LLMs for different contex
 
 #### Best Practices:
 
-- **Context Switching**: Use the right tool for the right task to minimize errors and maximize efficiency.
+- **Context Switching**: Use the right tool for the right task to minimize
+  errors and maximize efficiency.
 - **Validation**: Always validate outputs at each step to ensure correctness.
-- **Automation**: Integrate these steps into a CI/CD pipeline for continuous delivery.
+- **Automation**: Integrate these steps into a CI/CD pipeline for continuous
+  delivery.
 
-By leveraging the strengths of each tool, this workflow ensures a seamless and efficient development process tailored to specific contexts and purposes.
-By leveraging the strengths of each tool, this workflow ensures a seamless and efficient development process tailored to specific contexts and purposes.
-
-## 🧠 ORCHESTRATION ENGINE
-
-### Multi-LLM Routing Architecture
-
-The orchestration engine intelligently routes tasks to the most suitable LLM based on context, purpose, and performance requirements.
+By leveraging the strengths of each tool, this workflow ensures a seamless and
+efficient development process tailored to specific contexts and purposes. By
+leveraging the strengths of each tool, this workflow ensures a seamless and
+efficient development process tailored to specific contexts and purposes.
 
 ## 🧠 ORCHESTRATION ENGINE
 
 ### Multi-LLM Routing Architecture
 
-The orchestration engine intelligently routes tasks to the most suitable LLM based on context, purpose, and performance requirements.
+The orchestration engine intelligently routes tasks to the most suitable LLM
+based on context, purpose, and performance requirements.
+
+## 🧠 ORCHESTRATION ENGINE
+
+### Multi-LLM Routing Architecture
+
+The orchestration engine intelligently routes tasks to the most suitable LLM
+based on context, purpose, and performance requirements.
 
 #### System Architecture Diagram
 
@@ -217,13 +232,13 @@ orchestrate "plan" "Design a RESTful API for user management"
 
 ```yaml
 AIDER_SPECIFICATION:
-  execution_model: "Chat-to-Commit Loop"
-  state_management: "Git-Based"
+  execution_model: 'Chat-to-Commit Loop'
+  state_management: 'Git-Based'
 
   input_handling:
-    primary: "Natural language prompts"
-    context_source: "Git history + working tree"
-    max_context_window: "8k tokens"
+    primary: 'Natural language prompts'
+    context_source: 'Git history + working tree'
+    max_context_window: '8k tokens'
 
   processing_rules:
     - Never modify untracked files without confirmation
@@ -235,14 +250,14 @@ AIDER_SPECIFICATION:
   output_requirements:
     - Code changes must be syntactically valid
     - All modifications must be git-tracked
-    - Commit message format: "feat|fix|refactor|test: description"
+    - Commit message format: 'feat|fix|refactor|test: description'
     - Must include test coverage for significant changes
 
   language_understanding:
-    prompt_style: "Conversational with code snippets"
-    emphasis: "Git context and file relationships"
-    examples_needed: "Yes, with file paths"
-    tone: "Collaborative, incremental"
+    prompt_style: 'Conversational with code snippets'
+    emphasis: 'Git context and file relationships'
+    examples_needed: 'Yes, with file paths'
+    tone: 'Collaborative, incremental'
 ```
 
 #### Workflow Execution
@@ -298,28 +313,28 @@ AIDER_SPECIFICATION:
 
 ```yaml
 AIDER_LANGUAGE_PROCESSING:
-  primary_language: "English (conversational)"
-  code_references: "File paths, function names, line numbers"
+  primary_language: 'English (conversational)'
+  code_references: 'File paths, function names, line numbers'
 
   input_patterns_understood:
-    - "Refactor [file] to use [pattern]"
-    - "Fix [error] in [file]"
-    - "Add [feature] to [module]"
-    - "Update [file] with [requirements]"
-    - "Test [functionality] in [file]"
+    - 'Refactor [file] to use [pattern]'
+    - 'Fix [error] in [file]'
+    - 'Add [feature] to [module]'
+    - 'Update [file] with [requirements]'
+    - 'Test [functionality] in [file]'
 
   critical_keywords:
-    - "refactor": Structural code changes
-    - "fix": Bug resolution
-    - "add": Feature implementation
-    - "remove": Code deletion
-    - "test": Test creation/modification
-    - "update": Content changes
+    - 'refactor': Structural code changes
+    - 'fix': Bug resolution
+    - 'add': Feature implementation
+    - 'remove': Code deletion
+    - 'test': Test creation/modification
+    - 'update': Content changes
 
   context_awareness:
-    git_history: "Deep (uses git blame, log)"
-    file_relationships: "Tracks imports and dependencies"
-    api_consistency: "Ensures consistency with existing patterns"
+    git_history: 'Deep (uses git blame, log)'
+    file_relationships: 'Tracks imports and dependencies'
+    api_consistency: 'Ensures consistency with existing patterns'
 ```
 
 ---
@@ -330,15 +345,15 @@ AIDER_LANGUAGE_PROCESSING:
 
 ```yaml
 CLINE_SPECIFICATION:
-  execution_model: "ReAct Loop (Reason + Action)"
-  terminal_access: "Full shell access"
-  file_operations: "Read/Write entire trees"
+  execution_model: 'ReAct Loop (Reason + Action)'
+  terminal_access: 'Full shell access'
+  file_operations: 'Read/Write entire trees'
 
   input_handling:
-    primary: "High-level task descriptions"
-    context_source: "Entire project filesystem"
-    max_context_window: "12k+ tokens"
-    web_access: "Yes (can browse URLs)"
+    primary: 'High-level task descriptions'
+    context_source: 'Entire project filesystem'
+    max_context_window: '12k+ tokens'
+    web_access: 'Yes (can browse URLs)'
 
   processing_rules:
     - Break tasks into sequential steps
@@ -357,10 +372,10 @@ CLINE_SPECIFICATION:
     - Suggest next steps if incomplete
 
   language_understanding:
-    prompt_style: "Task-oriented, imperative"
-    emphasis: "What needs to be done (not how)"
-    examples_needed: "Optional, task clarity more important"
-    tone: "Action-focused, operational"
+    prompt_style: 'Task-oriented, imperative'
+    emphasis: 'What needs to be done (not how)'
+    examples_needed: 'Optional, task clarity more important'
+    tone: 'Action-focused, operational'
 ```
 
 #### Workflow Execution
@@ -415,31 +430,31 @@ CLINE_SPECIFICATION:
 
 ```yaml
 CLINE_LANGUAGE_PROCESSING:
-  primary_language: "English (imperative)"
-  task_focus: "Action verbs first"
+  primary_language: 'English (imperative)'
+  task_focus: 'Action verbs first'
 
   input_patterns_understood:
-    - "Create a [project type] project"
-    - "Install [dependencies] and set up"
-    - "Run [command] and report results"
-    - "Build [component] with [tech stack]"
-    - "Test [module] and fix failures"
-    - "Deploy [app] to [platform]"
+    - 'Create a [project type] project'
+    - 'Install [dependencies] and set up'
+    - 'Run [command] and report results'
+    - 'Build [component] with [tech stack]'
+    - 'Test [module] and fix failures'
+    - 'Deploy [app] to [platform]'
 
   critical_keywords:
-    - "create": New file/project creation
-    - "install": Dependency management
-    - "run": Command execution
-    - "build": Compilation/bundling
-    - "test": Test execution
-    - "deploy": Release/publish
-    - "configure": Setup tasks
+    - 'create': New file/project creation
+    - 'install': Dependency management
+    - 'run': Command execution
+    - 'build': Compilation/bundling
+    - 'test': Test execution
+    - 'deploy': Release/publish
+    - 'configure': Setup tasks
 
   context_awareness:
-    filesystem: "Complete tree awareness"
-    package_mgmt: "Understands npm, pip, cargo, etc."
-    environment: "Detects runtime, OS, versions"
-    errors: "Interprets terminal error messages"
+    filesystem: 'Complete tree awareness'
+    package_mgmt: 'Understands npm, pip, cargo, etc.'
+    environment: 'Detects runtime, OS, versions'
+    errors: 'Interprets terminal error messages'
 ```
 
 ---
@@ -450,14 +465,14 @@ CLINE_LANGUAGE_PROCESSING:
 
 ```yaml
 KILO_SPECIFICATION:
-  execution_model: "Role-Based Orchestration (Architect/Coder)"
-  context_window: "Largest of all tools"
-  analysis_depth: "Repository-wide"
+  execution_model: 'Role-Based Orchestration (Architect/Coder)'
+  context_window: 'Largest of all tools'
+  analysis_depth: 'Repository-wide'
 
   input_handling:
-    primary: "Strategic questions and requirements"
-    context_source: "Full codebase analysis"
-    max_context_window: "16k+ tokens"
+    primary: 'Strategic questions and requirements'
+    context_source: 'Full codebase analysis'
+    max_context_window: '16k+ tokens'
 
   processing_rules:
     architect_mode:
@@ -482,10 +497,10 @@ KILO_SPECIFICATION:
     - Clear migration paths if refactoring
 
   language_understanding:
-    prompt_style: "Strategic and analytical"
-    emphasis: "Why and how at design level"
-    examples_needed: "Yes, architectural patterns help"
-    tone: "Thoughtful, comprehensive"
+    prompt_style: 'Strategic and analytical'
+    emphasis: 'Why and how at design level'
+    examples_needed: 'Yes, architectural patterns help'
+    tone: 'Thoughtful, comprehensive'
 ```
 
 #### Workflow Execution
@@ -538,30 +553,30 @@ KILO_SPECIFICATION:
 
 ```yaml
 KILO_LANGUAGE_PROCESSING:
-  primary_language: "English (strategic)"
-  reasoning_style: "Comprehensive analysis"
+  primary_language: 'English (strategic)'
+  reasoning_style: 'Comprehensive analysis'
 
   input_patterns_understood:
-    - "Analyze [codebase] architecture"
-    - "How should we structure [feature]?"
+    - 'Analyze [codebase] architecture'
+    - 'How should we structure [feature]?'
     - "What's the best way to [implement]?"
-    - "Design a system for [requirements]"
-    - "Evaluate [approach] vs [alternative]"
+    - 'Design a system for [requirements]'
+    - 'Evaluate [approach] vs [alternative]'
 
   critical_keywords:
-    - "analyze": Deep inspection
-    - "design": Architectural planning
-    - "structure": Organization and layout
-    - "evaluate": Comparison and assessment
-    - "propose": Design suggestions
-    - "scalability": Growth planning
-    - "maintainability": Long-term health
+    - 'analyze': Deep inspection
+    - 'design': Architectural planning
+    - 'structure': Organization and layout
+    - 'evaluate': Comparison and assessment
+    - 'propose': Design suggestions
+    - 'scalability': Growth planning
+    - 'maintainability': Long-term health
 
   context_awareness:
-    full_codebase: "Yes, analyzes entire structure"
-    design_patterns: "Recognizes and applies patterns"
-    dependencies: "Maps full dependency graph"
-    performance: "Considers computational complexity"
+    full_codebase: 'Yes, analyzes entire structure'
+    design_patterns: 'Recognizes and applies patterns'
+    dependencies: 'Maps full dependency graph'
+    performance: 'Considers computational complexity'
 ```
 
 ---
@@ -572,14 +587,14 @@ KILO_LANGUAGE_PROCESSING:
 
 ```yaml
 BLACKBOX_SPECIFICATION:
-  execution_model: "RAG (Retrieval Augmented Generation)"
-  knowledge_source: "Training data + web search"
-  speed_focus: "Ultra-fast generation"
+  execution_model: 'RAG (Retrieval Augmented Generation)'
+  knowledge_source: 'Training data + web search'
+  speed_focus: 'Ultra-fast generation'
 
   input_handling:
-    primary: "Specific code snippets/patterns"
-    context_source: "Query only (no project context)"
-    max_context_window: "4k tokens"
+    primary: 'Specific code snippets/patterns'
+    context_source: 'Query only (no project context)'
+    max_context_window: '4k tokens'
 
   processing_rules:
     - Retrieve similar patterns from knowledge base
@@ -597,10 +612,10 @@ BLACKBOX_SPECIFICATION:
     - Well-commented for clarity
 
   language_understanding:
-    prompt_style: "Direct queries, pattern names"
-    emphasis: "What pattern/snippet is needed"
-    examples_needed: "Optional, pattern name sufficient"
-    tone: "Efficient, practical"
+    prompt_style: 'Direct queries, pattern names'
+    emphasis: 'What pattern/snippet is needed'
+    examples_needed: 'Optional, pattern name sufficient'
+    tone: 'Efficient, practical'
 ```
 
 #### Workflow Execution
@@ -653,28 +668,28 @@ BLACKBOX_SPECIFICATION:
 
 ```yaml
 BLACKBOX_LANGUAGE_PROCESSING:
-  primary_language: "English (query-based)"
-  input_style: "Pattern names, tech stack"
+  primary_language: 'English (query-based)'
+  input_style: 'Pattern names, tech stack'
 
   input_patterns_understood:
-    - "Generate [pattern] in [language]"
-    - "[Framework] [component] template"
-    - "Boilerplate for [tech stack]"
-    - "[Design pattern] implementation"
-    - "[Tool] configuration example"
+    - 'Generate [pattern] in [language]'
+    - '[Framework] [component] template'
+    - 'Boilerplate for [tech stack]'
+    - '[Design pattern] implementation'
+    - '[Tool] configuration example'
 
   critical_keywords:
-    - "generate": Create from template
-    - "template": Boilerplate code
-    - "example": Sample implementation
-    - "config": Configuration snippet
-    - "setup": Initial setup code
+    - 'generate': Create from template
+    - 'template': Boilerplate code
+    - 'example': Sample implementation
+    - 'config': Configuration snippet
+    - 'setup': Initial setup code
 
   context_awareness:
-    project_context: "No, query-only"
-    language_detection: "From query keywords"
-    framework_specific: "Yes, detects from pattern"
-    best_practices: "Generic, general rules"
+    project_context: 'No, query-only'
+    language_detection: 'From query keywords'
+    framework_specific: 'Yes, detects from pattern'
+    best_practices: 'Generic, general rules'
 ```
 
 ---
@@ -686,32 +701,32 @@ BLACKBOX_LANGUAGE_PROCESSING:
 ```yaml
 TOOL_COMMUNICATION_MATRIX:
   Kilo_to_Cline:
-    output_format: "Architecture specification (markdown)"
-    expected_input: "Cline understands design docs"
-    handoff_method: "File write → Cline reads"
-    risk: "Cline may misinterpret abstract designs"
-    mitigation: "Include concrete examples"
+    output_format: 'Architecture specification (markdown)'
+    expected_input: 'Cline understands design docs'
+    handoff_method: 'File write → Cline reads'
+    risk: 'Cline may misinterpret abstract designs'
+    mitigation: 'Include concrete examples'
 
   Cline_to_Aider:
-    output_format: "Working code files"
-    expected_input: "Aider analyzes via git diff"
-    handoff_method: "Commit → Aider reads git history"
-    risk: "Aider may not know implementation intent"
-    mitigation: "Clear commit messages"
+    output_format: 'Working code files'
+    expected_input: 'Aider analyzes via git diff'
+    handoff_method: 'Commit → Aider reads git history'
+    risk: 'Aider may not know implementation intent'
+    mitigation: 'Clear commit messages'
 
   Aider_to_Blackbox:
-    output_format: "Refactored code snippets"
-    expected_input: "Blackbox generates alternatives"
-    handoff_method: "Copy code → Blackbox queries"
-    risk: "Context loss in isolated snippets"
-    mitigation: "Include surrounding code context"
+    output_format: 'Refactored code snippets'
+    expected_input: 'Blackbox generates alternatives'
+    handoff_method: 'Copy code → Blackbox queries'
+    risk: 'Context loss in isolated snippets'
+    mitigation: 'Include surrounding code context'
 
   Blackbox_to_Cline:
-    output_format: "Boilerplate code"
-    expected_input: "Cline integrates snippets"
-    handoff_method: "Paste files → Cline modifies"
-    risk: "Snippet dependencies unknown"
-    mitigation: "Cline validates and fixes"
+    output_format: 'Boilerplate code'
+    expected_input: 'Cline integrates snippets'
+    handoff_method: 'Paste files → Cline modifies'
+    risk: 'Snippet dependencies unknown'
+    mitigation: 'Cline validates and fixes'
 ```
 
 ---
@@ -783,49 +798,26 @@ kilo-auto --mode architect "Design database schema" > schema.md
 
 ```
 
-┌─ SEQUENTIAL ──────────────────────────────────────────┐
-│ KILO → BLACKBOX → CLINE → AIDER → CLINE (Testing) │
-│ ↓ ↓ ↓ ↓ ↓ │
-│ PLAN → GEN → BUILD → REF → VALIDATE │
+┌─ SEQUENTIAL ──────────────────────────────────────────┐ │ KILO → BLACKBOX →
+CLINE → AIDER → CLINE (Testing) │ │ ↓ ↓ ↓ ↓ ↓ │ │ PLAN → GEN → BUILD → REF →
+VALIDATE │ └───────────────────────────────────────────────────────┘
+
+┌─ PARALLEL ────────────────────────────────────────────┐ │ ┌─→ KILO (Design
+API) │ │ │ │ │ ┌──┼─→ BLACKBOX (Generate Schema) │ │ │ │ │ │ │ └─→ BLACKBOX
+(Generate UI) │ │ │ │ │ └────────→ CLINE (Integrate All) │
 └───────────────────────────────────────────────────────┘
 
-┌─ PARALLEL ────────────────────────────────────────────┐
-│ ┌─→ KILO (Design API) │
-│ │ │
-│ ┌──┼─→ BLACKBOX (Generate Schema) │
-│ │ │ │
-│ │ └─→ BLACKBOX (Generate UI) │
-│ │ │
-│ └────────→ CLINE (Integrate All) │
+┌─ CONDITIONAL ─────────────────────────────────────────┐ │ CLINE (Run Tests) │
+│ ↓ │ │ ┌───┴────────────┐ │ │ │ Tests Passed? │ │ │ └───┬────────┬───┘ │ │ YES
+NO │ │ ↓ ↓ │ │ DEPLOY AIDER (Fix) │ │ ↓ │ │ RE-TEST │
 └───────────────────────────────────────────────────────┘
 
-┌─ CONDITIONAL ─────────────────────────────────────────┐
-│ CLINE (Run Tests) │
-│ ↓ │
-│ ┌───┴────────────┐ │
-│ │ Tests Passed? │ │
-│ └───┬────────┬───┘ │
-│ YES NO │
-│ ↓ ↓ │
-│ DEPLOY AIDER (Fix) │
-│ ↓ │
-│ RE-TEST │
-└───────────────────────────────────────────────────────┘
-
-┌─ FEEDBACK LOOP ───────────────────────────────────────┐
-│ ┌─────────────────────────────────┐ │
-│ │ CLINE (Run Tests & Report) │ │
-│ └──────────────┬──────────────────┘ │
-│ ↓ │
-│ ┌─────────────────────────────────┐ │
-│ │ AIDER (Review & Fix Issues) │ │
-│ └──────────────┬──────────────────┘ │
-│ ↓ │
-│ ┌────────┐ │
-│ │ Iterate│ │
-│ └────┬───┘ │
-│ ↑ │
-│ (3x max) │
+┌─ FEEDBACK LOOP ───────────────────────────────────────┐ │
+┌─────────────────────────────────┐ │ │ │ CLINE (Run Tests & Report) │ │ │
+└──────────────┬──────────────────┘ │ │ ↓ │ │
+┌─────────────────────────────────┐ │ │ │ AIDER (Review & Fix Issues) │ │ │
+└──────────────┬──────────────────┘ │ │ ↓ │ │ ┌────────┐ │ │ │ Iterate│ │ │
+└────┬───┘ │ │ ↑ │ │ (3x max) │
 └───────────────────────────────────────────────────────┘
 
 ```
@@ -901,47 +893,13 @@ run_with_fallback() {
 
 ```
 
-┌──────────────────────────────────────────────────────┐
-│ TASK EXECUTION START │
-└────────────────┬─────────────────────────────────────┘
-│
-▼
-┌──────────────┐
-│ Try Primary │
-│ Tool │
-└──────┬───────┘
-│
-┌───────┴────────┐
-│ Success? │
-└───┬────────┬───┘
-YES NO
-│ │
-▼ ▼
-SUCCESS ┌──────────────┐
-│ Retry Count? │
-└──────┬───────┘
-│
-┌─────┴──────┐
-│ < Max? │
-└───┬────┬───┘
-YES NO
-│ │
-▼ ▼
-WAIT TRY FALLBACK
-│ │
-└─┬─────┘
-▼
-┌──────────────┐
-│ Fallback OK? │
-└──────┬───────┘
-│
-┌──────┴──────┐
-│ Success? │
-└───┬────┬────┘
-YES NO
-│ │
-▼ ▼
-SUCCESS ALERT
+┌──────────────────────────────────────────────────────┐ │ TASK EXECUTION START
+│ └────────────────┬─────────────────────────────────────┘ │ ▼ ┌──────────────┐
+│ Try Primary │ │ Tool │ └──────┬───────┘ │ ┌───────┴────────┐ │ Success? │
+└───┬────────┬───┘ YES NO │ │ ▼ ▼ SUCCESS ┌──────────────┐ │ Retry Count? │
+└──────┬───────┘ │ ┌─────┴──────┐ │ < Max? │ └───┬────┬───┘ YES NO │ │ ▼ ▼ WAIT
+TRY FALLBACK │ │ └─┬─────┘ ▼ ┌──────────────┐ │ Fallback OK? │ └──────┬───────┘
+│ ┌──────┴──────┐ │ Success? │ └───┬────┬────┘ YES NO │ │ ▼ ▼ SUCCESS ALERT
 (Manual Review)
 
 ````
@@ -1048,9 +1006,8 @@ validate_and_fix() {
 
 time $tool "$prompt"
 
-echo "Success rate: $(calculate_success_rate $tool)"
-echo "Average execution time: $(calculate_avg_time $tool)"
-}
+echo "Success rate: $(calculate_success_rate $tool)" echo "Average execution
+time: $(calculate_avg_time $tool)" }
 
 ````
 
@@ -1071,52 +1028,19 @@ kilo-auto --mode architect "Design a user profile feature with authentication, d
 
 ````
 
-┌─────────────────────────────────────────────────────────────┐
-│ FULL-STACK FEATURE IMPLEMENTATION FLOW │
-└────────────────┬──────────────────────────────────────────┘
-│
-┌───────▼────────┐
-│ KILO (Architect)
-│ Design Features
-└───────┬────────┘
-│ ↓ feature_spec.md
-┌───────▼────────┐
-│ BLACKBOX │
-│ Generate UI │
-└───────┬────────┘
-│ ↓ ui_components/
-┌───────▼────────────┐
-│ CLINE (Builder) │
-│ Backend Setup │
-└───────┬────────────┘
-│ ↓ src/, migrations/
-┌───────▼────────────┐
-│ CLINE │
-│ API Implementation │
-└───────┬────────────┘
-│ ↓ routes/, services/
-┌───────▼────────────┐
-│ CLINE │
-│ Integration │
-└───────┬────────────┘
-│ ↓ integration.ts
-┌───────▼────────────┐
-│ CLINE │
-│ Run Test Suite │
-└───────┬────────────┘
-│
-┌───────┴──────────┐
-│ Tests Passed? │
-└───┬────────┬─────┘
-YES NO
-│ │
-▼ ▼
-READY ┌──────────────┐
-│ AIDER │
-│ Fix Issues │
-└──────┬───────┘
-│
-RE-RUN TESTS
+┌─────────────────────────────────────────────────────────────┐ │ FULL-STACK
+FEATURE IMPLEMENTATION FLOW │
+└────────────────┬──────────────────────────────────────────┘ │
+┌───────▼────────┐ │ KILO (Architect) │ Design Features └───────┬────────┘ │ ↓
+feature_spec.md ┌───────▼────────┐ │ BLACKBOX │ │ Generate UI │
+└───────┬────────┘ │ ↓ ui_components/ ┌───────▼────────────┐ │ CLINE (Builder) │
+│ Backend Setup │ └───────┬────────────┘ │ ↓ src/, migrations/
+┌───────▼────────────┐ │ CLINE │ │ API Implementation │ └───────┬────────────┘ │
+↓ routes/, services/ ┌───────▼────────────┐ │ CLINE │ │ Integration │
+└───────┬────────────┘ │ ↓ integration.ts ┌───────▼────────────┐ │ CLINE │ │ Run
+Test Suite │ └───────┬────────────┘ │ ┌───────┴──────────┐ │ Tests Passed? │
+└───┬────────┬─────┘ YES NO │ │ ▼ ▼ READY ┌──────────────┐ │ AIDER │ │ Fix
+Issues │ └──────┬───────┘ │ RE-RUN TESTS
 
 ````
 
@@ -1143,46 +1067,15 @@ aider-auto "Optimize performance and fix any failing tests"
 
 ````
 
-┌──────────────────────────────────────────────────────┐
-│ LARGE CODEBASE REFACTORING WORKFLOW │
-└──────────────┬───────────────────────────────────────┘
-│
-┌─────▼──────┐
-│ KILO │
-│ Analyze │
-│ & Plan │
-└─────┬──────┘
-│ ↓ opportunities.md
-┌─────▼──────┐
-│ AIDER │
-│ Create │
-│ Plan │
-└─────┬──────┘
-│ ↓ refactor_plan.md
-┌─────▼──────────────┐
-│ CLINE │
-│ Execute Changes │
-│ (Step by Step) │
-└─────┬──────────────┘
-│ ↓ refactored_src/
-┌─────▼──────┐
-│ CLINE │
-│ Run Tests │
-│ & Bench │
-└─────┬──────┘
-│
-┌─────┴────────────┐
-│ Perf Improved? │
-└────┬────────┬────┘
-YES NO
-│ │
-▼ ▼
-READY ┌──────────┐
-│ AIDER │
-│ Optimize │
-└────┬─────┘
-│
-RE-RUN TESTS
+┌──────────────────────────────────────────────────────┐ │ LARGE CODEBASE
+REFACTORING WORKFLOW │ └──────────────┬───────────────────────────────────────┘
+│ ┌─────▼──────┐ │ KILO │ │ Analyze │ │ & Plan │ └─────┬──────┘ │ ↓
+opportunities.md ┌─────▼──────┐ │ AIDER │ │ Create │ │ Plan │ └─────┬──────┘ │ ↓
+refactor_plan.md ┌─────▼──────────────┐ │ CLINE │ │ Execute Changes │ │ (Step by
+Step) │ └─────┬──────────────┘ │ ↓ refactored_src/ ┌─────▼──────┐ │ CLINE │ │
+Run Tests │ │ & Bench │ └─────┬──────┘ │ ┌─────┴────────────┐ │ Perf Improved? │
+└────┬────────┬────┘ YES NO │ │ ▼ ▼ READY ┌──────────┐ │ AIDER │ │ Optimize │
+└────┬─────┘ │ RE-RUN TESTS
 
 ````
 
@@ -1207,43 +1100,15 @@ aider-auto "Fix any issues and optimize critical paths"
 
 ````
 
-┌────────────────────────────────────────────────┐
-│ SECURITY AUDIT & HARDENING WORKFLOW │
-└────────────────┬─────────────────────────────┘
-│
-┌───────▼─────────┐
-│ KILO │
-│ Security Audit │
-└───────┬─────────┘
-│ ↓ vulnerabilities.md
-┌───────▼──────────┐
-│ BLACKBOX │
-│ Best Practices │
-└───────┬──────────┘
-│ ↓ checklist.md
-┌───────▼──────────┐
-│ AIDER │
-│ Implement Fixes │
-│ (OWASP Top 10) │
-└───────┬──────────┘
-│ ↓ hardened_src/
-┌───────▼──────────┐
-│ CLINE │
-│ Security Tests │
-└───────┬──────────┘
-│
-┌───────┴──────────┐
-│ Compliant? │
-└────┬────────┬────┘
-YES NO
-│ │
-▼ ▼
-APPROVED ┌──────────┐
-│ AIDER │
-│ Refine │
-└────┬─────┘
-│
-RE-RUN TESTS
+┌────────────────────────────────────────────────┐ │ SECURITY AUDIT & HARDENING
+WORKFLOW │ └────────────────┬─────────────────────────────┘ │
+┌───────▼─────────┐ │ KILO │ │ Security Audit │ └───────┬─────────┘ │ ↓
+vulnerabilities.md ┌───────▼──────────┐ │ BLACKBOX │ │ Best Practices │
+└───────┬──────────┘ │ ↓ checklist.md ┌───────▼──────────┐ │ AIDER │ │ Implement
+Fixes │ │ (OWASP Top 10) │ └───────┬──────────┘ │ ↓ hardened_src/
+┌───────▼──────────┐ │ CLINE │ │ Security Tests │ └───────┬──────────┘ │
+┌───────┴──────────┐ │ Compliant? │ └────┬────────┬────┘ YES NO │ │ ▼ ▼ APPROVED
+┌──────────┐ │ AIDER │ │ Refine │ └────┬─────┘ │ RE-RUN TESTS
 
 ````
 
@@ -1284,40 +1149,40 @@ cline-auto "Run security tests and generate compliance report"
 
 ```yaml
 workflow:
-  name: "Parallel Development"
+  name: 'Parallel Development'
   parallel_stages:
     - task: api_design
       tool: kilo
-      prompt: "Design API endpoints"
+      prompt: 'Design API endpoints'
     - task: db_schema
       tool: blackbox
-      prompt: "Generate database schema"
+      prompt: 'Generate database schema'
     - task: ui_components
       tool: blackbox
-      prompt: "Generate UI components"
+      prompt: 'Generate UI components'
   merge_stage:
     tool: cline
-    prompt: "Integrate all components"
+    prompt: 'Integrate all components'
 ```
 
 ### Conditional Workflow Template
 
 ```yaml
 workflow:
-  name: "Test-Driven Development"
+  name: 'Test-Driven Development'
   steps:
     - run_tests:
         tool: cline
-        prompt: "Run test suite"
+        prompt: 'Run test suite'
         output: test_results.txt
     - conditional:
-        if: "tests_failed"
+        if: 'tests_failed'
         then:
           tool: aider
-          prompt: "Fix failing tests"
+          prompt: 'Fix failing tests'
         else:
           tool: cline
-          prompt: "Deploy to production"
+          prompt: 'Deploy to production'
 ```
 
 ---
@@ -1326,7 +1191,8 @@ workflow:
 
 ### No-Hallucination Rule
 
-**Definition**: All outputs must be grounded in provided context or verifiable knowledge.
+**Definition**: All outputs must be grounded in provided context or verifiable
+knowledge.
 
 **Implementation**:
 
@@ -1337,43 +1203,16 @@ workflow:
 
 ```
 
-┌──────────────────────────────────────────────────────┐
-│ RULE ENFORCEMENT SYSTEM │
-└──────────────┬───────────────────────────────────────┘
-│
-┌────────┴────────┐
-▼ ▼
-┌──────────────┐ ┌──────────────┐
-│ Context │ │ Output │
-│ Validation │ │ Generation │
-└──────┬───────┘ └──────┬───────┘
-│ │
-└────────┬────────┘
-▼
-┌────────────────────┐
-│ Rule Checker │
-└────┬───────┬───┬───┘
-│ │ │
-┌──────▼──┐ ┌┴──┐ │
-│ No Halluc│ │Self│ │
-└─────┬────┘ │Refut│ │
-│ └──┬──┘ │
-│ │ │
-┌─────▼──────────▼─┐ │
-│ Skeptic Check │ │
-└────────┬─────────┘ │
-│ │
-┌────▼────────────▼─┐
-│ Claim → Prove │
-└────┬──────────────┘
-│
-┌──────┴───────┐
-│ All Pass? │
-└───┬────┬─────┘
-YES NO
-│ │
-▼ ▼
-APPROVED REVISE
+┌──────────────────────────────────────────────────────┐ │ RULE ENFORCEMENT
+SYSTEM │ └──────────────┬───────────────────────────────────────┘ │
+┌────────┴────────┐ ▼ ▼ ┌──────────────┐ ┌──────────────┐ │ Context │ │ Output │
+│ Validation │ │ Generation │ └──────┬───────┘ └──────┬───────┘ │ │
+└────────┬────────┘ ▼ ┌────────────────────┐ │ Rule Checker │
+└────┬───────┬───┬───┘ │ │ │ ┌──────▼──┐ ┌┴──┐ │ │ No Halluc│ │Self│ │
+└─────┬────┘ │Refut│ │ │ └──┬──┘ │ │ │ │ ┌─────▼──────────▼─┐ │ │ Skeptic Check
+│ │ └────────┬─────────┘ │ │ │ ┌────▼────────────▼─┐ │ Claim → Prove │
+└────┬──────────────┘ │ ┌──────┴───────┐ │ All Pass? │ └───┬────┬─────┘ YES NO │
+│ ▼ ▼ APPROVED REVISE
 
 ```
 
@@ -1588,49 +1427,22 @@ MCP_PID=$!
 
 ````
 
-┌─────────────────────────────────────────────────────────────────┐
-│ COMPLETE MCP ORCHESTRATION SYSTEM │
-└────────────┬──────────────────────────────────────────────────┘
-│
-┌────────┴────────┐
-▼ ▼
-┌──────────────┐ ┌──────────────────────────────┐
-│ Local Tools │ │ MCP Servers (Distributed) │
-│ │ │ │
-│ • Cline │ │ ┌──────────────────────────┐ │
-│ • Kilo │ │ │ Aider MCP Server │ │
-│ • Aider │ │ │ • Code Refactoring │ │
-│ • Blackbox │ │ │ • Test Writing │ │
-│ │ │ └──────────────────────────┘ │
-└──────┬───────┘ │ │
-│ │ ┌──────────────────────────┐ │
-│ │ │ AgentAPI MCP │ │
-│ │ │ • Multi-agent Control │ │
-│ │ │ • REST Orchestration │ │
-│ │ └──────────────────────────┘ │
-│ │ │
-│ │ ┌──────────────────────────┐ │
-│ │ │ Agor MCP │ │
-│ │ │ • Parallel Execution │ │
-│ │ │ • Workspace Management │ │
-│ │ └──────────────────────────┘ │
-│ └──────────────────────────────┘
-│ │
-└───────────┬───────┘
-▼
-┌──────────────────────┐
-│ Unified Orchestrator │
-│ │
-│ • Route Tasks │
-│ • Monitor Progress │
-│ • Handle Failures │
-└──────────┬───────────┘
-│
-▼
-┌──────────────┐
-│ Execution & │
-│ Results │
-└──────────────┘
+┌─────────────────────────────────────────────────────────────────┐ │ COMPLETE
+MCP ORCHESTRATION SYSTEM │
+└────────────┬──────────────────────────────────────────────────┘ │
+┌────────┴────────┐ ▼ ▼ ┌──────────────┐ ┌──────────────────────────────┐ │
+Local Tools │ │ MCP Servers (Distributed) │ │ │ │ │ │ • Cline │ │
+┌──────────────────────────┐ │ │ • Kilo │ │ │ Aider MCP Server │ │ │ • Aider │ │
+│ • Code Refactoring │ │ │ • Blackbox │ │ │ • Test Writing │ │ │ │ │
+└──────────────────────────┘ │ └──────┬───────┘ │ │ │ │
+┌──────────────────────────┐ │ │ │ │ AgentAPI MCP │ │ │ │ │ • Multi-agent
+Control │ │ │ │ │ • REST Orchestration │ │ │ │ └──────────────────────────┘ │ │
+│ │ │ │ ┌──────────────────────────┐ │ │ │ │ Agor MCP │ │ │ │ │ • Parallel
+Execution │ │ │ │ │ • Workspace Management │ │ │ │ └──────────────────────────┘
+│ │ └──────────────────────────────┘ │ │ └───────────┬───────┘ ▼
+┌──────────────────────┐ │ Unified Orchestrator │ │ │ │ • Route Tasks │ │ •
+Monitor Progress │ │ • Handle Failures │ └──────────┬───────────┘ │ ▼
+┌──────────────┐ │ Execution & │ │ Results │ └──────────────┘
 
 ```
 
@@ -1638,48 +1450,17 @@ MCP_PID=$!
 
 ```
 
-┌─────────────────────────────────────────────────────┐
-│ MCP TASK EXECUTION PIPELINE │
-└────────────┬─────────────────────────────────────────┘
-│
-┌──────▼──────┐
-│ Initialize │
-│ MCP Server │
-└──────┬──────┘
-│ ┌─────────────────────┐
-└→│ Port Assignment │
-│ Config Loading │
-│ Auth Setup │
-└─────────┬───────────┘
-│
-┌──────▼──────────┐
-│ Register Tools │
-│ with Server │
-└──────┬──────────┘
-│
-┌──────────┴──────────┐
-▼ ▼
-┌──────────────┐ ┌──────────────┐
-│ Route Task │ │ Get Config │
-│ to MCP │ │ Parameters │
-└──────┬───────┘ └──────┬───────┘
-│ │
-└──────────┬────────┘
-▼
-┌──────────────────────┐
-│ Execute on Remote │
-│ MCP Server │
-└──────┬───────────────┘
-│
-┌──────┴───────────┐
-│ Success? │
-└───┬────────┬─────┘
-YES NO
-│ │
-▼ ▼
-RETURN ERROR
-RESULT HANDLE
-&RETRY
+┌─────────────────────────────────────────────────────┐ │ MCP TASK EXECUTION
+PIPELINE │ └────────────┬─────────────────────────────────────────┘ │
+┌──────▼──────┐ │ Initialize │ │ MCP Server │ └──────┬──────┘ │
+┌─────────────────────┐ └→│ Port Assignment │ │ Config Loading │ │ Auth Setup │
+└─────────┬───────────┘ │ ┌──────▼──────────┐ │ Register Tools │ │ with Server │
+└──────┬──────────┘ │ ┌──────────┴──────────┐ ▼ ▼ ┌──────────────┐
+┌──────────────┐ │ Route Task │ │ Get Config │ │ to MCP │ │ Parameters │
+└──────┬───────┘ └──────┬───────┘ │ │ └──────────┬────────┘ ▼
+┌──────────────────────┐ │ Execute on Remote │ │ MCP Server │
+└──────┬───────────────┘ │ ┌──────┴───────────┐ │ Success? │
+└───┬────────┬─────┘ YES NO │ │ ▼ ▼ RETURN ERROR RESULT HANDLE &RETRY
 
 ````
 
@@ -1786,30 +1567,30 @@ agor task run --parallel \
 
 ```yaml
 mcp_workflow:
-  name: "Orchestrated Development Pipeline"
+  name: 'Orchestrated Development Pipeline'
   mcps:
-    - name: "aider-mcp"
-      endpoint: "aider-mcp-server"
+    - name: 'aider-mcp'
+      endpoint: 'aider-mcp-server'
       port: 5000
       tasks:
         - refactor_code
         - fix_bugs
         - write_tests
-    - name: "agentapi-mcp"
-      endpoint: "localhost:3284"
+    - name: 'agentapi-mcp'
+      endpoint: 'localhost:3284'
       tasks:
         - route_to_optimal_tool
         - multi_agent_coordination
         - task_scheduling
-    - name: "agor-mcp"
-      endpoint: "agor-daemon"
+    - name: 'agor-mcp'
+      endpoint: 'agor-daemon'
       tasks:
         - parallel_execution
         - workspace_management
         - git_worktree_control
-  execution_strategy: "intelligent_routing"
-  fallback_strategy: "cascade"
-  monitoring: "realtime"
+  execution_strategy: 'intelligent_routing'
+  fallback_strategy: 'cascade'
+  monitoring: 'realtime'
 ```
 
 ---

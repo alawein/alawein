@@ -1,3 +1,10 @@
+---
+title: 'ORCHEX System Architecture'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX System Architecture
 
 **Autonomous Technical Leadership & Adaptive System**
@@ -26,22 +33,34 @@
 
 ### Purpose and Goals
 
-ORCHEX is an enterprise-grade multiagent LLM orchestration platform designed to provide:
+ORCHEX is an enterprise-grade multiagent LLM orchestration platform designed to
+provide:
 
-1. **Intelligent Agent Routing** - Automatically select the best AI agent for each task based on capabilities, performance history, and current load
-2. **Resilient Execution** - Multi-tier fallback chains ensure task completion even when primary agents fail
-3. **Continuous Optimization** - Automated repository analysis and refactoring to reduce technical debt
-4. **Adaptive Learning** - System improves routing decisions based on historical performance data
-5. **Enterprise Observability** - Comprehensive telemetry, metrics, and audit trails
+1. **Intelligent Agent Routing** - Automatically select the best AI agent for
+   each task based on capabilities, performance history, and current load
+2. **Resilient Execution** - Multi-tier fallback chains ensure task completion
+   even when primary agents fail
+3. **Continuous Optimization** - Automated repository analysis and refactoring
+   to reduce technical debt
+4. **Adaptive Learning** - System improves routing decisions based on historical
+   performance data
+5. **Enterprise Observability** - Comprehensive telemetry, metrics, and audit
+   trails
 
 ### Key Capabilities
 
-- **Multi-Agent Orchestration**: Route tasks to Claude, GPT-4, Gemini, or local models based on task requirements
-- **Intelligent Fallback**: 3-tier fallback chain (primary → secondary → tertiary) with automatic retry logic
-- **Repository Optimization**: AST-based code analysis, chaos metrics calculation, automated refactoring suggestions
-- **Continuous Improvement**: Scheduled optimization runs, technical debt tracking, automated PR generation
-- **Health Monitoring**: Agent health checks, performance tracking, cost optimization
-- **Governance Integration**: Leverages KILO validation, checkpoint, and telemetry infrastructure
+- **Multi-Agent Orchestration**: Route tasks to Claude, GPT-4, Gemini, or local
+  models based on task requirements
+- **Intelligent Fallback**: 3-tier fallback chain (primary → secondary →
+  tertiary) with automatic retry logic
+- **Repository Optimization**: AST-based code analysis, chaos metrics
+  calculation, automated refactoring suggestions
+- **Continuous Improvement**: Scheduled optimization runs, technical debt
+  tracking, automated PR generation
+- **Health Monitoring**: Agent health checks, performance tracking, cost
+  optimization
+- **Governance Integration**: Leverages KILO validation, checkpoint, and
+  telemetry infrastructure
 
 ### Integration with KILO
 
@@ -58,7 +77,8 @@ KILO Foundation (Existing)          ORCHEX Extensions (New)
 
 **Key Integration Points:**
 
-- Uses [`validation.py`](../tools/lib/validation.py) for agent capability validation
+- Uses [`validation.py`](../tools/lib/validation.py) for agent capability
+  validation
 - Extends [`checkpoint.py`](../tools/lib/checkpoint.py) for task recovery
 - Leverages [`telemetry.py`](../tools/lib/telemetry.py) for performance metrics
 - Integrates with [`governance.py`](../tools/cli/governance.py) for compliance
@@ -230,7 +250,8 @@ graph LR
 
 ### 1. Agent Registry
 
-**Purpose:** Maintain catalog of available agents with capabilities, health status, and performance metrics.
+**Purpose:** Maintain catalog of available agents with capabilities, health
+status, and performance metrics.
 
 **Responsibilities:**
 
@@ -289,7 +310,8 @@ class AgentRegistry:
 
 ### 2. Task Router
 
-**Purpose:** Intelligently route tasks to the most appropriate agent based on capabilities, performance, and current load.
+**Purpose:** Intelligently route tasks to the most appropriate agent based on
+capabilities, performance, and current load.
 
 **Responsibilities:**
 
@@ -358,7 +380,8 @@ class TaskRouter:
 
 ### 3. Load Balancer
 
-**Purpose:** Distribute tasks across agents to optimize throughput and prevent overload.
+**Purpose:** Distribute tasks across agents to optimize throughput and prevent
+overload.
 
 **Responsibilities:**
 
@@ -476,7 +499,8 @@ class FallbackManager:
 
 ### 5. Repository Analyzer
 
-**Purpose:** Analyze repository code to identify technical debt and optimization opportunities.
+**Purpose:** Analyze repository code to identify technical debt and optimization
+opportunities.
 
 **Responsibilities:**
 
@@ -1031,7 +1055,11 @@ class OptimizationService:
           "type": "string",
           "enum": ["low", "medium", "high"]
         },
-        "breaking_change_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "breaking_change_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
         "test_coverage": { "type": "number", "minimum": 0, "maximum": 1 }
       }
     },
@@ -2577,7 +2605,9 @@ graph TB
 
 ## Conclusion
 
-ORCHEX represents a comprehensive enterprise-grade solution for multiagent LLM orchestration and continuous repository optimization. By building on the solid KILO foundation, ORCHEX provides:
+ORCHEX represents a comprehensive enterprise-grade solution for multiagent LLM
+orchestration and continuous repository optimization. By building on the solid
+KILO foundation, ORCHEX provides:
 
 1. **Intelligent Orchestration** - Smart agent selection and load balancing
 2. **Resilient Execution** - Multi-tier fallback chains ensure reliability
@@ -2585,7 +2615,9 @@ ORCHEX represents a comprehensive enterprise-grade solution for multiagent LLM o
 4. **Enterprise Observability** - Comprehensive telemetry and metrics
 5. **Seamless Integration** - Leverages existing KILO infrastructure
 
-The 6-week implementation roadmap provides a clear path from foundation to production-ready system, with well-defined phases, dependencies, and success criteria.
+The 6-week implementation roadmap provides a clear path from foundation to
+production-ready system, with well-defined phases, dependencies, and success
+criteria.
 
 ---
 

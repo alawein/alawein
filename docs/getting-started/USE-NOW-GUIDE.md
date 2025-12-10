@@ -1,3 +1,10 @@
+---
+title: '🎯 USE THE UNIVERSAL SYSTEM NOW - Quick Start'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🎯 USE THE UNIVERSAL SYSTEM NOW - Quick Start
 
 ## For Each of Your Projects:

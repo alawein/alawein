@@ -1,3 +1,10 @@
+---
+title: '**FAMILY WEBSITES STRATEGIC DEVELOPMENT PLAN**'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # **FAMILY WEBSITES STRATEGIC DEVELOPMENT PLAN**
 
 ## **Executive Deliverable: DrMAlowein & Rounaq Fashion Platform**
@@ -6,12 +13,16 @@
 
 ## **📋 EXECUTIVE SUMMARY**
 
-This comprehensive strategic plan outlines the development, integration, and deployment of two family websites:
+This comprehensive strategic plan outlines the development, integration, and
+deployment of two family websites:
 
 1. **DrMAlowein** - Academic portfolio for father's professional presence
 2. **Rounaq** - Fashion e-commerce platform for mother's design business
 
-**Key Correction**: REPZ platform already exists at `c:/Users/mesha/Desktop/GitHub/organizations/repz-llc/repz/` as a fully functional AI coaching platform, reducing development scope by 1 complete platform.
+**Key Correction**: REPZ platform already exists at
+`c:/Users/mesha/Desktop/GitHub/organizations/repz-llc/repz/` as a fully
+functional AI coaching platform, reducing development scope by 1 complete
+platform.
 
 ---
 
@@ -522,7 +533,13 @@ export const academicContentTaxonomy = {
   },
 
   publications: {
-    types: ['journal-article', 'conference-paper', 'book-chapter', 'patent', 'technical-report'],
+    types: [
+      'journal-article',
+      'conference-paper',
+      'book-chapter',
+      'patent',
+      'technical-report',
+    ],
     status: ['published', 'in-review', 'preprint', 'draft'],
   },
 
@@ -987,7 +1004,8 @@ export const riskAssessment = {
         risk: 'Content approval delays from stakeholders',
         probability: 'High',
         impact: 'High',
-        mitigation: 'Establish clear approval workflows, parallel content creation',
+        mitigation:
+          'Establish clear approval workflows, parallel content creation',
         owner: 'Project Manager',
       },
     ],
@@ -1197,4 +1215,6 @@ export const rounaqKPIs = {
 **Version:** 1.0 Executive Review  
 **Contact:** <meshal.alawein@berkeley.edu>
 
-_This strategic plan provides the foundation for creating exceptional digital platforms that showcase our family's professional excellence and creative vision._
+_This strategic plan provides the foundation for creating exceptional digital
+platforms that showcase our family's professional excellence and creative
+vision._

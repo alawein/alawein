@@ -1,3 +1,10 @@
+---
+title: 'SaaS Readiness Checklist'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # SaaS Readiness Checklist
 
 > **Last Updated:** 2025-12-09  

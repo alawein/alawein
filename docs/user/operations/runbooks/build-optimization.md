@@ -1,8 +1,14 @@
+---
+title: 'Runbook: Build Optimization'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Runbook: Build Optimization
 
 **Purpose:** Improve build performance and reduce CI/CD execution times
-**Frequency:** Quarterly review or when budgets exceeded
-**Duration:** 2-4 hours
+**Frequency:** Quarterly review or when budgets exceeded **Duration:** 2-4 hours
 
 ---
 
@@ -115,8 +121,8 @@ npm dedupe --dry-run
 }
 ```
 
-**Benefit:** 20-40% faster type checking
-**Risk:** Low - only skips checking library definitions
+**Benefit:** 20-40% faster type checking **Risk:** Low - only skips checking
+library definitions
 
 **Option B: Use Project References**
 
@@ -140,8 +146,8 @@ For large monorepo structures:
 }
 ```
 
-**Benefit:** Incremental builds across projects
-**Risk:** Medium - requires restructuring
+**Benefit:** Incremental builds across projects **Risk:** Medium - requires
+restructuring
 
 #### Dependency Optimizations
 

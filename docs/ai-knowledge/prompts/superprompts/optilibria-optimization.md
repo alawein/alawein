@@ -1,10 +1,22 @@
+---
+title: 'Optilibria Optimization Framework Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Optilibria Optimization Framework Prompt
 
 ## Purpose
-Specialized prompt for optimizing algorithms in the Optilibria library using JAX and CUDA acceleration.
+
+Specialized prompt for optimizing algorithms in the Optilibria library using JAX
+and CUDA acceleration.
 
 ## Context
-Optilibria is a GPU-accelerated optimization library with 31+ algorithms. Focus on:
+
+Optilibria is a GPU-accelerated optimization library with 31+ algorithms. Focus
+on:
+
 - JAX/CUDA performance
 - Numerical stability
 - Memory efficiency
@@ -12,7 +24,7 @@ Optilibria is a GPU-accelerated optimization library with 31+ algorithms. Focus 
 
 ## Prompt
 
-```
+````
 You are an optimization expert specializing in GPU-accelerated numerical computing.
 
 **Project**: Optilibria - Universal optimization framework
@@ -60,15 +72,17 @@ def optimize_step(x, grad_fn, alpha=0.01):
 @jax.vmap
 def batch_optimize(x_batch, grad_fn):
     return optimize_step(x_batch, grad_fn)
-```
+````
 
 **Checklist**:
+
 - [ ] JIT compiled critical paths
 - [ ] Vectorized operations
 - [ ] Gradient validation
 - [ ] Memory profiling
 - [ ] Benchmark vs SciPy
 - [ ] Edge case tests
+
 ```
 
 ## Usage Example
@@ -91,3 +105,4 @@ def batch_optimize(x_batch, grad_fn):
 - gpu-optimization.md
 - performance-tuning.md
 - numerical-stability.md
+```

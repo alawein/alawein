@@ -1,8 +1,14 @@
+---
+title: 'Librex Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex Codemap
 
 > **Location:** `.archive/organizations/AlaweinOS/Librex/` + `Librex.QAP/`
-> **Status:** Development
-> **Domain:** librex.dev (to register)
+> **Status:** Development **Domain:** librex.dev (to register)
 
 ---
 
@@ -89,27 +95,27 @@ Librex.QAP/
 
 ## Solver Inventory
 
-| Solver | Problem Domain | Status | Location |
-|--------|----------------|--------|----------|
-| **QAP** | Quadratic Assignment | Active | `Librex.QAP/` |
-| **Flow** | Network Flow | Planned | `Librex/` |
-| **Alloc** | Resource Allocation | Planned | `Librex/` |
-| **Evo** | Evolutionary | Planned | `Librex/` |
-| **Graph** | Graph Optimization | Planned | `Librex/` |
-| **Dual** | Dual Problems | Planned | `Librex/` |
-| **Meta** | Meta-optimization | Planned | `Librex/` |
+| Solver    | Problem Domain       | Status  | Location      |
+| --------- | -------------------- | ------- | ------------- |
+| **QAP**   | Quadratic Assignment | Active  | `Librex.QAP/` |
+| **Flow**  | Network Flow         | Planned | `Librex/`     |
+| **Alloc** | Resource Allocation  | Planned | `Librex/`     |
+| **Evo**   | Evolutionary         | Planned | `Librex/`     |
+| **Graph** | Graph Optimization   | Planned | `Librex/`     |
+| **Dual**  | Dual Problems        | Planned | `Librex/`     |
+| **Meta**  | Meta-optimization    | Planned | `Librex/`     |
 
 ---
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `src/librex/__init__.py` | Main package |
-| `src/librex/solvers/` | Solver implementations |
-| `src/librex/models/` | Problem models |
-| `ai/` | ML-enhanced solvers |
-| `benchmarks/` | Performance tests |
+| File                     | Purpose                |
+| ------------------------ | ---------------------- |
+| `src/librex/__init__.py` | Main package           |
+| `src/librex/solvers/`    | Solver implementations |
+| `src/librex/models/`     | Problem models         |
+| `ai/`                    | ML-enhanced solvers    |
+| `benchmarks/`            | Performance tests      |
 
 ---
 
@@ -126,7 +132,8 @@ flowchart LR
     style Librex fill:#10B981,color:#fff
 ```
 
-MEZAN uses Librex as its solver backend, orchestrating multiple solvers for complex optimization problems.
+MEZAN uses Librex as its solver backend, orchestrating multiple solvers for
+complex optimization problems.
 
 ---
 

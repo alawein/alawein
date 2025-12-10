@@ -1,3 +1,10 @@
+---
+title: 'AlaweinOS Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AlaweinOS Documentation
 
 Complete documentation for AI assistants (Claude, Cline, Cursor, etc.) and
@@ -5,13 +12,72 @@ developers.
 
 ## Table of Contents
 
-1. [Architecture Overview](./architecture/ARCHITECTURE.md)
-2. [Project Structure](./architecture/STRUCTURE.md)
-3. [Platform APIs](./api/APIS.md)
-4. [Design System](./guides/DESIGN_SYSTEM.md)
-5. [Development Guide](./developer/DEVELOPMENT.md)
-6. [Governance](./governance/README.md)
-7. [Security](./security/SECURITY-IMPLEMENTATION.md)
+### Getting Started
+
+- [Quick Start](./QUICK_START.md) - Get up and running in 10 minutes
+- [Onboarding](./ONBOARDING.md) - New team member guide
+- [FAQ](./FAQ.md) - Frequently asked questions
+- [Troubleshooting](./TROUBLESHOOTING.md) - Common issues and solutions
+- [Glossary](./GLOSSARY.md) - Term definitions
+
+### Architecture & Design
+
+- [Architecture Overview](./architecture/ARCHITECTURE.md)
+- [Project Structure](./architecture/STRUCTURE.md)
+- [Design System](./guides/DESIGN_SYSTEM.md)
+- [Component Patterns](./COMPONENT_PATTERNS.md) - React patterns
+- [State Management](./STATE_MANAGEMENT.md) - State patterns
+
+### API & Development
+
+- [Platform APIs](./api/APIS.md)
+- [API Reference](./api/API_REFERENCE.md) - Complete API docs
+- [API Design](./api/API_DESIGN.md) - Design principles
+- [Development Guide](./developer/DEVELOPMENT.md)
+- [Style Guide](./STYLE_GUIDE.md) - Documentation standards
+
+### Testing & Performance
+
+- [Testing Strategy](./TESTING_STRATEGY.md) - Testing approach
+- [Testing Guide](./testing/TESTING-GUIDE.md) - Detailed testing
+- [E2E Testing](./testing/E2E-TESTING.md) - Playwright tests
+- [Performance Testing](./testing/PERFORMANCE-TESTING.md) - k6 tests
+- [Performance](./PERFORMANCE.md) - Optimization guide
+- [Accessibility](./ACCESSIBILITY.md) - WCAG compliance
+
+### Infrastructure & Operations
+
+- [Infrastructure](./INFRASTRUCTURE.md) - Cloud architecture
+- [Deployment](./DEPLOYMENT.md) - Deployment guide
+- [Monitoring](./MONITORING.md) - Observability
+- [Caching](./CACHING.md) - Caching strategies
+- [Database Patterns](./DATABASE_PATTERNS.md) - PostgreSQL best practices
+
+### Security & Governance
+
+- [Security](./SECURITY.md) - Security practices
+- [Security Checklist](./SECURITY_CHECKLIST.md) - Pre-deployment audit
+- [Privacy](./PRIVACY.md) - Privacy policy
+- [Governance](./governance/README.md)
+
+### Contributing
+
+- [Contributing Guide](../CONTRIBUTING.md) - How to contribute
+- [Code of Conduct](../CODE_OF_CONDUCT.md) - Community standards
+- [Changelog](../CHANGELOG.md) - Version history
+- [Changelog Guide](./CHANGELOG_GUIDE.md) - Writing changelogs
+- [Roadmap](./ROADMAP.md) - Future plans
+- [Migration](./MIGRATION.md) - Version migration
+
+### Developer Tools
+
+- [CodeMap CLI](./developer/CODEMAP.md) - Visual code map generator
+- [Documentation Validation](../scripts/docs/) - Doc validation scripts
+
+### Advanced Topics
+
+- [Error Handling](./ERROR_HANDLING.md) - Error patterns
+- [Internationalization](./INTERNATIONALIZATION.md) - i18n guide
 
 ---
 

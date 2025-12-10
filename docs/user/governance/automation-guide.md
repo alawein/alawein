@@ -1,13 +1,22 @@
+---
+title: 'Governance Automation Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Governance Automation Guide
 
-**Purpose:** Understanding and maintaining automated governance systems
-**Last Updated:** 2025-12-04
+**Purpose:** Understanding and maintaining automated governance systems **Last
+Updated:** 2025-12-04
 
 ---
 
 ## Overview
 
-This repository uses automated governance to maintain code quality, security, and compliance. This guide explains how the governance automation works and how to maintain it.
+This repository uses automated governance to maintain code quality, security,
+and compliance. This guide explains how the governance automation works and how
+to maintain it.
 
 ## Governance Architecture
 
@@ -139,7 +148,8 @@ thresholds:
 **How to adjust thresholds:**
 
 1. Edit `automation/governance/policies/technical_debt.yaml`
-2. Test locally: `python automation/debt_gate.py --scan automation/debt_scan.json --env ci`
+2. Test locally:
+   `python automation/debt_gate.py --scan automation/debt_scan.json --env ci`
 3. Create PR for review
 4. Monitor first few CI runs after merge
 
@@ -299,7 +309,8 @@ python automation/debt_cli.py scan --path . --json debt_scan.json
 
 ### Debt Gate
 
-**Purpose:** Prevent technical debt from accumulating beyond acceptable thresholds
+**Purpose:** Prevent technical debt from accumulating beyond acceptable
+thresholds
 
 **Environments:**
 
@@ -402,7 +413,8 @@ jq '.items[] | select(.priority == "P0")' automation/debt_scan.json
 
 - [ ] Review weekly governance report
 - [ ] Run manual compliance checks: `npm run governance check`
-- [ ] Update dependencies: See [dependency-updates.md](../operations/runbooks/dependency-updates.md)
+- [ ] Update dependencies: See
+      [dependency-updates.md](../operations/runbooks/dependency-updates.md)
 
 ### Monthly
 

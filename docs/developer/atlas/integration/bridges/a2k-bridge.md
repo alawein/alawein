@@ -1,10 +1,23 @@
+---
+title: 'A2K Bridge (ORCHEX → KILO Integration)'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # A2K Bridge (ORCHEX → KILO Integration)
 
-The A2K Bridge enables ORCHEX operations to leverage KILO's governance, validation, and template services. This service-oriented bridge allows ORCHEX to validate refactoring operations against organizational policies and access KILO's DevOps templates.
+The A2K Bridge enables ORCHEX operations to leverage KILO's governance,
+validation, and template services. This service-oriented bridge allows ORCHEX to
+validate refactoring operations against organizational policies and access
+KILO's DevOps templates.
 
 ## Overview
 
-The A2K Bridge operates as a service bridge where ORCHEX makes synchronous and asynchronous requests to KILO services. This ensures that ORCHEX operations comply with organizational standards and can utilize KILO's infrastructure automation capabilities.
+The A2K Bridge operates as a service bridge where ORCHEX makes synchronous and
+asynchronous requests to KILO services. This ensures that ORCHEX operations
+comply with organizational standards and can utilize KILO's infrastructure
+automation capabilities.
 
 ## Architecture
 
@@ -49,7 +62,9 @@ Handles validation requests from ORCHEX refactoring operations:
 class ValidationProxy {
   constructor(private config: ValidationConfig) {}
 
-  async validateRefactoring(operation: RefactoringOperation): Promise<ValidationResult> {
+  async validateRefactoring(
+    operation: RefactoringOperation,
+  ): Promise<ValidationResult> {
     // Syntax validation
     const syntaxCheck = await this.validateSyntax(operation);
 
@@ -426,7 +441,7 @@ Ensures long-term code health:
 class ValidationError extends A2KBridgeError {
   constructor(
     message: string,
-    public operation: RefactoringOperation
+    public operation: RefactoringOperation,
   ) {
     super(message, 'VALIDATION_FAILED', 'validation');
   }
@@ -449,7 +464,7 @@ try {
 class TemplateError extends A2KBridgeError {
   constructor(
     message: string,
-    public request: TemplateRequest
+    public request: TemplateRequest,
   ) {
     super(message, 'TEMPLATE_ERROR', 'templates');
   }
@@ -462,7 +477,7 @@ class TemplateError extends A2KBridgeError {
 class ComplianceError extends A2KBridgeError {
   constructor(
     message: string,
-    public check: ComplianceCheck
+    public check: ComplianceCheck,
   ) {
     super(message, 'COMPLIANCE_ERROR', 'compliance');
   }

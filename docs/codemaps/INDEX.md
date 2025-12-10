@@ -1,20 +1,27 @@
+---
+title: 'Codemaps Index'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Codemaps Index
 
-> **Purpose:** Navigation hub for all project codemaps
-> **Last Updated:** December 5, 2025
+> **Purpose:** Navigation hub for all project codemaps **Last Updated:**
+> December 5, 2025
 
 ---
 
 ## Quick Navigation
 
-| Codemap | Projects | Status |
-|---------|----------|--------|
-| [TALAI_CODEMAP.md](./TALAI_CODEMAP.md) | TalAI (50 modules) | 🟡 Development |
-| [LIBREX_CODEMAP.md](./LIBREX_CODEMAP.md) | Librex, Librex.QAP | 🟡 Development |
-| [MEZAN_CODEMAP.md](./MEZAN_CODEMAP.md) | MEZAN, ATLAS, Libria | 🟡 Development |
-| [BUSINESS_PROJECTS_CODEMAP.md](./BUSINESS_PROJECTS_CODEMAP.md) | Repz, LiveItIconic | 🟡 Development |
-| [SCIENCE_PROJECTS_CODEMAP.md](./SCIENCE_PROJECTS_CODEMAP.md) | MagLogic, SpinCirc, etc. | 🔴 Research |
-| [INFRASTRUCTURE_CODEMAP.md](./INFRASTRUCTURE_CODEMAP.md) | automation/, tools/ | ✅ Active |
+| Codemap                                                        | Projects                 | Status         |
+| -------------------------------------------------------------- | ------------------------ | -------------- |
+| [TALAI_CODEMAP.md](./TALAI_CODEMAP.md)                         | TalAI (50 modules)       | 🟡 Development |
+| [LIBREX_CODEMAP.md](./LIBREX_CODEMAP.md)                       | Librex, Librex.QAP       | 🟡 Development |
+| [MEZAN_CODEMAP.md](./MEZAN_CODEMAP.md)                         | MEZAN, ATLAS, Libria     | 🟡 Development |
+| [BUSINESS_PROJECTS_CODEMAP.md](./BUSINESS_PROJECTS_CODEMAP.md) | Repz, LiveItIconic       | 🟡 Development |
+| [SCIENCE_PROJECTS_CODEMAP.md](./SCIENCE_PROJECTS_CODEMAP.md)   | MagLogic, SpinCirc, etc. | 🔴 Research    |
+| [INFRASTRUCTURE_CODEMAP.md](./INFRASTRUCTURE_CODEMAP.md)       | automation/, tools/      | ✅ Active      |
 
 ---
 
@@ -95,7 +102,8 @@ All project code is preserved in `.archive/organizations/`:
 
 ## Related Documents
 
-- [REPOSITORY_CONSOLIDATION_SUPERPROMPT.md](../../REPOSITORY_CONSOLIDATION_SUPERPROMPT.md) - Master superprompt
+- [REPOSITORY_CONSOLIDATION_SUPERPROMPT.md](../../REPOSITORY_CONSOLIDATION_SUPERPROMPT.md) -
+  Master superprompt
 - [CODEMAP.md](../CODEMAP.md) - Original system codemap
 - [projects/README.md](../../projects/README.md) - Project registry
 
@@ -105,16 +113,16 @@ All project code is preserved in `.archive/organizations/`:
 
 All project superprompts are in `automation/prompts/project/`:
 
-| Project | Superprompt File |
-|---------|------------------|
-| TalAI | `TALAI_SUPERPROMPT.md` |
-| Repz | `REPZ_SUPERPROMPT.md` |
-| SimCore | `SIMCORE_CLAUDE_CODE_SUPERPROMPT.md` |
-| MagLogic | `MAG_LOGIC_SUPERPROMPT.md` |
-| SpinCirc | `SPIN_CIRC_SUPERPROMPT.md` |
-| QMatSim | `QMAT_SIM_SUPERPROMPT.md` |
-| QubeML | `QUBE_ML_SUPERPROMPT.md` |
-| SciComp | `SCI_COMP_SUPERPROMPT.md` |
+| Project  | Superprompt File                     |
+| -------- | ------------------------------------ |
+| TalAI    | `TALAI_SUPERPROMPT.md`               |
+| Repz     | `REPZ_SUPERPROMPT.md`                |
+| SimCore  | `SIMCORE_CLAUDE_CODE_SUPERPROMPT.md` |
+| MagLogic | `MAG_LOGIC_SUPERPROMPT.md`           |
+| SpinCirc | `SPIN_CIRC_SUPERPROMPT.md`           |
+| QMatSim  | `QMAT_SIM_SUPERPROMPT.md`            |
+| QubeML   | `QUBE_ML_SUPERPROMPT.md`             |
+| SciComp  | `SCI_COMP_SUPERPROMPT.md`            |
 
 ---
 

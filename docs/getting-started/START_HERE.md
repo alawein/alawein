@@ -1,3 +1,10 @@
+---
+title: '🚀 START HERE - Alawein Technologies'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🚀 START HERE - Alawein Technologies
 
 > **Last Updated:** December 5, 2025  
@@ -419,15 +426,18 @@ Prioritize:
 
 ## 🎉 You're Ready!
 
-Everything is set up and ready to go. The repository is clean, documentation is complete, and landing pages are designed.
+Everything is set up and ready to go. The repository is clean, documentation is
+complete, and landing pages are designed.
 
-**Next step:** Open [ACTION_PLAN.md](./ACTION_PLAN.md) and start with Task 1: File the LLC.
+**Next step:** Open [ACTION_PLAN.md](./ACTION_PLAN.md) and start with Task 1:
+File the LLC.
 
 ---
 
 ## 🙏 Remember
 
-> "The best code is like a physics equation—minimal, elegant, and captures the essence of truth."
+> "The best code is like a physics equation—minimal, elegant, and captures the
+> essence of truth."
 
 Focus on:
 

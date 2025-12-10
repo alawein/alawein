@@ -1,3 +1,10 @@
+---
+title: "Page Templates"
+last_verified: 2025-12-09
+owner: "@alawein"
+status: active
+---
+
 # Page Templates
 
 Reusable HTML templates for creating new brand pages, landing pages, and project sites.

@@ -26,6 +26,7 @@ document_metadata:
     scope: "What this document covers and its boundaries"
     key_concepts: ["concept1", "concept2", "concept3"]
     related_documents: ["doc1.md", "doc2.md"]
+last_verified: 2025-12-09
 ---
 
 # Document Title

@@ -1,6 +1,14 @@
+---
+title: 'SimCore Claude Code Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # SimCore Claude Code Superprompt
 
-_Ultimate implementation guide for the SimCore Interactive Scientific Computing Laboratory_
+_Ultimate implementation guide for the SimCore Interactive Scientific Computing
+Laboratory_
 
 ## 🚀 Master Superprompt
 
@@ -137,7 +145,7 @@ interface PhysicsModuleProps {
 // WebGPU Computation Hook Pattern
 const useWebGPUCalculation = <T>(
   computeShader: string,
-  params: ComputeParams
+  params: ComputeParams,
 ): { result: T | null; isCalculating: boolean } => {
   // Implementation with GPU acceleration and CPU fallback
 };
@@ -320,4 +328,6 @@ src/
 
 ---
 
-**SimCore represents the future of web-based scientific computing education, combining research-grade accuracy with modern web technologies and universal accessibility.**
+**SimCore represents the future of web-based scientific computing education,
+combining research-grade accuracy with modern web technologies and universal
+accessibility.**

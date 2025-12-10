@@ -1,3 +1,10 @@
+---
+title: 'Platform APIs'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Platform APIs
 
 Each platform has its own Edge Function API at

@@ -1,3 +1,10 @@
+---
+title: 'Master AI Specification'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Master AI Specification
 
 > Single source of truth for all AI tool configurations, prompts, and

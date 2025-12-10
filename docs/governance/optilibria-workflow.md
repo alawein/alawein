@@ -1,25 +1,33 @@
+---
+title: 'Fullstack Development Workflow'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Fullstack Development Workflow
 
-**Project:** {{project_name}}
-**Stack:** {{tech_stack}}
+**Project:** {{project_name}} **Stack:** {{tech_stack}}
 
 ---
 
 ## Phase 1: Architecture
 
 ---
-name: 'Monorepo & Architecture Superprompt'
-version: '1.0'
-category: 'project'
+
+name: 'Monorepo & Architecture Superprompt' version: '1.0' category: 'project'
 tags: ['monorepo', 'architecture', 'modular', 'dependencies', 'organization']
 created: '2024-11-30'
+
 ---
 
 # Monorepo & Architecture Superprompt
 
 ## Purpose
 
-Comprehensive framework for organizing, structuring, and managing monorepo architectures with modular design, dependency handling, and scalable project organization.
+Comprehensive framework for organizing, structuring, and managing monorepo
+architectures with modular design, dependency handling, and scalable project
+organization.
 
 ---
 
@@ -535,7 +543,13 @@ jobs:
 
 ```typescript
 // tools/generators/lib/index.ts
-import { Tree, formatFiles, generateFiles, joinPathFragments, names } from '@nx/devkit';
+import {
+  Tree,
+  formatFiles,
+  generateFiles,
+  joinPathFragments,
+  names,
+} from '@nx/devkit';
 
 interface LibGeneratorSchema {
   name: string;
@@ -581,7 +595,10 @@ export default async function (tree: Tree, schema: LibGeneratorSchema) {
     },
   };
 
-  tree.write(joinPathFragments(projectRoot, 'project.json'), JSON.stringify(projectJson, null, 2));
+  tree.write(
+    joinPathFragments(projectRoot, 'project.json'),
+    JSON.stringify(projectJson, null, 2),
+  );
 
   await formatFiles(tree);
 }
@@ -623,7 +640,6 @@ export default async function (tree: Tree, schema: LibGeneratorSchema) {
 
 _Last updated: 2024-11-30_
 
-
 ---
 
 ## Phase 2: Backend Development
@@ -631,13 +647,14 @@ _Last updated: 2024-11-30_
 ## Code Review - {{backend_lang
 
 **Focus Areas:**
+
 - Code quality and maintainability
 - Performance optimization
 - Security vulnerabilities
-- Best practices adherence
-}}
+- Best practices adherence }}
 
 **Requirements:**
+
 - RESTful API design
 - Database schema
 - Authentication
@@ -649,7 +666,6 @@ _Last updated: 2024-11-30_
 - Integration tests for APIs
 - Edge case handling
 
-
 ---
 
 ## Phase 3: Frontend Development
@@ -657,13 +673,14 @@ _Last updated: 2024-11-30_
 ## Code Review - {{frontend_lang
 
 **Focus Areas:**
+
 - Code quality and maintainability
 - Performance optimization
 - Security vulnerabilities
-- Best practices adherence
-}}
+- Best practices adherence }}
 
 **Requirements:**
+
 - Component architecture
 - State management
 - Responsive design
@@ -675,18 +692,19 @@ _Last updated: 2024-11-30_
 [Component 'security-checklist}}
 
 ---
-name: 'CI/CD Pipeline Superprompt'
-version: '1.0'
-category: 'project'
-tags: ['cicd', 'devops', 'automation', 'deployment', 'github-actions']
-created: '2024-11-30'
+
+name: 'CI/CD Pipeline Superprompt' version: '1.0' category: 'project' tags:
+['cicd', 'devops', 'automation', 'deployment', 'github-actions'] created:
+'2024-11-30'
+
 ---
 
 # CI/CD Pipeline Superprompt
 
 ## Purpose
 
-Comprehensive CI/CD pipeline design and implementation framework for automated building, testing, and deployment across multiple environments.
+Comprehensive CI/CD pipeline design and implementation framework for automated
+building, testing, and deployment across multiple environments.
 
 ---
 
@@ -874,9 +892,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s
           --health-retries 5
 
       redis:
@@ -1148,7 +1164,8 @@ jobs:
         with:
           body: ${{ steps.changelog.outputs.content }}
           draft: false
-          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+          prerelease:
+            ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
           files: |
             dist/*.tar.gz
             dist/*.zip
@@ -1258,7 +1275,6 @@ environments:
 
 _Last updated: 2024-11-30_
 
-
 ---
 
 ## Success Criteria
@@ -1267,4 +1283,3 @@ _Last updated: 2024-11-30_
 - {{coverage_target' not found]% code coverage
 - Performance benchmarks met
 - Security audit passed
-

@@ -1,0 +1,26 @@
+{
+  "name": "@alawein/codemap",
+  "version": "1.0.0",
+  "description": "Visual code map generator for the Alawein monorepo",
+  "main": "cli.ts",
+  "bin": {
+    "codemap": "./cli.ts"
+  },
+  "scripts": {
+    "start": "npx ts-node cli.ts",
+    "generate:all": "npx ts-node cli.ts generate --all",
+    "generate:arch": "npx ts-node cli.ts generate --category architecture",
+    "generate:db": "npx ts-node cli.ts generate --category database",
+    "generate:components": "npx ts-node cli.ts generate --category components",
+    "list": "npx ts-node cli.ts list"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.0"
+  }
+}

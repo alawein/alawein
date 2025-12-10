@@ -1,8 +1,16 @@
+---
+title: 'Phase 2: Tooling Consolidation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Phase 2: Tooling Consolidation
 
 ## Objective
 
-Merge tools/ and scripts/ into .metaHub/tools/ for unified CLI and automation management.
+Merge tools/ and scripts/ into .metaHub/tools/ for unified CLI and automation
+management.
 
 ## Pre-Flight Checks
 

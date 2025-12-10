@@ -1,0 +1,15 @@
+╔══════════════════════════════════════════════════════════════╗
+║                    PLATFORM OVERVIEW                         ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  ✅ REPZ            │ Fitness coaching                        ║
+║  ✅ SimCore         │ Scientific sim                          ║
+║  🔶 QMLab           │ Quantum mechanics                      ║
+║  ✅ LiveItIconic    │ E-commerce                              ║
+║  🔶 LLMWorks        │ AI/ML tools                            ║
+║  🔶 Attributa       │ Attribution                            ║
+║  ✅ Portfolio       │ Personal site                           ║
+║                                                              ║
+╠══════════════════════════════════════════════════════════════╣
+║  ✅ Active   🔶 Beta   ⚪ Planned                            ║
+╚══════════════════════════════════════════════════════════════╝

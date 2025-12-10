@@ -1,6 +1,15 @@
+---
+title: 'ORCHEX-KILO CLI Reference'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX-KILO CLI Reference
 
-The ORCHEX-KILO integration provides a unified command-line interface that combines ORCHEX analysis capabilities with KILO governance and DevOps automation. This reference covers all integrated commands and their usage.
+The ORCHEX-KILO integration provides a unified command-line interface that
+combines ORCHEX analysis capabilities with KILO governance and DevOps
+automation. This reference covers all integrated commands and their usage.
 
 ## Command Structure
 
@@ -23,7 +32,8 @@ ORCHEX <command> [subcommand] [options] [arguments]
 
 ### `ORCHEX analyze repo`
 
-Analyze a repository for code quality metrics with optional KILO governance validation.
+Analyze a repository for code quality metrics with optional KILO governance
+validation.
 
 ```bash
 ORCHEX analyze repo <path> [options]
@@ -35,13 +45,16 @@ ORCHEX analyze repo <path> [options]
 
 **Options:**
 
-- `--format <format>`: Output format (`table`, `json`, `summary`) (default: `table`)
-- `--depth <depth>`: Analysis depth (`shallow`, `medium`, `deep`) (default: `medium`)
+- `--format <format>`: Output format (`table`, `json`, `summary`) (default:
+  `table`)
+- `--depth <depth>`: Analysis depth (`shallow`, `medium`, `deep`) (default:
+  `medium`)
 - `--include-patterns <patterns>`: File patterns to include (comma-separated)
 - `--exclude-patterns <patterns>`: File patterns to exclude (comma-separated)
 - `--governance-check`: Validate results against KILO governance policies
 - `--auto-refactor`: Apply KILO-validated refactoring operations
-- `--compliance-level <level>`: Compliance strictness (`lenient`, `standard`, `strict`)
+- `--compliance-level <level>`: Compliance strictness (`lenient`, `standard`,
+  `strict`)
 
 **Examples:**
 
@@ -171,7 +184,8 @@ ORCHEX template list [category] [options]
 
 **Arguments:**
 
-- `category`: Template category (`cicd`, `db`, `iac`, `k8s`, `logging`, `monitoring`, `ui`)
+- `category`: Template category (`cicd`, `db`, `iac`, `k8s`, `logging`,
+  `monitoring`, `ui`)
 
 **Options:**
 
@@ -748,4 +762,5 @@ jobs:
           path: compliance.html
 ```
 
-This CLI reference covers the complete integrated command set. For more detailed information about specific commands, use `ORCHEX <command> --help`.
+This CLI reference covers the complete integrated command set. For more detailed
+information about specific commands, use `ORCHEX <command> --help`.

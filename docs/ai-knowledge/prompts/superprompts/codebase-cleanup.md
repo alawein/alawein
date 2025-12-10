@@ -1,12 +1,22 @@
+---
+title: 'Repository Organization & Cleanup Master Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Organization & Cleanup Master Prompt
 
-A comprehensive, adaptable prompt for organizing and professionalizing any repository.
+A comprehensive, adaptable prompt for organizing and professionalizing any
+repository.
 
 ---
 
 ## Overview
 
-This document provides a reusable prompt template for cleaning up, organizing, and professionalizing repositories of any type. Customize the sections relevant to your project.
+This document provides a reusable prompt template for cleaning up, organizing,
+and professionalizing repositories of any type. Customize the sections relevant
+to your project.
 
 ---
 

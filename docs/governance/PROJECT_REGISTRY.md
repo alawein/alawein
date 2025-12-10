@@ -1,3 +1,10 @@
+---
+title: 'Complete Projects Registry'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Complete Projects Registry
 
 > **Last Updated:** December 5, 2025 **Total Projects Found:** 86+ (including

@@ -27,6 +27,7 @@ document_metadata:
     scope: "API endpoints, authentication, error handling, examples, testing"
     key_concepts: ["REST API", "authentication", "error handling", "rate limiting", "testing"]
     related_documents: ["DOCUMENT-TEMPLATE.md", "SECURITY.md"]
+last_verified: 2025-12-09
 ---
 
 # [API Name] Documentation

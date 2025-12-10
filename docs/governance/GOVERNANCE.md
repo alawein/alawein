@@ -1,8 +1,16 @@
+---
+title: 'Monorepo Governance & Standards'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monorepo Governance & Standards
 
 ## 📋 Overview
 
-This document establishes governance rules, coding standards, and development guidelines for the Alawein Technologies monorepo.
+This document establishes governance rules, coding standards, and development
+guidelines for the Alawein Technologies monorepo.
 
 ---
 
@@ -99,24 +107,28 @@ platform-name/
 ## 📝 Coding Standards
 
 ### TypeScript
+
 - Strict mode enabled
 - No `any` types (use `unknown` or proper types)
 - Export types from dedicated `types/` folder
 - Use interfaces for objects, types for unions
 
 ### React
+
 - Functional components only
 - Custom hooks for reusable logic
 - Props interfaces defined above components
 - Use React.memo() for expensive renders
 
 ### Styling
+
 - Tailwind CSS for all styling
 - Use `cn()` utility for conditional classes
 - No inline styles
 - CSS variables for theming
 
 ### File Naming
+
 - Components: `PascalCase.tsx`
 - Hooks: `use-kebab-case.ts`
 - Utils: `kebab-case.ts`
@@ -127,12 +139,14 @@ platform-name/
 ## 🔄 Git Workflow
 
 ### Branch Naming
+
 - `feature/platform-name/description`
 - `fix/platform-name/description`
 - `refactor/platform-name/description`
 - `docs/description`
 
 ### Commit Messages
+
 ```
 type(scope): description
 
@@ -141,6 +155,7 @@ Scope: platform name or 'monorepo'
 ```
 
 ### Pull Requests
+
 - Use PR template
 - Require 1 approval
 - All checks must pass
@@ -151,18 +166,20 @@ Scope: platform name or 'monorepo'
 ## 🚀 Deployment
 
 ### Platform Ports (Development)
-| Platform | Port |
-|----------|------|
-| Studios Hub | 5173 |
-| Portfolio | 5174 |
-| SimCore | 5175 |
-| REPZ | 5176 |
+
+| Platform     | Port |
+| ------------ | ---- |
+| Studios Hub  | 5173 |
+| Portfolio    | 5174 |
+| SimCore      | 5175 |
+| REPZ         | 5176 |
 | LiveItIconic | 5177 |
-| Attributa | 5179 |
-| QMLab | 5180 |
-| LLMWorks | 5181 |
+| Attributa    | 5179 |
+| QMLab        | 5180 |
+| LLMWorks     | 5181 |
 
 ### Production Deployment
+
 - All platforms deploy to Netlify
 - Use `netlify.toml` for configuration
 - Environment variables in Netlify dashboard
@@ -182,6 +199,7 @@ Scope: platform name or 'monorepo'
 ## 📊 Quality Gates
 
 ### Required for Merge
+
 - [ ] TypeScript compiles without errors
 - [ ] ESLint passes
 - [ ] Build succeeds
@@ -194,6 +212,7 @@ Scope: platform name or 'monorepo'
 ## 🤖 AI/Lovable Compatibility
 
 ### For Lovable.dev Integration
+
 1. Each platform must be self-contained
 2. Use standard Vite + React + TypeScript stack
 3. Include `components.json` for shadcn/ui
@@ -201,6 +220,7 @@ Scope: platform name or 'monorepo'
 5. Standard folder structure as defined above
 
 ### AI Agent Guidelines
+
 - Follow existing patterns in codebase
 - Don't modify shared components without approval
 - Create platform-specific components first

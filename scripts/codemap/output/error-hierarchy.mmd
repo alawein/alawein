@@ -1,0 +1,46 @@
+classDiagram
+    class Error {
+        +message: string
+        +stack: string
+    }
+
+    class AppError {
+        +code: ErrorCode
+        +statusCode: number
+        +isOperational: boolean
+        +timestamp: Date
+        +context: object
+        +toJSON()
+    }
+
+    class AuthenticationError {
+        +code: AUTH_INVALID_CREDENTIALS
+        +statusCode: 401
+    }
+
+    class ValidationError {
+        +code: VALIDATION_FAILED
+        +statusCode: 400
+    }
+
+    class NetworkError {
+        +code: API_NETWORK_ERROR
+        +statusCode: 0
+    }
+
+    class TimeoutError {
+        +code: API_TIMEOUT
+        +statusCode: 408
+    }
+
+    class NotFoundError {
+        +code: RESOURCE_NOT_FOUND
+        +statusCode: 404
+    }
+
+    Error <|-- AppError
+    AppError <|-- AuthenticationError
+    AppError <|-- ValidationError
+    AppError <|-- NetworkError
+    AppError <|-- TimeoutError
+    AppError <|-- NotFoundError

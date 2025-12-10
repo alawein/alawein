@@ -1,8 +1,16 @@
+---
+title: 'Governance Audit Reports & Implementation Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Governance Audit Reports & Implementation Guide
 
 ## 📋 Quick Navigation
 
-This directory contains the comprehensive governance audit and implementation materials for the organizations directory.
+This directory contains the comprehensive governance audit and implementation
+materials for the organizations directory.
 
 ### 📊 Reports
 

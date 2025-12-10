@@ -1,9 +1,14 @@
+---
+title: 'TalAI Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # TalAI Codemap
 
-> **Location:** `.archive/organizations/AlaweinOS/TalAI/`
-> **Modules:** 50
-> **Status:** Development
-> **Domain:** talai.dev (to register)
+> **Location:** `.archive/organizations/AlaweinOS/TalAI/` **Modules:** 50
+> **Status:** Development **Domain:** talai.dev (to register)
 
 ---
 
@@ -159,13 +164,13 @@ flowchart LR
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `src/main.py` | Main entry point |
-| `src/api/` | FastAPI routes |
-| `src/models/` | Data models |
-| `src/services/` | Business logic |
-| `docs/` | API documentation |
+| File            | Purpose           |
+| --------------- | ----------------- |
+| `src/main.py`   | Main entry point  |
+| `src/api/`      | FastAPI routes    |
+| `src/models/`   | Data models       |
+| `src/services/` | Business logic    |
+| `docs/`         | API documentation |
 
 ---
 

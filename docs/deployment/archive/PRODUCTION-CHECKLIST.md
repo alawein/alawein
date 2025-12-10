@@ -1,8 +1,16 @@
+---
+title: 'Production Deployment Checklist'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Production Deployment Checklist
 
 ## Pre-Deployment
 
 ### Security
+
 - [ ] Security headers configured in Vite/CDN
 - [ ] HTTPS enforced (no HTTP)
 - [ ] Environment variables set (no hardcoded secrets)
@@ -12,6 +20,7 @@
 - [ ] MFA enabled for admin accounts
 
 ### Code Quality
+
 - [ ] All tests passing (`npx turbo test`)
 - [ ] Type checking clean (`npx turbo type-check`)
 - [ ] Linting clean (`npx turbo lint`)
@@ -20,12 +29,14 @@
 - [ ] Source maps disabled or secured
 
 ### Dependencies
+
 - [ ] No known vulnerabilities (`npm audit`)
 - [ ] Dependencies up to date
 - [ ] License compliance verified
 - [ ] Unused dependencies removed
 
 ### Performance
+
 - [ ] Lighthouse score > 90
 - [ ] Core Web Vitals passing
 - [ ] Images optimized
@@ -33,6 +44,7 @@
 - [ ] CDN configured for static assets
 
 ### Monitoring
+
 - [ ] Error tracking configured (Sentry)
 - [ ] Analytics configured
 - [ ] Uptime monitoring enabled
@@ -40,6 +52,7 @@
 - [ ] Performance monitoring enabled
 
 ### Database
+
 - [ ] Migrations applied
 - [ ] Backups configured
 - [ ] RLS policies tested
@@ -47,6 +60,7 @@
 - [ ] Connection pooling configured
 
 ### Infrastructure
+
 - [ ] Health check endpoint working
 - [ ] Rollback plan documented
 - [ ] Disaster recovery tested
@@ -56,6 +70,7 @@
 ## Deployment
 
 ### Build
+
 ```bash
 # Build all projects
 npx turbo build
@@ -65,6 +80,7 @@ ls -lh dist/
 ```
 
 ### Deploy
+
 ```bash
 # Deploy to production
 npm run deploy:production
@@ -74,6 +90,7 @@ curl -I https://your-domain.com/health
 ```
 
 ### Verify
+
 - [ ] Application loads correctly
 - [ ] Authentication works
 - [ ] API endpoints responding
@@ -84,6 +101,7 @@ curl -I https://your-domain.com/health
 ## Post-Deployment
 
 ### Monitoring
+
 - [ ] Check error rates
 - [ ] Monitor performance metrics
 - [ ] Verify uptime
@@ -91,12 +109,14 @@ curl -I https://your-domain.com/health
 - [ ] Review security alerts
 
 ### Testing
+
 - [ ] Smoke tests passing
 - [ ] Critical user flows working
 - [ ] Mobile responsiveness verified
 - [ ] Cross-browser compatibility checked
 
 ### Documentation
+
 - [ ] Deployment documented
 - [ ] Rollback procedure tested
 - [ ] Incident response plan ready
@@ -107,12 +127,14 @@ curl -I https://your-domain.com/health
 If issues occur:
 
 1. **Immediate:** Revert to previous version
+
 ```bash
 git revert HEAD
 npm run deploy:production
 ```
 
 2. **Database:** Restore from backup if needed
+
 ```bash
 # Restore database
 supabase db restore backup-timestamp
@@ -126,6 +148,7 @@ supabase db restore backup-timestamp
 ## Platform-Specific
 
 ### Vercel
+
 - [ ] Environment variables set
 - [ ] Build command configured
 - [ ] Output directory correct
@@ -133,6 +156,7 @@ supabase db restore backup-timestamp
 - [ ] SSL certificate active
 
 ### Netlify
+
 - [ ] Build settings configured
 - [ ] Redirects/rewrites set
 - [ ] Environment variables set
@@ -140,6 +164,7 @@ supabase db restore backup-timestamp
 - [ ] Custom domain configured
 
 ### Supabase
+
 - [ ] Database migrations applied
 - [ ] Edge Functions deployed
 - [ ] Storage buckets configured
@@ -154,6 +179,7 @@ curl -I https://your-domain.com | grep -E "Strict-Transport-Security|X-Content-T
 ```
 
 Expected headers:
+
 - Strict-Transport-Security: max-age=31536000
 - X-Content-Type-Options: nosniff
 - X-Frame-Options: DENY
@@ -177,7 +203,7 @@ npx bundlesize
 - [ ] Documentation updated
 - [ ] Team trained on new features
 
-**Deployed by:** _______________  
-**Date:** _______________  
-**Version:** _______________  
-**Approved by:** _______________
+**Deployed by:** ******\_\_\_******  
+**Date:** ******\_\_\_******  
+**Version:** ******\_\_\_******  
+**Approved by:** ******\_\_\_******

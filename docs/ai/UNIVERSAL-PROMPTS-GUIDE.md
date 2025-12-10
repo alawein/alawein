@@ -1,3 +1,10 @@
+---
+title: '🌍 UNIVERSAL PROMPTS - Works for ALL Your Projects!'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🌍 UNIVERSAL PROMPTS - Works for ALL Your Projects!
 
 ## THE TRUTH: It's NOT Just Optilibria!

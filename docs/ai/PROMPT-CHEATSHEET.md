@@ -1,3 +1,10 @@
+---
+title: 'AI Prompt System - Quick Reference'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Prompt System - Quick Reference
 
 ## 🚀 Most Used Commands

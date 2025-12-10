@@ -1,3 +1,10 @@
+---
+title: 'Known Issues'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Known Issues
 
 **Last Updated:** 2025-12-04
@@ -14,14 +21,15 @@ _(No active issues)_
 
 ### 1. Vitest Test Discovery Failure
 
-**Status:** ✅ **Resolved** - 2025-12-04
-**Resolution:** Downgraded from Vitest 4.0.15 to 3.2.4
+**Status:** ✅ **Resolved** - 2025-12-04 **Resolution:** Downgraded from Vitest
+4.0.15 to 3.2.4
 
-**Original Issue:**
-Vitest 4.0.15 failed to discover test suites with error: "No test suite found in file". All 18 test files were affected, making the entire test suite non-functional.
+**Original Issue:** Vitest 4.0.15 failed to discover test suites with error: "No
+test suite found in file". All 18 test files were affected, making the entire
+test suite non-functional.
 
-**Root Cause:**
-Vitest 4.x has a regression or compatibility issue with Windows path resolution and/or TypeScript `moduleResolution: "bundler"` configuration.
+**Root Cause:** Vitest 4.x has a regression or compatibility issue with Windows
+path resolution and/or TypeScript `moduleResolution: "bundler"` configuration.
 
 **Solution:**
 
@@ -35,8 +43,9 @@ npm install -D vitest@3.2.4
 - ✅ Test execution time: ~14 seconds
 - ✅ CI/CD tests restored to working state
 
-**Recommendation:**
-Do not upgrade to Vitest 4.x until the Windows compatibility issue is resolved upstream. Monitor [Vitest releases](https://github.com/vitest-dev/vitest/releases) for a fix.
+**Recommendation:** Do not upgrade to Vitest 4.x until the Windows compatibility
+issue is resolved upstream. Monitor
+[Vitest releases](https://github.com/vitest-dev/vitest/releases) for a fix.
 
 ---
 
@@ -63,5 +72,4 @@ When reporting issues:
 3. **Expected vs actual:** What should happen vs what actually happens
 4. **Investigation:** Steps already taken to diagnose
 
-**Repository:** https://github.com/alawein/alawein
-**Maintainer:** @alawein
+**Repository:** https://github.com/alawein/alawein **Maintainer:** @alawein

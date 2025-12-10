@@ -1,3 +1,10 @@
+---
+title: 'Monitoring Setup Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monitoring Setup Guide
 
 ## 🔴 Sentry Error Tracking
@@ -52,7 +59,7 @@ initSentry({
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 ```
 
@@ -63,10 +70,7 @@ import { SentryErrorBoundary } from '@alawein/integrations/sentry';
 
 function App() {
   return (
-    <SentryErrorBoundary
-      fallback={<ErrorFallback />}
-      showDialog={true}
-    >
+    <SentryErrorBoundary fallback={<ErrorFallback />} showDialog={true}>
       {/* Your app components */}
     </SentryErrorBoundary>
   );
@@ -82,7 +86,7 @@ import { captureError, captureMessage } from '@alawein/integrations/sentry';
 try {
   await riskyOperation();
 } catch (error) {
-  captureError(error, { 
+  captureError(error, {
     context: 'checkout',
     userId: user.id,
   });
@@ -105,7 +109,11 @@ captureMessage('User upgraded to Pro', 'info', {
 2. Add script to each platform's `index.html`:
 
 ```html
-<script defer data-domain="simcore.dev" src="https://analytics.alawein.com/js/script.js"></script>
+<script
+  defer
+  data-domain="simcore.dev"
+  src="https://analytics.alawein.com/js/script.js"
+></script>
 ```
 
 ### Cloud Option
@@ -179,4 +187,3 @@ VITE_PLAUSIBLE_DOMAIN=
 - [ ] Slack/Discord integration for alerts
 - [ ] Weekly error review scheduled
 - [ ] Performance baselines documented
-

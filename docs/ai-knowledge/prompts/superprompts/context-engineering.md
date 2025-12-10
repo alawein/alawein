@@ -1,3 +1,10 @@
+---
+title: 'Context Engineering Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Context Engineering Prompt
 
 ## Purpose

@@ -1,6 +1,14 @@
+---
+title: 'Quick Start Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Quick Start Guide
 
-Get started with the ORCHEX-KILO integration in under 15 minutes. This guide covers the essential steps to set up and use the integrated system.
+Get started with the ORCHEX-KILO integration in under 15 minutes. This guide
+covers the essential steps to set up and use the integrated system.
 
 ## Prerequisites
 
@@ -228,4 +236,6 @@ ORCHEX compliance check . --format summary
 echo "🎉 ORCHEX-KILO integration complete!"
 ```
 
-This quick start guide should get you productive with the ORCHEX-KILO integration in minutes. For more advanced features, refer to the detailed documentation sections.
+This quick start guide should get you productive with the ORCHEX-KILO
+integration in minutes. For more advanced features, refer to the detailed
+documentation sections.

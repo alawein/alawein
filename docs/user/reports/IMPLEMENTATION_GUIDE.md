@@ -1,8 +1,16 @@
+---
+title: 'GOVERNANCE IMPLEMENTATION GUIDE'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # GOVERNANCE IMPLEMENTATION GUIDE
 
 ## Quick Start
 
-This guide provides step-by-step instructions to implement the governance improvements identified in the audit report.
+This guide provides step-by-step instructions to implement the governance
+improvements identified in the audit report.
 
 ### Prerequisites
 
@@ -531,7 +539,8 @@ Track these metrics to measure success:
 For questions or issues:
 
 1. Check the [Governance Audit Report](./GOVERNANCE_AUDIT_REPORT.md)
-2. Review the [Compliance Validator](../.metaHub/scripts/compliance_validator.py)
+2. Review the
+   [Compliance Validator](../.metaHub/scripts/compliance_validator.py)
 3. Contact the governance team
 
 ---

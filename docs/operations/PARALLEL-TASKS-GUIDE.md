@@ -1,3 +1,10 @@
+---
+title: 'Parallel Tasks While Other LLMs Work'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Parallel Tasks While Other LLMs Work
 
 ## 🎯 Quick Answer
@@ -5,6 +12,7 @@
 While Claude/GPT/Gemini work on complex tasks, run these in parallel:
 
 ### Instant Wins (No Waiting)
+
 ```bash
 # 1. Sync prompts to all IDEs (1s)
 cd .ai-system/tools/cross-ide-sync
@@ -24,6 +32,7 @@ python extractor.py
 ```
 
 ### Background Tasks (Set & Forget)
+
 ```bash
 # 1. Auto-sync watch mode
 cd .ai-system/tools/cross-ide-sync
@@ -47,6 +56,7 @@ eslint . --watch
 Your system has **built-in parallel execution**:
 
 ### Architecture
+
 ```python
 # .ai-system/automation/parallel_executor.py
 - ThreadPoolExecutor: 4-6 workers
@@ -58,6 +68,7 @@ Your system has **built-in parallel execution**:
 ### What Runs in Parallel
 
 **1. Code Analysis** (while LLM writes code)
+
 ```bash
 # Background Claude reasoning
 - Refactoring opportunities
@@ -66,6 +77,7 @@ Your system has **built-in parallel execution**:
 ```
 
 **2. Testing** (while LLM debugs)
+
 ```bash
 # Parallel test execution
 - 150 tests across 4 workers
@@ -74,6 +86,7 @@ Your system has **built-in parallel execution**:
 ```
 
 **3. Compilation** (while LLM designs)
+
 ```bash
 # Multi-threaded builds
 - TypeScript compilation
@@ -82,6 +95,7 @@ Your system has **built-in parallel execution**:
 ```
 
 **4. Deployment** (while LLM documents)
+
 ```bash
 # Async deployment
 - Blue-green strategy
@@ -94,7 +108,9 @@ Your system has **built-in parallel execution**:
 ## 💡 Practical Workflows
 
 ### Scenario 1: LLM Writing Feature Code
+
 **You do in parallel:**
+
 ```bash
 # Terminal 1: LLM writes code
 # (Amazon Q, Claude, etc.)
@@ -112,7 +128,9 @@ python cli.py watch
 ```
 
 ### Scenario 2: LLM Debugging Complex Issue
+
 **You do in parallel:**
+
 ```bash
 # Terminal 1: LLM debugs
 # (analyzing stack traces)
@@ -129,7 +147,9 @@ python cli.py validate --all
 ```
 
 ### Scenario 3: LLM Refactoring Codebase
+
 **You do in parallel:**
+
 ```bash
 # Terminal 1: LLM refactors
 # (restructuring modules)
@@ -151,6 +171,7 @@ python generator.py
 ## 🔧 Automation Scripts
 
 ### Daily Routine (While LLM Works)
+
 ```bash
 # Run this every morning
 cd .ai-system/automation
@@ -165,6 +186,7 @@ python daily-routine.py
 ```
 
 ### Pre-Commit Hook (Automatic)
+
 ```bash
 # Already set up in .git/hooks/pre-commit
 # Runs automatically before each commit:
@@ -179,6 +201,7 @@ python daily-routine.py
 ## 📊 Resource Management
 
 ### Dynamic Scaling
+
 ```python
 # System auto-adjusts workers based on:
 - CPU usage (scale down if >80%)
@@ -187,6 +210,7 @@ python daily-routine.py
 ```
 
 ### Priority Queue
+
 ```python
 TaskPriority.CRITICAL   # Security, critical bugs
 TaskPriority.HIGH       # Builds, deployments
@@ -201,6 +225,7 @@ TaskPriority.LOW        # Analytics, docs
 ### While Waiting for LLM Response
 
 **Quick wins:**
+
 ```bash
 # Get recommendations (instant)
 python tools/recommendation-engine/cli.py recommend "your task"
@@ -216,6 +241,7 @@ python tools/prompts/composer/cli.py templates/fullstack-workflow.md vars.json
 ```
 
 **Background tasks:**
+
 ```bash
 # Start watch modes (run once, forget)
 python tools/cross-ide-sync/cli.py watch &
@@ -229,28 +255,30 @@ eslint . --watch &
 ## 🚦 Parallel Execution Example
 
 ### Real Workflow
+
 ```yaml
 # .ai-system/automation/workflows/config/parallel_development.yaml
 
 stages:
-  - name: "Code Analysis"
+  - name: 'Code Analysis'
     parallel: true
-    tools: ["claude_reasoning"]
-    
-  - name: "Testing"
+    tools: ['claude_reasoning']
+
+  - name: 'Testing'
     parallel: true
-    tools: ["pytest", "jest"]
-    
-  - name: "Linting"
+    tools: ['pytest', 'jest']
+
+  - name: 'Linting'
     parallel: true
-    tools: ["eslint", "ruff"]
-    
-  - name: "Type Checking"
+    tools: ['eslint', 'ruff']
+
+  - name: 'Type Checking'
     parallel: true
-    tools: ["tsc", "mypy"]
+    tools: ['tsc', 'mypy']
 ```
 
 ### Execute
+
 ```bash
 cd .ai-system/automation
 python execute_parallel_development.py
@@ -264,6 +292,7 @@ python execute_parallel_development.py
 ## 💪 Power User Tips
 
 ### 1. Multi-Terminal Setup
+
 ```bash
 # Terminal 1: Main LLM interaction
 # Terminal 2: Watch tests
@@ -272,6 +301,7 @@ python execute_parallel_development.py
 ```
 
 ### 2. Background Process Manager
+
 ```python
 # Built into parallel_executor.py
 executor.background_manager.start_process("watch_tests", "pytest --watch")
@@ -280,6 +310,7 @@ executor.background_manager.health_check()  # Check all processes
 ```
 
 ### 3. Resource Monitoring
+
 ```bash
 # Real-time system metrics
 cd .ai-system/automation
@@ -291,32 +322,37 @@ python -c "from parallel_executor import ResourceMonitor; m = ResourceMonitor();
 ## 🎯 Best Practices
 
 ### DO
+
 ✅ Run validation while LLM writes code  
 ✅ Start watch modes at session start  
 ✅ Use background manager for long tasks  
 ✅ Monitor resources with dashboard  
-✅ Sync prompts after each update  
+✅ Sync prompts after each update
 
 ### DON'T
+
 ❌ Wait for LLM to finish before testing  
 ❌ Run CPU-heavy tasks without monitoring  
 ❌ Forget to stop background processes  
 ❌ Ignore resource warnings  
-❌ Skip validation to "save time"  
+❌ Skip validation to "save time"
 
 ---
 
 ## 📈 Performance Gains
 
 ### Typical Workflow
-**Without Parallel**: 45 minutes  
+
+**Without Parallel**: 45 minutes
+
 - LLM writes code: 15 min
 - Wait for tests: 10 min
 - Wait for linting: 5 min
 - Wait for type check: 5 min
 - Wait for validation: 10 min
 
-**With Parallel**: 15 minutes  
+**With Parallel**: 15 minutes
+
 - LLM writes code: 15 min
 - Everything else: 0 min (runs in parallel)
 
@@ -337,6 +373,7 @@ python -c "from parallel_executor import ResourceMonitor; m = ResourceMonitor();
 ## 🆘 Troubleshooting
 
 **Too many processes?**
+
 ```bash
 # Check what's running
 ps aux | grep python
@@ -347,6 +384,7 @@ pkill -f "tsc --watch"
 ```
 
 **System slow?**
+
 ```python
 # Check resource usage
 from parallel_executor import ResourceMonitor
@@ -355,6 +393,7 @@ print(m.get_current_metrics())
 ```
 
 **Tasks not running?**
+
 ```bash
 # Check task queue
 cd .ai-system/automation
@@ -363,4 +402,7 @@ python -c "from parallel_executor import AsyncTaskQueue; q = AsyncTaskQueue(); p
 
 ---
 
-**TL;DR**: While LLMs work, run validation, testing, linting, type checking, analytics, and monitoring in parallel. Use watch modes for continuous feedback. Your system has built-in parallel execution with 4-6 workers and dynamic scaling.
+**TL;DR**: While LLMs work, run validation, testing, linting, type checking,
+analytics, and monitoring in parallel. Use watch modes for continuous feedback.
+Your system has built-in parallel execution with 4-6 workers and dynamic
+scaling.

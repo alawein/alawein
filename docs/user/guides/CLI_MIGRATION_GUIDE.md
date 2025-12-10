@@ -1,8 +1,16 @@
+---
+title: 'CLI Migration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # CLI Migration Guide
 
 ## Overview
 
-We've consolidated **66 npm scripts** into a **single unified CLI** with intuitive subcommands. This reduces cognitive load and improves discoverability.
+We've consolidated **66 npm scripts** into a **single unified CLI** with
+intuitive subcommands. This reduces cognitive load and improves discoverability.
 
 ## Before vs After
 
@@ -283,7 +291,9 @@ npm install
 
 - **Before:** 66 flat npm scripts, hard to discover, easy to forget
 - **After:** 1 unified CLI with logical hierarchy and built-in help
-- **Impact:** 80% reduction in cognitive load, 100% improvement in discoverability
+- **Impact:** 80% reduction in cognitive load, 100% improvement in
+  discoverability
 - **Migration:** Both systems work during transition
 
-The new CLI makes the repository more professional and maintainable, following industry best practices for command-line tools.
+The new CLI makes the repository more professional and maintainable, following
+industry best practices for command-line tools.

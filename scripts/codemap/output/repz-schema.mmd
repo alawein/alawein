@@ -1,0 +1,115 @@
+erDiagram
+    profiles {
+        UUID id PK
+        TEXT email 
+        TEXT full_name 
+        TEXT avatar_url 
+        TEXT phone 
+        USER_ROLE role 
+        SUBSCRIPTION_TIER tier 
+        SUBSCRIPTION_STATUS subscription_status 
+    }
+    client_profiles {
+        UUID id PK
+        UUID user_id FK
+        UUID coach_id FK
+        DATE date_of_birth 
+        TEXT gender 
+        NUMERIC height_cm 
+        NUMERIC weight_kg 
+        FITNESS_LEVEL fitness_level 
+    }
+    coach_profiles {
+        UUID id PK
+        UUID user_id FK
+        TEXT bio 
+        TEXT certifications 
+        TEXT specialties 
+        INTEGER years_experience 
+        NUMERIC hourly_rate 
+        JSONB availability 
+    }
+    exercises {
+        UUID id PK
+        TEXT name 
+        TEXT description 
+        TEXT category 
+        TEXT muscle_groups 
+        TEXT equipment 
+        TEXT difficulty 
+        TEXT video_url 
+    }
+    workout_templates {
+        UUID id PK
+        UUID coach_id FK
+        TEXT name 
+        TEXT description 
+        TEXT category 
+        TEXT difficulty 
+        INTEGER duration_minutes 
+        JSONB exercises 
+    }
+    workouts {
+        UUID id PK
+        UUID client_id FK
+        UUID coach_id FK
+        UUID template_id FK
+        TEXT name 
+        TEXT description 
+        DATE scheduled_date 
+        WORKOUT_STATUS status 
+    }
+    workout_logs {
+        UUID id PK
+        UUID workout_id FK
+        UUID client_id FK
+        UUID exercise_id FK
+        INTEGER sets_completed 
+        INTEGER reps_completed 
+        NUMERIC weight_kg 
+        INTEGER duration_seconds 
+    }
+    body_measurements {
+        UUID id PK
+        UUID client_id FK
+        DATE date 
+        NUMERIC weight_kg 
+        NUMERIC body_fat_percentage 
+        NUMERIC muscle_mass_kg 
+        NUMERIC chest_cm 
+        NUMERIC waist_cm 
+    }
+    performance_metrics {
+        UUID id PK
+        UUID client_id FK
+        DATE date 
+        TEXT metric_name 
+        NUMERIC value 
+        TEXT unit 
+        TEXT notes 
+        TIMESTAMPTZ created_at 
+    }
+    biomarkers {
+        UUID id PK
+        UUID client_id FK
+        DATE test_date 
+        TEXT biomarker_name 
+        NUMERIC value 
+        TEXT unit 
+        TEXT reference_range 
+        TEXT notes 
+    }
+    profiles ||--o{ client_profiles : "user_id"
+    profiles ||--o{ client_profiles : "coach_id"
+    profiles ||--o{ coach_profiles : "user_id"
+    profiles ||--o{ exercises : "created_by"
+    profiles ||--o{ workout_templates : "coach_id"
+    profiles ||--o{ workouts : "client_id"
+    profiles ||--o{ workouts : "coach_id"
+    workout_templates ||--o{ workouts : "template_id"
+    workouts ||--o{ workout_logs : "workout_id"
+    profiles ||--o{ workout_logs : "client_id"
+    exercises ||--o{ workout_logs : "exercise_id"
+    profiles ||--o{ body_measurements : "client_id"
+    profiles ||--o{ performance_metrics : "client_id"
+    profiles ||--o{ biomarkers : "client_id"

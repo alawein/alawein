@@ -1,3 +1,10 @@
+---
+title: 'Execution Plan'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Execution Plan
 
 > **Created:** December 5, 2025  
@@ -177,18 +184,18 @@ git push origin main
 
 ## Project-to-Domain-to-LLC Mapping
 
-| Project      | Domain           | LLC            | Archive Path                      |
-| ------------ | ---------------- | -------------- | --------------------------------- |
-| TalAI        | talai.dev        | Alawein Tech   | AlaweinOS/TalAI/                  |
-| Librex       | librex.dev       | Alawein Tech   | AlaweinOS/Librex/                 |
-| MEZAN        | mezan.dev        | Alawein Tech   | AlaweinOS/MEZAN/                  |
-| Attributa    | attributa.dev ✅ | Alawein Tech   | AlaweinOS/Attributa/              |
-| SimCore      | simcore.dev ✅   | Alawein Tech   | AlaweinOS/SimCore/                |
-| QMLab        | qmlab.online ✅  | Alawein Tech   | AlaweinOS/QMLab/                  |
-| LLMWorks     | llmworks.dev ✅  | Alawein Tech   | AlaweinOS/LLMWorks/               |
+| Project      | Domain           | LLC            | Archive Path                   |
+| ------------ | ---------------- | -------------- | ------------------------------ |
+| TalAI        | talai.dev        | Alawein Tech   | AlaweinOS/TalAI/               |
+| Librex       | librex.dev       | Alawein Tech   | AlaweinOS/Librex/              |
+| MEZAN        | mezan.dev        | Alawein Tech   | AlaweinOS/MEZAN/               |
+| Attributa    | attributa.dev ✅ | Alawein Tech   | AlaweinOS/Attributa/           |
+| SimCore      | simcore.dev ✅   | Alawein Tech   | AlaweinOS/SimCore/             |
+| QMLab        | qmlab.online ✅  | Alawein Tech   | AlaweinOS/QMLab/               |
+| LLMWorks     | llmworks.dev ✅  | Alawein Tech   | AlaweinOS/LLMWorks/            |
 | Repz         | getrepz.app ✅   | REPZ LLC       | alawein-business/Repz/         |
 | LiveItIconic | liveiticonic.com | Live It Iconic | alawein-business/LiveItIconic/ |
-| Portfolio    | malawein.com ✅  | Personal       | .personal/portfolio/              |
+| Portfolio    | malawein.com ✅  | Personal       | .personal/portfolio/           |
 
 ---
 

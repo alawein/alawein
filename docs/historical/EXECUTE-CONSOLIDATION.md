@@ -1,42 +1,56 @@
+---
+title: '🚀 EXECUTE CONSOLIDATION - Step by Step'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🚀 EXECUTE CONSOLIDATION - Step by Step
 
 ## ✅ OPTION 1 COMPLETE
-You can now use all 68 prompts for ALL your projects!
-See: `USE-NOW-GUIDE.md`
+
+You can now use all 68 prompts for ALL your projects! See: `USE-NOW-GUIDE.md`
 
 ---
 
 ## 🔧 OPTION 2: RUN CONSOLIDATION
 
 ### Pre-Flight Checklist
-- [ ] Commit current work: `git add . && git commit -m "Pre-consolidation backup"`
+
+- [ ] Commit current work:
+      `git add . && git commit -m "Pre-consolidation backup"`
 - [ ] Close all IDEs
 - [ ] Close all terminals in GitHub directory
 
 ### Execute (15 minutes)
 
 #### Step 1: Run Consolidation (5 min)
+
 ```bash
 cd c:\Users\mesha\Desktop\GitHub
 consolidate.bat
 ```
 
 **What it does:**
+
 - Creates `.ai-system/` with all AI tools
 - Creates `projects/` with all projects
 - Copies everything to new locations
 - Creates symlinks for compatibility
 
 #### Step 2: Update Paths (2 min)
+
 ```bash
 python update-all-paths.py
 ```
 
 **What it does:**
+
 - Updates all tool paths automatically
 - Fixes references to new structure
 
 #### Step 3: Test (3 min)
+
 ```bash
 # Test sync
 cd .ai-system\tools\cross-ide-sync
@@ -52,6 +66,7 @@ python cli.py recommend "test"
 ```
 
 #### Step 4: Verify (2 min)
+
 ```bash
 # Check new structure
 dir .ai-system
@@ -62,6 +77,7 @@ dir projects
 ```
 
 #### Step 5: Clean Up (3 min)
+
 ```bash
 # If everything works, delete old directories
 rmdir /s /q docs\ai-knowledge
@@ -75,6 +91,7 @@ rmdir /s /q .config\ai
 ```
 
 #### Step 6: Commit (1 min)
+
 ```bash
 git add .
 git commit -m "Grand consolidation: Organized AI system and projects"
@@ -120,12 +137,14 @@ GitHub/
 ## 🎯 BENEFITS
 
 ### Before
+
 - 5+ locations for AI stuff
 - 3+ locations for projects
 - Confusion everywhere
 - Hard to find anything
 
 ### After
+
 - 1 location: `.ai-system/`
 - 1 location: `projects/`
 - Crystal clear
@@ -160,15 +179,14 @@ rmdir /s /q projects
 ## 🚀 READY?
 
 **Option A: Do it now** (15 min)
+
 ```bash
 consolidate.bat
 ```
 
-**Option B: Do it later**
-Just use the system as-is with `USE-NOW-GUIDE.md`
+**Option B: Do it later** Just use the system as-is with `USE-NOW-GUIDE.md`
 
-**Option C: Test first**
-Run consolidation but don't delete old directories yet
+**Option C: Test first** Run consolidation but don't delete old directories yet
 
 ---
 

@@ -1,0 +1,22 @@
+SUPABASE EDGE FUNCTIONS
+══════════════════════════════════════════════════
+
+supabase/functions/
+├── simcore-api/
+│   └── index.ts
+├── repz-api/
+│   └── index.ts
+├── qmlab-api/
+│   └── index.ts
+├── liveiticonic-api/
+│   └── index.ts
+├── talai-api/
+│   └── index.ts
+└── optilibria-api/
+    └── index.ts
+
+Each function handles:
+  • Authentication (JWT validation)
+  • CORS headers
+  • Request routing
+  • Database operations

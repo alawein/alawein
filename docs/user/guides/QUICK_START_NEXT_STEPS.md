@@ -1,3 +1,10 @@
+---
+title: 'QUICK START: Next Optimization Phase'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # QUICK START: Next Optimization Phase
 
 ## Your Current Achievement
@@ -59,7 +66,10 @@ import * as path from 'path';
 
 const patterns = [
   { from: /from ['"]\.\.\/services(?!')/g, to: "from '@ORCHEX/services" },
-  { from: /from ['"]\.\.\/orchestration(?!')/g, to: "from '@ORCHEX/orchestration" },
+  {
+    from: /from ['"]\.\.\/orchestration(?!')/g,
+    to: "from '@ORCHEX/orchestration",
+  },
   { from: /from ['"]\.\.\/adapters(?!')/g, to: "from '@ORCHEX/adapters" },
   // ... etc
 ];
@@ -244,12 +254,13 @@ Blocking: Must fix TypeScript errors first
 
 ## What NOT to Do Yet
 
-❌ **DON'T refactor large files** (while type errors exist)
-❌ **DON'T consolidate orchestration systems** (until type errors fixed)
-❌ **DON'T change npm scripts** (until path aliases adopted)
-❌ **DON'T merge configurations** (until structure tested)
+❌ **DON'T refactor large files** (while type errors exist) ❌ **DON'T
+consolidate orchestration systems** (until type errors fixed) ❌ **DON'T change
+npm scripts** (until path aliases adopted) ❌ **DON'T merge configurations**
+(until structure tested)
 
-**WHY:** Each change depends on previous one being solid. Fix bottom layer first.
+**WHY:** Each change depends on previous one being solid. Fix bottom layer
+first.
 
 ---
 
@@ -341,8 +352,10 @@ Right now, your codebase can go two ways:
 - Enable faster development
 - Scale to 10x codebase size
 
-The quick wins gave you the option to choose. I recommend Path B, and I recommend doing it now while the foundation is fresh.
+The quick wins gave you the option to choose. I recommend Path B, and I
+recommend doing it now while the foundation is fresh.
 
-The 3-day plan above is your entry point. Once you complete it, everything else becomes easier.
+The 3-day plan above is your entry point. Once you complete it, everything else
+becomes easier.
 
 **Start tomorrow. You've got this.**

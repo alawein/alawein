@@ -1,6 +1,14 @@
+---
+title: 'Architectural Codemaps'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Architectural Codemaps
 
-> Visual trace diagrams for the governance, orchestration, and automation systems.
+> Visual trace diagrams for the governance, orchestration, and automation
+> systems.
 
 **Generated:** 2025-12-04  
 **Systems Covered:** 6  
@@ -21,7 +29,8 @@
 
 ## 1. Unified Automation System
 
-**Files:** `automation/core/AutomationCore.ts`, `automation/cli/index.ts`, `automation/core/utils.ts`
+**Files:** `automation/core/AutomationCore.ts`, `automation/cli/index.ts`,
+`automation/core/utils.ts`
 
 ### Trace 1.1: AutomationCore Initialization
 
@@ -200,7 +209,8 @@ Agent-MCP Integration Report Generation
 
 ## 3. Orchestration Governance
 
-**Files:** `.metaHub/scripts/orchestration/orchestration_validator.py`, `orchestration_telemetry.py`, `orchestration_checkpoint.py`
+**Files:** `.metaHub/scripts/orchestration/orchestration_validator.py`,
+`orchestration_telemetry.py`, `orchestration_checkpoint.py`
 
 ### Trace 3.1: Handoff Envelope Validation
 
@@ -325,7 +335,9 @@ Checkpoint Creation Flow
 
 ## 4. MetaHub Governance System
 
-**Files:** `.metaHub/scripts/compliance/enforce.py`, `.metaHub/scripts/checkpoint.py`, `.metaHub/scripts/catalog.py`, `.metaHub/scripts/meta.py`
+**Files:** `.metaHub/scripts/compliance/enforce.py`,
+`.metaHub/scripts/checkpoint.py`, `.metaHub/scripts/catalog.py`,
+`.metaHub/scripts/meta.py`
 
 ### Trace 4.1: Policy Enforcement
 
@@ -473,7 +485,8 @@ Meta Auditor: Project Audit & Promotion
 
 ## 5. DevOps Template Library
 
-**Files:** `tools/cli/devops.ts`, `tools/cli/devops-generators.ts`, `tools/lib/fs.ts`
+**Files:** `tools/cli/devops.ts`, `tools/cli/devops-generators.ts`,
+`tools/lib/fs.ts`
 
 ### Trace 5.1: Template Discovery
 
@@ -559,7 +572,8 @@ Node.js Service Code Generation
 
 ## 6. ORCHEX Workflow Orchestration
 
-**Files:** `tools/orchex/orchestration/devops-agents.ts`, `tools/orchex/cli/commands/devops.ts`
+**Files:** `tools/orchex/orchestration/devops-agents.ts`,
+`tools/orchex/cli/commands/devops.ts`
 
 ### Trace 6.1: DevOps Agent Registry
 
@@ -735,10 +749,13 @@ ORCHEX DevOps CLI Registration
 
 ## Related Documentation
 
-- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Multi-agent orchestration guide
+- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Multi-agent
+  orchestration guide
 - [LLM-MODEL-CATALOG.md](LLM-MODEL-CATALOG.md) - 500+ LLM models across 8 IDEs
-- [GOVERNANCE_SYSTEM.md](GOVERNANCE_SYSTEM.md) - Full governance system documentation
+- [GOVERNANCE_SYSTEM.md](GOVERNANCE_SYSTEM.md) - Full governance system
+  documentation
 
 ---
 
-_Generated from codebase analysis. Update when significant architectural changes occur._
+_Generated from codebase analysis. Update when significant architectural changes
+occur._

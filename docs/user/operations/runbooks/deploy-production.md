@@ -1,8 +1,15 @@
+---
+title: 'Runbook: Production Deployment'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Runbook: Production Deployment
 
 **Purpose:** Deploy changes to production (GitHub releases, published packages)
-**Frequency:** As needed (typically weekly or per milestone)
-**Duration:** 30-60 minutes
+**Frequency:** As needed (typically weekly or per milestone) **Duration:** 30-60
+minutes
 
 ---
 
@@ -277,7 +284,8 @@ open https://github.com/YOUR_ORG/YOUR_REPO/blob/main/CHANGELOG.md
 
 ## Deployment Environments
 
-This repository doesn't have traditional "staging" and "production" environments. Instead:
+This repository doesn't have traditional "staging" and "production"
+environments. Instead:
 
 | Environment | Description       | Branch           | Validation                |
 | ----------- | ----------------- | ---------------- | ------------------------- |
@@ -325,9 +333,7 @@ Release notes: https://github.com/ORG/REPO/releases/tag/v1.2.3
 
 🚀 Released meta-governance v1.2.3
 
-New features:
-✅ [Feature 1]
-✅ [Feature 2]
+New features: ✅ [Feature 1] ✅ [Feature 2]
 
 Upgrade: npm install meta-governance@latest
 
@@ -394,8 +400,8 @@ For critical bugs in production:
 
 5. **Fast-track review:** Request immediate review from maintainer
 
-6. **Deploy immediately after merge:**
-   Follow standard deployment procedure with expedited timeline
+6. **Deploy immediately after merge:** Follow standard deployment procedure with
+   expedited timeline
 
 ---
 

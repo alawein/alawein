@@ -1,14 +1,23 @@
+---
+title: 'Testing Guide - Alawein Technologies Monorepo'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Testing Guide - Alawein Technologies Monorepo
 
 **Last Updated**: 2024  
 **Status**: Active  
-**Test Framework**: Vitest 3.2.4  
+**Test Framework**: Vitest 3.2.4
 
 ---
 
 ## 📋 Overview
 
-This guide provides comprehensive information about testing in the Alawein Technologies monorepo. We use Vitest as our primary testing framework for TypeScript/JavaScript tests and pytest for Python tests.
+This guide provides comprehensive information about testing in the Alawein
+Technologies monorepo. We use Vitest as our primary testing framework for
+TypeScript/JavaScript tests and pytest for Python tests.
 
 ---
 
@@ -134,6 +143,7 @@ export default defineConfig({
 ```
 
 **Key Features**:
+
 - **Environment**: Node.js
 - **Globals**: Enabled (describe, it, expect available globally)
 - **Coverage**: V8 provider with text, JSON, and HTML reports
@@ -144,6 +154,7 @@ export default defineConfig({
 **File**: `vitest.config.enhanced.ts`
 
 Enhanced configuration with additional features:
+
 - jsdom environment for browser-like testing
 - 90% coverage thresholds
 - Path aliases (@, @llcs, @research, etc.)
@@ -157,10 +168,13 @@ Enhanced configuration with additional features:
 ## 📊 Test Categories
 
 ### 1. AI Tools Tests (114 tests)
+
 **Location**: `tests/ai/`  
-**Coverage**: AI tooling, cache, compliance, errors, issues, monitoring, security
+**Coverage**: AI tooling, cache, compliance, errors, issues, monitoring,
+security
 
 **Example**:
+
 ```typescript
 import { describe, it, expect } from 'vitest';
 
@@ -172,30 +186,37 @@ describe('AI Cache', () => {
 ```
 
 ### 2. DevOps Tests (26 tests)
+
 **Location**: `tests/devops_*.test.ts`  
 **Coverage**: CLI, code generation, configuration, validation
 
 ### 3. Meta CLI Tests (14 tests)
+
 **Location**: `tests/meta-cli.test.ts`  
 **Coverage**: CLI commands, help, error handling
 
 ### 4. Atlas Tests (20 tests)
+
 **Location**: `tests/atlas/`  
 **Coverage**: Service optimization, testing framework
 
 ### 5. Integration Tests (12 tests)
+
 **Location**: `tests/integration/`  
 **Coverage**: MCP server integration
 
 ### 6. E2E Tests (6 tests)
+
 **Location**: `tests/e2e/`  
 **Coverage**: API endpoints
 
 ### 7. Unit Tests (11 tests)
+
 **Location**: `tests/unit/`  
 **Coverage**: WebSocket functionality
 
 ### 8. Python Tests (18 tests)
+
 **Location**: `tests/test_*.py`  
 **Coverage**: Catalog, checkpoint, enforcement, meta
 
@@ -206,18 +227,22 @@ describe('AI Cache', () => {
 ### Current Coverage
 
 Run coverage report:
+
 ```bash
 npm run test:coverage
 ```
 
 Coverage reports are generated in:
+
 - **Text**: Console output
 - **JSON**: `coverage/coverage-final.json`
 - **HTML**: `coverage/index.html`
 
 ### Coverage Thresholds
 
-Current configuration does not enforce thresholds. Enhanced configuration includes:
+Current configuration does not enforce thresholds. Enhanced configuration
+includes:
+
 - **Lines**: 90%
 - **Functions**: 90%
 - **Branches**: 90%
@@ -245,10 +270,10 @@ describe('Feature Name', () => {
     it('should do something specific', () => {
       // Arrange
       const input = 'test';
-      
+
       // Act
       const result = functionUnderTest(input);
-      
+
       // Assert
       expect(result).toBe('expected');
     });
@@ -378,18 +403,21 @@ npm test -- tests/feature.test.ts
 ### Common Issues
 
 #### Tests Not Found
+
 ```bash
 # Check test pattern
 npm test -- --reporter=verbose
 ```
 
 #### Import Errors
+
 ```bash
 # Check tsconfig.json paths
 # Verify module resolution
 ```
 
 #### Timeout Errors
+
 ```typescript
 // Increase timeout for specific test
 it('slow test', async () => {
@@ -398,6 +426,7 @@ it('slow test', async () => {
 ```
 
 #### Coverage Issues
+
 ```bash
 # Clear coverage cache
 rm -rf coverage/
@@ -409,11 +438,13 @@ npm run test:coverage
 ## 📚 Resources
 
 ### Documentation
+
 - [Vitest Documentation](https://vitest.dev/)
 - [Vitest API Reference](https://vitest.dev/api/)
 - [Pytest Documentation](https://docs.pytest.org/)
 
 ### Internal Resources
+
 - Test Results: `reports/PHASE-5-TEST-RESULTS.md`
 - Implementation Summary: `reports/PHASE-5-IMPLEMENTATION-SUMMARY.md`
 - Phase 5 Complete: `reports/PHASE-5-COMPLETE.md`
@@ -424,26 +455,26 @@ npm run test:coverage
 
 ### Current Status (as of 2024)
 
-| Metric | Value |
-|--------|-------|
-| **Total Tests** | 221 |
-| **Test Files** | 17 TypeScript, 6 Python |
-| **Pass Rate** | 100% |
-| **Duration** | 31.58 seconds |
-| **Coverage** | Available via `npm run test:coverage` |
+| Metric          | Value                                 |
+| --------------- | ------------------------------------- |
+| **Total Tests** | 221                                   |
+| **Test Files**  | 17 TypeScript, 6 Python               |
+| **Pass Rate**   | 100%                                  |
+| **Duration**    | 31.58 seconds                         |
+| **Coverage**    | Available via `npm run test:coverage` |
 
 ### Test Distribution
 
-| Category | Tests | Percentage |
-|----------|-------|------------|
-| AI Tools | 114 | 51.6% |
-| DevOps | 26 | 11.8% |
-| Atlas | 20 | 9.0% |
-| Python | 18 | 8.1% |
-| Meta CLI | 14 | 6.3% |
-| Integration | 12 | 5.4% |
-| Unit | 11 | 5.0% |
-| E2E | 6 | 2.7% |
+| Category    | Tests | Percentage |
+| ----------- | ----- | ---------- |
+| AI Tools    | 114   | 51.6%      |
+| DevOps      | 26    | 11.8%      |
+| Atlas       | 20    | 9.0%       |
+| Python      | 18    | 8.1%       |
+| Meta CLI    | 14    | 6.3%       |
+| Integration | 12    | 5.4%       |
+| Unit        | 11    | 5.0%       |
+| E2E         | 6     | 2.7%       |
 
 ---
 
@@ -454,6 +485,7 @@ npm run test:coverage
 **Completed**: 2024
 
 **Improvements**:
+
 - ✅ Removed 25 duplicate test files (61% reduction)
 - ✅ Simplified Cypress configuration (68% reduction)
 - ✅ Enhanced Vitest configuration available
@@ -461,6 +493,7 @@ npm run test:coverage
 - ✅ Comprehensive test documentation
 
 **Impact**:
+
 - Cleaner test structure
 - Simplified configurations
 - Better maintainability
@@ -471,6 +504,7 @@ npm run test:coverage
 ## 📞 Support
 
 For questions or issues with testing:
+
 1. Check this guide
 2. Review test examples in `tests/` directory
 3. Consult Vitest documentation

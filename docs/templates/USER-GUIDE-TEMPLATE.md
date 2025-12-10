@@ -27,6 +27,7 @@ document_metadata:
     scope: "User procedures, tutorials, troubleshooting, support, accessibility"
     key_concepts: ["user guide", "tutorial", "troubleshooting", "support", "accessibility"]
     related_documents: ["DOCUMENT-TEMPLATE.md", "USER-GUIDE.md", "SUPPORT.md"]
+last_verified: 2025-12-09
 ---
 
 # [Product/Feature Name] User Guide

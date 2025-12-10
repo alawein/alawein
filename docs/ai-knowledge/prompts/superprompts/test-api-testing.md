@@ -1,3 +1,10 @@
+---
+title: 'Write Comprehensive Tests For Rest'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Write Comprehensive Tests For Rest
 
 > **Comprehensive testing strategy**
@@ -14,16 +21,18 @@ write comprehensive tests for REST API.
 
 ## Prompt
 
-```markdown
+````markdown
 Create comprehensive tests for:
 
 ### Test Coverage
+
 - Unit tests: Core functionality
 - Integration tests: Component interaction
 - End-to-end tests: Full workflows
 - Edge cases: Boundary conditions
 
 ### Test Strategy
+
 1. Identify test scenarios
 2. Write test cases
 3. Implement tests
@@ -31,35 +40,43 @@ Create comprehensive tests for:
 5. Maintain test suite
 
 ### Quality Gates
+
 - Code coverage: > 80%
 - All tests pass
 - No flaky tests
 - Fast execution (< 5 min)
 
 ### Test Structure
+
 ```python
 def test_feature():
     # Arrange
     setup_test_data()
-    
+
     # Act
     result = execute_feature()
-    
+
     # Assert
     assert result == expected
 ```
+````
+
 ```
 
 ## Examples
 
 ### Input
 ```
+
 Example input based on requirement
+
 ```
 
 ### Output
 ```
+
 Expected output
+
 ```
 
 ## Success Criteria
@@ -76,5 +93,6 @@ Expected output
 
 ---
 
-**Domain**: testing  
+**Domain**: testing
 **Generated**: Meta-Prompt Generator v1.0
+```

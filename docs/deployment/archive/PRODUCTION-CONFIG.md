@@ -1,7 +1,14 @@
+---
+title: 'REPZ Coach Pro - Production Configuration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REPZ Coach Pro - Production Configuration Guide
 
-This document contains all production configuration data for the REPZ Coach Pro platform. This
-information is critical for deployment and integration setup.
+This document contains all production configuration data for the REPZ Coach Pro
+platform. This information is critical for deployment and integration setup.
 
 ## 📋 Table of Contents
 
@@ -61,12 +68,15 @@ information is critical for deployment and integration setup.
 
 ### In-Person Training Sessions
 
-- **Monthly Training:** `https://calendly.com/repzmeshacoach/personal-training-monthly`
-- **Semi-Weekly Training:** `https://calendly.com/repzmeshacoach/personal-training-semi-weekly`
+- **Monthly Training:**
+  `https://calendly.com/repzmeshacoach/personal-training-monthly`
+- **Semi-Weekly Training:**
+  `https://calendly.com/repzmeshacoach/personal-training-semi-weekly`
 
 ### Consultation & Assessment Calls
 
-- **Initial Consultation:** `https://calendly.com/repzmeshacoach/consultation-call`
+- **Initial Consultation:**
+  `https://calendly.com/repzmeshacoach/consultation-call`
 - **Progress Review:** `https://calendly.com/repzmeshacoach/progress-review`
 - **Strategy Session:** `https://calendly.com/repzmeshacoach/strategy-session`
 
@@ -74,7 +84,8 @@ information is critical for deployment and integration setup.
 
 ### Google Tag Manager (GTM)
 
-**Container ID:** `GTM-K3996XDS` _(REPZ Production)_ **Account:** REPZ **Container:** REPZ Container
+**Container ID:** `GTM-K3996XDS` _(REPZ Production)_ **Account:** REPZ
+**Container:** REPZ Container
 
 **GTM Installation Code:**
 
@@ -108,14 +119,19 @@ information is critical for deployment and integration setup.
 
 ### Google Analytics 4 (GA4)
 
-**Measurement ID:** `G-XL2VMRCZS2` _(REPZ Production)_ **Account:** REPZ (ID: 364739085)  
-**Stream:** REPZ stream (ID: 12013494336) **Website URL:** https://www.repzcoach.com
+**Measurement ID:** `G-XL2VMRCZS2` _(REPZ Production)_ **Account:** REPZ
+(ID: 364739085)  
+**Stream:** REPZ stream (ID: 12013494336) **Website URL:**
+https://www.repzcoach.com
 
 **GA4 Installation Code:**
 
 ```html
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XL2VMRCZS2"></script>
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=G-XL2VMRCZS2"
+></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
@@ -175,7 +191,8 @@ GOOGLE_TAG_MANAGER_ID=GTM-K3996XDS
 
 ### Analytics Testing (Google Tag Manager & GA4)
 
-Once your environment variables are configured, test your analytics implementation:
+Once your environment variables are configured, test your analytics
+implementation:
 
 ```javascript
 // Open browser console and run:
@@ -189,7 +206,8 @@ GTMHelpers.trackBookingAttempt('personalTrainingMonthly', 'home');
 GTMHelpers.trackFeatureUsage('ai_assistant', 'performance');
 ```
 
-**Step-by-step testing guide:** See `ANALYTICS-TESTING.md` for complete instructions.
+**Step-by-step testing guide:** See `ANALYTICS-TESTING.md` for complete
+instructions.
 
 ### Calendly Testing
 
@@ -255,8 +273,8 @@ const calendlyUrls = {
 
 #### 3. Analytics Integration
 
-Add the Google Tag Manager and Google Analytics scripts to your `index.html` or main layout
-component using the codes provided above.
+Add the Google Tag Manager and Google Analytics scripts to your `index.html` or
+main layout component using the codes provided above.
 
 ### Important Notes:
 
@@ -264,14 +282,19 @@ component using the codes provided above.
 2. **Environment**: Use production IDs only in production environment
 3. **Testing**: Keep test mode price IDs for development/staging environments
 4. **Validation**: Always validate environment variables are loaded correctly
-5. **Monitoring**: Set up alerts for failed payment processing or integration issues
+5. **Monitoring**: Set up alerts for failed payment processing or integration
+   issues
 
 ## 🚨 Critical Reminders
 
-- **Stripe Webhooks**: Configure webhook endpoints for subscription lifecycle events
-- **Calendly Webhooks**: Set up webhooks for booking confirmations and cancellations
-- **Analytics Events**: Configure custom events for subscription conversions and user interactions
-- **Error Handling**: Implement proper error handling for all payment and booking flows
+- **Stripe Webhooks**: Configure webhook endpoints for subscription lifecycle
+  events
+- **Calendly Webhooks**: Set up webhooks for booking confirmations and
+  cancellations
+- **Analytics Events**: Configure custom events for subscription conversions and
+  user interactions
+- **Error Handling**: Implement proper error handling for all payment and
+  booking flows
 - **Rate Limiting**: Implement rate limiting for API calls to external services
 
 ---
@@ -280,5 +303,5 @@ component using the codes provided above.
 **Maintainer:** REPZ Development Team  
 **Status:** Production Ready ✅
 
-_This configuration file should be updated whenever new products, prices, or integration endpoints
-are created._
+_This configuration file should be updated whenever new products, prices, or
+integration endpoints are created._

@@ -1,12 +1,22 @@
+---
+title: 'Timeline Planning Templates'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Timeline Planning Templates
 
-This document provides timeline templates for ORCHEX-KILO integration migration based on organization size and complexity. Templates include phase durations, resource allocation, and key milestones.
+This document provides timeline templates for ORCHEX-KILO integration migration
+based on organization size and complexity. Templates include phase durations,
+resource allocation, and key milestones.
 
 ## Organization Size Categories
 
 ### Small Organizations (< 50 developers)
 
-- **Characteristics**: Single team, limited repositories, straightforward workflows
+- **Characteristics**: Single team, limited repositories, straightforward
+  workflows
 - **Total Timeline**: 8-12 weeks
 - **Resource Requirements**: 1-2 dedicated staff
 
@@ -18,7 +28,8 @@ This document provides timeline templates for ORCHEX-KILO integration migration 
 
 ### Large Organizations (200+ developers)
 
-- **Characteristics**: Enterprise scale, multiple business units, complex governance
+- **Characteristics**: Enterprise scale, multiple business units, complex
+  governance
 - **Total Timeline**: 20-32 weeks
 - **Resource Requirements**: 5-10 dedicated staff
 
@@ -214,4 +225,5 @@ This document provides timeline templates for ORCHEX-KILO integration migration 
 - Team progress dashboards
 - Risk and issue tracking
 
-This timeline framework provides flexible planning guidance while allowing customization based on specific organizational needs and constraints.
+This timeline framework provides flexible planning guidance while allowing
+customization based on specific organizational needs and constraints.

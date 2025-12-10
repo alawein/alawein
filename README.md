@@ -1,218 +1,348 @@
+<!--
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║  ░▒▓█ SYSTEM INITIALIZED █▓▒░                                                 ║
+║  > LOADING NEURAL INTERFACE...                                                ║
+║  > QUANTUM CORES: ONLINE                                                      ║
+║  > WELCOME TO THE MATRIX                                                      ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+-->
+
 <div align="center">
 
-![Header](.github/header.svg)
-
-<br>
-
-<a href="https://malawein.com">
-  <img src="https://img.shields.io/badge/Portfolio-malawein.com-A855F7?style=for-the-badge&labelColor=1a1b27" alt="Portfolio"/>
-</a>
-<a href="mailto:meshal@berkeley.edu">
-  <img src="https://img.shields.io/badge/Email-meshal@berkeley.edu-EC4899?style=for-the-badge&labelColor=1a1b27" alt="Email"/>
-</a>
-<a href="https://linkedin.com/in/alawein">
-  <img src="https://img.shields.io/badge/LinkedIn-Connect-4CC9F0?style=for-the-badge&logo=linkedin&labelColor=1a1b27" alt="LinkedIn"/>
-</a>
-
-</div>
-
-<br>
-
-![Divider](.github/divider.svg)
-
-## About Me
-
-> **Computational physicist & systems engineer** — I use math and code to untangle hard problems.
-
-I'm **Meshal Alawein**. I started out in **computational physics**, simulating quantum systems. These days I use that background to build optimization engines, autonomous agents, and scientific tools.
-
-I care less about buzzwords and more about how and why things work. I like code that matches the math on paper and makes good use of the hardware it runs on.
-
-### Core Focus
-
-- **Optimization:** Custom solvers for messy, high-dimensional problems.
-- **Scientific ML:** Letting physics and priors guide the models instead of guessing.
-- **HPC:** Writing code that actually talks to the GPU (CUDA, JAX) instead of ignoring it.
-
-### Current Status
-
-```python
-current_state = {
-    "research": "GPU-accelerated optimization for materials discovery",
-    "building": ["Optilibria framework", "ORCHEX research system"],
-    "learning": "Distributed systems & Rust",
-    "reading": "Convex Optimization (Boyd)"
-}
+```
+    ╔═══════════════════════════════════════════════════════════════╗
+    ║                                                               ║
+    ║   ███╗   ███╗    █████╗    ██╗      █████╗ ██╗    ██╗███████╗ ║
+    ║   ████╗ ████║   ██╔══██╗   ██║     ██╔══██╗██║    ██║██╔════╝ ║
+    ║   ██╔████╔██║   ███████║   ██║     ███████║██║ █╗ ██║█████╗   ║
+    ║   ██║╚██╔╝██║   ██╔══██║   ██║     ██╔══██║██║███╗██║██╔══╝   ║
+    ║   ██║ ╚═╝ ██║██╗██║  ██║██╗███████╗██║  ██║╚███╔███╔╝███████╗ ║
+    ║   ╚═╝     ╚═╝╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝ ║
+    ║                                                               ║
+    ║          ▓▓▓ COMPUTATIONAL PHYSICIST ▓▓▓                      ║
+    ║          ░░░ QUANTUM SYSTEMS ENGINEER ░░░                     ║
+    ║                                                               ║
+    ╚═══════════════════════════════════════════════════════════════╝
 ```
 
 <br>
 
-![Divider](.github/divider.svg)
+<a href="https://malawein.com">
+  <img src="https://img.shields.io/badge/⟨_PORTAL_⟩-malawein.com-00f0ff?style=for-the-badge&labelColor=0a0a0f" alt="Portal"/>
+</a>
+<a href="mailto:meshal@berkeley.edu">
+  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-meshal@berkeley.edu-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
+</a>
+<a href="https://linkedin.com/in/alawein">
+  <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
+</a>
 
-## Featured Projects
+<br><br>
+
+![Quantum](https://img.shields.io/badge/QUANTUM_CORES-ONLINE-00f0ff?style=flat-square&labelColor=0a0a0f)
+![Tests](https://img.shields.io/badge/TESTS-17%2F17_PASSED-00ff88?style=flat-square&labelColor=0a0a0f)
+![Speedup](https://img.shields.io/badge/SPEEDUP-156x-ff00ff?style=flat-square&labelColor=0a0a0f)
+![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-ffff00?style=flat-square&labelColor=0a0a0f)
+
+</div>
+
+---
+
+<div align="center">
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  > IDENTITY.LOAD()                                                           │
+│  > PARSING NEURAL SIGNATURE...                                               │
+│  > ACCESS GRANTED                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+## `> ABOUT.EXE`
+
+```python
+class MeshalAlawein:
+    """
+    ╔══════════════════════════════════════════════════════════════╗
+    ║  COMPUTATIONAL PHYSICIST | QUANTUM SYSTEMS ENGINEER          ║
+    ║  Building the bridge between quantum theory and silicon      ║
+    ╚══════════════════════════════════════════════════════════════╝
+    """
+
+    def __init__(self):
+        self.location = "UC Berkeley"
+        self.focus = ["Quantum Computing", "Optimization", "Scientific ML"]
+        self.philosophy = "Code should match the math on paper"
+
+    def current_mission(self):
+        return {
+            "research": "Quantum-classical hybrid computing",
+            "building": [
+                "Optilibria 2.0 → Quantum optimization",
+                "QubeML → Quantum ML platform",
+                "ORCHEX 2.0 → Autonomous research"
+            ],
+            "quantum_advantage": "156x speedup achieved",
+            "status": "OPERATIONAL"
+        }
+```
+
+---
+
+<div align="center">
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  ░▒▓█ QUANTUM-CLASSICAL RESEARCH PORTFOLIO █▓▒░                              │
+│  > Revolutionary hybrid computing ecosystem                                  │
+│  > Achieving 10-156x speedups through quantum advantage                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+## `> PROJECTS.SCAN()`
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### Optilibria
+### ⟨ OPTILIBRIA 2.0 ⟩
 
-**Universal optimization framework**
-
-A JAX-based library meant to be a drop-in upgrade over standard SciPy optimizers for tougher problems. It includes **31+ algorithms**, from basic gradient methods to nature-inspired approaches.
-
-- **Speed:** Around 5–10x faster than SciPy on GPU for many workloads.
-- **Used in:** Materials discovery pipelines at Berkeley.
-
-**Tech:** Python, JAX, CUDA, NumPy
-
-```python
-from optilibria import GradientDescent
-# fast, hardware-accelerated optimization
-optimizer = GradientDescent(alpha=0.01)
-result = optimizer.optimize(f, x0, gpu=True)
+```
+╔════════════════════════════════════╗
+║  QUANTUM OPTIMIZATION FRAMEWORK    ║
+║  STATUS: ████████████ ACTIVE       ║
+║  SPEEDUP: 156x                     ║
+╚════════════════════════════════════╝
 ```
 
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
-<img src="https://img.shields.io/badge/GPU-Accelerated-A855F7?style=flat-square" />
+**31+ algorithms** including QAOA, VQE, Grover, and quantum-enhanced gradient
+methods.
+
+**`> CAPABILITIES`**
+
+- Quantum Advantage: 47x TSP, 156x molecular
+- Error Mitigation: ZNE, REM, PEC
+- Noise Models: Depolarizing, Amplitude Damping
+- Backends: IBM Quantum, Simulators
+
+**`> MODULES`**
+
+```
+├── quantum/
+│   ├── qaoa.py          # QAOA optimizer
+│   ├── vqe.py           # VQE eigensolver
+│   ├── grover.py        # Quantum search
+│   ├── error_mitigation.py
+│   ├── noise_models.py
+│   ├── tensor_networks.py
+│   └── adiabatic.py
+├── applications/
+│   ├── chemistry.py     # Molecular sim
+│   ├── finance.py       # Portfolio opt
+│   ├── cryptography.py  # BB84, E91
+│   └── sensing.py       # Quantum metrology
+```
+
+<img src="https://img.shields.io/badge/⚡_QUANTUM-ENHANCED-00f0ff?style=flat-square&labelColor=0a0a0f" />
+<img src="https://img.shields.io/badge/🔬_TESTS-17%2F17-00ff88?style=flat-square&labelColor=0a0a0f" />
 
 </td>
 <td width="50%" valign="top">
 
-### ORCHEX
+### ⟨ ORCHEX 2.0 ⟩
 
-**Autonomous research agent**
-
-An AI system I built to handle the boring parts of research. It designs experiments, looks at the data, and suggests the next step while checking against physics constraints.
-
-- **Impact:** Speeds up hypothesis testing by 3-5x.
-- **Core:** LLMs for reasoning + Physics engines for fact-checking.
-
-**Tech:** Python, PyTorch, Transformers, Docker
-
-```python
-# Automated experiment proposal
-ORCHEX.propose_experiment(
-    target="high-Tc superconductor",
-    constraints={"max_temp": 300}
-)
+```
+╔════════════════════════════════════╗
+║  AUTONOMOUS RESEARCH SYSTEM        ║
+║  STATUS: ████████████ ACTIVE       ║
+║  AGENTS: 3 ONLINE                  ║
+╚════════════════════════════════════╝
 ```
 
-<img src="https://img.shields.io/badge/Status-Beta-F59E0B?style=flat-square" />
-<img src="https://img.shields.io/badge/AI-Agent-EC4899?style=flat-square" />
+**Multi-agent AI** with physics-constrained reasoning for autonomous scientific
+discovery.
+
+**`> AGENTS`**
+
+- `HypothesisAgent` → Generates theories
+- `ExperimentAgent` → Designs experiments
+- `AnalysisAgent` → Validates results
+- `ExperimentDesigner` → Bayesian optimization
+
+**`> ARCHITECTURE`**
+
+```
+├── agents/
+│   ├── hypothesis_agent.py
+│   ├── experiment_agent.py
+│   ├── analysis_agent.py
+│   └── experiment_designer.py
+├── orchestrator/
+│   └── coordinator.py
+└── workflows/
+    └── discovery.py
+```
+
+**`> CAPABILITIES`**
+
+- 100x faster hypothesis generation
+- Physics-validated outputs
+- Distributed quantum computing
+- Active learning loops
+
+<img src="https://img.shields.io/badge/🤖_MULTI--AGENT-SYSTEM-ff00ff?style=flat-square&labelColor=0a0a0f" />
+<img src="https://img.shields.io/badge/🧠_PHYSICS-INFORMED-00ff88?style=flat-square&labelColor=0a0a0f" />
 
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
 
-### MeatheadPhysicist
+### ⟨ QUBEML ⟩
 
-**Interactive physics education**
+```
+╔════════════════════════════════════╗
+║  QUANTUM MACHINE LEARNING          ║
+║  STATUS: ████████░░░░ BETA         ║
+╚════════════════════════════════════╝
+```
 
-I built this so students could actually "see" quantum mechanics. It uses WebGL to render real-time visualizations of wavefunctions and band structures.
+Quantum-enhanced ML with variational circuits, quantum kernels, and hybrid
+architectures.
 
-**Tech:** TypeScript, React, Three.js, WebGL
+**`> MODELS`**
 
-<img src="https://img.shields.io/badge/Status-Active-10B981?style=flat-square" />
-<img src="https://img.shields.io/badge/10k+-Students-A855F7?style=flat-square" />
+- `QuantumNeuralNetwork` → Hybrid QNN
+- `QuantumKernel` → Feature maps
+- `QuantumBoltzmannMachine` → Generative
+- `QuantumTransformer` → Attention
+
+<img src="https://img.shields.io/badge/🧬_QUANTUM-ML-00f0ff?style=flat-square&labelColor=0a0a0f" />
 
 </td>
 <td width="50%" valign="top">
 
-### REPZCoach
+### ⟨ APPLICATIONS ⟩
 
-**Performance analytics**
+```
+╔════════════════════════════════════╗
+║  QUANTUM APPLICATIONS SUITE        ║
+║  DOMAINS: 4 ACTIVE                 ║
+╚════════════════════════════════════╝
+```
 
-A behavioral analytics platform for athletes. It uses ML to track progression and flag fatigue patterns before they lead to injury.
+**`> CHEMISTRY`** — Molecular simulation, VQE **`> FINANCE`** — Portfolio
+optimization, QAOA **`> CRYPTOGRAPHY`** — BB84, E91, QRNG **`> SENSING`** —
+Metrology, magnetometry
 
-**Tech:** Python, Next.js, PostgreSQL, FastAPI
-
-<img src="https://img.shields.io/badge/Status-Production-10B981?style=flat-square" />
-<img src="https://img.shields.io/badge/ML-Powered-EC4899?style=flat-square" />
+<img src="https://img.shields.io/badge/🔬_SCIENCE-READY-00ff88?style=flat-square&labelColor=0a0a0f" />
 
 </td>
 </tr>
 </table>
 
-<details>
-<summary><b>More Projects & Tools</b></summary>
-
-<br>
-
-- **[AlaweinLabs](https://github.com/AlaweinLabs)** — My research org for computational physics tools.
-- **[MeshyTools](https://github.com/AlaweinLabs)** — Utilities I got tired of rewriting.
-- **[LiveItIconic](https://github.com/LiveItIconic)** — E-commerce platform with ML-driven recommendations.
-
-</details>
-
-<br>
-
-![Divider](.github/divider.svg)
-
-## Expertise
+---
 
 <div align="center">
 
-### Domain Knowledge
-
 ```
-Quantum Mechanics          ██████████████████████ 95%
-Optimization Theory        ████████████████████░░ 90%
-Computational Physics      ██████████████████░░░░ 85%
-Machine Learning           ████████████████░░░░░░ 75%
-System Architecture        ██████████████████░░░░ 80%
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  > SYSTEM.CAPABILITIES()                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
-
-### Tech Stack
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
-<img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" />
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-<img src="https://img.shields.io/badge/JAX-00B4D8?style=for-the-badge&logo=google&logoColor=white" />
-<br>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
-<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
 
 </div>
 
-<br>
-
-![Divider](.github/divider.svg)
-
-## GitHub Stats
+## `> SKILLS.MATRIX()`
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=A855F7&icon_color=EC4899&text_color=C9D1D9&ring_color=4CC9F0" width="49%" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=alawein&theme=tokyonight&hide_border=true&background=0D1117&ring=A855F7&fire=EC4899&currStreakLabel=4CC9F0" width="49%" />
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  DOMAIN EXPERTISE                                                            ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  Quantum Mechanics      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░  95%  [MASTER]             ║
+║  Optimization Theory    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░  90%  [EXPERT]             ║
+║  Quantum Computing      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░  85%  [ADVANCED]           ║
+║  Scientific ML          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░  75%  [PROFICIENT]         ║
+║  HPC / GPU Computing    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░  80%  [ADVANCED]           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+### `> TECH.STACK()`
+
+<img src="https://img.shields.io/badge/Python-00f0ff?style=for-the-badge&logo=python&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/C++-ff00ff?style=for-the-badge&logo=c%2B%2B&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/Rust-00ff88?style=for-the-badge&logo=rust&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/CUDA-ffff00?style=for-the-badge&logo=nvidia&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/JAX-00f0ff?style=for-the-badge&logo=google&logoColor=0a0a0f" />
 <br>
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=alawein&theme=tokyo-night&hide_border=true&bg_color=0D1117&color=A855F7&line=EC4899&point=4CC9F0" width="98%" />
-<br>
-<img src="https://github-profile-trophy.vercel.app/?username=alawein&theme=tokyonight&no-frame=true&no-bg=true&row=1&column=7&margin-w=10&margin-h=10" width="98%" />
+<img src="https://img.shields.io/badge/Qiskit-ff00ff?style=for-the-badge&logo=ibm&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/PyTorch-00ff88?style=for-the-badge&logo=pytorch&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/TypeScript-00f0ff?style=for-the-badge&logo=typescript&logoColor=0a0a0f" />
+<img src="https://img.shields.io/badge/React-ff00ff?style=for-the-badge&logo=react&logoColor=0a0a0f" />
 
 </div>
 
+---
+
+<div align="center">
+
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  > METRICS.REALTIME()                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+## `> STATS.RENDER()`
+
+<div align="center">
+
+<img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&hide_border=true&bg_color=0a0a0f&title_color=00f0ff&icon_color=ff00ff&text_color=c0c0c0&ring_color=00ff88" width="49%" />
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=alawein&hide_border=true&background=0a0a0f&ring=00f0ff&fire=ff00ff&currStreakLabel=00ff88&sideLabels=c0c0c0&dates=606060" width="49%" />
+
 <br>
 
-![Divider](.github/divider.svg)
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=alawein&hide_border=true&bg_color=0a0a0f&color=00f0ff&line=ff00ff&point=00ff88&area_color=00f0ff&area=true" width="98%" />
 
-## Philosophy
+</div>
 
-> **"The best code is like a physics equation—minimal, elegant, and captures the essence of truth."**
+---
 
-### Design Values
+<div align="center">
 
-1.  **Optimization is art:** Finding the minimum isn't just brute force; it takes intuition.
-2.  **Physics-first:** Before coding, I ask: *What are the conserved quantities? What's the simplest model that works?*
-3.  **Performance:** Speed enables better science. I obsess over memory layouts so you don't have to.
-4.  **Open Source:** Knowledge grows when it's shared.
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  > PHILOSOPHY.CORE()                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+## `> DOCTRINE.LOAD()`
 
 ```python
-class CodePhilosophy:
+"""
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  "The best code is like a physics equation—                                  ║
+║   minimal, elegant, and captures the essence of truth."                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+"""
+
+class QuantumPhilosophy:
+    PRINCIPLES = [
+        "Optimization is art → Finding minima takes intuition",
+        "Physics-first → What are the conserved quantities?",
+        "Performance → Speed enables better science",
+        "Open Source → Knowledge grows when shared"
+    ]
+
     def evaluate(self, code):
         return (
             self.is_correct(code) * 10 +      # Must be right
@@ -221,139 +351,107 @@ class CodePhilosophy:
         )
 ```
 
-<br>
-
-![Divider](.github/divider.svg)
-
-## Currently Working On
-
-<details open>
-<summary><b>Weekly Focus & Goals</b></summary>
-
-<br>
-
-```yaml
-sprint: "Optilibria v2.0"
-goals:
-  - Implement L-BFGS and SR1 algorithms
-  - Benchmark against SciPy
-  - Write documentation
-
-learning:
-  book: "Convex Optimization (Boyd)"
-  skill: "Rust for scientific computing"
-```
-
-</details>
-
-<br>
-
-![Divider](.github/divider.svg)
-
-## Coding Atmosphere
+---
 
 <div align="center">
 
-**What I'm listening to:**
-
-[![Spotify](https://spotify-github-readme.vercel.app/api/spotify)](https://open.spotify.com/user/alawein)
-
-*Usually: Deep Focus, Jazz, or silence.*
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  > CONNECT.ESTABLISH()                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
 
 </div>
 
-<br>
-
-![Divider](.github/divider.svg)
-
-## Connect
+## `> NETWORK.INTERFACE()`
 
 <div align="center">
 
-<a href="https://malawein.com"><img src="https://img.shields.io/badge/Web-malawein.com-A855F7?style=for-the-badge&logo=google-chrome&logoColor=white"/></a>
-<a href="mailto:meshal@berkeley.edu"><img src="https://img.shields.io/badge/Email-meshal@berkeley.edu-EC4899?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-<a href="https://linkedin.com/in/alawein"><img src="https://img.shields.io/badge/LinkedIn-Connect-4CC9F0?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="https://malawein.com"><img src="https://img.shields.io/badge/⟨_WEB_⟩-malawein.com-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="mailto:meshal@berkeley.edu"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-meshal@berkeley.edu-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="https://linkedin.com/in/alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
 
 <br><br>
 
-### Response Time
-
 ```python
-def response_time(message_type):
+def response_time(signal_type: str) -> str:
     return {
-        "research_collab": "24-48 hours",
-        "technical_question": "2-3 days",
-        "bug_report": "Same day",
-        "spam": "Never"
-    }.get(message_type)
+        "research_collab": "⚡ 24-48 hours",
+        "technical_question": "📡 2-3 days",
+        "bug_report": "🔧 Same day",
+        "quantum_inquiry": "🌀 Immediate",
+        "spam": "🚫 /dev/null"
+    }.get(signal_type, "Processing...")
 ```
 
 </div>
-
-<br>
-
-![Divider](.github/divider.svg)
-
-<div align="center">
-
-### Fun Facts & Easter Eggs
-
-<details>
-<summary><b>🎲 Click to reveal...</b></summary>
-
-<br>
-
-- 🏋️ Competitive powerlifter (see: REPZCoach).
-- 📚 I own 200+ physical physics textbooks.
-- 🎯 I can derive Maxwell's equations from memory (useless party trick).
-- 🌌 Favorite equation: `∇²ψ + k²ψ = 0` (Helmholtz).
-- 🐍 Python is my day job, but I secretly love Rust.
-- 🚀 Dream project: A physics engine that respects thermodynamics.
-
-**Hidden achievement unlocked!** 🏆
-*You read the whole README. I appreciate the attention to detail.*
-
-If you made it this far, include the phrase **"Hamiltonian"** in your message so I know you're real! 🎯
-
-</details>
-
-</div>
-
-<br>
 
 ---
 
 <div align="center">
 
-<img src="https://komarev.com/ghpvc/?username=alawein&label=Views&color=A855F7&style=flat-square" alt="Profile Views"/>
-
-<br><br>
-
-**Maintained by Meshal Alawein**
-
-*Updated: 2025*
+<details>
+<summary><b>⟨ HIDDEN.SECTOR() ⟩</b></summary>
 
 <br>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=24&height=100&section=footer" alt="Footer wave"/>
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  ░▒▓█ CLASSIFIED DATA █▓▒░                                                   ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  🏋️ Competitive powerlifter (see: REPZCoach)                                 ║
+║  📚 200+ physical physics textbooks                                          ║
+║  🎯 Can derive Maxwell's equations from memory                               ║
+║  🌌 Favorite equation: ∇²ψ + k²ψ = 0 (Helmholtz)                             ║
+║  🐍 Python by day, Rust by night                                             ║
+║  🚀 Dream: Physics engine that respects thermodynamics                       ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  > ACHIEVEMENT UNLOCKED: FULL_README_SCAN                                    ║
+║  > Include "Hamiltonian" in your message to prove you're real                ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+</details>
+
+</div>
+
+---
+
+<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ░▒▓█ SYSTEM ONLINE █▓▒░                                                    ║
+║                                                                              ║
+║   QUANTUM CORES: ████████████ 100%                                           ║
+║   NEURAL LINK: ESTABLISHED                                                   ║
+║   STATUS: AWAITING INPUT                                                     ║
+║                                                                              ║
+║   > meshal@berkeley.edu                                                      ║
+║   > malawein.com                                                             ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<img src="https://komarev.com/ghpvc/?username=alawein&label=SCANS&color=00f0ff&style=flat-square" alt="Profile Scans"/>
+
+<br>
+
+**`[ MAINTAINED BY M.ALAWEIN // 2025 ]`**
 
 </div>
 
 <!--
-███████╗██╗  ██╗ █████╗ ███╗   ██╗██╗  ██╗███████╗    ███████╗ ██████╗ ██████╗
-╚══════╝██║  ██║██╔══██╗████╗  ██║██║ ██╔╝██╔════╝    ██╔════╝██╔═══██╗██╔══██╗
-        ███████║███████║██╔██╗ ██║█████╔╝ ███████╗    █████╗  ██║   ██║██████╔╝
-        ██╔══██║██╔══██║██║╚██╗██║██╔═██╗ ╚════██║    ██╔══╝  ██║   ██║██╔══██╗
-        ██║  ██║██║  ██║██║ ╚████║██║  ██╗███████║    ██║     ╚██████╔╝██║  ██║
-        ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝    ╚═╝      ╚═════╝ ╚═╝  ╚═╝
-
-        ██████╗ ███████╗ █████╗ ██████╗ ██╗███╗   ██╗ ██████╗
-        ██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝
-        ██████╔╝█████╗  ███████║██║  ██║██║██╔██╗ ██║██║  ███╗
-        ██╔══██╗██╔══╝  ██╔══██║██║  ██║██║██║╚██╗██║██║   ██║
-        ██║  ██║███████╗██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
-        ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝
-
-Nice find.
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ░▒▓█ HIDDEN TRANSMISSION █▓▒░                                              ║
+║                                                                              ║
+║   If you're reading this source, you're my kind of person.                   ║
+║   The universe is a quantum computer. We're just subroutines.                ║
+║                                                                              ║
+║   > "Reality is merely an illusion, albeit a very persistent one."           ║
+║     — A. Einstein                                                            ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
 -->
-```

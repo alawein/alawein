@@ -1,3 +1,10 @@
+---
+title: 'AI Prompts Library'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Prompts Library
 
 Comprehensive prompts for AI-assisted repository management and consolidation.
@@ -8,33 +15,29 @@ Comprehensive prompts for AI-assisted repository management and consolidation.
 
 #### 1. Master Prompt
 
-**File**: `repository-consolidation-master.md`
-**Purpose**: Overall consolidation strategy and roadmap
-**Use When**: Planning the full consolidation project
+**File**: `repository-consolidation-master.md` **Purpose**: Overall
+consolidation strategy and roadmap **Use When**: Planning the full consolidation
+project
 
 #### 2. Phase 1: Infrastructure
 
-**File**: `phase-1-infrastructure.md`
-**Purpose**: Consolidate deploy/, templates/ into .metaHub/
-**Use When**: Executing infrastructure consolidation
+**File**: `phase-1-infrastructure.md` **Purpose**: Consolidate deploy/,
+templates/ into .metaHub/ **Use When**: Executing infrastructure consolidation
 
 #### 3. Phase 2: Tooling
 
-**File**: `phase-2-tooling.md`
-**Purpose**: Consolidate tools/, scripts/ into .metaHub/tools/
-**Use When**: Executing tooling consolidation
+**File**: `phase-2-tooling.md` **Purpose**: Consolidate tools/, scripts/ into
+.metaHub/tools/ **Use When**: Executing tooling consolidation
 
 #### 4. Phase 3: AI Integration
 
-**File**: `phase-3-ai-integration.md`
-**Purpose**: Merge ai-tools/ into .ai/tools/
-**Use When**: Executing AI system integration
+**File**: `phase-3-ai-integration.md` **Purpose**: Merge ai-tools/ into
+.ai/tools/ **Use When**: Executing AI system integration
 
 #### 5. Claude Opus Instructions
 
-**File**: `claude-opus-instructions.md`
-**Purpose**: Detailed execution protocol for Claude Opus
-**Use When**: Delegating consolidation work to Claude Opus
+**File**: `claude-opus-instructions.md` **Purpose**: Detailed execution protocol
+for Claude Opus **Use When**: Delegating consolidation work to Claude Opus
 
 ## Usage
 

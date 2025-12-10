@@ -1,3 +1,10 @@
+---
+title: 'Master Implementation Plan: AI Knowledge Evolution'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Master Implementation Plan: AI Knowledge Evolution
 
 ## Overview

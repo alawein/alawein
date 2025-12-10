@@ -1,17 +1,26 @@
+---
+title: 'Librex.Evo Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Evo Implementation Superprompt
 
-**Version**: 1.0
-**Target**: NeurIPS 2025 / GECCO 2025
-**Priority**: High (2 strong contributions)
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: NeurIPS 2025 / GECCO 2025 **Priority**: High (2
+strong contributions) **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Evo implements evolutionary architecture search for multi-agent coordination using MAP-Elites (Multi-dimensional Archive of Phenotypic Elites). Unlike single-objective NAS, Librex.Evo discovers a diverse archive of coordination architectures spanning quality-diversity tradeoff space.
+Librex.Evo implements evolutionary architecture search for multi-agent
+coordination using MAP-Elites (Multi-dimensional Archive of Phenotypic Elites).
+Unlike single-objective NAS, Librex.Evo discovers a diverse archive of
+coordination architectures spanning quality-diversity tradeoff space.
 
-**Core Innovation**: Quality-diversity search for multi-agent architectures (🟢 MODERATE-STRONG novelty)
+**Core Innovation**: Quality-diversity search for multi-agent architectures (🟢
+MODERATE-STRONG novelty)
 
 **Research Contributions**:
 
@@ -26,8 +35,7 @@ Librex.Evo implements evolutionary architecture search for multi-agent coordinat
 
 ### 1.1 Problem Statement
 
-**Multi-Agent Architecture Search**:
-Given:
+**Multi-Agent Architecture Search**: Given:
 
 - Task distribution T
 - Performance metric f(architecture, task) → quality
@@ -497,20 +505,25 @@ class Librex.Evo(LibriaSolver):
 
 **EVO-C1: MAP-Elites for Multi-Agent Coordination Patterns**
 
-- **Gap**: Existing NAS (AutoMaAS, MANAS) uses single-objective optimization; no quality-diversity
-- **Approach**: MAP-Elites to discover diverse architectures spanning behavioral niches
-- **Impact**: 10-20% performance improvement + diverse solutions for different contexts
+- **Gap**: Existing NAS (AutoMaAS, MANAS) uses single-objective optimization; no
+  quality-diversity
+- **Approach**: MAP-Elites to discover diverse architectures spanning behavioral
+  niches
+- **Impact**: 10-20% performance improvement + diverse solutions for different
+  contexts
 
 **EVO-C2: Behavioral Diversity Metrics for Agent Architectures**
 
 - **Gap**: No standard behavioral descriptors for multi-agent systems
-- **Approach**: Communication frequency, specialization, hierarchy depth, redundancy
+- **Approach**: Communication frequency, specialization, hierarchy depth,
+  redundancy
 - **Impact**: Enables systematic exploration of architectural design space
 
 ### 2.2 Baselines
 
 1. **Recent Work**:
-   - AutoMaAS (arXiv:2510.02669, Oct 2025): Automated multi-agent architecture search
+   - AutoMaAS (arXiv:2510.02669, Oct 2025): Automated multi-agent architecture
+     search
    - MANAS (2023): Multi-agent NAS
    - MAP-Elites (Mouret & Clune 2015): Original algorithm
 
@@ -601,7 +614,5 @@ ORCHEX.set_architecture(best_arch)
 
 **END OF Librex.Evo SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: Month 11-12 (NeurIPS 2025 or GECCO 2025)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: Month 11-12 (NeurIPS 2025 or GECCO 2025)

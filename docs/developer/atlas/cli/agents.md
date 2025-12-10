@@ -1,6 +1,14 @@
+---
+title: 'DevOps Agents Catalog'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # DevOps Agents Catalog
 
-This page catalogs 20 essential DevOps agents used across CI/CD, infrastructure, and operations.
+This page catalogs 20 essential DevOps agents used across CI/CD, infrastructure,
+and operations.
 
 Conventions:
 
@@ -231,7 +239,8 @@ agentctl run compliance-audit --policies .\policies --scope prod
 
 ---
 
-See `docs/ai-tools/*.md` for deep dives on orchestrator, security, compliance, telemetry, etc.
+See `docs/ai-tools/*.md` for deep dives on orchestrator, security, compliance,
+telemetry, etc.
 
 ---
 
@@ -241,11 +250,15 @@ See `docs/ai-tools/*.md` for deep dives on orchestrator, security, compliance, t
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: DAG scheduler with stage dependencies, matrices, approvals, retries, artifact handoff; supports conditional execution and concurrency controls.
-- Core functionality: CI/CD workflow orchestration, gated releases, fan-out/in testing, environment promotion.
+- Technical: DAG scheduler with stage dependencies, matrices, approvals,
+  retries, artifact handoff; supports conditional execution and concurrency
+  controls.
+- Core functionality: CI/CD workflow orchestration, gated releases, fan-out/in
+  testing, environment promotion.
 - Inputs: `pipelineFile`, `env`, `parameters`, `secretsRef`.
 - Outputs: pipeline status, stage logs, artifact index.
-- Performance/limits: parallelism bounded by runner cores; long-running stages can block queues; caching advised.
+- Performance/limits: parallelism bounded by runner cores; long-running stages
+  can block queues; caching advised.
 
 #### What to Call [pipeline-orchestrator]
 
@@ -274,11 +287,13 @@ Content-Type: application/json
 - Scenarios: PRs, merges to `main`, nightly builds, gated production releases.
 - Preconditions: SCM reachable, valid YAML, runner capacity.
 - Error auto-invoke: retries on transient failures, stage-level re-runs.
-- Integrations: Build, Test Runner, Container Builder, Image Scanner, Notifications.
+- Integrations: Build, Test Runner, Container Builder, Image Scanner,
+  Notifications.
 
 #### Version Compatibility
 
-- GitHub Actions/GitLab/Azure DevOps/Jenkins; Windows Server 2019+, PowerShell 7+.
+- GitHub Actions/GitLab/Azure DevOps/Jenkins; Windows Server 2019+, PowerShell
+  7+.
 
 #### Security Considerations
 
@@ -296,11 +311,14 @@ agentctl run pipeline-orchestrator --pipeline .\ci\release.yml --env prod --para
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: compiles source, resolves dependencies, performs caching, produces artifacts with checksums.
-- Core functionality: language-specific builds (Node/Java/.NET/Go), incremental builds.
+- Technical: compiles source, resolves dependencies, performs caching, produces
+  artifacts with checksums.
+- Core functionality: language-specific builds (Node/Java/.NET/Go), incremental
+  builds.
 - Inputs: `sourcePath`, `buildSpec`, `cacheKey`.
 - Outputs: artifact IDs, build logs.
-- Performance/limits: incremental caching accelerates; cache invalidates on lockfile changes.
+- Performance/limits: incremental caching accelerates; cache invalidates on
+  lockfile changes.
 
 #### What to Call [build]
 
@@ -326,7 +344,8 @@ POST /agents/v1/build/run
 
 - Scenarios: post-checkout, pre-test, on tag creation.
 - Preconditions: toolchain installed, network for dependencies.
-- Error auto-invoke: dependency resolution failures trigger help output; can re-run with `--no-cache`.
+- Error auto-invoke: dependency resolution failures trigger help output; can
+  re-run with `--no-cache`.
 - Integrations: Artifact Repo, Test Runner.
 
 #### Version Compatibility
@@ -349,11 +368,13 @@ agentctl run build --spec .\buildspec.yml --src . --out .\dist
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: executes unit/integration/e2e suites, collects coverage, detects flaky tests via retries and historical timing.
+- Technical: executes unit/integration/e2e suites, collects coverage, detects
+  flaky tests via retries and historical timing.
 - Core functionality: sharding, parallelization, report aggregation.
 - Inputs: `testSpec`, `env`, `shard`.
 - Outputs: JUnit XML, coverage reports, pass/fail matrix.
-- Performance/limits: optimal with balanced shards; heavy e2e limited by environment readiness.
+- Performance/limits: optimal with balanced shards; heavy e2e limited by
+  environment readiness.
 
 #### What to Call [test-runner]
 
@@ -402,7 +423,8 @@ agentctl run test-runner --spec .\tests.yml --report .\reports
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: publishes/retrieves artifacts to registries (Nexus/Artifactory/S3); handles metadata and checksums.
+- Technical: publishes/retrieves artifacts to registries (Nexus/Artifactory/S3);
+  handles metadata and checksums.
 - Core functionality: versioning, immutability, provenance.
 - Inputs: `artifactPath`, `repoRef`, `metadata`.
 - Outputs: immutable URL, checksum.
@@ -508,7 +530,8 @@ agentctl run container-build --file .\Dockerfile --tag registry/app:1.2.3
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: scans images and dependencies for CVEs with policy gates; uses CVE DBs and SBOM correlation.
+- Technical: scans images and dependencies for CVEs with policy gates; uses CVE
+  DBs and SBOM correlation.
 - Core functionality: report generation, severity gating, remediation hints.
 - Inputs: `imageRef`, `policy`.
 - Outputs: scan report, pass/fail status.
@@ -560,8 +583,10 @@ agentctl run image-scan --image registry/app:1.2.3 --policy high-only
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: fetches, rotates, and injects secrets from Vault/KeyVault/KMS with TTL.
-- Core functionality: ephemeral env files, template bindings, rotation orchestration.
+- Technical: fetches, rotates, and injects secrets from Vault/KeyVault/KMS with
+  TTL.
+- Core functionality: ephemeral env files, template bindings, rotation
+  orchestration.
 - Inputs: `secretsRef`, `bindings`, `ttl`.
 - Outputs: injection status, rotation status.
 - Performance/limits: rate limits and token TTLs; caching discouraged.
@@ -666,11 +691,13 @@ agentctl run infra-provisioner --iac .\infra --workspace prod --action apply --v
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: idempotent configuration application (Ansible) across hosts/services.
+- Technical: idempotent configuration application (Ansible) across
+  hosts/services.
 - Core functionality: inventory targeting, role/tag selection, change reports.
 - Inputs: `playbook`, `inventory`, `vars`, `tags`.
 - Outputs: change set, compliance report.
-- Performance/limits: concurrency limited by hosts/transport; WinRM latency on Windows.
+- Performance/limits: concurrency limited by hosts/transport; WinRM latency on
+  Windows.
 
 #### What to Call [config-manager]
 
@@ -719,8 +746,10 @@ agentctl run config-manager --playbook .\site.yml --inventory .\hosts.ini --tags
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: applies manifests or Helm charts; monitors rollout health; supports strategic/rolling updates.
-- Core functionality: namespace targeting, values overrides, health probes validation.
+- Technical: applies manifests or Helm charts; monitors rollout health; supports
+  strategic/rolling updates.
+- Core functionality: namespace targeting, values overrides, health probes
+  validation.
 - Inputs: `clusterRef`, `manifests|chart`, `values`, `namespace`.
 - Outputs: rollout status, resource diffs, logs.
 - Performance/limits: API server QPS; rollout timeouts.
@@ -773,7 +802,8 @@ agentctl run k8s-deploy --cluster prod --manifests .\k8s\app --namespace app
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: controls traffic shifting (weights/headers) during phased rollout; evaluates health checks.
+- Technical: controls traffic shifting (weights/headers) during phased rollout;
+  evaluates health checks.
 - Core functionality: canary steps, promotion/abort, blue-green switching.
 - Inputs: `strategy`, `serviceRef`, `weights`, `checks`.
 - Outputs: promotion or rollback status, metrics snapshot.
@@ -827,7 +857,8 @@ agentctl run progressive-delivery --service payments --strategy blue-green
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: monitors post-deploy health and triggers rollback according to SLOs or error signals.
+- Technical: monitors post-deploy health and triggers rollback according to SLOs
+  or error signals.
 - Core functionality: rollback execution, incident linking, evidence capture.
 - Inputs: `deploymentId`, `rollbackPlan`, `monitors`.
 - Outputs: rollback status, incident link.
@@ -879,7 +910,8 @@ agentctl run rollback --deploymentId $(Get-Date -Format yyyyMMdd) --plan .\rollb
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: scrapes or receives OpenTelemetry metrics; sets alerts; exports dashboards.
+- Technical: scrapes or receives OpenTelemetry metrics; sets alerts; exports
+  dashboards.
 - Core functionality: target discovery, exporters, alert rules.
 - Inputs: `targets`, `otelConfig`.
 - Outputs: time-series data, alert states.
@@ -932,7 +964,8 @@ agentctl run metrics --targets .\scrape.yml --otel .\otel.yaml --env dev
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: collects, parses, and ships logs; enforces schemas; backpressure handling.
+- Technical: collects, parses, and ships logs; enforces schemas; backpressure
+  handling.
 - Core functionality: pipelines, sinks, parsers, redaction.
 - Inputs: `pipeline`, `sinks`, `parsers`.
 - Outputs: structured logs, ingestion metrics.
@@ -984,7 +1017,8 @@ agentctl run log-shipper --pipeline .\logs\pipeline.toml
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: routes alerts to on-call systems, deduplicates, escalates; integrates with schedules.
+- Technical: routes alerts to on-call systems, deduplicates, escalates;
+  integrates with schedules.
 - Core functionality: rules, receivers, silences, escalation policies.
 - Inputs: `rules`, `receivers`, `schedules`.
 - Outputs: incidents, acknowledgements.
@@ -1036,7 +1070,8 @@ agentctl run alert-router --rules .\alerts\routes.yml
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: classifies incidents, correlates signals, suggests runbooks, opens tickets.
+- Technical: classifies incidents, correlates signals, suggests runbooks, opens
+  tickets.
 - Core functionality: priority rules, enrichment, knowledge base linking.
 - Inputs: `eventStream`, `runbooks`, `priorityRules`.
 - Outputs: ticket IDs, triage notes, suggested actions.
@@ -1089,7 +1124,8 @@ agentctl run triage --events .\events\current.json --runbooks .\runbooks
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: assembles release notes, tags, changelogs; coordinates approvals and publishing.
+- Technical: assembles release notes, tags, changelogs; coordinates approvals
+  and publishing.
 - Core functionality: commit range analysis, artifact linkage, provenance.
 - Inputs: `commitsRange`, `artifacts`, `templates`, `publish`.
 - Outputs: release record, tag, notes.
@@ -1194,7 +1230,8 @@ agentctl run feature-flags --config .\flags\prod.yaml --disable legacy_checkout
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: ingests cloud billing, maps to workloads via tags, detects anomalies, enforces budgets.
+- Technical: ingests cloud billing, maps to workloads via tags, detects
+  anomalies, enforces budgets.
 - Core functionality: reports, alerts, recommendations.
 - Inputs: `cloudAccounts`, `budgets`, `tags`.
 - Outputs: cost reports, anomaly alerts.
@@ -1247,11 +1284,14 @@ agentctl run cost-monitor --accounts .\cloud.json --budgets .\budgets.yml
 
 #### Smart Generate Agent [DESCRIPTION]
 
-- Technical: checks infra/app against policies (CIS/SOC2) using OPA/Conftest; produces evidence bundles.
-- Core functionality: policy evaluation, exceptions management, evidence storage.
+- Technical: checks infra/app against policies (CIS/SOC2) using OPA/Conftest;
+  produces evidence bundles.
+- Core functionality: policy evaluation, exceptions management, evidence
+  storage.
 - Inputs: `policies`, `scope`, `exceptions`.
 - Outputs: pass/fail, detailed report, evidence artifacts.
-- Performance/limits: runtime scales with scope; policy complexity impacts speed.
+- Performance/limits: runtime scales with scope; policy complexity impacts
+  speed.
 
 #### What to Call [compliance-audit]
 
@@ -1298,6 +1338,7 @@ agentctl run compliance-audit --policies .\policies --scope prod
 
 ## Cross-Agent Patterns
 
-- Build → Test → Container Build → Image Scan → K8s Deploy → Progressive Delivery → Metrics/Logs → Alert Router → Release Manager.
+- Build → Test → Container Build → Image Scan → K8s Deploy → Progressive
+  Delivery → Metrics/Logs → Alert Router → Release Manager.
 - Fail gates (Image Scan/Compliance) auto-invoke Rollback and Triage.
 - Secrets injected just-in-time across agents; evidence stored in Artifact Repo.

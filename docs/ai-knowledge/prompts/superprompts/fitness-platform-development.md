@@ -1,9 +1,15 @@
+---
+title: '🤖 Repz - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 Repz - Master Superprompt & AI Orchestration
 
-**Project:** Repz (Resume Management & Automation)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** Repz (Resume Management & Automation) **Status:** ACTIVE - Ready
+for Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 

@@ -137,6 +137,20 @@ jobs:
           
           echo "✅ Markdown validation completed"
       
+      - name: Setup Node.js for link validation
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Validate internal links
+        run: |
+          echo "🔗 Validating internal documentation links..."
+          node scripts/docs/validate-links.js docs || echo "::warning::Found broken links - see output above"
+      
       - name: Create validation summary
         run: |
           echo "## Documentation Validation Summary" >> $GITHUB_STEP_SUMMARY
@@ -146,6 +160,7 @@ jobs:
           echo "- ✅ Broken link detection" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Documentation structure check" >> $GITHUB_STEP_SUMMARY
           echo "- ✅ Markdown syntax validation" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Internal link validation" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           # Count markdown files

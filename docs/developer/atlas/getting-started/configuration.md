@@ -1,6 +1,14 @@
+---
+title: 'Configuration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Configuration Guide
 
-Complete guide to configuring ORCHEX for optimal performance and security across different environments and use cases.
+Complete guide to configuring ORCHEX for optimal performance and security across
+different environments and use cases.
 
 ---
 
@@ -219,7 +227,11 @@ export ATLAS_METRICS_ENABLED="true"
   "validation": {
     "code_quality": {
       "enabled": true,
-      "rules": ["no_console_log", "max_function_length_50", "require_type_hints"]
+      "rules": [
+        "no_console_log",
+        "max_function_length_50",
+        "require_type_hints"
+      ]
     },
     "security": {
       "enabled": true,
@@ -659,7 +671,9 @@ ORCHEX config rollback 2  # Rollback 2 versions
 
 ## Next Steps
 
-- **[Quick Start](../getting-started/quick-start.md)** - Get started with basic configuration
+- **[Quick Start](../getting-started/quick-start.md)** - Get started with basic
+  configuration
 - **[Agent Management](../cli/agents.md)** - Configure AI agents
 - **[Integration Guides](../integration/)** - Integrate with other tools
-- **[Security Guide](../best-practices/security.md)** - Advanced security configuration</instructions>
+- **[Security Guide](../best-practices/security.md)** - Advanced security
+  configuration</instructions>

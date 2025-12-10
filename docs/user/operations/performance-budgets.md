@@ -1,13 +1,22 @@
+---
+title: 'Performance Budgets'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Performance Budgets
 
-**Purpose:** Define and monitor performance targets for CI/CD, builds, and operations
-**Last Updated:** 2025-12-04
+**Purpose:** Define and monitor performance targets for CI/CD, builds, and
+operations **Last Updated:** 2025-12-04
 
 ---
 
 ## Overview
 
-Performance budgets ensure the repository maintains fast feedback cycles and efficient resource usage. This document defines acceptable thresholds for various performance metrics.
+Performance budgets ensure the repository maintains fast feedback cycles and
+efficient resource usage. This document defines acceptable thresholds for
+various performance metrics.
 
 ## CI/CD Pipeline Budgets
 
@@ -43,7 +52,8 @@ Performance budgets ensure the repository maintains fast feedback cycles and eff
 | Total node_modules size | < 100 MB  | 150 MB  | 200 MB   |
 | CLI startup time        | < 500 ms  | 1 sec   | 2 sec    |
 
-**Current Production Dependencies:** 6 packages (chalk, commander, ora, ws, yaml, better-sqlite3)
+**Current Production Dependencies:** 6 packages (chalk, commander, ora, ws,
+yaml, better-sqlite3)
 
 ### Python Dependencies
 

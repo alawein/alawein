@@ -1,3 +1,10 @@
+---
+title: 'fast, hardware-accelerated optimization'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 <div align="center">
 
 ![Header](.github/header.svg)
@@ -22,17 +29,23 @@
 
 ## About Me
 
-> **Computational physicist & systems engineer** — I use math and code to untangle hard problems.
+> **Computational physicist & systems engineer** — I use math and code to
+> untangle hard problems.
 
-I'm **Meshal Alawein**. I started out in **computational physics**, simulating quantum systems. These days I use that background to build optimization engines, autonomous agents, and scientific tools.
+I'm **Meshal Alawein**. I started out in **computational physics**, simulating
+quantum systems. These days I use that background to build optimization engines,
+autonomous agents, and scientific tools.
 
-I care less about buzzwords and more about how and why things work. I like code that matches the math on paper and makes good use of the hardware it runs on.
+I care less about buzzwords and more about how and why things work. I like code
+that matches the math on paper and makes good use of the hardware it runs on.
 
 ### Core Focus
 
 - **Optimization:** Custom solvers for messy, high-dimensional problems.
-- **Scientific ML:** Letting physics and priors guide the models instead of guessing.
-- **HPC:** Writing code that actually talks to the GPU (CUDA, JAX) instead of ignoring it.
+- **Scientific ML:** Letting physics and priors guide the models instead of
+  guessing.
+- **HPC:** Writing code that actually talks to the GPU (CUDA, JAX) instead of
+  ignoring it.
 
 ### Current Status
 
@@ -59,7 +72,9 @@ current_state = {
 
 **Universal optimization framework**
 
-A JAX-based library meant to be a drop-in upgrade over standard SciPy optimizers for tougher problems. It includes **31+ algorithms**, from basic gradient methods to nature-inspired approaches.
+A JAX-based library meant to be a drop-in upgrade over standard SciPy optimizers
+for tougher problems. It includes **31+ algorithms**, from basic gradient
+methods to nature-inspired approaches.
 
 - **Speed:** Around 5–10x faster than SciPy on GPU for many workloads.
 - **Used in:** Materials discovery pipelines at Berkeley.
@@ -83,7 +98,9 @@ result = optimizer.optimize(f, x0, gpu=True)
 
 **Autonomous research agent**
 
-An AI system I built to handle the boring parts of research. It designs experiments, looks at the data, and suggests the next step while checking against physics constraints.
+An AI system I built to handle the boring parts of research. It designs
+experiments, looks at the data, and suggests the next step while checking
+against physics constraints.
 
 - **Impact:** Speeds up hypothesis testing by 3-5x.
 - **Core:** LLMs for reasoning + Physics engines for fact-checking.
@@ -110,7 +127,8 @@ ORCHEX.propose_experiment(
 
 **Interactive physics education**
 
-I built this so students could actually "see" quantum mechanics. It uses WebGL to render real-time visualizations of wavefunctions and band structures.
+I built this so students could actually "see" quantum mechanics. It uses WebGL
+to render real-time visualizations of wavefunctions and band structures.
 
 **Tech:** TypeScript, React, Three.js, WebGL
 
@@ -124,7 +142,8 @@ I built this so students could actually "see" quantum mechanics. It uses WebGL t
 
 **Performance analytics**
 
-A behavioral analytics platform for athletes. It uses ML to track progression and flag fatigue patterns before they lead to injury.
+A behavioral analytics platform for athletes. It uses ML to track progression
+and flag fatigue patterns before they lead to injury.
 
 **Tech:** Python, Next.js, PostgreSQL, FastAPI
 
@@ -140,9 +159,12 @@ A behavioral analytics platform for athletes. It uses ML to track progression an
 
 <br>
 
-- **[AlaweinLabs](https://github.com/AlaweinLabs)** — My research org for computational physics tools.
-- **[MeshyTools](https://github.com/AlaweinLabs)** — Utilities I got tired of rewriting.
-- **[LiveItIconic](https://github.com/LiveItIconic)** — E-commerce platform with ML-driven recommendations.
+- **[AlaweinLabs](https://github.com/AlaweinLabs)** — My research org for
+  computational physics tools.
+- **[MeshyTools](https://github.com/AlaweinLabs)** — Utilities I got tired of
+  rewriting.
+- **[LiveItIconic](https://github.com/LiveItIconic)** — E-commerce platform with
+  ML-driven recommendations.
 
 </details>
 
@@ -202,13 +224,17 @@ System Architecture        █████████████████�
 
 ## Philosophy
 
-> **"The best code is like a physics equation—minimal, elegant, and captures the essence of truth."**
+> **"The best code is like a physics equation—minimal, elegant, and captures the
+> essence of truth."**
 
 ### Design Values
 
-1.  **Optimization is art:** Finding the minimum isn't just brute force; it takes intuition.
-2.  **Physics-first:** Before coding, I ask: _What are the conserved quantities? What's the simplest model that works?_
-3.  **Performance:** Speed enables better science. I obsess over memory layouts so you don't have to.
+1.  **Optimization is art:** Finding the minimum isn't just brute force; it
+    takes intuition.
+2.  **Physics-first:** Before coding, I ask: _What are the conserved quantities?
+    What's the simplest model that works?_
+3.  **Performance:** Speed enables better science. I obsess over memory layouts
+    so you don't have to.
 4.  **Open Source:** Knowledge grows when it's shared.
 
 ```python
@@ -310,10 +336,11 @@ def response_time(message_type):
 - 🐍 Python is my day job, but I secretly love Rust.
 - 🚀 Dream project: A physics engine that respects thermodynamics.
 
-**Hidden achievement unlocked!** 🏆
-_You read the whole README. I appreciate the attention to detail._
+**Hidden achievement unlocked!** 🏆 _You read the whole README. I appreciate the
+attention to detail._
 
-If you made it this far, include the phrase **"Hamiltonian"** in your message so I know you're real! 🎯
+If you made it this far, include the phrase **"Hamiltonian"** in your message so
+I know you're real! 🎯
 
 </details>
 

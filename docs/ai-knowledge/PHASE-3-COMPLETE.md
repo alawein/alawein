@@ -1,3 +1,10 @@
+---
+title: 'Phase 3: Prompt Analytics - COMPLETE ✅'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Phase 3: Prompt Analytics - COMPLETE ✅
 
 **Completion Date**: 2025-01-XX  
@@ -6,22 +13,26 @@
 
 ## Overview
 
-Built comprehensive analytics system to track prompt usage, measure success rates, and generate actionable insights.
+Built comprehensive analytics system to track prompt usage, measure success
+rates, and generate actionable insights.
 
 ## Components Delivered
 
 ### 1. Usage Tracker (`tools/analytics/tracker.py`)
+
 - SQLite database for persistent storage
 - Tracks: prompt name, timestamp, success, duration, quality
 - Simple API: `log_usage()`, `get_stats()`
 
 ### 2. Insights Generator (`tools/analytics/insights.py`)
+
 - Analyzes usage patterns
 - Generates 4 insight types: performance, usage, quality, recommendations
 - Severity levels: info, warning, critical
 - Actionable recommendations based on data
 
 ### 3. CLI Dashboard (`tools/analytics/dashboard.py`)
+
 - Real-time analytics visualization
 - Shows: overall stats, top prompts, insights, recommendations
 - Configurable time windows (default: 30 days)
@@ -52,6 +63,7 @@ Recommendations:
 ## Usage Examples
 
 ### Track Prompt Usage
+
 ```python
 from tools.analytics.tracker import PromptTracker
 
@@ -61,6 +73,7 @@ tracker.log_usage("code-review", success=True, duration=2.5, quality=0.85)
 ```
 
 ### View Dashboard
+
 ```python
 from tools.analytics.dashboard import Dashboard
 
@@ -69,6 +82,7 @@ dashboard.show(days=30)  # Last 30 days
 ```
 
 ### Generate Insights
+
 ```python
 from tools.analytics.insights import InsightsGenerator
 
@@ -102,6 +116,7 @@ recommendations = insights.get_recommendations()
 ## Next Steps
 
 Phase 4: Pattern Extractor
+
 - Extract common patterns from successful prompts
 - Build pattern library
 - Auto-suggest patterns for new prompts

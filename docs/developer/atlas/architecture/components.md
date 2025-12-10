@@ -1,6 +1,14 @@
+---
+title: 'Component Specifications'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Component Specifications
 
-Detailed specifications for all major ORCHEX components, including their responsibilities, interfaces, algorithms, and implementation details.
+Detailed specifications for all major ORCHEX components, including their
+responsibilities, interfaces, algorithms, and implementation details.
 
 ---
 
@@ -8,7 +16,8 @@ Detailed specifications for all major ORCHEX components, including their respons
 
 ### Purpose
 
-Maintains a comprehensive catalog of available AI agents with their capabilities, constraints, health status, and performance metrics.
+Maintains a comprehensive catalog of available AI agents with their
+capabilities, constraints, health status, and performance metrics.
 
 ### Responsibilities
 
@@ -34,7 +43,10 @@ interface AgentRegistry {
 
   // Health and Performance
   updateHealth(agentId: string, health: HealthStatus): Promise<void>;
-  getPerformanceHistory(agentId: string, window: TimeWindow): Promise<PerformanceMetrics[]>;
+  getPerformanceHistory(
+    agentId: string,
+    window: TimeWindow,
+  ): Promise<PerformanceMetrics[]>;
   getHealthStatus(agentId: string): Promise<HealthStatus>;
 }
 ```
@@ -102,7 +114,8 @@ interface AgentStorage {
 
 ### Purpose
 
-Intelligently routes tasks to the most appropriate AI agent based on task requirements, agent capabilities, performance history, and current system load.
+Intelligently routes tasks to the most appropriate AI agent based on task
+requirements, agent capabilities, performance history, and current system load.
 
 ### Responsibilities
 
@@ -130,7 +143,7 @@ class TaskRouter {
 
     // 2. Score each agent
     const scoredAgents = await Promise.all(
-      eligibleAgents.map((agent) => this.scoreAgent(agent, task))
+      eligibleAgents.map((agent) => this.scoreAgent(agent, task)),
     );
 
     // 3. Sort by score (highest first)
@@ -162,7 +175,10 @@ class TaskRouter {
 
     // Weighted scoring (0-100 scale)
     const totalScore =
-      0.4 * capabilityScore + 0.3 * performanceScore + 0.2 * availabilityScore + 0.1 * costScore;
+      0.4 * capabilityScore +
+      0.3 * performanceScore +
+      0.2 * availabilityScore +
+      0.1 * costScore;
 
     return {
       agent,
@@ -264,7 +280,8 @@ calculateCostScore(agent: Agent, task: Task): number {
 
 ### Purpose
 
-Distributes tasks across multiple agents to optimize throughput, prevent overload, and ensure fair resource utilization.
+Distributes tasks across multiple agents to optimize throughput, prevent
+overload, and ensure fair resource utilization.
 
 ### Responsibilities
 
@@ -343,23 +360,31 @@ class PerformanceBasedBalancer {
       candidates.map(async (agent) => ({
         agent,
         score: await this.calculatePerformanceScore(agent, task),
-      }))
+      })),
     );
 
     scoredAgents.sort((a, b) => b.score - a.score);
     return scoredAgents[0].agent;
   }
 
-  private async calculatePerformanceScore(agent: Agent, task: Task): Promise<number> {
-    const recentPerformance = await this.registry.getPerformanceHistory(agent.agentId, {
-      hours: 1,
-    });
+  private async calculatePerformanceScore(
+    agent: Agent,
+    task: Task,
+  ): Promise<number> {
+    const recentPerformance = await this.registry.getPerformanceHistory(
+      agent.agentId,
+      {
+        hours: 1,
+      },
+    );
 
     const avgResponseTime =
-      recentPerformance.reduce((sum, p) => sum + p.responseTimeMs, 0) / recentPerformance.length;
+      recentPerformance.reduce((sum, p) => sum + p.responseTimeMs, 0) /
+      recentPerformance.length;
 
     const successRate =
-      recentPerformance.filter((p) => p.success).length / recentPerformance.length;
+      recentPerformance.filter((p) => p.success).length /
+      recentPerformance.length;
 
     // Prefer faster, more reliable agents
     return successRate * 100 - avgResponseTime / 100;
@@ -402,7 +427,8 @@ class TaskQueue {
 
 ### Purpose
 
-Ensures task completion through intelligent fallback chains when primary agents fail, with automatic retry logic and escalation.
+Ensures task completion through intelligent fallback chains when primary agents
+fail, with automatic retry logic and escalation.
 
 ### Responsibilities
 
@@ -437,7 +463,9 @@ class FallbackManager {
           await this.telemetry.recordFailure(agent, task, tier, attempt, error);
 
           // Wait before retry (except on last attempt)
-          if (!(tier === fallbackChain.length - 1 && attempt === maxRetries - 1)) {
+          if (
+            !(tier === fallbackChain.length - 1 && attempt === maxRetries - 1)
+          ) {
             await this.delay(backoffDelay);
           }
         }
@@ -458,11 +486,17 @@ class FallbackManager {
     return Math.min(1000 * Math.pow(2, attempt), 30000); // Max 30 seconds
   }
 
-  private async executeWithTimeout(agent: Agent, task: Task): Promise<TaskResult> {
+  private async executeWithTimeout(
+    agent: Agent,
+    task: Task,
+  ): Promise<TaskResult> {
     return Promise.race([
       agent.execute(task),
       new Promise((_, reject) =>
-        setTimeout(() => reject(new TimeoutError()), task.timeoutSeconds * 1000)
+        setTimeout(
+          () => reject(new TimeoutError()),
+          task.timeoutSeconds * 1000,
+        ),
       ),
     ]);
   }
@@ -528,7 +562,10 @@ class FailureAnalyzer {
 
 ```typescript
 class HumanEscalationHandler {
-  async escalateToHuman(task: Task, failureHistory: FailureRecord[]): Promise<TaskResult> {
+  async escalateToHuman(
+    task: Task,
+    failureHistory: FailureRecord[],
+  ): Promise<TaskResult> {
     // Create escalation record
     const escalation = await this.createEscalationRecord(task, failureHistory);
 
@@ -576,7 +613,8 @@ class HumanEscalationHandler {
 
 ### Purpose
 
-Analyzes codebases to identify technical debt, code quality issues, and refactoring opportunities using AST-based parsing and chaos metrics.
+Analyzes codebases to identify technical debt, code quality issues, and
+refactoring opportunities using AST-based parsing and chaos metrics.
 
 ### Responsibilities
 
@@ -679,7 +717,10 @@ class ChaosMetricsCalculator {
   private normalizeSize(size: SizeMetrics): number {
     // Lines of code thresholds
     const locScore = Math.min((size.linesOfCode / 500) * 100, 100);
-    const funcScore = size.functions > 10 ? Math.min(((size.functions - 10) / 20) * 100, 100) : 0;
+    const funcScore =
+      size.functions > 10
+        ? Math.min(((size.functions - 10) / 20) * 100, 100)
+        : 0;
 
     return locScore * 0.7 + funcScore * 0.3;
   }
@@ -739,7 +780,8 @@ class OpportunityIdentifier {
 
 ### Purpose
 
-Generates and applies safe code refactorings to reduce technical debt while ensuring correctness through validation and testing.
+Generates and applies safe code refactorings to reduce technical debt while
+ensuring correctness through validation and testing.
 
 ### Responsibilities
 
@@ -853,7 +895,10 @@ class SafetyValidator {
 
     return {
       passed: typeErrors.length === 0,
-      message: typeErrors.length > 0 ? `Type errors: ${typeErrors.join(', ')}` : 'Types are valid',
+      message:
+        typeErrors.length > 0
+          ? `Type errors: ${typeErrors.join(', ')}`
+          : 'Types are valid',
     };
   }
 
@@ -939,7 +984,8 @@ class RefactoringApplier {
 
 ### Purpose
 
-Continuously monitors repositories and applies automated optimizations on a scheduled basis to maintain code quality.
+Continuously monitors repositories and applies automated optimizations on a
+scheduled basis to maintain code quality.
 
 ### Responsibilities
 
@@ -979,7 +1025,10 @@ class OptimizationService {
       const analysis = await this.analyzer.analyze(this.repository);
 
       // 2. Filter opportunities based on configuration
-      const eligibleOpportunities = this.filterOpportunities(analysis.opportunities, this.config);
+      const eligibleOpportunities = this.filterOpportunities(
+        analysis.opportunities,
+        this.config,
+      );
 
       // 3. Apply safe refactorings
       const appliedRefactorings = [];
@@ -995,7 +1044,11 @@ class OptimizationService {
       }
 
       // 4. Generate report
-      const report = await this.generateOptimizationReport(cycleId, analysis, appliedRefactorings);
+      const report = await this.generateOptimizationReport(
+        cycleId,
+        analysis,
+        appliedRefactorings,
+      );
 
       // 5. Create pull request if configured
       if (this.config.createPullRequests && appliedRefactorings.length > 0) {
@@ -1015,13 +1068,15 @@ class OptimizationService {
 
     // Check daily schedule
     if (this.config.schedule.daily) {
-      const hoursSinceLastRun = (now.getTime() - lastRun.getTime()) / (1000 * 60 * 60);
+      const hoursSinceLastRun =
+        (now.getTime() - lastRun.getTime()) / (1000 * 60 * 60);
       if (hoursSinceLastRun >= 24) return true;
     }
 
     // Check weekly schedule
     if (this.config.schedule.weekly) {
-      const daysSinceLastRun = (now.getTime() - lastRun.getTime()) / (1000 * 60 * 60 * 24);
+      const daysSinceLastRun =
+        (now.getTime() - lastRun.getTime()) / (1000 * 60 * 60 * 24);
       if (daysSinceLastRun >= 7) return true;
     }
 
@@ -1036,7 +1091,7 @@ class OptimizationService {
 
   private filterOpportunities(
     opportunities: RefactoringOpportunity[],
-    config: OptimizationConfig
+    config: OptimizationConfig,
   ): RefactoringOpportunity[] {
     return opportunities.filter((opp) => {
       // Filter by risk level
@@ -1069,7 +1124,10 @@ class OptimizationService {
     }
 
     // Check risk threshold
-    if (this.config.maxRiskLevel === 'low' && opportunity.risk.level !== 'low') {
+    if (
+      this.config.maxRiskLevel === 'low' &&
+      opportunity.risk.level !== 'low'
+    ) {
       return false;
     }
 
@@ -1111,7 +1169,9 @@ class OptimizationLearner {
     await this.updateRiskModels();
   }
 
-  private async learnFromSuccess(refactoring: AppliedRefactoring): Promise<void> {
+  private async learnFromSuccess(
+    refactoring: AppliedRefactoring,
+  ): Promise<void> {
     // Update success patterns
     await this.patternStore.recordSuccess({
       type: refactoring.type,
@@ -1140,10 +1200,14 @@ class OptimizationLearner {
     await this.riskModel.adjustRisk(
       failure.opportunity.type,
       failure.reason,
-      +0.1 // Increase risk assessment
+      +0.1, // Increase risk assessment
     );
   }
 }
 ```
 
-This comprehensive component specification provides the foundation for understanding how ORCHEX orchestrates AI agents, manages tasks, analyzes code, and continuously optimizes repositories. Each component is designed with resilience, scalability, and safety in mind, ensuring reliable operation in production environments.</instructions>
+This comprehensive component specification provides the foundation for
+understanding how ORCHEX orchestrates AI agents, manages tasks, analyzes code,
+and continuously optimizes repositories. Each component is designed with
+resilience, scalability, and safety in mind, ensuring reliable operation in
+production environments.</instructions>

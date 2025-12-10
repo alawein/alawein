@@ -1,47 +1,68 @@
 ---
 document_metadata:
-  title: "Security Implementation Guide"
-  document_id: "SEC-GDE-001"
-  version: "1.0.0"
-  status: "Active"
-  classification: "Internal"
-  
+  title: 'Security Implementation Guide'
+  document_id: 'SEC-GDE-001'
+  version: '1.0.0'
+  status: 'Active'
+  classification: 'Internal'
+
   dates:
-    created: "2025-12-07"
-    last_updated: "2025-12-07"
-    next_review: "2026-03-07"
-    
+    created: '2025-12-07'
+    last_updated: '2025-12-07'
+    next_review: '2026-03-07'
+
   ownership:
-    owner: "Security Team"
-    maintainer: "Meshaal Alawein"
-    reviewers: ["Engineering Lead", "DevOps Lead"]
-    
+    owner: 'Security Team'
+    maintainer: 'Meshaal Alawein'
+    reviewers: ['Engineering Lead', 'DevOps Lead']
+
   change_summary: |
     [2025-12-07] Migrated from docs/SECURITY-IMPLEMENTATION.md
     - Added governance-compliant header
     - Moved to canonical location docs/security/
     - No content changes
-    
+
   llm_context:
-    purpose: "Comprehensive security implementation guide for the Alawein Technologies monorepo"
-    scope: "Authentication, API security, data protection, security headers, logging, compliance"
-    key_concepts: ["authentication", "CSRF", "rate limiting", "encryption", "CSP", "HSTS", "XSS prevention"]
-    related_documents: ["SECURITY.md", "SECURITY-IMPLEMENTATION-STATUS.md", "SECURITY-QUICK-FIXES.md"]
+    purpose:
+      'Comprehensive security implementation guide for the Alawein Technologies
+      monorepo'
+    scope:
+      'Authentication, API security, data protection, security headers, logging,
+      compliance'
+    key_concepts:
+      [
+        'authentication',
+        'CSRF',
+        'rate limiting',
+        'encryption',
+        'CSP',
+        'HSTS',
+        'XSS prevention',
+      ]
+    related_documents:
+      [
+        'SECURITY.md',
+        'SECURITY-IMPLEMENTATION-STATUS.md',
+        'SECURITY-QUICK-FIXES.md',
+      ]
+last_verified: 2025-12-09
 ---
 
 # Security Implementation Guide
 
-> **Summary:** This document outlines the security measures implemented across the Alawein Technologies monorepo, including authentication, API security, data protection, and security best practices.
+> **Summary:** This document outlines the security measures implemented across
+> the Alawein Technologies monorepo, including authentication, API security,
+> data protection, and security best practices.
 
 ## Quick Reference
 
-| Attribute | Value |
-|-----------|-------|
-| **Document ID** | SEC-GDE-001 |
-| **Status** | Active |
-| **Owner** | Security Team |
-| **Last Updated** | 2025-12-07 |
-| **Next Review** | 2026-03-07 |
+| Attribute        | Value         |
+| ---------------- | ------------- |
+| **Document ID**  | SEC-GDE-001   |
+| **Status**       | Active        |
+| **Owner**        | Security Team |
+| **Last Updated** | 2025-12-07    |
+| **Next Review**  | 2026-03-07    |
 
 ---
 
@@ -94,19 +115,23 @@ if (!passwordResult.isValid) {
 ### Token Management
 
 **Access Tokens:**
+
 - Stored in memory only
 - Short-lived (15 minutes recommended)
 - Included in Authorization header
 
 **Refresh Tokens:**
+
 - Encrypted before storage
-- Stored in secure storage (localStorage with encryption in dev, Vercel KV in production)
+- Stored in secure storage (localStorage with encryption in dev, Vercel KV in
+  production)
 - Long-lived (7 days recommended)
 - HTTP-only cookies recommended for production
 
 ### Rate Limiting
 
 Authentication endpoints implement rate limiting:
+
 - 100 requests per 15-minute window per IP
 - Configurable via environment variables
 - Returns 429 Too Many Requests when exceeded
@@ -130,6 +155,7 @@ headers['X-CSRF-Token'] = this.csrfToken;
 ### Request Timeouts
 
 All API requests have configurable timeouts:
+
 - Default: 10 seconds
 - Prevents hanging requests
 - Throws TimeoutError on timeout
@@ -137,6 +163,7 @@ All API requests have configurable timeouts:
 ### Retry Logic
 
 Automatic retry for transient failures:
+
 - Retryable status codes: 408, 429, 500, 502, 503, 504
 - Maximum 3 retries
 - Exponential backoff: 1s, 2s, 4s
@@ -186,6 +213,7 @@ const safe = sanitizeInput(userInput);
 ```
 
 Sanitization includes:
+
 - HTML entity encoding
 - Script tag removal
 - Event handler removal
@@ -200,7 +228,7 @@ Sanitization includes:
 Implemented via [`security-headers.ts`](../../src/lib/security-headers.ts):
 
 ```typescript
-Content-Security-Policy: 
+Content-Security-Policy:
   default-src 'self';
   script-src 'self' 'unsafe-inline';
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
@@ -216,13 +244,13 @@ Content-Security-Policy:
 
 ### Other Security Headers
 
-| Header | Value | Purpose |
-|--------|-------|---------|
-| **HSTS** | `max-age=31536000; includeSubDomains; preload` | Force HTTPS |
-| **X-Frame-Options** | `DENY` | Prevent clickjacking |
-| **X-XSS-Protection** | `1; mode=block` | XSS filter |
-| **X-Content-Type-Options** | `nosniff` | Prevent MIME sniffing |
-| **Referrer-Policy** | `strict-origin-when-cross-origin` | Control referrer |
+| Header                     | Value                                          | Purpose               |
+| -------------------------- | ---------------------------------------------- | --------------------- |
+| **HSTS**                   | `max-age=31536000; includeSubDomains; preload` | Force HTTPS           |
+| **X-Frame-Options**        | `DENY`                                         | Prevent clickjacking  |
+| **X-XSS-Protection**       | `1; mode=block`                                | XSS filter            |
+| **X-Content-Type-Options** | `nosniff`                                      | Prevent MIME sniffing |
+| **Referrer-Policy**        | `strict-origin-when-cross-origin`              | Control referrer      |
 
 ---
 
@@ -242,16 +270,17 @@ logger.warn('Rate limit approaching', { ip, requests });
 
 ### Log Levels
 
-| Level | Purpose |
-|-------|---------|
-| **DEBUG** | Development debugging information |
-| **INFO** | General informational messages |
-| **WARN** | Warning messages for potential issues |
-| **ERROR** | Error messages with stack traces |
+| Level     | Purpose                               |
+| --------- | ------------------------------------- |
+| **DEBUG** | Development debugging information     |
+| **INFO**  | General informational messages        |
+| **WARN**  | Warning messages for potential issues |
+| **ERROR** | Error messages with stack traces      |
 
 ### Production Logging
 
 In production:
+
 - Minimum log level: INFO
 - Remote logging enabled
 - Sensitive data redacted
@@ -367,10 +396,10 @@ ENABLE_HSTS=true
 
 ### Emergency Contacts
 
-| Role | Contact |
-|------|---------|
-| Security Team | security@alawein.com |
-| On-Call Engineer | oncall@alawein.com |
+| Role             | Contact              |
+| ---------------- | -------------------- |
+| Security Team    | security@alawein.com |
+| On-Call Engineer | oncall@alawein.com   |
 
 ---
 
@@ -386,6 +415,7 @@ ENABLE_HSTS=true
 ### Audit Trail
 
 All security-relevant events are logged:
+
 - Authentication attempts
 - Authorization failures
 - Data access
@@ -407,6 +437,7 @@ npm run test:auth
 ### Penetration Testing
 
 Schedule regular penetration testing:
+
 - Quarterly automated scans
 - Annual manual penetration tests
 - Immediate testing after major changes
@@ -418,7 +449,8 @@ Schedule regular penetration testing:
 ### Internal Documents
 
 - [`SECURITY.md`](../../SECURITY.md) - Security policy overview
-- [`SECURITY-IMPLEMENTATION-STATUS.md`](./SECURITY-IMPLEMENTATION-STATUS.md) - Implementation status
+- [`SECURITY-IMPLEMENTATION-STATUS.md`](./SECURITY-IMPLEMENTATION-STATUS.md) -
+  Implementation status
 - [`SECURITY-QUICK-FIXES.md`](./SECURITY-QUICK-FIXES.md) - Quick security fixes
 
 ### External Resources
@@ -431,10 +463,10 @@ Schedule regular penetration testing:
 
 ## Document History
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0.0 | 2025-12-07 | Security Team | Initial migration with governance header |
+| Version | Date       | Author        | Changes                                  |
+| ------- | ---------- | ------------- | ---------------------------------------- |
+| 1.0.0   | 2025-12-07 | Security Team | Initial migration with governance header |
 
 ---
 
-*Document ID: SEC-GDE-001 | Version: 1.0.0 | Classification: Internal*
+_Document ID: SEC-GDE-001 | Version: 1.0.0 | Classification: Internal_

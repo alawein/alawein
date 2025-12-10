@@ -1,6 +1,14 @@
+---
+title: 'Workspace Setup Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Workspace Setup Guide
 
-This monorepo uses **npm workspaces** to manage multiple packages and applications.
+This monorepo uses **npm workspaces** to manage multiple packages and
+applications.
 
 ## Structure
 
@@ -106,8 +114,10 @@ import { ApiResponse } from '@monorepo/types';
 
 ### Apps Currently Excluded
 
-- `organizations/live-it-iconic-llc/ecommerce/liveiticonic` - Storybook version conflicts
-- `organizations/alawein-technologies-llc/mobile-apps/simcore` - Complex dependency tree
+- `organizations/live-it-iconic-llc/ecommerce/liveiticonic` - Storybook version
+  conflicts
+- `organizations/alawein-technologies-llc/mobile-apps/simcore` - Complex
+  dependency tree
 
 ### Migration Steps
 
@@ -150,7 +160,8 @@ Example migration:
 
 ## Best Practices
 
-1. **Use workspace protocol** for internal dependencies: `"@monorepo/ui": "workspace:*"`
+1. **Use workspace protocol** for internal dependencies:
+   `"@monorepo/ui": "workspace:*"`
 2. **Keep packages focused** - single responsibility per package
 3. **Version together** - Use `npm version` at root to update all packages
 4. **Test in isolation** - Each package should have its own tests

@@ -1,3 +1,10 @@
+---
+title: 'Contributing'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Contributing
 
 <img src="https://img.shields.io/badge/PRs-Welcome-A855F7?style=flat-square&labelColor=1a1b27" alt="PRs Welcome"/>

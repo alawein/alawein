@@ -1,3 +1,10 @@
+---
+title: 'Platform Design Briefs'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Platform Design Briefs
 
 Comprehensive design specifications for each platform in the ecosystem. Use

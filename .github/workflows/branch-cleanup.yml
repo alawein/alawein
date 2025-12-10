@@ -13,7 +13,7 @@ on:
       dry_run:
         description: 'Dry run (no deletions)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 permissions:
@@ -32,12 +32,12 @@ jobs:
           script: |
             const branch = context.payload.pull_request.head.ref;
             const protectedBranches = ['main', 'develop', 'staging', 'production'];
-            
+
             if (protectedBranches.includes(branch)) {
               console.log(`Skipping protected branch: ${branch}`);
               return;
             }
-            
+
             try {
               await github.rest.git.deleteRef({
                 owner: context.repo.owner,
@@ -71,38 +71,38 @@ jobs:
             const staleThresholdDays = 60;
             const staleDate = new Date();
             staleDate.setDate(staleDate.getDate() - staleThresholdDays);
-            
+
             console.log(`Finding branches with no commits since ${staleDate.toISOString()}`);
             if (dryRun) console.log('DRY RUN MODE - No branches will be deleted');
-            
+
             const { data: branches } = await github.rest.repos.listBranches({
               owner: context.repo.owner,
               repo: context.repo.repo,
               per_page: 100
             });
-            
+
             let deletedCount = 0;
             let skippedCount = 0;
-            
+
             for (const branch of branches) {
               if (protectedBranches.includes(branch.name)) {
                 console.log(`Skipping protected branch: ${branch.name}`);
                 skippedCount++;
                 continue;
               }
-              
+
               // Get the latest commit date
               const { data: commit } = await github.rest.repos.getCommit({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 ref: branch.commit.sha
               });
-              
+
               const commitDate = new Date(commit.commit.committer.date);
-              
+
               if (commitDate < staleDate) {
                 console.log(`Stale branch: ${branch.name} (last commit: ${commitDate.toISOString()})`);
-                
+
                 if (!dryRun) {
                   try {
                     await github.rest.git.deleteRef({
@@ -121,6 +121,6 @@ jobs:
                 }
               }
             }
-            
+
             console.log(`\nSummary: ${deletedCount} stale branches ${dryRun ? 'would be ' : ''}deleted, ${skippedCount} protected branches skipped`);
 

@@ -1,3 +1,10 @@
+---
+title: '**IMPLEMENTATION GUIDE**'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # **IMPLEMENTATION GUIDE**
 
 ## **Step-by-Step Development Instructions**

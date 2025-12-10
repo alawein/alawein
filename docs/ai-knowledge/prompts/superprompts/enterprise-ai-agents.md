@@ -2,16 +2,20 @@
 name: 'Enterprise Agentic AI Architecture Superprompt'
 version: '1.0'
 category: 'project'
-tags: ['agentic-ai', 'enterprise', 'caching', 'orchestration', 'state-of-the-art']
+tags:
+  ['agentic-ai', 'enterprise', 'caching', 'orchestration', 'state-of-the-art']
 created: '2024-11-30'
 source: 'Consolidated from KILO analysis and enterprise architecture review'
+last_verified: 2025-12-09
 ---
 
 # Enterprise Agentic AI Architecture Superprompt
 
 ## Purpose
 
-Comprehensive framework for building state-of-the-art enterprise agentic AI systems with advanced caching, intelligent orchestration, and production-grade reliability patterns.
+Comprehensive framework for building state-of-the-art enterprise agentic AI
+systems with advanced caching, intelligent orchestration, and production-grade
+reliability patterns.
 
 ---
 
@@ -124,7 +128,10 @@ export class MultiLayerCache<T> {
   }
 
   // Layer 1: Semantic caching
-  async getSemanticMatch(query: string, embedding: number[]): Promise<T | null> {
+  async getSemanticMatch(
+    query: string,
+    embedding: number[],
+  ): Promise<T | null> {
     for (const [key, storedEmbedding] of this.semanticIndex) {
       const similarity = this.cosineSimilarity(embedding, storedEmbedding);
       if (similarity >= this.config.semanticThreshold) {
@@ -139,7 +146,10 @@ export class MultiLayerCache<T> {
   }
 
   // Layer 2: Template caching
-  getTemplateMatch(templateId: string, params: Record<string, unknown>): T | null {
+  getTemplateMatch(
+    templateId: string,
+    params: Record<string, unknown>,
+  ): T | null {
     const normalizedParams = this.normalizeParams(params);
     const key = `template:${templateId}:${JSON.stringify(normalizedParams)}`;
     return this.get(key);
@@ -185,7 +195,7 @@ export class MultiLayerCache<T> {
       ttl?: number;
       embedding?: number[];
       dependencies?: string[];
-    } = {}
+    } = {},
   ): void {
     // Enforce size limit with LRU eviction
     if (this.cache.size >= this.config.maxSize) {
@@ -267,7 +277,9 @@ export class MultiLayerCache<T> {
     }
   }
 
-  private normalizeParams(params: Record<string, unknown>): Record<string, unknown> {
+  private normalizeParams(
+    params: Record<string, unknown>,
+  ): Record<string, unknown> {
     return Object.keys(params)
       .sort()
       .reduce(
@@ -275,7 +287,7 @@ export class MultiLayerCache<T> {
           acc[key] = params[key];
           return acc;
         },
-        {} as Record<string, unknown>
+        {} as Record<string, unknown>,
       );
   }
 
@@ -385,16 +397,24 @@ export class ContinuousIntelligenceMonitor extends EventEmitter {
     });
 
     watcher
-      .on('change', (filePath) => this.handleFileChange(path, filePath, 'change'))
+      .on('change', (filePath) =>
+        this.handleFileChange(path, filePath, 'change'),
+      )
       .on('add', (filePath) => this.handleFileChange(path, filePath, 'add'))
-      .on('unlink', (filePath) => this.handleFileChange(path, filePath, 'delete'));
+      .on('unlink', (filePath) =>
+        this.handleFileChange(path, filePath, 'delete'),
+      );
 
     this.watchers.set(path, watcher);
     this.emit('repository_added', { path });
   }
 
   // Intelligent change handling with debouncing
-  private handleFileChange(repoPath: string, filePath: string, changeType: string): void {
+  private handleFileChange(
+    repoPath: string,
+    filePath: string,
+    changeType: string,
+  ): void {
     const repo = this.repositories.get(repoPath);
     if (!repo) return;
 
@@ -507,7 +527,10 @@ export class ContinuousIntelligenceMonitor extends EventEmitter {
 
     for (const repo of this.repositories.values()) {
       if (repo.pendingChanges.length > 0) pendingAnalyses++;
-      if (!lastTrigger || (repo.lastAnalysis && repo.lastAnalysis > lastTrigger)) {
+      if (
+        !lastTrigger ||
+        (repo.lastAnalysis && repo.lastAnalysis > lastTrigger)
+      ) {
         lastTrigger = repo.lastAnalysis;
       }
     }
@@ -602,7 +625,11 @@ export class PolicyValidator {
         severity: 'critical',
         check: (ctx) => {
           for (const [file, content] of ctx.content) {
-            if (/(?:password|secret|api_key|token)\s*=\s*['"][^'"]+['"]/i.test(content)) {
+            if (
+              /(?:password|secret|api_key|token)\s*=\s*['"][^'"]+['"]/i.test(
+                content,
+              )
+            ) {
               return {
                 rule: 'SEC001',
                 severity: 'critical',
@@ -644,7 +671,9 @@ export class PolicyValidator {
         name: 'README required',
         severity: 'low',
         check: (ctx) => {
-          const hasReadme = ctx.files.some((f) => f.toLowerCase().includes('readme'));
+          const hasReadme = ctx.files.some((f) =>
+            f.toLowerCase().includes('readme'),
+          );
           if (!hasReadme) {
             return {
               rule: 'DOC001',
@@ -710,7 +739,8 @@ export class PolicyValidator {
       violations,
       recommendations,
       metadata: {
-        rulesChecked: this.rules.length + (this.config.customRules?.length || 0),
+        rulesChecked:
+          this.rules.length + (this.config.customRules?.length || 0),
         duration: Date.now() - startTime,
         timestamp: new Date(),
       },
@@ -725,8 +755,13 @@ export class PolicyValidator {
     return Math.max(0, 100 - totalPenalty);
   }
 
-  private determinePassStatus(violations: ComplianceViolation[], score: number): boolean {
-    const criticalCount = violations.filter((v) => v.severity === 'critical').length;
+  private determinePassStatus(
+    violations: ComplianceViolation[],
+    score: number,
+  ): boolean {
+    const criticalCount = violations.filter(
+      (v) => v.severity === 'critical',
+    ).length;
     const highCount = violations.filter((v) => v.severity === 'high').length;
 
     switch (this.config.strictness) {
@@ -751,15 +786,19 @@ export class PolicyValidator {
         acc[v.severity].push(v);
         return acc;
       },
-      {} as Record<string, ComplianceViolation[]>
+      {} as Record<string, ComplianceViolation[]>,
     );
 
     if (bySeverity.critical?.length) {
-      recommendations.push(`🚨 Address ${bySeverity.critical.length} critical issues immediately`);
+      recommendations.push(
+        `🚨 Address ${bySeverity.critical.length} critical issues immediately`,
+      );
     }
 
     if (bySeverity.high?.length) {
-      recommendations.push(`⚠️ Fix ${bySeverity.high.length} high-priority issues before merge`);
+      recommendations.push(
+        `⚠️ Fix ${bySeverity.high.length} high-priority issues before merge`,
+      );
     }
 
     // Add specific suggestions
@@ -842,7 +881,7 @@ export class AgentScheduler {
       optimizeFor: 'latency' | 'cost' | 'reliability';
       maxLatency?: number;
       maxCost?: number;
-    }
+    },
   ): SchedulingDecision | null {
     const eligibleAgents = this.getEligibleAgents(requiredCapabilities);
 
@@ -873,7 +912,9 @@ export class AgentScheduler {
   private getEligibleAgents(capabilities: string[]): Agent[] {
     return Array.from(this.agents.values()).filter((agent) => {
       // Must have all required capabilities
-      const hasCapabilities = capabilities.every((cap) => agent.capabilities.includes(cap));
+      const hasCapabilities = capabilities.every((cap) =>
+        agent.capabilities.includes(cap),
+      );
 
       // Must be healthy or degraded (not unhealthy)
       const isAvailable = agent.metrics.status !== 'unhealthy';
@@ -887,7 +928,7 @@ export class AgentScheduler {
 
   private calculateAgentScore(
     agent: Agent,
-    preferences: { optimizeFor: string; maxLatency?: number; maxCost?: number }
+    preferences: { optimizeFor: string; maxLatency?: number; maxCost?: number },
   ): number {
     let score = 100;
 
@@ -913,7 +954,10 @@ export class AgentScheduler {
     if (preferences.maxLatency && avgLatency > preferences.maxLatency) {
       score -= 50;
     }
-    if (preferences.maxCost && agent.metrics.costPerRequest > preferences.maxCost) {
+    if (
+      preferences.maxCost &&
+      agent.metrics.costPerRequest > preferences.maxCost
+    ) {
       score -= 50;
     }
 
@@ -927,12 +971,20 @@ export class AgentScheduler {
 
   private getAverageLatency(agent: Agent): number {
     if (agent.metrics.latency.length === 0) return 0;
-    return agent.metrics.latency.reduce((a, b) => a + b, 0) / agent.metrics.latency.length;
+    return (
+      agent.metrics.latency.reduce((a, b) => a + b, 0) /
+      agent.metrics.latency.length
+    );
   }
 
-  private getSelectionReason(agent: Agent, preferences: { optimizeFor: string }): string {
+  private getSelectionReason(
+    agent: Agent,
+    preferences: { optimizeFor: string },
+  ): string {
     const avgLatency = this.getAverageLatency(agent);
-    const loadPercent = Math.round((agent.currentLoad / agent.maxConcurrency) * 100);
+    const loadPercent = Math.round(
+      (agent.currentLoad / agent.maxConcurrency) * 100,
+    );
 
     return (
       `Selected ${agent.name} (${preferences.optimizeFor} optimized): ` +
@@ -942,7 +994,12 @@ export class AgentScheduler {
   }
 
   // Record request completion for metrics
-  recordCompletion(agentId: string, latency: number, success: boolean, cost: number): void {
+  recordCompletion(
+    agentId: string,
+    latency: number,
+    success: boolean,
+    cost: number,
+  ): void {
     const agent = this.agents.get(agentId);
     if (!agent) return;
 
@@ -954,10 +1011,12 @@ export class AgentScheduler {
 
     // Update error rate (exponential moving average)
     const errorValue = success ? 0 : 1;
-    agent.metrics.errorRate = agent.metrics.errorRate * 0.95 + errorValue * 0.05;
+    agent.metrics.errorRate =
+      agent.metrics.errorRate * 0.95 + errorValue * 0.05;
 
     // Update cost (exponential moving average)
-    agent.metrics.costPerRequest = agent.metrics.costPerRequest * 0.9 + cost * 0.1;
+    agent.metrics.costPerRequest =
+      agent.metrics.costPerRequest * 0.9 + cost * 0.1;
 
     // Update throughput
     agent.metrics.throughput++;

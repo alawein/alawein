@@ -1,3 +1,10 @@
+---
+title: 'Design System Superprompts Collection'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Design System Superprompts Collection
 
 ## Table of Contents
@@ -142,7 +149,10 @@ ELIMINATE:
 }
 
 .magnetic-hover:hover {
-  transform: translate(calc(var(--mouse-x) * 0.3px), calc(var(--mouse-y) * 0.3px));
+  transform: translate(
+    calc(var(--mouse-x) * 0.3px),
+    calc(var(--mouse-y) * 0.3px)
+  );
 }
 ```
 
@@ -739,7 +749,11 @@ Visual Style:
   content: '';
   position: absolute;
   inset: -1px;
-  background: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
+  background: linear-gradient(
+    135deg,
+    hsl(var(--accent-primary)),
+    hsl(var(--accent-secondary))
+  );
   border-radius: inherit;
   z-index: -1;
 }
@@ -833,5 +847,4 @@ Visual Style:
 
 ---
 
-_Last Updated: 2025_
-_Version: 1.0.0_
+_Last Updated: 2025_ _Version: 1.0.0_

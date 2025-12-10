@@ -1,8 +1,14 @@
+---
+title: 'MEZAN Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # MEZAN Codemap
 
-> **Location:** `.archive/organizations/AlaweinOS/MEZAN/`
-> **Components:** ATLAS, Libria, MEZAN Core
-> **Status:** Development
+> **Location:** `.archive/organizations/AlaweinOS/MEZAN/` **Components:** ATLAS,
+> Libria, MEZAN Core **Status:** Development
 
 ---
 
@@ -91,38 +97,39 @@ MEZAN/
 
 ### ATLAS → Orchex Migration
 
-ATLAS was renamed to Orchex and moved to `tools/orchex/` in the main repo. The archive contains the original ATLAS code.
+ATLAS was renamed to Orchex and moved to `tools/orchex/` in the main repo. The
+archive contains the original ATLAS code.
 
 ```mermaid
 flowchart LR
     OLD[MEZAN/ATLAS/] -->|Renamed| NEW[tools/orchex/]
-    
+
     style OLD fill:#EF4444,color:#fff
     style NEW fill:#10B981,color:#fff
 ```
 
 ### Libria Solver Details
 
-| Solver | Purpose | Algorithms |
-|--------|---------|------------|
-| `libria-qap` | Quadratic Assignment | Simulated Annealing, Genetic |
-| `libria-flow` | Network Flow | Ford-Fulkerson, Push-Relabel |
-| `libria-alloc` | Resource Allocation | Linear Programming |
-| `libria-evo` | Evolutionary | GA, ES, DE |
-| `libria-graph` | Graph Problems | Dijkstra, A*, TSP |
-| `libria-dual` | Dual Problems | Lagrangian Relaxation |
-| `libria-meta` | Meta-optimization | Hyper-parameter tuning |
+| Solver         | Purpose              | Algorithms                   |
+| -------------- | -------------------- | ---------------------------- |
+| `libria-qap`   | Quadratic Assignment | Simulated Annealing, Genetic |
+| `libria-flow`  | Network Flow         | Ford-Fulkerson, Push-Relabel |
+| `libria-alloc` | Resource Allocation  | Linear Programming           |
+| `libria-evo`   | Evolutionary         | GA, ES, DE                   |
+| `libria-graph` | Graph Problems       | Dijkstra, A\*, TSP           |
+| `libria-dual`  | Dual Problems        | Lagrangian Relaxation        |
+| `libria-meta`  | Meta-optimization    | Hyper-parameter tuning       |
 
 ---
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `MEZAN/src/mezan.py` | Main orchestrator |
-| `Libria/libria-integration/` | Solver integration |
-| `ATLAS/src/` | Orchestration engine |
-| `visualization/` | Result visualization |
+| File                         | Purpose              |
+| ---------------------------- | -------------------- |
+| `MEZAN/src/mezan.py`         | Main orchestrator    |
+| `Libria/libria-integration/` | Solver integration   |
+| `ATLAS/src/`                 | Orchestration engine |
+| `visualization/`             | Result visualization |
 
 ---
 

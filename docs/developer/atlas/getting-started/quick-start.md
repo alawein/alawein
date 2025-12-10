@@ -1,6 +1,15 @@
+---
+title: 'Quick Start Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Quick Start Guide
 
-Get started with ORCHEX in 5 minutes! This guide will walk you through installing ORCHEX, registering your first AI agent, and submitting your first task.
+Get started with ORCHEX in 5 minutes! This guide will walk you through
+installing ORCHEX, registering your first AI agent, and submitting your first
+task.
 
 ---
 
@@ -208,15 +217,21 @@ This performs a quick analysis of your codebase and provides:
 
 ## Next Steps
 
-🎉 **Congratulations!** You've successfully set up ORCHEX and completed your first AI-assisted development task.
+🎉 **Congratulations!** You've successfully set up ORCHEX and completed your
+first AI-assisted development task.
 
 ### What to Explore Next
 
-1. **[Register More Agents](first-tasks.md#multi-agent-setup)** - Add multiple AI agents for better task routing
-2. **[Explore Task Types](first-tasks.md#task-types)** - Try debugging, refactoring, and documentation tasks
-3. **[Configure Advanced Settings](configuration.md)** - Set up cost limits, performance monitoring, and custom routing rules
-4. **[Integrate with CI/CD](integration/cicd-integration.md)** - Automate code quality checks in your pipeline
-5. **[Set Up KILO Integration](integration/kilo-integration.md)** - Enable governance and compliance validation
+1. **[Register More Agents](first-tasks.md#multi-agent-setup)** - Add multiple
+   AI agents for better task routing
+2. **[Explore Task Types](first-tasks.md#task-types)** - Try debugging,
+   refactoring, and documentation tasks
+3. **[Configure Advanced Settings](configuration.md)** - Set up cost limits,
+   performance monitoring, and custom routing rules
+4. **[Integrate with CI/CD](integration/cicd-integration.md)** - Automate code
+   quality checks in your pipeline
+5. **[Set Up KILO Integration](integration/kilo-integration.md)** - Enable
+   governance and compliance validation
 
 ### Useful Commands
 
@@ -262,9 +277,12 @@ ORCHEX task list --limit 10
 
 - **Documentation**: [Full Documentation](../README.md)
 - **CLI Help**: `ORCHEX --help` or `ORCHEX <command> --help`
-- **Community**: Join our [Discord community](https://discord.gg/ORCHEX-platform)
-- **Issues**: Report bugs on [GitHub](https://github.com/ORCHEX-platform/ORCHEX/issues)
+- **Community**: Join our
+  [Discord community](https://discord.gg/ORCHEX-platform)
+- **Issues**: Report bugs on
+  [GitHub](https://github.com/ORCHEX-platform/ORCHEX/issues)
 
 ---
 
-**Ready for more?** Continue to [First Tasks](first-tasks.md) to explore ORCHEX capabilities in depth!</instructions>
+**Ready for more?** Continue to [First Tasks](first-tasks.md) to explore ORCHEX
+capabilities in depth!</instructions>

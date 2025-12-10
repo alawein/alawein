@@ -1,8 +1,14 @@
+---
+title: '🤖 TalAI - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 TalAI - Master Superprompt & AI Orchestration
 
-**Project:** TalAI (AI Talent Acquisition)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
+**Project:** TalAI (AI Talent Acquisition) **Status:** ACTIVE - Ready for Claude
+Code **Config:** Enterprise-grade with sequential thinking + parallel agents
 **Date:** 2025-11-17
 
 ---

@@ -1,0 +1,67 @@
+name: "📖 Documentation Improvement"
+description: "Suggest improvements or report issues with documentation"
+title: "[DOCS] "
+labels: ["documentation"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Documentation Improvement Request
+
+        Thank you for helping improve our documentation!
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of Request
+      description: What kind of documentation change are you requesting?
+      options:
+        - New documentation needed
+        - Update existing documentation
+        - Fix incorrect information
+        - Improve clarity/readability
+        - Add code examples
+        - Fix broken links
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Which file or section needs attention?
+      placeholder: "docs/QUICK_START.md or 'API Reference section'"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current State
+      description: What does the documentation currently say (if applicable)?
+      placeholder: "The current documentation says..."
+
+  - type: textarea
+    id: proposed-change
+    attributes:
+      label: Proposed Change
+      description: What should the documentation say or include?
+      placeholder: "The documentation should..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any additional context, screenshots, or examples?
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you like to contribute this change?
+      options:
+        - label: I would like to submit a PR for this change

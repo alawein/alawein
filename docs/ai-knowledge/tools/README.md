@@ -1,3 +1,10 @@
+---
+title: 'Tools Directory'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Tools Directory
 
 Automation scripts for managing AI knowledge.
@@ -5,6 +12,7 @@ Automation scripts for managing AI knowledge.
 ## Available Tools
 
 ### 📦 migrate-prompts.py
+
 Scan existing documentation for reusable prompts.
 
 ```bash
@@ -13,6 +21,7 @@ python migrate-prompts.py
 ```
 
 ### 📊 update-catalog.py
+
 Auto-update catalog from filesystem.
 
 ```bash
@@ -21,6 +30,7 @@ python update-catalog.py
 ```
 
 ### ✨ create-workflow.py
+
 Interactive workflow generator.
 
 ```bash
@@ -29,6 +39,7 @@ python create-workflow.py
 ```
 
 ### 🔄 sync-across-tools.py
+
 Sync prompts to IDE-specific locations.
 
 ```bash
@@ -39,6 +50,7 @@ python sync-across-tools.py
 ## Usage Patterns
 
 ### After Adding New Content
+
 ```bash
 # 1. Update catalog
 python update-catalog.py
@@ -48,6 +60,7 @@ python sync-across-tools.py
 ```
 
 ### Starting New Project
+
 ```bash
 # 1. Scan for existing prompts
 python migrate-prompts.py
@@ -59,14 +72,18 @@ python create-workflow.py
 ## Extending Tools
 
 ### Add New IDE to Sync
+
 Edit `sync-across-tools.py`:
+
 ```python
 CURSOR = ROOT / ".cursor" / "prompts"
 # Add to sync() function
 ```
 
 ### Add New Catalog Type
+
 Edit `update-catalog.py`:
+
 ```python
 def scan_rules():
     # Scan rules directory

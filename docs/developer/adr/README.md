@@ -1,3 +1,10 @@
+---
+title: 'Architecture Decision Records'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Architecture Decision Records
 
 <img src="https://img.shields.io/badge/ADRs-3-A855F7?style=flat-square&labelColor=1a1b27" alt="ADRs"/>
@@ -7,7 +14,8 @@
 
 ## What are ADRs?
 
-Architecture Decision Records capture significant architectural decisions along with their context and consequences.
+Architecture Decision Records capture significant architectural decisions along
+with their context and consequences.
 
 ## Index
 

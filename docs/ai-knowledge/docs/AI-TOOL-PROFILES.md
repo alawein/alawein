@@ -1,3 +1,10 @@
+---
+title: 'AI Tool Profiles - Best-For & Typical Use'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Tool Profiles - Best-For & Typical Use
 
 Comprehensive profiles for all 13 configured AI coding assistants.
@@ -25,7 +32,8 @@ aider --yes-always --auto-commits "Rename all instances of getUserData to fetchU
 aider --read docs/adr/*.md "Implement the caching strategy from ADR-003"
 ```
 
-**Strengths:** True `--yes-always` autonomy, git integration, context file reading
+**Strengths:** True `--yes-always` autonomy, git integration, context file
+reading
 
 **Limitations:** CLI-only, no GUI preview
 

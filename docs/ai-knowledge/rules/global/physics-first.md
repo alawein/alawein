@@ -1,3 +1,10 @@
+---
+title: 'Physics-First Development Rule'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Physics-First Development Rule
 
 Always prioritize physics correctness over optimization.
@@ -5,6 +12,7 @@ Always prioritize physics correctness over optimization.
 ## Principle
 
 Before optimizing code, verify:
+
 1. Conservation laws hold
 2. Units are consistent
 3. Boundary conditions are correct

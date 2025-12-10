@@ -1,0 +1,33 @@
+graph LR
+    subgraph Hooks["Custom Hooks"]
+        useAuth["useAuth"]
+        useRecommendations["useRecommendations"]
+        useWorkouts["useWorkouts"]
+    end
+
+    subgraph Services["Services"]
+        apiService["apiService"]
+        storageService["storageService"]
+        recommendationService["recommendationService"]
+    end
+
+    subgraph External["External"]
+        useQuery["useQuery"]
+        useMutation["useMutation"]
+        useState["useState"]
+    end
+
+    useAuth --> apiService
+    useAuth --> storageService
+    useAuth --> useState
+
+    useRecommendations --> recommendationService
+    useRecommendations --> useQuery
+
+    useWorkouts --> apiService
+    useWorkouts --> useQuery
+    useWorkouts --> useMutation
+
+    style Hooks fill:#6366f1,stroke:#fff
+    style Services fill:#22c55e,stroke:#fff
+    style External fill:#94a3b8,stroke:#fff

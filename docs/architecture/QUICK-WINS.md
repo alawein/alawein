@@ -1,4 +1,12 @@
+---
+title: 'Quick Wins - Architecture Improvements'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Quick Wins - Architecture Improvements
+
 ## Immediate Impact, Low Effort
 
 **Last Updated:** 2025-01-XX
@@ -26,6 +34,7 @@ Add to root `package.json`:
 ```
 
 **Benefits:**
+
 - Shared dependency installation
 - Reduced disk usage
 - Faster installs
@@ -62,6 +71,7 @@ Create `turbo.json`:
 ```
 
 **Benefits:**
+
 - Parallel builds
 - Intelligent caching
 - 3-10x faster CI
@@ -84,20 +94,21 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: dev
     ports:
-      - "5432:5432"
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   redis:
     image: redis:7-alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
 volumes:
   postgres_data:
 ```
 
 **Benefits:**
+
 - Consistent local environment
 - Easy database setup
 - Faster onboarding
@@ -141,6 +152,7 @@ Update project configs:
 ```
 
 **Benefits:**
+
 - Consistent TypeScript settings
 - Easier maintenance
 - Reduced duplication
@@ -184,6 +196,7 @@ Create `.bundlesizerc.json`:
 ```
 
 **Benefits:**
+
 - Prevent bundle bloat
 - Performance monitoring
 - Automated alerts
@@ -201,25 +214,26 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-export const createViteConfig = (dirname: string) => defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(dirname, './src'),
+export const createViteConfig = (dirname: string) =>
+  defineConfig({
+    plugins: [react()],
+    resolve: {
+      alias: {
+        '@': path.resolve(dirname, './src'),
+      },
     },
-  },
-  build: {
-    target: 'es2020',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['@radix-ui/react-tabs', '@radix-ui/react-dialog'],
+    build: {
+      target: 'es2020',
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-ui': ['@radix-ui/react-tabs', '@radix-ui/react-dialog'],
+          },
         },
       },
     },
-  },
-});
+  });
 ```
 
 Use in projects:
@@ -231,6 +245,7 @@ export default createViteConfig(__dirname);
 ```
 
 **Benefits:**
+
 - DRY configuration
 - Consistent builds
 - Easy updates
@@ -252,6 +267,7 @@ npm run type-check
 ```
 
 **Benefits:**
+
 - Catch issues early
 - Prevent bad commits
 - Maintain quality
@@ -279,6 +295,7 @@ module.exports = {
 ```
 
 **Benefits:**
+
 - Consistent linting
 - Easier maintenance
 - Reduced duplication
@@ -312,6 +329,7 @@ app.get('/health', async (req, res) => {
 ```
 
 **Benefits:**
+
 - Monitoring support
 - Deployment verification
 - Debugging aid
@@ -359,6 +377,7 @@ export class ErrorBoundary extends Component<Props, State> {
 ```
 
 **Benefits:**
+
 - Graceful error handling
 - Better UX
 - Error tracking
@@ -391,6 +410,7 @@ Create `performance-budget.json`:
 ```
 
 **Benefits:**
+
 - Performance monitoring
 - Automated alerts
 - Quality gates
@@ -439,6 +459,7 @@ jobs:
 ```
 
 **Benefits:**
+
 - Reduce workflow duplication
 - Easier maintenance
 - Consistent CI
@@ -461,4 +482,5 @@ jobs:
 - [ ] Consolidate CI workflows
 
 **Total Time:** ~6 hours  
-**Total Impact:** Significant improvement in DX, performance, and maintainability
+**Total Impact:** Significant improvement in DX, performance, and
+maintainability

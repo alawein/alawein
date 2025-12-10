@@ -4,13 +4,15 @@ version: '1.0'
 category: 'project'
 tags: ['cicd', 'devops', 'automation', 'deployment', 'github-actions']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # CI/CD Pipeline Superprompt
 
 ## Purpose
 
-Comprehensive CI/CD pipeline design and implementation framework for automated building, testing, and deployment across multiple environments.
+Comprehensive CI/CD pipeline design and implementation framework for automated
+building, testing, and deployment across multiple environments.
 
 ---
 
@@ -198,9 +200,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s
           --health-retries 5
 
       redis:
@@ -472,7 +472,8 @@ jobs:
         with:
           body: ${{ steps.changelog.outputs.content }}
           draft: false
-          prerelease: ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
+          prerelease:
+            ${{ contains(github.ref, 'alpha') || contains(github.ref, 'beta') }}
           files: |
             dist/*.tar.gz
             dist/*.zip

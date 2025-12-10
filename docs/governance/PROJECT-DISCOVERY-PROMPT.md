@@ -1,12 +1,23 @@
+---
+title: '🚀 Comprehensive Project Discovery & Integration Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🚀 Comprehensive Project Discovery & Integration Prompt
 
 ## 🚀 Context
 
 I'm building a unified studio platform with two hubs:
-1. **Templates Studio** (/studio/templates) - Reusable design patterns and components
-2. **Platforms Studio** (/studio/platforms) - Functional platform projects organized by tier
 
-Currently, I have scaffolding for these platforms, but need to know which ones actually exist and where their source code is located.
+1. **Templates Studio** (/studio/templates) - Reusable design patterns and
+   components
+2. **Platforms Studio** (/studio/platforms) - Functional platform projects
+   organized by tier
+
+Currently, I have scaffolding for these platforms, but need to know which ones
+actually exist and where their source code is located.
 
 ## 🎯 Critical Questions - Please Answer Thoroughly
 
@@ -19,7 +30,6 @@ Currently, I have scaffolding for these platforms, but need to know which ones a
    - Color scheme/design theme (if different from briefs)?
 
 2. **QMLab** - Quantum mechanics laboratory
-
    - Does this exist? Where?
    - Folder path?
    - Key components?
@@ -38,7 +48,6 @@ Currently, I have scaffolding for these platforms, but need to know which ones a
    - Design?
 
 2. **LLMWorks** - Language model development
-
    - Exists? Path?
    - Components?
 
@@ -54,7 +63,6 @@ Currently, I have scaffolding for these platforms, but need to know which ones a
    - Exists? Path?
 
 2. **REPZ** - Agent network platform
-
    - Exists? Path?
 
 ### Tier 5: Lifestyle/E-commerce
@@ -63,7 +71,6 @@ Currently, I have scaffolding for these platforms, but need to know which ones a
    - Exists? Path?
 
 2. **PeptideVault** - Biotech e-commerce
-
    - Exists? Path?
 
 ### Tier 6: Family Projects
@@ -72,7 +79,6 @@ Currently, I have scaffolding for these platforms, but need to know which ones a
    - Exists? Path?
 
 2. **Dad's Website** - Academic portfolio
-
    - Exists? Path?
 
 ### Portfolio Projects
@@ -149,22 +155,22 @@ src/studios/templates/
 
 ## 📊 Summary Table Needed
 
-| Platform | Exists? | Path | Status | Primary Color | Notes |
-|----------|---------|------|--------|---------------|-------|
-| Portfolio #1 | Yes | src/pages/Portfolio.tsx | Active | Varies | |
-| Portfolio #2 | ? | ? | ? | ? | |
-| SimCore | ? | ? | ? | ? | |
-| QMLab | ? | ? | ? | ? | |
-| OptiLibria | ? | ? | ? | ? | |
-| TalAI | ? | ? | ? | ? | |
-| LLMWorks | ? | ? | ? | ? | |
-| MEZAN | ? | ? | ? | ? | |
-| Attributa | ? | ? | ? | ? | |
-| REPZ | ? | ? | ? | ? | |
-| LiveItIconic | ? | ? | ? | ? | |
-| PeptideVault | ? | ? | ? | ? | |
-| Mom's Business | ? | ? | ? | ? | |
-| Dad's Website | ? | ? | ? | ? | |
+| Platform       | Exists? | Path                    | Status | Primary Color | Notes |
+| -------------- | ------- | ----------------------- | ------ | ------------- | ----- |
+| Portfolio #1   | Yes     | src/pages/Portfolio.tsx | Active | Varies        |       |
+| Portfolio #2   | ?       | ?                       | ?      | ?             |       |
+| SimCore        | ?       | ?                       | ?      | ?             |       |
+| QMLab          | ?       | ?                       | ?      | ?             |       |
+| OptiLibria     | ?       | ?                       | ?      | ?             |       |
+| TalAI          | ?       | ?                       | ?      | ?             |       |
+| LLMWorks       | ?       | ?                       | ?      | ?             |       |
+| MEZAN          | ?       | ?                       | ?      | ?             |       |
+| Attributa      | ?       | ?                       | ?      | ?             |       |
+| REPZ           | ?       | ?                       | ?      | ?             |       |
+| LiveItIconic   | ?       | ?                       | ?      | ?             |       |
+| PeptideVault   | ?       | ?                       | ?      | ?             |       |
+| Mom's Business | ?       | ?                       | ?      | ?             |       |
+| Dad's Website  | ?       | ?                       | ?      | ?             |       |
 
 ## 🔍 Final Ask
 
@@ -180,12 +186,14 @@ Please scan the codebase and:
 ## 🎯 Expected Output Format
 
 Please respond with:
+
 1. **A filled summary table** showing existence status
 2. **Detailed breakdown** for each existing project using the template above
 3. **Any discrepancies** found between documentation and actual code
 4. **Recommendations** for integration approach
 
-This will help me accurately integrate the platforms into the studio hubs without making assumptions about what actually exists vs. what's just planned.
+This will help me accurately integrate the platforms into the studio hubs
+without making assumptions about what actually exists vs. what's just planned.
 
 ---
 
@@ -196,4 +204,5 @@ This will help me accurately integrate the platforms into the studio hubs withou
 3. Ask Windsurf to scan and provide the information
 4. Share the results with me for proper integration
 
-**Goal**: Get accurate, actionable data about which projects exist and where they're located so I can integrate them properly into the studio platform! 🎯
+**Goal**: Get accurate, actionable data about which projects exist and where
+they're located so I can integrate them properly into the studio platform! 🎯

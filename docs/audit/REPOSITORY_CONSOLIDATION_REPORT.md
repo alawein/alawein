@@ -1,3 +1,10 @@
+---
+title: 'Repository Consolidation Report'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Consolidation Report
 
 **Date:** December 6, 2025  
@@ -7,7 +14,8 @@
 
 ## Summary
 
-Consolidated repository root from **30 directories + 24 files** to **19 directories + 21 files**.
+Consolidated repository root from **30 directories + 24 files** to **19
+directories + 21 files**.
 
 ---
 

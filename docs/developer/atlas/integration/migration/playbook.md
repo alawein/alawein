@@ -1,8 +1,18 @@
+---
+title: 'ORCHEX-KILO Integration Migration Playbook'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX-KILO Integration Migration Playbook
 
 ## Overview
 
-This playbook provides detailed, step-by-step instructions for migrating from separate ORCHEX and KILO systems to the integrated ORCHEX-KILO workflow. Each phase includes prerequisites, detailed procedures, validation steps, and rollback procedures.
+This playbook provides detailed, step-by-step instructions for migrating from
+separate ORCHEX and KILO systems to the integrated ORCHEX-KILO workflow. Each
+phase includes prerequisites, detailed procedures, validation steps, and
+rollback procedures.
 
 ## Migration Phases Overview
 
@@ -229,7 +239,8 @@ jobs:
           ORCHEX config set kilo.apiKey ${{ secrets.KILO_API_KEY }}
 
       - name: Integrated Analysis
-        run: ORCHEX analyze repo . --governance-check --format json > analysis.json
+        run:
+          ORCHEX analyze repo . --governance-check --format json > analysis.json
 
       - name: Quality Gate
         run: |
@@ -628,4 +639,6 @@ ORCHEX config set bridges.a2k.templates.enabled true
 - 90% team satisfaction rating
 - 95% automated workflow adoption
 
-This playbook provides a comprehensive, phased approach to ORCHEX-KILO integration migration. Adapt the timeline and specific steps based on your organization's size, complexity, and risk tolerance.
+This playbook provides a comprehensive, phased approach to ORCHEX-KILO
+integration migration. Adapt the timeline and specific steps based on your
+organization's size, complexity, and risk tolerance.

@@ -1,3 +1,10 @@
+---
+title: 'Issues'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Issues
 
 > Automated issue management and tracking

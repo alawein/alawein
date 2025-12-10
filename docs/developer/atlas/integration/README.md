@@ -1,8 +1,20 @@
+---
+title: 'ORCHEX-KILO Integration Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX-KILO Integration Documentation
 
 ## Overview
 
-The ORCHEX-KILO integration represents a powerful convergence of two complementary development tools: **ORCHEX** (Advanced Tool for Learning and Analysis System) and **KILO** (Knowledge Infrastructure for Learning Operations). This integration enables seamless collaboration between ORCHEX's intelligent code analysis and refactoring capabilities with KILO's governance, validation, and DevOps automation features.
+The ORCHEX-KILO integration represents a powerful convergence of two
+complementary development tools: **ORCHEX** (Advanced Tool for Learning and
+Analysis System) and **KILO** (Knowledge Infrastructure for Learning
+Operations). This integration enables seamless collaboration between ORCHEX's
+intelligent code analysis and refactoring capabilities with KILO's governance,
+validation, and DevOps automation features.
 
 ### What is ORCHEX?
 
@@ -28,11 +40,16 @@ KILO is a comprehensive DevOps and governance platform that offers:
 
 The ORCHEX-KILO integration unlocks several key advantages:
 
-1. **Unified Workflow**: Single command interface for both analysis and governance operations
-2. **Automated Validation**: ORCHEX refactoring operations are automatically validated against KILO policies
-3. **Template Integration**: Access to KILO's DevOps templates directly from ORCHEX operations
-4. **Compliance Assurance**: Ensure all code changes meet organizational standards
-5. **Enhanced Automation**: End-to-end automation from code analysis to deployment
+1. **Unified Workflow**: Single command interface for both analysis and
+   governance operations
+2. **Automated Validation**: ORCHEX refactoring operations are automatically
+   validated against KILO policies
+3. **Template Integration**: Access to KILO's DevOps templates directly from
+   ORCHEX operations
+4. **Compliance Assurance**: Ensure all code changes meet organizational
+   standards
+5. **Enhanced Automation**: End-to-end automation from code analysis to
+   deployment
 
 ## Architecture
 
@@ -40,11 +57,15 @@ The integration is built around two primary bridge components:
 
 ### K2A Bridge (KILO → ORCHEX)
 
-Routes governance events from KILO to trigger ORCHEX analysis operations. When KILO detects policy violations or compliance issues, it can automatically initiate ORCHEX code analysis and optimization.
+Routes governance events from KILO to trigger ORCHEX analysis operations. When
+KILO detects policy violations or compliance issues, it can automatically
+initiate ORCHEX code analysis and optimization.
 
 ### A2K Bridge (ORCHEX → KILO)
 
-Enables ORCHEX operations to leverage KILO's validation and template systems. ORCHEX refactoring operations are validated against KILO policies, and ORCHEX can access KILO's DevOps templates for infrastructure setup.
+Enables ORCHEX operations to leverage KILO's validation and template systems.
+ORCHEX refactoring operations are validated against KILO policies, and ORCHEX
+can access KILO's DevOps templates for infrastructure setup.
 
 ```mermaid
 graph TB
@@ -75,7 +96,8 @@ graph TB
 
 ### Unified CLI
 
-A single command-line interface that provides access to both ORCHEX and KILO functionality:
+A single command-line interface that provides access to both ORCHEX and KILO
+functionality:
 
 ```bash
 # Analyze repository with governance validation
@@ -87,11 +109,13 @@ ORCHEX template get cicd/github-actions --validate
 
 ### Shared Configuration
 
-Common configuration system that works across both platforms, enabling consistent settings and policies.
+Common configuration system that works across both platforms, enabling
+consistent settings and policies.
 
 ### Automated Workflows
 
-Pre-built workflow templates that combine ORCHEX analysis with KILO governance operations.
+Pre-built workflow templates that combine ORCHEX analysis with KILO governance
+operations.
 
 ## Quick Start
 

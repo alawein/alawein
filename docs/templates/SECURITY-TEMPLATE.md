@@ -27,6 +27,7 @@ document_metadata:
     scope: "Security policies, threat modeling, incident response, compliance, best practices"
     key_concepts: ["security policy", "threat modeling", "incident response", "compliance", "risk assessment"]
     related_documents: ["DOCUMENT-TEMPLATE.md", "SECURITY.md", "SECURITY-IMPLEMENTATION.md"]
+last_verified: 2025-12-09
 ---
 
 # [Security Document Title]

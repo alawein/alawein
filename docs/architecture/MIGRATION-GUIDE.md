@@ -1,25 +1,35 @@
+---
+title: 'Migration Guide - Shared Configurations'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Migration Guide - Shared Configurations
 
 ## Overview
 
-This guide helps migrate existing projects to use shared workspace configurations.
+This guide helps migrate existing projects to use shared workspace
+configurations.
 
 ## Step 1: Update TypeScript Config
 
 ### Before
+
 ```json
 {
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020", "DOM"],
     "module": "ESNext",
-    "jsx": "react-jsx",
+    "jsx": "react-jsx"
     // ... many more options
   }
 }
 ```
 
 ### After
+
 ```json
 {
   "extends": "../../../../../packages/typescript-config/react.json",
@@ -35,6 +45,7 @@ This guide helps migrate existing projects to use shared workspace configuration
 ## Step 2: Update Vite Config
 
 ### Before
+
 ```typescript
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -46,6 +57,7 @@ export default defineConfig({
 ```
 
 ### After
+
 ```typescript
 import { createViteConfig } from '@alawein/vite-config';
 

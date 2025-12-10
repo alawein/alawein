@@ -1,6 +1,14 @@
+---
+title: 'Data Models and Schemas'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Data Models and Schemas
 
-Complete specification of all data models, schemas, and data structures used in the ORCHEX system for tasks, agents, metrics, and configuration.
+Complete specification of all data models, schemas, and data structures used in
+the ORCHEX system for tasks, agents, metrics, and configuration.
 
 ---
 
@@ -1219,4 +1227,7 @@ interface BudgetAlert {
 }
 ```
 
-These comprehensive data models provide the foundation for all ORCHEX operations, ensuring type safety, consistency, and extensibility across the entire system. Each model includes detailed specifications for validation, serialization, and integration with other components.</instructions>
+These comprehensive data models provide the foundation for all ORCHEX
+operations, ensuring type safety, consistency, and extensibility across the
+entire system. Each model includes detailed specifications for validation,
+serialization, and integration with other components.</instructions>

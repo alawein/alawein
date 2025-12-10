@@ -1,3 +1,10 @@
+---
+title: 'Branch Naming Convention'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Branch Naming Convention
 
 This document defines the branch naming conventions for the Alawein monorepo.
@@ -6,12 +13,12 @@ This document defines the branch naming conventions for the Alawein monorepo.
 
 ### Protected Branches (Never Deleted)
 
-| Branch | Purpose |
-|--------|---------|
-| `main` | Production-ready code, always deployable |
-| `develop` | Integration branch for features (if used) |
-| `staging` | Pre-production testing environment |
-| `production` | Mirror of what's deployed to production |
+| Branch       | Purpose                                   |
+| ------------ | ----------------------------------------- |
+| `main`       | Production-ready code, always deployable  |
+| `develop`    | Integration branch for features (if used) |
+| `staging`    | Pre-production testing environment        |
+| `production` | Mirror of what's deployed to production   |
 
 ### Feature Branches
 
@@ -20,6 +27,7 @@ This document defines the branch naming conventions for the Alawein monorepo.
 Use lowercase, hyphen-separated words.
 
 **Examples:**
+
 - `feat/portfolio-fixes`
 - `feat/quantum-visualization`
 - `feat/payment-integration`
@@ -32,6 +40,7 @@ Use lowercase, hyphen-separated words.
 For urgent fixes that need to go directly to production.
 
 **Examples:**
+
 - `hotfix/security-vulnerability`
 - `hotfix/login-crash`
 - `hotfix/payment-timeout`
@@ -43,6 +52,7 @@ For urgent fixes that need to go directly to production.
 For preparing releases with version numbers.
 
 **Examples:**
+
 - `release/v1.0.0`
 - `release/v2.1.0`
 - `release/v1.2.3`
@@ -54,6 +64,7 @@ For preparing releases with version numbers.
 Automatically created by Dependabot. Do not rename.
 
 **Examples:**
+
 - `dependabot/npm_and_yarn/vite-5.4.22`
 - `dependabot/pip/numpy-1.26.0`
 - `dependabot/github_actions/actions/checkout-4`
@@ -65,21 +76,25 @@ Automatically created by Dependabot. Do not rename.
 For experimental work that may not be merged.
 
 **Examples:**
+
 - `exp/meshal/new-algorithm`
 - `user/meshal/prototype-viz`
 
 ## Automated Cleanup Rules
 
 ### Merged Branch Deletion
+
 - All branches are automatically deleted after PR merge
 - Exception: Protected branches (main, develop, staging, production)
 
 ### Stale Branch Cleanup
+
 - Branches with no commits in 60+ days are deleted weekly
 - Exception: Protected branches
 - Runs every Sunday at 3 AM UTC
 
 ### Dependabot PR Management
+
 - Uses `rebase-strategy: auto` to keep PRs up-to-date
 - Newer updates automatically supersede older ones
 - Grouped updates reduce PR noise
@@ -114,4 +129,3 @@ gh pr create --title "feat: Add user dashboard" --base main
 - **Branch cleanup workflow:** `.github/workflows/branch-cleanup.yml`
 - **Dependabot config:** `.github/dependabot.yml`
 - **Auto-merge workflow:** `.github/workflows/auto-merge-dependabot.yml`
-

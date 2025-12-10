@@ -1,0 +1,49 @@
+graph LR
+    subgraph Triggers["🎯 Triggers"]
+        PUSH["push"]
+        PR["pull_request"]
+        SCHEDULE["schedule"]
+        MANUAL["workflow_dispatch"]
+    end
+
+    subgraph CI["🔄 CI Pipeline"]
+        LINT["Lint"]
+        TYPE["Type Check"]
+        TEST["Unit Tests"]
+        BUILD["Build"]
+    end
+
+    subgraph Quality["✅ Quality"]
+        E2E["E2E Tests"]
+        SECURITY["Security Scan"]
+        DOCS["Doc Validation"]
+    end
+
+    subgraph CD["🚀 CD Pipeline"]
+        PREVIEW["Preview Deploy"]
+        STAGING["Staging"]
+        PROD["Production"]
+    end
+
+    PUSH --> CI
+    PR --> CI
+
+    CI --> LINT
+    LINT --> TYPE
+    TYPE --> TEST
+    TEST --> BUILD
+
+    BUILD --> Quality
+    Quality --> E2E
+    Quality --> SECURITY
+    Quality --> DOCS
+
+    E2E --> CD
+    CD --> PREVIEW
+    PREVIEW --> STAGING
+    STAGING --> PROD
+
+    style Triggers fill:#6366f1,stroke:#fff
+    style CI fill:#f59e0b,stroke:#fff
+    style Quality fill:#22c55e,stroke:#fff
+    style CD fill:#3b82f6,stroke:#fff

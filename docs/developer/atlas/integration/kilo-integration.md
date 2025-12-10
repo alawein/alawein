@@ -1,6 +1,15 @@
+---
+title: 'KILO Integration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # KILO Integration Guide
 
-Complete guide for integrating ORCHEX with KILO (Knowledge Infrastructure for Learning Operations), enabling seamless collaboration between ORCHEX's AI orchestration and KILO's governance, validation, and DevOps automation.
+Complete guide for integrating ORCHEX with KILO (Knowledge Infrastructure for
+Learning Operations), enabling seamless collaboration between ORCHEX's AI
+orchestration and KILO's governance, validation, and DevOps automation.
 
 ---
 
@@ -8,10 +17,13 @@ Complete guide for integrating ORCHEX with KILO (Knowledge Infrastructure for Le
 
 The ORCHEX-KILO integration creates a powerful synergy between:
 
-- **ORCHEX**: Multiagent LLM orchestration, intelligent routing, continuous optimization
-- **KILO**: Governance, policy enforcement, DevOps automation, compliance validation
+- **ORCHEX**: Multiagent LLM orchestration, intelligent routing, continuous
+  optimization
+- **KILO**: Governance, policy enforcement, DevOps automation, compliance
+  validation
 
-Together they provide end-to-end automation from code analysis to production deployment.
+Together they provide end-to-end automation from code analysis to production
+deployment.
 
 ---
 
@@ -412,7 +424,10 @@ ORCHEX.policy.register(customPolicy);
 ```typescript
 // Custom bridge implementation
 class CustomA2KBridge extends A2KBridge {
-  async validateCode(code: string, policies: string[]): Promise<ValidationResult> {
+  async validateCode(
+    code: string,
+    policies: string[],
+  ): Promise<ValidationResult> {
     // Custom validation logic
     const result = await super.validateCode(code, policies);
 
@@ -647,7 +662,10 @@ ORCHEX governance dashboard --open
 ```json
 {
   "highAvailability": {
-    "multipleEndpoints": ["https://kilo-primary.company.com", "https://kilo-secondary.company.com"],
+    "multipleEndpoints": [
+      "https://kilo-primary.company.com",
+      "https://kilo-secondary.company.com"
+    ],
     "failoverEnabled": true,
     "healthCheckInterval": 30,
     "circuitBreaker": {
@@ -722,7 +740,8 @@ ORCHEX config set integration.features "[\"policy_validation\", \"template_acces
 
 ### Community Support
 
-- **Forum**: [ORCHEX-KILO Community](https://community.orchex-platform.com/c/kilo-integration)
+- **Forum**:
+  [ORCHEX-KILO Community](https://community.orchex-platform.com/c/kilo-integration)
 - **Discord**: [Real-time Help](https://discord.gg/ORCHEX-kilo)
 - **GitHub**: [Issue Tracking](https://github.com/ORCHEX-platform/ORCHEX/issues)
 
@@ -737,6 +756,11 @@ ORCHEX config set integration.features "[\"policy_validation\", \"template_acces
 
 ## Conclusion
 
-The ORCHEX-KILO integration provides a comprehensive solution for organizations seeking to combine AI-powered development with enterprise governance and DevOps automation. By following this guide, you can establish a robust integration that enhances productivity while maintaining compliance and quality standards.
+The ORCHEX-KILO integration provides a comprehensive solution for organizations
+seeking to combine AI-powered development with enterprise governance and DevOps
+automation. By following this guide, you can establish a robust integration that
+enhances productivity while maintaining compliance and quality standards.
 
-The integration is designed to be flexible and extensible, allowing you to customize workflows and policies to match your organization's specific needs and processes.</instructions>
+The integration is designed to be flexible and extensible, allowing you to
+customize workflows and policies to match your organization's specific needs and
+processes.</instructions>

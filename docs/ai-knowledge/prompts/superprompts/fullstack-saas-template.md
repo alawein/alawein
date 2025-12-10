@@ -6,13 +6,18 @@ tags: ['lovable', 'templates', 'ui', 'ux', 'design-system', 'frontend']
 created: '2024-12-04'
 author: 'Meshal Alawein'
 credits_budget: 200
+last_verified: 2025-12-09
 ---
 
 # Lovable Template Generation Strategy
 
 ## Executive Summary
 
-This document provides a comprehensive strategy for maximizing 200 Lovable credits to generate a library of deployment-ready UI/UX templates. All templates are designed to align with the Alawein Design System - a sophisticated, physics-inspired aesthetic featuring quantum visualizations, GPU-accelerated animations, and scientific elegance.
+This document provides a comprehensive strategy for maximizing 200 Lovable
+credits to generate a library of deployment-ready UI/UX templates. All templates
+are designed to align with the Alawein Design System - a sophisticated,
+physics-inspired aesthetic featuring quantum visualizations, GPU-accelerated
+animations, and scientific elegance.
 
 ---
 
@@ -57,8 +62,10 @@ colors:
 
   # Gradient Definitions
   gradients:
-    text-gradient: 'linear-gradient(90deg, #A855F7 0%, #EC4899 50%, #4CC9F0 100%)'
-    bg-gradient: 'linear-gradient(135deg, #0F0F23 0%, #1A1B3D 50%, #2A1B4D 100%)'
+    text-gradient:
+      'linear-gradient(90deg, #A855F7 0%, #EC4899 50%, #4CC9F0 100%)'
+    bg-gradient:
+      'linear-gradient(135deg, #0F0F23 0%, #1A1B3D 50%, #2A1B4D 100%)'
     orbit-gradient: 'linear-gradient(135deg, #4CC9F0 0%, #A855F7 100%)'
     button-gradient: 'linear-gradient(135deg, #A855F7 0%, #EC4899 100%)'
     card-gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
@@ -73,7 +80,8 @@ typography:
   # Font Families
   fonts:
     display: "'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace"
-    body: "'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    body:
+      "'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
     mono: "'JetBrains Mono', 'Fira Code', 'SF Mono', monospace"
     serif: "'Instrument Serif', 'Playfair Display', Georgia, serif"
 
@@ -293,19 +301,22 @@ lovable-templates/
 ```markdown
 # LOVABLE PROMPT: Quantum Lab Portal
 
-Create a sophisticated scientific research portal with the following specifications:
+Create a sophisticated scientific research portal with the following
+specifications:
 
 ## Visual Design
 
 - Dark theme with deep space background (#0F0F23 to #2A1B4D gradient)
-- Accent colors: quantum purple (#A855F7), plasma pink (#EC4899), electron cyan (#4CC9F0)
+- Accent colors: quantum purple (#A855F7), plasma pink (#EC4899), electron cyan
+  (#4CC9F0)
 - Monospace typography (JetBrains Mono or Fira Code) for all headings
 - Inter or system sans-serif for body text
 - Subtle grid pattern overlay (10% opacity)
 
 ## Layout Structure
 
-1. **Header**: Fixed navigation with glass morphism effect (backdrop-filter: blur(40px))
+1. **Header**: Fixed navigation with glass morphism effect (backdrop-filter:
+   blur(40px))
    - Logo with gradient text effect
    - Navigation: Research | Publications | Team | Contact
    - GitHub star button
@@ -697,7 +708,8 @@ Create a live system monitoring dashboard:
 ## Visual Design
 
 - Dark theme optimized for always-on displays
-- Green (#10B981) for healthy, Yellow (#F59E0B) for warning, Red (#EF4444) for critical
+- Green (#10B981) for healthy, Yellow (#F59E0B) for warning, Red (#EF4444) for
+  critical
 - Minimal chrome, maximum data density
 - Monospace numbers for precision
 
@@ -2014,17 +2026,17 @@ Add floating math symbols to scientific templates:
 
 ```tsx
 const MathDecorations = () => (
-  <div className="math-decorations">
-    <span className="math-symbol" style={{ top: '20%', left: '5%' }}>
+  <div className='math-decorations'>
+    <span className='math-symbol' style={{ top: '20%', left: '5%' }}>
       ∇²ψ
     </span>
-    <span className="math-symbol" style={{ top: '80%', left: '10%' }}>
+    <span className='math-symbol' style={{ top: '80%', left: '10%' }}>
       ∂H/∂t
     </span>
-    <span className="math-symbol" style={{ top: '15%', right: '8%' }}>
+    <span className='math-symbol' style={{ top: '15%', right: '8%' }}>
       λ·∇f
     </span>
-    <span className="math-symbol" style={{ top: '75%', right: '5%' }}>
+    <span className='math-symbol' style={{ top: '75%', right: '5%' }}>
       min(E)
     </span>
   </div>
@@ -2202,14 +2214,20 @@ Create a [TYPE] with:
   --color-info: #4cc9f0;
 
   /* Gradients */
-  --gradient-text: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #4cc9f0 100%);
+  --gradient-text: linear-gradient(
+    90deg,
+    #a855f7 0%,
+    #ec4899 50%,
+    #4cc9f0 100%
+  );
   --gradient-bg: linear-gradient(135deg, #0f0f23 0%, #1a1b3d 50%, #2a1b4d 100%);
   --gradient-button: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
 
   /* === TYPOGRAPHY === */
 
   --font-display: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
-  --font-body: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:
+    'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
 
   /* Type Scale */
@@ -2307,7 +2325,5 @@ Create a [TYPE] with:
 
 ---
 
-_Document Version: 1.0_
-_Created: December 4, 2024_
-_Author: Frontend Specialist Mode_
-_For: Meshal Alawein - Alawein Design System_
+_Document Version: 1.0_ _Created: December 4, 2024_ _Author: Frontend Specialist
+Mode_ _For: Meshal Alawein - Alawein Design System_

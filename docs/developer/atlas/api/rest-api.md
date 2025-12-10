@@ -1,12 +1,23 @@
+---
+title: 'REST API Reference'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REST API Reference
 
-Complete REST API documentation for ORCHEX, including all endpoints, request/response formats, authentication, error handling, and practical examples.
+Complete REST API documentation for ORCHEX, including all endpoints,
+request/response formats, authentication, error handling, and practical
+examples.
 
 ---
 
 ## API Overview
 
-The ORCHEX REST API provides programmatic access to all ORCHEX functionality, enabling integration with external systems, automation workflows, and custom applications.
+The ORCHEX REST API provides programmatic access to all ORCHEX functionality,
+enabling integration with external systems, automation workflows, and custom
+applications.
 
 **Base URL:** `https://api.orchex-platform.com/v1`  
 **Protocol:** HTTPS only  
@@ -110,7 +121,12 @@ POST /agents
   "name": "Claude Sonnet 4",
   "provider": "anthropic",
   "model": "claude-sonnet-4.5",
-  "capabilities": ["code_generation", "code_review", "refactoring", "debugging"],
+  "capabilities": [
+    "code_generation",
+    "code_review",
+    "refactoring",
+    "debugging"
+  ],
   "constraints": {
     "max_tokens": 200000,
     "max_concurrent_tasks": 5,
@@ -221,7 +237,12 @@ GET /agents/{agent_id}
     "name": "Claude Sonnet 4",
     "provider": "anthropic",
     "model": "claude-sonnet-4.5",
-    "capabilities": ["code_generation", "code_review", "refactoring", "debugging"],
+    "capabilities": [
+      "code_generation",
+      "code_review",
+      "refactoring",
+      "debugging"
+    ],
     "constraints": {
       "max_tokens": 200000,
       "max_concurrent_tasks": 5,
@@ -394,7 +415,11 @@ GET /tasks/{task_id}
     "result": {
       "code": "const express = require('express');\nconst router = express.Router();\n\nconst authenticateUser = async (req, res) => {\n  try {\n    const { email, password } = req.body;\n    \n    // Authentication logic here\n    \n    res.json({ success: true, token: 'jwt_token' });\n  } catch (error) {\n    res.status(401).json({ error: 'Authentication failed' });\n  }\n};\n\nrouter.post('/login', authenticateUser);\n\nmodule.exports = router;",
       "explanation": "Created a basic authentication endpoint with error handling",
-      "suggestions": ["Add input validation", "Implement JWT token generation", "Add rate limiting"]
+      "suggestions": [
+        "Add input validation",
+        "Implement JWT token generation",
+        "Add rate limiting"
+      ]
     },
     "agent_id": "claude-sonnet-4",
     "tier": 0,
@@ -836,7 +861,12 @@ POST /webhooks
 {
   "url": "https://my-app.com/webhooks/ORCHEX",
   "secret": "webhook_secret",
-  "events": ["task.completed", "task.failed", "analysis.completed", "refactoring.applied"],
+  "events": [
+    "task.completed",
+    "task.failed",
+    "analysis.completed",
+    "refactoring.applied"
+  ],
   "active": true
 }
 ```
@@ -1026,4 +1056,7 @@ curl https://api.orchex-platform.com/v1/tasks/task_123 \
 6. **Cache results** when appropriate to reduce API calls
 7. **Handle errors gracefully** with proper fallback logic
 
-This comprehensive API reference provides everything needed to integrate ORCHEX into your applications and workflows. For additional support, visit our [developer community](https://community.orchex-platform.com) or contact [enterprise support](mailto:enterprise@ORCHEX-platform.com).</instructions>
+This comprehensive API reference provides everything needed to integrate ORCHEX
+into your applications and workflows. For additional support, visit our
+[developer community](https://community.orchex-platform.com) or contact
+[enterprise support](mailto:enterprise@ORCHEX-platform.com).</instructions>

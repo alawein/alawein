@@ -1,10 +1,22 @@
+---
+title: 'K2A Bridge (KILO → ORCHEX Integration)'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # K2A Bridge (KILO → ORCHEX Integration)
 
-The K2A Bridge enables KILO governance operations to trigger ORCHEX analysis and optimization workflows. This event-driven bridge allows KILO to leverage ORCHEX's intelligent code analysis capabilities when governance events occur.
+The K2A Bridge enables KILO governance operations to trigger ORCHEX analysis and
+optimization workflows. This event-driven bridge allows KILO to leverage
+ORCHEX's intelligent code analysis capabilities when governance events occur.
 
 ## Overview
 
-The K2A Bridge operates as an event-driven system where KILO governance events are automatically routed to ORCHEX for analysis and potential remediation. This creates a proactive development workflow where policy violations and compliance issues trigger intelligent code improvements.
+The K2A Bridge operates as an event-driven system where KILO governance events
+are automatically routed to ORCHEX for analysis and potential remediation. This
+creates a proactive development workflow where policy violations and compliance
+issues trigger intelligent code improvements.
 
 ## Architecture
 
@@ -187,7 +199,8 @@ interface K2ABridgeConfig {
 
 ### 1. Event Reception
 
-The bridge receives governance events from KILO through the `onGovernanceEvent` method.
+The bridge receives governance events from KILO through the `onGovernanceEvent`
+method.
 
 ### 2. Event Filtering
 
@@ -239,7 +252,8 @@ Analysis results are processed and may trigger:
 - Service unavailability
 - Temporary ORCHEX overload
 
-**Recovery Strategy**: Exponential backoff retry with configurable maximum attempts.
+**Recovery Strategy**: Exponential backoff retry with configurable maximum
+attempts.
 
 ### Permanent Failures
 
@@ -247,7 +261,8 @@ Analysis results are processed and may trigger:
 - Unsupported event types
 - Configuration errors
 
-**Recovery Strategy**: Log error, notify administrators, continue processing other events.
+**Recovery Strategy**: Log error, notify administrators, continue processing
+other events.
 
 ### Circuit Breaker Pattern
 
@@ -334,11 +349,13 @@ async processBatch(events: GovernanceEvent[]): Promise<void> {
 
 ### Caching
 
-Frequently accessed analysis results and configurations are cached to reduce latency.
+Frequently accessed analysis results and configurations are cached to reduce
+latency.
 
 ### Async Processing
 
-Non-critical analysis operations are processed asynchronously to maintain responsiveness.
+Non-critical analysis operations are processed asynchronously to maintain
+responsiveness.
 
 ## Integration Examples
 

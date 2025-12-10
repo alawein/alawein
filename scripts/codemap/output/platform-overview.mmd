@@ -1,0 +1,33 @@
+graph LR
+    subgraph Platforms["🖥️ Platforms"]
+        REPZ["💪 REPZ<br/>Fitness Coaching"]
+        SIMCORE["🔬 SimCore<br/>Scientific Simulation"]
+        QMLAB["⚛️ QMLab<br/>Quantum Mechanics"]
+        ICONIC["🛍️ LiveItIconic<br/>E-commerce"]
+        LLMWORKS["🤖 LLMWorks<br/>AI/ML Tools"]
+        ATTRIBUTA["📊 Attributa<br/>Attribution"]
+        PORTFOLIO["👤 Portfolio<br/>Personal Site"]
+    end
+
+    subgraph Shared["📦 Shared"]
+        UI["@monorepo/ui"]
+        UTILS["@monorepo/utils"]
+        CONFIG["@monorepo/config"]
+    end
+
+    subgraph Backend["☁️ Backend"]
+        SUPABASE["Supabase"]
+        VERCEL["Vercel"]
+    end
+
+    REPZ --> UI
+    SIMCORE --> UI
+    QMLAB --> UI
+    ICONIC --> UI
+
+    UI --> SUPABASE
+    UI --> VERCEL
+
+    style Platforms fill:#1e293b,stroke:#6366f1
+    style Shared fill:#1e293b,stroke:#22c55e
+    style Backend fill:#1e293b,stroke:#f59e0b

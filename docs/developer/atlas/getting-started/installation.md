@@ -1,6 +1,14 @@
+---
+title: 'Installation Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Installation Guide
 
-Complete installation instructions for ORCHEX across all supported platforms and environments.
+Complete installation instructions for ORCHEX across all supported platforms and
+environments.
 
 ---
 
@@ -357,7 +365,9 @@ jobs:
           node-version: '18'
       - run: npm install -g @ORCHEX/cli
       - run: ORCHEX init
-      - run: ORCHEX agent register claude-sonnet-4 --api-key ${{ secrets.ANTHROPIC_API_KEY }}
+      - run:
+          ORCHEX agent register claude-sonnet-4 --api-key ${{
+          secrets.ANTHROPIC_API_KEY }}
       - run: ORCHEX analyze repo . --format json
 ```
 
@@ -503,8 +513,10 @@ echo "🎉 Installation verified successfully!"
 After successful installation:
 
 1. **[Quick Start](quick-start.md)** - Get up and running in 5 minutes
-2. **[Register Agents](first-tasks.md#registering-agents)** - Add AI agents to ORCHEX
-3. **[Submit Tasks](first-tasks.md#submitting-tasks)** - Start using ORCHEX for development
+2. **[Register Agents](first-tasks.md#registering-agents)** - Add AI agents to
+   ORCHEX
+3. **[Submit Tasks](first-tasks.md#submitting-tasks)** - Start using ORCHEX for
+   development
 4. **[Configuration](configuration.md)** - Advanced configuration options
 
 ---
@@ -514,4 +526,5 @@ After successful installation:
 - **Documentation**: [Full Documentation](../README.md)
 - **Community**: [Discord](https://discord.gg/ORCHEX-platform)
 - **Issues**: [GitHub Issues](https://github.com/ORCHEX-platform/ORCHEX/issues)
-- **Enterprise**: [Contact Sales](mailto:sales@ORCHEX-platform.com)</instructions>
+- **Enterprise**:
+  [Contact Sales](mailto:sales@ORCHEX-platform.com)</instructions>

@@ -1,0 +1,44 @@
+graph TB
+    subgraph Trigger["Trigger"]
+        MERGE["Merge to main"]
+        TAG["Release Tag"]
+    end
+
+    subgraph Build["Build"]
+        INSTALL["npm ci"]
+        LINT["Lint"]
+        TEST["Test"]
+        BUILD_APP["Build"]
+    end
+
+    subgraph Deploy["Deploy"]
+        PREVIEW["Preview"]
+        STAGING["Staging"]
+        PROD["Production"]
+    end
+
+    subgraph Verify["Verify"]
+        HEALTH["Health Check"]
+        E2E["E2E Tests"]
+        MONITOR["Monitoring"]
+    end
+
+    MERGE --> Build
+    TAG --> Build
+
+    INSTALL --> LINT
+    LINT --> TEST
+    TEST --> BUILD_APP
+
+    BUILD_APP --> PREVIEW
+    PREVIEW --> STAGING
+    STAGING --> PROD
+
+    PROD --> HEALTH
+    HEALTH --> E2E
+    E2E --> MONITOR
+
+    style Trigger fill:#6366f1,stroke:#fff
+    style Build fill:#f59e0b,stroke:#fff
+    style Deploy fill:#22c55e,stroke:#fff
+    style Verify fill:#3b82f6,stroke:#fff

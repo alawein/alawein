@@ -1,12 +1,22 @@
+---
+title: 'AI Tools Orchestration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Tools Orchestration Guide
 
-This document describes the multi-agent AI tool orchestration system for the alawein portfolio governance infrastructure.
+This document describes the multi-agent AI tool orchestration system for the
+alawein portfolio governance infrastructure.
 
 ## Overview
 
-The orchestration system enables seamless collaboration between 14 AI coding assistants, providing:
+The orchestration system enables seamless collaboration between 14 AI coding
+assistants, providing:
 
-- **Intelligent task routing** - Route tasks to the best-fit tool based on intent
+- **Intelligent task routing** - Route tasks to the best-fit tool based on
+  intent
 - **Handoff context preservation** - Maintain context across tool switches
 - **Hallucination prevention** - Three-layer verification cascade
 - **Checkpoint-based recovery** - Restore from known-good states on failure
@@ -44,7 +54,8 @@ The orchestration system enables seamless collaboration between 14 AI coding ass
 
 ## Tool Routing
 
-The system routes tasks to the optimal tool based on task type and intent extraction.
+The system routes tasks to the optimal tool based on task type and intent
+extraction.
 
 ### Task Type Mappings
 
@@ -82,7 +93,8 @@ python orchestration_validator.py check-routing --source cline --target kilo
 
 ## Handoff Envelopes
 
-When switching between tools, use structured handoff envelopes to preserve context.
+When switching between tools, use structured handoff envelopes to preserve
+context.
 
 ### Envelope Structure
 
@@ -98,11 +110,15 @@ When switching between tools, use structured handoff envelopes to preserve conte
   "context": {
     "task_description": "Implement user authentication flow",
     "relevant_files": ["src/auth/", "src/api/users.py"],
-    "prior_decisions": [{ "decision": "Use JWT tokens", "rationale": "Stateless, scalable" }],
+    "prior_decisions": [
+      { "decision": "Use JWT tokens", "rationale": "Stateless, scalable" }
+    ],
     "success_criteria": ["Users can login", "Tokens expire correctly"]
   },
   "artifacts": {
-    "files_modified": [{ "path": "src/auth/jwt.py", "action": "created", "lines_changed": 45 }],
+    "files_modified": [
+      { "path": "src/auth/jwt.py", "action": "created", "lines_changed": 45 }
+    ],
     "validation_results": {
       "tests_passed": true,
       "lint_passed": true
@@ -187,7 +203,8 @@ python hallucination_verifier.py analyze-claims --text "This will always work pe
 
 ### Confidence Threshold
 
-The default confidence threshold is **0.8** (80%). Outputs below this threshold are flagged for review.
+The default confidence threshold is **0.8** (80%). Outputs below this threshold
+are flagged for review.
 
 ## Error Recovery & Self-Healing
 
@@ -274,7 +291,8 @@ python orchestration_telemetry.py check-targets
 
 ## MCP Server Integration
 
-The system integrates with Model Context Protocol (MCP) servers for enhanced capabilities.
+The system integrates with Model Context Protocol (MCP) servers for enhanced
+capabilities.
 
 ### Available Servers
 
@@ -292,11 +310,13 @@ The system integrates with Model Context Protocol (MCP) servers for enhanced cap
 
 ### Server Registry
 
-See `.ai/mcp/server-registry.yaml` for full server definitions and configurations.
+See `.ai/mcp/server-registry.yaml` for full server definitions and
+configurations.
 
 ## MCP CLI Integration
 
-The orchestration system integrates with [mcp-cli](https://github.com/chrishayuk/mcp-cli) for testing and automation.
+The orchestration system integrates with
+[mcp-cli](https://github.com/chrishayuk/mcp-cli) for testing and automation.
 
 ### Installation
 
@@ -486,9 +506,11 @@ When the verifier flags claims, review before proceeding.
 
 ## Related Documentation
 
-- [ROOT_STRUCTURE_CONTRACT.md](ROOT_STRUCTURE_CONTRACT.md) - Repository structure
+- [ROOT_STRUCTURE_CONTRACT.md](ROOT_STRUCTURE_CONTRACT.md) - Repository
+  structure
 - [.ai/settings.yaml](../.ai/settings.yaml) - Tool configurations
-- [orchestration-governance.yaml](../.metaHub/policies/orchestration-governance.yaml) - Full policy
+- [orchestration-governance.yaml](../.metaHub/policies/orchestration-governance.yaml) -
+  Full policy
 
 ---
 

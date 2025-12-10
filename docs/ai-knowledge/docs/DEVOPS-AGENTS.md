@@ -1,6 +1,16 @@
+---
+title: 'DevOps Agent Reference (Top 20 Essentials)'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # DevOps Agent Reference (Top 20 Essentials)
 
-This document catalogs 20 essential DevOps agents with specifications, invocation syntax, activation scenarios, version compatibility, security considerations, and practical examples. Agents are expressed generically; adapt CLI/API names to your platform (`agentctl`, `agentd`, or your orchestrator).
+This document catalogs 20 essential DevOps agents with specifications,
+invocation syntax, activation scenarios, version compatibility, security
+considerations, and practical examples. Agents are expressed generically; adapt
+CLI/API names to your platform (`agentctl`, `agentd`, or your orchestrator).
 
 ---
 
@@ -8,15 +18,20 @@ This document catalogs 20 essential DevOps agents with specifications, invocatio
 
 ### Smart Generate Agent [DESCRIPTION]
 
-- Orchestrates multi-stage CI/CD workflows: fan-in/out, gates, matrices, approvals, retries.
-- Core: DAG scheduling, artifact passing, conditional steps, concurrency and queueing.
-- Inputs: `pipelineFile`, `env`, `secretsRef`, `parameters` map; Outputs: status, stage logs, artifacts index.
-- Perf: Parallel stages up to host core count; queue fairness; limitation: long-running stages can block shared runners.
+- Orchestrates multi-stage CI/CD workflows: fan-in/out, gates, matrices,
+  approvals, retries.
+- Core: DAG scheduling, artifact passing, conditional steps, concurrency and
+  queueing.
+- Inputs: `pipelineFile`, `env`, `secretsRef`, `parameters` map; Outputs:
+  status, stage logs, artifacts index.
+- Perf: Parallel stages up to host core count; queue fairness; limitation:
+  long-running stages can block shared runners.
 
 ### What to Call [pipeline-orchestrator]
 
 - Identifier: `pipeline-orchestrator` • Aliases: `workflow`, `ci-pipeline`.
-- CLI: `agentctl run pipeline-orchestrator --pipeline .\ci\main.yml --env prod --params .\params.json`
+- CLI:
+  `agentctl run pipeline-orchestrator --pipeline .\ci\main.yml --env prod --params .\params.json`
 - API: `POST /agents/v1/pipeline-orchestrator/run`
 
 ### When to Call
@@ -28,12 +43,14 @@ This document catalogs 20 essential DevOps agents with specifications, invocatio
 
 ### Version Compatibility
 
-- Works with GitHub Actions YAML 1.0+, Azure DevOps pipelines, GitLab CI 16+, Jenkinsfiles.
+- Works with GitHub Actions YAML 1.0+, Azure DevOps pipelines, GitLab CI 16+,
+  Jenkinsfiles.
 - Windows Server 2019+, PowerShell 7+, .NET 6+ runner or container runtime.
 
 ### Security Considerations
 
-- Least-privilege tokens for SCM and artifact stores; sanitize env and masked logs.
+- Least-privilege tokens for SCM and artifact stores; sanitize env and masked
+  logs.
 - Disallow untrusted script injection; approve external reusable workflows.
 
 ### Examples
@@ -60,9 +77,12 @@ Content-Type: application/json
 
 ### Smart Generate Agent [DESCRIPTION]
 
-- Compiles source, resolves deps, produces versioned artifacts (binaries, images).
-- Inputs: `sourcePath`, `buildSpec`, `cacheKey`; Outputs: build logs, artifact IDs.
-- Perf: Incremental caching, parallel module builds; limits: cache invalidation on lockfile changes.
+- Compiles source, resolves deps, produces versioned artifacts (binaries,
+  images).
+- Inputs: `sourcePath`, `buildSpec`, `cacheKey`; Outputs: build logs, artifact
+  IDs.
+- Perf: Incremental caching, parallel module builds; limits: cache invalidation
+  on lockfile changes.
 
 ### What to Call [build]
 
@@ -105,7 +125,8 @@ POST /agents/v1/build/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Executes unit/integration/e2e suites; collects coverage, flaky test detection.
-- Inputs: `testSpec`, `shard`, `env`; Outputs: JUnit XML, coverage reports, trend metrics.
+- Inputs: `testSpec`, `shard`, `env`; Outputs: JUnit XML, coverage reports,
+  trend metrics.
 - Perf: Sharding by historical runtime; retries for flaky tests.
 
 ### What to Call [test-runner]
@@ -145,12 +166,14 @@ POST /agents/v1/test-runner/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Publishes and retrieves artifacts from registries (Nexus, Artifactory, S3).
-- Inputs: `artifactPath`, `repoRef`, `metadata`; Outputs: immutable artifact URL, checksum.
+- Inputs: `artifactPath`, `repoRef`, `metadata`; Outputs: immutable artifact
+  URL, checksum.
 
 ### What to Call [artifact-repo]
 
 - Identifier: `artifact-repo` • Aliases: `publisher`, `registry-client`.
-- CLI: `agentctl run artifact-repo --push .\dist\app.zip --repo nuget://internal`
+- CLI:
+  `agentctl run artifact-repo --push .\dist\app.zip --repo nuget://internal`
 - API: `POST /agents/v1/artifact-repo/push`
 
 ### When to Call
@@ -189,7 +212,8 @@ POST /agents/v1/artifact-repo/push
 ### What to Call [container-build]
 
 - Identifier: `container-build` • Aliases: `image-builder`.
-- CLI: `agentctl run container-build --file .\Dockerfile --context . --tag mysvc:1.2.3`
+- CLI:
+  `agentctl run container-build --file .\Dockerfile --context . --tag mysvc:1.2.3`
 - API: `POST /agents/v1/container-build/run`
 
 ### When to Call
@@ -223,12 +247,14 @@ POST /agents/v1/container-build/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Scans images and dependencies (Trivy/Grype) for CVEs; policy gates.
-- Inputs: `imageRef`, `policy`; Outputs: report, pass/fail gate, remediation hints.
+- Inputs: `imageRef`, `policy`; Outputs: report, pass/fail gate, remediation
+  hints.
 
 ### What to Call [image-scan]
 
 - Identifier: `image-scan` • Aliases: `vuln-scan`.
-- CLI: `agentctl run image-scan --image registry.local/mysvc:1.2.3 --policy high-only`
+- CLI:
+  `agentctl run image-scan --image registry.local/mysvc:1.2.3 --policy high-only`
 - API: `POST /agents/v1/image-scan/run`
 
 ### When to Call
@@ -261,7 +287,8 @@ POST /agents/v1/image-scan/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Fetches, rotates, and injects secrets from KMS/Vault/Azure Key Vault.
-- Inputs: `secretsRef`, `bindings`; Outputs: ephemeral env files, rotation status.
+- Inputs: `secretsRef`, `bindings`; Outputs: ephemeral env files, rotation
+  status.
 
 ### What to Call [secrets]
 
@@ -298,13 +325,15 @@ POST /agents/v1/secrets/fetch
 
 ### Smart Generate Agent [DESCRIPTION]
 
-- Plans/applies IaC (Terraform/Pulumi) with state management and drift detection.
+- Plans/applies IaC (Terraform/Pulumi) with state management and drift
+  detection.
 - Inputs: `iacPath`, `workspace`, `vars`; Outputs: plan diff, apply status.
 
 ### What to Call [infra-provisioner]
 
 - Identifier: `infra-provisioner` • Aliases: `terraform-agent`, `pulumi-agent`.
-- CLI: `agentctl run infra-provisioner --iac .\infra --workspace prod --varFile .\prod.tfvars`
+- CLI:
+  `agentctl run infra-provisioner --iac .\infra --workspace prod --varFile .\prod.tfvars`
 - API: `POST /agents/v1/infra-provisioner/plan|apply`
 
 ### When to Call
@@ -337,12 +366,14 @@ POST /agents/v1/infra-provisioner/apply
 ### Smart Generate Agent [DESCRIPTION]
 
 - Applies declarative config (Ansible/Chef) to VMs/services; idempotent runs.
-- Inputs: `playbook`, `inventory`, `vars`; Outputs: change set, compliance report.
+- Inputs: `playbook`, `inventory`, `vars`; Outputs: change set, compliance
+  report.
 
 ### What to Call [config-manager]
 
 - Identifier: `config-manager` • Aliases: `ansible-agent`.
-- CLI: `agentctl run config-manager --playbook .\site.yml --inventory .\hosts.ini`
+- CLI:
+  `agentctl run config-manager --playbook .\site.yml --inventory .\hosts.ini`
 - API: `POST /agents/v1/config-manager/run`
 
 ### When to Call
@@ -375,12 +406,14 @@ POST /agents/v1/config-manager/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Applies manifests/Helm charts to clusters, validates health probes/rollouts.
-- Inputs: `clusterRef`, `manifests|chart`, `values`; Outputs: rollout status, kubectl logs.
+- Inputs: `clusterRef`, `manifests|chart`, `values`; Outputs: rollout status,
+  kubectl logs.
 
 ### What to Call [k8s-deploy]
 
 - Identifier: `k8s-deploy` • Aliases: `helm-deploy`.
-- CLI: `agentctl run k8s-deploy --cluster prod --chart .\charts\app --values .\values.prod.yaml`
+- CLI:
+  `agentctl run k8s-deploy --cluster prod --chart .\charts\app --values .\values.prod.yaml`
 - API: `POST /agents/v1/k8s-deploy/run`
 
 ### When to Call
@@ -412,13 +445,16 @@ POST /agents/v1/k8s-deploy/run
 
 ### Smart Generate Agent [DESCRIPTION]
 
-- Performs safe deployment strategies (blue-green, canary with weighted traffic).
-- Inputs: `strategy`, `serviceRef`, `weights`, `checks`; Outputs: promotion or rollback status.
+- Performs safe deployment strategies (blue-green, canary with weighted
+  traffic).
+- Inputs: `strategy`, `serviceRef`, `weights`, `checks`; Outputs: promotion or
+  rollback status.
 
 ### What to Call [progressive-delivery]
 
 - Identifier: `progressive-delivery` • Aliases: `canary`, `blue-green`.
-- CLI: `agentctl run progressive-delivery --service app --strategy canary --weights 10,30,60`
+- CLI:
+  `agentctl run progressive-delivery --service app --strategy canary --weights 10,30,60`
 - API: `POST /agents/v1/progressive-delivery/run`
 
 ### When to Call
@@ -451,12 +487,14 @@ POST /agents/v1/progressive-delivery/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Monitors post-deploy health; triggers rollback on SLO violation or errors.
-- Inputs: `deploymentId`, `rollbackPlan`, `monitors`; Outputs: rollback status, incident link.
+- Inputs: `deploymentId`, `rollbackPlan`, `monitors`; Outputs: rollback status,
+  incident link.
 
 ### What to Call [rollback]
 
 - Identifier: `rollback` • Aliases: `revert`, `undo-deploy`.
-- CLI: `agentctl run rollback --deploymentId 20251130-1234 --plan .\rollback.yml`
+- CLI:
+  `agentctl run rollback --deploymentId 20251130-1234 --plan .\rollback.yml`
 - API: `POST /agents/v1/rollback/run`
 
 ### When to Call
@@ -527,7 +565,8 @@ POST /agents/v1/metrics/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Collects, parses, and ships logs (Fluent Bit/Vector) with schema enforcement.
-- Inputs: `pipeline`, `sinks`, `parsers`; Outputs: structured logs, ingestion metrics.
+- Inputs: `pipeline`, `sinks`, `parsers`; Outputs: structured logs, ingestion
+  metrics.
 
 ### What to Call [log-shipper]
 
@@ -565,7 +604,8 @@ POST /agents/v1/log-shipper/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Routes alerts to on-call (PagerDuty/Opsgenie/MS Teams), dedup and escalation.
-- Inputs: `rules`, `receivers`, `schedules`; Outputs: incidents, acknowledgements.
+- Inputs: `rules`, `receivers`, `schedules`; Outputs: incidents,
+  acknowledgements.
 
 ### What to Call [alert-router]
 
@@ -603,12 +643,14 @@ POST /agents/v1/alert-router/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Classifies incidents, suggests runbooks, correlates signals, opens tickets.
-- Inputs: `eventStream`, `runbooks`, `priorityRules`; Outputs: ticket IDs, triage notes.
+- Inputs: `eventStream`, `runbooks`, `priorityRules`; Outputs: ticket IDs,
+  triage notes.
 
 ### What to Call [triage]
 
 - Identifier: `triage` • Aliases: `incident-bot`.
-- CLI: `agentctl run triage --events .\events\current.json --runbooks .\runbooks`
+- CLI:
+  `agentctl run triage --events .\events\current.json --runbooks .\runbooks`
 - API: `POST /agents/v1/triage/run`
 
 ### When to Call
@@ -641,12 +683,14 @@ POST /agents/v1/triage/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Assembles release notes, tags, change logs; coordinates approvals.
-- Inputs: `commitsRange`, `artifacts`, `templates`; Outputs: release record, tag.
+- Inputs: `commitsRange`, `artifacts`, `templates`; Outputs: release record,
+  tag.
 
 ### What to Call [release-manager]
 
 - Identifier: `release-manager` • Aliases: `releaser`.
-- CLI: `agentctl run release-manager --from v1.2.2 --to HEAD --notes .\templates\release.md`
+- CLI:
+  `agentctl run release-manager --from v1.2.2 --to HEAD --notes .\templates\release.md`
 - API: `POST /agents/v1/release-manager/run`
 
 ### When to Call
@@ -684,7 +728,8 @@ POST /agents/v1/release-manager/run
 ### What to Call [feature-flags]
 
 - Identifier: `feature-flags` • Aliases: `toggle`, `ff`.
-- CLI: `agentctl run feature-flags --config .\flags\prod.yaml --enable checkout_v2`
+- CLI:
+  `agentctl run feature-flags --config .\flags\prod.yaml --enable checkout_v2`
 - API: `POST /agents/v1/feature-flags/run`
 
 ### When to Call
@@ -717,12 +762,14 @@ POST /agents/v1/feature-flags/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Ingests cloud billing, maps to workloads, anomaly detection, budgets.
-- Inputs: `cloudAccounts`, `budgets`, `tags`; Outputs: reports, alerts, recommendations.
+- Inputs: `cloudAccounts`, `budgets`, `tags`; Outputs: reports, alerts,
+  recommendations.
 
 ### What to Call [cost-monitor]
 
 - Identifier: `cost-monitor` • Aliases: `finops`.
-- CLI: `agentctl run cost-monitor --accounts .\cloud.json --budgets .\budgets.yml`
+- CLI:
+  `agentctl run cost-monitor --accounts .\cloud.json --budgets .\budgets.yml`
 - API: `POST /agents/v1/cost-monitor/run`
 
 ### When to Call
@@ -755,7 +802,8 @@ POST /agents/v1/cost-monitor/run
 ### Smart Generate Agent [DESCRIPTION]
 
 - Checks infra/app against policies (CIS, SOC2), produces evidence bundles.
-- Inputs: `policies`, `scope`, `exceptions`; Outputs: pass/fail, evidence artifacts.
+- Inputs: `policies`, `scope`, `exceptions`; Outputs: pass/fail, evidence
+  artifacts.
 
 ### What to Call [compliance-audit]
 
@@ -790,8 +838,10 @@ POST /agents/v1/compliance-audit/run
 
 ## Cross-Agent Integration Patterns
 
-- Chaining: Build → Test → Container Build → Image Scan → K8s Deploy → Progressive Delivery → Metrics/Logs → Alert Router → Release Manager.
-- Error gates: Image Scan or Compliance Audit failure triggers Auto Rollback and Incident Triage.
+- Chaining: Build → Test → Container Build → Image Scan → K8s Deploy →
+  Progressive Delivery → Metrics/Logs → Alert Router → Release Manager.
+- Error gates: Image Scan or Compliance Audit failure triggers Auto Rollback and
+  Incident Triage.
 - Secrets: All agents consuming credentials call `secrets` with short TTL.
 - Evidence: Artifact Repo stores SBOMs, test reports, compliance evidence.
 

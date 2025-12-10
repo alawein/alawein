@@ -1,3 +1,10 @@
+---
+title: 'REPZ Production Deployment Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # REPZ Production Deployment Guide
 
 ## 🚀 **Production-Ready Checklist**
@@ -386,4 +393,5 @@ jobs:
 
 ---
 
-**🚀 REPZ is production-ready with enterprise-grade performance, monitoring, and reliability!**
+**🚀 REPZ is production-ready with enterprise-grade performance, monitoring, and
+reliability!**

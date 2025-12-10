@@ -1,3 +1,10 @@
+---
+title: 'Sync'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Sync
 
 > Context synchronization from git and other sources

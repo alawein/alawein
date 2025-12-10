@@ -1,3 +1,10 @@
+---
+title: 'Architecture Improvements Changelog'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Architecture Improvements Changelog
 
 ## 2025-01-XX - Major Architecture Overhaul

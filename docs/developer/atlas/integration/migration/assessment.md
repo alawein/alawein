@@ -1,13 +1,26 @@
+---
+title:
+  'Assessment Phase: Evaluating Current KILO Usage and Integration Opportunities'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Assessment Phase: Evaluating Current KILO Usage and Integration Opportunities
 
 ## Overview
 
-The assessment phase is the foundation of a successful ORCHEX-KILO migration. This phase involves systematically evaluating your current KILO implementation, understanding team workflows, and identifying the most valuable integration points for ORCHEX capabilities.
+The assessment phase is the foundation of a successful ORCHEX-KILO migration.
+This phase involves systematically evaluating your current KILO implementation,
+understanding team workflows, and identifying the most valuable integration
+points for ORCHEX capabilities.
 
 ## Assessment Objectives
 
-- **Current State Analysis**: Understand existing KILO usage patterns and effectiveness
-- **Integration Opportunities**: Identify workflows that would benefit most from ORCHEX integration
+- **Current State Analysis**: Understand existing KILO usage patterns and
+  effectiveness
+- **Integration Opportunities**: Identify workflows that would benefit most from
+  ORCHEX integration
 - **Risk Identification**: Assess potential challenges and mitigation strategies
 - **Resource Planning**: Determine team readiness and training needs
 - **Success Metrics Baseline**: Establish current performance benchmarks
@@ -16,7 +29,8 @@ The assessment phase is the foundation of a successful ORCHEX-KILO migration. Th
 
 ### 1. Current System Inventory Script
 
-Use this script to gather comprehensive information about your current KILO setup:
+Use this script to gather comprehensive information about your current KILO
+setup:
 
 ```bash
 #!/bin/bash
@@ -177,7 +191,8 @@ echo "Usage pattern analysis complete. Reports saved to $OUTPUT_DIR/"
 
 ### 3. Integration Opportunity Assessment
 
-Identify specific areas where ORCHEX-KILO integration would provide the most value:
+Identify specific areas where ORCHEX-KILO integration would provide the most
+value:
 
 ```bash
 #!/bin/bash
@@ -345,4 +360,5 @@ Based on the assessment results:
 4. **Prepare Migration Team**: Assemble team and provide training
 5. **Execute Pilot**: Implement and monitor pilot migration
 
-The assessment phase typically takes 1-2 weeks for small organizations and 3-4 weeks for large enterprises, depending on complexity and team size.
+The assessment phase typically takes 1-2 weeks for small organizations and 3-4
+weeks for large enterprises, depending on complexity and team size.

@@ -1,8 +1,14 @@
+---
+title: 'Comprehensive Folder Revision V2 - Research-Based Analysis'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Comprehensive Folder Revision V2 - Research-Based Analysis
 
-> Generated: 2024-12-06
-> Sources: Turborepo, Nx, monorepo.tools, industry best practices
-> Status: **ANALYSIS COMPLETE**
+> Generated: 2024-12-06 Sources: Turborepo, Nx, monorepo.tools, industry best
+> practices Status: **ANALYSIS COMPLETE**
 
 ---
 
@@ -10,14 +16,14 @@
 
 ### Sources Consulted
 
-| Source | Key Pattern | URL |
-|--------|-------------|-----|
-| **Turborepo (Vercel)** | `apps/` + `packages/` | turborepo.com/docs |
-| **Nx (Nrwl)** | `apps/` + `libs/` with grouping | nx.dev/docs |
-| **monorepo.tools** | Industry comparison | monorepo.tools |
-| **Luca Pette** | Domain-driven structure | lucapette.me |
-| **Island.is Handbook** | Government-scale monorepo | github.com/island-is |
-| **Backstage (Spotify)** | MkDocs monorepo plugin | github.com/backstage |
+| Source                  | Key Pattern                     | URL                  |
+| ----------------------- | ------------------------------- | -------------------- |
+| **Turborepo (Vercel)**  | `apps/` + `packages/`           | turborepo.com/docs   |
+| **Nx (Nrwl)**           | `apps/` + `libs/` with grouping | nx.dev/docs          |
+| **monorepo.tools**      | Industry comparison             | monorepo.tools       |
+| **Luca Pette**          | Domain-driven structure         | lucapette.me         |
+| **Island.is Handbook**  | Government-scale monorepo       | github.com/island-is |
+| **Backstage (Spotify)** | MkDocs monorepo plugin          | github.com/backstage |
 
 ---
 
@@ -40,6 +46,7 @@ monorepo/
 ```
 
 **Key Principles:**
+
 - Split into `apps/` (deployable) and `packages/` (libraries)
 - No nested packages (apps/a/b not allowed)
 - Group packages using globs: `packages/group/*`
@@ -64,6 +71,7 @@ monorepo/
 ```
 
 **Key Principles:**
+
 - Group by scope/domain, NOT by technology
 - `libs/shared/` for cross-cutting concerns
 - Projects that change together should be grouped together
@@ -95,6 +103,7 @@ monorepo/
 ```
 
 **Key Principles:**
+
 - Structure loosely reflects team organization (Conway's Law)
 - Don't make technical choices too present at top level
 - `lib/` grouped by language is acceptable for shared code
@@ -104,9 +113,12 @@ monorepo/
 
 From research on large-scale monorepos:
 
-> "None of those organisations use a monorepo as it is frequently interpreted by smaller orgs. They all operate open-source repositories that are public and distinct from any internal monorepos."
+> "None of those organisations use a monorepo as it is frequently interpreted by
+> smaller orgs. They all operate open-source repositories that are public and
+> distinct from any internal monorepos."
 
-**Key Insight:** Large companies have dedicated tooling teams. Don't mimic patterns from organizations with resources you don't have.
+**Key Insight:** Large companies have dedicated tooling teams. Don't mimic
+patterns from organizations with resources you don't have.
 
 ---
 
@@ -114,32 +126,32 @@ From research on large-scale monorepos:
 
 ### What's Working Well ✅
 
-| Folder | Assessment |
-|--------|------------|
-| `.allstar/` | Standard security config - keep |
-| `.github/` | Well-organized workflows/templates - keep |
-| `.husky/` | Standard git hooks - keep |
-| `.vscode/` | IDE settings - keep |
-| `.config/ai/` | Excellent AI tool organization - keep |
+| Folder        | Assessment                                |
+| ------------- | ----------------------------------------- |
+| `.allstar/`   | Standard security config - keep           |
+| `.github/`    | Well-organized workflows/templates - keep |
+| `.husky/`     | Standard git hooks - keep                 |
+| `.vscode/`    | IDE settings - keep                       |
+| `.config/ai/` | Excellent AI tool organization - keep     |
 
 ### What Needs Improvement ⚠️
 
-| Folder | Issue | Industry Solution |
-|--------|-------|-------------------|
-| `automation/` | Mixed Python + TypeScript | Separate by language OR unified tooling |
-| `docs/` | 30+ root files, flat structure | Topic-based subdirectories |
-| `tools/` | 25 subdirectories, too granular | Consolidate by function |
-| `tests/` | Mixed languages at root | Separate by language |
-| `platforms/` | Good concept, inconsistent naming | Standardize to `apps/` pattern |
+| Folder        | Issue                             | Industry Solution                       |
+| ------------- | --------------------------------- | --------------------------------------- |
+| `automation/` | Mixed Python + TypeScript         | Separate by language OR unified tooling |
+| `docs/`       | 30+ root files, flat structure    | Topic-based subdirectories              |
+| `tools/`      | 25 subdirectories, too granular   | Consolidate by function                 |
+| `tests/`      | Mixed languages at root           | Separate by language                    |
+| `platforms/`  | Good concept, inconsistent naming | Standardize to `apps/` pattern          |
 
 ### Redundancies Identified 🔄
 
-| Redundancy | Resolution |
-|------------|------------|
-| `.archive/` + `archive/` | ✅ MERGED (completed) |
-| `.config/claude/` + `.config/ai/claude/` | ✅ MERGED (completed) |
-| `templates/` + `tools/templates/` | ✅ MERGED (completed) |
-| `.amazonq/` + `.config/ai/amazonq/` | ✅ DELETED duplicate (completed) |
+| Redundancy                               | Resolution                       |
+| ---------------------------------------- | -------------------------------- |
+| `.archive/` + `archive/`                 | ✅ MERGED (completed)            |
+| `.config/claude/` + `.config/ai/claude/` | ✅ MERGED (completed)            |
+| `templates/` + `tools/templates/`        | ✅ MERGED (completed)            |
+| `.amazonq/` + `.config/ai/amazonq/`      | ✅ DELETED duplicate (completed) |
 
 ---
 
@@ -246,20 +258,18 @@ Move deployable applications to `apps/`, shared code to `packages/`.
 
 ### 2. Consolidate `tools/` Subdirectories
 
-**Current:** 25 subdirectories (too granular)
-**Target:** 5-7 logical groupings
+**Current:** 25 subdirectories (too granular) **Target:** 5-7 logical groupings
 
-| Current | Consolidate Into |
-|---------|------------------|
-| `adaptive-prompts/`, `meta-prompt/`, `prompt-composer/`, `prompt-testing/` | `tools/prompts/` |
-| `backup/`, `docker/`, `health/` | `tools/infrastructure/` |
-| `orchestrator/`, `orchex/` | `tools/orchestration/` |
-| `lib/`, `bin/`, `cross-ide-sync/` | `tools/internal/` |
+| Current                                                                    | Consolidate Into        |
+| -------------------------------------------------------------------------- | ----------------------- |
+| `adaptive-prompts/`, `meta-prompt/`, `prompt-composer/`, `prompt-testing/` | `tools/prompts/`        |
+| `backup/`, `docker/`, `health/`                                            | `tools/infrastructure/` |
+| `orchestrator/`, `orchex/`                                                 | `tools/orchestration/`  |
+| `lib/`, `bin/`, `cross-ide-sync/`                                          | `tools/internal/`       |
 
 ### 3. Organize `docs/` by Topic
 
-**Current:** 30+ files at root level
-**Target:** Topic-based subdirectories
+**Current:** 30+ files at root level **Target:** Topic-based subdirectories
 
 ```
 docs/
@@ -274,8 +284,8 @@ docs/
 
 ### 4. Separate Test Languages
 
-**Current:** Mixed Python/TypeScript at root
-**Target:** Language-specific subdirectories
+**Current:** Mixed Python/TypeScript at root **Target:** Language-specific
+subdirectories
 
 ```
 tests/
@@ -305,12 +315,14 @@ packages/
 ## Implementation Priority
 
 ### Phase 1: Quick Wins (Completed ✅)
+
 - [x] Delete cache folders
 - [x] Merge duplicate archives
 - [x] Merge duplicate configs
 - [x] Merge templates
 
 ### Phase 2: Structural (In Progress)
+
 - [x] Reorganize `archive/` with categories
 - [x] Reorganize `docs/` with subdirectories
 - [x] Reorganize `tests/` by language
@@ -318,6 +330,7 @@ packages/
 - [x] Restructure `automation/` by language
 
 ### Phase 3: Major Refactoring (Completed ✅)
+
 - [x] Rename `platforms/` → `apps/` ✅
 - [x] Create `packages/` for shared code ✅
 - [x] Consolidate LLC folders into `organizations/` ✅
@@ -393,18 +406,24 @@ packages/
 
 ## References
 
-1. **Turborepo Documentation** - https://turborepo.com/docs/crafting-your-repository/structuring-a-repository
-2. **Nx Folder Structure** - https://nx.dev/docs/concepts/decisions/folder-structure
+1. **Turborepo Documentation** -
+   https://turborepo.com/docs/crafting-your-repository/structuring-a-repository
+2. **Nx Folder Structure** -
+   https://nx.dev/docs/concepts/decisions/folder-structure
 3. **monorepo.tools** - https://monorepo.tools/
-4. **How to Structure a Monorepo** - https://lucapette.me/writing/how-to-structure-a-monorepo/
-5. **Island.is Monorepo Handbook** - https://github.com/island-is/handbook/blob/master/monorepo.md
-6. **Backstage MkDocs Plugin** - https://github.com/backstage/mkdocs-monorepo-plugin
+4. **How to Structure a Monorepo** -
+   https://lucapette.me/writing/how-to-structure-a-monorepo/
+5. **Island.is Monorepo Handbook** -
+   https://github.com/island-is/handbook/blob/master/monorepo.md
+6. **Backstage MkDocs Plugin** -
+   https://github.com/backstage/mkdocs-monorepo-plugin
 
 ---
 
 ## Conclusion
 
-The reorganization completed follows industry best practices from Turborepo, Nx, and domain-driven design principles:
+The reorganization completed follows industry best practices from Turborepo, Nx,
+and domain-driven design principles:
 
 1. **Group by scope/domain**, not technology (at top level)
 2. **Separate languages** within tooling folders
@@ -412,4 +431,6 @@ The reorganization completed follows industry best practices from Turborepo, Nx,
 4. **Topic-based documentation** for discoverability
 5. **Clear archive structure** for historical content
 
-The structure now aligns with patterns used by Vercel, Nrwl, Spotify, and other industry leaders while remaining practical for a single-developer or small-team monorepo.
+The structure now aligns with patterns used by Vercel, Nrwl, Spotify, and other
+industry leaders while remaining practical for a single-developer or small-team
+monorepo.

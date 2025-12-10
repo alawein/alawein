@@ -1,12 +1,22 @@
+---
+title: 'Agent Selection Best Practices'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Agent Selection Best Practices
 
-Comprehensive guide for selecting optimal AI agents for different tasks, balancing performance, cost, quality, and reliability considerations.
+Comprehensive guide for selecting optimal AI agents for different tasks,
+balancing performance, cost, quality, and reliability considerations.
 
 ---
 
 ## Understanding Agent Selection
 
-ORCHEX uses intelligent routing to select the best AI agent for each task based on multiple criteria. Understanding these factors helps you optimize performance, cost, and quality.
+ORCHEX uses intelligent routing to select the best AI agent for each task based
+on multiple criteria. Understanding these factors helps you optimize
+performance, cost, and quality.
 
 ### Key Selection Criteria
 
@@ -630,7 +640,10 @@ Automatically scale agent pools based on demand:
 
 ## Conclusion
 
-Effective agent selection in ORCHEX requires balancing multiple factors: task requirements, performance needs, cost constraints, and quality standards. By understanding each agent's strengths and configuring appropriate routing rules, you can optimize your AI-assisted development workflow.
+Effective agent selection in ORCHEX requires balancing multiple factors: task
+requirements, performance needs, cost constraints, and quality standards. By
+understanding each agent's strengths and configuring appropriate routing rules,
+you can optimize your AI-assisted development workflow.
 
 **Key Takeaways:**
 
@@ -640,4 +653,5 @@ Effective agent selection in ORCHEX requires balancing multiple factors: task re
 4. **Monitor performance and adjust routing rules**
 5. **Leverage ORCHEX's intelligent routing for optimal results**
 
-Regular review of agent performance and routing effectiveness ensures continued optimization of your development process.</instructions>
+Regular review of agent performance and routing effectiveness ensures continued
+optimization of your development process.</instructions>

@@ -1,8 +1,18 @@
+---
+title: 'Governance System Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Governance System Guide
 
 ## Overview
 
-This governance system provides automated compliance checking, structure validation, and policy enforcement across 80+ repositories in 5 organizations. The system ensures consistent development practices, security standards, and project structure.
+This governance system provides automated compliance checking, structure
+validation, and policy enforcement across 80+ repositories in 5 organizations.
+The system ensures consistent development practices, security standards, and
+project structure.
 
 ## Architecture
 
@@ -330,6 +340,4 @@ For issues or questions:
 
 ---
 
-**Last Updated**: 2025-11-27
-**Version**: 1.0.0
-**Maintained by**: @alawein
+**Last Updated**: 2025-11-27 **Version**: 1.0.0 **Maintained by**: @alawein

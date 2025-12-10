@@ -1,14 +1,24 @@
+---
+title: 'ORCHEX-KILO Integration Overview'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ORCHEX-KILO Integration Overview
 
 ## Architecture Deep Dive
 
-The ORCHEX-KILO integration is designed as a loosely-coupled system where each platform maintains its independence while providing seamless interoperability through well-defined bridge interfaces.
+The ORCHEX-KILO integration is designed as a loosely-coupled system where each
+platform maintains its independence while providing seamless interoperability
+through well-defined bridge interfaces.
 
 ### Core Components
 
 #### ORCHEX System Components
 
-- **Analysis Engine**: Performs code complexity, quality, and performance analysis
+- **Analysis Engine**: Performs code complexity, quality, and performance
+  analysis
 - **Refactoring Engine**: Generates and applies code transformation operations
 - **Metrics Collector**: Gathers repository statistics and health indicators
 - **CLI Interface**: Command-line interface for user interactions
@@ -53,7 +63,8 @@ ORCHEX Operation → A2K Bridge → KILO Service Request → Validation/Template
 
 ### Synchronous Validation Pattern
 
-ORCHEX operations that require immediate validation use synchronous calls to KILO:
+ORCHEX operations that require immediate validation use synchronous calls to
+KILO:
 
 ```typescript
 // ORCHEX refactoring with KILO validation
@@ -108,13 +119,17 @@ const template = await a2kBridge.getTemplates(templateRequest);
 
 ## Configuration Management
 
-The integration uses a shared configuration system that allows both platforms to access common settings:
+The integration uses a shared configuration system that allows both platforms to
+access common settings:
 
 ```json
 {
   "integration": {
     "bridges": {
-      "k2a": { "enabled": true, "eventTypes": ["policy_violation", "security_issue"] },
+      "k2a": {
+        "enabled": true,
+        "eventTypes": ["policy_violation", "security_issue"]
+      },
       "a2k": { "enabled": true, "validationTimeout": 30000 }
     },
     "shared": {

@@ -1,8 +1,14 @@
+---
+title: 'Science Projects Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Science Projects Codemap
 
-> **Location:** `.archive/organizations/alawein-science/`
-> **Projects:** 5 research projects
-> **Status:** Research/Archive
+> **Location:** `.archive/organizations/alawein-science/` **Projects:** 5
+> research projects **Status:** Research/Archive
 
 ---
 
@@ -55,7 +61,8 @@ MagLogic/
 └── tests/                       # Test suites
 ```
 
-**Purpose:** Simulation of magnetic logic circuits using micromagnetic solvers (MuMax3, OOMMF).
+**Purpose:** Simulation of magnetic logic circuits using micromagnetic solvers
+(MuMax3, OOMMF).
 
 ---
 
@@ -94,7 +101,8 @@ QMatSim/
 └── tests/                       # Tests
 ```
 
-**Purpose:** Quantum material property simulation using molecular dynamics (LAMMPS).
+**Purpose:** Quantum material property simulation using molecular dynamics
+(LAMMPS).
 
 ---
 
@@ -135,7 +143,8 @@ SciComp/
 └── tests/                       # Tests
 ```
 
-**Purpose:** General scientific computing utilities across MATLAB, Mathematica, and Python.
+**Purpose:** General scientific computing utilities across MATLAB, Mathematica,
+and Python.
 
 ---
 
@@ -143,19 +152,20 @@ SciComp/
 
 Each project has a superprompt in `automation/prompts/project/`:
 
-| Project | Superprompt |
-|---------|-------------|
+| Project  | Superprompt                |
+| -------- | -------------------------- |
 | MagLogic | `MAG_LOGIC_SUPERPROMPT.md` |
 | SpinCirc | `SPIN_CIRC_SUPERPROMPT.md` |
-| QMatSim | `QMAT_SIM_SUPERPROMPT.md` |
-| QubeML | `QUBE_ML_SUPERPROMPT.md` |
-| SciComp | `SCI_COMP_SUPERPROMPT.md` |
+| QMatSim  | `QMAT_SIM_SUPERPROMPT.md`  |
+| QubeML   | `QUBE_ML_SUPERPROMPT.md`   |
+| SciComp  | `SCI_COMP_SUPERPROMPT.md`  |
 
 ---
 
 ## Activation Priority
 
 These are research projects - activate when:
+
 1. Research resumes
 2. Publication preparation
 3. Grant applications

@@ -1,8 +1,15 @@
+---
+title: 'Brand & Infrastructure Validation Request'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Brand & Infrastructure Validation Request
 
-**Date:** December 5, 2025
-**Context:** Solo founder forming LLCs, launching optimization/AI products
-**Audience:** Claude Opus (strategy) & ChatGPT Deep Search (trademark/domain)
+**Date:** December 5, 2025 **Context:** Solo founder forming LLCs, launching
+optimization/AI products **Audience:** Claude Opus (strategy) & ChatGPT Deep
+Search (trademark/domain)
 
 ---
 
@@ -10,23 +17,22 @@
 
 ### 1. Librex™ Brand (Optimization Framework)
 
-**Decision:** Rename "Librex" → "Librex" to avoid conflict with Librex CBD company.
+**Decision:** Rename "Librex" → "Librex" to avoid conflict with Librex CBD
+company.
 
-**Solver Naming Convention (Brand.Solver pattern):**
-| Old Name | New Name | URL Path |
-|----------|----------|----------|
-| Librex.QAP | **Librex.QAP** | librex.dev/qap |
-| Librex.Flow | **Librex.Flow** | librex.dev/flow |
-| Librex.Alloc | **Librex.Alloc** | librex.dev/alloc |
-| Librex.Evo | **Librex.Evo** | librex.dev/evo |
-| Librex.Graph | **Librex.Graph** | librex.dev/graph |
-| Librex.Dual | **Librex.Dual** | librex.dev/dual |
-| Librex.Meta | **Librex.Meta** | librex.dev/meta |
+**Solver Naming Convention (Brand.Solver pattern):** | Old Name | New Name | URL
+Path | |----------|----------|----------| | Librex.QAP | **Librex.QAP** |
+librex.dev/qap | | Librex.Flow | **Librex.Flow** | librex.dev/flow | |
+Librex.Alloc | **Librex.Alloc** | librex.dev/alloc | | Librex.Evo |
+**Librex.Evo** | librex.dev/evo | | Librex.Graph | **Librex.Graph** |
+librex.dev/graph | | Librex.Dual | **Librex.Dual** | librex.dev/dual | |
+Librex.Meta | **Librex.Meta** | librex.dev/meta |
 
 **Questions for Claude Opus:**
 
 1. Is "Librex.QAP" (brand.solver) pattern clear and professional?
-2. Does "Librex" effectively communicate "balance/optimization" (from Latin libra)?
+2. Does "Librex" effectively communicate "balance/optimization" (from Latin
+   libra)?
 3. Would a tagline like "Librex - Balanced Optimization" strengthen the brand?
 
 **Questions for ChatGPT Deep Search:**
@@ -64,8 +70,10 @@
 
 **Questions for Claude Opus:**
 
-1. For a solo founder with multiple LLCs, is full name better for professional credibility?
-2. Is "alawein" memorable/unique enough, or does hyphenated "meshal-alawein" add value?
+1. For a solo founder with multiple LLCs, is full name better for professional
+   credibility?
+2. Is "alawein" memorable/unique enough, or does hyphenated "meshal-alawein" add
+   value?
 3. Should org name match LLC name (github.com/alawein-technologies)?
 
 ---
@@ -86,8 +94,8 @@ REPZ LLC (California) - Fitness app
 Live It Iconic LLC (Wyoming) - E-commerce
 ```
 
-**Question for both AIs:**
-Is forming separate LLCs for each product line overkill, or should everything be under one LLC initially?
+**Question for both AIs:** Is forming separate LLCs for each product line
+overkill, or should everything be under one LLC initially?
 
 ---
 
@@ -95,7 +103,8 @@ Is forming separate LLCs for each product line overkill, or should everything be
 
 ### For Claude Opus (Strategic Analysis)
 
-1. Evaluate the "Brand.Solver" naming convention (Librex.QAP, Librex.Flow) for brand cohesion
+1. Evaluate the "Brand.Solver" naming convention (Librex.QAP, Librex.Flow) for
+   brand cohesion
 2. Recommend pronunciation guide strategy for TalAI
 3. Assess GitHub username choice for professional branding
 4. Suggest trademark filing priority (which marks to file first)
@@ -145,4 +154,5 @@ Is forming separate LLCs for each product line overkill, or should everything be
 
 ---
 
-_This document is for AI validation. Please provide specific, actionable feedback with citations where possible._
+_This document is for AI validation. Please provide specific, actionable
+feedback with citations where possible._

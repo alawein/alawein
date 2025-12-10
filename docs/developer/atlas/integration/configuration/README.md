@@ -1,10 +1,20 @@
+---
+title: 'Configuration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Configuration Guide
 
-This guide covers the configuration system for the ORCHEX-KILO integration, including configuration files, environment variables, and runtime configuration management.
+This guide covers the configuration system for the ORCHEX-KILO integration,
+including configuration files, environment variables, and runtime configuration
+management.
 
 ## Configuration Overview
 
-The ORCHEX-KILO integration uses a hierarchical configuration system that supports:
+The ORCHEX-KILO integration uses a hierarchical configuration system that
+supports:
 
 - **Global Configuration**: System-wide settings
 - **Project Configuration**: Project-specific settings
@@ -25,7 +35,11 @@ The main configuration file is `ORCHEX.config.json` (or `ORCHEX.config.yaml`):
     "bridges": {
       "k2a": {
         "enabled": true,
-        "eventTypes": ["policy_violation", "security_issue", "compliance_failure"],
+        "eventTypes": [
+          "policy_violation",
+          "security_issue",
+          "compliance_failure"
+        ],
         "analysis": {
           "autoTrigger": true,
           "priorityMapping": {
@@ -157,7 +171,12 @@ The main configuration file is `ORCHEX.config.json` (or `ORCHEX.config.yaml`):
       "preloadTemplates": ["cicd/github-actions", "k8s/deployment"]
     },
     "compliance": {
-      "enabledPolicies": ["security", "code_quality", "performance", "maintainability"],
+      "enabledPolicies": [
+        "security",
+        "code_quality",
+        "performance",
+        "maintainability"
+      ],
       "failOnWarning": false,
       "customPolicies": [],
       "policyOverrides": {}
@@ -230,7 +249,8 @@ The main configuration file is `ORCHEX.config.json` (or `ORCHEX.config.yaml`):
 
 ## Configuration Precedence
 
-Configuration values are resolved in the following order (highest to lowest precedence):
+Configuration values are resolved in the following order (highest to lowest
+precedence):
 
 1. **Command-line flags**: `--config.key=value`
 2. **Environment variables**: `ATLAS_CONFIG_KEY`
@@ -646,4 +666,5 @@ ORCHEX bridge configure k2a --reset
 ORCHEX config show --effective --format json
 ```
 
-This configuration guide provides comprehensive coverage of all configuration options and management procedures for the ORCHEX-KILO integration.
+This configuration guide provides comprehensive coverage of all configuration
+options and management procedures for the ORCHEX-KILO integration.

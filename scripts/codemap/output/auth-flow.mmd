@@ -1,0 +1,33 @@
+sequenceDiagram
+    participant U as User
+    participant A as App
+    participant AS as AuthService
+    participant API as API
+    participant S as Storage
+
+    Note over U,S: Login Flow
+    U->>A: Enter credentials
+    A->>AS: login(email, password)
+    AS->>AS: Validate input
+    AS->>API: POST /auth/login
+    API-->>AS: { user, accessToken, refreshToken }
+    AS->>S: Store refreshToken
+    AS->>AS: Set accessToken in memory
+    AS-->>A: Update auth state
+    A-->>U: Redirect to dashboard
+
+    Note over U,S: Token Refresh
+    A->>AS: refreshToken()
+    AS->>S: Get refreshToken
+    AS->>API: POST /auth/refresh
+    API-->>AS: { user, accessToken }
+    AS->>AS: Update accessToken
+
+    Note over U,S: Logout
+    U->>A: Click logout
+    A->>AS: logout()
+    AS->>API: POST /auth/logout
+    AS->>S: Remove refreshToken
+    AS->>AS: Clear accessToken
+    AS-->>A: Reset auth state
+    A-->>U: Redirect to login

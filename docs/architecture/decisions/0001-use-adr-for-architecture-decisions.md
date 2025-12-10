@@ -1,3 +1,10 @@
+---
+title: 'ADR-0001: Use Architecture Decision Records'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-0001: Use Architecture Decision Records
 
 **Date:** 2025-12-04
@@ -12,9 +19,12 @@
 
 ## Context
 
-As the repository grows in complexity with multiple subsystems (ORCHEX, AI orchestration, governance automation), we need a structured way to document significant architectural decisions. Current challenges include:
+As the repository grows in complexity with multiple subsystems (ORCHEX, AI
+orchestration, governance automation), we need a structured way to document
+significant architectural decisions. Current challenges include:
 
-- Architectural decisions are scattered across commit messages, PR discussions, and Slack
+- Architectural decisions are scattered across commit messages, PR discussions,
+  and Slack
 - New team members struggle to understand why certain approaches were chosen
 - Historical context is lost when contributors leave
 - Trade-offs and alternatives considered are not documented
@@ -32,15 +42,18 @@ The team needs a lightweight, version-controlled method to:
 
 ## Decision
 
-We will use **Architecture Decision Records (ADRs)** to document all significant architectural decisions in this repository.
+We will use **Architecture Decision Records (ADRs)** to document all significant
+architectural decisions in this repository.
 
 **Key principles:**
 
 1. **Location:** Store ADRs in `docs/architecture/decisions/` directory
 2. **Format:** Use markdown files with a standardized template
-3. **Naming:** Sequential numbering: `NNNN-short-title.md` (e.g., `0001-use-adr.md`)
+3. **Naming:** Sequential numbering: `NNNN-short-title.md` (e.g.,
+   `0001-use-adr.md`)
 4. **Process:** Create ADRs through pull requests with team review
-5. **Scope:** Document decisions that are hard to reverse or significantly impact the project
+5. **Scope:** Document decisions that are hard to reverse or significantly
+   impact the project
 6. **Lifecycle:** ADRs can be Proposed, Accepted, Deprecated, or Superseded
 
 **What to document:**
@@ -63,7 +76,8 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 
 ### Option 1: Continue Using GitHub Issues
 
-**Description:** Document architectural decisions in GitHub issues with an "architecture" label
+**Description:** Document architectural decisions in GitHub issues with an
+"architecture" label
 
 **Pros:**
 
@@ -79,11 +93,13 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 - Discussion threads can become cluttered
 - Not version controlled with code
 
-**Why not chosen:** Issues are great for discussions but lack the structure and permanence needed for architectural documentation.
+**Why not chosen:** Issues are great for discussions but lack the structure and
+permanence needed for architectural documentation.
 
 ### Option 2: Use Wiki or Notion
 
-**Description:** Maintain architectural documentation in a wiki or external tool like Notion
+**Description:** Maintain architectural documentation in a wiki or external tool
+like Notion
 
 **Pros:**
 
@@ -99,11 +115,13 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 - Not part of code review process
 - External dependency
 
-**Why not chosen:** We want architectural decisions to be version controlled alongside the code and reviewed through the same PR process.
+**Why not chosen:** We want architectural decisions to be version controlled
+alongside the code and reviewed through the same PR process.
 
 ### Option 3: RFC Process (like Rust, Ember)
 
-**Description:** Formal RFC (Request for Comments) process with lengthy proposals
+**Description:** Formal RFC (Request for Comments) process with lengthy
+proposals
 
 **Pros:**
 
@@ -118,11 +136,13 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 - Requires significant time investment
 - Overkill for many decisions
 
-**Why not chosen:** A full RFC process is too formal for a small team. ADRs provide the right balance of structure and simplicity.
+**Why not chosen:** A full RFC process is too formal for a small team. ADRs
+provide the right balance of structure and simplicity.
 
 ### Option 4: No Formal Process
 
-**Description:** Continue documenting decisions informally in commits, PRs, and discussions
+**Description:** Continue documenting decisions informally in commits, PRs, and
+discussions
 
 **Pros:**
 
@@ -138,7 +158,8 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 - New team members lack context
 - Difficult to review architectural changes
 
-**Why not chosen:** This is our current state and the pain points are real. We need more structure.
+**Why not chosen:** This is our current state and the pain points are real. We
+need more structure.
 
 ---
 
@@ -146,30 +167,40 @@ We will use **Architecture Decision Records (ADRs)** to document all significant
 
 ### Positive Consequences
 
-- ✅ **Institutional memory:** Architectural context is preserved even when team members leave
-- ✅ **Better onboarding:** New contributors can understand why things are the way they are
-- ✅ **Thoughtful decisions:** Writing an ADR forces careful consideration of alternatives
-- ✅ **Asynchronous review:** Team members can review and discuss proposals on their schedule
+- ✅ **Institutional memory:** Architectural context is preserved even when team
+  members leave
+- ✅ **Better onboarding:** New contributors can understand why things are the
+  way they are
+- ✅ **Thoughtful decisions:** Writing an ADR forces careful consideration of
+  alternatives
+- ✅ **Asynchronous review:** Team members can review and discuss proposals on
+  their schedule
 - ✅ **Traceability:** Can track how architectural thinking evolved over time
-- ✅ **Reduced debates:** Past decisions are documented, reducing recurring discussions
-- ✅ **Version controlled:** ADRs live with the code and follow the same review process
+- ✅ **Reduced debates:** Past decisions are documented, reducing recurring
+  discussions
+- ✅ **Version controlled:** ADRs live with the code and follow the same review
+  process
 
 ### Negative Consequences
 
 - ⚠️ **Process overhead:** Writing ADRs takes time upfront
-  - _Mitigation:_ Use template to make writing faster; only document significant decisions
+  - _Mitigation:_ Use template to make writing faster; only document significant
+    decisions
 - ⚠️ **Maintenance burden:** ADRs can become stale if architecture changes
-  - _Mitigation:_ Mark outdated ADRs as Superseded or Deprecated rather than deleting
+  - _Mitigation:_ Mark outdated ADRs as Superseded or Deprecated rather than
+    deleting
 - ⚠️ **Learning curve:** Team needs to learn ADR format and process
   - _Mitigation:_ Provide clear template, examples, and documentation
 - ⚠️ **May slow down decisions:** Formal documentation adds friction
-  - _Mitigation:_ Keep ADRs lightweight (1-2 pages); accept "good enough" over perfect
+  - _Mitigation:_ Keep ADRs lightweight (1-2 pages); accept "good enough" over
+    perfect
 
 ### Neutral Consequences
 
 - ℹ️ ADRs require discipline to maintain but benefit grows over time
 - ℹ️ Not all decisions need ADRs; team judgment determines what's significant
-- ℹ️ ADRs complement (don't replace) other documentation like README and inline comments
+- ℹ️ ADRs complement (don't replace) other documentation like README and inline
+  comments
 
 ---
 

@@ -2,15 +2,18 @@
 name: 'Platform & Deployment Superprompt'
 version: '1.0'
 category: 'project'
-tags: ['deployment', 'cloud', 'infrastructure', 'responsive', 'seo', 'performance']
+tags:
+  ['deployment', 'cloud', 'infrastructure', 'responsive', 'seo', 'performance']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Platform & Deployment Superprompt
 
 ## Purpose
 
-Comprehensive framework for web platform deployment, cloud infrastructure, responsive design implementation, SEO optimization, and performance engineering.
+Comprehensive framework for web platform deployment, cloud infrastructure,
+responsive design implementation, SEO optimization, and performance engineering.
 
 ---
 
@@ -469,7 +472,10 @@ export const metadata: Metadata = {
 // Structured Data Component
 export function JsonLd({ data }: { data: object }) {
   return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
+    <script
+      type='application/ld+json'
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
   );
 }
 
@@ -503,12 +509,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://example.com';
 
   // Static pages
-  const staticPages = ['', '/about', '/contact', '/pricing', '/blog'].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: route === '' ? 1 : 0.8,
-  }));
+  const staticPages = ['', '/about', '/contact', '/pricing', '/blog'].map(
+    (route) => ({
+      url: `${baseUrl}${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: route === '' ? 1 : 0.8,
+    }),
+  );
 
   // Dynamic pages (e.g., blog posts)
   const posts = await fetchBlogPosts();
@@ -606,9 +614,9 @@ export function OptimizedImage({
       height={height}
       priority={priority}
       loading={priority ? 'eager' : 'lazy'}
-      placeholder="blur"
+      placeholder='blur'
       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`}
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+      sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
       className={className}
     />
   );
@@ -631,7 +639,9 @@ const shimmer = (w: number, h: number) => `
 </svg>`;
 
 const toBase64 = (str: string) =>
-  typeof window === 'undefined' ? Buffer.from(str).toString('base64') : window.btoa(str);
+  typeof window === 'undefined'
+    ? Buffer.from(str).toString('base64')
+    : window.btoa(str);
 ```
 
 ---

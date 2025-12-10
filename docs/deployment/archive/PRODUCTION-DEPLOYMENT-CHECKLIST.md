@@ -1,9 +1,17 @@
+---
+title: '🚀 REPZ Production Deployment Checklist'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🚀 REPZ Production Deployment Checklist
 
 ## 📋 **Pre-Deployment Validation**
 
-This automated checklist ensures all systems are production-ready before deployment. Run all
-validation scripts and verify each checkpoint before proceeding to production.
+This automated checklist ensures all systems are production-ready before
+deployment. Run all validation scripts and verify each checkpoint before
+proceeding to production.
 
 ---
 
@@ -46,7 +54,8 @@ npm run validate:routes
 - [ ] ✅ Client dashboards: Core/Adaptive/Performance/Longevity access correct
 - [ ] ✅ Coach dashboards: Proper client management access
 - [ ] ✅ Admin dashboards: System health and analytics accessible
-- [ ] ✅ Tier gates functioning: AI Assistant (Performance+), Biomarkers (Adaptive+)
+- [ ] ✅ Tier gates functioning: AI Assistant (Performance+), Biomarkers
+      (Adaptive+)
 - [ ] ✅ Error boundaries present in all dashboard components
 
 ### **1.3 Database Integrity Check**
@@ -256,7 +265,8 @@ npm run test:e2e
 **User Journey Validation:**
 
 - [ ] ✅ **New User Signup:** Complete 7-step intake process
-- [ ] ✅ **Tier Selection:** All 4 tiers (Core/Adaptive/Performance/Longevity) selectable
+- [ ] ✅ **Tier Selection:** All 4 tiers (Core/Adaptive/Performance/Longevity)
+      selectable
 - [ ] ✅ **Payment Processing:** Successful subscription creation
 - [ ] ✅ **Dashboard Access:** Role-appropriate dashboard loads
 - [ ] ✅ **Feature Access:** Tier-gated features respect access control
@@ -441,7 +451,8 @@ npm run prepare:rollback
 
 ## 🚨 **Emergency Rollback Criteria**
 
-**IMMEDIATE ROLLBACK if any of the following occur within 2 hours of deployment:**
+**IMMEDIATE ROLLBACK if any of the following occur within 2 hours of
+deployment:**
 
 - Site completely inaccessible (500 errors, DNS failures)
 - Authentication system failure (users cannot login)

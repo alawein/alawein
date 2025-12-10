@@ -1,0 +1,25 @@
+graph TB
+    subgraph Server["Server State (React Query)"]
+        QUERIES["Queries"]
+        MUTATIONS["Mutations"]
+        CACHE["Cache"]
+    end
+
+    subgraph Global["Global UI State (Context)"]
+        AUTH["Auth Context"]
+        THEME["Theme Context"]
+        TOAST["Toast Context"]
+    end
+
+    subgraph Local["Local State (useState)"]
+        FORMS["Form State"]
+        MODALS["Modal State"]
+        UI["UI Toggles"]
+    end
+
+    Server --> Global
+    Global --> Local
+
+    style Server fill:#3b82f6,stroke:#fff
+    style Global fill:#8b5cf6,stroke:#fff
+    style Local fill:#22c55e,stroke:#fff

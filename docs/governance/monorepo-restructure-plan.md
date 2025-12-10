@@ -1,15 +1,26 @@
+---
+title: 'Monorepo Restructure & Consolidation Plan'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monorepo Restructure & Consolidation Plan
 
 ## Current State Analysis
 
 ### Issues Identified
-1. **Scattered Structure**: Organizations, apps, tools, and root-level files mixed without clear hierarchy
-2. **Duplicate Tooling**: Multiple automation systems, CI/CD configs, and build tools
+
+1. **Scattered Structure**: Organizations, apps, tools, and root-level files
+   mixed without clear hierarchy
+2. **Duplicate Tooling**: Multiple automation systems, CI/CD configs, and build
+   tools
 3. **Inconsistent node_modules**: Root-level + project-level dependencies
 4. **MetaHub Fragmentation**: `.metaHub` directory not centralized
 5. **Root Pollution**: 40+ root-level files causing confusion
 
 ### Current Size Distribution
+
 - **organizations**: 3.6GB (5 orgs, multiple projects)
 - **apps**: 3.3GB (5 applications)
 - **tools**: 13.98MB (25+ utilities)
@@ -56,6 +67,7 @@ GitHub/
 ## Implementation Strategy
 
 ### Phase 1: MetaHub Centralization
+
 1. **Move all CI/CD to `.metaHub/ci-cd/`**
    - Consolidate GitHub Actions workflows
    - Merge Docker configurations
@@ -72,7 +84,9 @@ GitHub/
    - Create single CLI interface
 
 ### Phase 2: Organization Restructure
+
 1. **Standardize Organization Layout**
+
    ```
    organizations/{org-name}/{project-name}/
    ├── apps/                   # Application code
@@ -87,6 +101,7 @@ GitHub/
    - Live platforms → `organizations/live-it-iconic-llc/`
 
 ### Phase 3: Platform Consolidation
+
 1. **Extract Shared Code**
    - Move reusable components to `packages/`
    - Create shared configurations
@@ -103,6 +118,7 @@ GitHub/
    ```
 
 ### Phase 4: Node Modules Strategy
+
 1. **Workspace-Level Dependencies**
    - Remove root `node_modules`
    - Use npm/yarn workspaces
@@ -114,6 +130,7 @@ GitHub/
    - Implement lock file optimization
 
 ### Phase 5: Root Level Cleanup
+
 1. **Consolidate Documentation**
    - Move all docs to `docs/`
    - Create single README.md
@@ -127,6 +144,7 @@ GitHub/
 ## Migration Commands
 
 ### Phase 1 Commands
+
 ```bash
 # Create MetaHub structure
 mkdir -p .metaHub/{ci-cd,tooling,automation,templates,governance}
@@ -142,6 +160,7 @@ mv automation-ts/* .metaHub/automation/typescript/
 ```
 
 ### Phase 2 Commands
+
 ```bash
 # Standardize organization structure
 for org in organizations/*/; do
@@ -153,6 +172,7 @@ mv organizations/repz-llc/repz organizations/repz-llc/apps/
 ```
 
 ### Phase 3 Commands
+
 ```bash
 # Create packages structure
 mkdir -p packages/{ui,utils,types,configs}
@@ -164,18 +184,21 @@ find organizations/ -name "*.tsx" -path "*/components/*" | head -10
 ## Governance & Standards
 
 ### Code Organization Rules
+
 1. **Organization Scope**: LLC/company-specific projects
 2. **Platform Scope**: Cross-organization applications
 3. **Package Scope**: Reusable libraries
 4. **MetaHub Scope**: Infrastructure & tooling
 
 ### Naming Conventions
+
 - **Organizations**: `{llc-name}/` (kebab-case)
 - **Projects**: `{project-name}/` (kebab-case)
 - **Packages**: `@{scope}/{name}` (npm package naming)
 - **Apps**: `{app-name}/` (kebab-case)
 
 ### Dependency Management
+
 - **Root**: Shared dev dependencies
 - **Organizations**: Org-specific dependencies
 - **Projects**: Application dependencies
@@ -184,28 +207,33 @@ find organizations/ -name "*.tsx" -path "*/components/*" | head -10
 ## Success Metrics
 
 ### Structural Metrics
+
 - [ ] Root file count < 10
 - [ ] Single CI/CD source of truth
 - [ ] Unified build system
 - [ ] Clear separation of concerns
 
 ### Performance Metrics
+
 - [ ] Build time reduction > 30%
 - [ ] Dependency deduplication > 50%
 - [ ] CI/CD pipeline optimization > 40%
 
 ### Maintainability Metrics
+
 - [ ] Code sharing > 60%
 - [ ] Configuration duplication < 10%
 - [ ] Documentation coverage > 90%
 
 ## Rollback Plan
+
 1. Git stash before each phase
 2. Branch per major change
 3. Automated validation scripts
 4. Rollback automation ready
 
 ## Timeline
+
 - **Phase 1**: 2-3 days (MetaHub centralization)
 - **Phase 2**: 3-4 days (Organization restructure)
 - **Phase 3**: 2-3 days (Platform consolidation)
@@ -214,6 +242,7 @@ find organizations/ -name "*.tsx" -path "*/components/*" | head -10
 - **Total**: 9-14 days
 
 ## Next Steps
+
 1. Review and approve this plan
 2. Create feature branches for each phase
 3. Set up validation automation

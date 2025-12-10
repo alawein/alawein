@@ -1,3 +1,10 @@
+---
+title: 'Backend Architecture Decisions'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Backend Architecture Decisions
 
 > **Last Updated:** 2025-12-09  

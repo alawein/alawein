@@ -1,3 +1,10 @@
+---
+title: 'Runbook: Rollback Procedure'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Runbook: Rollback Procedure
 
 **Purpose:** Safely rollback a problematic release to restore stability
@@ -94,9 +101,8 @@ DO NOT DEPLOY until rollback complete.
 ```markdown
 ⚠️ Service Notice: Temporary rollback in progress
 
-We've identified an issue with v1.2.3 and are rolling back to v1.2.2.
-Expected completion: [time]
-Updates: [status page link]
+We've identified an issue with v1.2.3 and are rolling back to v1.2.2. Expected
+completion: [time] Updates: [status page link]
 ```
 
 ### Step 3: Rollback Git State
@@ -424,12 +430,9 @@ npm run validate:release
 ```markdown
 🚨 ROLLBACK INITIATED 🚨
 
-**Version:** v1.2.3 → v1.2.2
-**Reason:** [Critical bug description]
-**Impact:** [Who/what is affected]
-**ETA:** 15-30 minutes
-**Incident:** [Link]
-**Owner:** @username
+**Version:** v1.2.3 → v1.2.2 **Reason:** [Critical bug description] **Impact:**
+[Who/what is affected] **ETA:** 15-30 minutes **Incident:** [Link] **Owner:**
+@username
 
 **Actions:**
 
@@ -446,10 +449,10 @@ Will update when complete.
 ```markdown
 ⚠️ System Notice
 
-We've identified an issue with our latest release (v1.2.3) and are rolling back to the previous stable version (v1.2.2).
+We've identified an issue with our latest release (v1.2.3) and are rolling back
+to the previous stable version (v1.2.2).
 
-**Status:** In progress (started HH:MM UTC)
-**Expected Resolution:** HH:MM UTC
+**Status:** In progress (started HH:MM UTC) **Expected Resolution:** HH:MM UTC
 **Impact:** [Description of user impact]
 
 We'll post updates as the rollback progresses.
@@ -462,8 +465,7 @@ Thank you for your patience.
 ```markdown
 ✅ ROLLBACK COMPLETE
 
-**Restored Version:** v1.2.2
-**Status:** System stable and operational
+**Restored Version:** v1.2.2 **Status:** System stable and operational
 **Duration:** XX minutes
 
 **Next Steps:**

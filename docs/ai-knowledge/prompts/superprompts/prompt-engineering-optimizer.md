@@ -1,8 +1,16 @@
+---
+title: '🎯 Universal Prompt Optimizer'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🎯 Universal Prompt Optimizer
 
 **Transform any prompt from mediocre to exceptional in 2 minutes.**
 
-This system analyzes and optimizes prompts across 8 critical dimensions, giving you a clear score and actionable improvements.
+This system analyzes and optimizes prompts across 8 critical dimensions, giving
+you a clear score and actionable improvements.
 
 ---
 
@@ -64,8 +72,10 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "In src/api/users.ts, add rate limiting (100 req/min per IP) to the POST /api/users/login endpoint using express-rate-limit"
-- ✅ "Create a new React component <PricingCard> in src/components/pricing/ that displays: title, price, features list, CTA button. Use Tailwind for styling."
+- ✅ "In src/api/users.ts, add rate limiting (100 req/min per IP) to the POST
+  /api/users/login endpoint using express-rate-limit"
+- ✅ "Create a new React component <PricingCard> in src/components/pricing/ that
+  displays: title, price, features list, CTA button. Use Tailwind for styling."
 
 ---
 
@@ -88,8 +98,12 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "We're migrating from REST to GraphQL. Update the user fetching logic in src/services/UserService.ts to use Apollo Client instead of fetch(). Keep the same return types to avoid breaking existing components."
-- ✅ "Our tests are failing because we upgraded Jest from v27 to v29. Fix the failing test in **tests**/UserAuth.test.ts - specifically the mock implementation of localStorage."
+- ✅ "We're migrating from REST to GraphQL. Update the user fetching logic in
+  src/services/UserService.ts to use Apollo Client instead of fetch(). Keep the
+  same return types to avoid breaking existing components."
+- ✅ "Our tests are failing because we upgraded Jest from v27 to v29. Fix the
+  failing test in **tests**/UserAuth.test.ts - specifically the mock
+  implementation of localStorage."
 
 ---
 
@@ -102,7 +116,8 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 - 0-3: No constraints mentioned
 - 4-6: Some constraints but incomplete
 - 7-8: Most constraints specified
-- 9-10: All constraints clear (performance, compatibility, style, security, etc.)
+- 9-10: All constraints clear (performance, compatibility, style, security,
+  etc.)
 
 **Key constraint types:**
 
@@ -115,8 +130,10 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "Add email validation WITHOUT using external libraries (use regex). Must handle RFC 5322 edge cases."
-- ✅ "Optimize the image processing to handle 10MB files in under 2 seconds. Must maintain backward compatibility with existing uploads."
+- ✅ "Add email validation WITHOUT using external libraries (use regex). Must
+  handle RFC 5322 edge cases."
+- ✅ "Optimize the image processing to handle 10MB files in under 2 seconds.
+  Must maintain backward compatibility with existing uploads."
 
 ---
 
@@ -139,14 +156,18 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "Create a JSON API endpoint that returns: { users: [...], total: number, page: number }. Include Swagger/OpenAPI documentation."
-- ✅ "Write 5 unit tests covering: (1) successful login, (2) wrong password, (3) missing email, (4) rate limit exceeded, (5) database timeout. Use Jest + Supertest."
+- ✅ "Create a JSON API endpoint that returns: { users: [...], total: number,
+  page: number }. Include Swagger/OpenAPI documentation."
+- ✅ "Write 5 unit tests covering: (1) successful login, (2) wrong password, (3)
+  missing email, (4) rate limit exceeded, (5) database timeout. Use Jest +
+  Supertest."
 
 ---
 
 ### 6. **Actionability** (0-10)
 
-**What it measures:** Can Claude immediately start working, or must it ask questions?
+**What it measures:** Can Claude immediately start working, or must it ask
+questions?
 
 **Scoring:**
 
@@ -164,8 +185,10 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "In src/components/Dashboard.tsx lines 45-67, refactor the useEffect hook to use React Query's useQuery() instead. Keep the same loading/error states."
-- ✅ "Add these 3 environment variables to .env.example: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID. Use the same format as existing vars."
+- ✅ "In src/components/Dashboard.tsx lines 45-67, refactor the useEffect hook
+  to use React Query's useQuery() instead. Keep the same loading/error states."
+- ✅ "Add these 3 environment variables to .env.example: STRIPE_SECRET_KEY,
+  STRIPE_WEBHOOK_SECRET, STRIPE_PRICE_ID. Use the same format as existing vars."
 
 ---
 
@@ -188,8 +211,10 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "Refactor the 3 SQL queries in src/db/users.ts to use parameterized queries (prevent SQL injection). Do NOT refactor other files yet."
-- ✅ "Add dark mode toggle to the Settings page ONLY. Don't implement the actual theming logic - just the UI control that saves preference to localStorage."
+- ✅ "Refactor the 3 SQL queries in src/db/users.ts to use parameterized queries
+  (prevent SQL injection). Do NOT refactor other files yet."
+- ✅ "Add dark mode toggle to the Settings page ONLY. Don't implement the actual
+  theming logic - just the UI control that saves preference to localStorage."
 
 ---
 
@@ -212,8 +237,10 @@ Score your prompt on each dimension (0-10). **Target: 70+/80 total.**
 
 **Good examples:**
 
-- ✅ "Reduce the bundle size of src/App.tsx by at least 20%. Measure using: npm run build && ls -lh dist/assets/App-\*.js"
-- ✅ "Add TypeScript types to user.service.ts such that npm run type-check passes with zero errors."
+- ✅ "Reduce the bundle size of src/App.tsx by at least 20%. Measure using: npm
+  run build && ls -lh dist/assets/App-\*.js"
+- ✅ "Add TypeScript types to user.service.ts such that npm run type-check
+  passes with zero errors."
 
 ---
 
@@ -484,13 +511,10 @@ Fix the 3 failing tests in __tests__/api/users.test.ts after we migrated from Je
 Error messages:
 ```
 
-FAIL **tests**/api/users.test.ts
-● GET /api/users › returns user list
-ReferenceError: TextEncoder is not defined
-● POST /api/users › creates new user
-TypeError: Cannot read property 'json' of undefined
-● DELETE /api/users/:id › deletes user
-ReferenceError: TextEncoder is not defined
+FAIL **tests**/api/users.test.ts ● GET /api/users › returns user list
+ReferenceError: TextEncoder is not defined ● POST /api/users › creates new user
+TypeError: Cannot read property 'json' of undefined ● DELETE /api/users/:id ›
+deletes user ReferenceError: TextEncoder is not defined
 
 ```
 
@@ -544,7 +568,8 @@ Structure: Context → Request → Constraints
 [CONSTRAINTS] Keep existing props interface. Don't add new dependencies. Follow the pattern in src/components/Button.tsx.
 ```
 
-**Why it works:** Context prevents confusion, constraints prevent wrong approaches.
+**Why it works:** Context prevents confusion, constraints prevent wrong
+approaches.
 
 ---
 
@@ -667,11 +692,10 @@ Success criteria:
 
 ❌ "Fix the API"
 
-✅ **WHO:** src/api/users.ts endpoint GET /api/users
-✅ **WHAT:** Add pagination (limit/offset params)
-✅ **WHY:** Current endpoint returns all 10K users, causing timeout
-✅ **HOW:** Default limit=20, max=100, use SQL LIMIT/OFFSET
-✅ **WHEN:** Returns { users: [...], total: N, page: N } and loads in <200ms
+✅ **WHO:** src/api/users.ts endpoint GET /api/users ✅ **WHAT:** Add pagination
+(limit/offset params) ✅ **WHY:** Current endpoint returns all 10K users,
+causing timeout ✅ **HOW:** Default limit=20, max=100, use SQL LIMIT/OFFSET ✅
+**WHEN:** Returns { users: [...], total: N, page: N } and loads in <200ms
 
 ---
 
@@ -745,29 +769,29 @@ Success Criteria:
 
 Put file paths and key requirements in the first sentence.
 
-❌ "We need to update the authentication logic because we're getting security warnings. Can you help?"
+❌ "We need to update the authentication logic because we're getting security
+warnings. Can you help?"
 
-✅ "In src/auth/login.ts, replace MD5 password hashing with bcrypt (min cost factor: 12) to fix security audit warnings."
+✅ "In src/auth/login.ts, replace MD5 password hashing with bcrypt (min cost
+factor: 12) to fix security audit warnings."
 
 ---
 
 ### 2. **Use Absolute Metrics, Not Relative**
 
-❌ "Make it faster"
-✅ "Reduce response time from 500ms to under 100ms"
+❌ "Make it faster" ✅ "Reduce response time from 500ms to under 100ms"
 
-❌ "Improve code quality"
-✅ "Increase test coverage from 60% to 85%"
+❌ "Improve code quality" ✅ "Increase test coverage from 60% to 85%"
 
-❌ "Better error handling"
-✅ "Add try/catch blocks for all async operations, log errors to Sentry"
+❌ "Better error handling" ✅ "Add try/catch blocks for all async operations,
+log errors to Sentry"
 
 ---
 
 ### 3. **Reference Existing Patterns**
 
-❌ "Add authentication"
-✅ "Add authentication following the same pattern as src/auth/apiAuth.ts (JWT with refresh tokens)"
+❌ "Add authentication" ✅ "Add authentication following the same pattern as
+src/auth/apiAuth.ts (JWT with refresh tokens)"
 
 **Why:** Ensures consistency with existing codebase.
 
@@ -777,7 +801,8 @@ Put file paths and key requirements in the first sentence.
 
 Every prompt should answer: "How will I know this is complete?"
 
-✅ "Done when: npm run test passes, npm run build completes without warnings, manual testing shows login works"
+✅ "Done when: npm run test passes, npm run build completes without warnings,
+manual testing shows login works"
 
 ---
 
@@ -820,10 +845,8 @@ Debug the "TypeError: Cannot read property 'length' of undefined" error in src/u
 Code (lines 20-25):
 ```
 
-function validateEmail(email) {
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-return email.length > 0 && emailRegex.test(email) // Line 23 fails
-}
+function validateEmail(email) { const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+return email.length > 0 && emailRegex.test(email) // Line 23 fails }
 
 ```
 
@@ -928,13 +951,12 @@ Success: [VERIFICATION_METHOD]
 
 **The Universal Prompt Optimizer gives you:**
 
-✅ **8-dimension scoring framework** - Objective quality assessment
-✅ **Analysis template** - Systematic improvement process
-✅ **Optimization checklist** - Actionable improvements
-✅ **Before/after examples** - Learn from real transformations
-✅ **Advanced techniques** - Pro-level prompt engineering
-✅ **Common mistake fixes** - Avoid pitfalls
-✅ **Ready-to-use templates** - Start with strong foundations
+✅ **8-dimension scoring framework** - Objective quality assessment ✅
+**Analysis template** - Systematic improvement process ✅ **Optimization
+checklist** - Actionable improvements ✅ **Before/after examples** - Learn from
+real transformations ✅ **Advanced techniques** - Pro-level prompt engineering
+✅ **Common mistake fixes** - Avoid pitfalls ✅ **Ready-to-use templates** -
+Start with strong foundations
 
 **Result:** 3-5x better responses from Claude Code with minimal effort.
 

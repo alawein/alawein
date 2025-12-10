@@ -1,8 +1,14 @@
+---
+title: 'Business Projects Codemap'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Business Projects Codemap
 
-> **Location:** `.archive/organizations/alawein-business/`
-> **Projects:** Repz, LiveItIconic, MarketingAutomation
-> **Status:** Development
+> **Location:** `.archive/organizations/alawein-business/` **Projects:** Repz,
+> LiveItIconic, MarketingAutomation **Status:** Development
 
 ---
 
@@ -35,9 +41,9 @@ flowchart TB
 
 ## Repz - AI Fitness Tracking
 
-**Primary Location:** `C:\Users\mesha\Desktop\REPZ` (ACTIVE)
-**Archive Location:** `.archive/organizations/alawein-business/Repz/`
-**Domain:** getrepz.app ✅
+**Primary Location:** `C:\Users\mesha\Desktop\REPZ` (ACTIVE) **Archive
+Location:** `.archive/organizations/alawein-business/Repz/` **Domain:**
+getrepz.app ✅
 
 ### Active Repo Structure (Desktop/REPZ)
 
@@ -80,6 +86,7 @@ Repz/
 ```
 
 ### Key Features
+
 - AI-powered workout tracking
 - Rep counting with computer vision
 - Progress analytics
@@ -117,6 +124,7 @@ LiveItIconic/
 ```
 
 ### Key Features
+
 - Luxury product catalog
 - Shopify integration
 - SEO optimized
@@ -139,25 +147,26 @@ MarketingAutomation/
 ```
 
 ### Purpose
+
 Marketing automation tools for Repz and LiveItIconic campaigns.
 
 ---
 
 ## Existing Superprompt
 
-| Project | Superprompt |
-|---------|-------------|
-| Repz | `REPZ_SUPERPROMPT.md` |
+| Project | Superprompt           |
+| ------- | --------------------- |
+| Repz    | `REPZ_SUPERPROMPT.md` |
 
 ---
 
 ## Deployment Status
 
-| Project | Platform | Status |
-|---------|----------|--------|
-| Repz | Vercel | 🟡 Development |
-| LiveItIconic | Vercel | 🟡 Development |
-| MarketingAutomation | - | 🔴 Planned |
+| Project             | Platform | Status         |
+| ------------------- | -------- | -------------- |
+| Repz                | Vercel   | 🟡 Development |
+| LiveItIconic        | Vercel   | 🟡 Development |
+| MarketingAutomation | -        | 🔴 Planned     |
 
 ---
 

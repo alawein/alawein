@@ -1,0 +1,69 @@
+ROW LEVEL SECURITY POLICIES
+════════════════════════════════════════════════════════════
+
+📁 alawein-technologies-llc
+
+📁 repz-llc
+  └── profiles
+      • Users can view own profile
+      • Users can update own profile
+  └── client_profiles
+      • Clients can view own profile
+      • Coaches can view their clients
+      • Clients can update own profile
+  └── workouts
+      • Clients can view own workouts
+      • Coaches can view their clients' workouts
+      • Coaches can create workouts
+      • Coaches can update their workouts
+  └── messages
+      • Users can view their messages
+      • Users can send messages
+  └── sessions
+      • Clients can view own sessions
+      • Coaches can view their sessions
+      • Coaches can create sessions
+
+📁 repz-llc
+  └── profiles
+      • Users can view own profile
+      • Users can update own profile
+      • Admins can view all profiles
+  └── client_profiles
+      • Clients can view own profile
+      • Coaches can view their clients
+      • Clients can update own profile
+  └── workouts
+      • Clients can view own workouts
+      • Coaches can view their clients' workouts
+      • Coaches can create workouts
+      • Coaches can update their workouts
+  └── messages
+      • Users can view their messages
+      • Users can send messages
+      • Users can update their sent messages
+  └── notifications
+      • Users can view own notifications
+      • Users can update own notifications
+  └── sessions
+      • Users can view their sessions
+      • Coaches can create sessions
+  └── payments
+      • Users can view own payments
+  └── subscriptions
+      • Users can view own subscriptions
+  └── non_portal_clients
+      • Coaches can view non-portal clients
+  └── audit_log
+      • Admins can view audit log
+
+📁 attributa
+
+📁 attributa
+  └── user_api_keys
+      • Users can view their own API keys
+      • Users can insert their own API keys
+      • Users can update their own API keys
+      • Users can delete their own API keys
+
+📊 Total: 162 RLS policies across 121 tables

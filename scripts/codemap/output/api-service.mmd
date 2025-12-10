@@ -1,0 +1,23 @@
+classDiagram
+    class ApiService {
+        -baseUrl: string
+        -accessToken: string
+        -csrfToken: string
+        +get(endpoint, params)
+        +post(endpoint, data)
+        +put(endpoint, data)
+        +patch(endpoint, data)
+        +delete(endpoint)
+        +uploadFile(endpoint, file, onProgress)
+        -request(endpoint, options)
+        -requestWithTimeout(url, options, timeout)
+        -retryRequest(fn, retries)
+    }
+
+    class RetryConfig {
+        +maxRetries: number
+        +retryDelay: number
+        +retryableStatuses: number[]
+    }
+
+    ApiService --> RetryConfig

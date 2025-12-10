@@ -1,6 +1,14 @@
+---
+title: 'Common Issues and Solutions'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Common Issues and Solutions
 
-Comprehensive troubleshooting guide for the most frequently encountered issues with ORCHEX, including symptoms, root causes, and step-by-step solutions.
+Comprehensive troubleshooting guide for the most frequently encountered issues
+with ORCHEX, including symptoms, root causes, and step-by-step solutions.
 
 ---
 
@@ -880,4 +888,7 @@ ORCHEX system doctor --export diagnostics.json
 
 ---
 
-This troubleshooting guide covers the most common issues. If you encounter an issue not listed here, please check the [GitHub issues](https://github.com/ORCHEX-platform/ORCHEX/issues) or create a new issue with detailed information about your problem.</instructions>
+This troubleshooting guide covers the most common issues. If you encounter an
+issue not listed here, please check the
+[GitHub issues](https://github.com/ORCHEX-platform/ORCHEX/issues) or create a
+new issue with detailed information about your problem.</instructions>

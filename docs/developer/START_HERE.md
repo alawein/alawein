@@ -1,4 +1,9 @@
-# 🚀 START HERE - Alawein Technologies
+---
+title: '🚀 START HERE - Alawein Technologies'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
 
 > **Last Updated:** December 5, 2025  
 > **Status:** ✅ READY TO LAUNCH  
@@ -15,6 +20,7 @@
 | **[COMPLETION_SUMMARY.md](./COMPLETION_SUMMARY.md)** | What's been done             | Progress tracking         |
 | **[projects/README.md](./projects/README.md)**       | Complete project registry    | Finding archived projects |
 | **[STRUCTURE.md](./STRUCTURE.md)**                   | Repository organization      | Understanding layout      |
+| **[CODEMAP.md](./CODEMAP.md)**                       | Visual code map CLI          | Generating diagrams       |
 
 ---
 
@@ -53,34 +59,34 @@
 
 1. **File LLC** - Alawein Technologies LLC
    - Cost: $70
-   - Link: https://bizfileonline.sos.ca.gov/
+   - Link: <https://bizfileonline.sos.ca.gov/>
    - Time: 15 minutes
 2. **Get EIN** - IRS Employer ID
    - Cost: FREE
-   - Link: https://www.irs.gov/ein
+   - Link: <https://www.irs.gov/ein>
    - Time: 10 minutes
 
 ### Wednesday: Domains & Banking
 
-3. **Register Domains** (~$42 total)
+1. **Register Domains** (~$42 total)
    - alawein.tech (~$12)
    - talai.dev (~$15)
    - librex.dev (~$15)
-4. **Open Bank Account**
+2. **Open Bank Account**
    - Recommended: Mercury
    - Cost: FREE
-   - Link: https://mercury.com
+   - Link: <https://mercury.com>
 
 ### Thursday-Friday: Deploy & Launch
 
-5. **Enable GitHub Pages**
+1. **Enable GitHub Pages**
    - Go to repo settings
    - Enable Pages from `docs/pages/`
    - Configure custom domains
-6. **Set Up Google Workspace** ($6/mo)
+2. **Set Up Google Workspace** ($6/mo)
    - Create professional emails
-   - contact@alawein.tech
-   - support@talai.dev
+   - `contact@alawein.tech`
+   - `support@talai.dev`
 
 ---
 
@@ -174,7 +180,7 @@
 
 ## 📁 Repository Structure
 
-```
+```text
 GitHub/
 ├── .archive/                   # 47,805 archived files
 │   └── organizations/          # All project code preserved
@@ -219,9 +225,9 @@ GitHub/
 
 ### GitHub
 
-- **Repository:** https://github.com/alawein/alawein
-- **Profile:** https://github.com/alawein
-- **README:** https://github.com/alawein/alawein#readme
+- **Repository:** <https://github.com/alawein/alawein>
+- **Profile:** <https://github.com/alawein>
+- **README:** <https://github.com/alawein/alawein#readme>
 
 ### Domains (To Register)
 
@@ -231,15 +237,15 @@ GitHub/
 
 ### Business Formation
 
-- **California SOS:** https://bizfileonline.sos.ca.gov/
-- **IRS EIN:** https://www.irs.gov/ein
-- **Mercury Bank:** https://mercury.com
+- **California SOS:** <https://bizfileonline.sos.ca.gov/>
+- **IRS EIN:** <https://www.irs.gov/ein>
+- **Mercury Bank:** <https://mercury.com>
 
 ### Development
 
-- **Vercel:** https://vercel.com
-- **Stripe:** https://stripe.com
-- **GitHub Pages:** https://pages.github.com
+- **Vercel:** <https://vercel.com>
+- **Stripe:** <https://stripe.com>
+- **GitHub Pages:** <https://pages.github.com>
 
 ---
 
@@ -250,13 +256,13 @@ GitHub/
 - **Email:** meshal@berkeley.edu
 - **GitHub:** [@alawein](https://github.com/alawein)
 - **LinkedIn:** [linkedin.com/in/alawein](https://linkedin.com/in/alawein)
-- **Portfolio:** https://malawein.com (to be set up)
+- **Portfolio:** <https://malawein.com> (to be set up)
 
 ### Future (After Domain Setup)
 
-- **Company:** contact@alawein.tech
-- **Support:** support@alawein.tech
-- **TalAI:** hello@talai.dev
+- **Company:** `contact@alawein.tech`
+- **Support:** `support@alawein.tech`
+- **TalAI:** `hello@talai.dev`
 
 ---
 
@@ -417,7 +423,7 @@ Prioritize:
 
 ---
 
-## 🎉 You're Ready!
+## You're Ready
 
 Everything is set up and ready to go. The repository is clean, documentation is
 complete, and landing pages are designed.
@@ -448,7 +454,6 @@ Avoid:
 
 ---
 
-**Good luck! 🚀**
+Good luck! 🚀
 
-_Last updated: December 5, 2025_  
-_Next review: December 6, 2025_
+_Last updated: December 5, 2025_

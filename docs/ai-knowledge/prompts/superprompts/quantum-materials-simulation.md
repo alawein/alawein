@@ -1,9 +1,15 @@
+---
+title: '🤖 QMAT-Sim - Master Superprompt & AI Orchestration'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # 🤖 QMAT-Sim - Master Superprompt & AI Orchestration
 
-**Project:** QMAT-Sim (Quantum Material Simulation)
-**Status:** ACTIVE - Ready for Claude Code
-**Config:** Enterprise-grade with sequential thinking + parallel agents
-**Date:** 2025-11-17
+**Project:** QMAT-Sim (Quantum Material Simulation) **Status:** ACTIVE - Ready
+for Claude Code **Config:** Enterprise-grade with sequential thinking + parallel
+agents **Date:** 2025-11-17
 
 ---
 
@@ -24,11 +30,9 @@
 
 5 parallel agent teams optimized for QMAT-Sim:
 
-**Team 1:** Quantum chemistry & accuracy
-**Team 2:** Simulation engine & performance
-**Team 3:** Data management & APIs
-**Team 4:** Infrastructure & deployment
-**Team 5:** Optimization & research
+**Team 1:** Quantum chemistry & accuracy **Team 2:** Simulation engine &
+performance **Team 3:** Data management & APIs **Team 4:** Infrastructure &
+deployment **Team 5:** Optimization & research
 
 ### Execution Style
 

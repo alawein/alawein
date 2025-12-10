@@ -1,8 +1,17 @@
+---
+title: 'Monorepo Standards & Governance'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monorepo Standards & Governance
 
 ## 📋 Overview
 
-This document defines the standards, conventions, and governance for the GitHub monorepo structure. All development must follow these guidelines to maintain consistency and scalability.
+This document defines the standards, conventions, and governance for the GitHub
+monorepo structure. All development must follow these guidelines to maintain
+consistency and scalability.
 
 ## 🏗️ Repository Structure Standards
 
@@ -60,7 +69,8 @@ packages/{package-name}/
 ### Organizations
 
 - **Format**: `{llc-name}/` (kebab-case)
-- **Examples**: `organizations/repz-llc/`, `organizations/alawein-technologies-llc/`, `organizations/live-it-iconic-llc/`
+- **Examples**: `organizations/repz-llc/`,
+  `organizations/alawein-technologies-llc/`, `organizations/live-it-iconic-llc/`
 
 ### Platforms
 
@@ -174,7 +184,8 @@ All projects must use:
 
 - **Repository-level**: `docs/` directory
 - **Organization-level**: `organizations/{org}/docs/`
-- **Platform-level**: `organizations/alawein-technologies-llc/platforms/{platform}/docs/`
+- **Platform-level**:
+  `organizations/alawein-technologies-llc/platforms/{platform}/docs/`
 - **Package-level**: Package root `README.md`
 
 ## 🔒 Security & Governance

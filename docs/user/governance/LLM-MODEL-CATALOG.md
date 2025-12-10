@@ -1,6 +1,14 @@
+---
+title: 'LLM Model Catalog'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # LLM Model Catalog
 
-> Comprehensive reference for AI models available across coding assistants and IDEs.
+> Comprehensive reference for AI models available across coding assistants and
+> IDEs.
 
 **Last Updated:** 2025-12-03  
 **Total Models Cataloged:** 500+  
@@ -39,7 +47,8 @@
 
 ## Overview
 
-This catalog documents all AI models available across major coding assistants and IDEs. Use it to:
+This catalog documents all AI models available across major coding assistants
+and IDEs. Use it to:
 
 - **Compare model availability** across different tools
 - **Select the right model** for your task type
@@ -96,13 +105,15 @@ The Claude family excels at reasoning, safety, and large context handling.
 | **Claude 3 Opus**                | 200K    | Legacy premium                  | Cline, Kilo                            |
 | **Claude 3 Haiku**               | 200K    | Legacy fast                     | Cline, Kilo                            |
 
-**Thinking Variants:** Enable step-by-step reasoning with `:thinking` suffix. Best for debugging, architecture decisions, and complex refactoring.
+**Thinking Variants:** Enable step-by-step reasoning with `:thinking` suffix.
+Best for debugging, architecture decisions, and complex refactoring.
 
 ---
 
 ### OpenAI
 
-OpenAI offers the broadest model range from legacy GPT-3.5 to cutting-edge reasoning models.
+OpenAI offers the broadest model range from legacy GPT-3.5 to cutting-edge
+reasoning models.
 
 #### GPT-5.x Series (Latest)
 
@@ -488,7 +499,8 @@ Open-weight models with strong community support.
 **Pricing:** OpenRouter  
 **Special Features:** Full provider/model naming, browser control
 
-Uses `provider/model` naming convention. See [Models by Provider](#models-by-provider) for full list.
+Uses `provider/model` naming convention. See
+[Models by Provider](#models-by-provider) for full list.
 
 **Unique to Cline:**
 
@@ -616,7 +628,8 @@ See [Models by Provider](#models-by-provider) for comprehensive list.
 
 ### Optimization Strategies
 
-1. **Use Auto mode** - Let the IDE select the optimal model (10% discount in VS Code)
+1. **Use Auto mode** - Let the IDE select the optimal model (10% discount in VS
+   Code)
 2. **Match model to task** - Don't use Opus for simple edits
 3. **Leverage free tiers** - DeepSeek R1, GPT-5.1 variants
 4. **BYOK for heavy usage** - Bring your own key for premium models
@@ -643,10 +656,13 @@ See [Models by Provider](#models-by-provider) for comprehensive list.
 
 ## Related Documentation
 
-- [AI-TOOL-PROFILES.md](../AI-TOOL-PROFILES.md) - IDE/tool profiles and workflows
-- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Multi-agent orchestration
+- [AI-TOOL-PROFILES.md](../AI-TOOL-PROFILES.md) - IDE/tool profiles and
+  workflows
+- [AI-TOOLS-ORCHESTRATION.md](../AI-TOOLS-ORCHESTRATION.md) - Multi-agent
+  orchestration
 - [ai-coding-tools/README.md](../ai-coding-tools/README.md) - Tool catalog
 
 ---
 
-_This catalog is maintained as part of the governance documentation. Submit updates via PR._
+_This catalog is maintained as part of the governance documentation. Submit
+updates via PR._

@@ -4,13 +4,16 @@ version: '1.0'
 category: 'project'
 tags: ['ai', 'ml', 'llm', 'integration', 'mlops', 'inference']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # AI/ML Integration Superprompt
 
 ## Purpose
 
-Comprehensive framework for integrating AI/ML capabilities into applications, including LLM integration, model deployment, MLOps practices, and responsible AI implementation.
+Comprehensive framework for integrating AI/ML capabilities into applications,
+including LLM integration, model deployment, MLOps practices, and responsible AI
+implementation.
 
 ---
 
@@ -94,7 +97,10 @@ export class LLMClient {
     throw new Error(`Unsupported provider: ${this.config.provider}`);
   }
 
-  private async chatAnthropic(messages: Message[], systemPrompt?: string): Promise<LLMResponse> {
+  private async chatAnthropic(
+    messages: Message[],
+    systemPrompt?: string,
+  ): Promise<LLMResponse> {
     const response = await this.anthropic!.messages.create({
       model: this.config.model,
       max_tokens: this.config.maxTokens || 4096,
@@ -107,7 +113,8 @@ export class LLMClient {
     });
 
     return {
-      content: response.content[0].type === 'text' ? response.content[0].text : '',
+      content:
+        response.content[0].type === 'text' ? response.content[0].text : '',
       usage: {
         inputTokens: response.usage.input_tokens,
         outputTokens: response.usage.output_tokens,
@@ -117,7 +124,10 @@ export class LLMClient {
     };
   }
 
-  private async chatOpenAI(messages: Message[], systemPrompt?: string): Promise<LLMResponse> {
+  private async chatOpenAI(
+    messages: Message[],
+    systemPrompt?: string,
+  ): Promise<LLMResponse> {
     const allMessages = systemPrompt
       ? [{ role: 'system' as const, content: systemPrompt }, ...messages]
       : messages;
@@ -141,7 +151,10 @@ export class LLMClient {
   }
 
   // Streaming support
-  async *chatStream(messages: Message[], systemPrompt?: string): AsyncGenerator<string> {
+  async *chatStream(
+    messages: Message[],
+    systemPrompt?: string,
+  ): AsyncGenerator<string> {
     if (this.config.provider === 'anthropic') {
       const stream = await this.anthropic!.messages.stream({
         model: this.config.model,
@@ -154,7 +167,10 @@ export class LLMClient {
       });
 
       for await (const event of stream) {
-        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+        if (
+          event.type === 'content_block_delta' &&
+          event.delta.type === 'text_delta'
+        ) {
           yield event.delta.text;
         }
       }
@@ -253,7 +269,7 @@ export class RAGSystem {
   async query(
     question: string,
     llmClient: LLMClient,
-    options: { topK?: number; systemPrompt?: string } = {}
+    options: { topK?: number; systemPrompt?: string } = {},
   ): Promise<string> {
     const { topK = 5, systemPrompt } = options;
 
@@ -261,7 +277,9 @@ export class RAGSystem {
     const results = await this.search(question, topK);
 
     // Build context
-    const context = results.map((r, i) => `[${i + 1}] ${r.document.content}`).join('\n\n');
+    const context = results
+      .map((r, i) => `[${i + 1}] ${r.document.content}`)
+      .join('\n\n');
 
     // Generate response with context
     const augmentedPrompt = `
@@ -278,7 +296,7 @@ Answer:`;
     const response = await llmClient.chat(
       [{ role: 'user', content: augmentedPrompt }],
       systemPrompt ||
-        'You are a helpful assistant that answers questions based on the provided context.'
+        'You are a helpful assistant that answers questions based on the provided context.',
     );
 
     return response.content;
@@ -309,14 +327,17 @@ Please think through this carefully:
 Show your reasoning at each step.`,
 
   // Few-Shot Learning
-  fewShot: (examples: Array<{ input: string; output: string }>, newInput: string) => `
+  fewShot: (
+    examples: Array<{ input: string; output: string }>,
+    newInput: string,
+  ) => `
 Here are some examples:
 
 ${examples
   .map(
     (ex, i) => `Example ${i + 1}:
 Input: ${ex.input}
-Output: ${ex.output}`
+Output: ${ex.output}`,
   )
   .join('\n\n')}
 
@@ -403,7 +424,10 @@ export class PromptBuilder {
 
   examples(examples: Array<{ input: string; output: string }>): this {
     const examplesText = examples
-      .map((ex, i) => `Example ${i + 1}:\nInput: ${ex.input}\nOutput: ${ex.output}`)
+      .map(
+        (ex, i) =>
+          `Example ${i + 1}:\nInput: ${ex.input}\nOutput: ${ex.output}`,
+      )
       .join('\n\n');
     this.parts.push(`<examples>\n${examplesText}\n</examples>`);
     return this;
@@ -421,7 +445,8 @@ export class PromptBuilder {
   }
 
   outputFormat(format: string | object): this {
-    const formatText = typeof format === 'string' ? format : JSON.stringify(format, null, 2);
+    const formatText =
+      typeof format === 'string' ? format : JSON.stringify(format, null, 2);
     this.parts.push(`<output_format>\n${formatText}\n</output_format>`);
     return this;
   }

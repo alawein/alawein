@@ -1,8 +1,16 @@
+---
+title: 'Phase 1: Infrastructure Consolidation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Phase 1: Infrastructure Consolidation
 
 ## Objective
 
-Merge scattered infrastructure folders (deploy/, templates/) into .metaHub/ for unified DevOps management.
+Merge scattered infrastructure folders (deploy/, templates/) into .metaHub/ for
+unified DevOps management.
 
 ## Pre-Flight Checks
 

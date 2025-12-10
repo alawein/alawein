@@ -1,3 +1,10 @@
+---
+title: 'Root Directory Structure Contract'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Root Directory Structure Contract
 
 > **Version:** 2.1.0 **Status:** Active **Last Updated:** 2025-11-27 **Migration

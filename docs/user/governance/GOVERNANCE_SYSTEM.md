@@ -1,6 +1,14 @@
+---
+title: 'Multi-Agent Governance System Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Multi-Agent Governance System Documentation
 
-> Comprehensive guide to the automated code review and governance enforcement system
+> Comprehensive guide to the automated code review and governance enforcement
+> system
 
 ## Table of Contents
 
@@ -23,7 +31,11 @@
 
 ### Overview
 
-The Multi-Agent Governance System is a TypeScript-based automation framework that coordinates multiple specialized agents to perform automated code review, risk assessment, and governance enforcement. The system implements Anthropic's agentic workflow patterns with a focus on adversarial validation through self-refutation.
+The Multi-Agent Governance System is a TypeScript-based automation framework
+that coordinates multiple specialized agents to perform automated code review,
+risk assessment, and governance enforcement. The system implements Anthropic's
+agentic workflow patterns with a focus on adversarial validation through
+self-refutation.
 
 ### Key Benefits
 
@@ -38,8 +50,10 @@ The Multi-Agent Governance System is a TypeScript-based automation framework tha
 
 ### Key Capabilities
 
-- **Discovery → Analysis → Proposal → Review → Validation → Apply** workflow pipeline
-- Validation checkpoints for TypeScript compilation, ESLint, tests, and security scanning
+- **Discovery → Analysis → Proposal → Review → Validation → Apply** workflow
+  pipeline
+- Validation checkpoints for TypeScript compilation, ESLint, tests, and security
+  scanning
 - Skeptic approval requirement with configurable self-refutation rounds
 - Automated dashboard metrics collection and historical trend analysis
 - MCP server integration for external tool orchestration
@@ -263,9 +277,11 @@ flowchart TB
 
 #### Purpose and Responsibilities
 
-The `GovernanceOrchestrator` is the central coordinator that manages multi-agent workflows. It:
+The `GovernanceOrchestrator` is the central coordinator that manages multi-agent
+workflows. It:
 
-- Coordinates message passing between agents (analyzer, refactor, skeptic, organizer, security)
+- Coordinates message passing between agents (analyzer, refactor, skeptic,
+  organizer, security)
 - Manages validation checkpoints (TypeScript, ESLint, tests, security)
 - Tracks proposed changes through review lifecycle
 - Generates comprehensive governance reports
@@ -281,7 +297,13 @@ type AgentRole = 'analyzer' | 'refactor' | 'skeptic' | 'organizer' | 'security';
 interface AgentMessage {
   from: AgentRole;
   to: AgentRole | 'orchestrator';
-  type: 'proposal' | 'review' | 'approval' | 'rejection' | 'question' | 'report';
+  type:
+    | 'proposal'
+    | 'review'
+    | 'approval'
+    | 'rejection'
+    | 'question'
+    | 'report';
   content: unknown;
   timestamp: Date;
   correlationId: string;
@@ -372,7 +394,9 @@ orchestrator.reviewChange(changeId, {
 
 // Run validation checkpoints
 const results = await orchestrator.runValidation();
-console.log(`Validation: ${results.every((r) => r.passed) ? 'PASSED' : 'FAILED'}`);
+console.log(
+  `Validation: ${results.every((r) => r.passed) ? 'PASSED' : 'FAILED'}`,
+);
 
 // Generate final report
 const report = orchestrator.generateReport();
@@ -391,8 +415,11 @@ console.log(`Overall Status: ${report.overallStatus}`);
 
 #### Integration Points
 
-- **Event Emission:** Emits `finding`, `change-proposed`, `change-reviewed`, `change-status-updated`, `change-applied`, `change-error`, `validation-result`, `validation-failed`
-- **MCP Servers:** Integrates with `filesystem`, `git`, `semgrep`, `sequential-thinking` via workflow YAML
+- **Event Emission:** Emits `finding`, `change-proposed`, `change-reviewed`,
+  `change-status-updated`, `change-applied`, `change-error`,
+  `validation-result`, `validation-failed`
+- **MCP Servers:** Integrates with `filesystem`, `git`, `semgrep`,
+  `sequential-thinking` via workflow YAML
 - **Dashboard:** Feeds metrics to `GovernanceDashboard` for visualization
 
 ---
@@ -403,9 +430,11 @@ console.log(`Overall Status: ${report.overallStatus}`);
 
 #### Purpose and Responsibilities
 
-The `SkepticReviewer` is an adversarial review agent that challenges every proposed change with "what could go wrong?" analysis. It implements:
+The `SkepticReviewer` is an adversarial review agent that challenges every
+proposed change with "what could go wrong?" analysis. It implements:
 
-- Risk assessment (breaking changes, security, performance, regression, compatibility)
+- Risk assessment (breaking changes, security, performance, regression,
+  compatibility)
 - Skeptical question generation
 - Concern identification (missing tests, incomplete changes, side effects)
 - Self-refutation loop for robust validation
@@ -427,7 +456,12 @@ interface SkepticAnalysis {
 
 // Risk categories and severity
 interface Risk {
-  category: 'breaking-change' | 'security' | 'performance' | 'regression' | 'compatibility';
+  category:
+    | 'breaking-change'
+    | 'security'
+    | 'performance'
+    | 'regression'
+    | 'compatibility';
   severity: 'critical' | 'high' | 'medium' | 'low';
   description: string;
   mitigation?: string;
@@ -435,7 +469,12 @@ interface Risk {
 
 // Concern types
 interface Concern {
-  type: 'missing-tests' | 'incomplete-change' | 'side-effects' | 'unclear-intent' | 'scope-creep';
+  type:
+    | 'missing-tests'
+    | 'incomplete-change'
+    | 'side-effects'
+    | 'unclear-intent'
+    | 'scope-creep';
   description: string;
   evidence?: string;
 }
@@ -493,7 +532,9 @@ console.log(`Concerns: ${analysis.concerns.length}`);
 
 // View refutation rounds
 for (const round of analysis.refutationRounds) {
-  console.log(`Round ${round.round}: ${round.resolved ? '✓' : '✗'} ${round.challenge}`);
+  console.log(
+    `Round ${round.round}: ${round.resolved ? '✓' : '✗'} ${round.challenge}`,
+  );
 }
 
 // Generate review for orchestrator integration
@@ -518,14 +559,18 @@ findings.forEach((f) => console.log(`[${f.severity}] ${f.message}`));
 
 The skeptic performs iterative self-refutation to challenge its own analysis:
 
-1. **Phase 1: Risk Assessment** - Detect breaking changes, security risks, performance impacts
-2. **Phase 2: Question Generation** - Generate skeptical questions about edge cases
-3. **Phase 3: Concern Identification** - Flag missing tests, incomplete changes, side effects
+1. **Phase 1: Risk Assessment** - Detect breaking changes, security risks,
+   performance impacts
+2. **Phase 2: Question Generation** - Generate skeptical questions about edge
+   cases
+3. **Phase 3: Concern Identification** - Flag missing tests, incomplete changes,
+   side effects
 4. **Phase 4: Self-Refutation Loop** - For each round:
    - Generate challenge: "What could go wrong?"
    - Attempt to address the challenge
    - Evaluate if the challenge was resolved
-5. **Phase 5: Final Recommendation** - Calculate confidence and determine decision
+5. **Phase 5: Final Recommendation** - Calculate confidence and determine
+   decision
 
 ---
 
@@ -535,9 +580,11 @@ The skeptic performs iterative self-refutation to challenge its own analysis:
 
 #### Dashboard Purpose
 
-The `GovernanceDashboard` provides real-time metrics and health scores for continuous governance monitoring. It:
+The `GovernanceDashboard` provides real-time metrics and health scores for
+continuous governance monitoring. It:
 
-- Collects metrics across 5 categories (TypeScript, ESLint, tests, security, structure)
+- Collects metrics across 5 categories (TypeScript, ESLint, tests, security,
+  structure)
 - Calculates an overall health score (0-100)
 - Tracks historical trends over configurable time periods
 - Generates text-based and JSON reports
@@ -629,9 +676,11 @@ const currentMetrics = dashboard.getMetrics();
 
 #### Pipeline Purpose
 
-The `AutoRefactorPipeline` identifies and applies safe refactoring operations with validation. It:
+The `AutoRefactorPipeline` identifies and applies safe refactoring operations
+with validation. It:
 
-- Scans for refactoring opportunities (large files, complex functions, missing types)
+- Scans for refactoring opportunities (large files, complex functions, missing
+  types)
 - Supports dry-run mode for safe preview
 - Validates changes after each refactoring
 - Generates summary reports with metrics
@@ -742,7 +791,10 @@ pipe.scan().then(opps => console.log(JSON.stringify(opps, null, 2)));
 #### Full Governance Workflow
 
 ```typescript
-import { createGovernanceSystem, createGovernanceDashboard } from './automation/agents/governance';
+import {
+  createGovernanceSystem,
+  createGovernanceDashboard,
+} from './automation/agents/governance';
 import { createAutoRefactorPipeline } from './automation/workflows/auto-refactor';
 
 async function runGovernanceWorkflow() {
@@ -884,7 +936,8 @@ dash.collectMetrics().then(m => {
 
 ## 5. Skeptic Review Report
 
-> This section contains the self-refutation analysis of the governance system implementation
+> This section contains the self-refutation analysis of the governance system
+> implementation
 
 ### 5.1 Analysis Summary
 
@@ -905,7 +958,9 @@ dash.collectMetrics().then(m => {
 
 **Category:** Security / Reliability
 
-**Description:** The `runCommand` method in `GovernanceOrchestrator` and `execAsync` calls in `GovernanceDashboard` execute shell commands without proper error handling or input sanitization.
+**Description:** The `runCommand` method in `GovernanceOrchestrator` and
+`execAsync` calls in `GovernanceDashboard` execute shell commands without proper
+error handling or input sanitization.
 
 **Evidence:**
 
@@ -940,7 +995,9 @@ private async runCommand(cmd: string): Promise<boolean> {
 
 **Category:** Regression / Reliability
 
-**Description:** The `reviewChange` method modifies the `reviews` array and calls `evaluateChangeStatus` without synchronization, creating potential race conditions in concurrent review scenarios.
+**Description:** The `reviewChange` method modifies the `reviews` array and
+calls `evaluateChangeStatus` without synchronization, creating potential race
+conditions in concurrent review scenarios.
 
 **Evidence:**
 
@@ -978,7 +1035,9 @@ public reviewChange(changeId: string, review: Omit<ChangeReview, 'timestamp'>): 
 
 **Category:** Performance / Reliability
 
-**Description:** The `createGovernanceSystem` factory wires up event listeners on the orchestrator but provides no cleanup mechanism, leading to potential memory leaks in long-running processes.
+**Description:** The `createGovernanceSystem` factory wires up event listeners
+on the orchestrator but provides no cleanup mechanism, leading to potential
+memory leaks in long-running processes.
 
 **Evidence:**
 
@@ -1009,7 +1068,9 @@ orchestrator.on('change-proposed', async (change) => {
 
 **Category:** Incomplete Change
 
-**Description:** The `evaluateResponse` method in SkepticReviewer always returns `true`, meaning self-refutation never fails. This defeats the purpose of adversarial review.
+**Description:** The `evaluateResponse` method in SkepticReviewer always returns
+`true`, meaning self-refutation never fails. This defeats the purpose of
+adversarial review.
 
 **Evidence:**
 
@@ -1039,7 +1100,9 @@ private evaluateResponse(_challenge: string, _response: string): boolean {
 
 **Category:** Side Effects
 
-**Description:** The `collectMetrics` method runs actual npm commands (`npm run lint`, `npm run test:run`, `npm audit`) which may have side effects, require network access, or fail in CI environments.
+**Description:** The `collectMetrics` method runs actual npm commands
+(`npm run lint`, `npm run test:run`, `npm audit`) which may have side effects,
+require network access, or fail in CI environments.
 
 **Evidence:**
 
@@ -1074,14 +1137,16 @@ const [typescript, eslint, tests, security, structure] = await Promise.all([
 
 **Category:** Incomplete Change
 
-**Description:** The `AutoRefactorPipeline` uses regex-based function detection which is error-prone for modern JavaScript/TypeScript patterns like arrow functions in class properties or method shorthand.
+**Description:** The `AutoRefactorPipeline` uses regex-based function detection
+which is error-prone for modern JavaScript/TypeScript patterns like arrow
+functions in class properties or method shorthand.
 
 **Evidence:**
 
 ```typescript
 // auto-refactor.ts:186-188
 const functionMatches = content.matchAll(
-  /(async\s+)?function\s+(\w+)|(\w+)\s*=\s*(async\s+)?\([^)]*\)\s*=>/g
+  /(async\s+)?function\s+(\w+)|(\w+)\s*=\s*(async\s+)?\([^)]*\)\s*=>/g,
 );
 // Misses: methods, getters, setters, class fields
 ```
@@ -1103,7 +1168,8 @@ const functionMatches = content.matchAll(
 
 #### Round 1: "What is the worst-case scenario?"
 
-**Challenge:** What happens if the governance system is deployed with these issues?
+**Challenge:** What happens if the governance system is deployed with these
+issues?
 
 **Response:** The system could:
 
@@ -1112,7 +1178,8 @@ const functionMatches = content.matchAll(
 - Consume increasing memory in long-running daemon mode
 - Provide false confidence scores, leading to unsafe approvals
 
-**Resolved:** ⚠️ Partially - Critical security issue requires immediate attention
+**Resolved:** ⚠️ Partially - Critical security issue requires immediate
+attention
 
 #### Round 2: "Are there hidden assumptions?"
 
@@ -1189,7 +1256,10 @@ const functionMatches = content.matchAll(
    └─ Status: pass | 0 structure violations
 ```
 
-> **Note:** Structure score improved from 45/100 to 100/100 after updating `allowedPatterns` in `dashboard.ts` to recognize standard repository files (CONTRIBUTING.md, SECURITY.md, GOVERNANCE.md, CODEOWNERS, CLAUDE.md, mkdocs.yaml, etc.)
+> **Note:** Structure score improved from 45/100 to 100/100 after updating
+> `allowedPatterns` in `dashboard.ts` to recognize standard repository files
+> (CONTRIBUTING.md, SECURITY.md, GOVERNANCE.md, CODEOWNERS, CLAUDE.md,
+> mkdocs.yaml, etc.)
 
 ### 6.2 Skeptic Reviewer Analysis
 
@@ -1234,7 +1304,6 @@ Reports saved to `.archive/reports/governance/`:
 
 ---
 
-**Last Updated:** 2025-12-04
-**Version:** 1.0.0
-**Author:** Governance Multi-Agent System
-**Review Status:** Self-refutation analysis complete with live execution
+**Last Updated:** 2025-12-04 **Version:** 1.0.0 **Author:** Governance
+Multi-Agent System **Review Status:** Self-refutation analysis complete with
+live execution

@@ -1,3 +1,10 @@
+---
+title: 'Button Component Migration Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Button Component Migration Guide
 
 **Version**: 1.0.0  

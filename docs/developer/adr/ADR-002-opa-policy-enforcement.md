@@ -1,3 +1,10 @@
+---
+title: 'ADR-002: OPA/Rego for Policy Enforcement'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # ADR-002: OPA/Rego for Policy Enforcement
 
 <img src="https://img.shields.io/badge/Status-Accepted-10B981?style=flat-square&labelColor=1a1b27" alt="Accepted"/>
@@ -89,4 +96,5 @@ Policies live in `.metaHub/policies/`:
 
 ---
 
-**See also:** [ADR-001](./ADR-001-organization-monorepos.md) · [ADR-003](./ADR-003-json-schema-metadata.md)
+**See also:** [ADR-001](./ADR-001-organization-monorepos.md) ·
+[ADR-003](./ADR-003-json-schema-metadata.md)

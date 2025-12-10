@@ -1,8 +1,17 @@
+---
+title: 'Repository Consolidation Master Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Consolidation Master Prompt
 
 ## Mission
 
-Transform the GitHub workspace from 47 root folders into a streamlined 10-folder architecture while preserving all functionality, improving governance, and maintaining zero data loss.
+Transform the GitHub workspace from 47 root folders into a streamlined 10-folder
+architecture while preserving all functionality, improving governance, and
+maintaining zero data loss.
 
 ## Current State Analysis
 

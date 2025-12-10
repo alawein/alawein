@@ -1,3 +1,10 @@
+---
+title: 'Orchestrator'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Orchestrator
 
 > Task management and context injection for AI-assisted development

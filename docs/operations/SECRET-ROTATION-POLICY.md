@@ -1,3 +1,10 @@
+---
+title: 'Secret Rotation Policy'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Secret Rotation Policy
 
 ## Overview
@@ -7,18 +14,21 @@ All secrets must be rotated regularly to maintain security posture.
 ## Rotation Schedule
 
 ### Critical Secrets (Every 30 days)
+
 - Database passwords
 - API keys with write access
 - Admin credentials
 - Encryption keys
 
 ### Standard Secrets (Every 90 days)
+
 - Service account tokens
 - OAuth client secrets
 - Webhook secrets
 - CI/CD tokens
 
 ### Low-Risk Secrets (Every 180 days)
+
 - Read-only API keys
 - Development tokens
 - Analytics tokens
@@ -26,12 +36,14 @@ All secrets must be rotated regularly to maintain security posture.
 ## Rotation Process
 
 ### 1. Generate New Secret
+
 ```bash
 # Generate secure random secret
 openssl rand -base64 32
 ```
 
 ### 2. Update in Secret Manager
+
 ```bash
 # AWS Secrets Manager
 aws secretsmanager update-secret \
@@ -42,6 +54,7 @@ aws secretsmanager update-secret \
 ```
 
 ### 3. Deploy with New Secret
+
 ```bash
 # Update environment variables
 # Deploy application
@@ -49,12 +62,14 @@ npm run deploy:production
 ```
 
 ### 4. Verify New Secret Works
+
 ```bash
 # Test API with new credentials
 curl -H "Authorization: Bearer NEW_TOKEN" https://api.example.com/health
 ```
 
 ### 5. Revoke Old Secret
+
 ```bash
 # Revoke old token/key
 # Wait 24 hours for propagation
@@ -62,6 +77,7 @@ curl -H "Authorization: Bearer NEW_TOKEN" https://api.example.com/health
 ```
 
 ### 6. Document Rotation
+
 ```bash
 # Log rotation in tracking sheet
 echo "$(date): Rotated API_KEY" >> secret-rotation-log.txt
@@ -69,16 +85,17 @@ echo "$(date): Rotated API_KEY" >> secret-rotation-log.txt
 
 ## Secrets Inventory
 
-| Secret | Type | Rotation | Last Rotated | Next Due |
-|--------|------|----------|--------------|----------|
-| GITHUB_TOKEN | Critical | 30 days | 2025-01-01 | 2025-01-31 |
-| SUPABASE_KEY | Critical | 30 days | 2025-01-01 | 2025-01-31 |
-| ANTHROPIC_API_KEY | Standard | 90 days | 2025-01-01 | 2025-04-01 |
-| SENTRY_DSN | Standard | 90 days | 2025-01-01 | 2025-04-01 |
+| Secret            | Type     | Rotation | Last Rotated | Next Due   |
+| ----------------- | -------- | -------- | ------------ | ---------- |
+| GITHUB_TOKEN      | Critical | 30 days  | 2025-01-01   | 2025-01-31 |
+| SUPABASE_KEY      | Critical | 30 days  | 2025-01-01   | 2025-01-31 |
+| ANTHROPIC_API_KEY | Standard | 90 days  | 2025-01-01   | 2025-04-01 |
+| SENTRY_DSN        | Standard | 90 days  | 2025-01-01   | 2025-04-01 |
 
 ## Automation
 
 ### Automated Rotation Script
+
 ```bash
 #!/bin/bash
 # scripts/rotate-secrets.sh
@@ -98,13 +115,14 @@ echo "Rotated $SECRET_NAME on $(date)"
 ```
 
 ### Scheduled Rotation
+
 ```yaml
 # .github/workflows/rotate-secrets.yml
 name: Rotate Secrets
 
 on:
   schedule:
-    - cron: '0 0 1 * *'  # Monthly
+    - cron: '0 0 1 * *' # Monthly
   workflow_dispatch:
 
 jobs:
@@ -131,6 +149,7 @@ If a secret is compromised:
 ## Monitoring
 
 ### Expiration Alerts
+
 ```bash
 # Check secret age
 SECRET_AGE=$(( ($(date +%s) - $(date -d "2025-01-01" +%s)) / 86400 ))
@@ -140,6 +159,7 @@ fi
 ```
 
 ### Rotation Tracking
+
 - Log all rotations
 - Track rotation dates
 - Alert on overdue rotations

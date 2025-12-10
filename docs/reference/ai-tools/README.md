@@ -1,10 +1,18 @@
+---
+title: 'AI Tools Documentation'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # AI Tools Documentation
 
 > Enterprise-grade AI orchestration, monitoring, and compliance tools
 
 ## Overview
 
-The AI Tools suite provides comprehensive capabilities for AI-assisted development:
+The AI Tools suite provides comprehensive capabilities for AI-assisted
+development:
 
 - **Task Orchestration**: Track and manage AI-assisted tasks
 - **Multi-layer Caching**: Semantic similarity-based caching
@@ -83,5 +91,9 @@ npm run ai:api:start
 Import the VS Code integration module in your extension:
 
 ```typescript
-import { commands, getStatusBarItems, getTreeViewData } from 'tools/ai/vscode/integration';
+import {
+  commands,
+  getStatusBarItems,
+  getTreeViewData,
+} from 'tools/ai/vscode/integration';
 ```

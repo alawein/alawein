@@ -1,3 +1,10 @@
+---
+title: 'Test Generation and Coverage Analysis'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Test Generation and Coverage Analysis
 
 ## Purpose
@@ -80,12 +87,14 @@ describe('calculateTotal error handling', () => {
   });
 
   it('should throw for negative price', () => {
-    expect(() => calculateTotal([{ price: -10, quantity: 1 }])).toThrow('Price cannot be negative');
+    expect(() => calculateTotal([{ price: -10, quantity: 1 }])).toThrow(
+      'Price cannot be negative',
+    );
   });
 
   it('should throw for negative quantity', () => {
     expect(() => calculateTotal([{ price: 10, quantity: -1 }])).toThrow(
-      'Quantity cannot be negative'
+      'Quantity cannot be negative',
     );
   });
 });
@@ -176,7 +185,10 @@ jest.mock('../services/paymentGateway');
 const mockPayment = paymentGateway as jest.Mocked<typeof paymentGateway>;
 
 beforeEach(() => {
-  mockPayment.charge.mockResolvedValue({ success: true, transactionId: 'tx123' });
+  mockPayment.charge.mockResolvedValue({
+    success: true,
+    transactionId: 'tx123',
+  });
 });
 
 // Bad: Mock internal implementation

@@ -1,19 +1,29 @@
+---
+title: 'Librex.Meta Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Meta Implementation Superprompt
 
-**Version**: 1.0
-**Target**: AutoML Conference 2025 (Submission Deadline: March 31, 2025)
-**Priority**: 🔴 CRITICAL PATH
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: AutoML Conference 2025 (Submission Deadline: March
+31, 2025) **Priority**: 🔴 CRITICAL PATH **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Meta implements tournament-based solver selection using a Swiss-system tournament framework to orchestrate multiple optimization solvers. Unlike traditional pairwise or regression-based meta-learning approaches, Librex.Meta leverages competitive game theory to discover complementary solver synergies.
+Librex.Meta implements tournament-based solver selection using a Swiss-system
+tournament framework to orchestrate multiple optimization solvers. Unlike
+traditional pairwise or regression-based meta-learning approaches, Librex.Meta
+leverages competitive game theory to discover complementary solver synergies.
 
-**Core Innovation**: Tournament-based solver selection (🟢 MODERATE-STRONG novelty)
+**Core Innovation**: Tournament-based solver selection (🟢 MODERATE-STRONG
+novelty)
 
-**Research Contribution**: META-C1 - Tournament-Based Meta-Learning for Multi-Agent Solver Selection
+**Research Contribution**: META-C1 - Tournament-Based Meta-Learning for
+Multi-Agent Solver Selection
 
 **Publication Strategy**: AutoML Conference 2025 (September 8-11, Vancouver)
 
@@ -32,7 +42,8 @@ Given:
   - p_ij: performance metric (e.g., solution quality, runtime)
 - New problem instance x\*
 
-Objective: Select solver s* ∈ S that maximizes expected performance E[p(x*, s\*)]
+Objective: Select solver s* ∈ S that maximizes expected performance E[p(x*,
+s\*)]
 
 ### 1.2 Core Algorithm
 
@@ -397,13 +408,15 @@ class FeatureExtractor:
 
 **META-C1: Tournament-Based Meta-Learning for Multi-Agent Solver Selection**
 
-**Research Gap**: Existing meta-learning approaches (SATzilla, AutoFolio, SMAC) use:
+**Research Gap**: Existing meta-learning approaches (SATzilla, AutoFolio, SMAC)
+use:
 
 - Pairwise performance prediction
 - Regression-based models
 - Independent solver evaluation
 
-**Novel Approach**: Swiss-system tournament with cluster-specific Elo ratings discovers complementary solver synergies through competitive dynamics.
+**Novel Approach**: Swiss-system tournament with cluster-specific Elo ratings
+discovers complementary solver synergies through competitive dynamics.
 
 **Expected Impact**:
 
@@ -1174,33 +1187,36 @@ libria-meta/
 
 ## 12. Contact and Coordination
 
-**Primary Implementer**: [Your Name]
-**Research Advisor**: [Advisor Name]
-**Code Reviews**: Weekly (Fridays)
-**Paper Reviews**: Weeks 11, 12
-**Slack Channel**: `#Librex.Meta-automl2025`
-**Git Repository**: `github.com/yourorg/libria-meta`
+**Primary Implementer**: [Your Name] **Research Advisor**: [Advisor Name] **Code
+Reviews**: Weekly (Fridays) **Paper Reviews**: Weeks 11, 12 **Slack Channel**:
+`#Librex.Meta-automl2025` **Git Repository**: `github.com/yourorg/libria-meta`
 
 ---
 
 ## Appendix: Key References
 
-1. **SATzilla**: Xu et al. (2008). "SATzilla: Portfolio-based Algorithm Selection for SAT"
-2. **AutoFolio**: Lindauer et al. (2015). "AutoFolio: An Automatically Configured Algorithm Selector"
-3. **SMAC**: Hutter et al. (2011). "Sequential Model-Based Optimization for General Algorithm Configuration"
-4. **ASlib**: Bischl et al. (2016). "ASlib: A Benchmark Library for Algorithm Selection"
-5. **Meta-Learning Survey**: Hospedales et al. (2021). "Meta-Learning in Neural Networks: A Survey"
-6. **Swiss-System**: Glickman & Sonas (2015). "A Comprehensive Guide to Chess Ratings"
+1. **SATzilla**: Xu et al. (2008). "SATzilla: Portfolio-based Algorithm
+   Selection for SAT"
+2. **AutoFolio**: Lindauer et al. (2015). "AutoFolio: An Automatically
+   Configured Algorithm Selector"
+3. **SMAC**: Hutter et al. (2011). "Sequential Model-Based Optimization for
+   General Algorithm Configuration"
+4. **ASlib**: Bischl et al. (2016). "ASlib: A Benchmark Library for Algorithm
+   Selection"
+5. **Meta-Learning Survey**: Hospedales et al. (2021). "Meta-Learning in Neural
+   Networks: A Survey"
+6. **Swiss-System**: Glickman & Sonas (2015). "A Comprehensive Guide to Chess
+   Ratings"
 7. **Elo Rating**: Elo (1978). "The Rating of Chessplayers, Past and Present"
-8. **UCB**: Auer et al. (2002). "Finite-time Analysis of the Multiarmed Bandit Problem"
-9. **Neural Algorithm Selection**: Loreggia et al. (2021). "Deep Learning for Algorithm Selection"
+8. **UCB**: Auer et al. (2002). "Finite-time Analysis of the Multiarmed Bandit
+   Problem"
+9. **Neural Algorithm Selection**: Loreggia et al. (2021). "Deep Learning for
+   Algorithm Selection"
 10. **Tournament Design**: Appleton (1995). "May the Best Man Win?"
 
 ---
 
 **END OF Librex.Meta SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Deadline**: 🔴 March 31, 2025 (10 weeks remaining)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Deadline**: 🔴 March 31, 2025 (10 weeks remaining)

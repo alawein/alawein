@@ -4,13 +4,16 @@ version: '1.0'
 category: 'project'
 tags: ['gating', 'approval', 'code-review', 'security', 'compliance']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Gating & Approval Workflows Superprompt
 
 ## Purpose
 
-Comprehensive framework for implementing quality gates, approval workflows, and security checkpoints to ensure code quality, compliance, and controlled releases.
+Comprehensive framework for implementing quality gates, approval workflows, and
+security checkpoints to ensure code quality, compliance, and controlled
+releases.
 
 ---
 
@@ -237,9 +240,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: >-
-            p/security-audit
-            p/secrets
-            p/owasp-top-ten
+            p/security-audit p/secrets p/owasp-top-ten
 
   # ============================================
   # Dependency Scanning

@@ -1,3 +1,10 @@
+---
+title: 'NumPy/JAX Style Guide'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # NumPy/JAX Style Guide
 
 ## Principles
@@ -10,6 +17,7 @@
 ## Examples
 
 ### Bad
+
 ```python
 def compute_sum(arr):
     total = 0
@@ -19,13 +27,14 @@ def compute_sum(arr):
 ```
 
 ### Good
+
 ```python
 def compute_sum(arr: jnp.ndarray) -> float:
     """Sum array elements.
-    
+
     Args:
         arr: Array of shape (n,)
-    
+
     Returns:
         Sum of elements
     """
@@ -35,6 +44,7 @@ def compute_sum(arr: jnp.ndarray) -> float:
 ## Array Shape Notation
 
 Use Einstein notation in docstrings:
+
 - `(n,)`: 1D array of length n
 - `(n, m)`: 2D array
 - `(*, 3)`: Any leading dims, last dim is 3

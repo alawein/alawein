@@ -4,13 +4,15 @@ version: '1.0'
 category: 'project'
 tags: ['security', 'cybersecurity', 'appsec', 'devsecops', 'vulnerability']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Security & Cybersecurity Superprompt
 
 ## Purpose
 
-Comprehensive framework for application security, infrastructure security, DevSecOps practices, and cybersecurity implementation across all projects.
+Comprehensive framework for application security, infrastructure security,
+DevSecOps practices, and cybersecurity implementation across all projects.
 
 ---
 
@@ -124,7 +126,7 @@ export function configureSecurityMiddleware(app: Express) {
       noSniff: true,
       xssFilter: true,
       frameguard: { action: 'deny' },
-    })
+    }),
   );
 
   // A03:2021 - Injection
@@ -181,7 +183,7 @@ export const userInputSchema = z.object({
     .max(128, 'Password too long')
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      'Password must contain uppercase, lowercase, number, and special character'
+      'Password must contain uppercase, lowercase, number, and special character',
     ),
 
   name: z
@@ -203,7 +205,9 @@ export async function findUserByEmail(email: string) {
   // const query = `SELECT * FROM users WHERE email = '${email}'`;
 
   // ALWAYS use parameterized queries:
-  const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+  const result = await db.query('SELECT * FROM users WHERE email = $1', [
+    email,
+  ]);
   return result.rows[0];
 }
 
@@ -245,7 +249,10 @@ export async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);
 }
 
-export async function verifyPassword(password: string, hash: string): Promise<boolean> {
+export async function verifyPassword(
+  password: string,
+  hash: string,
+): Promise<boolean> {
   return bcrypt.compare(password, hash);
 }
 
@@ -268,7 +275,7 @@ export function generateAccessToken(userId: string, roles: string[]): string {
       algorithm: 'RS256',
       issuer: 'your-app',
       audience: 'your-app-users',
-    }
+    },
   );
 }
 
@@ -305,7 +312,10 @@ export async function generateTOTP(secret: string): Promise<string> {
   return authenticator.generate(secret);
 }
 
-export async function verifyTOTP(token: string, secret: string): Promise<boolean> {
+export async function verifyTOTP(
+  token: string,
+  secret: string,
+): Promise<boolean> {
   const { authenticator } = await import('otplib');
   return authenticator.verify({ token, secret });
 }
@@ -349,10 +359,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: >-
-            p/security-audit
-            p/secrets
-            p/owasp-top-ten
-            p/typescript
+            p/security-audit p/secrets p/owasp-top-ten p/typescript
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -380,8 +387,7 @@ jobs:
           path: '.'
           format: 'ALL'
           args: >-
-            --failOnCVSS 7
-            --enableRetired
+            --failOnCVSS 7 --enableRetired
 
       - name: License Compliance
         run: |
@@ -596,7 +602,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 const securityLogger = winston.createLogger({
   level: 'info',
-  format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json(),
+  ),
   defaultMeta: { service: 'security' },
   transports: [
     new winston.transports.File({ filename: 'logs/security.log' }),
@@ -631,7 +640,7 @@ export function logAuthEvent(
   userId: string,
   outcome: 'success' | 'failure',
   ipAddress: string,
-  details?: Record<string, unknown>
+  details?: Record<string, unknown>,
 ) {
   logSecurityEvent({
     eventType: `auth.${type}`,
@@ -650,7 +659,7 @@ export function logAuthzEvent(
   resource: string,
   action: string,
   outcome: 'success' | 'failure',
-  ipAddress: string
+  ipAddress: string,
 ) {
   logSecurityEvent({
     eventType: 'authorization',
@@ -668,7 +677,7 @@ export function logSuspiciousActivity(
   type: string,
   details: Record<string, unknown>,
   ipAddress: string,
-  userId?: string
+  userId?: string,
 ) {
   logSecurityEvent({
     eventType: `suspicious.${type}`,

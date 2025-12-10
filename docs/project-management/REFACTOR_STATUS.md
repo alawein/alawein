@@ -1,3 +1,10 @@
+---
+title: 'Refactoring Status'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Refactoring Status
 
 > **Philosophy:** Organize first, ship later  

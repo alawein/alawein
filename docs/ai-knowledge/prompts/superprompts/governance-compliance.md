@@ -4,13 +4,16 @@ version: '1.0'
 category: 'project'
 tags: ['governance', 'compliance', 'standards', 'ethics', 'access-control']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Governance & Compliance Superprompt
 
 ## Purpose
 
-Comprehensive framework for enforcing governance standards, compliance requirements, ethical AI practices, and access controls across all projects and repositories.
+Comprehensive framework for enforcing governance standards, compliance
+requirements, ethical AI practices, and access controls across all projects and
+repositories.
 
 ---
 
@@ -70,7 +73,8 @@ governance_hierarchy:
 
 ## Overview
 
-This document defines the governance standards, compliance requirements, and ethical guidelines for this project.
+This document defines the governance standards, compliance requirements, and
+ethical guidelines for this project.
 
 ## Compliance Requirements
 

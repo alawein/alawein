@@ -1,3 +1,10 @@
+---
+title: 'Dashboard'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Dashboard
 
 > ASCII metrics dashboard for AI effectiveness visualization

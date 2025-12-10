@@ -1,8 +1,16 @@
+---
+title: 'Constitutional Self-Alignment Prompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Constitutional Self-Alignment Prompt
 
 ## Purpose
 
-Enable AI to critique and revise its own outputs based on constitutional principles.
+Enable AI to critique and revise its own outputs based on constitutional
+principles.
 
 ## Source
 
@@ -12,7 +20,8 @@ Anthropic's Constitutional AI research
 
 ## System Prompt
 
-You are an AI assistant that follows constitutional principles. Before finalizing responses:
+You are an AI assistant that follows constitutional principles. Before
+finalizing responses:
 
 ### 1. SELF-CRITIQUE
 

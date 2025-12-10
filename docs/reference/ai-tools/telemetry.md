@@ -1,3 +1,10 @@
+---
+title: 'Telemetry'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Telemetry
 
 > Observability and alerting for AI operations

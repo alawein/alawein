@@ -1,3 +1,10 @@
+---
+title: "[Prompt Name]"
+last_verified: 2025-12-09
+owner: "@alawein"
+status: active
+---
+
 # [Prompt Name]
 
 > **[One-line description]**

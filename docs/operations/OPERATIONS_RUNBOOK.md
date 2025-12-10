@@ -1,6 +1,14 @@
+---
+title: 'Operations Runbook - Golden Path Governance System'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Operations Runbook - Golden Path Governance System
 
-This document provides operational procedures for deploying, monitoring, and maintaining the governance system.
+This document provides operational procedures for deploying, monitoring, and
+maintaining the governance system.
 
 ## Overview
 
@@ -149,8 +157,7 @@ To customize alerting, modify `.github/workflows/checkpoint.yml`:
 
 ### Workflow Failures
 
-**Symptom:** Enforcement workflow fails
-**Diagnosis:**
+**Symptom:** Enforcement workflow fails **Diagnosis:**
 
 ```bash
 # Check workflow logs in GitHub Actions
@@ -165,8 +172,7 @@ To customize alerting, modify `.github/workflows/checkpoint.yml`:
 
 ### Schema Validation Errors
 
-**Symptom:** Repositories failing schema validation
-**Diagnosis:**
+**Symptom:** Repositories failing schema validation **Diagnosis:**
 
 ```bash
 python3 -c "
@@ -185,8 +191,7 @@ jsonschema.validate(metadata, schema)
 
 ### Missing Repositories
 
-**Symptom:** Repositories not appearing in catalog
-**Diagnosis:**
+**Symptom:** Repositories not appearing in catalog **Diagnosis:**
 
 ```bash
 # Check organizations directory structure
@@ -204,8 +209,7 @@ find organizations -name "repo.yaml" -path "*/.meta/*"
 
 ### Drift Detection Issues
 
-**Symptom:** Drift not detected or false positives
-**Diagnosis:**
+**Symptom:** Drift not detected or false positives **Diagnosis:**
 
 ```bash
 # Compare checkpoints
@@ -324,5 +328,4 @@ done
 
 ---
 
-**Last Updated:** 2025-11-26
-**Version:** 1.0
+**Last Updated:** 2025-11-26 **Version:** 1.0

@@ -1,6 +1,14 @@
+---
+title: 'CLI Overview'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # CLI Overview
 
-Complete guide to the ORCHEX Command Line Interface (CLI), including command structure, concepts, usage patterns, and getting started.
+Complete guide to the ORCHEX Command Line Interface (CLI), including command
+structure, concepts, usage patterns, and getting started.
 
 ---
 
@@ -294,9 +302,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm install -g @ORCHEX/cli
-      - run: ORCHEX agent register claude-sonnet-4 --api-key ${{ secrets.ANTHROPIC_KEY }}
+      - run:
+          ORCHEX agent register claude-sonnet-4 --api-key ${{
+          secrets.ANTHROPIC_KEY }}
       - run: ORCHEX analyze repo . --format json > analysis.json
-      - run: ORCHEX task submit --type code_review --description "Review PR changes" --pr ${{ github.event.number }}
+      - run:
+          ORCHEX task submit --type code_review --description "Review PR
+          changes" --pr ${{ github.event.number }}
 ```
 
 ---
@@ -577,8 +589,10 @@ ORCHEX task submit --help --type code_generation
 ### Community Resources
 
 - **Documentation**: [Full Documentation](../README.md)
-- **Community Forum**: [community.orchex-platform.com](https://community.orchex-platform.com)
-- **GitHub Issues**: [Report bugs](https://github.com/ORCHEX-platform/ORCHEX/issues)
+- **Community Forum**:
+  [community.orchex-platform.com](https://community.orchex-platform.com)
+- **GitHub Issues**:
+  [Report bugs](https://github.com/ORCHEX-platform/ORCHEX/issues)
 - **Discord**: [Real-time help](https://discord.gg/ORCHEX-platform)
 
 ### Enterprise Support
@@ -592,4 +606,6 @@ For enterprise customers:
 
 ---
 
-This CLI overview provides the foundation for using ORCHEX effectively. Each command group has detailed documentation in the following sections. Start with [Agent Management](agents.md) to register your first AI agent!</instructions>
+This CLI overview provides the foundation for using ORCHEX effectively. Each
+command group has detailed documentation in the following sections. Start with
+[Agent Management](agents.md) to register your first AI agent!</instructions>

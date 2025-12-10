@@ -1,17 +1,30 @@
+---
+title: 'System Architecture Overview'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # System Architecture Overview
 
-High-level overview of the ORCHEX system architecture, including core components, data flow, and integration patterns.
+High-level overview of the ORCHEX system architecture, including core
+components, data flow, and integration patterns.
 
 ---
 
 ## System Purpose and Goals
 
-ORCHEX (Autonomous Technical Leadership & Adaptive System) is an enterprise-grade multiagent LLM orchestration platform designed to:
+ORCHEX (Autonomous Technical Leadership & Adaptive System) is an
+enterprise-grade multiagent LLM orchestration platform designed to:
 
-- **🤖 Intelligent Agent Routing**: Automatically select optimal AI agents based on task requirements, performance history, and current load
-- **🛡️ Resilient Execution**: Multi-tier fallback chains ensure task completion even when primary agents fail
-- **🔄 Continuous Optimization**: Automated repository analysis and refactoring to reduce technical debt
-- **📊 Enterprise Observability**: Comprehensive telemetry, metrics, and audit trails for governance and compliance
+- **🤖 Intelligent Agent Routing**: Automatically select optimal AI agents based
+  on task requirements, performance history, and current load
+- **🛡️ Resilient Execution**: Multi-tier fallback chains ensure task completion
+  even when primary agents fail
+- **🔄 Continuous Optimization**: Automated repository analysis and refactoring
+  to reduce technical debt
+- **📊 Enterprise Observability**: Comprehensive telemetry, metrics, and audit
+  trails for governance and compliance
 
 ---
 
@@ -19,7 +32,8 @@ ORCHEX (Autonomous Technical Leadership & Adaptive System) is an enterprise-grad
 
 ### 1. Multi-Agent Orchestration
 
-ORCHEX orchestrates multiple AI agents (Claude, GPT-4, Gemini, etc.) with intelligent routing based on:
+ORCHEX orchestrates multiple AI agents (Claude, GPT-4, Gemini, etc.) with
+intelligent routing based on:
 
 - Task type and complexity
 - Agent capabilities and performance history
@@ -135,7 +149,8 @@ graph TB
 
 ### Client Layer
 
-**Purpose**: Provide interfaces for human users and automated systems to interact with ORCHEX.
+**Purpose**: Provide interfaces for human users and automated systems to
+interact with ORCHEX.
 
 #### ORCHEX CLI
 
@@ -166,7 +181,8 @@ graph TB
 
 ### Orchestration Layer
 
-**Purpose**: Intelligently manage task execution across multiple agents with resilience and optimization.
+**Purpose**: Intelligently manage task execution across multiple agents with
+resilience and optimization.
 
 #### Task Router
 
@@ -216,7 +232,8 @@ graph TB
 
 ### Optimization Layer
 
-**Purpose**: Continuously analyze and improve codebases through automated optimization.
+**Purpose**: Continuously analyze and improve codebases through automated
+optimization.
 
 #### Repository Analyzer
 
@@ -241,7 +258,8 @@ graph TB
 
 ### Storage Layer
 
-**Purpose**: Persist system state, metrics, and historical data for analysis and recovery.
+**Purpose**: Persist system state, metrics, and historical data for analysis and
+recovery.
 
 #### Metrics Database
 
@@ -266,7 +284,8 @@ graph TB
 
 ### Foundation Layer (KILO Integration)
 
-**Purpose**: Leverage KILO's enterprise capabilities for governance, security, and DevOps.
+**Purpose**: Leverage KILO's enterprise capabilities for governance, security,
+and DevOps.
 
 #### Validation Service
 
@@ -553,6 +572,14 @@ High-throughput processing for bulk operations:
 
 ## Conclusion
 
-ORCHEX represents a comprehensive solution for enterprise AI orchestration, combining intelligent agent routing, resilient execution, and continuous optimization. Built on the solid KILO foundation, it provides the reliability, security, and governance capabilities required for production enterprise use while maintaining the flexibility and performance needed for modern development workflows.
+ORCHEX represents a comprehensive solution for enterprise AI orchestration,
+combining intelligent agent routing, resilient execution, and continuous
+optimization. Built on the solid KILO foundation, it provides the reliability,
+security, and governance capabilities required for production enterprise use
+while maintaining the flexibility and performance needed for modern development
+workflows.
 
-The architecture is designed for scalability, maintainability, and extensibility, ensuring that ORCHEX can evolve with the rapidly changing AI landscape while maintaining backward compatibility and operational stability.</instructions>
+The architecture is designed for scalability, maintainability, and
+extensibility, ensuring that ORCHEX can evolve with the rapidly changing AI
+landscape while maintaining backward compatibility and operational
+stability.</instructions>

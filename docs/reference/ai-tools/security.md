@@ -1,3 +1,10 @@
+---
+title: 'Security'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Security
 
 > Security scanning for secrets, vulnerabilities, and license compliance

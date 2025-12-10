@@ -1,17 +1,26 @@
+---
+title: 'Librex.Dual Implementation Superprompt'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Librex.Dual Implementation Superprompt
 
-**Version**: 1.0
-**Target**: NeurIPS 2025 / IEEE S&P 2026
-**Priority**: High (2 strong contributions)
-**Status**: Ready for Implementation
+**Version**: 1.0 **Target**: NeurIPS 2025 / IEEE S&P 2026 **Priority**: High (2
+strong contributions) **Status**: Ready for Implementation
 
 ---
 
 ## Executive Summary
 
-Librex.Dual implements adversarial workflow validation using min-max optimization and red-team/blue-team dynamics. Unlike post-deployment testing, Librex.Dual provides pre-deployment adversarial validation to discover failure modes and robustness issues before production.
+Librex.Dual implements adversarial workflow validation using min-max
+optimization and red-team/blue-team dynamics. Unlike post-deployment testing,
+Librex.Dual provides pre-deployment adversarial validation to discover failure
+modes and robustness issues before production.
 
-**Core Innovation**: Pre-deployment adversarial validation (🟢 MODERATE-STRONG novelty)
+**Core Innovation**: Pre-deployment adversarial validation (🟢 MODERATE-STRONG
+novelty)
 
 **Research Contributions**:
 
@@ -26,8 +35,7 @@ Librex.Dual implements adversarial workflow validation using min-max optimizatio
 
 ### 1.1 Problem Statement
 
-**Adversarial Workflow Validation**:
-Given:
+**Adversarial Workflow Validation**: Given:
 
 - Workflow W with agents {a₁, a₂, ..., aₙ}
 - Safety/correctness specification φ
@@ -36,7 +44,8 @@ Given:
 Find:
 
 1. **Red team (adversary)**: Worst-case input x* maximizing P(φ violated | x*)
-2. **Blue team (defender)**: Robustified workflow W' minimizing max attack success
+2. **Blue team (defender)**: Robustified workflow W' minimizing max attack
+   success
 
 **Min-Max Formulation**:
 
@@ -591,7 +600,8 @@ class CertifiedDefender:
 
 **DUAL-C1: Min-Max Optimization for Workflow Robustness**
 
-- **Gap**: Post-deployment testing only (PyRIT, FAST-BAT); no pre-deployment adversarial validation
+- **Gap**: Post-deployment testing only (PyRIT, FAST-BAT); no pre-deployment
+  adversarial validation
 - **Approach**: Min-max optimization with alternating red-team/blue-team updates
 - **Impact**: 50-70% reduction in deployment failures
 
@@ -690,7 +700,5 @@ ORCHEX.deploy_workflow(robustified_workflow)
 
 **END OF Librex.Dual SUPERPROMPT**
 
-**Version**: 1.0
-**Last Updated**: 2026-01-17
-**Status**: Ready for Implementation
-**Target**: Month 10-11 (NeurIPS 2025 or IEEE S&P 2026)
+**Version**: 1.0 **Last Updated**: 2026-01-17 **Status**: Ready for
+Implementation **Target**: Month 10-11 (NeurIPS 2025 or IEEE S&P 2026)

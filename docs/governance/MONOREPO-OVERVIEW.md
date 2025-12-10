@@ -1,3 +1,10 @@
+---
+title: 'Monorepo Overview & Cleanup Plan'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monorepo Overview & Cleanup Plan
 
 ## Current State Analysis
@@ -139,7 +146,8 @@ GitHub/                           # Root monorepo
 ### 6. **Missing Full-Stack Implementations**
 
 - Most LLC projects lack web frontends
-- Only `organizations/alawein-technologies-llc/platforms/portfolio` has a full React app
+- Only `organizations/alawein-technologies-llc/platforms/portfolio` has a full
+  React app
 - Brand pages in `docs/pages/brands/` are static HTML only
 
 ---
@@ -200,7 +208,8 @@ GitHub/
 
 ### Phase 1: Consolidate AI Systems
 
-- [ ] Merge `tools/ai/`, `tools/orchex/`, `tools/prompts/meta/`, etc. into `automation/`
+- [ ] Merge `tools/ai/`, `tools/orchex/`, `tools/prompts/meta/`, etc. into
+      `automation/`
 - [ ] Consolidate all prompts into `automation/prompts/`
 - [ ] Remove empty hidden directories
 - [ ] Create single AI CLI entry point
@@ -213,7 +222,8 @@ GitHub/
 
 ### Phase 3: Organize Platforms
 
-- [ ] Move full-stack apps to `organizations/alawein-technologies-llc/platforms/`
+- [ ] Move full-stack apps to
+      `organizations/alawein-technologies-llc/platforms/`
 - [ ] Keep libraries in `packages/`
 - [ ] Keep research separate
 

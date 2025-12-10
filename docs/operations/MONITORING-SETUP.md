@@ -1,13 +1,22 @@
+---
+title: 'Monitoring & Observability Setup'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Monitoring & Observability Setup
 
 ## Error Tracking - Sentry
 
 ### Installation
+
 ```bash
 npm install @sentry/react @sentry/vite-plugin
 ```
 
 ### Configuration
+
 ```typescript
 // src/lib/sentry.ts
 import * as Sentry from '@sentry/react';
@@ -24,6 +33,7 @@ Sentry.init({
 ```
 
 ### Usage
+
 ```typescript
 import { ErrorBoundary } from '@alawein/shared-ui';
 import { captureError } from '@alawein/monitoring';
@@ -36,12 +46,14 @@ import { captureError } from '@alawein/monitoring';
 ## Uptime Monitoring
 
 ### UptimeRobot
+
 1. Sign up at uptimerobot.com
 2. Add monitors for each service
 3. Configure alerts (email, Slack)
 4. Set check interval (5 minutes)
 
 ### Endpoints to Monitor
+
 - https://llmworks.dev/health
 - https://api.supabase.co/health
 - https://your-domain.com/api/health
@@ -49,6 +61,7 @@ import { captureError } from '@alawein/monitoring';
 ## Performance Monitoring
 
 ### Web Vitals
+
 ```typescript
 // src/lib/vitals.ts
 import { onCLS, onFID, onLCP } from 'web-vitals';
@@ -64,6 +77,7 @@ onLCP(sendToAnalytics);
 ```
 
 ### Lighthouse CI
+
 ```yaml
 # .github/workflows/lighthouse.yml
 name: Lighthouse CI
@@ -85,6 +99,7 @@ jobs:
 ## Log Aggregation
 
 ### Supabase Logs
+
 ```sql
 -- Query logs
 SELECT * FROM auth.audit_log_entries
@@ -93,6 +108,7 @@ ORDER BY created_at DESC;
 ```
 
 ### Application Logs
+
 ```typescript
 // src/lib/logger.ts
 export const logger = {
@@ -110,6 +126,7 @@ export const logger = {
 ## Metrics Dashboard
 
 ### Key Metrics
+
 - Response time (p50, p95, p99)
 - Error rate
 - Request rate
@@ -119,13 +136,14 @@ export const logger = {
 - CPU usage
 
 ### Grafana Setup
+
 ```yaml
 # docker-compose.yml
 services:
   grafana:
     image: grafana/grafana
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
 ```
@@ -133,18 +151,21 @@ services:
 ## Alerts
 
 ### Critical Alerts
+
 - Error rate > 5%
 - Response time > 2s
 - Uptime < 99%
 - Database connections > 80%
 
 ### Warning Alerts
+
 - Error rate > 1%
 - Response time > 1s
 - Memory usage > 80%
 - Disk usage > 80%
 
 ### Alert Channels
+
 - Email: team@example.com
 - Slack: #alerts
 - PagerDuty: On-call rotation
@@ -152,6 +173,7 @@ services:
 ## Health Checks
 
 ### Application Health
+
 ```typescript
 // src/api/health.ts
 export async function healthCheck() {
@@ -170,9 +192,10 @@ export async function healthCheck() {
 ```
 
 ### Database Health
+
 ```sql
 -- Check database health
-SELECT 
+SELECT
   count(*) as active_connections,
   max(now() - query_start) as longest_query
 FROM pg_stat_activity
@@ -182,6 +205,7 @@ WHERE state = 'active';
 ## Incident Response
 
 ### Runbook
+
 1. **Detect:** Alert triggered
 2. **Assess:** Check dashboards
 3. **Mitigate:** Apply fix or rollback
@@ -190,6 +214,7 @@ WHERE state = 'active';
 6. **Document:** Post-mortem
 
 ### Status Page
+
 - Use statuspage.io or similar
 - Update during incidents
 - Post-incident reports
@@ -197,11 +222,13 @@ WHERE state = 'active';
 ## Cost Monitoring
 
 ### AWS Cost Explorer
+
 - Set budget alerts
 - Monitor by service
 - Review monthly
 
 ### Supabase Usage
+
 - Monitor database size
 - Track API requests
 - Review storage usage
@@ -209,8 +236,9 @@ WHERE state = 'active';
 ## Security Monitoring
 
 ### Failed Login Attempts
+
 ```sql
-SELECT 
+SELECT
   email,
   count(*) as failed_attempts,
   max(created_at) as last_attempt
@@ -222,6 +250,7 @@ HAVING count(*) > 5;
 ```
 
 ### Suspicious Activity
+
 - Multiple failed logins
 - Unusual API patterns
 - Large data exports

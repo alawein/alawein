@@ -4,13 +4,16 @@ version: '1.0'
 category: 'project'
 tags: ['monorepo', 'architecture', 'modular', 'dependencies', 'organization']
 created: '2024-11-30'
+last_verified: 2025-12-09
 ---
 
 # Monorepo & Architecture Superprompt
 
 ## Purpose
 
-Comprehensive framework for organizing, structuring, and managing monorepo architectures with modular design, dependency handling, and scalable project organization.
+Comprehensive framework for organizing, structuring, and managing monorepo
+architectures with modular design, dependency handling, and scalable project
+organization.
 
 ---
 
@@ -526,7 +529,13 @@ jobs:
 
 ```typescript
 // tools/generators/lib/index.ts
-import { Tree, formatFiles, generateFiles, joinPathFragments, names } from '@nx/devkit';
+import {
+  Tree,
+  formatFiles,
+  generateFiles,
+  joinPathFragments,
+  names,
+} from '@nx/devkit';
 
 interface LibGeneratorSchema {
   name: string;
@@ -572,7 +581,10 @@ export default async function (tree: Tree, schema: LibGeneratorSchema) {
     },
   };
 
-  tree.write(joinPathFragments(projectRoot, 'project.json'), JSON.stringify(projectJson, null, 2));
+  tree.write(
+    joinPathFragments(projectRoot, 'project.json'),
+    JSON.stringify(projectJson, null, 2),
+  );
 
   await formatFiles(tree);
 }

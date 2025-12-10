@@ -1,3 +1,10 @@
+---
+title: 'Repository Organization Analysis & Cleanup Plan'
+last_verified: 2025-12-09
+owner: '@alawein'
+status: active
+---
+
 # Repository Organization Analysis & Cleanup Plan
 
 ## Executive Summary

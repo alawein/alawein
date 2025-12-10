@@ -1,0 +1,75 @@
+version: "1.0"
+access_control:
+  roles:
+    owner:
+      description: "Full access to all resources"
+      permissions: ["*"]
+      members: ["alawein"]
+
+    admin:
+      description: "Administrative access"
+      permissions:
+        - "repo:*"
+        - "settings:read"
+        - "settings:write"
+        - "members:manage"
+        - "secrets:manage"
+
+    developer:
+      description: "Development access"
+      permissions:
+        - "repo:read"
+        - "repo:write"
+        - "pr:create"
+        - "pr:review"
+        - "issues:create"
+        - "issues:comment"
+
+    reviewer:
+      description: "Code review access"
+      permissions:
+        - "repo:read"
+        - "pr:review"
+        - "issues:read"
+        - "issues:comment"
+
+    readonly:
+      description: "Read-only access"
+      permissions:
+        - "repo:read"
+        - "issues:read"
+
+    contractor:
+      description: "Limited external access"
+      permissions:
+        - "repo:read"
+        - "pr:create"
+      expires_after_days: 90
+
+  assignments:
+    critical_repos:
+      repos: ["platforms/repz", "platforms/liveiticonic"]
+      required_roles: ["admin", "developer"]
+      review_required_from: ["admin"]
+
+    standard_repos:
+      repos: ["platforms/*", "packages/*"]
+      required_roles: ["developer"]
+      review_required_from: ["developer", "admin"]
+
+    research_repos:
+      repos: ["research/*"]
+      required_roles: ["developer", "readonly"]
+      review_required_from: []
+
+  security:
+    mfa_required_for: ["owner", "admin"]
+    session_timeout_minutes: 480
+    ip_allowlist_enabled: false
+    audit_logging: true
+    failed_login_lockout: 5
+
+  compliance:
+    review_frequency_days: 90
+    access_certification_required: true
+    orphan_account_detection: true

@@ -1,0 +1,45 @@
+version: "1.0"
+ai_review:
+  enabled: true
+
+  review_areas:
+    security:
+      priority: critical
+      checks:
+        - sql_injection
+        - xss_vulnerabilities
+        - hardcoded_secrets
+        - insecure_dependencies
+
+    performance:
+      priority: high
+      checks:
+        - n_plus_one_queries
+        - memory_leaks
+        - inefficient_algorithms
+        - large_bundle_imports
+
+    maintainability:
+      priority: medium
+      checks:
+        - code_complexity
+        - duplicate_code
+        - naming_conventions
+        - documentation_coverage
+
+    best_practices:
+      priority: medium
+      checks:
+        - error_handling
+        - type_safety
+        - test_coverage
+        - accessibility
+
+  automation:
+    auto_comment: false
+    require_approval: true
+    block_on_critical: true
+
+  integrations:
+    github_actions: true
+    pr_comments: true

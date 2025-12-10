@@ -1,0 +1,49 @@
+version: "1.0"
+self_healing:
+  monitors:
+    health_check:
+      interval_seconds: 60
+      timeout_seconds: 10
+      retries: 3
+
+    dependency_check:
+      interval_hours: 24
+      auto_update: false
+      notify_on_update: true
+
+    config_drift:
+      enabled: true
+      baseline: ".config/"
+      alert_on_drift: true
+
+  remediation:
+    auto_restart:
+      enabled: true
+      max_retries: 3
+      cooldown_seconds: 300
+
+    auto_rollback:
+      enabled: true
+      trigger:
+        error_rate_threshold: 0.05
+        latency_threshold_ms: 5000
+
+    auto_scale:
+      enabled: false
+      min_instances: 1
+      max_instances: 5
+
+  alerts:
+    channels:
+      - type: "log"
+        path: ".logs/self-healing.jsonl"
+
+    severity_levels:
+      info:
+        - config_drift_detected
+      warning:
+        - health_check_failed
+        - dependency_outdated
+      critical:
+        - auto_rollback_triggered
+        - max_retries_exceeded

@@ -462,3 +462,9 @@ client-reports/
 # Temporary client staging
 staging-client-*/
 temp-client-*/
+
+# AI Response Cache (cached tool/AI responses cluttering workspace)
+response_*/
+*.response
+**/response_*/
+**/response_*/**

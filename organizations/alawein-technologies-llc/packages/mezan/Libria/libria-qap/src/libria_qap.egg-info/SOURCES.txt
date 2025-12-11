@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+src/libria_qap/__init__.py
+src/libria_qap/benchmarks.py
+src/libria_qap/py.typed
+src/libria_qap/solver.py
+src/libria_qap.egg-info/PKG-INFO
+src/libria_qap.egg-info/SOURCES.txt
+src/libria_qap.egg-info/dependency_links.txt
+src/libria_qap.egg-info/requires.txt
+src/libria_qap.egg-info/top_level.txt
+tests/test_solver.py

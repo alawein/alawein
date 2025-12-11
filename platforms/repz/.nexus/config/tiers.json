@@ -1,0 +1,236 @@
+{
+  "tiers": {
+    "core": {
+      "id": "core",
+      "name": "Core",
+      "description": "Essential coaching program for beginners",
+      "price": 8900,
+      "currency": "USD",
+      "interval": "month",
+      "features": [
+        "training_program",
+        "nutrition_plan",
+        "email_support",
+        "progress_tracking",
+        "mobile_app",
+        "basic_analytics"
+      ],
+      "limits": {
+        "consultations": 2,
+        "program_updates": 1,
+        "message_responses": 72,
+        "workout_plans": 1,
+        "meal_plans": 1
+      },
+      "stripePriceId": {
+        "month": "price_1OMq...",
+        "quarter": "price_1OMr...",
+        "semiannual": "price_1OMs...",
+        "year": "price_1OMt..."
+      }
+    },
+    "adaptive": {
+      "id": "adaptive",
+      "name": "Adaptive",
+      "description": "Advanced coaching with biomarker tracking",
+      "price": 14900,
+      "currency": "USD",
+      "interval": "month",
+      "features": [
+        "all_core_features",
+        "biomarkers_tracking",
+        "wearable_integration",
+        "weekly_checkins",
+        "advanced_analytics",
+        "priority_email"
+      ],
+      "limits": {
+        "consultations": 4,
+        "program_updates": 2,
+        "message_responses": 48,
+        "workout_plans": 2,
+        "meal_plans": 2,
+        "wearable_syncs": -1
+      },
+      "stripePriceId": {
+        "month": "price_1OMu...",
+        "quarter": "price_1OMv...",
+        "semiannual": "price_1OMw...",
+        "year": "price_1OMx..."
+      }
+    },
+    "performance": {
+      "id": "performance",
+      "name": "Performance",
+      "description": "Elite coaching with AI assistance",
+      "price": 22900,
+      "currency": "USD",
+      "interval": "month",
+      "features": [
+        "all_adaptive_features",
+        "ai_coaching_assistant",
+        "form_analysis",
+        "peds_protocols",
+        "priority_support",
+        "custom_workouts"
+      ],
+      "limits": {
+        "consultations": 8,
+        "program_updates": 4,
+        "message_responses": 24,
+        "workout_plans": -1,
+        "meal_plans": 4,
+        "ai_sessions": 10
+      },
+      "stripePriceId": {
+        "month": "price_1OMy...",
+        "quarter": "price_1OMz...",
+        "semiannual": "price_1OM0...",
+        "year": "price_1OM1..."
+      }
+    },
+    "longevity": {
+      "id": "longevity",
+      "name": "Longevity",
+      "description": "Premium concierge coaching service",
+      "price": 34900,
+      "currency": "USD",
+      "interval": "month",
+      "features": [
+        "all_performance_features",
+        "in_person_training",
+        "concierge_service",
+        "medical_oversight",
+        "custom_protocols",
+        "unlimited_access"
+      ],
+      "limits": {
+        "consultations": -1,
+        "program_updates": -1,
+        "message_responses": 12,
+        "workout_plans": -1,
+        "meal_plans": -1,
+        "in_person_sessions": 4
+      },
+      "stripePriceId": {
+        "month": "price_1OM2...",
+        "quarter": "price_1OM3...",
+        "semiannual": "price_1OM4...",
+        "year": "price_1OM5..."
+      }
+    }
+  },
+  "features": {
+    "training_program": {
+      "name": "Personalized Training Program",
+      "description": "Custom workout plans tailored to your goals"
+    },
+    "nutrition_plan": {
+      "name": "Nutrition Planning",
+      "description": "Personalized meal plans and macro tracking"
+    },
+    "email_support": {
+      "name": "Email Support",
+      "description": "Direct email access to your coach"
+    },
+    "progress_tracking": {
+      "name": "Progress Tracking",
+      "description": "Track workouts, measurements, and progress photos"
+    },
+    "mobile_app": {
+      "name": "Mobile App",
+      "description": "Full-featured iOS and Android apps"
+    },
+    "basic_analytics": {
+      "name": "Basic Analytics",
+      "description": "Workout and nutrition insights"
+    },
+    "biomarkers_tracking": {
+      "name": "Biomarker Tracking",
+      "description": "Blood work analysis and health metrics"
+    },
+    "wearable_integration": {
+      "name": "Wearable Integration",
+      "description": "Sync with Whoop, Strava, Apple Health"
+    },
+    "weekly_checkins": {
+      "name": "Weekly Check-ins",
+      "description": "Weekly video calls with your coach"
+    },
+    "advanced_analytics": {
+      "name": "Advanced Analytics",
+      "description": "Deep insights and trend analysis"
+    },
+    "priority_email": {
+      "name": "Priority Email",
+      "description": "Faster email response times"
+    },
+    "ai_coaching_assistant": {
+      "name": "AI Coaching Assistant",
+      "description": "24/7 AI-powered coaching advice"
+    },
+    "form_analysis": {
+      "name": "Form Analysis",
+      "description": "Video analysis of exercise form"
+    },
+    "peds_protocols": {
+      "name": "PEDs Protocols",
+      "description": "Medical supervision for performance enhancement"
+    },
+    "priority_support": {
+      "name": "Priority Support",
+      "description": "24/7 priority support channel"
+    },
+    "custom_workouts": {
+      "name": "Custom Workouts",
+      "description": "Fully customized workout programming"
+    },
+    "in_person_training": {
+      "name": "In-Person Training",
+      "description": "Face-to-face training sessions"
+    },
+    "concierge_service": {
+      "name": "Concierge Service",
+      "description": "Personalized service coordinator"
+    },
+    "medical_oversight": {
+      "name": "Medical Oversight",
+      "description": "Regular medical consultations"
+    },
+    "custom_protocols": {
+      "name": "Custom Protocols",
+      "description": "Bespoke health and performance protocols"
+    },
+    "unlimited_access": {
+      "name": "Unlimited Access",
+      "description": "Access to all platform features"
+    }
+  },
+  "billing": {
+    "cycles": {
+      "month": {
+        "name": "Monthly",
+        "discount": 0
+      },
+      "quarter": {
+        "name": "Quarterly",
+        "discount": 5
+      },
+      "semiannual": {
+        "name": "Semi-Annual",
+        "discount": 10
+      },
+      "year": {
+        "name": "Annual",
+        "discount": 20
+      }
+    },
+    "trial": {
+      "enabled": true,
+      "duration": 14,
+      "tier": "core"
+    },
+    "gracePeriod": 7,
+    "cancellationPolicy": "Cancel anytime, access until period ends"
+  }
+}

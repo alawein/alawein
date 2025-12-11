@@ -8,6 +8,8 @@ const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const ABTestingDashboard = lazy(() => import("./pages/admin/ABTestingDashboard"));
 
 function LoadingSpinner() {
   return (
@@ -28,6 +30,8 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin/ab-testing" element={<ABTestingDashboard />} />
           </Routes>
         </Suspense>
       </main>
@@ -37,4 +41,3 @@ function App() {
 }
 
 export default App;
-

@@ -61,11 +61,5 @@
       "VERCEL_TEAM_ID": "team_cGFXe2xrRySciNomITsbHNPE"
     }
   },
-  "regions": ["iad1"],
-  "functions": {
-    "api/**/*.ts": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  "regions": ["iad1"]
 }

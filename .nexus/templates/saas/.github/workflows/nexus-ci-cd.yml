@@ -1,0 +1,344 @@
+name: Nexus Platform CI/CD
+
+on:
+  push:
+    branches: ['app/dev', 'app/main', 'production']
+  pull_request:
+    branches: ['app/main', 'production']
+
+env:
+  NODE_VERSION: '20'
+  NEXUS_REGION: us-east-1
+
+jobs:
+  # Test job - runs on all branches and PRs
+  test:
+    name: Test & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Run unit tests
+        run: npm run test:unit -- --coverage
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Security audit
+        run: npm audit --audit-level=high
+
+      - name: Validate Nexus config
+        run: npx nexus config --validate
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+  # Build job - builds the application
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Analyze bundle
+        run: npm run analyze
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-files
+          path: dist/
+          retention-days: 1
+
+  # Deploy to dev environment
+  deploy-dev:
+    name: Deploy to Development
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/app/dev'
+    environment: development
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Nexus credentials
+        uses: nexus-actions/configure-credentials@v1
+        with:
+          NEXUS_ACCESS_KEY_ID: ${{ secrets.NEXUS_ACCESS_KEY_ID }}
+          NEXUS_SECRET_ACCESS_KEY: ${{ secrets.NEXUS_SECRET_ACCESS_KEY }}
+          nexus-region: ${{ env.NEXUS_REGION }}
+
+      - name: Deploy to Nexus (Dev)
+        run: |
+          npm install -g @nexus/cli
+          nexus push --env dev --yes
+
+      - name: Run smoke tests
+        run: npm run test:smoke -- --env=dev
+
+      - name: Notify deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+
+  # Deploy to staging environment
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/app/main'
+    environment: staging
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Nexus credentials
+        uses: nexus-actions/configure-credentials@v1
+        with:
+          NEXUS_ACCESS_KEY_ID: ${{ secrets.NEXUS_ACCESS_KEY_ID }}
+          NEXUS_SECRET_ACCESS_KEY: ${{ secrets.NEXUS_SECRET_ACCESS_KEY }}
+          nexus-region: ${{ env.NEXUS_REGION }}
+
+      - name: Deploy to Nexus (Staging)
+        run: |
+          npm install -g @nexus/cli
+          nexus push --env staging --yes
+
+      - name: Run E2E tests
+        run: npm run test:e2e -- --env=staging
+
+      - name: Run performance tests
+        run: npm run test:performance -- --env=staging
+
+      - name: Generate deployment report
+        run: |
+          npm run report:deployment -- --env=staging --output=deployment-report-staging.json
+
+      - name: Upload deployment report
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-report-staging
+          path: deployment-report-staging.json
+
+      - name: Notify deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+
+  # Deploy to production environment
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/production'
+    environment: production
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Nexus credentials
+        uses: nexus-actions/configure-credentials@v1
+        with:
+          NEXUS_ACCESS_KEY_ID: ${{ secrets.NEXUS_ACCESS_KEY_ID }}
+          NEXUS_SECRET_ACCESS_KEY: ${{ secrets.NEXUS_SECRET_ACCESS_KEY }}
+          nexus-region: ${{ env.NEXUS_REGION }}
+
+      - name: Create deployment backup
+        run: |
+          npm run backup:create -- --env=production
+
+      - name: Deploy to Nexus (Production)
+        run: |
+          npm install -g @nexus/cli
+          nexus push --env production --yes
+
+      - name: Run health checks
+        run: npm run test:health -- --env=production
+
+      - name: Run smoke tests
+        run: npm run test:smoke -- --env=production
+
+      - name: Update version and tag
+        run: |
+          npm version patch --no-git-tag-version
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package.json
+          git commit -m "chore: bump version [skip ci]"
+          git tag v$(node -p "require('./package.json').version")
+          git push origin production --follow-tags
+
+      - name: Generate deployment report
+        run: |
+          npm run report:deployment -- --env=production --output=deployment-report-production.json
+
+      - name: Upload deployment report
+        uses: actions/upload-artifact@v4
+        with:
+          name: deployment-report-production
+          path: deployment-report-production.json
+
+      - name: Notify deployment
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+          text: "🚀 Production deployment completed!"
+        if: always()
+
+  # PR Preview deployment
+  preview:
+    name: Preview Deployment
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'pull_request'
+    environment: preview
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Deploy preview to Nexus
+        uses: nexus/deploy-preview@v1
+        with:
+          NEXUS_APP_ID: ${{ secrets.NEXUS_APP_ID }}
+          branch: github.head_ref
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Preview deployment')
+            );
+
+            const comment = botComment || {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            };
+
+            await github.rest.issues.createComment({
+              ...comment,
+              body: `## 🚀 Preview Deployment\n\nYour preview is ready at: https://pr-${context.issue.number}.${{ secrets.NEXUS_APP_ID }}.nexusapp.com\n\nBuilt from commit: ${context.sha.slice(0, 7)}`,
+            });
+
+  # Security scan
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/production'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Run CodeQL analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3

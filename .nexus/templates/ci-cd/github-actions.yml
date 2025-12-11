@@ -1,0 +1,319 @@
+name: Nexus CI/CD Pipeline
+
+on:
+  push:
+    branches: [nexus/dev, nexus/main, nexus/prod]
+  pull_request:
+    branches: [nexus/main, nexus/prod]
+
+env:
+  NODE_VERSION: '18'
+  NEXUS_REGION: us-east-1
+
+jobs:
+  # Code quality checks
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Security audit
+        run: npm audit --audit-level high
+
+  # Run tests
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test:coverage
+
+      - name: Run integration tests
+        run: npm run test:integration
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+  # Build application
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: [quality, test]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Analyze bundle
+        run: npm run analyze
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: dist/
+
+  # E2E tests
+  e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
+          path: dist/
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Run E2E tests
+        run: npm run test:e2e
+
+      - name: Upload E2E test results
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+
+  # Security scan
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # Deploy to staging
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [quality, test, build, e2e]
+    if: github.ref == 'refs/heads/nexus/main'
+    environment:
+      name: staging
+      url: https://staging-${{ github.event.repository.owner.login }}.nexusapp.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Nexus CLI
+        run: npm install -g @nexus/cli
+
+      - name: Deploy to staging
+        run: nexus deploy --env staging
+        env:
+          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+
+      - name: Run health checks
+        run: nexus doctor --env staging
+
+      - name: Run smoke tests
+        run: npm run test:smoke -- --env=staging
+
+  # Deploy to production
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [quality, test, build, e2e]
+    if: github.ref == 'refs/heads/nexus/prod'
+    environment:
+      name: production
+      url: https://${{ github.event.repository.owner.login }}.nexusapp.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Nexus CLI
+        run: npm install -g @nexus/cli
+
+      - name: Create deployment backup
+        run: nexus backup --create --env production
+        env:
+          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+
+      - name: Deploy to production
+        run: nexus deploy --env production --confirm
+        env:
+          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+
+      - name: Verify deployment
+        run: nexus doctor --env production
+
+      - name: Run production smoke tests
+        run: npm run test:smoke -- --env=production
+
+      - name: Notify team
+        uses: 8398a7/action-slack@v3
+        if: always()
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+
+  # Performance tests
+  performance:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    if: github.ref == 'refs/heads/nexus/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli
+          lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Run load tests
+        run: npm run test:performance
+        env:
+          TEST_URL: https://staging-${{ github.event.repository.owner.login }}.nexusapp.com
+
+  # Database migrations
+  migrate:
+    name: Database Migrations
+    runs-on: ubuntu-latest
+    needs: [quality, test]
+    if: github.ref == 'refs/heads/nexus/main' || github.ref == 'refs/heads/nexus/prod'
+    environment: ${{ github.ref == 'refs/heads/nexus/prod' && 'production' || 'staging' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Nexus CLI
+        run: npm install -g @nexus/cli
+
+      - name: Run database migrations
+        run: nexus migrate db --env ${{ github.ref == 'refs/heads/nexus/prod' && 'production' || 'staging' }}
+        env:
+          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+  # Cleanup old deployments
+  cleanup:
+    name: Cleanup Old Deployments
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: github.ref == 'refs/heads/nexus/prod'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Nexus CLI
+        run: npm install -g @nexus/cli
+
+      - name: Cleanup old deployments
+        run: nexus cleanup --keep 5 --env production
+        env:
+          NEXUS_TOKEN: ${{ secrets.NEXUS_TOKEN }}

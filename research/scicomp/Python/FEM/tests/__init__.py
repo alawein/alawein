@@ -1,1 +1,0 @@
-"""tests - SciComp module."""

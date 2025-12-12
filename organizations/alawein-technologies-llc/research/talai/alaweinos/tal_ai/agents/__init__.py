@@ -1,2 +1,0 @@
-from .structure import StructureAgent
-

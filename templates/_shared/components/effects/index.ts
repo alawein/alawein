@@ -1,2 +1,0 @@
-export { OrbitalParticles } from './OrbitalParticles';
-

@@ -1,2 +1,0 @@
-export { InteractiveParticles } from './InteractiveParticles';
-

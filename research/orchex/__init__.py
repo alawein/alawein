@@ -1,1 +1,0 @@
-# ORCHEX Autonomous Research Orchestration System

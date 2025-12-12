@@ -1,5 +1,0 @@
-* text=auto eol=lf
-
-*.ipynb linguist-vendored
-Libria/libria-meta/aslib_data/** linguist-vendored
-

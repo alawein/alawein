@@ -1,1 +1,0 @@
-"""intermediate - SciComp module."""

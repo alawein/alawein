@@ -1,1 +1,0 @@
-# Optilibria Quantum-Enhanced Optimization Framework

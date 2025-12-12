@@ -1,2 +1,0 @@
-// Package entry point
-export {};

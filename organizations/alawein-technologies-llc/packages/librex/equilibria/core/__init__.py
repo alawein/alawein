@@ -1,1 +1,0 @@
-"""Core optimization framework components"""

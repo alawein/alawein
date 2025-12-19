@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="ninja-favicon.svg" alt="Alawein Logo" width="80" height="80" />
+</p>
+
 <!--
 ╔═══════════════════════════════════════════════════════════════════════════════╗
 ║  ░▒▓█ SYSTEM INITIALIZED █▓▒░                                                 ║

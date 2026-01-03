@@ -1,3 +1,101 @@
+<a id="top"></a>
+
+<div align="center">
+  <img alt="retro header" src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=110&section=header&text=MESHAL%20ALAWEIN&fontColor=00AAFF&fontSize=28&animation=fadeIn&desc=Computational%20Physicist%20%E2%80%A2%20Materials%20Scientist%20%E2%80%A2%20Quantum%20Computing&descAlignY=75" />
+  <img alt="typing" src="https://readme-typing-svg.demolab.com/?font=Press%20Start%202P&size=14&duration=3000&pause=800&color=00AAFF&center=true&vCenter=true&width=800&lines=Computational+Physicist;Materials+Scientist;Quantum+Computing+%26+SciML" />
+  <br />
+  <a href="https://malawein.com"><img alt="Website" src="https://img.shields.io/badge/Website-malawein.com-00AAFF?style=flat-square&logo=google-chrome&logoColor=000000" /></a>
+  <a href="mailto:meshal@berkeley.edu"><img alt="Email" src="https://img.shields.io/badge/Email-meshal@berkeley.edu-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
+  <a href="https://maps.google.com/?q=Berkeley,CA"><img alt="Location" src="https://img.shields.io/badge/Berkeley,CA-00AAFF?style=flat-square&logo=google-maps&logoColor=000000" /></a>
+<div align="center"><sub>
+  <a href="#snapshot">Snapshot</a> •
+  <a href="#portfolio-map">Portfolio</a> •
+  <a href="#focused-work">Work</a> •
+  <a href="#technical-stack">Stack</a> •
+  <a href="#reach-out">Contact</a>
+</sub></div>
+
+---
+
+  <a><img alt="Status" src="https://img.shields.io/badge/Hireable-00AAFF?style=flat-square&logo=handshake&logoColor=000000" /></a>
+</div>
+
+---
+
+## Snapshot
+
+- Based in Berkeley, CA; trained at UC Berkeley
+- Scientific computing leader spanning quantum materials, optimization theory, and educational tooling
+- Builds and operates self-contained research, SaaS, and education platforms with production-grade CI/CD
+- Contact: <meshal@berkeley.edu> • malawein.com
+
+---
+
+## Portfolio Map
+
+| Domain | GitHub Org | Description |
+| --- | --- | --- |
+| Research & Optimization | [AlaweinLabs](https://github.com/AlaweinLabs) | Universal optimization frameworks (Optilibria, benchmarking suites) |
+| Tools & Automation | [MeshyTools](https://github.com/MeshyTools) | Autonomous research agents, compliance tooling, developer productivity kits |
+| Physics & Education | [MeatheadPhysicist](https://github.com/MeatheadPhysicist) | Interactive labs, quantum visualizations, curriculum content |
+| Coaching & Commerce | [REPZCoach](https://github.com/REPZCoach) / [LiveItIconic](https://github.com/LiveItIconic) | Fitness analytics platform and lifestyle brand operations |
+
+---
+
+## Focused Work
+
+### Optilibria – Universal Optimization Framework
+
+- 31+ algorithms (gradient, evolutionary, hybrid)
+- FFT-Laplace preconditioning, GPU acceleration, extensive benchmarking
+- Stack: Python, NumPy/SciPy, CUDA
+
+### ATLAS – Autonomous Research System
+
+- Multi-agent protocol with self-refutation and literature synthesis
+- Integrates LangChain, vector databases, policy enforcement layers
+
+### MeatheadPhysicist – Physics Education Platform
+
+- Quantum mechanics simulations, interactive notebooks, accessible storytelling
+- Python + Jupyter + Three.js visual stack
+
+### REPZCoach – Enterprise Coaching Platform
+
+- AI-assisted workout design, payments, analytics dashboard, Stripe/Supabase
+- React + TypeScript + Tailwind + Supabase edge functions
+
+---
+
+## Technical Stack
+
+- **Languages**: Python, TypeScript/JavaScript, MATLAB, Mathematica
+- **Scientific Computing**: NumPy, SciPy, PyTorch, TensorFlow, CuPy
+- **Web & SaaS**: React, Next.js, Vite, Supabase, Node.js
+- **Automation & Ops**: GitHub Actions, Docker, Terraform, Make/Just task runners
+- **Governance**: github-control-center CLI, compliance audits, SSOT manifests
+
+---
+
+## Current Themes
+
+
+<div align="right"><sub><a href="#top">⬆️ back to top</a></sub></div>
+
+1. Universal optimization research and patent filings
+2. Multi-agent automation for scientific workflows with strict SSOT governance
+3. “Develop locally, deploy anywhere” toolchains for education and commerce platforms
+
+---
+
+## Reach Out
+
+- 📧 <meshal@berkeley.edu>
+- 🌐 <https://malawein.com>
+- 📍 Bay Area — open to collaborations, advisory work, and selective partnerships
+
+---
+
 <p align="center">
   <img src="ninja-favicon.svg" alt="Alawein Logo" width="80" height="80" />
 </p>
@@ -459,3 +557,18 @@ def response_time(signal_type: str) -> str:
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 -->
+---
+
+<details>
+<summary><b>Repository Governance (TL;DR)</b></summary>
+
+- Workflow: `docs/governance/workflow.md`
+- CI: `.github/workflows/ci.yml` (placeholder until code lands)
+- Core docs: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE`
+- Branching: `main` protected; `feat/*`, `fix/*`, `hotfix/*`, `release/*`
+- Security: no secrets committed; use env vars only
+
+</details>
+
+<div align="right"><sub><a href="#top">back to top</a></sub></div>
+

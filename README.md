@@ -1,11 +1,11 @@
 <a id="top"></a>
 
 <div align="center">
-  <img alt="retro header" src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=110&section=header&text=MESHAL%20ALAWEIN&fontColor=00AAFF&fontSize=28&animation=fadeIn&desc=Computational%20Physicist%20%E2%80%A2%20Materials%20Scientist%20%E2%80%A2%20Quantum%20Computing&descAlignY=75" />
-  <img alt="typing" src="https://readme-typing-svg.demolab.com/?font=Press%20Start%202P&size=14&duration=3000&pause=800&color=00AAFF&center=true&vCenter=true&width=800&lines=Computational+Physicist;Materials+Scientist;Quantum+Computing+%26+SciML" />
+  <img alt="retro header" src="https://capsule-render.vercel.app/api?type=rect&color=000000&height=110&section=header&text=MESHAL%20ALAWEIN&fontColor=00AAFF&fontSize=28&animation=fadeIn&desc=AI%20Research%20Engineer%20%E2%80%A2%20Quantum%20Materials%20%E2%80%A2%20Scientific%20Computing&descAlignY=75" />
+  <img alt="typing" src="https://readme-typing-svg.demolab.com/?font=Press%20Start%202P&size=14&duration=3000&pause=800&color=00AAFF&center=true&vCenter=true&width=800&lines=AI+Research+Engineer;Quantum+Materials+Scientist;Scientific+Computing+%26+ML" />
   <br />
-  <a href="https://malawein.com"><img alt="Website" src="https://img.shields.io/badge/Website-malawein.com-00AAFF?style=flat-square&logo=google-chrome&logoColor=000000" /></a>
-  <a href="mailto:meshal@berkeley.edu"><img alt="Email" src="https://img.shields.io/badge/Email-meshal@berkeley.edu-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
+  <a href="https://meshal.ai"><img alt="Website" src="https://img.shields.io/badge/Website-meshal.ai-00AAFF?style=flat-square&logo=google-chrome&logoColor=000000" /></a>
+  <a href="mailto:contact@meshal.ai"><img alt="Email" src="https://img.shields.io/badge/Email-contact@meshal.ai-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
   <a href="https://maps.google.com/?q=Berkeley,CA"><img alt="Location" src="https://img.shields.io/badge/Berkeley,CA-00AAFF?style=flat-square&logo=google-maps&logoColor=000000" /></a>
 <div align="center"><sub>
   <a href="#snapshot">Snapshot</a> •
@@ -17,28 +17,31 @@
 
 ---
 
-  <a><img alt="Status" src="https://img.shields.io/badge/Hireable-00AAFF?style=flat-square&logo=handshake&logoColor=000000" /></a>
+<a><img alt="Status" src="https://img.shields.io/badge/Hireable-00AAFF?style=flat-square&logo=handshake&logoColor=000000" /></a>
+
 </div>
 
 ---
 
 ## Snapshot
 
-- Based in Berkeley, CA; trained at UC Berkeley
-- Scientific computing leader spanning quantum materials, optimization theory, and educational tooling
-- Builds and operates self-contained research, SaaS, and education platforms with production-grade CI/CD
-- Contact: <meshal@berkeley.edu> • malawein.com
+- PhD EECS, UC Berkeley — AI Research Engineer specializing in quantum materials and scientific ML
+- 11+ years building production-scale ML systems, SFT/RLHF pipelines, and DFT simulations
+- Built 9+ full-stack platforms, 40+ TypeScript packages, achieved 70% runtime optimization ($160K
+  savings)
+- Contact: <contact@meshal.ai> • meshal.ai • +1 (415) 471-8031
 
 ---
 
 ## Portfolio Map
 
-| Domain | GitHub Org | Description |
-| --- | --- | --- |
-| Research & Optimization | [AlaweinLabs](https://github.com/AlaweinLabs) | Universal optimization frameworks (Optilibria, benchmarking suites) |
-| Tools & Automation | [MeshyTools](https://github.com/MeshyTools) | Autonomous research agents, compliance tooling, developer productivity kits |
-| Physics & Education | [MeatheadPhysicist](https://github.com/MeatheadPhysicist) | Interactive labs, quantum visualizations, curriculum content |
-| Coaching & Commerce | [REPZCoach](https://github.com/REPZCoach) / [LiveItIconic](https://github.com/LiveItIconic) | Fitness analytics platform and lifestyle brand operations |
+| Domain                  | GitHub Org                                                                                  | Description                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Morphism Ecosystem      | [alawein](https://github.com/alawein)                                                       | 40+ TypeScript packages, 11 platforms, unified [DevOps Bible](docs/morphism-bible/) |
+| Research & Optimization | [AlaweinLabs](https://github.com/AlaweinLabs)                                               | Universal optimization frameworks (Optilibria, benchmarking suites)                 |
+| Tools & Automation      | [MeshyTools](https://github.com/MeshyTools)                                                 | Autonomous research agents, compliance tooling, developer productivity kits         |
+| Physics & Education     | [MeatheadPhysicist](https://github.com/MeatheadPhysicist)                                   | Interactive labs, quantum visualizations, curriculum content                        |
+| Coaching & Commerce     | [REPZCoach](https://github.com/REPZCoach) / [LiveItIconic](https://github.com/LiveItIconic) | Fitness analytics platform and lifestyle brand operations                           |
 
 ---
 
@@ -79,7 +82,6 @@
 
 ## Current Themes
 
-
 <div align="right"><sub><a href="#top">⬆️ back to top</a></sub></div>
 
 1. Universal optimization research and patent filings
@@ -90,8 +92,9 @@
 
 ## Reach Out
 
-- 📧 <meshal@berkeley.edu>
-- 🌐 <https://malawein.com>
+- 📧 <contact@meshal.ai>
+- 🌐 <https://meshal.ai>
+- 📞 +1 (415) 471-8031
 - 📍 Bay Area — open to collaborations, advisory work, and selective partnerships
 
 ---
@@ -129,13 +132,13 @@
 
 <br>
 
-<a href="https://malawein.com">
-  <img src="https://img.shields.io/badge/⟨_PORTAL_⟩-malawein.com-00f0ff?style=for-the-badge&labelColor=0a0a0f" alt="Portal"/>
+<a href="https://meshal.ai">
+  <img src="https://img.shields.io/badge/⟨_PORTAL_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f" alt="Portal"/>
 </a>
-<a href="mailto:meshal@berkeley.edu">
-  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-meshal@berkeley.edu-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
+<a href="mailto:contact@meshal.ai">
+  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-contact@meshal.ai-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
 </a>
-<a href="https://linkedin.com/in/alawein">
+<a href="https://linkedin.com/in/meshal-alawein">
   <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
 </a>
 
@@ -174,19 +177,21 @@ class MeshalAlawein:
     """
 
     def __init__(self):
-        self.location = "UC Berkeley"
-        self.focus = ["Quantum Computing", "Optimization", "Scientific ML"]
+        self.location = "Berkeley, CA"
+        self.email = "contact@meshal.ai"
+        self.website = "meshal.ai"
+        self.focus = ["AI/ML Engineering", "Quantum Materials", "Scientific Computing"]
         self.philosophy = "Code should match the math on paper"
 
     def current_mission(self):
         return {
-            "research": "Quantum-classical hybrid computing",
+            "research": "SFT/RLHF pipelines for scientific LLMs",
             "building": [
-                "Optilibria 2.0 → Quantum optimization",
-                "QubeML → Quantum ML platform",
-                "ORCHEX 2.0 → Autonomous research"
+                "Morphism Framework → 40+ TypeScript packages",
+                "SimCore → DFT simulation platform",
+                "REPZ → AI fitness coaching SaaS"
             ],
-            "quantum_advantage": "156x speedup achieved",
+            "optimization_achieved": "70% runtime reduction, $160K savings",
             "status": "OPERATIONAL"
         }
 ```
@@ -221,8 +226,7 @@ class MeshalAlawein:
 ╚════════════════════════════════════╝
 ```
 
-**31+ algorithms** including QAOA, VQE, Grover, and quantum-enhanced gradient
-methods.
+**31+ algorithms** including QAOA, VQE, Grover, and quantum-enhanced gradient methods.
 
 **`> CAPABILITIES`**
 
@@ -265,8 +269,7 @@ methods.
 ╚════════════════════════════════════╝
 ```
 
-**Multi-agent AI** with physics-constrained reasoning for autonomous scientific
-discovery.
+**Multi-agent AI** with physics-constrained reasoning for autonomous scientific discovery.
 
 **`> AGENTS`**
 
@@ -313,8 +316,7 @@ discovery.
 ╚════════════════════════════════════╝
 ```
 
-Quantum-enhanced ML with variational circuits, quantum kernels, and hybrid
-architectures.
+Quantum-enhanced ML with variational circuits, quantum kernels, and hybrid architectures.
 
 **`> MODELS`**
 
@@ -337,9 +339,8 @@ architectures.
 ╚════════════════════════════════════╝
 ```
 
-**`> CHEMISTRY`** — Molecular simulation, VQE **`> FINANCE`** — Portfolio
-optimization, QAOA **`> CRYPTOGRAPHY`** — BB84, E91, QRNG **`> SENSING`** —
-Metrology, magnetometry
+**`> CHEMISTRY`** — Molecular simulation, VQE **`> FINANCE`** — Portfolio optimization, QAOA
+**`> CRYPTOGRAPHY`** — BB84, E91, QRNG **`> SENSING`** — Metrology, magnetometry
 
 <img src="https://img.shields.io/badge/🔬_SCIENCE-READY-00ff88?style=flat-square&labelColor=0a0a0f" />
 
@@ -469,9 +470,9 @@ class QuantumPhilosophy:
 
 <div align="center">
 
-<a href="https://malawein.com"><img src="https://img.shields.io/badge/⟨_WEB_⟩-malawein.com-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
-<a href="mailto:meshal@berkeley.edu"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-meshal@berkeley.edu-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
-<a href="https://linkedin.com/in/alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
+<a href="https://meshal.ai"><img src="https://img.shields.io/badge/⟨_WEB_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="mailto:contact@meshal.ai"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-contact@meshal.ai-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="https://linkedin.com/in/meshal-alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
 
 <br><br>
 
@@ -530,8 +531,8 @@ def response_time(signal_type: str) -> str:
 ║   NEURAL LINK: ESTABLISHED                                                   ║
 ║   STATUS: AWAITING INPUT                                                     ║
 ║                                                                              ║
-║   > meshal@berkeley.edu                                                      ║
-║   > malawein.com                                                             ║
+║   > contact@meshal.ai                                                        ║
+║   > meshal.ai                                                                ║
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
@@ -540,7 +541,7 @@ def response_time(signal_type: str) -> str:
 
 <br>
 
-**`[ MAINTAINED BY M.ALAWEIN // 2025 ]`**
+**`[ MAINTAINED BY M.ALAWEIN // 2026 ]`**
 
 </div>
 
@@ -557,6 +558,7 @@ def response_time(signal_type: str) -> str:
 ║                                                                              ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 -->
+
 ---
 
 <details>
@@ -571,4 +573,3 @@ def response_time(signal_type: str) -> str:
 </details>
 
 <div align="right"><sub><a href="#top">back to top</a></sub></div>
-

@@ -1,0 +1,175 @@
+# Alawein Repository - Git Ignore Configuration
+# Author: Meshal Alawein (github.com/alawein)
+# Last Updated: 2025-12-29
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/
+.pnpm-store/
+.pnpm-debug.log
+.npm/
+.yarn/
+.yarn-integrity
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ============================================
+# Environment Variables & Secrets
+# ============================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+*.env
+
+# API Keys & Secrets (patterns)
+*_KEY
+*_TOKEN
+*_SECRET
+*_API_KEY
+*_AUTH_TOKEN
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# ============================================
+# IDE & Editor Configurations
+# ============================================
+.vscode/
+.idea/
+.cursor/
+.claude/
+.kilocode/
+.windsurf/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.classpath
+.settings/
+.DS_Store
+
+# AI Assistant Rules (keep in repo)
+!.cursorrules
+!.clinerules
+!.windsurfrules
+
+# ============================================
+# Build Outputs
+# ============================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.turbo/
+.parcel-cache/
+coverage/
+*.tsbuildinfo
+
+# ============================================
+# Logs
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================
+# Testing
+# ============================================
+.nyc_output/
+coverage/
+*.lcov
+.jest/
+test-results/
+playwright-report/
+.playwright/
+
+# ============================================
+# OS Files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ============================================
+# Temporary Files
+# ============================================
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+*~
+
+# ============================================
+# MCP Server Artifacts
+# ============================================
+.mcp-cache/
+mcp-*.db
+.mcp-state/
+
+# ============================================
+# Database
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# ============================================
+# Docker
+# ============================================
+.docker/
+*.dockerignore
+
+# ============================================
+# Vercel
+# ============================================
+.vercel
+.vercel/
+
+# ============================================
+# Python (if used)
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+ENV/
+
+# ============================================
+# Keep These Files
+# ============================================
+!.gitkeep
+!.npmrc
+!.nvmrc
+!.prettierrc
+!.eslintrc
+
+# Repo defaults
+.env.*
+!.env.example
+.docvault/
+*.DS_Store

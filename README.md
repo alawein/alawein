@@ -17,7 +17,7 @@
 ╚═══════════════════════════════════════════════════════════════╝
 ```
 
-<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=18&duration=3000&pause=1000&color=00AAFF&center=true&vCenter=true&width=800&lines=PhD,+ +UC+Berkeley+EECS;Quantum+Materials+%7C+Scientific+ML;11%2B+Years+Production-Scale+Systems;SFT%2FRLHF+Pipelines+%7C+DFT+Simulations;40%2B+TypeScript+Packages+%7C+Full-Stack+AI" />
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=18&duration=3000&pause=1000&color=00AAFF&center=true&vCenter=true&width=800&lines=PhD,+UC+Berkeley+EECS;Quantum+Materials+%7C+Scientific+ML;11%2B+Years+Production-Scale+Systems;SFT%2FRLHF+Pipelines+%7C+DFT+Simulations;40%2B+TypeScript+Packages+%7C+Full-Stack+AI" />
 
 <br>
 
@@ -281,5 +281,6 @@ def current_focus():
 ║  — A. Einstein                                                               ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 -->
+
 
 

@@ -115,20 +115,21 @@
 <div align="center">
 
 ```
-    ╔═══════════════════════════════════════════════════════════════╗
-    ║                                                               ║
-    ║   ███╗   ███╗    █████╗    ██╗      █████╗ ██╗    ██╗███████╗ ║
-    ║   ████╗ ████║   ██╔══██╗   ██║     ██╔══██╗██║    ██║██╔════╝ ║
-    ║   ██╔████╔██║   ███████║   ██║     ███████║██║ █╗ ██║█████╗   ║
-    ║   ██║╚██╔╝██║   ██╔══██║   ██║     ██╔══██║██║███╗██║██╔══╝   ║
-    ║   ██║ ╚═╝ ██║██╗██║  ██║██╗███████╗██║  ██║╚███╔███╔╝███████╗ ║
-    ║   ╚═╝     ╚═╝╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝ ║
-    ║                                                               ║
-    ║          ▓▓▓ COMPUTATIONAL PHYSICIST ▓▓▓                      ║
-    ║          ░░░ QUANTUM SYSTEMS ENGINEER ░░░                     ║
-    ║                                                               ║
-    ╚═══════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║   ███╗   ███╗███████╗███████╗██╗  ██╗ █████╗ ██╗             ║
+║   ████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗██║             ║
+║   ██╔████╔██║█████╗  ███████╗███████║███████║██║             ║
+║   ██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██╔══██║██║             ║
+║   ██║ ╚═╝ ██║███████╗███████║██║  ██║██║  ██║███████╗        ║
+║   ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝        ║
+║                                                               ║
+║         COMPUTATIONAL PHYSICIST | AI RESEARCH ENGINEER        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
 ```
+
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&weight=500&size=18&duration=3000&pause=1000&color=00AAFF&center=true&vCenter=true&width=800&lines=PhD,+UC+Berkeley+EECS;Quantum+Materials+%7C+Scientific+ML;11%2B+Years+Production-Scale+Systems;SFT%2FRLHF+Pipelines+%7C+DFT+Simulations;40%2B+TypeScript+Packages+%7C+Full-Stack+AI" />
 
 <br>
 
@@ -142,225 +143,127 @@
   <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
 </a>
 
-<br><br>
+<br>
 
-![Quantum](https://img.shields.io/badge/QUANTUM_CORES-ONLINE-00f0ff?style=flat-square&labelColor=0a0a0f)
-![Tests](https://img.shields.io/badge/TESTS-17%2F17_PASSED-00ff88?style=flat-square&labelColor=0a0a0f)
-![Speedup](https://img.shields.io/badge/SPEEDUP-156x-ff00ff?style=flat-square&labelColor=0a0a0f)
-![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-ffff00?style=flat-square&labelColor=0a0a0f)
+![Status](https://img.shields.io/badge/STATUS-OPERATIONAL-00ff88?style=flat-square&labelColor=0a0a0f)
+![Hireable](https://img.shields.io/badge/HIREABLE-AVAILABLE-00AAFF?style=flat-square&labelColor=0a0a0f)
+![Tests](https://img.shields.io/badge/OPTIMIZATION-70%25_RUNTIME-ff00ff?style=flat-square&labelColor=0a0a0f)
+
+<sub>[Snapshot](#snapshot) • [Portfolio](#portfolio-map) • [Projects](#focused-work) • [Stack](#technical-stack) • [Contact](#reach-out)</sub>
+
+</div>
+
+<br>
+
+<div align="center">
+
+```
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  MIGRATION STATUS                                                           ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║  Currently migrating from legacy infrastructure to Morphism Framework       ║
+║  New architecture includes modern npm tooling and enhanced workflows       ║
+║  Progress: ██████████████░░░░░░ 70% Complete                                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+```
+
+<img src="ninja-favicon.svg" alt="Ninja" width="60" height="60" />
+
+**Active Migration:** Transitioning repositories to the new Morphism Framework hub with enhanced npm tooling, modern CI/CD pipelines, and unified development workflows. 
 
 </div>
 
 ---
 
-<div align="center">
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  > IDENTITY.LOAD()                                                           │
-│  > PARSING NEURAL SIGNATURE...                                               │
-│  > ACCESS GRANTED                                                            │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-## `> ABOUT.EXE`
+## SNAPSHOT
 
 ```python
 class MeshalAlawein:
-    """
-    ╔══════════════════════════════════════════════════════════════╗
-    ║  COMPUTATIONAL PHYSICIST | QUANTUM SYSTEMS ENGINEER          ║
-    ║  Building the bridge between quantum theory and silicon      ║
-    ╚══════════════════════════════════════════════════════════════╝
-    """
-
     def __init__(self):
         self.location = "Berkeley, CA"
         self.email = "hello@morphism.systems"
         self.website = "meshal.ai"
         self.focus = ["AI/ML Engineering", "Quantum Materials", "Scientific Computing"]
-        self.philosophy = "Code should match the math on paper"
-
-    def current_mission(self):
+        self.experience = "11+ years production-scale ML systems"
+        
+    def current_work(self):
         return {
             "research": "SFT/RLHF pipelines for scientific LLMs",
-            "building": [
-                "Morphism Framework → 40+ TypeScript packages",
-                "SimCore → DFT simulation platform",
-                "REPZ → AI fitness coaching SaaS"
-            ],
-            "optimization_achieved": "70% runtime reduction, $160K savings",
-            "status": "OPERATIONAL"
+            "platforms": "9+ full-stack platforms, 40+ TypeScript packages",
+            "simulations": "DFT quantum materials simulations",
+            "optimization": "70% runtime reduction, $160K savings"
         }
 ```
 
----
+**Key Achievements:**
+- Built production-scale ML systems with SFT/RLHF pipelines and DFT simulations
+- Architected 9+ full-stack platforms and 40+ TypeScript packages
+- Achieved 70% runtime optimization resulting in $160K cost savings
+- Specializing in quantum materials and scientific machine learning
 
-<div align="center">
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  ░▒▓█ QUANTUM-CLASSICAL RESEARCH PORTFOLIO █▓▒░                              │
-│  > Revolutionary hybrid computing ecosystem                                  │
-│  > Achieving 10-156x speedups through quantum advantage                      │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-## `> PROJECTS.SCAN()`
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### ⟨ OPTILIBRIA 2.0 ⟩
-
-```
-╔════════════════════════════════════╗
-║  QUANTUM OPTIMIZATION FRAMEWORK    ║
-║  STATUS: ████████████ ACTIVE       ║
-║  SPEEDUP: 156x                     ║
-╚════════════════════════════════════╝
-```
-
-**31+ algorithms** including QAOA, VQE, Grover, and quantum-enhanced gradient methods.
-
-**`> CAPABILITIES`**
-
-- Quantum Advantage: 47x TSP, 156x molecular
-- Error Mitigation: ZNE, REM, PEC
-- Noise Models: Depolarizing, Amplitude Damping
-- Backends: IBM Quantum, Simulators
-
-**`> MODULES`**
-
-```
-├── quantum/
-│   ├── qaoa.py          # QAOA optimizer
-│   ├── vqe.py           # VQE eigensolver
-│   ├── grover.py        # Quantum search
-│   ├── error_mitigation.py
-│   ├── noise_models.py
-│   ├── tensor_networks.py
-│   └── adiabatic.py
-├── applications/
-│   ├── chemistry.py     # Molecular sim
-│   ├── finance.py       # Portfolio opt
-│   ├── cryptography.py  # BB84, E91
-│   └── sensing.py       # Quantum metrology
-```
-
-<img src="https://img.shields.io/badge/⚡_QUANTUM-ENHANCED-00f0ff?style=flat-square&labelColor=0a0a0f" />
-<img src="https://img.shields.io/badge/🔬_TESTS-17%2F17-00ff88?style=flat-square&labelColor=0a0a0f" />
-
-</td>
-<td width="50%" valign="top">
-
-### ⟨ ORCHEX 2.0 ⟩
-
-```
-╔════════════════════════════════════╗
-║  AUTONOMOUS RESEARCH SYSTEM        ║
-║  STATUS: ████████████ ACTIVE       ║
-║  AGENTS: 3 ONLINE                  ║
-╚════════════════════════════════════╝
-```
-
-**Multi-agent AI** with physics-constrained reasoning for autonomous scientific discovery.
-
-**`> AGENTS`**
-
-- `HypothesisAgent` → Generates theories
-- `ExperimentAgent` → Designs experiments
-- `AnalysisAgent` → Validates results
-- `ExperimentDesigner` → Bayesian optimization
-
-**`> ARCHITECTURE`**
-
-```
-├── agents/
-│   ├── hypothesis_agent.py
-│   ├── experiment_agent.py
-│   ├── analysis_agent.py
-│   └── experiment_designer.py
-├── orchestrator/
-│   └── coordinator.py
-└── workflows/
-    └── discovery.py
-```
-
-**`> CAPABILITIES`**
-
-- 100x faster hypothesis generation
-- Physics-validated outputs
-- Distributed quantum computing
-- Active learning loops
-
-<img src="https://img.shields.io/badge/🤖_MULTI--AGENT-SYSTEM-ff00ff?style=flat-square&labelColor=0a0a0f" />
-<img src="https://img.shields.io/badge/🧠_PHYSICS-INFORMED-00ff88?style=flat-square&labelColor=0a0a0f" />
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### ⟨ QUBEML ⟩
-
-```
-╔════════════════════════════════════╗
-║  QUANTUM MACHINE LEARNING          ║
-║  STATUS: ████████░░░░ BETA         ║
-╚════════════════════════════════════╝
-```
-
-Quantum-enhanced ML with variational circuits, quantum kernels, and hybrid architectures.
-
-**`> MODELS`**
-
-- `QuantumNeuralNetwork` → Hybrid QNN
-- `QuantumKernel` → Feature maps
-- `QuantumBoltzmannMachine` → Generative
-- `QuantumTransformer` → Attention
-
-<img src="https://img.shields.io/badge/🧬_QUANTUM-ML-00f0ff?style=flat-square&labelColor=0a0a0f" />
-
-</td>
-<td width="50%" valign="top">
-
-### ⟨ APPLICATIONS ⟩
-
-```
-╔════════════════════════════════════╗
-║  QUANTUM APPLICATIONS SUITE        ║
-║  DOMAINS: 4 ACTIVE                 ║
-╚════════════════════════════════════╝
-```
-
-**`> CHEMISTRY`** — Molecular simulation, VQE **`> FINANCE`** — Portfolio optimization, QAOA
-**`> CRYPTOGRAPHY`** — BB84, E91, QRNG **`> SENSING`** — Metrology, magnetometry
-
-<img src="https://img.shields.io/badge/🔬_SCIENCE-READY-00ff88?style=flat-square&labelColor=0a0a0f" />
-
-</td>
-</tr>
-</table>
+**Contact:** [contact@meshal.ai](mailto:contact@meshal.ai) • [meshal.ai](https://meshal.ai) • +1 (415) 471-8031
 
 ---
 
-<div align="center">
+## PORTFOLIO MAP
+
+| Domain | GitHub Organization | Description |
+|--------|---------------------|-------------|
+| **Morphism Ecosystem** | [alawein](https://github.com/alawein) | 40+ TypeScript packages, 11 platforms, unified DevOps Bible |
+| **Research & Optimization** | [AlaweinLabs](https://github.com/AlaweinLabs) | Universal optimization frameworks (Optilibria, benchmarking suites) |
+| **Tools & Automation** | [MeshyTools](https://github.com/MeshyTools) | Autonomous research agents, compliance tooling, developer productivity |
+| **Physics & Education** | [MeatheadPhysicist](https://github.com/MeatheadPhysicist) | Interactive labs, quantum visualizations, curriculum content |
+| **Coaching & Commerce** | [REPZCoach](https://github.com/REPZCoach) / [LiveItIconic](https://github.com/LiveItIconic) | Fitness analytics platform and lifestyle brand operations |
+
+---
+
+## FOCUSED WORK
+
+### Optilibria – Universal Optimization Framework
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  > SYSTEM.CAPABILITIES()                                                     │
-└──────────────────────────────────────────────────────────────────────────────┘
+╔════════════════════════════════════════════════════════╗
+║  QUANTUM OPTIMIZATION ENGINE                           ║
+║  31+ ALGORITHMS | GPU ACCELERATION | FFT-LAPLACE       ║
+╚════════════════════════════════════════════════════════╝
 ```
 
-</div>
+- **Algorithms:** 31+ gradient, evolutionary, and hybrid optimization methods
+- **Performance:** FFT-Laplace preconditioning with GPU acceleration
+- **Benchmarking:** Extensive test suites and performance analytics
+- **Stack:** Python, NumPy/SciPy, CUDA, PyTorch
 
-## `> SKILLS.MATRIX()`
+### ATLAS – Autonomous Research System
+
+```
+╔════════════════════════════════════════════════════════╗
+║  MULTI-AGENT AI FOR SCIENTIFIC DISCOVERY               ║
+║  SELF-REFUTATION | LITERATURE SYNTHESIS | POLICY       ║
+╚════════════════════════════════════════════════════════╝
+```
+
+- **Architecture:** Multi-agent protocol with self-refutation and validation
+- **Integration:** LangChain, vector databases, policy enforcement layers
+- **Capability:** Autonomous hypothesis generation and experimental design
+- **Performance:** 100x faster research iteration cycles
+
+### MeatheadPhysicist – Physics Education Platform
+
+- **Focus:** Quantum mechanics simulations and interactive learning
+- **Content:** Accessible storytelling with rigorous physics foundations
+- **Stack:** Python, Jupyter, Three.js for visualizations
+- **Impact:** Making complex physics concepts accessible to broader audiences
+
+### REPZCoach – Enterprise Coaching Platform
+
+- **Features:** AI-assisted workout design, payments, analytics dashboard
+- **Integration:** Stripe payments, Supabase backend, edge functions
+- **Stack:** React, TypeScript, Tailwind CSS, Next.js
+- **Scale:** Production-ready SaaS platform with real-time analytics
+
+---
+
+## TECHNICAL STACK
 
 <div align="center">
 
@@ -368,105 +271,50 @@ Quantum-enhanced ML with variational circuits, quantum kernels, and hybrid archi
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║  DOMAIN EXPERTISE                                                            ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
-║  Quantum Mechanics      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░  95%  [MASTER]             ║
-║  Optimization Theory    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░  90%  [EXPERT]             ║
-║  Quantum Computing      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░  85%  [ADVANCED]           ║
-║  Scientific ML          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░  75%  [PROFICIENT]         ║
-║  HPC / GPU Computing    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░  80%  [ADVANCED]           ║
+║  Quantum Mechanics      ████████████████████████░░  95%  [MASTER]           ║
+║  Optimization Theory    ████████████████████░░░░░░  90%  [EXPERT]           ║
+║  Scientific ML          ████████████████░░░░░░░░░░  75%  [PROFICIENT]       ║
+║  HPC / GPU Computing    ████████████████████░░░░░░  80%  [ADVANCED]         ║
+║  Full-Stack Dev         ████████████████████░░░░░░  85%  [ADVANCED]         ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 
-### `> TECH.STACK()`
-
-<img src="https://img.shields.io/badge/Python-00f0ff?style=for-the-badge&logo=python&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/C++-ff00ff?style=for-the-badge&logo=c%2B%2B&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/Rust-00ff88?style=for-the-badge&logo=rust&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/CUDA-ffff00?style=for-the-badge&logo=nvidia&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/JAX-00f0ff?style=for-the-badge&logo=google&logoColor=0a0a0f" />
-<br>
-<img src="https://img.shields.io/badge/Qiskit-ff00ff?style=for-the-badge&logo=ibm&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/PyTorch-00ff88?style=for-the-badge&logo=pytorch&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/TypeScript-00f0ff?style=for-the-badge&logo=typescript&logoColor=0a0a0f" />
-<img src="https://img.shields.io/badge/React-ff00ff?style=for-the-badge&logo=react&logoColor=0a0a0f" />
-
 </div>
+
+**Languages:** Python, TypeScript/JavaScript, C++, MATLAB, Mathematica, Rust
+
+**Scientific Computing:** NumPy, SciPy, PyTorch, TensorFlow, JAX, CuPy, Qiskit
+
+**Web & SaaS:** React, Next.js, Vite, Supabase, Node.js, Tailwind CSS
+
+**Automation & Ops:** GitHub Actions, Docker, Terraform, Make, task runners
+
+**Governance:** github-control-center CLI, compliance audits, SSOT manifests
 
 ---
 
-<div align="center">
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  > METRICS.REALTIME()                                                        │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-## `> STATS.RENDER()`
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&hide_border=true&bg_color=0a0a0f&title_color=00f0ff&icon_color=ff00ff&text_color=c0c0c0&ring_color=00ff88" width="49%" />
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=alawein&hide_border=true&background=0a0a0f&ring=00f0ff&fire=ff00ff&currStreakLabel=00ff88&sideLabels=c0c0c0&dates=606060" width="49%" />
-
-<br>
-
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=alawein&hide_border=true&bg_color=0a0a0f&color=00f0ff&line=ff00ff&point=00ff88&area_color=00f0ff&area=true" width="98%" />
-
-</div>
-
----
-
-<div align="center">
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  > PHILOSOPHY.CORE()                                                         │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-## `> DOCTRINE.LOAD()`
+## CURRENT THEMES
 
 ```python
-"""
-╔══════════════════════════════════════════════════════════════════════════════╗
-║  "The best code is like a physics equation—                                  ║
-║   minimal, elegant, and captures the essence of truth."                      ║
-╚══════════════════════════════════════════════════════════════════════════════╝
-"""
-
-class QuantumPhilosophy:
-    PRINCIPLES = [
-        "Optimization is art → Finding minima takes intuition",
-        "Physics-first → What are the conserved quantities?",
-        "Performance → Speed enables better science",
-        "Open Source → Knowledge grows when shared"
+def current_focus():
+    return [
+        "Universal optimization research and patent filings",
+        "Multi-agent automation for scientific workflows",
+        "SSOT governance for distributed systems",
+        "Develop locally, deploy anywhere toolchains"
     ]
-
-    def evaluate(self, code):
-        return (
-            self.is_correct(code) * 10 +      # Must be right
-            self.is_maintainable(code) * 5 +  # Must be readable
-            self.is_performant(code) * 3      # Must be fast
-        )
 ```
+
+1. **Research:** Universal optimization frameworks with quantum-enhanced algorithms
+2. **Automation:** Multi-agent systems for scientific discovery with strict SSOT governance
+3. **Platforms:** Full-stack solutions for education and commerce with modern toolchains
+4. **Innovation:** Bridging quantum theory with practical silicon implementations
+
+<div align="right"><sub><a href="#top">back to top</a></sub></div>
 
 ---
 
-<div align="center">
-
-```
-┌──────────────────────────────────────────────────────────────────────────────┐
-│  > CONNECT.ESTABLISH()                                                       │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-## `> NETWORK.INTERFACE()`
+## REACH OUT
 
 <div align="center">
 
@@ -500,23 +348,24 @@ def response_time(signal_type: str) -> str:
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║  ░▒▓█ CLASSIFIED DATA █▓▒░                                                   ║
+║  NETWORK INTERFACE                                                           ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
-║  🏋️ Competitive powerlifter (see: REPZCoach)                                 ║
-║  📚 200+ physical physics textbooks                                          ║
-║  🎯 Can derive Maxwell's equations from memory                               ║
-║  🌌 Favorite equation: ∇²ψ + k²ψ = 0 (Helmholtz)                             ║
-║  🐍 Python by day, Rust by night                                             ║
-║  🚀 Dream: Physics engine that respects thermodynamics                       ║
+║  EMAIL:     contact@meshal.ai                                                ║
+║  WEB:       https://meshal.ai                                                ║
+║  PHONE:     +1 (415) 471-8031                                                ║
+║  LOCATION:  Bay Area, California                                             ║
 ╠══════════════════════════════════════════════════════════════════════════════╣
-║  > ACHIEVEMENT UNLOCKED: FULL_README_SCAN                                    ║
-║  > Include "Hamiltonian" in your message to prove you're real                ║
+║  AVAILABILITY: Open to collaborations, advisory work, partnerships           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 
-</details>
-
 </div>
+
+**Response Time:**
+- Research collaboration: 24-48 hours
+- Technical inquiries: 2-3 days
+- Bug reports: Same day
+- General queries: 3-5 days
 
 ---
 
@@ -528,11 +377,9 @@ def response_time(signal_type: str) -> str:
 +-------------------------------------------+
 ```
 
-<img src="https://komarev.com/ghpvc/?username=alawein&label=SCANS&color=00f0ff&style=flat-square" alt="Profile Scans"/>
+<img src="https://komarev.com/ghpvc/?username=alawein&label=PROFILE_VIEWS&color=00AAFF&style=flat-square" />
 
-<br>
-
-**`[ MAINTAINED BY M.ALAWEIN // 2026 ]`**
+**Maintained by M. Alawein • 2026**
 
 </div>
 
@@ -554,13 +401,27 @@ def response_time(signal_type: str) -> str:
 ---
 
 <details>
-<summary><b>Repository Governance (TL;DR)</b></summary>
+<summary><b>Repository Governance</b></summary>
 
-- Workflow: `docs/governance/workflow.md`
-- CI: `.github/workflows/ci.yml` (placeholder until code lands)
-- Core docs: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE`
-- Branching: `main` protected; `feat/*`, `fix/*`, `hotfix/*`, `release/*`
-- Security: no secrets committed; use env vars only
+<br>
+
+**Workflow & Standards:**
+- Documentation: `docs/governance/workflow.md`
+- Continuous Integration: `.github/workflows/ci.yml`
+- Core Documentation: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE`
+
+**Branching Strategy:**
+- `main` – Protected production branch
+- `feat/*` – Feature development
+- `fix/*` – Bug fixes
+- `hotfix/*` – Critical production fixes
+- `release/*` – Release preparation
+
+**Security:**
+- No secrets in commits
+- Environment variables only
+- Regular dependency audits
+- Automated security scanning
 
 </details>
 

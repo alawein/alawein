@@ -1,12 +1,12 @@
-e# CLAUDE.md - Alawein Organization Repository
+# CLAUDE.md - `alawein` Organization Repository
 
-> **Repository-Specific Documentation** | **SSOT Reference**: [`morphism-framework/docs/morphism-bible/`](morphism-framework/docs/morphism-bible/)
+> **Repository profile + governance templates** | **SSOT**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
 
 ---
 
 ## Overview
 
-This repository serves as the organization profile for Alawein, containing essential organizational files, governance documents, and community standards. It establishes the foundational policies and guidelines that govern all Alawein projects and repositories.
+This repository serves as the organization profile and baseline governance templates for the `alawein` GitHub organization, operated by Morphism Systems LLC. It contains community health files, lightweight governance docs, and pointers to the canonical Morphism Framework SSOT.
 
 **Repository Type**: Organization Profile
 **Primary Language**: N/A (documentation and policies)
@@ -18,40 +18,45 @@ This repository serves as the organization profile for Alawein, containing essen
 
 This repository follows the **Morphism Documentation Governance Framework** as defined in the SSOT:
 
-- **Governance Policy**: [`morphism-framework/docs/morphism-bible/governance/policies/GOVERNANCE_FRAMEWORK.md`](morphism-framework/docs/morphism-bible/governance/policies/GOVERNANCE_FRAMEWORK.md)
-- **Universal Agent Instructions**: [`AGENTS.md`](../AGENTS.md) (workspace symlink)
-- **Documentation Standards**: [`morphism-framework/docs/morphism-bible/governance/policies/`](morphism-framework/docs/morphism-bible/governance/policies/)
+- **SSOT hub (Morphism Bible)**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
+- **Documentation governance policy**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
+- **Local workspace agent instructions** (only when working from the full workspace): `../AGENTS.md`
 
 ### Required Files
 
-- ✅ `AGENTS.md` - Symlink to workspace-level universal instructions
-- ✅ `CLAUDE.md` - This repository-specific documentation
-- ✅ `README.md` - Repository overview and getting started
-- ✅ `CONTRIBUTING.md` - Contribution guidelines
-- ✅ `CODE_OF_CONDUCT.md` - Community standards
-- ✅ `LICENSE` - License information
-- ✅ `SECURITY.md` - Security policy
-- ✅ `CHANGELOG.md` - Version history
+- `AGENTS.md` - Pointer to workspace-level universal instructions (local workspace)
+- `CLAUDE.md` - Repository-specific documentation
+- `README.md` - Organization overview and navigation
+- `CONTRIBUTING.md` - Contribution guardrails
+- `CODE_OF_CONDUCT.md` - Community standards
+- `LICENSE` - License information
+- `SECURITY.md` - Security policy
+- `CHANGELOG.md` - Version history
 
 ---
 
 ## Repository Structure
 
-```
+```text
 alawein/
-├── docs/                    # Organizational documentation
-│   ├── governance/         # Governance policies
-│   └── community/          # Community resources
-├── .github/                 # GitHub configuration
-├── AGENTS.md                # Symlink to workspace instructions
-├── CLAUDE.md                # This file
-├── README.md                # Organization overview
-├── CONTRIBUTING.md          # Contribution guidelines
-├── CODE_OF_CONDUCT.md       # Community standards
-├── LICENSE                  # License information
-├── SECURITY.md              # Security policy
-├── CHANGELOG.md             # Version history
-└── [Configuration files]    # .editorconfig, .gitignore, etc.
+  docs/
+    governance/
+      workflow.md
+  .github/
+    ISSUE_TEMPLATE/
+    workflows/
+    CODEOWNERS
+    pull_request_template.md
+    README.md
+  AGENTS.md
+  CLAUDE.md
+  README.md
+  CONTRIBUTING.md
+  CODE_OF_CONDUCT.md
+  LICENSE
+  SECURITY.md
+  CHANGELOG.md
+  [configuration files] (.editorconfig, .gitignore, etc.)
 ```
 
 ---
@@ -60,14 +65,14 @@ alawein/
 
 ### Getting Started
 
-1. **Read Universal Instructions**: Start with [`AGENTS.md`](../AGENTS.md)
-2. **Review Governance**: Understand [`GOVERNANCE_FRAMEWORK.md`](morphism-framework/docs/morphism-bible/governance/policies/GOVERNANCE_FRAMEWORK.md)
+1. **Read local workspace instructions** (when working in the full workspace): `../AGENTS.md`
+2. **Review documentation governance (SSOT)**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
 3. **Review Organization Policies**: Read CODE_OF_CONDUCT.md and CONTRIBUTING.md
 4. **Follow Standards**: Adhere to coding standards and documentation policies
 
 ### Working Agreements
 
-- **Organizational Standards**: Maintain consistency across all Alawein projects
+- **Organizational Standards**: Maintain consistency across all Morphism Systems repositories under `alawein`
 - **Community Focus**: Ensure inclusive and welcoming community guidelines
 - **Policy Compliance**: All organizational policies must be current and accurate
 - **Documentation Quality**: High standards for organizational communications
@@ -83,12 +88,12 @@ All markdown files must include YAML frontmatter:
 ```yaml
 ---
 title: Organization Overview
-description: Comprehensive overview of the Alawein organization and its projects
+description: Comprehensive overview of the `alawein` organization and its projects
 last_updated: 2025-12-28
 category: organization
 audience: all
 status: active
-author: Alawein Team
+author: Morphism Systems LLC
 version: 1.0.0
 tags: [organization, governance, community]
 ---
@@ -156,7 +161,7 @@ Pull requests are validated for:
 ### License Information
 
 **File**: `LICENSE`
-- Specifies terms of use for Alawein projects
+- Specifies terms of use for this repository's content (other repositories may vary)
 - Defines permissions and restrictions
 - Governs intellectual property rights
 
@@ -172,9 +177,9 @@ Pull requests are validated for:
 
 ## References
 
-- **SSOT Hub**: [`morphism-framework/docs/morphism-bible/`](morphism-framework/docs/morphism-bible/)
-- **Governance Framework**: [`morphism-framework/docs/morphism-bible/governance/policies/GOVERNANCE_FRAMEWORK.md`](morphism-framework/docs/morphism-bible/governance/policies/GOVERNANCE_FRAMEWORK.md)
-- **Universal Instructions**: [`AGENTS.md`](../AGENTS.md)
+- **Morphism Bible (SSOT)**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
+- **Documentation governance**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
+- **Local workspace instructions** (only when working from the full workspace): `../AGENTS.md`
 
 ---
 

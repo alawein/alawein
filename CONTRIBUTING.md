@@ -5,8 +5,8 @@ moving fast.
 
 ## References
 
-- Root standards: AGENTS.md, AI_DEVELOPMENT_SETTINGS_GUIDE.md, Comprehensive MCP Implementation
-  Analysis (workspace root)
+- Canonical SSOT (Morphism Bible): https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
+- Local workspace standards (when working from the full Morphism workspace): `../AGENTS.md`
 - Workflow source: docs/governance/workflow.md
 
 ## Branching
@@ -20,13 +20,13 @@ moving fast.
 
 ## Commits
 
-- Conventional style recommended: `type(scope): subject` (e.g., `feat(api): add pagination`)
+- Use conventional commits: `type(scope): subject` (e.g., `feat(api): add pagination`)
 - Small, frequent commits; keep unrelated changes out of the same commit
 - No secrets, tokens, or .env files ever
 
 ## PRs (self-review checklist)
 
-- Scope ≤ ~300 lines diff
+- Scope <= ~300 lines diff
 - Branch naming follows the model above
 - CI green or flake noted; if force merge is needed, document why and the risk
 - Docs updated when behavior or workflows change

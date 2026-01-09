@@ -27,7 +27,7 @@
 
 - PhD EECS, UC Berkeley — AI Research Engineer specializing in quantum materials and scientific ML
 - 11+ years building production-scale ML systems, SFT/RLHF pipelines, and DFT simulations
-- Built 9+ full-stack platforms, 40+ TypeScript packages, achieved 70% runtime optimization ($160K
+- Built and maintained Morphism Framework: 52 packages, 18 platforms; achieved 70% runtime optimization ($160K
   savings)
 - Contact: <hello@morphism.systems> • meshal.ai • +1 (415) 471-8031
 
@@ -37,7 +37,7 @@
 
 | Domain                  | GitHub Org                                                                                  | Description                                                                         |
 | ----------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Morphism Ecosystem      | [alawein](https://github.com/alawein)                                                       | 40+ TypeScript packages, 11 platforms, unified [DevOps Bible](docs/morphism-bible/) |
+| Morphism Ecosystem      | [alawein](https://github.com/alawein)                                                       | 52 packages, 18 platforms, SSOT: [Morphism Bible](https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible) • [Vision](https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md) |
 | Research & Optimization | [AlaweinLabs](https://github.com/AlaweinLabs)                                               | Universal optimization frameworks (Optilibria, benchmarking suites)                 |
 | Tools & Automation      | [MeshyTools](https://github.com/MeshyTools)                                                 | Autonomous research agents, compliance tooling, developer productivity kits         |
 | Physics & Education     | [MeatheadPhysicist](https://github.com/MeatheadPhysicist)                                   | Interactive labs, quantum visualizations, curriculum content                        |
@@ -189,7 +189,7 @@ class MeshalAlawein:
     def current_work(self):
         return {
             "research": "SFT/RLHF pipelines for scientific LLMs",
-            "platforms": "9+ full-stack platforms, 40+ TypeScript packages",
+            "platforms": "Morphism Framework: 18 platforms, 52 packages",
             "simulations": "DFT quantum materials simulations",
             "optimization": "70% runtime reduction, $160K savings"
         }
@@ -197,7 +197,7 @@ class MeshalAlawein:
 
 **Key Achievements:**
 - Built production-scale ML systems with SFT/RLHF pipelines and DFT simulations
-- Architected 9+ full-stack platforms and 40+ TypeScript packages
+- Architected and maintained Morphism Framework: 18 platforms and 52 TypeScript packages
 - Achieved 70% runtime optimization resulting in $160K cost savings
 - Specializing in quantum materials and scientific machine learning
 
@@ -209,7 +209,7 @@ class MeshalAlawein:
 
 | Domain | GitHub Organization | Description |
 |--------|---------------------|-------------|
-| **Morphism Ecosystem** | [alawein](https://github.com/alawein) | 40+ TypeScript packages, 11 platforms, unified DevOps Bible |
+| **Morphism Ecosystem** | [alawein](https://github.com/alawein) | 52 packages, 18 platforms, SSOT: [Morphism Bible](https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible) • [Vision](https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md) |
 | **Research & Optimization** | [AlaweinLabs](https://github.com/AlaweinLabs) | Universal optimization frameworks (Optilibria, benchmarking suites) |
 | **Tools & Automation** | [MeshyTools](https://github.com/MeshyTools) | Autonomous research agents, compliance tooling, developer productivity |
 | **Physics & Education** | [MeatheadPhysicist](https://github.com/MeatheadPhysicist) | Interactive labs, quantum visualizations, curriculum content |

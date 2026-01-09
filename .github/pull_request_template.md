@@ -6,7 +6,7 @@
 ## Checklist
 
 - [ ] Branch follows naming rules (`fast/*`, `feat/*`, `fix/*`, `hotfix/*`, `release/*`)
-- [ ] Scope is reasonable (≈300 LOC diff or smaller)
+- [ ] Scope is reasonable (<= 300 LOC diff or smaller)
 - [ ] CI is green or flake is documented
 - [ ] Tests added/updated (when applicable)
 - [ ] Docs updated (README or docs/governance/workflow.md if workflow changes)

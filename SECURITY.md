@@ -1,1 +1,16 @@
-# Security Policy\n\n## Reporting Security Vulnerabilities\n\nPlease report security vulnerabilities to security@nexus-framework.dev\n\n## Supported Versions\n\n| Version | Supported |\n| ------- | --------- |\n| 2.0.x | ✅ |\n| 1.x.x | ❌ |
+# Security Policy
+
+## Reporting Security Vulnerabilities
+
+Please report security vulnerabilities to `security@morphism.systems`.
+
+Include the repository name, a clear description of the issue, reproduction steps (if available), and the expected impact.
+
+## Supported Versions
+
+This repository contains organizational documentation and templates. The `main` branch is the only supported line.
+
+| Branch/Version | Supported |
+| -------------- | --------- |
+| `main`         | Yes       |
+| other          | No        |

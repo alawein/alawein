@@ -1,4 +1,8 @@
-# Alawein Repository Workflow (Solo, High-Velocity)
+# Morphism Systems (alawein) Repository Workflow (Solo, High-Velocity)
+
+> **Brand note:** The `alawein` GitHub organization is operated by Morphism Systems LLC. Canonical ecosystem docs live in the Morphism Framework monorepo:
+> - https://github.com/alawein/morphism-framework
+> - https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
 
 ## Branch Model
 
@@ -19,7 +23,8 @@
 
 ### Commit Patterns
 
-- Prefer small, frequent commits; conventional prefixes optional (`feat:`, `fix:`, `chore:`).
+- Use conventional commits: `type(scope): subject` (e.g., `feat(docs): add workflow guardrails`).
+- Prefer small, frequent commits; keep unrelated changes out of the same commit.
 - Squash on merge for `fast/*` and most `feat/*` to keep `main` clean.
 - Merge commits allowed for `hotfix/*` or multi-commit work needing history.
 

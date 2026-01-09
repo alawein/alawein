@@ -1,0 +1,1 @@
+# Security Policy\n\n## Reporting Security Vulnerabilities\n\nPlease report security vulnerabilities to security@nexus-framework.dev\n\n## Supported Versions\n\n| Version | Supported |\n| ------- | --------- |\n| 2.0.x | ✅ |\n| 1.x.x | ❌ |

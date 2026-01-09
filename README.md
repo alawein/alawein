@@ -5,7 +5,7 @@
   <img alt="typing" src="https://readme-typing-svg.demolab.com/?font=Press%20Start%202P&size=14&duration=3000&pause=800&color=00AAFF&center=true&vCenter=true&width=800&lines=AI+Research+Engineer;Quantum+Materials+Scientist;Scientific+Computing+%26+ML" />
   <br />
   <a href="https://meshal.ai"><img alt="Website" src="https://img.shields.io/badge/Website-meshal.ai-00AAFF?style=flat-square&logo=google-chrome&logoColor=000000" /></a>
-  <a href="mailto:contact@meshal.ai"><img alt="Email" src="https://img.shields.io/badge/Email-contact@meshal.ai-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
+  <a href="mailto:hello@morphism.systems"><img alt="Email" src="https://img.shields.io/badge/Email-hello@morphism.systems-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
   <a href="https://maps.google.com/?q=Berkeley,CA"><img alt="Location" src="https://img.shields.io/badge/Berkeley,CA-00AAFF?style=flat-square&logo=google-maps&logoColor=000000" /></a>
 <div align="center"><sub>
   <a href="#snapshot">Snapshot</a> •
@@ -29,7 +29,7 @@
 - 11+ years building production-scale ML systems, SFT/RLHF pipelines, and DFT simulations
 - Built 9+ full-stack platforms, 40+ TypeScript packages, achieved 70% runtime optimization ($160K
   savings)
-- Contact: <contact@meshal.ai> • meshal.ai • +1 (415) 471-8031
+- Contact: <hello@morphism.systems> • meshal.ai • +1 (415) 471-8031
 
 ---
 
@@ -92,7 +92,7 @@
 
 ## Reach Out
 
-- 📧 <contact@meshal.ai>
+- 📧 <hello@morphism.systems>
 - 🌐 <https://meshal.ai>
 - 📞 +1 (415) 471-8031
 - 📍 Bay Area — open to collaborations, advisory work, and selective partnerships
@@ -135,8 +135,8 @@
 <a href="https://meshal.ai">
   <img src="https://img.shields.io/badge/⟨_PORTAL_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f" alt="Portal"/>
 </a>
-<a href="mailto:contact@meshal.ai">
-  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-contact@meshal.ai-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
+<a href="mailto:hello@morphism.systems">
+  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
 </a>
 <a href="https://linkedin.com/in/meshal-alawein">
   <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
@@ -178,7 +178,7 @@ class MeshalAlawein:
 
     def __init__(self):
         self.location = "Berkeley, CA"
-        self.email = "contact@meshal.ai"
+        self.email = "hello@morphism.systems"
         self.website = "meshal.ai"
         self.focus = ["AI/ML Engineering", "Quantum Materials", "Scientific Computing"]
         self.philosophy = "Code should match the math on paper"
@@ -471,7 +471,7 @@ class QuantumPhilosophy:
 <div align="center">
 
 <a href="https://meshal.ai"><img src="https://img.shields.io/badge/⟨_WEB_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
-<a href="mailto:contact@meshal.ai"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-contact@meshal.ai-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="mailto:hello@morphism.systems"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
 <a href="https://linkedin.com/in/meshal-alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
 
 <br><br>
@@ -523,18 +523,9 @@ def response_time(signal_type: str) -> str:
 <div align="center">
 
 ```
-╔══════════════════════════════════════════════════════════════════════════════╗
-║                                                                              ║
-║   ░▒▓█ SYSTEM ONLINE █▓▒░                                                    ║
-║                                                                              ║
-║   QUANTUM CORES: ████████████ 100%                                           ║
-║   NEURAL LINK: ESTABLISHED                                                   ║
-║   STATUS: AWAITING INPUT                                                     ║
-║                                                                              ║
-║   > contact@meshal.ai                                                        ║
-║   > meshal.ai                                                                ║
-║                                                                              ║
-╚══════════════════════════════════════════════════════════════════════════════╝
++-------------------------------------------+
+|  SYSTEM STATUS: OPERATIONAL               |
++-------------------------------------------+
 ```
 
 <img src="https://komarev.com/ghpvc/?username=alawein&label=SCANS&color=00f0ff&style=flat-square" alt="Profile Scans"/>
@@ -544,6 +535,7 @@ def response_time(signal_type: str) -> str:
 **`[ MAINTAINED BY M.ALAWEIN // 2026 ]`**
 
 </div>
+
 
 <!--
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -573,3 +565,4 @@ def response_time(signal_type: str) -> str:
 </details>
 
 <div align="right"><sub><a href="#top">back to top</a></sub></div>
+

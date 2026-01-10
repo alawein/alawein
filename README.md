@@ -100,7 +100,7 @@
 ---
 
 <p align="center">
-  <img src="ninja-favicon.svg" alt="Alawein Logo" width="80" height="80" />
+  <img src="ninja-favicon.svg" alt="Morphism Ninja" width="80" height="80" />
 </p>
 
 <!--

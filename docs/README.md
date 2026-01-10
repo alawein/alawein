@@ -1,7 +1,7 @@
 ---
 title: Morphism Systems (alawein) documentation
 description: Entry point for organization-level documentation and governance.
-last_updated: 2026-01-09
+last_updated: 2026-01-10
 category: index
 audience: all
 status: active
@@ -18,6 +18,7 @@ This repository contains organization-level materials and governance notes for t
 
 ## Start here
 
+- Ecosystem portal: [`README.md`](../README.md)
 - Ecosystem docs (SSOT): https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
 - Ecosystem vision: https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
 - Governance workflow: `docs/governance/workflow.md`

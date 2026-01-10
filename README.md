@@ -1,10 +1,11 @@
 <a id="top"></a>
 
 ```text
-╔═══════════════════════════════════════════════════════════════╗
-║                        MORPHISM SYSTEMS                        ║
-║                   "Arrange once. Gift forever."                ║
-╚═══════════════════════════════════════════════════════════════╝
++---------------------------------------------------------------+
+|                         MORPHISM SYSTEMS                       |
+|                   "Arrange once. Gift forever."                |
+|              50+ packages | 18+ platforms | SSOT-driven         |
++---------------------------------------------------------------+
 ```
 
 This repository is the **organization portal + governance baseline** for the `alawein` GitHub organization, operated by **Morphism Systems LLC**.

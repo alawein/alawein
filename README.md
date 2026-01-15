@@ -87,8 +87,8 @@ graph LR
 | Channel | Frequency |
 |:---|:---|
 | **Email** | [`contact@meshal.ai`](mailto:contact@meshal.ai) |
-| **Academic** | [`meshal@berkeley.edu`](mailto:meshal@berkeley.edu) |
-| **Web** | [malawein.com](https://malawein.com) |
+| **Business** | [`meshal@berkeley.edu`](mailto:contact@morphism.systems) |
+| **Web** | [malawein.com](https://meshal.ai) |
 | **LinkedIn** | [linkedin.com/in/alawein](https://linkedin.com/in/alawein) |
 
 </div>

@@ -1,4 +1,4 @@
-<a id="top"></a>
+# Morphism Systems
 
 <div align="center">
 
@@ -11,90 +11,170 @@
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
 ```
 
-### Computational Physicist • AI Research Engineer • Systems Architect
+**Computational Physicist • AI Research Engineer • Systems Architect**
 
-[![Morphism Status](https://img.shields.io/badge/SYSTEM-ONLINE-00AAFF?style=for-the-badge&logo=linux)](https://morphism.systems)
-[![Scholar](https://img.shields.io/badge/SCHOLAR-GOOGLE-FF00AA?style=for-the-badge&logo=google-scholar)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
-[![Location](https://img.shields.io/badge/LOCATION-SAN_FRANCISCO-00FF88?style=for-the-badge&logo=google-maps)](https://maps.google.com/?q=San+Francisco,CA)
+[contact@meshal.ai](mailto:contact@meshal.ai) • [github.com/alawein](https://github.com/alawein) • [meshal.ai](https://meshal.ai)
 
 </div>
 
 ---
 
-## 🔭 Perspective
+## Perspective
 
-I build systems that respect **invariants**. Whether it's the conserved quantities in a quantum simulation or the architectural boundaries in a distributed software system, the principle is the same: **Find the structure that must be preserved, and optimize everything else around it.**
+I build systems that respect **invariants**.
 
-My work spans from **ab-initio quantum materials simulation** (DFT, Quantum Espresso) to **autonomous AI agent swarms** (Morphism Framework).
+Whether it's tracking conserved quantities through a quantum simulation or holding architectural boundaries steady in a distributed system, the principle remains the same: **Find what must be preserved. Optimize everything else.**
 
-> *"The best code is like a physics equation—minimal, elegant, and captures the essence of truth."*
+My work applies this philosophy across three distinct distinct domains:
+1.  **Physics:** High-performance quantum materials simulation.
+2.  **Architecture:** Self-healing, structure-preserving software frameworks.
+3.  **Agents:** Autonomous systems that reason within strict boundary conditions.
+
+> *"The best code reads like physics. Minimal. Elegant. True."*
 
 ---
 
-## 🧬 The Morphism Ecosystem
+## Technical Portfolio
 
-My primary output is organized into a cohesive workspace known as **Morphism**.
+My work is divided into distinct, standalone systems.
 
-| System | Designation | Purpose |
+| System | Domain | Description |
 |:---|:---|:---|
-| **[Morphism Framework](https://github.com/alawein/morphism-framework)** | `core` | A monorepo architecture for "structure-preserving transformations." Arrange once, gift forever. |
-| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | `research` | Quantum-inspired optimization. Gradient preconditioning, FFT-accelerated attractor programming. |
-| **[Evidentia](https://github.com/alawein/morphism-playground/tree/main/evidentia)** | `legal-tech` | Autonomous legal reasoning agents using MCP (Model Context Protocol). |
-| **[REPZ](https://github.com/alawein/repz)** | `biophysics` | Fitness coaching platform modeling biological adaptation as an optimization problem. |
+| **[Morphism Framework](https://github.com/alawein/morphism-framework)** | `Systems Architecture` | A project-agnostic, self-healing monorepo architecture. It provides the *structure* for complex systems but is decoupled from their *domain logic*. |
+| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | `Computational Physics` | Quantum-inspired optimization research. Focuses on gradient preconditioning and FFT-accelerated attractor programming. |
+| **[Evidentia](https://github.com/alawein/morphism-dev/tree/main/apps/evidentia)** | `Legal Tech` | Autonomous legal reasoning agents. Maps unstructured evidence to structured claims using the Model Context Protocol. |
+| **[REPZ](https://github.com/alawein/repz)** | `Biophysics` | Fitness coaching engine that models biological adaptation as a rigorous optimization problem. |
 
 ---
 
-## 🔬 Selected Works & Research
+## The Mathematical Framework
 
-### Quantum & HPC
-- **Scalable DFT Workflows**: Managed 2,300+ production jobs across 24,000 CPU-hours, achieving a **70% runtime reduction** via algorithmic optimization.
-- **Spintronic Simulation**: Developed EDA-compatible models yielding **1000x speedups** over finite element methods.
-- **Patents Pending**: Novel approaches in Quantum Gradient Preconditioning and ML-Trained Attractor Agents.
+The Morphism ecosystem is not just a collection of tools; it is a realization of applied Category Theory.
 
-### AI Engineering
-- **Morphism AI**: A multi-agent orchestration layer capable of self-healing codebases and enforcing architectural invariants.
-- **Knowledge Functors**: Experimental mapping of legal logic to executable code structures.
+### 🧠 The Codex of Functorial Intelligence
 
----
+We map software engineering and AI concepts directly to mathematical structures, ensuring rigorous composability and type safety at the architectural level.
 
-## 🛠️ Technology Stack
+| Mathematical Concept | Software Realization |
+|:---|:---|
+| **Category** | A Domain (e.g., `LLM Model Family`, `DevOps Pipeline`). A collection of objects and morphisms. |
+| **Object** | A specific instance or state (e.g., `GPT-4`, `Production Environment v1.2`). |
+| **Morphism** | A transformation process (e.g., `Fine-tuning`, `Deployment`). Maps one object to another within a category. |
+| **Functor** | A structure-preserving map between domains (e.g., `TextToEmbeddings`). Transforms a Task definition into an Agent workflow without losing semantic meaning. |
+| **Isomorphism** | An invertible transformation (e.g., `Code <-> AST`). Ensures we can translate between representations with zero information loss. |
+| **Homomorphism** | A structure-preserving transformation where structure is maintained but data might be simplified (e.g., `System Logs -> Metrics`). |
+
+### 🔄 Isomorphic Workflows
 
 ```mermaid
 graph LR
-    subgraph Physics
-        A[Python/NumPy] --> B[DFT/VASP]
-        A --> C[Quantum Espresso]
-        A --> D[Qiskit/Cirq]
+    subgraph "Category: Task Definition"
+        A[Human Intent] -->|Natural Transformation| B[Structured Spec]
     end
-    subgraph Systems
-        E[TypeScript] --> F[React/Next.js]
-        E --> G[Node.js]
-        H[Rust] --> I[WASM]
+
+    subgraph "Category: Execution"
+        C[Agent Plan] -->|Morphism: Execute| D[Result Artifact]
     end
-    subgraph Infrastructure
-        J[Docker] --> K[Kubernetes]
-        J --> L[AWS/GCP]
-        M[Terraform] --> L
+
+    B -->|Functor: TaskToAgent| C
+    D -->|Functor: ResultToInsight| E[Verified Outcome]
+```
+
+**Key Functors:**
+*   **`TextToEmbeddings`**: Maps the category of Text to the category of Vector Spaces. Preserves semantic relationships.
+*   **`TaskToAgent`**: Maps a defined Task schema to an executable Agent workflow. Preserves intent and constraints.
+
+---
+
+## System Architecture
+
+The Morphism ecosystem is designed as a self-correcting feedback loop.
+
+```mermaid
+flowchart LR
+    subgraph Input["Input"]
+        Source[Source Code]
+        Config[Policy Config]
     end
+
+    subgraph Core["Morphism Engine"]
+        Router[Task Router]
+        Analyzer[Code Analyzer]
+        Optimizer[Continuous Optimizer]
+    end
+
+    subgraph Output["Output"]
+        Report[Analysis Report]
+        Dashboard[Metrics]
+        Fix[Auto-Fixes]
+    end
+
+    Source --> Router
+    Config --> Router
+    Router --> Analyzer
+    Analyzer --> Optimizer
+
+    Optimizer --> Output
+    
+    style Router fill:#2a5a3a,stroke:#fff,color:#fff
+    style Optimizer fill:#1a472a,stroke:#fff,color:#fff
+    style Analyzer fill:#3a6a4a,stroke:#fff,color:#fff
+```
+
+## Decision Logic
+
+Every artifact in the system has a deterministic home. This decision tree ensures architectural entropy remains zero.
+
+```text
+Is it a standalone tool usable without morphism-framework?
+├── YES → morphism-prod/
+└── NO → Is it experimental/research?
+    ├── YES → morphism-dev/
+    └── NO → Is it a reusable package?
+        ├── YES → morphism-framework/packages/
+        └── NO → Is it a product/application?
+            ├── YES → portfolio-products/
+            └── NO → morphism-framework/tools/
 ```
 
 ---
 
-## 📡 Transmission
+## Technology Stack
+
+**Physics & Simulation**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
+![VASP](https://img.shields.io/badge/VASP-FF6B35?style=flat&logo=atom&logoColor=white)
+![Quantum Espresso](https://img.shields.io/badge/QuantumESPRESSO-004B87?style=flat&logo=atom&logoColor=white)
+![Qiskit](https://img.shields.io/badge/Qiskit-6929C4?style=flat&logo=qiskit&logoColor=white)
+![Cirq](https://img.shields.io/badge/Cirq-F57C00?style=flat&logo=google&logoColor=white)
+
+**Systems & Interfaces**
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-CE422B?style=flat&logo=rust&logoColor=white)
+![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=flat&logo=webassembly&logoColor=white)
+
+**Infrastructure**
+
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazonwebservices&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4?style=flat&logo=googlecloud&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=flat&logo=terraform&logoColor=white)
+
+---
+
+## Transmission
 
 <div align="center">
 
-| Channel | Frequency |
-|:---|:---|
-| **Email** | [`contact@meshal.ai`](mailto:contact@meshal.ai) |
-| **Business** | [`meshal@berkeley.edu`](mailto:contact@morphism.systems) |
-| **Web** | [malawein.com](https://meshal.ai) |
-| **LinkedIn** | [linkedin.com/in/alawein](https://linkedin.com/in/alawein) |
+[Email](mailto:contact@meshal.ai) • [Business](mailto:meshal@berkeley.edu) • [Web](https://meshal.ai) • [GitHub](https://github.com/alawein) • [LinkedIn](https://linkedin.com/in/alawein)
 
-</div>
+<sub>*Architecture is an invariant. © 2026 Meshal Alawein.*</sub>
 
-<div align="center">
-<sub>
-&copy; 2026 Meshal Alawein. Architecture is an invariant.
-</sub>
 </div>

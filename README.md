@@ -2,96 +2,55 @@
 
 ```text
 +---------------------------------------------------------------+
-|                         MORPHISM SYSTEMS                       |
-|                   "Arrange once. Gift forever."                |
-|              50+ packages | 18+ platforms | SSOT-driven         |
+|                        MORPHISM SYSTEMS                       |
+|                 "Arrange once. Gift forever."                 |
+|           50+ packages | 18+ platforms | Framework-driven      |
 +---------------------------------------------------------------+
 ```
 
-This repository is the **organization portal + governance baseline** for the `alawein` GitHub organization, operated by **Morphism Systems LLC**.
+This repository is the **profile portal** for **alawein**, founder of **Morphism Systems** and architect of the Morphism Framework.
 
-## Start here (canonical)
+## Overview
 
-- SSOT docs (Morphism Bible): https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
-- Vision brief: https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
-- Framework monorepo: https://github.com/alawein/morphism-framework
+I build systems by treating architecture like an invariant: set it once, then stop re-solving the same infrastructure problems in every new project.
 
-## The ecosystem map
+The Morphism work is a practical attempt to make that boring (in the good way): reusable foundations, consistent deployment/ops patterns, and composition over rewrites—until a rewrite is the fastest safe option.
 
-| Repo | Role |
-| --- | --- |
-| `morphism-framework/` | Core monorepo: packages, platforms, Codex, tools, docs |
-| `morphism-tools/` | Standalone production tools (doccon, repo-std, etc.) |
-| `morphism-brand/` | Brand assets + design system entrypoints |
-| `morphism-playground/` | Experiments + incubating work |
-| `alawein/` | Org-level governance templates + pointers (this repo) |
+## The core insight
 
-## System essence (C4-style, ASCII)
+You don't rearrange your house every time you want to give someone a gift. You arrange it once, then focus on the gift itself.
 
-```text
-+--------------------------+
-|  External Actors         |
-|  Dev  CI  Ext(Services)  |
-+------------+-------------+
-             |
-             v
-+----------------------------------------+
-|  Morphism Framework Monorepo           |
-|  +------------------+----------------+ |
-|  | CLI              | Codex          | |
-|  | (create/list)    | (schemas/      | |
-|  | (validate/status)|  prompts/      | |
-|  |                  |  templates/    | |
-|  +--------+---------+----+-----------+ |
-|  | Packages| Platforms | Tools | Docs | |
-|  | (@morphism/*) | (apps) | (auto) |   |
-|  +--------+---------+-------+--------+ |
-+-----------+----------+----------------+
-            |          |      |
-            v          v      v
-        Codex -> Packages -> Platforms
-            |          |      |
-            v          v      v
-        Tools <---- CI <---- Dev
-```
+Software should work the same way. **Arrange your architecture once. Build products forever.**
 
-## Mental model (objects + morphisms)
+## What we built
 
-```text
-Objects (O):
-- Package, Platform, Agent, Workflow, Schema, Prompt, Template, Event
+The **Morphism Framework** is a monorepo containing **50+ packages** and **18+ platforms**, all sharing the same foundational architecture. When you need to build something new, you don't start from scratch—you compose from existing, battle-tested pieces.
 
-Morphism examples (f: A -> B):
-- scaffold:    Template -> Platform
-- validate:    (Code | Codex | Schemas) -> Report
-- compose:     Package x Package -> Package (preserves invariants)
-- orchestrate: Workflow(Agents, Steps, Policies) -> Executions
-- evolve:      Schema_t -> Schema_{t+1} (controlled evolution)
-```
+| Component | Purpose | Scale |
+|---|---|---|
+| morphism-framework | Core monorepo with shared packages | 50+ packages, 18+ platforms |
+| morphism-tools | Production tooling ecosystem | 10+ standalone tools |
+| morphism-brand | Design system and brand assets | Unified identity |
 
-## Invariants (what must remain true)
+## Current systems
 
-- The SSOT is explicit (Morphism Bible); everything else links to it.
-- Composition preserves structure: packages remain reusable primitives.
-- Platforms are assembled from packages, not copied-and-forked bundles.
-- Automation is auditable: every run produces artifacts (reports, manifests, logs).
+- **Discord automation**: **15K+ daily users**, **99.9% uptime**
+- **Payment processing**: Financial integrations, **millions monthly**
+- **Real-time APIs**: **Sub-100ms response times**
+- **Infrastructure monitoring**: **24/7 operational oversight**
 
-## Mantras
+## Links
 
-> Arrange once. Gift forever.  
-> Transform complexity into clarity, then gift-wrap the blueprint.  
-> Structure-preserving transformations for composable systems.
+- [Morphism Framework](https://github.com/alawein/morphism-framework)
+- [Infrastructure Portfolio](https://github.com/alawein/infrastructure-portfolio)
+- [Morphism Systems](https://morphism.systems)
 
-## Contact
+Framework effect, stated plainly:
 
-- General: `hello@morphism.systems`
-- Security: `security@morphism.systems`
-- DevOps: `dev@morphism.systems`
+- **Before Morphism**: Every new project meant rebuilding authentication, database layers, deployment pipelines, monitoring, error handling.
+- **With Morphism**: New projects inherit battle-tested infrastructure. Focus shifts from plumbing to product.
+- **Result**: **5-day complete rewrites** become possible. **8,000 lines migrated with zero downtime.**
 
-## Legacy content (no data loss)
-
-The prior README content is archived:
-
-- `docs/archive/meshal-alawein-profile.md`
+Contact: **alawein@morphism.systems** • [LinkedIn](https://linkedin.com/in/alawein)
 
 <div align="right"><sub><a href="#top">back to top</a></sub></div>

@@ -13,10 +13,7 @@
 
 **Computational Physicist • AI Research Engineer • Systems Architect**
 
-[contact@meshal.ai](mailto:contact@meshal.ai) • [github.com/alawein](https://github.com/alawein) • [meshal.ai](https://meshal.ai)
-
-</div>
-
+[![GitHub](https://img.shields.io/badge/GitHub-alawein-3b82f6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alawein) [![LinkedIn](https://img.shields.io/badge/LinkedIn-meshal%20alawien-8b5cf6?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/meshal-alawien) [![Website](https://img.shields.io/badge/Website-meshal.ai-10b981?style=for-the-badge&logo=globe&logoColor=white)](https://meshal.ai) [![Email](https://img.shields.io/badge/Email-contact@meshal.ai-ef4444?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
 ---
 
 ## Perspective
@@ -173,7 +170,7 @@ Is it a standalone tool usable without morphism-framework?
 
 <div align="center">
 
-[Email](mailto:contact@meshal.ai) • [Business](mailto:meshal@berkeley.edu) • [Web](https://meshal.ai) • [GitHub](https://github.com/alawein) • [LinkedIn](https://linkedin.com/in/alawein)
+[Email](mailto:contact@meshal.ai) • [Business](mailto:contact@morphism.systems) • [Portfolio](https://meshal.ai) • [GitHub](https://github.com/alawein) • [LinkedIn](https://linkedin.com/in/meshal-alawein)
 
 <sub>*Architecture is an invariant. © 2026 Meshal Alawein.*</sub>
 

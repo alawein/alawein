@@ -4,7 +4,7 @@
 +---------------------------------------------------------------+
 |                        MORPHISM SYSTEMS                       |
 |                 "Arrange once. Gift forever."                 |
-|           50+ packages | 18+ platforms | Framework-driven      |
+|           50+ packages | 20+ platforms | Framework-driven      |
 +---------------------------------------------------------------+
 ```
 
@@ -24,20 +24,21 @@ Software should work the same way. **Arrange your architecture once. Build produ
 
 ## What we built
 
-The **Morphism Framework** is a monorepo containing **50+ packages** and **18+ platforms**, all sharing the same foundational architecture. When you need to build something new, you don't start from scratch—you compose from existing, battle-tested pieces.
+The **Morphism Framework** is a monorepo containing **50+ packages** and **20+ platforms**, all sharing the same foundational architecture. When you need to build something new, you don't start from scratch—you compose from existing, battle-tested pieces.
 
 | Component | Purpose | Scale |
 |---|---|---|
-| morphism-framework | Core monorepo with shared packages | 50+ packages, 18+ platforms |
+| morphism-framework | Core monorepo with shared packages | 50+ packages, single-source-of-truth |
 | morphism-tools | Production tooling ecosystem | 10+ standalone tools |
 | morphism-brand | Design system and brand assets | Unified identity |
+| portfolio-products | Applications built on the framework | 20+ products and experiments |
 
-## Current systems
+## Capabilities
 
-- **Discord automation**: **15K+ daily users**, **99.9% uptime**
-- **Payment processing**: Financial integrations, **millions monthly**
-- **Real-time APIs**: **Sub-100ms response times**
-- **Infrastructure monitoring**: **24/7 operational oversight**
+- **Discord automation**: Complex event orchestration and bot ecosystems.
+- **Payment processing**: Integrated financial workflows and subscriptions.
+- **Real-time APIs**: High-performance, type-safe API layers.
+- **Infrastructure monitoring**: Full-stack observability and operational oversight.
 
 ## Links
 
@@ -49,7 +50,7 @@ Framework effect, stated plainly:
 
 - **Before Morphism**: Every new project meant rebuilding authentication, database layers, deployment pipelines, monitoring, error handling.
 - **With Morphism**: New projects inherit battle-tested infrastructure. Focus shifts from plumbing to product.
-- **Result**: **5-day complete rewrites** become possible. **8,000 lines migrated with zero downtime.**
+- **Result**: **5-day complete rewrites** become possible. Rapid prototyping with stable scaling.
 
 Contact: **alawein@morphism.systems** • [LinkedIn](https://linkedin.com/in/alawein)
 

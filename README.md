@@ -2,164 +2,202 @@
 
 <div align="center">
 
-```text
+```
 ███╗   ███╗███████╗███████╗██╗  ██╗ █████╗ ██╗     
 ████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗██║     
 ██╔████╔██║█████╗  ███████╗███████║███████║██║     
-██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██╔══██║██║     
+██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██║  ██║██║     
 ██║ ╚═╝ ██║███████╗███████║██║  ██║██║  ██║███████╗
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
 ```
 
-### Computational Physicist • AI Research Engineer • Systems Architect
-
-[![Morphism Status](https://img.shields.io/badge/SYSTEM-ONLINE-0ea5e9?style=for-the-badge&logo=linux)](https://morphism.systems)
-[![Scholar](https://img.shields.io/badge/SCHOLAR-GOOGLE-FF00AA?style=for-the-badge&logo=google-scholar)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
-[![Framework](https://img.shields.io/badge/morphism-framework-0ea5e9?style=flat-square)](https://github.com/alawein/morphism-framework)
+Computational Physicist • AI Research Engineer • Systems Architect
 
 </div>
 
 ---
 
-## 🔭 Perspective
+## Perspective
 
-I build systems that respect **invariants**. Whether it's the conserved quantities in a quantum simulation or the architectural boundaries in a distributed software system, the principle is the same: **Find the structure that must be preserved, and optimize everything else around it.**
+I build systems that respect **invariants**. Whether it's the conserved quantities in a quantum simulation or the architectural boundaries in a distributed software system, the principle is the same:
+
+> **Find the structure that must be preserved. Optimize everything else around it.**
 
 My work spans from **ab-initio quantum materials simulation** (DFT, Quantum Espresso) to **autonomous AI agent swarms** (Morphism Framework).
 
-> *"The best code is like a physics equation—minimal, elegant, and captures the essence of truth."*
-
 ---
 
-## 🎯 Current Focus
+## The Morphism Ecosystem
 
-- **Morphism Framework** — Multi-platform SaaS development framework
-- **Governance Systems** — Architecture validation and policy-as-code (@morphism/governance)
-- **Ecosystem Orchestration** — Coordinating distributed development environments
-- **Documentation** — Comprehensive reference material and guides
+```
+┌─ Morphism ──────────────────────────────────────────┐
+│                                                      │
+│  φ(S) = ⟨Structure ↦ Invariants ↦ Transform⟩       │
+│                                                      │
+│  [Framework] ─→ [Governance] ─→ [Orchestration]     │
+│       ↓              ↓               ↓               │
+│   Core Arch     Policy Engine    Monorepo Coord      │
+│                                                      │
+└──────────────────────────────────────────────────────┘
+```
 
----
-
-## 🧬 The Morphism Ecosystem
-
-My primary output is organized into a cohesive workspace known as **Morphism**.
-
-| System | Designation | Purpose |
+| System | Role | Purpose |
 |:---|:---|:---|
-| **[Morphism Framework](https://github.com/alawein/morphism-framework)** | `core` | A monorepo architecture for "structure-preserving transformations." Arrange once, gift forever. |
-| **[Morphism Workspace](https://github.com/alawein/morphism-workspace)** | `orchestrator` | Orchestration hub coordinating all Morphism repositories as submodules and ecosystem projects. |
-| **[@morphism/governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)** | `governance` | Architecture validation and policy-as-code enforcement for ecosystem projects. |
-| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | `research` | Quantum-inspired optimization. Gradient preconditioning, FFT-accelerated attractor programming. |
-| **[Evidentia](https://github.com/alawein/morphism-playground/tree/main/evidentia)** | `legal-tech` | Autonomous legal reasoning agents using MCP (Model Context Protocol). |
-| **[REPZ](https://github.com/alawein/repz)** | `biophysics` | Fitness coaching platform modeling biological adaptation as an optimization problem. |
+| **[Morphism Framework](https://github.com/alawein/morphism-framework)** | `core` | Structure-preserving transformations. Arrange once, gift forever. |
+| **[Morphism Workspace](https://github.com/alawein/morphism-workspace)** | `orchestrator` | Coordinates repositories and governance across ecosystem. |
+| **[@morphism/governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)** | `validation` | Policy-as-code enforcement and architectural drift detection. |
+| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | `research` | Quantum-inspired optimization with FFT preconditioning. |
+| **[Evidentia](https://github.com/alawein/morphism-playground/tree/main/evidentia)** | `legal-tech` | Autonomous legal reasoning via MCP agents. |
 
 ---
 
-## 🔬 Selected Works & Research
+## Governance & Deployment
 
-### Quantum & HPC
-- **Scalable DFT Workflows**: Managed 2,300+ production jobs across 24,000 CPU-hours, achieving a **70% runtime reduction** via algorithmic optimization.
-- **Spintronic Simulation**: Developed EDA-compatible models yielding **1000x speedups** over finite element methods.
-- **Patents Pending**: Novel approaches in Quantum Gradient Preconditioning and ML-Trained Attractor Agents.
+### @morphism/governance: v1.0-v1.2
 
-### AI Engineering
-- **Morphism AI**: A multi-agent orchestration layer capable of self-healing codebases and enforcing architectural invariants.
-- **Knowledge Functors**: Experimental mapping of legal logic to executable code structures.
+```
+Codebase IR Analysis
+     ↓
+┌────────────────────────┐
+│ Language-Agnostic IR   │  ← TS/JS parser (v1), Python/Go (v2)
+│ (Intermediate Rep)     │
+└────────────────────────┘
+     ↓
+Policy Engine (YAML Rules)
+     ↓
+┌────────────────────────┐
+│ Pattern Analysis       │  → Naming • Dependencies • Structure
+│ Baseline/Drift         │  → Breaking Changes • Violations
+│ Auto Documentation     │  → API Docs from IR
+└────────────────────────┘
+     ↓
+CI/CD Integration (GitHub Actions)
+```
 
----
+**Status:** Complete (7,000+ LOC)
+- IR extraction for TypeScript/JavaScript
+- Policy evaluation engine with YAML rules
+- Pattern analysis (naming, dependencies, structure)
+- Baseline & drift detection (breaking change identification)
+- Automated API documentation
+- GitHub Actions workflow integration
+- 800+ LOC comprehensive tests
+- 1,400+ lines documentation
 
-## 📊 @morphism/governance Development
-
-**v1.0-v1.2 Complete** (7,000+ lines of code)
-
-- ✅ IR extraction for TypeScript/JavaScript (language-agnostic code analysis)
-- ✅ Policy engine with YAML rules (declarative governance)
-- ✅ Pattern analysis (naming conventions, dependencies, structure)
-- ✅ Baseline & drift detection (breaking change identification)
-- ✅ API documentation generation (automated docs from code)
-- ✅ GitHub Actions integration (CI/CD workflow)
-- ✅ Comprehensive tests (800+ LOC)
-- ✅ Complete documentation (1,400+ lines)
-
-**Features:**
-- `morphism-gov scan` — Analyze codebase and extract IR
-- `morphism-gov audit` — Enforce governance policies
-- `morphism-gov baseline` — Create and manage baselines
-- `morphism-gov analyze-patterns` — Detect naming patterns and dependencies
-- `morphism-gov document` — Generate API documentation
-
----
-
-## 🎓 Learn More
-
-**Understanding the Morphism Ecosystem:**
-
-1. **IR Design** → [Intermediate Representation Specification](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs/IR.md) - Language-agnostic code analysis
-2. **Policy Engines** → [Policy Schema & YAML Rules](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs/POLICY_SCHEMA.md) - Governance without programming
-3. **Baseline & Drift** → [Drift Detection Guide](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs/DRIFT.md) - Breaking change detection
-4. **CLI Design** → [@morphism/governance Documentation](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance) - Complete CLI reference
+**Commands:**
+```bash
+morphism-gov scan              # Extract codebase IR
+morphism-gov audit             # Enforce governance policies
+morphism-gov baseline          # Create/manage baselines
+morphism-gov analyze-patterns  # Detect naming patterns
+morphism-gov document          # Generate API docs
+```
 
 ---
 
-## 🛠️ Technology Stack
+## Infrastructure & Standardization
 
-**Languages:** TypeScript, JavaScript (+ Python, Go, Rust in progress)
+### Deployment Workflow
 
-**Core Technologies:**
-- Babel & TypeScript Compiler — AST analysis and IR extraction
-- Commander.js — CLI frameworks
-- YAML — Policy configuration
-- GitHub Actions — CI/CD and workflow automation
-- Docker & Kubernetes — Orchestration and deployment
+```mermaid
+graph LR
+    A["Commit to Branch"] --> B["Run Tests"]
+    B --> C{"Build OK?"}
+    C -->|No| D["Fix Issues"]
+    D --> A
+    C -->|Yes| E["Run Governance Audit"]
+    E --> F{"Policy OK?"}
+    F -->|No| G["Address Violations"]
+    G --> A
+    F -->|Yes| H["Create PR"]
+    H --> I["Code Review"]
+    I --> J{"Approved?"}
+    J -->|No| K["Refine Changes"]
+    K --> A
+    J -->|Yes| L["Merge to Main"]
+    L --> M["Deploy"]
+    style M fill:#10b981
+```
 
-**Architectural Patterns:**
-- Policy-as-Code
-- Intermediate Representation (IR)
-- Pluggable Parsers (prepare for multi-language support)
-- Deterministic Analysis (reproducible, CI-friendly)
+### Standardization Framework
+
+```
+Deterministic Analysis
+  │
+  ├─ Same Input → Same Output (SHA256 integrity)
+  ├─ Reproducible Baselines (CI-friendly)
+  ├─ Policy Enforcement (YAML-based, no code needed)
+  └─ Drift Detection (automatic breaking change alerts)
+
+Exit Codes:
+  0 = Clean / Policy compliant
+  1 = Violations or drift detected
+  2 = Error / Analysis failed
+```
+
+---
+
+## Technology Stack
+
+**Languages:** TypeScript • JavaScript (Python, Go, Rust planned)
+
+**Core:**
+```
+Parsing:        Babel + TypeScript Compiler (AST → IR)
+Policy:         YAML declarative rules
+CLI:            Commander.js
+CI/CD:          GitHub Actions
+Orchestration:  Docker • Kubernetes
+```
+
+**Patterns:**
+- Policy-as-Code (declarative governance)
+- Intermediate Representation (language-agnostic analysis)
+- Deterministic Analysis (reproducible CI/CD)
 - Monorepo Orchestration (coordinated development)
 - Structure-Preserving Transformations (invariant-respecting)
 
 ---
 
-## 💡 Design Principles
+## Design Principles
 
-- **Language-Agnostic Design** — Code analysis independent of language syntax
-- **Policy-as-Code** — Declarative governance without programming requirements
-- **Deterministic Systems** — Consistent, reproducible analysis for CI/CD pipelines
-- **Monorepo Orchestration** — Multiple repositories as unified development environments
-- **Baseline Integrity** — Automatic detection of breaking changes and drift
-- **Invariant Preservation** — Find the structure that must be preserved, optimize everything else
+**Invariant Preservation** — Find the structure that must be preserved, optimize everything else  
+**Deterministic Systems** — Same codebase → same output (CI baseline friendly)  
+**Declarative Governance** — YAML policies, no programming required  
+**Language Agnostic** — Analysis independent of syntax  
+**Ease of Shipping** — Standardized workflows reduce friction
 
 ---
 
-## 📡 Transmission
+## Selected Works & Research
 
-<div align="center">
+### Quantum & HPC
+- Scalable DFT Workflows: 2,300+ production jobs, 70% runtime reduction
+- Spintronic Simulation: 1000x speedups vs. finite element methods
+- Patents Pending: Quantum Gradient Preconditioning, ML-Trained Attractors
 
-| Channel | Contact |
+### AI Engineering
+- Multi-agent orchestration with architectural invariant enforcement
+- Legal reasoning agents mapping logic to executable code
+
+---
+
+## Contact
+
+| | |
 |:---|:---|
-| **Email** | [`contact@meshal.ai`](mailto:contact@meshal.ai) |
-| **Academic** | [`meshal@berkeley.edu`](mailto:meshal@berkeley.edu) |
-| **Web** | [malawein.com](https://malawein.com) |
-| **Scholar** | [Google Scholar Profile](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) |
-| **LinkedIn** | [linkedin.com/in/alawein](https://linkedin.com/in/alawein) |
-
-</div>
+| Email | contact@meshal.ai |
+| Academic | meshal@berkeley.edu |
+| Scholar | [Google Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) |
+| Web | [malawein.com](https://malawein.com) |
 
 ---
 
 <div align="center">
 
-### Key Repositories
+**[Morphism Framework](https://github.com/alawein/morphism-framework)** • **[Morphism Workspace](https://github.com/alawein/morphism-workspace)** • **[All Repos](https://github.com/alawein?tab=repositories)**
 
-**[View All Repos](https://github.com/alawein?tab=repositories)** • **[Morphism Framework](https://github.com/alawein/morphism-framework)** • **[Morphism Workspace](https://github.com/alawein/morphism-workspace)**
-
----
-
-<sub>
 Architecture is an invariant. Design systems that preserve structure.
-</sub>
 
 **Updated:** 2026-01-17 | **Status:** Active Development
 

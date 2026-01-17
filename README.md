@@ -1,177 +1,129 @@
-# Morphism Systems
+<!-- Profile Banner -->
+<div align="center">
+
+# 👋 Welcome to Alawein's GitHub
+
+**Building comprehensive platforms for modern development challenges**
+
+[![Morphism Badge](https://img.shields.io/badge/Morphism-Framework-blue?style=flat-square)](https://github.com/alawein/morphism-framework)
+[![Workspace Badge](https://img.shields.io/badge/Workspace-Ecosystem-green?style=flat-square)](https://github.com/alawein/morphism-workspace)
+
+</div>
+
+---
+
+## 🎯 About
+
+Platform architect focused on building robust, scalable frameworks and governance solutions. Work spans from low-level infrastructure tooling to high-level architecture design.
+
+**Current Focus:**
+- 🏗️ **Morphism Framework**: Multi-platform SaaS development framework
+- 🛠️ **Governance Tools**: Architecture validation and policy-as-code (@morphism/governance)
+- 📚 **Documentation**: Comprehensive ecosystem documentation
+- 🔄 **Workspace Orchestration**: Coordinating distributed development environments
+
+---
+
+## 🚀 Major Projects
+
+### [Morphism Framework](https://github.com/alawein/morphism-framework)
+Multi-platform SaaS development framework designed to streamline development across platforms while maintaining consistency.
+
+**Status**: Active Development | **License**: MIT
+
+### [Morphism Workspace](https://github.com/alawein/morphism-workspace)
+Orchestration hub for the Morphism ecosystem. Coordinates all Morphism repositories as submodules.
+
+**Status**: Active | **Type**: Monorepo Coordinator
+
+### [Morphism Governance (@morphism/governance)](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)
+Internal governance and architecture validation tool. Enforces naming conventions, dependencies, and documentation standards through policy-as-code.
+
+**Features:**
+- IR extraction (language-agnostic code analysis)
+- Policy evaluation engine
+- Baseline & drift detection
+- GitHub Actions integration
+- Auto-generated API documentation
+
+**Status**: v1.2.0 | **Type**: Internal Tool | **Code**: 7,000+ LOC
+
+### [Morphism Ecosystem](https://github.com/alawein/morphism-ecosystem)
+Central entry point for the complete Morphism development platform.
+
+**Status**: Documentation | **Access**: Public
+
+---
+
+## 🛠️ Tech Stack
+
+**Languages**: TypeScript, JavaScript, Python (coming), Go (coming)
+
+**Core:**
+- Babel & TypeScript Compiler (AST analysis)
+- Commander.js (CLI frameworks)
+- YAML (policy configuration)
+- GitHub Actions (CI/CD)
+- Docker & Kubernetes (deployment)
+
+**Patterns:**
+- Policy-as-Code
+- Intermediate Representation (IR)
+- Pluggable Parsers
+- Deterministic Analysis
+- Monorepo Orchestration
+
+---
+
+## 📊 Recent Work
+
+### @morphism/governance v1.0-v1.2 Complete
+- ✅ IR extraction for TypeScript/JavaScript
+- ✅ Policy engine with YAML rules
+- ✅ Pattern analysis (naming, dependencies, structure)
+- ✅ Baseline & drift detection
+- ✅ API documentation generation
+- ✅ GitHub Actions integration
+- ✅ Comprehensive tests (800+ LOC)
+- ✅ Complete documentation (1,400+ lines)
+
+---
+
+## 🔗 Key Repositories
+
+| Repository | Status | Purpose |
+|-----------|--------|---------|
+| [morphism-framework](https://github.com/alawein/morphism-framework) | 🔄 Active | Multi-platform framework |
+| [morphism-workspace](https://github.com/alawein/morphism-workspace) | ✅ Maintained | Monorepo orchestrator |
+| [morphism-ecosystem](https://github.com/alawein/morphism-ecosystem) | 📚 Docs | Public entry point |
+| [morphism-docs](https://github.com/alawein/morphism-docs) | 📖 Updated | Central documentation |
+| [morphism-governance](https://github.com/alawein/morphism-workspace) | 🛠️ Internal | Governance CLI |
+
+---
+
+## 💡 Highlights
+
+- **Language-Agnostic IR**: Code structure extraction independent of syntax
+- **Policy-as-Code**: YAML-based governance without programming
+- **Deterministic Analysis**: Same codebase = same output (CI/baseline friendly)
+- **Monorepo Orchestration**: Multiple repositories as cohesive workspace
+- **Baseline Drift Detection**: Automatic breaking change detection
+
+---
+
+## 🎓 Learn More
+
+1. **IR Design** → [IR Specification](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
+2. **Policy Engines** → [Policy Schema](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
+3. **Baseline & Drift** → [Drift Detection](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
+4. **CLI Design** → [@morphism/governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)
+
+---
 
 <div align="center">
 
-```text
-███╗   ███╗███████╗███████╗██╗  ██╗ █████╗ ██╗     
-████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗██║     
-██╔████╔██║█████╗  ███████╗███████║███████║██║     
-██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██╔══██║██║     
-██║ ╚═╝ ██║███████╗███████║██║  ██║██║  ██║███████╗
-╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
-```
+### "Code is read more often than it's written. Make it readable."
 
-**Computational Physicist • AI Research Engineer • Systems Architect**
-
-[![GitHub](https://img.shields.io/badge/GitHub-alawein-3b82f6?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alawein) [![LinkedIn](https://img.shields.io/badge/LinkedIn-meshal%20alawien-8b5cf6?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/meshal-alawien) [![Website](https://img.shields.io/badge/Website-meshal.ai-10b981?style=for-the-badge&logo=globe&logoColor=white)](https://meshal.ai) [![Email](https://img.shields.io/badge/Email-contact@meshal.ai-ef4444?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
----
-
-## Perspective
-
-I build systems that respect **invariants**.
-
-Whether it's tracking conserved quantities through a quantum simulation or holding architectural boundaries steady in a distributed system, the principle remains the same: **Find what must be preserved. Optimize everything else.**
-
-My work applies this philosophy across three distinct distinct domains:
-1.  **Physics:** High-performance quantum materials simulation.
-2.  **Architecture:** Self-healing, structure-preserving software frameworks.
-3.  **Agents:** Autonomous systems that reason within strict boundary conditions.
-
-> *"The best code reads like physics. Minimal. Elegant. True."*
-
----
-
-## Technical Portfolio
-
-My work is divided into distinct, standalone systems.
-
-| System | Domain | Description |
-|:---|:---|:---|
-| **[Morphism Framework](https://github.com/alawein/morphism-framework)** | `Systems Architecture` | A project-agnostic, self-healing monorepo architecture. It provides the *structure* for complex systems but is decoupled from their *domain logic*. |
-| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | `Computational Physics` | Quantum-inspired optimization research. Focuses on gradient preconditioning and FFT-accelerated attractor programming. |
-| **[Evidentia](https://github.com/alawein/morphism-dev/tree/main/apps/evidentia)** | `Legal Tech` | Autonomous legal reasoning agents. Maps unstructured evidence to structured claims using the Model Context Protocol. |
-| **[REPZ](https://github.com/alawein/repz)** | `Biophysics` | Fitness coaching engine that models biological adaptation as a rigorous optimization problem. |
-
----
-
-## The Mathematical Framework
-
-The Morphism ecosystem is not just a collection of tools; it is a realization of applied Category Theory.
-
-### 🧠 The Codex of Functorial Intelligence
-
-We map software engineering and AI concepts directly to mathematical structures, ensuring rigorous composability and type safety at the architectural level.
-
-| Mathematical Concept | Software Realization |
-|:---|:---|
-| **Category** | A Domain (e.g., `LLM Model Family`, `DevOps Pipeline`). A collection of objects and morphisms. |
-| **Object** | A specific instance or state (e.g., `GPT-4`, `Production Environment v1.2`). |
-| **Morphism** | A transformation process (e.g., `Fine-tuning`, `Deployment`). Maps one object to another within a category. |
-| **Functor** | A structure-preserving map between domains (e.g., `TextToEmbeddings`). Transforms a Task definition into an Agent workflow without losing semantic meaning. |
-| **Isomorphism** | An invertible transformation (e.g., `Code <-> AST`). Ensures we can translate between representations with zero information loss. |
-| **Homomorphism** | A structure-preserving transformation where structure is maintained but data might be simplified (e.g., `System Logs -> Metrics`). |
-
-### 🔄 Isomorphic Workflows
-
-```mermaid
-graph LR
-    subgraph "Category: Task Definition"
-        A[Human Intent] -->|Natural Transformation| B[Structured Spec]
-    end
-
-    subgraph "Category: Execution"
-        C[Agent Plan] -->|Morphism: Execute| D[Result Artifact]
-    end
-
-    B -->|Functor: TaskToAgent| C
-    D -->|Functor: ResultToInsight| E[Verified Outcome]
-```
-
-**Key Functors:**
-*   **`TextToEmbeddings`**: Maps the category of Text to the category of Vector Spaces. Preserves semantic relationships.
-*   **`TaskToAgent`**: Maps a defined Task schema to an executable Agent workflow. Preserves intent and constraints.
-
----
-
-## System Architecture
-
-The Morphism ecosystem is designed as a self-correcting feedback loop.
-
-```mermaid
-flowchart LR
-    subgraph Input["Input"]
-        Source[Source Code]
-        Config[Policy Config]
-    end
-
-    subgraph Core["Morphism Engine"]
-        Router[Task Router]
-        Analyzer[Code Analyzer]
-        Optimizer[Continuous Optimizer]
-    end
-
-    subgraph Output["Output"]
-        Report[Analysis Report]
-        Dashboard[Metrics]
-        Fix[Auto-Fixes]
-    end
-
-    Source --> Router
-    Config --> Router
-    Router --> Analyzer
-    Analyzer --> Optimizer
-
-    Optimizer --> Output
-    
-    style Router fill:#2a5a3a,stroke:#fff,color:#fff
-    style Optimizer fill:#1a472a,stroke:#fff,color:#fff
-    style Analyzer fill:#3a6a4a,stroke:#fff,color:#fff
-```
-
-## Decision Logic
-
-Every artifact in the system has a deterministic home. This decision tree ensures architectural entropy remains zero.
-
-```text
-Is it a standalone tool usable without morphism-framework?
-├── YES → morphism-prod/
-└── NO → Is it experimental/research?
-    ├── YES → morphism-dev/
-    └── NO → Is it a reusable package?
-        ├── YES → morphism-framework/packages/
-        └── NO → Is it a product/application?
-            ├── YES → portfolio-products/
-            └── NO → morphism-framework/tools/
-```
-
----
-
-## Technology Stack
-
-**Physics & Simulation**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
-![VASP](https://img.shields.io/badge/VASP-FF6B35?style=flat&logo=atom&logoColor=white)
-![Quantum Espresso](https://img.shields.io/badge/QuantumESPRESSO-004B87?style=flat&logo=atom&logoColor=white)
-![Qiskit](https://img.shields.io/badge/Qiskit-6929C4?style=flat&logo=qiskit&logoColor=white)
-![Cirq](https://img.shields.io/badge/Cirq-F57C00?style=flat&logo=google&logoColor=white)
-
-**Systems & Interfaces**
-
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-CE422B?style=flat&logo=rust&logoColor=white)
-![WebAssembly](https://img.shields.io/badge/WebAssembly-654FF0?style=flat&logo=webassembly&logoColor=white)
-
-**Infrastructure**
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazonwebservices&logoColor=white)
-![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4?style=flat&logo=googlecloud&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-844FBA?style=flat&logo=terraform&logoColor=white)
-
----
-
-## Transmission
-
-<div align="center">
-
-[Email](mailto:contact@meshal.ai) • [Business](mailto:contact@morphism.systems) • [Portfolio](https://meshal.ai) • [GitHub](https://github.com/alawein) • [LinkedIn](https://linkedin.com/in/meshal-alawein)
-
-<sub>*Architecture is an invariant. © 2026 Meshal Alawein.*</sub>
+**[View All Repos](https://github.com/alawein?tab=repositories)** | **Updated**: 2025-01-17
 
 </div>

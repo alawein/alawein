@@ -1,30 +1,32 @@
-<!-- Profile Banner -->
 <div align="center">
 
-# 👋 Welcome to Alawein's GitHub
+# Alawein
 
-**Building comprehensive platforms for modern development challenges**
+**Platform architect • System designer • Framework builder**
 
-[![Morphism Badge](https://img.shields.io/badge/Morphism-Framework-blue?style=flat-square)](https://github.com/alawein/morphism-framework)
-[![Workspace Badge](https://img.shields.io/badge/Workspace-Ecosystem-green?style=flat-square)](https://github.com/alawein/morphism-workspace)
+[![Framework](https://img.shields.io/badge/morphism-framework-0ea5e9?style=flat-square)](https://github.com/alawein/morphism-framework)
+[![Workspace](https://img.shields.io/badge/workspace-orchestrator-10b981?style=flat-square)](https://github.com/alawein/morphism-workspace)
 
 </div>
 
 ---
 
-## 🎯 About
+## About
 
-Platform architect focused on building robust, scalable frameworks and governance solutions. Work spans from low-level infrastructure tooling to high-level architecture design.
-
-**Current Focus:**
-- 🏗️ **Morphism Framework**: Multi-platform SaaS development framework
-- 🛠️ **Governance Tools**: Architecture validation and policy-as-code (@morphism/governance)
-- 📚 **Documentation**: Comprehensive ecosystem documentation
-- 🔄 **Workspace Orchestration**: Coordinating distributed development environments
+Designing robust, scalable platforms for modern development. Focus spans from low-level infrastructure to high-level architecture, with emphasis on governance, frameworks, and ecosystem orchestration.
 
 ---
 
-## 🚀 Major Projects
+## Current Focus
+
+- **Morphism Framework** — Multi-platform SaaS development framework
+- **Governance Systems** — Architecture validation and policy-as-code
+- **Ecosystem Orchestration** — Coordinating distributed development environments
+- **Documentation** — Comprehensive reference material and guides
+
+---
+
+## Major Projects
 
 ### [Morphism Framework](https://github.com/alawein/morphism-framework)
 Multi-platform SaaS development framework designed to streamline development across platforms while maintaining consistency.
@@ -55,18 +57,18 @@ Central entry point for the complete Morphism development platform.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-**Languages**: TypeScript, JavaScript, Python (coming), Go (coming)
+**Languages:** TypeScript, JavaScript (+ Python, Go planned)
 
-**Core:**
-- Babel & TypeScript Compiler (AST analysis)
-- Commander.js (CLI frameworks)
-- YAML (policy configuration)
-- GitHub Actions (CI/CD)
-- Docker & Kubernetes (deployment)
+**Core Technologies:**
+- Babel & TypeScript Compiler for AST analysis
+- Commander.js for CLI frameworks
+- YAML for policy configuration
+- GitHub Actions for CI/CD
+- Docker & Kubernetes for orchestration
 
-**Patterns:**
+**Architectural Patterns:**
 - Policy-as-Code
 - Intermediate Representation (IR)
 - Pluggable Parsers
@@ -75,21 +77,7 @@ Central entry point for the complete Morphism development platform.
 
 ---
 
-## 📊 Recent Work
-
-### @morphism/governance v1.0-v1.2 Complete
-- ✅ IR extraction for TypeScript/JavaScript
-- ✅ Policy engine with YAML rules
-- ✅ Pattern analysis (naming, dependencies, structure)
-- ✅ Baseline & drift detection
-- ✅ API documentation generation
-- ✅ GitHub Actions integration
-- ✅ Comprehensive tests (800+ LOC)
-- ✅ Complete documentation (1,400+ lines)
-
----
-
-## 🔗 Key Repositories
+## Key Repositories
 
 | Repository | Status | Purpose |
 |-----------|--------|---------|
@@ -101,29 +89,25 @@ Central entry point for the complete Morphism development platform.
 
 ---
 
-## 💡 Highlights
+## Philosophy
 
-- **Language-Agnostic IR**: Code structure extraction independent of syntax
-- **Policy-as-Code**: YAML-based governance without programming
-- **Deterministic Analysis**: Same codebase = same output (CI/baseline friendly)
-- **Monorepo Orchestration**: Multiple repositories as cohesive workspace
-- **Baseline Drift Detection**: Automatic breaking change detection
-
----
-
-## 🎓 Learn More
-
-1. **IR Design** → [IR Specification](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
-2. **Policy Engines** → [Policy Schema](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
-3. **Baseline & Drift** → [Drift Detection](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/docs)
-4. **CLI Design** → [@morphism/governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)
+- **Language-Agnostic Design** — Code analysis independent of language syntax
+- **Policy-as-Code** — Declarative governance without programming requirements
+- **Deterministic Systems** — Consistent, reproducible analysis for CI/CD pipelines
+- **Monorepo Orchestration** — Multiple repositories as unified development environments
+- **Baseline Integrity** — Automatic detection of breaking changes and drift
 
 ---
 
 <div align="center">
 
-### "Code is read more often than it's written. Make it readable."
+### Design Principles
 
-**[View All Repos](https://github.com/alawein?tab=repositories)** | **Updated**: 2025-01-17
+> Code is read more often than it's written.
+> Design for clarity. Build for scale. Document for understanding.
+
+---
+
+**[View All Repositories](https://github.com/alawein?tab=repositories)** • **[Portfolio](https://malawein.com)** • **Updated:** 2026-01-17
 
 </div>

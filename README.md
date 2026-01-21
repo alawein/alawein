@@ -3,10 +3,10 @@
 <div align="center">
 
 ```
-███╗   ███╗███████╗███████╗██╗  ██╗ █████╗ ██╗     
-████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗██║     
-██╔████╔██║█████╗  ███████╗███████║███████║██║     
-██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██║  ██║██║     
+███╗   ███╗███████╗███████╗██╗  ██╗ █████╗ ██╗
+████╗ ████║██╔════╝██╔════╝██║  ██║██╔══██╗██║
+██╔████╔██║█████╗  ███████╗███████║███████║██║
+██║╚██╔╝██║██╔══╝  ╚════██║██╔══██║██║  ██║██║
 ██║ ╚═╝ ██║███████╗███████║██║  ██║██║  ██║███████╗
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝
 ```
@@ -29,30 +29,75 @@ This guides everything: physics → code → infrastructure.
 
 ## Theorem: Morphism Architecture
 
-**Definition**: A monorepo framework for structure-preserving transformations where policy-as-code preserves architectural invariants across evolution.
-
-**Observable Structure**:
+**Definition**: A structure-preserving transformation framework. In category theory, a morphism `φ: A → B` preserves structure between objects. In software:
 
 ```
-φ(Codebase) = ⟨IR ← Deterministic Extract ← Source⟩
+φ: Source → Target  where  φ(compose(f,g)) = compose(φ(f), φ(g))
+```
+
+**The Monorepo as Category**:
+
+```
+         kernel/                    hub/
+    ┌─────────────┐           ┌─────────────┐
+    │  Governance │    φ      │ Distribution│
+    │   (specs)   │ ───────▶  │  (packages) │
+    │  Invariants │           │   Outputs   │
+    └─────────────┘           └─────────────┘
+           │                        │
+           │ preserves              │ ships
+           ▼                        ▼
+         lab/                   @morphism/*
+    ┌─────────────┐           ┌─────────────┐
+    │ Experiments │           │  npm/PyPI   │
+    │  (research) │           │  (public)   │
+    └─────────────┘           └─────────────┘
 ```
 
 **Invariants Preserved**:
-- Structural completeness: IR contains all dependencies, symbols, relationships
-- Determinism: SHA256(extract(code)) always equals itself (reproducible CI/CD)
-- Language agnostic: Policies apply to TypeScript, Python, Go identically
+- **Structural completeness**: IR contains all dependencies, symbols, relationships
+- **Determinism**: `SHA256(extract(code))` reproducible across runs
+- **Composability**: Policies combine without interference (monoid structure)
 
 ---
 
 ## Ecosystem
 
-| System | Definition | Observable |
+| Layer | Definition | Observable |
 |:---|:---|:---|
-| **[Framework](https://github.com/alawein/morphism-framework)** | Structure-preserving monorepo architecture | Compose, transform, extend without breaking invariants |
-| **[Workspace](https://github.com/alawein/morphism-workspace)** | Orchestration layer for distributed repos + governance | Single source of truth for policy enforcement across ecosystem |
-| **[@morphism/governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)** | Policy engine enforcing architectural invariants | Exit codes: 0=compliant, 1=violation, 2=error. Deterministic baseline diffs detect drift. |
-| **[Optilibria](https://github.com/alawein/morphism-framework/tree/main/packages/misc-qaplibria)** | Quantum-inspired optimization (gradient preconditioning) | 70% speedup on DFT workloads; generalizes to other high-dimensional problems |
-| **[Evidentia](https://github.com/alawein/morphism-playground/tree/main/evidentia)** | Legal reasoning agents via MCP (autonomous verification) | Empirically validated on 200+ contract patterns; generalization tested on novel clause types |
+| **[kernel/](https://github.com/alawein/morphism/tree/main/kernel)** | Governance specs, architectural invariants | The "what" and "why" — slow-moving, high-stability |
+| **[hub/](https://github.com/alawein/morphism/tree/main/hub)** | Distribution packages (@morphism-systems/*) | The "how" — fast-moving, ships to npm/PyPI |
+| **[lab/](https://github.com/alawein/morphism/tree/main/lab)** | Research & experiments | The "what if" — exploratory, may break things |
+| **[Sheaf](https://github.com/alawein/morphism/tree/main/hub/packages/sheaf)** | Topological consistency verification | Detects when local patches don't glue globally |
+| **[Optilibria](https://github.com/alawein/morphism/tree/main/kernel/docs)** | Quantum-inspired optimization | 70% speedup on DFT; generalizes to high-dim problems |
+
+---
+
+## Agents Mathematics
+
+> *"An agent is a morphism from observations to actions that preserves decision structure."*
+
+**The Agents Certainty Principle**: You can know an agent's *policy* or its *reasoning*, but not both with arbitrary precision. Optimizing for interpretable reasoning often sacrifices optimal policy, and vice versa.
+
+```
+Certainty(policy) × Certainty(reasoning) ≥ ℏ_agent
+```
+
+Where `ℏ_agent` is the fundamental limit of agent transparency. (Yes, this is playful. But also... true?)
+
+**Compositional Agents**:
+
+```
+Agent₁: Observe → Plan       (functor F)
+Agent₂: Plan → Act           (functor G)
+─────────────────────────────────────────
+Composed: Observe → Act      (G ∘ F)
+
+Natural transformation η: F ⇒ G
+preserves: η(compose(a,b)) = compose(η(a), η(b))
+```
+
+**Observable**: Agents that compose cleanly outperform monolithic agents. The math predicts it; the benchmarks confirm it.
 
 ---
 
@@ -80,7 +125,7 @@ Drift Report (change detection)
 
 **Conservation**: Every policy rule is composable. Add new rules without modifying others.
 
-**Generalization**: Same YAML policies work across TypeScript, Python, Go (v2 roadmap).
+**Generalization**: Same YAML policies work across TypeScript, Python, Go.
 
 ---
 
@@ -106,10 +151,10 @@ Drift Report (change detection)
 
 | Principle | Measure | Signal | Action |
 |:---|:---|:---|:---|
-| **Determinism** | Extract variance | >5% = anomaly | Investigate Babel version, OS, cache state |
-| **Reproducibility** | Baseline drift | Unexpected change = breaking invariant | Block deploy, review with team |
-| **Composability** | Policy count | Violations per policy | Too many violations → policy too strict |
-| **Generalization** | Language coverage | Pattern accuracy by language | Plateauing accuracy → dataset insufficient |
+| **Determinism** | Extract variance | >5% = anomaly | Investigate cache state, dependencies |
+| **Reproducibility** | Baseline drift | Unexpected change = broken invariant | Block deploy, review with team |
+| **Composability** | Policy count | Violations per policy | Too many → policy too strict |
+| **Generalization** | Language coverage | Accuracy by language | Plateauing → dataset insufficient |
 
 ---
 
@@ -118,6 +163,8 @@ Drift Report (change detection)
 **From Mathematics**: Precision. Every term means exactly what we say.
 
 **From Physics**: Conservation. What flows through must be measured. Symmetry reveals truth.
+
+**From Category Theory**: Composition. If it doesn't compose, it doesn't scale.
 
 **From DevOps**: Reproducibility. If you can't run it twice and get the same result, you don't understand it.
 
@@ -137,12 +184,12 @@ Drift Report (change detection)
 const ir = deterministic_extract(source);
 
 // Conservation: Dependency graph edges sum to same work
-// Signal: High-degree nodes = architectural bottlenecks (observable clusters)
+// Signal: High-degree nodes = architectural bottlenecks
 const clusters = force_directed_layout(ir.dependencies);
 
-// Observable: Baseline should match expected. Drift indicates breaking change.
-// Action: If drift > threshold, block merge. Require manual review.
-const report = compare(current_ir, baseline_ir);
+// Sheaf condition: Local sections must glue to global section
+// If they don't, we have a topological obstruction (real bug)
+const consistency = verify_sheaf_condition(patches);
 ```
 
 ---
@@ -151,7 +198,7 @@ const report = compare(current_ir, baseline_ir);
 
 - **Selected Works**: DFT acceleration, spintronic models, autonomous agents
 - **Patents**: Quantum preconditioning, emergent dynamics
-- **Implementation**: 7,000+ LOC (@morphism/governance), 800+ test cases, 1,400+ lines docs
+- **Implementation**: Morphism monorepo — kernel (governance) + hub (distribution)
 
 ---
 
@@ -167,7 +214,7 @@ const report = compare(current_ir, baseline_ir);
 
 <div align="center">
 
-**[Morphism Framework](https://github.com/alawein/morphism-framework)** • **[Workspace](https://github.com/alawein/morphism-workspace)** • **[Governance](https://github.com/alawein/morphism-workspace/tree/main/morphism-projects/clis/morphism-governance)** • **[All Repos](https://github.com/alawein?tab=repositories)**
+**[Morphism](https://github.com/alawein/morphism)** • **[kernel/](https://github.com/alawein/morphism/tree/main/kernel)** • **[hub/](https://github.com/alawein/morphism/tree/main/hub)** • **[All Repos](https://github.com/alawein?tab=repositories)**
 
 ---
 
@@ -175,6 +222,6 @@ const report = compare(current_ir, baseline_ir);
 
 First principles. Observable systems. Reproducible by design.
 
-**Updated**: 2026-01-17 | **Status**: Active Development | **Style**: First-Principles Engineering
+**Updated**: 2026-01-21 | **Status**: Active Development | **Style**: First-Principles Engineering
 
 </div>

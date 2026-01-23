@@ -13,7 +13,90 @@
 
 Computational Physicist • AI Research Engineer • Systems Architect
 
+**[morphism.systems](https://morphism.systems)** — Governance for software development
+
 </div>
+
+---
+
+## The Framework
+
+**42 tenets. 12 sections. One truth.**
+
+Morphism is a governance framework for software development. Not infrastructure. Not tooling. *Governance*.
+
+```
+if sources_of_truth > 1:
+    sources_of_truth = 0
+```
+
+> **T4**: One document governs each domain. One document everyone references. Including future LLMs. Drift is debt.
+
+---
+
+## LLM Entropy
+
+Sessions tend toward disorder. Left unconstrained, an LLM explores rather than executes.
+
+```
+S(session) = -k Σ pᵢ ln(pᵢ)
+
+Signal(docs) ∝ 1/n    // where n = number of "sources of truth"
+```
+
+**The failure modes** (T37, T40, T41):
+- Activity theater — motion confused with progress
+- Archaeology trap — 30 bash commands before asking "what do you need?"
+- Context loss — each session as fresh start
+
+**The override**: Explicit governance. External context anchors. The Protocol.
+
+---
+
+## The Protocol (T54-T58)
+
+```
+T54. Read     — Load MORPHISM.md. Load CLAUDE.md. Read error logs. No assumptions.
+T55. State    — "The ONE thing is: [X]. Done means: [Y]."
+T56. Verify   — Confirm understanding before proposing changes.
+T57. Execute  — Incremental with verification (T11). Small change → verify → commit.
+T58. Refuse   — Scope creep is the enemy. "That's T9" (out of scope).
+```
+
+Every session. No exceptions. Entropy is the default. Governance is the override.
+
+---
+
+## Architecture
+
+| Layer | Definition | Observable |
+|:---|:---|:---|
+| **[kernel/](https://github.com/alawein/morphism/tree/main/kernel)** | Governance. Slow-moving. Requires consensus. | MORPHISM.md lives here |
+| **[hub/](https://github.com/alawein/morphism/tree/main/hub)** | Distribution. Ships to npm/PyPI. Fast iteration. | Hub may import kernel |
+| **[lab/](https://github.com/alawein/morphism/tree/main/lab)** | Experiments. May break. Never imported. | Nothing imports lab |
+
+**The rule**: Kernel ← Hub ← Lab. Never the reverse.
+
+---
+
+## The 12 Sections
+
+| # | Section | Key Tenets |
+|:---|:---|:---|
+| I | Philosophy | T1 Structure Preserves, T3 One Thing Done, T4 SSOT |
+| II | Operations | T7 Understand First, T11 Incremental |
+| III | Failure Modes | T14-T16, T40-T43 |
+| IV | Policies | T18-T22 |
+| V | Guards | T23-T27 |
+| VI | Testing | T28-T32 |
+| VII | Kernelization | T33-T36 |
+| VIII | Layouts | Kernel/Hub/Lab |
+| IX | Templates | Project scaffolds |
+| X | LLM Entropy | T37-T43, entropy formula |
+| XI | Protocol | T54-T58 |
+| XII | Coda | Close it out |
+
+Full framework: **[morphism.systems/docs](https://morphism.systems/docs)**
 
 ---
 
@@ -23,109 +106,11 @@ I build systems from **invariants**. In quantum simulation, conserved quantities
 
 > **Identify what must be preserved. Compose transforms around it.**
 
-This guides everything: physics → code → infrastructure.
-
----
-
-## Theorem: Morphism Architecture
-
-**Definition**: A structure-preserving transformation framework. In category theory, a morphism `φ: A → B` preserves structure between objects. In software:
+In category theory, a morphism `φ: A → B` preserves structure between objects:
 
 ```
 φ: Source → Target  where  φ(compose(f,g)) = compose(φ(f), φ(g))
 ```
-
-**The Monorepo as Category**:
-
-```
-         kernel/                    hub/
-    ┌─────────────┐           ┌─────────────┐
-    │  Governance │    φ      │ Distribution│
-    │   (specs)   │ ───────▶  │  (packages) │
-    │  Invariants │           │   Outputs   │
-    └─────────────┘           └─────────────┘
-           │                        │
-           │ preserves              │ ships
-           ▼                        ▼
-         lab/                   @morphism/*
-    ┌─────────────┐           ┌─────────────┐
-    │ Experiments │           │  npm/PyPI   │
-    │  (research) │           │  (public)   │
-    └─────────────┘           └─────────────┘
-```
-
-**Invariants Preserved**:
-- **Structural completeness**: IR contains all dependencies, symbols, relationships
-- **Determinism**: `SHA256(extract(code))` reproducible across runs
-- **Composability**: Policies combine without interference (monoid structure)
-
----
-
-## Ecosystem
-
-| Layer | Definition | Observable |
-|:---|:---|:---|
-| **[kernel/](https://github.com/alawein/morphism/tree/main/kernel)** | Governance specs, architectural invariants | The "what" and "why" — slow-moving, high-stability |
-| **[hub/](https://github.com/alawein/morphism/tree/main/hub)** | Distribution packages (@morphism-systems/*) | The "how" — fast-moving, ships to npm/PyPI |
-| **[lab/](https://github.com/alawein/morphism/tree/main/lab)** | Research & experiments | The "what if" — exploratory, may break things |
-| **[Sheaf](https://github.com/alawein/morphism/tree/main/hub/packages/sheaf)** | Topological consistency verification | Detects when local patches don't glue globally |
-| **[Optilibria](https://github.com/alawein/morphism/tree/main/kernel/docs)** | Quantum-inspired optimization | 70% speedup on DFT; generalizes to high-dim problems |
-
----
-
-## Agents Mathematics
-
-> *"An agent is a morphism from observations to actions that preserves decision structure."*
-
-**The Agents Certainty Principle**: You can know an agent's *policy* or its *reasoning*, but not both with arbitrary precision. Optimizing for interpretable reasoning often sacrifices optimal policy, and vice versa.
-
-```
-Certainty(policy) × Certainty(reasoning) ≥ ℏ_agent
-```
-
-Where `ℏ_agent` is the fundamental limit of agent transparency. (Yes, this is playful. But also... true?)
-
-**Compositional Agents**:
-
-```
-Agent₁: Observe → Plan       (functor F)
-Agent₂: Plan → Act           (functor G)
-─────────────────────────────────────────
-Composed: Observe → Act      (G ∘ F)
-
-Natural transformation η: F ⇒ G
-preserves: η(compose(a,b)) = compose(η(a), η(b))
-```
-
-**Observable**: Agents that compose cleanly outperform monolithic agents. The math predicts it; the benchmarks confirm it.
-
----
-
-## Governance Through Invariance
-
-```
-Source Code
-    ↓ (Deterministic Extract)
-Intermediate Representation (IR)
-    ├─ Symbols + imports (what exists)
-    ├─ Dependencies (what connects)
-    └─ Metadata (what it does)
-    ↓ (Policy Engine)
-Violations (breaking invariants)
-    ├─ Naming patterns (inconsistent?)
-    ├─ Dependency bounds (cyclic?)
-    └─ Documentation (stale?)
-    ↓ (Baseline Comparison)
-Drift Report (change detection)
-    ├─ Severity: Critical (breaks) | High (API) | Low (style)
-    └─ Action: Block | Review | Warn
-```
-
-**Observable**: Extract time is deterministic (±1% variance). If >5%, investigate non-determinism.
-
-**Conservation**: Every policy rule is composable. Add new rules without modifying others.
-
-**Generalization**: Same YAML policies work across TypeScript, Python, Go.
 
 ---
 
@@ -134,71 +119,12 @@ Drift Report (change detection)
 ### Quantum & HPC
 **Problem**: DFT simulations bottlenecked by gradient computation.
 **Solution**: Preconditioning + FFT-accelerated optimization.
-**Result**: 2,300+ jobs, 24,000 CPU-hours, 70% speedup. Generalizes to spintronic models (1000x vs FE).
+**Result**: 2,300+ jobs, 24,000 CPU-hours, 70% speedup.
 
 ### AI Engineering
-**Problem**: Codebases drift from architectural intent as they scale.
-**Solution**: Structure-preserving transformations + deterministic policy enforcement.
-**Result**: Detects breaking changes before deployment. Baseline diffs are reproducible (SHA256).
-
-### Patents Pending
-- Quantum Gradient Preconditioning (optimization theory)
-- ML-Trained Attractor Dynamics (emergent behavior synthesis)
-
----
-
-## Observable Principles
-
-| Principle | Measure | Signal | Action |
-|:---|:---|:---|:---|
-| **Determinism** | Extract variance | >5% = anomaly | Investigate cache state, dependencies |
-| **Reproducibility** | Baseline drift | Unexpected change = broken invariant | Block deploy, review with team |
-| **Composability** | Policy count | Violations per policy | Too many → policy too strict |
-| **Generalization** | Language coverage | Accuracy by language | Plateauing → dataset insufficient |
-
----
-
-## Design Philosophy
-
-**From Mathematics**: Precision. Every term means exactly what we say.
-
-**From Physics**: Conservation. What flows through must be measured. Symmetry reveals truth.
-
-**From Category Theory**: Composition. If it doesn't compose, it doesn't scale.
-
-**From DevOps**: Reproducibility. If you can't run it twice and get the same result, you don't understand it.
-
-**From AI/ML**: Empiricism. Claims require baselines. Generalization > memorization.
-
-**From Wizardry**: Minimalism. Remove ruthlessly. Compose carefully.
-
----
-
-## Implementation
-
-**Code Speaks**. Comments are mathematical/physical/observational prose:
-
-```typescript
-// Invariant: |IR| == |Source| (structural completeness)
-// Enforce: SHA256(extractIR(code)) reproducible across runs
-const ir = deterministic_extract(source);
-
-// Conservation: Dependency graph edges sum to same work
-// Signal: High-degree nodes = architectural bottlenecks
-const clusters = force_directed_layout(ir.dependencies);
-
-// Sheaf condition: Local sections must glue to global section
-// If they don't, we have a topological obstruction (real bug)
-const consistency = verify_sheaf_condition(patches);
-```
-
----
-
-## Research Publications & Code
-
-- **Selected Works**: DFT acceleration, spintronic models, autonomous agents
-- **Patents**: Quantum preconditioning, emergent dynamics
-- **Implementation**: Morphism monorepo — kernel (governance) + hub (distribution)
+**Problem**: Codebases drift from architectural intent. LLM sessions drift from goals.
+**Solution**: Structure-preserving transformations + explicit governance.
+**Result**: 42 tenets. Reproducible sessions. Context anchors that persist.
 
 ---
 
@@ -206,22 +132,23 @@ const consistency = verify_sheaf_condition(patches);
 
 | Channel | | |
 |:---|:---|:---|
+| Framework | [morphism.systems](https://morphism.systems) | 42 tenets, 12 sections |
+| Monorepo | [alawein/morphism](https://github.com/alawein/morphism) | kernel + hub + lab |
 | Email | contact@meshal.ai | academic: meshal@berkeley.edu |
-| Scholar | [Google Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) | |
 | Web | [malawein.com](https://malawein.com) | |
 
 ---
 
 <div align="center">
 
-**[Morphism](https://github.com/alawein/morphism)** • **[kernel/](https://github.com/alawein/morphism/tree/main/kernel)** • **[hub/](https://github.com/alawein/morphism/tree/main/hub)** • **[All Repos](https://github.com/alawein?tab=repositories)**
+**[Morphism](https://github.com/alawein/morphism)** • **[morphism.systems](https://morphism.systems)** • **[Docs](https://morphism.systems/docs)** • **[All Repos](https://github.com/alawein?tab=repositories)**
 
 ---
 
-**Architecture is an invariant. Structure preserves through evolution.**
+**Entropy is the default. Governance is the override.**
 
-First principles. Observable systems. Reproducible by design.
+42 tenets. 12 sections. One truth.
 
-**Updated**: 2026-01-21 | **Status**: Active Development | **Style**: First-Principles Engineering
+**Updated**: 2026-01-23 | **Status**: Active Development
 
 </div>

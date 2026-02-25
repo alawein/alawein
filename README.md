@@ -243,7 +243,7 @@ Decisions reversed. Progress lost.
 
 <br/>
 
-**[Morphism](https://github.com/alawein/morphism)** · **[morphism.systems](https://morphism.systems)** · **[Docs](https://morphism.systems/docs)**
+**[Morphism](https://github.com/morphism-systems/morphism)** · **[morphism.systems](https://morphism.systems)** · **[Docs](https://morphism.systems/docs)**
 
 <br/>
 

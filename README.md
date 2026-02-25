@@ -183,6 +183,27 @@ Decisions reversed. Progress lost.
 
 <br/>
 
+## <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30"/> Projects
+
+<div align="center">
+
+| Project | Domain | Description |
+|:--------|:-------|:------------|
+| **[Morphism](https://github.com/morphism-systems/morphism)** | [morphism.systems](https://morphism.systems) | Governance framework for software development |
+| **[AI Clarity](https://github.com/meshal-alawein/event-discovery-framework)** | [aiclarity.com](https://aiclarity.com) | Physics-inspired event discovery in video streams |
+| **[QMLab](https://github.com/alawein/QAPlibria)** | [qmlab.online](https://qmlab.online) | Quadratic Assignment Problem optimization library |
+| **[SimCore](https://github.com/alawein/MeatheadPhysicist)** | [simcore.dev](https://simcore.dev) | Computational physics simulations |
+| **[Shared Utils](https://github.com/alawein/shared-utils)** | [shared-utils.vercel.app](https://shared-utils.vercel.app) | Shared AI/ML utilities across projects |
+| **[meshal.ai](https://github.com/alawein/meshal-web)** | [alawein.ai](https://alawein.ai) | Personal website |
+
+</div>
+
+<br/>
+
+---
+
+<br/>
+
 ## <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30"/> Research
 
 <table>

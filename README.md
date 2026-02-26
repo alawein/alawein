@@ -1,280 +1,167 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
+
 <div align="center">
 
-<!-- Header with gradient effect using HTML -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=&fontSize=0" width="100%"/>
+[![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
+[![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=flat-square&logo=atom&logoColor=8B5CF6)](https://morphism.systems)
+[![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meshal-alawein)
+[![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
 
-# MESHAL ALAWEIN
+**AI Research Engineer · PhD EECS · ML Systems & Quantum Simulations**
 
-[![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=for-the-badge&logo=safari&logoColor=white)](https://meshal.ai)
-[![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=for-the-badge&logo=atom&logoColor=8B5CF6)](https://morphism.systems)
-[![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
-
-**Computational Physicist** · **AI Research Engineer** · **Systems Architect**
-
-<br/>
-
-*"Entropy is the default. Governance is the override."*
+*"Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced."*
 
 </div>
-
-<br/>
 
 ---
 
-<br/>
-
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Aber/Tarikul-Islam-Amir/main/assets/images/Writing.gif" width="30"/> The Framework
+## About
 
 <table>
 <tr>
-<td width="60%">
+<td width="55%" valign="top">
 
-### Morphism
-
-**42 tenets. 12 sections. One truth.**
-
-A governance framework for software development. Not infrastructure. Not tooling. *Governance*.
-
-```python
-if sources_of_truth > 1:
-    sources_of_truth = 0  # T4
-```
-
-> One document governs each domain.
-> One document everyone references.
-> Including future LLMs.
-> *Drift is debt.*
+PhD researcher at UC Berkeley (EECS, 2019–2025) specializing in ML systems, LLM infrastructure, and quantum materials simulation. Founder of Morphism Systems — a governed software framework for AI-driven development. Built production DFT/HPC workflows (2,300+ jobs, 24,000 CPU-hours, 70% runtime reduction). Designed SFT/RLHF pipelines, reward modeling frameworks, and evaluation harnesses for LLM training.
 
 </td>
-<td width="40%">
-
-<div align="center">
+<td width="45%" valign="top">
 
 ```
-    ┌─────────────┐
-    │   KERNEL    │
-    │ (governance)│
-    └──────┬──────┘
-           │ imports
-    ┌──────▼──────┐
-    │     HUB     │
-    │(distribution)│
-    └──────┬──────┘
-           │ imports
-    ┌──────▼──────┐
-    │     LAB     │
-    │ (experiments)│
-    └─────────────┘
+🎓 PhD EECS — UC Berkeley (2025)
+🏢 Morphism Systems — Founder
+🔬 16+ peer-reviewed publications
+⚡ 24,000+ CPU-hours of HPC work
+🤖 SFT/RLHF · DFT · LLM Infra
+📍 San Francisco, CA
 ```
-
-**Never the reverse.**
-
-</div>
 
 </td>
 </tr>
 </table>
 
-<br/>
-
 ---
 
-<br/>
-
-## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"/> LLM Entropy
-
-Sessions tend toward disorder. Left unconstrained, an LLM explores rather than executes.
-
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║           S(session) = −k Σ pᵢ ln(pᵢ)                        ║
-║                                                              ║
-║           Signal(docs) ∝ 1/n                                 ║
-║           where n = number of "sources of truth"             ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-```
-
-</div>
+## Active Projects
 
 <table>
 <tr>
 <td align="center" width="33%">
 
-### T37
-**Activity Theater**
+**[Event Discovery Framework](https://edfp.online)**
 
-Motion confused with progress.
-High tool usage, zero deliverables.
+Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.
 
-</td>
-<td align="center" width="33%">
-
-### T40
-**Archaeology Trap**
-
-30 bash commands before asking
-*"what do you need?"*
+`Python` `OpenCV` `FastAPI`
 
 </td>
 <td align="center" width="33%">
 
-### T41
-**Context Loss**
+**[Morphism Systems](https://morphism.systems)**
 
-Each session as fresh start.
-Decisions reversed. Progress lost.
+Governed software kernel framework. 42 tenets, AI-driven development governance.
+
+`TypeScript` `React` `Python`
+
+</td>
+<td align="center" width="33%">
+
+**[QMatSim](https://github.com/alawein/qmatsim)**
+
+Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.
+
+`Python` `VASP` `CUDA`
 
 </td>
 </tr>
-</table>
-
-<br/>
-
----
-
-<br/>
-
-## <img src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" width="30"/> The Protocol
-
-<div align="center">
-
-| Step | Tenet | Action |
-|:----:|:-----:|:-------|
-| 1 | **T54** | **Read** — Load MORPHISM.md. Load CLAUDE.md. No assumptions. |
-| 2 | **T55** | **State** — "The ONE thing is: [X]. Done means: [Y]." |
-| 3 | **T56** | **Verify** — Confirm understanding before proposing changes. |
-| 4 | **T57** | **Execute** — Small change → verify → commit. Repeat. |
-| 5 | **T58** | **Refuse** — Scope creep is the enemy. "That's out of scope." |
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="30"/> The 12 Sections
-
-<div align="center">
-
-| | Section | Core Tenets | | Section | Core Tenets |
-|:--:|:--------|:------------|:--:|:--------|:------------|
-| I | **Philosophy** | T1-T6 | VII | **Kernelization** | T33-T36 |
-| II | **Operations** | T7-T11 | VIII | **Layouts** | Kernel/Hub/Lab |
-| III | **Failure Modes** | T14-T16, T40-T43 | IX | **Templates** | Project scaffolds |
-| IV | **Policies** | T18-T22 | X | **LLM Entropy** | T37-T43 |
-| V | **Guards** | T23-T27 | XI | **Protocol** | T54-T58 |
-| VI | **Testing** | T28-T32 | XII | **Coda** | Close it out |
-
-<br/>
-
-[![Read the Docs](https://img.shields.io/badge/Read_the_Docs-morphism.systems-8B5CF6?style=for-the-badge)](https://morphism.systems/docs)
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30"/> Projects
-
-<div align="center">
-
-| Project | Domain | Description |
-|:--------|:-------|:------------|
-| **[Morphism](https://github.com/morphism-systems/morphism)** | [morphism.systems](https://morphism.systems) | Governance framework for software development |
-| **[AI Clarity](https://github.com/alawein/event-discovery-framework)** | [aiclarity.com](https://aiclarity.com) | Physics-inspired event discovery in video streams |
-| **[QMLab](https://github.com/alawein/QAPlibria)** | [qmlab.online](https://qmlab.online) | Quadratic Assignment Problem optimization library |
-| **[SimCore](https://github.com/alawein/MeatheadPhysicist)** | [simcore.dev](https://simcore.dev) | Computational physics simulations |
-| **[Shared Utils](https://github.com/alawein/shared-utils)** | [shared-utils.vercel.app](https://shared-utils.vercel.app) | Shared AI/ML utilities across projects |
-| **[meshal.ai](https://github.com/alawein/meshal-web)** | [alawein.ai](https://alawein.ai) | Personal website |
-
-</div>
-
-<br/>
-
----
-
-<br/>
-
-## <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="30"/> Research
-
-<table>
 <tr>
-<td width="50%">
+<td align="center" width="33%">
 
-### Quantum & HPC
+**[LLMWorks](https://llmworks.dev)**
 
-**Problem**: DFT simulations bottlenecked by gradient computation.
+LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.
 
-**Solution**: Preconditioning + FFT-accelerated optimization.
-
-**Result**:
-- 2,300+ simulation jobs
-- 24,000 CPU-hours
-- **70% speedup**
+`Python` `PyTorch` `HuggingFace`
 
 </td>
-<td width="50%">
+<td align="center" width="33%">
 
-### AI Engineering
+**[REPZ](https://repzcoach.com)**
 
-**Problem**: Codebases drift from intent. LLM sessions drift from goals.
+AI-powered coaching platform.
 
-**Solution**: Structure-preserving transformations + explicit governance.
+`TypeScript` `React` `FastAPI`
 
-**Result**:
-- 42 tenets codified
-- Reproducible sessions
-- Context anchors that persist
+</td>
+<td align="center" width="33%">
+
+**[Attributa](https://attributa.dev)**
+
+Design audit & accessibility platform.
+
+`TypeScript` `React`
 
 </td>
 </tr>
 </table>
 
-<br/>
+---
+
+## Tech Stack
+
+**AI/ML**
+
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+![CUDA](https://img.shields.io/badge/CUDA-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
+
+**Scientific**
+
+![Python](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
+![MPI](https://img.shields.io/badge/MPI-0047AB?style=flat-square&logo=openmpi&logoColor=white)
+![SLURM](https://img.shields.io/badge/SLURM-HPC-2C3E50?style=flat-square)
+![VASP](https://img.shields.io/badge/VASP-DFT-6C3483?style=flat-square)
+![Quantum ESPRESSO](https://img.shields.io/badge/Quantum_ESPRESSO-1A5276?style=flat-square)
+
+**Backend**
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+
+**Frontend**
+
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
+
+**Tools**
+
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
 ---
 
-<br/>
-
-## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="30"/> Connect
+## GitHub Stats
 
 <div align="center">
-
-| | | |
-|:---:|:---:|:---:|
-| [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=for-the-badge&logo=safari&logoColor=white)](https://meshal.ai) | [![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=for-the-badge&logo=atom&logoColor=8B5CF6)](https://morphism.systems) | [![GitHub](https://img.shields.io/badge/alawein-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alawein) |
-| [![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai) | [![Scholar](https://img.shields.io/badge/Google_Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) | [![Berkeley](https://img.shields.io/badge/contact@meshal.ai-003262?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iMTgiPvCfjoA8L3RleHQ+PC9zdmc+&logoColor=white)](mailto:contact@meshal.ai) |
-
+<img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&theme=tokyonight&hide_border=true" height="165"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alawein&layout=compact&theme=tokyonight&hide_border=true" height="165"/>
 </div>
 
-<br/>
-
 ---
 
 <div align="center">
 
-<br/>
-
-**[Morphism](https://github.com/morphism-systems/morphism)** · **[morphism.systems](https://morphism.systems)** · **[Docs](https://morphism.systems/docs)**
-
-<br/>
-
-```
-φ: Source → Target  where  φ(compose(f,g)) = compose(φ(f), φ(g))
-```
-
-**Structure preserves through transformation.**
-
-<br/>
+📫 contact@meshal.ai · [meshal.ai](https://meshal.ai) · San Francisco, CA
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=100&section=footer" width="100%"/>
 

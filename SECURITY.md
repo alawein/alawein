@@ -1,3 +1,15 @@
+---
+title: Security Policy
+description: Security vulnerability reporting and disclosure procedures
+last_updated: 2026-02-26
+category: governance
+audience: all
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [governance, security, vulnerability, disclosure]
+---
+
 # Security Policy
 
 ## Reporting Security Vulnerabilities

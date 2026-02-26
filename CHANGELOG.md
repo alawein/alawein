@@ -1,3 +1,15 @@
+---
+title: Changelog
+description: Version history and notable changes to the alawein organization repository
+last_updated: 2026-02-26
+category: documentation
+audience: all
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [changelog, version-history, releases]
+---
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

@@ -190,7 +190,7 @@ Decisions reversed. Progress lost.
 | Project | Domain | Description |
 |:--------|:-------|:------------|
 | **[Morphism](https://github.com/morphism-systems/morphism)** | [morphism.systems](https://morphism.systems) | Governance framework for software development |
-| **[AI Clarity](https://github.com/meshal-alawein/event-discovery-framework)** | [aiclarity.com](https://aiclarity.com) | Physics-inspired event discovery in video streams |
+| **[AI Clarity](https://github.com/alawein/event-discovery-framework)** | [aiclarity.com](https://aiclarity.com) | Physics-inspired event discovery in video streams |
 | **[QMLab](https://github.com/alawein/QAPlibria)** | [qmlab.online](https://qmlab.online) | Quadratic Assignment Problem optimization library |
 | **[SimCore](https://github.com/alawein/MeatheadPhysicist)** | [simcore.dev](https://simcore.dev) | Computational physics simulations |
 | **[Shared Utils](https://github.com/alawein/shared-utils)** | [shared-utils.vercel.app](https://shared-utils.vercel.app) | Shared AI/ML utilities across projects |
@@ -252,7 +252,7 @@ Decisions reversed. Progress lost.
 | | | |
 |:---:|:---:|:---:|
 | [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=for-the-badge&logo=safari&logoColor=white)](https://meshal.ai) | [![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=for-the-badge&logo=atom&logoColor=8B5CF6)](https://morphism.systems) | [![GitHub](https://img.shields.io/badge/alawein-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alawein) |
-| [![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai) | [![Scholar](https://img.shields.io/badge/Google_Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) | [![Berkeley](https://img.shields.io/badge/meshal@berkeley.edu-003262?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iMTgiPvCfjoA8L3RleHQ+PC9zdmc+&logoColor=white)](mailto:meshal@berkeley.edu) |
+| [![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:contact@meshal.ai) | [![Scholar](https://img.shields.io/badge/Google_Scholar-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ) | [![Berkeley](https://img.shields.io/badge/contact@meshal.ai-003262?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHRleHQgeT0iMTgiIGZvbnQtc2l6ZT0iMTgiPvCfjoA8L3RleHQ+PC9zdmc+&logoColor=white)](mailto:contact@meshal.ai) |
 
 </div>
 

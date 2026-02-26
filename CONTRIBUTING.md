@@ -1,3 +1,15 @@
+---
+title: Contributing Guide
+description: Contribution guidelines and development workflow for the alawein organization
+last_updated: 2026-02-26
+category: governance
+audience: contributors
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [governance, contributing, workflow, development]
+---
+
 # Contributing Guide (Solo High-Velocity)
 
 This repo is currently a lightweight scaffold. Follow these guardrails to keep `main` clean and

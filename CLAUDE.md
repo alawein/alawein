@@ -1,3 +1,15 @@
+---
+title: CLAUDE.md - Repository Documentation
+description: Repository-specific documentation and governance for AI agents working in the alawein organization
+last_updated: 2026-02-26
+category: documentation
+audience: ai-agents
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [documentation, governance, ai-agents, claude, morphism]
+---
+
 # CLAUDE.md - `alawein` Organization Repository
 
 > **Repository profile + governance templates** | **SSOT**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible

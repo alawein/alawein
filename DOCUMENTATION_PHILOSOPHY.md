@@ -1,8 +1,18 @@
+---
+title: Morphism Documentation Philosophy
+description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
+last_updated: 2026-02-26
+category: documentation
+audience: contributors
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [documentation, philosophy, style-guide, morphism, principles]
+---
+
 # Morphism Documentation Philosophy
 
 *A unified aesthetic for mathematician • physicist • devops engineer • AI researcher*
-
----
 
 ## Core Principles
 

@@ -1,3 +1,15 @@
+---
+title: Repository Workflow
+description: Branch model, commit patterns, and deployment flow for the alawein organization
+last_updated: 2026-02-26
+category: governance
+audience: contributors
+status: active
+author: Morphism Systems LLC
+version: 1.0.0
+tags: [governance, workflow, branching, deployment, git]
+---
+
 # Morphism Systems (alawein) Repository Workflow (Solo, High-Velocity)
 
 > **Brand note:** The `alawein` GitHub organization is operated by Morphism Systems LLC. Canonical ecosystem docs live in the Morphism Framework monorepo:

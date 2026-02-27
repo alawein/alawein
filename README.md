@@ -59,7 +59,7 @@ Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierar
 
 **[Morphism Systems](https://morphism.systems)**
 
-Governed software kernel framework. 42 tenets, AI-driven development governance.
+Categorical governance framework. 7 invariants, 10 tenets, AI-driven development governance.
 
 `TypeScript` `React` `Python`
 
@@ -104,6 +104,73 @@ Design audit & accessibility platform.
 </td>
 </tr>
 </table>
+
+---
+
+## Published Packages
+
+<table>
+<tr>
+<th>Package</th>
+<th>Description</th>
+<th>Version</th>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/cli"><code>@morphism-systems/cli</code></a></td>
+<td>Governance CLI — scaffold, validate, score, heal</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/cli?style=flat-square&color=8B5CF6" alt="npm"/></td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/mcp-server"><code>@morphism-systems/mcp-server</code></a></td>
+<td>MCP server for AI agent governance</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/mcp-server?style=flat-square&color=8B5CF6" alt="npm"/></td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/agentic-math"><code>@morphism-systems/agentic-math</code></a></td>
+<td>MCP math computation server</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/agentic-math?style=flat-square&color=8B5CF6" alt="npm"/></td>
+</tr>
+<tr>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
+<td>One-command installer for all tools</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
+</tr>
+<tr>
+<td><a href="https://pypi.org/project/morphism/"><code>morphism</code> (PyPI)</a></td>
+<td>Python category theory engine</td>
+<td><img src="https://img.shields.io/pypi/v/morphism?style=flat-square&color=8B5CF6" alt="pypi"/></td>
+</tr>
+</table>
+
+---
+
+## Governance Model
+
+Every project follows the **morphism tier model**, scaffolded via `npx @morphism-systems/cli scaffold tier <n>`:
+
+| Tier | Scope | Stack | Standards |
+|:----:|-------|-------|-----------|
+| **1** | Web apps | TypeScript strict, React, Vite | Auto-deploy, Tailwind, CI |
+| **2** | Research | Python 3.11+, mypy strict | >90% coverage, reproducible |
+| **3** | Governance | Multi-language monorepo | Kernel invariants, drift detection |
+
+---
+
+<details>
+<summary><strong>Research & Scientific Computing</strong></summary>
+<br/>
+
+| Project | Domain |
+|---------|--------|
+| [qmatsim](https://github.com/alawein/qmatsim) | Quantum material simulation |
+| [qmlab](https://github.com/alawein/qmlab) | Quantum mechanics lab tools |
+| [qubeml](https://github.com/alawein/qubeml) | Quantum ML experiments |
+| [simcore](https://github.com/alawein/simcore) | Scientific simulation core |
+| [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
+| [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
+| [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
+
+</details>
 
 ---
 

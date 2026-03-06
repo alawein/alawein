@@ -19,4 +19,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-- Initial repository scaffold and governance docs
+## [2.0.0] — 2026-03-06
+
+### Added
+- Workspace standardization (P1-P20) across all 21 repos (#58)
+- HackerRank.ipynb problem-solving notebook
+- RevisionNotebook.ipynb for revision and prep
+- Canonical governance files with YAML frontmatter (SSOT.md, cross-links)
+- npm packages, governance model, and research repos
+
+### Changed
+- Rewrote GitHub profile README: AI Research Engineer focus with real projects and tech stack
+- Updated profile README and cleaned submodule refs

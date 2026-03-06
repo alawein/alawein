@@ -197,3 +197,6 @@ Pull requests are validated for:
 
 *Last Updated: 2025-12-28 | Version: 1.0.0 | Status: Active*
 
+## Governance
+See [AGENTS.md](AGENTS.md) for rules. See [SSOT.md](SSOT.md) for current state.
+

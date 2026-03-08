@@ -1,7 +1,7 @@
 ---
 title: Repository Workflow
 description: Branch model, commit patterns, and deployment flow for the alawein organization
-last_updated: 2026-02-26
+last_updated: 2026-03-06
 category: governance
 audience: contributors
 status: active
@@ -84,6 +84,7 @@ release/* (optional) ---------> tag -> main
 ## Minimal Release Policy
 
 - Create lightweight changelog entry in PR description.
+- Draft release notes using `docs/governance/changelog-entry.md` before updating `CHANGELOG.md`.
 - Tag after merge when user-facing behavior changes.
 
 ## Tooling Alignment (from ecosystem guides)
@@ -92,6 +93,8 @@ release/* (optional) ---------> tag -> main
 - Preserve secrets: never commit .env or keys.
 - Prefer TypeScript strictness and linting; no dangerous patterns (`eval`, unsafe HTML) without
   sanitization.
+- Use `docs/governance/workspace-standardization.md` as the active migration contract for workspace
+  naming, package namespace changes, and stack-aware directory normalization.
 
 ## Branch Protection & CI (recommended)
 
@@ -137,6 +140,15 @@ release/* (optional) ---------> tag -> main
 
 - README section: workflow summary + branch naming table.
 - `.github/workflows/ci.yml`: minimal lint/test (placeholder now) for solo velocity.
+
+## Workspace Migration
+
+- Safe support-directory renames can be applied at the workspace root when they do not conflict with
+  tool-discovered semantics.
+- `.github/` is exempt from underscore-prefix renaming until automation/path consumers are fully
+  audited.
+- Repository-root renames and shared package namespace changes must follow the staged plan in
+  `docs/governance/workspace-standardization.md`.
 - Optional: `docs/governance/workflow.md` (this file) as the living source.
 
 ## Future Enhancements

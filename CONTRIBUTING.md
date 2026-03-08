@@ -21,6 +21,7 @@ moving fast.
 - Local workspace standards (when working from the full Morphism workspace): `../AGENTS.md`
 - Workflow source: [`docs/governance/workflow.md`](docs/governance/workflow.md)
 - Local documentation contract: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- Clean-slate guide: [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
 
 ## Branching
 
@@ -36,6 +37,16 @@ moving fast.
 - Use conventional commits: `type(scope): subject` (e.g., `feat(api): add pagination`)
 - Small, frequent commits; keep unrelated changes out of the same commit
 - No secrets, tokens, or .env files ever
+
+## Working Tree Hygiene
+
+- Keep the active commit focused; do not mix unrelated notebooks, assets, or
+  template churn into governance changes.
+- Use path-scoped stashes for intentional but not-yet-ready work.
+- Move intentional notebook and asset edits to a dedicated branch when they do
+  not belong to the current change.
+- Follow [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
+  when you need a clean slate without losing work.
 
 ## PRs (self-review checklist)
 

@@ -22,6 +22,8 @@ This repository contains organization-level materials and governance notes for t
 - Local documentation contract:
   [`documentation-contract.md`](./governance/documentation-contract.md)
 - Governance workflow: [`workflow.md`](./governance/workflow.md)
+- Clean-slate workflow:
+  [`clean-slate-workflow.md`](./governance/clean-slate-workflow.md)
 - Changelog authoring:
   [`changelog-entry.md`](./governance/changelog-entry.md)
 - Workspace standardization:

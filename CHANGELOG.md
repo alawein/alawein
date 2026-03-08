@@ -23,6 +23,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Added a repository-local documentation contract and validator script for
   freshness, frontmatter, BOM, and local-link enforcement.
+- Added a clean-slate workflow guide for stash hygiene, branch recovery, and
+  notebook or asset separation.
 
 ### Changed
 

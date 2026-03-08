@@ -40,6 +40,17 @@ tags: [governance, workflow, branching, deployment, git]
 - Squash on merge for `fast/*` and most `feat/*` to keep `main` clean.
 - Merge commits allowed for `hotfix/*` or multi-commit work needing history.
 
+### Clean-Slate Hygiene
+
+- If unrelated local edits remain after a focused commit, stash or branch them
+  instead of mixing them into the current PR.
+- Prefer path-scoped stashes over whole-repo stashes when only a few files are
+  unrelated.
+- Treat notebooks and asset files as their own change surface when they create
+  large serialized diffs.
+- Use [`clean-slate-workflow.md`](clean-slate-workflow.md) as the detailed
+  operating guide.
+
 ### Merge Strategy
 
 - Default: squash merge to `main`.

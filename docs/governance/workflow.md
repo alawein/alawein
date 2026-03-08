@@ -1,7 +1,7 @@
 ---
 title: Repository Workflow
 description: Branch model, commit patterns, and deployment flow for the alawein organization
-last_updated: 2026-03-06
+last_updated: 2026-03-08
 category: governance
 audience: contributors
 status: active
@@ -13,8 +13,8 @@ tags: [governance, workflow, branching, deployment, git]
 # Morphism Systems (alawein) Repository Workflow (Solo, High-Velocity)
 
 > **Brand note:** The `alawein` GitHub organization is operated by Morphism Systems LLC. Canonical ecosystem docs live in the Morphism Framework monorepo:
-> - https://github.com/alawein/morphism-framework
-> - https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
+> - `morphism-framework/`
+> - `morphism-framework/docs/MORPHISM_VISION.md`
 
 ## Branch Model
 
@@ -78,7 +78,9 @@ release/* (optional) ---------> tag -> main
 ## Force-Merge Checklist
 
 1. CI failure is a known flake or external outage.
-2. Code diff reviewed locally; `npm test`/`npm run lint` (or project equivalent) run locally.
+2. Diff reviewed locally and the docs-only checks run locally:
+   `./scripts/validate-doc-contract.sh --full` and markdown lint for managed
+   docs.
 3. PR description documents why force merge is necessary and risks.
 
 ## Minimal Release Policy
@@ -89,10 +91,12 @@ release/* (optional) ---------> tag -> main
 
 ## Tooling Alignment (from ecosystem guides)
 
-- Respect AI/development settings from root AGENTS and AI_DEVELOPMENT_SETTINGS_GUIDE.
+- Respect workspace-level `AGENTS.md` when operating from the full workspace.
+- Treat any workspace `AI_DEVELOPMENT_SETTINGS_GUIDE` as supplemental only if it
+  actually exists at the workspace root.
 - Preserve secrets: never commit .env or keys.
-- Prefer TypeScript strictness and linting; no dangerous patterns (`eval`, unsafe HTML) without
-  sanitization.
+- This repo does not own an application runtime. Do not introduce Node build or
+  artifact assumptions unless the repo actually gains a package surface.
 - Use `docs/governance/workspace-standardization.md` as the active migration contract for workspace
   naming, package namespace changes, and stack-aware directory normalization.
 
@@ -101,7 +105,11 @@ release/* (optional) ---------> tag -> main
 - Protect `main`: require PRs, status checks, and up-to-date branches; allow squash + merge-commit
   (for hotfix/release), disable rebase.
 - CODEOWNERS applies to all files; require review if desired.
-- CI should run lint, type-check, tests (Node), and ruff/pytest when Python is present.
+- `.github/workflows/ci.yml` is the fast gate: local contract validation plus
+  markdown lint for managed docs.
+- `.github/workflows/docs-validation.yml` is the slower documentation audit:
+  full contract validation, legacy-domain enforcement, and external link checks
+  for governance docs.
 
 ## Security & MCP
 
@@ -134,12 +142,14 @@ release/* (optional) ---------> tag -> main
 2. Rebase/squash open spikes into `fast/*` and merge or close.
 3. Enable branch protection on `main` (require PR + at least basic CI checks).
 4. Adopt naming rules for new branches; document in README.
-5. Add CI (lint/test placeholder) to enforce basic quality gates.
+5. Keep the docs-only CI contract truthful as workflows evolve.
 
-## Governance Artifacts to Add (this repo)
+## Governance Artifacts in This Repo
 
-- README section: workflow summary + branch naming table.
-- `.github/workflows/ci.yml`: minimal lint/test (placeholder now) for solo velocity.
+- [`docs/governance/documentation-contract.md`](documentation-contract.md) is
+  the local source of truth for doc classes, exemptions, and freshness rules.
+- [`../../scripts/validate-doc-contract.sh`](../../scripts/validate-doc-contract.sh)
+  is the local validation entrypoint.
 
 ## Workspace Migration
 
@@ -154,5 +164,6 @@ release/* (optional) ---------> tag -> main
 ## Future Enhancements
 
 - Add release workflow to auto-tag and draft release notes.
-- Add doc validation if documentation footprint grows.
-- Add dependency audit workflow (weekly) once package manager is set.
+- Add anchor-level markdown link validation if local link volume grows.
+- Add dependency audit workflow only if this repo gains an actual package
+  surface.

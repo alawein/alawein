@@ -1,7 +1,7 @@
 ---
 title: Morphism Documentation Philosophy
 description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
-last_updated: 2026-02-26
+last_updated: 2026-03-08
 category: documentation
 audience: contributors
 status: active
@@ -64,7 +64,7 @@ tags: [documentation, philosophy, style-guide, morphism, principles]
 ```
 Energy/State flows through:
   Input → Transform A → Transform B → Output
-  
+
 Invariants preserved:
   ✓ Property X (demonstrated by test Y)
   ✓ Property Z (enforced by architecture A)
@@ -189,7 +189,7 @@ graph TD
 
 ### "Before" (Generic Documentation)
 ```
-The governance tool analyzes code and finds problems. It uses AI to understand 
+The governance tool analyzes code and finds problems. It uses AI to understand
 your codebase structure. You can fix issues and deploy with confidence.
 ```
 
@@ -197,11 +197,11 @@ your codebase structure. You can fix issues and deploy with confidence.
 ```
 ## Theorem: Governance Through Structural Invariance
 
-**Claim**: Policy-as-code enforcement preserves architectural invariants 
+**Claim**: Policy-as-code enforcement preserves architectural invariants
 while permitting local optimization.
 
-**Definition**: We extract a language-agnostic IR (Intermediate Representation) 
-that preserves all structural relationships but abstracts syntax. This IR is 
+**Definition**: We extract a language-agnostic IR (Intermediate Representation)
+that preserves all structural relationships but abstracts syntax. This IR is
 deterministic—same source always produces identical IR (verified via SHA256).
 
 **Observable Flow**:
@@ -216,9 +216,9 @@ Violations → [Baseline Comparison] → Drift Report
 ✓ Determinism: f(source) ≡ f(source) always
 ✓ Language agnostic: Same policy works for TS and Python
 
-**Application**: Use this to enforce naming conventions, dependency constraints, 
-and documentation standards. The system is composable—combine policies like 
-lego blocks. Extend to new languages by implementing a new extractor; policies 
+**Application**: Use this to enforce naming conventions, dependency constraints,
+and documentation standards. The system is composable—combine policies like
+lego blocks. Extend to new languages by implementing a new extractor; policies
 remain unchanged.
 ```
 
@@ -255,7 +255,7 @@ remain unchanged.
 
 **Not This:**
 ```
-"The tool is really powerful and helps with your code governance needs. 
+"The tool is really powerful and helps with your code governance needs.
 It's super fast and easy to use. Just run it and watch the magic happen!"
 ```
 

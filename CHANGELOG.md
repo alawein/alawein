@@ -1,7 +1,7 @@
 ---
 title: Changelog
 description: Version history and notable changes to the alawein organization repository
-last_updated: 2026-02-26
+last_updated: 2026-03-08
 category: documentation
 audience: all
 status: active
@@ -19,8 +19,18 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added a repository-local documentation contract and validator script for
+  freshness, frontmatter, BOM, and local-link enforcement.
+
 ### Changed
+
 - Updated the shared package migration guidance to reflect the active consumer pattern: in-workspace repositories now resolve `@alawein/*` packages through local `devkit` `file:` references, with refreshed installs across the first consumer batch.
+- Replaced the placeholder Node build assumptions with docs-only CI and a
+  slower documentation audit workflow.
+- Updated canonical governance docs to document explicit GitHub-file exemptions
+  and local validation commands.
 
 ## [2.0.4] — 2026-03-07
 

@@ -1,7 +1,7 @@
 ---
 title: Code of Conduct
 description: Community standards and behavior expectations for the alawein organization
-last_updated: 2026-02-26
+last_updated: 2026-03-08
 category: governance
 audience: all
 status: active

@@ -1,7 +1,7 @@
 ---
 title: Contributing Guide
 description: Contribution guidelines and development workflow for the alawein organization
-last_updated: 2026-02-26
+last_updated: 2026-03-08
 category: governance
 audience: contributors
 status: active
@@ -17,9 +17,10 @@ moving fast.
 
 ## References
 
-- Canonical SSOT (Morphism Bible): https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
+- Canonical SSOT (Morphism Bible): `morphism-framework/docs/morphism-bible`
 - Local workspace standards (when working from the full Morphism workspace): `../AGENTS.md`
-- Workflow source: docs/governance/workflow.md
+- Workflow source: [`docs/governance/workflow.md`](docs/governance/workflow.md)
+- Local documentation contract: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 
 ## Branching
 
@@ -46,13 +47,21 @@ moving fast.
 
 ## CI & Quality
 
-- Current workflow: .github/workflows/ci.yml (placeholder lint/test)
-- Replace placeholders with real lint/test/build commands once code is added
-- Run the relevant checks locally before opening a PR
+- Fast gate: `.github/workflows/ci.yml` validates the local documentation
+  contract and lints managed markdown.
+- Audit workflow: `.github/workflows/docs-validation.yml` runs the full contract
+  check, markdown lint, legacy-domain enforcement, and external link checks for
+  governance docs.
+- For this repo, "relevant checks" means documentation checks only. There is no
+  application build, package install, or artifact pipeline to run locally.
+- Run these before opening a PR:
+  - `./scripts/validate-doc-contract.sh --full`
+  - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md DOCUMENTATION_PHILOSOPHY.md docs/README.md docs/governance/*.md`
 
 ## Documentation
 
-- Keep README and docs/governance/workflow.md in sync with workflow changes
+- Keep `README.md`, `docs/governance/workflow.md`, and
+  `docs/governance/documentation-contract.md` in sync with workflow changes
 - Mirror any future wiki content into `/docs` to avoid drift
 
 ## Releases

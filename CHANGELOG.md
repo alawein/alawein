@@ -29,6 +29,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   operations, feature lifecycle, review, merge, and release flow.
 - Added a workspace resource map defining the canonical home for governance,
   shared packages, design tokens, and cross-repo guides.
+- Added a repo-by-repo workspace layout audit so stack-aware standardization
+  rules now have concrete adoption status and priority cleanup targets.
 
 ### Changed
 

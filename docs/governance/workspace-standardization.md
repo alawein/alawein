@@ -108,6 +108,8 @@ See `docs/governance/package-namespace-matrix.md` for the current consumer and d
 
 See `docs/governance/workspace-resource-map.md` for the canonical home of each
 shared resource class.
+See `docs/governance/workspace-layout-audit.md` for the current repo-by-repo
+layout alignment status.
 
 ## Documentation and Writing Standards
 

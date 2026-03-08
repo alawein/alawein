@@ -55,6 +55,7 @@ This repository contains organization-level materials and governance notes for t
 ## Workspace migration
 
 - [`workspace-standardization.md`](./governance/workspace-standardization.md)
+- [`workspace-layout-audit.md`](./governance/workspace-layout-audit.md)
 - [`workspace-rename-matrix.md`](./governance/workspace-rename-matrix.md)
 - [`package-namespace-matrix.md`](./governance/package-namespace-matrix.md)
 - [`workspace-resource-map.md`](./governance/workspace-resource-map.md)

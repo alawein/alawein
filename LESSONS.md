@@ -1,7 +1,7 @@
 ---
 type: lessons
 authority: observed
-last-updated:  2026-03-08
+last-updated: 2026-03-08
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -19,6 +19,7 @@ audience: [ai-agents, contributors, future-self]
 - **Git hygiene separated from merge and review policy**: Stash cleanup, push rules, and branch recovery are operational mechanics, while review quality and merge approval are policy decisions and should not be collapsed into one guide.
 - **Explicit stash and branch-recovery patterns**: The same recovery questions recur often enough that the docs should explain `apply`, `pop`, `drop`, and path-scoped stash usage in plain language.
 - **One canonical home per shared resource class**: Workspace migrations stay tractable when governance, shared packages, and cross-repo guides each have a single documented owner instead of overlapping repos.
+- **Standards need an audit companion**: A stack-aware layout rule is much easier to apply when there is a repo-by-repo audit showing which repos are aligned, mixed, or intentionally exceptional.
 
 ## Anti-Patterns
 

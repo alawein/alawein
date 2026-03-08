@@ -1,36 +1,41 @@
 ---
 title: Contributing Guide
 description: Contribution guidelines and development workflow for the alawein organization
-last_updated: 2026-03-08
 category: governance
 audience: contributors
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
+last_updated: 2026-03-08
 tags: [governance, contributing, workflow, development]
 ---
 
-# Contributing Guide (Solo High-Velocity)
+# Contributing Guide
 
-This repo is currently a lightweight scaffold. Follow these guardrails to keep `main` clean and
-moving fast.
+This repo is a docs-only organization and governance repository. Use this guide
+for contributor guardrails, then follow the task-specific governance docs for
+the actual operating details.
 
 ## References
 
 - Canonical SSOT (Morphism Bible): `morphism-framework/docs/morphism-bible`
 - Local workspace standards (when working from the full Morphism workspace): `../AGENTS.md`
 - Workflow source: [`docs/governance/workflow.md`](docs/governance/workflow.md)
+- Operating model: [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
 - Local documentation contract: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Clean-slate guide: [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
 
 ## Branching
 
-- `main`: protected; only PR merges or documented emergency force merges
-- `fast/*`: spikes/prototypes (<24h); squash to `main` or delete
-- `feat/*`, `fix/*`: scoped work; squash preferred, merge-commit allowed when chronology matters
-- `hotfix/*`: urgent fixes; merge-commit allowed
-- `release/*`: optional pre-tag stabilization
-- Naming: kebab-case, <= 40 chars, max 4 segments (e.g., `feat/auth-oauth`)
+- `main`: protected; use PRs instead of direct pushes
+- `fast/*`: spikes or prototypes
+- `feat/*`, `fix/*`: scoped reviewable work
+- `hotfix/*`: urgent fixes
+- `release/*`: optional release stabilization
+- Naming: kebab-case, <= 40 chars, max 4 segments
+
+Detailed branch, sync, push, stash, and recovery guidance lives in
+[`docs/governance/git-operations.md`](docs/governance/git-operations.md).
 
 ## Commits
 
@@ -38,23 +43,36 @@ moving fast.
 - Small, frequent commits; keep unrelated changes out of the same commit
 - No secrets, tokens, or .env files ever
 
+## Task-Specific Guides
+
+- choose the right branch and lifecycle:
+  [`docs/governance/feature-lifecycle.md`](docs/governance/feature-lifecycle.md)
+- review your branch:
+  [`docs/governance/review-playbook.md`](docs/governance/review-playbook.md)
+- decide how to merge:
+  [`docs/governance/merge-policy.md`](docs/governance/merge-policy.md)
+- draft releases and changelog updates:
+  [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
+
 ## Working Tree Hygiene
 
-- Keep the active commit focused; do not mix unrelated notebooks, assets, or
-  template churn into governance changes.
+- Keep the active branch focused.
+- Do not mix unrelated notebooks, assets, or template churn into governance
+  changes.
 - Use path-scoped stashes for intentional but not-yet-ready work.
-- Move intentional notebook and asset edits to a dedicated branch when they do
-  not belong to the current change.
-- Follow [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
+- Follow [`docs/governance/git-operations.md`](docs/governance/git-operations.md)
+  and [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
   when you need a clean slate without losing work.
 
-## PRs (self-review checklist)
+## PR Expectations
 
-- Scope <= ~300 lines diff
-- Branch naming follows the model above
-- CI green or flake noted; if force merge is needed, document why and the risk
-- Docs updated when behavior or workflows change
-- Tests added/adjusted when code exists
+- keep the scope reviewable
+- note the validation you ran
+- update docs when behavior or workflow changes
+- document risk when the branch is not low-risk
+
+Use [`docs/governance/review-playbook.md`](docs/governance/review-playbook.md)
+for the full author and reviewer checklist.
 
 ## CI & Quality
 
@@ -71,14 +89,16 @@ moving fast.
 
 ## Documentation
 
-- Keep `README.md`, `docs/governance/workflow.md`, and
-  `docs/governance/documentation-contract.md` in sync with workflow changes
+- Keep `README.md`, `docs/README.md`, and the relevant guide under
+  `docs/governance/` in sync with workflow changes
 - Mirror any future wiki content into `/docs` to avoid drift
 
 ## Releases
 
-- Tag milestones as `v{major}.{minor}.{patch}` when code ships
-- Maintain CHANGELOG.md using Keep a Changelog format
+- Use `v{major}.{minor}.{patch}` when the repo hits a meaningful milestone
+- Maintain `CHANGELOG.md` using Keep a Changelog format
+- Follow [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
+  for tag and changelog decisions
 
 ## Security & Safety
 

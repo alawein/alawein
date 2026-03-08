@@ -1,12 +1,12 @@
 ---
 title: Changelog
 description: Version history and notable changes to the alawein organization repository
-last_updated: 2026-03-08
 category: documentation
 audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
+last_updated: 2026-03-08
 tags: [changelog, version-history, releases]
 ---
 
@@ -25,6 +25,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   freshness, frontmatter, BOM, and local-link enforcement.
 - Added a clean-slate workflow guide for stash hygiene, branch recovery, and
   notebook or asset separation.
+- Added a full governance doc suite covering the operating model, Git
+  operations, feature lifecycle, review, merge, and release flow.
 
 ### Changed
 
@@ -33,6 +35,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   slower documentation audit workflow.
 - Updated canonical governance docs to document explicit GitHub-file exemptions
   and local validation commands.
+- Refactored overview docs into a hub-and-spoke navigation model so task
+  routing lives in `docs/README.md`, `workflow.md`, and the new specialized
+  governance guides.
 
 ## [2.0.4] — 2026-03-07
 

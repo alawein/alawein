@@ -1,8 +1,8 @@
 ---
 type: guide
 authority: canonical
+last-verified:  2026-03-08
 audience: [ai-agents, contributors]
-last-verified: 2026-03-08
 ---
 
 # CLAUDE.md — alawein
@@ -31,6 +31,11 @@ Local documentation rules are defined in
 [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
 That contract is the authoritative source for document classes, freshness
 fields, naming rules, exemptions, and CI truthfulness in this repo.
+
+The repo's workflow guidance is now organized as a governance suite under
+`docs/governance/`, with `workflow.md` as the stable overview and task-specific
+guides for Git operations, feature flow, review, merge, release, and
+clean-slate handling.
 
 - **SSOT hub (Morphism Bible)**:
   `morphism-framework/docs/morphism-bible`
@@ -63,8 +68,16 @@ alawein/
   docs/
     README.md
     governance/
+      operating-model.md
       documentation-contract.md
       workflow.md
+      git-operations.md
+      feature-lifecycle.md
+      review-playbook.md
+      merge-policy.md
+      release-playbook.md
+      clean-slate-workflow.md
+      changelog-entry.md
   .github/
     ISSUE_TEMPLATE/
     workflows/
@@ -118,6 +131,25 @@ alawein/
 - Internal markdown links must resolve locally.
 - Root community filenames remain conventional; docs under `docs/governance/`
   use kebab-case.
+
+### Governance Suite
+
+- **Operating model**:
+  [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
+- **Workflow overview**:
+  [`docs/governance/workflow.md`](docs/governance/workflow.md)
+- **Git operations**:
+  [`docs/governance/git-operations.md`](docs/governance/git-operations.md)
+- **Feature lifecycle**:
+  [`docs/governance/feature-lifecycle.md`](docs/governance/feature-lifecycle.md)
+- **Review playbook**:
+  [`docs/governance/review-playbook.md`](docs/governance/review-playbook.md)
+- **Merge policy**:
+  [`docs/governance/merge-policy.md`](docs/governance/merge-policy.md)
+- **Release playbook**:
+  [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
+- **Clean-slate workflow**:
+  [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
 
 ---
 
@@ -188,6 +220,7 @@ Scheduled and docs-focused audits additionally validate:
 - **Documentation governance**:
   `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
 - **Local documentation contract**: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- **Local operating model**: [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
 - **Local workspace instructions** (only when working from the full workspace): `../AGENTS.md`
 
 ---

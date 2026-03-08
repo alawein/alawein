@@ -22,3 +22,5 @@ This repository contains organization-level materials and governance notes for t
 - Ecosystem docs (SSOT): https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
 - Ecosystem vision: https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
 - Governance workflow: `docs/governance/workflow.md`
+- Changelog authoring: `docs/governance/changelog-entry.md`
+- Workspace standardization: `docs/governance/workspace-standardization.md`

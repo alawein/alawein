@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-08
+last_updated:  2026-03-08
 tags: [changelog, version-history, releases]
 ---
 
@@ -27,6 +27,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   notebook or asset separation.
 - Added a full governance doc suite covering the operating model, Git
   operations, feature lifecycle, review, merge, and release flow.
+- Added a workspace resource map defining the canonical home for governance,
+  shared packages, design tokens, and cross-repo guides.
 
 ### Changed
 
@@ -38,6 +40,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Refactored overview docs into a hub-and-spoke navigation model so task
   routing lives in `docs/README.md`, `workflow.md`, and the new specialized
   governance guides.
+- Refreshed the workspace rename matrix to reflect the observed root inventory,
+  documented `aw-devkit/` retirement into `devkit/`, and clarified the split
+  between `alawein/`, `devkit/`, and `docs/`.
 
 ## [2.0.4] — 2026-03-07
 

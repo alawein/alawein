@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-08
+last_updated:  2026-03-08
 tags: [morphism-systems, documentation, governance, index]
 related:
   - ../README.md
@@ -57,6 +57,7 @@ This repository contains organization-level materials and governance notes for t
 - [`workspace-standardization.md`](./governance/workspace-standardization.md)
 - [`workspace-rename-matrix.md`](./governance/workspace-rename-matrix.md)
 - [`package-namespace-matrix.md`](./governance/package-namespace-matrix.md)
+- [`workspace-resource-map.md`](./governance/workspace-resource-map.md)
 
 ## Archive
 

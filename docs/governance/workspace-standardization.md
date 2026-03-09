@@ -1,7 +1,7 @@
 ---
 title: Workspace Standardization Guide
 description: Canonical migration contract for root naming, stack-aware directory layouts, shared package namespaces, and consistency refactors across the alawein workspace
-last_updated:  2026-03-08
+last_updated:  2026-03-09
 category: governance
 audience: contributors
 status: active
@@ -75,8 +75,15 @@ This document is the active contract for workspace-wide cleanup and standardizat
   - `docs/`
   - `notebooks/`
   - `scripts/`
-- Research repositories may retain specialized domain folders, but new additions should align with
-  the structure above where practical.
+- General-purpose libraries should prefer the `src/<package_name>/` boundary.
+- Research and HPC repositories may use a rooted `<package_name>/` layout when:
+  - the package root is singular and clearly documented
+  - the repo couples code with large domain-specific assets or workflow tooling
+  - the specialized surfaces such as `scripts/`, `siesta/`, `lammps/`, or
+    `notebooks/` are intentional and documented
+- Research repositories may retain specialized domain folders, but new additions
+  should align with the documented repo-specific structure rather than creating
+  parallel package roots.
 
 ## Shared Package and Theme Rules
 

@@ -1,7 +1,7 @@
 ---
 title: Workspace Layout Audit
 description: Repo-by-repo audit of layout alignment against the alawein workspace stack-aware standardization rules
-last_updated: 2026-03-08
+last_updated: 2026-03-09
 category: governance
 audience: contributors
 status: active
@@ -53,13 +53,13 @@ it.
 | `attributa/` | Vite SPA: `src/`, `tests/`, `docs/`, `scripts/`, `public/` | aligned | Has the standard Vite app surfaces plus testing and ops directories | Maintain as-is |
 | `gainboy/` | Vite SPA | partial | `src/` and `tests/` are healthy, but there is no dedicated `docs/` or `scripts/` surface yet | Add `docs/` when repo-specific guidance grows |
 | `llmworks/` | Vite SPA | aligned | Clear `src/`, `tests/`, `docs/`, and `public/` structure | Maintain as-is |
-| `meshal-web/` | Vite SPA | mixed | Uses Vite but also carries `src/app/` and `src/pages/`, which suggests mixed routing models | Decide whether this is route-module Vite or should converge on one routing convention |
+| `meshal-web/` | Vite SPA | aligned | React Router routes are now explicitly standardized under `src/pages/`, with `src/app/` reserved for app-shell styles and repo-local `docs/` and `scripts/` surfaces in place | Keep route and docs validators aligned with the repo contract |
 | `qmlab/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
 | `rounaq-atelier/` | Vite SPA | aligned | Healthy Vite-style app layout with `src/`, `tests/`, `docs/`, and `scripts/` | Maintain as-is |
 | `simcore/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
 | `bolts/` | Next.js app | partial | Has `src/app/`, `src/components/`, `src/lib/`, and tests, but also a root `packages/` surface | Confirm whether `packages/` is intentional or should be collapsed into repo-local modules |
 | `scribd/` | Next.js app | aligned | Uses `app/`, `components/`, `lib/`, `public/`, and tests in the expected Next shape | Maintain as-is |
-| `repz/` | hybrid JS app | mixed | Simultaneously carries Next config, Vite config, `src/app/`, `src/pages/`, `backend/`, and root `styles/` | Run a focused structure audit before any move or rename |
+| `repz/` | hybrid JS app | partial | The canonical Vite + React Router runtime is now documented, but frozen Next-era artifacts remain in the tree | Keep new work on the Vite surfaces and remove legacy Next files once the broader worktree is stable |
 | `shared-utils/` | package repo | partial | Clean minimal package layout with `src/`, but no `tests/` or `docs/` surface at root | Add `tests/` and `docs/` if package surface keeps growing |
 
 ## Python and Research Repos
@@ -77,14 +77,14 @@ it.
 
 ## Priority Cleanup Queue
 
-1. `repz/` — hybrid Next and Vite structure needs an explicit canonical layout
-   decision.
-2. `meshal-web/` — mixed `src/app/` and `src/pages/` should be converged on one
-   routing model.
-3. `qmatsim/` — lacks the standard `src/<package>/` Python boundary.
-4. `maglogic/` — `python/` versus `src/` needs a deliberate exception or
+1. `qmatsim/` — lacks the standard `src/<package>/` Python boundary.
+2. `maglogic/` — `python/` versus `src/` needs a deliberate exception or
    migration decision.
-5. `bolts/` — verify whether root `packages/` is a permanent structural choice.
+3. `bolts/` — verify whether root `packages/` is a permanent structural choice.
+4. `repz/` — canonical runtime is settled, but frozen Next-era files still need
+   a cleanup window after the dirty worktree stabilizes.
+5. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
+   guidance and tooling continue to expand.
 
 ## Rules for Follow-On Cleanup
 

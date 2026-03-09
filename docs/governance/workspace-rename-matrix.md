@@ -1,7 +1,7 @@
 ---
 title: Workspace Root Rename Matrix
 description: Current inventory of top-level workspace directories, their classification, and rename status for the alawein workspace migration
-last_updated: 2026-03-06
+last_updated:  2026-03-08
 category: governance
 audience: contributors
 status: active
@@ -17,10 +17,13 @@ This matrix tracks the current top-level workspace directories, their role, and 
 | Current name | Classification | Target name | Status | Notes |
 | --- | --- | --- | --- | --- |
 | `.github/` | Support directory | `.github/` | Deferred | Exempt until automation and instruction-path consumers are audited. |
+| `_gmail-ops/` | Support directory | `_gmail-ops/` | No change | Already underscore-prefixed local support workspace. |
+| `_neper/` | Support directory | `_neper/` | No change | Already underscore-prefixed local support workspace. |
 | `_0/` | Support directory | `_0/` | Implemented | Renamed from `0/` in the first cleanup pass. |
 | `_mypy_cache/` | Support directory | `_mypy_cache/` | Implemented | Renamed from `.mypy_cache/` in the first cleanup pass. |
 | `alawein/` | Repository | `alawein/` | No change | Already lowercase and stable. |
 | `attributa/` | Repository | `attributa/` | No change | Already lowercase and stable. |
+| `aw-devkit/` | Repository | retired into `devkit/` | In progress | Legacy design-system repo to be archived after references point to `devkit/`. |
 | `bolts/` | Repository | `bolts/` | No change | Already lowercase and stable. |
 | `devkit/` | Repository | `devkit/` | No change | Canonical shared-package source. |
 | `docs/` | Repository | `docs/` | No change | Already lowercase and stable. |
@@ -31,7 +34,7 @@ This matrix tracks the current top-level workspace directories, their role, and 
 | `maglogic/` | Repository | `maglogic/` | No change | Already lowercase and stable. |
 | `MeatheadPhysicist/` | Repository | `meatheadphysicist/` | Deferred | Remote still resolves as `MeatheadPhysicist`; finalize slug policy before renaming locally. |
 | `meshal-web/` | Repository | `meshal-web/` | No change | Already kebab-case. |
-| `QAPlibria/` | Repository | `qaplibria/` | Blocked | Remote slug is already `qaplibria`, but repeated local rename attempts are still blocked by an active workspace handle on Windows. |
+| `qaplibria/` | Repository | `qaplibria/` | No change | Local root now matches the lowercase canonical slug. |
 | `qmatsim/` | Repository | `qmatsim/` | No change | Already lowercase and stable. |
 | `qmlab/` | Repository | `qmlab/` | No change | Already lowercase and stable. |
 | `qubeml/` | Repository | `qubeml/` | No change | Already lowercase and stable. |

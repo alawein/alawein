@@ -44,6 +44,7 @@ PhD researcher at UC Berkeley (EECS, 2019–2025) specializing in ML systems, LL
 
 ## Active Projects
 
+<!-- SYNC:PROJECTS:START -->
 <table>
 <tr>
 <td align="center" width="33%">
@@ -103,12 +104,27 @@ Design audit & accessibility platform.
 
 </td>
 </tr>
+<tr>
+<td align="center" width="33%">
+
+**[Neper](https://github.com/alawein/neper)**
+
+Named entity extraction & processing pipeline with transformer models.
+
+`Python` `Transformers` `NLP`
+
+</td>
+<td align="center" width="33%"></td>
+<td align="center" width="33%"></td>
+</tr>
 </table>
+<!-- SYNC:PROJECTS:END -->
 
 ---
 
 ## Published Packages
 
+<!-- SYNC:PACKAGES:START -->
 <table>
 <tr>
 <th>Package</th>
@@ -136,11 +152,12 @@ Design audit & accessibility platform.
 <td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 <tr>
-<td><a href="https://pypi.org/project/morphism/"><code>morphism</code> (PyPI)</a></td>
+<td><a href="https://pypi.org/project/morphism/"><code>morphism</code></a></td>
 <td>Python category theory engine</td>
 <td><img src="https://img.shields.io/pypi/v/morphism?style=flat-square&color=8B5CF6" alt="pypi"/></td>
 </tr>
 </table>
+<!-- SYNC:PACKAGES:END -->
 
 ---
 
@@ -160,6 +177,7 @@ Every project follows the **morphism tier model**, scaffolded via `npx @morphism
 <summary><strong>Research & Scientific Computing</strong></summary>
 <br/>
 
+<!-- SYNC:RESEARCH:START -->
 | Project | Domain |
 |---------|--------|
 | [qmatsim](https://github.com/alawein/qmatsim) | Quantum material simulation |
@@ -169,6 +187,9 @@ Every project follows the **morphism tier model**, scaffolded via `npx @morphism
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
+| [neper](https://github.com/alawein/neper) | NLP entity extraction |
+| [MeatheadPhysicist](https://github.com/alawein/MeatheadPhysicist) | Physics research & writing |
+<!-- SYNC:RESEARCH:END -->
 
 </details>
 

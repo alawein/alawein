@@ -1,4 +1,4 @@
-name: CI - Lint & Build
+name: CI - Documentation Contract
 
 on:
   push:
@@ -7,30 +7,43 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  validate-contract:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint || echo "Lint script not found"
+          fetch-depth: 0
 
-  build:
+      - name: Validate documentation contract (push)
+        if: github.event_name == 'push'
+        env:
+          DOC_CONTRACT_BASE_REF: ${{ github.event.before }}
+        run: ./scripts/validate-doc-contract.sh --full
+
+      - name: Validate documentation contract (pull request)
+        if: github.event_name == 'pull_request'
+        run: ./scripts/validate-doc-contract.sh --changed-only "origin/${{ github.base_ref }}"
+
+  lint-managed-markdown:
     runs-on: ubuntu-latest
-    needs: lint
+    needs: validate-contract
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
-          retention-days: 7
+      - name: Lint managed markdown
+        run: |
+          npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc \
+            AGENTS.md \
+            CLAUDE.md \
+            CONTRIBUTING.md \
+            CODE_OF_CONDUCT.md \
+            SECURITY.md \
+            CHANGELOG.md \
+            SSOT.md \
+            LESSONS.md \
+            DOCUMENTATION_PHILOSOPHY.md \
+            docs/README.md \
+            docs/governance/*.md

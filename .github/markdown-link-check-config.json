@@ -1,0 +1,10 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^mailto:"
+    }
+  ],
+  "retryOn429": true,
+  "retryCount": 2,
+  "timeout": "20s"
+}

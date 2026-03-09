@@ -1,158 +1,83 @@
 ---
 title: Repository Workflow
 description: Branch model, commit patterns, and deployment flow for the alawein organization
-last_updated: 2026-03-06
 category: governance
 audience: contributors
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
+last_updated: 2026-03-08
 tags: [governance, workflow, branching, deployment, git]
 ---
 
-# Morphism Systems (alawein) Repository Workflow (Solo, High-Velocity)
+# Repository Workflow
 
-> **Brand note:** The `alawein` GitHub organization is operated by Morphism Systems LLC. Canonical ecosystem docs live in the Morphism Framework monorepo:
-> - https://github.com/alawein/morphism-framework
-> - https://github.com/alawein/morphism-framework/blob/main/docs/MORPHISM_VISION.md
+This is the stable high-level overview of how work moves through `alawein`.
+Use the linked specialist guides when you need detailed branch, review, merge,
+release, or clean-slate handling.
 
 ## Branch Model
 
-- `main`: protected, release-ready; only PR merges or documented emergency force merges.
-- `fast/*`: spike/prototype branches; <24h lifespan; squash merge to `main` or delete.
-- `feat/*` and `fix/*`: scoped work; small batches; squash or merge-commit allowed; rebase
-  discouraged.
-- `hotfix/*`: urgent production fixes; branch from `main`, fast-track tests, merge-commit allowed.
-- `release/*`: optional pre-tag stabilization when needed.
+- `main`: protected, PR-first, and release-ready
+- `fast/*`: short-lived spikes or discovery branches
+- `feat/*`: additive scoped work
+- `fix/*`: scoped fixes
+- `hotfix/*`: urgent changes that need fast handling
+- `release/*`: optional stabilization before tagging
 
-### Naming Rules
+### Naming
 
-- `fast/{ticket-or-topic}` (e.g., `fast/llm-prompt-spike`)
-- `feat/{scope}` (e.g., `feat/auth-oauth`)
-- `fix/{scope}` (e.g., `fix/cors-headers`)
-- `hotfix/{issue}` (e.g., `hotfix/console-error`)
-- Use kebab-case, max 4 path segments, <= 40 chars.
+- use kebab-case
+- branch from `main`
+- keep the branch name short and intent-revealing
+- stay within the documented taxonomy above
 
-### Commit Patterns
+## Merge Model
 
-- Use conventional commits: `type(scope): subject` (e.g., `feat(docs): add workflow guardrails`).
-- Prefer small, frequent commits; keep unrelated changes out of the same commit.
-- Squash on merge for `fast/*` and most `feat/*` to keep `main` clean.
-- Merge commits allowed for `hotfix/*` or multi-commit work needing history.
+- default strategy: squash merge
+- merge commits: allowed for `hotfix/*` and `release/*` when chronology matters
+- direct pushes to `main`: not part of the normal workflow
+- force merge: exception-only, with documented risk and local validation evidence
 
-### Merge Strategy
+## Validation and CI
 
-- Default: squash merge to `main`.
-- Allow merge-commit when chronology matters (hotfix/release).
-- Force merge policy: allowed only when CI is red for non-code reasons (infra flake) AND risk is
-  documented in PR checklist.
+- local enforcement entrypoint:
+  [`../../scripts/validate-doc-contract.sh`](../../scripts/validate-doc-contract.sh)
+- fast CI:
+  [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
+- slower documentation audit:
+  [`.github/workflows/docs-validation.yml`](../../.github/workflows/docs-validation.yml)
 
-### Branch Lifecycle (ASCII Diagram)
+The enforced baseline in this repo is documentation-focused:
 
-```
-           start work
-               |
-           (branch)
-               v
-fast/*  ---> short spike ----> squash to main
-               |
-feat/* -> small batches ------> squash/merge to main
-               |
-hotfix/* ---------------------> merge-commit to main
-               |
-release/* (optional) ---------> tag -> main
-```
+- documentation contract validation
+- markdown lint for managed docs
+- link audit in the slower governance workflow
 
-## Deployment Flow (solo-friendly)
+There is no application build, package-install, or artifact pipeline in this
+repo.
 
-- Default: commit/PR -> CI -> merge to `main` -> optional tag -> deploy script (future).
-- Tags: `v{major}.{minor}.{patch}` when a stable milestone is ready.
+## Release Summary
 
-## PR Checklist (for self-review)
+- tags are optional and milestone-driven
+- changelog and release guidance live in
+  [`release-playbook.md`](release-playbook.md)
+- draft changelog entries using [`changelog-entry.md`](changelog-entry.md)
 
-- Scope <= 300 lines diff.
-- CI green or flake noted.
-- Docs updated if behavior changes.
-- Tests added/adjusted.
+## Clean-Slate Rule
 
-## Force-Merge Checklist
+If unrelated edits remain after a focused change, separate them instead of
+mixing them into the current branch. Prefer a dedicated branch or a path-scoped
+stash.
 
-1. CI failure is a known flake or external outage.
-2. Code diff reviewed locally; `npm test`/`npm run lint` (or project equivalent) run locally.
-3. PR description documents why force merge is necessary and risks.
+## See Also
 
-## Minimal Release Policy
-
-- Create lightweight changelog entry in PR description.
-- Draft release notes using `docs/governance/changelog-entry.md` before updating `CHANGELOG.md`.
-- Tag after merge when user-facing behavior changes.
-
-## Tooling Alignment (from ecosystem guides)
-
-- Respect AI/development settings from root AGENTS and AI_DEVELOPMENT_SETTINGS_GUIDE.
-- Preserve secrets: never commit .env or keys.
-- Prefer TypeScript strictness and linting; no dangerous patterns (`eval`, unsafe HTML) without
-  sanitization.
-- Use `docs/governance/workspace-standardization.md` as the active migration contract for workspace
-  naming, package namespace changes, and stack-aware directory normalization.
-
-## Branch Protection & CI (recommended)
-
-- Protect `main`: require PRs, status checks, and up-to-date branches; allow squash + merge-commit
-  (for hotfix/release), disable rebase.
-- CODEOWNERS applies to all files; require review if desired.
-- CI should run lint, type-check, tests (Node), and ruff/pytest when Python is present.
-
-## Security & MCP
-
-- Do not commit `.env` or any `*_KEY`, `*_TOKEN`, `*_SECRET` values; rotate exposed keys noted in
-  the MCP implementation analysis.
-- Do not overwrite custom MCP server configs used by morphism-framework; consult AGENTS.md before
-  adding servers.
-
-## Stale Branch Cleanup Policy
-
-- **Inactive threshold**: 30 days without commits (excludes tagged releases)
-- **Process**: Monthly manual review or automated workflow (future)
-- **Actions**:
-  1. Identify branches with no commits in 30+ days via `git for-each-ref --sort=-committerdate`
-  2. Verify branch has no open PRs
-  3. Archive locally if needed: `git checkout <branch> && git branch -m archive/<branch>`
-  4. Delete remote: `git push origin --delete <branch>`
-- **Exceptions**: Tagged releases, `main`, documented long-running initiatives
-
-## Bot-Generated Branch Exception
-
-- **Scope**: Auto-generated branches from Dependabot, GitHub Actions, or other automation
-- **Naming**: Allowed to deviate from human branch patterns (e.g., `dependabot/npm_and_yarn/...`)
-- **Lifecycle**: Deleted automatically after PR merge via GitHub settings
-- **Review**: Bot PRs still require CI green; manual approval if security-sensitive
-
-## Migration Plan from Current State
-
-1. Prune stale branches: delete branches with no commits in 30+ days unless tagged.
-2. Rebase/squash open spikes into `fast/*` and merge or close.
-3. Enable branch protection on `main` (require PR + at least basic CI checks).
-4. Adopt naming rules for new branches; document in README.
-5. Add CI (lint/test placeholder) to enforce basic quality gates.
-
-## Governance Artifacts to Add (this repo)
-
-- README section: workflow summary + branch naming table.
-- `.github/workflows/ci.yml`: minimal lint/test (placeholder now) for solo velocity.
-
-## Workspace Migration
-
-- Safe support-directory renames can be applied at the workspace root when they do not conflict with
-  tool-discovered semantics.
-- `.github/` is exempt from underscore-prefix renaming until automation/path consumers are fully
-  audited.
-- Repository-root renames and shared package namespace changes must follow the staged plan in
-  `docs/governance/workspace-standardization.md`.
-- Optional: `docs/governance/workflow.md` (this file) as the living source.
-
-## Future Enhancements
-
-- Add release workflow to auto-tag and draft release notes.
-- Add doc validation if documentation footprint grows.
-- Add dependency audit workflow (weekly) once package manager is set.
+- [operating-model.md](operating-model.md)
+- [git-operations.md](git-operations.md)
+- [feature-lifecycle.md](feature-lifecycle.md)
+- [review-playbook.md](review-playbook.md)
+- [merge-policy.md](merge-policy.md)
+- [release-playbook.md](release-playbook.md)
+- [clean-slate-workflow.md](clean-slate-workflow.md)
+- [documentation-contract.md](documentation-contract.md)
+- [workspace-standardization.md](workspace-standardization.md)

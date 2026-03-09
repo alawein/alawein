@@ -1,19 +1,23 @@
-﻿---
+---
 type: guide
 authority: canonical
+last-verified:  2026-03-08
 audience: [ai-agents, contributors]
-last-verified: 2026-03-07
 ---
 
 # CLAUDE.md — alawein
 
-> **Repository profile + governance templates** | **SSOT**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
+> **Repository profile + governance templates** | **SSOT**:
+> `morphism-framework/docs/morphism-bible`
 
 ---
 
 ## Overview
 
-This repository serves as the organization profile and baseline governance templates for the `alawein` GitHub organization, operated by Morphism Systems LLC. It contains community health files, lightweight governance docs, and pointers to the canonical Morphism Framework SSOT.
+This repository serves as the organization profile and baseline governance
+templates for the `alawein` GitHub organization, operated by Morphism Systems
+LLC. It contains community health files, lightweight governance docs, and
+pointers to the canonical Morphism Framework SSOT.
 
 **Repository Type**: Organization Profile
 **Primary Language**: N/A (documentation and policies)
@@ -23,22 +27,37 @@ This repository serves as the organization profile and baseline governance templ
 
 ## Documentation Governance
 
-This repository follows the **Morphism Documentation Governance Framework** as defined in the SSOT:
+Local documentation rules are defined in
+[`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
+That contract is the authoritative source for document classes, freshness
+fields, naming rules, exemptions, and CI truthfulness in this repo.
 
-- **SSOT hub (Morphism Bible)**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
-- **Documentation governance policy**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
-- **Local workspace agent instructions** (only when working from the full workspace): `../AGENTS.md`
+The repo's workflow guidance is now organized as a governance suite under
+`docs/governance/`, with `workflow.md` as the stable overview and task-specific
+guides for Git operations, feature flow, review, merge, release, and
+clean-slate handling.
+
+- **SSOT hub (Morphism Bible)**:
+  `morphism-framework/docs/morphism-bible`
+- **Documentation governance policy**:
+  `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
+- **Local workspace agent instructions** (only when working from the full
+  workspace): `../AGENTS.md`
 
 ### Required Files
 
 - `AGENTS.md` - Pointer to workspace-level universal instructions (local workspace)
 - `CLAUDE.md` - Repository-specific documentation
 - `README.md` - Organization overview and navigation
+- `SSOT.md` - Current local repository truth
+- `LESSONS.md` - Observed repo-specific lessons
 - `CONTRIBUTING.md` - Contribution guardrails
 - `CODE_OF_CONDUCT.md` - Community standards
 - `LICENSE` - License information
 - `SECURITY.md` - Security policy
 - `CHANGELOG.md` - Version history
+- `docs/governance/documentation-contract.md` - Local documentation contract
+- `scripts/validate-doc-contract.sh` - Local validation entrypoint
 
 ---
 
@@ -47,17 +66,30 @@ This repository follows the **Morphism Documentation Governance Framework** as d
 ```text
 alawein/
   docs/
+    README.md
     governance/
+      operating-model.md
+      documentation-contract.md
       workflow.md
+      git-operations.md
+      feature-lifecycle.md
+      review-playbook.md
+      merge-policy.md
+      release-playbook.md
+      clean-slate-workflow.md
+      changelog-entry.md
   .github/
     ISSUE_TEMPLATE/
     workflows/
     CODEOWNERS
     pull_request_template.md
-    README.md
+  scripts/
+    validate-doc-contract.sh
   AGENTS.md
   CLAUDE.md
   README.md
+  SSOT.md
+  LESSONS.md
   CONTRIBUTING.md
   CODE_OF_CONDUCT.md
   LICENSE
@@ -73,9 +105,11 @@ alawein/
 ### Getting Started
 
 1. **Read local workspace instructions** (when working in the full workspace): `../AGENTS.md`
-2. **Review documentation governance (SSOT)**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
-3. **Review Organization Policies**: Read CODE_OF_CONDUCT.md and CONTRIBUTING.md
-4. **Follow Standards**: Adhere to coding standards and documentation policies
+2. **Review documentation governance (SSOT)**:
+   `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
+3. **Read the local contract**: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+4. **Review Organization Policies**: Read `CODE_OF_CONDUCT.md` and `CONTRIBUTING.md`
+5. **Run the local validator**: `./scripts/validate-doc-contract.sh --full`
 
 ### Working Agreements
 
@@ -88,35 +122,34 @@ alawein/
 
 ## Documentation Standards
 
-### Frontmatter Required
+- Canonical docs (`AGENTS.md`, `CLAUDE.md`, `SSOT.md`) require frontmatter with
+  `last-verified` and must remain within a 30-day verification window.
+- `LESSONS.md` requires frontmatter with `last-updated`.
+- Managed governance docs require frontmatter with `last_updated`.
+- `README.md` and GitHub-managed templates are explicit exemptions so GitHub
+  rendering and template behavior stay intact.
+- Internal markdown links must resolve locally.
+- Root community filenames remain conventional; docs under `docs/governance/`
+  use kebab-case.
 
-All markdown files must include YAML frontmatter:
+### Governance Suite
 
-```yaml
----
-title: Organization Overview
-description: Comprehensive overview of the `alawein` organization and its projects
-last_updated: 2025-12-28
-category: organization
-audience: all
-status: active
-author: Morphism Systems LLC
-version: 1.0.0
-tags: [organization, governance, community]
----
-```
-
-### File Naming Conventions
-
-- **Documentation**: `SCREAMING_SNAKE_CASE.md` (e.g., `README.md`)
-- **Directories**: `kebab-case` (e.g., `governance-policies/`)
-- **Policy Files**: `SCREAMING_SNAKE_CASE.md` (e.g., `CODE_OF_CONDUCT.md`)
-
-### Link Validation
-
-- Use relative links for internal documentation
-- Use absolute URLs for external resources
-- All internal links must be valid and working
+- **Operating model**:
+  [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
+- **Workflow overview**:
+  [`docs/governance/workflow.md`](docs/governance/workflow.md)
+- **Git operations**:
+  [`docs/governance/git-operations.md`](docs/governance/git-operations.md)
+- **Feature lifecycle**:
+  [`docs/governance/feature-lifecycle.md`](docs/governance/feature-lifecycle.md)
+- **Review playbook**:
+  [`docs/governance/review-playbook.md`](docs/governance/review-playbook.md)
+- **Merge policy**:
+  [`docs/governance/merge-policy.md`](docs/governance/merge-policy.md)
+- **Release playbook**:
+  [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
+- **Clean-slate workflow**:
+  [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
 
 ---
 
@@ -125,20 +158,20 @@ tags: [organization, governance, community]
 ### Pre-commit Validation
 
 Before committing, ensure:
-- ✅ YAML frontmatter is valid
-- ✅ File naming follows conventions
+- ✅ `./scripts/validate-doc-contract.sh --full` passes
+- ✅ Managed markdown files satisfy the local contract
 - ✅ Internal links are working
-- ✅ Required sections are present
 - ✅ Policy documents are current
 
 ### CI/CD Validation
 
 Pull requests are validated for:
-- Documentation structure compliance
-- Link integrity
-- Content freshness
-- Accessibility standards
-- Policy document accuracy
+- Documentation contract compliance
+- Markdown linting for managed docs
+
+Scheduled and docs-focused audits additionally validate:
+- Legacy domain enforcement
+- External link health for governance docs
 
 ---
 
@@ -177,21 +210,20 @@ Pull requests are validated for:
 ## Contact & Support
 
 - **Documentation Issues**: Follow governance framework reporting
-- **Build Failures**: dev@morphism.systems
 - **General Support**: dev@morphism.systems
 
 ---
 
 ## References
 
-- **Morphism Bible (SSOT)**: https://github.com/alawein/morphism-framework/tree/main/docs/morphism-bible
-- **Documentation governance**: https://github.com/alawein/morphism-framework/blob/main/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md
+- **Morphism Bible (SSOT)**: `morphism-framework/docs/morphism-bible`
+- **Documentation governance**:
+  `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
+- **Local documentation contract**: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- **Local operating model**: [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
 - **Local workspace instructions** (only when working from the full workspace): `../AGENTS.md`
 
 ---
 
-*Last Updated: 2025-12-28 | Version: 1.0.0 | Status: Active*
-
 ## Governance
 See [AGENTS.md](AGENTS.md) for rules. See [SSOT.md](SSOT.md) for current state.
-

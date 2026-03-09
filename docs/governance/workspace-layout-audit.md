@@ -51,7 +51,7 @@ it.
 | Repo | Expected pattern | Status | Notes | Next action |
 | --- | --- | --- | --- | --- |
 | `attributa/` | Vite SPA: `src/`, `tests/`, `docs/`, `scripts/`, `public/` | aligned | Has the standard Vite app surfaces plus testing and ops directories | Maintain as-is |
-| `gainboy/` | Vite SPA | partial | `src/` and `tests/` are healthy, but there is no dedicated `docs/` or `scripts/` surface yet | Add `docs/` when repo-specific guidance grows |
+| `gainboy/` | Vite SPA | aligned | Uses the standard `src/` and `tests/` runtime shape, with repo-local `docs/` and `scripts/` surfaces now documented and validated | Keep the single-app Vite contract documented and validated |
 | `llmworks/` | Vite SPA | aligned | Clear `src/`, `tests/`, `docs/`, and `public/` structure | Maintain as-is |
 | `meshal-web/` | Vite SPA | aligned | React Router routes are now explicitly standardized under `src/pages/`, with `src/app/` reserved for app-shell styles and repo-local `docs/` and `scripts/` surfaces in place | Keep route and docs validators aligned with the repo contract |
 | `qmlab/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
@@ -79,12 +79,12 @@ it.
 
 1. `repz/` — canonical runtime is settled, but frozen Next-era files still need
    a cleanup window after the dirty worktree stabilizes.
-2. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
-   guidance and tooling continue to expand.
-3. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
+2. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
    operational and research work continues to accumulate.
-4. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
+3. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
    surface if the utility package continues to grow.
+4. `qaplibria/` — keep the current Python core while containing additional
+   service, template, and website surfaces from spreading at the root.
 
 ## Rules for Follow-On Cleanup
 

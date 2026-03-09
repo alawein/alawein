@@ -15,6 +15,9 @@ labels: [enhancement]
 ## Proposed Approach
 
 - High-level idea
+- Note any expected branch, review, merge, or release impact. Detailed workflow
+  guidance lives in
+  [`docs/governance/feature-lifecycle.md`](../../docs/governance/feature-lifecycle.md).
 
 ## Acceptance Criteria
 

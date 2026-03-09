@@ -1,7 +1,7 @@
 ---
 title: Workspace Standardization Guide
 description: Canonical migration contract for root naming, stack-aware directory layouts, shared package namespaces, and consistency refactors across the alawein workspace
-last_updated: 2026-03-06
+last_updated:  2026-03-09
 category: governance
 audience: contributors
 status: active
@@ -30,6 +30,7 @@ This document is the active contract for workspace-wide cleanup and standardizat
 - Implemented in this pass:
   - `0/` -> `_0/`
   - `.mypy_cache/` -> `_mypy_cache/`
+  - local-only support workspaces such as `_gmail-ops/` and `_neper/` stay underscore-prefixed
 - Deferred:
   - `.github/` remains unchanged because its current path may be consumed by automation,
     instructions, and workflow tooling.
@@ -42,8 +43,7 @@ This document is the active contract for workspace-wide cleanup and standardizat
   package consumers have been audited.
 - Current rename targets:
   - `MeatheadPhysicist/` -> `meatheadphysicist/` (deferred pending final remote slug decision)
-  - `QAPlibria/` -> `qaplibria/` (confirmed by remote slug; repeated rename attempts are still
-    blocked by an active workspace handle on Windows)
+  - `aw-devkit/` -> retired into `devkit/` after migration audit
 
 ## Stack-Aware Layout Standards
 
@@ -66,6 +66,10 @@ This document is the active contract for workspace-wide cleanup and standardizat
 - Preserve `app/` routing conventions.
 - Prefer clear boundaries between UI, data access, and shared utilities.
 - Monorepos should keep `apps/` and `packages/` boundaries explicit rather than flattening them.
+- Single-app Next.js repositories may retain a root `packages/` directory when:
+  - `src/app/` remains the only runtime surface
+  - the root packages are app-local content or config surfaces
+  - the package purpose is documented and validated
 
 ### Python repositories
 
@@ -75,23 +79,55 @@ This document is the active contract for workspace-wide cleanup and standardizat
   - `docs/`
   - `notebooks/`
   - `scripts/`
-- Research repositories may retain specialized domain folders, but new additions should align with
-  the structure above where practical.
+- General-purpose libraries should prefer the `src/<package_name>/` boundary.
+- Research and HPC repositories may use a rooted `<package_name>/` layout when:
+  - the package root is singular and clearly documented
+  - the repo couples code with large domain-specific assets or workflow tooling
+  - the specialized surfaces such as `scripts/`, `siesta/`, `lammps/`, or
+    `notebooks/` are intentional and documented
+- Polyglot scientific suites may use a language-boundary layout such as:
+  - `python/<package_name>/`
+  - `python/tests/`
+  - root-level domain assets like `matlab/`, `oommf/`, `mumax3/`, `docker/`,
+    or `examples/`
+  when the language boundary is documented and the repo is not pretending to be
+  a pure single-language package.
+- Research repositories may retain specialized domain folders, but new additions
+  should align with the documented repo-specific structure rather than creating
+  parallel package roots.
 
 ## Shared Package and Theme Rules
 
-- Shared design, linting, formatting, and TypeScript packages are owned by `devkit/`.
+- Shared design, linting, formatting, TypeScript packages, tokens, icons,
+  themes, and reusable frontend assets are owned by `devkit/`.
 - Namespace migrations must start in `devkit/` before consumer repositories are changed.
 - Shared brand primitives, theme tokens, and reusable asset rules should be centralized before
   product-specific theme overrides are touched.
 - Producer-side migration to `@alawein/*` is complete in `devkit/` for the active package surface.
 - In-workspace consumer adoption must use local `file:` references into `devkit/packages/*` while
   `devkit/` remains unpublished.
+- `aw-devkit/` is legacy overlapping design-surface work. It should be treated
+  as read-only during migration and retired after its references are redirected
+  to `devkit/`.
 - Consumer package rewiring and install refreshes are now complete for the first migration batch:
   `attributa`, `bolts`, `gainboy`, `llmworks`, `meshal-web`, `qmlab`, `repz`, `scribd`, and
   `simcore`.
 
 See `docs/governance/package-namespace-matrix.md` for the current consumer and dependency map.
+
+## Canonical Repo Split
+
+- `alawein/` owns governance contracts, rename policy, matrices, and workspace
+  migration decisions.
+- `devkit/` owns shared packages, design tokens, icons, themes, reusable
+  frontend assets, and package-level templates.
+- `docs/` owns cross-repo general guides, handoff state, and portfolio backlog
+  references.
+
+See `docs/governance/workspace-resource-map.md` for the canonical home of each
+shared resource class.
+See `docs/governance/workspace-layout-audit.md` for the current repo-by-repo
+layout alignment status.
 
 ## Documentation and Writing Standards
 
@@ -118,12 +154,13 @@ See `docs/governance/package-namespace-matrix.md` for the current consumer and d
 
 1. Safe support-directory renames.
 2. Cross-repo audit of hardcoded names, URLs, deployment paths, and package consumers.
-3. `devkit/` package namespace migration.
-4. Consumer repository package adoption using local `devkit` package paths.
-5. Repository-root renames.
-6. Stack-aware internal layout normalization.
-7. Documentation, branding, and license cleanup.
-8. Refactors and verification.
+3. Canonical-home documentation refresh in `alawein/`, `devkit/`, and `docs/`.
+4. `devkit/` package namespace migration and shared-resource consolidation.
+5. Consumer repository package adoption using local `devkit` package paths.
+6. Repository-root renames or retirements.
+7. Stack-aware internal layout normalization.
+8. Documentation, branding, and license cleanup.
+9. Refactors and verification.
 
 ## Verification Requirements
 

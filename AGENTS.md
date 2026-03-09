@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-07
+last-verified: 2026-03-08
 ---
 
 # AGENTS — alawein
@@ -17,6 +17,7 @@ last-verified: 2026-03-07
 
 - Keep README.md current with active repos and their domains
 - Maintain governance templates (CLAUDE.md, AGENTS.md, SSOT.md, LESSONS.md) as the portfolio standard
+- Keep `docs/governance/documentation-contract.md` and `scripts/validate-doc-contract.sh` aligned
 
 ### Ask first
 
@@ -31,8 +32,8 @@ last-verified: 2026-03-07
 
 | Task | Command |
 |------|---------|
-| Governance check | `/governance canonical-check` |
+| Governance check | `./scripts/validate-doc-contract.sh --full` |
 
 ---
 
-_See [CLAUDE.md](CLAUDE.md) | [SSOT.md](SSOT.md)_
+_See [CLAUDE.md](CLAUDE.md) | [SSOT.md](SSOT.md) | [docs/governance/documentation-contract.md](docs/governance/documentation-contract.md)_

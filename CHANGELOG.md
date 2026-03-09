@@ -1,12 +1,12 @@
 ---
 title: Changelog
 description: Version history and notable changes to the alawein organization repository
-last_updated: 2026-02-26
 category: documentation
 audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
+last_updated:  2026-03-08
 tags: [changelog, version-history, releases]
 ---
 
@@ -19,8 +19,32 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Added a repository-local documentation contract and validator script for
+  freshness, frontmatter, BOM, and local-link enforcement.
+- Added a clean-slate workflow guide for stash hygiene, branch recovery, and
+  notebook or asset separation.
+- Added a full governance doc suite covering the operating model, Git
+  operations, feature lifecycle, review, merge, and release flow.
+- Added a workspace resource map defining the canonical home for governance,
+  shared packages, design tokens, and cross-repo guides.
+- Added a repo-by-repo workspace layout audit so stack-aware standardization
+  rules now have concrete adoption status and priority cleanup targets.
+
 ### Changed
+
 - Updated the shared package migration guidance to reflect the active consumer pattern: in-workspace repositories now resolve `@alawein/*` packages through local `devkit` `file:` references, with refreshed installs across the first consumer batch.
+- Replaced the placeholder Node build assumptions with docs-only CI and a
+  slower documentation audit workflow.
+- Updated canonical governance docs to document explicit GitHub-file exemptions
+  and local validation commands.
+- Refactored overview docs into a hub-and-spoke navigation model so task
+  routing lives in `docs/README.md`, `workflow.md`, and the new specialized
+  governance guides.
+- Refreshed the workspace rename matrix to reflect the observed root inventory,
+  documented `aw-devkit/` retirement into `devkit/`, and clarified the split
+  between `alawein/`, `devkit/`, and `docs/`.
 
 ## [2.0.4] — 2026-03-07
 

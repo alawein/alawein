@@ -1,0 +1,112 @@
+{
+  "$schema": "./projects.schema.json",
+  "lastUpdated": "2025-07-08",
+  "featured": [
+    {
+      "name": "Event Discovery Framework",
+      "slug": "event-discovery-framework",
+      "url": "https://edfp.online",
+      "repo": "alawein/event-discovery-framework",
+      "description": "Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.",
+      "tags": ["Python", "OpenCV", "FastAPI"],
+      "category": "active"
+    },
+    {
+      "name": "Morphism Systems",
+      "slug": "morphism",
+      "url": "https://morphism.systems",
+      "repo": "alawein/morphism",
+      "description": "Categorical governance framework. 7 invariants, 10 tenets, AI-driven development governance.",
+      "tags": ["TypeScript", "React", "Python"],
+      "category": "active"
+    },
+    {
+      "name": "QMatSim",
+      "slug": "qmatsim",
+      "url": "https://github.com/alawein/qmatsim",
+      "repo": "alawein/qmatsim",
+      "description": "Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.",
+      "tags": ["Python", "VASP", "CUDA"],
+      "category": "active"
+    },
+    {
+      "name": "LLMWorks",
+      "slug": "llmworks",
+      "url": "https://llmworks.dev",
+      "repo": "alawein/llmworks",
+      "description": "LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.",
+      "tags": ["Python", "PyTorch", "HuggingFace"],
+      "category": "active"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "url": "https://repzcoach.com",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform.",
+      "tags": ["TypeScript", "React", "FastAPI"],
+      "category": "active"
+    },
+    {
+      "name": "Attributa",
+      "slug": "attributa",
+      "url": "https://attributa.dev",
+      "repo": "alawein/attributa",
+      "description": "Design audit & accessibility platform.",
+      "tags": ["TypeScript", "React"],
+      "category": "active"
+    },
+    {
+      "name": "Neper",
+      "slug": "neper",
+      "url": "https://github.com/alawein/neper",
+      "repo": "alawein/neper",
+      "description": "Named entity extraction & processing pipeline with transformer models.",
+      "tags": ["Python", "Transformers", "NLP"],
+      "category": "active"
+    }
+  ],
+  "research": [
+    { "name": "qmatsim", "repo": "alawein/qmatsim", "domain": "Quantum material simulation" },
+    { "name": "qmlab", "repo": "alawein/qmlab", "domain": "Quantum mechanics lab tools" },
+    { "name": "qubeml", "repo": "alawein/qubeml", "domain": "Quantum ML experiments" },
+    { "name": "simcore", "repo": "alawein/simcore", "domain": "Scientific simulation core" },
+    { "name": "scicomp", "repo": "alawein/scicomp", "domain": "Scientific computing utilities" },
+    { "name": "spincirc", "repo": "alawein/spincirc", "domain": "Spintronics circuit simulation" },
+    { "name": "maglogic", "repo": "alawein/maglogic", "domain": "Magnetic logic gates" },
+    { "name": "neper", "repo": "alawein/neper", "domain": "NLP entity extraction" },
+    { "name": "MeatheadPhysicist", "repo": "alawein/MeatheadPhysicist", "domain": "Physics research & writing" }
+  ],
+  "packages": [
+    {
+      "name": "@morphism-systems/cli",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/cli",
+      "description": "Governance CLI — scaffold, validate, score, heal"
+    },
+    {
+      "name": "@morphism-systems/mcp-server",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
+      "description": "MCP server for AI agent governance"
+    },
+    {
+      "name": "@morphism-systems/agentic-math",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
+      "description": "MCP math computation server"
+    },
+    {
+      "name": "@morphism-systems/plugin-bundle",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
+      "description": "One-command installer for all tools"
+    },
+    {
+      "name": "morphism",
+      "registry": "pypi",
+      "url": "https://pypi.org/project/morphism/",
+      "description": "Python category theory engine"
+    }
+  ]
+}

@@ -66,6 +66,10 @@ This document is the active contract for workspace-wide cleanup and standardizat
 - Preserve `app/` routing conventions.
 - Prefer clear boundaries between UI, data access, and shared utilities.
 - Monorepos should keep `apps/` and `packages/` boundaries explicit rather than flattening them.
+- Single-app Next.js repositories may retain a root `packages/` directory when:
+  - `src/app/` remains the only runtime surface
+  - the root packages are app-local content or config surfaces
+  - the package purpose is documented and validated
 
 ### Python repositories
 

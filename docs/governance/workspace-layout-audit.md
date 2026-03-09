@@ -57,7 +57,7 @@ it.
 | `qmlab/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
 | `rounaq-atelier/` | Vite SPA | aligned | Healthy Vite-style app layout with `src/`, `tests/`, `docs/`, and `scripts/` | Maintain as-is |
 | `simcore/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
-| `bolts/` | Next.js app | partial | Has `src/app/`, `src/components/`, `src/lib/`, and tests, but also a root `packages/` surface | Confirm whether `packages/` is intentional or should be collapsed into repo-local modules |
+| `bolts/` | Next.js app | aligned | Uses `src/app/` as the runtime surface and documented app-local `packages/content/` and `packages/config/` surfaces for content and config | Keep the internal-package decision documented and validated |
 | `scribd/` | Next.js app | aligned | Uses `app/`, `components/`, `lib/`, `public/`, and tests in the expected Next shape | Maintain as-is |
 | `repz/` | hybrid JS app | partial | The canonical Vite + React Router runtime is now documented, but frozen Next-era artifacts remain in the tree | Keep new work on the Vite surfaces and remove legacy Next files once the broader worktree is stable |
 | `shared-utils/` | package repo | partial | Clean minimal package layout with `src/`, but no `tests/` or `docs/` surface at root | Add `tests/` and `docs/` if package surface keeps growing |
@@ -77,14 +77,13 @@ it.
 
 ## Priority Cleanup Queue
 
-1. `bolts/` — verify whether root `packages/` is a permanent structural choice.
-2. `repz/` — canonical runtime is settled, but frozen Next-era files still need
+1. `repz/` — canonical runtime is settled, but frozen Next-era files still need
    a cleanup window after the dirty worktree stabilizes.
-3. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
+2. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
    guidance and tooling continue to expand.
-4. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
+3. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
    operational and research work continues to accumulate.
-5. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
+4. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
    surface if the utility package continues to grow.
 
 ## Rules for Follow-On Cleanup

@@ -81,6 +81,13 @@ This document is the active contract for workspace-wide cleanup and standardizat
   - the repo couples code with large domain-specific assets or workflow tooling
   - the specialized surfaces such as `scripts/`, `siesta/`, `lammps/`, or
     `notebooks/` are intentional and documented
+- Polyglot scientific suites may use a language-boundary layout such as:
+  - `python/<package_name>/`
+  - `python/tests/`
+  - root-level domain assets like `matlab/`, `oommf/`, `mumax3/`, `docker/`,
+    or `examples/`
+  when the language boundary is documented and the repo is not pretending to be
+  a pure single-language package.
 - Research repositories may retain specialized domain folders, but new additions
   should align with the documented repo-specific structure rather than creating
   parallel package roots.

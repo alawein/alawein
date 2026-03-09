@@ -71,21 +71,21 @@ it.
 | `qaplibria/` | Python research repo | partial | Core Python layout is present, but `services/`, `templates/`, and website material make it multi-surface | Keep core layout; avoid adding more root-level sprawl |
 | `qubeml/` | Python repo | partial | Has `src/`, `tests/`, and `docs/`, but lacks a clearer `notebooks/` or `scripts/` boundary | Add standard helper surfaces when new operational work appears |
 | `qmatsim/` | Python research repo | aligned | Uses a documented rooted `qmatsim/` package layout with intentional `siesta/`, `lammps/`, `scripts/`, and `docs/` research surfaces | Keep the rooted-package decision documented and validated |
-| `maglogic/` | Python research repo | mixed | Uses a `python/` root rather than `src/`, alongside domain-specific tool directories | Decide whether to keep an explicit exception or migrate toward `src/` |
+| `maglogic/` | Python research repo | aligned | Uses a documented `python/maglogic` and `python/tests` language boundary alongside intentional MATLAB, OOMMF, and MuMax3 surfaces | Keep the language-boundary layout documented and validated |
 | `scicomp/` | computational science repo | exception | Multiple language and domain roots (`Python/`, `MATLAB/`, `Mathematica/`) are intentional | Audit by runtime surface, not by generic template |
 | `spincirc/` | scientific mixed-language repo | exception | `python/`, `matlab/`, and `verilogA/` reflect real multi-language boundaries | Preserve specialized layout until a surface-specific audit is done |
 
 ## Priority Cleanup Queue
 
-1. `maglogic/` — `python/` versus `src/` needs a deliberate exception or
-   migration decision.
-2. `bolts/` — verify whether root `packages/` is a permanent structural choice.
-3. `repz/` — canonical runtime is settled, but frozen Next-era files still need
+1. `bolts/` — verify whether root `packages/` is a permanent structural choice.
+2. `repz/` — canonical runtime is settled, but frozen Next-era files still need
    a cleanup window after the dirty worktree stabilizes.
-4. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
+3. `gainboy/` — add a lightweight `docs/` and `scripts/` surface if the repo’s
    guidance and tooling continue to expand.
-5. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
+4. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
    operational and research work continues to accumulate.
+5. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
+   surface if the utility package continues to grow.
 
 ## Rules for Follow-On Cleanup
 

@@ -32,7 +32,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
       - name: Lint managed markdown
         run: |
           npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc \

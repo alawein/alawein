@@ -1,5 +1,6 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
 
+
 <div align="center">
 
 [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
@@ -127,9 +128,9 @@ Design audit and accessibility platform.
 
 **[Neper](https://github.com/alawein/neper)**
 
-Named entity extraction and processing pipeline with transformer models.
+LLM training, alignment, evaluation & synthetic data platform.
 
-`Python` `Transformers` `NLP`
+`Python` `PyTorch` `HuggingFace`
 
 </td>
 </tr>
@@ -148,6 +149,11 @@ Named entity extraction and processing pipeline with transformer models.
 <th>Version</th>
 </tr>
 <tr>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
+<td>One-command installer for all tools</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
+</tr>
+<tr>
 <td><a href="https://www.npmjs.com/package/@morphism-systems/cli"><code>@morphism-systems/cli</code></a></td>
 <td>Governance CLI — scaffold, validate, score, heal</td>
 <td><img src="https://img.shields.io/npm/v/@morphism-systems/cli?style=flat-square&color=8B5CF6" alt="npm"/></td>
@@ -159,18 +165,18 @@ Named entity extraction and processing pipeline with transformer models.
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@morphism-systems/agentic-math"><code>@morphism-systems/agentic-math</code></a></td>
-<td>MCP math computation server</td>
+<td>Category theory MCP server</td>
 <td><img src="https://img.shields.io/npm/v/@morphism-systems/agentic-math?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 <tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
-<td>One-command installer for all tools</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/shared"><code>@morphism-systems/shared</code></a></td>
+<td>Shared TypeScript utilities</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/shared?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 <tr>
-<td><a href="https://pypi.org/project/morphism/"><code>morphism</code></a></td>
-<td>Python category theory engine</td>
-<td><img src="https://img.shields.io/pypi/v/morphism?style=flat-square&color=8B5CF6" alt="pypi"/></td>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/design-tokens"><code>@morphism-systems/design-tokens</code></a></td>
+<td>10 themes — CSS variables and Tailwind presets</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/design-tokens?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 </table>
 <!-- SYNC:PACKAGES:END -->
@@ -213,8 +219,8 @@ Validation commands:
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
-| [neper](https://github.com/alawein/neper) | NLP entity extraction |
-| [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
+| [neper](https://github.com/alawein/neper) | LLM training & alignment platform |
+| [MeatheadPhysicist](https://github.com/alawein/MeatheadPhysicist) | Physics research & writing |
 <!-- SYNC:RESEARCH:END -->
 
 </details>

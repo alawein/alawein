@@ -1,0 +1,34 @@
+name: Reusable Node CI
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        type: string
+        default: '20'
+      install-cmd:
+        type: string
+        default: 'npm ci'
+      lint-cmd:
+        type: string
+        default: 'npm run lint'
+      build-cmd:
+        type: string
+        default: 'npm run build'
+      test-cmd:
+        type: string
+        default: 'npm run test --if-present'
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: 'npm'
+      - run: ${{ inputs.install-cmd }}
+      - run: ${{ inputs.lint-cmd }}
+      - run: ${{ inputs.build-cmd }}
+      - run: ${{ inputs.test-cmd }}

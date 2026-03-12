@@ -1,37 +1,45 @@
 ---
 type: normative
 authority: canonical
-last-verified:  2026-03-08
+last-verified: 2026-03-11
 audience: [ai-agents, contributors]
 ---
 
 # SSOT — alawein
 
-**Version:** 1.0
-**Last Updated:** 2026-03-08
+**Version:** 1.1
+**Last Updated:** 2026-03-11
 **Status:** Active
 
 ---
 
 ## Purpose
 
-Organization profile and portfolio governance for the `@alawein` GitHub
-organization. This repository is a docs-only org-profile and governance-pointer
-repo.
+Organization profile and portfolio governance source for the `@alawein` GitHub
+organization. This repository is docs-only and owns the canonical workspace
+governance contract for naming, portfolio truth, and migration sequencing.
 
 ## Current State
 
 - Organization profile and documentation: ✅ Active
+- Workspace operating contract:
+  [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
 - Local documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
-- Governance suite entrypoint:
-  [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
+- Governance suite navigation:
+  [`docs/README-backup-20250807.md`](docs/README-backup-20250807.md)
 - Canonical governance validation:
   `./scripts/validate-doc-contract.sh --full`
-- Fast CI checks: local contract validation plus markdown lint for managed docs
-- Specialized workflow guides: Git operations, feature lifecycle, review,
-  merge, release, and clean-slate workflow are all documented locally under
-  `docs/governance/`
+- Managed-doc canonical name/domain audit:
+  `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
+- README sections are generated from `projects.json` via
+  `scripts/sync-readme.py`
+- Canonical naming policy is active; hard cutover completed on 2026-03-11 for
+  `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
+- Transitional identifiers are retained in `projects.json` via `legacy_slugs`
+  for one migration cycle
+- D-1 consolidation status: canonical token source is `devkit/tokens/`; legacy
+  `aw-devkit` physical retirement cutover completed on 2026-03-11
 
 ## Structure
 
@@ -42,8 +50,9 @@ alawein/
 ├── SSOT.md
 ├── LESSONS.md
 ├── docs/
-│   ├── README.md
+│   ├── README-backup-20250807.md
 │   └── governance/
+│       ├── workspace-master-prompt.md
 │       ├── operating-model.md
 │       ├── documentation-contract.md
 │       ├── workflow.md
@@ -53,17 +62,24 @@ alawein/
 │       ├── merge-policy.md
 │       ├── release-playbook.md
 │       ├── clean-slate-workflow.md
-│       └── changelog-entry.md
+│       ├── changelog-entry.md
+│       ├── workspace-standardization.md
+│       ├── workspace-rename-matrix.md
+│       ├── workspace-layout-audit.md
+│       └── workspace-resource-map.md
 └── scripts/
-    └── validate-doc-contract.sh
+    ├── validate-doc-contract.sh
+    ├── sync-readme.py
+    └── sync-to-notion.mjs
 ```
 
 ## What's Next
 
 - Keep canonical files fresh (last-verified ≤ 30 days)
-- Keep workflow and CI descriptions truthful for a docs-only repository
-- Keep the governance suite navigable by task rather than re-centralizing it
-  into one oversized guide
+- Keep README/project data/workspace docs synchronized for any naming or domain
+  change
+- Complete phased workspace directives (D-1 through D-5) with org README sync
+  at each structural milestone
 
 ---
 

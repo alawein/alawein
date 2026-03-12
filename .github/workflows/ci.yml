@@ -38,12 +38,12 @@ jobs:
           npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc \
             AGENTS.md \
             CLAUDE.md \
-            CONTRIBUTING.md \
+            CONTRIBUTING-backup-20250807.md \
             CODE_OF_CONDUCT.md \
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \
             LESSONS.md \
             DOCUMENTATION_PHILOSOPHY.md \
-            docs/README.md \
+            docs/README-backup-20250807.md \
             docs/governance/*.md

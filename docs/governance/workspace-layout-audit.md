@@ -1,95 +1,95 @@
 ---
 title: Workspace Layout Audit
-description: Repo-by-repo audit of layout alignment against the alawein workspace stack-aware standardization rules
-last_updated: 2026-03-09
+description: Repo-by-repo layout status against stack-aware standards with canonical-name-first reporting.
+last_updated: 2026-03-11
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
-version: 1.0.0
+author: alawein maintainers
+version: 1.1.0
 tags: [workspace, layout, audit, standardization, governance]
 ---
 
 # Workspace Layout Audit
 
-This audit turns the workspace layout standards into a concrete repo-by-repo
-status view. It should be used alongside
-[`workspace-standardization.md`](./workspace-standardization.md), not instead of
-it.
+This audit maps workspace repos to stack-aware layout standards while reporting
+canonical names first and physical slugs second when needed.
 
 ## Status Labels
 
-- `aligned`: current shape matches the expected pattern for the repo type
-- `partial`: broadly on the right path, but missing one or more standard
-  surfaces or carrying minor drift
-- `mixed`: multiple layout models are present and need a focused cleanup pass
-- `exception`: intentionally specialized or archival; do not force a generic
-  layout without a separate audit
+- `aligned`: layout matches expected pattern for repo type
+- `partial`: broadly aligned, with targeted cleanup pending
+- `mixed`: multiple layout models need focused cleanup
+- `exception`: intentionally specialized or archival
 
 ## Root-Level Naming
 
-| Path | Status | Notes |
+| Canonical Name | Physical Path | Status | Notes |
+| --- | --- | --- | --- |
+| `_gmail-ops` | `_gmail-ops/` | aligned | External workspace, underscore-prefixed |
+| `gymboy` | `gymboy/` | aligned | Hard cutover completed 2026-03-11 |
+| `meatheadphysicist` | `meatheadphysicist/` | aligned | Hard cutover completed 2026-03-11 |
+
+## Local-Only Support Paths
+
+| Path | Status | Policy |
 | --- | --- | --- |
-| `.github/` | exception | Explicit automation-path exemption |
-| `_gmail-ops/` | aligned | Local support workspace; underscore-prefixed |
-| `_neper/` | aligned | Local support workspace; underscore-prefixed |
-| `MeatheadPhysicist/` | partial | Layout is mostly healthy, but root rename to `meatheadphysicist/` is still deferred pending slug audit |
-| `aw-devkit/` | exception | Archived migration-reference repo; retire by redirection, not by further feature work |
+| `.mypy_cache/` | local-only | Excluded from canonical workspace inventory |
+| `.venv/` | local-only | Excluded from canonical workspace inventory |
+| `.vscode/` | local-only | Excluded from canonical workspace inventory |
 
 ## Governance and Shared-Resource Repos
 
-| Repo | Expected pattern | Status | Notes | Next action |
+| Canonical Name | Physical Slug | Expected Pattern | Status | Next Action |
 | --- | --- | --- | --- | --- |
-| `alawein/` | root governance files, `.github/`, `docs/`, `scripts/` | aligned | Governance home already follows the docs-first pattern | Keep matrices and audits current |
-| `docs/` | docs-only repo with guide, handoff, and backlog surfaces | aligned | `guides/`, `handoffs/`, and `backlog/` now replace the old flat file layout | Keep `handoffs/current.md` overwritten with real current state |
-| `devkit/` | `apps/`, `packages/`, `docs/`, `scripts/`, `bin/` | aligned | Canonical shared-resource monorepo shape is now explicit | Continue moving canonical references away from `aw-devkit/` |
-| `aw-devkit/` | archival reference only | exception | Flat CSS-kit structure remains for historical and migration context | Do not add new canonical shared-resource work here |
-| `helios/` | special-case archive | exception | Docs-only or archive-style repo with no active app/runtime surface | Audit before any forced restructuring |
+| `alawein` | `alawein` | docs + governance + scripts | aligned | Keep matrices and prompts current |
+| `devkit` | `devkit` | shared packages + docs + scripts | aligned | Maintain canonical ownership in `devkit/tokens/` and package surfaces |
+| `helios` | `helios` | archive/special-case docs surface | exception | Audit before structural normalization |
+
+## Retired Roots
+
+| Canonical Name | Retired Physical Root | Retirement Date | Notes |
+| --- | --- | --- | --- |
+| `devkit` | `aw-devkit/` | 2026-03-11 | D-1 physical retirement cutover completed |
 
 ## JavaScript and TypeScript Repos
 
-| Repo | Expected pattern | Status | Notes | Next action |
+| Canonical Name | Physical Slug | Expected Pattern | Status | Next Action |
 | --- | --- | --- | --- | --- |
-| `attributa/` | Vite SPA: `src/`, `tests/`, `docs/`, `scripts/`, `public/` | aligned | Has the standard Vite app surfaces plus testing and ops directories | Maintain as-is |
-| `gainboy/` | Vite SPA | aligned | Uses the standard `src/` and `tests/` runtime shape, with repo-local `docs/` and `scripts/` surfaces now documented and validated | Keep the single-app Vite contract documented and validated |
-| `llmworks/` | Vite SPA | aligned | Clear `src/`, `tests/`, `docs/`, and `public/` structure | Maintain as-is |
-| `meshal-web/` | Vite SPA | aligned | React Router routes are now explicitly standardized under `src/pages/`, with `src/app/` reserved for app-shell styles and repo-local `docs/` and `scripts/` surfaces in place | Keep route and docs validators aligned with the repo contract |
-| `qmlab/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
-| `rounaq-atelier/` | Vite SPA | aligned | Healthy Vite-style app layout with `src/`, `tests/`, `docs/`, and `scripts/` | Maintain as-is |
-| `simcore/` | Vite SPA | aligned | `src/`, `tests/`, `docs/`, `scripts/`, and `public/` are present | Maintain as-is |
-| `bolts/` | Next.js app | aligned | Uses `src/app/` as the runtime surface and documented app-local `packages/content/` and `packages/config/` surfaces for content and config | Keep the internal-package decision documented and validated |
-| `scribd/` | Next.js app | aligned | Uses `app/`, `components/`, `lib/`, `public/`, and tests in the expected Next shape | Maintain as-is |
-| `repz/` | hybrid JS app | partial | The canonical Vite + React Router runtime is now documented, but frozen Next-era artifacts remain in the tree | Keep new work on the Vite surfaces and remove legacy Next files once the broader worktree is stable |
-| `shared-utils/` | package repo | partial | Clean minimal package layout with `src/`, but no `tests/` or `docs/` surface at root | Add `tests/` and `docs/` if package surface keeps growing |
+| `attributa` | `attributa` | Vite SPA | aligned | Maintain |
+| `gymboy` | `gymboy` | Vite SPA | aligned | Execute D-2 redesign; keep canonical naming in docs |
+| `llmworks` | `llmworks` | Vite SPA | aligned | Maintain |
+| `meshal-web` | `meshal-web` | Vite SPA | aligned | Execute D-5 refinement |
+| `qmlab` | `qmlab` | Vite SPA | aligned | Maintain |
+| `atelier-rounaq` | `atelier-rounaq` | Vite SPA | aligned | Maintain |
+| `simcore` | `simcore` | Vite SPA | aligned | Maintain |
+| `bolts` | `bolts` | Next.js app | aligned | Maintain |
+| `scribd` | `scribd` | Next.js app | aligned | Maintain |
+| `repz` | `repz` | Vite + React Router app | partial | Execute D-3 cleanup and retire stale legacy runtime files |
+| `shared-utils` | `shared-utils` | package repo | partial | Add stronger docs/test boundaries if package grows |
 
 ## Python and Research Repos
 
-| Repo | Expected pattern | Status | Notes | Next action |
+| Canonical Name | Physical Slug | Expected Pattern | Status | Next Action |
 | --- | --- | --- | --- | --- |
-| `event-discovery-framework/` | `src/<package>/`, `tests/`, `docs/`, `notebooks/`, `scripts/` | aligned | Already follows the preferred Python project structure closely | Maintain as-is |
-| `MeatheadPhysicist/` | Python research repo | partial | Strong `src/`, `tests/`, `docs/`, `notebooks/`, and `scripts/` core, plus additional research surfaces | Defer root rename until slug audit is complete |
-| `qaplibria/` | Python research repo | partial | Core Python layout is present, but `services/`, `templates/`, and website material make it multi-surface | Keep core layout; avoid adding more root-level sprawl |
-| `qubeml/` | Python repo | partial | Has `src/`, `tests/`, and `docs/`, but lacks a clearer `notebooks/` or `scripts/` boundary | Add standard helper surfaces when new operational work appears |
-| `qmatsim/` | Python research repo | aligned | Uses a documented rooted `qmatsim/` package layout with intentional `siesta/`, `lammps/`, `scripts/`, and `docs/` research surfaces | Keep the rooted-package decision documented and validated |
-| `maglogic/` | Python research repo | aligned | Uses a documented `python/maglogic` and `python/tests` language boundary alongside intentional MATLAB, OOMMF, and MuMax3 surfaces | Keep the language-boundary layout documented and validated |
-| `scicomp/` | computational science repo | exception | Multiple language and domain roots (`Python/`, `MATLAB/`, `Mathematica/`) are intentional | Audit by runtime surface, not by generic template |
-| `spincirc/` | scientific mixed-language repo | exception | `python/`, `matlab/`, and `verilogA/` reflect real multi-language boundaries | Preserve specialized layout until a surface-specific audit is done |
+| `edfp` | `edfp` | Python package layout | aligned | Maintain |
+| `meatheadphysicist` | `meatheadphysicist` | Python research repo | aligned | Maintain domain-specific structure |
+| `qaplibria` | `qaplibria` | Python research multi-surface | partial | Contain root-level sprawl |
+| `qubeml` | `qubeml` | Python package + research surfaces | partial | Add clearer scripts/notebooks boundary if needed |
+| `qmatsim` | `qmatsim` | rooted package with research surfaces | aligned | Maintain |
+| `maglogic` | `maglogic` | polyglot scientific layout | aligned | Maintain |
+| `scicomp` | `scicomp` | multi-language scientific suite | exception | Audit by runtime surface |
+| `spincirc` | `spincirc` | mixed-language scientific repo | exception | Preserve specialized boundaries |
 
 ## Priority Cleanup Queue
 
-1. `repz/` — canonical runtime is settled, but frozen Next-era files still need
-   a cleanup window after the dirty worktree stabilizes.
-2. `qubeml/` — add a clearer `scripts/` or `notebooks/` boundary if new
-   operational and research work continues to accumulate.
-3. `shared-utils/` — add a clearer `tests/` and `docs/` package-maintenance
-   surface if the utility package continues to grow.
-4. `qaplibria/` — keep the current Python core while containing additional
-   service, template, and website surfaces from spreading at the root.
+1. `repz` — execute D-3 and standardize on `repzcoach.com`.
+2. `gymboy` — execute D-2 redesign and naming/domain consistency.
+3. `meshal-web` — execute D-5 refinement.
+4. `meatheadphysicist` — maintain immutable-surface policy and repo health.
 
-## Rules for Follow-On Cleanup
+## Follow-On Rules
 
-- Do not batch all repo normalizations into one change set.
-- Treat archival and research exceptions as first-class decisions, not failures.
-- When a repo is already aligned, avoid churn for cosmetic uniformity alone.
-- Update this audit whenever a repo moves between `partial`, `mixed`,
-  `exception`, and `aligned`.
+- Do not batch all repo normalizations into one diff.
+- Preserve documented exceptions unless an explicit decision updates them.
+- Update this audit whenever repo status changes across labels.

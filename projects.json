@@ -1,23 +1,53 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2025-07-08",
+  "lastUpdated": "2026-03-11",
   "featured": [
     {
       "name": "Event Discovery Framework",
-      "slug": "event-discovery-framework",
+      "slug": "edfp",
+      "legacy_slugs": ["event-discovery-framework"],
       "url": "https://edfp.online",
-      "repo": "alawein/event-discovery-framework",
+      "repo": "alawein/edfp",
       "description": "Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.",
       "tags": ["Python", "OpenCV", "FastAPI"],
       "category": "active"
     },
     {
-      "name": "Morphism Systems",
-      "slug": "morphism",
-      "url": "https://morphism.systems",
-      "repo": "alawein/morphism",
-      "description": "Categorical governance framework. 7 invariants, 10 tenets, AI-driven development governance.",
-      "tags": ["TypeScript", "React", "Python"],
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "legacy_slugs": ["gainboy"],
+      "url": "https://gymboy.coach",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "tags": ["React", "Vite", "Spark"],
+      "category": "active"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "url": "https://repzcoach.com",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform.",
+      "tags": ["TypeScript", "React", "Supabase"],
+      "category": "active"
+    },
+    {
+      "name": "meshal-web",
+      "slug": "meshal-web",
+      "url": "https://meshal.ai",
+      "repo": "alawein/meshal-web",
+      "description": "Personal site and portfolio surface for current Alawein projects.",
+      "tags": ["React", "Vite", "Tailwind"],
+      "category": "active"
+    },
+    {
+      "name": "devkit",
+      "slug": "devkit",
+      "legacy_slugs": ["aw-devkit"],
+      "url": "https://github.com/alawein/devkit",
+      "repo": "alawein/devkit",
+      "description": "Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.",
+      "tags": ["Design Tokens", "UI", "Tooling"],
       "category": "active"
     },
     {
@@ -39,20 +69,11 @@
       "category": "active"
     },
     {
-      "name": "REPZ",
-      "slug": "repz",
-      "url": "https://repzcoach.com",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform.",
-      "tags": ["TypeScript", "React", "FastAPI"],
-      "category": "active"
-    },
-    {
       "name": "Attributa",
       "slug": "attributa",
       "url": "https://attributa.dev",
       "repo": "alawein/attributa",
-      "description": "Design audit & accessibility platform.",
+      "description": "Design audit and accessibility platform.",
       "tags": ["TypeScript", "React"],
       "category": "active"
     },
@@ -61,21 +82,67 @@
       "slug": "neper",
       "url": "https://github.com/alawein/neper",
       "repo": "alawein/neper",
-      "description": "Named entity extraction & processing pipeline with transformer models.",
+      "description": "Named entity extraction and processing pipeline with transformer models.",
       "tags": ["Python", "Transformers", "NLP"],
       "category": "active"
     }
   ],
   "research": [
-    { "name": "qmatsim", "repo": "alawein/qmatsim", "domain": "Quantum material simulation" },
-    { "name": "qmlab", "repo": "alawein/qmlab", "domain": "Quantum mechanics lab tools" },
-    { "name": "qubeml", "repo": "alawein/qubeml", "domain": "Quantum ML experiments" },
-    { "name": "simcore", "repo": "alawein/simcore", "domain": "Scientific simulation core" },
-    { "name": "scicomp", "repo": "alawein/scicomp", "domain": "Scientific computing utilities" },
-    { "name": "spincirc", "repo": "alawein/spincirc", "domain": "Spintronics circuit simulation" },
-    { "name": "maglogic", "repo": "alawein/maglogic", "domain": "Magnetic logic gates" },
-    { "name": "neper", "repo": "alawein/neper", "domain": "NLP entity extraction" },
-    { "name": "MeatheadPhysicist", "repo": "alawein/MeatheadPhysicist", "domain": "Physics research & writing" }
+    {
+      "name": "qmatsim",
+      "slug": "qmatsim",
+      "repo": "alawein/qmatsim",
+      "domain": "Quantum material simulation"
+    },
+    {
+      "name": "qmlab",
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "domain": "Quantum mechanics lab tools"
+    },
+    {
+      "name": "qubeml",
+      "slug": "qubeml",
+      "repo": "alawein/qubeml",
+      "domain": "Quantum ML experiments"
+    },
+    {
+      "name": "simcore",
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "domain": "Scientific simulation core"
+    },
+    {
+      "name": "scicomp",
+      "slug": "scicomp",
+      "repo": "alawein/scicomp",
+      "domain": "Scientific computing utilities"
+    },
+    {
+      "name": "spincirc",
+      "slug": "spincirc",
+      "repo": "alawein/spincirc",
+      "domain": "Spintronics circuit simulation"
+    },
+    {
+      "name": "maglogic",
+      "slug": "maglogic",
+      "repo": "alawein/maglogic",
+      "domain": "Magnetic logic gates"
+    },
+    {
+      "name": "neper",
+      "slug": "neper",
+      "repo": "alawein/neper",
+      "domain": "NLP entity extraction"
+    },
+    {
+      "name": "meatheadphysicist",
+      "slug": "meatheadphysicist",
+      "legacy_slugs": ["MeatheadPhysicist"],
+      "repo": "alawein/meatheadphysicist",
+      "domain": "Physics research and writing"
+    }
   ],
   "packages": [
     {

@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated:  2026-03-08
+last_updated: 2026-03-11
 tags: [changelog, version-history, releases]
 ---
 
@@ -21,6 +21,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Added `docs/governance/workspace-master-prompt.md` as the canonical
+  workspace operating contract.
+- Added canonical name/domain audit logic in
+  `.github/workflows/docs-validation.yml` with explicit transitional alias
+  allowlists.
 - Added a repository-local documentation contract and validator script for
   freshness, frontmatter, BOM, and local-link enforcement.
 - Added a clean-slate workflow guide for stash hygiene, branch recovery, and
@@ -34,13 +39,35 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Updated `AGENTS.md`, `SSOT.md`, `CLAUDE.md`, and `docs/README-backup-20250807.md` to anchor
+  governance on the workspace master prompt and phased naming migration.
+- Updated workspace migration docs (`workspace-standardization`,
+  `workspace-rename-matrix`, `workspace-layout-audit`,
+  `workspace-resource-map`) to canonical-name-first reporting.
+- Updated `projects.json`, `scripts/sync-readme.py`, and
+  `scripts/sync-to-notion.mjs` for canonical slugs plus transitional
+  `legacy_slugs`.
+- Executed hard cutover for repository slugs:
+  `gainboy→gymboy`, `MeatheadPhysicist→meatheadphysicist`,
+  `rounaq-atelier→atelier-rounaq`, and `event-discovery-framework→edfp`,
+  including org workflows, governance docs, and data-contract checks.
+- Updated docs validation and workspace-audit workflows for post-cutover
+  canonical slugs with explicit one-cycle `legacy_slugs` retention checks.
+- Updated D-1 governance status to reflect canonical token ownership at
+  `devkit/tokens/` and archival-only staging for `aw-devkit` before physical
+  retirement cutover.
+- Completed D-1 physical retirement cutover on 2026-03-11 by removing the
+  `aw-devkit` workspace root and updating migration/governance matrices to
+  retired status.
+- Replaced README governance abstraction content with workspace governance rules
+  and validation commands.
 - Updated the shared package migration guidance to reflect the active consumer pattern: in-workspace repositories now resolve `@alawein/*` packages through local `devkit` `file:` references, with refreshed installs across the first consumer batch.
 - Replaced the placeholder Node build assumptions with docs-only CI and a
   slower documentation audit workflow.
 - Updated canonical governance docs to document explicit GitHub-file exemptions
   and local validation commands.
 - Refactored overview docs into a hub-and-spoke navigation model so task
-  routing lives in `docs/README.md`, `workflow.md`, and the new specialized
+  routing lives in `docs/README-backup-20250807.md`, `workflow.md`, and the new specialized
   governance guides.
 - Refreshed the workspace rename matrix to reflect the observed root inventory,
   documented `aw-devkit/` retirement into `devkit/`, and clarified the split

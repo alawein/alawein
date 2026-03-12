@@ -1,7 +1,7 @@
 ---
 title: Documentation Contract
 description: Authoritative local rules for document classes, freshness metadata, naming, and CI truthfulness in the alawein repository
-last_updated: 2026-03-08
+last_updated: 2026-03-11
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -30,8 +30,8 @@ self-consistent.
 | --- | --- | --- | --- | --- |
 | Canonical normative docs | `AGENTS.md`, `CLAUDE.md`, `SSOT.md` | Required | `last-verified` | Must be <= 30 days old |
 | Observed lessons | `LESSONS.md` | Required | `last-updated` | Must change whenever lesson content changes |
-| Managed governance docs | `CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `DOCUMENTATION_PHILOSOPHY.md`, `docs/**/*.md` excluding `docs/archive/**` | Required | `last_updated` | Must change whenever document content changes |
-| GitHub/profile exemptions | `README.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.md` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
+| Managed governance docs | `CONTRIBUTING-backup-20250807.md`, `SECURITY.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `DOCUMENTATION_PHILOSOPHY.md`, `docs/**/*.md` excluding `docs/archive/**` | Required | `last_updated` | Must change whenever document content changes |
+| GitHub/profile exemptions | `README-backup-20250807.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.md` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
 | Historical archive | `docs/archive/**` | Preserve as-is | Optional | No freshness SLA |
 
 ## Required Files
@@ -40,24 +40,25 @@ The repository must contain these files:
 
 - `AGENTS.md`
 - `CLAUDE.md`
-- `README.md`
-- `CONTRIBUTING.md`
+- `README-backup-20250807.md`
+- `CONTRIBUTING-backup-20250807.md`
 - `CODE_OF_CONDUCT.md`
 - `LICENSE`
 - `SECURITY.md`
 - `CHANGELOG.md`
 - `SSOT.md`
 - `LESSONS.md`
-- `docs/README.md`
+- `docs/README-backup-20250807.md`
 - `docs/governance/documentation-contract.md`
+- `docs/governance/workspace-master-prompt.md`
 - `docs/governance/workflow.md`
 - `scripts/validate-doc-contract.sh`
 
 ## Naming Rules
 
 - Root community and governance files keep their conventional filenames:
-  `README.md`, `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`,
-  `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `CHANGELOG.md`,
+  `README-backup-20250807.md`, `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`,
+  `CONTRIBUTING-backup-20250807.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `CHANGELOG.md`,
   `DOCUMENTATION_PHILOSOPHY.md`.
 - Files under `docs/governance/` use `kebab-case.md`.
 - `.github` templates keep GitHub-managed naming conventions.
@@ -103,6 +104,7 @@ runs:
 - full contract validation
 - markdown linting for managed docs
 - legacy domain enforcement
+- canonical name/domain audit with phased alias allowlists
 - external link audit for governance docs
 
 ## Update Rules

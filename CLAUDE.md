@@ -1,63 +1,72 @@
 ---
 type: guide
 authority: canonical
-last-verified:  2026-03-08
+last-verified: 2026-03-11
 audience: [ai-agents, contributors]
 ---
 
 # CLAUDE.md — alawein
 
-> **Repository profile + governance templates** | **SSOT**:
-> `morphism-framework/docs/morphism-bible`
+> Repository profile + governance templates
 
 ---
 
 ## Overview
 
-This repository serves as the organization profile and baseline governance
-templates for the `alawein` GitHub organization, operated by Morphism Systems
-LLC. It contains community health files, lightweight governance docs, and
-pointers to the canonical Morphism Framework SSOT.
+This repository is the org-level docs and governance control plane for the
+`alawein` GitHub organization.
 
-**Repository Type**: Organization Profile
-**Primary Language**: N/A (documentation and policies)
+It owns:
+
+- portfolio truth (`README-backup-20250807.md` + `projects.json`)
+- workspace governance rules
+- documentation contract and validation scripts
+
+**Repository Type**: Organization Profile  
+**Primary Language**: N/A (documentation and policies)  
 **Build System**: N/A (static organizational content)
 
 ---
 
-## Documentation Governance
+## Governance Sources
 
-Local documentation rules are defined in
-[`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
-That contract is the authoritative source for document classes, freshness
-fields, naming rules, exemptions, and CI truthfulness in this repo.
+- Workspace operating contract:
+  [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+- Documentation contract:
+  [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- Repo boundaries:
+  [`AGENTS.md`](AGENTS.md)
+- Current state:
+  [`SSOT.md`](SSOT.md)
 
-The repo's workflow guidance is now organized as a governance suite under
-`docs/governance/`, with `workflow.md` as the stable overview and task-specific
-guides for Git operations, feature flow, review, merge, release, and
-clean-slate handling.
+## Required Files
 
-- **SSOT hub (Morphism Bible)**:
-  `morphism-framework/docs/morphism-bible`
-- **Documentation governance policy**:
-  `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
-- **Local workspace agent instructions** (only when working from the full
-  workspace): `../AGENTS.md`
+- `AGENTS.md`
+- `CLAUDE.md`
+- `README-backup-20250807.md`
+- `SSOT.md`
+- `LESSONS.md`
+- `CONTRIBUTING-backup-20250807.md`
+- `CODE_OF_CONDUCT.md`
+- `LICENSE`
+- `SECURITY.md`
+- `CHANGELOG.md`
+- `docs/governance/documentation-contract.md`
+- `docs/governance/workspace-master-prompt.md`
+- `scripts/validate-doc-contract.sh`
 
-### Required Files
+---
 
-- `AGENTS.md` - Pointer to workspace-level universal instructions (local workspace)
-- `CLAUDE.md` - Repository-specific documentation
-- `README.md` - Organization overview and navigation
-- `SSOT.md` - Current local repository truth
-- `LESSONS.md` - Observed repo-specific lessons
-- `CONTRIBUTING.md` - Contribution guardrails
-- `CODE_OF_CONDUCT.md` - Community standards
-- `LICENSE` - License information
-- `SECURITY.md` - Security policy
-- `CHANGELOG.md` - Version history
-- `docs/governance/documentation-contract.md` - Local documentation contract
-- `scripts/validate-doc-contract.sh` - Local validation entrypoint
+## Naming and Migration Rules
+
+- Use canonical names in docs and inventory tables.
+- When canonical name and physical repo slug differ, use:
+  `canonical-name (repo: physical-slug)`.
+- Keep links pointed at physical slugs until cutover.
+- Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
+  `atelier-rounaq`, and `edfp` now use canonical physical slugs.
+- Regenerate README sync blocks from `projects.json` with
+  `scripts/sync-readme.py`.
 
 ---
 
@@ -66,10 +75,11 @@ clean-slate handling.
 ```text
 alawein/
   docs/
-    README.md
+    README-backup-20250807.md
     governance/
-      operating-model.md
+      workspace-master-prompt.md
       documentation-contract.md
+      operating-model.md
       workflow.md
       git-operations.md
       feature-lifecycle.md
@@ -78,6 +88,10 @@ alawein/
       release-playbook.md
       clean-slate-workflow.md
       changelog-entry.md
+      workspace-standardization.md
+      workspace-rename-matrix.md
+      workspace-layout-audit.md
+      workspace-resource-map.md
   .github/
     ISSUE_TEMPLATE/
     workflows/
@@ -85,145 +99,36 @@ alawein/
     pull_request_template.md
   scripts/
     validate-doc-contract.sh
-  AGENTS.md
-  CLAUDE.md
-  README.md
-  SSOT.md
-  LESSONS.md
-  CONTRIBUTING.md
-  CODE_OF_CONDUCT.md
-  LICENSE
-  SECURITY.md
-  CHANGELOG.md
-  [configuration files] (.editorconfig, .gitignore, etc.)
+    sync-readme.py
+    sync-to-notion.mjs
+  projects.json
 ```
 
 ---
 
 ## Development Workflow
 
-### Getting Started
-
-1. **Read local workspace instructions** (when working in the full workspace): `../AGENTS.md`
-2. **Review documentation governance (SSOT)**:
-   `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
-3. **Read the local contract**: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
-4. **Review Organization Policies**: Read `CODE_OF_CONDUCT.md` and `CONTRIBUTING.md`
-5. **Run the local validator**: `./scripts/validate-doc-contract.sh --full`
-
-### Working Agreements
-
-- **Organizational Standards**: Maintain consistency across all Morphism Systems repositories under `alawein`
-- **Community Focus**: Ensure inclusive and welcoming community guidelines
-- **Policy Compliance**: All organizational policies must be current and accurate
-- **Documentation Quality**: High standards for organizational communications
-
----
-
-## Documentation Standards
-
-- Canonical docs (`AGENTS.md`, `CLAUDE.md`, `SSOT.md`) require frontmatter with
-  `last-verified` and must remain within a 30-day verification window.
-- `LESSONS.md` requires frontmatter with `last-updated`.
-- Managed governance docs require frontmatter with `last_updated`.
-- `README.md` and GitHub-managed templates are explicit exemptions so GitHub
-  rendering and template behavior stay intact.
-- Internal markdown links must resolve locally.
-- Root community filenames remain conventional; docs under `docs/governance/`
-  use kebab-case.
-
-### Governance Suite
-
-- **Operating model**:
-  [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
-- **Workflow overview**:
-  [`docs/governance/workflow.md`](docs/governance/workflow.md)
-- **Git operations**:
-  [`docs/governance/git-operations.md`](docs/governance/git-operations.md)
-- **Feature lifecycle**:
-  [`docs/governance/feature-lifecycle.md`](docs/governance/feature-lifecycle.md)
-- **Review playbook**:
-  [`docs/governance/review-playbook.md`](docs/governance/review-playbook.md)
-- **Merge policy**:
-  [`docs/governance/merge-policy.md`](docs/governance/merge-policy.md)
-- **Release playbook**:
-  [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
-- **Clean-slate workflow**:
-  [`docs/governance/clean-slate-workflow.md`](docs/governance/clean-slate-workflow.md)
+1. Read [`AGENTS.md`](AGENTS.md) and [`SSOT.md`](SSOT.md).
+2. Read
+   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md).
+3. Read
+   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
+4. Run `python scripts/sync-readme.py --check`.
+5. Run `./scripts/validate-doc-contract.sh --full`.
 
 ---
 
 ## Quality Gates
 
-### Pre-commit Validation
+Before proposing changes:
 
-Before committing, ensure:
-- ✅ `./scripts/validate-doc-contract.sh --full` passes
-- ✅ Managed markdown files satisfy the local contract
-- ✅ Internal links are working
-- ✅ Policy documents are current
-
-### CI/CD Validation
-
-Pull requests are validated for:
-- Documentation contract compliance
-- Markdown linting for managed docs
-
-Scheduled and docs-focused audits additionally validate:
-- Legacy domain enforcement
-- External link health for governance docs
-
----
-
-## Organizational Policies
-
-### Code of Conduct
-
-**File**: `CODE_OF_CONDUCT.md`
-- Defines community standards and behavior expectations
-- Outlines reporting procedures for violations
-- Establishes consequences for policy breaches
-
-### Contribution Guidelines
-
-**File**: `CONTRIBUTING.md`
-- Provides guidance for contributors
-- Outlines development workflows
-- Defines code review processes
-
-### Security Policy
-
-**File**: `SECURITY.md`
-- Details security reporting procedures
-- Defines supported versions
-- Outlines vulnerability disclosure process
-
-### License Information
-
-**File**: `LICENSE`
-- Specifies terms of use for this repository's content (other repositories may vary)
-- Defines permissions and restrictions
-- Governs intellectual property rights
-
----
-
-## Contact & Support
-
-- **Documentation Issues**: Follow governance framework reporting
-- **General Support**: dev@morphism.systems
-
----
-
-## References
-
-- **Morphism Bible (SSOT)**: `morphism-framework/docs/morphism-bible`
-- **Documentation governance**:
-  `morphism-framework/docs/morphism-bible/DOCUMENTATION_GOVERNANCE.md`
-- **Local documentation contract**: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
-- **Local operating model**: [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
-- **Local workspace instructions** (only when working from the full workspace): `../AGENTS.md`
+- `python scripts/sync-readme.py --check`
+- `./scripts/validate-doc-contract.sh --full`
+- markdown lint/link checks for managed docs (same commands as CI workflows)
 
 ---
 
 ## Governance
-See [AGENTS.md](AGENTS.md) for rules. See [SSOT.md](SSOT.md) for current state.
+
+See [AGENTS.md](AGENTS.md) for boundaries and [SSOT.md](SSOT.md) for current
+state.

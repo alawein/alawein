@@ -1,77 +1,73 @@
 ---
 title: Workspace Standardization Guide
-description: Canonical migration contract for root naming, stack-aware directory layouts, shared package namespaces, and consistency refactors across the alawein workspace
-last_updated:  2026-03-09
+description: Canonical migration contract for naming, layout, shared resources, and phased workspace directives.
+last_updated: 2026-03-11
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
-version: 1.0.0
-tags: [workspace, migration, naming, layout, refactoring, governance]
+author: alawein maintainers
+version: 1.1.0
+tags: [workspace, migration, naming, layout, governance]
 ---
 
 # Workspace Standardization Guide
 
-This document is the active contract for workspace-wide cleanup and standardization across the
-`alawein` workspace.
+This document defines how workspace standardization is executed under the
+canonical contract in
+[`workspace-master-prompt.md`](./workspace-master-prompt.md).
 
 ## Goals
 
-- Keep root naming predictable.
-- Standardize repository layout by stack and function instead of forcing one generic tree.
-- Centralize shared package, branding, and documentation rules.
-- Separate low-risk filesystem cleanup from higher-risk package and repository migrations.
+- Keep naming canonical and predictable.
+- Preserve truthful documentation during any phased repo-slug migration.
+- Keep shared resources centralized with explicit ownership.
+- Execute directives in dependency order, not as one monolithic sweep.
 
-## Naming Policy
+## Canonical Naming Policy
 
-### Support directories
+### Canonical Names
 
-- Non-repository support directories use a leading underscore when they are safe to rename.
-- Implemented in this pass:
-  - `0/` -> `_0/`
-  - `.mypy_cache/` -> `_mypy_cache/`
-  - local-only support workspaces such as `_gmail-ops/` and `_neper/` stay underscore-prefixed
-- Deferred:
-  - `.github/` remains unchanged because its current path may be consumed by automation,
-    instructions, and workflow tooling.
+- `gymboy`
+- `meatheadphysicist`
+- `devkit` (legacy overlap: `aw-devkit`)
+- `_gmail-ops` (external workspace)
 
-### Repository roots
+### Transitional Alias Format
 
-- Repository root directories should converge on lowercase canonical repository slugs.
-- Use kebab-case when the repository slug itself uses hyphens.
-- Root renames must happen only after cross-repo references, deployment paths, changelog links, and
-  package consumers have been audited.
-- Current rename targets:
-  - `MeatheadPhysicist/` -> `meatheadphysicist/` (deferred pending final remote slug decision)
-  - `aw-devkit/` -> retired into `devkit/` after migration audit
+When canonical name and physical repo slug differ, docs must use:
+
+`canonical-name (repo: physical-slug)`
+
+Current cutover status (2026-03-11): for `gymboy`, `meatheadphysicist`,
+`atelier-rounaq`, and `edfp`, canonical and physical slugs now match.
+
+### External Prefix Rule
+
+External or remote tool directories must be underscore-prefixed.
 
 ## Stack-Aware Layout Standards
 
-### Vite and SPA repositories
+### Vite and SPA Repositories
 
 - Core directories:
   - `src/components/`
   - `src/lib/`
   - `src/types/`
   - `src/hooks/`
-  - `src/pages/` or route-equivalent entry points
-- Optional directories should be feature-driven, not arbitrary:
+  - `src/pages/` or equivalent route entry
+- Optional feature directories:
   - `src/services/`
   - `src/store/`
   - `src/integrations/`
   - `src/workers/`
 
-### Next.js repositories
+### Next.js Repositories
 
-- Preserve `app/` routing conventions.
-- Prefer clear boundaries between UI, data access, and shared utilities.
-- Monorepos should keep `apps/` and `packages/` boundaries explicit rather than flattening them.
-- Single-app Next.js repositories may retain a root `packages/` directory when:
-  - `src/app/` remains the only runtime surface
-  - the root packages are app-local content or config surfaces
-  - the package purpose is documented and validated
+- Preserve App Router conventions.
+- Keep clear UI/data/utility boundaries.
+- Preserve app-local `packages/` only when documented as intentional.
 
-### Python repositories
+### Python Repositories
 
 - Preferred structure:
   - `src/<package_name>/`
@@ -79,94 +75,60 @@ This document is the active contract for workspace-wide cleanup and standardizat
   - `docs/`
   - `notebooks/`
   - `scripts/`
-- General-purpose libraries should prefer the `src/<package_name>/` boundary.
-- Research and HPC repositories may use a rooted `<package_name>/` layout when:
-  - the package root is singular and clearly documented
-  - the repo couples code with large domain-specific assets or workflow tooling
-  - the specialized surfaces such as `scripts/`, `siesta/`, `lammps/`, or
-    `notebooks/` are intentional and documented
-- Polyglot scientific suites may use a language-boundary layout such as:
-  - `python/<package_name>/`
-  - `python/tests/`
-  - root-level domain assets like `matlab/`, `oommf/`, `mumax3/`, `docker/`,
-    or `examples/`
-  when the language boundary is documented and the repo is not pretending to be
-  a pure single-language package.
-- Research repositories may retain specialized domain folders, but new additions
-  should align with the documented repo-specific structure rather than creating
-  parallel package roots.
+- Research and polyglot repos may use justified exceptions with documented
+  runtime boundaries.
 
-## Shared Package and Theme Rules
+## Shared Resource Rules
 
-- Shared design, linting, formatting, TypeScript packages, tokens, icons,
-  themes, and reusable frontend assets are owned by `devkit/`.
-- Namespace migrations must start in `devkit/` before consumer repositories are changed.
-- Shared brand primitives, theme tokens, and reusable asset rules should be centralized before
-  product-specific theme overrides are touched.
-- Producer-side migration to `@alawein/*` is complete in `devkit/` for the active package surface.
-- In-workspace consumer adoption must use local `file:` references into `devkit/packages/*` while
-  `devkit/` remains unpublished.
-- `aw-devkit/` is legacy overlapping design-surface work. It should be treated
-  as read-only during migration and retired after its references are redirected
-  to `devkit/`.
-- Consumer package rewiring and install refreshes are now complete for the first migration batch:
-  `attributa`, `bolts`, `gainboy`, `llmworks`, `meshal-web`, `qmlab`, `repz`, `scribd`, and
-  `simcore`.
+- Shared design tokens, components, themes, and tooling belong in `devkit/`.
+- Token source of truth is `devkit/tokens/`.
+- Cross-repo docs and migration matrices belong in `alawein/`.
+- Cross-repo operational guides and handoff docs belong in `docs/`.
+- `aw-devkit` is retired and can only be referenced as historical migration
+  context.
 
-See `docs/governance/package-namespace-matrix.md` for the current consumer and dependency map.
+## Directive Mapping (D-1 through D-5)
 
-## Canonical Repo Split
+### D-1: Devkit Consolidation
 
-- `alawein/` owns governance contracts, rename policy, matrices, and workspace
-  migration decisions.
-- `devkit/` owns shared packages, design tokens, icons, themes, reusable
-  frontend assets, and package-level templates.
-- `docs/` owns cross-repo general guides, handoff state, and portfolio backlog
-  references.
+- Consolidate `aw-devkit` into `devkit`.
+- Redirect references to `devkit` with canonical token source in `devkit/tokens/`.
+- Completed on 2026-03-11: physical `aw-devkit` workspace root retired.
 
-See `docs/governance/workspace-resource-map.md` for the canonical home of each
-shared resource class.
-See `docs/governance/workspace-layout-audit.md` for the current repo-by-repo
-layout alignment status.
+### D-2: Gymboy Redesign
 
-## Documentation and Writing Standards
+- Implement Game Boy-inspired visual redesign.
+- Keep canonical naming as `gymboy`.
+- Ensure deploy metadata targets `gymboy.coach`.
 
-- Required governance surface for active repositories:
-  - `AGENTS.md`
-  - `CLAUDE.md`
-  - `SSOT.md`
-  - `README.md`
-  - `CHANGELOG.md`
-  - `CONTRIBUTING.md`
-  - `SECURITY.md`
-  - `LICENSE`
-- Writing style should follow the documentation guidance already established in this workspace.
-- Hollow templates must be replaced with stack-specific, repo-specific content during migration.
+### D-3: Repz Heal
 
-## License and Branding Policy
+- Resolve build, test, lint, dependency, and architecture debt.
+- Standardize on `repzcoach.com` as canonical domain.
 
-- Licenses should be aligned only where legal requirements truly match.
-- Shared logos, themes, tokens, and reusable brand assets should be centralized when multiple repos
-  consume them.
-- Product-specific identities stay local when they are intentionally distinct.
+### D-4: Ninja Visual Token System
+
+- Enforce shared core ninja tokens from `devkit/tokens/`.
+- Permit per-character specialization through constrained derivations.
+
+### D-5: meshal.ai Refinement
+
+- Execute content, design, performance, SEO, and accessibility upgrades.
+- Keep portfolio representation synchronized with `alawein/README-backup-20250807.md`.
 
 ## Execution Order
 
-1. Safe support-directory renames.
-2. Cross-repo audit of hardcoded names, URLs, deployment paths, and package consumers.
-3. Canonical-home documentation refresh in `alawein/`, `devkit/`, and `docs/`.
-4. `devkit/` package namespace migration and shared-resource consolidation.
-5. Consumer repository package adoption using local `devkit` package paths.
-6. Repository-root renames or retirements.
-7. Stack-aware internal layout normalization.
-8. Documentation, branding, and license cleanup.
-9. Refactors and verification.
+1. Update governance docs and canonical naming matrices.
+2. Align portfolio data (`projects.json`) and generated README content.
+3. Consolidate shared-resource ownership (`devkit`, token contracts).
+4. Execute repo-specific directives (D-2, D-3, D-5) with continuous README sync.
+5. Perform physical repo slug renames once technical readiness is confirmed.
+6. Remove transitional alias notation after cutover.
 
 ## Verification Requirements
 
-1. Maintain an old-to-new root rename matrix before renaming repository directories.
-2. Validate package consumers after each namespace change.
-3. Re-run repository-standard checks after structural changes.
-4. Update cross-repo documentation and changelog comparison links after any root rename.
-
-See `docs/governance/workspace-rename-matrix.md` for the current root inventory and rename status.
+1. Canonical names are reflected in governance docs and portfolio data.
+2. Transitional aliases appear only in approved `repo:` contexts.
+3. README and `projects.json` remain synchronized.
+4. Domain canonicalization is enforced (`repzcoach.com`).
+5. Validation commands pass for docs and repo-level contracts.

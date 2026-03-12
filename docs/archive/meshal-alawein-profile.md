@@ -1,6 +1,6 @@
 ---
 title: Legacy profile (Meshal Alawein)
-description: Archived copy of the previous `alawein/README.md` content (kept for history and reference).
+description: Archived copy of the previous `alawein/README-backup-20250807.md` content (kept for history and reference).
 last_updated: 2026-01-10
 category: archive
 audience: all
@@ -8,7 +8,7 @@ status: archived
 version: 1.0.0
 tags: [archive, legacy, profile]
 related:
-  - ../../README.md
+  - ../../README-backup-20250807.md
 ---
 
 > This document is intentionally preserved as a legacy snapshot of a prior org README.
@@ -423,7 +423,7 @@ def response_time(signal_type: str) -> str:
 **Workflow & Standards:**
 - Documentation: `docs/governance/workflow.md`
 - Continuous Integration: `.github/workflows/ci.yml`
-- Core Documentation: `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE`
+- Core Documentation: `README-backup-20250807.md`, `CONTRIBUTING-backup-20250807.md`, `CODE_OF_CONDUCT.md`, `CHANGELOG.md`, `LICENSE`
 
 **Branching Strategy:**
 - `main` – Protected production branch

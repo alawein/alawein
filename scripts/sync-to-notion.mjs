@@ -6,7 +6,7 @@
  *   NOTION_DB_ID     — Database ID for "Projects (Canonical)"
  *
  * For each project in projects.json, upserts a page in Notion:
- *   - Matches on "Slug" property (unique key)
+ *   - Matches on "Slug" property (canonical or legacy slug)
  *   - Updates Name, URL, Description, Tags, Category
  */
 import { readFileSync } from 'node:fs';
@@ -74,7 +74,16 @@ function buildProperties(project) {
 }
 
 async function upsertProject(project, existingPages) {
-  const pageId = existingPages.get(project.slug);
+  let pageId = existingPages.get(project.slug);
+  if (!pageId) {
+    for (const legacySlug of project.legacy_slugs || []) {
+      pageId = existingPages.get(legacySlug);
+      if (pageId) {
+        break;
+      }
+    }
+  }
+
   const properties = buildProperties(project);
 
   if (pageId) {
@@ -82,6 +91,7 @@ async function upsertProject(project, existingPages) {
       method: 'PATCH',
       body: JSON.stringify({ properties }),
     });
+    existingPages.set(project.slug, pageId);
     console.log(`  Updated: ${project.name}`);
   } else {
     await notionFetch('/pages', {

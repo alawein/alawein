@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""sync-readme.py — Regenerate README.md sections from projects.json.
+"""sync-readme.py — Regenerate README-backup-20250807.md sections from projects.json.
 
 Reads projects.json and rewrites sections between HTML comment markers:
   <!-- SYNC:PROJECTS:START --> ... <!-- SYNC:PROJECTS:END -->
@@ -15,7 +15,40 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PROJECTS_JSON = ROOT / "projects.json"
-README = ROOT / "README.md"
+README = ROOT / "README-backup-20250807.md"
+
+
+def repo_slug(repo: str) -> str:
+    """Return physical repo slug from owner/name."""
+    return repo.rsplit("/", maxsplit=1)[-1]
+
+
+def canonical_label(entry: dict) -> str:
+    """Return display label with canonical-name-first alias semantics."""
+    canonical = entry.get("slug") or entry.get("name", "")
+    physical = repo_slug(entry["repo"]) if entry.get("repo") else ""
+
+    if canonical and physical and canonical != physical:
+        return f"{canonical} (repo: {physical})"
+
+    return entry.get("name") or canonical
+
+
+def entry_url(entry: dict) -> str:
+    """Return link target for entry.
+
+    If canonical and physical repo names differ, link to physical GitHub repo
+    until slug cutover is complete.
+    """
+    if not entry.get("repo"):
+        return entry.get("url", "")
+
+    canonical = entry.get("slug", "")
+    physical = repo_slug(entry["repo"])
+    if canonical and canonical != physical:
+        return f"https://github.com/{entry['repo']}"
+
+    return entry.get("url", f"https://github.com/{entry['repo']}")
 
 
 def render_projects(featured: list[dict]) -> str:
@@ -26,9 +59,11 @@ def render_projects(featured: list[dict]) -> str:
         cells = []
         for p in chunk:
             tags = " ".join(f"`{t}`" for t in p["tags"])
+            label = canonical_label(p)
+            url = entry_url(p)
             cells.append(
                 f'<td align="center" width="33%">\n\n'
-                f'**[{p["name"]}]({p["url"]})**\n\n'
+                f"**[{label}]({url})**\n\n"
                 f'{p["description"]}\n\n'
                 f"{tags}\n\n"
                 f"</td>"
@@ -47,8 +82,9 @@ def render_research(research: list[dict]) -> str:
         "|---------|--------|",
     ]
     for r in research:
+        label = canonical_label(r)
         lines.append(
-            f'| [{r["name"]}](https://github.com/{r["repo"]}) | {r["domain"]} |'
+            f'| [{label}](https://github.com/{r["repo"]}) | {r["domain"]} |'
         )
     return "\n".join(lines)
 
@@ -110,15 +146,15 @@ def main() -> int:
     content = sync_section(content, "PACKAGES", render_packages(data["packages"]))
 
     if content == old_content:
-        print("README.md is up to date.")
+        print("README-backup-20250807.md is up to date.")
         return 0
 
     if check_only:
-        print("README.md is out of sync with projects.json. Run: python scripts/sync-readme.py")
+        print("README-backup-20250807.md is out of sync with projects.json. Run: python scripts/sync-readme.py")
         return 1
 
     README.write_text(content, encoding="utf-8")
-    print("README.md updated from projects.json.")
+    print("README-backup-20250807.md updated from projects.json.")
     return 0
 
 

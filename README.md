@@ -58,11 +58,40 @@ Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierar
 </td>
 <td align="center" width="33%">
 
-**[Morphism Systems](https://morphism.systems)**
+**[Gymboy](https://gymboy.coach)**
 
-Categorical governance framework. 7 invariants, 10 tenets, AI-driven development governance.
+Fitness coaching platform with a retro progression-first training interface.
 
-`TypeScript` `React` `Python`
+`React` `Vite` `Spark`
+
+</td>
+<td align="center" width="33%">
+
+**[REPZ](https://repzcoach.com)**
+
+AI-powered coaching platform.
+
+`TypeScript` `React` `Supabase`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**[meshal-web](https://meshal.ai)**
+
+Personal site and portfolio surface for current Alawein projects.
+
+`React` `Vite` `Tailwind`
+
+</td>
+<td align="center" width="33%">
+
+**[devkit](https://github.com/alawein/devkit)**
+
+Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.
+
+`Design Tokens` `UI` `Tooling`
 
 </td>
 <td align="center" width="33%">
@@ -87,35 +116,22 @@ LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF
 </td>
 <td align="center" width="33%">
 
-**[REPZ](https://repzcoach.com)**
-
-AI-powered coaching platform.
-
-`TypeScript` `React` `FastAPI`
-
-</td>
-<td align="center" width="33%">
-
 **[Attributa](https://attributa.dev)**
 
-Design audit & accessibility platform.
+Design audit and accessibility platform.
 
 `TypeScript` `React`
 
 </td>
-</tr>
-<tr>
 <td align="center" width="33%">
 
 **[Neper](https://github.com/alawein/neper)**
 
-Named entity extraction & processing pipeline with transformer models.
+Named entity extraction and processing pipeline with transformer models.
 
 `Python` `Transformers` `NLP`
 
 </td>
-<td align="center" width="33%"></td>
-<td align="center" width="33%"></td>
 </tr>
 </table>
 <!-- SYNC:PROJECTS:END -->
@@ -161,15 +177,25 @@ Named entity extraction & processing pipeline with transformer models.
 
 ---
 
-## Governance Model
+## Workspace Governance
 
-Every project follows the **morphism tier model**, scaffolded via `npx @morphism-systems/cli scaffold tier <n>`:
+Canonical operating contract:
+[`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
 
-| Tier | Scope | Stack | Standards |
-|:----:|-------|-------|-----------|
-| **1** | Web apps | TypeScript strict, React, Vite | Auto-deploy, Tailwind, CI |
-| **2** | Research | Python 3.11+, mypy strict | >90% coverage, reproducible |
-| **3** | Governance | Multi-language monorepo | Kernel invariants, drift detection |
+Core rules enforced in this repo:
+
+- Single source of truth (`SSOT.md`, per-repo `AGENTS.md`, org `README-backup-20250807.md`)
+- Scope boundaries before action
+- Observable changes (`type(scope): description`)
+- Reject violations with file/line evidence
+- README sync for structural changes
+- D-1 phase state: canonical token source is `devkit/tokens/`; `aw-devkit`
+  physical retirement cutover completed on 2026-03-11
+
+Validation commands:
+
+- `python scripts/sync-readme.py --check`
+- `./scripts/validate-doc-contract.sh --full`
 
 ---
 
@@ -188,7 +214,7 @@ Every project follows the **morphism tier model**, scaffolded via `npx @morphism
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
 | [neper](https://github.com/alawein/neper) | NLP entity extraction |
-| [MeatheadPhysicist](https://github.com/alawein/MeatheadPhysicist) | Physics research & writing |
+| [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
 <!-- SYNC:RESEARCH:END -->
 
 </details>

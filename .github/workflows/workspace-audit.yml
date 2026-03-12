@@ -19,11 +19,11 @@ jobs:
           - attributa
           - bolts
           - devkit
-          - event-discovery-framework
-          - gainboy
+          - edfp
+          - gymboy
           - llmworks
           - maglogic
-          - MeatheadPhysicist
+          - meatheadphysicist
           - meshal-web
           - neper
           - qaplibria
@@ -31,7 +31,7 @@ jobs:
           - qmlab
           - qubeml
           - repz
-          - rounaq-atelier
+          - atelier-rounaq
           - scicomp
           - scribd
           - shared-utils
@@ -48,7 +48,7 @@ jobs:
         id: files
         run: |
           missing=""
-          for f in README.md SSOT.md AGENTS.md CLAUDE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md CONTRIBUTING.md; do
+          for f in README-backup-20250807.md SSOT.md AGENTS.md CLAUDE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md CONTRIBUTING-backup-20250807.md; do
             [ -f "$f" ] || missing="$missing $f"
           done
           echo "missing=$missing" >> "$GITHUB_OUTPUT"
@@ -78,6 +78,7 @@ jobs:
       - name: Summary
         run: |
           echo "## ${{ matrix.repo }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Physical repo slug: ${{ matrix.repo }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Missing files: ${{ steps.files.outputs.missing || 'none' }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Has CI: ${{ steps.ci.outputs.has_ci }}" >> "$GITHUB_STEP_SUMMARY"
           echo "- Has tests: ${{ steps.tests.outputs.has_tests }}" >> "$GITHUB_STEP_SUMMARY"

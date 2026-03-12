@@ -85,11 +85,11 @@ for the full author and reviewer checklist.
   application build, package install, or artifact pipeline to run locally.
 - Run these before opening a PR:
   - `./scripts/validate-doc-contract.sh --full`
-  - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md DOCUMENTATION_PHILOSOPHY.md docs/README.md docs/governance/*.md`
+  - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CONTRIBUTING-backup-20250807.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md DOCUMENTATION_PHILOSOPHY.md docs/README-backup-20250807.md docs/governance/*.md`
 
 ## Documentation
 
-- Keep `README.md`, `docs/README.md`, and the relevant guide under
+- Keep `README-backup-20250807.md`, `docs/README-backup-20250807.md`, and the relevant guide under
   `docs/governance/` in sync with workflow changes
 - Mirror any future wiki content into `/docs` to avoid drift
 

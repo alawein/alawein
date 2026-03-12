@@ -47,14 +47,14 @@ jobs:
           npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc \
             AGENTS.md \
             CLAUDE.md \
-            CONTRIBUTING.md \
+            CONTRIBUTING-backup-20250807.md \
             CODE_OF_CONDUCT.md \
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \
             LESSONS.md \
             DOCUMENTATION_PHILOSOPHY.md \
-            docs/README.md \
+            docs/README-backup-20250807.md \
             docs/governance/*.md
 
       - name: Enforce canonical docs base URL
@@ -67,17 +67,136 @@ jobs:
             exit 1
           fi
 
+      - name: Audit canonical names and domains
+        run: |
+          python3 - <<'PY'
+          import json
+          import re
+          import sys
+          from pathlib import Path
+
+          root = Path(".")
+          managed_root_docs = [
+              root / "AGENTS.md",
+              root / "CLAUDE.md",
+              root / "CONTRIBUTING-backup-20250807.md",
+              root / "CODE_OF_CONDUCT.md",
+              root / "SECURITY.md",
+              root / "CHANGELOG.md",
+              root / "SSOT.md",
+              root / "LESSONS.md",
+              root / "DOCUMENTATION_PHILOSOPHY.md",
+              root / "README-backup-20250807.md",
+          ]
+          managed_docs = sorted(
+              p for p in (root / "docs").rglob("*.md")
+              if not p.as_posix().startswith("docs/archive/")
+          )
+          files_to_scan = managed_root_docs + managed_docs
+
+          legacy_tokens = [
+              "gainboy",
+              "MeatheadPhysicist",
+              "rounaq-atelier",
+              "event-discovery-framework",
+          ]
+          legacy_context_patterns = [
+              r"legacy[_ -]?slug",
+              r"migration",
+              r"cutover",
+              r"renamed from",
+              r"retired",
+              r"historical",
+              r"`legacy_slugs`",
+              r"→",
+              r"->",
+          ]
+
+          errors = []
+          for file_path in files_to_scan:
+              text = file_path.read_text(encoding="utf-8")
+              for line_no, line in enumerate(text.splitlines(), start=1):
+                  if "repazapp.com" in line:
+                      errors.append(
+                          f"{file_path}:{line_no}: forbidden legacy domain 'repazapp.com'"
+                      )
+
+                  for token in legacy_tokens:
+                      if token in line and not any(
+                          re.search(pattern, line, flags=re.IGNORECASE)
+                          for pattern in legacy_context_patterns
+                      ):
+                          errors.append(
+                              f"{file_path}:{line_no}: legacy token '{token}' outside approved alias context"
+                          )
+
+          projects = json.loads((root / "projects.json").read_text(encoding="utf-8"))
+          featured = projects.get("featured", [])
+          research = projects.get("research", [])
+
+          gymboy = next((p for p in featured if p.get("repo") == "alawein/gymboy"), None)
+          if gymboy is None:
+              errors.append("projects.json: missing featured entry for alawein/gymboy")
+          else:
+              if gymboy.get("slug") != "gymboy":
+                  errors.append("projects.json: alawein/gymboy must use slug 'gymboy'")
+              if "gainboy" not in (gymboy.get("legacy_slugs") or []):
+                  errors.append("projects.json: alawein/gymboy must retain legacy slug 'gainboy' for transition window")
+
+          edfp = next((p for p in featured if p.get("repo") == "alawein/edfp"), None)
+          if edfp is None:
+              errors.append("projects.json: missing featured entry for alawein/edfp")
+          else:
+              if edfp.get("slug") != "edfp":
+                  errors.append("projects.json: alawein/edfp must use slug 'edfp'")
+              if "event-discovery-framework" not in (edfp.get("legacy_slugs") or []):
+                  errors.append("projects.json: alawein/edfp must retain legacy slug 'event-discovery-framework' for transition window")
+
+          repz = next((p for p in featured if p.get("repo") == "alawein/repz"), None)
+          if repz is None or repz.get("url") != "https://repzcoach.com":
+              errors.append("projects.json: featured entry for alawein/repz must use url 'https://repzcoach.com'")
+
+          meathead = next((p for p in research if p.get("repo") == "alawein/meatheadphysicist"), None)
+          if meathead is None:
+              errors.append("projects.json: missing research entry for alawein/meatheadphysicist")
+          else:
+              if meathead.get("slug") != "meatheadphysicist":
+                  errors.append("projects.json: alawein/meatheadphysicist research entry must use slug 'meatheadphysicist'")
+              if meathead.get("name") != "meatheadphysicist":
+                  errors.append("projects.json: alawein/meatheadphysicist research entry must use canonical name 'meatheadphysicist'")
+              if "MeatheadPhysicist" not in (meathead.get("legacy_slugs") or []):
+                  errors.append("projects.json: alawein/meatheadphysicist must retain legacy slug 'MeatheadPhysicist' for transition window")
+
+          readme_text = (root / "README-backup-20250807.md").read_text(encoding="utf-8")
+          for forbidden_alias in (
+              "gymboy (repo:",
+              "meatheadphysicist (repo:",
+              "atelier-rounaq (repo:",
+              "edfp (repo:",
+          ):
+              if forbidden_alias in readme_text:
+                  errors.append(f"README-backup-20250807.md: obsolete alias display '{forbidden_alias}' must be removed post-cutover")
+
+          if errors:
+              print("Canonical name/domain audit failed:")
+              for err in errors:
+                  print(f"- {err}")
+              sys.exit(1)
+
+          print("Canonical name/domain audit passed for managed docs (docs/archive/** exempt).")
+          PY
+
       - name: Audit external governance links
         run: |
           npx --yes markdown-link-check@3.11.2 \
             --config .github/markdown-link-check-config.json \
             AGENTS.md \
             CLAUDE.md \
-            CONTRIBUTING.md \
+            CONTRIBUTING-backup-20250807.md \
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \
-            docs/README.md \
+            docs/README-backup-20250807.md \
             docs/governance/*.md
 
       - name: Generate documentation report
@@ -91,7 +210,7 @@ jobs:
           echo "- External governance links audited" >> docs-validation-report.md
           echo "" >> docs-validation-report.md
           echo "## Repository Type" >> docs-validation-report.md
-          echo "- Morphism Systems documentation repository" >> docs-validation-report.md
+          echo "- Alawein organization documentation repository" >> docs-validation-report.md
           echo "- Contains README(s), documentation, and governance artifacts" >> docs-validation-report.md
           echo "" >> docs-validation-report.md
           echo "## Generated on $(date)" >> docs-validation-report.md
@@ -130,6 +249,6 @@ jobs:
           echo "- **Documentation Validation**: ${{ needs.validate-docs.result }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Notes" >> $GITHUB_STEP_SUMMARY
-          echo "- This repository contains Morphism Systems documentation" >> $GITHUB_STEP_SUMMARY
-          echo "- Audit includes contract validation, markdown lint, legacy-domain enforcement, and external governance links" >> $GITHUB_STEP_SUMMARY
+          echo "- This repository contains Alawein organization documentation" >> $GITHUB_STEP_SUMMARY
+          echo "- Audit includes contract validation, markdown lint, canonical-name/domain checks, and external governance links" >> $GITHUB_STEP_SUMMARY
           echo "- Reports are available as artifacts for download" >> $GITHUB_STEP_SUMMARY

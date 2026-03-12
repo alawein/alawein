@@ -24,16 +24,19 @@ jobs:
       - name: Sync README from projects.json
         run: python scripts/sync-readme.py
 
+      - name: Verify README sync is stable
+        run: python scripts/sync-readme.py --check
+
       - name: Check for changes
         id: diff
         run: |
-          git diff --quiet README.md && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+          git diff --quiet README-backup-20250807.md && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "docs: auto-sync README from projects.json"
+          git add README-backup-20250807.md
+          git commit -m "docs(readme): auto-sync from projects.json"
           git push

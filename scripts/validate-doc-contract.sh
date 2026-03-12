@@ -84,6 +84,7 @@ REQUIRED_FILES = [
     "LESSONS.md",
     "docs/README.md",
     "docs/governance/documentation-contract.md",
+    "docs/governance/workspace-master-prompt.md",
     "docs/governance/workflow.md",
     "scripts/validate-doc-contract.sh",
 ]

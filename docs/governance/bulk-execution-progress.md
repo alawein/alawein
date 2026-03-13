@@ -1,7 +1,7 @@
 ---
 title: Bulk Execution Progress — Design & Branding Plan
 description: Tracks Phase 3–5 execution across repos for resume capability.
-last_updated: 2026-03-12 (continue implementation)
+last_updated: 2026-03-13
 category: governance
 status: active
 ---
@@ -39,6 +39,7 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | 2026-03-13 | simcore | Phase 5 | merge + deploy | PR #6 merged via gh; main pulled; vercel deploy --prod succeeded. |
 | 2026-03-13 | (Vercel repos) | Deploy | vercel deploy --prod | **OK:** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework. **Failed:** repz (install exit 128), meshal-web (build exit 1), attributa (install exit 128). |
 | 2026-03-13 | repz, meshal-web, attributa | Fix deploy | vercel.json + Clerk | repz: added installCommand (--ignore-scripts); **redeploy succeeded.** meshal-web: Clerk v6 — replaced SignedIn/SignedOut with Show; **pin @clerk/react to 6.1.0** (fixes loadClerkUiScript mismatch with @clerk/shared); **redeploy succeeded.** attributa: added installCommand; redeploy still failed (install 128; has github:alawein/alawein-ui dep). |
+| 2026-03-13 | attributa | Deploy prep | install script + docs | Added `scripts/vercel-install.sh` (configures git with GH_TOKEN for private deps) and README “Deployment (Vercel)”. Set vercel.json installCommand to `bash scripts/vercel-install.sh`. **Next:** add GH_TOKEN in Vercel env and redeploy. |
 
 ## Per-repo status
 

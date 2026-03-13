@@ -46,8 +46,8 @@ This document is the single source of truth for how we apply branding across ala
 | attributa | `/favicon.ico`, `/placeholder.svg` | Yes | OK |
 | qmlab | `/favicon.svg`, `/favicon.ico` | Yes | OK |
 | llmworks | `/favicon.png`, `/favicon.svg` | Yes | OK |
-| meshal-web | (none in grep) | — | Add `public/favicon.svg` and link in index.html |
-| gainboy | (none in grep) | — | Add `public/favicon.svg` and link in index.html |
+| meshal-web | `/favicon.svg` | Yes | OK (applied) |
+| gainboy | `/favicon.svg` | Yes | OK (applied) |
 | bolts | (Next.js; check app layout) | — | Ensure favicon in app or public |
 | event-discovery-framework | (frontend) | — | Add if missing |
 | devkit templates | `/vite.svg` | Yes | Template default |

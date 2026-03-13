@@ -81,15 +81,9 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 
 **Classification:** Front-end; Vite + React; portfolio (meshal.ai); D-5 refinement target.
 
-**Done:** Format, lint fix (Navigation setState-in-effect), Phase 5 branch + commit. Four unit tests still fail (Clerk/Router context — pre-existing).
+**Done:** Format, lint fix (Navigation setState-in-effect), Phase 5 branch + commit; **Clerk v6:** use Show, pin @clerk/react to 6.1.0 (fixes Vercel loadClerkUiScript); **Vercel deploy — succeeded** (2026-03-13). Four unit tests still fail (Clerk/Router context — pre-existing).
 
-**Left:**
-
-1. **(Optional)** Fix test setup: add Clerk/Router providers or mocks so `npm run test` passes (see phase4-testing-and-validation.md known issues).
-2. **(Optional)** Phase 2: Add/update global styles from devkit; refactor core UI to tokens and STYLE_GUIDE; integrate logo in header/footer/loading (see plan Phase 2 for front-ends).
-3. Push: `cd REPO_ROOT/meshal-web && git push origin feature/branding-and-standardization`
-4. Open PR to `main`; after merge, pull main.
-5. Vercel: deploy prod and verify. **Note (2026-03-13):** `vercel deploy --prod` failed (build exit 1); run `npm run build` locally to debug, then retry or use Git-linked deploy.
+**Left:** (Optional) Phase 2 theme/tokens/logo; fix test setup for unit tests.
 
 ---
 
@@ -121,7 +115,7 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 1. **(Optional)** Phase 2: Theme, tokens, logo in header/footer/loading; align with STYLE_GUIDE (see plan Phase 2 for front-ends).
 2. Push: `cd REPO_ROOT/attributa && git push origin feature/branding-and-standardization`
 3. Open PR to `main`; after merge, pull main.
-4. Vercel: deploy prod and verify. **Note (2026-03-13):** `vercel deploy --prod` failed (install exit 128); check Vercel dashboard or use Git-linked auto-deploy.
+4. Vercel: deploy prod and verify. **Note (2026-03-13):** install still fails with 128; repo has `github:alawein/alawein-ui` — ensure Vercel has GitHub token for private deps or publish @alawein/ui.
 
 ---
 

@@ -38,6 +38,10 @@ It owns:
   [`AGENTS.md`](AGENTS.md)
 - Current state:
   [`SSOT.md`](SSOT.md)
+- Design/branding plan summary and remaining steps:
+  [`docs/governance/DESIGN-BRANDING-SUMMARY.md`](docs/governance/DESIGN-BRANDING-SUMMARY.md),
+  [`docs/governance/remaining-steps-per-repo.md`](docs/governance/remaining-steps-per-repo.md),
+  [`docs/HANDOFF-DESIGN-BRANDING.md`](docs/HANDOFF-DESIGN-BRANDING.md)
 
 ## Required Files
 

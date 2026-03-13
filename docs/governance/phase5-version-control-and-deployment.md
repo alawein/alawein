@@ -46,6 +46,25 @@ Repos with `vercel.json` (deploy to Vercel when branch is merged):
 
 **devkit-storybook (Vercel project):** If the dashboard shows "Connect Git Repository", in Vercel go to Project Settings → Git → Connect to GitHub → select `alawein/devkit`, set Production Branch to `main`. The repo already has `vercel.json` with `buildCommand: npm run build -- --filter=@alawein/storybook` and `outputDirectory: apps/storybook/dist`.
 
+## Automation (GitHub CLI + Vercel)
+
+**After pushing the feature branch**, from the repo directory:
+
+```bash
+gh pr create --base main --head feature/branding-and-standardization \
+  --title "feat: design system and branding integration (Phase 3-5)" \
+  --body "See alawein/docs/governance/bulk-execution-progress.md."
+```
+
+**After merging to main:**
+
+```bash
+git checkout main && git pull origin main
+vercel deploy --prod
+```
+
+Or rely on Vercel’s Git integration for auto-deploy on push to main. Full handoff: [HANDOFF-DESIGN-BRANDING.md](../HANDOFF-DESIGN-BRANDING.md).
+
 ## Success criteria
 
 - All changes committed and pushed on a feature branch; PR opened and merged.

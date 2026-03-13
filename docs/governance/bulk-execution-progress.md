@@ -1,7 +1,7 @@
 ---
 title: Bulk Execution Progress — Design & Branding Plan
 description: Tracks Phase 3–5 execution across repos for resume capability.
-last_updated: 2026-03-12 (bulk rest)
+last_updated: 2026-03-12 (continue implementation)
 category: governance
 status: active
 ---
@@ -31,6 +31,10 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | 2026-03-12 | event-discovery-framework | Phase 3 | lint | Backend: ruff check — 4 errors in notebooks only (E402, C408, B007). Frontend: no ESLint config. |
 | 2026-03-12 | event-discovery-framework | Phase 4 | test | Backend: pytest run via uv (deps install); frontend: no test script. |
 | 2026-03-12 | (all with changes) | Phase 5 | branch + commit | feature/branding-and-standardization created and committed in alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, attributa, rounaq-atelier, qmlab, scribd, shared-utils. |
+| 2026-03-12 | simcore | Phase 3–4 | format, lint, test | Prettier ok (layout.tsx); lint warnings in public/scripts (pre-existing); 189 tests passed. |
+| 2026-03-12 | simcore | Phase 5 | branch + commit | Committed on feature/branding-and-standardization (102 files). |
+| 2026-03-12 | alawein | — | commit | branding-workflow-and-standards.md committed on main. |
+| 2026-03-12 | (13 repos) | Phase 5 | push | Pushed feature/branding-and-standardization: alawein and repz (new branch); simcore (new commits); others already up-to-date. |
 
 ## Per-repo status
 
@@ -41,7 +45,7 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | gainboy | format ok, lint warnings/errors | test env (rollup) | **branch + commit done** |
 | attributa | format ok, lint warnings only | 55 passed | **branch + commit done** |
 | llmworks | format: npx; lint ok | 192 passed | (no local changes this run) |
-| simcore | format/lint issues (layout.ts JSX) | skipped | (no commit this run) |
+| simcore | format ok; lint warnings (scripts/public) | 189 passed | **branch + commit done**; **push done** |
 | qmlab | format ok, lint ok | Playwright not run | **branch + commit done** |
 | rounaq-atelier | format ok, lint warnings | 321 passed | **branch + commit done** |
 | bolts | format ok, lint warnings | passed | **branch + commit done** |

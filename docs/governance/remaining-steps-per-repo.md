@@ -144,16 +144,13 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 
 **Classification:** Front-end; Vite + React, Capacitor; scientific simulation UI.
 
-**Done:** Format failed (Prettier parse error in `src/config/layout.ts` — JSX in .ts); tests not run in bulk.
+**Done:** Layout is `layout.tsx`; Prettier run ok; 189 tests passed; branch + commit + **push** (2026-03-12). Lint has pre-existing warnings in `public/` and `scripts/`.
 
 **Left:**
 
-1. Fix `src/config/layout.ts`: either rename to `.tsx` if it contains JSX, or remove JSX so Prettier/TS accept it; run `npx prettier --write .` and `npm run lint`.
-2. Run `npm run test`; fix any failures.
-3. If there are uncommitted changes: `git checkout -b feature/branding-and-standardization`, `git add .`, `git commit -m "feat(simcore): design system and branding integration (Phase 3-4)"`.
-4. Push, open PR, merge, pull main.
-5. **(Optional)** Phase 2: Theme + tokens + logo.
-6. Vercel: deploy prod and verify.
+1. Open PR to `main`, merge, then `git checkout main && git pull origin main`.
+2. **(Optional)** Phase 2: Theme + tokens + logo.
+3. Vercel: deploy prod and verify.
 
 ---
 

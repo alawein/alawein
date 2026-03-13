@@ -30,24 +30,26 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | 2026-03-12 | event-discovery-framework | Phase 3 | format | Frontend: npx prettier ok; backend: ruff format (22 files). |
 | 2026-03-12 | event-discovery-framework | Phase 3 | lint | Backend: ruff check — 4 errors in notebooks only (E402, C408, B007). Frontend: no ESLint config. |
 | 2026-03-12 | event-discovery-framework | Phase 4 | test | Backend: pytest run via uv (deps install); frontend: no test script. |
+| 2026-03-12 | (all with changes) | Phase 5 | branch + commit | feature/branding-and-standardization created and committed in alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, attributa, rounaq-atelier, qmlab, scribd, shared-utils. |
 
 ## Per-repo status
 
 | Repo | Phase 3 (format/lint) | Phase 4 (tests) | Phase 5 (branch/commit) |
 |------|------------------------|-----------------|--------------------------|
-| repz | format ok, lint config issue | 343 passed | pending |
-| meshal-web | format ok, lint fixed | 4 fail (pre-existing) | pending |
-| gainboy | format ok, lint warnings/errors | test env (rollup) | pending |
-| attributa | format ok, lint warnings only | 55 passed | pending |
-| llmworks | format: npx; lint ok | 192 passed | pending |
-| simcore | format/lint issues (layout.ts JSX) | skipped | pending |
-| qmlab | format ok, lint ok | Playwright not run | pending |
-| rounaq-atelier | format ok, lint warnings | 321 passed | pending |
-| bolts | format ok, lint warnings | passed | pending |
-| scribd | format: npx; lint warnings | 75 passed | pending |
-| devkit | format ok, turbo lint ok | (no root test script) | pending |
-| shared-utils | lint ok (format: npx) | 65 passed | pending |
-| event-discovery-framework | format ok; ruff 4 notebook errors | pytest via uv (frontend no test script) | pending |
+| repz | format ok, lint config issue | 343 passed | **branch + commit done** |
+| meshal-web | format ok, lint fixed | 4 fail (pre-existing) | **branch + commit done** |
+| gainboy | format ok, lint warnings/errors | test env (rollup) | **branch + commit done** |
+| attributa | format ok, lint warnings only | 55 passed | **branch + commit done** |
+| llmworks | format: npx; lint ok | 192 passed | (no local changes this run) |
+| simcore | format/lint issues (layout.ts JSX) | skipped | (no commit this run) |
+| qmlab | format ok, lint ok | Playwright not run | **branch + commit done** |
+| rounaq-atelier | format ok, lint warnings | 321 passed | **branch + commit done** |
+| bolts | format ok, lint warnings | passed | **branch + commit done** |
+| scribd | format: npx; lint warnings | 75 passed | **branch + commit done** |
+| devkit | format ok, turbo lint ok | (no root test script) | **branch + commit done** |
+| shared-utils | lint ok (format: npx) | 65 passed | **branch + commit done** |
+| event-discovery-framework | format ok; ruff 4 notebook errors | pytest via uv (frontend no test script) | **branch + commit done** |
+| alawein | — | — | **branch + commit done** |
 
 ### Batch 2 (attributa, llmworks, simcore, qmlab)
 
@@ -82,7 +84,9 @@ This document tracks execution of the design-and-branding agent-executable plan 
 4. Run Phase 5: create branch, `git add .`, commit, push, open PR (see phase5 doc).
 5. Update the table above with results (ok / fail / skip) and timestamp.
 
-## Phase 5 — Branch and commit (run when ready)
+## Phase 5 — Branch and commit
+
+**Completed (2026-03-12):** Feature branch `feature/branding-and-standardization` created and committed locally in: alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, attributa, rounaq-atelier, qmlab, scribd, shared-utils. Push and open PR when ready.
 
 For each repo where Phase 3/4 were run, create a feature branch and commit. Push and open PR when you are back.
 

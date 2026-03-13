@@ -10,7 +10,7 @@ status: active
 
 ## What this is
 
-A **workspace-wide design and branding integration plan** across 16+ repos. Each repo is classified (front-end, SaaS, docs, research, etc.), has a design/branding strategy, and a 5-phase agent-executable implementation plan. **Phases 1–4 and Phase 5 (branch + commit) are done for 13 repos (including simcore).** Feature branches have been **pushed** for alawein, repz, simcore (others were already up-to-date). PR, merge, and Vercel deploy remain.
+A **workspace-wide design and branding integration plan** across 16+ repos. Each repo is classified (front-end, SaaS, docs, research, etc.), has a design/branding strategy, and a 5-phase agent-executable implementation plan. **Phases 1–5 and Vercel deploy are done for 11 of 12 Vercel repos.** simcore PR #6 merged; repz and meshal-web fixes deployed. **Attributa** needs GH_TOKEN in Vercel (see README) then redeploy.
 
 **Authority:** Tokens → `devkit/tokens/`; brand manifests & guides → `repz/branding/`. Governance → `alawein/docs/governance/`.
 
@@ -30,8 +30,8 @@ A **workspace-wide design and branding integration plan** across 16+ repos. Each
 
 ## What's left
 
-- **Required:** Push each feature branch → open PR → merge → `git pull main` → **Vercel deploy** (where `vercel.json` exists).
-- **Optional:** Phase 2 deep work (tokens in CSS, component refactors, logo in shell); fix repz ESLint, meshal-web tests, gainboy rollup, simcore `layout.ts`, event-discovery-framework notebook ruff.
+- **Required (one step):** **Attributa** — In Vercel project Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope), then redeploy. All other Vercel deploys (11/12) are green.
+- **Optional:** Phase 2 deep work (tokens in CSS, component refactors, logo in shell); fix repz ESLint, meshal-web tests, gainboy rollup, event-discovery-framework notebook ruff.
 
 ---
 

@@ -197,6 +197,7 @@ Core rules enforced in this repo:
 - README sync for structural changes
 - D-1 phase state: canonical token source is `devkit/tokens/`; `aw-devkit`
   physical retirement cutover completed on 2026-03-11
+- Design and branding authority: shared tokens in [devkit/tokens](https://github.com/alawein/devkit/tree/main/tokens); brand manifests and style guides in [repz/branding](https://github.com/alawein/repz/tree/main/branding) (STYLE_GUIDE, MASCOT_GUIDE); see [workspace-resource-map](docs/governance/workspace-resource-map.md) for canonical paths.
 
 Validation commands:
 

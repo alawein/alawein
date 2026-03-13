@@ -54,4 +54,4 @@ alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, at
 
 **PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
 
-**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK:** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework. **Vercel deploy failed:** repz (install 128), meshal-web (build 1), attributa (install 128); check Vercel dashboard or CI for details.
+**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK:** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework. **repz:** fixed with installCommand in vercel.json; redeploy succeeded; change pushed to main. **meshal-web:** Clerk v6 fix (SignedIn/SignedOut → Show) committed and pushed to main; local build passes — Git-connected Vercel deploy should succeed. **attributa:** installCommand added, pushed; install still fails with 128 on Vercel (may need project/env fix).

@@ -1,7 +1,7 @@
 ---
 title: Design & Branding Plan — Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
-last_updated: 2026-03-12
+last_updated: 2026-03-13
 category: governance
 status: active
 ---
@@ -54,4 +54,6 @@ alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, at
 
 **PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
 
-**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK:** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, **repz**, **meshal-web**. meshal-web: pinned @clerk/react to 6.1.0 and use Show (fixes loadClerkUiScript build error); redeploy succeeded. **attributa:** Install script and README added; add **GH_TOKEN** in Vercel env (repo scope) so `scripts/vercel-install.sh` can install private `@alawein/ui`; then redeploy.
+**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK (11/12):** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, repz, meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** Install script + README in place; add **GH_TOKEN** in Vercel (repo scope) and redeploy for 12/12.
+
+**Final status:** Plan execution complete except attributa deploy (blocked on GH_TOKEN in Vercel). Optional: Phase 2 deep work and lint/test fixes per remaining-steps-per-repo.

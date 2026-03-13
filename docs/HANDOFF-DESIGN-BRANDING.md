@@ -1,7 +1,7 @@
 ---
 title: Handoff — Design & Branding Plan Completion
 description: Context and automation for next session or agent to push, PR, merge, and deploy.
-last_updated: 2026-03-12
+last_updated: 2026-03-13
 ---
 
 # Handoff: Design & Branding Plan
@@ -9,7 +9,7 @@ last_updated: 2026-03-12
 ## Project context
 
 - **Goal:** Complete the design/branding agent-executable plan across alawein workspace repos.
-- **Current state:** Phase 1–4 and **local** Phase 5 (branch + commit) are done for 12 repos. All work is on branch `feature/branding-and-standardization` in each; **nothing has been pushed or PR’d**.
+- **Current state:** Phase 1–5 and Vercel deploy done for **11 of 12** Vercel repos. simcore PR #6 merged; repz and meshal-web fixes pushed and deployed. **Attributa:** add **GH_TOKEN** in Vercel (Settings → Environment Variables), then redeploy; see attributa README "Deployment (Vercel)" and `scripts/vercel-install.sh`.
 - **Authority:** [DESIGN-BRANDING-SUMMARY.md](governance/DESIGN-BRANDING-SUMMARY.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
 
 ## What was done
@@ -18,7 +18,7 @@ last_updated: 2026-03-12
 - README/design sections and links to devkit/repz branding in most repos.
 - Format (Prettier/ruff) and lint run; meshal-web Navigation lint fix.
 - Tests run; results and known failures documented.
-- Branch `feature/branding-and-standardization` created and committed in: **alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, attributa, rounaq-atelier, qmlab, scribd, shared-utils.**
+- Branch + commit + push in 13 repos; simcore PR #6 merged. **Vercel deploy — OK (11/12):** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, repz, meshal-web. **Attributa:** install script and README added; add GH_TOKEN in Vercel to complete.
 
 ## Key locations
 
@@ -32,11 +32,8 @@ last_updated: 2026-03-12
 
 ## Next steps (in order)
 
-1. **Push** each repo’s feature branch to `origin`.
-2. **Open a PR** to `main` (or `develop`) per repo.
-3. **Merge** after review.
-4. **Pull main** in each repo.
-5. **Deploy** to Vercel for repos with `vercel.json` (see phase5 table).
+1. **Attributa only:** In Vercel project → Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope). Redeploy.
+2. **(Optional)** Phase 2 deep work and optional fixes per [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md).
 
 ## Automation & one-liners
 
@@ -80,5 +77,5 @@ Or rely on Vercel’s GitHub integration (auto-deploy on push to main).
 
 ## Success criteria
 
-- All 12 repos: feature branch pushed, PR opened and merged, main pulled.
-- Vercel deployments green for: devkit, repz, meshal-web, llmworks, attributa, simcore, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework (and any other with `vercel.json`).
+- **Done:** Feature branches pushed/merged where applicable; simcore PR #6 merged; 11/12 Vercel deploys green (simcore, devkit, repz, meshal-web, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework).
+- **Remaining:** Add GH_TOKEN in Vercel for attributa and redeploy to get 12/12 green.

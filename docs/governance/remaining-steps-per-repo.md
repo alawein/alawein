@@ -144,11 +144,11 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 
 **Classification:** Front-end; Vite + React, Capacitor; scientific simulation UI.
 
-**Done:** Layout is `layout.tsx`; Prettier run ok; 189 tests passed; branch + commit + **push** (2026-03-12). Lint has pre-existing warnings in `public/` and `scripts/`.
+**Done:** Layout is `layout.tsx`; Prettier run ok; 189 tests passed; branch + commit + push (2026-03-12). **PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Lint has pre-existing warnings in `public/` and `scripts/`.
 
 **Left:**
 
-1. Open PR to `main`, merge, then `git checkout main && git pull origin main`.
+1. Merge [PR #6](https://github.com/alawein/simcore/pull/6), then `git checkout main && git pull origin main`.
 2. **(Optional)** Phase 2: Theme + tokens + logo.
 3. Vercel: deploy prod and verify.
 

@@ -52,4 +52,6 @@ alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, at
 
 **Push (2026-03-12):** alawein and repz (branch pushed for first time); simcore (new commits pushed); other 10 already up-to-date on remote.
 
-**Minimum to close the loop:** Open PR → merge → pull main → deploy (see remaining-steps-per-repo and phase5).
+**PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
+
+**Minimum to close the loop:** Merge simcore PR #6 → pull main → deploy; for other repos, confirm main has the changes, then deploy (see remaining-steps-per-repo and phase5).

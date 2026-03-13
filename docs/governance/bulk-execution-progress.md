@@ -35,6 +35,7 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | 2026-03-12 | simcore | Phase 5 | branch + commit | Committed on feature/branding-and-standardization (102 files). |
 | 2026-03-12 | alawein | — | commit | branding-workflow-and-standards.md committed on main. |
 | 2026-03-12 | (13 repos) | Phase 5 | push | Pushed feature/branding-and-standardization: alawein and repz (new branch); simcore (new commits); others already up-to-date. |
+| 2026-03-12 | (13 repos) | Phase 5 | gh pr create | simcore: PR #6 opened (https://github.com/alawein/simcore/pull/6). Other 12 repos: "No commits between main and feature/branding-and-standardization" — branch may already be merged or in sync with main on remote. |
 
 ## Per-repo status
 

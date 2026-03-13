@@ -73,7 +73,7 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 2. **(Optional)** Phase 2: Align all app surfaces with `repz/branding` and BRAND_BOUNDARY; logo and REPZ tokens in header/footer/loading (see plan Phase 2 for repz).
 3. Push: `cd REPO_ROOT/repz && git push origin feature/branding-and-standardization`
 4. Open PR to `main`; after merge, pull main.
-5. Vercel: confirm `vercel.json` (buildCommand, outputDirectory); deploy prod and verify.
+5. Vercel: confirm `vercel.json` (buildCommand, outputDirectory); deploy prod and verify. **Note (2026-03-13):** `vercel deploy --prod` failed (install exit 128); check Vercel dashboard or use Git-linked auto-deploy.
 
 ---
 
@@ -89,7 +89,7 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 2. **(Optional)** Phase 2: Add/update global styles from devkit; refactor core UI to tokens and STYLE_GUIDE; integrate logo in header/footer/loading (see plan Phase 2 for front-ends).
 3. Push: `cd REPO_ROOT/meshal-web && git push origin feature/branding-and-standardization`
 4. Open PR to `main`; after merge, pull main.
-5. Vercel: deploy prod and verify.
+5. Vercel: deploy prod and verify. **Note (2026-03-13):** `vercel deploy --prod` failed (build exit 1); run `npm run build` locally to debug, then retry or use Git-linked deploy.
 
 ---
 
@@ -121,7 +121,7 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 1. **(Optional)** Phase 2: Theme, tokens, logo in header/footer/loading; align with STYLE_GUIDE (see plan Phase 2 for front-ends).
 2. Push: `cd REPO_ROOT/attributa && git push origin feature/branding-and-standardization`
 3. Open PR to `main`; after merge, pull main.
-4. Vercel: deploy prod and verify.
+4. Vercel: deploy prod and verify. **Note (2026-03-13):** `vercel deploy --prod` failed (install exit 128); check Vercel dashboard or use Git-linked auto-deploy.
 
 ---
 
@@ -144,13 +144,9 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 
 **Classification:** Front-end; Vite + React, Capacitor; scientific simulation UI.
 
-**Done:** Layout is `layout.tsx`; Prettier run ok; 189 tests passed; branch + commit + push (2026-03-12). **PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Lint has pre-existing warnings in `public/` and `scripts/`.
+**Done:** Layout is `layout.tsx`; Prettier run ok; 189 tests passed; branch + commit + push; **PR #6 merged** (2026-03-13); main pulled; **Vercel deploy --prod succeeded.** Lint has pre-existing warnings in `public/` and `scripts/`.
 
-**Left:**
-
-1. Merge [PR #6](https://github.com/alawein/simcore/pull/6), then `git checkout main && git pull origin main`.
-2. **(Optional)** Phase 2: Theme + tokens + logo.
-3. Vercel: deploy prod and verify.
+**Left:** (Optional) Phase 2: Theme + tokens + logo.
 
 ---
 

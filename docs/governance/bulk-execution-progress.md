@@ -36,6 +36,8 @@ This document tracks execution of the design-and-branding agent-executable plan 
 | 2026-03-12 | alawein | — | commit | branding-workflow-and-standards.md committed on main. |
 | 2026-03-12 | (13 repos) | Phase 5 | push | Pushed feature/branding-and-standardization: alawein and repz (new branch); simcore (new commits); others already up-to-date. |
 | 2026-03-12 | (13 repos) | Phase 5 | gh pr create | simcore: PR #6 opened (https://github.com/alawein/simcore/pull/6). Other 12 repos: "No commits between main and feature/branding-and-standardization" — branch may already be merged or in sync with main on remote. |
+| 2026-03-13 | simcore | Phase 5 | merge + deploy | PR #6 merged via gh; main pulled; vercel deploy --prod succeeded. |
+| 2026-03-13 | (Vercel repos) | Deploy | vercel deploy --prod | **OK:** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework. **Failed:** repz (install exit 128), meshal-web (build exit 1), attributa (install exit 128). |
 
 ## Per-repo status
 

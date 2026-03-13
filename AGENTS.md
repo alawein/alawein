@@ -57,6 +57,12 @@ governance coordination.
 - Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
   `atelier-rounaq`, and `edfp` now use canonical physical slugs.
 
+## Design & branding plan (agent-executable)
+
+- **Summary:** [docs/governance/DESIGN-BRANDING-SUMMARY.md](docs/governance/DESIGN-BRANDING-SUMMARY.md)
+- **Remaining steps per repo:** [docs/governance/remaining-steps-per-repo.md](docs/governance/remaining-steps-per-repo.md)
+- **Handoff (push, PR, deploy):** [docs/HANDOFF-DESIGN-BRANDING.md](docs/HANDOFF-DESIGN-BRANDING.md)
+
 ## Quick Reference
 
 | Task | Command |

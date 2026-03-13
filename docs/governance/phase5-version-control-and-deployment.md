@@ -44,6 +44,8 @@ Repos with `vercel.json` (deploy to Vercel when branch is merged):
 - After merge to main: trigger deployment via `vercel deploy --prod` or integrated CI/CD (e.g. GitHub connection).
 - Monitor deployment logs and verify production rollout.
 
+**devkit-storybook (Vercel project):** If the dashboard shows "Connect Git Repository", in Vercel go to Project Settings → Git → Connect to GitHub → select `alawein/devkit`, set Production Branch to `main`. The repo already has `vercel.json` with `buildCommand: npm run build -- --filter=@alawein/storybook` and `outputDirectory: apps/storybook/dist`.
+
 ## Success criteria
 
 - All changes committed and pushed on a feature branch; PR opened and merged.

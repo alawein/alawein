@@ -115,7 +115,7 @@ Use `REPO_ROOT` = your path to each repo (e.g. `.../alawein/meshal-web`). Replac
 1. **(Optional)** Phase 2: Theme, tokens, logo in header/footer/loading; align with STYLE_GUIDE (see plan Phase 2 for front-ends).
 2. Push: `cd REPO_ROOT/attributa && git push origin feature/branding-and-standardization`
 3. Open PR to `main`; after merge, pull main.
-4. Vercel: deploy prod and verify. **Note (2026-03-13):** install still fails with 128; repo has `github:alawein/alawein-ui` — ensure Vercel has GitHub token for private deps or publish @alawein/ui.
+4. Vercel: deploy prod and verify. **Note:** Add **`GH_TOKEN`** in Vercel (Settings → Environment Variables) with a GitHub PAT (repo scope). The project uses `scripts/vercel-install.sh` to configure git for the private `@alawein/ui` dep; see attributa README “Deployment (Vercel)”.
 
 ---
 

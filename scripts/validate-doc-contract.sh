@@ -298,6 +298,7 @@ def check_naming(errors: List[str]) -> None:
         "CLAUDE.md",
         "README.md",
         "README-backup-20250807.md",
+        "CONTRIBUTING-backup-20250807.md",
         "CONTRIBUTING.md",
         "CODE_OF_CONDUCT.md",
         "SECURITY.md",

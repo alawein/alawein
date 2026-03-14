@@ -1,7 +1,7 @@
 ---
 title: Workspace Resource Map
 description: Canonical ownership map for governance docs, shared packages, design tokens, and migration surfaces.
-last_updated: 2026-03-11
+last_updated: 2026-03-14
 category: governance
 audience: contributors
 status: active

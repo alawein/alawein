@@ -12,11 +12,11 @@ tags: [github, dashboard, portfolio, operations]
 
 # GitHub Repository Dashboard
 
-- Generated at: `2026-03-14T20:56:47.470536Z`
+- Generated at: `2026-03-14T23:04:59.720727Z`
 - Owners: `alawein`
 - Data status: `fresh`
-- Snapshot: `20260314T205641Z`
-- Previous snapshot: `20260314T092542Z`
+- Snapshot: `20260314T230453Z`
+- Previous snapshot: `20260314T205641Z`
 
 ## Portfolio KPIs
 
@@ -24,7 +24,7 @@ tags: [github, dashboard, portfolio, operations]
 | --- | ---: | ---: |
 | Total repositories | 40 | 0 |
 | Open issues | 6 | 0 |
-| Open pull requests | 4 | 0 |
+| Open pull requests | 6 | 2 |
 | Total stars | 0 | 0 |
 | Repositories with releases | 3 | 0 |
 | License coverage | 26 | 0 |

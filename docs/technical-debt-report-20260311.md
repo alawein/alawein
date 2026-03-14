@@ -1,3 +1,13 @@
+---
+title: Technical Debt & Code Quality Report
+description: Snapshot of workspace technical debt and quality issues as of March 2026.
+category: governance
+audience: contributors
+status: active
+version: 1.0.0
+last_updated: 2026-03-13
+tags: [technical debt, report]
+---
 # Technical Debt & Code Quality Report
 
 **Scope:** 24 git repositories under the `alawein/` organisation  

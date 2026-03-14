@@ -29,7 +29,7 @@ workspace.
 | Storybook and shared demos | `devkit` | `apps/storybook/` | `devkit` maintainers | design-system consumers | Canonical |
 | Retired legacy shared-resource repo | `aw-devkit` | retired from workspace root | migration owners | historical reference only | Retired on 2026-03-11 |
 | External automation workspace | `_gmail-ops` | workspace root | local operator | local tooling | Canonical external |
-| Design/branding implementation (Phase 1–5) | `alawein` | `docs/governance/phase1-design-branding-analysis-*.md`, `phase3-refactor-and-centralization.md`, `phase4-testing-and-validation.md`, `phase5-version-control-and-deployment.md`, `bulk-execution-progress.md` | `alawein` maintainers | agents, contributors | Active |
+| Design/branding implementation (Phase 1–5) | `alawein` | `docs/governance/phase1-design-branding-analysis-*.md`, `phase3-refactor-and-centralization.md`, `phase4-testing-and-validation.md`, `phase5-version-control-and-deployment.md`, `bulk-execution-progress.md`, `remaining-steps-per-repo.md` | `alawein` maintainers | agents, contributors | Active |
 
 ## Rules
 

@@ -8,7 +8,7 @@ status: active
 
 # Bulk Execution Progress
 
-This document tracks execution of the design-and-branding agent-executable plan (see phase1–phase5 docs in this folder) so work can resume after session interruption.
+This document tracks execution of the design-and-branding agent-executable plan (see phase1–phase5 docs in this folder) so work can resume after session interruption. **For a step-by-step plan of what's left per repo**, see [remaining-steps-per-repo.md](./remaining-steps-per-repo.md).
 
 ## Session log
 

@@ -304,6 +304,7 @@ def check_naming(errors: List[str]) -> None:
         "SSOT.md",
         "LESSONS.md",
         "DOCUMENTATION_PHILOSOPHY.md",
+        "README-backup-20250807.md",
     }
     for path in ROOT.glob("*.md"):
         rel = relative(path)

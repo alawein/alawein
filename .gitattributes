@@ -1,0 +1,2 @@
+# Ensure shell scripts keep LF line endings so bash `set -euo pipefail` works on Windows checkouts.
+*.sh text eol=lf

@@ -9,8 +9,8 @@ last_updated: 2026-03-13
 ## Project context
 
 - **Goal:** Complete the design/branding agent-executable plan across alawein workspace repos.
-- **Current state:** Phase 1–5 and Vercel deploy done for **11 of 12** Vercel repos. simcore PR #6 merged; repz and meshal-web fixes pushed and deployed. **Attributa:** add **GH_TOKEN** in Vercel (Settings → Environment Variables), then redeploy; see attributa README "Deployment (Vercel)" and `scripts/vercel-install.sh`.
-- **Authority:** [DESIGN-BRANDING-SUMMARY.md](governance/DESIGN-BRANDING-SUMMARY.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
+- **Current state:** Phase 1–5 and Vercel deploy done for **11 of 12** Vercel repos. simcore PR #6 merged; repz and meshal-web fixes pushed and deployed. **Attributa:** add **GH_TOKEN** in Vercel (Dashboard or `vercel env add GH_TOKEN production`), then redeploy; see [attributa README — Deployment (Vercel)](https://github.com/alawein/attributa#deployment-vercel) and `scripts/vercel-install.mjs`.
+- **Authority:** [design-branding-summary.md](governance/design-branding-summary.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
 
 ## What was done
 
@@ -24,7 +24,7 @@ last_updated: 2026-03-13
 
 | What | Where |
 |------|--------|
-| One-page summary | `docs/governance/DESIGN-BRANDING-SUMMARY.md` |
+| One-page summary | `docs/governance/design-branding-summary.md` |
 | Step-by-step per repo | `docs/governance/remaining-steps-per-repo.md` |
 | Progress log & status | `docs/governance/bulk-execution-progress.md` |
 | Phase 5 + Vercel table | `docs/governance/phase5-version-control-and-deployment.md` |
@@ -32,7 +32,7 @@ last_updated: 2026-03-13
 
 ## Next steps (in order)
 
-1. **Attributa only:** In Vercel project → Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope). Redeploy.
+1. **Attributa only:** Add **GH_TOKEN** (GitHub PAT with `repo` scope) — either in Vercel Dashboard (Settings → Environment Variables) or run `vercel env add GH_TOKEN production` from the attributa repo and paste the token when prompted. Then run `vercel deploy --prod` (or redeploy from the dashboard).
 2. **(Optional)** Phase 2 deep work and optional fixes per [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md).
 
 ## Automation & one-liners

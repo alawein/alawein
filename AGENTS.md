@@ -59,7 +59,7 @@ governance coordination.
 
 ## Design & branding plan (agent-executable)
 
-- **Summary:** [docs/governance/DESIGN-BRANDING-SUMMARY.md](docs/governance/DESIGN-BRANDING-SUMMARY.md)
+- **Summary:** [docs/governance/design-branding-summary.md](docs/governance/design-branding-summary.md)
 - **Remaining steps per repo:** [docs/governance/remaining-steps-per-repo.md](docs/governance/remaining-steps-per-repo.md)
 - **Handoff (push, PR, deploy):** [docs/HANDOFF-DESIGN-BRANDING.md](docs/HANDOFF-DESIGN-BRANDING.md)
 

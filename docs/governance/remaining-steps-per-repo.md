@@ -1,7 +1,7 @@
 ---
 title: Remaining Steps Per Repository — Design & Branding Plan
 description: What's left and step-by-step plan for each repo after bulk Phase 3–5 execution.
-last_updated: 2026-03-12
+last_updated: 2026-03-14
 category: governance
 status: active
 ---

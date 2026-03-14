@@ -1,7 +1,7 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-11
+last-verified: 2026-03-14
 audience: [ai-agents, contributors]
 ---
 

@@ -1,7 +1,7 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-11
+last-verified: 2026-03-14
 audience: [ai-agents, contributors]
 ---
 
@@ -39,7 +39,7 @@ It owns:
 - Current state:
   [`SSOT.md`](SSOT.md)
 - Design/branding plan summary and remaining steps:
-  [`docs/governance/DESIGN-BRANDING-SUMMARY.md`](docs/governance/DESIGN-BRANDING-SUMMARY.md),
+  [`docs/governance/design-branding-summary.md`](docs/governance/design-branding-summary.md),
   [`docs/governance/remaining-steps-per-repo.md`](docs/governance/remaining-steps-per-repo.md),
   [`docs/HANDOFF-DESIGN-BRANDING.md`](docs/HANDOFF-DESIGN-BRANDING.md)
 

@@ -146,6 +146,10 @@ def managed_docs() -> Dict[str, str]:
 
 MANAGED_DOCS = managed_docs()
 
+GENERATED_FRESHNESS_MARKERS = {
+    "docs/dashboard/index.md": re.compile(r"^[+-]- Generated at:\s*`", re.MULTILINE),
+}
+
 
 def base_ref_for_mode() -> Optional[str]:
     if MODE == "--changed-only":
@@ -297,6 +301,8 @@ def check_naming(errors: List[str]) -> None:
         "AGENTS.md",
         "CLAUDE.md",
         "README.md",
+        "README-backup-20250807.md",
+        "CONTRIBUTING-backup-20250807.md",
         "CONTRIBUTING.md",
         "CODE_OF_CONDUCT.md",
         "SECURITY.md",
@@ -367,6 +373,9 @@ def check_freshness_updates(errors: List[str], base_ref: Optional[str]) -> None:
             continue
         key_re = re.compile(rf"^[+-]{re.escape(key)}:\s*", re.MULTILINE)
         if not key_re.search(diff_text):
+            marker_re = GENERATED_FRESHNESS_MARKERS.get(rel)
+            if marker_re and marker_re.search(diff_text):
+                continue
             errors.append(
                 f"{rel}:1: file changed in current diff but `{key}` was not updated"
             )

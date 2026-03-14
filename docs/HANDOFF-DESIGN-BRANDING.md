@@ -1,7 +1,7 @@
 ---
 title: Handoff — Design & Branding Plan Completion
 description: Context and automation for next session or agent to push, PR, merge, and deploy.
-last_updated: 2026-03-13
+last_updated: 2026-03-14
 ---
 
 # Handoff: Design & Branding Plan
@@ -10,7 +10,7 @@ last_updated: 2026-03-13
 
 - **Goal:** Complete the design/branding agent-executable plan across alawein workspace repos.
 - **Current state:** Phase 1–5 and Vercel deploy done for **11 of 12** Vercel repos. simcore PR #6 merged; repz and meshal-web fixes pushed and deployed. **Attributa:** add **GH_TOKEN** in Vercel (Settings → Environment Variables), then redeploy; see attributa README "Deployment (Vercel)" and `scripts/vercel-install.sh`.
-- **Authority:** [DESIGN-BRANDING-SUMMARY.md](governance/DESIGN-BRANDING-SUMMARY.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
+- **Authority:** [design-branding-summary.md](governance/design-branding-summary.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
 
 ## What was done
 
@@ -24,7 +24,7 @@ last_updated: 2026-03-13
 
 | What | Where |
 |------|--------|
-| One-page summary | `docs/governance/DESIGN-BRANDING-SUMMARY.md` |
+| One-page summary | `docs/governance/design-branding-summary.md` |
 | Step-by-step per repo | `docs/governance/remaining-steps-per-repo.md` |
 | Progress log & status | `docs/governance/bulk-execution-progress.md` |
 | Phase 5 + Vercel table | `docs/governance/phase5-version-control-and-deployment.md` |

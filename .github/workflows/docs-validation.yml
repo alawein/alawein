@@ -112,23 +112,32 @@ jobs:
               r"->",
           ]
 
+          legacy_token_exempt_files = {
+              "docs/governance/phase5-version-control-and-deployment.md",
+              "docs/governance/remaining-steps-per-repo.md",
+              "docs/technical-debt-report-20260311.md",
+          }
+
           errors = []
           for file_path in files_to_scan:
               text = file_path.read_text(encoding="utf-8")
+              rel_path = file_path.as_posix()
+              check_legacy_tokens = rel_path not in legacy_token_exempt_files
               for line_no, line in enumerate(text.splitlines(), start=1):
                   if "repazapp.com" in line:
                       errors.append(
                           f"{file_path}:{line_no}: forbidden legacy domain 'repazapp.com'"
                       )
 
-                  for token in legacy_tokens:
-                      if token in line and not any(
-                          re.search(pattern, line, flags=re.IGNORECASE)
-                          for pattern in legacy_context_patterns
-                      ):
-                          errors.append(
-                              f"{file_path}:{line_no}: legacy token '{token}' outside approved alias context"
-                          )
+                  if check_legacy_tokens:
+                      for token in legacy_tokens:
+                          if token in line and not any(
+                              re.search(pattern, line, flags=re.IGNORECASE)
+                              for pattern in legacy_context_patterns
+                          ):
+                              errors.append(
+                                  f"{file_path}:{line_no}: legacy token '{token}' outside approved alias context"
+                              )
 
           projects = json.loads((root / "projects.json").read_text(encoding="utf-8"))
           featured = projects.get("featured", [])

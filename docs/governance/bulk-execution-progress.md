@@ -1,14 +1,14 @@
 ---
 title: Bulk Execution Progress — Design & Branding Plan
 description: Tracks Phase 3–5 execution across repos for resume capability.
-last_updated: 2026-03-13
+last_updated: 2026-03-15
 category: governance
 status: active
 ---
 
 # Bulk Execution Progress
 
-This document tracks execution of the design-and-branding agent-executable plan (see phase1–phase5 docs in this folder) so work can resume after session interruption.
+This document tracks execution of the design-and-branding agent-executable plan (see phase1–phase5 docs in this folder) so work can resume after session interruption. **Need a per-repo checklist?** Refer to [remaining-steps-per-repo.md](./remaining-steps-per-repo.md) for a repo-by-repo TODO status.
 
 ## Session log
 

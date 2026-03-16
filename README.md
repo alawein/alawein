@@ -6,10 +6,10 @@
 [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
 [![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=flat-square&logo=atom&logoColor=8B5CF6)](https://morphism.systems)
 [![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/meshal-alawein)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/alawein)
 [![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
 
-**AI Research Engineer · PhD EECS · ML Systems & Quantum Simulations**
+**Computational Physicist & AI Engineer · Founder, Morphism Systems · PhD EECS, UC Berkeley**
 
 *"Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced."*
 
@@ -23,17 +23,17 @@
 <tr>
 <td width="55%" valign="top">
 
-PhD researcher at UC Berkeley (EECS, 2019–2025) specializing in ML systems, LLM infrastructure, and quantum materials simulation. Founder of Morphism Systems — a governed software framework for AI-driven development. Built production DFT/HPC workflows (2,300+ jobs, 24,000 CPU-hours, 70% runtime reduction). Designed SFT/RLHF pipelines, reward modeling frameworks, and evaluation harnesses for LLM training.
+PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a formally verified AI governance framework grounded in category theory. Applied Scientist at Turing. Built production DFT/HPC workflows (2,300+ jobs, 70% runtime reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation harnesses for LLM training. 16+ peer-reviewed publications in IEEE, APS, and AIP.
 
 </td>
 <td width="45%" valign="top">
 
 ```
-🎓 PhD EECS — UC Berkeley (2025)
-🏢 Morphism Systems — Founder
+🎓 PhD EECS — UC Berkeley (Dec 2025)
+🏢 Morphism Systems — Founder (Aug 2025)
+⚗️  Turing — Applied Scientist (AI)
 🔬 16+ peer-reviewed publications
-⚡ 24,000+ CPU-hours of HPC work
-🤖 SFT/RLHF · DFT · LLM Infra
+🤖 SFT/DPO/LoRA · DFT/HPC · LLM Infra
 📍 San Francisco, CA
 ```
 
@@ -50,6 +50,44 @@ PhD researcher at UC Berkeley (EECS, 2019–2025) specializing in ML systems, LL
 <tr>
 <td align="center" width="33%">
 
+**[Morphism](https://github.com/morphism-org/morphism)**
+
+Formally verified AI governance framework. Category-theoretic contraction proofs, cryptographic audit trails, zero-dependency CLI.
+
+`TypeScript` `Python` `Category Theory`
+
+</td>
+<td align="center" width="33%">
+
+**[Neper](https://github.com/alawein/neper)**
+
+LLM training, alignment, evaluation & synthetic data platform. SFT, DPO, LoRA, differentiable safety constraints.
+
+`Python` `PyTorch` `Docker`
+
+</td>
+<td align="center" width="33%">
+
+**[QMatSim](https://github.com/alawein/qmatsim)**
+
+Quantum materials simulation toolkit. DFT workflows, HPC automation, flat-band discovery in strained TMDs.
+
+`Python` `VASP` `CUDA`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**[Attributa](https://github.com/alawein/attributa)**
+
+Privacy-first AI attribution tool. Client-side AI content detection (GLTR, DetectGPT), DOI validation, CWE scanning — zero data exfiltration.
+
+`React` `TypeScript` `Python`
+
+</td>
+<td align="center" width="33%">
+
 **[Event Discovery Framework](https://edfp.online)**
 
 Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.
@@ -59,78 +97,11 @@ Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierar
 </td>
 <td align="center" width="33%">
 
-**[Gymboy](https://gymboy.coach)**
-
-Fitness coaching platform with a retro progression-first training interface.
-
-`React` `Vite` `Spark`
-
-</td>
-<td align="center" width="33%">
-
-**[REPZ](https://repzcoach.com)**
-
-AI-powered coaching platform.
-
-`TypeScript` `React` `Supabase`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
 **[meshal-web](https://meshal.ai)**
 
-Personal site and portfolio surface for current Alawein projects.
+Personal site and portfolio — meshal.ai.
 
 `React` `Vite` `Tailwind`
-
-</td>
-<td align="center" width="33%">
-
-**[devkit](https://github.com/alawein/devkit)**
-
-Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.
-
-`Design Tokens` `UI` `Tooling`
-
-</td>
-<td align="center" width="33%">
-
-**[QMatSim](https://github.com/alawein/qmatsim)**
-
-Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.
-
-`Python` `VASP` `CUDA`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**[LLMWorks](https://llmworks.dev)**
-
-LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.
-
-`Python` `PyTorch` `HuggingFace`
-
-</td>
-<td align="center" width="33%">
-
-**[Attributa](https://attributa.dev)**
-
-Design audit and accessibility platform.
-
-`TypeScript` `React`
-
-</td>
-<td align="center" width="33%">
-
-**[Neper](https://github.com/alawein/neper)**
-
-LLM training, alignment, evaluation & synthetic data platform.
-
-`Python` `PyTorch` `HuggingFace`
 
 </td>
 </tr>

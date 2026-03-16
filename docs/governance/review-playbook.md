@@ -1,12 +1,12 @@
 ---
 title: Review Playbook
-description: Self-review and collaborator-review expectations for changes in the alawein repository
+description: Self-review and collaborator-review expectations for changes in the alawein repository, including batch-generated PRs
 category: governance
 audience: contributors
 status: active
 author: Morphism Systems LLC
-version: 1.0.0
-last_updated: 2026-03-08
+version: 1.1.0
+last_updated: 2026-03-15
 tags: [review, self-review, pull-requests, risk, validation]
 ---
 
@@ -54,6 +54,20 @@ Every PR summary should answer:
 If the PR changes governance or workflow, reference the specific guide that now
 governs the behavior.
 
+## Batch-Generated PRs
+
+When a PR is created by `workspace-batch`, the summary must also include:
+
+- batch id
+- objective
+- touched scope
+- validation commands or skipped steps
+- dependency notes
+- remaining follow-up
+
+The consolidated batch report is supporting evidence. It does not replace
+repo-level review of the actual diff.
+
 ## Change Scoping Expectations
 
 Good review scope:
@@ -74,8 +88,9 @@ Poor review scope:
   workflow behavior change
 - Medium: workflow changes, merge policy clarification, CI-facing governance
   changes, branch model guidance updates
-- High: changes to canonical truth, validation expectations, release behavior,
-  or anything that could mislead contributors about what is enforced
+- High: changes to canonical truth, validation expectations, batch stop rules,
+  release behavior, or anything that could mislead contributors about what is
+  enforced
 
 Higher risk requires more explicit validation evidence and more careful summary
 text.
@@ -88,6 +103,9 @@ At minimum, record:
 - markdown lint status when managed docs changed
 - link-check status when governance docs changed
 
+For batch-generated PRs, also reference the batch report and the repo-local
+validation results recorded in the PR body.
+
 If something was not run, say so plainly and explain why.
 
 ## Reviewer Checklist for Collaborators
@@ -99,6 +117,7 @@ When a collaborator reviews:
 - look for contradictions with `documentation-contract.md`
 - look for missing changelog or navigation updates
 - check whether the PR summary matches the actual diff
+- confirm batch PRs match the batch manifest and dependency story when batch mode was used
 
 ## Comment Handling and Resolution
 
@@ -113,6 +132,7 @@ Request a second human review when:
 
 - canonical truth is being changed
 - merge or release policy is being tightened or loosened
+- batch-blocking stop rules are being changed
 - the branch touches multiple governance entry points at once
 - the risk is high and the change will be used as a future template
 

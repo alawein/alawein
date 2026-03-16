@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-14
+last-verified: 2026-03-15
 ---
 
 # AGENTS — alawein
@@ -16,6 +16,8 @@ governance coordination.
 
 - Workspace operating contract:
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+- Autonomous batch execution guide:
+  [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Repository state:
@@ -30,6 +32,7 @@ governance coordination.
   slug has not yet been renamed.
 - Keep `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`, and governance docs
   aligned.
+- Use manifest-driven batch execution for multi-repo autonomous work.
 - Keep `docs/governance/documentation-contract.md` and
   `scripts/validate-doc-contract.sh` aligned.
 - Regenerate README sections from `projects.json` instead of hand-editing synced

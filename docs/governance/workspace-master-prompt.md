@@ -1,13 +1,13 @@
 ---
 title: Alawein Workspace Master Prompt
-description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and directive tracking.
-last_updated: 2026-03-11
+description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and manifest-driven batch execution.
+last_updated: 2026-03-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
 author: alawein maintainers
-version: 1.0.0
-tags: [workspace, governance, naming, directives, portfolio]
+version: 1.1.0
+tags: [workspace, governance, naming, directives, portfolio, batches]
 ---
 
 # Alawein Workspace — Master Prompt
@@ -40,7 +40,7 @@ These are non-negotiable. Violations block merge.
 ### R-3: Observable Changes
 
 - Use commit messages: `type(scope): description`.
-- Every structural change must be traceable (no silent renames).
+- Every structural change must be traceable.
 
 ### R-4: Reject With Evidence
 
@@ -54,6 +54,16 @@ These are non-negotiable. Violations block merge.
   `alawein/README-backup-20250807.md`.
 - Config, imports, deploy targets, and documentation must be updated together.
 - A change is incomplete until every reference is consistent.
+
+### R-6: Batch Contract
+
+- Multi-repo autonomous execution must start from
+  `docs/batches/<batch-id>/manifest.yaml`.
+- Use `_workspace-tools/config/repo-capabilities.yaml` as the repo registry.
+- Use `_workspace-tools/state/<batch-id>/` as the only valid runtime state
+  location.
+- Healthy batch runs should not emit routine progress chatter between kickoff
+  and final report.
 
 ## Phased Migration Semantics
 
@@ -197,8 +207,10 @@ cat SSOT.md
 
 - Break work into atomic units.
 - Identify dependencies between units.
-- Execute one verified unit at a time.
-- Verify after each unit; avoid stacking unverified changes.
+- Use one verified unit at a time for single-repo work.
+- Use manifest-driven parallel batches for multi-repo work.
+- Treat structured exceptions as the only approved interruption path during a
+  healthy batch run.
 
 ### Validation
 
@@ -211,6 +223,10 @@ ruff check src/ tests/ && mypy src/ && pytest tests/
 
 # Org-level governance
 ./scripts/validate-doc-contract.sh --full
+
+# Batch planning/execution
+python -m workspace_batch plan docs/batches/<batch-id>/manifest.yaml
+python -m workspace_batch run docs/batches/<batch-id>/manifest.yaml
 ```
 
 ## Refusal Templates
@@ -250,4 +266,5 @@ Recommendation: Update alawein/README-backup-20250807.md to match new state
 - [ ] Canonical names are used (legacy aliases only in approved contexts)
 - [ ] Imports/configs/docs/deploy targets are all updated
 - [ ] `alawein/README-backup-20250807.md` reflects the true current state
+- [ ] Batch artifacts are present when batch mode was used
 - [ ] Tests pass, lint is clean, and no regressions remain

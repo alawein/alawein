@@ -6,7 +6,7 @@ audience: contributors
 status: active
 author: alawein maintainers
 version: 1.0.0
-last_updated: 2026-03-15
+last_updated: 2026-03-16
 tags: [governance, automation, workspace, batches, orchestration]
 ---
 
@@ -30,9 +30,9 @@ Healthy batch behavior is:
 ## Canonical Artifacts
 
 - kickoff manifest: `docs/batches/<batch-id>/manifest.yaml`
-- repo registry: `_workspace-tools/config/repo-capabilities.yaml`
-- runtime state: `_workspace-tools/state/<batch-id>/status.json`
-- audit ledger: `_workspace-tools/state/<batch-id>/ledger.jsonl`
+- repo registry: `_ops/config/repo-capabilities.yaml`
+- runtime state: `_ops/state/<batch-id>/status.json`
+- audit ledger: `_ops/state/<batch-id>/ledger.jsonl`
 - final report: `docs/batches/<batch-id>/report.md`
 
 ## Execution Contract
@@ -88,7 +88,7 @@ Publish failures are repo-local by default.
 
 ## Legacy Status
 
-`_workspace-tools/workspace-orchestration/` and the old bash entrypoints are
+`_ops/workspace-orchestration/` and the old bash entrypoints are
 reference-only. They are not the approved execution path for current workspace
 operations.
 

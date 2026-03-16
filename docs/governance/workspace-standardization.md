@@ -30,7 +30,7 @@ canonical contract in
 - `gymboy`
 - `meatheadphysicist`
 - `devkit` (legacy overlap: `aw-devkit`)
-- `_gmail-ops` (external workspace)
+- `gmail-ops` (external workspace)
 
 ### Transitional Alias Format
 

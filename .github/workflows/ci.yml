@@ -24,6 +24,16 @@ jobs:
         if: github.event_name == 'pull_request'
         run: ./scripts/validate-doc-contract.sh --changed-only "origin/${{ github.base_ref }}"
 
+  test-scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run script tests
+        run: python -m pytest scripts/tests/ -v --tb=short
+
   lint-managed-markdown:
     runs-on: ubuntu-latest
     needs: validate-contract

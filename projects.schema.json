@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./projects.schema.json",
+  "title": "Alawein projects manifest",
+  "description": "Canonical portfolio and package list for the alawein organization",
+  "type": "object",
+  "required": ["featured", "research", "packages"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "lastUpdated": { "type": "string", "format": "date" },
+    "featured": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "slug", "repo", "description", "tags", "category"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "legacy_slugs": { "type": "array", "items": { "type": "string" } },
+          "url": { "type": "string", "format": "uri" },
+          "repo": { "type": "string" },
+          "description": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "category": { "type": "string" }
+        }
+      }
+    },
+    "research": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "slug", "repo", "domain"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "legacy_slugs": { "type": "array", "items": { "type": "string" } },
+          "repo": { "type": "string" },
+          "domain": { "type": "string" }
+        }
+      }
+    },
+    "packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "registry", "url", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "registry": { "type": "string", "enum": ["npm", "pypi"] },
+          "url": { "type": "string", "format": "uri" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

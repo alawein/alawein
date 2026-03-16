@@ -53,7 +53,7 @@ status.
 
 | Canonical Name | Physical Directory | Status | Notes |
 | --- | --- | --- | --- |
-| `_gmail-ops` | `_gmail-ops` | Stable | External/remote tooling |
+| `gmail-ops` | `gmail-ops` | Stable | External/remote tooling |
 | `.github` | `.github` | Stable | Workspace-level automation surface |
 | `.mypy_cache` | `.mypy_cache` | Local-only | Transient local cache; non-canonical |
 | `.venv` | `.venv` | Local-only | Transient local environment; non-canonical |

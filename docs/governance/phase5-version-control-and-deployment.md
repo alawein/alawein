@@ -43,6 +43,15 @@ Repos with `vercel.json` (deploy to Vercel when branch is merged):
 - Confirm `vercel.json` in each repo has correct `buildCommand`, `outputDirectory`, `installCommand`.
 - After merge to main: trigger deployment via `vercel deploy --prod` or integrated CI/CD (e.g. GitHub connection).
 - Monitor deployment logs and verify production rollout.
+- From the workspace meta repo, audit the production alias contract and apply missing aliases when needed:
+
+```bash
+cd alawein
+python scripts/vercel_alias_audit.py
+python scripts/vercel_alias_audit.py --apply
+```
+
+- The expected production preview alias is `https://[github-repo-name].vercel.app`. The audit derives that value from the GitHub repo name linked in Vercel, not from hidden local directory names such as `_devkit`.
 
 **devkit-storybook (Vercel project):** If the dashboard shows "Connect Git Repository", in Vercel go to Project Settings → Git → Connect to GitHub → select `alawein/devkit`, set Production Branch to `main`. The repo already has `vercel.json` with `buildCommand: npm run build -- --filter=@alawein/storybook` and `outputDirectory: apps/storybook/dist`.
 
@@ -70,3 +79,4 @@ Or rely on Vercel’s Git integration for auto-deploy on push to main. Full hand
 - All changes committed and pushed on a feature branch; PR opened and merged.
 - No uncommitted design/branding or refactor changes.
 - Vercel builds complete without errors for repos that use Vercel.
+- `python scripts/vercel_alias_audit.py` reports every local Vercel project as `compliant` or documents a real alias conflict that must be resolved in Vercel.

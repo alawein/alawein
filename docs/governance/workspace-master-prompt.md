@@ -1,7 +1,7 @@
 ---
 title: Alawein Workspace Master Prompt
 description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and manifest-driven batch execution.
-last_updated: 2026-03-15
+last_updated: 2026-03-16
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -59,8 +59,8 @@ These are non-negotiable. Violations block merge.
 
 - Multi-repo autonomous execution must start from
   `docs/batches/<batch-id>/manifest.yaml`.
-- Use `_workspace-tools/config/repo-capabilities.yaml` as the repo registry.
-- Use `_workspace-tools/state/<batch-id>/` as the only valid runtime state
+- Use `_ops/config/repo-capabilities.yaml` as the repo registry.
+- Use `_ops/state/<batch-id>/` as the only valid runtime state
   location.
 - Healthy batch runs should not emit routine progress chatter between kickoff
   and final report.
@@ -89,7 +89,7 @@ These are binding names.
 | `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
 | `meshal-web/` | `meshal-web` | `meshal.ai` | — |
 | `devkit/` | `devkit` | — | Consolidated from legacy `aw-devkit` |
-| `_gmail-ops/` | `_gmail-ops` | — | External/remote tools must be underscore-prefixed |
+| `gmail-ops/` | `gmail-ops` | — | External/remote tools |
 
 ### External Tool Prefix Rule
 
@@ -186,7 +186,7 @@ Track each to completion. None is done until `alawein/README-backup-20250807.md`
 
 | Repo | Purpose |
 | --- | --- |
-| `_gmail-ops` | Gmail automation tooling |
+| `gmail-ops` | Gmail automation tooling |
 
 ## Session Workflow
 

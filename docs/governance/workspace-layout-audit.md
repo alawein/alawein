@@ -26,7 +26,7 @@ canonical names first and physical slugs second when needed.
 
 | Canonical Name | Physical Path | Status | Notes |
 | --- | --- | --- | --- |
-| `_gmail-ops` | `_gmail-ops/` | aligned | External workspace, underscore-prefixed |
+| `gmail-ops` | `gmail-ops/` | aligned | External workspace |
 | `gymboy` | `gymboy/` | aligned | Hard cutover completed 2026-03-11 |
 | `meatheadphysicist` | `meatheadphysicist/` | aligned | Hard cutover completed 2026-03-11 |
 

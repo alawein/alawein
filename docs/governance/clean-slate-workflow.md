@@ -68,7 +68,7 @@ git stash push -m "alawein-clean-slate-leftovers" -- \
   HackerRank.ipynb \
   LICENSE \
   RevisionNotebook.ipynb \
-  ninja-favicon.svg
+  avatar.svg
 ```
 
 Why:
@@ -98,8 +98,8 @@ git restore \
   .github/ISSUE_TEMPLATE/feature_request.md \
   .github/pull_request_template.md \
   LICENSE
-git add HackerRank.ipynb RevisionNotebook.ipynb ninja-favicon.svg
-git commit -m "chore: update notebooks and favicon assets"
+git add HackerRank.ipynb RevisionNotebook.ipynb avatar.svg
+git commit -m "chore: update notebooks and avatar assets"
 ```
 
 ## When To Restore a Stash

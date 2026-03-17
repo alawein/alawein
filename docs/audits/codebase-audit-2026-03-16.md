@@ -138,4 +138,12 @@ last_updated: 2026-03-16
 
 ---
 
+## 9. Follow-up audit (2026-03-16) — Avatar asset
+
+| Finding | Severity | Action taken |
+|---------|----------|--------------|
+| `ninja-favicon.svg` at repo root had informal name; canonical org avatar should be named `avatar.svg` and sourced from devkit (design system) as high-quality asset. | Low | Renamed to `avatar.svg`; updated refs in `docs/governance/clean-slate-workflow.md`, `docs/governance/git-operations.md`, `docs/archive/meshal-alawein-profile.md`. Documented in `docs/governance/branding-workflow-and-standards.md`: org avatar is `avatar.svg`; canonical source is devkit; replace with devkit-produced high-quality avatar when available. |
+
+---
+
 *Audit performed per repo-superpowers codebase-audit skill. Governance sources: AGENTS.md, CLAUDE.md, docs/governance/documentation-contract.md.*

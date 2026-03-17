@@ -115,7 +115,7 @@ related:
 ---
 
 <p align="center">
-  <img src="ninja-favicon.svg" alt="Morphism Ninja" width="80" height="80" />
+  <img src="avatar.svg" alt="Morphism Ninja" width="80" height="80" />
 </p>
 
 <!--
@@ -182,7 +182,7 @@ related:
 ╚══════════════════════════════════════════════════════════════════════════════╝
 ```
 
-<img src="ninja-favicon.svg" alt="Ninja" width="60" height="60" />
+<img src="avatar.svg" alt="Ninja" width="60" height="60" />
 
 **Active Migration:** Transitioning repositories to the new Morphism Framework hub with enhanced npm tooling, modern CI/CD pipelines, and unified development workflows. 
 

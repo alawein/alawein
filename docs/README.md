@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-17
+last_updated: 2026-03-18
 tags: [alawein, documentation, governance, index]
 related:
   - ../README.md
@@ -62,6 +62,7 @@ workspace governance for the `alawein` GitHub organization.
   [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md)
 - Remediation checklist (step-by-step): [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md)
 - Codebase audit (governance, scripts, CI): [`codebase-audit-2026-03-16.md`](./audits/codebase-audit-2026-03-16.md)
+- Doc audit (TODOs, READMEs, links): [`doc-audit-2026-03-17.md`](./audits/doc-audit-2026-03-17.md)
 - Credential hygiene: [`credential-hygiene.md`](./governance/credential-hygiene.md)
 
 ## Workspace migration

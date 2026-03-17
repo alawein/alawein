@@ -1,14 +1,14 @@
 ---
 title: Remaining Steps Per Repository — Design & Branding Plan
 description: What's left and step-by-step plan for each repo after bulk Phase 3–5 execution.
-last_updated: 2026-03-12
+last_updated: 2026-03-14
 category: governance
 status: active
 ---
 
 # What's Left & Step-by-Step Plan Per Repo
 
-After the bulk run (Phase 3 format/lint, Phase 4 tests, Phase 5 branch + local commit), this document lists **what's left** and gives a **step-by-step plan** for each repository. The master plan is the Cursor plan *Repo design branding agent plans* (or see [DESIGN-BRANDING-SUMMARY.md](./DESIGN-BRANDING-SUMMARY.md)); progress is in [bulk-execution-progress.md](./bulk-execution-progress.md). Handoff and automation: [HANDOFF-DESIGN-BRANDING.md](../HANDOFF-DESIGN-BRANDING.md).
+After the bulk run (Phase 3 format/lint, Phase 4 tests, Phase 5 branch + local commit), this document lists **what's left** and gives a **step-by-step plan** for each repository. The master plan is the Cursor plan *Repo design branding agent plans* (or see [design-branding-summary.md](./design-branding-summary.md)); progress is in [bulk-execution-progress.md](./bulk-execution-progress.md). Handoff and automation: [HANDOFF-DESIGN-BRANDING.md](../HANDOFF-DESIGN-BRANDING.md).
 
 ---
 

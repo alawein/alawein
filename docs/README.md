@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-11
+last_updated: 2026-03-16
 tags: [alawein, documentation, governance, index]
 related:
   - ../README-backup-20250807.md
@@ -39,6 +39,7 @@ workspace governance for the `alawein` GitHub organization.
 | review your own PR or review a collaborator's | [`review-playbook.md`](./governance/review-playbook.md) |
 | decide how the branch should merge | [`merge-policy.md`](./governance/merge-policy.md) |
 | draft releases, tags, and changelog updates | [`release-playbook.md`](./governance/release-playbook.md) |
+| run or follow up on environment/credential audit | [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md), [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md) |
 
 ## Workflow operations
 
@@ -52,6 +53,14 @@ workspace governance for the `alawein` GitHub organization.
 - [`release-playbook.md`](./governance/release-playbook.md)
 - [`clean-slate-workflow.md`](./governance/clean-slate-workflow.md)
 - [`changelog-entry.md`](./governance/changelog-entry.md)
+
+## Audits
+
+- Full environment audit (credentials, config, IDE/LLM):
+  [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md)
+- Remediation checklist (step-by-step): [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md)
+- Codebase audit (governance, scripts, CI): [`codebase-audit-2026-03-16.md`](./audits/codebase-audit-2026-03-16.md)
+- Credential hygiene: [`credential-hygiene.md`](./governance/credential-hygiene.md)
 
 ## Workspace migration
 

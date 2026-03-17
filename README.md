@@ -1,6 +1,5 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
 
-
 <div align="center">
 
 [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
@@ -9,9 +8,9 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/alawein)
 [![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
 
-**Computational Physicist & AI Engineer · Founder, Morphism Systems · PhD EECS, UC Berkeley**
+**Computational Physicist & AI Engineer** · Founder, [Morphism Systems](https://morphism.systems) · PhD EECS, UC Berkeley
 
-*"Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced."*
+*Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.*
 
 </div>
 
@@ -45,7 +44,7 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 
 ---
 
-## Active Projects
+## Projects
 
 <!-- SYNC:PROJECTS:START -->
 <table>
@@ -141,7 +140,7 @@ Named entity extraction and processing pipeline with transformer models.
 
 ---
 
-## Published Packages
+## Packages
 
 <!-- SYNC:PACKAGES:START -->
 <table>
@@ -180,31 +179,22 @@ Named entity extraction and processing pipeline with transformer models.
 
 ---
 
-## Workspace Governance
+## Governance
 
-Canonical operating contract:
-[`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+This org runs on a single operating contract: [workspace-master-prompt](docs/governance/workspace-master-prompt.md). Core tenets:
 
-Core rules enforced in this repo:
+- **Single source of truth** — `SSOT.md`, per-repo `AGENTS.md`, org `README.md`
+- **Scope before action** — boundaries defined; violations rejected with file/line evidence
+- **Observable changes** — commit style `type(scope): description`
+- **README sync** — structural changes flow through `sync-readme.py` and the doc contract
+- **Design & branding** — shared tokens in [devkit/tokens](https://github.com/alawein/devkit/tree/main/tokens); brand manifests in [repz/branding](https://github.com/alawein/repz/tree/main/branding). Canonical paths: [workspace-resource-map](docs/governance/workspace-resource-map.md).
 
-- Single source of truth (`SSOT.md`, per-repo `AGENTS.md`, org `README.md`)
-- Scope boundaries before action
-- Observable changes (`type(scope): description`)
-- Reject violations with file/line evidence
-- README sync for structural changes
-- D-1 phase state: canonical token source is `devkit/tokens/`; `aw-devkit`
-  physical retirement cutover completed on 2026-03-11
-- Design and branding authority: shared tokens in [devkit/tokens](https://github.com/alawein/devkit/tree/main/tokens); brand manifests and style guides in [repz/branding](https://github.com/alawein/repz/tree/main/branding) (STYLE_GUIDE, MASCOT_GUIDE); see [workspace-resource-map](docs/governance/workspace-resource-map.md) for canonical paths.
-
-Validation commands:
-
-- `python scripts/sync-readme.py --check`
-- `./scripts/validate-doc-contract.sh --full`
+**Quality gates:** `python scripts/sync-readme.py --check` · `./scripts/validate-doc-contract.sh --full`
 
 ---
 
 <details>
-<summary><strong>Research & Scientific Computing</strong></summary>
+<summary><strong>Research & scientific computing</strong></summary>
 <br/>
 
 <!-- SYNC:RESEARCH:START -->
@@ -225,9 +215,9 @@ Validation commands:
 
 ---
 
-## Tech Stack
+## Stack
 
-**AI/ML**
+**AI & ML**
 
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
 ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
@@ -235,15 +225,15 @@ Validation commands:
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
 
-**Scientific**
+**Scientific computing**
 
-![Python](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
 ![MPI](https://img.shields.io/badge/MPI-0047AB?style=flat-square&logo=openmpi&logoColor=white)
 ![SLURM](https://img.shields.io/badge/SLURM-HPC-2C3E50?style=flat-square)
 ![VASP](https://img.shields.io/badge/VASP-DFT-6C3483?style=flat-square)
 ![Quantum ESPRESSO](https://img.shields.io/badge/Quantum_ESPRESSO-1A5276?style=flat-square)
 
-**Backend**
+**Backend & infra**
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
@@ -259,7 +249,7 @@ Validation commands:
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
 
-**Tools**
+**Tooling**
 
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
@@ -268,7 +258,7 @@ Validation commands:
 
 ---
 
-## GitHub Stats
+## Stats
 
 <div align="center">
 <img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&theme=tokyonight&hide_border=true" height="165"/>
@@ -279,7 +269,7 @@ Validation commands:
 
 <div align="center">
 
-📫 contact@meshal.ai · [meshal.ai](https://meshal.ai) · San Francisco, CA
+**contact@meshal.ai** · [meshal.ai](https://meshal.ai) · San Francisco
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=100&section=footer" width="100%"/>
 

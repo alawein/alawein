@@ -22,6 +22,8 @@ governance coordination.
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Repository state:
   [`SSOT.md`](SSOT.md)
+- Branch naming, workflow, and Vercel deployment:
+  [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 
 ## Governance Boundaries
 
@@ -91,7 +93,7 @@ governance coordination.
 
 Profile/About section can be updated from _pkos via `profile-from-guides.yaml`;
 see [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md).
-For a full revision and syncing plan for agents, see [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md).
+For a full revision and syncing plan for agents, see [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md). Branch/workflow/deploy: [branch-and-deployment-convention](docs/governance/branch-and-deployment-convention.md).
 
 ---
 

@@ -6,7 +6,7 @@ audience: contributors
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-08
+last_updated: 2026-03-17
 tags: [governance, contributing, workflow, development]
 ---
 
@@ -45,6 +45,8 @@ Detailed branch, sync, push, stash, and recovery guidance lives in
 
 ## Task-Specific Guides
 
+- branch naming, workflow, and Vercel deployment (single reference):
+  [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 - choose the right branch and lifecycle:
   [`docs/governance/feature-lifecycle.md`](docs/governance/feature-lifecycle.md)
 - review your branch:

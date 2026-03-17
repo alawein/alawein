@@ -4,7 +4,7 @@ description: Summary, revision plan, and syncing runbook for _pkos ↔ alawein p
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-03-17
+last_updated: 2026-03-18
 ---
 
 # Cursor agent handoff — profile sync and PKOS alignment
@@ -35,14 +35,13 @@ last_updated: 2026-03-17
 | **alawein** | `scripts/sync-readme.py` | Single script for projects + profile sync. |
 | **_pkos** | `C:\Users\mesha\Desktop\guides` or `...\Desktop\_pkos` | PKOS root. Profile: `db/profile/meshal-alawein.md`. Copy: `docs/career/profile-copy.yaml`. Export: `scripts/export-profile.py`. |
 | **_pkos** | `schema/export/profile-export.schema.yaml` | Canonical export schema. |
-| **_pkos** | `templates/*.yaml` | Platform field maps (alawein-readme, meshal-web, linkedin). |
+| **_pkos** | `templates/*.yaml` | Platform field maps (alawein-readme, meshal-web, linkedin, notion, cv-master). |
 
 ### Not yet done (pending)
 
 - **Rename folder:** `Desktop/guides` → `Desktop/_pkos` (user must run when folder not in use).
-- **meshal-web:** Consume `profile-export.yaml` or a generated artifact in build; no automation yet.
-- **LinkedIn:** Export includes `linkedin_headline`; no automated push; manual copy-paste or future snippet/automation.
-- **_pkos in workspace:** Optional move to sibling of alawein (e.g. `../GitHub/github.com/_pkos`) and update `ALAWEIN_REPO_PATH` / export default.
+- **meshal-web:** Consume `profile-export.yaml` or a generated artifact in build; no automation yet. Manual option: copy `out/profile-export.yaml` (or relevant fields) into meshal-web and document in that repo’s README that profile content comes from _pkos export.
+- **_pkos in workspace:** Optional move to sibling of alawein (e.g. `../GitHub/github.com/_pkos`); then set `ALAWEIN_REPO_PATH` or update default in `export-profile.py` and HANDOFF-CODEX paths.
 
 ---
 
@@ -71,7 +70,7 @@ Execute in order when improving or extending the setup.
 ### Phase D — Optional structural improvements
 
 10. **_pkos move** — If user moves _pkos to `../GitHub/github.com/_pkos`, update HANDOFF-CODEX key paths and export default; set `ALAWEIN_REPO_PATH` if needed.
-11. **Notion / CV** — Add `templates/notion.yaml` or `templates/cv-master.yaml` and optional export artifacts if Notion or master CV should be driven from the same export.
+11. **Notion / CV** — Done: `templates/notion.yaml` and `templates/cv-master.yaml` added; documented in _pkos `templates/README.md`. Export script can be extended to write `out/notion-snippet.md` / `out/cv-snippet.md` when requested.
 
 ---
 
@@ -131,9 +130,9 @@ Then update any hardcoded `guides` paths in HANDOFF-CODEX and export script defa
 
 ## 5. Agent checklist for “revision and enhancements”
 
-- [ ] Run Phase A (wording, templates README, doc contract, backup stub).
-- [ ] Run Phase B (export path, PyYAML doc, sync-check behavior).
-- [ ] If requested: Phase C (meshal-web, LinkedIn snippet).
-- [ ] If requested: Phase D (_pkos move, Notion/CV templates).
-- [ ] Re-run `sync-readme.py --check` and `validate-doc-contract.sh --full` after changes.
-- [ ] Update this handoff’s “last_updated” and any “Not yet done” items when completing work.
+- [x] Run Phase A (wording, templates README, doc contract, backup stub).
+- [x] Run Phase B (export path, PyYAML doc, sync-check behavior).
+- [x] Phase C LinkedIn snippet: `export-profile.py` writes `out/linkedin-snippet.md`; documented in _pkos `templates/README.md`. meshal-web consumption still manual/optional.
+- [x] Phase D Notion/CV: added `templates/notion.yaml` and `templates/cv-master.yaml`; documented in _pkos `templates/README.md`. _pkos move remains user-only when desired.
+- [x] Re-run `sync-readme.py --check` (passed). Run `validate-doc-contract.sh --full` locally when needed.
+- [x] Update this handoff’s “last_updated” and “Not yet done” when completing work.

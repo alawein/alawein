@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-16
+last_updated: 2026-03-17
 tags: [changelog, version-history, releases]
 ---
 
@@ -20,6 +20,31 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+
+- Profile sync phases A–D: consistency (_pkos wording in alawein + _pkos templates), PyYAML and sync-check docs, LinkedIn snippet (`out/linkedin-snippet.md` from _pkos export), Notion/CV templates (`templates/notion.yaml`, `templates/cv-master.yaml`) and docs in _pkos `templates/README.md` and HANDOFF-CODEX.
+- Added doc audit report `docs/audits/doc-audit-2026-03-17.md` (TODO/TBD scan, missing
+  READMEs under docs subdirs, link sanity; no unresolved doc TODOs, no broken
+  internal links).
+- Added Cursor agent handoff for profile sync and PKOS alignment:
+  `docs/governance/cursor-agent-handoff-profile-sync.md` as single reference;
+  AGENTS.md, CLAUDE.md, and profile-sync-from-guides.md updated to point agents
+  at it.
+- Added single branch-and-deployment convention:
+  `docs/governance/branch-and-deployment-convention.md` (branch taxonomy
+  feat/fix/hotfix/release/fast/chore/codex, workflow, Vercel deployment, stale
+  branch cleanup); referenced from AGENTS.md, CLAUDE.md, SSOT.md,
+  workspace-master-prompt.md, workflow.md, phase5, docs/README.md,
+  CONTRIBUTING.md.
+
+### Changed
+
+- Updated README for clearer structure and governance wording (Projects,
+  Packages, Governance, Stack, Stats; refined footer and badges).
+- Multi-repo hygiene: committed and pushed alawein, edfp, meshal-web,
+  attributa, _devkit, qmatsim; aligned _devkit main with origin via
+  force-push after unrelated-history merge abort; Vercel production deploys
+  for edfp, meshal-web, attributa, _devkit (repz deploy remains failing with
+  Vercel “Unexpected error”).
 
 - Added full-environment audit report
   `docs/audits/full-environment-audit-2026-03-16.md` (scoped scan of GitHub

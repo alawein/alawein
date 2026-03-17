@@ -4,7 +4,7 @@ description: Single reference for branch naming, workflow, and Vercel deployment
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-03-16
+last_updated: 2026-03-17
 tags: [branch, naming, workflow, vercel, deployment, convention]
 ---
 
@@ -72,10 +72,7 @@ Repos with `vercel.json` and build/output config: see [phase5-version-control-an
 
 ## Current branches (alawein repo)
 
-Run `git branch -a` in `alawein/alawein` for up-to-date list. Typical long-lived or historical names you may see:
-
-- Local: `chore/hard-cutover-20260311`, `codex/*`, `feature/branding-and-standardization`, `fix/alawein-stash-reconciliation`, `main`
-- Remote: `feat/workspace-standardization`, `feat/workspace-standardization-wave-2`, `agent/*` (automation), etc.
+Run `git branch -a` in `alawein/alawein` for the current list. After hygiene, only `main` and unmerged branches (e.g. `codex/*`, `feat/*`, `agent/*`) remain.
 
 **Hygiene:** After merging a branch, delete it locally and on origin. Prune stale remotes with `git fetch --prune`. Prefer short-lived branches.
 

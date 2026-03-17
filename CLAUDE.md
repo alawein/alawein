@@ -59,6 +59,8 @@ It owns:
   [`docs/governance/profile-sync-from-guides.md`](docs/governance/profile-sync-from-guides.md)
 - Profile sync and PKOS alignment (single handoff for agents):
   [`docs/governance/cursor-agent-handoff-profile-sync.md`](docs/governance/cursor-agent-handoff-profile-sync.md)
+- Branch naming, workflow, and Vercel deployment (single convention):
+  [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 
 ## Required Files
 

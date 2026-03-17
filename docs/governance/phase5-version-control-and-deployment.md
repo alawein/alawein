@@ -12,11 +12,13 @@ Execute after Phase 4 (testing and validation) for each repository.
 
 ## Git workflow (per repo)
 
-1. **Branch:** `git checkout -b feature/branding-and-standardization` (or `feature/<repo>-design-integration`).
+Canonical branch prefix is `feat/*` (see [branch-and-deployment-convention.md](branch-and-deployment-convention.md)). Legacy `feature/*` branches (e.g. `feature/branding-and-standardization`) remain valid until merged.
+
+1. **Branch:** `git checkout -b feat/scope-outcome` (e.g. `feat/branding-integration` or `feat/docs-governance-suite`).
 2. **Stage:** `git add .`
-3. **Commit:** `git commit -m "feat(<scope>): implement design system and branding integration"`
-4. **Push:** `git push origin feature/branding-and-standardization`
-5. **PR:** Open pull request to `main` (or `develop`); request review.
+3. **Commit:** `git commit -m "feat(scope): description"`
+4. **Push:** `git push -u origin feat/scope-outcome`
+5. **PR:** Open pull request to `main`; request review.
 6. **After merge:** `git checkout main && git pull origin main`
 
 ## Vercel deployment
@@ -57,12 +59,12 @@ python scripts/vercel_alias_audit.py --apply
 
 ## Automation (GitHub CLI + Vercel)
 
-**After pushing the feature branch**, from the repo directory:
+**After pushing the branch**, from the repo directory:
 
 ```bash
-gh pr create --base main --head feature/branding-and-standardization \
-  --title "feat: design system and branding integration (Phase 3-5)" \
-  --body "See alawein/docs/governance/bulk-execution-progress.md."
+gh pr create --base main --head feat/scope-outcome \
+  --title "feat(scope): short description" \
+  --body "Reference: alawein/docs/governance/branch-and-deployment-convention.md"
 ```
 
 **After merging to main:**

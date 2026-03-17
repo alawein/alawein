@@ -85,6 +85,7 @@ stash.
 
 ## See Also
 
+- [branch-and-deployment-convention.md](branch-and-deployment-convention.md) — single reference for branch naming, workflow, and Vercel
 - [parallel-batch-execution.md](parallel-batch-execution.md)
 - [operating-model.md](operating-model.md)
 - [git-operations.md](git-operations.md)

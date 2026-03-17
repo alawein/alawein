@@ -54,7 +54,7 @@ jobs:
             SSOT.md \
             LESSONS.md \
             DOCUMENTATION_PHILOSOPHY.md \
-            docs/README-backup-20250807.md \
+            docs/README.md \
             docs/governance/*.md
 
       - name: Enforce canonical docs base URL
@@ -86,7 +86,7 @@ jobs:
               root / "SSOT.md",
               root / "LESSONS.md",
               root / "DOCUMENTATION_PHILOSOPHY.md",
-              root / "README-backup-20250807.md",
+              root / "README.md",
           ]
           managed_docs = sorted(
               p for p in (root / "docs").rglob("*.md")
@@ -185,7 +185,7 @@ jobs:
               if "MeatheadPhysicist" not in (meathead.get("legacy_slugs") or []):
                   errors.append("projects.json: alawein/meatheadphysicist must retain legacy slug 'MeatheadPhysicist' for transition window")
 
-          readme_text = (root / "README-backup-20250807.md").read_text(encoding="utf-8")
+          readme_text = (root / "README.md").read_text(encoding="utf-8")
           for forbidden_alias in (
               "gymboy (repo:",
               "meatheadphysicist (repo:",
@@ -193,7 +193,7 @@ jobs:
               "edfp (repo:",
           ):
               if forbidden_alias in readme_text:
-                  errors.append(f"README-backup-20250807.md: obsolete alias display '{forbidden_alias}' must be removed post-cutover")
+                  errors.append(f"README.md: obsolete alias display '{forbidden_alias}' must be removed post-cutover")
 
           if errors:
               print("Canonical name/domain audit failed:")
@@ -214,7 +214,7 @@ jobs:
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \
-            docs/README-backup-20250807.md \
+            docs/README.md \
             docs/governance/*.md
 
       - name: Generate documentation report

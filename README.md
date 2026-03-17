@@ -19,6 +19,7 @@
 
 ## About
 
+<!-- SYNC:PROFILE:START -->
 <table>
 <tr>
 <td width="55%" valign="top">
@@ -40,6 +41,7 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 </td>
 </tr>
 </table>
+<!-- SYNC:PROFILE:END -->
 
 ---
 
@@ -48,44 +50,6 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 <!-- SYNC:PROJECTS:START -->
 <table>
 <tr>
-<td align="center" width="33%">
-
-**[Morphism](https://github.com/morphism-org/morphism)**
-
-Formally verified AI governance framework. Category-theoretic contraction proofs, cryptographic audit trails, zero-dependency CLI.
-
-`TypeScript` `Python` `Category Theory`
-
-</td>
-<td align="center" width="33%">
-
-**[Neper](https://github.com/alawein/neper)**
-
-LLM training, alignment, evaluation & synthetic data platform. SFT, DPO, LoRA, differentiable safety constraints.
-
-`Python` `PyTorch` `Docker`
-
-</td>
-<td align="center" width="33%">
-
-**[QMatSim](https://github.com/alawein/qmatsim)**
-
-Quantum materials simulation toolkit. DFT workflows, HPC automation, flat-band discovery in strained TMDs.
-
-`Python` `VASP` `CUDA`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**[Attributa](https://github.com/alawein/attributa)**
-
-Privacy-first AI attribution tool. Client-side AI content detection (GLTR, DetectGPT), DOI validation, CWE scanning — zero data exfiltration.
-
-`React` `TypeScript` `Python`
-
-</td>
 <td align="center" width="33%">
 
 **[Event Discovery Framework](https://edfp.online)**
@@ -97,11 +61,78 @@ Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierar
 </td>
 <td align="center" width="33%">
 
+**[Gymboy](https://gymboy.coach)**
+
+Fitness coaching platform with a retro progression-first training interface.
+
+`React` `Vite` `Spark`
+
+</td>
+<td align="center" width="33%">
+
+**[REPZ](https://repzcoach.com)**
+
+AI-powered coaching platform.
+
+`TypeScript` `React` `Supabase`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
 **[meshal-web](https://meshal.ai)**
 
-Personal site and portfolio — meshal.ai.
+Personal site and portfolio surface for current Alawein projects.
 
 `React` `Vite` `Tailwind`
+
+</td>
+<td align="center" width="33%">
+
+**[devkit](https://github.com/alawein/devkit)**
+
+Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.
+
+`Design Tokens` `UI` `Tooling`
+
+</td>
+<td align="center" width="33%">
+
+**[QMatSim](https://github.com/alawein/qmatsim)**
+
+Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.
+
+`Python` `VASP` `CUDA`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**[LLMWorks](https://llmworks.dev)**
+
+LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.
+
+`Python` `PyTorch` `HuggingFace`
+
+</td>
+<td align="center" width="33%">
+
+**[Attributa](https://attributa.dev)**
+
+Design audit and accessibility platform.
+
+`TypeScript` `React`
+
+</td>
+<td align="center" width="33%">
+
+**[Neper](https://github.com/alawein/neper)**
+
+Named entity extraction and processing pipeline with transformer models.
+
+`Python` `Transformers` `NLP`
 
 </td>
 </tr>
@@ -120,11 +151,6 @@ Personal site and portfolio — meshal.ai.
 <th>Version</th>
 </tr>
 <tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
-<td>One-command installer for all tools</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
-</tr>
-<tr>
 <td><a href="https://www.npmjs.com/package/@morphism-systems/cli"><code>@morphism-systems/cli</code></a></td>
 <td>Governance CLI — scaffold, validate, score, heal</td>
 <td><img src="https://img.shields.io/npm/v/@morphism-systems/cli?style=flat-square&color=8B5CF6" alt="npm"/></td>
@@ -136,18 +162,18 @@ Personal site and portfolio — meshal.ai.
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/@morphism-systems/agentic-math"><code>@morphism-systems/agentic-math</code></a></td>
-<td>Category theory MCP server</td>
+<td>MCP math computation server</td>
 <td><img src="https://img.shields.io/npm/v/@morphism-systems/agentic-math?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 <tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/shared"><code>@morphism-systems/shared</code></a></td>
-<td>Shared TypeScript utilities</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/shared?style=flat-square&color=8B5CF6" alt="npm"/></td>
+<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
+<td>One-command installer for all tools</td>
+<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
 </tr>
 <tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/design-tokens"><code>@morphism-systems/design-tokens</code></a></td>
-<td>10 themes — CSS variables and Tailwind presets</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/design-tokens?style=flat-square&color=8B5CF6" alt="npm"/></td>
+<td><a href="https://pypi.org/project/morphism/"><code>morphism</code></a></td>
+<td>Python category theory engine</td>
+<td><img src="https://img.shields.io/pypi/v/morphism?style=flat-square&color=8B5CF6" alt="pypi"/></td>
 </tr>
 </table>
 <!-- SYNC:PACKAGES:END -->
@@ -161,7 +187,7 @@ Canonical operating contract:
 
 Core rules enforced in this repo:
 
-- Single source of truth (`SSOT.md`, per-repo `AGENTS.md`, org `README-backup-20250807.md`)
+- Single source of truth (`SSOT.md`, per-repo `AGENTS.md`, org `README.md`)
 - Scope boundaries before action
 - Observable changes (`type(scope): description`)
 - Reject violations with file/line evidence
@@ -191,8 +217,8 @@ Validation commands:
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
-| [neper](https://github.com/alawein/neper) | LLM training & alignment platform |
-| [MeatheadPhysicist](https://github.com/alawein/MeatheadPhysicist) | Physics research & writing |
+| [neper](https://github.com/alawein/neper) | NLP entity extraction |
+| [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
 <!-- SYNC:RESEARCH:END -->
 
 </details>

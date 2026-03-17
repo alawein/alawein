@@ -27,7 +27,7 @@ governance coordination.
 
 ### Always do
 
-- Keep `README-backup-20250807.md` current with active repos, domains, and canonical naming.
+- Keep `README.md` current with active repos, domains, and canonical naming.
 - Use canonical names first and transitional alias notation when a physical repo
   slug has not yet been renamed.
 - Keep `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`, and governance docs
@@ -37,6 +37,13 @@ governance coordination.
   `scripts/validate-doc-contract.sh` aligned.
 - Regenerate README sections from `projects.json` instead of hand-editing synced
   blocks.
+- When `profile-from-guides.yaml` is present, run `sync-readme.py` to update the
+  README About block; profile/positioning copy is sourced from guides (see
+  [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md)).
+- For profile sync, README About block updates, _pkos rename/location, or
+  meshal-web/LinkedIn export: **read and follow**
+  [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md);
+  it is the single handoff for revision and enhancements.
 
 ### Ask first
 
@@ -81,6 +88,10 @@ governance coordination.
 | Sync README from data | `python scripts/sync-readme.py` |
 | Verify README sync | `python scripts/sync-readme.py --check` |
 | Governance check | `./scripts/validate-doc-contract.sh --full` |
+
+Profile/About section can be updated from _pkos via `profile-from-guides.yaml`;
+see [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md).
+For a full revision and syncing plan for agents, see [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md).
 
 ---
 

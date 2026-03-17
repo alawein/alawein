@@ -18,7 +18,7 @@ This is the `@alawein` GitHub organization workspace. It contains repositories
 across web apps, research/scientific computing, tooling, and external
 integrations.
 
-The canonical portfolio index is `alawein/README-backup-20250807.md`. It must always reflect
+The canonical portfolio index is `alawein/README.md`. It must always reflect
 the true current state of the workspace.
 
 ## Workspace Rules
@@ -28,7 +28,7 @@ These are non-negotiable. Violations block merge.
 ### R-1: Single Source of Truth
 
 - Every repo has an `SSOT.md` declaring canonical current state.
-- `alawein/README-backup-20250807.md` is the org-level SSOT for portfolio structure and domains.
+- `alawein/README.md` is the org-level SSOT for portfolio structure and domains.
 - Read `SSOT.md` and `AGENTS.md` before making non-trivial changes.
 
 ### R-2: Scope Before Action
@@ -51,7 +51,7 @@ These are non-negotiable. Violations block merge.
 ### R-5: Sync or It Didn't Happen
 
 - Any structural change (rename, move, add, remove) must be reflected in
-  `alawein/README-backup-20250807.md`.
+  `alawein/README.md`.
 - Config, imports, deploy targets, and documentation must be updated together.
 - A change is incomplete until every reference is consistent.
 
@@ -98,7 +98,7 @@ underscore-prefixed. Internal repos remain unprefixed.
 
 ## Active Directives
 
-Track each to completion. None is done until `alawein/README-backup-20250807.md` is updated.
+Track each to completion. None is done until `alawein/README.md` is updated.
 
 ### D-1: Devkit Consolidation
 
@@ -255,7 +255,7 @@ Recommendation: Update to canonical name before proceeding
 Cannot complete this change — README sync missing
 
 Reason: alawein README does not reflect the change (R-5)
-Recommendation: Update alawein/README-backup-20250807.md to match new state
+Recommendation: Update alawein/README.md to match new state
 ```
 
 ## Done Checklist
@@ -265,6 +265,6 @@ Recommendation: Update alawein/README-backup-20250807.md to match new state
 - [ ] Commit messages follow `type(scope): description`
 - [ ] Canonical names are used (legacy aliases only in approved contexts)
 - [ ] Imports/configs/docs/deploy targets are all updated
-- [ ] `alawein/README-backup-20250807.md` reflects the true current state
+- [ ] `alawein/README.md` reflects the true current state
 - [ ] Batch artifacts are present when batch mode was used
 - [ ] Tests pass, lint is clean, and no regressions remain

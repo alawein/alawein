@@ -226,7 +226,7 @@ remain unchanged.
 
 ## Practical Implementation
 
-### README-backup-20250807.md
+### README.md
 - Lead with equations/invariants
 - Show observable flows
 - Emphasize preservation, not restriction

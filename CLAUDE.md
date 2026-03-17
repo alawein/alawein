@@ -18,7 +18,7 @@ This repository is the org-level docs and governance control plane for the
 
 It owns:
 
-- portfolio truth (`README-backup-20250807.md` + `projects.json`)
+- portfolio truth (`README.md` + `projects.json`)
 - workspace governance rules
 - documentation contract and validation scripts
 
@@ -55,12 +55,16 @@ It owns:
   step-by-step remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md)
 - Credential hygiene (secrets, MCP, CI):
   [`docs/governance/credential-hygiene.md`](docs/governance/credential-hygiene.md)
+- Profile sync from guides (README About / positioning):
+  [`docs/governance/profile-sync-from-guides.md`](docs/governance/profile-sync-from-guides.md)
+- Profile sync and PKOS alignment (single handoff for agents):
+  [`docs/governance/cursor-agent-handoff-profile-sync.md`](docs/governance/cursor-agent-handoff-profile-sync.md)
 
 ## Required Files
 
 - `AGENTS.md`
 - `CLAUDE.md`
-- `README-backup-20250807.md`
+- `README.md`
 - `SSOT.md`
 - `LESSONS.md`
 - `CONTRIBUTING-backup-20250807.md`
@@ -83,7 +87,11 @@ It owns:
 - Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
   `atelier-rounaq`, and `edfp` now use canonical physical slugs.
 - Regenerate README sync blocks from `projects.json` with
-  `scripts/sync-readme.py`.
+  `scripts/sync-readme.py`. When `profile-from-guides.yaml` exists (from guides
+  export), the same script updates the README About block; see
+  [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md).
+- For profile sync or PKOS alignment work, read and follow
+  [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md).
 
 ---
 
@@ -92,7 +100,7 @@ It owns:
 ```text
 alawein/
   docs/
-    README-backup-20250807.md
+    README.md
     audits/
       full-environment-audit-YYYY-MM-DD.md
       remediation-checklist-YYYY-MM-DD.md

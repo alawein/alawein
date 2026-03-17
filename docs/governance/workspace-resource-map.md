@@ -34,7 +34,7 @@ workspace.
 ## Rules
 
 - Do not create multiple sources of truth for the same resource class.
-- Any canonical-home change must update this map and `alawein/README-backup-20250807.md`.
+- Any canonical-home change must update this map and `alawein/README.md`.
 - Legacy resources are read-only unless a migration directive explicitly scopes
   edits.
 - Secrets are out of scope for this map and remain in secret-management flows.

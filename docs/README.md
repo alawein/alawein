@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-16
+last_updated: 2026-03-17
 tags: [alawein, documentation, governance, index]
 related:
   - ../README.md
@@ -34,6 +34,7 @@ workspace governance for the `alawein` GitHub organization.
 | --- | --- |
 | understand the overall flow | [`workflow.md`](./governance/workflow.md) |
 | choose the right branch and path to merge | [`feature-lifecycle.md`](./governance/feature-lifecycle.md) |
+| branch naming, workflow, and Vercel deployment | [`branch-and-deployment-convention.md`](./governance/branch-and-deployment-convention.md) |
 | branch, sync, push, stash, or recover work | [`git-operations.md`](./governance/git-operations.md) |
 | keep the repo clean while preserving unrelated edits | [`clean-slate-workflow.md`](./governance/clean-slate-workflow.md) |
 | review your own PR or review a collaborator's | [`review-playbook.md`](./governance/review-playbook.md) |
@@ -46,6 +47,7 @@ workspace governance for the `alawein` GitHub organization.
 - [`documentation-contract.md`](./governance/documentation-contract.md)
 - [`operating-model.md`](./governance/operating-model.md)
 - [`workflow.md`](./governance/workflow.md)
+- [`branch-and-deployment-convention.md`](./governance/branch-and-deployment-convention.md)
 - [`git-operations.md`](./governance/git-operations.md)
 - [`feature-lifecycle.md`](./governance/feature-lifecycle.md)
 - [`review-playbook.md`](./governance/review-playbook.md)

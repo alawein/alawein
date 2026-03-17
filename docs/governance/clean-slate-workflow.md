@@ -1,12 +1,12 @@
 ---
 title: Clean-Slate Workflow
-description: Best practices for keeping alawein clean while preserving intentional in-progress work through focused commits, path-scoped stashes, and branch isolation
-last_updated: 2026-03-08
+description: Best practices for keeping alawein clean while preserving intentional in-progress work through focused commits, path-scoped stashes, branch isolation, and batch worktree hygiene
+last_updated: 2026-03-16
 category: governance
 audience: contributors
 status: active
 author: Morphism Systems LLC
-version: 1.0.0
+version: 1.1.0
 tags: [git, stash, workflow, clean-slate, notebooks, assets]
 ---
 
@@ -22,6 +22,7 @@ without losing intentional work.
 - Preserve intentional work-in-progress without mixing it into governance
   changes.
 - Treat notebook and binary-ish asset diffs as their own change surface.
+- Keep autonomous batch work isolated from manual local edits.
 
 ## Default Rule
 
@@ -31,6 +32,16 @@ mix them into the same commit. Either:
 - commit them separately if they belong together
 - stash them if they are not ready
 - discard them if they are accidental
+
+## Batch Isolation Rule
+
+`workspace-batch` creates isolated worktrees under
+`_ops/state/<batch-id>/worktrees/`.
+
+- do not use those worktrees as normal developer sandboxes
+- do not mix manual edits into a live batch worktree
+- isolate unrelated local changes before starting a batch run when the manifest
+  requires a clean checkout
 
 ## Recommended Order of Operations
 
@@ -57,7 +68,7 @@ git stash push -m "alawein-clean-slate-leftovers" -- \
   HackerRank.ipynb \
   LICENSE \
   RevisionNotebook.ipynb \
-  ninja-favicon.svg
+  avatar.svg
 ```
 
 Why:
@@ -87,8 +98,8 @@ git restore \
   .github/ISSUE_TEMPLATE/feature_request.md \
   .github/pull_request_template.md \
   LICENSE
-git add HackerRank.ipynb RevisionNotebook.ipynb ninja-favicon.svg
-git commit -m "chore: update notebooks and favicon assets"
+git add HackerRank.ipynb RevisionNotebook.ipynb avatar.svg
+git commit -m "chore: update notebooks and avatar assets"
 ```
 
 ## When To Restore a Stash
@@ -132,6 +143,7 @@ If any answer points away from the current commit, separate the change.
 - Stashing the entire repo without knowing what is inside the stash
 - Mixing governance docs with notebook or asset updates in one commit
 - Restoring a stash back onto `main` when the work deserves its own branch
+- Treating batch worktrees as general-purpose local branches
 - Dropping a stash before deciding whether notebook or asset edits are
   intentional
 

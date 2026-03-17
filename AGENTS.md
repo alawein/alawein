@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-11
+last-verified: 2026-03-16
 ---
 
 # AGENTS — alawein
@@ -16,6 +16,8 @@ governance coordination.
 
 - Workspace operating contract:
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+- Autonomous batch execution guide:
+  [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Repository state:
@@ -30,6 +32,7 @@ governance coordination.
   slug has not yet been renamed.
 - Keep `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`, and governance docs
   aligned.
+- Use manifest-driven batch execution for multi-repo autonomous work.
 - Keep `docs/governance/documentation-contract.md` and
   `scripts/validate-doc-contract.sh` aligned.
 - Regenerate README sections from `projects.json` instead of hand-editing synced
@@ -50,7 +53,7 @@ governance coordination.
 ## Canonical Naming Policy
 
 - Canonical names are workspace authority (`gymboy`, `meatheadphysicist`,
-  `devkit`, `_gmail-ops`).
+  `devkit`, `gmail-ops`).
 - During phased migration, if canonical name differs from physical repo slug,
   use this format in docs: `canonical-name (repo: physical-slug)`.
 - Physical links stay pointed at the actual GitHub repo slug until cutover.
@@ -59,9 +62,17 @@ governance coordination.
 
 ## Design & branding plan (agent-executable)
 
-- **Summary:** [docs/governance/DESIGN-BRANDING-SUMMARY.md](docs/governance/DESIGN-BRANDING-SUMMARY.md)
+- **Summary:** [docs/governance/design-branding-summary.md](docs/governance/design-branding-summary.md)
 - **Remaining steps per repo:** [docs/governance/remaining-steps-per-repo.md](docs/governance/remaining-steps-per-repo.md)
 - **Handoff (push, PR, deploy):** [docs/HANDOFF-DESIGN-BRANDING.md](docs/HANDOFF-DESIGN-BRANDING.md)
+
+## Audits
+
+- Full environment audit (credentials, config, IDE/LLM):
+  [docs/audits/full-environment-audit-2026-03-16.md](docs/audits/full-environment-audit-2026-03-16.md)
+- Remediation checklist (step-by-step): [docs/audits/remediation-checklist-2026-03-16.md](docs/audits/remediation-checklist-2026-03-16.md)
+- Credential hygiene (no secrets in repo; MCP env vars; CI secrets):
+  [docs/governance/credential-hygiene.md](docs/governance/credential-hygiene.md)
 
 ## Quick Reference
 

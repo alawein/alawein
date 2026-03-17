@@ -1,7 +1,7 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-11
+last-verified: 2026-03-16
 audience: [ai-agents, contributors]
 ---
 
@@ -39,9 +39,22 @@ It owns:
 - Current state:
   [`SSOT.md`](SSOT.md)
 - Design/branding plan summary and remaining steps:
-  [`docs/governance/DESIGN-BRANDING-SUMMARY.md`](docs/governance/DESIGN-BRANDING-SUMMARY.md),
+  [`docs/governance/design-branding-summary.md`](docs/governance/design-branding-summary.md),
   [`docs/governance/remaining-steps-per-repo.md`](docs/governance/remaining-steps-per-repo.md),
   [`docs/HANDOFF-DESIGN-BRANDING.md`](docs/HANDOFF-DESIGN-BRANDING.md)
+- Slash commands catalog and workflows (any repo/dir):
+  [`docs/governance/slash-commands-catalog.md`](docs/governance/slash-commands-catalog.md)
+- Skills, agents & commands unification (universal vs ecosystem vs org):
+  [`docs/governance/skills-agents-unification.md`](docs/governance/skills-agents-unification.md)
+- Skills/agents maintenance and tailoring runbook:
+  [`docs/governance/maintenance-skills-agents.md`](docs/governance/maintenance-skills-agents.md)
+- Operator quick commands:
+  [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)
+- Audits (environment, codebase):
+  [`docs/audits/full-environment-audit-2026-03-16.md`](docs/audits/full-environment-audit-2026-03-16.md);
+  step-by-step remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md)
+- Credential hygiene (secrets, MCP, CI):
+  [`docs/governance/credential-hygiene.md`](docs/governance/credential-hygiene.md)
 
 ## Required Files
 
@@ -80,9 +93,14 @@ It owns:
 alawein/
   docs/
     README-backup-20250807.md
+    audits/
+      full-environment-audit-YYYY-MM-DD.md
+      remediation-checklist-YYYY-MM-DD.md
+      codebase-audit-*.md
     governance/
       workspace-master-prompt.md
       documentation-contract.md
+      credential-hygiene.md
       operating-model.md
       workflow.md
       git-operations.md

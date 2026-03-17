@@ -1,14 +1,14 @@
 ---
 type: normative
 authority: canonical
-last-verified: 2026-03-11
+last-verified: 2026-03-15
 audience: [ai-agents, contributors]
 ---
 
 # SSOT — alawein
 
-**Version:** 1.1
-**Last Updated:** 2026-03-11
+**Version:** 1.2
+**Last Updated:** 2026-03-15
 **Status:** Active
 
 ---
@@ -24,6 +24,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Organization profile and documentation: ✅ Active
 - Workspace operating contract:
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+- Workspace batch execution contract:
+  [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Local documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Governance suite navigation:
@@ -32,6 +34,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
   `./scripts/validate-doc-contract.sh --full`
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
+- Manifest-driven batch governance is active for multi-repo autonomous work
 - README sections are generated from `projects.json` via
   `scripts/sync-readme.py`
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
@@ -56,6 +59,7 @@ alawein/
 │       ├── operating-model.md
 │       ├── documentation-contract.md
 │       ├── workflow.md
+│       ├── parallel-batch-execution.md
 │       ├── git-operations.md
 │       ├── feature-lifecycle.md
 │       ├── review-playbook.md

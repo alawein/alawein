@@ -1,7 +1,7 @@
 ---
 title: Design & Branding Plan — Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
-last_updated: 2026-03-13
+last_updated: 2026-03-14
 category: governance
 status: active
 ---
@@ -52,7 +52,7 @@ alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, at
 
 **Push (2026-03-12):** alawein and repz (branch pushed for first time); simcore (new commits pushed); other 10 already up-to-date on remote.
 
-**PR opened:** [simcore PR #6](https://github.com/alawein/simcore/pull/6). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
+**PR opened:** simcore PR #6 (historical reference; upstream PR link no longer resolves). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
 
 **Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK (11/12):** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, repz, meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** Install script + README in place; add **GH_TOKEN** in Vercel (repo scope) and redeploy for 12/12.
 

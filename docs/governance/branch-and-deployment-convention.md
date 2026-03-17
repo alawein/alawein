@@ -94,6 +94,19 @@ Run `git branch -a` in `alawein/alawein` for up-to-date list. Typical long-lived
 
 ---
 
+## Stale branch cleanup
+
+Keep branch lists manageable:
+
+- **List all branches:** `git branch -a`
+- **List remote branches merged into main:** `git branch -r --merged main`
+- **Prune stale remote refs:** `git fetch --prune`
+- **After merging a branch:** Delete local `git branch -d feat/name` and remote `git push origin --delete feat/name`
+
+Do not delete branches that are still in review or that others depend on. Prefer deleting only branches you merged yourself or that are explicitly obsolete.
+
+---
+
 ## See also
 
 - [workflow.md](workflow.md) — Branch model, merge model, CI

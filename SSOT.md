@@ -1,14 +1,14 @@
 ---
 type: normative
 authority: canonical
-last-verified: 2026-03-15
+last-verified: 2026-03-17
 audience: [ai-agents, contributors]
 ---
 
 # SSOT — alawein
 
 **Version:** 1.2
-**Last Updated:** 2026-03-15
+**Last Updated:** 2026-03-17
 **Status:** Active
 
 ---
@@ -43,6 +43,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
   for one migration cycle
 - D-1 consolidation status: canonical token source is `devkit/tokens/`; legacy
   `aw-devkit` physical retirement cutover completed on 2026-03-11
+- Branch and deployment convention (feat/*, Vercel, multi-repo):
+  [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 
 ## Structure
 

@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-17
+last_updated: 2026-03-18
 tags: [changelog, version-history, releases]
 ---
 
@@ -38,6 +38,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Parent `github.com/alawein` converted from git repo to clone root: removed parent `.git` so only leaf repos (e.g. `alawein/alawein`) are versioned; documented in `docs/archive/parent-alawein-repo-removal-2026-03-18.md`.
 - Updated README for clearer structure and governance wording (Projects,
   Packages, Governance, Stack, Stats; refined footer and badges).
 - Multi-repo hygiene: committed and pushed alawein, edfp, meshal-web,

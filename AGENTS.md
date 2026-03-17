@@ -66,6 +66,14 @@ governance coordination.
 - **Remaining steps per repo:** [docs/governance/remaining-steps-per-repo.md](docs/governance/remaining-steps-per-repo.md)
 - **Handoff (push, PR, deploy):** [docs/HANDOFF-DESIGN-BRANDING.md](docs/HANDOFF-DESIGN-BRANDING.md)
 
+## Audits
+
+- Full environment audit (credentials, config, IDE/LLM):
+  [docs/audits/full-environment-audit-2026-03-16.md](docs/audits/full-environment-audit-2026-03-16.md)
+- Remediation checklist (step-by-step): [docs/audits/remediation-checklist-2026-03-16.md](docs/audits/remediation-checklist-2026-03-16.md)
+- Credential hygiene (no secrets in repo; MCP env vars; CI secrets):
+  [docs/governance/credential-hygiene.md](docs/governance/credential-hygiene.md)
+
 ## Quick Reference
 
 | Task | Command |

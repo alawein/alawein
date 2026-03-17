@@ -130,7 +130,7 @@ Prefer path-scoped stashes over whole-repo stashes when only a few files are
 unrelated.
 
 ```bash
-git stash push -m "alawein-clean-slate-leftovers" -- HackerRank.ipynb ninja-favicon.svg
+git stash push -m "alawein-clean-slate-leftovers" -- HackerRank.ipynb avatar.svg
 ```
 
 ## `apply` vs `pop` vs `drop`

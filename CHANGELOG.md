@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-11
+last_updated: 2026-03-16
 tags: [changelog, version-history, releases]
 ---
 
@@ -21,6 +21,16 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Added full-environment audit report
+  `docs/audits/full-environment-audit-2026-03-16.md` (scoped scan of GitHub
+  dirs, local env, IDE/LLM config; findings by severity and domain;
+  remediation backlog).
+- Added `docs/audits/remediation-checklist-2026-03-16.md` (step-by-step
+  actions for MCP token, AWS/GitHub/npm/Stripe rotation, Cursor auto-approve).
+- Added `docs/governance/credential-hygiene.md` with rules for secrets, MCP
+  env-var usage, CI secrets, and an MCP config example.
+- Added audit and credential-hygiene links to `AGENTS.md`, `CLAUDE.md`, and
+  `SECURITY.md`.
 - Added `docs/governance/workspace-master-prompt.md` as the canonical
   workspace operating contract.
 - Added canonical name/domain audit logic in
@@ -72,6 +82,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Refreshed the workspace rename matrix to reflect the observed root inventory,
   documented `aw-devkit/` retirement into `devkit/`, and clarified the split
   between `alawein/`, `devkit/`, and `docs/`.
+- Updated `SECURITY.md` to link to credential hygiene and full-environment
+  audit for exposed-credential response.
+- Updated `docs/README.md` with an Audits section (full-environment audit,
+  remediation checklist, codebase audit, credential hygiene).
+- Updated `CLAUDE.md` repository structure to include `docs/audits/` and
+  `docs/governance/credential-hygiene.md`.
 
 ## [2.0.4] — 2026-03-07
 

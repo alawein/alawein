@@ -1,7 +1,7 @@
 ---
 title: Branding Workflow and Standards
 description: Per-repo checklist and icon/favicon/theme standard for design and branding.
-last_updated: 2026-03-13
+last_updated: 2026-03-16
 category: governance
 status: active
 ---
@@ -36,10 +36,15 @@ This document is the single source of truth for how we apply branding across ala
 | meshal-web, attributa, llmworks, qmlab, rounaq-atelier, bolts | devkit or repo-level theme; align with STYLE_GUIDE |
 | event-discovery-framework | Inline EDF theme in frontend (standalone build); optional future alignment with devkit |
 
+## Organization avatar (alawein repo)
+
+- **File:** `avatar.svg` at repo root. Canonical source: **devkit** (design system). Replace this file with the high-quality avatar produced by devkit when available; until then, the committed `avatar.svg` is the org/profile avatar for docs and profile surfaces.
+
 ## Favicon audit (current state)
 
 | Repo | Current favicon / icon | Committed? | Action |
 |------|-------------------------|------------|--------|
+| alawein | `avatar.svg` (org avatar) | Yes | OK; source from devkit when high-quality avatar is available |
 | simcore | Dropbox URL (external) | No | Replace with `public/favicon.svg` (or placeholder.svg); update index.html |
 | repz | `/repz-icon.png` | Yes | OK |
 | rounaq-atelier | `/favicon.svg` | Yes | OK |

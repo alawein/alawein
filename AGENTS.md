@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-16
+last-verified: 2026-03-17
 ---
 
 # AGENTS — alawein

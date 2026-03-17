@@ -188,6 +188,15 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 | --- | --- |
 | `gmail-ops` | Gmail automation tooling |
 
+## Branch and deployment
+
+- **Branch naming:** Use canonical prefixes: `feat/*`, `fix/*`, `hotfix/*`, `release/*`, `fast/*`, `chore/*`, or `codex/<batch-id>/<slug>` for batch work. Kebab-case; intent-revealing.
+- **Workflow:** Branch from `main` → work → push branch → PR → squash merge to `main`. No direct push to `main`.
+- **Vercel:** Production from `main` (Git integration or `vercel deploy --prod`). Preview per branch/PR. Audit aliases from alawein: `python scripts/vercel_alias_audit.py`.
+- **Other repos:** Same convention per repo; one branch per repo for multi-repo work.
+
+Single reference: [branch-and-deployment-convention.md](branch-and-deployment-convention.md).
+
 ## Session Workflow
 
 ```bash

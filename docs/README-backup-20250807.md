@@ -1,14 +1,11 @@
 ---
-title: Documentation Portal Backup
-description: Mirrors the canonical `README-backup-20250807.md` for documentation navigation.
+title: Documentation Portal (legacy reference)
+description: Canonical portfolio index is README.md at repo root. This file is deprecated; use ../README.md and docs/README.md.
 category: index
 audience: contributors
-status: active
-version: 1.0.0
-last_updated: 2026-03-13
-tags: [governance, index]
+status: deprecated
 ---
 
-# Documentation Backup
+# Deprecated
 
-The canonical portfolio index lives at [`../README-backup-20250807.md`](../README-backup-20250807.md). Regenerate it with `python scripts/sync-readme.py` when `projects.json` changes.
+The canonical portfolio index is **[`../README.md`](../README.md)**. Regenerate it with `python scripts/sync-readme.py` when `projects.json` (or profile-from-guides.yaml) changes. See [docs/README.md](README.md) for the documentation index.

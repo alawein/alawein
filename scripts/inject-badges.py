@@ -53,10 +53,10 @@ def main() -> int:
 
     repo_dir = Path(sys.argv[1]).resolve()
     dry_run = "--dry-run" in sys.argv
-    readme = repo_dir / "README-backup-20250807.md"
+    readme = repo_dir / "README.md"
 
     if not readme.exists():
-        print(f"No README-backup-20250807.md in {repo_dir}")
+        print(f"No README.md in {repo_dir}")
         return 1
 
     content = readme.read_text(encoding="utf-8")

@@ -114,7 +114,7 @@ External or remote tool directories must be underscore-prefixed.
 ### D-5: meshal.ai Refinement
 
 - Execute content, design, performance, SEO, and accessibility upgrades.
-- Keep portfolio representation synchronized with `alawein/README-backup-20250807.md`.
+- Keep portfolio representation synchronized with `alawein/README.md`.
 
 ## Execution Order
 

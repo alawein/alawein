@@ -18,7 +18,7 @@ last_updated: 2026-03-16
 | Aspect | Assessment |
 |--------|------------|
 | **Maturity** | **Mature** — Documentation and governance are well-structured; CI, validation scripts, and tests are in place. |
-| **Type** | Organization profile repo: portfolio truth (`projects.json`, `README-backup-20250807.md`), governance docs, and automation. No application build. |
+| **Type** | Organization profile repo: portfolio truth (`projects.json`, `README.md`), governance docs, and automation. No application build. |
 | **Primary language** | N/A (documentation); Python and Bash for scripts, Node for markdown lint and Notion sync. |
 
 ---
@@ -67,8 +67,8 @@ last_updated: 2026-03-16
 - **Locations:**
   - `docs/governance/documentation-contract.md` lines 41–55 (Required Files list)
   - `scripts/validate-doc-contract.sh` lines 74–90 (`REQUIRED_FILES`)
-- **Issue:** Contract says required files include `README-backup-20250807.md`, `CONTRIBUTING-backup-20250807.md`, and `docs/README-backup-20250807.md`. The script requires `README.md`, `CONTRIBUTING.md`, and `docs/README.md`. Repo has both sets; script only checks the non-backup names.
-- **Recommendation:** Align the contract’s “Required Files” section with what the script enforces (i.e. list `README.md`, `CONTRIBUTING.md`, `docs/README.md` as required), and add a note that `README-backup-20250807.md` (and backups) are the synced/canonical content files.
+- **Issue:** Canonical files are `README.md`, `CONTRIBUTING.md`, and `docs/README.md`; sync-readme.py updates README.md from projects.json and optional profile-from-guides.yaml.
+- **Recommendation:** Align the contract’s “Required Files” section with what the script enforces (i.e. list `README.md`, `CONTRIBUTING.md`, `docs/README.md` as required), and Canonical README.md is now the synced portfolio index.
 
 ### 4.2 Notion sync env vars not documented
 
@@ -92,7 +92,7 @@ last_updated: 2026-03-16
 |------|------------|
 | **Python tests** | `scripts/tests/` has `test_github_dashboard_lib.py` and `test_vercel_alias_audit.py`. Consider running them in CI (e.g. in `ci.yml` or a dedicated workflow) so regressions are caught on push/PR. |
 | **Optional schema validation** | Add a CI step or pre-commit check that validates `projects.json` against `projects.schema.json` (e.g. `ajv` or a small Python step). |
-| **CLAUDE.md required files** | CLAUDE.md lists `README-backup-20250807.md` in Required Files; the validator requires `README.md`. Consider documenting that both README files exist and that the script checks `README.md`. |
+| **CLAUDE.md required files** | CLAUDE.md and contract list `README.md` as the canonical portfolio file; sync-readme.py updates it. |
 | **Placeholder / TODO in docs** | `docs/technical-debt-report-20260311.md` line 173 references fixing type errors and using `// TODO:` for suppressions — actionable tech-debt; no code change in this repo. |
 | **CONTRIBUTING backup naming** | Contract and CLAUDE reference `CONTRIBUTING-backup-20250807.md`; script requires `CONTRIBUTING.md`. Same alignment as README: document both and that the script checks the non-backup name. |
 

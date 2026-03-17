@@ -57,5 +57,5 @@ jobs:
             SSOT.md \
             LESSONS.md \
             DOCUMENTATION_PHILOSOPHY.md \
-            docs/README-backup-20250807.md \
+            docs/README.md \
             docs/governance/*.md

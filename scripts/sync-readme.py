@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""sync-readme.py — Regenerate README-backup-20250807.md sections from projects.json.
+"""sync-readme.py — Regenerate README.md from projects.json and optional profile-from-guides.yaml.
 
-Reads projects.json and rewrites sections between HTML comment markers:
+Reads projects.json and rewrites sections between HTML comment markers in README.md:
   <!-- SYNC:PROJECTS:START --> ... <!-- SYNC:PROJECTS:END -->
   <!-- SYNC:RESEARCH:START --> ... <!-- SYNC:RESEARCH:END -->
   <!-- SYNC:PACKAGES:START --> ... <!-- SYNC:PACKAGES:END -->
+  <!-- SYNC:PROFILE:START --> ... <!-- SYNC:PROFILE:END --> (when profile-from-guides.yaml exists)
 
 Usage: python scripts/sync-readme.py [--check]
   --check: exit 1 if README would change (for CI)
@@ -13,9 +14,15 @@ import json
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
 ROOT = Path(__file__).resolve().parent.parent
 PROJECTS_JSON = ROOT / "projects.json"
-README = ROOT / "README-backup-20250807.md"
+README = ROOT / "README.md"
+PROFILE_YAML = ROOT / "profile-from-guides.yaml"
 
 
 def repo_slug(repo: str) -> str:
@@ -135,8 +142,37 @@ def sync_section(content: str, marker: str, new_content: str) -> str:
     )
 
 
+def render_profile_block(profile: dict) -> str:
+    """Render the About table from profile-from-guides.yaml (bio_short, bio_bullets)."""
+    bio_short = (profile.get("bio_short") or "").strip()
+    bio_bullets = (profile.get("bio_bullets") or "").strip()
+    if not bio_bullets:
+        bio_bullets = (
+            "🎓 PhD EECS — UC Berkeley (Dec 2025)\n"
+            "🏢 Morphism Systems — Founder (Aug 2025)\n"
+            "⚗️  Turing — Applied Scientist (AI)\n"
+            "🔬 16+ peer-reviewed publications\n"
+            "🤖 SFT/DPO/LoRA · DFT/HPC · LLM Infra\n"
+            "📍 " + (profile.get("location") or "San Francisco, CA")
+        )
+    return (
+        "<table>\n"
+        "<tr>\n"
+        "<td width=\"55%\" valign=\"top\">\n\n"
+        + bio_short
+        + "\n\n</td>\n"
+        "<td width=\"45%\" valign=\"top\">\n\n```\n"
+        + bio_bullets
+        + "\n```\n\n</td>\n"
+        "</tr>\n</table>"
+    )
+
+
 def main() -> int:
     check_only = "--check" in sys.argv
+    if not README.is_file():
+        print(f"README not found: {README}")
+        return 1
     data = json.loads(PROJECTS_JSON.read_text(encoding="utf-8"))
     old_content = README.read_text(encoding="utf-8")
     content = old_content
@@ -145,16 +181,22 @@ def main() -> int:
     content = sync_section(content, "RESEARCH", render_research(data["research"]))
     content = sync_section(content, "PACKAGES", render_packages(data["packages"]))
 
-    if content == old_content:
-        print("README-backup-20250807.md is up to date.")
-        return 0
-
-    if check_only:
-        print("README-backup-20250807.md is out of sync with projects.json. Run: python scripts/sync-readme.py")
+    # Optional: sync profile block from profile-from-guides.yaml
+    if PROFILE_YAML.is_file() and yaml is not None:
+        profile_data = yaml.safe_load(PROFILE_YAML.read_text(encoding="utf-8")) or {}
+        content = sync_section(content, "PROFILE", render_profile_block(profile_data))
+    elif check_only and PROFILE_YAML.is_file() and yaml is None:
+        print("profile-from-guides.yaml present but PyYAML not installed; cannot check README profile sync.")
         return 1
 
-    README.write_text(content, encoding="utf-8")
-    print("README-backup-20250807.md updated from projects.json.")
+    if content != old_content:
+        if check_only:
+            print("README.md is out of sync with projects.json (or profile-from-guides.yaml). Run: python scripts/sync-readme.py")
+            return 1
+        README.write_text(content, encoding="utf-8")
+        print("README.md updated.")
+    elif check_only:
+        print("README.md is up to date.")
     return 0
 
 

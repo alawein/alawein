@@ -72,7 +72,7 @@ Or rely on Vercel’s GitHub integration (auto-deploy on push to main).
 
 ## Scripts & validation (alawein repo)
 
-- **README sync check:** `python scripts/sync-readme.py --check` (requires `README-backup-20250807.md`).
+- **README sync check:** `python scripts/sync-readme.py --check` (requires `README.md`).
 - **Doc contract validation:** `./scripts/validate-doc-contract.sh --full` (bash; use Git Bash or WSL on Windows).
 
 ## Success criteria

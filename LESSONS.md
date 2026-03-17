@@ -13,7 +13,7 @@ audience: [ai-agents, contributors, future-self]
 
 - **One canonical prompt prevents policy drift**: Anchoring org governance to `docs/governance/workspace-master-prompt.md` keeps workspace naming and migration rules stable.
 - **Frontmatter for all governance docs**: Using YAML frontmatter with `type`, `authority`, and `audience` fields makes doc classification unambiguous across 20+ repos.
-- **Documented GitHub-file exceptions**: Calling out `README-backup-20250807.md` and `.github` templates as explicit contract exemptions prevents fake compliance work that would damage GitHub rendering or template behavior.
+- **Documented GitHub-file exceptions**: Calling out `README.md` and `.github` templates as explicit contract exemptions prevents fake compliance work that would damage GitHub rendering or template behavior.
 - **Alias notation should be transitional and short-lived**: use `canonical-name (repo: physical-slug)` only while canonical and physical differ, then remove it immediately after cutover.
 - **Generated sections must be treated as code**: Keeping `projects.json` and README sync markers in lockstep avoids silent data drift in org profile content.
 - **Path-scoped stash before branch recovery**: Stashing only the unrelated files and then restoring them onto a dedicated branch keeps `main` clean without losing intentional notebook or asset work.

@@ -29,7 +29,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Local documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
 - Governance suite navigation:
-  [`docs/README-backup-20250807.md`](docs/README-backup-20250807.md)
+  [`docs/README.md`](docs/README.md)
 - Canonical governance validation:
   `./scripts/validate-doc-contract.sh --full`
 - Managed-doc canonical name/domain audit:
@@ -53,7 +53,7 @@ alawein/
 ├── SSOT.md
 ├── LESSONS.md
 ├── docs/
-│   ├── README-backup-20250807.md
+│   ├── README.md
 │   └── governance/
 │       ├── workspace-master-prompt.md
 │       ├── operating-model.md

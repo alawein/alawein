@@ -31,7 +31,7 @@ self-consistent.
 | Canonical normative docs | `AGENTS.md`, `CLAUDE.md`, `SSOT.md` | Required | `last-verified` | Must be <= 30 days old |
 | Observed lessons | `LESSONS.md` | Required | `last-updated` | Must change whenever lesson content changes |
 | Managed governance docs | `CONTRIBUTING-backup-20250807.md`, `SECURITY.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `DOCUMENTATION_PHILOSOPHY.md`, `docs/**/*.md` excluding `docs/archive/**` | Required | `last_updated` | Must change whenever document content changes |
-| GitHub/profile exemptions | `README-backup-20250807.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.md` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
+| GitHub/profile exemptions | `README.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.md` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
 | Historical archive | `docs/archive/**` | Preserve as-is | Optional | No freshness SLA |
 
 ## Required Files
@@ -54,12 +54,12 @@ The repository must contain these files (validated by `scripts/validate-doc-cont
 - `docs/governance/workflow.md`
 - `scripts/validate-doc-contract.sh`
 
-The canonical portfolio and contributing content is synced into `README-backup-20250807.md`, `CONTRIBUTING-backup-20250807.md`, and `docs/README-backup-20250807.md`; those backup files must also exist for governance and lint workflows.
+The canonical portfolio and contributing content is synced into `README.md`, `CONTRIBUTING-backup-20250807.md`, and `docs/README.md`; those backup files must also exist for governance and lint workflows.
 
 ## Naming Rules
 
 - Root community and governance files keep their conventional filenames:
-  `README-backup-20250807.md`, `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`,
+  `README.md`, `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`,
   `CONTRIBUTING-backup-20250807.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `CHANGELOG.md`,
   `DOCUMENTATION_PHILOSOPHY.md`.
 - Files under `docs/governance/` use `kebab-case.md`.

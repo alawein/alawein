@@ -8,7 +8,7 @@ version: 1.0.0
 last_updated: 2026-03-16
 tags: [alawein, documentation, governance, index]
 related:
-  - ../README-backup-20250807.md
+  - ../README.md
   - ./governance/workspace-master-prompt.md
 ---
 
@@ -19,7 +19,7 @@ workspace governance for the `alawein` GitHub organization.
 
 ## Start here
 
-- Organization portal: [`README-backup-20250807.md`](../README-backup-20250807.md)
+- Organization portal: [`README.md`](../README.md)
 - Workspace operating contract:
   [`workspace-master-prompt.md`](./governance/workspace-master-prompt.md)
 - Local documentation contract:

@@ -46,16 +46,27 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 
 ## Projects
 
+**Showcase order** matches the live products and portfolio pages highlighted on [meshal.ai](https://www.meshal.ai) (resume-aligned). Each title links to the **deployed site** or **case-study page**, not the GitHub repo.
+
 <!-- SYNC:PROJECTS:START -->
 <table>
 <tr>
 <td align="center" width="33%">
 
-**[Event Discovery Framework](https://edfp.online)**
+**[meshal.ai](https://www.meshal.ai)**
 
-Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.
+Personal site and portfolio — project deep-dives, case studies, and contact.
 
-`Python` `OpenCV` `FastAPI`
+`React` `Vite` `Tailwind`
+
+</td>
+<td align="center" width="33%">
+
+**[REPZ](https://repzcoach.com)**
+
+AI-powered coaching platform for fitness professionals and clients.
+
+`TypeScript` `React` `Supabase`
 
 </td>
 <td align="center" width="33%">
@@ -67,53 +78,15 @@ Fitness coaching platform with a retro progression-first training interface.
 `React` `Vite` `Spark`
 
 </td>
-<td align="center" width="33%">
-
-**[REPZ](https://repzcoach.com)**
-
-AI-powered coaching platform.
-
-`TypeScript` `React` `Supabase`
-
-</td>
 </tr>
 <tr>
 <td align="center" width="33%">
 
-**[meshal-web](https://meshal.ai)**
+**[Scribd](https://scribd.fit)**
 
-Personal site and portfolio surface for current Alawein projects.
+Fitness publishing and content surface (Next.js, design-system aligned).
 
-`React` `Vite` `Tailwind`
-
-</td>
-<td align="center" width="33%">
-
-**[devkit](https://github.com/alawein/devkit)**
-
-Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.
-
-`Design Tokens` `UI` `Tooling`
-
-</td>
-<td align="center" width="33%">
-
-**[QMatSim](https://github.com/alawein/qmatsim)**
-
-Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.
-
-`Python` `VASP` `CUDA`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**[LLMWorks](https://llmworks.dev)**
-
-LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.
-
-`Python` `PyTorch` `HuggingFace`
+`Next.js` `React` `TypeScript`
 
 </td>
 <td align="center" width="33%">
@@ -127,11 +100,40 @@ Design audit and accessibility platform.
 </td>
 <td align="center" width="33%">
 
-**[Neper](https://github.com/alawein/neper)**
+**[LLMWorks](https://llmworks.dev)**
 
-Named entity extraction and processing pipeline with transformer models.
+LLM evaluation, benchmarking, and security testing playground.
 
-`Python` `Transformers` `NLP`
+`TypeScript` `React` `LLM`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**[Event Discovery Framework](https://edfp.online)**
+
+Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.
+
+`Python` `OpenCV` `FastAPI`
+
+</td>
+<td align="center" width="33%">
+
+**[Neper](https://www.meshal.ai/neper)**
+
+LLM training, alignment, evaluation, and synthetic data platform.
+
+`Python` `PyTorch` `LLM Training`
+
+</td>
+<td align="center" width="33%">
+
+**[QAPlibria](https://www.meshal.ai/qaplibria)**
+
+Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.
+
+`Python` `Optimization` `HPC`
 
 </td>
 </tr>
@@ -207,7 +209,6 @@ This org runs on a single operating contract: [workspace-master-prompt](docs/gov
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
-| [neper](https://github.com/alawein/neper) | NLP entity extraction |
 | [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
 <!-- SYNC:RESEARCH:END -->
 

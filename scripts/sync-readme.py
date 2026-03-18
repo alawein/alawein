@@ -42,20 +42,13 @@ def canonical_label(entry: dict) -> str:
 
 
 def entry_url(entry: dict) -> str:
-    """Return link target for entry.
-
-    If canonical and physical repo names differ, link to physical GitHub repo
-    until slug cutover is complete.
-    """
-    if not entry.get("repo"):
-        return entry.get("url", "")
-
-    canonical = entry.get("slug", "")
-    physical = repo_slug(entry["repo"])
-    if canonical and canonical != physical:
+    """Return link target for portfolio cards: prefer public product URL, never GitHub when url is set."""
+    u = (entry.get("url") or "").strip()
+    if u:
+        return u
+    if entry.get("repo"):
         return f"https://github.com/{entry['repo']}"
-
-    return entry.get("url", f"https://github.com/{entry['repo']}")
+    return ""
 
 
 def render_projects(featured: list[dict]) -> str:

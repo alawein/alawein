@@ -1,15 +1,23 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-11",
+  "lastUpdated": "2026-03-22",
   "featured": [
     {
-      "name": "Event Discovery Framework",
-      "slug": "edfp",
-      "legacy_slugs": ["event-discovery-framework"],
-      "url": "https://edfp.online",
-      "repo": "alawein/edfp",
-      "description": "Physics-inspired video event detection. 6 methods, FFT spectral analysis, hierarchical filtering.",
-      "tags": ["Python", "OpenCV", "FastAPI"],
+      "name": "meshal.ai",
+      "slug": "meshal-web",
+      "url": "https://www.meshal.ai",
+      "repo": "alawein/meshal-web",
+      "description": "Personal site and portfolio — project deep-dives, case studies, and contact.",
+      "tags": ["React", "Vite", "Tailwind"],
+      "category": "active"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "url": "https://repzcoach.com",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "tags": ["TypeScript", "React", "Supabase"],
       "category": "active"
     },
     {
@@ -23,49 +31,12 @@
       "category": "active"
     },
     {
-      "name": "REPZ",
-      "slug": "repz",
-      "url": "https://repzcoach.com",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform.",
-      "tags": ["TypeScript", "React", "Supabase"],
-      "category": "active"
-    },
-    {
-      "name": "meshal-web",
-      "slug": "meshal-web",
-      "url": "https://meshal.ai",
-      "repo": "alawein/meshal-web",
-      "description": "Personal site and portfolio surface for current Alawein projects.",
-      "tags": ["React", "Vite", "Tailwind"],
-      "category": "active"
-    },
-    {
-      "name": "devkit",
-      "slug": "devkit",
-      "legacy_slugs": ["aw-devkit"],
-      "url": "https://github.com/alawein/devkit",
-      "repo": "alawein/devkit",
-      "description": "Shared design tokens (source: devkit/tokens), components, and tooling for workspace repos.",
-      "tags": ["Design Tokens", "UI", "Tooling"],
-      "category": "active"
-    },
-    {
-      "name": "QMatSim",
-      "slug": "qmatsim",
-      "url": "https://github.com/alawein/qmatsim",
-      "repo": "alawein/qmatsim",
-      "description": "Quantum materials simulation toolkit. DFT workflows, HPC automation, ML surrogates.",
-      "tags": ["Python", "VASP", "CUDA"],
-      "category": "active"
-    },
-    {
-      "name": "LLMWorks",
-      "slug": "llmworks",
-      "url": "https://llmworks.dev",
-      "repo": "alawein/llmworks",
-      "description": "LLM infrastructure playground. Evaluation harnesses, fine-tuning pipelines, RLHF.",
-      "tags": ["Python", "PyTorch", "HuggingFace"],
+      "name": "Scribd",
+      "slug": "scribd",
+      "url": "https://scribd.fit",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface (Next.js, design-system aligned).",
+      "tags": ["Next.js", "React", "TypeScript"],
       "category": "active"
     },
     {
@@ -78,12 +49,40 @@
       "category": "active"
     },
     {
+      "name": "LLMWorks",
+      "slug": "llmworks",
+      "url": "https://llmworks.dev",
+      "repo": "alawein/llmworks",
+      "description": "LLM evaluation, benchmarking, and security testing playground.",
+      "tags": ["TypeScript", "React", "LLM"],
+      "category": "active"
+    },
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "legacy_slugs": ["event-discovery-framework"],
+      "url": "https://edfp.online",
+      "repo": "alawein/edfp",
+      "description": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.",
+      "tags": ["Python", "OpenCV", "FastAPI"],
+      "category": "active"
+    },
+    {
       "name": "Neper",
       "slug": "neper",
-      "url": "https://github.com/alawein/neper",
+      "url": "https://www.meshal.ai/neper",
       "repo": "alawein/neper",
-      "description": "Named entity extraction and processing pipeline with transformer models.",
-      "tags": ["Python", "Transformers", "NLP"],
+      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "tags": ["Python", "PyTorch", "LLM Training"],
+      "category": "active"
+    },
+    {
+      "name": "QAPlibria",
+      "slug": "qaplibria",
+      "url": "https://www.meshal.ai/qaplibria",
+      "repo": "alawein/qaplibria",
+      "description": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
+      "tags": ["Python", "Optimization", "HPC"],
       "category": "active"
     }
   ],
@@ -129,12 +128,6 @@
       "slug": "maglogic",
       "repo": "alawein/maglogic",
       "domain": "Magnetic logic gates"
-    },
-    {
-      "name": "neper",
-      "slug": "neper",
-      "repo": "alawein/neper",
-      "domain": "NLP entity extraction"
     },
     {
       "name": "meatheadphysicist",

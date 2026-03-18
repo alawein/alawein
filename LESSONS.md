@@ -1,7 +1,7 @@
 ---
 type: lessons
 authority: observed
-last-updated: 2026-03-11
+last-updated: 2026-03-21
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -24,12 +24,16 @@ audience: [ai-agents, contributors, future-self]
 - **Archive-before-delete is safer in dirty multi-repo workspaces**: Converting a legacy repo to explicit archival mode first preserves traceability while avoiding accidental data loss before physical retirement cutover.
 - **Retirement cutovers need explicit completion metadata**: Recording exact completion dates in SSOT and migration matrices prevents indefinite “pending” states after a structural migration is actually done.
 - **Standards need an audit companion**: A stack-aware layout rule is much easier to apply when there is a repo-by-repo audit showing which repos are aligned, mixed, or intentionally exceptional.
+- **Compare branch vs main before squash-merge**: Long-lived local branches that predate large mainline commits can show a diff that mostly deletes current work; squash-merging them is effectively a rollback. Check `git diff --stat main <branch>` first; cherry-pick or abandon.
+- **Doc contract and markdownlint are two gates**: `validate-doc-contract.sh` can pass while `markdownlint-cli` still fails on emphasis, list numbering, or tables—run both (or rely on CI) before calling the branch done.
+- **Repo-local links in markdown**: CI validates targets inside the checked-out repo only; sibling dirs such as `_workspace/` and `_ops/` are outside this clone—describe them in prose or backticks, not as clickable repo-relative markdown links.
 
 ## Anti-Patterns
 
 - **Treating this repo as a code repo**: It is a documentation and governance repo; applying build/test tooling expectations here causes confusion.
 - **Unscoped legacy-name usage**: Legacy names outside explicit alias contexts create ambiguity and break canonical-name audits.
 - **Assuming build artifacts exist**: CI contracts should never require `npm ci`, `npm run build`, or `dist/` unless the repo actually contains a package manifest and build surface.
+- **Using `_token` as markdown emphasis**: Tokens like `_pkos` parse as italics and break MD037/MD049; use backticks.
 
 ## Pitfalls
 

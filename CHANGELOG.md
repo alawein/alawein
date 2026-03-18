@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-18
+last_updated: 2026-03-19
 tags: [changelog, version-history, releases]
 ---
 
@@ -39,6 +39,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- CI/doc contract: fixed broken cross-repo markdown links in skills docs (workspace paths as code only in this repo), added frontmatter to profile-sync-from-guides, repaired full-environment-audit links, README-backup `last_updated`, CHANGELOG freshness for pushes.
 - Governance: skills/agents maintenance and slash-command catalog aligned with consolidation work; workspace standardization, resource map, layout audit, rename matrix, and master prompt refreshed.
 - Removed obsolete local git branches and linked worktrees (`fix/alawein-stash-reconciliation`, `codex/recovery-*`) that predated current `main`; recovery copies under `_recovery/` were pruned via `git worktree remove`.
 - Parent `github.com/alawein` converted from git repo to clone root: removed parent `.git` so only leaf repos (e.g. `alawein/alawein`) are versioned; documented in `docs/archive/parent-alawein-repo-removal-2026-03-18.md`.

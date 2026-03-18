@@ -6,7 +6,7 @@ audience: contributors
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-17
+last_updated: 2026-03-19
 tags: [governance, contributing, workflow, development]
 ---
 
@@ -27,7 +27,7 @@ the actual operating details.
 
 ## Branching
 
-- `main`: protected; use PRs instead of direct pushes
+- `main`: **branch protection** (required status checks). Prefer **`feat/*` or `fix/*` + pull request** so CI runs on the PR and reviewers see a single diff. Direct push to `main` is for emergencies or org admins only and still must pass checks when enforced.
 - `fast/*`: spikes or prototypes
 - `feat/*`, `fix/*`: scoped reviewable work
 - `hotfix/*`: urgent fixes

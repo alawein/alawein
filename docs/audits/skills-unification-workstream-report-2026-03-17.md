@@ -1,7 +1,7 @@
 ---
 title: Skills unification workstream — report
 description: What we did, open issues, likely causes, and audits for other IDEs/LLMs/MCPs.
-last_updated: 2026-03-18
+last_updated: 2026-03-19
 category: audit
 audience: [contributors, operators, ai-agents]
 status: active
@@ -19,8 +19,8 @@ This document summarizes work completed in March 2026 around **repo cataloging**
 | [skills-agents-unification.md](../governance/skills-agents-unification.md) | Universal / ecosystem / org taxonomy |
 | [maintenance-skills-agents.md](../governance/maintenance-skills-agents.md) | Artifact map, morphism scope |
 | [slash-commands-catalog.md](../governance/slash-commands-catalog.md) | Slash workflows + machine setup pointer |
-| [_workspace/docs/repo-catalog.md](../../../_workspace/docs/repo-catalog.md) | Tooling vs product repos, skills CLI notes |
-| [_ops/mcp/README.md](../../../_ops/mcp/README.md) | MCP default vs optional guidance |
+| `_workspace/docs/repo-catalog.md` (full clone only) | Tooling vs product repos, skills CLI notes |
+| `_ops/mcp/README.md` (full clone only) | MCP default vs optional guidance |
 
 ---
 

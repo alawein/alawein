@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-21
+last_updated: 2026-03-22
 tags: [changelog, version-history, releases]
 ---
 
@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [2.1.0] — 2026-03-21
+
+Governance expansion, audits, skills layer, CI hardening, slug/workspace migrations, and operator lessons since v2.0.4. **Executive paste:** [`docs/audits/release-summary-2026-03-21.md`](docs/audits/release-summary-2026-03-21.md).
 
 ### Added
 
@@ -36,23 +40,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   branch cleanup); referenced from AGENTS.md, CLAUDE.md, SSOT.md,
   workspace-master-prompt.md, workflow.md, phase5, docs/README.md,
   CONTRIBUTING.md.
-
-### Changed
-
-- LESSONS.md: recorded branch/CI recovery patterns (stale squash-merge hazard, dual CI gates, in-repo links only, `_token` markdown).
-- CI: markdownlint fixes (`_pkos` as code spans, summary table columns, ordered-list phases in profile handoff, emphasis style).
-- CI/doc contract: fixed broken cross-repo markdown links in skills docs (workspace paths as code only in this repo), added frontmatter to profile-sync-from-guides, repaired full-environment-audit links, README-backup `last_updated`, CHANGELOG freshness for pushes.
-- Governance: skills/agents maintenance and slash-command catalog aligned with consolidation work; workspace standardization, resource map, layout audit, rename matrix, and master prompt refreshed.
-- Removed obsolete local git branches and linked worktrees (`fix/alawein-stash-reconciliation`, `codex/recovery-*`) that predated current `main`; recovery copies under `_recovery/` were pruned via `git worktree remove`.
-- Parent `github.com/alawein` converted from git repo to clone root: removed parent `.git` so only leaf repos (e.g. `alawein/alawein`) are versioned; documented in `docs/archive/parent-alawein-repo-removal-2026-03-18.md`.
-- Updated README for clearer structure and governance wording (Projects,
-  Packages, Governance, Stack, Stats; refined footer and badges).
-- Multi-repo hygiene: committed and pushed alawein, edfp, meshal-web,
-  attributa, `_devkit`, qmatsim; aligned `_devkit` main with origin via
-  force-push after unrelated-history merge abort; Vercel production deploys
-  for edfp, meshal-web, attributa, _devkit (repz deploy remains failing with
-  Vercel “Unexpected error”).
-
 - Added full-environment audit report
   `docs/audits/full-environment-audit-2026-03-16.md` (scoped scan of GitHub
   dirs, local env, IDE/LLM config; findings by severity and domain;
@@ -81,6 +68,19 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- LESSONS.md: recorded branch/CI recovery patterns (stale squash-merge hazard, dual CI gates, in-repo links only, `_token` markdown).
+- CI: markdownlint fixes (`_pkos` as code spans, summary table columns, ordered-list phases in profile handoff, emphasis style).
+- CI/doc contract: fixed broken cross-repo markdown links in skills docs (workspace paths as code only in this repo), added frontmatter to profile-sync-from-guides, repaired full-environment-audit links, README-backup `last_updated`, CHANGELOG freshness for pushes.
+- Governance: skills/agents maintenance and slash-command catalog aligned with consolidation work; workspace standardization, resource map, layout audit, rename matrix, and master prompt refreshed.
+- Removed obsolete local git branches and linked worktrees (`fix/alawein-stash-reconciliation`, `codex/recovery-*`) that predated current `main`; recovery copies under `_recovery/` were pruned via `git worktree remove`.
+- Parent `github.com/alawein` converted from git repo to clone root: removed parent `.git` so only leaf repos (e.g. `alawein/alawein`) are versioned; documented in `docs/archive/parent-alawein-repo-removal-2026-03-18.md`.
+- Updated README for clearer structure and governance wording (Projects,
+  Packages, Governance, Stack, Stats; refined footer and badges).
+- Multi-repo hygiene: committed and pushed alawein, edfp, meshal-web,
+  attributa, `_devkit`, qmatsim; aligned `_devkit` main with origin via
+  force-push after unrelated-history merge abort; Vercel production deploys
+  for edfp, meshal-web, attributa, _devkit (repz deploy remains failing with
+  Vercel “Unexpected error”).
 - Updated `AGENTS.md`, `SSOT.md`, `CLAUDE.md`, and `docs/README-backup-20250807.md` to anchor
   governance on the workspace master prompt and phased naming migration.
 - Updated workspace migration docs (`workspace-standardization`,

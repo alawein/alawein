@@ -1,7 +1,7 @@
 ---
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, layout, shared resources, and phased workspace directives.
-last_updated: 2026-03-11
+last_updated: 2026-03-18
 category: governance
 audience: contributors
 status: active
@@ -30,7 +30,7 @@ canonical contract in
 - `gymboy`
 - `meatheadphysicist`
 - `devkit` (legacy overlap: `aw-devkit`)
-- `gmail-ops` (external workspace)
+- `_ops/gmail-ops` (external workspace)
 
 ### Transitional Alias Format
 

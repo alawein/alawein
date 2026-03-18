@@ -1,7 +1,7 @@
 ---
 title: Skills, Agents & Commands Unification
 description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website—not just governance.
-last_updated: 2026-03-16
+last_updated: 2026-03-18
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -13,6 +13,7 @@ This document inventories **what we built** (Cursor + Claude plugins, skills, ag
 
 Operational maintenance, scope changes, and tailoring procedures are tracked in
 [maintenance-skills-agents.md](./maintenance-skills-agents.md).
+**Install policy (global vs repo vs plugins, MCP vs skills):** [skills-install-policy.md](./skills-install-policy.md).
 
 ---
 

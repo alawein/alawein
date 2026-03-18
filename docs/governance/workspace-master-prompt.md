@@ -1,7 +1,7 @@
 ---
 title: Alawein Workspace Master Prompt
 description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and manifest-driven batch execution.
-last_updated: 2026-03-16
+last_updated: 2026-03-18
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -58,9 +58,9 @@ These are non-negotiable. Violations block merge.
 ### R-6: Batch Contract
 
 - Multi-repo autonomous execution must start from
-  `docs/batches/<batch-id>/manifest.yaml`.
-- Use `_ops/config/repo-capabilities.yaml` as the repo registry.
-- Use `_ops/state/<batch-id>/` as the only valid runtime state
+  `_workspace/docs/batches/<batch-id>/manifest.yaml` (workspace root).
+- Use `_workspace/ops/config/repo-capabilities.yaml` as the repo registry.
+- Use `_workspace/ops/state/<batch-id>/` as the only valid runtime state
   location.
 - Healthy batch runs should not emit routine progress chatter between kickoff
   and final report.
@@ -89,7 +89,7 @@ These are binding names.
 | `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
 | `meshal-web/` | `meshal-web` | `meshal.ai` | — |
 | `devkit/` | `devkit` | — | Consolidated from legacy `aw-devkit` |
-| `gmail-ops/` | `gmail-ops` | — | External/remote tools |
+| `_ops/gmail-ops/` | `_ops` | — | External/remote tools (Gmail automation) |
 
 ### External Tool Prefix Rule
 
@@ -186,7 +186,7 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 
 | Repo | Purpose |
 | --- | --- |
-| `gmail-ops` | Gmail automation tooling |
+| `_ops/gmail-ops` | Gmail automation tooling |
 
 ## Branch and deployment
 
@@ -233,9 +233,9 @@ ruff check src/ tests/ && mypy src/ && pytest tests/
 # Org-level governance
 ./scripts/validate-doc-contract.sh --full
 
-# Batch planning/execution
-python -m workspace_batch plan docs/batches/<batch-id>/manifest.yaml
-python -m workspace_batch run docs/batches/<batch-id>/manifest.yaml
+# Batch planning/execution (from workspace root)
+python -m workspace_batch plan _workspace/docs/batches/<batch-id>/manifest.yaml
+python -m workspace_batch run _workspace/docs/batches/<batch-id>/manifest.yaml
 ```
 
 ## Refusal Templates

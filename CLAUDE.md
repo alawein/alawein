@@ -1,7 +1,8 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-17
+last-verified: 2026-03-18
+last_updated: 2026-03-18
 audience: [ai-agents, contributors]
 ---
 
@@ -48,11 +49,15 @@ It owns:
   [`docs/governance/skills-agents-unification.md`](docs/governance/skills-agents-unification.md)
 - Skills/agents maintenance and tailoring runbook:
   [`docs/governance/maintenance-skills-agents.md`](docs/governance/maintenance-skills-agents.md)
+- **Global skills install** (IDEs, collision rules, MCP vs skills):
+  [`docs/governance/skills-install-policy.md`](docs/governance/skills-install-policy.md)
 - Operator quick commands:
   [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)
-- Audits (environment, codebase):
+- Audits (environment, codebase, skills):
   [`docs/audits/full-environment-audit-2026-03-16.md`](docs/audits/full-environment-audit-2026-03-16.md);
-  step-by-step remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md)
+  remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md);
+  skills unification (complete): [`docs/audits/skills-unification-workstream-completion-2026-03-17.md`](docs/audits/skills-unification-workstream-completion-2026-03-17.md);
+  machine audit: [`docs/audits/machine-audit-mesha-2026-03-17.md`](docs/audits/machine-audit-mesha-2026-03-17.md)
 - Credential hygiene (secrets, MCP, CI):
   [`docs/governance/credential-hygiene.md`](docs/governance/credential-hygiene.md)
 - Profile sync from _pkos (README About / positioning):

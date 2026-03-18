@@ -1,7 +1,7 @@
 ---
 title: Workspace Root Rename Matrix
 description: Canonical-to-physical name matrix for top-level workspace directories and phased migration status.
-last_updated: 2026-03-11
+last_updated: 2026-03-18
 category: governance
 audience: contributors
 status: active
@@ -53,7 +53,7 @@ status.
 
 | Canonical Name | Physical Directory | Status | Notes |
 | --- | --- | --- | --- |
-| `gmail-ops` | `gmail-ops` | Stable | External/remote tooling |
+| `_ops/gmail-ops` | `_ops` | Stable | External/remote tooling |
 | `.github` | `.github` | Stable | Workspace-level automation surface |
 | `.mypy_cache` | `.mypy_cache` | Local-only | Transient local cache; non-canonical |
 | `.venv` | `.venv` | Local-only | Transient local environment; non-canonical |

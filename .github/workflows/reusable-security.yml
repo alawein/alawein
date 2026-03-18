@@ -11,12 +11,12 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: github/codeql-action/init@v3
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: github/codeql-action/init@603b797f8b14b413fe025cd935a91c16c4782713 # v3
         with:
           languages: javascript-typescript
-      - uses: github/codeql-action/autobuild@v3
-      - uses: github/codeql-action/analyze@v3
+      - uses: github/codeql-action/autobuild@603b797f8b14b413fe025cd935a91c16c4782713 # v3
+      - uses: github/codeql-action/analyze@603b797f8b14b413fe025cd935a91c16c4782713 # v3
       - name: npm audit
         if: inputs.ecosystem == 'npm'
         run: npm audit --audit-level=high

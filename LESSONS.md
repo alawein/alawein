@@ -1,7 +1,7 @@
 ---
 type: lessons
 authority: observed
-last-updated: 2026-03-21
+last-updated: 2026-03-23
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -27,6 +27,8 @@ audience: [ai-agents, contributors, future-self]
 - **Compare branch vs main before squash-merge**: Long-lived local branches that predate large mainline commits can show a diff that mostly deletes current work; squash-merging them is effectively a rollback. Check `git diff --stat main <branch>` first; cherry-pick or abandon.
 - **Doc contract and markdownlint are two gates**: `validate-doc-contract.sh` can pass while `markdownlint-cli` still fails on emphasis, list numbering, or tables—run both (or rely on CI) before calling the branch done.
 - **Repo-local links in markdown**: CI validates targets inside the checked-out repo only; sibling dirs such as `_workspace/` and `_ops/` are outside this clone—describe them in prose or backticks, not as clickable repo-relative markdown links.
+- **Close-out is commit + push + merge**: IDE/LLM sessions that stop at “looks good” strand work on disk; the task is not done until `git status` is clean and intended commits are on the remote (and merged per policy). Narrative: [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
+- **Resume/product URLs in showcase**: Org README project cards should link to **live sites or case-study URLs** in `projects.json` (`url`); `sync-readme.py` must prefer that field over inferred GitHub links so the grid matches resume and meshal surfaces.
 
 ## Anti-Patterns
 
@@ -34,6 +36,7 @@ audience: [ai-agents, contributors, future-self]
 - **Unscoped legacy-name usage**: Legacy names outside explicit alias contexts create ambiguity and break canonical-name audits.
 - **Assuming build artifacts exist**: CI contracts should never require `npm ci`, `npm run build`, or `dist/` unless the repo actually contains a package manifest and build surface.
 - **Using `_token` as markdown emphasis**: Tokens like `_pkos` parse as italics and break MD037/MD049; use backticks.
+- **Assuming old local branches mean unmerged work**: Empty `main..branch` means nothing to merge from that tip; a large diff where `main` has additions and the branch “removes” current files usually means the branch is **stale**—do not squash-merge without comparing to `main` first.
 
 ## Pitfalls
 
@@ -41,3 +44,4 @@ audience: [ai-agents, contributors, future-self]
 - **Adding project-specific content**: This repo covers the whole org; project-scoped lessons belong in the individual project repos.
 - **Dropping a stash too early**: A stash is only safe to delete after the work is restored elsewhere or confirmed to be obsolete.
 - **Editing synced README blocks manually**: Changes inside `SYNC:*` regions will be overwritten by `scripts/sync-readme.py` if `projects.json` is not updated.
+- **Uncommitted “small” edits** (e.g. workflow pin bumps): Still invisible to GitHub and CI until committed; always end with `git status`.

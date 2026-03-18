@@ -6,7 +6,7 @@ audience: all
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-23
+last_updated: 2026-03-24
 tags: [changelog, version-history, releases]
 ---
 
@@ -18,6 +18,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- Audit doc [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.
 
 ### Changed
 

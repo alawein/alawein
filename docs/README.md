@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-18
+last_updated: 2026-03-23
 tags: [alawein, documentation, governance, index]
 related:
   - ../README.md
@@ -41,6 +41,7 @@ workspace governance for the `alawein` GitHub organization.
 | decide how the branch should merge | [`merge-policy.md`](./governance/merge-policy.md) |
 | draft releases, tags, and changelog updates | [`release-playbook.md`](./governance/release-playbook.md) |
 | run or follow up on environment/credential audit | [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md), [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md) |
+| avoid IDE/LLM sessions that never ship; close-out checklist | [`ide-llm-agent-completion-lessons-2026-03.md`](./audits/ide-llm-agent-completion-lessons-2026-03.md) |
 
 ## Workflow operations
 
@@ -63,6 +64,7 @@ workspace governance for the `alawein` GitHub organization.
 - Remediation checklist (step-by-step): [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md)
 - Codebase audit (governance, scripts, CI): [`codebase-audit-2026-03-16.md`](./audits/codebase-audit-2026-03-16.md)
 - Doc audit (TODOs, READMEs, links): [`doc-audit-2026-03-17.md`](./audits/doc-audit-2026-03-17.md)
+- IDE/LLM agent completion (commit/push/merge, branches, README sync): [`ide-llm-agent-completion-lessons-2026-03.md`](./audits/ide-llm-agent-completion-lessons-2026-03.md)
 - Credential hygiene: [`credential-hygiene.md`](./governance/credential-hygiene.md)
 
 ## Workspace migration

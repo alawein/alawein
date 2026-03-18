@@ -6,7 +6,7 @@ audience: contributors
 status: active
 author: Morphism Systems LLC
 version: 1.0.0
-last_updated: 2026-03-08
+last_updated: 2026-03-23
 tags: [git, branching, push, stash, recovery, workflow]
 ---
 
@@ -156,8 +156,16 @@ Use `revert` when:
 Use history rewrite only on personal, unmerged branches and only when it makes
 the branch easier to review.
 
+## IDE and agent close-out
+
+Assisted editing is not complete until changes are **recorded and visible on the
+remote** (and merged per [merge-policy.md](merge-policy.md)). Uncommitted files
+are invisible to GitHub and CI. Checklist and narrative:
+[ide-llm-agent-completion-lessons-2026-03.md](../audits/ide-llm-agent-completion-lessons-2026-03.md).
+
 ## Related Guides
 
 - [clean-slate-workflow.md](clean-slate-workflow.md)
 - [merge-policy.md](merge-policy.md)
 - [feature-lifecycle.md](feature-lifecycle.md)
+- [ide-llm-agent-completion-lessons-2026-03.md](../audits/ide-llm-agent-completion-lessons-2026-03.md)

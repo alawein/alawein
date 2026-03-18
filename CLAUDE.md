@@ -1,8 +1,8 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-18
-last_updated: 2026-03-18
+last-verified: 2026-03-24
+last_updated: 2026-03-24
 audience: [ai-agents, contributors]
 ---
 
@@ -99,6 +99,8 @@ It owns:
   [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md).
 - For profile sync or PKOS alignment work, read and follow
   [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md).
+- End file-changing work with **commit, push**, merge per policy, and clean
+  `git status` — [ide-llm-agent-completion-lessons-2026-03](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
 
 ---
 

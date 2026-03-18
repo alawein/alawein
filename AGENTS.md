@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-18
+last-verified: 2026-03-23
 ---
 
 # AGENTS — alawein
@@ -46,6 +46,9 @@ governance coordination.
   meshal-web/LinkedIn export: **read and follow**
   [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md);
   it is the single handoff for revision and enhancements.
+- Before ending a task that changes files: **commit, push** (and PR/merge per
+  policy), then confirm **`git status` is clean**—see
+  [ide-llm-agent-completion-lessons-2026-03](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
 
 ### Ask first
 

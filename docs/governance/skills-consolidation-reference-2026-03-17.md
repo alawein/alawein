@@ -1,7 +1,7 @@
 ---
 title: Skills Consolidation Quick Reference
 description: One-page summary of skills architecture decisions from 2026-03-17 audit; intended for operators and contributors
-last_updated: 2026-03-18
+last_updated: 2026-03-20
 category: governance
 audience: [ai-agents, contributors, operators]
 status: active
@@ -98,7 +98,7 @@ status: active
 
 ---
 
-## What To Do If...
+## What To Do If
 
 **...you want to add a new global skill**
 1. Use `skills add <repo> -g -y -a cursor -a claude-code -a codex`

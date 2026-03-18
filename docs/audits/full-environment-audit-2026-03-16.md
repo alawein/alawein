@@ -2,7 +2,7 @@
 title: Full Environment Audit 2026-03-16
 description: Scoped security and config audit — GitHub workspaces, local env, IDE/LLM domains
 category: audit
-last_updated: 2026-03-16
+last_updated: 2026-03-19
 ---
 
 # Full Environment Audit — 2026-03-16
@@ -153,7 +153,7 @@ last_updated: 2026-03-16
    - `msal_token_cache.json` is standard Azure CLI behavior; ensure it is not world-readable.
 
 2. **Document credential hygiene**
-   - See [docs/governance/credential-hygiene.md](docs/governance/credential-hygiene.md) for rules on credential storage and MCP env var usage.
+   - See [credential-hygiene.md](../governance/credential-hygiene.md) for rules on credential storage and MCP env var usage.
 
 3. **Run remediation checklist**
    - Step-by-step actions: [docs/audits/remediation-checklist-2026-03-16.md](remediation-checklist-2026-03-16.md).
@@ -209,4 +209,4 @@ last_updated: 2026-03-16
 
 ---
 
-*Audit performed per [full-environment-audit-execution_5910b5fc.plan.md](c:\Users\mesha\.cursor\plans\full-environment-audit-execution_5910b5fc.plan.md). Governance: AGENTS.md, CLAUDE.md, docs/governance/documentation-contract.md.*
+*Audit performed per internal execution plan (Cursor workspace; not in-repo). Governance: AGENTS.md, CLAUDE.md, docs/governance/documentation-contract.md.*

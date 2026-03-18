@@ -1,3 +1,12 @@
+---
+title: Profile sync from guides
+description: README About and profile copy sync with _pkos (formerly guides); export and sync flow.
+last_updated: 2026-03-19
+category: governance
+audience: [ai-agents, contributors]
+status: active
+---
+
 # Profile sync from guides
 
 **Purpose:** Document how the README About section and profile copy stay in sync with the PKOS repo (Desktop/_pkos, formerly guides), which is the single source of truth for positioning, resume, and profile copy.

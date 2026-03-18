@@ -4,6 +4,7 @@ description: Canonical portfolio index is README.md at repo root. This file is d
 category: index
 audience: contributors
 status: deprecated
+last_updated: 2026-03-19
 ---
 
 # Deprecated

@@ -1,7 +1,7 @@
 ---
 title: Skills, Agents & Commands Unification
 description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website—not just governance.
-last_updated: 2026-03-18
+last_updated: 2026-03-20
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -238,7 +238,7 @@ Ecosystem add-ons:
 | Item | Action |
 |------|--------|
 | **Inventory** | Done in §1: morphism (ecosystem), repo-superpowers (universal), alawein (org + catalog). |
-| **Taxonomy** | Universal (any repo/dir) | Ecosystem (morphism) | Org (alawein). §2. |
+| **Taxonomy** | Universal (any repo/dir); ecosystem (morphism); org (alawein). See §2. |
 | **New** | Add universal session-start + context (in repo-superpowers or new universal plugin). §3.1. |
 | **Rename** | Optional: repo-superpowers → workspace/universal-repo with prefixed commands. §3.2. |
 | **Docs** | Extend slash-commands-catalog with “our” plugins and universal workflow; link from CLAUDE.md. §3.3. |

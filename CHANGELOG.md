@@ -21,6 +21,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Skills unification workstream audits and operator notes under `docs/audits/` (2026-03-17) plus `docs/governance/skills-install-policy.md` and `skills-consolidation-reference-2026-03-17.md`.
 - Profile sync phases A–D: consistency (_pkos wording in alawein + _pkos templates), PyYAML and sync-check docs, LinkedIn snippet (`out/linkedin-snippet.md` from _pkos export), Notion/CV templates (`templates/notion.yaml`, `templates/cv-master.yaml`) and docs in _pkos `templates/README.md` and HANDOFF-CODEX.
 - Added doc audit report `docs/audits/doc-audit-2026-03-17.md` (TODO/TBD scan, missing
   READMEs under docs subdirs, link sanity; no unresolved doc TODOs, no broken
@@ -38,6 +39,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Governance: skills/agents maintenance and slash-command catalog aligned with consolidation work; workspace standardization, resource map, layout audit, rename matrix, and master prompt refreshed.
+- Removed obsolete local git branches and linked worktrees (`fix/alawein-stash-reconciliation`, `codex/recovery-*`) that predated current `main`; recovery copies under `_recovery/` were pruned via `git worktree remove`.
 - Parent `github.com/alawein` converted from git repo to clone root: removed parent `.git` so only leaf repos (e.g. `alawein/alawein`) are versioned; documented in `docs/archive/parent-alawein-repo-removal-2026-03-18.md`.
 - Updated README for clearer structure and governance wording (Projects,
   Packages, Governance, Stack, Stats; refined footer and badges).

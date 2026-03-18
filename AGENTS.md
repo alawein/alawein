@@ -2,7 +2,7 @@
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-17
+last-verified: 2026-03-18
 ---
 
 # AGENTS — alawein
@@ -62,7 +62,7 @@ governance coordination.
 ## Canonical Naming Policy
 
 - Canonical names are workspace authority (`gymboy`, `meatheadphysicist`,
-  `devkit`, `gmail-ops`).
+  `devkit`, `_ops/gmail-ops`).
 - During phased migration, if canonical name differs from physical repo slug,
   use this format in docs: `canonical-name (repo: physical-slug)`.
 - Physical links stay pointed at the actual GitHub repo slug until cutover.

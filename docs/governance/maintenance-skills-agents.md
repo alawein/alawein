@@ -1,7 +1,8 @@
 ---
 title: Skills, Agents, and Commands Maintenance
 description: Operating guide for maintaining universal, ecosystem, and org layers across local Claude/Cursor plugins and alawein governance docs.
-last_updated: 2026-03-16
+last_updated: 2026-03-18
+last_verified: 2026-03-18
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -33,9 +34,11 @@ Use this document when:
 | Ecosystem | morphism | `~/.claude/plugins/cache/local/morphism/1.2.0/` | morphism commands, skills, agents, hooks, universal YAML specs |
 | Org | alawein repo | `docs/governance/`, `AGENTS.md`, `CLAUDE.md`, `scripts/` | governance contracts, command catalog, quality-gate scripts |
 | Cursor org hints | alawein repo | `.cursor/rules/` | repo-level Cursor reminders/guardrails |
+| Global skill installs | `skills` CLI (npm) | `~/.agents/skills/` (universal for Cursor/Claude/Codex); `~/.codex/skills/`, `~/.kilocode/skills/` (agent-specific pre-bootstrap installs) | Canonical location `~/.agents/skills/`; symlinked or auto-detected per agent; **policy:** [skills-install-policy.md](./skills-install-policy.md) |
 
 Related docs:
 
+- [docs/governance/skills-install-policy.md](./skills-install-policy.md) — tiers, collision rules, allowlisted agents, bootstrap scripts
 - [docs/governance/skills-agents-unification.md](./skills-agents-unification.md)
 - [docs/governance/slash-commands-catalog.md](./slash-commands-catalog.md)
 - [AGENTS.md](../../AGENTS.md)

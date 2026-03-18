@@ -1,7 +1,7 @@
 ---
 title: Workspace Layout Audit
 description: Repo-by-repo layout status against stack-aware standards with canonical-name-first reporting.
-last_updated: 2026-03-11
+last_updated: 2026-03-18
 category: governance
 audience: contributors
 status: active
@@ -26,7 +26,7 @@ canonical names first and physical slugs second when needed.
 
 | Canonical Name | Physical Path | Status | Notes |
 | --- | --- | --- | --- |
-| `gmail-ops` | `gmail-ops/` | aligned | External workspace |
+| `_ops/gmail-ops` | `_ops/gmail-ops/` | aligned | External workspace (under _ops) |
 | `gymboy` | `gymboy/` | aligned | Hard cutover completed 2026-03-11 |
 | `meatheadphysicist` | `meatheadphysicist/` | aligned | Hard cutover completed 2026-03-11 |
 

@@ -1,7 +1,7 @@
 ---
 title: Workspace Resource Map
 description: Canonical ownership map for governance docs, shared packages, design tokens, and migration surfaces.
-last_updated: 2026-03-16
+last_updated: 2026-03-18
 category: governance
 audience: contributors
 status: active
@@ -28,7 +28,7 @@ workspace.
 | Shared style/config packages | `devkit` | `packages/eslint-config/`, `packages/prettier-config/`, `packages/tsconfig/`, `packages/tailwind-preset/` | `devkit` maintainers | JS/TS repos | Canonical |
 | Storybook and shared demos | `devkit` | `apps/storybook/` | `devkit` maintainers | design-system consumers | Canonical |
 | Retired legacy shared-resource repo | `aw-devkit` | retired from workspace root | migration owners | historical reference only | Retired on 2026-03-11 |
-| External automation workspace | `gmail-ops` | workspace root | local operator | local tooling | Canonical external |
+| External automation workspace | `_ops/gmail-ops` | workspace root | local operator | local tooling | Canonical external |
 | Design/branding implementation (Phase 1–5) | `alawein` | `docs/governance/phase1-design-branding-analysis-*.md`, `phase3-refactor-and-centralization.md`, `phase4-testing-and-validation.md`, `phase5-version-control-and-deployment.md`, `bulk-execution-progress.md`, `remaining-steps-per-repo.md`, `design-branding-summary.md`; `docs/HANDOFF-DESIGN-BRANDING.md` | `alawein` maintainers | agents, contributors | Active |
 
 ## Rules

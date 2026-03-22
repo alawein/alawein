@@ -46,6 +46,9 @@ credentials/
 .idea/
 .cursor/
 .claude/
+!.claude/settings.json
+!.claude/hooks/
+!.claude/hooks/**
 .kilocode/
 .windsurf/
 *.swp

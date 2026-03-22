@@ -1,3 +1,4 @@
+<!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 ---
 type: guide
 authority: canonical

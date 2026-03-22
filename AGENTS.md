@@ -1,3 +1,4 @@
+<!-- CUSTOM OVERRIDE: entire file — org-level governance boundaries with canonical naming policy, design/branding plan, and batch execution guide. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 ---
 type: normative
 authority: canonical

@@ -6,7 +6,7 @@ audience: contributors
 status: active
 author: Morphism Systems Inc.
 version: 1.0.0
-last_updated: 2026-03-08
+last_updated: 2026-03-28
 tags: [release, changelog, tags, rollback, governance]
 ---
 

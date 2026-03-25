@@ -1,7 +1,7 @@
 ---
 title: Clean-Slate Workflow
 description: Best practices for keeping alawein clean while preserving intentional in-progress work through focused commits, path-scoped stashes, branch isolation, and batch worktree hygiene
-last_updated: 2026-03-16
+last_updated: 2026-03-28
 category: governance
 audience: contributors
 status: active

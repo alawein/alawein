@@ -1,7 +1,7 @@
 ---
 title: Changelog Entry Guide
 description: Standard workflow for drafting and prepending Keep a Changelog release notes from recent commits
-last_updated: 2026-03-06
+last_updated: 2026-03-28
 category: governance
 audience: contributors
 status: active

@@ -1,3 +1,14 @@
+---
+title: GitHub canonical verification
+description: gh repo view notes for canonical repo names, redirects, and PKOS alignment.
+last_updated: 2026-03-26
+category: operations
+audience: [ai-agents, contributors]
+status: active
+related:
+  - ./project-lifecycle-tiers.md
+---
+
 # GitHub canonical verification (2026-03-24)
 
 Recorded with `gh repo view` from a machine with GitHub CLI auth. Use this when reconciling Notion “Projects (Canonical)” and PKOS `repo` fields.

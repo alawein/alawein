@@ -1,3 +1,15 @@
+---
+title: Project lifecycle tiers (SSOT)
+description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
+last_updated: 2026-03-26
+category: operations
+audience: [ai-agents, contributors]
+status: active
+related:
+  - ../../projects.json
+  - ./notion-projects-database.md
+---
+
 # Project lifecycle tiers (SSOT)
 
 This document defines how **`category`** in [`projects.json`](../../projects.json) maps to portfolio posture. Apply the same semantics in Notion “Projects (Canonical)” and PKOS (`status` + `phase`) so exports stay aligned.

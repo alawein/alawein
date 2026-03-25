@@ -5,25 +5,41 @@
   "description": "Canonical portfolio and package list for the alawein organization",
   "type": "object",
   "required": ["featured", "research", "packages"],
+  "$defs": {
+    "projectEntry": {
+      "type": "object",
+      "required": ["name", "slug", "repo", "description", "tags", "category"],
+      "properties": {
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "legacy_slugs": { "type": "array", "items": { "type": "string" } },
+        "url": { "type": "string", "format": "uri" },
+        "repo": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "category": {
+          "type": "string",
+          "enum": ["active", "maintained", "planned", "archived"]
+        },
+        "portfolio_domain": {
+          "type": "string",
+          "description": "Notion Domain select",
+          "enum": ["Work", "Personal", "scientific-computing"]
+        }
+      }
+    }
+  },
   "properties": {
     "$schema": { "type": "string" },
     "lastUpdated": { "type": "string", "format": "date" },
     "featured": {
       "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["name", "slug", "repo", "description", "tags", "category"],
-        "properties": {
-          "name": { "type": "string" },
-          "slug": { "type": "string" },
-          "legacy_slugs": { "type": "array", "items": { "type": "string" } },
-          "url": { "type": "string", "format": "uri" },
-          "repo": { "type": "string" },
-          "description": { "type": "string" },
-          "tags": { "type": "array", "items": { "type": "string" } },
-          "category": { "type": "string" }
-        }
-      }
+      "items": { "$ref": "#/$defs/projectEntry" }
+    },
+    "notion_sync": {
+      "type": "array",
+      "description": "Extra rows pushed only to Notion (not README); same shape as featured",
+      "items": { "$ref": "#/$defs/projectEntry" }
     },
     "research": {
       "type": "array",
@@ -49,6 +65,20 @@
           "registry": { "type": "string", "enum": ["npm", "pypi"] },
           "url": { "type": "string", "format": "uri" },
           "description": { "type": "string" }
+        }
+      }
+    },
+    "infrastructure": {
+      "type": "array",
+      "description": "Workspace tooling repos (folder names may differ from GitHub slug)",
+      "items": {
+        "type": "object",
+        "required": ["name", "slug", "repo", "purpose"],
+        "properties": {
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "repo": { "type": "string" },
+          "purpose": { "type": "string" }
         }
       }
     }

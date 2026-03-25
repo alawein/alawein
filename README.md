@@ -46,7 +46,7 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 
 ## Projects
 
-**Showcase order** matches the live products and portfolio pages highlighted on [meshal.ai](https://www.meshal.ai) (resume-aligned). Each title links to the **deployed site** or **case-study page**, not the GitHub repo.
+Project links point to the public product or project page.
 
 <!-- SYNC:PROJECTS:START -->
 <table>
@@ -57,7 +57,16 @@ PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a forma
 
 Personal site and portfolio — project deep-dives, case studies, and contact.
 
-`React` `Vite` `Tailwind`
+`React` `Vite` `TypeScript` `Tailwind`
+
+</td>
+<td align="center" width="33%">
+
+**[Morphism](https://morphism.systems)**
+
+Category-theoretic AI governance — proof witnesses, offline-first verification. Companion: morphism-systems/morphism.
+
+`TypeScript` `Python` `Governance`
 
 </td>
 <td align="center" width="33%">
@@ -69,6 +78,8 @@ AI-powered coaching platform for fitness professionals and clients.
 `TypeScript` `React` `Supabase`
 
 </td>
+</tr>
+<tr>
 <td align="center" width="33%">
 
 **[Gymboy](https://gymboy.coach)**
@@ -78,8 +89,6 @@ Fitness coaching platform with a retro progression-first training interface.
 `React` `Vite` `Spark`
 
 </td>
-</tr>
-<tr>
 <td align="center" width="33%">
 
 **[Scribd](https://scribd.fit)**
@@ -91,11 +100,31 @@ Fitness publishing and content surface (Next.js, design-system aligned).
 </td>
 <td align="center" width="33%">
 
+**[Bolts](https://bolts.fit)**
+
+Fitness transformation plans — Next.js, Stripe, Supabase, Python tooling.
+
+`Next.js` `TypeScript` `Python`
+
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+
+**[Atelier Rounaq](https://atelier-rounaq.com)**
+
+Studio and portfolio site — React, TypeScript, Supabase.
+
+`TypeScript` `React` `Supabase`
+
+</td>
+<td align="center" width="33%">
+
 **[Attributa](https://attributa.dev)**
 
-Design audit and accessibility platform.
+Privacy-first attribution intelligence — AI detection, citation checks, CWE scans (client-side first).
 
-`TypeScript` `React`
+`TypeScript` `React` `Vite`
 
 </td>
 <td align="center" width="33%">
@@ -104,7 +133,7 @@ Design audit and accessibility platform.
 
 LLM evaluation, benchmarking, and security testing playground.
 
-`TypeScript` `React` `LLM`
+`TypeScript` `React` `Supabase` `LLM`
 
 </td>
 </tr>
@@ -113,7 +142,7 @@ LLM evaluation, benchmarking, and security testing playground.
 
 **[Event Discovery Framework](https://edfp.online)**
 
-Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.
+Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com → edfp.online.)
 
 `Python` `OpenCV` `FastAPI`
 
@@ -203,13 +232,18 @@ This org runs on a single operating contract: [workspace-master-prompt](docs/gov
 | Project | Domain |
 |---------|--------|
 | [qmatsim](https://github.com/alawein/qmatsim) | Quantum material simulation |
-| [qmlab](https://github.com/alawein/qmlab) | Quantum mechanics lab tools |
+| [qmlab](https://github.com/alawein/qmlab) | Quantum ML web lab (React/TS/Vite) |
 | [qubeml](https://github.com/alawein/qubeml) | Quantum ML experiments |
 | [simcore](https://github.com/alawein/simcore) | Scientific simulation core |
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
 | [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
 | [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
 | [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
+| [adil](https://github.com/alawein/adil) | Legal AI — evidence and agency submissions |
+| [chshlab](https://github.com/alawein/chshlab) | Quantum foundations — CHSH / Bell education site |
+| [helios](https://github.com/alawein/helios) | Proprietary research archive — computational astrophysics |
+| [loopholelab](https://github.com/alawein/loopholelab) | Research validation — adversarial claim stress-testing |
+| [epistemic-stack](https://github.com/alawein/epistemic-stack) | Agent MCP tooling — drift, memory, proof |
 <!-- SYNC:RESEARCH:END -->
 
 </details>

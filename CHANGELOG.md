@@ -22,10 +22,13 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 - Audit doc [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.
+- Portfolio **`portfolio_domain`** on `projects.json` featured entries (Notion Domain select). **`notion_sync`** array for Notion-only rows (qmlab, simcore, meatheadphysicist) without expanding README. Ops guide [`docs/operations/notion-projects-database.md`](docs/operations/notion-projects-database.md).
+- [`scripts/run-notion-local.ps1`](scripts/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as [`notion-sync.yml`](.github/workflows/notion-sync.yml).
 
 ### Changed
 
-- README **Projects**: resume-aligned showcase (meshal.ai → REPZ, Gymboy, Scribd, Attributa, LLMWorks, EDFP, Neper, QAPlibria); every card links to **live site** or **meshal.ai** case study, not GitHub. `sync-readme.py` always prefers `projects.json` `url` for card links.
+- `scripts/sync-to-notion.mjs`: merges **featured + notion_sync**, writes **Domain** when `portfolio_domain` is set; optional **`NOTION_DOMAIN_PROPERTY`** env (see `.env.example`).
+- README **Projects**: intro copy is minimal/neutral (outside sync markers); table still regenerates from `projects.json` **featured** via `sync-readme.py`. Card links use each entry’s public `url` when set.
 
 ## [2.1.0] — 2026-03-21
 

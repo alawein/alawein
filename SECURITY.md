@@ -1,7 +1,7 @@
 ---
 title: Security Policy
 description: Security vulnerability reporting and disclosure procedures
-last_updated: 2026-03-16
+last_updated: 2026-03-28
 category: governance
 audience: all
 status: active

@@ -54,7 +54,9 @@ It owns:
   [`docs/governance/skills-install-policy.md`](docs/governance/skills-install-policy.md)
 - **Claude Code** (product repos with `.claude/` — layout, rules, skills, agents):
   [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md);
-  copy-paste audit/migration prompts:
+  copy-paste **worked examples** (CLAUDE.md, rules, skills, hooks):
+  [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md);
+  audit/migration **prompts**:
   [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md)
 - Operator quick commands:
   [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)

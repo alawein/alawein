@@ -8,6 +8,7 @@ audience: [ai-agents, contributors]
 status: active
 related:
   - ./claude-code-migration-prompts.md
+  - ./claude-code-worked-examples.md
   - ../../CLAUDE.md
   - ./skills-agents-unification.md
 ---
@@ -15,6 +16,8 @@ related:
 # Claude Code configuration reference
 
 Use this in **product repositories** that ship a `.claude/` directory. This **org hub** (`alawein/alawein`) primarily uses root `CLAUDE.md`, `AGENTS.md`, and `docs/governance/*`; treat this file as the **portable pattern** when you add Claude Code to a codebase.
+
+**Copy-paste snippets (CLAUDE.md, rules, commands, skills, agents, settings):** [claude-code-worked-examples.md](./claude-code-worked-examples.md).
 
 **Copy-paste prompts and checklists:** [claude-code-migration-prompts.md](./claude-code-migration-prompts.md).
 
@@ -121,7 +124,7 @@ Do not put secrets in committed `settings.json`; use `settings.local.json`.
 
 Claude Code can maintain **auto-memory** under `~/.claude/projects/<project>/memory/MEMORY.md` (implementation details may vary by version). Treat it as a **personal notebook**: preferences and session learnings. **`CLAUDE.md`** remains the **committed** source of team truth.
 
-Some builds support a **`#`** shortcut to append notes to memory; prefer `CLAUDE.md` / rules for durable team rules.
+Some builds support a **`#`** shortcut to append notes to memory; prefer `CLAUDE.md` / rules for durable team rules. See [claude-code-worked-examples.md](./claude-code-worked-examples.md#memory-vs-claudemd) for a concise comparison table.
 
 ---
 
@@ -171,4 +174,4 @@ Treat **`.claude/` like CI config**: review changes in PRs. **Untrusted reposito
 
 ## Source
 
-Condensed from internal Claude Code reference UI (`claude-code-guide.jsx`). Canonical copy lives in this repository; the JSX remains optional local scratch.
+Semantics from the internal Claude Code reference UI were merged into this guide and into [claude-code-worked-examples.md](./claude-code-worked-examples.md). **Do not rely on stray `.jsx` scratch files** — edit the Markdown here so the org hub stays the single source.

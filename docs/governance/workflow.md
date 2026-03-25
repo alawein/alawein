@@ -4,7 +4,7 @@ description: Branch model, commit patterns, deployment flow, and autonomous batc
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.1.0
 last_updated: 2026-03-15
 tags: [governance, workflow, branching, deployment, git]

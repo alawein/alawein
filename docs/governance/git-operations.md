@@ -4,7 +4,7 @@ description: Day-to-day Git guidance for branching, syncing, pushing, stashing, 
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 last_updated: 2026-03-23
 tags: [git, branching, push, stash, recovery, workflow]

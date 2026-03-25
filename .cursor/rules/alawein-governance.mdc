@@ -11,6 +11,6 @@ When working in `alawein/alawein`:
 2. Before suggesting a commit or PR, run:
    - `python scripts/sync-readme.py --check`
    - `./scripts/validate-doc-contract.sh --full`
-3. Treat [AGENTS.md](../../AGENTS.md) and [docs/governance](../../docs/governance/) as authoritative boundaries for this repo.
+3. Treat `AGENTS.md` and `docs/governance/` (repo root paths) as authoritative boundaries for this repo.
 4. Do not skip required governance validations for managed docs.
 

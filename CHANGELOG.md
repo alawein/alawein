@@ -21,6 +21,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Ops glossary [`docs/operations/github-notion-sync-glossary.md`](docs/operations/github-notion-sync-glossary.md): `Sync [project]` vs `GitHub Sync`, canonical `projects.json` → Notion flow, per-repo scan vs Notion push, **rule #4** out-of-scope guardrail for architecture drift, naming note for Morphism Systems Inc.
 - Claude Code **worked examples** (CLAUDE.md, rules, commands, skills, agents, settings): [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md). Cursor rule [`.cursor/rules/claude-code-governance.mdc`](.cursor/rules/claude-code-governance.mdc) applies when editing `.claude/` or `CLAUDE.md` (`.gitignore` now allows `.cursor/rules/`).
 - Claude Code reference: [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md) and copy-paste prompts/checklists [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md) (extracted from internal reference material).
 - Audit doc [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.

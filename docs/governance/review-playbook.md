@@ -4,7 +4,7 @@ description: Self-review and collaborator-review expectations for changes in the
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.1.0
 last_updated: 2026-03-15
 tags: [review, self-review, pull-requests, risk, validation]

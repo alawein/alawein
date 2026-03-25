@@ -4,7 +4,7 @@ description: Backup mirror for contributor guidance used by documentation workfl
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 last_updated: 2026-03-14
 tags: [governance, contributing, backup]

@@ -5,7 +5,7 @@ last_updated: 2026-03-08
 category: documentation
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 tags: [documentation, philosophy, style-guide, morphism, principles]
 ---

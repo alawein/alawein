@@ -4,7 +4,7 @@ description: Docs-first guidance for changelog updates, tags, release readiness,
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 last_updated: 2026-03-08
 tags: [release, changelog, tags, rollback, governance]

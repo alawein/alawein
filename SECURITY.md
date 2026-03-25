@@ -5,7 +5,7 @@ last_updated: 2026-03-16
 category: governance
 audience: all
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 tags: [governance, security, vulnerability, disclosure]
 ---

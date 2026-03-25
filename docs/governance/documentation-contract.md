@@ -5,7 +5,7 @@ last_updated: 2026-03-16
 category: governance
 audience: [ai-agents, contributors]
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 tags: [documentation, governance, contract, validation, ci]
 ---

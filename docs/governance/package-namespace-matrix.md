@@ -5,7 +5,7 @@ last_updated: 2026-03-11
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
 tags: [packages, namespace, devkit, migration, inventory]
 ---

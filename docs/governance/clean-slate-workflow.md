@@ -5,7 +5,7 @@ last_updated: 2026-03-16
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.1.0
 tags: [git, stash, workflow, clean-slate, notebooks, assets]
 ---

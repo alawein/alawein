@@ -4,9 +4,9 @@ description: Version history and notable changes to the alawein organization rep
 category: documentation
 audience: all
 status: active
-author: Morphism Systems LLC
+author: Morphism Systems Inc.
 version: 1.0.0
-last_updated: 2026-03-27
+last_updated: 2026-03-28
 tags: [changelog, version-history, releases]
 ---
 
@@ -29,6 +29,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Author / entity metadata: **Morphism Systems LLC** → **Morphism Systems Inc.** in repository frontmatter (`author:`) across managed governance and policy Markdown.
 - Documentation contract: `AGENTS.md` / `CLAUDE.md` YAML frontmatter starts at line 1; [`.cursor/rules.md`](.cursor/rules.md) links repaired; root `REPO-SWEEP-PROMPT.md` moved to [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md) with frontmatter; `docs/migration_changelog.md` and `docs/operations/*.md` now include required frontmatter.
 - `scripts/sync-to-notion.mjs`: merges **featured + notion_sync**, writes **Domain** when `portfolio_domain` is set; optional **`NOTION_DOMAIN_PROPERTY`** env (see `.env.example`).
 - README **Projects**: intro copy is minimal/neutral (outside sync markers); table still regenerates from `projects.json` **featured** via `sync-readme.py`. Card links use each entry’s public `url` when set.

@@ -59,12 +59,18 @@ workspace governance for the `alawein` GitHub organization.
 
 ## Audits
 
-- Full environment audit (credentials, config, IDE/LLM):
-  [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md)
+- Canonical audits index: [`audits/README.md`](./audits/README.md)
+- Full environment audit (credentials, config, IDE/LLM): [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md)
 - Remediation checklist (step-by-step): [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md)
 - Codebase audit (governance, scripts, CI): [`codebase-audit-2026-03-16.md`](./audits/codebase-audit-2026-03-16.md)
 - Doc audit (TODOs, READMEs, links): [`doc-audit-2026-03-17.md`](./audits/doc-audit-2026-03-17.md)
 - IDE/LLM agent completion (commit/push/merge, branches, README sync): [`ide-llm-agent-completion-lessons-2026-03.md`](./audits/ide-llm-agent-completion-lessons-2026-03.md)
+- Machine audit (reference workstation): [`machine-audit-mesha-2026-03-17.md`](./audits/machine-audit-mesha-2026-03-17.md)
+- Skills unification navigation guide: [`README-2026-03-17-skills-unification.md`](./audits/README-2026-03-17-skills-unification.md)
+- Skills unification workstream report: [`skills-unification-workstream-report-2026-03-17.md`](./audits/skills-unification-workstream-report-2026-03-17.md)
+- Skills unification workstream completion: [`skills-unification-workstream-completion-2026-03-17.md`](./audits/skills-unification-workstream-completion-2026-03-17.md)
+- Issue C Phase 2 consolidation assessment: [`issue-c-phase2-consolidation-assessment-2026-03-17.md`](./audits/issue-c-phase2-consolidation-assessment-2026-03-17.md)
+- Release summary v2.1.0: [`release-summary-2026-03-21.md`](./audits/release-summary-2026-03-21.md)
 - Credential hygiene: [`credential-hygiene.md`](./governance/credential-hygiene.md)
 
 ## Workspace migration

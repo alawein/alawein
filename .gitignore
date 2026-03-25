@@ -44,8 +44,9 @@ credentials/
 # ============================================
 .vscode/
 .idea/
-# Cursor IDE: ignore local state but keep shared rules
-.cursor/**
+# Cursor IDE: ignore direct children except committed rules (see git FAQ on un-ignoring).
+.cursor/*
+!.cursor/rules.md
 !.cursor/rules/
 !.cursor/rules/**
 .claude/

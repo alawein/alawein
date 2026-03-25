@@ -1,3 +1,12 @@
+---
+title: Migration changelog
+description: Timestamped notes for docs and catalog moves in this repository (informal log).
+last_updated: 2026-03-26
+category: documentation
+audience: [ai-agents, contributors]
+status: active
+---
+
 # Migration Changelog
 
 ## 2026-03-25

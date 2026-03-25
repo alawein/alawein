@@ -1,4 +1,16 @@
-# Repo Sweep — Universal Agent Prompt
+---
+title: Repo sweep — universal agent prompt
+description: Stack-agnostic governance-aware prompt for cleaning and validating any repo under the alawein workspace.
+last_updated: 2026-03-26
+category: governance
+audience: [ai-agents, contributors]
+status: active
+related:
+  - ./parallel-batch-execution.md
+  - ../../CLAUDE.md
+---
+
+# Repo sweep — universal agent prompt
 
 > Drop into any agent on any repo under `alawein/`. Stack-agnostic, governance-aware.
 
@@ -13,7 +25,7 @@
 
 ---
 
-## Phase 0 — Orient
+## Phase 0 — orient
 
 Read governance files in this order (skip missing ones, note which are absent):
 
@@ -37,11 +49,11 @@ Record which commands exist and which don't. This is your baseline.
 
 ---
 
-## Phase 1 — Validate
+## Phase 1 — validate
 
 Run every available check from Phase 0. Record pass/fail counts as baseline:
 
-```
+```text
 BASELINE (before):
   lint:       ___  (pass/fail/n-a)
   typecheck:  ___
@@ -53,7 +65,7 @@ If a command doesn't exist (e.g. no test runner configured), record `n/a`.
 
 ---
 
-## Phase 2 — Fix (strict priority order)
+## Phase 2 — fix (strict priority order)
 
 Work top-to-bottom. Do not skip ahead.
 
@@ -67,7 +79,7 @@ Work top-to-bottom. Do not skip ahead.
 
 ---
 
-## Phase 3 — Governance
+## Phase 3 — governance
 
 Verify these files exist and are accurate. Create missing ones from what the repo actually contains.
 
@@ -75,11 +87,11 @@ Verify these files exist and are accurate. Create missing ones from what the rep
 
 | File | Purpose | Create if missing? |
 |------|---------|-------------------|
-| `AGENTS.md` | Agent boundaries, always/never/ask-first | ✅ Yes — derive from repo purpose |
-| `CLAUDE.md` | Dev workflow, quality gates, structure | ✅ Yes — derive from stack + scripts |
-| `SSOT.md` | Current state, version, status | ✅ Yes — derive from repo contents |
-| `LESSONS.md` | Observed patterns and anti-patterns | ✅ Yes — minimal initial entry |
-| `README.md` | Project overview, setup, usage | ✅ Yes — derive from package manifest + src |
+| `AGENTS.md` | Agent boundaries, always/never/ask-first | Yes — derive from repo purpose |
+| `CLAUDE.md` | Dev workflow, quality gates, structure | Yes — derive from stack + scripts |
+| `SSOT.md` | Current state, version, status | Yes — derive from repo contents |
+| `LESSONS.md` | Observed patterns and anti-patterns | Yes — minimal initial entry |
+| `README.md` | Project overview, setup, usage | Yes — derive from package manifest + src |
 
 ### Governance file format
 
@@ -104,11 +116,11 @@ audience: [ai-agents, contributors]
 
 ---
 
-## Phase 4 — Re-validate
+## Phase 4 — re-validate
 
 Run the same checks from Phase 1. All must pass (or match `n/a` baseline).
 
-```
+```text
 AFTER:
   lint:       ___
   typecheck:  ___
@@ -120,17 +132,18 @@ If anything regressed, fix it before proceeding.
 
 ---
 
-## Phase 5 — Commit
+## Phase 5 — commit
 
 Stage commits grouped by scope, each independently revertible:
 
-```
+```text
 fix(<scope>): <what was fixed>
 chore(<scope>): <cleanup or dep change>
 docs(<scope>): <governance file created or updated>
 ```
 
 Examples:
+
 - `fix(types): resolve 3 TypeScript strict-mode errors`
 - `chore(deps): remove unused lodash dependency`
 - `docs(governance): create SSOT.md from repo state`
@@ -139,7 +152,7 @@ Examples:
 
 ---
 
-## Phase 6 — Report
+## Phase 6 — report
 
 Produce a summary table:
 
@@ -156,7 +169,7 @@ Produce a summary table:
 ### Governance
 | File        | Status |
 |-------------|--------|
-| AGENTS.md   | ✅ existed / 🆕 created / 🔧 updated |
+| AGENTS.md   | existed / created / updated |
 | CLAUDE.md   | ... |
 | SSOT.md     | ... |
 | LESSONS.md  | ... |
@@ -173,23 +186,28 @@ Append any new lessons to `LESSONS.md` (observed patterns only, not aspirational
 
 ---
 
-## Repo Roster (alawein workspace)
+## Repo roster (alawein workspace)
 
 For batch execution, here are the repos grouped by stack:
 
 ### TypeScript / React (product)
+
 `gymboy` · `meshal-web` · `repz` · `scribd` · `attributa` · `llmworks` · `qmlab` · `simcore` · `bolts` · `atelier-rounaq`
 
 ### Python (research / tools)
+
 `qaplibria` · `meatheadphysicist` · `neper` · `edfp` · `maglogic` · `qmatsim` · `qubeml` · `scicomp` · `spincirc` · `loopholelab` · `adil`
 
 ### Tooling
+
 `_devkit` · `_ops` · `_workspace`
 
-### Static / Other
+### Static / other
+
 `chshlab` · `helios` · `ingesta-toolkit`
 
-### Org Profile (docs-only)
+### Org profile (docs-only)
+
 `alawein`
 
 ---
@@ -200,4 +218,4 @@ For batch execution, here are the repos grouped by stack:
 - It respects existing `AGENTS.md` boundaries — if a repo says "ask first" for something, the agent asks.
 - It explicitly forbids adding features or pushing without confirmation.
 - Governance files follow the alawein YAML frontmatter convention.
-- For batch execution across multiple repos, see `alawein/docs/governance/parallel-batch-execution.md`.
+- For batch execution across multiple repos, see [parallel-batch-execution.md](./parallel-batch-execution.md).

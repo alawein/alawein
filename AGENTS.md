@@ -1,10 +1,11 @@
-<!-- CUSTOM OVERRIDE: entire file — org-level governance boundaries with canonical naming policy, design/branding plan, and batch execution guide. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 ---
 type: normative
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-23
+last-verified: 2026-03-27
 ---
+
+<!-- CUSTOM OVERRIDE: entire file — org-level governance boundaries with canonical naming policy, design/branding plan, and batch execution guide. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 
 # AGENTS — alawein
 
@@ -50,6 +51,8 @@ governance coordination.
 - Before ending a task that changes files: **commit, push** (and PR/merge per
   policy), then confirm **`git status` is clean**—see
   [ide-llm-agent-completion-lessons-2026-03](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
+- In this repository, **Cursor** loadable rules are committed under `.cursor/rules/`
+  (see `.gitignore`); treat them like other governance text when editing.
 
 ### Ask first
 

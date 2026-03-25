@@ -1,11 +1,12 @@
-<!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-25
-last_updated: 2026-03-25
+last-verified: 2026-03-27
+last_updated: 2026-03-27
 audience: [ai-agents, contributors]
 ---
+
+<!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 
 # CLAUDE.md — alawein
 
@@ -58,8 +59,11 @@ It owns:
   [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md);
   audit/migration **prompts**:
   [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md)
+- **Cursor (this org hub):** shared IDE rules live under [`.cursor/rules/`](.cursor/rules/) (e.g. `alawein-governance.mdc`, `claude-code-governance.mdc`); other `.cursor/**` paths stay gitignored.
 - Operator quick commands:
   [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)
+- Universal **repo sweep** prompt (any workspace repo):
+  [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md)
 - Audits (environment, codebase, skills):
   [`docs/audits/full-environment-audit-2026-03-16.md`](docs/audits/full-environment-audit-2026-03-16.md);
   remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md);

@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-22",
+  "lastUpdated": "2026-03-24",
   "featured": [
     {
       "name": "meshal.ai",
@@ -8,8 +8,19 @@
       "url": "https://www.meshal.ai",
       "repo": "alawein/meshal-web",
       "description": "Personal site and portfolio — project deep-dives, case studies, and contact.",
-      "tags": ["React", "Vite", "Tailwind"],
-      "category": "active"
+      "tags": ["React", "Vite", "TypeScript", "Tailwind"],
+      "category": "maintained",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Morphism",
+      "slug": "morphism",
+      "url": "https://morphism.systems",
+      "repo": "morphism-org/morphism",
+      "description": "Category-theoretic AI governance — proof witnesses, offline-first verification. Companion: morphism-systems/morphism.",
+      "tags": ["TypeScript", "Python", "Governance"],
+      "category": "active",
+      "portfolio_domain": "Work"
     },
     {
       "name": "REPZ",
@@ -18,7 +29,8 @@
       "repo": "alawein/repz",
       "description": "AI-powered coaching platform for fitness professionals and clients.",
       "tags": ["TypeScript", "React", "Supabase"],
-      "category": "active"
+      "category": "active",
+      "portfolio_domain": "Personal"
     },
     {
       "name": "Gymboy",
@@ -28,7 +40,8 @@
       "repo": "alawein/gymboy",
       "description": "Fitness coaching platform with a retro progression-first training interface.",
       "tags": ["React", "Vite", "Spark"],
-      "category": "active"
+      "category": "active",
+      "portfolio_domain": "Personal"
     },
     {
       "name": "Scribd",
@@ -37,16 +50,39 @@
       "repo": "alawein/scribd",
       "description": "Fitness publishing and content surface (Next.js, design-system aligned).",
       "tags": ["Next.js", "React", "TypeScript"],
-      "category": "active"
+      "category": "active",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "url": "https://bolts.fit",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans — Next.js, Stripe, Supabase, Python tooling.",
+      "tags": ["Next.js", "TypeScript", "Python"],
+      "category": "active",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "legacy_slugs": ["rounaq-atelier"],
+      "url": "https://atelier-rounaq.com",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site — React, TypeScript, Supabase.",
+      "tags": ["TypeScript", "React", "Supabase"],
+      "category": "active",
+      "portfolio_domain": "Work"
     },
     {
       "name": "Attributa",
       "slug": "attributa",
       "url": "https://attributa.dev",
       "repo": "alawein/attributa",
-      "description": "Design audit and accessibility platform.",
-      "tags": ["TypeScript", "React"],
-      "category": "active"
+      "description": "Privacy-first attribution intelligence — AI detection, citation checks, CWE scans (client-side first).",
+      "tags": ["TypeScript", "React", "Vite"],
+      "category": "active",
+      "portfolio_domain": "Work"
     },
     {
       "name": "LLMWorks",
@@ -54,18 +90,20 @@
       "url": "https://llmworks.dev",
       "repo": "alawein/llmworks",
       "description": "LLM evaluation, benchmarking, and security testing playground.",
-      "tags": ["TypeScript", "React", "LLM"],
-      "category": "active"
+      "tags": ["TypeScript", "React", "Supabase", "LLM"],
+      "category": "active",
+      "portfolio_domain": "Work"
     },
     {
       "name": "Event Discovery Framework",
       "slug": "edfp",
-      "legacy_slugs": ["event-discovery-framework"],
+      "legacy_slugs": ["event-discovery-framework", "aiclarity"],
       "url": "https://edfp.online",
       "repo": "alawein/edfp",
-      "description": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.",
+      "description": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com → edfp.online.)",
       "tags": ["Python", "OpenCV", "FastAPI"],
-      "category": "active"
+      "category": "planned",
+      "portfolio_domain": "Work"
     },
     {
       "name": "Neper",
@@ -74,7 +112,8 @@
       "repo": "alawein/neper",
       "description": "LLM training, alignment, evaluation, and synthetic data platform.",
       "tags": ["Python", "PyTorch", "LLM Training"],
-      "category": "active"
+      "category": "active",
+      "portfolio_domain": "scientific-computing"
     },
     {
       "name": "QAPlibria",
@@ -83,7 +122,41 @@
       "repo": "alawein/qaplibria",
       "description": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
       "tags": ["Python", "Optimization", "HPC"],
-      "category": "active"
+      "category": "maintained",
+      "portfolio_domain": "Personal"
+    }
+  ],
+  "notion_sync": [
+    {
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "url": "https://qmlab.online",
+      "repo": "alawein/qmlab",
+      "description": "Quantum ML web lab — React, TypeScript, Vite, Supabase.",
+      "tags": ["TypeScript", "React", "Vite", "Supabase"],
+      "category": "active",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "url": "https://simcore.dev",
+      "repo": "alawein/simcore",
+      "description": "Scientific simulation core — Python, scientific computing.",
+      "tags": ["Python", "Scientific computing"],
+      "category": "active",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "MeatheadPhysicist",
+      "slug": "meatheadphysicist",
+      "legacy_slugs": ["MeatheadPhysicist"],
+      "url": "https://github.com/alawein/meatheadphysicist",
+      "repo": "alawein/meatheadphysicist",
+      "description": "Physics education and writing — Markdown-first content brand.",
+      "tags": ["Markdown", "Physics"],
+      "category": "maintained",
+      "portfolio_domain": "Personal"
     }
   ],
   "research": [
@@ -97,7 +170,7 @@
       "name": "qmlab",
       "slug": "qmlab",
       "repo": "alawein/qmlab",
-      "domain": "Quantum mechanics lab tools"
+      "domain": "Quantum ML web lab (React/TS/Vite)"
     },
     {
       "name": "qubeml",
@@ -135,6 +208,56 @@
       "legacy_slugs": ["MeatheadPhysicist"],
       "repo": "alawein/meatheadphysicist",
       "domain": "Physics research and writing"
+    },
+    {
+      "name": "adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "domain": "Legal AI — evidence and agency submissions"
+    },
+    {
+      "name": "chshlab",
+      "slug": "chshlab",
+      "repo": "alawein/chshlab",
+      "domain": "Quantum foundations — CHSH / Bell education site"
+    },
+    {
+      "name": "helios",
+      "slug": "helios",
+      "repo": "alawein/helios",
+      "domain": "Proprietary research archive — computational astrophysics"
+    },
+    {
+      "name": "loopholelab",
+      "slug": "loopholelab",
+      "repo": "alawein/loopholelab",
+      "domain": "Research validation — adversarial claim stress-testing"
+    },
+    {
+      "name": "epistemic-stack",
+      "slug": "epistemic-stack",
+      "repo": "alawein/epistemic-stack",
+      "domain": "Agent MCP tooling — drift, memory, proof"
+    }
+  ],
+  "infrastructure": [
+    {
+      "name": "aw-devkit",
+      "slug": "aw-devkit",
+      "repo": "alawein/aw-devkit",
+      "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: _devkit/)"
+    },
+    {
+      "name": "workspace-tools",
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "purpose": "Workspace batch execution and ops orchestration (workspace: _ops/)"
+    },
+    {
+      "name": "pkos",
+      "slug": "pkos",
+      "repo": "alawein/pkos",
+      "purpose": "Personal Knowledge OS — career, resume, project catalog (workspace: _pkos/)"
     }
   ],
   "packages": [

@@ -5,7 +5,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-23
+last_updated: 2026-03-25
 tags: [alawein, documentation, governance, index]
 related:
   - ../README.md
@@ -42,6 +42,7 @@ workspace governance for the `alawein` GitHub organization.
 | draft releases, tags, and changelog updates | [`release-playbook.md`](./governance/release-playbook.md) |
 | run or follow up on environment/credential audit | [`full-environment-audit-2026-03-16.md`](./audits/full-environment-audit-2026-03-16.md), [`remediation-checklist-2026-03-16.md`](./audits/remediation-checklist-2026-03-16.md) |
 | avoid IDE/LLM sessions that never ship; close-out checklist | [`ide-llm-agent-completion-lessons-2026-03.md`](./audits/ide-llm-agent-completion-lessons-2026-03.md) |
+| set up or upgrade Claude Code `.claude/` in a product repo | [`claude-code-configuration-guide.md`](./governance/claude-code-configuration-guide.md), [`claude-code-migration-prompts.md`](./governance/claude-code-migration-prompts.md) |
 
 ## Workflow operations
 

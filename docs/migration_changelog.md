@@ -1,5 +1,9 @@
 # Migration Changelog
 
+## 2026-03-25
+
+- Extracted Claude Code reference content into canonical governance docs: `docs/governance/claude-code-configuration-guide.md` and `docs/governance/claude-code-migration-prompts.md`; linked from `CLAUDE.md` and `docs/README.md`. Source was local scratch JSX (`claude-code-*.jsx`, gitignored).
+
 ## 2026-03-23T03:12:43-07:00
 
 - Ran `audits-collector` manually because `ops/consolidation_toolbox.py` is not present in this repository.

@@ -2,8 +2,8 @@
 ---
 type: guide
 authority: canonical
-last-verified: 2026-03-24
-last_updated: 2026-03-24
+last-verified: 2026-03-25
+last_updated: 2026-03-25
 audience: [ai-agents, contributors]
 ---
 
@@ -52,6 +52,10 @@ It owns:
   [`docs/governance/maintenance-skills-agents.md`](docs/governance/maintenance-skills-agents.md)
 - **Global skills install** (IDEs, collision rules, MCP vs skills):
   [`docs/governance/skills-install-policy.md`](docs/governance/skills-install-policy.md)
+- **Claude Code** (product repos with `.claude/` — layout, rules, skills, agents):
+  [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md);
+  copy-paste audit/migration prompts:
+  [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md)
 - Operator quick commands:
   [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)
 - Audits (environment, codebase, skills):

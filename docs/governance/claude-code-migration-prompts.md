@@ -8,6 +8,7 @@ audience: [ai-agents, contributors]
 status: active
 related:
   - ./claude-code-configuration-guide.md
+  - ./claude-code-worked-examples.md
 ---
 
 # Claude Code migration prompts and checklists
@@ -41,7 +42,7 @@ Paste when you want a **three-phase** audit → plan → execute flow. Requires 
 ```text
 # Claude Code Setup & Upgrade — Superprompt
 
-> Reference: docs/governance/claude-code-configuration-guide.md in the alawein org hub (or this repo's copy).
+> Reference: docs/governance/claude-code-configuration-guide.md and docs/governance/claude-code-worked-examples.md in the alawein org hub (or this repo's copy).
 
 ## Context
 
@@ -383,4 +384,4 @@ After approval, update each project one at a time:
 
 ## Source
 
-Extracted from internal reference UI (`claude-code-guide.jsx`, `claude-code-superprompt.jsx`). Canonical prose lives in this file; JSX remains optional local scratch.
+Original prompts came from internal reference UI; **canonical** copy-paste text lives here. Long-form snippets (CLAUDE.md skeleton, rules, commands, skills, agents, settings) are in [claude-code-worked-examples.md](./claude-code-worked-examples.md). The old `.jsx` scratch files were removed to avoid drift.

@@ -1,0 +1,23 @@
+---
+description: When editing Claude Code project config (.claude/, CLAUDE.md), follow alawein org governance docs
+globs: "**/.claude/**,**/CLAUDE.md,**/CLAUDE.local.md"
+---
+
+# Claude Code alignment (alawein org hub)
+
+When creating or changing **project-level** Claude Code configuration:
+
+1. **Read first** (this repo or your checkout of `alawein/alawein`):
+   - `docs/governance/claude-code-configuration-guide.md` — layout, loading order, rules vs CLAUDE.md
+   - `docs/governance/claude-code-worked-examples.md` — copy-paste CLAUDE.md, rules, commands, skills, agents, `settings.json`
+   - `docs/governance/claude-code-migration-prompts.md` — phased audit / upgrade prompts
+
+2. **Keep `CLAUDE.md` lean** (~200 lines): only what the model cannot infer from the codebase. Put linter-enforced behavior in **hooks**, not prose.
+
+3. **Prefer `skills/`** over new `commands/`** when workflows need bundled scripts, auto-invocation, or tight `allowed-tools`.
+
+4. **No secrets** in committed `.claude/settings.json`; use `settings.local.json` (gitignored).
+
+5. **Security**: treat `.claude/` like CI — review hooks and skills in PRs; inspect before running untrusted repos.
+
+6. **This org hub repo** also honors `AGENTS.md`, `docs/governance/workspace-master-prompt.md`, and the documentation contract.

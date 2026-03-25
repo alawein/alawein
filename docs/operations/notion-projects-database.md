@@ -1,16 +1,19 @@
 ---
 title: Notion Projects (Canonical) — sync and checklist
 description: Runbook for syncing projects.json to Notion and required database properties.
-last_updated: 2026-03-26
+last_updated: 2026-03-25
 category: operations
 audience: [ai-agents, contributors]
 status: active
 related:
   - ../../projects.json
   - ../../scripts/sync-to-notion.mjs
+  - ./github-notion-sync-glossary.md
 ---
 
 # Notion “Projects (Canonical)” — sync and checklist
+
+**Terminology:** [GitHub ↔ Notion sync glossary and guardrails](./github-notion-sync-glossary.md) (`Sync [project]` vs `GitHub Sync`, out-of-scope rules).
 
 ## Automated sync
 

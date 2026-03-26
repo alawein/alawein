@@ -78,7 +78,10 @@
           "name": { "type": "string" },
           "slug": { "type": "string" },
           "repo": { "type": "string" },
-          "purpose": { "type": "string" }
+          "url": { "type": "string", "format": "uri" },
+          "purpose": { "type": "string" },
+          "status": { "type": "string" },
+          "note": { "type": "string" }
         }
       }
     }

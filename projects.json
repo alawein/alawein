@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-24",
+  "lastUpdated": "2026-03-25",
   "featured": [
     {
       "name": "meshal.ai",
@@ -245,19 +245,46 @@
       "name": "aw-devkit",
       "slug": "aw-devkit",
       "repo": "alawein/aw-devkit",
+      "url": "https://github.com/alawein/aw-devkit",
       "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: _devkit/)"
     },
     {
       "name": "workspace-tools",
       "slug": "workspace-tools",
       "repo": "alawein/workspace-tools",
+      "url": "https://github.com/alawein/workspace-tools",
       "purpose": "Workspace batch execution and ops orchestration (workspace: _ops/)"
     },
     {
       "name": "pkos",
       "slug": "pkos",
       "repo": "alawein/pkos",
+      "url": "https://github.com/alawein/pkos",
       "purpose": "Personal Knowledge OS — career, resume, project catalog (workspace: _pkos/)"
+    },
+    {
+      "name": "handshake-hai",
+      "slug": "handshake-hai",
+      "repo": "alawein/handshake-hai",
+      "url": "https://github.com/alawein/handshake-hai",
+      "purpose": "Handshake AI platform — task validation, proctor tooling monorepo (workspace: _handshake-hai/)",
+      "status": "active"
+    },
+    {
+      "name": "handshake-project-proctor",
+      "slug": "handshake-project-proctor",
+      "repo": "alawein/handshake-project-proctor",
+      "url": "https://github.com/alawein/handshake-project-proctor",
+      "purpose": "STEM task submission validator CLI (standalone, now archived)",
+      "status": "archived",
+      "note": "Migrated to _handshake-hai/packages/proctor/"
+    },
+    {
+      "name": "reasonbench",
+      "slug": "reasonbench",
+      "repo": "alawein/reasonbench",
+      "url": "https://github.com/alawein/reasonbench",
+      "purpose": "Reasonbench workspace repository (workspace: reasonbench/)"
     }
   ],
   "packages": [

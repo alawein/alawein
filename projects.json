@@ -263,21 +263,21 @@
       "purpose": "Personal Knowledge OS — career, resume, project catalog (workspace: _pkos/)"
     },
     {
-      "name": "handshake-hai",
-      "slug": "handshake-hai",
+      "name": "eval",
+      "slug": "eval",
+      "legacy_slugs": ["handshake-hai"],
       "repo": "alawein/handshake-hai",
       "url": "https://github.com/alawein/handshake-hai",
-      "purpose": "Handshake AI platform — task validation, proctor tooling monorepo (workspace: _handshake-hai/)",
+      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (workspace: _eval/)",
       "status": "active"
     },
     {
-      "name": "handshake-project-proctor",
-      "slug": "handshake-project-proctor",
-      "repo": "alawein/handshake-project-proctor",
-      "url": "https://github.com/alawein/handshake-project-proctor",
-      "purpose": "STEM task submission validator CLI (standalone, now archived)",
-      "status": "archived",
-      "note": "Migrated to _handshake-hai/packages/proctor/"
+      "name": "failsafe",
+      "slug": "failsafe",
+      "legacy_slugs": ["mercor-llm-failsafe"],
+      "repo": "alawein/failsafe",
+      "url": "https://github.com/alawein/failsafe",
+      "purpose": "LLM benchmark generation — failure mode discovery + domain packs (workspace: _failsafe/)"
     },
     {
       "name": "reasonbench",

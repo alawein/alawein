@@ -48,7 +48,7 @@ jobs:
         id: files
         run: |
           missing=""
-          for f in README.md SSOT.md AGENTS.md CLAUDE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md CONTRIBUTING-backup-20250807.md; do
+          for f in README.md SSOT.md AGENTS.md CLAUDE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md; do
             [ -f "$f" ] || missing="$missing $f"
           done
           echo "missing=$missing" >> "$GITHUB_OUTPUT"

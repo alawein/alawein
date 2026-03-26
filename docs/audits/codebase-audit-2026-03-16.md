@@ -93,7 +93,7 @@ last_updated: 2026-03-16
 | **Python tests** | `scripts/tests/` has `test_github_dashboard_lib.py` and `test_vercel_alias_audit.py`. Consider running them in CI (e.g. in `ci.yml` or a dedicated workflow) so regressions are caught on push/PR. |
 | **Optional schema validation** | Add a CI step or pre-commit check that validates `projects.json` against `projects.schema.json` (e.g. `ajv` or a small Python step). |
 | **CLAUDE.md required files** | CLAUDE.md and contract list `README.md` as the canonical portfolio file; sync-readme.py updates it. |
-| **Placeholder / TODO in docs** | `docs/technical-debt-report-20260311.md` line 173 references fixing type errors and using `// TODO:` for suppressions — actionable tech-debt; no code change in this repo. |
+| **Placeholder / TODO in docs** | `docs/audits/technical-debt-report-20260311.md` line 173 references fixing type errors and using `// TODO:` for suppressions — actionable tech-debt; no code change in this repo. |
 | **CONTRIBUTING backup naming** | Contract and CLAUDE reference `CONTRIBUTING-backup-20250807.md`; script requires `CONTRIBUTING.md`. Same alignment as README: document both and that the script checks the non-backup name. |
 
 ---

@@ -47,13 +47,11 @@ jobs:
           npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc \
             AGENTS.md \
             CLAUDE.md \
-            CONTRIBUTING-backup-20250807.md \
             CODE_OF_CONDUCT.md \
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \
             LESSONS.md \
-            DOCUMENTATION_PHILOSOPHY.md \
             docs/README.md \
             docs/governance/*.md
 
@@ -79,13 +77,11 @@ jobs:
           managed_root_docs = [
               root / "AGENTS.md",
               root / "CLAUDE.md",
-              root / "CONTRIBUTING-backup-20250807.md",
               root / "CODE_OF_CONDUCT.md",
               root / "SECURITY.md",
               root / "CHANGELOG.md",
               root / "SSOT.md",
               root / "LESSONS.md",
-              root / "DOCUMENTATION_PHILOSOPHY.md",
               root / "README.md",
           ]
           managed_docs = sorted(
@@ -121,7 +117,7 @@ jobs:
               "docs/governance/bulk-execution-progress.md",
               "docs/governance/design-branding-summary.md",
               "docs/governance/remaining-steps-per-repo.md",
-              "docs/technical-debt-report-20260311.md",
+              "docs/audits/technical-debt-report-20260311.md",
           }
 
           errors = []
@@ -210,7 +206,6 @@ jobs:
             --config .github/markdown-link-check-config.json \
             AGENTS.md \
             CLAUDE.md \
-            CONTRIBUTING-backup-20250807.md \
             SECURITY.md \
             CHANGELOG.md \
             SSOT.md \

@@ -104,7 +104,6 @@ MANAGED_ROOT_DOCS = {
     "SECURITY.md": "last_updated",
     "CHANGELOG.md": "last_updated",
     "CODE_OF_CONDUCT.md": "last_updated",
-    "DOCUMENTATION_PHILOSOPHY.md": "last_updated",
 }
 
 EXEMPT_DOCS = {
@@ -301,14 +300,12 @@ def check_naming(errors: List[str]) -> None:
         "AGENTS.md",
         "CLAUDE.md",
         "README.md",
-        "CONTRIBUTING-backup-20250807.md",
         "CONTRIBUTING.md",
         "CODE_OF_CONDUCT.md",
         "SECURITY.md",
         "CHANGELOG.md",
         "SSOT.md",
         "LESSONS.md",
-        "DOCUMENTATION_PHILOSOPHY.md",
     }
     for path in ROOT.glob("*.md"):
         rel = relative(path)

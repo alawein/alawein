@@ -85,7 +85,6 @@ It owns:
 - `README.md`
 - `SSOT.md`
 - `LESSONS.md`
-- `CONTRIBUTING-backup-20250807.md`
 - `CODE_OF_CONDUCT.md`
 - `LICENSE`
 - `SECURITY.md`

@@ -172,11 +172,12 @@ Running `git status` from workspace root returns nothing (no repo). Each `git` c
 Bookmarked 2026-03-26. These items require user decisions before proceeding:
 
 - [ ] **Docs doctrine**: Establish formal conventions for naming, canonical vs derived docs, kernelization, and syncing across 28+ repos
-- [ ] **Rebuild reusable workflows**: Delete 4 orphaned workflows (`reusable-node-ci.yml`, `reusable-python-ci.yml`, `reusable-security.yml`, `reusable-visual-audit.yml`), rebuild with standard `ci-*` naming and at least one caller each
-- [ ] **Delete `.branch-protection-with-ci.json`**: Orphaned GitHub API payload template, untracked, unreferenced
-- [ ] **Gitignore dashboard snapshots**: Add `docs/dashboard/snapshots/*.json` to `.gitignore`
-- [ ] **Update `projects.json`**: Fix stale `handshake-hai` repo URL reference
-- [ ] **Fix meshal-web tracked logs**: Add `output/` to `.gitignore`, remove tracked log files
-- [ ] **Fix empty directories**: Clean up empty dirs in `_eval` (4), `meshal-web` (5), `mercor-llm-failsafe` (2)
+- [ ] **Rebuild reusable workflows**: Rebuild with standard `ci-*` naming and at least one caller each
+- [x] ~~**Delete `.branch-protection-with-ci.json`**~~: Done 2026-03-26
+- [x] ~~**Gitignore dashboard snapshots**~~: Done 2026-03-26 — added to `.gitignore`, untracked 8 JSON files
+- [x] ~~**Update `projects.json`**~~: No change needed — GitHub remote is still `handshake-hai`, `projects.json` is correct
+- [x] ~~**Fix meshal-web tracked logs**~~: Done 2026-03-26 — added `output/` to `.gitignore`
+- [x] ~~**Fix empty directories**~~: Done 2026-03-26 — cleaned 11 empty dirs across `_eval`, `meshal-web`, `mercor-llm-failsafe`
+- [x] ~~**Delete orphaned reusable workflows**~~: Done 2026-03-26 — deleted all 4
 - [ ] **Workspace root policy**: Document what's allowed at workspace root (currently: `INDEX.md`, `CLAUDE.md`, `README.md`, `package.json` — nothing else)
 - [ ] **Dual CLAUDE.md clarification**: Document the dual-file pattern (root = authoritative, `.claude/CLAUDE.md` = governance template) in the docs doctrine so agents know which to edit

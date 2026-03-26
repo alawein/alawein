@@ -242,10 +242,11 @@
   ],
   "infrastructure": [
     {
-      "name": "aw-devkit",
-      "slug": "aw-devkit",
-      "repo": "alawein/aw-devkit",
-      "url": "https://github.com/alawein/aw-devkit",
+      "name": "devkit",
+      "slug": "devkit",
+      "legacy_slugs": ["aw-devkit"],
+      "repo": "alawein/devkit",
+      "url": "https://github.com/alawein/devkit",
       "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: _devkit/)"
     },
     {

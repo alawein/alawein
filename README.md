@@ -23,18 +23,17 @@
 <tr>
 <td width="55%" valign="top">
 
-PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a formally verified AI governance framework grounded in category theory. Applied Scientist at Turing. Built production DFT/HPC workflows (2,300+ jobs, 70% runtime reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation harnesses for LLM training. 16+ peer-reviewed publications in IEEE, APS, and AIP.
+Ph.D. in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a formally verified AI governance framework grounded in category theory and contraction-mapping proofs. Built large-scale HPC simulation pipelines at Lawrence Berkeley National Laboratory (2,300+ DFT simulations, 70% runtime reduction, $160K cost savings). Designed SFT/DPO/LoRA training pipelines and evaluation harnesses for domain-specific LLM agents. 16 peer-reviewed publications in IEEE, APS, and AIP venues.
 
 </td>
 <td width="45%" valign="top">
 
 ```
-🎓 PhD EECS — UC Berkeley (Dec 2025)
-🏢 Morphism Systems — Founder (Aug 2025)
-⚗️  Turing — Applied Scientist (AI)
-🔬 16+ peer-reviewed publications
-🤖 SFT/DPO/LoRA · DFT/HPC · LLM Infra
-📍 San Francisco, CA
+PhD EECS — UC Berkeley (Dec 2025)
+Morphism Systems — Founder (Aug 2025)
+16 peer-reviewed publications (IEEE, APS, AIP)
+SFT/DPO/LoRA · DFT/HPC · Category Theory
+San Francisco, CA
 ```
 
 </td>

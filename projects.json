@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-25",
+  "lastUpdated": "2026-03-26",
   "featured": [
     {
       "name": "meshal.ai",
@@ -16,7 +16,7 @@
       "name": "Morphism",
       "slug": "morphism",
       "url": "https://morphism.systems",
-      "repo": "morphism-org/morphism",
+      "repo": "morphism-systems/morphism",
       "description": "Category-theoretic AI governance — proof witnesses, offline-first verification. Companion: morphism-systems/morphism.",
       "tags": ["TypeScript", "Python", "Governance"],
       "category": "active",
@@ -271,14 +271,6 @@
       "url": "https://github.com/alawein/handshake-hai",
       "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (workspace: _eval/)",
       "status": "active"
-    },
-    {
-      "name": "failsafe",
-      "slug": "failsafe",
-      "legacy_slugs": ["mercor-llm-failsafe"],
-      "repo": "alawein/failsafe",
-      "url": "https://github.com/alawein/failsafe",
-      "purpose": "LLM benchmark generation — failure mode discovery + domain packs (workspace: _failsafe/)"
     },
     {
       "name": "reasonbench",

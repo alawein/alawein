@@ -108,6 +108,34 @@ Do not delete branches that are still in review or that others depend on. Prefer
 
 ---
 
+## CI workflow naming convention
+
+Workflow filenames in `.github/workflows/` follow these conventions:
+
+| Filename | Purpose | Scope |
+|----------|---------|-------|
+| `ci.yml` | Primary CI: lint, typecheck, build | Per-repo |
+| `ci-smoke.yml` | Lightweight smoke test (fast) | Per-repo |
+| `test.yml` | Full test suite (may use matrix) | Per-repo |
+| `e2e-tests.yml` or `e2e.yml` | End-to-end / integration tests | Per-repo |
+| `docs-doctrine.yml` | Doctrine validation (calls reusable) | All repos |
+| `docs-validation.yml` | Content quality, link checks | Repos with docs scripts |
+| `release.yml` | Semantic release / changesets | Repos with releases |
+| `deploy.yml` | Preview/staging deployment | Vercel-deployed repos |
+| `deploy-production.yml` | Production deployment | Vercel-deployed repos |
+| `notion-sync.yml` | Notion project sync | Ops-enabled repos |
+| `ops-sync-report.yml` | GitHub sync report generation | Ops-enabled repos |
+| `visual-audit.yml` | Visual regression / screenshots | Frontend repos |
+| `security.yml` or `codeql.yml` | Security scanning | Per-repo |
+
+**Rules:**
+- New CI workflows should use descriptive kebab-case names
+- Do not rename existing working workflows (breaks branch protection, badges)
+- `docs-doctrine.yml` is managed centrally — do not modify per-repo
+- One workflow per concern; avoid monolithic CI files
+
+---
+
 ## See also
 
 - [workflow.md](workflow.md) — Branch model, merge model, CI

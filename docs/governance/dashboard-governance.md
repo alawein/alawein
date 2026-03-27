@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: GitHub Dashboard Governance
 description: Topic taxonomy and operational rules for the generated GitHub portfolio dashboard.
 last_updated: 2026-03-14

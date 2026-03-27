@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Merge Policy
 description: Approved merge strategies, readiness criteria, exceptions, and cleanup rules for alawein
 category: governance

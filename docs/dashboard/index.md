@@ -1,4 +1,8 @@
 ---
+type: generated
+source: none
+sync: none
+sla: none
 title: GitHub Dashboard Snapshot
 description: Generated portfolio dashboard summary for GitHub repositories.
 last_updated: 2026-03-14

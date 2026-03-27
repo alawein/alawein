@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Parent alawein repo removal (clone-root conversion)
 description: Record of converting github.com/alawein from a git repo to a plain clone root per standard one-repo-per-project layout.
 category: archive

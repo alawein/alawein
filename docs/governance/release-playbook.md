@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Release Playbook
 description: Docs-first guidance for changelog updates, tags, release readiness, and rollback in alawein
 category: governance

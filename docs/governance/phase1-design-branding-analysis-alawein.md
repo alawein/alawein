@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Phase 1 — Design and Branding Analysis (alawein)
 description: Repository setup and initial analysis summary per agent-executable plan.
 last_updated: 2026-03-12

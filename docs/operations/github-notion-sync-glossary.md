@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: GitHub ↔ Notion sync glossary and guardrails
 description: Definitions for Sync [project] vs GitHub Sync, canonical data flow, and out-of-scope rules for agents and operators.
 last_updated: 2026-03-25

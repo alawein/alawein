@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Alawein Workspace Master Prompt
 description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and manifest-driven batch execution.
 last_updated: 2026-03-18

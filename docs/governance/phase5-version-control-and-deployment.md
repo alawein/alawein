@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Phase 5 — Version Control and Deployment Readiness
 description: Git operations and Vercel deployment checklist per agent-executable plan.
 last_updated: 2026-03-12

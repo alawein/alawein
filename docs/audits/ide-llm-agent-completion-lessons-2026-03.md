@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: IDE / LLM agent completion — issues, lessons, and PR-adjacent patterns
 description: Narrative capture of workflow gaps when agents stop before ship, branch confusion, README/projects work, and ties to v2.1.0 PR themes
 last_updated: 2026-03-23

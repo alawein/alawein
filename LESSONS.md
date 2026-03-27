@@ -1,5 +1,8 @@
 ---
-type: lessons
+type: canonical
+source: none
+sync: none
+sla: none
 authority: observed
 last-updated: 2026-03-26
 audience: [ai-agents, contributors, future-self]

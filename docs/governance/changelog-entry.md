@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Changelog Entry Guide
 description: Standard workflow for drafting and prepending Keep a Changelog release notes from recent commits
 last_updated: 2026-03-28

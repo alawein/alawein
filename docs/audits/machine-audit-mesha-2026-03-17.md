@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Machine audit — mesha reference machine
 description: Complete audit of skills, agents, MCPs, and plugin configuration on reference operator machine (Windows 11, Claude Code / Cursor / Codex / Kilo Code)
 last_updated: 2026-03-18

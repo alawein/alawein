@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Dashboard Rollout Playbook
 description: Operational procedure for token setup, dirty-file remediation, backup, rollback, and dashboard promotion.
 last_updated: 2026-03-14

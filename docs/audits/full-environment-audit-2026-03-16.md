@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Full Environment Audit 2026-03-16
 description: Scoped security and config audit — GitHub workspaces, local env, IDE/LLM domains
 category: audit

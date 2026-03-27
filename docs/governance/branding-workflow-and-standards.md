@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Branding Workflow and Standards
 description: Per-repo checklist and icon/favicon/theme standard for design and branding.
 last_updated: 2026-03-16

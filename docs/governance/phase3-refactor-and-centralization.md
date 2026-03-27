@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Phase 3 — Code Refactoring and Centralization Checklist
 description: Agent-executable steps to enforce standardization across repos.
 last_updated: 2026-03-12

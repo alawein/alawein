@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Workspace Layout Audit
 description: Repo-by-repo layout status against stack-aware standards with canonical-name-first reporting.
 last_updated: 2026-03-18

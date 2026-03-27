@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Skills Unification Workstream — Completion Summary
 description: Final status of 2026-03-17 workstream; all immediate issues resolved; path forward for lockfile pilot and Cursor audit
 last_updated: 2026-03-18

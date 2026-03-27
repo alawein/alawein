@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Phase 4 — Testing and Validation
 description: Agent-executable test and validation steps per repository.
 last_updated: 2026-03-12

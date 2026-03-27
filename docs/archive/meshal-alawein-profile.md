@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Legacy profile (Meshal Alawein)
 description: Archived copy of the previous `alawein/README-backup-20250807.md` content (kept for history and reference).
 last_updated: 2026-01-10

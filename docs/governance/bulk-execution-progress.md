@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Bulk Execution Progress — Design & Branding Plan
 description: Tracks Phase 3–5 execution across repos for resume capability.
 last_updated: 2026-03-15

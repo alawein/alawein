@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Notion Projects (Canonical) — sync and checklist
 description: Runbook for syncing projects.json to Notion and required database properties.
 last_updated: 2026-03-25

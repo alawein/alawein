@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Skills Consolidation Quick Reference
 description: One-page summary of skills architecture decisions from 2026-03-17 audit; intended for operators and contributors
 last_updated: 2026-03-20

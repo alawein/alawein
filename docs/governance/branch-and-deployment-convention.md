@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Branch and deployment convention
 description: Single reference for branch naming, workflow, and Vercel deployment across alawein repos
 category: governance

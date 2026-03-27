@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Morphism Documentation Philosophy
 description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
 last_updated: 2026-03-08

@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Review Playbook
 description: Self-review and collaborator-review expectations for changes in the alawein repository, including batch-generated PRs
 category: governance

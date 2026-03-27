@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Parallel Batch Execution
 description: Manifest-driven, exception-only rules for autonomous multi-repo execution in the alawein workspace
 category: governance

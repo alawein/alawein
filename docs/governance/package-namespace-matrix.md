@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Package Namespace Matrix
 description: Inventory of shared package producers, consumers, and namespace inconsistencies across the alawein workspace
 last_updated: 2026-03-28

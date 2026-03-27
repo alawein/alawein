@@ -1,5 +1,8 @@
 ---
-type: guide
+type: canonical
+source: none
+sync: none
+sla: none
 authority: canonical
 last-verified: 2026-03-27
 last_updated: 2026-03-27
@@ -37,6 +40,8 @@ It owns:
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
 - Documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- **Docs Doctrine** (file governance, classification, validation):
+  [`docs/governance/docs-doctrine.md`](docs/governance/docs-doctrine.md)
 - Repo boundaries:
   [`AGENTS.md`](AGENTS.md)
 - Current state:
@@ -45,6 +50,8 @@ It owns:
   [`docs/governance/design-branding-summary.md`](docs/governance/design-branding-summary.md),
   [`docs/governance/remaining-steps-per-repo.md`](docs/governance/remaining-steps-per-repo.md),
   [`docs/HANDOFF-DESIGN-BRANDING.md`](docs/HANDOFF-DESIGN-BRANDING.md)
+- Docs Doctrine handoff (Phase 3-5 requests with superpowers prompts):
+  [`docs/HANDOFF-DOCS-DOCTRINE.md`](docs/HANDOFF-DOCS-DOCTRINE.md)
 - Slash commands catalog and workflows (any repo/dir):
   [`docs/governance/slash-commands-catalog.md`](docs/governance/slash-commands-catalog.md)
 - Skills, agents & commands unification (universal vs ecosystem vs org):
@@ -92,6 +99,8 @@ It owns:
 - `docs/governance/documentation-contract.md`
 - `docs/governance/workspace-master-prompt.md`
 - `scripts/validate-doc-contract.sh`
+- `scripts/validate-doctrine.py`
+- `docs/governance/docs-doctrine.md`
 
 ---
 
@@ -141,6 +150,7 @@ alawein/
       workspace-rename-matrix.md
       workspace-layout-audit.md
       workspace-resource-map.md
+      docs-doctrine.md
   .github/
     ISSUE_TEMPLATE/
     workflows/
@@ -148,6 +158,12 @@ alawein/
     pull_request_template.md
   scripts/
     validate-doc-contract.sh
+    validate-doctrine.py
+    bootstrap-repo.sh
+    generate-index.sh
+    sync-claude.sh
+    render-configs.sh
+    pre-commit-doctrine.sh
     sync-readme.py
     sync-to-notion.mjs
   projects.json
@@ -164,6 +180,7 @@ alawein/
    [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
 4. Run `python scripts/sync-readme.py --check`.
 5. Run `./scripts/validate-doc-contract.sh --full`.
+6. Run `python scripts/validate-doctrine.py .` (expect PASS; 0 errors).
 
 ---
 
@@ -173,6 +190,7 @@ Before proposing changes:
 
 - `python scripts/sync-readme.py --check`
 - `./scripts/validate-doc-contract.sh --full`
+- `python scripts/validate-doctrine.py .` (docs doctrine: headers, naming, zombies)
 - markdown lint/link checks for managed docs (same commands as CI workflows)
 
 ---

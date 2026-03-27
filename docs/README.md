@@ -1,4 +1,8 @@
 ---
+type: derived
+source: docs/
+sync: manual
+sla: manual
 title: Alawein Documentation
 description: Entry point for organization-level governance, portfolio truth, and migration guides.
 category: index

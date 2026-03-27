@@ -92,6 +92,11 @@ def check_naming(filepath, result):
     name = path.name
     stem = path.stem
 
+    # R5 only applies to managed file types — skip source code, notebooks, etc.
+    if path.suffix not in MANAGED_EXTENSIONS:
+        result.ok()
+        return
+
     # Files in archive/ or dist/ get warnings, not errors (historical artifacts)
     parts = path.parts
     in_archive = any(p in ("archive", "dist") for p in parts)

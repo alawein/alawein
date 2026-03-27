@@ -58,27 +58,36 @@ def validate_repo(repo_path: Path) -> dict:
     warnings = []
     passed = 0
 
+    # Directories to skip (build artifacts, caches, environments)
+    skip_dirs = {
+        "node_modules", "__pycache__", ".git", "dist", ".venv",
+        "venv", ".next", ".turbo",
+    }
+
     for dirpath, dirnames, filenames in os.walk(repo_path):
         dirnames[:] = [
             d for d in dirnames
-            if not d.startswith(".")
-            and d != "node_modules"
-            and d != "__pycache__"
-            and d != ".git"
+            if not d.startswith(".") and d not in skip_dirs
         ]
 
         for f in filenames:
             fp = os.path.join(dirpath, f)
             p = Path(fp)
 
-            # Rule 5: naming checks
-            if p.suffix in BANNED_EXTENSIONS:
-                errors.append((fp, "R5", f"Banned extension: {p.suffix}"))
-                continue
-            for suffix in BANNED_SUFFIXES:
-                if p.stem.endswith(suffix):
-                    errors.append((fp, "R5", f"Banned suffix: {suffix}"))
-                    break
+            # Rule 5: naming checks (only managed file types)
+            if p.suffix in MANAGED_EXTENSIONS:
+                in_archive = any(
+                    part in ("archive", "dist") for part in p.parts
+                )
+                if p.suffix in BANNED_EXTENSIONS:
+                    if not in_archive:
+                        errors.append((fp, "R5", f"Banned extension: {p.suffix}"))
+                    continue
+                for suffix in BANNED_SUFFIXES:
+                    if p.stem.endswith(suffix):
+                        if not in_archive:
+                            errors.append((fp, "R5", f"Banned suffix: {suffix}"))
+                        break
 
             # Rule 1: header checks (only .md files)
             if p.suffix in HEADER_EXTENSIONS:

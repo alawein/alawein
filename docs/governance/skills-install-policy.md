@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Skills install policy (IDEs, platforms, repos)
 description: Single policy for where agent skills live, how to install without collisions, and how MCPs differ from skills.
 last_updated: 2026-03-19

@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Issue C Phase 2 — Codex/Kilo Consolidation Assessment
 description: Optional further consolidation of per-agent skills to global Tier 1; deferred pending active need
 last_updated: 2026-03-18

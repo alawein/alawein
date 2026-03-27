@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Feature Lifecycle
 description: End-to-end lifecycle for docs, governance, asset, and feature work in the alawein repository
 category: governance

@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Audit Reports Index
 description: Canonical index of audit reports under docs/audits.
 category: index

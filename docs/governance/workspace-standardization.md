@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, layout, shared resources, and phased workspace directives.
 last_updated: 2026-03-18

@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Remediation checklist (full-environment audit)
 description: Step-by-step actions to address findings from full-environment-audit-2026-03-16
 last_updated: 2026-03-16

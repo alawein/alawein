@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Design & Branding Plan — Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
 last_updated: 2026-03-14

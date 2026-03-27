@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Profile sync from guides
 description: README About and profile copy sync with _pkos (formerly guides); export and sync flow.
 last_updated: 2026-03-20

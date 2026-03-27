@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Skills, Agents, and Commands Maintenance
 description: Operating guide for maintaining universal, ecosystem, and org layers across local Claude/Cursor plugins and alawein governance docs.
 last_updated: 2026-03-18

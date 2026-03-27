@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Release v2.1.0 — executive summary (Notion / email)
 description: Paste-friendly summary for alawein org repo release 2026-03-21
 last_updated: 2026-03-22

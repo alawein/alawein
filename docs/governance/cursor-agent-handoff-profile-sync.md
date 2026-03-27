@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Cursor agent handoff — profile sync and PKOS alignment
 description: Summary, revision plan, and syncing runbook for PKOS and alawein profile/README alignment
 category: governance

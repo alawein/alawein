@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Repository Workflow
 description: Branch model, commit patterns, deployment flow, and autonomous batch rules for the alawein organization
 category: governance

@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Repo sweep — universal agent prompt
 description: Stack-agnostic governance-aware prompt for cleaning and validating any repo under the alawein workspace.
 last_updated: 2026-03-26

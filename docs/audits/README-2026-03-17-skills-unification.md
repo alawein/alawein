@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Skills Unification Audit (2026-03-17) — Navigation Guide
 description: Index and navigation for all skills unification workstream documents
 last_updated: 2026-03-18

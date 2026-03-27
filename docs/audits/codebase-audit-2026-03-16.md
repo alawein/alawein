@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Codebase Audit 2026-03-16
 description: Full repository audit — governance, scripts, CI, and recommended actions
 category: audit

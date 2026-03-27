@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Credential hygiene
 description: Rules for storing and referencing secrets; aligns with full-environment audit findings
 last_updated: 2026-03-16

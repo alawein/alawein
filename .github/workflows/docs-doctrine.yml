@@ -1,0 +1,47 @@
+name: Docs Doctrine
+
+on:
+  push:
+    paths:
+      - "docs/**"
+      - "*.md"
+      - "scripts/validate-doctrine.py"
+      - "scripts/generate-index.sh"
+      - "scripts/sync-claude.sh"
+      - "scripts/render-configs.sh"
+      - ".github/workflows/docs-doctrine.yml"
+  pull_request:
+    paths:
+      - "docs/**"
+      - "*.md"
+      - "scripts/validate-doctrine.py"
+      - "scripts/generate-index.sh"
+      - "scripts/sync-claude.sh"
+      - "scripts/render-configs.sh"
+      - ".github/workflows/docs-doctrine.yml"
+
+jobs:
+  validate:
+    name: Doctrine Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run Doctrine Validator
+        run: python scripts/validate-doctrine.py --ci .
+
+  drift-check:
+    name: Derived File Drift Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check derived file freshness
+        run: |
+          bash scripts/generate-index.sh . 2>/dev/null || true
+          if ! git diff --exit-code; then
+            echo "FAIL: Derived files are stale."
+            git diff --stat
+            exit 1
+          fi

@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Technical Debt & Code Quality Report
 description: Snapshot of workspace technical debt and quality issues as of March 2026.
 category: governance

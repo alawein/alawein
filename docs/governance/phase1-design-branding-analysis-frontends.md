@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Phase 1 — Design and Branding Analysis (Front-end Repos)
 description: Combined setup and initial analysis for meshal-web, gainboy, attributa, llmworks, simcore, qmlab, rounaq-atelier.
 last_updated: 2026-03-12

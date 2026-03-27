@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Skills unification workstream — report
 description: What we did, open issues, likely causes, and audits for other IDEs/LLMs/MCPs.
 last_updated: 2026-03-19

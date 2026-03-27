@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: GitHub canonical verification
 description: gh repo view notes for canonical repo names, redirects, and PKOS alignment.
 last_updated: 2026-03-26

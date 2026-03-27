@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Project lifecycle tiers (SSOT)
 description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
 last_updated: 2026-03-26

@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Operator Command Cheatsheet
 description: Preferred slash commands for daily operation across any repo or directory, with ecosystem and org-specific add-ons.
 last_updated: 2026-03-16

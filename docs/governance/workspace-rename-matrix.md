@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Workspace Root Rename Matrix
 description: Canonical-to-physical name matrix for top-level workspace directories and phased migration status.
 last_updated: 2026-03-18

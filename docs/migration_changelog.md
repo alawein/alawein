@@ -1,4 +1,8 @@
 ---
+type: frozen
+source: none
+sync: none
+sla: none
 title: Migration changelog
 description: Timestamped notes for docs and catalog moves in this repository (informal log).
 last_updated: 2026-03-26

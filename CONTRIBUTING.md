@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Contributing Guide
 description: Contribution guidelines and development workflow for the alawein organization
 category: governance

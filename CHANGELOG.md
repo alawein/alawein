@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Changelog
 description: Version history and notable changes to the alawein organization repository
 category: documentation

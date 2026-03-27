@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Claude Code migration prompts and checklists
 description: Copy-paste superprompt and phased prompts to audit, upgrade, and harmonize Claude Code config; plus a practical migration checklist.
 last_updated: 2026-03-25

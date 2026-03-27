@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Documentation Contract
 description: Authoritative local rules for document classes, freshness metadata, naming, and CI truthfulness in the alawein repository
 last_updated: 2026-03-16

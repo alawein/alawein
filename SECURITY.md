@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Security Policy
 description: Security vulnerability reporting and disclosure procedures
 last_updated: 2026-03-28

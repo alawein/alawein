@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Operating Model
 description: Task-oriented map of the alawein governance suite, including the default path for autonomous batch execution
 category: governance

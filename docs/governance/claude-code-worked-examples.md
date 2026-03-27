@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Claude Code worked examples (copy-paste)
 description: Concrete snippets for CLAUDE.md, rules/, commands/, skills/, agents/, and settings — extracted from the internal reference UI for use in product repos.
 last_updated: 2026-03-25

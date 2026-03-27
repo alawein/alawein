@@ -1,4 +1,8 @@
 ---
+type: canonical
+source: none
+sync: none
+sla: none
 title: Git Operations Guide
 description: Day-to-day Git guidance for branching, syncing, pushing, stashing, cleanup, and recovery in alawein
 category: governance

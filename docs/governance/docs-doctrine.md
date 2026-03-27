@@ -111,18 +111,18 @@ automated check.
 
 ## Part 2: File Classification Table
 
-| File Type | Class | Canonical Source | Derived? | SLA | Notes |
-|-----------|-------|------------------|----------|-----|-------|
-| CLAUDE.md (org) | Canonical | Org repo root | No | N/A | Global rules and directives |
-| CLAUDE.md (local) | Derived | Org CLAUDE.md | Yes | On-change | Filtered projection only |
-| INDEX.md | Derived | Directory structure | Yes | On-change | Auto-generated, never hand-edited |
-| projects.json | Canonical | Org repo | No | N/A | Single source of truth |
-| Project README | Canonical | Project repo root | No | N/A | Human-owned |
-| Batch templates | Canonical | templates/ dir | No | N/A | Never duplicated into repos |
-| Generated configs | Derived | Templates | Yes | On-change | Deterministic rendering |
-| Logs | Generated | Runtime | No | None | Ephemeral, not reproducible |
-| Reports | Generated | Pipelines | No | None | Point-in-time snapshots |
-| Snapshots | Frozen | Prior canonical | No | None | Immutable after creation |
+| File Type | Class | Canonical Source | Derived? | SLA | Generator | Notes |
+|-----------|-------|------------------|----------|-----|-----------|-------|
+| CLAUDE.md (root) | Canonical | Per-repo root | No | N/A | — | Project-specific, human-owned |
+| .claude/CLAUDE.md | Derived | org/governance-templates | Yes | On-change | `sync-claude.sh` | Governance template; preserves per-repo description |
+| INDEX.md | Derived | Directory structure | Yes | On-change | `generate-index.sh` | Auto-generated, never hand-edited |
+| projects.json | Canonical | Org repo | No | N/A | — | Single source of truth |
+| Project README | Canonical | Project repo root | No | N/A | — | Human-owned |
+| Batch templates | Canonical | templates/ dir | No | N/A | — | Never duplicated into repos |
+| Generated configs | Derived | Templates | Yes | On-change | `render-configs.sh` | Deterministic rendering |
+| Logs | Generated | Runtime | No | None | — | Ephemeral, not reproducible |
+| Reports | Generated | Pipelines | No | None | — | Point-in-time snapshots |
+| Snapshots | Frozen | Prior canonical | No | None | — | Immutable after creation |
 
 ---
 

@@ -1,0 +1,43 @@
+name: Doctrine Validation (Reusable)
+
+# Reusable workflow for cross-repo doctrine validation.
+# Product repos call this via:
+#   jobs:
+#     doctrine:
+#       uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@main
+
+on:
+  workflow_call:
+    inputs:
+      strict:
+        description: "Block on failures (true) or warn only (false)"
+        required: false
+        default: "true"
+        type: string
+
+jobs:
+  validate:
+    name: Doctrine Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: repo
+
+      - uses: actions/checkout@v4
+        with:
+          repository: alawein/alawein
+          path: org
+          sparse-checkout: scripts/validate-doctrine.py
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Doctrine Validator
+        run: |
+          if [ "${{ inputs.strict }}" = "true" ]; then
+            python org/scripts/validate-doctrine.py --ci repo
+          else
+            python org/scripts/validate-doctrine.py repo || echo "::warning::Doctrine validation found issues (non-blocking)"
+          fi

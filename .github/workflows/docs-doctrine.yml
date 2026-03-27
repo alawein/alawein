@@ -19,6 +19,9 @@ on:
       - "scripts/sync-claude.sh"
       - "scripts/render-configs.sh"
       - ".github/workflows/docs-doctrine.yml"
+  schedule:
+    # Monthly freshness audit — 1st of each month at 06:00 UTC
+    - cron: "0 6 1 * *"
 
 jobs:
   validate:

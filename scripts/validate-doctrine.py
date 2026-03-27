@@ -92,15 +92,27 @@ def check_naming(filepath, result):
     name = path.name
     stem = path.stem
 
+    # Files in archive/ or dist/ get warnings, not errors (historical artifacts)
+    parts = path.parts
+    in_archive = any(p in ("archive", "dist") for p in parts)
+
     # Banned extensions
     if path.suffix in BANNED_EXTENSIONS:
-        result.error(filepath, "R5", f"Banned extension: {path.suffix}")
+        if in_archive:
+            result.warn(filepath, "R5", f"Banned extension in archive: {path.suffix}")
+        else:
+            result.error(filepath, "R5", f"Banned extension: {path.suffix}")
         return
 
     # Banned suffixes
     for suffix in BANNED_SUFFIXES:
         if stem.endswith(suffix):
-            result.error(filepath, "R5", f"Banned version suffix: {suffix}")
+            if in_archive:
+                result.warn(
+                    filepath, "R5", f"Banned suffix in archive: {suffix}"
+                )
+            else:
+                result.error(filepath, "R5", f"Banned version suffix: {suffix}")
             return
 
     # Root-level .md files must be UPPERCASE
@@ -217,12 +229,15 @@ def validate(root, ci_mode=False):
     managed_files = []
     all_contents = {}
 
+    # Directories to always skip (build artifacts, environments, caches)
+    SKIP_DIRS = {"node_modules", "__pycache__", "dist", ".venv", "venv", ".next", ".turbo"}
+
     for dirpath, dirnames, filenames in os.walk(root):
-        # Skip hidden dirs, underscore-prefixed dirs, and node_modules
+        # Skip hidden dirs, build dirs, and known non-doc directories
         dirnames[:] = [
             d
             for d in dirnames
-            if not d.startswith(".") and d != "node_modules" and d != "__pycache__"
+            if not d.startswith(".") and d not in SKIP_DIRS
         ]
 
         for d in dirnames:

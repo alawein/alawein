@@ -54,22 +54,10 @@ for file in $STAGED; do
   esac
 done
 
-# -- Full validation (if validator is available) --
-# Look for validator in common locations
-VALIDATOR=""
-for candidate in \
-  "scripts/validate-doctrine.py" \
-  "../alawein/scripts/validate-doctrine.py" \
-  "$(git rev-parse --show-toplevel 2>/dev/null)/scripts/validate-doctrine.py"; do
-  if [ -f "$candidate" ]; then
-    VALIDATOR="$candidate"
-    break
-  fi
-done
-
-if [ -n "$VALIDATOR" ]; then
-  python "$VALIDATOR" . || FAIL=1
-fi
+# NOTE: Full-repo validation (validate-doctrine.py) runs in CI, not here.
+# The pre-commit hook only checks staged files for naming and header issues.
+# This prevents bulk migrations from being blocked by pre-existing errors
+# in unstaged files.
 
 if [ $FAIL -ne 0 ]; then
   echo ""

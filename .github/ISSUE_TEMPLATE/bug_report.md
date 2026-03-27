@@ -1,4 +1,8 @@
----
+---type: canonical
+source: none
+sync: none
+sla: none
+
 name: Bug report
 title: 'Bug: <short description>'
 labels: [bug]

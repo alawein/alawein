@@ -1,4 +1,8 @@
----
+---type: canonical
+source: none
+sync: none
+sla: none
+
 name: Feature request
 title: 'Feature: <short description>'
 labels: [enhancement]

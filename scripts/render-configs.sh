@@ -30,10 +30,15 @@ render_template() {
   today=$(date +%Y-%m-%d)
 
   # Determine output path from template name
-  # e.g., editorconfig.template -> .editorconfig
-  #        claude-settings.json.template -> .claude/settings.json
+  # Convention: editorconfig.template -> .editorconfig (add dot prefix)
+  # Override: if name already starts with dot, keep as-is
   local tname
   tname=$(basename "${template%.template}")
+  # Known dotfile mappings
+  case "$tname" in
+    editorconfig|gitignore|gitattributes|prettierrc|eslintrc)
+      tname=".${tname}" ;;
+  esac
   local out="${repo_dir}/${tname}"
 
   mkdir -p "$(dirname "$out")"
@@ -55,7 +60,7 @@ case "$MODE" in
       exit 0
     fi
     count=0
-    for tmpl in "${TEMPLATE_DIR}"/*.template; do
+    for tmpl in "${TEMPLATE_DIR}"/*.template "${TEMPLATE_DIR}"/.*.template; do
       [ -f "$tmpl" ] || continue
       echo "  $(basename "$tmpl") -> $(basename "${tmpl%.template}")"
       count=$((count + 1))

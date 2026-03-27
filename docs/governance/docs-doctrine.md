@@ -274,6 +274,52 @@ and frozen files, set source/sync/sla to `none`.
 
 ---
 
+## Part 8: Enforcement Deployment
+
+### Pre-commit Hook
+
+Deploy via `scripts/deploy-hooks.sh --all`. The hook checks:
+- Rule 5: naming conventions (banned extensions, banned suffixes)
+- Rule 1: frontmatter presence on managed file types
+- Full validation (when validator script is reachable)
+
+Repos with existing non-doctrine pre-commit hooks are skipped (not
+overwritten). Check deployment status: `scripts/deploy-hooks.sh --check`.
+
+### Reusable CI Workflow
+
+Product repos can adopt doctrine validation by adding a workflow that calls:
+
+```yaml
+jobs:
+  doctrine:
+    uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@main
+    with:
+      strict: "true"  # or "false" for warn-only
+```
+
+### Periodic Freshness Audit
+
+The org repo CI runs monthly (1st of month, 06:00 UTC) to check for stale
+derived files. Drift is detected by regenerating derived files and checking
+for git diff.
+
+### Escalation Path
+
+When a derived file goes stale beyond its SLA:
+
+| SLA Tier | Detection | Action | Escalation |
+|----------|-----------|--------|------------|
+| Realtime | CI on every commit | Block merge | Fix immediately |
+| On-change | CI drift-check | Warn in PR | Regenerate before next merge |
+| Manual | Monthly cron | GitHub issue | Owner regenerates within 7 days |
+| None (frozen) | N/A | N/A | File is immutable |
+
+If a stale file persists beyond its escalation window, it is flagged as a
+zombie candidate (Rule 9) in the next monthly scan.
+
+---
+
 ## Core Principle
 
 > Every file must justify its existence.

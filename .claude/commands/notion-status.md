@@ -1,4 +1,8 @@
----
+---type: canonical
+source: none
+sync: none
+sla: none
+
 description: "Show Notion database status and sync health"
 allowed-tools: ["Bash", "Read"]
 ---

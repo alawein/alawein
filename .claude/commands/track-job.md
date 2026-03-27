@@ -1,4 +1,8 @@
----
+---type: canonical
+source: none
+sync: none
+sla: none
+
 description: "Search Gmail for interview emails and sync to Notion Engagements"
 allowed-tools: ["mcp__claude_ai_Gmail__gmail_search_messages", "mcp__claude_ai_Gmail__gmail_read_message", "Read", "Write", "Bash"]
 ---

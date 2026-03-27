@@ -1,4 +1,8 @@
----
+---type: canonical
+source: none
+sync: none
+sla: none
+
 description: "Bidirectional sync between PKOS knowledge base and Notion"
 allowed-tools: ["Read", "Write", "Bash", "Glob", "Grep"]
 ---

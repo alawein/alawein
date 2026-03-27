@@ -1,3 +1,10 @@
+---
+type: canonical
+source: none
+sync: none
+sla: none
+---
+
 # Cursor Rules for alawein
 
 You are working in the **alawein** organization profile repository (docs, governance, `projects.json`, README sync).

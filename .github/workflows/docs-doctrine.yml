@@ -37,11 +37,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check derived file freshness
+      - name: Regenerate derived files
         run: |
-          bash scripts/generate-index.sh . 2>/dev/null || true
+          echo "=== generate-index.sh ==="
+          bash scripts/generate-index.sh .
+
+          echo "=== render-configs.sh ==="
+          bash scripts/render-configs.sh
+
+      - name: Check for drift
+        run: |
           if ! git diff --exit-code; then
-            echo "FAIL: Derived files are stale."
+            echo "::error::Derived files are stale. Run generators and commit."
             git diff --stat
             exit 1
           fi
+          echo "All derived files are fresh."

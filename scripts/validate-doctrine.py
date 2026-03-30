@@ -15,8 +15,9 @@ from pathlib import Path
 
 # -- Configuration --
 MANAGED_EXTENSIONS = {".md", ".json", ".yaml", ".yml", ".toml", ".cfg"}
-# Extensions that support YAML frontmatter (JSON structurally cannot)
-HEADER_EXTENSIONS = {".md", ".yaml", ".yml", ".toml", ".cfg"}
+# Frontmatter is enforced for Markdown only; config/metadata files are
+# classified by path/governance rules, not in-file YAML blocks.
+HEADER_EXTENSIONS = {".md"}
 UPPERCASE_ROOT_PATTERN = re.compile(r"^[A-Z][A-Z0-9_-]*\.md$")
 KEBAB_DIR_PATTERN = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 BANNED_SUFFIXES = ("_v2", "_v3", "_final", "_new", "_old", "_copy", "_backup")
@@ -145,8 +146,8 @@ def check_header(filepath, result):
     if suffix not in MANAGED_EXTENSIONS:
         return
 
-    # JSON files cannot have YAML frontmatter -- skip header checks
-    if suffix == ".json":
+    # Only markdown files are required to carry doctrine frontmatter.
+    if suffix not in HEADER_EXTENSIONS:
         result.ok()
         return
 

@@ -5,13 +5,15 @@ sync: none
 sla: none
 title: Project lifecycle tiers (SSOT)
 description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
-last_updated: 2026-03-26
+last_updated: 2026-03-30
 category: operations
 audience: [ai-agents, contributors]
 status: active
 related:
   - ../../projects.json
   - ./notion-projects-database.md
+  - ../governance/repository-layout-standard.md
+  - ../governance/tooling-quality-gates.md
 ---
 
 # Project lifecycle tiers (SSOT)
@@ -26,6 +28,15 @@ This document defines how **`category`** in [`projects.json`](../../projects.jso
 | **maintained** | Product or surface stays live; **low churn** — fixes, deps, content tweaks, no major roadmap. | PKOS `phase: maintenance`, or stable portfolio site with rare commits. |
 | **planned** | Idea / early build: not yet a stable public product loop. | PKOS `phase: ideation` (or equivalent); may still have a repo and commits. |
 | **archived** | Intentionally sunset or **GitHub archived**; keep only for history or redirects. | GitHub `archived=true`, or explicit sunset note in PKOS. |
+
+## Layout and CI expectations by tier
+
+| `category` | Repository layout | CI quality gates |
+|------------|-------------------|------------------|
+| **active** | SHOULD follow the archetype in [repository layout standard](../governance/repository-layout-standard.md). | SHOULD run format, lint, type-check, and build on PRs (see [tooling quality gates](../governance/tooling-quality-gates.md)). |
+| **maintained** | SHOULD keep `docs/` and scripts organized; avoid new root clutter. | SHOULD run at least test/build; lint/format MAY warn until debt is cleared. |
+| **planned** | MAY use minimal layout; document intended archetype in README. | CI optional until first public release. |
+| **archived** | No layout requirements. | No CI requirement. |
 
 ## Precedence when signals conflict
 

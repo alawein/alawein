@@ -1,12 +1,19 @@
 ---
-type: canonical
-source: none
-sync: none
-sla: none
+**Build System**: N/A (static organizational content)
+**Primary Language**: N/A (documentation and policies)
+**Repository Type**: Organization Profile
+- Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
+- When canonical name and physical repo slug differ, use: 
+It owns: 
+`canonical-name (repo: physical-slug)`.
+audience: [ai-agents, contributors]
 authority: canonical
 last-verified: 2026-03-27
 last_updated: 2026-03-27
-audience: [ai-agents, contributors]
+sla: none
+source: none
+sync: none
+type: canonical
 ---
 
 <!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
@@ -15,24 +22,6 @@ audience: [ai-agents, contributors]
 
 > Repository profile + governance templates
 
----
-
-## Overview
-
-This repository is the org-level docs and governance control plane for the
-`alawein` GitHub organization.
-
-It owns:
-
-- portfolio truth (`README.md` + `projects.json`)
-- workspace governance rules
-- documentation contract and validation scripts
-
-**Repository Type**: Organization Profile  
-**Primary Language**: N/A (documentation and policies)  
-**Build System**: N/A (static organizational content)
-
----
 
 ## Governance Sources
 
@@ -102,26 +91,6 @@ It owns:
 - `scripts/validate-doctrine.py`
 - `docs/governance/docs-doctrine.md`
 
----
-
-## Naming and Migration Rules
-
-- Use canonical names in docs and inventory tables.
-- When canonical name and physical repo slug differ, use:
-  `canonical-name (repo: physical-slug)`.
-- Keep links pointed at physical slugs until cutover.
-- Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
-  `atelier-rounaq`, and `edfp` now use canonical physical slugs.
-- Regenerate README sync blocks from `projects.json` with
-  `scripts/sync-readme.py`. When `profile-from-guides.yaml` exists (from _pkos
-  export), the same script updates the README About block; see
-  [profile-sync-from-guides](docs/governance/profile-sync-from-guides.md).
-- For profile sync or PKOS alignment work, read and follow
-  [cursor-agent-handoff-profile-sync](docs/governance/cursor-agent-handoff-profile-sync.md).
-- End file-changing work with **commit, push**, merge per policy, and clean
-  `git status` — [ide-llm-agent-completion-lessons-2026-03](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
-
----
 
 ## Repository Structure
 
@@ -169,20 +138,6 @@ alawein/
   projects.json
 ```
 
----
-
-## Development Workflow
-
-1. Read [`AGENTS.md`](AGENTS.md) and [`SSOT.md`](SSOT.md).
-2. Read
-   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md).
-3. Read
-   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md).
-4. Run `python scripts/sync-readme.py --check`.
-5. Run `./scripts/validate-doc-contract.sh --full`.
-6. Run `python scripts/validate-doctrine.py .` (expect PASS; 0 errors).
-
----
 
 ## Quality Gates
 

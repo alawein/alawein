@@ -148,7 +148,7 @@ Physics-inspired video event detection. FFT spectral analysis, hierarchical filt
 </td>
 <td align="center" width="33%">
 
-**[Neper](https://www.meshal.ai/neper)**
+**[Alembiq](https://alembiq.online)**
 
 LLM training, alignment, evaluation, and synthetic data platform.
 
@@ -157,7 +157,7 @@ LLM training, alignment, evaluation, and synthetic data platform.
 </td>
 <td align="center" width="33%">
 
-**[QAPlibria](https://www.meshal.ai/qaplibria)**
+**[OptiQAP](https://optiqap.online)**
 
 Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.
 
@@ -242,7 +242,7 @@ This org runs on a single operating contract: [workspace-master-prompt](docs/gov
 | [chshlab](https://github.com/alawein/chshlab) | Quantum foundations — CHSH / Bell education site |
 | [helios](https://github.com/alawein/helios) | Proprietary research archive — computational astrophysics |
 | [loopholelab](https://github.com/alawein/loopholelab) | Research validation — adversarial claim stress-testing |
-| [epistemic-stack](https://github.com/alawein/epistemic-stack) | Agent MCP tooling — drift, memory, proof |
+| [Provegate](https://provegate.online) | Agent MCP tooling — drift, memory, proof |
 <!-- SYNC:RESEARCH:END -->
 
 </details>

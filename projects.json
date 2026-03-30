@@ -106,9 +106,9 @@
       "portfolio_domain": "Work"
     },
     {
-      "name": "Neper",
+      "name": "Alembiq",
       "slug": "neper",
-      "url": "https://www.meshal.ai/neper",
+      "url": "https://alembiq.online",
       "repo": "alawein/neper",
       "description": "LLM training, alignment, evaluation, and synthetic data platform.",
       "tags": ["Python", "PyTorch", "LLM Training"],
@@ -237,9 +237,10 @@
       "domain": "Research validation — adversarial claim stress-testing"
     },
     {
-      "name": "epistemic-stack",
+      "name": "Provegate",
       "slug": "epistemic-stack",
       "repo": "alawein/epistemic-stack",
+      "url": "https://provegate.online",
       "domain": "Agent MCP tooling — drift, memory, proof"
     }
   ],
@@ -276,11 +277,11 @@
       "status": "active"
     },
     {
-      "name": "reasonbench",
+      "name": "fallax",
       "slug": "reasonbench",
       "repo": "alawein/reasonbench",
-      "url": "https://github.com/alawein/reasonbench",
-      "purpose": "Reasonbench workspace repository (workspace: reasonbench/)"
+      "url": "https://fallax.online",
+      "purpose": "Fallax — LLM adversarial reasoning evaluation system (workspace: reasonbench/)"
     }
   ],
   "packages": [

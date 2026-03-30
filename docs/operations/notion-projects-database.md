@@ -73,7 +73,7 @@ Each entry can set **`portfolio_domain`**: `Work` | `Personal` | `scientific-com
    - **Tags** (multi-select) — add options matching `projects.json` tags, or sync will fail on unknown names.
    - **Category** (select) — `active`, `maintained`, `planned`, `archived`
    - **Repo** (text)
-   - **Domain** (select) — at minimum add **`scientific-computing`** if you use it for Neper; otherwise change `portfolio_domain` for Neper to `Work` or `Personal` in JSON.
+   - **Domain** (select) — at minimum add **`scientific-computing`** if you use it for Alembiq; otherwise change `portfolio_domain` for Alembiq to `Work` or `Personal` in JSON.
    - The sync script now runs a **preflight** and will fail early if Category/Domain/Tags options are missing (or wrong type). If your column names differ, set env overrides.
 3. **Legacy rows** — The script matches **`aiclarity`** via `legacy_slugs` on **edfp** and rewrites that page to EDFP (`edfp.online`, `alawein/edfp`). You can delete the duplicate **aiclarity.com** row after one successful sync if a second page remains.
 

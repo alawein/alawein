@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-26",
+  "lastUpdated": "2026-03-29",
   "featured": [
     {
       "name": "meshal.ai",
@@ -116,9 +116,10 @@
       "portfolio_domain": "scientific-computing"
     },
     {
-      "name": "QAPlibria",
-      "slug": "qaplibria",
-      "url": "https://www.meshal.ai/qaplibria",
+      "name": "OptiQAP",
+      "slug": "optiqap",
+      "legacy_slugs": ["qaplibria"],
+      "url": "https://optiqap.online",
       "repo": "alawein/qaplibria",
       "description": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
       "tags": ["Python", "Optimization", "HPC"],
@@ -155,7 +156,7 @@
       "repo": "alawein/meatheadphysicist",
       "description": "Physics education and writing — Markdown-first content brand.",
       "tags": ["Markdown", "Physics"],
-      "category": "maintained",
+      "category": "archived",
       "portfolio_domain": "Personal"
     }
   ],
@@ -219,6 +220,7 @@
       "name": "chshlab",
       "slug": "chshlab",
       "repo": "alawein/chshlab",
+      "url": "https://chshlab.online",
       "domain": "Quantum foundations — CHSH / Bell education site"
     },
     {
@@ -231,6 +233,7 @@
       "name": "loopholelab",
       "slug": "loopholelab",
       "repo": "alawein/loopholelab",
+      "url": "https://loopholelab.online",
       "domain": "Research validation — adversarial claim stress-testing"
     },
     {

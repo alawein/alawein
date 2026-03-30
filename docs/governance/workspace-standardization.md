@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, layout, shared resources, and phased workspace directives.
-last_updated: 2026-03-18
+last_updated: 2026-03-30
 category: governance
 audience: contributors
 status: active
@@ -50,6 +50,11 @@ Current cutover status (2026-03-11): for `gymboy`, `meatheadphysicist`,
 External or remote tool directories must be underscore-prefixed.
 
 ## Stack-Aware Layout Standards
+
+**SSOT for archetypes and anti-patterns**: [repository-layout-standard.md](./repository-layout-standard.md).  
+**Tooling and CI**: [tooling-quality-gates.md](./tooling-quality-gates.md).
+
+The sections below remain as migration-era detail; prefer the SSOT doc for new repos.
 
 ### Vite and SPA Repositories
 

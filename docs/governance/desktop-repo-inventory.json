@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "generated": "2026-03-30",
+  "workspace_roots": [
+    "C:\\Users\\mesha\\Desktop\\GitHub\\alawein",
+    "C:\\Users\\mesha\\Desktop\\GitHub\\morphism-systems",
+    "C:\\Users\\mesha\\Desktop\\GitHub\\blackmalejournal"
+  ],
+  "golden_references": {
+    "vite-react-spa": { "repo": "alawein/repz", "local_folder": "repz", "notes": "Shared ESLint/Prettier devkit pattern" },
+    "vite-react-spa_alt": { "repo": "alawein/llmworks", "local_folder": "llmworks", "notes": "Lean Vite + Vitest" },
+    "next-app-router": { "repo": "alawein/scribd", "local_folder": "scribd", "notes": "eslint.config.mjs without package type module" },
+    "node-monorepo": { "repo": "alawein/devkit", "local_folder": "_devkit", "notes": "Scoped @alawein packages" },
+    "python-library": { "repo": "alawein/edfp", "local_folder": "edfp", "notes": "Service-style Python; extend with ruff/pytest" }
+  },
+  "excluded_paths": [
+    "_devkit-rollout",
+    "node_modules",
+    ".cache",
+    "meatheadphysicist/.cache"
+  ],
+  "repos": [
+    {"folder": "_devkit", "remote_slug": "devkit", "archetype": "node-monorepo", "tier": "infrastructure", "stack": "pnpm/npm workspaces"},
+    {"folder": "_workspace-tools", "remote_slug": "workspace-tools", "archetype": "node-monorepo", "tier": "infrastructure", "stack": "Python + Node tooling"},
+    {"folder": "_ops", "remote_slug": "workspace-tools", "archetype": "node-monorepo", "tier": "infrastructure", "notes": "Legacy folder name; origin may be workspace-tools"},
+    {"folder": "_pkos", "remote_slug": "pkos", "archetype": "python-library", "tier": "infrastructure", "stack": "Python, templates"},
+    {"folder": "_eval", "remote_slug": "handshake-hai", "archetype": "node-monorepo", "tier": "infrastructure", "stack": "Eval monorepo"},
+    {"folder": "alawein", "remote_slug": "alawein", "archetype": "docs-hub", "tier": "active", "stack": "Markdown SSOT"},
+    {"folder": "repz", "remote_slug": "repz", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React TS Supabase"},
+    {"folder": "scribd", "remote_slug": "scribd", "archetype": "next-app-router", "tier": "active", "stack": "Next.js 16"},
+    {"folder": "llmworks", "remote_slug": "llmworks", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React Supabase"},
+    {"folder": "qmlab", "remote_slug": "qmlab", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React"},
+    {"folder": "simcore", "remote_slug": "simcore", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React R3F Plotly"},
+    {"folder": "attributa", "remote_slug": "attributa", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React"},
+    {"folder": "gymboy", "remote_slug": "gymboy", "archetype": "vite-react-spa", "tier": "active", "stack": "Vite React"},
+    {"folder": "bolts", "remote_slug": "bolts", "archetype": "next-app-router", "tier": "active", "stack": "Next.js + Python tooling"},
+    {"folder": "atelier-rounaq", "remote_slug": "atelier-rounaq", "archetype": "vite-react-spa", "tier": "active", "stack": "React TS Supabase"},
+    {"folder": "meshal-web", "remote_slug": "meshal-web", "archetype": "vite-react-spa", "tier": "maintained", "stack": "Vite"},
+    {"folder": "edfp", "remote_slug": "edfp", "archetype": "python-service", "tier": "planned", "stack": "Python OpenCV FastAPI"},
+    {"folder": "neper", "remote_slug": "neper", "archetype": "python-library", "tier": "active", "stack": "PyTorch"},
+    {"folder": "qaplibria", "remote_slug": "qaplibria", "archetype": "research-archive", "tier": "maintained", "stack": "Python notebooks + archive"},
+    {"folder": "qmatsim", "remote_slug": "qmatsim", "archetype": "python-library", "tier": "research", "stack": "Python"},
+    {"folder": "qubeml", "remote_slug": "qubeml", "archetype": "python-library", "tier": "research", "stack": "Python"},
+    {"folder": "scicomp", "remote_slug": "scicomp", "archetype": "python-library", "tier": "research", "stack": "Python"},
+    {"folder": "spincirc", "remote_slug": "spincirc", "archetype": "python-library", "tier": "research", "stack": "Python"},
+    {"folder": "maglogic", "remote_slug": "maglogic", "archetype": "python-library", "tier": "research", "stack": "Python"},
+    {"folder": "adil", "remote_slug": "adil", "archetype": "python-service", "tier": "research", "stack": "Python"},
+    {"folder": "chshlab", "remote_slug": "chshlab", "archetype": "vite-react-spa", "tier": "active", "stack": "Web"},
+    {"folder": "loopholelab", "remote_slug": "loopholelab", "archetype": "vite-react-spa", "tier": "active", "stack": "Web"},
+    {"folder": "epistemic-stack", "remote_slug": "epistemic-stack", "archetype": "node-monorepo", "tier": "research", "stack": "MCP TypeScript"},
+    {"folder": "reasonbench", "remote_slug": "reasonbench", "archetype": "python-library", "tier": "infrastructure", "stack": "Python"},
+    {"folder": "mercor-llm-failsafe", "remote_slug": "mercor-llm-failsafe", "archetype": "python-library", "tier": "active", "stack": "Python"},
+    {"folder": "helios", "remote_slug": "helios", "archetype": "research-archive", "tier": "research", "stack": "Archive"},
+    {"folder": "meatheadphysicist", "remote_slug": "meatheadphysicist", "archetype": "research-archive", "tier": "archived", "stack": "Markdown"},
+    {"folder": "morphism-systems/morphism", "remote_slug": "morphism-systems/morphism", "archetype": "node-monorepo", "tier": "active", "stack": "TypeScript Python governance"},
+    {"folder": "blackmalejournal/blackmalejournal", "remote_slug": "blackmalejournal/blackmalejournal", "archetype": "next-app-router", "tier": "active", "stack": "Next.js monorepo"}
+  ]
+}

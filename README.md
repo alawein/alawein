@@ -1,3 +1,10 @@
+---
+type: derived
+source: _pkos/guides
+sync: manual
+sla: none
+---
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
 
 <div align="center">
@@ -8,7 +15,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/alawein)
 [![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
 
-**Computational Physicist & AI Engineer** · Founder, [Morphism Systems](https://morphism.systems) · PhD EECS, UC Berkeley
+**Computational Scientist & AI Systems Engineer** · Founder, [Morphism Systems](https://morphism.systems) · PhD EECS, UC Berkeley
 
 *Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.*
 
@@ -23,7 +30,7 @@
 <tr>
 <td width="55%" valign="top">
 
-Ph.D. in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a formally verified AI governance framework grounded in category theory and contraction-mapping proofs. Built large-scale HPC simulation pipelines at Lawrence Berkeley National Laboratory (2,300+ DFT simulations, 70% runtime reduction, $160K cost savings). Designed SFT/DPO/LoRA training pipelines and evaluation harnesses for domain-specific LLM agents. 16 peer-reviewed publications in IEEE, APS, and AIP venues.
+Ph.D. in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a formally verified AI governance framework grounded in category theory and contraction-mapping proofs. Former LLM Alignment Specialist at Turing. Built large-scale HPC simulation pipelines at Lawrence Berkeley National Laboratory (2,300+ DFT simulations, 70% runtime reduction, $160K cost savings). Designed SFT/DPO/LoRA training pipelines and evaluation harnesses for domain-specific LLM agents. 16 peer-reviewed publications in IEEE, APS, and ACS venues.
 
 </td>
 <td width="45%" valign="top">

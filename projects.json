@@ -250,6 +250,12 @@
       "slug": "mercor-llm-failsafe",
       "repo": "alawein/mercor-llm-failsafe",
       "domain": "LLM failsafe system (Mercor employer project)"
+    },
+    {
+      "name": "Roka: Oakland Hustle",
+      "slug": "roka-oakland-hustle",
+      "repo": "alawein/roka-oakland-hustle",
+      "domain": "Retro RPG / narrative adventure game — Godot 4.2+, GDScript"
     }
   ],
   "infrastructure": [

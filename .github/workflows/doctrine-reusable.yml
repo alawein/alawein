@@ -30,7 +30,7 @@ jobs:
           path: org
           sparse-checkout: scripts/validate-doctrine.py
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 

@@ -28,7 +28,7 @@ jobs:
     name: Doctrine Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -39,7 +39,7 @@ jobs:
     name: Derived File Drift Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Regenerate derived files
         run: |
           echo "=== generate-index.sh ==="

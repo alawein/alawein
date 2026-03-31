@@ -107,7 +107,8 @@
     },
     {
       "name": "Alembiq",
-      "slug": "neper",
+      "slug": "alembiq",
+      "legacy_slugs": ["neper"],
       "url": "https://alembiq.online",
       "repo": "alawein/alembiq",
       "description": "LLM training, alignment, evaluation, and synthetic data platform.",
@@ -238,10 +239,17 @@
     },
     {
       "name": "Provegate",
-      "slug": "epistemic-stack",
+      "slug": "provegate",
+      "legacy_slugs": ["epistemic-stack"],
       "repo": "alawein/provegate",
       "url": "https://provegate.online",
       "domain": "Agent MCP tooling — drift, memory, proof"
+    },
+    {
+      "name": "mercor-llm-failsafe",
+      "slug": "mercor-llm-failsafe",
+      "repo": "alawein/mercor-llm-failsafe",
+      "domain": "LLM failsafe system (Mercor employer project)"
     }
   ],
   "infrastructure": [
@@ -254,11 +262,18 @@
       "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: _devkit/)"
     },
     {
+      "name": "alawein",
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "url": "https://github.com/alawein/alawein",
+      "purpose": "Org profile, governance control plane, projects.json, scripts"
+    },
+    {
       "name": "workspace-tools",
       "slug": "workspace-tools",
       "repo": "alawein/workspace-tools",
       "url": "https://github.com/alawein/workspace-tools",
-      "purpose": "Workspace batch execution and ops orchestration (workspace: _ops/)"
+      "purpose": "Workspace batch execution and ops orchestration (workspace: _ops/ and _workspace-tools/)"
     },
     {
       "name": "pkos",
@@ -278,10 +293,11 @@
     },
     {
       "name": "fallax",
-      "slug": "reasonbench",
+      "slug": "fallax",
+      "legacy_slugs": ["reasonbench"],
       "repo": "alawein/fallax",
       "url": "https://fallax.online",
-      "purpose": "Fallax — LLM adversarial reasoning evaluation system (workspace: reasonbench/)"
+      "purpose": "Fallax — LLM adversarial reasoning evaluation system (workspace: fallax/)"
     }
   ],
   "packages": [

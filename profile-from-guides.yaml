@@ -1,0 +1,60 @@
+---
+type: derived
+source: _pkos/guides
+sync: manual
+sla: manual
+---
+id: meshal-alawein
+name: Meshal Alawein
+full_name: Meshal Alawein
+location: San Francisco, CA
+role:
+- computational-scientist
+- systems-architect
+- ai-systems-engineer
+domains:
+- quantum-computing
+- ai-governance
+- hpc
+- web-systems
+- category-theory
+tags:
+- physics
+- ai
+- systems
+- governance
+updated: 2026-03-26
+variant_default: balanced
+urls:
+  website: https://meshal.ai
+  morphism: https://morphism.systems
+  email: mailto:contact@meshal.ai
+  linkedin: https://linkedin.com/in/alawein
+  github: https://github.com/alawein
+tagline: Computational Scientist & AI Systems Engineer · Founder, Morphism Systems · PhD EECS,
+  UC Berkeley
+tagline_quote: '"Build systems that can be governed. Write code that can be audited.
+  Ship research that can be reproduced."'
+bio_short: PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems —
+  a formally verified AI governance framework grounded in category theory. Former
+  LLM Alignment Specialist at Turing (Aug–Sep 2025). Built production DFT/HPC
+  workflows at Lawrence Berkeley National Laboratory (2,300+ jobs, 70% runtime
+  reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation
+  harnesses for LLM training. 16 peer-reviewed publications in IEEE, APS, and ACS.
+bio_long: PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a
+  formally verified AI governance framework grounded in category theory. Former
+  LLM Alignment Specialist at Turing (Aug–Sep 2025). Built production DFT/HPC
+  workflows at Lawrence Berkeley National Laboratory (2,300+ jobs, 70% runtime
+  reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation
+  harnesses for LLM training. 16 peer-reviewed publications in IEEE, APS, and ACS.
+bio_bullets: 'PhD EECS -- UC Berkeley (Dec 2025)
+
+  Morphism Systems -- Founder (Aug 2025)
+
+  16 peer-reviewed publications
+
+  SFT/DPO/LoRA | DFT/HPC | LLM Infra
+
+  San Francisco, CA'
+linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Morphism
+  Systems · PhD EECS, UC Berkeley

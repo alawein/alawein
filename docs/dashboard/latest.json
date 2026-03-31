@@ -1114,10 +1114,10 @@
     {
       "id": "R_kgDORivbGg",
       "name": "neper",
-      "nameWithOwner": "alawein/neper",
+      "nameWithOwner": "alawein/alembiq",
       "scopeOwner": "alawein",
       "ownerLogin": "alawein",
-      "url": "https://github.com/alawein/neper",
+      "url": "https://github.com/alawein/alembiq",
       "description": "LLM training, alignment, evaluation & synthetic data platform. Measuring excellence in natural units.",
       "topics": [
         "alignment",
@@ -1163,7 +1163,7 @@
       "latestRelease": {
         "name": "v0.1.0 — Initial Release",
         "tagName": "v0.1.0",
-        "url": "https://github.com/alawein/neper/releases/tag/v0.1.0",
+        "url": "https://github.com/alawein/alembiq/releases/tag/v0.1.0",
         "description": "## Neper v0.1.0 — Initial Release\n\n**Measuring LLM excellence in natural units.**\n\n### Features\n\n- **Data Pipeline** — DAG-based with deterministic SHA-256 caching, Pydantic schema validation, and append-only versioning\n- **Training** — SFT and DPO loss functions with checkpoint-integrated training loop\n- **LoRA** — Parameter-efficient fine-tuning as a first-class citizen\n- **Safety & Alignment** — Differentiable penalty constraints visible in training curves\n- **Checkpointing** — Atomic saves with rotation and crash recovery\n- **Monitoring** — Structured metrics (JSONL + Prometheus), distributed training context (NCCL/DDP)\n- **Evaluation** — Perplexity and benchmark harness with regression testing\n- **Synthetic Data** — Temperature-controlled generation with quality filtering and deduplication\n- **CLI** — \\\neper-train\\, \\\neper-eval\\, \\\neper-synth\\ entry points with \\--demo\\ mode\n- **Docker** — Multi-stage Dockerfile (dev, train, eval targets)\n- **CI/CD** — GitHub Actions for lint, type-check, and tests (Python 3.10/3.11/3.12)\n\n### Quick Start\n\n\\\\\\\bash\npip install -e .\nneper-train --demo        # toy training with gpt2\nneper-eval --model gpt2   # perplexity benchmark\nneper-synth --mock         # synthetic data generation\n\\\\\\\n\n### Stats\n\n- 58 passing tests\n- 20 source modules across 5 subpackages\n- 3 example configs + sample datasets\n",
         "publishedAt": "2026-03-09T22:18:08Z",
         "isPrerelease": false
@@ -1172,7 +1172,7 @@
         {
           "name": "v0.1.0 — Initial Release",
           "tagName": "v0.1.0",
-          "url": "https://github.com/alawein/neper/releases/tag/v0.1.0",
+          "url": "https://github.com/alawein/alembiq/releases/tag/v0.1.0",
           "description": "## Neper v0.1.0 — Initial Release\n\n**Measuring LLM excellence in natural units.**\n\n### Features\n\n- **Data Pipeline** — DAG-based with deterministic SHA-256 caching, Pydantic schema validation, and append-only versioning\n- **Training** — SFT and DPO loss functions with checkpoint-integrated training loop\n- **LoRA** — Parameter-efficient fine-tuning as a first-class citizen\n- **Safety & Alignment** — Differentiable penalty constraints visible in training curves\n- **Checkpointing** — Atomic saves with rotation and crash recovery\n- **Monitoring** — Structured metrics (JSONL + Prometheus), distributed training context (NCCL/DDP)\n- **Evaluation** — Perplexity and benchmark harness with regression testing\n- **Synthetic Data** — Temperature-controlled generation with quality filtering and deduplication\n- **CLI** — \\\neper-train\\, \\\neper-eval\\, \\\neper-synth\\ entry points with \\--demo\\ mode\n- **Docker** — Multi-stage Dockerfile (dev, train, eval targets)\n- **CI/CD** — GitHub Actions for lint, type-check, and tests (Python 3.10/3.11/3.12)\n\n### Quick Start\n\n\\\\\\\bash\npip install -e .\nneper-train --demo        # toy training with gpt2\nneper-eval --model gpt2   # perplexity benchmark\nneper-synth --mock         # synthetic data generation\n\\\\\\\n\n### Stats\n\n- 58 passing tests\n- 20 source modules across 5 subpackages\n- 3 example configs + sample datasets\n",
           "publishedAt": "2026-03-09T22:18:08Z",
           "isPrerelease": false
@@ -1368,10 +1368,10 @@
     {
       "id": "R_kgDORUOjng",
       "name": "qaplibria",
-      "nameWithOwner": "alawein/qaplibria",
+      "nameWithOwner": "alawein/optiqap",
       "scopeOwner": "alawein",
       "ownerLogin": "alawein",
-      "url": "https://github.com/alawein/qaplibria",
+      "url": "https://github.com/alawein/optiqap",
       "description": null,
       "topics": [],
       "category": "uncategorized",
@@ -2169,12 +2169,12 @@
     {
       "repoId": "R_kgDORivbGg",
       "repoName": "neper",
-      "nameWithOwner": "alawein/neper",
-      "repoUrl": "https://github.com/alawein/neper",
+      "nameWithOwner": "alawein/alembiq",
+      "repoUrl": "https://github.com/alawein/alembiq",
       "scopeOwner": "alawein",
       "name": "v0.1.0 — Initial Release",
       "tagName": "v0.1.0",
-      "url": "https://github.com/alawein/neper/releases/tag/v0.1.0",
+      "url": "https://github.com/alawein/alembiq/releases/tag/v0.1.0",
       "description": "## Neper v0.1.0 — Initial Release\n\n**Measuring LLM excellence in natural units.**\n\n### Features\n\n- **Data Pipeline** — DAG-based with deterministic SHA-256 caching, Pydantic schema validation, and append-only versioning\n- **Training** — SFT and DPO loss functions with checkpoint-integrated training loop\n- **LoRA** — Parameter-efficient fine-tuning as a first-class citizen\n- **Safety & Alignment** — Differentiable penalty constraints visible in training curves\n- **Checkpointing** — Atomic saves with rotation and crash recovery\n- **Monitoring** — Structured metrics (JSONL + Prometheus), distributed training context (NCCL/DDP)\n- **Evaluation** — Perplexity and benchmark harness with regression testing\n- **Synthetic Data** — Temperature-controlled generation with quality filtering and deduplication\n- **CLI** — \\\neper-train\\, \\\neper-eval\\, \\\neper-synth\\ entry points with \\--demo\\ mode\n- **Docker** — Multi-stage Dockerfile (dev, train, eval targets)\n- **CI/CD** — GitHub Actions for lint, type-check, and tests (Python 3.10/3.11/3.12)\n\n### Quick Start\n\n\\\\\\\bash\npip install -e .\nneper-train --demo        # toy training with gpt2\nneper-eval --model gpt2   # perplexity benchmark\nneper-synth --mock         # synthetic data generation\n\\\\\\\n\n### Stats\n\n- 58 passing tests\n- 20 source modules across 5 subpackages\n- 3 example configs + sample datasets\n",
       "publishedAt": "2026-03-09T22:18:08Z",
       "isPrerelease": false
@@ -2898,7 +2898,7 @@
       {
         "id": "R_kgDORUOjng",
         "name": "qaplibria",
-        "nameWithOwner": "alawein/qaplibria",
+        "nameWithOwner": "alawein/optiqap",
         "score": 4,
         "level": "medium",
         "flags": [
@@ -3185,7 +3185,7 @@
       {
         "id": "R_kgDORivbGg",
         "name": "neper",
-        "nameWithOwner": "alawein/neper",
+        "nameWithOwner": "alawein/alembiq",
         "score": 1,
         "level": "low",
         "flags": [

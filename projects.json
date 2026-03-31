@@ -109,7 +109,7 @@
       "name": "Alembiq",
       "slug": "neper",
       "url": "https://alembiq.online",
-      "repo": "alawein/neper",
+      "repo": "alawein/alembiq",
       "description": "LLM training, alignment, evaluation, and synthetic data platform.",
       "tags": ["Python", "PyTorch", "LLM Training"],
       "category": "active",
@@ -120,7 +120,7 @@
       "slug": "optiqap",
       "legacy_slugs": ["qaplibria"],
       "url": "https://optiqap.online",
-      "repo": "alawein/qaplibria",
+      "repo": "alawein/optiqap",
       "description": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
       "tags": ["Python", "Optimization", "HPC"],
       "category": "maintained",
@@ -239,7 +239,7 @@
     {
       "name": "Provegate",
       "slug": "epistemic-stack",
-      "repo": "alawein/epistemic-stack",
+      "repo": "alawein/provegate",
       "url": "https://provegate.online",
       "domain": "Agent MCP tooling — drift, memory, proof"
     }
@@ -279,7 +279,7 @@
     {
       "name": "fallax",
       "slug": "reasonbench",
-      "repo": "alawein/reasonbench",
+      "repo": "alawein/fallax",
       "url": "https://fallax.online",
       "purpose": "Fallax — LLM adversarial reasoning evaluation system (workspace: reasonbench/)"
     }

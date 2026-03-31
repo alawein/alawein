@@ -49,7 +49,7 @@ const REPO_TO_DOMAIN = {
 
 describe("makeExternalId", () => {
   it("creates owner/repo#number format", () => {
-    assert.equal(makeExternalId("alawein", "neper", 42), "alawein/neper#42");
+    assert.equal(makeExternalId("alawein", "alembiq", 42), "alawein/alembiq#42");
   });
 
   it("handles number 0", () => {
@@ -59,8 +59,8 @@ describe("makeExternalId", () => {
 
 describe("parseExternalId", () => {
   it("parses valid external ID", () => {
-    const result = parseExternalId("alawein/neper#42");
-    assert.deepEqual(result, { owner: "alawein", repo: "neper", number: 42 });
+    const result = parseExternalId("alawein/alembiq#42");
+    assert.deepEqual(result, { owner: "alawein", repo: "alembiq", number: 42 });
   });
 
   it("returns null for invalid format", () => {

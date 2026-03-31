@@ -48,7 +48,7 @@ tags: [github, dashboard, portfolio, operations]
 | `alawein/meatheadphysicist` | [`v1.8.0`](https://github.com/alawein/meatheadphysicist/releases/tag/v1.8.0) | 2026-03-14 |
 | `alawein/meatheadphysicist` | [`v1.7.3`](https://github.com/alawein/meatheadphysicist/releases/tag/v1.7.3) | 2026-03-14 |
 | `alawein/meatheadphysicist` | [`v1.7.2`](https://github.com/alawein/meatheadphysicist/releases/tag/v1.7.2) | 2026-03-14 |
-| `alawein/neper` | [`v0.1.0`](https://github.com/alawein/neper/releases/tag/v0.1.0) | 2026-03-09 |
+| `alawein/alembiq` | [`v0.1.0`](https://github.com/alawein/alembiq/releases/tag/v0.1.0) | 2026-03-09 |
 | `alawein/alawein` | [`v1.0.0`](https://github.com/alawein/alawein/releases/tag/v1.0.0) | 2025-11-27 |
 
 ## Repositories Needing Attention

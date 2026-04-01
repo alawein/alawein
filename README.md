@@ -1,10 +1,3 @@
----
-type: derived
-source: _pkos/guides
-sync: manual
-sla: none
----
-
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
 
 <div align="center">

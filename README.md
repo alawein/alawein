@@ -301,6 +301,12 @@ This org runs on a single operating contract: [workspace-master-prompt](docs/gov
 
 ---
 
+## License
+
+[MIT](LICENSE)
+
+---
+
 <div align="center">
 
 **contact@meshal.ai** · [meshal.ai](https://meshal.ai) · San Francisco

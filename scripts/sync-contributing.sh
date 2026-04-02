@@ -15,6 +15,8 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ORG_REPO="$(dirname "$SCRIPT_DIR")"
 TEMPLATE="${ORG_REPO}/../_devkit/templates/CONTRIBUTING.md"
 
+[ -f "$TEMPLATE" ] || { echo "ERROR: template not found: $TEMPLATE" >&2; exit 1; }
+
 get_sync_val() {
   local file="$1"
   sed -n '/^sync:/s/sync:[[:space:]]*//p' "$file" 2>/dev/null | head -1 || echo ""
@@ -36,11 +38,12 @@ propagate_contributing() {
   local repo_dir="$1"
   local repo_name
   repo_name=$(basename "$repo_dir")
-  local github_slug
-  github_slug=$(get_github_slug "$repo_dir")
   local target="${repo_dir}/CONTRIBUTING.md"
 
   [ -d "$repo_dir" ] || { echo "SKIP: ${repo_name} (directory not found)"; return 0; }
+
+  local github_slug
+  github_slug=$(get_github_slug "$repo_dir")
 
   if [ -f "$target" ]; then
     local sync_val
@@ -51,8 +54,10 @@ propagate_contributing() {
     fi
   fi
 
-  # {REPO_NAME} = GitHub slug (official name used in public contexts)
-  # {REPO}      = GitHub slug (used in clone URL and issues link)
+  # Auto-substituted tokens: {REPO_NAME} and {REPO} → GitHub slug (e.g. "handshake-hai")
+  # Intentionally left as visible placeholders for manual fill (Plan 2):
+  #   {INSTALL_COMMAND}, {TEST_COMMAND}, {VALIDATE_COMMAND}
+  # Note: GitHub slugs are alphanumeric+hyphens — no sed special chars (&, \) expected.
   sed \
     -e "s/{REPO_NAME}/${github_slug}/g" \
     -e "s/{REPO}/${github_slug}/g" \

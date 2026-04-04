@@ -1,19 +1,12 @@
 ---
-**Build System**: N/A (static organizational content)
-**Primary Language**: N/A (documentation and policies)
-**Repository Type**: Organization Profile
-- Hard-cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
-- When canonical name and physical repo slug differ, use: 
-It owns: 
-`canonical-name (repo: physical-slug)`.
-audience: [ai-agents, contributors]
-authority: canonical
-last-verified: 2026-03-27
-last_updated: 2026-03-27
-sla: none
+type: canonical
 source: none
 sync: none
-type: canonical
+sla: none
+authority: canonical
+audience: [ai-agents, contributors]
+last-verified: 2026-03-27
+last_updated: 2026-03-27
 ---
 
 <!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->

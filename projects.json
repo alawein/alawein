@@ -153,11 +153,11 @@
       "name": "MeatheadPhysicist",
       "slug": "meatheadphysicist",
       "legacy_slugs": ["MeatheadPhysicist"],
-      "url": "https://github.com/alawein/meatheadphysicist",
+      "url": "https://mhphys.online",
       "repo": "alawein/meatheadphysicist",
-      "description": "Physics education and writing — Markdown-first content brand.",
-      "tags": ["Markdown", "Physics"],
-      "category": "archived",
+      "description": "Computational physics research platform — Bell inequality analysis, CHSH simulator, claim verifier.",
+      "tags": ["Python", "Physics", "FastAPI", "Research"],
+      "category": "active",
       "portfolio_domain": "Personal"
     }
   ],
@@ -208,8 +208,9 @@
       "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "legacy_slugs": ["MeatheadPhysicist"],
+      "url": "https://mhphys.online",
       "repo": "alawein/meatheadphysicist",
-      "domain": "Physics research and writing"
+      "domain": "Computational physics research — Bell inequality, CHSH simulation"
     },
     {
       "name": "adil",
@@ -249,7 +250,8 @@
       "name": "mercor-llm-failsafe",
       "slug": "mercor-llm-failsafe",
       "repo": "alawein/mercor-llm-failsafe",
-      "domain": "LLM failsafe system (Mercor employer project)"
+      "domain": "LLM failsafe system (Mercor employer project)",
+      "category": "archived"
     },
     {
       "name": "Roka: Oakland Hustle",
@@ -260,12 +262,12 @@
   ],
   "infrastructure": [
     {
-      "name": "devkit",
-      "slug": "devkit",
-      "legacy_slugs": ["aw-devkit"],
-      "repo": "alawein/devkit",
-      "url": "https://github.com/alawein/devkit",
-      "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: _devkit/)"
+      "name": "design-system",
+      "slug": "design-system",
+      "legacy_slugs": ["aw-devkit", "devkit"],
+      "repo": "alawein/design-system",
+      "url": "https://github.com/alawein/design-system",
+      "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: design-system/)"
     },
     {
       "name": "alawein",
@@ -279,14 +281,15 @@
       "slug": "workspace-tools",
       "repo": "alawein/workspace-tools",
       "url": "https://github.com/alawein/workspace-tools",
-      "purpose": "Workspace batch execution and ops orchestration (workspace: _ops/ and _workspace-tools/)"
+      "purpose": "Workspace batch execution and ops orchestration (workspace: workspace-tools/)"
     },
     {
-      "name": "pkos",
-      "slug": "pkos",
-      "repo": "alawein/pkos",
-      "url": "https://github.com/alawein/pkos",
-      "purpose": "Personal Knowledge OS — career, resume, project catalog (workspace: _pkos/)"
+      "name": "knowledge-base",
+      "slug": "knowledge-base",
+      "legacy_slugs": ["pkos"],
+      "repo": "alawein/knowledge-base",
+      "url": "https://knowledge-base-alawein.vercel.app",
+      "purpose": "Knowledge DB, dashboard, config audit, career/resume (workspace: knowledge-base/)"
     },
     {
       "name": "eval",
@@ -294,7 +297,7 @@
       "legacy_slugs": ["handshake-hai"],
       "repo": "alawein/handshake-hai",
       "url": "https://github.com/alawein/handshake-hai",
-      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (workspace: _eval/)",
+      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (local: ~/jobs/handshake-hai/)",
       "status": "active"
     },
     {

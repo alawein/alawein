@@ -1,3 +1,10 @@
+---
+type: canonical
+source: none
+sync: none
+sla: none
+---
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
 
 <div align="center">
@@ -5,8 +12,9 @@
 [![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
 [![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=flat-square&logo=atom&logoColor=8B5CF6)](https://morphism.systems)
 [![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/alawein)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alawein)
 [![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
+[![Gravatar](https://img.shields.io/badge/Gravatar-1E8CBE?style=flat-square&logo=gravatar&logoColor=white)](https://gravatar.com/sweetlyzorro8cec2cde43)
 
 **Computational Scientist & AI Systems Engineer** · Founder, [Morphism Systems](https://morphism.systems) · PhD EECS, UC Berkeley
 

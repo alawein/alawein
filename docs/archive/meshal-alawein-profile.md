@@ -158,7 +158,7 @@ related:
 <a href="mailto:hello@morphism.systems">
   <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
 </a>
-<a href="https://linkedin.com/in/meshal-alawein">
+<a href="https://linkedin.com/in/alawein">
   <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
 </a>
 
@@ -339,7 +339,7 @@ def current_focus():
 
 <a href="https://meshal.ai"><img src="https://img.shields.io/badge/⟨_WEB_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
 <a href="mailto:hello@morphism.systems"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
-<a href="https://linkedin.com/in/meshal-alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
+<a href="https://linkedin.com/in/alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
 
 <br><br>
 

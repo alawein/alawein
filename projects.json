@@ -297,7 +297,7 @@
       "legacy_slugs": ["handshake-hai"],
       "repo": "alawein/handshake-hai",
       "url": "https://github.com/alawein/handshake-hai",
-      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (local: ~/jobs/handshake-hai/)",
+      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (local: Dropbox/jobs/handshake-hai/)",
       "status": "active"
     },
     {

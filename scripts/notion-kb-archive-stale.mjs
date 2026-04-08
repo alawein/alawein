@@ -1,11 +1,20 @@
 /**
  * notion-kb-archive-stale.mjs
  *
- * Archives stale pages in the Notion "KB Projects" database whose `LocalFile`
- * property references a markdown file that no longer exists in
- * `knowledge-base/db/projects/`.
+ * Archives stale pages in a Notion KB database whose corresponding local
+ * markdown file no longer exists.
  *
- * Use this after running a KB cleanup that deletes/renames project records.
+ * Supports two schema strategies, auto-detected from the DB properties:
+ *
+ *   (A) LocalFile strategy — DB has a `LocalFile` rich_text/url property.
+ *       A page is stale iff its LocalFile value points to a missing file
+ *       under db/projects/. Used by the legacy "KB Projects" DB layout.
+ *
+ *   (B) Name strategy — DB does NOT have a LocalFile property. A page is
+ *       stale iff its Name title doesn't match any local record's name
+ *       (frontmatter `name:` field) or filename (without .md). Walks the
+ *       entire db/ tree, not just db/projects/. Used by the current
+ *       "Knowledge Base" DB layout.
  *
  * Usage:
  *   NOTION_TOKEN=<token> node scripts/notion-kb-archive-stale.mjs            # diff (default)
@@ -22,8 +31,8 @@
  *   - Archived pages can be restored manually via Notion UI.
  *   - The script never deletes pages; archive is reversible.
  */
-import { existsSync, readdirSync } from "node:fs";
-import { resolve, dirname, join } from "node:path";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
+import { resolve, dirname, basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -65,19 +74,76 @@ async function notionFetch(path, opts = {}) {
   return res.json();
 }
 
-function listLocalProjectFiles() {
-  const projectsDir = join(KB_DB_DIR, "projects");
-  if (!existsSync(projectsDir)) {
-    console.error(`Projects directory not found: ${projectsDir}`);
-    process.exit(1);
-  }
-  const files = new Set();
-  for (const entry of readdirSync(projectsDir)) {
-    if (entry.endsWith(".md")) {
-      files.add(`projects/${entry}`);
+// --- Local file walking ---
+
+function parseFrontmatter(content) {
+  // Supports both `---` and `---type: canonical` openers.
+  const match = content.match(/^---(?:type:\s*\S+)?\n?([\s\S]*?)\n---\n?/);
+  if (!match) return {};
+  const meta = {};
+  for (const line of match[1].split("\n")) {
+    const idx = line.indexOf(":");
+    if (idx > 0) {
+      const key = line.slice(0, idx).trim();
+      const val = line
+        .slice(idx + 1)
+        .trim()
+        .replace(/^['"]|['"]$/g, "");
+      meta[key] = val;
     }
   }
+  return meta;
+}
+
+function listLocalProjectFiles() {
+  const projectsDir = join(KB_DB_DIR, "projects");
+  if (!existsSync(projectsDir)) return new Set();
+  const files = new Set();
+  for (const entry of readdirSync(projectsDir)) {
+    if (entry.endsWith(".md")) files.add(`projects/${entry}`);
+  }
   return files;
+}
+
+function buildLocalNameSet() {
+  // Walk entire db/ tree, extract frontmatter name + filename for each .md.
+  const names = new Set();
+  if (!existsSync(KB_DB_DIR)) {
+    console.error(`KB DB directory not found: ${KB_DB_DIR}`);
+    process.exit(1);
+  }
+
+  function walk(dir) {
+    for (const entry of readdirSync(dir)) {
+      if (entry.startsWith(".")) continue;
+      const full = join(dir, entry);
+      const stat = statSync(full);
+      if (stat.isDirectory()) {
+        walk(full);
+      } else if (entry.endsWith(".md")) {
+        const filename = basename(entry, ".md").toLowerCase();
+        names.add(filename);
+        try {
+          const content = readFileSync(full, "utf8");
+          const meta = parseFrontmatter(content);
+          if (meta.name) {
+            names.add(meta.name.toLowerCase());
+          }
+        } catch {
+          // ignore read errors
+        }
+      }
+    }
+  }
+
+  walk(KB_DB_DIR);
+  return names;
+}
+
+// --- Notion DB ---
+
+async function fetchDbSchema() {
+  return notionFetch(`/databases/${NOTION_KB_DB_ID}`, { method: "GET" });
 }
 
 async function fetchAllPages() {
@@ -96,14 +162,11 @@ async function fetchAllPages() {
         props.Name?.title?.[0]?.plain_text ||
         props.Title?.title?.[0]?.plain_text ||
         "";
-      // LocalFile is typically a rich_text or url property
       const localFile =
         props.LocalFile?.rich_text?.[0]?.plain_text ||
         props.LocalFile?.url ||
         "";
-      const status = props.Status?.select?.name || "";
-      const archived = page.archived === true;
-      pages.push({ id: page.id, name, localFile, status, archived });
+      pages.push({ id: page.id, name, localFile, archived: page.archived === true });
     }
     cursor = data.has_more ? data.next_cursor : undefined;
   } while (cursor);
@@ -117,59 +180,74 @@ async function archivePage(pageId) {
   });
 }
 
+// --- Main ---
+
 async function main() {
   console.log(`Mode: ${mode}`);
   console.log(`KB DB dir: ${KB_DB_DIR}`);
-  console.log(`Notion KB DB: ${NOTION_KB_DB_ID}\n`);
+  console.log(`Notion DB: ${NOTION_KB_DB_ID}\n`);
 
-  const localFiles = listLocalProjectFiles();
-  console.log(`Local project files: ${localFiles.size}`);
+  const schema = await fetchDbSchema();
+  const hasLocalFile = Boolean(schema.properties?.LocalFile);
+  const strategy = hasLocalFile ? "LocalFile" : "Name";
+  console.log(`Strategy: ${strategy} (auto-detected from DB schema)\n`);
 
   const notionPages = await fetchAllPages();
-  console.log(`Notion pages: ${notionPages.length}\n`);
+  console.log(`Notion pages: ${notionPages.length}`);
 
-  // Find stale pages: LocalFile references a deleted/missing local file
   const stale = [];
-  const missingLocalFile = [];
-  const alreadyArchived = [];
   const matched = [];
+  const alreadyArchived = [];
 
-  for (const page of notionPages) {
-    if (page.archived) {
-      alreadyArchived.push(page);
-      continue;
+  if (strategy === "LocalFile") {
+    const localFiles = listLocalProjectFiles();
+    console.log(`Local project files: ${localFiles.size}\n`);
+
+    for (const page of notionPages) {
+      if (page.archived) {
+        alreadyArchived.push(page);
+        continue;
+      }
+      if (!page.localFile) {
+        // No LocalFile on a DB that has the column is ambiguous — skip.
+        continue;
+      }
+      const normalized = page.localFile.replace(/\\/g, "/");
+      if (localFiles.has(normalized)) {
+        matched.push(page);
+      } else {
+        stale.push({ ...page, reason: `missing file: ${normalized}` });
+      }
     }
-    if (!page.localFile) {
-      missingLocalFile.push(page);
-      continue;
-    }
-    // Normalize backslashes (Windows) to forward slashes
-    const normalized = page.localFile.replace(/\\/g, "/");
-    if (localFiles.has(normalized)) {
-      matched.push(page);
-    } else {
-      stale.push({ ...page, normalized });
+  } else {
+    // Name strategy — walk entire db/ tree.
+    const localNames = buildLocalNameSet();
+    console.log(`Local record names: ${localNames.size}\n`);
+
+    for (const page of notionPages) {
+      if (page.archived) {
+        alreadyArchived.push(page);
+        continue;
+      }
+      const nm = (page.name || "").toLowerCase();
+      if (!nm) continue; // skip untitled pages (safety)
+      if (localNames.has(nm)) {
+        matched.push(page);
+      } else {
+        stale.push({ ...page, reason: `no local match for name: ${page.name}` });
+      }
     }
   }
 
   console.log("=== Diff Report ===\n");
-  console.log(`Matched (LocalFile exists locally): ${matched.length}`);
-  console.log(`Stale (LocalFile missing locally):  ${stale.length}`);
-  console.log(`Missing LocalFile property:         ${missingLocalFile.length}`);
-  console.log(`Already archived:                   ${alreadyArchived.length}\n`);
+  console.log(`Matched:           ${matched.length}`);
+  console.log(`Stale:             ${stale.length}`);
+  console.log(`Already archived:  ${alreadyArchived.length}\n`);
 
   if (stale.length > 0) {
     console.log("--- Stale pages (would be archived) ---");
     for (const p of stale) {
-      console.log(`  ${p.name.padEnd(40)} -> ${p.normalized}  [${p.id}]`);
-    }
-    console.log();
-  }
-
-  if (missingLocalFile.length > 0) {
-    console.log("--- Pages with no LocalFile property (skipped) ---");
-    for (const p of missingLocalFile) {
-      console.log(`  ${p.name.padEnd(40)} [${p.id}]`);
+      console.log(`  ${(p.name || "(untitled)").padEnd(45)} [${p.id}]`);
     }
     console.log();
   }
@@ -190,10 +268,10 @@ async function main() {
     for (const page of stale) {
       try {
         await archivePage(page.id);
-        console.log(`  Archived: ${page.name}`);
+        console.log(`  archived: ${page.name || "(untitled)"}`);
         ok += 1;
       } catch (e) {
-        console.error(`  Failed: ${page.name} -- ${e.message}`);
+        console.error(`  FAILED: ${page.name || "(untitled)"} -- ${e.message}`);
         failed += 1;
       }
     }

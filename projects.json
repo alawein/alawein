@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-03-29",
+  "lastUpdated": "2026-04-07",
   "featured": [
     {
       "name": "meshal.ai",
@@ -159,6 +159,24 @@
       "tags": ["Python", "Physics", "FastAPI", "Research"],
       "category": "active",
       "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets to USCIS and other agencies.",
+      "tags": ["Python", "Legal AI", "CLI", "OCR"],
+      "category": "active",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Roka: Oakland Hustle",
+      "slug": "roka-oakland-hustle",
+      "repo": "alawein/roka-oakland-hustle",
+      "description": "Retro narrative RPG set in Oakland — 7-day arc, 32 quests, HD-retro 640x360 (Godot 4.2+).",
+      "tags": ["Godot", "GDScript", "RPG", "Game"],
+      "category": "active",
+      "portfolio_domain": "Personal"
     }
   ],
   "research": [
@@ -213,12 +231,6 @@
       "domain": "Computational physics research — Bell inequality, CHSH simulation"
     },
     {
-      "name": "adil",
-      "slug": "adil",
-      "repo": "alawein/adil",
-      "domain": "Legal AI — evidence and agency submissions"
-    },
-    {
       "name": "chshlab",
       "slug": "chshlab",
       "repo": "alawein/chshlab",
@@ -252,12 +264,6 @@
       "repo": "alawein/mercor-llm-failsafe",
       "domain": "LLM failsafe system (Mercor employer project)",
       "category": "archived"
-    },
-    {
-      "name": "Roka: Oakland Hustle",
-      "slug": "roka-oakland-hustle",
-      "repo": "alawein/roka-oakland-hustle",
-      "domain": "Retro RPG / narrative adventure game — Godot 4.2+, GDScript"
     }
   ],
   "infrastructure": [
@@ -292,9 +298,9 @@
       "purpose": "Knowledge DB, dashboard, config audit, career/resume (workspace: knowledge-base/)"
     },
     {
-      "name": "eval",
-      "slug": "eval",
-      "legacy_slugs": ["handshake-hai"],
+      "name": "Handshake AI Eval",
+      "slug": "handshake-hai",
+      "legacy_slugs": ["eval"],
       "repo": "alawein/handshake-hai",
       "url": "https://github.com/alawein/handshake-hai",
       "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (local: Dropbox/jobs/handshake-hai/)",
@@ -339,6 +345,12 @@
       "registry": "pypi",
       "url": "https://pypi.org/project/morphism/",
       "description": "Python category theory engine"
+    },
+    {
+      "name": "berkeley-scicomp",
+      "registry": "pypi",
+      "url": "https://pypi.org/project/berkeley-scicomp/",
+      "description": "Cross-platform scientific computing framework — QM, thermal transport, PINNs (Python/MATLAB/Mathematica)"
     }
   ]
 }

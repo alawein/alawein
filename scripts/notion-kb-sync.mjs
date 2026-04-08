@@ -12,8 +12,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_KB_DB_ID =
   process.env.NOTION_KB_DB_ID || "3166d8de-2215-810e-89e6-cc9ed7b723d7";
+// 2026-04-07: _pkos/ retired -> knowledge-base/ (consolidation 2026-04-03).
+// PKOS_DB_DIR env var still supported for override; default updated.
 const PKOS_DB_DIR = resolve(
-  process.env.PKOS_DB_DIR || join(__dirname, "../../_pkos/db"),
+  process.env.PKOS_DB_DIR || join(__dirname, "../../knowledge-base/db"),
 );
 const SYNC_STATE_FILE = join(PKOS_DB_DIR, ".sync-state.json");
 

@@ -23,6 +23,10 @@ on:
     # Monthly freshness audit — 1st of each month at 06:00 UTC
     - cron: "0 6 1 * *"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     name: Doctrine Validation

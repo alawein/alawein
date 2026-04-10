@@ -3,6 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: none
+last_updated: 2026-04-09
 ---
 
 # Docs Doctrine

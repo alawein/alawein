@@ -3,6 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
+last_updated: 2026-04-09
 ---
 
 # Index — alawein

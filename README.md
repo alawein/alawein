@@ -1,15 +1,18 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=120&section=header&text=MESHAL+ALAWEIN&fontSize=36&fontColor=ffffff&fontAlignY=65" width="100%"/>
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=140&section=header&text=Meshal%20Alawein&fontSize=40&fontColor=ffffff&fontAlignY=60&desc=Computational%20Scientist%20%C2%B7%20AI%20Systems%20Engineer%20%C2%B7%20Founder%2C%20Morphism%20Systems&descSize=14&descAlignY=80" width="100%"/>
+
+</div>
 
 <div align="center">
 
-[![Website](https://img.shields.io/badge/meshal.ai-8B5CF6?style=flat-square&logo=safari&logoColor=white)](https://meshal.ai)
-[![Morphism](https://img.shields.io/badge/morphism.systems-1a1a2e?style=flat-square&logo=atom&logoColor=8B5CF6)](https://morphism.systems)
-[![Email](https://img.shields.io/badge/contact@meshal.ai-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:contact@meshal.ai)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alawein)
-[![GitHub](https://img.shields.io/badge/alawein-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/alawein)
-[![Gravatar](https://img.shields.io/badge/Gravatar-1E8CBE?style=flat-square&logo=gravatar&logoColor=white)](https://gravatar.com/sweetlyzorro8cec2cde43)
+<a href="https://meshal.ai"><img src="https://img.shields.io/badge/meshal.ai-000000?style=for-the-badge&logo=safari&logoColor=white"/></a>
+<a href="https://morphism.systems"><img src="https://img.shields.io/badge/morphism.systems-1a1a2e?style=for-the-badge&logo=atom&logoColor=8B5CF6"/></a>
+<a href="mailto:contact@meshal.ai"><img src="https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/alawein"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="https://github.com/alawein"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
 
-**Computational Scientist & AI Systems Engineer** · Founder, [Morphism Systems](https://morphism.systems) · PhD EECS, UC Berkeley
+<br/><br/>
 
 *Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.*
 
@@ -17,306 +20,262 @@
 
 ---
 
-## About
+<div align="center">
 
-<!-- SYNC:PROFILE:START -->
+| PhD EECS · UC Berkeley *(Dec 2025)* | Founder · Morphism Systems |
+|:---:|:---:|
+| 20 Publications · APS / IEEE / ACS | 16 Peer-Reviewed · 2 Patents in Process |
+| SFT · DPO · RLHF · LoRA | DFT · HPC · Workflow Automation |
+| Category Theory · AI Governance | Spintronics · 2D Materials · Quantum Transport |
+
+</div>
+
+---
+
+## Who I Am
+
+I'm a computational scientist and AI systems engineer working at the intersection of **high-performance computing**, **large language model infrastructure**, and **alignment engineering**. My PhD at UC Berkeley focused on strain-engineered flat bands in 2D materials — fields where reproducibility and fault tolerance aren't ideals, they're requirements.
+
+At **Lawrence Berkeley National Laboratory**, I designed automated DFT/HPC workflows comprising **2,300+ distributed simulation jobs** and **24,000 CPU-hours**, achieving a 70% runtime reduction and **$160K in annual cost savings**. That work shaped how I think about every system I build: correctness is a constraint you engineer in, not a property you hope for.
+
+That mindset carries directly into LLM systems. At **Turing**, I performed PhD-level RLHF preference ranking and built a SciCode evaluation pipeline for domain-specific LLM assessment. Most production AI deployments treat alignment as an afterthought — bolted on post-hoc, poorly measured, disconnected from infrastructure. I see that as an HPC problem with a different substrate.
+
+**Morphism Systems** exists because trustworthiness needs to be a first-class design constraint. Its four-stage governance pipeline (`READ → VERIFY → EXECUTE → EMIT`) produces cryptographically signed Proof Witnesses (HMAC-SHA256), with formal convergence proofs showing the governance operator acts as a contraction (*κ* < 1) under Banach fixed-point conditions. **7 npm packages shipped.**
+
+---
+
+## Work & Research
+
 <table>
 <tr>
-<td width="55%" valign="top">
+<td width="50%" valign="top">
 
-Computational scientist, AI engineer, and founder working across HPC, LLM systems, and AI infrastructure. I hold a PhD in EECS from UC Berkeley, with research in materials simulation and workflow automation.
+### Research Focus
 
-At Lawrence Berkeley National Lab, I built high-throughput DFT workflows that taught me a core lesson: efficiency and reliability are engineered constraints, not aspirational goals.
-Those same principles—reproducibility, fault tolerance, structured outputs—are what LLM systems lack by default. Moving from HPC and materials discovery into LLM alignment and evaluation wasn't a pivot; it was applying proven methods to a domain that needed them.
-
-I founded Morphism Systems on a simple premise: trustworthiness must be a design constraint from day one. That means treating alignment, evaluation, and infrastructure as first-class engineering problems. My work spans APS, IEEE, and ACS publications, focused on making AI systems dependable and grounded in production engineering.
+- Strain-induced flat bands & lateral heterostructures in TMD monolayers
+- LLM alignment · RLHF · SFT / DPO / LoRA
+- Evaluation frameworks for generative systems *(SciCode pipeline)*
+- High-throughput DFT & materials informatics
+- Category-theoretic AI governance · formal convergence analysis
+- Spintronic device modeling · nanomagnetic logic
+- Multiscale simulation *(DFT + MD)*
 
 </td>
-<td width="45%" valign="top">
+<div align="center">
 
-```
-PhD EECS — UC Berkeley (Dec 2025)
-Morphism Systems — Founder (Aug 2025)
-16 peer-reviewed publications (IEEE, APS, AIP)
-SFT/DPO/LoRA · DFT/HPC · Category Theory
-San Francisco, CA
-```
+</td>
+<td width="50%" valign="top">
+
+### Engineering Stack
+
+**ML & Alignment**
+
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/> <img src="https://img.shields.io/badge/Hugging%20Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/> <img src="https://img.shields.io/badge/MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white"/>
+
+**HPC & Simulation**
+
+<img src="https://img.shields.io/badge/VASP-4B0082?style=flat-square"/> <img src="https://img.shields.io/badge/LAMMPS-2E8B57?style=flat-square"/> <img src="https://img.shields.io/badge/SLURM-005571?style=flat-square"/>
+
+**Infrastructure**
+
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"/> <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white"/> <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white"/> <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white"/> <img src="https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white"/>
+
+**Languages**
+
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white"/> <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white"/> <img src="https://img.shields.io/badge/Julia-9558B2?style=flat-square&logo=julia&logoColor=white"/>
 
 </td>
 </tr>
 </table>
-<!-- SYNC:PROFILE:END -->
 
 ---
 
-## Projects
+## Activity
 
-Project links point to the public product or project page.
+<div align="center">
 
-<!-- SYNC:PROJECTS:START -->
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=alawein&theme=tokyo-night&hide_border=true&bg_color=0d1117&color=8B5CF6&line=8B5CF6&point=ffffff&area=true&area_color=8B5CF620" width="100%"/>
+
+</div>
+
+<div align="center">
+
+<img src="https://github-profile-trophy.vercel.app/?username=alawein&theme=tokyonight&no-frame=true&no-bg=true&column=7&rank=SECRET,SSS,SS,S,AAA,AA,A" width="100%"/>
+
+</div>
+
+---
+
+## Featured Projects
+
+### 🧠 AI Governance & Formal Methods
+
+<div align="center">
 <table>
 <tr>
-<td align="center" width="33%">
+<td width="50%">
 
-**[meshal.ai](https://www.meshal.ai)**
+[![Morphism](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=morphism-core&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://morphism.systems)
 
-Personal site and portfolio — project deep-dives, case studies, and contact.
-
-`React` `Vite` `TypeScript` `Tailwind`
+**[morphism.systems](https://morphism.systems)** — AI governance infrastructure. Formal specification, policy enforcement, and alignment tooling for production ML systems.
 
 </td>
-<td align="center" width="33%">
+<td width="50%">
 
-**[Morphism](https://morphism.systems)**
+[![Provegate](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=provegate&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://provegate.online)
 
-Category-theoretic AI governance — proof witnesses, offline-first verification. Companion: morphism-systems/morphism.
-
-`TypeScript` `Python` `Governance`
-
-</td>
-<td align="center" width="33%">
-
-**[REPZ](https://repzcoach.com)**
-
-AI-powered coaching platform for fitness professionals and clients.
-
-`TypeScript` `React` `Supabase`
+**[provegate.online](https://provegate.online)** — Agent belief infrastructure. Three MCP servers giving AI coding agents justified, revisable beliefs: drift detection, graph-structured memory mesh, and verified proof chains.
 
 </td>
 </tr>
+</table>
+</div>
+
+---
+
+### ⚗️ ML Systems Platforms
+
+<div align="center">
+<table>
 <tr>
-<td align="center" width="33%">
-
-**[Gymboy](https://gymboy.coach)**
-
-Fitness coaching platform with a retro progression-first training interface.
-
-`React` `Vite` `Spark`
-
-</td>
-<td align="center" width="33%">
-
-**[Scribd](https://scribd.fit)**
-
-Fitness publishing and content surface (Next.js, design-system aligned).
-
-`Next.js` `React` `TypeScript`
-
-</td>
-<td align="center" width="33%">
-
-**[Bolts](https://bolts.fit)**
-
-Fitness transformation plans — Next.js, Stripe, Supabase, Python tooling.
-
-`Next.js` `TypeScript` `Python`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**[Atelier Rounaq](https://atelier-rounaq.com)**
-
-Studio and portfolio site — React, TypeScript, Supabase.
-
-`TypeScript` `React` `Supabase`
-
-</td>
-<td align="center" width="33%">
-
-**[Attributa](https://attributa.dev)**
-
-Privacy-first attribution intelligence — AI detection, citation checks, CWE scans (client-side first).
-
-`TypeScript` `React` `Vite`
-
-</td>
-<td align="center" width="33%">
-
-**[LLMWorks](https://llmworks.dev)**
-
-LLM evaluation, benchmarking, and security testing playground.
-
-`TypeScript` `React` `Supabase` `LLM`
-
-</td>
-</tr>
-<tr>
-<td align="center" width="33%">
-
-**[Event Discovery Framework](https://edfp.online)**
-
-Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com → edfp.online.)
-
-`Python` `OpenCV` `FastAPI`
-
-</td>
-<td align="center" width="33%">
+<td width="33%">
 
 **[Alembiq](https://alembiq.online)**
 
-LLM training, alignment, evaluation, and synthetic data platform.
+End-to-end LLM training, alignment & evaluation platform. DAG pipelines, SFT/DPO loops, LoRA, differentiable safety constraints, Prometheus metrics.
 
-`Python` `PyTorch` `LLM Training`
+`Python` `PyTorch` `Docker`
 
 </td>
-<td align="center" width="33%">
+<td width="33%">
 
-**[OptiQAP](https://optiqap.online)**
+**[Fallax](https://fallax.online)**
 
-Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.
+Adversarial reasoning evaluation for frontier LLMs. 25 adversarial patterns, multi-provider evaluation, 6-dimension scoring, failure clustering, LLM-driven template mutation.
 
-`Python` `Optimization` `HPC`
+`Python` `FastAPI` `scikit-learn`
+
+</td>
+<td width="33%">
+
+**[LoopholeLab](https://loopholelab.online)**
+
+Multi-round adversarial validation of academic papers. Three-round protocol: self-refutation → methodology interrogation → statistical audit. Structured verdicts with offline fallback.
+
+`Python` `FastAPI` `Claude API`
+
+</td>
+</tr>
+<tr>
+<td width="33%">
+
+**[Attributa](https://attributa.dev)**
+
+Privacy-first attribution intelligence. All analysis runs client-side via WebAssembly. AI content detection (GLTR, DetectGPT), citation validation, CWE security scanning.
+
+`React` `TypeScript` `WASM`
+
+</td>
+<td width="33%">
+
+**[EDFP](https://edfp.online)**
+
+Physics-inspired rare event detection in long-horizon video. Eight algorithm implementations, 20–100× speedup over dense VLM processing, 90%+ recall, 99.78% test coverage.
+
+`Python` `Railway` `FastAPI`
+
+</td>
+<td width="33%">
+
+**[LLMWorks](https://llmworks.dev)**
+
+LLM security & testing platform. OpenAI + Anthropic integration, Supabase backend, Docker deployment, Sentry monitoring, Playwright E2E tests.
+
+`TypeScript` `React` `Supabase`
 
 </td>
 </tr>
 </table>
-<!-- SYNC:PROJECTS:END -->
+</div>
 
 ---
 
-## Packages
+### ⚛️ Quantum & Scientific Computing
 
-<!-- SYNC:PACKAGES:START -->
+<div align="center">
 <table>
 <tr>
-<th>Package</th>
-<th>Description</th>
-<th>Version</th>
-</tr>
-<tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/cli"><code>@morphism-systems/cli</code></a></td>
-<td>Governance CLI — scaffold, validate, score, heal</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/cli?style=flat-square&color=8B5CF6" alt="npm"/></td>
-</tr>
-<tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/mcp-server"><code>@morphism-systems/mcp-server</code></a></td>
-<td>MCP server for AI agent governance</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/mcp-server?style=flat-square&color=8B5CF6" alt="npm"/></td>
-</tr>
-<tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/agentic-math"><code>@morphism-systems/agentic-math</code></a></td>
-<td>MCP math computation server</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/agentic-math?style=flat-square&color=8B5CF6" alt="npm"/></td>
-</tr>
-<tr>
-<td><a href="https://www.npmjs.com/package/@morphism-systems/plugin-bundle"><code>@morphism-systems/plugin-bundle</code></a></td>
-<td>One-command installer for all tools</td>
-<td><img src="https://img.shields.io/npm/v/@morphism-systems/plugin-bundle?style=flat-square&color=8B5CF6" alt="npm"/></td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/morphism/"><code>morphism</code></a></td>
-<td>Python category theory engine</td>
-<td><img src="https://img.shields.io/pypi/v/morphism?style=flat-square&color=8B5CF6" alt="pypi"/></td>
+<td width="25%">
+
+[![QMatSim](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=qmatsim&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://github.com/alawein/qmatsim)
+
+Multiscale 2D materials simulation (DFT + MD). Implements *Phys. Rev. Materials* 2025. MoS₂/MoSe₂/WS₂/WSe₂ libraries, automated flat-band discovery, SLURM automation.
+
+</td>
+<td width="25%">
+
+[![SpinCirc](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=spincirc&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://github.com/alawein/spincirc)
+
+Equivalent-circuit spin-transport simulator. LLG/LLGS with thermal noise, Verilog-A compact models for EDA. MTJs, spin valves, all-spin logic, multiferroics.
+
+</td>
+<td width="25%">
+
+[![MagLogic](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=maglogic&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://github.com/alawein/maglogic)
+
+OOMMF/MuMax3-based nanomagnetic logic simulator. NAND/NOR, majority gates, cellular automata. Automated truth-table verification. *IEEE Magnetics Letters* 2019.
+
+</td>
+<td width="25%">
+
+[![OptiQAP](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=optiqap&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://optiqap.online)
+
+31 optimization methods for the NP-hard Quadratic Assignment Problem. Qubit mapping, facility layout, formal SymPy proofs, SSOT research database, QAPLIB benchmarks.
+
+</td>
 </tr>
 </table>
-<!-- SYNC:PACKAGES:END -->
+</div>
+
+<div align="center">
+<table>
+<tr>
+<td width="50%">
+
+[![SciComp](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=scicomp&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://github.com/alawein/scicomp)
+
+Cross-platform scientific computing across Python, MATLAB & Mathematica. Quantum simulations (Bell states, VQE, QAOA, Jaynes-Cummings), GPU via CUDA/CuPy, PINNs for PDE solving.
+
+</td>
+<td width="50%">
+
+[![QubeML](https://github-readme-stats.vercel.app/api/pin/?username=alawein&repo=qubeml&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=8B5CF6&icon_color=8B5CF6&text_color=ffffff)](https://github.com/alawein/qubeml)
+
+Quantum computing education notebooks. Qiskit, Cirq, PennyLane, PyTorch crystal GNNs, Materials Project pipelines, Kwant transport. Google Colab support.
+
+</td>
+</tr>
+</table>
+</div>
 
 ---
 
-## Governance
+### 🛠️ Additional Engineering
 
-This org runs on a single operating contract: [workspace-master-prompt](docs/governance/workspace-master-prompt.md). Core tenets:
+<div align="center">
 
-- **Single source of truth** — `SSOT.md`, per-repo `AGENTS.md`, org `README.md`
-- **Scope before action** — boundaries defined; violations rejected with file/line evidence
-- **Observable changes** — commit style `type(scope): description`
-- **README sync** — structural changes flow through `sync-readme.py` and the doc contract
-- **Design & branding** — shared tokens in [devkit/tokens](https://github.com/alawein/devkit/tree/main/tokens); brand manifests in [repz/branding](https://github.com/alawein/repz/tree/main/branding). Canonical paths: [workspace-resource-map](docs/governance/workspace-resource-map.md).
+Full-stack products shipped end-to-end &nbsp;·&nbsp; [**Repz**](https://github.com/alawein/repz) — 242+ React components, Supabase backend &nbsp;·&nbsp; [**Adil**](https://github.com/alawein/adil) — legal case management &nbsp;·&nbsp; [**Bolts**](https://bolts.fit) · [**Scribd**](https://scribd.fit) · [**Gymboy**](https://gymboy.coach)
 
-**Quality gates:** `python scripts/sync-readme.py --check` · `./scripts/validate-doc-contract.sh --full`
+</div>
 
 ---
 
-<details>
-<summary><strong>Research & scientific computing</strong></summary>
+<div align="center">
+
+**Open to collaborations in AI governance, HPC workflow design, and LLM alignment research.**
 <br/>
-
-<!-- SYNC:RESEARCH:START -->
-| Project | Domain |
-|---------|--------|
-| [qmatsim](https://github.com/alawein/qmatsim) | Quantum material simulation |
-| [qmlab](https://github.com/alawein/qmlab) | Quantum ML web lab (React/TS/Vite) |
-| [qubeml](https://github.com/alawein/qubeml) | Quantum ML experiments |
-| [simcore](https://github.com/alawein/simcore) | Scientific simulation core |
-| [scicomp](https://github.com/alawein/scicomp) | Scientific computing utilities |
-| [spincirc](https://github.com/alawein/spincirc) | Spintronics circuit simulation |
-| [maglogic](https://github.com/alawein/maglogic) | Magnetic logic gates |
-| [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Physics research and writing |
-| [adil](https://github.com/alawein/adil) | Legal AI — evidence and agency submissions |
-| [chshlab](https://github.com/alawein/chshlab) | Quantum foundations — CHSH / Bell education site |
-| [helios](https://github.com/alawein/helios) | Proprietary research archive — computational astrophysics |
-| [loopholelab](https://github.com/alawein/loopholelab) | Research validation — adversarial claim stress-testing |
-| [Provegate](https://provegate.online) | Agent MCP tooling — drift, memory, proof |
-<!-- SYNC:RESEARCH:END -->
-
-</details>
-
----
-
-## Stack
-
-**AI & ML**
-
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
-![CUDA](https://img.shields.io/badge/CUDA-76B900?style=flat-square&logo=nvidia&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white)
-
-**Scientific computing**
-
-![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=flat-square&logo=scipy&logoColor=white)
-![MPI](https://img.shields.io/badge/MPI-0047AB?style=flat-square&logo=openmpi&logoColor=white)
-![SLURM](https://img.shields.io/badge/SLURM-HPC-2C3E50?style=flat-square)
-![VASP](https://img.shields.io/badge/VASP-DFT-6C3483?style=flat-square)
-![Quantum ESPRESSO](https://img.shields.io/badge/Quantum_ESPRESSO-1A5276?style=flat-square)
-
-**Backend & infra**
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazon-aws&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-
-**Frontend**
-
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
-
-**Tooling**
-
-![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-2088FF?style=flat-square&logo=github-actions&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
-
----
-
-## Stats
-
-<div align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=alawein&show_icons=true&theme=tokyonight&hide_border=true" height="165"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alawein&layout=compact&theme=tokyonight&hide_border=true" height="165"/>
-</div>
-
----
-
-## License
-
-[MIT](LICENSE)
-
----
-
-<div align="center">
-
-**contact@meshal.ai** · [meshal.ai](https://meshal.ai) · San Francisco
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=8B5CF6&height=100&section=footer" width="100%"/>
+<a href="mailto:contact@meshal.ai">contact@meshal.ai</a> · <a href="https://meshal.ai">meshal.ai</a> · <a href="https://morphism.systems">morphism.systems</a>
 
 </div>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=100&section=footer" width="100%"/>

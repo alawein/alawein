@@ -1,11 +1,4 @@
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=140&section=header&text=Meshal%20Alawein&fontSize=40&fontColor=ffffff&fontAlignY=60&desc=Computational%20Scientist%20%C2%B7%20AI%20Systems%20Engineer%20%C2%B7%20Founder%2C%20Morphism%20Systems&descSize=14&descAlignY=80" width="100%"/>
-
-</div>
-
-<div align="center">
-
+<div align="center"> <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12&height=140&section=header&text=Meshal%20Alawein&fontSize=40&fontColor=ffffff&fontAlignY=60&desc=Computational%20Scientist%20%C2%B7%20AI%20Systems%20Engineer%20%C2%B7%20Founder%2C%20Morphism%20Systems&descSize=14&descAlignY=80" width="100%"/> </div> <div align="center">
 <a href="https://meshal.ai"><img src="https://img.shields.io/badge/meshal.ai-000000?style=for-the-badge&logo=safari&logoColor=white"/></a>
 <a href="https://morphism.systems"><img src="https://img.shields.io/badge/morphism.systems-1a1a2e?style=for-the-badge&logo=atom&logoColor=8B5CF6"/></a>
 <a href="mailto:contact@meshal.ai"><img src="https://img.shields.io/badge/contact@meshal.ai-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/></a>
@@ -14,7 +7,7 @@
 
 <br/><br/>
 
-*Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.*
+Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.
 
 </div>
 

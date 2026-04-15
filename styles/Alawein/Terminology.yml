@@ -1,0 +1,11 @@
+extends: existence
+message: "Use the canonical term '%s' from the terminology registry."
+ignorecase: true
+level: error
+tokens:
+  - gainboy
+  - neper
+  - qaplibria
+  - epistemic-stack
+  - reasonbench
+  - aw-devkit

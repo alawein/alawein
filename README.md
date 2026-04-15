@@ -12,9 +12,9 @@ Computational scientist and AI systems engineer building auditable AI, scientifi
 
 Pinned below on GitHub carries the portfolio signal. The current focus set is:
 
-- [meshal-web](https://www.meshal.ai) - Personal site and portfolio — project deep-dives, case studies, and contact.
-- [attributa](https://attributa.dev) - Privacy-first attribution intelligence — AI detection, citation checks, CWE scans (client-side first).
-- [bolts](https://bolts.fit) - Fitness transformation plans — Next.js, Stripe, Supabase, Python tooling.
-- [scribd](https://scribd.fit) - Fitness publishing and content surface (Next.js, design-system aligned).
-- [alembiq](https://alembiq.online) - LLM training, alignment, evaluation, and synthetic data platform.
+- [meshal-web](https://www.meshal.ai) - Personal site and portfolio with project deep-dives, case studies, and contact.
+- [attributa](https://attributa.dev) - Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.
+- [bolts](https://bolts.fit) - Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.
+- [scribd](https://scribd.fit) - Fitness publishing and content surface aligned with the shared design system.
+- [alembiq](https://alembiq.online) - 
 - [llmworks](https://llmworks.dev) - LLM evaluation, benchmarking, and security testing playground.

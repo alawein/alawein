@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./asset.schema.json",
+  "title": "Asset manifest",
+  "type": "object",
+  "required": ["schemaVersion", "assets"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/asset" }
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "required": [
+        "slug",
+        "name",
+        "type",
+        "source_repo",
+        "path",
+        "owner",
+        "theme_family",
+        "consumers",
+        "version_source",
+        "description"
+      ],
+      "properties": {
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string" },
+        "source_repo": { "type": "string" },
+        "owner": { "type": "string" },
+        "path": { "type": "string" },
+        "theme_family": { "type": "string" },
+        "consumers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "version_source": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

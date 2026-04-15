@@ -1,130 +1,191 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-04-07",
+  "lastUpdated": "2026-04-14",
   "featured": [
     {
       "name": "meshal.ai",
       "slug": "meshal-web",
-      "url": "https://www.meshal.ai",
       "repo": "alawein/meshal-web",
-      "description": "Personal site and portfolio — project deep-dives, case studies, and contact.",
-      "tags": ["React", "Vite", "TypeScript", "Tailwind"],
+      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
+      "tags": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Tailwind"
+      ],
       "category": "maintained",
+      "url": "https://www.meshal.ai",
       "portfolio_domain": "Personal"
     },
     {
       "name": "Morphism",
       "slug": "morphism",
-      "url": "https://morphism.systems",
       "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance — proof witnesses, offline-first verification. Companion: morphism-systems/morphism.",
-      "tags": ["TypeScript", "Python", "Governance"],
+      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
+      "tags": [
+        "TypeScript",
+        "Python",
+        "Governance"
+      ],
       "category": "active",
+      "url": "https://morphism.systems",
       "portfolio_domain": "Work"
     },
     {
       "name": "REPZ",
       "slug": "repz",
-      "url": "https://repzcoach.com",
       "repo": "alawein/repz",
       "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "tags": ["TypeScript", "React", "Supabase"],
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
       "category": "active",
+      "url": "https://repzcoach.com",
       "portfolio_domain": "Personal"
     },
     {
       "name": "Gymboy",
       "slug": "gymboy",
-      "legacy_slugs": ["gainboy"],
-      "url": "https://gymboy.coach",
       "repo": "alawein/gymboy",
       "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "tags": ["React", "Vite", "Spark"],
+      "tags": [
+        "React",
+        "Vite",
+        "Spark"
+      ],
       "category": "active",
+      "legacy_slugs": [
+        "gainboy"
+      ],
+      "url": "https://gymboy.coach",
       "portfolio_domain": "Personal"
     },
     {
       "name": "Scribd",
       "slug": "scribd",
-      "url": "https://scribd.fit",
       "repo": "alawein/scribd",
-      "description": "Fitness publishing and content surface (Next.js, design-system aligned).",
-      "tags": ["Next.js", "React", "TypeScript"],
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript"
+      ],
       "category": "active",
+      "url": "https://scribd.fit",
       "portfolio_domain": "Work"
     },
     {
       "name": "Bolts",
       "slug": "bolts",
-      "url": "https://bolts.fit",
       "repo": "alawein/bolts",
-      "description": "Fitness transformation plans — Next.js, Stripe, Supabase, Python tooling.",
-      "tags": ["Next.js", "TypeScript", "Python"],
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Python"
+      ],
       "category": "active",
+      "url": "https://bolts.fit",
       "portfolio_domain": "Work"
     },
     {
       "name": "Atelier Rounaq",
       "slug": "atelier-rounaq",
-      "legacy_slugs": ["rounaq-atelier"],
-      "url": "https://atelier-rounaq.com",
       "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site — React, TypeScript, Supabase.",
-      "tags": ["TypeScript", "React", "Supabase"],
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
       "category": "active",
+      "legacy_slugs": [
+        "rounaq-atelier"
+      ],
+      "url": "https://atelier-rounaq.com",
       "portfolio_domain": "Work"
     },
     {
       "name": "Attributa",
       "slug": "attributa",
-      "url": "https://attributa.dev",
       "repo": "alawein/attributa",
-      "description": "Privacy-first attribution intelligence — AI detection, citation checks, CWE scans (client-side first).",
-      "tags": ["TypeScript", "React", "Vite"],
+      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite"
+      ],
       "category": "active",
+      "url": "https://attributa.dev",
       "portfolio_domain": "Work"
     },
     {
       "name": "LLMWorks",
       "slug": "llmworks",
-      "url": "https://llmworks.dev",
       "repo": "alawein/llmworks",
       "description": "LLM evaluation, benchmarking, and security testing playground.",
-      "tags": ["TypeScript", "React", "Supabase", "LLM"],
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase",
+        "LLM"
+      ],
       "category": "active",
+      "url": "https://llmworks.dev",
       "portfolio_domain": "Work"
     },
     {
       "name": "Event Discovery Framework",
       "slug": "edfp",
-      "legacy_slugs": ["event-discovery-framework", "aiclarity"],
-      "url": "https://edfp.online",
       "repo": "alawein/edfp",
-      "description": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com → edfp.online.)",
-      "tags": ["Python", "OpenCV", "FastAPI"],
+      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "FastAPI"
+      ],
       "category": "planned",
+      "legacy_slugs": [
+        "event-discovery-framework",
+        "aiclarity"
+      ],
+      "url": "https://edfp.online",
       "portfolio_domain": "Work"
     },
     {
       "name": "Alembiq",
       "slug": "alembiq",
-      "legacy_slugs": ["neper"],
-      "url": "https://alembiq.online",
       "repo": "alawein/alembiq",
       "description": "LLM training, alignment, evaluation, and synthetic data platform.",
-      "tags": ["Python", "PyTorch", "LLM Training"],
+      "tags": [
+        "Python",
+        "PyTorch",
+        "LLM Training"
+      ],
       "category": "active",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "url": "https://alembiq.online",
       "portfolio_domain": "scientific-computing"
     },
     {
       "name": "OptiQAP",
       "slug": "optiqap",
-      "legacy_slugs": ["qaplibria"],
-      "url": "https://optiqap.online",
       "repo": "alawein/optiqap",
-      "description": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
-      "tags": ["Python", "Optimization", "HPC"],
+      "description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+      "tags": [
+        "Python",
+        "Optimization",
+        "HPC"
+      ],
       "category": "maintained",
+      "legacy_slugs": [
+        "qaplibria"
+      ],
+      "url": "https://optiqap.online",
       "portfolio_domain": "Personal"
     }
   ],
@@ -132,40 +193,60 @@
     {
       "name": "qmlab.online",
       "slug": "qmlab",
-      "url": "https://qmlab.online",
       "repo": "alawein/qmlab",
-      "description": "Quantum ML web lab — React, TypeScript, Vite, Supabase.",
-      "tags": ["TypeScript", "React", "Vite", "Supabase"],
+      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Supabase"
+      ],
       "category": "active",
+      "url": "https://qmlab.online",
       "portfolio_domain": "Personal"
     },
     {
       "name": "simcore.dev",
       "slug": "simcore",
-      "url": "https://simcore.dev",
       "repo": "alawein/simcore",
-      "description": "Scientific simulation core — Python, scientific computing.",
-      "tags": ["Python", "Scientific computing"],
+      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "tags": [
+        "Python",
+        "Scientific computing"
+      ],
       "category": "active",
+      "url": "https://simcore.dev",
       "portfolio_domain": "Work"
     },
     {
       "name": "MeatheadPhysicist",
       "slug": "meatheadphysicist",
-      "legacy_slugs": ["MeatheadPhysicist"],
-      "url": "https://mhphys.online",
       "repo": "alawein/meatheadphysicist",
-      "description": "Computational physics research platform — Bell inequality analysis, CHSH simulator, claim verifier.",
-      "tags": ["Python", "Physics", "FastAPI", "Research"],
+      "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
+      "tags": [
+        "Python",
+        "Physics",
+        "FastAPI",
+        "Research"
+      ],
       "category": "active",
+      "legacy_slugs": [
+        "MeatheadPhysicist"
+      ],
+      "url": "https://mhphys.online",
       "portfolio_domain": "Personal"
     },
     {
       "name": "Adil",
       "slug": "adil",
       "repo": "alawein/adil",
-      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets to USCIS and other agencies.",
-      "tags": ["Python", "Legal AI", "CLI", "OCR"],
+      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "tags": [
+        "Python",
+        "Legal AI",
+        "CLI",
+        "OCR"
+      ],
       "category": "active",
       "portfolio_domain": "Personal"
     },
@@ -173,13 +254,79 @@
       "name": "Roka: Oakland Hustle",
       "slug": "roka-oakland-hustle",
       "repo": "alawein/roka-oakland-hustle",
-      "description": "Retro narrative RPG set in Oakland — 7-day arc, 32 quests, HD-retro 640x360 (Godot 4.2+).",
-      "tags": ["Godot", "GDScript", "RPG", "Game"],
+      "description": "Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.",
+      "tags": [
+        "Godot",
+        "GDScript",
+        "RPG",
+        "Game"
+      ],
       "category": "active",
       "portfolio_domain": "Personal"
     }
   ],
   "research": [
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com \u2192 edfp.online.)",
+      "legacy_slugs": [
+        "event-discovery-framework",
+        "aiclarity"
+      ],
+      "url": "https://edfp.online"
+    },
+    {
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "repo": "alawein/alembiq",
+      "domain": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "url": "https://alembiq.online"
+    },
+    {
+      "name": "OptiQAP",
+      "slug": "optiqap",
+      "repo": "alawein/optiqap",
+      "domain": "Quadratic Assignment Problem solvers \u2014 equilibrium-guided optimization, spectral methods, QUBO.",
+      "legacy_slugs": [
+        "qaplibria"
+      ],
+      "url": "https://optiqap.online"
+    },
+    {
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "domain": "Quantum ML web lab (React/TS/Vite)",
+      "url": "https://qmlab.online"
+    },
+    {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "domain": "Scientific simulation core",
+      "url": "https://simcore.dev"
+    },
+    {
+      "name": "MeatheadPhysicist",
+      "slug": "meatheadphysicist",
+      "repo": "alawein/meatheadphysicist",
+      "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",
+      "legacy_slugs": [
+        "MeatheadPhysicist"
+      ],
+      "url": "https://mhphys.online"
+    },
+    {
+      "name": "Adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "domain": "Arabic-dialect NLP research"
+    },
     {
       "name": "qmatsim",
       "slug": "qmatsim",
@@ -187,22 +334,10 @@
       "domain": "Quantum material simulation"
     },
     {
-      "name": "qmlab",
-      "slug": "qmlab",
-      "repo": "alawein/qmlab",
-      "domain": "Quantum ML web lab (React/TS/Vite)"
-    },
-    {
       "name": "qubeml",
       "slug": "qubeml",
       "repo": "alawein/qubeml",
       "domain": "Quantum ML experiments"
-    },
-    {
-      "name": "simcore",
-      "slug": "simcore",
-      "repo": "alawein/simcore",
-      "domain": "Scientific simulation core"
     },
     {
       "name": "scicomp",
@@ -217,102 +352,122 @@
       "domain": "Spintronics circuit simulation"
     },
     {
-      "name": "maglogic",
+      "name": "MagLogic",
       "slug": "maglogic",
       "repo": "alawein/maglogic",
       "domain": "Magnetic logic gates"
     },
     {
-      "name": "meatheadphysicist",
-      "slug": "meatheadphysicist",
-      "legacy_slugs": ["MeatheadPhysicist"],
-      "url": "https://mhphys.online",
-      "repo": "alawein/meatheadphysicist",
-      "domain": "Computational physics research — Bell inequality, CHSH simulation"
-    },
-    {
-      "name": "chshlab",
+      "name": "CHSH Lab",
       "slug": "chshlab",
       "repo": "alawein/chshlab",
-      "url": "https://chshlab.online",
-      "domain": "Quantum foundations — CHSH / Bell education site"
+      "domain": "Quantum foundations \u2014 CHSH / Bell education site",
+      "url": "https://chshlab.online"
     },
     {
-      "name": "helios",
+      "name": "Helios",
       "slug": "helios",
       "repo": "alawein/helios",
-      "domain": "Proprietary research archive — computational astrophysics"
+      "domain": "Proprietary research archive \u2014 computational astrophysics",
+      "category": "archived"
     },
     {
-      "name": "loopholelab",
+      "name": "Loophole Lab",
       "slug": "loopholelab",
       "repo": "alawein/loopholelab",
-      "url": "https://loopholelab.online",
-      "domain": "Research validation — adversarial claim stress-testing"
+      "domain": "Research validation \u2014 adversarial claim stress-testing",
+      "url": "https://loopholelab.online"
     },
     {
       "name": "Provegate",
       "slug": "provegate",
-      "legacy_slugs": ["epistemic-stack"],
       "repo": "alawein/provegate",
-      "url": "https://provegate.online",
-      "domain": "Agent MCP tooling — drift, memory, proof"
+      "domain": "Agent MCP tooling \u2014 drift, memory, proof",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "url": "https://provegate.online"
     },
     {
-      "name": "mercor-llm-failsafe",
+      "name": "Mercor LLM Failsafe",
       "slug": "mercor-llm-failsafe",
       "repo": "alawein/mercor-llm-failsafe",
-      "domain": "LLM failsafe system (Mercor employer project)",
+      "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
       "category": "archived"
     }
   ],
   "infrastructure": [
     {
+      "name": "Provegate",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "purpose": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "url": "https://provegate.online",
+      "status": "active"
+    },
+    {
       "name": "design-system",
       "slug": "design-system",
-      "legacy_slugs": ["aw-devkit", "devkit"],
       "repo": "alawein/design-system",
+      "purpose": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "legacy_slugs": [
+        "aw-devkit",
+        "devkit"
+      ],
       "url": "https://github.com/alawein/design-system",
-      "purpose": "Shared design tokens, themes, ESLint/Prettier/tsconfig packages, Storybook (workspace: design-system/)"
+      "status": "active"
     },
     {
       "name": "alawein",
       "slug": "alawein",
       "repo": "alawein/alawein",
+      "purpose": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
       "url": "https://github.com/alawein/alawein",
-      "purpose": "Org profile, governance control plane, projects.json, scripts"
+      "status": "active"
     },
     {
       "name": "workspace-tools",
       "slug": "workspace-tools",
       "repo": "alawein/workspace-tools",
+      "purpose": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
       "url": "https://github.com/alawein/workspace-tools",
-      "purpose": "Workspace batch execution and ops orchestration (workspace: workspace-tools/)"
+      "status": "active"
     },
     {
       "name": "knowledge-base",
       "slug": "knowledge-base",
-      "legacy_slugs": ["pkos"],
       "repo": "alawein/knowledge-base",
+      "purpose": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "legacy_slugs": [
+        "pkos"
+      ],
       "url": "https://knowledge-base-alawein.vercel.app",
-      "purpose": "Knowledge DB, dashboard, config audit, career/resume (workspace: knowledge-base/)"
+      "status": "active"
     },
     {
       "name": "Handshake AI Eval",
       "slug": "handshake-hai",
-      "legacy_slugs": ["eval"],
       "repo": "alawein/handshake-hai",
+      "purpose": "LLM evaluation monorepo with shared core and project validators.",
+      "legacy_slugs": [
+        "eval"
+      ],
       "url": "https://github.com/alawein/handshake-hai",
-      "purpose": "LLM evaluation monorepo — shared core + project validators (proctor, watts, ohm) (local: Dropbox/jobs/handshake-hai/)",
       "status": "active"
     },
     {
-      "name": "fallax",
+      "name": "Fallax",
       "slug": "fallax",
-      "legacy_slugs": ["reasonbench"],
       "repo": "alawein/fallax",
+      "purpose": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "legacy_slugs": [
+        "reasonbench"
+      ],
       "url": "https://fallax.online",
-      "purpose": "Fallax — LLM adversarial reasoning evaluation system (workspace: fallax/)"
+      "status": "active"
     }
   ],
   "packages": [
@@ -320,37 +475,37 @@
       "name": "@morphism-systems/cli",
       "registry": "npm",
       "url": "https://www.npmjs.com/package/@morphism-systems/cli",
-      "description": "Governance CLI — scaffold, validate, score, heal"
+      "description": "Governance CLI for scaffold, validate, score, and heal operations."
     },
     {
       "name": "@morphism-systems/mcp-server",
       "registry": "npm",
       "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
-      "description": "MCP server for AI agent governance"
+      "description": "MCP server for AI agent governance."
     },
     {
       "name": "@morphism-systems/agentic-math",
       "registry": "npm",
       "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
-      "description": "MCP math computation server"
+      "description": "MCP math computation server."
     },
     {
       "name": "@morphism-systems/plugin-bundle",
       "registry": "npm",
       "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
-      "description": "One-command installer for all tools"
+      "description": "Bundle installer for Morphism tools."
     },
     {
       "name": "morphism",
       "registry": "pypi",
       "url": "https://pypi.org/project/morphism/",
-      "description": "Python category theory engine"
+      "description": "Python category theory engine."
     },
     {
       "name": "berkeley-scicomp",
       "registry": "pypi",
       "url": "https://pypi.org/project/berkeley-scicomp/",
-      "description": "Cross-platform scientific computing framework — QM, thermal transport, PINNs (Python/MATLAB/Mathematica)"
+      "description": "Cross-platform scientific computing framework."
     }
   ]
 }

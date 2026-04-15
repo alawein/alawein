@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastVerified": "2026-04-14",
+  "templates": [
+    {
+      "slug": "editorconfig",
+      "name": ".editorconfig baseline",
+      "path": "alawein/templates/editorconfig.template",
+      "type": "config-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["all repos"],
+      "automation": "scripts/render-configs.sh",
+      "version_source": "manual",
+      "description": "Workspace-wide editor formatting baseline."
+    },
+    {
+      "slug": "product-readme",
+      "name": "Product README contract",
+      "path": "alawein/templates/scaffolding/README.product.md",
+      "type": "docs-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["product repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "README skeleton for product repositories."
+    },
+    {
+      "slug": "tooling-readme",
+      "name": "Tooling README contract",
+      "path": "alawein/templates/scaffolding/README.tooling.md",
+      "type": "docs-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["tooling and infrastructure repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "README skeleton for tooling and infrastructure repositories."
+    },
+    {
+      "slug": "research-readme",
+      "name": "Research README contract",
+      "path": "alawein/templates/scaffolding/README.research.md",
+      "type": "docs-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["research repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "README skeleton for research repositories."
+    },
+    {
+      "slug": "docs-index",
+      "name": "docs/README contract",
+      "path": "alawein/templates/scaffolding/docs-README.md",
+      "type": "docs-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["all repos with docs/"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "Index page contract for repository documentation folders."
+    },
+    {
+      "slug": "service-metadata",
+      "name": "service metadata baseline",
+      "path": "alawein/templates/scaffolding/service-metadata.yaml",
+      "type": "metadata-template",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "consumers": ["all repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "Standard service metadata file for ownership, compliance, and runtime classification."
+    },
+    {
+      "slug": "governance-license",
+      "name": "LICENSE baseline",
+      "path": "knowledge-base/templates/governance/LICENSE",
+      "type": "governance-template",
+      "owner": "alawein",
+      "source_repo": "alawein/knowledge-base",
+      "consumers": ["all repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "Canonical license template used across governed repositories."
+    },
+    {
+      "slug": "governance-security",
+      "name": "SECURITY baseline",
+      "path": "knowledge-base/templates/governance/SECURITY.md",
+      "type": "governance-template",
+      "owner": "alawein",
+      "source_repo": "alawein/knowledge-base",
+      "consumers": ["all repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "Canonical security policy template."
+    },
+    {
+      "slug": "governance-changelog",
+      "name": "CHANGELOG baseline",
+      "path": "knowledge-base/templates/governance/CHANGELOG.md",
+      "type": "governance-template",
+      "owner": "alawein",
+      "source_repo": "alawein/knowledge-base",
+      "consumers": ["all repos"],
+      "automation": "workspace-batch scaffold apply",
+      "version_source": "manual",
+      "description": "Canonical changelog template."
+    }
+  ]
+}

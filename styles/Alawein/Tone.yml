@@ -1,0 +1,10 @@
+extends: existence
+message: "Avoid promotional filler in governed docs: '%s'."
+ignorecase: true
+level: warning
+tokens:
+  - best-in-class
+  - seamless
+  - revolutionary
+  - cutting-edge
+  - world-class

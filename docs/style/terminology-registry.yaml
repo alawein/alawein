@@ -1,0 +1,45 @@
+version: 1
+last_verified: 2026-04-14
+canonical_terms:
+  - term: alawein
+    usage: "Organization and governance control plane."
+  - term: design-system
+    usage: "Infrastructure repo slug for shared tokens, UI, themes, and brand assets."
+  - term: workspace-tools
+    usage: "Infrastructure repo slug for workspace automation and scaffolding."
+  - term: knowledge-base
+    usage: "Infrastructure repo slug for searchable inventory and onboarding UI."
+  - term: provegate
+    usage: "Canonical repo slug replacing epistemic-stack."
+  - term: fallax
+    usage: "Canonical repo slug replacing reasonbench."
+  - term: handshake-hai
+    usage: "Canonical remote slug replacing local eval shorthand."
+  - term: gymboy
+    usage: "Canonical product slug replacing gainboy."
+  - term: alembiq
+    usage: "Canonical research slug replacing neper."
+  - term: optiqap
+    usage: "Canonical research slug replacing qaplibria."
+  - term: repo archetype
+    usage: "Normalized scaffold classification such as next-app-router or python-library."
+  - term: theme family
+    usage: "Controlled visual grouping applied to repo-level branding."
+banned_terms:
+  - best-in-class
+  - seamless
+  - revolutionary
+  - cutting-edge
+  - next-gen
+  - gainboy
+  - neper
+  - qaplibria
+  - epistemic-stack
+  - reasonbench
+  - aw-devkit
+  - devkit
+lifecycle_labels:
+  - planned
+  - active
+  - maintained
+  - archived

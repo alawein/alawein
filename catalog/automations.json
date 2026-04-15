@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastVerified": "2026-04-14",
+  "automations": [
+    {
+      "slug": "daily-digest",
+      "name": "Daily digest",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/daily-digest.yml",
+      "schedule": "0 16 * * 1-5",
+      "outputs": ["digest summary"],
+      "description": "Builds and posts the daily summary."
+    },
+    {
+      "slug": "job-tracker",
+      "name": "Job tracker summary",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/job-tracker.yml",
+      "schedule": "0 16 * * 1-5",
+      "outputs": ["job tracker summary"],
+      "description": "Fetches and summarizes job tracker activity."
+    },
+    {
+      "slug": "task-sync",
+      "name": "Task sync",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/task-sync.yml",
+      "schedule": "0 */6 * * *",
+      "outputs": ["Notion and GitHub issue sync"],
+      "description": "Keeps tasks synchronized between Notion and GitHub."
+    },
+    {
+      "slug": "github-dashboard-sync",
+      "name": "GitHub dashboard sync",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/github-dashboard-sync.yml",
+      "schedule": "0 6 * * *",
+      "outputs": ["dashboard snapshots"],
+      "description": "Refreshes GitHub dashboard snapshots from API data."
+    },
+    {
+      "slug": "readme-sync",
+      "name": "Profile README sync",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/readme-sync.yml",
+      "schedule": "push-triggered",
+      "outputs": ["README.md"],
+      "description": "Regenerates the profile README when canonical data changes."
+    },
+    {
+      "slug": "docs-doctrine-monthly",
+      "name": "Docs doctrine monthly audit",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/docs-doctrine.yml",
+      "schedule": "0 6 1 * *",
+      "outputs": ["doctrine audit"],
+      "description": "Runs monthly documentation doctrine and drift checks."
+    },
+    {
+      "slug": "knowledge-base-smoke",
+      "name": "Knowledge base smoke production",
+      "owner": "alawein",
+      "source_repo": "alawein/knowledge-base",
+      "runner": "github-actions",
+      "path": "knowledge-base/.github/workflows/smoke-production.yml",
+      "schedule": "manual + weekly",
+      "outputs": ["production smoke report"],
+      "description": "Runs smoke tests against the deployed knowledge-base surface."
+    }
+  ]
+}

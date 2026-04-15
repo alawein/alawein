@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "lastVerified": "2026-04-14",
+  "axes": {
+    "type": [
+      "product",
+      "tooling",
+      "infra",
+      "research",
+      "archive",
+      "governance"
+    ],
+    "surface": [
+      "web",
+      "cli",
+      "library",
+      "service",
+      "monorepo",
+      "docs-hub",
+      "dataset",
+      "workflow",
+      "asset-pack"
+    ],
+    "domain": [
+      "portfolio",
+      "ai-governance",
+      "fitness",
+      "publishing",
+      "quantum",
+      "scientific-computing",
+      "legal-ops",
+      "design-system",
+      "research-ops",
+      "governance",
+      "game-dev"
+    ],
+    "lifecycle": [
+      "planned",
+      "active",
+      "maintained",
+      "archived"
+    ],
+    "audience": [
+      "public",
+      "internal",
+      "hiring",
+      "client",
+      "research"
+    ],
+    "brand_family": [
+      "midnight",
+      "dawn",
+      "wisdom",
+      "forge",
+      "legacy",
+      "vibrant",
+      "earth",
+      "heritage"
+    ],
+    "compliance": [
+      "public-data",
+      "internal-only",
+      "pii",
+      "regulated"
+    ]
+  },
+  "github": {
+    "topics": {
+      "max": 20,
+      "recommendedMax": 12,
+      "policy": "Reserve topics for public discovery only. Store governance-heavy metadata in custom properties."
+    },
+    "customProperties": [
+      "lifecycle",
+      "owner",
+      "maintainer",
+      "docs_owner",
+      "compliance",
+      "repo_archetype",
+      "docs_maturity",
+      "brand_family"
+    ]
+  },
+  "portfolioDomains": [
+    "Work",
+    "Personal",
+    "scientific-computing"
+  ]
+}

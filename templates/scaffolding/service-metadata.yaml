@@ -1,0 +1,12 @@
+schema_version: 1
+repo_slug: "{{slug}}"
+repo_archetype: "{{repo_archetype}}"
+stack:
+  - "{{stack_primary}}"
+theme_family: "{{theme_family}}"
+brand_family: "{{brand_family}}"
+owner: "{{owner}}"
+maintainer: "{{maintainer}}"
+docs_owner: "{{docs_owner}}"
+version_source: "{{version_source}}"
+homepage: "{{homepage}}"

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./automation.schema.json",
+  "title": "Automation manifest",
+  "type": "object",
+  "required": ["schemaVersion", "automations"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "automations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/automation" }
+    }
+  },
+  "$defs": {
+    "automation": {
+      "type": "object",
+      "required": [
+        "slug",
+        "name",
+        "owner",
+        "source_repo",
+        "runner",
+        "path",
+        "schedule",
+        "outputs",
+        "description"
+      ],
+      "properties": {
+        "slug": { "type": "string" },
+        "name": { "type": "string" },
+        "owner": { "type": "string" },
+        "source_repo": { "type": "string" },
+        "runner": { "type": "string" },
+        "path": { "type": "string" },
+        "schedule": { "type": "string" },
+        "outputs": { "type": "array", "items": { "type": "string" } },
+        "description": { "type": "string" }
+      }
+    }
+  }
+}

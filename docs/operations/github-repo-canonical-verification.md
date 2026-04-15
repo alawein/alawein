@@ -39,21 +39,21 @@ Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repo
 | Remote | Status |
 |--------|--------|
 | `alawein/gymboy` | Canonical |
-| `alawein/gainboy` | Resolves to **`alawein/gymboy`** (GitHub redirect) |
+| `alawein/gainboy` | Historical alias; resolves to **`alawein/gymboy`** (GitHub redirect) |
 
 ## Atelier Rounaq
 
 | Remote | Status |
 |--------|--------|
 | `alawein/atelier-rounaq` | Canonical |
-| `alawein/rounaq-atelier` | Resolves to **`alawein/atelier-rounaq`** (redirect) |
+| `alawein/rounaq-atelier` | Historical alias; resolves to **`alawein/atelier-rounaq`** (redirect) |
 
 ## EDFP vs legacy Aiclarity
 
 | Remote | Status |
 |--------|--------|
 | `alawein/edfp` | Exists, not archived — **canonical** for Event Discovery Framework (`edfp.online`) |
-| `meshal-alawein/event-discovery-framework` | Still exists, not archived — **legacy**; prefer `alawein/edfp` unless you explicitly maintain the user-org fork |
+| `meshal-alawein/event-discovery-framework` | Still exists, not archived — historical legacy slug; prefer `alawein/edfp` unless you explicitly maintain the user-org fork |
 
 ## Workspace folder → GitHub remote (tooling)
 

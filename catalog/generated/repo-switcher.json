@@ -48,7 +48,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data"
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Morphism",
@@ -96,7 +98,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
-      "compliance": "internal-only"
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "REPZ",
@@ -144,7 +148,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "pii"
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Gymboy",
@@ -190,7 +196,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "pii"
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Scribd",
@@ -237,7 +245,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
-      "compliance": "public-data"
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Bolts",
@@ -285,7 +295,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
-      "compliance": "pii"
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Atelier Rounaq",
@@ -331,7 +343,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data"
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Attributa",
@@ -378,7 +392,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only"
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "LLMWorks",
@@ -427,7 +443,9 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only"
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Event Discovery Framework",
@@ -473,7 +491,9 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
-      "compliance": "public-data"
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "Alembiq",
@@ -520,7 +540,9 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "internal-only"
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     },
     {
       "name": "OptiQAP",
@@ -567,7 +589,9 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data"
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
     }
   ],
   "entrypoints": {

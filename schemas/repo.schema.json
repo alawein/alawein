@@ -105,6 +105,48 @@
             "type": ["string", "number", "boolean", "null"]
           }
         },
+        "github_actions_settings": {
+          "type": "object",
+          "required": [
+            "default_workflow_permissions",
+            "can_approve_pull_request_reviews"
+          ],
+          "properties": {
+            "default_workflow_permissions": {
+              "type": "string",
+              "enum": ["read", "write"]
+            },
+            "can_approve_pull_request_reviews": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
+        "release_automation": {
+          "type": "object",
+          "required": [
+            "mode",
+            "supports_release_prs",
+            "publishes_packages",
+            "requires_npm_token"
+          ],
+          "properties": {
+            "mode": {
+              "type": "string",
+              "enum": ["none", "changesets-version-pr", "changesets-publish"]
+            },
+            "supports_release_prs": {
+              "type": "boolean"
+            },
+            "publishes_packages": {
+              "type": "boolean"
+            },
+            "requires_npm_token": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        },
         "depends_on": {
           "type": "array",
           "items": { "type": "string" }

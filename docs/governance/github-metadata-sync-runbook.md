@@ -4,20 +4,20 @@ source: none
 sync: none
 sla: none
 title: GitHub Metadata Sync Runbook
-description: Operator procedure for advisory runs, canary apply, verification, rollback, and cohort expansion of catalog-driven GitHub metadata sync.
+description: Operator procedure for advisory runs, canary apply, verification, rollback, and cohort expansion of catalog-driven GitHub metadata and workflow-settings sync.
 category: governance
 audience: [maintainers, contributors]
 status: active
 author: alawein maintainers
 version: 1.0.0
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 tags: [github, metadata, sync, rollout, canary, governance]
 ---
 
 # GitHub Metadata Sync Runbook
 
-Use this runbook to operate the catalog-driven GitHub metadata sync for the
-`alawein` organization.
+Use this runbook to operate the catalog-driven GitHub metadata and workflow
+settings sync for the `alawein` organization.
 
 ## Token Requirements
 
@@ -30,6 +30,7 @@ Recommended repository permissions:
 - `Administration` (write) for repository description and homepage updates
 - `Administration` (write) for repository topics via the repository topics
   endpoint
+- `Administration` (write) for repository Actions workflow permissions
 - `Custom properties` (write) for repository custom property values
 
 Store the token as:
@@ -60,7 +61,7 @@ Inputs:
   - default `false` for the current user-owned `alawein` account
   - `true`: update custom properties as part of the run
   - `false`: skip custom property writes and only update description, homepage,
-    and topics
+    topics, and Actions workflow settings
 
 Apply mode never supports a full-catalog fanout. Use only `canary`, `cohort-1`,
 or `repo`.
@@ -79,6 +80,7 @@ Sequence:
    - description
    - homepage
    - normalized topic list
+   - Actions workflow permissions
    - custom property values
 4. Run manual dispatch again with `target=canary` and `apply=true`.
 5. Download the `github-metadata-sync-apply` artifact and confirm the apply
@@ -94,6 +96,8 @@ Sequence:
 Observed canary result on 2026-04-14:
 
 - `alawein/design-system` accepted description, homepage, and topic updates
+- `repos/alawein/design-system/actions/permissions/workflow` matched the
+  cataloged state of `read + can approve pull request reviews`
 - `repos/alawein/design-system/properties/values` returned `404 Not Found`
 - treat custom properties as blocked for the current user-owned `alawein/*`
   repositories
@@ -140,6 +144,24 @@ Rollback procedure:
    catalog state.
 4. If the failure is limited to custom properties, rerun with
    `include_custom_properties=false` and document custom properties as blocked.
+
+## Cataloged Settings Contract
+
+The control plane now carries two automation fields for each core
+infrastructure repo:
+
+- `github_actions_settings`
+  - `default_workflow_permissions`
+  - `can_approve_pull_request_reviews`
+- `release_automation`
+  - `mode`
+  - `supports_release_prs`
+  - `publishes_packages`
+  - `requires_npm_token`
+
+`github_actions_settings` is the syncable contract. `release_automation` is the
+governance and validation contract used to explain why a repo requires release
+PR permissions or package-publishing credentials.
 
 Do not edit profile pins as part of rollback. Profile pinning remains manual and
 outside this automation.

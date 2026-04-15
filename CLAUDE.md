@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-03-27
-last_updated: 2026-03-27
+last-verified: 2026-04-14
+last_updated: 2026-04-14
 ---
 
 <!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
@@ -22,6 +22,8 @@ last_updated: 2026-03-27
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
 - Documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- GitHub profile and workflow baseline:
+  [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)
 - **Docs Doctrine** (file governance, classification, validation):
   [`docs/governance/docs-doctrine.md`](docs/governance/docs-doctrine.md)
 - Repo boundaries:
@@ -117,7 +119,7 @@ alawein/
     ISSUE_TEMPLATE/
     workflows/
     CODEOWNERS
-    pull_request_template.md
+    PULL_REQUEST_TEMPLATE.md
   scripts/
     validate-doc-contract.sh
     validate-doctrine.py
@@ -127,8 +129,11 @@ alawein/
     render-configs.sh
     pre-commit-doctrine.sh
     sync-readme.py
+    sync-github.sh
+    github-baseline-audit.py
     sync-to-notion.mjs
   projects.json
+  github-baseline.yaml
 ```
 
 
@@ -137,6 +142,8 @@ alawein/
 Before proposing changes:
 
 - `python scripts/sync-readme.py --check`
+- `./scripts/sync-github.sh --check --all`
+- `python scripts/github-baseline-audit.py`
 - `./scripts/validate-doc-contract.sh --full`
 - `python scripts/validate-doctrine.py .` (docs doctrine: headers, naming, zombies)
 - markdown lint/link checks for managed docs (same commands as CI workflows)

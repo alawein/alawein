@@ -1,0 +1,84 @@
+name: Reusable Node CI
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: Directory containing the Node project.
+        required: false
+        type: string
+        default: "."
+      install-command:
+        description: Command used to install dependencies.
+        required: true
+        type: string
+      build-command:
+        description: Command used for lint, type-check, or build steps.
+        required: false
+        type: string
+        default: ""
+      test-command:
+        description: Command used to run automated tests.
+        required: false
+        type: string
+        default: ""
+      package-manager:
+        description: Dependency manager used by the repo.
+        required: false
+        type: string
+        default: "npm"
+      node-versions:
+        description: JSON array of Node.js versions.
+        required: false
+        type: string
+        default: '["22","24"]'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ${{ fromJSON(inputs.node-versions) }}
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup pnpm
+        if: inputs.package-manager == 'pnpm'
+        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js (pnpm)
+        if: inputs.package-manager == 'pnpm'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+          cache-dependency-path: ${{ format('{0}/pnpm-lock.yaml', inputs.working-directory) }}
+
+      - name: Setup Node.js (npm)
+        if: inputs.package-manager != 'pnpm'
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+          cache-dependency-path: ${{ format('{0}/package-lock.json', inputs.working-directory) }}
+
+      - name: Install dependencies
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.install-command }}
+
+      - name: Build
+        if: inputs.build-command != ''
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.build-command }}
+
+      - name: Test
+        if: inputs.test-command != ''
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.test-command }}

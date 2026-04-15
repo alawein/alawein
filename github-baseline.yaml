@@ -1,0 +1,231 @@
+version: 1
+
+repos:
+  - repo: alawein
+    stack: docs
+    ci_template: manual
+    working_directory: "."
+    install_command: ""
+    build_command: ""
+    test_command: ""
+    codeql_languages: []
+    sync: manual
+
+  - repo: design-system
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run build"
+    test_command: "npm test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: workspace-tools
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e . && python -m pip install pytest ruff requests"
+    build_command: "ruff check workspace_batch/ tests/ scripts/"
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+      - javascript-typescript
+    sync: auto
+
+  - repo: knowledge-base
+    stack: mixed
+    ci_template: mixed
+    working_directory: "."
+    install_command: ""
+    build_command: ""
+    test_command: ""
+    codeql_languages:
+      - python
+      - javascript-typescript
+    sync: auto
+    node:
+      working_directory: "."
+      install_command: "npm ci"
+      build_command: "npm run lint && npm run build"
+      test_command: "npm run build:verify"
+    python:
+      working_directory: "."
+      install_command: "python -m pip install -r requirements.txt && python -m pip install pytest ruff detect-secrets"
+      build_command: "python scripts/export-profile.py && python scripts/validate-profile-manifest.py && python scripts/validate_records.py && python scripts/generate_master_reference.py && git diff -I 'Last updated:' --exit-code MASTER_REFERENCE.md"
+      test_command: "ruff check scripts/ && pytest scripts/tests/ -v --tb=short"
+
+  - repo: adil
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check src/ && mypy src/"
+    test_command: "pytest --cov=adil --cov-report=term-missing"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: alembiq
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "python -m ruff check . && python -m mypy src/alembiq/"
+    test_command: "python -m pytest tests/ -v"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: atelier-rounaq
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run type-check && npm run lint && npm run build"
+    test_command: "npm run test:coverage"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: attributa
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: bolts
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test:ci"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: gymboy
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: llmworks
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test:run"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: meatheadphysicist
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: ""
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: meshal-web
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run check:types && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: optiqap
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check src/qaplibria services/api/app.py tools/generate_application_summary_pdf.py tools/verify_all.py tools/formal_verify.py tools/verify_claims.py"
+    test_command: "pytest tests/ -v --tb=short && python tools/verify_all.py"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: qmlab
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: repz
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run check:lint && npm run check:types && npm run build"
+    test_command: "npm run test:run"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: scribd
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: simcore
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run type-check && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: edfp
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: ""
+    build_command: ""
+    test_command: ""
+    codeql_languages: []
+    sync: manual
+
+  - repo: roka-oakland-hustle
+    stack: unsupported
+    ci_template: manual
+    working_directory: "."
+    install_command: ""
+    build_command: ""
+    test_command: ""
+    codeql_languages: []
+    sync: manual

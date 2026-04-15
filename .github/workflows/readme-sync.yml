@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'projects.json'
+      - 'profile-from-guides.yaml'
       - 'scripts/sync-readme.py'
   workflow_dispatch:
 
@@ -25,7 +26,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Sync README from projects.json
+      - name: Install sync dependencies
+        run: python -m pip install pyyaml
+
+      - name: Sync README from canonical profile and project data
         run: python scripts/sync-readme.py
 
       - name: Verify README sync is stable
@@ -42,5 +46,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "docs(readme): auto-sync from projects.json"
+          git commit -m "docs(readme): auto-sync profile"
           git push

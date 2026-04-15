@@ -1,0 +1,47 @@
+name: Bug Report
+description: Report a reproducible bug in the profile repo, governance docs, or automation.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Include the actual behavior and the expected behavior.
+      placeholder: A concise summary of the bug and the expected result.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Provide a minimal, deterministic reproduction.
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: Which repo or automation surface is affected?
+      placeholder: alawein / design-system / workspace-tools / ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output
+      description: Paste logs, command output, or stack traces if they help.
+      render: shell
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety checks
+      options:
+        - label: I removed secrets or personal data from the report.
+          required: true
+        - label: I confirmed this is not already covered by an existing issue.
+          required: true

@@ -1,10 +1,3 @@
----
-type: canonical
-source: none
-sync: none
-sla: none
----
-
 ## Summary
 
 - What is changing?
@@ -12,11 +5,11 @@ sla: none
 
 ## Checklist
 
-- [ ] Branch follows naming rules (`fast/*`, `feat/*`, `fix/*`, `hotfix/*`, `release/*`)
-- [ ] Scope is reasonable (<= 300 LOC diff or smaller)
+- [ ] Branch follows naming rules (`feat/*`, `fix/*`, `docs/*`, `chore/*`, `test/*`)
+- [ ] Scope is intentional and focused
 - [ ] CI is green or flake is documented
 - [ ] Tests added/updated (when applicable)
-- [ ] Docs updated (README or the relevant `docs/governance/*` guide if workflow changes)
+- [ ] Docs or governance guides updated when behavior or workflow changed
 - [ ] No secrets, tokens, or .env files included
 
 ## Testing

@@ -108,9 +108,9 @@ MANAGED_ROOT_DOCS = {
 
 EXEMPT_DOCS = {
     "README.md",
-    ".github/pull_request_template.md",
-    ".github/ISSUE_TEMPLATE/bug_report.md",
-    ".github/ISSUE_TEMPLATE/feature_request.md",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
 }
 
 

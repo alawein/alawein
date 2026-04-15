@@ -9,7 +9,7 @@ category: index
 audience: all
 status: active
 version: 1.0.0
-last_updated: 2026-03-25
+last_updated: 2026-04-14
 tags: [alawein, documentation, governance, index]
 related:
   - ../README.md
@@ -28,6 +28,8 @@ workspace governance for the `alawein` GitHub organization.
   [`workspace-master-prompt.md`](./governance/workspace-master-prompt.md)
 - Local documentation contract:
   [`documentation-contract.md`](./governance/documentation-contract.md)
+- GitHub profile and workflow baseline:
+  [`github-baseline.md`](./governance/github-baseline.md)
 - Governance operating model:
   [`operating-model.md`](./governance/operating-model.md)
 - Workflow overview: [`workflow.md`](./governance/workflow.md)
@@ -51,6 +53,7 @@ workspace governance for the `alawein` GitHub organization.
 ## Workflow operations
 
 - [`documentation-contract.md`](./governance/documentation-contract.md)
+- [`github-baseline.md`](./governance/github-baseline.md)
 - [`operating-model.md`](./governance/operating-model.md)
 - [`workflow.md`](./governance/workflow.md)
 - [`branch-and-deployment-convention.md`](./governance/branch-and-deployment-convention.md)

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Governance docs
+    url: https://github.com/alawein/alawein/tree/main/docs/governance
+    about: Check the governance docs before opening a workflow or policy issue.

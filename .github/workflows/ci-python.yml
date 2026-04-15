@@ -1,0 +1,67 @@
+name: Reusable Python CI
+
+on:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: Directory containing the Python project.
+        required: false
+        type: string
+        default: "."
+      python-version:
+        description: Python version used by the job.
+        required: false
+        type: string
+        default: "3.12"
+      install-command:
+        description: Command used to install dependencies.
+        required: true
+        type: string
+      build-command:
+        description: Command used for lint, type-check, or build steps.
+        required: false
+        type: string
+        default: ""
+      test-command:
+        description: Command used to run automated tests.
+        required: false
+        type: string
+        default: ""
+      use-uv:
+        description: Install uv before running commands.
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: ${{ inputs.python-version }}
+          cache: "pip"
+
+      - name: Install uv
+        if: inputs.use-uv
+        run: python -m pip install uv
+
+      - name: Install dependencies
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.install-command }}
+
+      - name: Build
+        if: inputs.build-command != ''
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.build-command }}
+
+      - name: Test
+        if: inputs.test-command != ''
+        working-directory: ${{ inputs.working-directory }}
+        run: ${{ inputs.test-command }}

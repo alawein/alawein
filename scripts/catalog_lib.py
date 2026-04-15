@@ -20,6 +20,11 @@ SCHEMAS_DIR = ROOT / "schemas"
 PROJECTS_JSON = ROOT / "projects.json"
 WORKSPACE_YAML = WORKSPACE_ROOT / "knowledge-base" / "WORKSPACE.yaml"
 INVENTORY_JSON = ROOT / "docs" / "governance" / "desktop-repo-inventory.json"
+STABLE_WORKSPACE_ROOTS = [
+    ".",
+    "../morphism-systems",
+    "../blackmalejournal",
+]
 
 REQUIRED_REPO_FIELDS = [
     "name",
@@ -146,9 +151,23 @@ def repo_entries(catalogs: dict[str, Any]) -> list[dict[str, Any]]:
     return list(catalogs["repos"].get("repos", []))
 
 
-def workspace_manifest() -> dict[str, Any]:
+def projected_workspace_manifest(repos: list[dict[str, Any]]) -> dict[str, Any]:
+    return {
+        "repos": {
+            repo["slug"]: {
+                "path": repo["local_path"],
+                "description": repo["canonical_description"],
+                "role": repo["type"],
+                "status": repo["status"],
+            }
+            for repo in repos
+        }
+    }
+
+
+def workspace_manifest(repos: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     if not WORKSPACE_YAML.exists():
-        return {}
+        return projected_workspace_manifest(repos or [])
     return load_yaml(WORKSPACE_YAML) or {}
 
 
@@ -381,11 +400,7 @@ def build_inventory_manifest(
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "generated": generated_at,
-        "workspace_roots": [
-            str(WORKSPACE_ROOT),
-            str(WORKSPACE_ROOT.parent / "morphism-systems"),
-            str(WORKSPACE_ROOT.parent / "blackmalejournal"),
-        ],
+        "workspace_roots": STABLE_WORKSPACE_ROOTS,
         "golden_references": golden_references,
         "excluded_paths": [
             "node_modules",
@@ -408,7 +423,7 @@ def build_inventory_manifest(
 
 
 def inventory_reconciliation(repos: list[dict[str, Any]]) -> dict[str, Any]:
-    workspace = workspace_manifest()
+    workspace = workspace_manifest(repos)
     workspace_repos = workspace.get("repos") or {}
     workspace_keys = set(workspace_repos.keys())
     catalog_keys = {repo["slug"] for repo in repos}

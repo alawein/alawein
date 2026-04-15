@@ -11,9 +11,16 @@ set -euo pipefail
 generate_index() {
   local docs_dir="$1"
   local repo_name="$2"
+  local repo_root
+  repo_root=$(dirname "$docs_dir")
 
   local index_file="${docs_dir}/INDEX.md"
   local title="Index — ${repo_name}"
+  local last_updated="unknown"
+
+  if git -C "$repo_root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    last_updated=$(git -C "$repo_root" log -1 --format=%cs -- "$docs_dir" 2>/dev/null || echo "unknown")
+  fi
 
   {
     echo "---"
@@ -21,6 +28,7 @@ generate_index() {
     echo "source: directory-structure"
     echo "sync: script"
     echo "sla: on-change"
+    echo "last_updated: ${last_updated}"
     echo "---"
     echo ""
     echo "# ${title}"

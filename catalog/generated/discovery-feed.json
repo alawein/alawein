@@ -800,7 +800,7 @@
         "compliance": "internal-only"
       },
       {
-        "name": "MeatheadPhysicist",
+        "name": "meatheadphysicist",
         "slug": "meatheadphysicist",
         "repo": "alawein/meatheadphysicist",
         "type": "research",
@@ -1883,7 +1883,7 @@
       "compliance": "internal-only"
     },
     {
-      "name": "MeatheadPhysicist",
+      "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
       "type": "research",

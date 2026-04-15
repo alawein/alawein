@@ -526,7 +526,7 @@
       "research_domain": "Scientific simulation core"
     },
     {
-      "name": "MeatheadPhysicist",
+      "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "legacy_slugs": ["MeatheadPhysicist"],
       "repo": "alawein/meatheadphysicist",

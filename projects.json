@@ -219,7 +219,7 @@
       "portfolio_domain": "Work"
     },
     {
-      "name": "MeatheadPhysicist",
+      "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
       "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
@@ -312,7 +312,7 @@
       "url": "https://simcore.dev"
     },
     {
-      "name": "MeatheadPhysicist",
+      "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
       "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",

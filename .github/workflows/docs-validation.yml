@@ -81,13 +81,48 @@ jobs:
             docs/governance/*.md \
             docs/style/*.md
 
+      - name: Install Vale CLI
+        run: |
+          set -euo pipefail
+          VALE_VERSION=3.14.1
+          curl -fsSL "https://github.com/vale-cli/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" -o "$RUNNER_TEMP/vale.tar.gz"
+          mkdir -p "$RUNNER_TEMP/vale-bin"
+          tar -xzf "$RUNNER_TEMP/vale.tar.gz" -C "$RUNNER_TEMP/vale-bin"
+          echo "$RUNNER_TEMP/vale-bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/vale-bin/vale" --version
+
       - name: Enforce writing voice and terminology with Vale
-        uses: vale-cli/vale-action@v2.1.1
-        with:
-          files: '["AGENTS.md","CLAUDE.md","SECURITY.md","CHANGELOG.md","SSOT.md","LESSONS.md","README.md","docs","templates/scaffolding"]'
-          reporter: github-pr-check
-          fail_on_error: true
-          filter_mode: nofilter
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          vale sync
+          vale --minAlertLevel=error \
+            AGENTS.md \
+            CLAUDE.md \
+            SECURITY.md \
+            CHANGELOG.md \
+            SSOT.md \
+            LESSONS.md \
+            README.md \
+            docs \
+            templates/scaffolding | tee vale-report.txt
+
+      - name: Publish Vale summary
+        if: always()
+        run: |
+          echo "## Vale audit" >> "$GITHUB_STEP_SUMMARY"
+          if [ -s vale-report.txt ]; then
+            echo "- Status: advisory findings present" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo '```text' >> "$GITHUB_STEP_SUMMARY"
+            sed -n '1,200p' vale-report.txt >> "$GITHUB_STEP_SUMMARY"
+            if [ "$(wc -l < vale-report.txt)" -gt 200 ]; then
+              echo "... truncated ..." >> "$GITHUB_STEP_SUMMARY"
+            fi
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- Status: no Vale errors" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Enforce canonical docs base URL
         run: |

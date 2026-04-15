@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -41,16 +41,26 @@ jobs:
       - name: Verify README sync is stable
         run: python scripts/sync-readme.py --check
 
-      - name: Check for changes
+      - name: Check for README drift
         id: diff
         run: |
           git diff --quiet README.md && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and push
+      - name: Capture README drift patch
         if: steps.diff.outputs.changed == 'true'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "docs(readme): auto-sync profile"
-          git push
+          git diff -- README.md > readme-sync.patch
+
+      - name: Upload README drift artifact
+        if: steps.diff.outputs.changed == 'true'
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: readme-sync-drift
+          path: readme-sync.patch
+
+      - name: Fail on README drift
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          echo "README.md drift detected. Protected branch rules prevent this workflow from pushing directly to main." >> "$GITHUB_STEP_SUMMARY"
+          echo "Run 'python scripts/sync-readme.py', commit the regenerated README.md, and rerun the workflow." >> "$GITHUB_STEP_SUMMARY"
+          exit 1

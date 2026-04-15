@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Morphism Systems Inc.
 version: 1.0.0
-last_updated: 2026-04-15
+last_updated: "2026-04-15"
 tags: [release, changelog, tags, rollback, governance]
 ---
 
@@ -100,6 +100,16 @@ Check and set this before debugging the workflow itself:
 Verified on `alawein/design-system` on 2026-04-15: the release workflow turned
 green immediately after enabling this setting and rerunning the existing failed
 run.
+
+When a repo is managed by the Alawein catalog, keep the release expectation in
+`catalog/repos.json` under `repo_settings.release_pr_automation`. The GitHub
+workflow-permission state should be converged from the same catalog via
+`python scripts/sync-github-metadata.py`, not tracked only in the GitHub UI.
+
+If `NPM_TOKEN` is not configured, keep the workflow in version-only mode and
+skip npm publication. Missing publish credentials are an operational
+configuration gap, not a reason for `main` to go red when the repo is only
+trying to maintain release PR hygiene.
 
 ## Post-Release Verification
 

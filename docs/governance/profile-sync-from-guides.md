@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Profile sync from guides
 description: README About and profile copy sync with _pkos (formerly guides); export and sync flow.
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -51,6 +51,7 @@ status: active
 - `python scripts/sync-readme.py --check` verifies the generated README is in sync with both `projects.json` and `profile-from-guides.yaml`.
 - **PyYAML:** `sync-readme.py` requires `pyyaml` because the generated README depends on `profile-from-guides.yaml`.
 - The generated README is intentionally minimal. Detailed project descriptions remain in `projects.json`, not in the profile README itself.
+- The `Sync README` GitHub Actions workflow is advisory only. Protected branch rules on `main` block bot-authored direct pushes, so the workflow uploads a drift patch artifact and expects the regenerated `README.md` to be committed through the normal review path.
 
 ## Guides location and naming (recommendation)
 

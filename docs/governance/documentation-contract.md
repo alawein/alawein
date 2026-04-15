@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Documentation Contract
 description: Authoritative local rules for document classes, freshness metadata, naming, and CI truthfulness in the alawein repository
-last_updated: 2026-03-16
+last_updated: 2026-04-14
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -35,7 +35,7 @@ self-consistent.
 | Canonical normative docs | `AGENTS.md`, `CLAUDE.md`, `SSOT.md` | Required | `last-verified` | Must be <= 30 days old |
 | Observed lessons | `LESSONS.md` | Required | `last-updated` | Must change whenever lesson content changes |
 | Managed governance docs | `SECURITY.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `docs/**/*.md` excluding `docs/archive/**` | Required | `last_updated` | Must change whenever document content changes |
-| GitHub/profile exemptions | `README.md`, `.github/pull_request_template.md`, `.github/ISSUE_TEMPLATE/*.md` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
+| GitHub/profile exemptions | `README.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/*.yml` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
 | Historical archive | `docs/archive/**` | Preserve as-is | Optional | No freshness SLA |
 
 ## Required Files

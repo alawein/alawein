@@ -1,0 +1,84 @@
+---
+type: canonical
+source: none
+sync: none
+sla: none
+title: GitHub Baseline
+description: Canonical GitHub profile, repository metadata, workflow, and community-health baseline for the alawein workspace.
+last_updated: 2026-04-14
+category: governance
+audience: [ai-agents, contributors]
+status: active
+author: Morphism Systems Inc.
+version: 1.0.0
+tags: [github, ci, security, profile, governance]
+---
+
+# GitHub baseline
+
+This guide defines the GitHub baseline for the `alawein` control plane and the
+active repo cohort it manages.
+
+## Profile policy
+
+- The profile README stays minimal: a short bio, compact links, and no vanity
+  widgets.
+- Pinned repositories carry the portfolio signal; the README should not try to
+  duplicate full project cards or activity dashboards.
+- `projects.json` remains the canonical source for repo descriptions and tags.
+- `profile-from-guides.yaml` remains the canonical source for the public-facing
+  profile copy and the pinned repo list.
+
+## Repository metadata policy
+
+- New repositories must use lowercase `kebab-case`.
+- Repository descriptions and topic cleanup should be driven from canonical data
+  in `projects.json`, not from ad hoc edits.
+- `CODEOWNERS` defaults to `* @alawein` unless a repo documents a narrower
+  ownership model.
+
+## Workflow baseline
+
+- Shared GitHub workflow policy lives in this repo and is propagated from
+  `scripts/sync-github.sh`.
+- Reusable workflows under `.github/workflows/` are the canonical source for:
+  - Node CI
+  - Python CI
+  - CodeQL scanning
+- GitHub Actions must stay SHA-pinned.
+- Node CI targets Node.js `22` and `24`.
+- Python CI defaults to Python `3.12`.
+- `github-baseline.yaml` is the manifest for repo-specific install, build, test,
+  CodeQL, and sync decisions.
+
+## Community-health baseline
+
+- Issue templates must use YAML issue forms, not Markdown issue templates.
+- Pull requests must use `PULL_REQUEST_TEMPLATE.md`.
+- Dependabot must always include the `github-actions` ecosystem.
+- This phase does not add Husky or commitlint enforcement; CI remains the
+  enforcement layer.
+
+## Security baseline
+
+- Active supported repos should receive CodeQL coverage through the reusable
+  workflow path.
+- Planned, dormant, unsupported-language, or externally owned repos may be
+  tracked in `github-baseline.yaml` with `sync: manual`.
+- Manual GitHub settings remain out-of-repo work:
+  - account-level secret scanning and push protection
+  - rulesets requiring status checks, signed commits, and linear history
+  - SSH commit signing
+
+## Docs-doctrine exception
+
+GitHub-native surfaces remain exempt from frontmatter rules where GitHub
+requires raw filenames or schema-specific content:
+
+- `README.md`
+- `.github/PULL_REQUEST_TEMPLATE.md`
+- `.github/ISSUE_TEMPLATE/*.yml`
+
+Those files are still governed by this baseline and by
+`scripts/validate-doc-contract.sh`, but they should not be wrapped in YAML
+frontmatter.

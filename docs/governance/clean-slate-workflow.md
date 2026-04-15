@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Clean-Slate Workflow
 description: Best practices for keeping alawein clean while preserving intentional in-progress work through focused commits, path-scoped stashes, branch isolation, and batch worktree hygiene
-last_updated: 2026-03-28
+last_updated: 2026-04-14
 category: governance
 audience: contributors
 status: active
@@ -66,9 +66,9 @@ are unrelated.
 ```bash
 git stash push -m "alawein-clean-slate-leftovers" -- \
   .github/CODEOWNERS \
-  .github/ISSUE_TEMPLATE/bug_report.md \
-  .github/ISSUE_TEMPLATE/feature_request.md \
-  .github/pull_request_template.md \
+  .github/ISSUE_TEMPLATE/bug_report.yml \
+  .github/ISSUE_TEMPLATE/feature_request.yml \
+  .github/PULL_REQUEST_TEMPLATE.md \
   HackerRank.ipynb \
   LICENSE \
   RevisionNotebook.ipynb \
@@ -98,9 +98,9 @@ git switch -c wip/notebook-svg-updates
 git stash apply stash@{0}
 git restore \
   .github/CODEOWNERS \
-  .github/ISSUE_TEMPLATE/bug_report.md \
-  .github/ISSUE_TEMPLATE/feature_request.md \
-  .github/pull_request_template.md \
+  .github/ISSUE_TEMPLATE/bug_report.yml \
+  .github/ISSUE_TEMPLATE/feature_request.yml \
+  .github/PULL_REQUEST_TEMPLATE.md \
   LICENSE
 git add HackerRank.ipynb RevisionNotebook.ipynb avatar.svg
 git commit -m "chore: update notebooks and avatar assets"

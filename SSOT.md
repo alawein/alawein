@@ -4,14 +4,14 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-03-17
+last-verified: 2026-04-14
 audience: [ai-agents, contributors]
 ---
 
 # SSOT — alawein
 
-**Version:** 1.2
-**Last Updated:** 2026-03-17
+**Version:** 1.3
+**Last Updated:** 2026-04-14
 **Status:** Active
 
 ---
@@ -31,14 +31,19 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Local documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- GitHub baseline contract:
+  [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)
 - Governance suite navigation:
   [`docs/README.md`](docs/README.md)
 - Canonical governance validation:
   `./scripts/validate-doc-contract.sh --full`
+- GitHub baseline manifest and sync path are active:
+  `github-baseline.yaml`, `scripts/sync-github.sh`,
+  `scripts/github-baseline-audit.py`
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
 - Manifest-driven batch governance is active for multi-repo autonomous work
-- README sections are generated from `projects.json` via
+- README is generated from `projects.json` and `profile-from-guides.yaml` via
   `scripts/sync-readme.py`
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
   `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
@@ -75,10 +80,14 @@ alawein/
 │       ├── workspace-standardization.md
 │       ├── workspace-rename-matrix.md
 │       ├── workspace-layout-audit.md
-│       └── workspace-resource-map.md
+│       ├── workspace-resource-map.md
+│       └── github-baseline.md
+├── github-baseline.yaml
 └── scripts/
     ├── validate-doc-contract.sh
     ├── sync-readme.py
+    ├── sync-github.sh
+    ├── github-baseline-audit.py
     └── sync-to-notion.mjs
 ```
 
@@ -87,6 +96,8 @@ alawein/
 - Keep canonical files fresh (last-verified ≤ 30 days)
 - Keep README/project data/workspace docs synchronized for any naming or domain
   change
+- Keep the GitHub baseline manifest and generated repo files in sync for the
+  active cohort
 - Complete phased workspace directives (D-1 through D-5) with org README sync
   at each structural milestone
 

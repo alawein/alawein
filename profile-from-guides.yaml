@@ -23,7 +23,7 @@ tags:
 - ai
 - systems
 - governance
-updated: 2026-03-26
+updated: 2026-04-14
 variant_default: balanced
 urls:
   website: https://meshal.ai
@@ -31,30 +31,28 @@ urls:
   email: mailto:contact@meshal.ai
   linkedin: https://linkedin.com/in/alawein
   github: https://github.com/alawein
-tagline: Computational Scientist & AI Systems Engineer · Founder, Morphism Systems · PhD EECS,
-  UC Berkeley
+tagline: Computational scientist and AI systems engineer building auditable AI systems.
 tagline_quote: '"Build systems that can be governed. Write code that can be audited.
   Ship research that can be reproduced."'
-bio_short: PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems —
-  a formally verified AI governance framework grounded in category theory. Former
-  LLM Alignment Specialist at Turing (Aug–Sep 2025). Built production DFT/HPC
-  workflows at Lawrence Berkeley National Laboratory (2,300+ jobs, 70% runtime
-  reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation
-  harnesses for LLM training. 16 peer-reviewed publications in IEEE, APS, and ACS.
-bio_long: PhD in EECS from UC Berkeley (Dec 2025). Founder of Morphism Systems — a
-  formally verified AI governance framework grounded in category theory. Former
-  LLM Alignment Specialist at Turing (Aug–Sep 2025). Built production DFT/HPC
-  workflows at Lawrence Berkeley National Laboratory (2,300+ jobs, 70% runtime
-  reduction, $160K cost savings). Designed SFT/DPO/LoRA pipelines and evaluation
-  harnesses for LLM training. 16 peer-reviewed publications in IEEE, APS, and ACS.
-bio_bullets: 'PhD EECS -- UC Berkeley (Dec 2025)
+bio_short: Computational scientist and AI systems engineer building auditable AI,
+  scientific-computing, and product systems. Founder of Morphism Systems and
+  finishing a PhD in EECS at UC Berkeley.
+bio_long: Computational scientist and AI systems engineer building auditable AI,
+  scientific-computing, and product systems. Founder of Morphism Systems and
+  finishing a PhD in EECS at UC Berkeley.
+bio_bullets: 'UC Berkeley PhD EECS
 
-  Morphism Systems -- Founder (Aug 2025)
+  Morphism Systems founder
 
-  16 peer-reviewed publications
-
-  SFT/DPO/LoRA | DFT/HPC | LLM Infra
+  AI governance, HPC, and product systems
 
   San Francisco, CA'
 linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Morphism
   Systems · PhD EECS, UC Berkeley
+profile_pins:
+  - meshal-web
+  - attributa
+  - bolts
+  - scribd
+  - alembiq
+  - llmworks

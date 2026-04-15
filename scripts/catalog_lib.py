@@ -51,6 +51,22 @@ REQUIRED_REPO_FIELDS = [
     "version_source",
     "last_verified",
 ]
+CORE_AUTOMATION_REPOS = {
+    "alawein",
+    "design-system",
+    "knowledge-base",
+    "workspace-tools",
+}
+REQUIRED_GITHUB_ACTIONS_SETTINGS_FIELDS = [
+    "default_workflow_permissions",
+    "can_approve_pull_request_reviews",
+]
+REQUIRED_RELEASE_AUTOMATION_FIELDS = [
+    "mode",
+    "supports_release_prs",
+    "publishes_packages",
+    "requires_npm_token",
+]
 
 README_SECTIONS = {
     "product": [
@@ -312,6 +328,8 @@ def repo_summary(repo: dict[str, Any]) -> dict[str, Any]:
         "version_source": repo["version_source"],
         "repo_archetype": archetype_for_repo(repo),
         "compliance": compliance_for_repo(repo),
+        "github_actions_settings": repo.get("github_actions_settings") or {},
+        "release_automation": repo.get("release_automation") or {},
     }
 
 
@@ -377,6 +395,8 @@ def build_github_metadata_feed(
                 "homepage": repo.get("homepage") or "",
                 "topics": repo.get("github_topics") or [],
                 "custom_properties": repo.get("github_custom_properties") or {},
+                "actions_settings": repo.get("github_actions_settings") or {},
+                "release_automation": repo.get("release_automation") or {},
             }
             for repo in repos
         ],
@@ -561,6 +581,33 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
                     "error", f"Repo '{repo['slug']}' uses unknown domain '{repo.get('domain')}'"
                 )
             )
+        if repo.get("slug") in CORE_AUTOMATION_REPOS:
+            actions_settings = repo.get("github_actions_settings") or {}
+            missing_actions_settings = [
+                field
+                for field in REQUIRED_GITHUB_ACTIONS_SETTINGS_FIELDS
+                if field not in actions_settings
+            ]
+            if missing_actions_settings:
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        f"Core repo '{repo['slug']}' missing GitHub Actions settings fields: {', '.join(missing_actions_settings)}",
+                    )
+                )
+            release_automation = repo.get("release_automation") or {}
+            missing_release_automation = [
+                field
+                for field in REQUIRED_RELEASE_AUTOMATION_FIELDS
+                if field not in release_automation
+            ]
+            if missing_release_automation:
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        f"Core repo '{repo['slug']}' missing release automation fields: {', '.join(missing_release_automation)}",
+                    )
+                )
 
     repo_slugs = {repo["slug"] for repo in repos}
     for manifest_name, key in (

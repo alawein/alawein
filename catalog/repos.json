@@ -1037,6 +1037,16 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "changesets-publish",
+        "supports_release_prs": true,
+        "publishes_packages": true,
+        "requires_npm_token": true
+      },
       "depends_on": ["alawein"],
       "provides": ["design-tokens", "ui-components", "brand-assets"],
       "version_source": "package.json",
@@ -1072,6 +1082,16 @@
         "repo_archetype": "docs-hub",
         "docs_maturity": "managed",
         "brand_family": "midnight"
+      },
+      "github_actions_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
       },
       "depends_on": [],
       "provides": ["catalog-ssot", "governance-docs", "profile-generation"],
@@ -1109,6 +1129,16 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      },
       "depends_on": ["alawein"],
       "provides": ["workspace-batch", "scaffolding", "drift-audits"],
       "version_source": "pyproject.toml",
@@ -1144,6 +1174,16 @@
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
         "brand_family": "dawn"
+      },
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
       },
       "depends_on": ["alawein", "workspace-tools"],
       "provides": ["catalog-ui", "inventory-search", "onboarding-docs"],

@@ -101,6 +101,16 @@ Verified on `alawein/design-system` on 2026-04-15: the release workflow turned
 green immediately after enabling this setting and rerunning the existing failed
 run.
 
+The long-term source of truth for this setting is the catalog entry in
+`catalog/repos.json`:
+
+- `github_actions_settings`
+- `release_automation`
+
+For changesets repos, keep those two sections aligned. The release workflow
+should not be the only place that knows whether a repository is expected to
+open release PRs or publish packages.
+
 ## Post-Release Verification
 
 After tagging:

@@ -5,7 +5,10 @@ on:
     branches: [main]
     paths:
       - 'projects.json'
+      - 'catalog/**'
       - 'profile-from-guides.yaml'
+      - 'scripts/build-catalog.py'
+      - 'scripts/catalog_lib.py'
       - 'scripts/sync-readme.py'
   workflow_dispatch:
 
@@ -28,6 +31,9 @@ jobs:
 
       - name: Install sync dependencies
         run: python -m pip install pyyaml
+
+      - name: Verify derived catalog outputs are up to date
+        run: python scripts/build-catalog.py --check
 
       - name: Sync README from canonical profile and project data
         run: python scripts/sync-readme.py

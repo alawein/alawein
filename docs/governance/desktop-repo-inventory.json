@@ -2,9 +2,9 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "generated": "2026-04-14",
   "workspace_roots": [
-    "C:\\Users\\mesha\\Desktop\\Dropbox\\GitHub\\alawein",
-    "C:\\Users\\mesha\\Desktop\\Dropbox\\GitHub\\morphism-systems",
-    "C:\\Users\\mesha\\Desktop\\Dropbox\\GitHub\\blackmalejournal"
+    ".",
+    "../morphism-systems",
+    "../blackmalejournal"
   ],
   "golden_references": {
     "vite-react-spa": {

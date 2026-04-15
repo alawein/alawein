@@ -108,6 +108,15 @@ def today_iso() -> str:
     return date.today().isoformat()
 
 
+def catalog_timestamp(catalogs: dict[str, Any]) -> str:
+    candidates = [
+        str(manifest.get("lastVerified"))
+        for manifest in catalogs.values()
+        if isinstance(manifest, dict) and manifest.get("lastVerified")
+    ]
+    return max(candidates) if candidates else today_iso()
+
+
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -241,9 +250,10 @@ def package_entries_from_components(catalogs: dict[str, Any]) -> list[dict[str, 
 
 def derive_projects_manifest(catalogs: dict[str, Any]) -> dict[str, Any]:
     repos = repo_entries(catalogs)
+    generated_at = catalog_timestamp(catalogs)
     return {
         "$schema": "./projects.schema.json",
-        "lastUpdated": today_iso(),
+        "lastUpdated": generated_at,
         "featured": [project_entry_from_repo(repo) for repo in filter_repos(repos, "featured")],
         "notion_sync": [
             project_entry_from_repo(repo) for repo in filter_repos(repos, "notion_sync")
@@ -334,9 +344,12 @@ def build_asset_assignments(repos: list[dict[str, Any]]) -> dict[str, dict[str, 
     return assignments
 
 
-def build_github_metadata_feed(repos: list[dict[str, Any]]) -> dict[str, Any]:
+def build_github_metadata_feed(
+    repos: list[dict[str, Any]],
+    generated_at: str,
+) -> dict[str, Any]:
     return {
-        "generatedAt": today_iso(),
+        "generatedAt": generated_at,
         "repos": [
             {
                 "slug": repo["slug"],
@@ -351,7 +364,10 @@ def build_github_metadata_feed(repos: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def build_inventory_manifest(repos: list[dict[str, Any]]) -> dict[str, Any]:
+def build_inventory_manifest(
+    repos: list[dict[str, Any]],
+    generated_at: str,
+) -> dict[str, Any]:
     golden_references: dict[str, dict[str, str]] = {}
     for repo in repos:
         archetype = archetype_for_repo(repo)
@@ -364,7 +380,7 @@ def build_inventory_manifest(repos: list[dict[str, Any]]) -> dict[str, Any]:
         }
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "generated": today_iso(),
+        "generated": generated_at,
         "workspace_roots": [
             str(WORKSPACE_ROOT),
             str(WORKSPACE_ROOT.parent / "morphism-systems"),
@@ -441,8 +457,9 @@ def inventory_reconciliation(repos: list[dict[str, Any]]) -> dict[str, Any]:
 def derive_discovery_feed(catalogs: dict[str, Any]) -> dict[str, Any]:
     repos = repo_entries(catalogs)
     reconciliation = inventory_reconciliation(repos)
+    generated_at = catalog_timestamp(catalogs)
     return {
-        "generatedAt": today_iso(),
+        "generatedAt": generated_at,
         "summary": {
             "repoCount": len(repos),
             "typeCounts": dict(Counter(repo["type"] for repo in repos)),
@@ -460,7 +477,7 @@ def derive_discovery_feed(catalogs: dict[str, Any]) -> dict[str, Any]:
         },
         "taxonomy": catalogs["taxonomy"],
         "assetAssignments": build_asset_assignments(repos),
-        "githubMetadata": build_github_metadata_feed(repos)["repos"],
+        "githubMetadata": build_github_metadata_feed(repos, generated_at)["repos"],
         "inventoryReconciliation": reconciliation,
         "projectSwitcher": {
             "featured": [repo_summary(repo) for repo in filter_repos(repos, "featured")],

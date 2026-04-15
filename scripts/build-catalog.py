@@ -13,6 +13,7 @@ from catalog_lib import (
     PROJECTS_JSON,
     build_github_metadata_feed,
     build_inventory_manifest,
+    catalog_timestamp,
     derive_discovery_feed,
     derive_projects_manifest,
     dump_json,
@@ -41,8 +42,9 @@ def main(argv: list[str] | None = None) -> int:
 
     projects_manifest = derive_projects_manifest(catalogs)
     discovery_feed = derive_discovery_feed(catalogs)
-    github_feed = build_github_metadata_feed(repo_entries(catalogs))
-    inventory = build_inventory_manifest(repo_entries(catalogs))
+    generated_at = catalog_timestamp(catalogs)
+    github_feed = build_github_metadata_feed(repo_entries(catalogs), generated_at)
+    inventory = build_inventory_manifest(repo_entries(catalogs), generated_at)
 
     outputs = {
         PROJECTS_JSON: json.dumps(projects_manifest, indent=2) + "\n",

@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Morphism Systems Inc.
 version: 1.0.0
-last_updated: 2026-03-28
+last_updated: 2026-04-15
 tags: [release, changelog, tags, rollback, governance]
 ---
 
@@ -84,6 +84,22 @@ Examples:
 - validation passed on the final state
 - the version bump matches the scope of change
 - the tag message or release notes are readable without opening the full diff
+
+## GitHub Actions release prerequisite
+
+For repos that use `changesets/action` to open a release PR, the repository
+must allow GitHub Actions to create and approve pull requests.
+
+Check and set this before debugging the workflow itself:
+
+- repository settings: `Actions` -> `General` -> `Workflow permissions`
+- keep job-level permissions explicit in `release.yml`
+- enable the repository-level Actions PR creation setting, or the workflow can
+  push `changeset-release/*` successfully and still fail at the PR step
+
+Verified on `alawein/design-system` on 2026-04-15: the release workflow turned
+green immediately after enabling this setting and rerunning the existing failed
+run.
 
 ## Post-Release Verification
 

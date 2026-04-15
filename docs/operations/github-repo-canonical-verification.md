@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub canonical verification
 description: gh repo view notes for canonical repo names, redirects, and PKOS alignment.
-last_updated: 2026-03-30
+last_updated: 2026-04-14
 category: operations
 audience: [ai-agents, contributors]
 status: active

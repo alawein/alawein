@@ -1,0 +1,361 @@
+{
+  "$schema": "./projects.schema.json",
+  "lastUpdated": "2026-04-14",
+  "featured": [
+    {
+      "name": "meshal.ai",
+      "slug": "meshal-web",
+      "repo": "alawein/meshal-web",
+      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
+      "tags": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Tailwind"
+      ],
+      "category": "maintained",
+      "url": "https://www.meshal.ai",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Morphism",
+      "slug": "morphism",
+      "repo": "morphism-systems/morphism",
+      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
+      "tags": [
+        "TypeScript",
+        "Python",
+        "Governance"
+      ],
+      "category": "active",
+      "url": "https://morphism.systems",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "category": "active",
+      "url": "https://repzcoach.com",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "tags": [
+        "React",
+        "Vite",
+        "Spark"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "gainboy"
+      ],
+      "url": "https://gymboy.coach",
+      "portfolio_domain": "Personal"
+    },
+    {
+      "name": "Scribd",
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript"
+      ],
+      "category": "active",
+      "url": "https://scribd.fit",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Python"
+      ],
+      "category": "active",
+      "url": "https://bolts.fit",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "rounaq-atelier"
+      ],
+      "url": "https://atelier-rounaq.com",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Attributa",
+      "slug": "attributa",
+      "repo": "alawein/attributa",
+      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite"
+      ],
+      "category": "active",
+      "url": "https://attributa.dev",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "LLMWorks",
+      "slug": "llmworks",
+      "repo": "alawein/llmworks",
+      "description": "LLM evaluation, benchmarking, and security testing playground.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase",
+        "LLM"
+      ],
+      "category": "active",
+      "url": "https://llmworks.dev",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "FastAPI"
+      ],
+      "category": "planned",
+      "legacy_slugs": [
+        "event-discovery-framework",
+        "aiclarity"
+      ],
+      "url": "https://edfp.online",
+      "portfolio_domain": "Work"
+    },
+    {
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "repo": "alawein/alembiq",
+      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "tags": [
+        "Python",
+        "PyTorch",
+        "LLM Training"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "url": "https://alembiq.online",
+      "portfolio_domain": "scientific-computing"
+    },
+    {
+      "name": "OptiQAP",
+      "slug": "optiqap",
+      "repo": "alawein/optiqap",
+      "description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+      "tags": [
+        "Python",
+        "Optimization",
+        "HPC"
+      ],
+      "category": "maintained",
+      "legacy_slugs": [
+        "qaplibria"
+      ],
+      "url": "https://optiqap.online",
+      "portfolio_domain": "Personal"
+    }
+  ],
+  "research": [
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com \u2192 edfp.online.)",
+      "legacy_slugs": [
+        "event-discovery-framework",
+        "aiclarity"
+      ],
+      "url": "https://edfp.online"
+    },
+    {
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "repo": "alawein/alembiq",
+      "domain": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "url": "https://alembiq.online"
+    },
+    {
+      "name": "OptiQAP",
+      "slug": "optiqap",
+      "repo": "alawein/optiqap",
+      "domain": "Quadratic Assignment Problem solvers \u2014 equilibrium-guided optimization, spectral methods, QUBO.",
+      "legacy_slugs": [
+        "qaplibria"
+      ],
+      "url": "https://optiqap.online"
+    },
+    {
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "domain": "Quantum ML web lab (React/TS/Vite)",
+      "url": "https://qmlab.online"
+    },
+    {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "domain": "Scientific simulation core",
+      "url": "https://simcore.dev"
+    },
+    {
+      "name": "meatheadphysicist",
+      "slug": "meatheadphysicist",
+      "repo": "alawein/meatheadphysicist",
+      "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",
+      "legacy_slugs": [
+        "MeatheadPhysicist"
+      ],
+      "url": "https://mhphys.online"
+    },
+    {
+      "name": "Adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "domain": "Arabic-dialect NLP research"
+    },
+    {
+      "name": "qmatsim",
+      "slug": "qmatsim",
+      "repo": "alawein/qmatsim",
+      "domain": "Quantum material simulation"
+    },
+    {
+      "name": "qubeml",
+      "slug": "qubeml",
+      "repo": "alawein/qubeml",
+      "domain": "Quantum ML experiments"
+    },
+    {
+      "name": "scicomp",
+      "slug": "scicomp",
+      "repo": "alawein/scicomp",
+      "domain": "Scientific computing utilities"
+    },
+    {
+      "name": "spincirc",
+      "slug": "spincirc",
+      "repo": "alawein/spincirc",
+      "domain": "Spintronics circuit simulation"
+    },
+    {
+      "name": "MagLogic",
+      "slug": "maglogic",
+      "repo": "alawein/maglogic",
+      "domain": "Magnetic logic gates"
+    },
+    {
+      "name": "CHSH Lab",
+      "slug": "chshlab",
+      "repo": "alawein/chshlab",
+      "domain": "Quantum foundations \u2014 CHSH / Bell education site",
+      "url": "https://chshlab.online"
+    },
+    {
+      "name": "Helios",
+      "slug": "helios",
+      "repo": "alawein/helios",
+      "domain": "Proprietary research archive \u2014 computational astrophysics",
+      "category": "archived"
+    },
+    {
+      "name": "Loophole Lab",
+      "slug": "loopholelab",
+      "repo": "alawein/loopholelab",
+      "domain": "Research validation \u2014 adversarial claim stress-testing",
+      "url": "https://loopholelab.online"
+    },
+    {
+      "name": "Provegate",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "domain": "Agent MCP tooling \u2014 drift, memory, proof",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "url": "https://provegate.online"
+    },
+    {
+      "name": "Mercor LLM Failsafe",
+      "slug": "mercor-llm-failsafe",
+      "repo": "alawein/mercor-llm-failsafe",
+      "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
+      "category": "archived"
+    }
+  ],
+  "packages": [
+    {
+      "name": "@morphism-systems/cli",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/cli",
+      "description": "Governance CLI for scaffold, validate, score, and heal operations."
+    },
+    {
+      "name": "@morphism-systems/mcp-server",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
+      "description": "MCP server for AI agent governance."
+    },
+    {
+      "name": "@morphism-systems/agentic-math",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
+      "description": "MCP math computation server."
+    },
+    {
+      "name": "@morphism-systems/plugin-bundle",
+      "registry": "npm",
+      "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
+      "description": "Bundle installer for Morphism tools."
+    },
+    {
+      "name": "morphism",
+      "registry": "pypi",
+      "url": "https://pypi.org/project/morphism/",
+      "description": "Python category theory engine."
+    },
+    {
+      "name": "berkeley-scicomp",
+      "registry": "pypi",
+      "url": "https://pypi.org/project/berkeley-scicomp/",
+      "description": "Cross-platform scientific computing framework."
+    }
+  ]
+}

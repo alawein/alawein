@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "./projects.schema.json",
   "title": "Alawein projects manifest",
-  "description": "Canonical portfolio and package list for the alawein organization",
+  "description": "Curated public portfolio and package manifest for the alawein profile repository",
   "type": "object",
   "required": ["featured", "research", "packages"],
   "$defs": {
@@ -36,11 +36,6 @@
       "type": "array",
       "items": { "$ref": "#/$defs/projectEntry" }
     },
-    "notion_sync": {
-      "type": "array",
-      "description": "Extra rows pushed only to Notion (not README); same shape as featured",
-      "items": { "$ref": "#/$defs/projectEntry" }
-    },
     "research": {
       "type": "array",
       "items": {
@@ -65,23 +60,6 @@
           "registry": { "type": "string", "enum": ["npm", "pypi"] },
           "url": { "type": "string", "format": "uri" },
           "description": { "type": "string" }
-        }
-      }
-    },
-    "infrastructure": {
-      "type": "array",
-      "description": "Workspace tooling repos (folder names may differ from GitHub slug)",
-      "items": {
-        "type": "object",
-        "required": ["name", "slug", "repo", "purpose"],
-        "properties": {
-          "name": { "type": "string" },
-          "slug": { "type": "string" },
-          "repo": { "type": "string" },
-          "url": { "type": "string", "format": "uri" },
-          "purpose": { "type": "string" },
-          "status": { "type": "string" },
-          "note": { "type": "string" }
         }
       }
     }

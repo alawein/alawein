@@ -5,11 +5,11 @@ on:
     paths:
       - 'docs/**'
       - '*.md'
-      - 'catalog/**'
-      - 'schemas/**'
       - 'styles/**'
       - '.vale.ini'
       - 'scripts/**'
+      - 'projects.json'
+      - 'projects.schema.json'
       - '.github/workflows/docs-validation.yml'
       - '.github/markdown-link-check-config.json'
       - '.markdownlint.jsonc'
@@ -17,11 +17,11 @@ on:
     paths:
       - 'docs/**'
       - '*.md'
-      - 'catalog/**'
-      - 'schemas/**'
       - 'styles/**'
       - '.vale.ini'
       - 'scripts/**'
+      - 'projects.json'
+      - 'projects.schema.json'
       - '.github/workflows/docs-validation.yml'
       - '.github/markdown-link-check-config.json'
       - '.markdownlint.jsonc'
@@ -54,18 +54,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install catalog validation dependencies
-        run: python -m pip install pyyaml
-
-      - name: Build catalog outputs and validate registry
-        run: |
-          python scripts/build-catalog.py --check
-          python scripts/validate-catalog.py --strict
-
       - name: Setup Node.js
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
           node-version: '20'
+
+      - name: Validate curated public projects manifest
+        run: node scripts/validate-projects-json.mjs
 
       - name: Validate markdown syntax
         run: |

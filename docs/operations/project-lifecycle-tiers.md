@@ -5,13 +5,12 @@ sync: none
 sla: none
 title: Project lifecycle tiers (SSOT)
 description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
-last_updated: 2026-03-30
+last_updated: 2026-04-15
 category: operations
 audience: [ai-agents, contributors]
 status: active
 related:
   - ../../projects.json
-  - ./notion-projects-database.md
   - ../governance/repository-layout-standard.md
   - ../governance/tooling-quality-gates.md
 ---
@@ -53,4 +52,5 @@ This document defines how **`category`** in [`projects.json`](../../projects.jso
 
 - Portfolio manifest: [`projects.json`](../../projects.json)
 - Repo paths and redirects: [`github-repo-canonical-verification.md`](github-repo-canonical-verification.md)
-- Push tiers + Domain to Notion: [`notion-projects-database.md`](notion-projects-database.md)
+- Private Notion database mapping now lives in the private Alawein control
+  plane, not this public repo.

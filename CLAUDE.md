@@ -5,15 +5,15 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-04-14
-last_updated: 2026-04-14
+last-verified: 2026-04-16
+last_updated: 2026-04-16
 ---
 
 <!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
 
 # CLAUDE.md — alawein
 
-> Repository profile + governance templates
+> Public profile repository + governance-lite docs
 
 
 ## Governance Sources
@@ -66,6 +66,8 @@ last_updated: 2026-04-14
   [`docs/governance/profile-sync-from-guides.md`](docs/governance/profile-sync-from-guides.md)
 - Profile sync and PKOS alignment (single handoff for agents):
   [`docs/governance/cursor-agent-handoff-profile-sync.md`](docs/governance/cursor-agent-handoff-profile-sync.md)
+- Public/private boundary for this repo:
+  [`docs/governance/public-private-boundary.md`](docs/governance/public-private-boundary.md)
 - Branch naming, workflow, and Vercel deployment (single convention):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 
@@ -129,9 +131,7 @@ alawein/
     render-configs.sh
     pre-commit-doctrine.sh
     sync-readme.py
-    sync-github.sh
-    github-baseline-audit.py
-    sync-to-notion.mjs
+    validate-projects-json.mjs
   projects.json
   github-baseline.yaml
 ```
@@ -142,8 +142,7 @@ alawein/
 Before proposing changes:
 
 - `python scripts/sync-readme.py --check`
-- `./scripts/sync-github.sh --check --all`
-- `python scripts/github-baseline-audit.py`
+- `node scripts/validate-projects-json.mjs`
 - `./scripts/validate-doc-contract.sh --full`
 - `python scripts/validate-doctrine.py .` (docs doctrine: headers, naming, zombies)
 - markdown lint/link checks for managed docs (same commands as CI workflows)

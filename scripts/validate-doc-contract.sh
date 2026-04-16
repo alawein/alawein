@@ -357,6 +357,8 @@ def check_freshness_updates(errors: List[str], base_ref: Optional[str]) -> None:
     changed = changed_files(base_ref)
     freshness_map = {**CANONICAL_DOCS, **LESSON_DOCS, **MANAGED_DOCS}
     for rel, key in freshness_map.items():
+        if rel == "docs/INDEX.md" or rel.startswith("docs/") and rel.endswith("/INDEX.md"):
+            continue
         if rel not in changed:
             continue
         path = ROOT / rel

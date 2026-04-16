@@ -20,8 +20,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "morphism",
@@ -42,8 +42,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "repz",
@@ -64,8 +64,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "gymboy",
@@ -86,8 +86,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "scribd",
@@ -108,8 +108,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "bolts",
@@ -130,8 +130,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "atelier-rounaq",
@@ -152,8 +152,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "attributa",
@@ -174,8 +174,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "llmworks",
@@ -196,8 +196,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "edfp",
@@ -218,8 +218,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "alembiq",
@@ -240,8 +240,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "optiqap",
@@ -262,8 +262,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qmlab",
@@ -284,8 +284,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "simcore",
@@ -306,8 +306,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "meatheadphysicist",
@@ -328,8 +328,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "adil",
@@ -350,8 +350,8 @@
         "docs_maturity": "managed",
         "brand_family": "heritage"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "roka-oakland-hustle",
@@ -372,8 +372,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qmatsim",
@@ -394,8 +394,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qubeml",
@@ -415,8 +415,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "scicomp",
@@ -436,8 +436,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "spincirc",
@@ -457,8 +457,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "maglogic",
@@ -478,8 +478,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "chshlab",
@@ -500,8 +500,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "helios",
@@ -520,8 +520,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "loopholelab",
@@ -541,8 +541,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "provegate",
@@ -563,8 +563,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "mercor-llm-failsafe",
@@ -583,8 +583,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "design-system",
@@ -605,16 +605,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": true
       },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
-      }
+      "release_pr_automation": "changesets"
     },
     {
       "slug": "alawein",
@@ -634,16 +629,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "write",
         "can_approve_pull_request_reviews": true
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "workspace-tools",
@@ -663,16 +653,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": false
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "knowledge-base",
@@ -692,16 +677,11 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": false
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "handshake-hai",
@@ -721,8 +701,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "fallax",
@@ -742,8 +722,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     }
   ]
 }

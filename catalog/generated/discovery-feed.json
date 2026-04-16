@@ -177,9 +177,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       }
     ],
     "clients": [
@@ -231,9 +229,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Morphism",
@@ -281,9 +277,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "REPZ",
@@ -331,9 +325,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Gymboy",
@@ -379,9 +371,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Scribd",
@@ -428,9 +418,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "next-app-router",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Bolts",
@@ -478,9 +466,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "next-app-router",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Atelier Rounaq",
@@ -526,9 +512,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Attributa",
@@ -575,9 +559,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       }
     ],
     "research": [
@@ -625,9 +607,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Alembiq",
@@ -674,9 +654,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "OptiQAP",
@@ -723,9 +701,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "qmlab.online",
@@ -773,9 +749,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "simcore.dev",
@@ -823,9 +797,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "meatheadphysicist",
@@ -873,9 +845,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "research-archive",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Adil",
@@ -923,9 +893,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
-        "compliance": "regulated",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "regulated"
       },
       {
         "name": "qmatsim",
@@ -968,9 +936,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       }
     ],
     "internal_ops": [
@@ -1021,15 +987,10 @@
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
         "compliance": "internal-only",
-        "github_actions_settings": {
+        "repo_settings": {
           "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": true
-        },
-        "release_automation": {
-          "mode": "changesets-publish",
-          "supports_release_prs": true,
-          "publishes_packages": true,
-          "requires_npm_token": true
+          "can_approve_pull_request_reviews": true,
+          "release_pr_automation": "changesets"
         }
       },
       {
@@ -1075,15 +1036,10 @@
         "version_source": "projects.json",
         "repo_archetype": "docs-hub",
         "compliance": "public-data",
-        "github_actions_settings": {
+        "repo_settings": {
           "default_workflow_permissions": "write",
-          "can_approve_pull_request_reviews": true
-        },
-        "release_automation": {
-          "mode": "none",
-          "supports_release_prs": false,
-          "publishes_packages": false,
-          "requires_npm_token": false
+          "can_approve_pull_request_reviews": true,
+          "release_pr_automation": "none"
         }
       },
       {
@@ -1130,15 +1086,10 @@
         "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "internal-only",
-        "github_actions_settings": {
+        "repo_settings": {
           "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": false
-        },
-        "release_automation": {
-          "mode": "none",
-          "supports_release_prs": false,
-          "publishes_packages": false,
-          "requires_npm_token": false
+          "can_approve_pull_request_reviews": false,
+          "release_pr_automation": "none"
         }
       },
       {
@@ -1186,15 +1137,15 @@
         "version_source": "package.json",
         "repo_archetype": "next-app-router",
         "compliance": "internal-only",
-        "github_actions_settings": {
+        "repo_settings": {
           "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": false
+          "can_approve_pull_request_reviews": false,
+          "release_pr_automation": "none"
         },
-        "release_automation": {
-          "mode": "none",
-          "supports_release_prs": false,
-          "publishes_packages": false,
-          "requires_npm_token": false
+        "vercel": {
+          "project_name": "knowledge-base",
+          "root_directory": "app",
+          "node_version": "22.x"
         }
       },
       {
@@ -1240,9 +1191,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "Fallax",
@@ -1288,9 +1237,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       }
     ]
   },
@@ -1343,9 +1290,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Morphism",
@@ -1393,9 +1338,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "REPZ",
@@ -1443,9 +1386,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "pii"
     },
     {
       "name": "Gymboy",
@@ -1491,9 +1432,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "pii"
     },
     {
       "name": "Scribd",
@@ -1540,9 +1479,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Bolts",
@@ -1590,9 +1527,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "pii"
     },
     {
       "name": "Atelier Rounaq",
@@ -1638,9 +1573,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Attributa",
@@ -1687,9 +1620,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "LLMWorks",
@@ -1738,9 +1669,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "Event Discovery Framework",
@@ -1786,9 +1715,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Alembiq",
@@ -1835,9 +1762,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "OptiQAP",
@@ -1884,9 +1809,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "qmlab.online",
@@ -1934,9 +1857,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "simcore.dev",
@@ -1984,9 +1905,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "meatheadphysicist",
@@ -2034,9 +1953,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "research-archive",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Adil",
@@ -2084,9 +2001,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
-      "compliance": "regulated",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "regulated"
     },
     {
       "name": "Roka: Oakland Hustle",
@@ -2131,9 +2046,7 @@
       ],
       "version_source": "project.godot",
       "repo_archetype": "game-project",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "qmatsim",
@@ -2176,9 +2089,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "qubeml",
@@ -2220,9 +2131,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "scicomp",
@@ -2264,9 +2173,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "spincirc",
@@ -2308,9 +2215,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "MagLogic",
@@ -2352,9 +2257,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "CHSH Lab",
@@ -2400,9 +2303,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Helios",
@@ -2442,9 +2343,7 @@
       ],
       "version_source": "none",
       "repo_archetype": "research-archive",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "Loophole Lab",
@@ -2489,9 +2388,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "public-data"
     },
     {
       "name": "Provegate",
@@ -2538,9 +2435,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "Mercor LLM Failsafe",
@@ -2581,9 +2476,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "design-system",
@@ -2632,15 +2525,10 @@
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
       "compliance": "internal-only",
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
+        "can_approve_pull_request_reviews": true,
+        "release_pr_automation": "changesets"
       }
     },
     {
@@ -2686,15 +2574,10 @@
       "version_source": "projects.json",
       "repo_archetype": "docs-hub",
       "compliance": "public-data",
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+        "can_approve_pull_request_reviews": true,
+        "release_pr_automation": "none"
       }
     },
     {
@@ -2741,15 +2624,10 @@
       "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
       "compliance": "internal-only",
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+        "can_approve_pull_request_reviews": false,
+        "release_pr_automation": "none"
       }
     },
     {
@@ -2797,15 +2675,15 @@
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
       "compliance": "internal-only",
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
+        "can_approve_pull_request_reviews": false,
+        "release_pr_automation": "none"
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+      "vercel": {
+        "project_name": "knowledge-base",
+        "root_directory": "app",
+        "node_version": "22.x"
       }
     },
     {
@@ -2851,9 +2729,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     },
     {
       "name": "Fallax",
@@ -2899,9 +2775,7 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
+      "compliance": "internal-only"
     }
   ],
   "collections": {
@@ -3761,8 +3635,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "morphism",
@@ -3783,8 +3657,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "repz",
@@ -3805,8 +3679,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "gymboy",
@@ -3827,8 +3701,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "scribd",
@@ -3849,8 +3723,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "bolts",
@@ -3871,8 +3745,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "atelier-rounaq",
@@ -3893,8 +3767,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "attributa",
@@ -3915,8 +3789,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "llmworks",
@@ -3937,8 +3811,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "edfp",
@@ -3959,8 +3833,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "alembiq",
@@ -3981,8 +3855,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "optiqap",
@@ -4003,8 +3877,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qmlab",
@@ -4025,8 +3899,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "simcore",
@@ -4047,8 +3921,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "meatheadphysicist",
@@ -4069,8 +3943,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "adil",
@@ -4091,8 +3965,8 @@
         "docs_maturity": "managed",
         "brand_family": "heritage"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "roka-oakland-hustle",
@@ -4113,8 +3987,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qmatsim",
@@ -4135,8 +4009,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "qubeml",
@@ -4156,8 +4030,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "scicomp",
@@ -4177,8 +4051,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "spincirc",
@@ -4198,8 +4072,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "maglogic",
@@ -4219,8 +4093,8 @@
         "docs_maturity": "managed",
         "brand_family": "vibrant"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "chshlab",
@@ -4241,8 +4115,8 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "helios",
@@ -4261,8 +4135,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "loopholelab",
@@ -4282,8 +4156,8 @@
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "provegate",
@@ -4304,8 +4178,8 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "mercor-llm-failsafe",
@@ -4324,8 +4198,8 @@
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "design-system",
@@ -4346,16 +4220,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": true
       },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
-      }
+      "release_pr_automation": "changesets"
     },
     {
       "slug": "alawein",
@@ -4375,16 +4244,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "write",
         "can_approve_pull_request_reviews": true
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "workspace-tools",
@@ -4404,16 +4268,11 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": false
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "knowledge-base",
@@ -4433,16 +4292,11 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "actions_settings": {
+      "repository_settings": {
         "default_workflow_permissions": "read",
         "can_approve_pull_request_reviews": false
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "release_pr_automation": "none"
     },
     {
       "slug": "handshake-hai",
@@ -4462,8 +4316,8 @@
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
     },
     {
       "slug": "fallax",
@@ -4483,8 +4337,23 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "repository_settings": {},
+      "release_pr_automation": "none"
+    }
+  ],
+  "vercelProjects": [
+    {
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "project_name": "knowledge-base",
+      "project_link_source": "knowledge-base/.vercel/project.json",
+      "framework": "nextjs",
+      "root_directory": "app",
+      "install_command": "npm install",
+      "build_command": "npm run build:verify",
+      "output_directory": ".next",
+      "node_version": "22.x"
     }
   ],
   "inventoryReconciliation": {
@@ -4543,9 +4412,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Morphism",
@@ -4593,9 +4460,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "REPZ",
@@ -4643,9 +4508,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Gymboy",
@@ -4691,9 +4554,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Scribd",
@@ -4740,9 +4601,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "next-app-router",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Bolts",
@@ -4790,9 +4649,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "next-app-router",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "pii"
       },
       {
         "name": "Atelier Rounaq",
@@ -4838,9 +4695,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Attributa",
@@ -4887,9 +4742,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "LLMWorks",
@@ -4938,9 +4791,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "Event Discovery Framework",
@@ -4986,9 +4837,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       },
       {
         "name": "Alembiq",
@@ -5035,9 +4884,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "internal-only"
       },
       {
         "name": "OptiQAP",
@@ -5084,9 +4931,7 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
+        "compliance": "public-data"
       }
     ],
     "entrypoints": {

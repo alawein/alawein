@@ -1037,15 +1037,10 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
+        "can_approve_pull_request_reviews": true,
+        "release_pr_automation": "changesets"
       },
       "depends_on": ["alawein"],
       "provides": ["design-tokens", "ui-components", "brand-assets"],
@@ -1083,15 +1078,10 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+        "can_approve_pull_request_reviews": true,
+        "release_pr_automation": "none"
       },
       "depends_on": [],
       "provides": ["catalog-ssot", "governance-docs", "profile-generation"],
@@ -1129,15 +1119,10 @@
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+        "can_approve_pull_request_reviews": false,
+        "release_pr_automation": "none"
       },
       "depends_on": ["alawein"],
       "provides": ["workspace-batch", "scaffolding", "drift-audits"],
@@ -1175,15 +1160,20 @@
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
-      "github_actions_settings": {
+      "repo_settings": {
         "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
+        "can_approve_pull_request_reviews": false,
+        "release_pr_automation": "none"
       },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
+      "vercel": {
+        "project_name": "knowledge-base",
+        "project_link_source": "knowledge-base/.vercel/project.json",
+        "framework": "nextjs",
+        "root_directory": "app",
+        "install_command": "npm install",
+        "build_command": "npm run build:verify",
+        "output_directory": ".next",
+        "node_version": "22.x"
       },
       "depends_on": ["alawein", "workspace-tools"],
       "provides": ["catalog-ui", "inventory-search", "onboarding-docs"],

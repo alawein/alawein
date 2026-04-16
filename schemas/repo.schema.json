@@ -105,45 +105,47 @@
             "type": ["string", "number", "boolean", "null"]
           }
         },
-        "github_actions_settings": {
+        "repo_settings": {
           "type": "object",
           "required": [
             "default_workflow_permissions",
-            "can_approve_pull_request_reviews"
+            "can_approve_pull_request_reviews",
+            "release_pr_automation"
           ],
           "properties": {
             "default_workflow_permissions": {
               "type": "string",
               "enum": ["read", "write"]
             },
-            "can_approve_pull_request_reviews": {
-              "type": "boolean"
+            "can_approve_pull_request_reviews": { "type": "boolean" },
+            "release_pr_automation": {
+              "type": "string",
+              "enum": ["none", "changesets"]
             }
           },
           "additionalProperties": false
         },
-        "release_automation": {
+        "vercel": {
           "type": "object",
           "required": [
-            "mode",
-            "supports_release_prs",
-            "publishes_packages",
-            "requires_npm_token"
+            "project_name",
+            "project_link_source",
+            "framework",
+            "root_directory",
+            "install_command",
+            "build_command",
+            "output_directory",
+            "node_version"
           ],
           "properties": {
-            "mode": {
-              "type": "string",
-              "enum": ["none", "changesets-version-pr", "changesets-publish"]
-            },
-            "supports_release_prs": {
-              "type": "boolean"
-            },
-            "publishes_packages": {
-              "type": "boolean"
-            },
-            "requires_npm_token": {
-              "type": "boolean"
-            }
+            "project_name": { "type": "string", "minLength": 1 },
+            "project_link_source": { "type": "string", "minLength": 1 },
+            "framework": { "type": "string", "minLength": 1 },
+            "root_directory": { "type": "string" },
+            "install_command": { "type": "string", "minLength": 1 },
+            "build_command": { "type": "string", "minLength": 1 },
+            "output_directory": { "type": "string", "minLength": 1 },
+            "node_version": { "type": "string", "minLength": 1 }
           },
           "additionalProperties": false
         },

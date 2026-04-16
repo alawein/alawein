@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Sync GitHub repository metadata and workflow settings from the Alawein catalog feed."""
+"""Sync GitHub repository metadata and settings from the generated Alawein catalog feed."""
 
 from __future__ import annotations
 
@@ -66,11 +66,11 @@ def command_plan(
             "body": {"names": sorted({topic.lower() for topic in repo_entry.get("topics") or []})},
         },
     ]
-    actions_settings = repo_entry.get("actions_settings") or {}
-    if actions_settings:
+    repository_settings = repo_entry.get("repository_settings") or {}
+    if repository_settings:
         commands.append(
             {
-                "name": "actions_permissions",
+                "name": "repository_settings",
                 "method": "PUT",
                 "endpoint": f"repos/{owner}/{repo_name}/actions/permissions/workflow",
                 "argv": build_args(
@@ -79,7 +79,7 @@ def command_plan(
                     "PUT",
                     api_version,
                 ),
-                "body": actions_settings,
+                "body": repository_settings,
             }
         )
     custom_properties = repo_entry.get("custom_properties") or {}
@@ -186,7 +186,7 @@ def select_repos(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Sync GitHub repository descriptions, topics, workflow settings, and custom properties from the Alawein catalog feed"
+        description="Sync GitHub repository descriptions, topics, custom properties, and workflow settings from the Alawein catalog feed"
     )
     parser.add_argument("--repo", default=None, help="Catalog repo slug to sync")
     parser.add_argument(

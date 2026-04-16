@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-04-14",
+  "repos": [
+    {
+      "slug": "design-system",
+      "repo": "alawein/design-system",
+      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "homepage": "https://github.com/alawein/design-system",
+      "topics": [
+        "design-system",
+        "storybook",
+        "react",
+        "tokens",
+        "turborepo"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "repository_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_pr_automation": "changesets"
+    },
+    {
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "homepage": "https://github.com/alawein/alawein",
+      "topics": [
+        "governance",
+        "documentation",
+        "catalog",
+        "automation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "repository_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_pr_automation": "none"
+    },
+    {
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "homepage": "https://github.com/alawein/workspace-tools",
+      "topics": [
+        "automation",
+        "python",
+        "cli",
+        "governance"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "repository_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_pr_automation": "none"
+    },
+    {
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "topics": [
+        "knowledge-base",
+        "nextjs",
+        "search",
+        "documentation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "repository_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_pr_automation": "none"
+    }
+  ]
+}

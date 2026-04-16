@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-04-14",
+  "projects": [
+    {
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "project_name": "knowledge-base",
+      "project_link_source": "knowledge-base/.vercel/project.json",
+      "framework": "nextjs",
+      "root_directory": "app",
+      "install_command": "npm install",
+      "build_command": "npm run build:verify",
+      "output_directory": ".next",
+      "node_version": "22.x"
+    }
+  ]
+}

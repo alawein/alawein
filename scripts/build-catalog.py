@@ -13,6 +13,7 @@ from catalog_lib import (
     PROJECTS_JSON,
     build_github_metadata_feed,
     build_inventory_manifest,
+    build_vercel_projects_feed,
     catalog_timestamp,
     derive_discovery_feed,
     derive_projects_manifest,
@@ -44,6 +45,7 @@ def main(argv: list[str] | None = None) -> int:
     discovery_feed = derive_discovery_feed(catalogs)
     generated_at = catalog_timestamp(catalogs)
     github_feed = build_github_metadata_feed(repo_entries(catalogs), generated_at)
+    vercel_projects = build_vercel_projects_feed(repo_entries(catalogs), generated_at)
     inventory = build_inventory_manifest(repo_entries(catalogs), generated_at)
 
     outputs = {
@@ -54,6 +56,17 @@ def main(argv: list[str] | None = None) -> int:
         )
         + "\n",
         GENERATED_DIR / "github-metadata.json": json.dumps(github_feed, indent=2) + "\n",
+        GENERATED_DIR / "repo-settings.json": json.dumps(
+            {
+                "generatedAt": generated_at,
+                "repos": [
+                    repo for repo in github_feed["repos"] if repo.get("repository_settings")
+                ],
+            },
+            indent=2,
+        )
+        + "\n",
+        GENERATED_DIR / "vercel-projects.json": json.dumps(vercel_projects, indent=2) + "\n",
         GENERATED_DIR / "asset-assignments.json": json.dumps(
             discovery_feed["assetAssignments"], indent=2
         )

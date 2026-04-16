@@ -51,22 +51,6 @@ REQUIRED_REPO_FIELDS = [
     "version_source",
     "last_verified",
 ]
-CORE_AUTOMATION_REPOS = {
-    "alawein",
-    "design-system",
-    "knowledge-base",
-    "workspace-tools",
-}
-REQUIRED_GITHUB_ACTIONS_SETTINGS_FIELDS = [
-    "default_workflow_permissions",
-    "can_approve_pull_request_reviews",
-]
-REQUIRED_RELEASE_AUTOMATION_FIELDS = [
-    "mode",
-    "supports_release_prs",
-    "publishes_packages",
-    "requires_npm_token",
-]
 
 README_SECTIONS = {
     "product": [
@@ -303,7 +287,7 @@ def derive_projects_manifest(catalogs: dict[str, Any]) -> dict[str, Any]:
 
 
 def repo_summary(repo: dict[str, Any]) -> dict[str, Any]:
-    return {
+    summary = {
         "name": repo["name"],
         "slug": repo["slug"],
         "repo": repo["repo"],
@@ -328,9 +312,17 @@ def repo_summary(repo: dict[str, Any]) -> dict[str, Any]:
         "version_source": repo["version_source"],
         "repo_archetype": archetype_for_repo(repo),
         "compliance": compliance_for_repo(repo),
-        "github_actions_settings": repo.get("github_actions_settings") or {},
-        "release_automation": repo.get("release_automation") or {},
     }
+    if repo.get("repo_settings"):
+        summary["repo_settings"] = repo["repo_settings"]
+    if repo.get("vercel"):
+        vercel = repo["vercel"]
+        summary["vercel"] = {
+            "project_name": vercel["project_name"],
+            "root_directory": vercel["root_directory"],
+            "node_version": vercel["node_version"],
+        }
+    return summary
 
 
 def build_featured_collections(repos: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
@@ -395,10 +387,58 @@ def build_github_metadata_feed(
                 "homepage": repo.get("homepage") or "",
                 "topics": repo.get("github_topics") or [],
                 "custom_properties": repo.get("github_custom_properties") or {},
-                "actions_settings": repo.get("github_actions_settings") or {},
-                "release_automation": repo.get("release_automation") or {},
+                "repository_settings": {
+                    "default_workflow_permissions": repo["repo_settings"][
+                        "default_workflow_permissions"
+                    ],
+                    "can_approve_pull_request_reviews": repo["repo_settings"][
+                        "can_approve_pull_request_reviews"
+                    ],
+                }
+                if repo.get("repo_settings")
+                else {},
+                "release_pr_automation": (repo.get("repo_settings") or {}).get(
+                    "release_pr_automation", "none"
+                ),
             }
             for repo in repos
+        ],
+    }
+
+
+def vercel_project_link(repo: dict[str, Any]) -> dict[str, Any]:
+    vercel = repo.get("vercel") or {}
+    project_link_source = vercel.get("project_link_source")
+    if not project_link_source:
+        return {}
+    project_path = WORKSPACE_ROOT / project_link_source
+    if not project_path.exists():
+        return {}
+    payload = load_json(project_path)
+    return {
+        "project_id": payload.get("projectId") or "",
+        "team_id": payload.get("orgId") or "",
+        "linked_project_name": payload.get("projectName") or "",
+        "linked_settings": payload.get("settings") or {},
+    }
+
+
+def build_vercel_projects_feed(
+    repos: list[dict[str, Any]],
+    generated_at: str,
+) -> dict[str, Any]:
+    vercel_repos = [repo for repo in repos if repo.get("vercel")]
+    return {
+        "generatedAt": generated_at,
+        "projects": [
+            {
+                "slug": repo["slug"],
+                "repo": repo["repo"],
+                "homepage": repo.get("homepage") or "",
+                **(repo.get("vercel") or {}),
+                **vercel_project_link(repo),
+            }
+            for repo in vercel_repos
         ],
     }
 
@@ -513,6 +553,7 @@ def derive_discovery_feed(catalogs: dict[str, Any]) -> dict[str, Any]:
         "taxonomy": catalogs["taxonomy"],
         "assetAssignments": build_asset_assignments(repos),
         "githubMetadata": build_github_metadata_feed(repos, generated_at)["repos"],
+        "vercelProjects": build_vercel_projects_feed(repos, generated_at)["projects"],
         "inventoryReconciliation": reconciliation,
         "projectSwitcher": {
             "featured": [repo_summary(repo) for repo in filter_repos(repos, "featured")],
@@ -581,33 +622,48 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
                     "error", f"Repo '{repo['slug']}' uses unknown domain '{repo.get('domain')}'"
                 )
             )
-        if repo.get("slug") in CORE_AUTOMATION_REPOS:
-            actions_settings = repo.get("github_actions_settings") or {}
-            missing_actions_settings = [
-                field
-                for field in REQUIRED_GITHUB_ACTIONS_SETTINGS_FIELDS
-                if field not in actions_settings
-            ]
-            if missing_actions_settings:
+        repo_settings = repo.get("repo_settings") or {}
+        if repo_settings.get("release_pr_automation") == "changesets":
+            if not repo_settings.get("can_approve_pull_request_reviews"):
                 issues.append(
                     ValidationIssue(
                         "error",
-                        f"Core repo '{repo['slug']}' missing GitHub Actions settings fields: {', '.join(missing_actions_settings)}",
+                        f"Repo '{repo['slug']}' uses changesets release PR automation but disables Actions PR approval",
                     )
                 )
-            release_automation = repo.get("release_automation") or {}
-            missing_release_automation = [
-                field
-                for field in REQUIRED_RELEASE_AUTOMATION_FIELDS
-                if field not in release_automation
-            ]
-            if missing_release_automation:
+        vercel = repo.get("vercel") or {}
+        if vercel:
+            project_link_source = str(vercel.get("project_link_source") or "")
+            project_path = WORKSPACE_ROOT / project_link_source if project_link_source else None
+            if not project_path or not project_path.exists():
                 issues.append(
                     ValidationIssue(
-                        "error",
-                        f"Core repo '{repo['slug']}' missing release automation fields: {', '.join(missing_release_automation)}",
+                        "warning",
+                        f"Repo '{repo['slug']}' references missing Vercel link source '{project_link_source}'",
                     )
                 )
+            else:
+                linked = load_json(project_path)
+                linked_settings = linked.get("settings") or {}
+                mismatches = []
+                field_map = {
+                    "framework": "framework",
+                    "install_command": "installCommand",
+                    "build_command": "buildCommand",
+                    "output_directory": "outputDirectory",
+                    "root_directory": "rootDirectory",
+                    "node_version": "nodeVersion",
+                }
+                for catalog_field, linked_field in field_map.items():
+                    if str(vercel.get(catalog_field) or "") != str(linked_settings.get(linked_field) or ""):
+                        mismatches.append(catalog_field)
+                if mismatches:
+                    issues.append(
+                        ValidationIssue(
+                            "warning",
+                            f"Repo '{repo['slug']}' Vercel settings differ from linked project file: {', '.join(mismatches)}",
+                        )
+                    )
 
     repo_slugs = {repo["slug"] for repo in repos}
     for manifest_name, key in (

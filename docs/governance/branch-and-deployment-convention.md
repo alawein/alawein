@@ -8,7 +8,7 @@ description: Single reference for branch naming, workflow, and Vercel deployment
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-03-17
+last_updated: 2026-04-15
 tags: [branch, naming, workflow, vercel, deployment, convention]
 ---
 
@@ -69,6 +69,10 @@ Repos under the same org (e.g. `edfp`, `repz`, `meshal-web`, `devkit`, `gymboy`,
   `python scripts/vercel_alias_audit.py`  
   `python scripts/vercel_alias_audit.py --apply`  
   Ensures production alias matches `https://[github-repo-name].vercel.app`.
+- **Project settings control plane:** Store managed Vercel settings in
+  `catalog/repos.json` under each repo's `vercel` block, regenerate derived
+  outputs with `python scripts/build-catalog.py`, then audit or apply with
+  `python scripts/sync-vercel-projects.py --repo <slug>` or `--all`.
 
 Repos with `vercel.json` and build/output config: see [phase5-version-control-and-deployment.md](phase5-version-control-and-deployment.md) for the list and build commands.
 
@@ -92,6 +96,7 @@ Run `git branch -a` in `alawein/alawein` for the current list. After hygiene, on
 | After merge | `git switch main && git pull && git branch -d feat/… && git push origin --delete feat/…` |
 | Deploy (after merge) | `vercel deploy --prod` or rely on Vercel Git |
 | Vercel alias audit | `python scripts/vercel_alias_audit.py` (from alawein) |
+| Vercel settings audit | `python scripts/sync-vercel-projects.py --repo knowledge-base` |
 
 ---
 

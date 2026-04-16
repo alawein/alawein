@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub Baseline
 description: Canonical GitHub profile, repository metadata, workflow, and community-health baseline for the alawein workspace.
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -39,8 +39,10 @@ active repo cohort it manages.
 
 ## Workflow baseline
 
-- Shared GitHub workflow policy lives in this repo and is propagated from
-  `scripts/sync-github.sh`.
+- Shared GitHub workflow policy for public-safe surfaces lives in this repo.
+- Private repository-metadata sync, workflow-permission convergence, and other
+  control-plane automation live in the private `knowledge-base` control-plane
+  lane.
 - Reusable workflows under `.github/workflows/` are the canonical source for:
   - Node CI
   - Python CI

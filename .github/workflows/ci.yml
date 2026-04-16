@@ -3,18 +3,8 @@ name: CI - Documentation Contract
 on:
   push:
     branches: [main]
-    paths-ignore:
-      - '**/*.md'
-      - 'docs/**'
-      - '.github/ISSUE_TEMPLATE/**'
-      - 'LICENSE'
   pull_request:
     branches: [main]
-    paths-ignore:
-      - '**/*.md'
-      - 'docs/**'
-      - '.github/ISSUE_TEMPLATE/**'
-      - 'LICENSE'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -45,10 +35,15 @@ jobs:
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: '3.12'
-      - name: Install pytest
-        run: pip install pytest
-      - name: Run script tests
-        run: python -m pytest scripts/tests/ -v --tb=short
+      - name: Install sync dependencies
+        run: python -m pip install pyyaml
+      - name: Verify public sync scripts
+        run: python scripts/sync-readme.py --check
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
+        with:
+          node-version: '20'
+      - name: Validate public manifest
+        run: node scripts/validate-projects-json.mjs
 
   lint-managed-markdown:
     runs-on: ubuntu-latest

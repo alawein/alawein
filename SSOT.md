@@ -18,9 +18,10 @@ audience: [ai-agents, contributors]
 
 ## Purpose
 
-Organization profile and portfolio governance source for the `@alawein` GitHub
-organization. This repository is docs-only and owns the canonical workspace
-governance contract for naming, portfolio truth, and migration sequencing.
+Public profile and governance-lite source for the `@alawein` GitHub
+organization. This repository owns the public README/profile surface, the
+curated public portfolio manifest, and public-safe governance guidance.
+Private control-plane state now lives in `knowledge-base`.
 
 ## Current State
 
@@ -37,14 +38,14 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`docs/README.md`](docs/README.md)
 - Canonical governance validation:
   `./scripts/validate-doc-contract.sh --full`
-- GitHub baseline manifest and sync path are active:
-  `github-baseline.yaml`, `scripts/sync-github.sh`,
-  `scripts/github-baseline-audit.py`
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
-- Manifest-driven batch governance is active for multi-repo autonomous work
 - README is generated from `projects.json` and `profile-from-guides.yaml` via
   `scripts/sync-readme.py`
+- `projects.json` is a curated public portfolio export, not the full internal
+  control-plane registry
+- Private control-plane exports, dashboard state, inventory, and sync tooling
+  live in `knowledge-base/db/ops/alawein-control-plane/`
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
   `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
 - Transitional identifiers are retained in `projects.json` via `legacy_slugs`
@@ -86,9 +87,7 @@ alawein/
 └── scripts/
     ├── validate-doc-contract.sh
     ├── sync-readme.py
-    ├── sync-github.sh
-    ├── github-baseline-audit.py
-    └── sync-to-notion.mjs
+    └── validate-projects-json.mjs
 ```
 
 ## What's Next
@@ -96,8 +95,7 @@ alawein/
 - Keep canonical files fresh (last-verified ≤ 30 days)
 - Keep README/project data/workspace docs synchronized for any naming or domain
   change
-- Keep the GitHub baseline manifest and generated repo files in sync for the
-  active cohort
+- Keep the curated public manifest and profile README synchronized
 - Complete phased workspace directives (D-1 through D-5) with org README sync
   at each structural milestone
 

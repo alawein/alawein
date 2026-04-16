@@ -12,8 +12,9 @@ last-verified: 2026-03-27
 
 # AGENTS — alawein
 
-**Purpose:** Organization profile repository for `@alawein` portfolio truth and
-governance coordination.
+**Purpose:** Public profile repository for `@alawein` portfolio truth and
+public governance documentation. Private control-plane data and automation now
+live in `knowledge-base`.
 
 ---
 
@@ -35,6 +36,8 @@ governance coordination.
 ### Always do
 
 - Keep `README.md` current with active repos, domains, and canonical naming.
+- Treat `projects.json` as the curated public portfolio manifest, not the full
+  internal repo registry.
 - Use canonical names first and transitional alias notation when a physical repo
   slug has not yet been renamed.
 - Keep `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `LESSONS.md`, and governance docs
@@ -62,11 +65,12 @@ governance coordination.
 - Before changing governance template structure (affects all repos).
 - Before changing canonical naming policy or transitional alias semantics.
 - Before adding new automation that rewrites managed docs.
+- Before expanding this public repo back into private ops/inventory territory.
 
 ### Never do
 
-- Store secrets or credentials.
-- Add build artifacts or non-documentation files.
+- Store secrets, private inventory, or internal control-plane exports.
+- Reintroduce dashboard/catalog/Notion/GitHub/Vercel sync artifacts here.
 - Perform destructive git operations to force consistency.
 
 ## Canonical Naming Policy

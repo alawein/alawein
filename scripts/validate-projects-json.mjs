@@ -79,24 +79,11 @@ function main() {
   if (!Array.isArray(data.featured)) errors.push('featured must be an array');
   if (!Array.isArray(data.research)) errors.push('research must be an array');
   if (!Array.isArray(data.packages)) errors.push('packages must be an array');
-  if (data.notion_sync && !Array.isArray(data.notion_sync)) errors.push('notion_sync must be an array when present');
-
   for (const [idx, entry] of (data.featured || []).entries()) {
     validateProjectEntry(entry, `featured[${idx}]`, errors);
   }
-  for (const [idx, entry] of (data.notion_sync || []).entries()) {
-    validateProjectEntry(entry, `notion_sync[${idx}]`, errors);
-  }
 
   uniqueBySlug(data.featured || [], 'featured', errors);
-  uniqueBySlug(data.notion_sync || [], 'notion_sync', errors);
-
-  const featuredSlugs = new Set((data.featured || []).map((p) => p.slug));
-  for (const [idx, entry] of (data.notion_sync || []).entries()) {
-    if (featuredSlugs.has(entry.slug)) {
-      errors.push(`notion_sync[${idx}].slug '${entry.slug}' duplicates a featured slug`);
-    }
-  }
 
   if (errors.length) fail(errors);
   console.log('projects.json validation passed.');

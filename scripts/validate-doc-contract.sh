@@ -145,9 +145,7 @@ def managed_docs() -> Dict[str, str]:
 
 MANAGED_DOCS = managed_docs()
 
-GENERATED_FRESHNESS_MARKERS = {
-    "docs/dashboard/index.md": re.compile(r"^[+-]- Generated at:\s*`", re.MULTILINE),
-}
+GENERATED_FRESHNESS_MARKERS = {}
 
 
 def base_ref_for_mode() -> Optional[str]:

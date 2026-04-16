@@ -5,13 +5,13 @@ sync: on-change
 sla: none
 title: Repository layout standard
 description: Canonical top-level layout by stack archetype; aligns apps with AWS-style separation of code, infra, docs, and automation.
-last_updated: 2026-03-30
+last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
 related:
   - ./tooling-quality-gates.md
-  - ./desktop-repo-inventory.md
+  - ./public-private-boundary.md
   - ./workspace-standardization.md
 ---
 
@@ -99,7 +99,9 @@ Typical: `archive/`, `notebooks/`, large `data/` (often gitignored or LFS).
 
 ## Reference implementations
 
-Listed in [`desktop-repo-inventory.json`](./desktop-repo-inventory.json) under `golden_references`.
+Reference implementations are tracked in the private Alawein control plane. The
+public repo only carries the governance standard, not the full machine-readable
+workspace inventory.
 
 ## Related
 

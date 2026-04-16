@@ -101,10 +101,10 @@ Verified on `alawein/design-system` on 2026-04-15: the release workflow turned
 green immediately after enabling this setting and rerunning the existing failed
 run.
 
-When a repo is managed by the Alawein catalog, keep the release expectation in
-`catalog/repos.json` under `repo_settings.release_pr_automation`. The GitHub
-workflow-permission state should be converged from the same catalog via
-`python scripts/sync-github-metadata.py`, not tracked only in the GitHub UI.
+When a repo is managed by the Alawein private control plane, keep the release
+expectation in the private catalog under `repo_settings.release_pr_automation`.
+The GitHub workflow-permission state should be converged from that private
+control plane, not tracked only in the GitHub UI.
 
 If `NPM_TOKEN` is not configured, keep the workflow in version-only mode and
 skip npm publication. Missing publish credentials are an operational

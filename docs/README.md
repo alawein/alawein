@@ -30,6 +30,8 @@ workspace governance for the `alawein` GitHub organization.
   [`documentation-contract.md`](./governance/documentation-contract.md)
 - GitHub profile and workflow baseline:
   [`github-baseline.md`](./governance/github-baseline.md)
+- Public/private repository boundary:
+  [`public-private-boundary.md`](./governance/public-private-boundary.md)
 - Governance operating model:
   [`operating-model.md`](./governance/operating-model.md)
 - Workflow overview: [`workflow.md`](./governance/workflow.md)

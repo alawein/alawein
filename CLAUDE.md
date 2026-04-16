@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-04-14
-last_updated: 2026-04-14
+last-verified: 2026-04-16
+last_updated: 2026-04-16
 ---
 
 <!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->

@@ -1,10 +1,35 @@
 extends: existence
-message: "Avoid promotional filler in governed docs: '%s'."
+message: 'Avoid promotional filler in governed docs: ''%s''.'
 ignorecase: true
-level: warning
+level: error
 tokens:
-  - best-in-class
-  - seamless
-  - revolutionary
-  - cutting-edge
-  - world-class
+- passionate about
+- leveraging
+- innovative
+- excited to
+- it's worth noting
+- interestingly
+- delve into
+- deep dive
+- utilize
+- in today's world
+- moving forward
+- synergy
+- holistic
+- game-changing
+- groundbreaking
+- best-in-class
+- seamless
+- revolutionary
+- cutting-edge
+- robust solution
+- empower
+- transformative
+- I am pleased to
+- I hope this helps
+- feel free to
+- as mentioned above
+- next-gen
+- world-class
+- powerful
+- future-ready

@@ -1,5 +1,5 @@
 version: 1
-last_verified: 2026-04-14
+last_verified: 2026-04-15
 canonical_terms:
   - term: alawein
     usage: "Organization and governance control plane."
@@ -26,10 +26,32 @@ canonical_terms:
   - term: theme family
     usage: "Controlled visual grouping applied to repo-level branding."
 banned_terms:
+  - passionate about
+  - leveraging
   - best-in-class
+  - innovative
   - seamless
   - revolutionary
   - cutting-edge
+  - excited to
+  - it's worth noting
+  - interestingly
+  - delve into
+  - deep dive
+  - utilize
+  - in today's world
+  - moving forward
+  - synergy
+  - holistic
+  - game-changing
+  - groundbreaking
+  - robust solution
+  - empower
+  - transformative
+  - I am pleased to
+  - I hope this helps
+  - feel free to
+  - as mentioned above
   - next-gen
   - gainboy
   - neper
@@ -38,6 +60,67 @@ banned_terms:
   - reasonbench
   - aw-devkit
   - devkit
+linter_rules:
+  terminology:
+    message: "Use the canonical term '%s' from the terminology registry."
+    level: error
+    tokens:
+      - gainboy
+      - neper
+      - qaplibria
+      - epistemic-stack
+      - reasonbench
+      - aw-devkit
+      - devkit
+  tone:
+    message: "Avoid promotional filler in governed docs: '%s'."
+    level: error
+    tokens:
+      - passionate about
+      - leveraging
+      - innovative
+      - excited to
+      - it's worth noting
+      - interestingly
+      - delve into
+      - deep dive
+      - utilize
+      - in today's world
+      - moving forward
+      - synergy
+      - holistic
+      - game-changing
+      - groundbreaking
+      - best-in-class
+      - seamless
+      - revolutionary
+      - cutting-edge
+      - robust solution
+      - empower
+      - transformative
+      - I am pleased to
+      - I hope this helps
+      - feel free to
+      - as mentioned above
+      - next-gen
+      - world-class
+      - powerful
+      - future-ready
+  comments:
+    message: "Avoid low-signal comment language: '%s'."
+    level: warning
+    tokens:
+      - simply
+      - obviously
+      - easy
+      - easily
+      - magic
+      - hack
+math_notation_preferences:
+  prefer_arrow: "→"
+  prefer_equivalence: "≡"
+  prefer_latex_in_markdown: true
+  avoid_ascii_flow_arrows: true
 lifecycle_labels:
   - planned
   - active

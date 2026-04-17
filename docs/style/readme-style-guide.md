@@ -1,15 +1,18 @@
 ---
-type: canonical
-source: none
-sync: none
-sla: none
-authority: canonical
+type: derived
+source: ./VOICE.md
+sync: manual
+sla: on-change
+authority: derived
 audience: [contributors, agents]
-last_updated: 2026-04-14
-last-verified: 2026-04-14
+last_updated: 2026-04-15
+last-verified: 2026-04-15
 ---
 
 # README style guide
+
+This file is a quick-reference projection of [`VOICE.md`](VOICE.md).
+Use `VOICE.md` as the canonical README authority.
 
 ## Global invariants
 
@@ -60,7 +63,8 @@ last-verified: 2026-04-14
 
 ## Formatting rules
 
-- Use `README.md` and `docs/README.md` as the only top-level documentation entry points.
+- Use `README.md` and `docs/README.md` as the only top-level documentation
+  entry points.
 - Keep command examples copy-pastable.
 - Prefer tables only for stable reference material.
 - End each README with ownership or support information.

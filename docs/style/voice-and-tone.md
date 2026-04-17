@@ -1,15 +1,18 @@
 ---
-type: canonical
-source: none
-sync: none
-sla: none
-authority: canonical
+type: derived
+source: ./VOICE.md
+sync: manual
+sla: on-change
+authority: derived
 audience: [contributors, agents]
-last_updated: 2026-04-14
-last-verified: 2026-04-14
+last_updated: 2026-04-15
+last-verified: 2026-04-15
 ---
 
 # Voice and tone
+
+This file is a quick-reference projection of [`VOICE.md`](VOICE.md).
+Use `VOICE.md` as the canonical voice authority.
 
 ## Default voice
 
@@ -41,16 +44,16 @@ Write as if the reader will act on the guidance immediately. Prefer precise noun
 
 ### Product
 
-Lead with user value, then show status, quick start, architecture, and deployment reality.
+Lead with user value, status, and operating reality.
 
 ### Tooling and infrastructure
 
-Lead with purpose, consumers, install, commands, architecture, and versioning.
+Lead with purpose, consumers, commands, and integration boundaries.
 
 ### Research
 
-Lead with abstract, status, reproducibility, datasets, and runtime requirements.
+Lead with the question, current status, reproducibility, and runtime facts.
 
 ### Archive
 
-Lead with archival status, retention reason, and known limitations.
+Lead with archival status, retention reason, and limitations.

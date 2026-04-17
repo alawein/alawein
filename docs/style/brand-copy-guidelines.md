@@ -1,15 +1,18 @@
 ---
-type: canonical
-source: none
-sync: none
-sla: none
-authority: canonical
+type: derived
+source: ./VOICE.md
+sync: manual
+sla: on-change
+authority: derived
 audience: [contributors, agents]
-last_updated: 2026-04-14
-last-verified: 2026-04-14
+last_updated: 2026-04-15
+last-verified: 2026-04-15
 ---
 
 # Brand copy guidelines
+
+This file is a quick-reference projection of [`VOICE.md`](VOICE.md).
+Use `VOICE.md` as the canonical brand-copy authority.
 
 ## Brand posture
 

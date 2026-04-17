@@ -1,15 +1,18 @@
 ---
-type: canonical
-source: none
-sync: none
-sla: none
-authority: canonical
+type: derived
+source: ./VOICE.md
+sync: manual
+sla: on-change
+authority: derived
 audience: [contributors, agents]
-last_updated: 2026-04-14
-last-verified: 2026-04-14
+last_updated: 2026-04-15
+last-verified: 2026-04-15
 ---
 
 # Markdown formatting standard
+
+Derived from [`VOICE.md`](VOICE.md). Use that file as the canonical style
+source.
 
 ## Headings
 
@@ -37,5 +40,7 @@ last-verified: 2026-04-14
 
 ## Frontmatter and exemptions
 
-- Governed markdown files require doctrine-compliant frontmatter.
-- `README.md`, issue forms, and PR templates may stay frontmatter-exempt where GitHub surfaces require raw markdown.
+- Governed markdown files require doctrine-compliant frontmatter unless they are
+  GitHub-facing README exemptions.
+- `README.md`, `docs/README.md`, issue forms, and PR templates stay
+  frontmatter-exempt where GitHub surfaces require raw markdown.

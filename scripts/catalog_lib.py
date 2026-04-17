@@ -18,6 +18,7 @@ CATALOG_DIR = ROOT / "catalog"
 GENERATED_DIR = CATALOG_DIR / "generated"
 SCHEMAS_DIR = ROOT / "schemas"
 PROJECTS_JSON = ROOT / "projects.json"
+PROFILE_FROM_GUIDES = ROOT / "profile-from-guides.yaml"
 WORKSPACE_YAML = WORKSPACE_ROOT / "knowledge-base" / "WORKSPACE.yaml"
 INVENTORY_JSON = ROOT / "docs" / "governance" / "desktop-repo-inventory.json"
 STABLE_WORKSPACE_ROOTS = [
@@ -146,6 +147,27 @@ def load_yaml(path: Path) -> Any:
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def load_frontmatter_yaml(path: Path) -> dict[str, Any]:
+    text = path.read_text(encoding="utf-8")
+    lines = text.splitlines()
+    if lines and lines[0].lstrip("\ufeff") == "---":
+        for index in range(1, len(lines)):
+            if lines[index] == "---":
+                payload = "\n".join(lines[index + 1 :]).strip()
+                return _first_yaml_doc(payload)
+    return _first_yaml_doc(text)
+
+
+def _first_yaml_doc(payload: str) -> dict[str, Any]:
+    # Use safe_load_all so a stray `---` inside the body does not trigger
+    # yaml.ComposerError; we only care about the first document.
+    if not payload:
+        return {}
+    docs = list(yaml.safe_load_all(payload))
+    first = docs[0] if docs else {}
+    return first or {}
+
+
 def dump_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8", newline="\n")
@@ -193,6 +215,12 @@ def current_projects_manifest() -> dict[str, Any]:
     return load_json(PROJECTS_JSON)
 
 
+def profile_config() -> dict[str, Any]:
+    if not PROFILE_FROM_GUIDES.exists():
+        return {}
+    return load_frontmatter_yaml(PROFILE_FROM_GUIDES)
+
+
 def current_inventory_manifest() -> dict[str, Any]:
     if not INVENTORY_JSON.exists():
         return {}
@@ -211,6 +239,10 @@ def compliance_for_repo(repo: dict[str, Any]) -> str:
 
 def filter_repos(entries: list[dict[str, Any]], group: str) -> list[dict[str, Any]]:
     return [entry for entry in entries if group in (entry.get("catalog_groups") or [])]
+
+
+def repo_index_by_slug(entries: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    return {str(entry["slug"]): entry for entry in entries}
 
 
 def project_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
@@ -537,6 +569,7 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     repos = repo_entries(catalogs)
     taxonomy = catalogs["taxonomy"].get("axes", {})
+    profile = profile_config()
 
     slug_counts = Counter(repo.get("slug") for repo in repos)
     duplicate_slugs = sorted(slug for slug, count in slug_counts.items() if slug and count > 1)
@@ -547,6 +580,41 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
     duplicate_repos = sorted(value for value, count in repo_counts.items() if value and count > 1)
     for value in duplicate_repos:
         issues.append(ValidationIssue("error", f"Duplicate repo remote '{value}' in catalog/repos.json"))
+
+    repo_index = repo_index_by_slug(repos)
+    profile_pins = profile.get("profile_pins") or []
+    if profile_pins and not isinstance(profile_pins, list):
+        issues.append(ValidationIssue("error", "profile-from-guides.yaml profile_pins must be a list"))
+        profile_pins = []
+    seen_profile_pins: set[str] = set()
+    for raw_slug in profile_pins:
+        slug = str(raw_slug).strip()
+        if not slug:
+            issues.append(
+                ValidationIssue("error", "profile-from-guides.yaml profile_pins must contain non-empty slugs")
+            )
+            continue
+        if slug in seen_profile_pins:
+            issues.append(
+                ValidationIssue("error", f"profile-from-guides.yaml profile_pins contains duplicate slug '{slug}'")
+            )
+            continue
+        seen_profile_pins.add(slug)
+
+        repo = repo_index.get(slug)
+        if repo is None:
+            issues.append(
+                ValidationIssue("error", f"profile-from-guides.yaml profile_pins references unknown repo slug '{slug}'")
+            )
+            continue
+        if not str(repo.get("canonical_description") or "").strip():
+            issues.append(
+                ValidationIssue("error", f"Pinned repo '{slug}' is missing canonical_description in catalog/repos.json")
+            )
+        if not str(repo.get("homepage") or "").strip():
+            issues.append(
+                ValidationIssue("error", f"Pinned repo '{slug}' is missing homepage in catalog/repos.json")
+            )
 
     for repo in repos:
         missing = [field for field in REQUIRED_REPO_FIELDS if field not in repo]

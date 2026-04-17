@@ -47,6 +47,7 @@ python - "$ORG_REPO" "$CHECK" "$TARGET" <<'PY'
 from __future__ import annotations
 
 import sys
+import re
 from pathlib import Path
 
 import yaml
@@ -59,6 +60,10 @@ MANIFEST_PATH = ORG_REPO / "github-baseline.yaml"
 
 data = yaml.safe_load(MANIFEST_PATH.read_text(encoding="utf-8")) or {}
 entries = data.get("repos", [])
+WORKFLOW_REF = str(data.get("workflow_ref") or "").strip()
+
+if not re.fullmatch(r"[0-9a-f]{40}", WORKFLOW_REF):
+    raise SystemExit("github-baseline.yaml missing a valid 40-character workflow_ref")
 
 TEMPLATE_MAP = {
     ".github/CODEOWNERS": ORG_REPO / ".github" / "CODEOWNERS",
@@ -163,7 +168,7 @@ def render_ci_node(entry: dict) -> str:
             "",
             "jobs:",
             "  ci:",
-            "    uses: alawein/alawein/.github/workflows/ci-node.yml@main",
+            f"    uses: alawein/alawein/.github/workflows/ci-node.yml@{WORKFLOW_REF}",
             "    with:",
             f"      working-directory: {yaml_quote(entry.get('working_directory', '.'))}",
             f"      install-command: {yaml_quote(entry.get('install_command', ''))}",
@@ -206,7 +211,7 @@ def render_ci_python(job: dict) -> str:
             "",
             "jobs:",
             "  ci:",
-            "    uses: alawein/alawein/.github/workflows/ci-python.yml@main",
+            f"    uses: alawein/alawein/.github/workflows/ci-python.yml@{WORKFLOW_REF}",
             "    with:",
             f"      working-directory: {yaml_quote(job.get('working_directory', '.'))}",
             f"      python-version: {yaml_quote(job.get('python_version', '3.12'))}",
@@ -251,7 +256,7 @@ def render_ci_mixed(entry: dict) -> str:
             "",
             "jobs:",
             "  node:",
-            "    uses: alawein/alawein/.github/workflows/ci-node.yml@main",
+            f"    uses: alawein/alawein/.github/workflows/ci-node.yml@{WORKFLOW_REF}",
             "    with:",
             f"      working-directory: {yaml_quote(node.get('working_directory', '.'))}",
             f"      install-command: {yaml_quote(node.get('install_command', ''))}",
@@ -259,7 +264,7 @@ def render_ci_mixed(entry: dict) -> str:
             f"      test-command: {yaml_quote(node.get('test_command', ''))}",
             f"      package-manager: {yaml_quote(package_manager(node))}",
             "  python:",
-            "    uses: alawein/alawein/.github/workflows/ci-python.yml@main",
+            f"    uses: alawein/alawein/.github/workflows/ci-python.yml@{WORKFLOW_REF}",
             "    with:",
             f"      working-directory: {yaml_quote(python_job.get('working_directory', '.'))}",
             f"      python-version: {yaml_quote(python_job.get('python_version', '3.12'))}",
@@ -293,7 +298,7 @@ def render_codeql(entry: dict) -> str:
             "",
             "jobs:",
             "  analyze:",
-            "    uses: alawein/alawein/.github/workflows/codeql.yml@main",
+            f"    uses: alawein/alawein/.github/workflows/codeql.yml@{WORKFLOW_REF}",
             "    with:",
             f"      languages: {yaml_quote(languages)}",
             "",

@@ -246,6 +246,22 @@ def normalize_visibility(value: str) -> str:
     return (value or "unknown").lower()
 
 
+def sanitize_release_text(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return value
+    sanitized = value
+    replacements = {
+        "https://github.com/alaweimm90/alaweimm90": "https://github.com/alawein/alawein",
+        "https://github.com/alaweimm90": "https://github.com/alawein",
+        "alaweimm90/alaweimm90": "alawein/alawein",
+        "alaweimm90": "alawein",
+        "malawein.com": "alawein.com",
+    }
+    for old, new in replacements.items():
+        sanitized = sanitized.replace(old, new)
+    return sanitized
+
+
 def normalize_release(release_node: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
     if not release_node or release_node.get("isDraft"):
         return None
@@ -253,7 +269,7 @@ def normalize_release(release_node: Optional[Dict[str, Any]]) -> Optional[Dict[s
         "name": release_node.get("name"),
         "tagName": release_node.get("tagName"),
         "url": release_node.get("url"),
-        "description": release_node.get("description"),
+        "description": sanitize_release_text(release_node.get("description")),
         "publishedAt": release_node.get("publishedAt"),
         "isPrerelease": bool(release_node.get("isPrerelease")),
     }

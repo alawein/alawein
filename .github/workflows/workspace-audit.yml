@@ -20,27 +20,38 @@ jobs:
       fail-fast: false
       matrix:
         repo:
+          - adil
+          - alawein
+          - alembiq
+          - atelier-rounaq
           - attributa
           - bolts
-          - devkit
+          - chshlab
+          - design-system
+          - design-system-visual-fix
           - edfp
+          - fallax
           - gymboy
+          - helios
+          - knowledge-base
+          - legacy-portfolio-temp
           - llmworks
+          - loopholelab
           - maglogic
           - meatheadphysicist
           - meshal-web
-          - neper
-          - qaplibria
+          - optiqap
+          - provegate
           - qmatsim
           - qmlab
           - qubeml
           - repz
-          - atelier-rounaq
+          - roka-oakland-hustle
           - scicomp
           - scribd
-          - shared-utils
           - simcore
           - spincirc
+          - workspace-tools
 
     steps:
       - name: Checkout repo

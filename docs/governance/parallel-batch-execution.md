@@ -34,9 +34,9 @@ Healthy batch behavior is:
 ## Canonical Artifacts
 
 - kickoff manifest: `docs/batches/<batch-id>/manifest.yaml`
-- repo registry: `_ops/config/repo-capabilities.yaml`
-- runtime state: `_ops/state/<batch-id>/status.json`
-- audit ledger: `_ops/state/<batch-id>/ledger.jsonl`
+- repo registry: `workspace-tools/config/repo-capabilities.yaml`
+- runtime state: `workspace-tools/state/<batch-id>/status.json`
+- audit ledger: `workspace-tools/state/<batch-id>/ledger.jsonl`
 - final report: `docs/batches/<batch-id>/report.md`
 
 ## Execution Contract
@@ -92,7 +92,7 @@ Publish failures are repo-local by default.
 
 ## Legacy Status
 
-`_ops/workspace-orchestration/` and the old bash entrypoints are
+`workspace-tools/workspace-orchestration/` and the old bash entrypoints are
 reference-only. They are not the approved execution path for current workspace
 operations.
 

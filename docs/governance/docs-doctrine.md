@@ -3,7 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: none
-last_updated: 2026-04-09
+last_updated: 2026-04-15
 ---
 
 # Docs Doctrine
@@ -203,7 +203,10 @@ defect, not a documentation issue. Fix the system, not the symptoms.
 
 ## Part 5: YAML Frontmatter Header Format
 
-Every managed file must include a YAML frontmatter header:
+Managed markdown files must include a YAML frontmatter header unless they are
+explicit GitHub-facing exemptions such as `README.md`, `docs/README.md`, issue
+forms, or PR templates where raw Markdown rendering would expose doctrine
+metadata to users.
 
 ```yaml
 ---
@@ -215,7 +218,9 @@ sla: realtime | on-change | manual | none
 ```
 
 For derived files, `source`, `sync`, and `sla` are all required. For canonical
-and frozen files, set source/sync/sla to `none`.
+and frozen files, set source/sync/sla to `none`. Exempt GitHub-facing entrypoint
+READMEs are classified by repository contract and path convention, not by
+visible in-file headers. Visible YAML frontmatter on those surfaces is invalid.
 
 ---
 

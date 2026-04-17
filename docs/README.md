@@ -1,21 +1,3 @@
----
-type: derived
-source: docs/
-sync: manual
-sla: manual
-title: Alawein Documentation
-description: Entry point for organization-level governance, portfolio truth, and migration guides.
-category: index
-audience: all
-status: active
-version: 1.0.0
-last_updated: 2026-04-14
-tags: [alawein, documentation, governance, index]
-related:
-  - ../README.md
-  - ./governance/workspace-master-prompt.md
----
-
 # Alawein documentation
 
 This repository contains organization-level portfolio documentation and

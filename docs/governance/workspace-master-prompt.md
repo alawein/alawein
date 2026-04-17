@@ -4,13 +4,13 @@ source: none
 sync: none
 sla: none
 title: Alawein Workspace Master Prompt
-description: Canonical operating contract for workspace naming, scope boundaries, portfolio synchronization, and manifest-driven batch execution.
-last_updated: 2026-03-18
+description: Canonical operating contract for workspace naming, control-plane ownership, portfolio synchronization, and manifest-driven batch execution.
+last_updated: 2026-04-16
 category: governance
 audience: [ai-agents, contributors]
 status: active
 author: alawein maintainers
-version: 1.1.0
+version: 1.2.0
 tags: [workspace, governance, naming, directives, portfolio, batches]
 ---
 
@@ -62,9 +62,9 @@ These are non-negotiable. Violations block merge.
 ### R-6: Batch Contract
 
 - Multi-repo autonomous execution must start from
-  `_workspace/docs/batches/<batch-id>/manifest.yaml` (workspace root).
-- Use `_workspace/ops/config/repo-capabilities.yaml` as the repo registry.
-- Use `_workspace/ops/state/<batch-id>/` as the only valid runtime state
+  `workspace-tools/docs/batches/<batch-id>/manifest.yaml`.
+- Use `workspace-tools/config/repo-capabilities.yaml` as the repo registry.
+- Use `workspace-tools/state/<batch-id>/` as the only valid runtime state
   location.
 - Healthy batch runs should not emit routine progress chatter between kickoff
   and final report.
@@ -92,8 +92,9 @@ These are binding names.
 | `gymboy/` | `gymboy` | `gymboy.coach` | — |
 | `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
 | `meshal-web/` | `meshal-web` | `meshal.ai` | — |
-| `devkit/` | `devkit` | — | Consolidated from legacy `aw-devkit` |
-| `_ops/gmail-ops/` | `_ops` | — | External/remote tools (Gmail automation) |
+| `design-system/` | `design-system` | — | Canonical shared design-system repo; consolidated from legacy `aw-devkit` |
+| `workspace-tools/` | `workspace-tools` | — | Canonical batch/orchestration repo |
+| `knowledge-base/` | `knowledge-base` | — | Canonical records, profile export, and audit/config repo |
 
 ### External Tool Prefix Rule
 
@@ -104,15 +105,16 @@ underscore-prefixed. Internal repos remain unprefixed.
 
 Track each to completion. None is done until `alawein/README.md` is updated.
 
-### D-1: Devkit Consolidation
+### D-1: Design-System Consolidation
 
-- Status: completed on 2026-03-11 (canonical tokens in `devkit/tokens/`,
-  `aw-devkit` physical root retired from active workspace).
-- Merge `aw-devkit/` contents into `devkit/`.
+- Status: completed on 2026-03-11 (canonical tokens in
+  `design-system/tokens/`, `aw-devkit` physical root retired from the active
+  workspace).
+- Merge `aw-devkit/` contents into `design-system/`.
 - Deduplicate conflicts in favor of the more complete implementation.
-- Update all cross-references to `devkit/`.
+- Update all cross-references to `design-system/`.
 - Delete or archive `aw-devkit/` once migration is verified.
-- Token source of truth is `devkit/tokens/`.
+- Token source of truth is `design-system/tokens/`.
 
 ### D-2: Gymboy Redesign (`gymboy.coach`)
 
@@ -132,7 +134,7 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 
 - All ninja characters share identical core visual tokens.
 - Each ninja keeps distinct individual specs within token constraints.
-- Source of truth is `devkit/tokens/`, imported elsewhere.
+- Source of truth is `design-system/tokens/`, imported elsewhere.
 - Consistency is mandatory; individuality is constrained expression.
 
 ### D-5: `meshal.ai` Refinement
@@ -159,9 +161,13 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 
 | Repo | Domain |
 | --- | --- |
+| `alembiq` | Research platform and information-theoretic experiments |
+| `fallax` | Benchmark and reasoning-failure evaluation |
+| `optiqap` | QAP research and optimization experiments |
 | `qmatsim` | Quantum material simulation |
 | `qmlab` | Quantum mechanics lab tools |
 | `qubeml` | Quantum ML experiments |
+| `quantumalgo` | Quantum algorithms for QAP and related research |
 | `simcore` | Scientific simulation core |
 | `scicomp` | Scientific computing utilities |
 | `spincirc` | Spintronics circuit simulation |
@@ -172,25 +178,19 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 
 | Repo | Domain |
 | --- | --- |
-| `llmworks` | LLM infrastructure, fine-tuning, RLHF |
-| `neper` | NLP entity extraction |
-| `qaplibria` | — |
+| `attributa` | Browser-first entity extraction and attribution workflows |
+| `adil` | Legal-ops CLI and matter-local automation surfaces |
+| `llmworks` | LLM infrastructure, evaluation, and security-testing workbench |
 
 ### Tooling & Infrastructure
 
 | Repo | Purpose |
 | --- | --- |
-| `devkit` | Design tokens, components, CLI tools |
-| `shared-utils` | Shared utilities |
-| `edfp` | Physics-inspired video event detection |
-| `scribd` | — |
-| `atelier-rounaq` | — |
-
-### External / Remote (underscore-prefixed)
-
-| Repo | Purpose |
-| --- | --- |
-| `_ops/gmail-ops` | Gmail automation tooling |
+| `design-system` | Design tokens, packages, Storybook, and shared UI infrastructure |
+| `design-system-visual-fix` | Design-system sibling snapshot / rollout surface |
+| `workspace-tools` | Workspace orchestration, manifests, runtime state, and governance deployment |
+| `knowledge-base` | Structured records, exports, templates, and audit/config surfaces |
+| `alawein` | Control plane for governance, generators, style, and rollout work |
 
 ## Branch and deployment
 
@@ -238,8 +238,8 @@ ruff check src/ tests/ && mypy src/ && pytest tests/
 ./scripts/validate-doc-contract.sh --full
 
 # Batch planning/execution (from workspace root)
-python -m workspace_batch plan _workspace/docs/batches/<batch-id>/manifest.yaml
-python -m workspace_batch run _workspace/docs/batches/<batch-id>/manifest.yaml
+python -m workspace_batch plan workspace-tools/docs/batches/<batch-id>/manifest.yaml
+python -m workspace_batch run workspace-tools/docs/batches/<batch-id>/manifest.yaml
 ```
 
 ## Refusal Templates

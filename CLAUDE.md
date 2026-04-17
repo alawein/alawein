@@ -5,152 +5,132 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-04-14
-last_updated: 2026-04-14
+last-verified: 2026-04-15
+last_updated: 2026-04-15
 ---
 
-<!-- CUSTOM OVERRIDE: entire file — org-level governance hub with portfolio truth, workspace contract, naming policy, and cross-repo coordination. Not a standard project template. [Task 1.4 audit 2026-03-22] -->
+# CLAUDE.md — alawein workspace control plane
 
-# CLAUDE.md — alawein
+## Workspace identity
 
-> Repository profile + governance templates
+The `alawein` repo is the control plane for the Alawein workspace. It owns the
+shared style contract, prompt kits, documentation doctrine, and reusable CI
+policies used across sibling repos.
 
+This repo does not own product code. Each sibling top-level directory in the
+workspace is an independent git repo.
 
-## Governance Sources
+Company: Morphism Systems (Cache Me Outside LLC)  
+GitHub: `github.com/alawein`  
+Contact: `contact@meshal.ai`
 
-- Workspace operating contract:
-  [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
-- Documentation contract:
-  [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
-- GitHub profile and workflow baseline:
-  [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)
-- **Docs Doctrine** (file governance, classification, validation):
-  [`docs/governance/docs-doctrine.md`](docs/governance/docs-doctrine.md)
-- Repo boundaries:
-  [`AGENTS.md`](AGENTS.md)
-- Current state:
-  [`SSOT.md`](SSOT.md)
-- Design/branding plan summary and remaining steps:
-  [`docs/governance/design-branding-summary.md`](docs/governance/design-branding-summary.md),
-  [`docs/governance/remaining-steps-per-repo.md`](docs/governance/remaining-steps-per-repo.md),
-  [`docs/HANDOFF-DESIGN-BRANDING.md`](docs/HANDOFF-DESIGN-BRANDING.md)
-- Docs Doctrine handoff (Phase 3-5 requests with superpowers prompts):
-  [`docs/HANDOFF-DOCS-DOCTRINE.md`](docs/HANDOFF-DOCS-DOCTRINE.md)
-- Slash commands catalog and workflows (any repo/dir):
-  [`docs/governance/slash-commands-catalog.md`](docs/governance/slash-commands-catalog.md)
-- Skills, agents & commands unification (universal vs ecosystem vs org):
-  [`docs/governance/skills-agents-unification.md`](docs/governance/skills-agents-unification.md)
-- Skills/agents maintenance and tailoring runbook:
-  [`docs/governance/maintenance-skills-agents.md`](docs/governance/maintenance-skills-agents.md)
-- **Global skills install** (IDEs, collision rules, MCP vs skills):
-  [`docs/governance/skills-install-policy.md`](docs/governance/skills-install-policy.md)
-- **Claude Code** (product repos with `.claude/` — layout, rules, skills, agents):
-  [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md);
-  copy-paste **worked examples** (CLAUDE.md, rules, skills, hooks):
-  [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md);
-  audit/migration **prompts**:
-  [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md)
-- **Cursor (this org hub):** shared IDE rules live under [`.cursor/rules/`](.cursor/rules/) (e.g. `alawein-governance.mdc`, `claude-code-governance.mdc`); other `.cursor/**` paths stay gitignored.
-- Operator quick commands:
-  [`docs/governance/operator-command-cheatsheet.md`](docs/governance/operator-command-cheatsheet.md)
-- Universal **repo sweep** prompt (any workspace repo):
-  [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md)
-- Audits (environment, codebase, skills):
-  [`docs/audits/full-environment-audit-2026-03-16.md`](docs/audits/full-environment-audit-2026-03-16.md);
-  remediation: [`docs/audits/remediation-checklist-2026-03-16.md`](docs/audits/remediation-checklist-2026-03-16.md);
-  skills unification (complete): [`docs/audits/skills-unification-workstream-completion-2026-03-17.md`](docs/audits/skills-unification-workstream-completion-2026-03-17.md);
-  machine audit: [`docs/audits/machine-audit-mesha-2026-03-17.md`](docs/audits/machine-audit-mesha-2026-03-17.md)
-- Credential hygiene (secrets, MCP, CI):
-  [`docs/governance/credential-hygiene.md`](docs/governance/credential-hygiene.md)
-- Profile sync from _pkos (README About / positioning):
-  [`docs/governance/profile-sync-from-guides.md`](docs/governance/profile-sync-from-guides.md)
-- Profile sync and PKOS alignment (single handoff for agents):
-  [`docs/governance/cursor-agent-handoff-profile-sync.md`](docs/governance/cursor-agent-handoff-profile-sync.md)
-- Branch naming, workflow, and Vercel deployment (single convention):
-  [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
-
-## Required Files
-
-- `AGENTS.md`
-- `CLAUDE.md`
-- `README.md`
-- `SSOT.md`
-- `LESSONS.md`
-- `CODE_OF_CONDUCT.md`
-- `LICENSE`
-- `SECURITY.md`
-- `CHANGELOG.md`
-- `docs/governance/documentation-contract.md`
-- `docs/governance/workspace-master-prompt.md`
-- `scripts/validate-doc-contract.sh`
-- `scripts/validate-doctrine.py`
-- `docs/governance/docs-doctrine.md`
-
-
-## Repository Structure
+## Directory structure
 
 ```text
 alawein/
+  README.md                 generated public profile README
+  AGENTS.md                 governance boundaries
+  CLAUDE.md                 agent-facing contract for this repo
+  SSOT.md                   current state and active decisions
   docs/
     README.md
-    audits/
-      full-environment-audit-YYYY-MM-DD.md
-      remediation-checklist-YYYY-MM-DD.md
-      codebase-audit-*.md
     governance/
-      workspace-master-prompt.md
-      documentation-contract.md
-      credential-hygiene.md
-      operating-model.md
-      workflow.md
-      git-operations.md
-      feature-lifecycle.md
-      review-playbook.md
-      merge-policy.md
-      release-playbook.md
-      clean-slate-workflow.md
-      changelog-entry.md
-      workspace-standardization.md
-      workspace-rename-matrix.md
-      workspace-layout-audit.md
-      workspace-resource-map.md
-      docs-doctrine.md
-  .github/
-    ISSUE_TEMPLATE/
-    workflows/
-    CODEOWNERS
-    PULL_REQUEST_TEMPLATE.md
+    style/
+      VOICE.md              canonical voice contract
+  prompt-kits/
+    AGENT.md                canonical workspace prompt
+    PORTFOLIO.md            canonical meshal-web prompt
   scripts/
+    validate.py            style validator
     validate-doc-contract.sh
     validate-doctrine.py
-    bootstrap-repo.sh
-    generate-index.sh
-    sync-claude.sh
-    render-configs.sh
-    pre-commit-doctrine.sh
+    build-style-rules.py
+    style-advisory-audit.py
     sync-readme.py
+    sync-claude.sh
     sync-github.sh
-    github-baseline-audit.py
-    sync-to-notion.mjs
-  projects.json
-  github-baseline.yaml
 ```
 
+## Hard constraints
 
-## Quality Gates
+1. Never introduce YAML frontmatter into `README.md` or `docs/README.md`.
+2. Never add AI attribution to commits, code comments, or documentation.
+3. Never use the forbidden register defined in `docs/style/VOICE.md`.
+4. Treat each sibling repo as independent. Do not assume shared git state.
+5. Do not revert unrelated user changes in sibling repos.
+6. Never commit secrets or API keys.
+7. Check remotes before pushing; some repos have multiple remotes.
+8. Raw corpus inputs stay out of version control.
+9. `README.md` in this repo is generated by `scripts/sync-readme.py`; do not
+   hand-edit it.
 
-Before proposing changes:
+## Style contract
 
-- `python scripts/sync-readme.py --check`
-- `./scripts/sync-github.sh --check --all`
-- `python scripts/github-baseline-audit.py`
-- `./scripts/validate-doc-contract.sh --full`
-- `python scripts/validate-doctrine.py .` (docs doctrine: headers, naming, zombies)
-- markdown lint/link checks for managed docs (same commands as CI workflows)
+Canonical sources:
 
----
+- Voice: [`docs/style/VOICE.md`](docs/style/VOICE.md)
+- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md)
+- Portfolio prompt: [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
+- Terminology/lint source:
+  [`docs/style/terminology-registry.yaml`](docs/style/terminology-registry.yaml)
 
-## Governance
+Use `docs/style/style-system.md` only as a compatibility summary for older
+references.
 
-See [AGENTS.md](AGENTS.md) for boundaries and [SSOT.md](SSOT.md) for current
-state.
+## Enforcement tiers
+
+| Surface | Tier |
+|---------|------|
+| README.md, docs/README.md | Blocking |
+| CLAUDE.md, AGENTS.md, .claude/CLAUDE.md | Blocking |
+| prompt-kits/*.md | Blocking |
+| Code comments | Advisory |
+| Math notation | Advisory |
+| Commit messages | Advisory |
+
+## Canary order
+
+Apply voice and prompt-surface changes in this order:
+
+1. `alawein`
+2. `meshal-web`
+3. `workspace-tools`
+4. `alembiq`
+5. remaining governed repos
+
+## Code conventions
+
+- Python: PEP 8, type hints, explicit operational naming
+- TypeScript: strict mode, explicit public return types, no casual `any`
+- Comments: explain invariants, assumptions, and failure modes
+- Commits: present tense, technical context
+
+## Build and validate
+
+Run these before proposing a control-plane change:
+
+```bash
+python scripts/build-style-rules.py --check
+python scripts/validate.py --ci
+python scripts/validate-doctrine.py .
+bash ./scripts/validate-doc-contract.sh --full
+python scripts/style-advisory-audit.py --repo-root .
+python scripts/sync-readme.py --check
+python scripts/build-catalog.py --check
+python scripts/verify-profile-pins.py --skip-live --check
+./scripts/sync-github.sh --check --all
+python scripts/github-baseline-audit.py
+```
+
+If validation fails because a checker is scanning generated or runtime state,
+fix the classification boundary in the validator. Do not patch generated output
+to silence the failure.
+
+## Operating mode
+
+- Clear task: execute, then report what changed.
+- Ambiguous task: ask one scoped question, then execute.
+- Disagreement: state the reason directly, then execute if confirmed.
+
+Do not pad responses with meta-commentary. Do not ask for permission on clearly
+scoped work.

@@ -4,14 +4,14 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-04-14
+last-verified: 2026-04-15
 audience: [ai-agents, contributors]
 ---
 
 # SSOT — alawein
 
-**Version:** 1.3
-**Last Updated:** 2026-04-14
+**Version:** 1.4
+**Last Updated:** 2026-04-15
 **Status:** Active
 
 ---
@@ -31,6 +31,11 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Local documentation contract:
   [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
+- Canonical voice contract:
+  [`docs/style/VOICE.md`](docs/style/VOICE.md)
+- Canonical prompt kits:
+  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md),
+  [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
 - GitHub baseline contract:
   [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)
 - Governance suite navigation:
@@ -43,14 +48,25 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
 - Manifest-driven batch governance is active for multi-repo autonomous work
-- README is generated from `projects.json` and `profile-from-guides.yaml` via
-  `scripts/sync-readme.py`
+- README is generated from canonical `catalog/repos.json` data and
+  `profile-from-guides.yaml`; `projects.json` remains derived output from
+  `scripts/build-catalog.py`
+- Read-only profile pin drift verification is active via
+  `scripts/verify-profile-pins.py`
+- README entrypoint surfaces are contract-exempt from doctrine frontmatter and
+  remain render-first GitHub artifacts
+- Hybrid corpus refinement is active under `docs/style/`; canonical prompt
+  surfaces live under `prompt-kits/`
+- Vale terminology/tone rules are derived from `docs/style/terminology-registry.yaml`
+  via `scripts/build-style-rules.py`
+- Managed repo workflow consumers are generated from `github-baseline.yaml`
+  using immutable reusable workflow refs
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
   `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
 - Transitional identifiers are retained in `projects.json` via `legacy_slugs`
   for one migration cycle
-- D-1 consolidation status: canonical token source is `devkit/tokens/`; legacy
-  `aw-devkit` physical retirement cutover completed on 2026-03-11
+- D-1 consolidation status: canonical token source is `design-system/tokens/`;
+  legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 
@@ -85,7 +101,11 @@ alawein/
 ├── github-baseline.yaml
 └── scripts/
     ├── validate-doc-contract.sh
+    ├── build-catalog.py
+    ├── build-style-rules.py
     ├── sync-readme.py
+    ├── style-advisory-audit.py
+    ├── verify-profile-pins.py
     ├── sync-github.sh
     ├── github-baseline-audit.py
     └── sync-to-notion.mjs

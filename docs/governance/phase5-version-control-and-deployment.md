@@ -57,9 +57,9 @@ python scripts/vercel_alias_audit.py
 python scripts/vercel_alias_audit.py --apply
 ```
 
-- The expected production preview alias is `https://[github-repo-name].vercel.app`. The audit derives that value from the GitHub repo name linked in Vercel, not from hidden local directory names such as `_devkit`.
+- The expected production preview alias is `https://[github-repo-name].vercel.app`. The audit derives that value from the GitHub repo name linked in Vercel, not from local clone names or temporary rollout directories.
 
-**devkit-storybook (Vercel project):** If the dashboard shows "Connect Git Repository", in Vercel go to Project Settings → Git → Connect to GitHub → select `alawein/devkit`, set Production Branch to `main`. The repo already has `vercel.json` with `buildCommand: npm run build -- --filter=@alawein/storybook` and `outputDirectory: apps/storybook/dist`.
+**design-system-storybook (Vercel project):** If the dashboard shows "Connect Git Repository", in Vercel go to Project Settings → Git → Connect to GitHub → select `alawein/design-system`, set Production Branch to `main`. The repo already has `vercel.json` with `buildCommand: npm run build -- --filter=@alawein/storybook` and `outputDirectory: apps/storybook/dist`.
 
 ## Automation (GitHub CLI + Vercel)
 

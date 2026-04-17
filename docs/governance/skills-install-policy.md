@@ -16,7 +16,7 @@ status: active
 
 This doc defines **how** skills are installed so Cursor, Claude Code, Codex, and other agents stay aligned without duplicate or conflicting copies.
 
-**Related:** [skills-agents-unification.md](./skills-agents-unification.md) (taxonomy), [maintenance-skills-agents.md](./maintenance-skills-agents.md) (artifact map). MCP inventory: `_ops/mcp/README.md` in a **full workspace clone** (not shipped in this repo).
+**Related:** [skills-agents-unification.md](./skills-agents-unification.md) (taxonomy), [maintenance-skills-agents.md](./maintenance-skills-agents.md) (artifact map). MCP inventory: `workspace-tools/mcp/README.md` in a **full workspace clone** (not shipped in this repo).
 
 ---
 
@@ -28,7 +28,7 @@ This doc defines **how** skills are installed so Cursor, Claude Code, Codex, and
 | **Install** | `skills` CLI, plugins, or repo `./skills/` | Per-IDE config (e.g. Cursor MCP settings) |
 | **Overlap feeling** | Same *name* in two tiers | Multiple MCPs doing “search” or “fetch URL” |
 
-**Rule:** Do not conflate them. Reduce MCP confusion with one **default MCP set** per machine (documented under `_ops/mcp/README.md` in the full workspace clone).
+**Rule:** Do not conflate them. Reduce MCP confusion with one **default MCP set** per machine (documented under `workspace-tools/mcp/README.md` in the full workspace clone).
 
 ---
 
@@ -82,7 +82,9 @@ Add more packages the same way (one `skills add` line per repo). Prefer **explic
 
 **Reproducibility:** Use upstream `skills check` / `skills update` and optional `skills-lock.json` / `experimental_sync` for parity across machines.
 
-**Automation:** `_workspace/ops/bootstrap-skills.ps1` and `_workspace/ops/bootstrap-skills.sh` (full workspace clone) mirror the lines above.
+**Automation:** `workspace-tools/scripts/bootstrap-skills.ps1` and
+`workspace-tools/scripts/bootstrap-skills.sh` (full workspace clone) mirror
+the lines above.
 
 **Agent compatibility note:** The `skills` CLI automatically maps compatible agents (e.g., Cline, Kilo Code) to the universal skills path even if not explicitly listed in `-a` flags. This is by design — the CLI detects agent compatibility rather than restricting it per install. Policy defines **intended** agents (`cursor`, `claude-code`, `codex`); the CLI may show broader availability due to its agent-detection logic. This behavior cannot be overridden via `skills remove` (global skills are not installed per-agent).
 
@@ -140,9 +142,10 @@ These skills already ship inside **local Claude plugins**. **Do not** install ov
 ## New machine checklist
 
 1. `npm install -g skills`
-2. Run `_workspace/ops/bootstrap-skills.ps1` or `bootstrap-skills.sh` from the full workspace clone
+2. Run `workspace-tools/scripts/bootstrap-skills.ps1` or
+   `workspace-tools/scripts/bootstrap-skills.sh` from the full workspace clone
 3. Install Claude plugins (morphism, repo-superpowers) per [maintenance-skills-agents.md](./maintenance-skills-agents.md)
-4. Configure MCP using `_ops/mcp/README.md` defaults (full workspace clone)
+4. Configure MCP using `workspace-tools/mcp/README.md` defaults (full workspace clone)
 
 ---
 

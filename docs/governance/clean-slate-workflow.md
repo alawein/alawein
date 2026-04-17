@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Clean-Slate Workflow
 description: Best practices for keeping alawein clean while preserving intentional in-progress work through focused commits, path-scoped stashes, branch isolation, and batch worktree hygiene
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 category: governance
 audience: contributors
 status: active
@@ -40,7 +40,7 @@ mix them into the same commit. Either:
 ## Batch Isolation Rule
 
 `workspace-batch` creates isolated worktrees under
-`_ops/state/<batch-id>/worktrees/`.
+`workspace-tools/state/<batch-id>/worktrees/`.
 
 - do not use those worktrees as normal developer sandboxes
 - do not mix manual edits into a live batch worktree

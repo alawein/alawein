@@ -4,13 +4,13 @@ source: none
 sync: none
 sla: none
 title: Workspace Standardization Guide
-description: Canonical migration contract for naming, layout, shared resources, and phased workspace directives.
-last_updated: 2026-03-30
+description: Canonical migration contract for naming, control-plane ownership, shared resources, and phased workspace directives.
+last_updated: 2026-04-16
 category: governance
 audience: contributors
 status: active
 author: alawein maintainers
-version: 1.1.0
+version: 1.2.0
 tags: [workspace, migration, naming, layout, governance]
 ---
 
@@ -33,8 +33,9 @@ canonical contract in
 
 - `gymboy`
 - `meatheadphysicist`
-- `devkit` (legacy overlap: `aw-devkit`)
-- `_ops/gmail-ops` (external workspace)
+- `design-system` (legacy overlap: `aw-devkit`)
+- `workspace-tools`
+- `knowledge-base`
 
 ### Transitional Alias Format
 
@@ -47,7 +48,9 @@ Current cutover status (2026-03-11): for `gymboy`, `meatheadphysicist`,
 
 ### External Prefix Rule
 
-External or remote tool directories must be underscore-prefixed.
+External or remote tool directories must be explicitly documented as external.
+Do not assume underscore-prefixed directories represent current live workspace
+infrastructure.
 
 ## Stack-Aware Layout Standards
 
@@ -89,8 +92,13 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 ## Shared Resource Rules
 
-- Shared design tokens, components, themes, and tooling belong in `devkit/`.
-- Token source of truth is `devkit/tokens/`.
+- Shared design tokens, components, themes, and tooling belong in
+  `design-system/`.
+- Token source of truth is `design-system/tokens/`.
+- Workspace manifests, repo registry, and runtime batch state belong in
+  `workspace-tools/`.
+- Structured records, profile exports, and audit/config templates belong in
+  `knowledge-base/`.
 - Cross-repo docs and migration matrices belong in `alawein/`.
 - Cross-repo operational guides and handoff docs belong in `docs/`.
 - `aw-devkit` is retired and can only be referenced as historical migration
@@ -98,10 +106,11 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 ## Directive Mapping (D-1 through D-5)
 
-### D-1: Devkit Consolidation
+### D-1: Design-System Consolidation
 
-- Consolidate `aw-devkit` into `devkit`.
-- Redirect references to `devkit` with canonical token source in `devkit/tokens/`.
+- Consolidate `aw-devkit` into `design-system`.
+- Redirect references to `design-system` with canonical token source in
+  `design-system/tokens/`.
 - Completed on 2026-03-11: physical `aw-devkit` workspace root retired.
 
 ### D-2: Gymboy Redesign
@@ -117,7 +126,7 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 ### D-4: Ninja Visual Token System
 
-- Enforce shared core ninja tokens from `devkit/tokens/`.
+- Enforce shared core ninja tokens from `design-system/tokens/`.
 - Permit per-character specialization through constrained derivations.
 
 ### D-5: meshal.ai Refinement
@@ -129,7 +138,8 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 1. Update governance docs and canonical naming matrices.
 2. Align portfolio data (`projects.json`) and generated README content.
-3. Consolidate shared-resource ownership (`devkit`, token contracts).
+3. Consolidate shared-resource ownership (`design-system`, `workspace-tools`,
+   `knowledge-base`).
 4. Execute repo-specific directives (D-2, D-3, D-5) with continuous README sync.
 5. Perform physical repo slug renames once technical readiness is confirmed.
 6. Remove transitional alias notation after cutover.

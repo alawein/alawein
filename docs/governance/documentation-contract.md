@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Documentation Contract
 description: Authoritative local rules for document classes, freshness metadata, naming, and CI truthfulness in the alawein repository
-last_updated: 2026-04-14
+last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -35,7 +35,7 @@ self-consistent.
 | Canonical normative docs | `AGENTS.md`, `CLAUDE.md`, `SSOT.md` | Required | `last-verified` | Must be <= 30 days old |
 | Observed lessons | `LESSONS.md` | Required | `last-updated` | Must change whenever lesson content changes |
 | Managed governance docs | `SECURITY.md`, `CHANGELOG.md`, `CODE_OF_CONDUCT.md`, `docs/**/*.md` excluding `docs/archive/**` | Required | `last_updated` | Must change whenever document content changes |
-| GitHub/profile exemptions | `README.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/*.yml` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
+| GitHub/profile exemptions | `README.md`, `docs/README.md`, `.github/PULL_REQUEST_TEMPLATE.md`, `.github/ISSUE_TEMPLATE/*.yml` | Optional | None | Exempt to preserve GitHub rendering and template compatibility |
 | Historical archive | `docs/archive/**` | Preserve as-is | Optional | No freshness SLA |
 
 ## Required Files
@@ -58,7 +58,10 @@ The repository must contain these files (validated by `scripts/validate-doc-cont
 - `docs/governance/workflow.md`
 - `scripts/validate-doc-contract.sh`
 
-The canonical portfolio and contributing content is synced into `README.md` and `docs/README.md`.
+The canonical portfolio and contributing content is synced into `README.md` and
+`docs/README.md`. Those entrypoint READMEs are validated by path-class rules,
+not visible YAML frontmatter. Reintroducing visible YAML frontmatter on those
+surfaces is a contract failure.
 
 ## Naming Rules
 
@@ -84,7 +87,8 @@ test, accessibility, or policy checks unless they exist here.
 The validator enforces:
 
 - required file existence
-- frontmatter requirements for managed docs
+- frontmatter requirements for managed docs, excluding GitHub-facing README
+  exemptions
 - required freshness keys by document class
 - `last-verified` age for canonical docs
 - freshness-field updates when managed docs change in the current diff

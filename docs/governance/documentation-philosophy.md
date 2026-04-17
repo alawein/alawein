@@ -1,20 +1,23 @@
 ---
-type: canonical
+type: frozen
 source: none
 sync: none
 sla: none
 title: Morphism Documentation Philosophy
 description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
-last_updated: 2026-03-08
+last_updated: 2026-04-15
 category: documentation
 audience: contributors
-status: active
+status: historical
 author: Morphism Systems Inc.
 version: 1.0.0
 tags: [documentation, philosophy, style-guide, morphism, principles]
 ---
 
 # Morphism Documentation Philosophy
+
+This document remains as historical background. The canonical, enforceable
+style authority now lives in [`../style/VOICE.md`](../style/VOICE.md).
 
 *A unified aesthetic for mathematician • physicist • devops engineer • AI researcher*
 

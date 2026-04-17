@@ -99,7 +99,22 @@ Verify these files exist and are accurate. Create missing ones from what the rep
 
 ### Governance file format
 
-All governance files must have YAML frontmatter:
+Root governance docs should keep YAML frontmatter. GitHub-facing `README.md` and
+`docs/README.md` are render-first surfaces and must not use YAML frontmatter.
+
+Use frontmatter on:
+
+- `AGENTS.md`
+- `CLAUDE.md`
+- `SSOT.md`
+- `LESSONS.md`
+
+Do not add frontmatter to:
+
+- `README.md`
+- `docs/README.md`
+
+Canonical frontmatter shape for the governance docs above:
 
 ```yaml
 ---
@@ -200,15 +215,15 @@ For batch execution, here are the repos grouped by stack:
 
 ### Python (research / tools)
 
-`qaplibria` · `meatheadphysicist` · `neper` · `edfp` · `maglogic` · `qmatsim` · `qubeml` · `scicomp` · `spincirc` · `loopholelab` · `adil`
+`optiqap` · `meatheadphysicist` · `alembiq` · `edfp` · `fallax` · `maglogic` · `qmatsim` · `quantumalgo` · `qubeml` · `scicomp` · `spincirc` · `loopholelab` · `provegate` · `adil`
 
 ### Tooling
 
-`_devkit` · `_ops` · `_workspace`
+`design-system` · `design-system-visual-fix` · `workspace-tools` · `knowledge-base`
 
 ### Static / other
 
-`chshlab` · `helios` · `ingesta-toolkit`
+`chshlab` · `helios` · `legacy-portfolio-temp` · `roka-oakland-hustle`
 
 ### Org profile (docs-only)
 

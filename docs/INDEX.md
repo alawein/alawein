@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-04-15
+last_updated:  2026-04-15
 ---
 
 # Index — alawein
@@ -106,9 +106,13 @@ last_updated: 2026-04-15
 
 ## style/
 
+- [VOICE.md](style/VOICE.md)
 - [brand-copy-guidelines.md](style/brand-copy-guidelines.md)
 - [brand-system.md](style/brand-system.md)
+- [hybrid-corpus-workflow.md](style/hybrid-corpus-workflow.md)
 - [markdown-formatting-standard.md](style/markdown-formatting-standard.md)
+- [prompt-kit-chatgpt.md](style/prompt-kit-chatgpt.md)
+- [prompt-kit-claude.md](style/prompt-kit-claude.md)
 - [readme-style-guide.md](style/readme-style-guide.md)
+- [style-system.md](style/style-system.md)
 - [voice-and-tone.md](style/voice-and-tone.md)
-

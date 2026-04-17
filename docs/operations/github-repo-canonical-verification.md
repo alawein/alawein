@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 title: GitHub canonical verification
-description: gh repo view notes for canonical repo names, redirects, and PKOS alignment.
-last_updated: 2026-04-14
+description: gh repo view notes for canonical repo names, redirects, and current workspace-core repo alignment.
+last_updated: 2026-04-15
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -17,7 +17,9 @@ related:
 
 # GitHub canonical verification (2026-03-24)
 
-Recorded with `gh repo view` from a machine with GitHub CLI auth. Use this when reconciling Notion “Projects (Canonical)” and PKOS `repo` fields.
+Recorded with `gh repo view` from a machine with GitHub CLI auth. Use this
+when reconciling canonical repo records, local clone names, and current GitHub
+remotes.
 
 See also: [project lifecycle tiers](project-lifecycle-tiers.md) for how `projects.json` `category` maps to posture.
 
@@ -57,12 +59,15 @@ Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repo
 
 ## Workspace folder → GitHub remote (tooling)
 
-Local directory names with `_` do not match GitHub slugs:
+Current local directory names should match the live GitHub slugs for the core
+infrastructure repos:
 
 | Folder | `origin` |
 |--------|----------|
-| `_devkit/` | `https://github.com/alawein/aw-devkit.git` |
-| `_ops/` | `https://github.com/alawein/workspace-tools.git` |
-| `_pkos/` | `https://github.com/alawein/pkos.git` |
+| `design-system/` | `https://github.com/alawein/design-system.git` |
+| `workspace-tools/` | `https://github.com/alawein/workspace-tools.git` |
+| `knowledge-base/` | `https://github.com/alawein/knowledge-base.git` |
 
-Note: `_devkit/` may use remote `alawein/aw-devkit` or `alawein/devkit` depending on clone age — confirm with `git remote -v`.
+Retired local alias naming from the pre-consolidation workspace is historical
+migration context only. If you encounter those names in older notes, verify the
+current clone with `git remote -v` before acting on them.

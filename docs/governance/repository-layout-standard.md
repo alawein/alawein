@@ -33,7 +33,7 @@ This document defines **layout archetypes**, not a single folder shape for every
 ## Anti-patterns
 
 - Emitting TypeScript declaration files **into** `src/` alongside sources when using composite projects without a dedicated `declarationDir`.
-- Treating **local folder names** with underscores (`_devkit`, `_ops`) as GitHub slugs — verify `origin` (see operations doc linked below).
+- Treating **workspace folder names** as GitHub slugs without checking `origin` — for example assuming `design-system/` or `workspace-tools/` must match a remote name without verification.
 - Standardizing **archive** or **notebook-only** trees to full app layout — use `research-archive` posture instead.
 
 ## Archetype: `vite-react-spa`

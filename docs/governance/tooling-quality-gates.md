@@ -69,7 +69,10 @@ When adopting the shared Prettier config, run **`prettier --write`** in a **dedi
 
 ## Local drift scan (workspace-tools)
 
-From **`_workspace-tools`**, after `npm ci` in repos you care about, aggregate **format / lint / type-check** (and optionally **`build`** with `--with-build`) against clones listed in [`desktop-repo-inventory.json`](./desktop-repo-inventory.json):
+From **`workspace-tools`**, after `npm ci` in repos you care about, aggregate
+**format / lint / type-check** (and optionally **`build`** with
+`--with-build`) against clones listed in
+[`desktop-repo-inventory.json`](./desktop-repo-inventory.json):
 
 ```bash
 python scripts/repo_health_check.py --local

@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 title: Profile sync from guides
-description: README About and profile copy sync with _pkos (formerly guides); export and sync flow.
+description: README About and profile copy sync with knowledge-base; export and sync flow.
 last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
@@ -13,21 +13,22 @@ status: active
 
 # Profile sync from guides
 
-**Purpose:** Document how the profile README and canonical profile copy stay in sync with the PKOS repo (Desktop/_pkos, formerly guides), which is the single source of truth for positioning, resume, and profile copy.
+**Purpose:** Document how the profile README and canonical profile copy stay in sync with `knowledge-base`, which is the single source of truth for positioning, resume, and profile copy.
 
 **For Cursor agents:** For revision and enhancements (phases, runbook, checklist), read and follow [cursor-agent-handoff-profile-sync.md](cursor-agent-handoff-profile-sync.md).
 
-## Source of truth (_pkos repo, formerly guides)
+## Source of truth (`knowledge-base`)
 
 - **Profile record:** `db/profile/meshal-alawein.md` (YAML frontmatter).
-- **Copy (tagline, bios, headline):** `docs/career/profile-copy.yaml`.
+- **Copy (tagline, bios, headline):** `career/profile-copy.yaml`.
+- **Export schema:** `db/schema/export/profile-export.schema.yaml`.
 - **Export:** `scripts/export-profile.py` produces `out/profile-export.yaml` and can write `profile-from-guides.yaml` into this repo.
 
 ## Flow
 
-1. **In _pkos (formerly guides):** Edit `db/profile/meshal-alawein.md` and/or `docs/career/profile-copy.yaml`, then run:
+1. **In `knowledge-base`:** Edit `db/profile/meshal-alawein.md` and/or `career/profile-copy.yaml`, then run:
    ```bash
-   cd /path/to/_pkos
+   cd /path/to/knowledge-base
    python scripts/export-profile.py --write-alawein
    ```
    This writes `profile-from-guides.yaml` into `alawein/alawein` (default: `../GitHub/github.com/alawein/alawein/`). Set `ALAWEIN_REPO_PATH` to point at this repo if needed.
@@ -42,7 +43,7 @@ status: active
 
 | File | Role |
 |------|------|
-| `profile-from-guides.yaml` | Canonical profile export from `_pkos`; tracked in this repo because the profile README depends on it. |
+| `profile-from-guides.yaml` | Canonical profile export from `knowledge-base`; the filename is retained for compatibility with the existing README generator and workflow names. |
 | `README.md` | Fully generated profile README; overwritten by `sync-readme.py`. |
 | `scripts/sync-readme.py` | Reads `profile-from-guides.yaml` and `projects.json`, then rewrites the full README. |
 
@@ -53,12 +54,13 @@ status: active
 - The generated README is intentionally minimal. Detailed project descriptions remain in `projects.json`, not in the profile README itself.
 - The `Sync README` GitHub Actions workflow is advisory only. Protected branch rules on `main` block bot-authored direct pushes, so the workflow uploads a drift patch artifact and expects the regenerated `README.md` to be committed through the normal review path.
 
-## Guides location and naming (recommendation)
+## Knowledge-base location and naming
 
-- **Canonical name:** `_pkos` (Personal Knowledge Operating System). Rename from `guides` when the folder is not in use: from Desktop, run `Rename-Item -Path "C:\Users\mesha\Desktop\guides" -NewName "_pkos"` (or close Cursor/explorer using the folder first).
-- **Location:** Keep at `C:\Users\mesha\Desktop\_pkos` or move to be sibling to the alawein repo (e.g. `../GitHub/github.com/_pkos`). After moving, set `ALAWEIN_REPO_PATH` or the default in `_pkos/scripts/export-profile.py` so the export still writes to `alawein/alawein/profile-from-guides.yaml`.
+- **Canonical repo:** `knowledge-base`.
+- **Current layout:** keep the profile record under `db/profile/`, public copy under `career/`, and export logic under `scripts/export-profile.py`.
+- **Location:** keep `knowledge-base` as a sibling repo of `alawein` inside the shared workspace. If you move it elsewhere, set `ALAWEIN_REPO_PATH` so the export still writes to `alawein/alawein/profile-from-guides.yaml`.
 
 ## See also
 
 - **Cursor agent handoff:** [cursor-agent-handoff-profile-sync.md](cursor-agent-handoff-profile-sync.md) — summary, revision/enhancements plan, and syncing runbook.
-- _pkos (formerly guides): `HANDOFF-CODEX.md` (Profile and positioning sync), `templates/README.md`, `schema/export/profile-export.schema.yaml`.
+- `knowledge-base`: [`career/README.md`](https://github.com/alawein/knowledge-base/blob/main/career/README.md), [`career/NOTION_PROFILE_SYNC.md`](https://github.com/alawein/knowledge-base/blob/main/career/NOTION_PROFILE_SYNC.md), `db/schema/export/profile-export.schema.yaml`.

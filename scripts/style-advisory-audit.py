@@ -29,6 +29,8 @@ SKIP_DIRS = {
     "coverage",
     "test-results",
     "playwright-report",
+    "archive",
+    "imports",
 }
 
 

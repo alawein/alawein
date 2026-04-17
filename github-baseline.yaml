@@ -21,7 +21,12 @@ repos:
     test_command: "npm test"
     codeql_languages:
       - javascript-typescript
-    sync: auto
+    # sync: manual because ci.yml has a linux-x64 native-binding install
+    # shim (@tailwindcss/oxide-linux-x64-gnu, @rollup/rollup-linux-x64-gnu,
+    # lightningcss, @esbuild/linux-x64) required for Storybook builds
+    # (npm/cli#4828). The baseline template does not model this extension;
+    # auto-sync would strip it.
+    sync: manual
 
   - repo: workspace-tools
     stack: python
@@ -77,7 +82,11 @@ repos:
     test_command: "python -m pytest tests/ -v"
     codeql_languages:
       - python
-    sync: auto
+    # sync: manual because ci.yml has an additional website-app job that
+    # lints/tests/builds the alembiq.online marketing site in website-app/.
+    # The baseline template only models the Python stack; auto-sync would
+    # strip the extra job.
+    sync: manual
 
   - repo: atelier-rounaq
     stack: node

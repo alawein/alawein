@@ -4,8 +4,6 @@
 
 Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems and finishing a PhD in EECS at UC Berkeley.
 
-> Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.
-
 [meshal.ai](https://meshal.ai) · [morphism.systems](https://morphism.systems) · [linkedin.com/in/alawein](https://linkedin.com/in/alawein) · [contact@meshal.ai](mailto:contact@meshal.ai)
 
 ## Current focus

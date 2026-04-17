@@ -32,8 +32,7 @@ urls:
   linkedin: https://linkedin.com/in/alawein
   github: https://github.com/alawein
 tagline: Computational scientist and AI systems engineer building auditable AI systems.
-tagline_quote: '"Build systems that can be governed. Write code that can be audited.
-  Ship research that can be reproduced."'
+tagline_quote: ''
 bio_short: Computational scientist and AI systems engineer building auditable AI,
   scientific-computing, and product systems. Founder of Morphism Systems and
   finishing a PhD in EECS at UC Berkeley.

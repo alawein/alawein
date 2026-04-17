@@ -1,7 +1,7 @@
 /**
  * task-sync.mjs — Bidirectional sync between Notion "Master Tasks" DB and GitHub Issues.
  *
- * Field ownership (from _ops/config/work-orchestration.yaml):
+ * Field ownership (from knowledge-base/config/work-orchestration.yaml):
  *   Notion owns: status, priority, due_date
  *   GitHub owns: repo, github_ref, github_issue_url, github_state
  *

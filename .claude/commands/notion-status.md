@@ -1,4 +1,5 @@
----type: canonical
+---
+type: canonical
 source: none
 sync: none
 sla: none
@@ -28,7 +29,7 @@ gh run list -R alawein/alawein -w notion-sync.yml -L 3
 3. Check sync state if it exists:
 
 ```bash
-cat _pkos/db/.sync-state.json 2>/dev/null || echo "No sync state file found"
+cat ../knowledge-base/db/.sync-state.json 2>/dev/null || echo "No sync state file found"
 ```
 
 4. Summarize:

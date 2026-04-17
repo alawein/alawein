@@ -2,13 +2,6 @@
 
 # alawein
 
-Control plane for the Alawein workspace. Governs style, documentation
-standards, and agent-facing contracts across sibling repos.
-
-This repo contains no product code. Each sibling repo is an independent
-git repository; this control plane defines the rules they operate under
-but does not own their code.
-
 - Website: [https://meshal.ai](https://meshal.ai)
 - Morphism: [https://morphism.systems](https://morphism.systems)
 - LinkedIn: [https://linkedin.com/in/alawein](https://linkedin.com/in/alawein)

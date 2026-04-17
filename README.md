@@ -2,19 +2,21 @@
 
 # Meshal Alawein
 
-Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems. I hold a PhD in EECS from UC Berkeley.
+Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems and finishing a PhD in EECS at UC Berkeley.
 
-- Website: [https://meshal.ai](https://meshal.ai)
-- Morphism: [https://morphism.systems](https://morphism.systems)
-- LinkedIn: [https://linkedin.com/in/alawein](https://linkedin.com/in/alawein)
-- GitHub: [https://github.com/alawein](https://github.com/alawein)
-- Email: [contact@meshal.ai](mailto:contact@meshal.ai)
+> Build systems that can be governed. Write code that can be audited. Ship research that can be reproduced.
 
-Pinned below on GitHub carries the portfolio signal. The current focus set is:
+[meshal.ai](https://meshal.ai) · [morphism.systems](https://morphism.systems) · [linkedin.com/in/alawein](https://linkedin.com/in/alawein) · [contact@meshal.ai](mailto:contact@meshal.ai)
 
-- [meshal-web](https://www.meshal.ai) - Personal site and portfolio with project deep-dives, case studies, and contact.
-- [attributa](https://attributa.dev) - Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.
-- [bolts](https://bolts.fit) - Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.
-- [scribd](https://scribd.fit) - Fitness publishing and content surface aligned with the shared design system.
-- [alembiq](https://alembiq.online) - 
-- [llmworks](https://llmworks.dev) - LLM evaluation, benchmarking, and security testing playground.
+## Current focus
+
+- [meshal-web](https://www.meshal.ai) — Personal site and portfolio with project deep-dives, case studies, and contact.
+- [attributa](https://attributa.dev) — Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.
+- [bolts](https://bolts.fit) — Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.
+- [scribd](https://scribd.fit) — Fitness publishing and content surface aligned with the shared design system.
+- [alembiq](https://alembiq.online) — LLM training, alignment, evaluation, and synthetic data platform.
+- [llmworks](https://llmworks.dev) — LLM evaluation, benchmarking, and security testing playground.
+
+## Working on
+
+Quantum computing · AI governance · HPC · Web systems · Category theory

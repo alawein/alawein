@@ -17,8 +17,8 @@ from catalog_lib import profile_config
 ROOT = Path(__file__).resolve().parent.parent
 README = ROOT / "README.md"
 PROFILE_URL = "https://github.com/alawein"
-README_PIN_HEADER = "Pinned below on GitHub carries the portfolio signal. The current focus set is:"
-README_PIN_RE = re.compile(r"^- \[([^\]]+)\]\(([^)]+)\) - (.+)$")
+README_PIN_HEADER = "## Current focus"
+README_PIN_RE = re.compile(r"^- \[([^\]]+)\]\(([^)]+)\) — (.+)$")
 LIVE_PIN_BLOCK_MARKER = "js-pinned-items-reorder-list"
 LIVE_PIN_REPO_RE = re.compile(r'href="/alawein/([^"/?#]+)"')
 

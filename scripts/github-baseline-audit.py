@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -12,6 +13,8 @@ ROOT = Path(__file__).resolve().parent.parent
 WORKSPACE = ROOT.parent
 MANIFEST = yaml.safe_load((ROOT / "github-baseline.yaml").read_text(encoding="utf-8")) or {}
 REPOS = MANIFEST.get("repos", [])
+WORKFLOW_REF = str(MANIFEST.get("workflow_ref") or "").strip()
+WORKFLOW_DIR = ROOT / ".github" / "workflows"
 
 BANNED_WIDGET_PATTERNS = [
     "github-readme-stats",
@@ -21,6 +24,8 @@ BANNED_WIDGET_PATTERNS = [
     "spotify-github-profile",
     "capsule-render",
 ]
+PINNED_REF_RE = re.compile(r"^[0-9a-f]{40}$")
+USES_LINE_RE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)")
 
 
 def load_yaml(path: Path) -> dict:
@@ -37,11 +42,59 @@ def add_error(errors: list[str], message: str) -> None:
     errors.append(message)
 
 
+def check_manifest(errors: list[str]) -> None:
+    if not PINNED_REF_RE.fullmatch(WORKFLOW_REF):
+        add_error(errors, "github-baseline.yaml workflow_ref must be a 40-character SHA")
+
+
 def check_readme(errors: list[str]) -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     for pattern in BANNED_WIDGET_PATTERNS:
         if pattern in readme:
             add_error(errors, f"README contains banned widget pattern: {pattern}")
+
+
+def check_control_plane_workflows(errors: list[str]) -> None:
+    for path in sorted(WORKFLOW_DIR.glob("*.yml")):
+        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            match = USES_LINE_RE.match(stripped)
+            if not match:
+                continue
+            target = match.group(1)
+            if "@" not in target:
+                add_error(errors, f"{path.relative_to(ROOT).as_posix()}:{line_number}: uses target missing ref: {target}")
+                continue
+            action, ref = target.rsplit("@", maxsplit=1)
+            if action.startswith("alawein/alawein/.github/workflows/"):
+                if ref != WORKFLOW_REF:
+                    add_error(
+                        errors,
+                        f"{path.relative_to(ROOT).as_posix()}:{line_number}: reusable workflow ref '{ref}' does not match workflow_ref '{WORKFLOW_REF}'",
+                    )
+                continue
+            if not PINNED_REF_RE.fullmatch(ref):
+                add_error(
+                    errors,
+                    f"{path.relative_to(ROOT).as_posix()}:{line_number}: action ref must be SHA pinned, found '{target}'",
+                )
+
+
+def internal_workflow_refs(text: str) -> list[str]:
+    refs: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        match = USES_LINE_RE.match(stripped)
+        if not match:
+            continue
+        target = match.group(1)
+        if target.startswith("alawein/alawein/.github/workflows/") and "@" in target:
+            refs.append(target.rsplit("@", maxsplit=1)[-1])
+    return refs
 
 
 def check_repo(entry: dict, errors: list[str]) -> None:
@@ -86,8 +139,13 @@ def check_repo(entry: dict, errors: list[str]) -> None:
     ci = repo_dir / ".github" / "workflows" / "ci.yml"
     if ci.exists():
         text = ci.read_text(encoding="utf-8")
+        refs = internal_workflow_refs(text)
         if "alawein/alawein/.github/workflows/ci-" not in text:
             add_error(errors, f"{entry['repo']}: ci.yml does not use central reusable workflows")
+        elif not refs:
+            add_error(errors, f"{entry['repo']}: ci.yml missing reusable workflow ref")
+        elif any(ref != WORKFLOW_REF for ref in refs):
+            add_error(errors, f"{entry['repo']}: ci.yml reusable workflow refs must equal workflow_ref {WORKFLOW_REF}")
 
     codeql_path = repo_dir / ".github" / "workflows" / "codeql.yml"
     if entry.get("codeql_languages"):
@@ -95,15 +153,20 @@ def check_repo(entry: dict, errors: list[str]) -> None:
             add_error(errors, f"{entry['repo']}: missing .github/workflows/codeql.yml")
         else:
             text = codeql_path.read_text(encoding="utf-8")
-            if "alawein/alawein/.github/workflows/codeql.yml@main" not in text:
+            refs = internal_workflow_refs(text)
+            if "alawein/alawein/.github/workflows/codeql.yml@" not in text:
                 add_error(errors, f"{entry['repo']}: codeql.yml does not use central reusable workflow")
+            elif refs != [WORKFLOW_REF]:
+                add_error(errors, f"{entry['repo']}: codeql.yml must use workflow_ref {WORKFLOW_REF}")
     elif codeql_path.exists():
         add_error(errors, f"{entry['repo']}: unexpected codeql.yml for repo without CodeQL languages")
 
 
 def main() -> int:
     errors: list[str] = []
+    check_manifest(errors)
     check_readme(errors)
+    check_control_plane_workflows(errors)
     for entry in REPOS:
         check_repo(entry, errors)
 

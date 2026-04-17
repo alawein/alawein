@@ -108,6 +108,7 @@ MANAGED_ROOT_DOCS = {
 
 EXEMPT_DOCS = {
     "README.md",
+    "docs/README.md",
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/feature_request.yml",
@@ -115,12 +116,17 @@ EXEMPT_DOCS = {
 
 
 def run_git(args: Sequence[str], check: bool = True) -> subprocess.CompletedProcess[str]:
+    # Force UTF-8 on capture: Windows default is cp1252, which crashes on
+    # non-ASCII bytes that appear in git diff/status output for docs
+    # containing em-dashes, arrows, etc.
     return subprocess.run(
         ["git", *args],
         cwd=ROOT,
         text=True,
         capture_output=True,
         check=check,
+        encoding="utf-8",
+        errors="replace",
     )
 
 
@@ -137,6 +143,8 @@ def managed_docs() -> Dict[str, str]:
     for path in sorted((ROOT / "docs").rglob("*.md")):
         rel = relative(path)
         if is_archive_doc(rel):
+            continue
+        if rel in EXEMPT_DOCS:
             continue
         docs[rel] = "last_updated"
     docs.pop("docs/archive", None)
@@ -214,6 +222,14 @@ def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
+def is_exempt_doc(rel: str) -> bool:
+    return rel in EXEMPT_DOCS
+
+
+def exempt_doc_requires_plain_markdown(rel: str) -> bool:
+    return rel in {"README.md", "docs/README.md", ".github/PULL_REQUEST_TEMPLATE.md"}
+
+
 def parse_frontmatter(path: Path) -> Tuple[Optional[Dict[str, Tuple[str, int]]], List[str]]:
     rel = relative(path)
     errors: List[str] = []
@@ -262,6 +278,8 @@ def check_bom(errors: List[str]) -> None:
 def check_frontmatter(errors: List[str]) -> None:
     freshness_map = {**CANONICAL_DOCS, **LESSON_DOCS, **MANAGED_DOCS}
     for rel, key in freshness_map.items():
+        if is_exempt_doc(rel):
+            continue
         path = ROOT / rel
         if not path.exists():
             continue
@@ -271,6 +289,18 @@ def check_frontmatter(errors: List[str]) -> None:
             continue
         if key not in meta:
             errors.append(f"{rel}:1: required freshness key `{key}` is missing")
+
+
+def check_exempt_docs(errors: List[str]) -> None:
+    for rel in EXEMPT_DOCS:
+        if not exempt_doc_requires_plain_markdown(rel):
+            continue
+        path = ROOT / rel
+        if not path.exists():
+            continue
+        text = read_text(path)
+        if text.lstrip("\ufeff").startswith("---\n") or text.lstrip("\ufeff").startswith("---\r\n"):
+            errors.append(f"{rel}:1: GitHub-facing exempt docs must not include visible YAML frontmatter")
 
 
 def check_canonical_age(errors: List[str]) -> None:
@@ -321,10 +351,64 @@ def check_naming(errors: List[str]) -> None:
                 errors.append(f"{rel}:1: governance docs must use kebab-case filenames")
 
 
+# Doctrine R8: workspace root is controlled. The repo root may only contain
+# community-health entrypoints, canonical data files that must live at root
+# for tool discovery (projects.json, *.schema.json, baseline yamls), and
+# tooling config dotfiles. Anything else belongs in a structured subdirectory.
+R8_ALLOWED_ROOT_FILES = {
+    # Community health + doctrine-required canonical docs
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LESSONS.md",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md",
+    "SSOT.md",
+    # Canonical data that tools discover from root
+    "projects.json",
+    "projects.schema.json",
+    "github-baseline.yaml",
+    "profile-from-guides.yaml",
+    "service-metadata.yaml",
+    # Profile asset rendered by GitHub org page
+    "avatar.svg",
+    # Tooling config (must live at root for tool auto-discovery)
+    ".editorconfig",
+    ".env.example",
+    ".gitignore",
+    ".markdownlint.jsonc",
+    ".vale.ini",
+    "prettier.config.js",
+}
+
+
+def check_root_whitelist(errors: List[str]) -> None:
+    for entry in ROOT.iterdir():
+        if not entry.is_file():
+            continue
+        name = entry.name
+        if name in R8_ALLOWED_ROOT_FILES:
+            continue
+        # Gitignored files are not considered part of the committed surface
+        # and are therefore outside R8's jurisdiction.
+        check = run_git(["check-ignore", "-q", name], check=False)
+        if check.returncode == 0:
+            continue
+        errors.append(
+            f"{name}:1: root file not in R8 whitelist (move to a structured subdirectory or extend R8_ALLOWED_ROOT_FILES with rationale)"
+        )
+
+
 def markdown_files_for_links() -> Iterable[Path]:
+    skip_parts = {"node_modules", ".venv", "venv", "dist", "build", "__pycache__"}
     for path in sorted(ROOT.rglob("*.md")):
         rel = relative(path)
         if is_archive_doc(rel):
+            continue
+        if skip_parts.intersection(path.parts):
             continue
         yield path
 
@@ -359,6 +443,8 @@ def check_freshness_updates(errors: List[str], base_ref: Optional[str]) -> None:
     changed = changed_files(base_ref)
     freshness_map = {**CANONICAL_DOCS, **LESSON_DOCS, **MANAGED_DOCS}
     for rel, key in freshness_map.items():
+        if is_exempt_doc(rel):
+            continue
         if rel not in changed:
             continue
         path = ROOT / rel
@@ -384,8 +470,10 @@ def main() -> int:
     check_required_files(errors)
     check_bom(errors)
     check_frontmatter(errors)
+    check_exempt_docs(errors)
     check_canonical_age(errors)
     check_naming(errors)
+    check_root_whitelist(errors)
     check_local_links(errors)
     check_freshness_updates(errors, base_ref)
 

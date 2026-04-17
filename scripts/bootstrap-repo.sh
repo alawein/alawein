@@ -11,12 +11,6 @@ git init
 
 # -- Common files --
 cat > README.md << HEADER
----
-type: canonical
-source: none
-sync: none
-sla: none
----
 # $REPO_NAME
 
 > TODO: Add project description.

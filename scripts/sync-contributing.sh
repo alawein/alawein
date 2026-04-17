@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# sync-contributing.sh -- propagates CONTRIBUTING.md template to workspace repos
+# sync-contributing.sh -- propagates the org CONTRIBUTING.md baseline to workspace repos
 #
 # Modeled on sync-claude.sh. Repos with `sync: manual` in their CONTRIBUTING.md
 # frontmatter are skipped.
@@ -13,7 +13,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ORG_REPO="$(dirname "$SCRIPT_DIR")"
-TEMPLATE="${ORG_REPO}/../_devkit/templates/CONTRIBUTING.md"
+TEMPLATE="${ORG_REPO}/CONTRIBUTING.md"
 
 [ -f "$TEMPLATE" ] || { echo "ERROR: template not found: $TEMPLATE" >&2; exit 1; }
 
@@ -54,10 +54,9 @@ propagate_contributing() {
     fi
   fi
 
-  # Auto-substituted tokens: {REPO_NAME} and {REPO} → GitHub slug (e.g. "handshake-hai")
-  # Intentionally left as visible placeholders for manual fill (Plan 2):
-  #   {INSTALL_COMMAND}, {TEST_COMMAND}, {VALIDATE_COMMAND}
-  # Note: GitHub slugs are alphanumeric+hyphens — no sed special chars (&, \) expected.
+  # Legacy placeholder substitution remains in place for compatibility with
+  # older CONTRIBUTING templates. The current control-plane baseline does not
+  # use these tokens, so the substitutions are effectively a no-op.
   sed \
     -e "s/{REPO_NAME}/${github_slug}/g" \
     -e "s/{REPO}/${github_slug}/g" \

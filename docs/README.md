@@ -1,21 +1,3 @@
----
-type: derived
-source: docs/
-sync: manual
-sla: manual
-title: Alawein Documentation
-description: Entry point for organization-level governance, portfolio truth, and migration guides.
-category: index
-audience: all
-status: active
-version: 1.0.0
-last_updated: 2026-04-16
-tags: [alawein, documentation, governance, index]
-related:
-  - ../README.md
-  - ./governance/workspace-master-prompt.md
----
-
 # Alawein documentation
 
 This repository contains organization-level portfolio documentation and
@@ -30,8 +12,6 @@ workspace governance for the `alawein` GitHub organization.
   [`documentation-contract.md`](./governance/documentation-contract.md)
 - GitHub profile and workflow baseline:
   [`github-baseline.md`](./governance/github-baseline.md)
-- Public/private repository boundary:
-  [`public-private-boundary.md`](./governance/public-private-boundary.md)
 - Governance operating model:
   [`operating-model.md`](./governance/operating-model.md)
 - Workflow overview: [`workflow.md`](./governance/workflow.md)

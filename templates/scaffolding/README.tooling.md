@@ -1,13 +1,3 @@
----
-type: canonical
-source: none
-sync: none
-sla: none
-authority: canonical
-audience: [contributors, agents]
-last-verified: 2026-04-14
----
-
 # {{name}}
 
 ## Purpose

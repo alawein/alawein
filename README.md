@@ -16,5 +16,4 @@ Pinned below on GitHub carries the portfolio signal. The current focus set is:
 - [attributa](https://attributa.dev) - Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.
 - [bolts](https://bolts.fit) - Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.
 - [scribd](https://scribd.fit) - Fitness publishing and content surface aligned with the shared design system.
-- [alembiq](https://alembiq.online) - 
 - [llmworks](https://llmworks.dev) - LLM evaluation, benchmarking, and security testing playground.

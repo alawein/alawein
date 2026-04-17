@@ -186,6 +186,9 @@ docs/dashboard/snapshots/*.json
 !.env.example
 .docvault/
 *.DS_Store
+corpus/raw/
+corpus/exports/
+corpus/tmp/
 
 # === Build artifacts & caches (workspace standard) ===
 __pycache__/

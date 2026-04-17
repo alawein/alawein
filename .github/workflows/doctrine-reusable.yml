@@ -4,7 +4,7 @@ name: Doctrine Validation (Reusable)
 # Product repos call this via:
 #   jobs:
 #     doctrine:
-#       uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@main
+#       uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@<workflow-ref>
 
 on:
   workflow_call:
@@ -20,19 +20,27 @@ jobs:
     name: Doctrine Validation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           path: repo
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           repository: alawein/alawein
           path: org
-          sparse-checkout: scripts/validate-doctrine.py
+          sparse-checkout: |
+            .vale.ini
+            styles
+            scripts/style-advisory-audit.py
+            scripts/validate.py
+            scripts/validate-doctrine.py
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
           python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml
 
       - name: Run Doctrine Validator
         run: |
@@ -41,3 +49,47 @@ jobs:
           else
             python org/scripts/validate-doctrine.py repo || echo "::warning::Doctrine validation found issues (non-blocking)"
           fi
+
+      - name: Validate governed style surfaces
+        run: |
+          if [ "${{ inputs.strict }}" = "true" ]; then
+            python org/scripts/validate.py --root repo --ci
+          else
+            python org/scripts/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
+          fi
+
+      - name: Install Vale CLI
+        run: |
+          set -euo pipefail
+          VALE_VERSION=3.14.1
+          curl -fsSL "https://github.com/vale-cli/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" -o "$RUNNER_TEMP/vale.tar.gz"
+          mkdir -p "$RUNNER_TEMP/vale-bin"
+          tar -xzf "$RUNNER_TEMP/vale.tar.gz" -C "$RUNNER_TEMP/vale-bin"
+          echo "$RUNNER_TEMP/vale-bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/vale-bin/vale" --version
+
+      - name: Enforce repo docs style with Vale
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(git -C repo ls-files '*.md' | grep -Ev '^docs/archive/' || true)
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No tracked Markdown files to audit."
+            exit 0
+          fi
+          prefixed=()
+          for file in "${files[@]}"; do
+            prefixed+=("repo/${file}")
+          done
+          vale --config org/.vale.ini --minAlertLevel=error "${prefixed[@]}"
+
+      - name: Run advisory repo style audit
+        run: |
+          python org/scripts/style-advisory-audit.py --repo-root repo > style-advisory-report.txt
+
+      - name: Publish advisory repo style audit
+        if: always()
+        run: |
+          echo "## Style advisory audit" >> "$GITHUB_STEP_SUMMARY"
+          echo '```text' >> "$GITHUB_STEP_SUMMARY"
+          sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

@@ -10,6 +10,20 @@ on:
       - 'scripts/build-catalog.py'
       - 'scripts/catalog_lib.py'
       - 'scripts/sync-readme.py'
+  pull_request:
+    paths:
+      - 'projects.json'
+      - 'catalog/**'
+      - 'profile-from-guides.yaml'
+      - 'scripts/build-catalog.py'
+      - 'scripts/catalog_lib.py'
+      - 'scripts/sync-readme.py'
+      - 'README.md'
+  schedule:
+    # Weekly drift audit catches upstream dependency changes that bypass the
+    # path filter set above (for example, logic edits in a helper module that
+    # is not on the trigger list but still affects rendered output).
+    - cron: '0 7 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -64,3 +78,59 @@ jobs:
           echo "README.md drift detected. Protected branch rules prevent this workflow from pushing directly to main." >> "$GITHUB_STEP_SUMMARY"
           echo "Run 'python scripts/sync-readme.py', commit the regenerated README.md, and rerun the workflow." >> "$GITHUB_STEP_SUMMARY"
           exit 1
+
+  auto-pr:
+    # Only opens a PR on the weekly schedule or manual dispatch. We intentionally
+    # do NOT auto-PR on push events: push-triggered drift means a human already
+    # committed inconsistent state, and we want the `sync` job's failure to
+    # surface to that commit's author rather than silently opening a follow-up.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+
+      - name: Install sync dependencies
+        run: python -m pip install pyyaml
+
+      - name: Regenerate derived catalog outputs and README
+        run: |
+          python scripts/build-catalog.py
+          python scripts/sync-readme.py
+
+      - name: Detect drift
+        id: detect
+        run: |
+          if git diff --quiet; then
+            echo "drift=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "drift=true" >> "$GITHUB_OUTPUT"
+            git diff --stat >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # TODO: pin peter-evans/create-pull-request to a commit SHA before merge.
+      # v7 is the current major.
+      - name: Open drift-repair PR
+        if: steps.detect.outputs.drift == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'chore(catalog): regenerate derived README and catalog outputs'
+          branch: chore/readme-sync-drift
+          delete-branch: true
+          title: 'chore(catalog): regenerate derived README and catalog outputs'
+          body: |
+            Automated drift-repair PR opened by `readme-sync.yml` scheduled run.
+
+            The weekly audit regenerated catalog outputs and/or README and
+            found drift. Review the diff, then merge if the regeneration is
+            correct. If the diff looks wrong, the root cause is a change in a
+            helper module that needs investigation -- do not merge blindly.
+          labels: |
+            automation
+            governance

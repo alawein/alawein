@@ -2,7 +2,7 @@
 
 # Meshal Alawein
 
-Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems and finishing a PhD in EECS at UC Berkeley.
+Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems. PhD in EECS from UC Berkeley.
 
 [meshal.ai](https://meshal.ai) · [morphism.systems](https://morphism.systems) · [linkedin.com/in/alawein](https://linkedin.com/in/alawein) · [contact@meshal.ai](mailto:contact@meshal.ai)
 

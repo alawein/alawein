@@ -71,6 +71,15 @@ STALE_IDENTITY_PATTERNS = [
     r"\balaweimm90\b",
     r"\bmalawein\.com\b",
 ]
+FORBIDDEN_PERSONAL_CLAIMS = [
+    # Phrases contradicting canonical personal facts. Update when a fact
+    # changes; the stale phrasing moves here. Source of truth:
+    # docs/style/terminology-registry.yaml :: forbidden_personal_claims.
+    r"\bPh\.?D\.? candidate\b",
+    r"\bfinishing (my|a) PhD\b",
+    r"\bpursuing (my|a) PhD\b",
+    r"\bABD\b",
+]
 FRONTMATTER_RE = re.compile(r"\A---\s*\r?\n.*?\r?\n---\s*(?:\r?\n|$)", re.DOTALL)
 
 
@@ -231,12 +240,22 @@ def run_checks(paths: list[Path], checks: set[str], report: Report) -> None:
                 "blocking" if is_blocking_surface(path) else "advisory",
             )
 
+        if "claim" in checks:
+            add_match_violations(
+                report,
+                path,
+                content,
+                FORBIDDEN_PERSONAL_CLAIMS,
+                "stale-claim",
+                "blocking" if is_blocking_surface(path) else "advisory",
+            )
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate governed style surfaces")
     parser.add_argument(
         "--check",
-        choices=["frontmatter", "voice", "attribution", "identity", "all"],
+        choices=["frontmatter", "voice", "attribution", "identity", "claim", "all"],
         default="all",
     )
     parser.add_argument("--paths", nargs="*", help="Specific file paths to check")
@@ -244,7 +263,7 @@ def main() -> int:
     parser.add_argument("--ci", action="store_true", help="Exit non-zero on blocking violations")
     args = parser.parse_args()
 
-    checks = {"frontmatter", "voice", "attribution", "identity"} if args.check == "all" else {args.check}
+    checks = {"frontmatter", "voice", "attribution", "identity", "claim"} if args.check == "all" else {args.check}
     root = Path(args.root).resolve()
 
     if args.paths:

@@ -126,3 +126,30 @@ lifecycle_labels:
   - active
   - maintained
   - archived
+forbidden_personal_claims:
+  # Phrases that contradict the current canonical personal facts. Each entry
+  # blocks commits on GitHub-facing surfaces (README, CLAUDE, AGENTS, prompt
+  # kits) and warns on other governed docs. Update this list whenever a fact
+  # changes (graduation, move, role change) — the old phrasing moves here.
+  #
+  # Canonical personal facts (as of 2026-04-17):
+  # - PhD in EECS from UC Berkeley (awarded; not in progress)
+  # - Founder, Morphism Systems (Cache Me Outside LLC)
+  # - Location: San Francisco, CA
+  - phrase: 'PhD candidate'
+    reason: 'PhD in EECS from UC Berkeley is awarded; not a candidate.'
+  - phrase: 'Ph.D. candidate'
+    reason: 'PhD in EECS from UC Berkeley is awarded; not a candidate.'
+  - phrase: 'Ph.D candidate'
+    reason: 'PhD in EECS from UC Berkeley is awarded; not a candidate.'
+  - phrase: 'finishing a PhD'
+    reason: 'PhD awarded; use "PhD in EECS from UC Berkeley".'
+  - phrase: 'finishing my PhD'
+    reason: 'PhD awarded; use "PhD in EECS from UC Berkeley".'
+  - phrase: 'pursuing a PhD'
+    reason: 'PhD awarded; use "PhD in EECS from UC Berkeley".'
+  - phrase: 'pursuing my PhD'
+    reason: 'PhD awarded; use "PhD in EECS from UC Berkeley".'
+  - phrase: 'ABD'
+    reason: 'PhD awarded; not ABD.'
+    word_boundary: true

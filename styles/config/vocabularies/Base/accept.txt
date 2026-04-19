@@ -1,5 +1,3 @@
-# Workspace-specific terms accepted by Vale.Spelling
-# Org and repo names
 alawein
 Alawein
 fallax
@@ -17,11 +15,8 @@ proctor
 loopholelab
 chshlab
 provegate
-atelier-rounaq
-# Python package names used as Python module directories
 reasonbench
 neper
-# LLM providers and models
 Ollama
 Qwen
 OpenAI
@@ -30,7 +25,6 @@ Gemini
 LangChain
 HuggingFace
 Pinecone
-# Python tooling
 mypy
 pytest
 uv
@@ -44,7 +38,6 @@ numpy
 pandas
 FastAPI
 fastapi
-# JavaScript tooling
 turborepo
 vite
 eslint
@@ -56,7 +49,6 @@ Supabase
 supabase
 Cloudflare
 cloudflare
-# Common tech abbreviations and words flagged by Hunspell
 repo
 env
 configs
@@ -78,9 +70,7 @@ args
 compat
 dicts
 agentic
-# ML/data science terms
 KMeans
 LLMs
-# Misc project-specific identifiers
 Evolver
 evolver

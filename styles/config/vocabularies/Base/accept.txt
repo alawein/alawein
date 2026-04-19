@@ -42,6 +42,8 @@ eslint
 Pydantic
 repo
 env
+config
+Config
 configs
 args
 compat

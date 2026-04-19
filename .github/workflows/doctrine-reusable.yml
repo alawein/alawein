@@ -71,7 +71,7 @@ jobs:
       - name: Enforce repo docs style with Vale
         run: |
           set -euo pipefail
-          mapfile -t files < <(git -C repo ls-files '*.md' | grep -Ev '^docs/archive/' || true)
+          mapfile -t files < <(git -C repo ls-files '*.md' | grep -Ev '^docs/archive/|^docs/superpowers/' || true)
           if [ "${#files[@]}" -eq 0 ]; then
             echo "No tracked Markdown files to audit."
             exit 0

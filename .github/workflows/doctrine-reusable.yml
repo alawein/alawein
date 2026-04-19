@@ -31,6 +31,7 @@ jobs:
           sparse-checkout: |
             .vale.ini
             styles
+            docs/style/terminology-registry.yaml
             scripts/style-advisory-audit.py
             scripts/validate.py
             scripts/validate-doctrine.py
@@ -83,6 +84,7 @@ jobs:
           vale --config org/.vale.ini --minAlertLevel=error "${prefixed[@]}"
 
       - name: Run advisory repo style audit
+        continue-on-error: true
         run: |
           python org/scripts/style-advisory-audit.py --repo-root repo > style-advisory-report.txt
 

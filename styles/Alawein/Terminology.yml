@@ -2,6 +2,7 @@ extends: existence
 message: Use the canonical term '%s' from the terminology registry.
 ignorecase: true
 level: error
+code: false
 tokens:
 - gainboy
 - neper

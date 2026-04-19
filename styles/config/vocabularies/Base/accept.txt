@@ -1,0 +1,86 @@
+# Workspace-specific terms accepted by Vale.Spelling
+# Org and repo names
+alawein
+Alawein
+fallax
+Fallax
+bolts
+edfp
+adil
+optiqap
+alembiq
+llmworks
+repz
+qmlab
+simcore
+proctor
+loopholelab
+chshlab
+provegate
+atelier-rounaq
+# Python package names used as Python module directories
+reasonbench
+neper
+# LLM providers and models
+Ollama
+Qwen
+OpenAI
+Anthropic
+Gemini
+LangChain
+HuggingFace
+Pinecone
+# Python tooling
+mypy
+pytest
+uv
+ruff
+pydantic
+Pydantic
+asyncio
+scikit
+sklearn
+numpy
+pandas
+FastAPI
+fastapi
+# JavaScript tooling
+turborepo
+vite
+eslint
+Tailwind
+tailwind
+Vercel
+vercel
+Supabase
+supabase
+Cloudflare
+cloudflare
+# Common tech abbreviations and words flagged by Hunspell
+repo
+env
+configs
+config
+Config
+cli
+sdk
+api
+ui
+ux
+ai
+ml
+llm
+nlp
+csv
+yaml
+toml
+args
+compat
+dicts
+agentic
+# ML/data science terms
+KMeans
+LLMs
+# Misc project-specific identifiers
+Evolver
+evolver

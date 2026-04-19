@@ -49,3 +49,9 @@ args
 compat
 dicts
 agentic
+gitignored
+testpaths
+Recharts
+Deliverables
+uvicorn
+jsonl

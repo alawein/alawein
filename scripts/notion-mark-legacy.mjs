@@ -5,14 +5,14 @@
  * - NOTION_TOKEN
  * - NOTION_DB_ID
  *
- * Optional env (defaults match your current DB):
- * - NOTION_NAME_PROPERTY=Project Name
+ * Optional env (defaults match current DB as of 2026-04-19):
+ * - NOTION_NAME_PROPERTY=Name
  * - NOTION_STATUS_PROPERTY=Status
- * - NOTION_ONELINER_PROPERTY=One-Liner
+ * - NOTION_ONELINER_PROPERTY=One-Liner (note: column may not exist; override as needed)
  */
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_DB_ID = process.env.NOTION_DB_ID;
-const NAME_PROP = process.env.NOTION_NAME_PROPERTY || 'Project Name';
+const NAME_PROP = process.env.NOTION_NAME_PROPERTY || 'Name';
 const STATUS_PROP = process.env.NOTION_STATUS_PROPERTY || 'Status';
 const ONELINER_PROP = process.env.NOTION_ONELINER_PROPERTY || 'One-Liner';
 
@@ -59,33 +59,35 @@ function getRichTextPlain(prop) {
   return prop.rich_text.map((r) => r.plain_text || '').join('');
 }
 
-async function markLegacy(name, replacementLabel, replacementRepo) {
+async function markLegacy(name, replacementLabel, replacementRepo, dbProperties) {
   const rows = await findByName(name);
   if (!rows.length) {
     console.log(`Not found: ${name}`);
     return;
   }
+  const hasOneLiner = dbProperties?.[ONELINER_PROP]?.type === 'rich_text';
   for (const row of rows) {
-    const oldOneLiner = getRichTextPlain(row.properties[ONELINER_PROP]);
-    const note = `Legacy row. Replaced by ${replacementLabel} (${replacementRepo}).`;
-    const merged = oldOneLiner.includes('Legacy row.') ? oldOneLiner : `${oldOneLiner} ${note}`.trim();
-
+    const properties = {
+      [STATUS_PROP]: { select: { name: 'archived' } },
+    };
+    if (hasOneLiner) {
+      const oldOneLiner = getRichTextPlain(row.properties[ONELINER_PROP]);
+      const note = `Legacy row. Replaced by ${replacementLabel} (${replacementRepo}).`;
+      const merged = oldOneLiner.includes('Legacy row.') ? oldOneLiner : `${oldOneLiner} ${note}`.trim();
+      properties[ONELINER_PROP] = { rich_text: [{ text: { content: merged.slice(0, 1800) } }] };
+    }
     await notionFetch(`/pages/${row.id}`, {
       method: 'PATCH',
-      body: JSON.stringify({
-        properties: {
-          [STATUS_PROP]: { select: { name: 'archived' } },
-          [ONELINER_PROP]: { rich_text: [{ text: { content: merged.slice(0, 1800) } }] },
-        },
-      }),
+      body: JSON.stringify({ properties }),
     });
-    console.log(`Archived: ${name} (${row.id})`);
+    console.log(`Archived: ${name} (${row.id})${hasOneLiner ? '' : ' — no One-Liner column; status only'}`);
   }
 }
 
 async function main() {
-  await markLegacy('morphism.systems', 'Morphism', 'morphism-org/morphism');
-  await markLegacy('aiclarity.com', 'Event Discovery Framework', 'alawein/edfp');
+  const db = await notionFetch(`/databases/${NOTION_DB_ID}`, { method: 'GET' });
+  const dbProperties = db.properties || {};
+  await markLegacy('morphism.systems', 'Morphism', 'morphism-org/morphism', dbProperties);
   console.log('Legacy marking complete.');
 }
 

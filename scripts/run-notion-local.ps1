@@ -30,11 +30,10 @@ foreach ($name in @('.env.local', '.env')) {
 $env:NOTION_DOMAIN_PROPERTY = 'Domain'
 $env:NOTION_CATEGORY_PROPERTY = 'Status'
 $env:NOTION_TAGS_PROPERTY = 'Stack'
-$env:NOTION_NAME_PROPERTY = 'Project Name'
-$env:NOTION_DESCRIPTION_PROPERTY = 'One-Liner'
+$env:NOTION_NAME_PROPERTY = 'Name'
 $env:NOTION_REPO_PROPERTY = 'Repo'
 $env:NOTION_STATUS_PROPERTY = 'Status'
-$env:NOTION_EXPECTED_LEGACY_COUNT = '2'
+$env:NOTION_EXPECTED_LEGACY_COUNT = '1'
 
 node scripts/validate-projects-json.mjs
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

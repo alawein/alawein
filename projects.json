@@ -148,8 +148,7 @@
       ],
       "category": "planned",
       "legacy_slugs": [
-        "event-discovery-framework",
-        "aiclarity"
+        "event-discovery-framework"
       ],
       "url": "https://edfp.online",
       "portfolio_domain": "Work"
@@ -270,10 +269,9 @@
       "name": "Event Discovery Framework",
       "slug": "edfp",
       "repo": "alawein/edfp",
-      "domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com \u2192 edfp.online.)",
+      "domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.",
       "legacy_slugs": [
-        "event-discovery-framework",
-        "aiclarity"
+        "event-discovery-framework"
       ],
       "url": "https://edfp.online"
     },

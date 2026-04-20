@@ -338,7 +338,7 @@
     {
       "name": "Event Discovery Framework",
       "slug": "edfp",
-      "legacy_slugs": ["event-discovery-framework", "aiclarity"],
+      "legacy_slugs": ["event-discovery-framework"],
       "repo": "alawein/edfp",
       "local_path": "edfp",
       "type": "research",
@@ -371,7 +371,7 @@
       "last_verified": "2026-04-14",
       "catalog_groups": ["featured", "research"],
       "portfolio_domain": "Work",
-      "research_domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering. (Legacy domain: aiclarity.com → edfp.online.)"
+      "research_domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering."
     },
     {
       "name": "Alembiq",

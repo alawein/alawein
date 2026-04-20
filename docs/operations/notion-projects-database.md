@@ -75,7 +75,7 @@ Each entry can set **`portfolio_domain`**: `Work` | `Personal` | `scientific-com
    - **Repo** (text)
    - **Domain** (select) — at minimum add **`scientific-computing`** if you use it for Alembiq; otherwise change `portfolio_domain` for Alembiq to `Work` or `Personal` in JSON.
    - The sync script now runs a **preflight** and will fail early if Category/Domain/Tags options are missing (or wrong type). If your column names differ, set env overrides.
-3. **Legacy rows** — The script matches **`aiclarity`** via `legacy_slugs` on **edfp** and rewrites that page to EDFP (`edfp.online`, `alawein/edfp`). You can delete the duplicate **aiclarity.com** row after one successful sync if a second page remains.
+3. **Legacy rows** — The archived set is `morphism.systems` (kept as historical reference). Verify script enforces `EXPECTED_LEGACY_COUNT=1`. Other orphan rows should be deleted in Notion.
 
 ## Cursor Notion MCP
 

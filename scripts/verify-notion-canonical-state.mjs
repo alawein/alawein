@@ -12,10 +12,10 @@
  *
  * Optional env:
  * - NOTION_STATUS_PROPERTY (default: Status)
- * - NOTION_NAME_PROPERTY (default: Project Name)
+ * - NOTION_NAME_PROPERTY (default: Name)
  * - NOTION_SLUG_PROPERTY (default: Slug)
  * - NOTION_REPO_PROPERTY (default: Repo)
- * - NOTION_EXPECTED_LEGACY_COUNT (default: 2)
+ * - NOTION_EXPECTED_LEGACY_COUNT (default: 1)
  */
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -27,17 +27,17 @@ const root = resolve(__dirname, '..');
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_DB_ID = process.env.NOTION_DB_ID;
 const STATUS_PROP = process.env.NOTION_STATUS_PROPERTY || 'Status';
-const NAME_PROP = process.env.NOTION_NAME_PROPERTY || 'Project Name';
+const NAME_PROP = process.env.NOTION_NAME_PROPERTY || 'Name';
 const SLUG_PROP = process.env.NOTION_SLUG_PROPERTY || 'Slug';
 const REPO_PROP = process.env.NOTION_REPO_PROPERTY || 'Repo';
-const EXPECTED_LEGACY_COUNT = Number(process.env.NOTION_EXPECTED_LEGACY_COUNT || '2');
+const EXPECTED_LEGACY_COUNT = Number(process.env.NOTION_EXPECTED_LEGACY_COUNT || '1');
 
 if (!NOTION_TOKEN || !NOTION_DB_ID) {
   console.error('Missing NOTION_TOKEN or NOTION_DB_ID.');
   process.exit(1);
 }
 
-const LEGACY_NAMES = new Set(['morphism.systems', 'aiclarity.com']);
+const LEGACY_NAMES = new Set(['morphism.systems']);
 
 const headers = {
   Authorization: `Bearer ${NOTION_TOKEN}`,

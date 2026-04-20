@@ -8,7 +8,7 @@
  * Optional env (defaults match current DB as of 2026-04-19):
  * - NOTION_NAME_PROPERTY=Name
  * - NOTION_STATUS_PROPERTY=Status
- * - NOTION_ONELINER_PROPERTY=One-Liner (note: column may not exist; override as needed)
+ * - NOTION_ONELINER_PROPERTY=One-Liner (column is optional; script auto-detects absence and patches status only)
  */
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const NOTION_DB_ID = process.env.NOTION_DB_ID;

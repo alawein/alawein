@@ -5,8 +5,9 @@
  *
  * Matches existing rows by title (NAME_PROP) against projects.json
  * (featured[] + notion_sync[]) and fills Slug/Repo on any row missing them.
- * Matcher order: exact name → legacy_slugs → URL host. Safe to re-run:
- * skips rows that already have both values set.
+ * Matcher order: exact name → slug or legacy_slug → URL host. Safe to re-run:
+ * skips rows that already have both values set. Retries on Notion 429
+ * with Retry-After, throttles between PATCHes.
  *
  * Required env: NOTION_TOKEN, NOTION_DB_ID
  * Optional env: NOTION_NAME_PROPERTY (default: Name),
@@ -43,11 +44,19 @@ const headers = {
   'Notion-Version': '2022-06-28',
 };
 
-async function notionFetch(path, options = {}) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function notionFetch(path, options = {}, retries = 3) {
   const res = await fetch(`https://api.notion.com/v1${path}`, {
     ...options,
     headers: { ...headers, ...(options.headers || {}) },
   });
+  if (res.status === 429 && retries > 0) {
+    const ra = Number(res.headers.get('Retry-After') || '1');
+    console.warn(`  [429] sleeping ${ra}s before retry (path=${path})`);
+    await sleep(ra * 1000);
+    return notionFetch(path, options, retries - 1);
+  }
   if (!res.ok) throw new Error(`Notion API ${res.status}: ${await res.text()}`);
   return res.json();
 }
@@ -101,11 +110,12 @@ async function main() {
   const projects = [...(data.featured || []), ...(data.notion_sync || [])];
 
   const norm = (s) => (s || '').trim().toLowerCase();
-  const hostOf = (url) => {
+  const hostOf = (url, label) => {
     if (!url) return '';
     try {
       return new URL(url).host.replace(/^www\./, '').toLowerCase();
-    } catch {
+    } catch (e) {
+      console.warn(`  [hostOf] bad URL for ${label}: ${url} (${e.message})`);
       return '';
     }
   };
@@ -113,14 +123,25 @@ async function main() {
   const bySlug = new Map();
   const byHost = new Map();
   const seen = new Set();
+  const setOrWarn = (map, key, p, label) => {
+    if (!key) return;
+    if (map.has(key) && map.get(key).slug !== p.slug) {
+      console.warn(`  [collision] ${label} "${key}" — "${map.get(key).slug}" then "${p.slug}"; first wins`);
+      return;
+    }
+    map.set(key, p);
+  };
   for (const p of projects) {
-    if (seen.has(p.slug)) continue;
+    if (seen.has(p.slug)) {
+      console.warn(`  [collision] duplicate slug "${p.slug}" in projects.json; first wins`);
+      continue;
+    }
     seen.add(p.slug);
-    byName.set(norm(p.name), p);
-    bySlug.set(norm(p.slug), p);
-    for (const ls of p.legacy_slugs || []) bySlug.set(norm(ls), p);
-    const h = hostOf(p.url);
-    if (h) byHost.set(h, p);
+    setOrWarn(byName, norm(p.name), p, 'name');
+    setOrWarn(bySlug, norm(p.slug), p, 'slug');
+    for (const ls of p.legacy_slugs || []) setOrWarn(bySlug, norm(ls), p, 'legacy_slug');
+    const h = hostOf(p.url, p.slug);
+    if (h) setOrWarn(byHost, h, p, 'host');
   }
 
   const matchRow = (title) => {
@@ -146,7 +167,7 @@ async function main() {
     const project = matchRow(title);
     if (!project) {
       unmatched += 1;
-      console.log(`  [unmatched] "${title}" — no projects.json entry with this name`);
+      console.warn(`  [unmatched] "${title}" (normalized="${title.trim().toLowerCase()}") — no name/slug/host match in projects.json`);
       continue;
     }
     const existingSlug = slugOf(page);
@@ -171,11 +192,17 @@ async function main() {
     if (DRY_RUN) {
       console.log(`  [dry] would patch "${title}": slug=${needsSlug ? project.slug : '—'} repo=${needsRepo ? project.repo : '—'}`);
     } else {
-      await notionFetch(`/pages/${page.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(patch),
-      });
+      try {
+        await notionFetch(`/pages/${page.id}`, {
+          method: 'PATCH',
+          body: JSON.stringify(patch),
+        });
+      } catch (err) {
+        console.error(`  [error] PATCH failed on "${title}" (page=${page.id}, ${updated} of ${pages.length} processed): ${err.message}`);
+        throw err;
+      }
       console.log(`  patched "${title}" (slug=${needsSlug}, repo=${needsRepo})`);
+      await sleep(350);
     }
     updated += 1;
   }

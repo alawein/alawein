@@ -2,9 +2,9 @@
 
 # Meshal Alawein
 
-Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Morphism Systems. PhD in EECS from UC Berkeley.
+Computational scientist and AI systems engineer building auditable AI, scientific-computing, and product systems. Founder of Kohyr. PhD in EECS from UC Berkeley.
 
-[meshal.ai](https://meshal.ai) · [morphism.systems](https://morphism.systems) · [linkedin.com/in/alawein](https://linkedin.com/in/alawein) · [contact@meshal.ai](mailto:contact@meshal.ai)
+[meshal.ai](https://meshal.ai) · [kohyr.com](https://kohyr.com) · [linkedin.com/in/alawein](https://linkedin.com/in/alawein) · [contact@meshal.ai](mailto:contact@meshal.ai)
 
 ## Current focus
 

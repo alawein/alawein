@@ -69,6 +69,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
+- Workspace audit specs and execution plans:
+  [`docs/superpowers/specs/`](docs/superpowers/specs/) — triage, per-domain audits, and master execution plan
 
 ## Structure
 

@@ -1,0 +1,105 @@
+=== REPO: bolts ===
+Generated: 2026-04-23
+
+--- TECH STACK ---
+Framework: Next.js v16.2.3
+TypeScript strict: yes (tsconfig.json "strict": true, inherits packages/config/tsconfig.base.json)
+Tailwind version: 4.x (^4 in devDeps, @tailwindcss/postcss ^4, oxide native)
+Design system packages: @alawein/tokens v0.2.0 (declared), @alawein/theme-base v0.3.0 (declared); installed copies are v0.1.0 — version mismatch
+Theme in use: theme-base neutral defaults (light/dark CSS vars); bolts overrides with custom --bolts-* variables in globals.css
+State management: TanStack Query v5.90.21
+Data fetching: TanStack Query (server state) + direct fetch in API routes
+Live URL: https://bolts.fit
+
+--- SOURCE STRUCTURE ---
+src/
+  app/          (Next.js App Router)
+  components/   (shared UI, flat)
+  hooks/        (custom hooks)
+  lib/          (service clients, helpers, ab-testing module)
+  types/        (TypeScript types)
+
+Routes/pages (page.tsx files relative to src/app/):
+  / (page.tsx)
+  /account/page.tsx
+  /admin/page.tsx
+  /admin/ab-testing/page.tsx
+  /admin/testimonials/page.tsx
+  /blog/page.tsx
+  /blog/[slug]/page.tsx
+  /checkout/[planId]/page.tsx
+  /dashboard/page.tsx
+  /faq/page.tsx
+  /privacy/page.tsx
+  /refund-request/page.tsx
+  /refunds/page.tsx
+  /success/page.tsx
+  /support/page.tsx
+  /terms/page.tsx
+  /testimonials/page.tsx
+  /unsubscribe/page.tsx
+
+API routes: 14 route handlers under src/app/api/
+Component count: 22 (files in src/components/)
+Hook count: 1 file in src/hooks/ (useTestimonials.ts); additional hooks in src/lib/ab-testing/hooks.ts
+
+--- DESIGN SYSTEM ADOPTION ---
+@alawein/tokens imported: yes — src/app/globals.css line 2 (@import '@alawein/tokens')
+Theme CSS imported: yes — src/app/globals.css line 3 (@import '@alawein/theme-base')
+@alawein/ui components used: no (not in deps)
+Custom tokens vs design system tokens: Hybrid with drift. globals.css imports both packages then immediately declares a parallel custom token layer (--bolts-bg, --bolts-surface, --bolts-accent, --bolts-white, --bolts-muted, --bolts-border) with hard-coded hex values. Components (Testimonials, Dashboard, Checkout, ProgressTracker) use Tailwind class utilities with literal colors (bg-gray-900, text-blue-400, bg-green-500, bg-black, border-gray-700, etc.) instead of the --bolts-* or design-system variables. Only 11 token-derived references found in components vs 156 hard-coded Tailwind color class instances. The @theme inline block in globals.css maps --bolts-* to Tailwind color utilities (color-bolts-accent etc.) but components do not use those utilities.
+Drift level: Critical
+Evidence: src/components/Testimonials.tsx — bg-gray-900, text-blue-400, bg-gray-800, border-gray-700, border-blue-500 throughout; src/app/dashboard/page.tsx — bg-black, bg-gray-900, text-blue-400, border-gray-800 throughout; src/app/globals.css:53-59 — --bolts-bg: #0d0d0d hard-coded hex
+
+--- COMPONENT QUALITY ---
+Loading states: partial — Testimonials.tsx has animate-pulse skeleton (line 62-73); checkout/[planId]/page.tsx has spinner on button (line 146-168); but dashboard/page.tsx, account/page.tsx, and admin/page.tsx have no loading states for their data-dependent sections
+Error states: partial — ErrorBoundary.tsx wraps entire app (src/app/layout.tsx line 94); checkout/[planId]/page.tsx has "plan not found" fallback; but ErrorBoundary fallback uses light theme (bg-gray-50, text-navy-900) that is invisible/broken against the dark site background; alert() used for checkout errors (checkout/[planId]/page.tsx line 91)
+Empty states: partial — Testimonials.tsx returns null when testimonials.length === 0 (line 75-78) but uses hardcoded fallback data before that check; account/page.tsx uses mock hard-coded user data with no real auth; dashboard/page.tsx ProgressTracker uses hard-coded session data
+Form patterns: inconsistent — TestimonialForm.tsx uses react-hook-form with zod; EmailCapture.tsx uses manual useState with fetch; checkout uses bare button with manual loading state; no shared form abstraction
+TypeScript coverage: strict/loose — 0 `any` usages found (strict mode enforced), but account/page.tsx uses mock data with comment "in production, this would come from auth/database", and lib/supabase.ts uses `unknown` on repz_json field
+Key quality issue: Account and dashboard pages use hardcoded mock data — no real auth session, no Supabase user lookup, no purchase history from database. Visiting /account shows "John Doe" with a fabricated purchase. This is a critical gap between the working Stripe+Supabase backend (API routes, webhook handler, full DB helpers in supabase.ts) and the frontend pages that display user data.
+Evidence: src/app/account/page.tsx lines 4-17 — const mockUser with hard-coded name, email, and purchases
+
+--- ARCHITECTURE ---
+State management pattern: TanStack Query used only for server state (testimonials, admin stats, admin testimonial moderation). Local UI state via useState throughout. No global client state manager (no Zustand, no Context for user auth state).
+Data fetching pattern: API calls live primarily in lib/ (supabase.ts, stripe.ts, plans.ts, api.ts) or inline in route handlers. Hooks in src/hooks/ only contain useTestimonials. Direct fetch() calls appear in page-level components for checkout and some admin views. lib/plans.ts uses fs.readFileSync for server-side plan parsing from packages/content/.
+Component organization: flat — all 22 components in src/components/ with only a single layout/ subdirectory. No feature-based grouping despite product complexity spanning checkout, social proof, AB testing, email capture, upsells, loyalty, and referral.
+Dead code signals: affiliate route (src/app/api/affiliate/route.ts) has TODO: "Integrate with affiliate tracking service" and only console.warn — no real affiliate tracking. refund route has TODO for email notification (line 50-51). ABTestWrapper.tsx logs console.warn on variant selection (line 83). ProgressTracker uses hardcoded 2024-01-15 session dates. LoyaltyProgram, ReferralProgram, BundleOffer, UrgencyTimer, and ExitIntentPopup exist as components but are not wired to any real data source.
+Bundle config: next.config.js has turbopack enabled with root path, security headers for all routes, optimizePackageImports for headless-ui and lucide-react, font caching. No bundle analyzer enabled in production. No standalone output mode.
+Key architecture issue: Installed design-system packages (v0.1.0) do not match declared versions (tokens@0.2.0, theme-base@0.3.0). The `npm ci` lockfile is pinned to 0.1.0 despite package.json declaring 0.2.0/0.3.0 — this means the wave C design system upgrade was declared but never actually installed. The theme-base 0.1.0 neutral defaults provide light-mode vars (--color-background: white) that directly conflict with the site's dark theme, but because components bypass those vars entirely (using hard-coded Tailwind classes), the conflict is invisible at runtime.
+Evidence: node_modules/@alawein/tokens/package.json → version 0.1.0; node_modules/@alawein/theme-base/package.json → version 0.1.0; package.json declares "0.2.0" and "0.3.0"
+
+--- PORTFOLIO PRESENTATION ---
+Live site assessment: bolts.fit presents a dark-themed fitness transformation product with animated counters, social proof (testimonials), pricing plans, A/B testing infrastructure, email capture, exit-intent popup, upsell components, and Stripe checkout. The visible product story is coherent — plans fetched from file-based content package, Stripe-powered checkout flow, webhook handler for purchase events, Supabase for user data and testimonials. The disconnect is that the post-purchase authenticated experience (/account, /dashboard) is entirely mocked with no real auth, showing fake user data.
+README quality: Accurate and well-scoped. Describes the product, stack, quick start, and validation commands clearly. Does not over-document. Missing: no mention of @alawein design system, no architecture diagram, no note about the packages/content plan directory structure.
+Key presentation gap: /account page shows hardcoded "John Doe" data with no login gate. Any visitor navigating to /account sees fabricated purchase history, which signals an incomplete product to any technical evaluator checking the live demo.
+
+--- FEATURE GAPS ---
+1. No authentication gate — /account, /dashboard, and /admin routes have no session check or redirect. Admin panel is publicly accessible without credentials.
+2. Post-purchase content delivery is incomplete — Stripe webhook marks orders as completed in Supabase, but /account/page.tsx reads only mock data; purchased plans are not surfaced from the database to the buyer.
+3. Affiliate tracking is a stub — src/app/api/affiliate/route.ts only logs to console; no real tracking service, no attribution storage, no payout logic.
+4. Progress tracking is disconnected — ProgressTracker.tsx uses hardcoded session dates; no Supabase write on session completion, no persistence across refreshes or sessions.
+5. Blog route exists (/blog, /blog/[slug]) but no content source is wired — no CMS, no MDX files, no database table. Both pages would 404 or render empty in production.
+
+--- FINDINGS SUMMARY ---
+Critical: 3 | High: 2 | Medium: 3 | Low: 2
+
+[CRITICAL] Account/dashboard pages use mock data, no auth gate | Area: FE | src/app/account/page.tsx:4-17, src/app/dashboard/page.tsx | Replace mockUser with real Supabase session + purchases query; add middleware auth redirect | Effort: L
+
+[CRITICAL] Admin panel publicly accessible, no auth check | Area: Arch | src/app/admin/page.tsx, src/app/admin/testimonials/page.tsx | Add Supabase session guard or Next.js middleware to protect /admin/* routes | Effort: S
+
+[CRITICAL] Installed design packages are v0.1.0, declared as 0.2.0/0.3.0 — lockfile never updated | Area: DX | node_modules/@alawein/tokens package.json | Run `npm install @alawein/tokens@0.2.0 @alawein/theme-base@0.3.0` and commit updated lockfile | Effort: S (design/presentability gap, not security)
+
+[HIGH] Components bypass design tokens — 156 hard-coded Tailwind color instances vs 11 token-derived | Area: FE | src/components/Testimonials.tsx, src/app/dashboard/page.tsx | Migrate component color classes to bolts-* token utilities already defined in globals.css @theme block | Effort: L
+
+[HIGH] ErrorBoundary uses light theme classes (bg-gray-50, text-navy-900) — invisible against dark site | Area: FE/UX | src/components/ErrorBoundary.tsx:37-53 | Replace with dark theme classes matching the site (bg-bolts-bg, text-bolts-white) | Effort: S
+
+[MEDIUM] Affiliate route is a stub with TODO; refund email notification also missing | Area: Arch | src/app/api/affiliate/route.ts:13, src/app/api/refund/route.ts:50-51 | Implement or remove stub endpoints; stubs log to console in production | Effort: M
+
+[MEDIUM] Blog route exists but no content source — will 404 in production | Area: FE | src/app/blog/page.tsx, src/app/blog/[slug]/page.tsx | Wire to MDX files, Supabase table, or remove route | Effort: M
+
+[MEDIUM] ProgressTracker hardcoded session data, not persisted to Supabase | Area: FE/Arch | src/components/ProgressTracker.tsx:23-46 | Connect to Supabase user_sessions table; replace hardcoded dates | Effort: M
+
+[LOW] alert() used for checkout error feedback | Area: FE/UX | src/app/checkout/[planId]/page.tsx:91 | Replace with inline error state in the checkout form | Effort: S
+
+[LOW] README omits design system, content package architecture, and env var requirements beyond .env.example reference | Area: Portfolio/DX | README.md | Add design system section and content package description | Effort: S

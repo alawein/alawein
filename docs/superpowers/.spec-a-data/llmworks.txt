@@ -1,0 +1,190 @@
+=== REPO: llmworks ===
+Generated: 2026-04-23
+
+--- TECH STACK ---
+Framework: Vite 7.3.2 / React 19
+TypeScript strict: yes (strict: true in tsconfig.json)
+Tailwind version: 4.x (@tailwindcss/vite ^4)
+Design system packages: @alawein/tokens 0.2.0, @alawein/theme-base 0.3.0, @alawein/ui ^0.1.0
+Theme in use: theme-base (default)
+State management: TanStack Query v5.83.0
+Data fetching: TanStack Query (configured but not used for LLM calls — see Architecture)
+Live URL: https://llmworks.dev
+
+--- SOURCE STRUCTURE ---
+src/ dirs:
+  src/api/          — 1 file (health.ts only)
+  src/components/   — 73 .tsx files across 11 subdirs
+  src/hooks/        — custom hooks
+  src/integrations/ — supabase only (client.ts + types.ts)
+  src/lib/          — analytics, monitoring, performance, security, service-worker, utils
+  src/pages/        — 10 route pages
+  src/styles/       — supplemental CSS
+  src/test/         — vitest + integration test setup
+
+Routes: / (Index), /arena (Arena), /bench (Bench), /compare (Compare),
+        /settings (Settings), /admin (Admin), /dashboard (Dashboard),
+        /privacy (Privacy), /terms (Terms), /* (NotFound)
+        All routes lazy-loaded via React.lazy + Suspense.
+
+Component count: 73 .tsx in components/ + 10 pages + 1 App.tsx = 84 total .tsx files (90 total in src/)
+Hook count: 6
+
+Integration files:
+  src/integrations/supabase/client.ts
+  src/integrations/supabase/types.ts
+  src/api/health.ts
+
+--- DESIGN SYSTEM ADOPTION ---
+@alawein/tokens imported: yes — src/index.css line 8 (@import '@alawein/tokens')
+Theme CSS imported: yes — src/index.css line 9 (@import '@alawein/theme-base')
+@alawein/ui components used: yes — but only cn utility + a subset of primitives
+  cn from @alawein/ui: src/components/comparison/ComparisonTable.tsx:7,
+    src/components/comparison/ModelSelector.tsx:7,
+    src/components/LoadingSpinner.tsx:1,
+    src/components/MicroInteractions.tsx:2,
+    src/components/ui/sidebar.tsx:8,
+    src/components/ui/toast.tsx:6
+  Full component imports from @alawein/ui: BenchmarkRunner.tsx, ResultsViewer.tsx,
+    DebateMode.tsx, ModelManager.tsx (Badge, Button, Card, Select, etc.)
+  Radix primitives also installed directly (@radix-ui/*) — dual dependency on Radix both
+  through @alawein/ui and direct installs; likely redundant package tree.
+Custom tokens vs design system tokens: predominantly design system tokens — 550 var(--*)
+  references vs 70 hardcoded hex values. The hex values appear in chart/visualization
+  components (recharts color arrays) and icon stroke definitions, not in layout or
+  structural styles. @alawein/tokens CSS variables drive spacing, color, and typography
+  throughout; no evidence of a parallel hardcoded color system.
+Drift level: Low
+  Rationale: 550 var(--*) references vs 70 hardcoded hex values; hard-coded values isolated
+  to chart color arrays (recharts) and icon strokes, not layout or structural styles —
+  drift is well-bounded, not systemic.
+Evidence: index.css:8-9 tokens/theme correctly imported; @alawein/ui used for primitives
+  but cn utility imported 6 ways suggesting incomplete migration from local shadcn copies.
+  src/components/ui/ subdirectory contains locally-vendored shadcn components (sidebar.tsx,
+  toast.tsx) co-existing with @alawein/ui imports — parallel component trees.
+
+--- COMPONENT QUALITY ---
+Loading states: present — ArenaLoadingStates.tsx dedicated component; LoadingSpinner.tsx
+  with PageLoader; Suspense+PageLoader on all route-level lazy loads (App.tsx:82-83).
+  Missing on BenchmarkRunner.tsx and ResultsViewer.tsx — both use synchronous local state
+  only, no async loading UI needed since data is entirely mock.
+Error states: partial — ErrorBoundary.tsx wraps all routes (App.tsx:81). Per-component
+  error handling sparse; BenchmarkRunner has no error path. useAuth.tsx surfaces auth errors.
+Empty states: missing — ResultsViewer hardcodes 3 sample results; no empty-state branch
+  when results array would be empty.
+TypeScript coverage: strict (tsconfig strict: true); 14 ": any" usages across src/
+  — primarily in lib/ utilities (monitoring.ts, security.ts, health.ts) not component layer.
+Form patterns: consistent — ModelManager.tsx is the primary form surface; uses Input,
+  Label, Select, Textarea, Switch all imported from @alawein/ui with controlled useState
+  bindings throughout. Other form-like surfaces (SettingsPage.tsx, AccessibilityToolbar.tsx,
+  KeyboardShortcutsModal.tsx) follow the same @alawein/ui primitive pattern. No raw HTML
+  <form> elements or uncontrolled inputs found.
+Key quality issue: BenchmarkRunner.tsx:105-126 — "startBenchmark" loops over 15,459+
+  tasks with setTimeout(resolve, 10) simulation. Running MMLU alone takes 154 seconds of
+  UI-blocking fake progress. No real API call is ever made.
+
+--- ARCHITECTURE ---
+LLM integrations: STUB — zero real provider connections.
+  OpenAI: listed in README and models[] arrays but no SDK import, no fetch call, no API key
+    wiring beyond a placeholder UI field in ModelManager.tsx.
+  Anthropic: same — named in README ("Anthropic integrations where configured") but absent
+    from any import or fetch.
+  Ollama / Cohere / Groq / HuggingFace: not present.
+  Provider references exist only as hardcoded string literals in model selection arrays.
+
+API layer: src/api/ contains only health.ts — a browser-side health-check utility that
+  checks navigator.onLine and localStorage. Database check is explicitly stubbed:
+  "database: true, // Would check Supabase connection in real implementation" (health.ts:54).
+  No backend routes, no edge functions, no proxy for LLM API calls.
+
+Supabase usage: auth only (useAuth.tsx — sign in/up/out/reset). The database schema in
+  types.ts defines evaluations, models, analytics_events, profiles tables but no component
+  reads or writes any of these tables. The models table (with api_key_encrypted field) is
+  schema-only — ModelManager.tsx manages model configs in React useState, never persists
+  to Supabase.
+
+TanStack Query: QueryClient configured with production-grade settings (staleTime 5min,
+  gcTime 10min, retry 2) but useQuery/useMutation are not called anywhere in src/.
+  The entire data layer is synchronous in-component useState with mock data.
+
+Component organization: feature-grouped (arena/, bench/, comparison/, dashboard/,
+  settings/) with a large flat set at components/ root level (~30 files).
+
+Bundle config: manual chunk splitting across 5 vendor buckets (vendor-react, vendor-ui,
+  vendor-charts, vendor-query, vendor-supabase); terser minification with console/debugger
+  drop; chunkSizeWarningLimit raised to 1000KB; es2020 target; @supabase/supabase-js
+  excluded from optimizeDeps (known ESM issue). Security headers applied at both dev
+  server and preview. No notable issues — config is well-structured for a Vite SPA of
+  this size.
+
+Dead code signals:
+  - src/App.css — Vite scaffold boilerplate (.logo, .read-the-docs, logo-spin animation)
+    that is never imported by App.tsx or any component.
+  - src/App.tsx:26-28 — initSecurity, initAdvancedSEO, initMonitoring all commented out.
+  - src/lib/advanced-seo.ts, monitoring.ts, security.ts — present and implemented but
+    never called (all three init functions commented out in App.tsx).
+  - 5 blank import lines at top of BenchmarkRunner.tsx, DebateMode.tsx, ResultsViewer.tsx,
+    ModelManager.tsx suggest imports were removed but lines left (formatting artifact).
+  - ResultsViewer.tsx hardcodes 3 historical results with dates from 2024-01-13/14/15 —
+    purely decorative fixture data.
+
+Key architecture issue: The entire evaluation/benchmark/arena layer is a UI demo with
+  no backend. BenchmarkRunner.tsx:129-141 generates results via Math.random(). DebateMode
+  responses are setTimeout-scheduled hardcoded strings. useModelComparison.ts exports
+  MOCK_MODELS as a hardcoded const. No fetch(), no SDK call, no edge function exists.
+  The Supabase evaluations table schema is defined but entirely unused.
+
+--- PORTFOLIO PRESENTATION ---
+Live site assessment: llmworks.dev presents as a credible-looking LLM evaluation platform
+  with polished UI — arena debate mode, benchmark runner with progress bar, radar/bar
+  comparison charts, cost tracking dashboards, achievement system, accessibility toolbar.
+  On interaction, all "runs" produce random numbers after a simulated delay. A technically
+  literate visitor who runs a benchmark and notices the results vary on each run will
+  recognize the mock data pattern immediately. The disconnect between the README claim
+  ("Runs evaluation and benchmark flows against configured providers") and the actual
+  implementation (Math.random()) is the primary credibility risk.
+
+README quality: Concise, well-written, correct voice. Claims "OpenAI and Anthropic
+  integrations where configured" — this is technically defensible phrasing but misleading
+  given zero integration code exists. The stack section accurately lists the technology
+  but omits that provider integrations are unimplemented. No badges, no live demo link
+  state (just URL). README is not the problem — implementation gap is.
+
+Key presentation gap: Any technical reviewer who clicks "Start Benchmark", waits, then
+  re-runs and gets different results will identify the simulation. The gap between the
+  sophisticated scaffolding (DB schema, model manager with API key fields, encrypted key
+  column) and zero actual API call makes it appear the project was abandoned mid-build
+  rather than intentionally demo-only.
+
+--- FEATURE GAPS ---
+1. Real LLM provider calls: No SDK or fetch to OpenAI, Anthropic, Ollama, or any
+   provider. BenchmarkRunner, DebateMode, and CreativeSandbox all need actual inference.
+2. Supabase data persistence: models, evaluations, analytics_events tables exist in schema
+   but no component reads or writes them. Model configs set in UI are lost on page reload.
+3. Result reproducibility: benchmark results are Math.random() — no deterministic scoring,
+   no stored run history, no ability to compare runs over time.
+4. Security testing flows: llmworks/CLAUDE.md line 45 states "Security-testing flows are
+   first-class product paths" (product description at line 16 also frames it as an
+   "LLM evaluation and security-testing workbench") but no security-specific component,
+   test harness, adversarial prompt suite, or jailbreak detection exists in src/.
+5. Real benchmark datasets: MMLU/TruthfulQA/GSM8K are named but no dataset loading,
+   no eval loop, no per-task result storage. Task counts (15459, 817, 1319) are cosmetic.
+
+--- FINDINGS SUMMARY ---
+Critical: 2 | High: 1 | Medium: 3 | Low: 2
+
+[CRITICAL] All benchmark/eval execution is simulated | Architecture | BenchmarkRunner.tsx:129 (Math.random()), DebateMode.tsx:52-78 (setTimeout mock), useModelComparison.ts:5 (MOCK_MODELS const) | Wire at least one real provider (Anthropic SDK or OpenAI SDK via edge function or proxy) before presenting as an eval platform | XL (min path: single Anthropic SDK call via Supabase edge function — L; full: all 5 providers + eval persistence — XL)
+
+[HIGH] Supabase schema defined but fully unused | Architecture | integrations/supabase/types.ts defines evaluations + models tables; zero .select()/.insert() calls outside useAuth.tsx (ModelManager.tsx uses useState — any API key entered is lost on page reload) | Implement persistence for model configs and eval results using the existing schema | L
+
+[CRITICAL] README claims "OpenAI and Anthropic integrations where configured" with no supporting code | Portfolio | README.md line 26 vs. zero SDK import in any src file | Update README to remove false capability claims AND wire at least one real provider — README fix alone does not close the credibility gap | S
+
+[MEDIUM] Parallel component trees — local shadcn components alongside @alawein/ui | Design System | src/components/ui/sidebar.tsx + toast.tsx import cn from @alawein/ui but are locally vendored duplicates | Consolidate: remove src/components/ui/ vendored copies and source from @alawein/ui | M
+
+[MEDIUM] App.css is Vite scaffold boilerplate, never imported | Dead Code | src/App.css:1-42 (.logo, .read-the-docs, logo-spin) never referenced; App.tsx imports nothing from it | Delete App.css | S
+
+[MEDIUM] lib/ init functions (security, advancedSEO, monitoring) implemented but commented out at call site | Dead Code | App.tsx:26-28, src/lib/advanced-seo.ts, monitoring.ts, security.ts | Either wire the init calls or delete the modules | S
+
+[LOW] TanStack Query configured but never used for data fetching | Architecture | App.tsx:42-61 has production QueryClient config; no useQuery anywhere in src/ | Wire data fetching through TanStack Query when provider calls are implemented | M
+
+[LOW] Empty blank import lines in component files | Code Quality | BenchmarkRunner.tsx:4-8, DebateMode.tsx:3-7, ResultsViewer.tsx:1-5, ModelManager.tsx:3-11 | Remove blank import blocks (likely leftover from removed SDK imports) | S

@@ -71,6 +71,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 - Workspace audit specs and execution plans:
   [`docs/superpowers/specs/`](docs/superpowers/specs/) — triage, per-domain audits, and master execution plan
+  - Active products audit (Spec A):
+    [`docs/superpowers/specs/2026-04-23-active-products-audit.md`](docs/superpowers/specs/2026-04-23-active-products-audit.md) — 75 findings across 8 repos
 
 ## Structure
 

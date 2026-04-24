@@ -160,12 +160,14 @@ Critical and High items where a technical visitor, hiring manager, or collaborat
 
 #### 1.3 Ship `@alawein/ui` primitives — load-bearing for Spec A consolidation
 
-| # | Item | Repo | Severity | Effort | Blocked By | Source |
-|---|------|------|----------|--------|------------|--------|
-| 16 | Ship `@alawein/ui` `<ErrorBoundary>` + `<ErrorFallback>` with typed FallbackProps | design-system | Critical | L | — | Spec B |
-| 17 | Ship `@alawein/ui` `<EmptyState icon title description action>` | design-system | Critical | M | — | Spec B |
-| 18 | Ship `@alawein/ui` `<Spinner>` + `<PageLoader>` (skeleton already shipped) | design-system | Critical | M | — | Spec B |
-| 19 | Publish @alawein/ui minor bump with the three new primitives; update CHANGELOG | design-system | High | S | 16, 17, 18 | Spec B |
+**Status (2026-04-23):** Implementation complete on `feat/ui-error-empty-loading-primitives` (9 commits, origin-pushed). **Publish deferred** pending 2FA OTP entry — see [Deferrals](#deferrals-2026-04-23) below.
+
+| # | Item | Repo | Severity | Effort | Blocked By | Source | Status |
+|---|------|------|----------|--------|------------|--------|--------|
+| 16 | Ship `@alawein/ui` `<ErrorBoundary>` + `<ErrorFallback>` with typed FallbackProps | design-system | Critical | L | — | Spec B | code done (`665d391`); awaits publish (19) |
+| 17 | Ship `@alawein/ui` `<EmptyState icon title description action>` | design-system | Critical | M | — | Spec B | code done (`152514b`); awaits publish (19) |
+| 18 | Ship `@alawein/ui` `<Spinner>` + `<PageLoader>` (skeleton already shipped) | design-system | Critical | M | — | Spec B | code done (`19a705e`); awaits publish (19) |
+| 19 | Publish @alawein/ui minor bump with the three new primitives; update CHANGELOG | design-system | High | S | 16, 17, 18 | Spec B | version bumped (`0315779`); **publish deferred — 2FA OTP needed** |
 | 20 | Migrate bolts ErrorBoundary to @alawein/ui (fixes light-theme-on-dark ErrorBoundary bug) | bolts | High | S | 19 | Spec A |
 | 21 | Migrate repz ErrorBoundary + EmptyState to @alawein/ui | repz | High | M | 19 | Spec A |
 | 22 | Migrate gymboy ErrorFallback (currently untyped, implicit any) to @alawein/ui | gymboy | Medium | S | 19 | Spec A |
@@ -449,6 +451,61 @@ If you find yourself opening Specs A–D to answer "what do I work on next?" —
 - **Phase 4 ready:** continuously — Low items can slot in between larger work when context switching is free.
 
 The phases are priority orderings, not strict barriers. A Low-effort Phase 4 item adjacent to completed Phase 2 work should be done in the same commit — don't delay 2 lines of README polish to "honor" the phase number.
+
+---
+
+## Deferrals (2026-04-23)
+
+Items that reached a natural pause in a given session and need to be resumed later. Each entry names the exact resume step, the blocker, and what's already in place.
+
+### D-1 — Publish `@alawein/ui@0.2.0` (MEP row 19)
+
+**What's done:**
+- Worktree: `design-system-primitives-wt/` on branch `feat/ui-error-empty-loading-primitives` (pushed to `origin/alawein/design-system`).
+- 9 commits: dep add, Spinner/PageLoader, EmptyState, ErrorBoundary/ErrorFallback, Storybook stories, COMPONENTS.md, changeset `.md`, version bump to `0.2.0`, CHANGELOG updated with doctrine frontmatter.
+- 146/146 vitest passing, tsc clean, tsup build clean. `dist/index.js` 99.28 KB, `dist/index.d.ts` 55.61 KB.
+- npm login completed as `malawein` on `registry.npmjs.org`.
+
+**Blocker:** `npm publish` returned 403 — account has 2FA-for-publish enabled. Needs `--otp=XXXXXX` on the command or a granular access token with "bypass 2fa" enabled.
+
+**Resume sequence** (5 min once OTP is handy):
+
+```bash
+cd C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system-primitives-wt
+npm publish -w @alawein/ui --access public --otp=XXXXXX
+git tag @alawein/ui@0.2.0
+git push origin @alawein/ui@0.2.0
+
+# Merge to main — PR or direct-merge
+gh pr create --title "feat(ui): add ErrorBoundary, EmptyState, Spinner primitives (0.2.0)" \
+  --body "Ships MEP rows 16-19. Unblocks rows 20-26 (7 product migrations)."
+
+# After merge: remove worktree
+cd C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system
+git worktree remove ../design-system-primitives-wt
+
+# Mark MEP rows 16-19 done with publish SHA in this file
+```
+
+**Unblocks on completion:** MEP rows 20, 21, 22, 23, 24, 25, 26 (7 product migrations).
+
+### D-2 — bolts `.dark` class activation (prerequisite for row 20)
+
+**Finding:** bolts' `src/app/layout.tsx:69` renders `<html lang="en">` without `className="dark"`. Its `globals.css` imports `@alawein/theme-base`, but theme-base's dark semantic tokens (`--color-foreground`, `--color-card`, etc.) only activate under the `.dark` selector. Bolts therefore uses LIGHT token values on top of its dark `#0d0d0d` body — explaining the Spec A "light-theme-on-dark ErrorBoundary bug" that the audit attributed to `@alawein/ui`.
+
+**Action:** When executing MEP row 20 (migrate bolts ErrorBoundary to `@alawein/ui`), include `className="dark"` on `<html>` in the same PR. Without it, the new `<ErrorFallback>` will render in the same light-on-dark state as the existing fallback.
+
+### D-3 — `@testing-library/dom` missing from `design-system` main (baseline fix)
+
+**Finding:** Fresh worktree from `origin/main` fails `npm test -w @alawein/ui` with `Cannot find module '@testing-library/dom'` — it's a peer of `@testing-library/react@16` that's not installed. The primitives branch includes a commit (`dc73f48`) that adds it as a devDep.
+
+**Action:** After row 19 merges (via PR or direct), the fix lands on main automatically via the feature branch's bundled commit. If someone else branches from main in the meantime, they'll hit the same baseline failure; cherry-pick `dc73f48` if needed.
+
+### D-4 — CHANGELOG.md doctrine-frontmatter gap (pre-existing)
+
+**Finding:** `packages/ui/CHANGELOG.md` was committed in a prior release without YAML frontmatter; the current `.git/hooks/pre-commit` doctrine validator (R1) now requires a `---` header on every staged `.md`. Touching CHANGELOG.md to add a new version section triggers the rule. Fixed on the primitives branch by adding `type: generated`, `source: changesets` to `packages/ui/CHANGELOG.md`. The same gap exists in `packages/@alawein/tokens/CHANGELOG.md` (and likely every `packages/*/CHANGELOG.md`) — not fixed here.
+
+**Action:** Small sweep PR to add doctrine frontmatter to every `packages/*/CHANGELOG.md`. Stand-alone docs fix; no runtime impact. Could be batched with the next real changeset run.
 
 ---
 

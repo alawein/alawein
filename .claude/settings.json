@@ -3,9 +3,5 @@
   "_templateSource": "github.com/alawein/knowledge-base/templates/governance-hooks",
   "project_name": "alawein",
   "project_type": "project",
-  "hooks": {
-    "pre-commit": "bash .claude/hooks/scope-binding-check.sh --warn-only",
-    "post-commit": "bash .claude/hooks/observability-log.sh --log-to docs/operations/session-log.md",
-    "hourly": "bash .claude/hooks/drift-detection.sh"
-  }
+  "_note": "The scripts in .claude/hooks/ (scope-binding-check, observability-log, drift-detection) are vendored from the knowledge-base governance-hooks template. They are NOT wired as Claude Code hooks — Claude Code hook events are PreToolUse/PostToolUse/Stop/UserPromptSubmit/SessionStart, not pre-commit/post-commit/hourly. To actually fire these scripts, install them as git hooks (symlink into .git/hooks/) or run manually."
 }

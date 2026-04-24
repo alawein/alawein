@@ -160,14 +160,14 @@ Critical and High items where a technical visitor, hiring manager, or collaborat
 
 #### 1.3 Ship `@alawein/ui` primitives — load-bearing for Spec A consolidation
 
-**Status (2026-04-23):** Implementation complete on `feat/ui-error-empty-loading-primitives` (9 commits, origin-pushed). **Publish deferred** pending 2FA OTP entry — see [Deferrals](#deferrals-2026-04-23) below.
+**Status (2026-04-24):** DONE. `@alawein/ui@0.2.0` published to npm via PR #19 → squash merge `041320fd` → Release workflow run `24875940881`.
 
 | # | Item | Repo | Severity | Effort | Blocked By | Source | Status |
 |---|------|------|----------|--------|------------|--------|--------|
-| 16 | Ship `@alawein/ui` `<ErrorBoundary>` + `<ErrorFallback>` with typed FallbackProps | design-system | Critical | L | — | Spec B | code done (`665d391`); awaits publish (19) |
-| 17 | Ship `@alawein/ui` `<EmptyState icon title description action>` | design-system | Critical | M | — | Spec B | code done (`152514b`); awaits publish (19) |
-| 18 | Ship `@alawein/ui` `<Spinner>` + `<PageLoader>` (skeleton already shipped) | design-system | Critical | M | — | Spec B | code done (`19a705e`); awaits publish (19) |
-| 19 | Publish @alawein/ui minor bump with the three new primitives; update CHANGELOG | design-system | High | S | 16, 17, 18 | Spec B | version bumped (`0315779`); **publish deferred — 2FA OTP needed** |
+| 16 | Ship `@alawein/ui` `<ErrorBoundary>` + `<ErrorFallback>` with typed FallbackProps | design-system | Critical | L | — | Spec B | DONE 2026-04-24 (`041320fd`) |
+| 17 | Ship `@alawein/ui` `<EmptyState icon title description action>` | design-system | Critical | M | — | Spec B | DONE 2026-04-24 (`041320fd`) |
+| 18 | Ship `@alawein/ui` `<Spinner>` + `<PageLoader>` (skeleton already shipped) | design-system | Critical | M | — | Spec B | DONE 2026-04-24 (`041320fd`) |
+| 19 | Publish @alawein/ui minor bump with the three new primitives; update CHANGELOG | design-system | High | S | 16, 17, 18 | Spec B | DONE 2026-04-24 — published as `@alawein/ui@0.2.0` |
 | 20 | Migrate bolts ErrorBoundary to @alawein/ui (fixes light-theme-on-dark ErrorBoundary bug) | bolts | High | S | 19 | Spec A |
 | 21 | Migrate repz ErrorBoundary + EmptyState to @alawein/ui | repz | High | M | 19 | Spec A |
 | 22 | Migrate gymboy ErrorFallback (currently untyped, implicit any) to @alawein/ui | gymboy | Medium | S | 19 | Spec A |
@@ -458,36 +458,17 @@ The phases are priority orderings, not strict barriers. A Low-effort Phase 4 ite
 
 Items that reached a natural pause in a given session and need to be resumed later. Each entry names the exact resume step, the blocker, and what's already in place.
 
-### D-1 — Publish `@alawein/ui@0.2.0` (MEP row 19)
+### D-1 — Publish `@alawein/ui@0.2.0` (MEP row 19) — ✅ RESOLVED 2026-04-24
 
-**What's done:**
-- Worktree: `design-system-primitives-wt/` on branch `feat/ui-error-empty-loading-primitives` (pushed to `origin/alawein/design-system`).
-- 9 commits: dep add, Spinner/PageLoader, EmptyState, ErrorBoundary/ErrorFallback, Storybook stories, COMPONENTS.md, changeset `.md`, version bump to `0.2.0`, CHANGELOG updated with doctrine frontmatter.
-- 146/146 vitest passing, tsc clean, tsup build clean. `dist/index.js` 99.28 KB, `dist/index.d.ts` 55.61 KB.
-- npm login completed as `malawein` on `registry.npmjs.org`.
+Published via GitHub Actions release workflow (rather than local `npm publish` with 2FA OTP). The design-system repo already had `.github/workflows/release.yml` wired up with `NPM_TOKEN` and `ALAWEIN_RELEASE_TOKEN` secrets; merging PR #19 to main triggered `changesets/action` → `npm run release` → `changeset publish` inside CI, bypassing local 2FA entirely.
 
-**Blocker:** `npm publish` returned 403 — account has 2FA-for-publish enabled. Needs `--otp=XXXXXX` on the command or a granular access token with "bypass 2fa" enabled.
+- PR: https://github.com/alawein/design-system/pull/19
+- Merge commit: `041320fd`
+- Release run: `24875940881` (success, 1m 58s)
+- Published: `@alawein/ui@0.2.0` (+ `react-error-boundary@^4.1.2` as dep)
+- Worktree cleanup: pending (see [Cleanup tasks](#cleanup-tasks-2026-04-24) below).
 
-**Resume sequence** (5 min once OTP is handy):
-
-```bash
-cd C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system-primitives-wt
-npm publish -w @alawein/ui --access public --otp=XXXXXX
-git tag @alawein/ui@0.2.0
-git push origin @alawein/ui@0.2.0
-
-# Merge to main — PR or direct-merge
-gh pr create --title "feat(ui): add ErrorBoundary, EmptyState, Spinner primitives (0.2.0)" \
-  --body "Ships MEP rows 16-19. Unblocks rows 20-26 (7 product migrations)."
-
-# After merge: remove worktree
-cd C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system
-git worktree remove ../design-system-primitives-wt
-
-# Mark MEP rows 16-19 done with publish SHA in this file
-```
-
-**Unblocks on completion:** MEP rows 20, 21, 22, 23, 24, 25, 26 (7 product migrations).
+**Pattern takeaway:** For Turborepo + Changesets + NPM_TOKEN-configured repos, always prefer the CI release workflow over local publish. Avoids 2FA friction and keeps the release reproducible. Applies to every `@alawein/*` package published from `design-system`.
 
 ### D-2 — bolts `.dark` class activation (prerequisite for row 20)
 
@@ -501,11 +482,17 @@ git worktree remove ../design-system-primitives-wt
 
 **Action:** After row 19 merges (via PR or direct), the fix lands on main automatically via the feature branch's bundled commit. If someone else branches from main in the meantime, they'll hit the same baseline failure; cherry-pick `dc73f48` if needed.
 
-### D-4 — CHANGELOG.md doctrine-frontmatter gap (pre-existing)
+### D-4 — CHANGELOG.md doctrine-frontmatter gap — ✅ RESOLVED 2026-04-24 (in-flight during PR #19)
 
-**Finding:** `packages/ui/CHANGELOG.md` was committed in a prior release without YAML frontmatter; the current `.git/hooks/pre-commit` doctrine validator (R1) now requires a `---` header on every staged `.md`. Touching CHANGELOG.md to add a new version section triggers the rule. Fixed on the primitives branch by adding `type: generated`, `source: changesets` to `packages/ui/CHANGELOG.md`. The same gap exists in `packages/@alawein/tokens/CHANGELOG.md` (and likely every `packages/*/CHANGELOG.md`) — not fixed here.
+All 5 `packages/*/CHANGELOG.md` files and `apps/storybook/CHANGELOG.md` now have doctrine-compliant frontmatter (`type: generated`, `source: changesets`). Landed as part of the primitives PR because the strict doctrine check was blocking merge. Two `docs/*.md` files with malformed `---type: canonical` frontmatter (blank line inside block) were also corrected in the same PR.
 
-**Action:** Small sweep PR to add doctrine frontmatter to every `packages/*/CHANGELOG.md`. Stand-alone docs fix; no runtime impact. Could be batched with the next real changeset run.
+### Cleanup tasks (2026-04-24)
+
+Minor housekeeping post-publish.
+
+- **C-1** — Remove worktree: `cd design-system && git worktree remove ../design-system-primitives-wt` (branch was auto-deleted on merge).
+- **C-2** — The design-system `Docs Doctrine` workflow has been failing on main since 2026-04-16 (vale spelling errors for "npm", "colocation", "vendoring", "repos"). Not blocking merges (not a required check), but noisy. Follow-up PR to either extend vale vocabulary or correct the flagged terms. Low priority.
+- **C-3** — `augment-repo.md` frontmatter was fixed to be YAML-valid (quoted `description` and `allowed-tools` fields that had unescaped colons). Worth auditing every `.claude/commands/*.md` across all workspace repos for the same YAML trap.
 
 ---
 

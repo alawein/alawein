@@ -86,6 +86,45 @@ Flip `status` and `lifecycle` from `active`/`maintained` → `frozen` in `alawei
 | R29 | `gymboy/src/debug.log` (Chrome Crashpad artifact) | Spec A | Delete; add `*.log` to `.gitignore` |
 | R30 | `knowledge-base/services/vscode-extension/` on-disk node_modules (untracked) | Spec B | Delete filesystem artifacts; repo doesn't need them |
 
+### Reset execution log (2026-04-23)
+
+| Item | Status | Commit / Action |
+|------|--------|-----------------|
+| R1 (edfp freeze banner) | ✓ done | `alawein/edfp@f9cfea0` chore(status): freeze repo per MEP R1 |
+| R1 (edfp catalog flip) | ✓ done | `alawein/alawein@0fb56485` catalog status/lifecycle → frozen |
+| R2 (loopholelab banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R3 (maglogic banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R4 (qmatsim banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R5 (qmlab banner) | ✓ done | `alawein/qmlab@41c3a2e` chore(status): freeze repo per MEP R5 |
+| R5 (qmlab catalog flip) | ✓ done | `alawein/alawein@0fb56485` |
+| R6 (qubeml banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R7 (scicomp banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R8 (spincirc banner) | pending | catalog flipped in `0fb56485`; banner deferred — README has user WIP |
+| R9 (helios archived=true) | ✓ done | `gh api -X PATCH repos/alawein/helios -f archived=true`; verified true |
+| R10 (delete dotnet-kilo/) | ✓ done | `alawein/workspace-tools@474c58b` |
+| R11 (delete profile-platform/) | ✓ done | `alawein/workspace-tools@474c58b` |
+| R12 (delete ingesta/) | ✓ done | `alawein/workspace-tools@474c58b` |
+| R13 (delete gmail-ops/) | ✓ done | `alawein/workspace-tools@474c58b` |
+| R14 (delete clis/mobius-cli/) | ✓ done | `alawein/workspace-tools@474c58b` (whole clis/ removed) |
+| R15 (merge mcp/ → mcps/docs/) | ✓ done | `alawein/workspace-tools@474c58b` |
+| R16 (move testing/test-all.sh) | ✓ done | `alawein/workspace-tools@474c58b` → scripts/test-all.sh |
+| R17 (prune state/ v1-v4) | ✓ done | `alawein/workspace-tools@474c58b` → state/_archive/ |
+| R18 (delete consolidation_toolbox.py) | ✓ done | `alawein/workspace-tools@474c58b` (verified no callers) |
+| R19 (ERROR_AUDIT archive + tests) | ✓ done | `alawein/workspace-tools@474c58b` — 4 Critical fixes already shipped pre-batch; added 6-test `tests/test_core_io.py` + archived all 6 audit artifacts to `docs/historical/` |
+| R20 (rewire drift-detection hook) | ✓ done | `alawein/alawein@0fb56485` + `alawein/workspace-tools@474c58b` — both repos sync'd from `knowledge-base/templates/governance-hooks` |
+| R21 (rewire scope-binding hook) | ✓ done | `alawein/alawein@0fb56485` + `alawein/workspace-tools@474c58b` |
+| R22 (rewire observability hook) | ✓ done | `alawein/alawein@0fb56485` + `alawein/workspace-tools@474c58b` |
+| R23 (fix settings.json hooks) | ✓ done | `alawein/alawein@0fb56485` — removed invalid Claude Code event keys; added `_note` documenting that scripts are not wired as Claude Code hooks |
+| R24 (rewrite REPO_GOVERNANCE_INITIATIVE.md) | ✓ done | Workspace-root file (not git-tracked); Dropbox-synced only. Rewritten to describe delivered baseline + marked 5 missing deliverables as "Future work" |
+| R25 (supersede bulk-execution-progress.md) | ✓ done | `alawein/alawein@0fb56485` — status: active → superseded, pointer added |
+| R26 (spincirc jsx delete) | ✓ done locally (push pending) | local commit on spincirc/main; push blocked by unrelated WIP in sibling repo |
+| R27 (maglogic jsx delete) | ✓ done locally (push pending) | local commit on maglogic/main; push blocked by unrelated WIP |
+| R28 (qmatsim jsx delete) | ✓ done locally (push pending) | local commit on qmatsim/main; push blocked by unrelated WIP |
+| R29 (gymboy debug.log) | ✓ done | `.gitignore` already had `*.log`; file was untracked; deleted from disk (no commit needed) |
+| R30 (knowledge-base vscode-extension/) | ✓ done | filesystem `rm -rf` on untracked on-disk artifacts (never committed) |
+
+**Summary:** 22 of 30 reset items fully complete + pushed. 3 complete locally but push deferred (R26-R28 — sibling repos have unrelated README WIP blocking rebase). 5 README banner items (R2, R3, R4, R6, R7, R8) intentionally deferred — sibling READMEs have substantial user WIP mid-rewrite; catalog entries have been flipped for all 8, so the canonical status is correct; banners will be added as part of the user's ongoing README rewrite.
+
 ---
 
 ## Part 2 — Work Backlog

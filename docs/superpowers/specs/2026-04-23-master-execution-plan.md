@@ -342,22 +342,22 @@ Critical and High items where a technical visitor, hiring manager, or collaborat
 
 | Severity | Phase 1 | Phase 2 | Phase 3 | Phase 4 | Total |
 |----------|--------:|--------:|--------:|--------:|------:|
-| Critical | 13 | 1 | 1 | 0 | 15 |
-| High | 14 | 22 | 7 | 2 | 45 |
-| Medium | 5 | 15 | 10 | 14 | 44 |
-| Low | 1 | 6 | 0 | 9 | 16 |
-| **Total** | **33** | **44** | **18** | **25** | **120** |
+| Critical | 18 | 2 | 1 | 0 | 21 |
+| High | 10 | 21 | 7 | 2 | 40 |
+| Medium | 9 | 17 | 15 | 13 | 54 |
+| Low | 3 | 4 | 0 | 13 | 20 |
+| **Total** | **40** | **44** | **23** | **28** | **135** |
 
-(Reset items R1–R30 are tracked separately from the 135 backlog numbers; 9 backlog items execute reset decisions.)
+(Reset items R1–R30 are tracked separately; several backlog items — notably 38–40 in Phase 1 and 41–45 in Phase 2 — are the wrappers that actually execute R-numbered resets inside the numbered workflow.)
 
 ### Effort totals
 
 | Effort | Count |
 |--------|------:|
-| S | 61 |
-| M | 42 |
-| L | 26 |
-| XL | 6 |
+| S | 67 |
+| M | 45 |
+| L | 18 |
+| XL | 5 |
 
 ### High-value consolidation wins (ordered by leverage)
 

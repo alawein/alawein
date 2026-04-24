@@ -3,8 +3,6 @@ title: Workspace Audit and Improvement Planning — Design Spec
 date: 2026-04-23
 status: active
 type: canonical
-author: Claude Sonnet 4.6
-session: brainstorming
 ---
 
 # Workspace Audit and Improvement Planning

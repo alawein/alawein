@@ -168,13 +168,13 @@ Critical and High items where a technical visitor, hiring manager, or collaborat
 | 17 | Ship `@alawein/ui` `<EmptyState icon title description action>` | design-system | Critical | M | — | Spec B | DONE 2026-04-24 (`041320fd`) |
 | 18 | Ship `@alawein/ui` `<Spinner>` + `<PageLoader>` (skeleton already shipped) | design-system | Critical | M | — | Spec B | DONE 2026-04-24 (`041320fd`) |
 | 19 | Publish @alawein/ui minor bump with the three new primitives; update CHANGELOG | design-system | High | S | 16, 17, 18 | Spec B | DONE 2026-04-24 — published as `@alawein/ui@0.2.0` |
-| 20 | Migrate bolts ErrorBoundary to @alawein/ui (fixes light-theme-on-dark ErrorBoundary bug) | bolts | High | S | 19 | Spec A | **PR open** 2026-04-24: [alawein/bolts#13](https://github.com/alawein/bolts/pull/13) |
-| 21 | Migrate repz ErrorBoundary + EmptyState to @alawein/ui | repz | High | M | 19 | Spec A | **PR open** 2026-04-24: [alawein/repz#15](https://github.com/alawein/repz/pull/15) |
-| 22 | Migrate gymboy ErrorFallback (currently untyped, implicit any) to @alawein/ui | gymboy | Medium | S | 19 | Spec A | **PR open** 2026-04-24: [alawein/gymboy#25](https://github.com/alawein/gymboy/pull/25) |
-| 23 | Migrate meshal-web ErrorBoundary + PageLoader to @alawein/ui | meshal-web | Medium | M | 19 | Spec A | **PR open** 2026-04-24: [alawein/meshal-web#1](https://github.com/alawein/meshal-web/pull/1) |
-| 24 | Migrate attributa ErrorBoundary + EmptyState to @alawein/ui | attributa | Medium | M | 19 | Spec A | **PR open** 2026-04-24: [alawein/attributa#10](https://github.com/alawein/attributa/pull/10) |
-| 25 | Migrate atelier-rounaq ErrorBoundary to @alawein/ui | atelier-rounaq | Medium | S | 19 | Spec A | **PR open** 2026-04-24: [alawein/atelier-rounaq#11](https://github.com/alawein/atelier-rounaq/pull/11) |
-| 26 | Add llmworks EmptyState (currently missing; silent omission) | llmworks | Medium | S | 19 | Spec A | **PR open** 2026-04-24: [alawein/llmworks#10](https://github.com/alawein/llmworks/pull/10) |
+| 20 | Migrate bolts ErrorBoundary to @alawein/ui (fixes light-theme-on-dark ErrorBoundary bug) | bolts | High | S | 19 | Spec A | DONE 2026-04-24 ([#13](https://github.com/alawein/bolts/pull/13), `4840a1dd`) |
+| 21 | Migrate repz ErrorBoundary + EmptyState to @alawein/ui | repz | High | M | 19 | Spec A | DONE 2026-04-24 ([#15](https://github.com/alawein/repz/pull/15), `21bd1f58`) |
+| 22 | Migrate gymboy ErrorFallback (currently untyped, implicit any) to @alawein/ui | gymboy | Medium | S | 19 | Spec A | DONE 2026-04-24 ([#25](https://github.com/alawein/gymboy/pull/25), `cf76f4b7`) |
+| 23 | Migrate meshal-web ErrorBoundary + PageLoader to @alawein/ui | meshal-web | Medium | M | 19 | Spec A | DONE 2026-04-24 ([#1](https://github.com/alawein/meshal-web/pull/1), `160f98cf`) |
+| 24 | Migrate attributa ErrorBoundary + EmptyState to @alawein/ui | attributa | Medium | M | 19 | Spec A | DONE 2026-04-24 ([#10](https://github.com/alawein/attributa/pull/10), `3177e6a8`) |
+| 25 | Migrate atelier-rounaq ErrorBoundary to @alawein/ui | atelier-rounaq | Medium | S | 19 | Spec A | DONE 2026-04-24 ([#11](https://github.com/alawein/atelier-rounaq/pull/11), `b5213c40`) |
+| 26 | Add llmworks EmptyState (currently missing; silent omission) | llmworks | Medium | S | 19 | Spec A | DONE 2026-04-24 ([#10](https://github.com/alawein/llmworks/pull/10), `868b6102`) |
 
 #### 1.4 Build-breaking product fixes
 
@@ -470,11 +470,9 @@ Published via GitHub Actions release workflow (rather than local `npm publish` w
 
 **Pattern takeaway:** For Turborepo + Changesets + NPM_TOKEN-configured repos, always prefer the CI release workflow over local publish. Avoids 2FA friction and keeps the release reproducible. Applies to every `@alawein/*` package published from `design-system`.
 
-### D-2 — bolts `.dark` class activation (prerequisite for row 20)
+### D-2 — bolts `.dark` class activation — ✅ RESOLVED 2026-04-24 (via bolts PR #13)
 
-**Finding:** bolts' `src/app/layout.tsx:69` renders `<html lang="en">` without `className="dark"`. Its `globals.css` imports `@alawein/theme-base`, but theme-base's dark semantic tokens (`--color-foreground`, `--color-card`, etc.) only activate under the `.dark` selector. Bolts therefore uses LIGHT token values on top of its dark `#0d0d0d` body — explaining the Spec A "light-theme-on-dark ErrorBoundary bug" that the audit attributed to `@alawein/ui`.
-
-**Action:** When executing MEP row 20 (migrate bolts ErrorBoundary to `@alawein/ui`), include `className="dark"` on `<html>` in the same PR. Without it, the new `<ErrorFallback>` will render in the same light-on-dark state as the existing fallback.
+Merged with MEP row 20. `src/app/layout.tsx` now renders `<html lang="en" className={\`dark ${...}\`}>` so `@alawein/theme-base`'s dark semantic tokens activate. The "light-theme-on-dark ErrorBoundary" bug is resolved.
 
 ### D-3 — `@testing-library/dom` missing from `design-system` main (baseline fix)
 
@@ -490,9 +488,11 @@ All 5 `packages/*/CHANGELOG.md` files and `apps/storybook/CHANGELOG.md` now have
 
 Minor housekeeping post-publish.
 
-- **C-1** — Remove worktree: `cd design-system && git worktree remove ../design-system-primitives-wt` (branch was auto-deleted on merge).
+- **C-1** — Remove worktree: `cd design-system && git worktree remove ../design-system-primitives-wt` (branch was auto-deleted on merge). Also applies to 7 migration worktrees from rows 20-26; 6 were auto-cleaned on 2026-04-24, `gymboy-migrate-wt` needs manual `rm -rf` after Windows releases the `node_modules` lock.
 - **C-2** — The design-system `Docs Doctrine` workflow has been failing on main since 2026-04-16 (vale spelling errors for "npm", "colocation", "vendoring", "repos"). Not blocking merges (not a required check), but noisy. Follow-up PR to either extend vale vocabulary or correct the flagged terms. Low priority.
 - **C-3** — `augment-repo.md` frontmatter was fixed to be YAML-valid (quoted `description` and `allowed-tools` fields that had unescaped colons). Worth auditing every `.claude/commands/*.md` across all workspace repos for the same YAML trap.
+- **C-4** — CI rot across migration targets: bolts, repz, gymboy, attributa, atelier-rounaq, llmworks all had failing CI on main **before** the 2026-04-24 migrations landed (lockfile cross-platform drift, pre-existing type errors, pre-existing lint violations, vale spelling, etc.). Rows 20-26 were admin-squash-merged with `--admin` override. A separate CI-rehabilitation pass per repo is warranted before those CI surfaces become trustworthy gates again.
+- **C-5** — `Next.js App Router + @alawein/ui` requires a client-boundary wrapper. bolts added `src/components/AppErrorBoundary.tsx` with `'use client'` re-exporting `ErrorBoundary`/`ErrorFallback` from `@alawein/ui`. If another Next.js consumer adopts `@alawein/ui`, follow the same pattern. A library-side fix (per-component `'use client'` directives or split entry points) would eliminate this in `@alawein/ui@0.3.0`.
 
 ---
 

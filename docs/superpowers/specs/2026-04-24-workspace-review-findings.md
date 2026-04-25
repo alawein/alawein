@@ -26,6 +26,13 @@ feeds: [master-execution-plan]
 
 | Area | Criterion | Repo | Verdict | Evidence | Recommendation | Effort |
 |------|-----------|------|---------|----------|----------------|--------|
+| Community Health | README.md | all sampled | Pass | present in all 9 repos | — | — |
+| Community Health | CONTRIBUTING.md | all sampled | Pass | present in all 9 repos | — | — |
+| Community Health | CODE_OF_CONDUCT.md | all sampled | Pass | present in all 9 repos | — | — |
+| Community Health | SECURITY.md | all sampled | Pass | present in all 9 repos | — | — |
+| Community Health | LICENSE | all sampled | Pass | present in all 9 repos | — | — |
+| Community Health | .github/ISSUE_TEMPLATE/ | meshal-web | Fail | absent at repo root | Add .github/ISSUE_TEMPLATE/ following alawein template | S |
+| Community Health | .github/PULL_REQUEST_TEMPLATE.md | meshal-web | Fail | absent at repo root | Add .github/PULL_REQUEST_TEMPLATE.md following alawein template | S |
 
 ### A2. CI/CD and SHA Pinning
 

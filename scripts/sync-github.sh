@@ -437,6 +437,16 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
     elif codeql_path.exists():
         issues.extend(remove_legacy(codeql_path, check=check))
 
+    docs_managed_src = ORG_REPO / ".github" / "workflows" / "docs-validation-managed.yml"
+    if docs_managed_src.exists():
+        issues.extend(
+            ensure_text(
+                repo_dir / ".github" / "workflows" / "docs-validation-managed.yml",
+                docs_managed_src.read_text(encoding="utf-8"),
+                check=check,
+            )
+        )
+
     for legacy in LEGACY_DELETE:
         issues.extend(remove_legacy(repo_dir / legacy, check=check))
 

@@ -1,6 +1,10 @@
 version: 1
 workflow_ref: ed5ed61aef28cbdd761eeb0654808833bc4564be
 
+required_files:
+  - .github/dependabot.yml
+  - .github/workflows/docs-validation-managed.yml
+
 repos:
   - repo: alawein
     stack: docs

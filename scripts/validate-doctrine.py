@@ -11,6 +11,7 @@ import os
 import sys
 import re
 import argparse
+from datetime import date, timedelta
 from pathlib import Path
 
 try:
@@ -482,6 +483,57 @@ def check_zombies(managed_files, all_contents, result):
             )
 
 
+def check_staleness(managed_files, result):
+    """Rule 10: Managed governance docs must have last_updated within 90 days.
+
+    Emits a warning (not an error) on initial rollout. The grace period is
+    30 days from 2026-04-25; after 2026-05-25 the warning converts to an error.
+    """
+    GRACE_PERIOD_END = date(2026, 5, 25)
+    MAX_AGE_DAYS = 90
+    today = date.today()
+    grace_active = today <= GRACE_PERIOD_END
+
+    for fp in managed_files:
+        path = Path(fp)
+
+        # Only apply to docs/**/*.md (managed governance class). Skip archive.
+        parts = path.parts
+        if "archive" in parts:
+            continue
+        if not any(p == "docs" for p in parts):
+            continue
+        if path.suffix != ".md":
+            continue
+
+        header, _ = parse_header(fp)
+        if not header:
+            continue
+
+        # Only files with last_updated are in scope — others already fail R1/R4.
+        raw_date = header.get("last_updated", "").strip()
+        if not raw_date:
+            continue
+
+        # Parse ISO date. Accept YYYY-MM-DD only.
+        try:
+            doc_date = date.fromisoformat(raw_date)
+        except ValueError:
+            result.warn(fp, "R10", f"last_updated '{raw_date}' is not a valid ISO date (YYYY-MM-DD)")
+            continue
+
+        age_days = (today - doc_date).days
+        if age_days > MAX_AGE_DAYS:
+            msg = (
+                f"last_updated is {age_days} days old (limit: {MAX_AGE_DAYS}). "
+                f"Review and update this doc, or move to docs/archive/ if complete."
+            )
+            if grace_active:
+                result.warn(fp, "R10", msg)
+            else:
+                result.error(fp, "R10", msg)
+
+
 def validate(root, ci_mode=False):
     """Run all validation checks."""
     result = ValidationResult()
@@ -536,6 +588,7 @@ def validate(root, ci_mode=False):
     check_domain_boundaries(managed_files, result, root)
     check_sla_ci_wiring(managed_files, result, root)
     check_zombies(managed_files, all_contents, result)
+    check_staleness(managed_files, result)
 
     success = result.report()
     if ci_mode and not success:

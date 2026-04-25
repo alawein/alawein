@@ -16,7 +16,7 @@ feeds: [master-execution-plan]
 
 ## Executive Summary
 
-> _To be written last (Task S1)._
+The workspace is Yellow. The governance framework exists and is structurally coherent, but enforcement is narrower than declared and the automation layer that should sustain compliance is broken or missing at every layer. The top external gaps are SHA pin maintenance (5 repos with floating `@v4`/`@main` tags, zero `dependabot.yml` files for the `github-actions` ecosystem), private-key patterns missing from all 8 sampled `.gitignore` files, and README structure violations in 6 repos that CI never catches because docs-validation runs only in the control-plane repo. The governance framework is internally consistent but miscalibrated: all six subsystems are either Undermaintained or Overspecified, which means the rules are often correct but the mechanisms to enforce them are absent, broken, or over-scoped for a solo workspace. The three highest-value quick wins are: (1) fix the four broken Claude Code hook event names in `.claude/settings.json` so governance automation actually fires, (2) add `*.pem` and `*.key` to `.gitignore` in all 8 repos via `sync-github.sh` (one propagation pass, zero repo-by-repo work), and (3) update `drift-detection.sh` to exit non-zero when the template source cannot be resolved so it stops reporting a false green on every run. The single most urgent action is closing the admin auth gap in bolts: the `/admin/*` panel is publicly accessible with no session check on the live product.
 
 ---
 
@@ -235,4 +235,22 @@ _Gaps from external standards with no internal governance equivalent._
 
 ## Cross-Cutting Recommendations
 
-> _To be written last (Task S1)._
+### 1. Declare the rule and ship the mechanism together
+
+`github-baseline.md` requires SHA-pinned Actions and names the `github-actions` Dependabot ecosystem as mandatory, but no repo in the workspace has a `dependabot.yml` configured for it, and no doc explains how to locate or rotate SHAs — so the 5 repos with floating `@v4`/`@main` tags are the predictable outcome: the rule exists but the upkeep path does not. Add a "Pin maintenance" section to `github-baseline.md` with the SHA-bump workflow and add a `dependabot.yml` template (schedule: weekly, `package-ecosystem: github-actions`) to the scaffold used by `sync-github.sh`.
+
+### 2. Scope enforcement tiers to match actual enforcement reach
+
+VOICE.md and the alawein CLAUDE.md declare README.md as a "Blocking" surface, but docs-validation.yml runs only in the `alawein` control-plane repo; the 15 `sync:auto` sibling repos have no docs-validation workflow, and Layer A confirmed README violations in meshal-web, alembiq, and fallax that CI never caught. Either propagate a trimmed docs-validation workflow to all `sync:auto` repos via `sync-github.sh`, or rename the tier "Control-plane Blocking" so the label accurately describes the actual enforcement boundary.
+
+### 3. Fix automation that silently no-ops
+
+The workspace has three automation promises that do not run: the Claude Code hooks in `.claude/settings.json` use invalid event names (`pre-commit`, `post-commit`, `hourly`) and never fire; `drift-detection.sh` uses a relative path (`../../../knowledge-base`) that resolves to nothing in most contexts and unconditionally prints "No governance drift detected."; and `github-baseline-audit.py` is not wired into any CI job. Fix the hook event names to valid Claude Code events (`PreToolUse`, `PostToolUse`, `Stop`), make `drift-detection.sh` exit non-zero when the template source cannot be resolved, and wire `github-baseline-audit.py` into the docs-validation workflow.
+
+### 4. Archive completed work and stop treating session logs as canonical docs
+
+REPO_GOVERNANCE_INITIATIVE.md promises 5 deliverables that do not exist; `bulk-execution-progress.md` is marked `type: canonical, status: active` but is a stale 2026-03-12 session log; 14 of 51 governance docs carry `last_updated` dates more than 45 days stale with no CI gate. Layer C confirmed the 30-day SLA creates compliance theater — the field gets bumped without re-verification. Introduce a governance-doc lifecycle (`active`, `completed`, `archived`), move all one-time-migration docs to `docs/governance/archive/` within 30 days of the work shipping, and add a CI staleness gate that enforces the `last_updated` field on non-archived docs with a 90-day rolling window.
+
+### 5. Close the design-system version contract with an automated check
+
+`@alawein/tokens` v0.2.0 and `@alawein/theme-base` v0.3.0 are published, but bolts and gymboy have v0.1.0 installed in `node_modules` and the `knowledge-base` dashboard consumes zero `@alawein/*` packages at all. Layer C confirmed badge validation is not enforced and no `audit:published-vs-installed` script exists. Add a workspace-level `audit:published-vs-installed` script (analogous to `audit:registry` in design-system) that compares the latest published version of each `@alawein/*` package against what each consumer repo has installed, and run it as part of the reusable CI workflow so version drift becomes a CI signal rather than a discovered surprise.

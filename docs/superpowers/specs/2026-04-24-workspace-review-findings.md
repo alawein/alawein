@@ -103,6 +103,10 @@ feeds: [master-execution-plan]
 
 | Area | Criterion | Repo | Verdict | Evidence | Recommendation | Effort |
 |------|-----------|------|---------|----------|----------------|--------|
+| Conventional Commits | Commit format compliance | bolts | Pass | 20/20 commits follow `<type>(<scope>): <desc>` format | — | — |
+| Conventional Commits | Commit format compliance | design-system | Pass | 19/20 commits follow conventional format; 1 violation: `Wave A: reconcile theme registry + tokens audit infrastructure (#11)` — no type prefix | Enforce with commitlint or pre-commit git hook | S |
+| Conventional Commits | Commit format compliance | workspace-tools | Pass | 18/20 commits follow conventional format; 2 violations: `Merge pull request #7 from alawein/docs/...` (GitHub auto-merge message), `merge: integrate quality gates phases 4-5` (`merge` is not a valid conventional type) | Enforce with commitlint; configure `merge` as alias for `chore` or suppress GitHub auto-merge messages via squash-merge policy | S |
+| Semver | Package version format | design-system | Pass | All 23 packages use `MAJOR.MINOR.PATCH` (e.g., `0.2.0`, `0.3.0`); no pre-release or malformed strings | — | — |
 
 ### A — Gap List
 

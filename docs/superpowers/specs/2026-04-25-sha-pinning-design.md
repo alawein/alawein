@@ -4,6 +4,7 @@ date: 2026-04-25
 status: active
 type: canonical
 feeds: [master-execution-plan]
+last_updated: 2026-04-25
 ---
 
 # Spec 5 — Per-Repo SHA Pinning

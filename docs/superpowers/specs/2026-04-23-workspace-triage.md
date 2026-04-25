@@ -4,6 +4,7 @@ date: 2026-04-23
 status: active
 type: canonical
 feeds: [spec-a, spec-b, spec-c, spec-d]
+last_updated: 2026-04-23
 ---
 
 # Workspace Triage — Reset Map

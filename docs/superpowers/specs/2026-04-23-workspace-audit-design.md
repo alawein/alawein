@@ -3,6 +3,7 @@ title: Workspace Audit and Improvement Planning — Design Spec
 date: 2026-04-23
 status: active
 type: canonical
+last_updated: 2026-04-23
 ---
 
 # Workspace Audit and Improvement Planning

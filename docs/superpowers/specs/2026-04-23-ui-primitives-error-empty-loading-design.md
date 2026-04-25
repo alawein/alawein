@@ -4,6 +4,7 @@ date: 2026-04-23
 status: active
 type: canonical
 feeds_from: [active-products-audit, shared-infrastructure-audit, master-execution-plan]
+last_updated: 2026-04-23
 ---
 
 # Design Spec: @alawein/ui Primitives — ErrorBoundary, EmptyState, Spinner, PageLoader

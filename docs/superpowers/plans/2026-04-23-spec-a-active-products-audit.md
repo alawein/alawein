@@ -3,6 +3,7 @@ title: Spec A — Active Products Audit Implementation Plan
 date: 2026-04-23
 status: active
 type: canonical
+last_updated: 2026-04-23
 ---
 
 # Spec A — Active Products Audit Implementation Plan

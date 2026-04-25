@@ -4,6 +4,7 @@ date: 2026-04-23
 status: active
 type: canonical
 feeds: [master-execution-plan]
+last_updated: 2026-04-23
 ---
 
 # Spec C — Governance Audit

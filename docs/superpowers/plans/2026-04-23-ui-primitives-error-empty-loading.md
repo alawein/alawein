@@ -3,6 +3,7 @@ title: "@alawein/ui Primitives Implementation Plan — ErrorBoundary, EmptyState
 date: 2026-04-23
 status: active
 type: canonical
+last_updated: 2026-04-23
 ---
 
 # @alawein/ui Primitives Implementation Plan

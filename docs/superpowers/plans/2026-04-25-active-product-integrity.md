@@ -6,6 +6,7 @@ sla: none
 authority: canonical
 last-verified: 2026-04-25
 audience: [ai-agents, contributors]
+last_updated: 2026-04-25
 ---
 
 # Active Product Integrity Implementation Plan

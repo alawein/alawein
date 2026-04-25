@@ -6,6 +6,7 @@ sla: none
 authority: canonical
 last-verified: 2026-04-24
 audience: [ai-agents, contributors]
+last_updated: 2026-04-24
 ---
 
 # Workspace Comprehensive Review Implementation Plan

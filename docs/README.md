@@ -15,6 +15,8 @@ workspace governance for the `alawein` GitHub organization.
 - Governance operating model:
   [`operating-model.md`](./governance/operating-model.md)
 - Workflow overview: [`workflow.md`](./governance/workflow.md)
+- Repo standardization and baseline enforcement:
+  [`repo-standardization.md`](./governance/repo-standardization.md)
 
 ## Governance by task
 

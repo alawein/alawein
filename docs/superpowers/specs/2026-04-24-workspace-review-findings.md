@@ -38,6 +38,19 @@ feeds: [master-execution-plan]
 
 | Area | Criterion | Repo | Verdict | Evidence | Recommendation | Effort |
 |------|-----------|------|---------|----------|----------------|--------|
+| CI/CD Security | SHA pinning — actions/* (checkout, setup-node, etc.) | alawein, design-system, workspace-tools, bolts, repz | Pass | All uses: pinned to 40-char SHA (e.g. `actions/checkout@de0fac2e...`) | — | — |
+| CI/CD Security | SHA pinning — reusable workflow ref | design-system, workspace-tools, bolts, repz, alembiq, knowledge-base | Pass | All reference `alawein/.github/workflows/*@ed5ed61aef28cbdd761eeb0654808833bc4564be` | — | — |
+| CI/CD Security | SHA pinning — doctrine-reusable workflow ref | meshal-web, design-system (docs-doctrine.yml) | Fail | `alawein/alawein/.github/workflows/doctrine-reusable.yml@main` — mutable tag, not SHA | Pin to canonical SHA `ed5ed61aef28cbdd761eeb0654808833bc4564be` | S |
+| CI/CD Security | SHA pinning — doctrine-reusable workflow ref | fallax | Partial | `doctrine-reusable.yml@e036032418348c7085ce1cd34eed6c3a4266fbb1` — SHA-pinned but different from canonical `ed5ed61...` | Update to canonical SHA `ed5ed61aef28cbdd761eeb0654808833bc4564be` | S |
+| CI/CD Security | SHA pinning — actions/checkout, actions/setup-node | knowledge-base (career-profile-checks.yml, ci-app.yml, ci-smoke.yml, resume-latex.yml, smoke-production.yml) | Fail | `actions/checkout@v4`, `actions/setup-node@v4` — mutable tags | Pin to 40-char SHA | S |
+| CI/CD Security | SHA pinning — actions/checkout, actions/setup-node | meshal-web (ci.yml, security.yml) | Fail | `actions/checkout@v4`, `actions/setup-node@v4` — mutable tags | Pin to 40-char SHA | S |
+| CI/CD Security | SHA pinning — github/codeql-action | meshal-web (security.yml) | Fail | `github/codeql-action/init@v3`, `github/codeql-action/analyze@v3` — mutable tags | Pin to 40-char SHA | S |
+| CI/CD Security | SHA pinning — actions/checkout, actions/setup-node, dorny/paths-filter | alembiq (ci.yml) | Fail | `actions/checkout@v4`, `actions/setup-node@v4`, `dorny/paths-filter@v3` — mutable tags (mixed: some steps SHA-pinned, some not) | Pin all uses to 40-char SHA | S |
+| CI/CD Security | SHA pinning — actions/checkout, astral-sh/setup-uv | fallax (ci.yml, ci-smoke.yml) | Fail | `actions/checkout@v4`, `astral-sh/setup-uv@v6` — mutable tags | Pin to 40-char SHA | S |
+| CI/CD Security | Permissions block — top-level `permissions: contents: read` | meshal-web, fallax | Partial | No top-level `permissions:` block in ci.yml | Add `permissions: contents: read` at workflow level | S |
+| CI/CD Security | Permissions block — top-level `permissions: contents: read` | alawein (ci.yml) | Partial | No top-level `permissions:` block; relies on repo default | Add `permissions: contents: read` at workflow level | S |
+| CI/CD Security | Concurrency block with `cancel-in-progress: true` | alawein, design-system, workspace-tools, knowledge-base, bolts, repz, alembiq, fallax | Pass | `concurrency:` block with `cancel-in-progress: true` present | — | — |
+| CI/CD Security | Concurrency block with `cancel-in-progress: true` | meshal-web | Fail | No `concurrency:` block in ci.yml | Add `concurrency: group: ..., cancel-in-progress: true` | S |
 
 ### A3. Branch Protection and Secrets Hygiene
 

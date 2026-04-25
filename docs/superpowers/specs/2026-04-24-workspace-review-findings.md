@@ -128,7 +128,7 @@ _Gaps from external standards with no internal governance equivalent._
 
 | Subsystem | Verdict | Rationale | Recommendation |
 |-----------|---------|-----------|----------------|
-| Voice contract | | | |
+| Voice contract | Undermaintained | The forbidden-register list (23 phrases) is fully implemented in validate.py and enforced as a blocking gate on README/CLAUDE.md/prompt-kit surfaces — that part is sound. However, the structural README rules (factual opener, no motivational footers, contribution-path link) and the badge rule ("current, verifiable state only") have no corresponding validator checks; Layer A found 6 repos missing contribution-path links and stale version badges in meshal-web and alembiq with no automated enforcement. The mathematical-notation section is correctly marked Advisory but carries no scope qualifier, so it reads as governing all 30+ repos rather than only scientific-exposition surfaces. | (1) Add a `check_readme_structure` function to validate.py that flags missing contribution-path links and detects version badges (`![](https://img.shields.io/badge/...version...`) on blocking surfaces. (2) Add a scope note to the mathematical-notation section: "Applies to scientific papers, theses, and research docs; not to product or tooling repos." Effort: S. |
 | Enforcement tiers | | | |
 | Documentation doctrine | | | |
 | Workflow baseline | | | |

@@ -37,7 +37,7 @@ if (!NOTION_TOKEN || !NOTION_DB_ID) {
   process.exit(1);
 }
 
-const LEGACY_NAMES = new Set(['morphism.systems']);
+const LEGACY_NAMES = new Set(['kohyr.com']);
 
 const headers = {
   Authorization: `Bearer ${NOTION_TOKEN}`,

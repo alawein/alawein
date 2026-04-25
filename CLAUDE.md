@@ -20,7 +20,7 @@ policies used across sibling repos.
 This repo does not own product code. Each sibling top-level directory in the
 workspace is an independent git repo.
 
-Company: Morphism Systems (Cache Me Outside LLC)  
+Company: Kohyr (Cache Me Outside LLC)  
 GitHub: `github.com/alawein`  
 Contact: `contact@meshal.ai`
 

@@ -26,7 +26,7 @@ next_phase: lockfile-pilot-and-cursor-audit
 
 **Scope (from workstream report §4):**
 - Cursor skill paths and discovery
-- Claude Code local plugins (morphism, repo-superpowers, knowledge, workspace, superpowers, governance)
+- Claude Code local plugins (kohyr, repo-superpowers, knowledge, workspace, superpowers, governance)
 - Codex pre-bootstrap skill inventory
 - Kilo Code pre-bootstrap skill inventory
 - Cline and other agents receiving skills outside policy allowlist

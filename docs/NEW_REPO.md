@@ -9,7 +9,7 @@ last_updated: 2026-04-16
 category: governance
 audience: [contributors, ai-agents]
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 tags: [governance, bootstrap, onboarding, doctrine]
 ---

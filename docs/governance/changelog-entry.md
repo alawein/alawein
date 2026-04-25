@@ -9,7 +9,7 @@ last_updated: 2026-03-28
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 tags: [changelog, releases, documentation, workflow]
 ---

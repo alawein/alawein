@@ -59,7 +59,7 @@ Cursor-local parity (if using Cursor plugin directly):
 2. `/compound-engineering:reproduce-bug <issue-number>`
 3. `/compound-engineering:workflows:review`
 
-## Morphism Add-On (Only in morphism repos)
+## Morphism Add-On (Only in kohyr repos)
 
 - `/morphism:session-start`
 - `/morphism:context`

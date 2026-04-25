@@ -60,14 +60,14 @@ Audit performed on operator machine (Windows 11 WSL/Git Bash environment) follow
 
 | Plugin | Skills Count | Names |
 |--------|-------------|-------|
-| morphism | 6 | daily-focus, morphism-context, tenet-awareness, tooling-catalog, validation-reminder, weekly-review |
+| kohyr | 6 | daily-focus, morphism-context, tenet-awareness, tooling-catalog, validation-reminder, weekly-review |
 | repo-superpowers | 12 | base-class-extract, ci-tooling-setup, codebase-audit, code-quality-standards, dependency-audit, error-hardening, full-cleanup-pipeline, package-modernize, readme-rewrite, tech-debt-blitz, test-bootstrap |
 | knowledge | 13 | consolidate, develop, extract, ingest, query, resume-audit, resume-sync, resume-tailor, status, sync-migrate, sync-pull, sync-push, update |
 | workspace | 4 | devkit-release, pre-ship, repo-health-sweep, research-publish |
 | superpowers | 2 | platform-plan, writing-plans |
 | governance | 2 | kernel-patterns, policy-authoring |
 
-**Total plugin skills:** 39 unique (49 with morphism + repo-superpowers counted once)
+**Total plugin skills:** 39 unique (49 with kohyr + repo-superpowers counted once)
 
 ### 3.3 Plugin Enable Status (from `~/.claude/settings.json`)
 ```
@@ -84,7 +84,7 @@ governance: NOT LISTED (disabled)
 
 ### 3.5 Duplication Check
 **Plugin names vs Global/Agent skills:**
-- ✓ No overlap found (morphism, repo-superpowers, knowledge skills do not collide with Vercel pack)
+- ✓ No overlap found (kohyr, repo-superpowers, knowledge skills do not collide with Vercel pack)
 
 ---
 

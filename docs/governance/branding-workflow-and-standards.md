@@ -67,7 +67,7 @@ Social links in footer (for sites with visible footers):
 - GitHub: `https://github.com/alawein`
 - LinkedIn: `https://www.linkedin.com/in/alawein/`
 - meshal.ai: `https://meshal.ai/`
-- Morphism Systems: `https://morphism.systems/`
+- Kohyr: `https://kohyr.com/`
 
 ## Theme — which app uses what
 

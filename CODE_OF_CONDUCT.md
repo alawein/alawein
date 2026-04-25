@@ -9,7 +9,7 @@ last_updated: 2026-03-28
 category: governance
 audience: all
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 2.1.0
 tags: [governance, community, conduct, contributor-covenant]
 ---

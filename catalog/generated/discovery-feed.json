@@ -256,7 +256,7 @@
           "client",
           "research"
         ],
-        "homepage": "https://morphism.systems",
+        "homepage": "https://kohyr.com",
         "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
         "topics": [
           "ai-governance",
@@ -1368,7 +1368,7 @@
         "client",
         "research"
       ],
-      "homepage": "https://morphism.systems",
+      "homepage": "https://kohyr.com",
       "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
       "topics": [
         "ai-governance",
@@ -3768,7 +3768,7 @@
       "slug": "morphism",
       "repo": "morphism-systems/morphism",
       "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "homepage": "https://morphism.systems",
+      "homepage": "https://kohyr.com",
       "topics": [
         "ai-governance",
         "typescript",
@@ -4568,7 +4568,7 @@
           "client",
           "research"
         ],
-        "homepage": "https://morphism.systems",
+        "homepage": "https://kohyr.com",
         "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
         "topics": [
           "ai-governance",

@@ -8,7 +8,7 @@ description: Docs-first guidance for changelog updates, tags, release readiness,
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 last_updated: "2026-04-15"
 tags: [release, changelog, tags, rollback, governance]

@@ -8,7 +8,7 @@ description: End-to-end lifecycle for docs, governance, asset, and feature work 
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 last_updated: 2026-03-28
 tags: [workflow, features, lifecycle, branching, validation]

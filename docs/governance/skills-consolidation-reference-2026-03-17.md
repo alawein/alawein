@@ -62,7 +62,7 @@ status: active
 
 ### Claude Code Plugins (Tier 3)
 **Location:** `~/.claude/plugins/cache/local/` + official plugins
-**Plugin Skills:** morphism (6), repo-superpowers (12), knowledge (13), workspace (4), superpowers (2), governance (2) = 39 unique
+**Plugin Skills:** kohyr (6), repo-superpowers (12), knowledge (13), workspace (4), superpowers (2), governance (2) = 39 unique
 **Status:** No overlap with global or pre-bootstrap agent skills
 
 ---

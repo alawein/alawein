@@ -21,7 +21,7 @@ This document summarizes work completed in March 2026 around **repo cataloging**
 |-----|---------|
 | [skills-install-policy.md](../governance/skills-install-policy.md) | Tiers, collision rules, allowlisted agents, MCP vs skills |
 | [skills-agents-unification.md](../governance/skills-agents-unification.md) | Universal / ecosystem / org taxonomy |
-| [maintenance-skills-agents.md](../governance/maintenance-skills-agents.md) | Artifact map, morphism scope |
+| [maintenance-skills-agents.md](../governance/maintenance-skills-agents.md) | Artifact map, kohyr scope |
 | [slash-commands-catalog.md](../governance/slash-commands-catalog.md) | Slash workflows + machine setup pointer |
 | `_workspace/docs/repo-catalog.md` (full clone only) | Tooling vs product repos, skills CLI notes |
 | `_ops/mcp/README.md` (full clone only) | MCP default vs optional guidance |
@@ -50,7 +50,7 @@ This document summarizes work completed in March 2026 around **repo cataloging**
   - **Three tiers:** (1) machine global via `skills add … -g`, (2) repo `./skills/`, (3) Claude plugin–bundled skills.
   - **Collision rule:** one owning tier per skill `name:` (no duplicate bodies across plugin vs global vs repo).
   - **Allowlisted agents** in policy and bootstrap: `cursor`, `claude-code`, `codex`.
-  - Tables of **morphism** and **repo-superpowers** plugin-owned skills — do not re-install those via Tier 1.
+  - Tables of **kohyr** and **repo-superpowers** plugin-owned skills — do not re-install those via Tier 1.
   - **MCP vs skills:** separate layers; points to `_ops/mcp/README.md`.
 - Updated **maintenance-skills-agents.md** (artifact map row for global `skills` installs).
 - Updated **slash-commands-catalog.md** (machine setup → policy + bootstrap).
@@ -121,7 +121,7 @@ Use this as a **checklist per machine** (or per teammate). Record findings in a 
 ### 4.2 Claude Code (CLI)
 
 - [ ] List `~/.claude/skills` (or symlink targets from `.agents`) — confirm **5 Vercel skills** resolve.
-- [ ] Confirm **morphism** / **repo-superpowers** plugin skills **not** duplicated under the same `name:` as a global pack.
+- [ ] Confirm **kohyr** / **repo-superpowers** plugin skills **not** duplicated under the same `name:` as a global pack.
 - [ ] Run **`/repo-superpowers:context`** or session flow — ensure plugin commands still behave (Tier 3 intact).
 
 ### 4.3 Codex (OpenAI Codex CLI / agent)

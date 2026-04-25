@@ -9,7 +9,7 @@ last_updated: 2026-04-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 tags: [github, ci, security, profile, governance]
 ---

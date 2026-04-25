@@ -9,7 +9,7 @@ last_updated: 2026-04-15
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.1.0
 tags: [git, stash, workflow, clean-slate, notebooks, assets]
 ---

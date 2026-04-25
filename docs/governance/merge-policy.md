@@ -8,7 +8,7 @@ description: Approved merge strategies, readiness criteria, exceptions, and clea
 category: governance
 audience: contributors
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 last_updated: 2026-03-28
 tags: [merge, pull-requests, branch-protection, workflow, policy]

@@ -21,9 +21,9 @@ Use these strings exactly where the surface calls for them.
 
 ```text
 Name:     Meshal Alawein
-Role:     Computational Scientist · AI Systems Engineer · Founder, Morphism Systems
+Role:     Computational Scientist · AI Systems Engineer · Founder, Kohyr
 Degrees:  PhD EECS, UC Berkeley
-Company:  Morphism Systems (Cache Me Outside LLC)
+Company:  Kohyr (Cache Me Outside LLC)
 GitHub:   github.com/alawein
 Contact:  contact@meshal.ai · +1-(415)-660-6676
 Stack:    Python · TypeScript · C++ · CUDA · VASP · SIESTA · LAMMPS

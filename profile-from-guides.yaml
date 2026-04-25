@@ -27,21 +27,21 @@ updated: 2026-04-14
 variant_default: balanced
 urls:
   website: https://meshal.ai
-  morphism: https://morphism.systems
+  morphism: https://kohyr.com
   email: mailto:contact@meshal.ai
   linkedin: https://linkedin.com/in/alawein
   github: https://github.com/alawein
 tagline: Computational scientist and AI systems engineer building auditable AI systems.
 tagline_quote: ''
 bio_short: Computational scientist and AI systems engineer building auditable AI,
-  scientific-computing, and product systems. Founder of Morphism Systems. PhD
+  scientific-computing, and product systems. Founder of Kohyr. PhD
   in EECS from UC Berkeley.
 bio_long: Computational scientist and AI systems engineer building auditable AI,
-  scientific-computing, and product systems. Founder of Morphism Systems. PhD
+  scientific-computing, and product systems. Founder of Kohyr. PhD
   in EECS from UC Berkeley.
 bio_bullets: 'UC Berkeley PhD EECS
 
-  Morphism Systems founder
+  Kohyr founder
 
   AI governance, HPC, and product systems
 

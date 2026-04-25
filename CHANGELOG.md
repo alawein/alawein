@@ -8,7 +8,7 @@ description: Version history and notable changes to the alawein organization rep
 category: documentation
 audience: all
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 last_updated: 2026-04-09
 tags: [changelog, version-history, releases]
@@ -27,7 +27,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - `projects.json` **infrastructure** entries: canonical `url` for GitHub (`aw-devkit`, `workspace-tools`, `pkos`, `handshake-hai`, `handshake-project-proctor`) and **`reasonbench`** row; schema allows optional `url`, `status`, `note` on infrastructure objects.
 - [`scripts/audit-last-commit-messages.ps1`](scripts/audit-last-commit-messages.ps1): list top-level repos whose **latest** commit is still the bulk `chore: sync workspace changes` message (hygiene / follow-up triage).
-- Ops glossary [`docs/operations/github-notion-sync-glossary.md`](docs/operations/github-notion-sync-glossary.md): `Sync [project]` vs `GitHub Sync`, canonical `projects.json` → Notion flow, per-repo scan vs Notion push, **rule #4** out-of-scope guardrail for architecture drift, naming note for Morphism Systems Inc.
+- Ops glossary [`docs/operations/github-notion-sync-glossary.md`](docs/operations/github-notion-sync-glossary.md): `Sync [project]` vs `GitHub Sync`, canonical `projects.json` → Notion flow, per-repo scan vs Notion push, **rule #4** out-of-scope guardrail for architecture drift, naming note for Kohyr Inc.
 - Claude Code **worked examples** (CLAUDE.md, rules, commands, skills, agents, settings): [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md). Cursor rule [`.cursor/rules/claude-code-governance.mdc`](.cursor/rules/claude-code-governance.mdc) applies when editing `.claude/` or `CLAUDE.md` (`.gitignore` now allows `.cursor/rules/`).
 - Claude Code reference: [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md) and copy-paste prompts/checklists [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md) (extracted from internal reference material).
 - Audit doc [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.
@@ -37,7 +37,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - Tracked workspace index mirror [`docs/INDEX.md`](docs/INDEX.md) (keep in sync with workspace-root `INDEX.md` when cloning the full tree): infrastructure **GitHub** links for `_devkit`, `_ops`, `_pkos`; product list includes `reasonbench/`, `_handshake-hai/`, `handshake-project-proctor/`; non-repo table cleanup.
-- Author / entity metadata updated to **Morphism Systems Inc.** in repository frontmatter (`author:`) across managed governance and policy Markdown (replacing prior LLC references).
+- Author / entity metadata updated to **Kohyr Inc.** in repository frontmatter (`author:`) across managed governance and policy Markdown (replacing prior LLC references).
 - Documentation contract: `AGENTS.md` / `CLAUDE.md` YAML frontmatter starts at line 1; [`.cursor/rules.md`](.cursor/rules.md) links repaired; root `REPO-SWEEP-PROMPT.md` moved to [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md) with frontmatter; `docs/migration_changelog.md` and `docs/operations/*.md` now include required frontmatter.
 - `scripts/sync-to-notion.mjs`: merges **featured + notion_sync**, writes **Domain** when `portfolio_domain` is set; optional **`NOTION_DOMAIN_PROPERTY`** env (see `.env.example`).
 - README **Projects**: intro copy is minimal/neutral (outside sync markers); table still regenerates from `projects.json` **featured** via `sync-readme.py`. Card links use each entry’s public `url` when set.

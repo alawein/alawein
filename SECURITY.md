@@ -9,7 +9,7 @@ last_updated: 2026-03-28
 category: governance
 audience: all
 status: active
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
 tags: [governance, security, vulnerability, disclosure]
 ---
@@ -18,7 +18,7 @@ tags: [governance, security, vulnerability, disclosure]
 
 ## Reporting Security Vulnerabilities
 
-Please report security vulnerabilities to `security@morphism.systems`.
+Please report security vulnerabilities to `security@kohyr.com`.
 
 Include the repository name, a clear description of the issue, reproduction steps (if available), and the expected impact.
 

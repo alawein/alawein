@@ -87,7 +87,7 @@ category: audits
 - **Global (Tier 1):** 5 (Vercel pack, canonical location)
 - **Codex (Tier 1 legacy):** 50 (retained; no collisions)
 - **Kilo (Tier 1 legacy):** 21 (consolidated from 23)
-- **Plugins (Tier 3):** 39 (morphism, repo-superpowers, knowledge, etc.)
+- **Plugins (Tier 3):** 39 (kohyr, repo-superpowers, knowledge, etc.)
 - **Total:** 115 skills, **0 collisions**
 
 ### Policy Alignment Status

@@ -46,7 +46,7 @@ For each skill **`name:`** in YAML frontmatter, **exactly one owning tier** on a
 
 - Either the **plugin** owns it (Tier 3), **or** it is installed via **`skills add -g`** (Tier 1), **or** it lives only in **repo `./skills/`** (Tier 2).
 
-**Do not** `skills add` a pack that re-ships the same `name` as morphism or repo-superpowers unless you remove the plugin copy first.
+**Do not** `skills add` a pack that re-ships the same `name` as kohyr or repo-superpowers unless you remove the plugin copy first.
 
 ---
 
@@ -144,7 +144,7 @@ These skills already ship inside **local Claude plugins**. **Do not** install ov
 1. `npm install -g skills`
 2. Run `workspace-tools/scripts/bootstrap-skills.ps1` or
    `workspace-tools/scripts/bootstrap-skills.sh` from the full workspace clone
-3. Install Claude plugins (morphism, repo-superpowers) per [maintenance-skills-agents.md](./maintenance-skills-agents.md)
+3. Install Claude plugins (kohyr, repo-superpowers) per [maintenance-skills-agents.md](./maintenance-skills-agents.md)
 4. Configure MCP using `workspace-tools/mcp/README.md` defaults (full workspace clone)
 
 ---

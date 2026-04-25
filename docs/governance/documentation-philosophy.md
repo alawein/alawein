@@ -9,9 +9,9 @@ last_updated: 2026-04-15
 category: documentation
 audience: contributors
 status: historical
-author: Morphism Systems Inc.
+author: Kohyr Inc.
 version: 1.0.0
-tags: [documentation, philosophy, style-guide, morphism, principles]
+tags: [documentation, philosophy, style-guide, kohyr, principles]
 ---
 
 # Morphism Documentation Philosophy

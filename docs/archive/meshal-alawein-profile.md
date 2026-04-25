@@ -24,7 +24,7 @@ related:
   <img alt="typing" src="https://readme-typing-svg.demolab.com/?font=Press%20Start%202P&size=14&duration=3000&pause=800&color=00AAFF&center=true&vCenter=true&width=800&lines=AI+Research+Engineer;Quantum+Materials+Scientist;Scientific+Computing+%26+ML" />
   <br />
   <a href="https://meshal.ai"><img alt="Website" src="https://img.shields.io/badge/Website-meshal.ai-00AAFF?style=flat-square&logo=google-chrome&logoColor=000000" /></a>
-  <a href="mailto:hello@morphism.systems"><img alt="Email" src="https://img.shields.io/badge/Email-hello@morphism.systems-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
+  <a href="mailto:hello@kohyr.com"><img alt="Email" src="https://img.shields.io/badge/Email-hello@kohyr.com-00AAFF?style=flat-square&logo=gmail&logoColor=000000" /></a>
   <a href="https://maps.google.com/?q=Berkeley,CA"><img alt="Location" src="https://img.shields.io/badge/Berkeley,CA-00AAFF?style=flat-square&logo=google-maps&logoColor=000000" /></a>
 <div align="center"><sub>
   <a href="#snapshot">Snapshot</a> •
@@ -48,7 +48,7 @@ related:
 - 11+ years building production-scale ML systems, SFT/RLHF pipelines, and DFT simulations
 - Built and maintained Morphism Framework: 52 packages, 18 platforms; achieved 70% runtime optimization ($160K
   savings)
-- Contact: <hello@morphism.systems> • meshal.ai • +1 (415) 471-8031
+- Contact: <hello@kohyr.com> • meshal.ai • +1 (415) 471-8031
 
 ---
 
@@ -111,7 +111,7 @@ related:
 
 ## Reach Out
 
-- 📧 <hello@morphism.systems>
+- 📧 <hello@kohyr.com>
 - 🌐 <https://meshal.ai>
 - 📞 +1 (415) 471-8031
 - 📍 Bay Area — open to collaborations, advisory work, and selective partnerships
@@ -155,8 +155,8 @@ related:
 <a href="https://meshal.ai">
   <img src="https://img.shields.io/badge/⟨_PORTAL_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f" alt="Portal"/>
 </a>
-<a href="mailto:hello@morphism.systems">
-  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
+<a href="mailto:hello@kohyr.com">
+  <img src="https://img.shields.io/badge/⟨_SIGNAL_⟩-hello@kohyr.com-ff00ff?style=for-the-badge&labelColor=0a0a0f" alt="Signal"/>
 </a>
 <a href="https://linkedin.com/in/alawein">
   <img src="https://img.shields.io/badge/⟨_NETWORK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f" alt="Network"/>
@@ -200,7 +200,7 @@ related:
 class MeshalAlawein:
     def __init__(self):
         self.location = "Berkeley, CA"
-        self.email = "hello@morphism.systems"
+        self.email = "hello@kohyr.com"
         self.website = "meshal.ai"
         self.focus = ["AI/ML Engineering", "Quantum Materials", "Scientific Computing"]
         self.experience = "11+ years production-scale ML systems"
@@ -338,7 +338,7 @@ def current_focus():
 <div align="center">
 
 <a href="https://meshal.ai"><img src="https://img.shields.io/badge/⟨_WEB_⟩-meshal.ai-00f0ff?style=for-the-badge&labelColor=0a0a0f"/></a>
-<a href="mailto:hello@morphism.systems"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-hello@morphism.systems-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
+<a href="mailto:hello@kohyr.com"><img src="https://img.shields.io/badge/⟨_MAIL_⟩-hello@kohyr.com-ff00ff?style=for-the-badge&labelColor=0a0a0f"/></a>
 <a href="https://linkedin.com/in/alawein"><img src="https://img.shields.io/badge/⟨_LINK_⟩-Connect-00ff88?style=for-the-badge&logo=linkedin&labelColor=0a0a0f"/></a>
 
 <br><br>

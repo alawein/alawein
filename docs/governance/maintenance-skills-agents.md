@@ -22,7 +22,7 @@ This is the operational playbook for maintaining the unified model:
 
 Use this document when:
 
-- adding/removing morphism repos
+- adding/removing kohyr repos
 - changing validation boundaries or tenet behavior
 - adding a new org profile with custom checks
 - adding or adjusting universal commands/skills
@@ -35,7 +35,7 @@ Use this document when:
 |---|---|---|---|
 | Universal (Claude) | repo-superpowers | `~/.claude/plugins/cache/local/repo-superpowers/1.0.0/` | commands, skills, agents, quality hook |
 | Universal (Cursor) | workspace-universal | `~/.cursor/plugins/local/workspace-universal/` | session/context slash commands |
-| Ecosystem | morphism | `~/.claude/plugins/cache/local/morphism/1.2.0/` | morphism commands, skills, agents, hooks, universal YAML specs |
+| Ecosystem | kohyr | `~/.claude/plugins/cache/local/morphism/1.2.0/` | kohyr commands, skills, agents, hooks, universal YAML specs |
 | Org | alawein repo | `docs/governance/`, `AGENTS.md`, `CLAUDE.md`, `scripts/` | governance contracts, command catalog, quality-gate scripts |
 | Cursor org hints | alawein repo | `.cursor/rules/` | repo-level Cursor reminders/guardrails |
 | Global skill installs | `skills` CLI (npm) | `~/.agents/skills/` (universal for Cursor/Claude/Codex); `~/.codex/skills/`, `~/.kilocode/skills/` (agent-specific pre-bootstrap installs) | Canonical location `~/.agents/skills/`; symlinked or auto-detected per agent; **policy:** [skills-install-policy.md](./skills-install-policy.md) |
@@ -65,7 +65,7 @@ sync.
 
 ## 3. Morphism Scope Change Checklist
 
-When adding/removing morphism repos or changing scope behavior:
+When adding/removing kohyr repos or changing scope behavior:
 
 1. **SSoT update (required)**  
    Update `lib/repo-detect.md` (repo patterns, detection priority, context behavior).
@@ -202,7 +202,7 @@ After any maintenance change:
 | Surface | Plugin | Expected commands |
 |---|---|---|
 | Claude | repo-superpowers | `workspace:*` aliases and legacy commands (`session-start`, `context`, `check-patterns`, `check-complexity`, `audit-deps`) |
-| Claude | morphism | context, validate, tenet-check, session-start, promote, scope-guard, review |
+| Claude | kohyr | context, validate, tenet-check, session-start, promote, scope-guard, review |
 | Cursor | workspace-universal | session-start, context |
 | Cursor | public plugin set | superpowers, compound-engineering, parallel, context7, sentry, vercel |
 
@@ -215,7 +215,7 @@ Run these checks after plugin/doc updates:
 2. **Generic repo check**  
    Run universal session/context in a non-morphism git repo and verify pre-commit suggestions are project-derived.
 3. **Morphism repo check**  
-   Run morphism context/validate and verify repo detection aligns with `repo-detect.md` and `repos.yaml`.
+   Run kohyr context/validate and verify repo detection aligns with `repo-detect.md` and `repos.yaml`.
 4. **Alawein repo check**  
    Verify alawein reminders include:
    - `python scripts/sync-readme.py --check`
@@ -259,7 +259,7 @@ not only via manifest/frontmatter checks.
 4. Confirm backward-compatible commands still resolve:
    - `/repo-superpowers:session-start`
    - `/repo-superpowers:context`
-5. In a morphism repo, verify morphism commands appear:
+5. In a kohyr repo, verify kohyr commands appear:
    - `/morphism:context`
    - `/morphism:validate --quick`
 

@@ -15,7 +15,7 @@ status: active
 
 This document lists slash commands available from **Cursor plugins** (and, where noted, **Claude Code** plugins). It gives a **reliable order** for running them and **workflows** as series of slashes that work for any repo or directory (with minor differences for git repos vs non-repos).
 
-**Unified taxonomy:** For a single clear set that works for any repo, project, or website (not just governance), see [skills-agents-unification.md](./skills-agents-unification.md). Layers: **Universal** (any dir) | **Ecosystem** (morphism) | **Org** (alawein).
+**Unified taxonomy:** For a single clear set that works for any repo, project, or website (not just governance), see [skills-agents-unification.md](./skills-agents-unification.md). Layers: **Universal** (any dir) | **Ecosystem** (kohyr) | **Org** (alawein).
 For the shortest daily command set, use [operator-command-cheatsheet.md](./operator-command-cheatsheet.md).
 
 **Machine setup (skills across IDEs):** Install the global `skills` CLI,
@@ -54,7 +54,7 @@ allowlisted agents, and avoid colliding with plugin-owned skills — see
 
 Legacy `/repo-superpowers:*` commands remain supported.
 
-**Morphism** — ecosystem-only, morphism repos (`~/.claude/plugins/cache/local/morphism/`): see §1.8 below.
+**Morphism** — ecosystem-only, kohyr repos (`~/.claude/plugins/cache/local/morphism/`): see §1.8 below.
 
 **Workspace-Universal (Cursor local parity plugin)** — `~/.cursor/plugins/local/workspace-universal/`:
 
@@ -165,17 +165,17 @@ Available in **Claude Code** when the Morphism plugin is installed (e.g. `~/.cla
 
 | Command | Description |
 |--------|-------------|
-| `/morphism:validate` | Run morphism validators; explain failures with tenet references. Optional: `--quick` for fast checks before commit. |
+| `/morphism:validate` | Run kohyr validators; explain failures with tenet references. Optional: `--quick` for fast checks before commit. |
 | `/morphism:review` | Full architectural review (tenet-analyzer + validation). |
 | `/morphism:promote` | Guided promotion from lab/ to hub/ with dependency validation. |
-| `/morphism:context` | Show current morphism repo context (allowed/forbidden). |
+| `/morphism:context` | Show current kohyr repo context (allowed/forbidden). |
 | `/morphism:session-start` | Initialize a focused session (read SSOT, declare one goal). |
 | `/morphism:tenet-check` | Scan recent changes for tenet violations. |
 | `/morphism:scope-guard` | Check if current work still matches session goal. |
 | `/morphism:daily-focus` | Today’s focus plan from Master Tasks, Email, Calendar (Agent G). |
 | `/morphism:weekly-review` | Weekly review from Notion databases (Agent H). |
 
-**Run order (morphism repos):** `session-start` → work → `tenet-check` / `scope-guard` as needed → `validate` (e.g. `--quick` before commit) → `review` if doing architectural review.
+**Run order (kohyr repos):** `session-start` → work → `tenet-check` / `scope-guard` as needed → `validate` (e.g. `--quick` before commit) → `review` if doing architectural review.
 
 ---
 
@@ -280,7 +280,7 @@ Or use the single meta-command: `/compound-engineering:lfg` *&lt;feature descrip
 1. `/parallel:parallel-search` *&lt;topic&gt;* or `/parallel:parallel-research` *&lt;topic&gt;*
 2. `/compound-engineering:workflows:plan` *&lt;feature using research findings&gt;*
 
-### 4.5 Morphism session (morphism repos only)
+### 4.5 Morphism session (kohyr repos only)
 
 1. `/morphism:session-start`
 2. Do work; optionally `/morphism:scope-guard` or `/morphism:tenet-check`
@@ -304,7 +304,7 @@ Not slash commands; run in shell:
 | Research | `parallel-search` or `parallel-research` | `parallel-result` if async run |
 | Docs lookup | `context7:docs <lib> [query]` | — |
 | Bug | `reproduce-bug <issue#>` | fix → review |
-| Before commit (morphism) | `morphism:validate --quick` | — |
+| Before commit (kohyr) | `morphism:validate --quick` | — |
 | Before commit (alawein) | `sync-readme.py --check` + `validate-doc-contract.sh --full` | — |
 | Deploy app | `vercel:vercel-deploy` | — |
 | Deploy docs | `deploy-docs` | — |

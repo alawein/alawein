@@ -41,8 +41,8 @@ This page is the **GitHub-side** counterpart to the Operations Hub handoff in No
 
 ## Naming and legal entity
 
-- **Legal / repository metadata:** **Morphism Systems Inc.** (match counsel and filings).
-- **Public / brand copy:** **Morphism Systems** is acceptable where the legal suffix is not required.
+- **Legal / repository metadata:** **Kohyr Inc.** (match counsel and filings).
+- **Public / brand copy:** **Kohyr** is acceptable where the legal suffix is not required.
 
 ## Related docs
 

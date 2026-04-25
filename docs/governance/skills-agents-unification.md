@@ -27,14 +27,14 @@ Operational maintenance, scope changes, and tailoring procedures are tracked in
 
 | Where | What |
 |-------|------|
-| **Claude local plugins** | `~/.claude/plugins/cache/local/` — morphism, repo-superpowers |
+| **Claude local plugins** | `~/.claude/plugins/cache/local/` — kohyr, repo-superpowers |
 | **Cursor plugins** | Public plugins under `~/.cursor/plugins/cache/cursor-public/` plus local parity plugin `~/.cursor/plugins/local/workspace-universal/` |
 | **Alawein repo** | Governance docs, [slash-commands-catalog.md](./slash-commands-catalog.md); no `.cursor/` or `.claude/` in repo |
 
 ### 1.2 Morphism Plugin (Claude, local)
 
 **Path:** `~/.claude/plugins/cache/local/morphism/1.2.0/`  
-**Purpose:** Governance for the morphism ecosystem (validation, tenet compliance, layer transitions, session discipline).
+**Purpose:** Governance for the kohyr ecosystem (validation, tenet compliance, layer transitions, session discipline).
 
 | Type | Name | Description |
 |------|------|-------------|
@@ -114,7 +114,7 @@ Split into three layers so the same mental model works everywhere:
 | Layer | Scope | Examples |
 |-------|--------|----------|
 | **Universal** | Any repo, project, or website (code or docs) | Session start, context, audit, plan, research, validate (generic), deploy |
-| **Ecosystem** | Morphism ecosystem only | Tenets, promote, morphism-context, validation-reminder (morphism) |
+| **Ecosystem** | Morphism ecosystem only | Tenets, promote, morphism-context, validation-reminder (kohyr) |
 | **Org** | Alawein (or another org) only | sync-readme, validate-doc-contract, workspace-master-prompt |
 
 **Principle:** Universal capabilities live in one place and are **invokable from any directory**. Ecosystem and org layers **add** when detected (e.g. morphism-* repo, or alawein repo).
@@ -133,22 +133,22 @@ Proposed **universal** capabilities (names can be standardized):
 
 | Capability | Current home | Notes |
 |------------|---------------|--------|
-| **Session start / context** | — (missing as universal) | “What is this dir? One goal.” Works like morphism session-start but repo-agnostic |
+| **Session start / context** | — (missing as universal) | “What is this dir? One goal.” Works like kohyr session-start but repo-agnostic |
 | **Audit / onboard** | repo-superpowers: codebase-audit | Keep; already “any repo” |
 | **Plan / brainstorm** | superpowers, compound-engineering | Use existing Cursor plugins; document in one place |
 | **Research** | parallel plugin | Document |
 | **Docs lookup** | context7:docs | Document |
-| **Quality checks (generic)** | repo-superpowers: check-patterns, check-complexity, audit-deps | Generic; no morphism tenets |
+| **Quality checks (generic)** | repo-superpowers: check-patterns, check-complexity, audit-deps | Generic; no kohyr tenets |
 | **Cleanup / tech debt** | repo-superpowers: full-cleanup-pipeline, tech-debt-blitz, etc. | Keep as universal |
-| **Validate (generic)** | — | “Run project’s own checks” (e.g. npm test, make check); not morphism:validate |
+| **Validate (generic)** | — | “Run project’s own checks” (e.g. npm test, make check); not kohyr:validate |
 | **Deploy** | vercel-deploy, deploy-docs | Document |
 
-### 2.2 Ecosystem Layer (morphism)
+### 2.2 Ecosystem Layer (kohyr)
 
-Keep as-is; **activate only** when in a morphism-* repo (or when user explicitly invokes morphism commands):
+Keep as-is; **activate only** when in a morphism-* repo (or when user explicitly invokes kohyr commands):
 
-- All morphism commands, skills, agents, hooks
-- validation-reminder only in morphism repos (or when morphism plugin is in use)
+- All kohyr commands, skills, agents, hooks
+- validation-reminder only in kohyr repos (or when kohyr plugin is in use)
 
 ### 2.3 Org Layer (alawein)
 
@@ -170,7 +170,7 @@ Keep in repo; **activate only** when in alawein repo (or when working under alaw
 - **A) New command in repo-superpowers**  
   Add `session-start.md` and `context.md` that:
   - Detect: git repo vs plain dir; if repo, read README, package.json/pyproject.toml/Cargo.toml for project name and scripts.
-  - No morphism tenets; no layer boundaries.
+  - No kohyr tenets; no layer boundaries.
   - Suggest one goal and optional “run these checks before commit” from project’s own config (e.g. npm run validate, make check).
 
 - **B) New minimal “universal” plugin**  
@@ -179,7 +179,7 @@ Keep in repo; **activate only** when in alawein repo (or when working under alaw
   - `commands/context.md`
   - Optional: one skill “universal-context” that triggers on “what is this project”, “session start”, “where am I”.
 
-Recommendation: **A** (keep one “any repo” plugin and extend repo-superpowers) to avoid plugin proliferation. Name the commands so they don’t collide with morphism (e.g. `repo:session-start` or `workspace:context` if you namespace).
+Recommendation: **A** (keep one “any repo” plugin and extend repo-superpowers) to avoid plugin proliferation. Name the commands so they don’t collide with kohyr (e.g. `repo:session-start` or `workspace:context` if you namespace).
 
 ### 3.2 Rename / Namespace repo-superpowers (optional but clear)
 
@@ -190,9 +190,9 @@ Recommendation: **A** (keep one “any repo” plugin and extend repo-superpower
 ### 3.3 Unify Documentation in One Place
 
 - **Single “how to use” doc:** Extend [slash-commands-catalog.md](./slash-commands-catalog.md) to:
-  - List **our** plugins (morphism, repo-superpowers) alongside Cursor public plugins.
+  - List **our** plugins (kohyr, repo-superpowers) alongside Cursor public plugins.
   - Add a **Universal workflow** section: “Any repo or dir” → session-start/context → audit (if repo) → plan → implement → validate (project’s own) → deploy.
-  - Keep **Ecosystem** and **Org** sections so morphism and alawein are clearly optional add-ons.
+  - Keep **Ecosystem** and **Org** sections so kohyr and alawein are clearly optional add-ons.
 
 - **This doc** (skills-agents-unification.md): Keep as the revision plan and taxonomy reference; link to it from CLAUDE.md and slash-commands-catalog.
 
@@ -206,12 +206,12 @@ Recommendation: Start with the **minimal** rule in alawein and the unified doc; 
 
 ### 3.5 Morphism: No Structural Change
 
-- Keep morphism plugin as-is: governance-only, morphism repos only.
-- Ensure **validation-reminder** only suggests `/morphism:validate` when in a morphism repo (or when user has morphism plugin active). No change needed if it’s already scoped by skill description.
+- Keep kohyr plugin as-is: governance-only, kohyr repos only.
+- Ensure **validation-reminder** only suggests `/morphism:validate` when in a kohyr repo (or when user has kohyr plugin active). No change needed if it’s already scoped by skill description.
 
 ### 3.6 Deprecate / Merge Nothing For Now
 
-- **repo-superpowers** and **morphism** stay separate: one universal (any repo), one ecosystem (morphism).
+- **repo-superpowers** and **kohyr** stay separate: one universal (any repo), one ecosystem (kohyr).
 - Public Cursor plugins (superpowers, compound-engineering, parallel) stay as-is; we only **document** how they fit in the universal workflow.
 
 ---
@@ -227,7 +227,7 @@ After revision, a single recommended flow:
 | 3 | **Plan** (if feature/task) | superpowers: brainstorm → write-plan; or compound-engineering: workflows:plan |
 | 4 | **Implement** | compound-engineering: workflows:work or execute-plan |
 | 5 | **Review** | compound-engineering: workflows:review |
-| 6 | **Validate** | Project’s own (npm test, make check, etc.); in morphism add `/morphism:validate`; in alawein add shell checks |
+| 6 | **Validate** | Project’s own (npm test, make check, etc.); in kohyr add `/morphism:validate`; in alawein add shell checks |
 | 7 | **Deploy** (if app/site) | vercel-deploy or deploy-docs |
 
 Ecosystem add-ons:
@@ -241,14 +241,14 @@ Ecosystem add-ons:
 
 | Item | Action |
 |------|--------|
-| **Inventory** | Done in §1: morphism (ecosystem), repo-superpowers (universal), alawein (org + catalog). |
-| **Taxonomy** | Universal (any repo/dir); ecosystem (morphism); org (alawein). See §2. |
+| **Inventory** | Done in §1: kohyr (ecosystem), repo-superpowers (universal), alawein (org + catalog). |
+| **Taxonomy** | Universal (any repo/dir); ecosystem (kohyr); org (alawein). See §2. |
 | **New** | Add universal session-start + context (in repo-superpowers or new universal plugin). §3.1. |
 | **Rename** | Optional: repo-superpowers → workspace/universal-repo with prefixed commands. §3.2. |
 | **Docs** | Extend slash-commands-catalog with “our” plugins and universal workflow; link from CLAUDE.md. §3.3. |
 | **Cursor** | Optional: .cursor rule in alawein; later Cursor plugin for universal commands. §3.4. |
 | **Morphism** | No structural change. §3.5. |
-| **Workflow** | One flow for any repo/dir; morphism and alawein as optional layers. §4. |
+| **Workflow** | One flow for any repo/dir; kohyr and alawein as optional layers. §4. |
 | **Maintenance** | Use [maintenance-skills-agents.md](./maintenance-skills-agents.md) for scope/tailoring updates and edit pathways. |
 
-This gives one clear set that works for **any repo, project, or website**, with governance (morphism) and org (alawein) as explicit, optional layers on top.
+This gives one clear set that works for **any repo, project, or website**, with governance (kohyr) and org (alawein) as explicit, optional layers on top.

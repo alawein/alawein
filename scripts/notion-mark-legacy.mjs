@@ -87,7 +87,7 @@ async function markLegacy(name, replacementLabel, replacementRepo, dbProperties)
 async function main() {
   const db = await notionFetch(`/databases/${NOTION_DB_ID}`, { method: 'GET' });
   const dbProperties = db.properties || {};
-  await markLegacy('morphism.systems', 'Morphism', 'morphism-org/morphism', dbProperties);
+  await markLegacy('kohyr.com', 'Morphism', 'morphism-org/morphism', dbProperties);
   console.log('Legacy marking complete.');
 }
 

@@ -31,7 +31,7 @@ const DRY_RUN = process.env.DRY_RUN === '1';
 // Keep in sync with LEGACY_NAMES in verify-notion-canonical-state.mjs.
 // Rows with these titles are archived historical markers — do NOT fill
 // slug/repo on them, or sync-to-notion.mjs will start upserting them.
-const LEGACY_NAMES = new Set(['morphism.systems']);
+const LEGACY_NAMES = new Set(['kohyr.com']);
 
 if (!NOTION_TOKEN || !NOTION_DB_ID) {
   console.error('Missing NOTION_TOKEN or NOTION_DB_ID.');

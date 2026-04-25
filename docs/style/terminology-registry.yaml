@@ -134,7 +134,7 @@ forbidden_personal_claims:
   #
   # Canonical personal facts (as of 2026-04-17):
   # - PhD in EECS from UC Berkeley (awarded; not in progress)
-  # - Founder, Morphism Systems (Cache Me Outside LLC)
+  # - Founder, Kohyr (Cache Me Outside LLC)
   # - Location: San Francisco, CA
   - phrase: 'PhD candidate'
     reason: 'PhD in EECS from UC Berkeley is awarded; not a candidate.'

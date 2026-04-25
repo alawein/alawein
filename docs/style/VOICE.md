@@ -186,7 +186,7 @@ requires a narrower subset.
 ```text
 Name:     Meshal Alawein
 Degrees:  PhD EECS, UC Berkeley · MS (spintronics / nanomagnetic logic)
-Company:  Morphism Systems (Cache Me Outside LLC)
+Company:  Kohyr (Cache Me Outside LLC)
 GitHub:   github.com/alawein
 Contact:  contact@meshal.ai
 Stack:    Python · TypeScript · C++ · CUDA · VASP · SIESTA · LAMMPS

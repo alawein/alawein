@@ -112,6 +112,16 @@ feeds: [master-execution-plan]
 
 _Gaps from external standards with no internal governance equivalent._
 
+- **SHA pin maintenance process**: `github-baseline.md` requires SHA-pinned Actions and names the `github-actions` Dependabot ecosystem as mandatory, but no repo in the workspace has a `dependabot.yml` configured for it, and no doc explains how to locate new SHAs or schedule pin bumps. The A3 audit found floating `@v4` / `@main` refs in knowledge-base, meshal-web, alembiq, and fallax — exactly the drift that Dependabot would catch. Recommendation: add a "Pin maintenance" section to `docs/governance/github-baseline.md` with the update workflow, and add a template `dependabot.yml` (schedule: weekly, `package-ecosystem: github-actions`) to `scripts/` or the `.github/` scaffold used by `sync-github.sh`. Effort: S.
+
+- **Private key patterns in `.gitignore`**: `credential-hygiene.md` names `.env` as a required `.gitignore` entry but says nothing about `*.pem`, `*.key`, `*.p12`, or other private-key formats. The A4 audit found all 8 sampled repos missing both patterns. GitHub's own push-protection blocks known secret formats but does not substitute for gitignore-level prevention. Recommendation: add `*.pem`, `*.key`, and `*.p12` to the required `.gitignore` entries in `docs/governance/github-baseline.md` and propagate them via `sync-github.sh`. Effort: S.
+
+- **Workflow-level `permissions` block**: `github-baseline.md` lists branch-protection rulesets as manual GitHub settings but has no rule requiring a `permissions:` block in every workflow file. Omitting it means the workflow inherits the org-level `GITHUB_TOKEN` scope, which defaults to `write` for contents — broader than needed. The A3 audit flagged meshal-web as missing this block entirely. Recommendation: add a rule to `docs/governance/github-baseline.md` requiring at minimum `permissions: read-all` at the workflow level with explicit write grants where needed, and add a lint check to `sync-github.sh`. Effort: S.
+
+- **Workflow `concurrency` groups**: No governance doc requires `concurrency:` groups on push/PR workflows. Without them, multiple in-flight runs for the same branch queue and can race on deployments or artifact writes. The A3 audit flagged meshal-web as missing this. Recommendation: add a required `concurrency` block pattern to the workflow baseline section of `docs/governance/github-baseline.md` and to the reusable-workflow templates. Effort: S.
+
+- **Stale version badge rule**: VOICE.md states "use badges only for current, verifiable state" but does not distinguish between CI-status badges (always live via Shields.io API) and version/release badges (go stale unless explicitly updated or automated). The A5 audit found meshal-web carrying stale version badges with no automated refresh. Recommendation: extend the badge rule in `docs/style/VOICE.md` to prohibit manually-maintained version badges unless Renovate or Dependabot is configured to update them, or replace them with CI-generated badges. Effort: XS.
+
 ---
 
 ## Layer C — Governance Framework Critique

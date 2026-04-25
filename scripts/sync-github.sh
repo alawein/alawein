@@ -131,11 +131,53 @@ def render_dependabot(entry: dict, repo_dir: Path) -> str:
             "package-ecosystem": "github-actions",
             "directory": "/",
             "schedule": {"interval": "weekly", "day": "monday"},
-            "open-pull-requests-limit": 10,
+            "commit-message": {"prefix": "ci"},
+            "labels": ["dependencies"],
+            "open-pull-requests-limit": 5,
         }
     )
 
     return yaml.safe_dump({"version": 2, "updates": updates}, sort_keys=False, default_flow_style=False)
+
+
+GITIGNORE_TEMPLATE = """\
+# Build outputs
+dist/
+build/
+out/
+.next/
+__pycache__/
+*.pyc
+*.pyo
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.secret
+*.pem
+*.key
+*.p12
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Scratch / local
+scratch/
+*.bak
+*.tmp
+*.orig
+"""
 
 
 def render_ci_node(entry: dict) -> str:
@@ -379,6 +421,8 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
     for relative_path, source in TEMPLATE_MAP.items():
         destination = repo_dir / relative_path
         issues.extend(ensure_text(destination, source.read_text(encoding="utf-8"), check=check))
+
+    issues.extend(ensure_text(repo_dir / ".gitignore", GITIGNORE_TEMPLATE, check=check))
 
     issues.extend(ensure_text(repo_dir / ".github" / "dependabot.yml", render_dependabot(entry, repo_dir), check=check))
 

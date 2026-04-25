@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills Unification Audit (2026-03-17) — Navigation Guide
 description: Index and navigation for all skills unification workstream documents
-last_updated: 2026-03-18
+last_updated: 2026-04-25
 category: audits
 ---
 
@@ -25,7 +25,7 @@ category: audits
 - Path forward for lockfile pilot and Cursor MCP audit
 
 **Want a one-page quick reference?**
-→ [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md)
+→ [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md)
 - Current state table
 - Architecture decision rationale
 - What not to do
@@ -56,7 +56,7 @@ category: audits
 **Need to understand the current skill architecture?**
 → Read in this order:
 1. [`../governance/skills-install-policy.md`](../governance/skills-install-policy.md) (policy fundamentals)
-2. [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md) (current state + decisions)
+2. [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md) (current state + decisions)
 3. [`machine-audit-mesha-2026-03-17.md`](./machine-audit-mesha-2026-03-17.md) (full inventory and findings)
 
 ---
@@ -68,7 +68,7 @@ category: audits
 | [`skills-unification-workstream-completion-2026-03-17.md`](./skills-unification-workstream-completion-2026-03-17.md) | Final summary; issues resolved; path forward | Operator, PM, Architect | 2-3 min read |
 | [`machine-audit-mesha-2026-03-17.md`](./machine-audit-mesha-2026-03-17.md) | Comprehensive audit of all agents, skills, MCPs on reference machine | Technical reviewer, Auditor | 10-15 min read |
 | [`issue-c-phase2-consolidation-assessment-2026-03-17.md`](./issue-c-phase2-consolidation-assessment-2026-03-17.md) | Phase 2 analysis: should we consolidate more skills? | Architect, Tech Lead | 5-7 min read |
-| [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md) | Quick reference: current state, decisions, troubleshooting | Anyone maintaining skills | 3-5 min read |
+| [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md) | Quick reference: current state, decisions, troubleshooting | Anyone maintaining skills | 3-5 min read |
 | [`../governance/skills-install-policy.md`](../governance/skills-install-policy.md) (updated) | Policy definition (updated with agent compatibility + consolidation notes) | Policy reviewer, Contributor | 5 min read |
 | [`../governance/maintenance-skills-agents.md`](../governance/maintenance-skills-agents.md) (updated) | Artifact map and maintenance procedures (updated with canonical paths) | Maintainer, Contributor | 5 min read |
 
@@ -109,7 +109,7 @@ category: audits
 → See [`issue-c-phase2-consolidation-assessment-2026-03-17.md`](./issue-c-phase2-consolidation-assessment-2026-03-17.md) "Recommendation" section
 
 **Q: What do I do if X happens?**
-→ See [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md) "What To Do If..."
+→ See [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md) "What To Do If..."
 
 **Q: How do I bootstrap a new machine?**
 → See [`../governance/skills-install-policy.md`](../governance/skills-install-policy.md) "New machine checklist"
@@ -125,7 +125,7 @@ Choose your path based on role:
 
 ### Operator/PM/Manager
 - [ ] Read [`skills-unification-workstream-completion-2026-03-17.md`](./skills-unification-workstream-completion-2026-03-17.md)
-- [ ] Skim [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md) "What To Do If..."
+- [ ] Skim [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md) "What To Do If..."
 - [ ] Done ✓
 
 ### Technical Reviewer/Auditor
@@ -137,7 +137,7 @@ Choose your path based on role:
 
 ### Contributor/New Team Member
 - [ ] Read [`../governance/skills-install-policy.md`](../governance/skills-install-policy.md)
-- [ ] Read [`../governance/skills-consolidation-reference-2026-03-17.md`](../governance/skills-consolidation-reference-2026-03-17.md)
+- [ ] Read [`../archive/skills-consolidation-reference-2026-03-17.md`](../archive/skills-consolidation-reference-2026-03-17.md)
 - [ ] Skim [`machine-audit-mesha-2026-03-17.md`](./machine-audit-mesha-2026-03-17.md) §1 and §13 (summary tables)
 - [ ] Done ✓
 

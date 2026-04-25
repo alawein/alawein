@@ -8,13 +8,13 @@ description: Single reference for branch naming, workflow, and Vercel deployment
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-03-17
+last_updated: 2026-04-25
 tags: [branch, naming, workflow, vercel, deployment, convention]
 ---
 
 # Branch and deployment convention
 
-Use this doc as the single reference for **branch naming**, **feature workflow**, and **Vercel deployment** across the `@alawein` org. It aligns [git-operations.md](git-operations.md), [workflow.md](workflow.md), [feature-lifecycle.md](feature-lifecycle.md), and [phase5-version-control-and-deployment.md](phase5-version-control-and-deployment.md).
+Use this doc as the single reference for **branch naming**, **feature workflow**, and **Vercel deployment** across the `@alawein` org. It aligns [git-operations.md](git-operations.md), [workflow.md](workflow.md), [feature-lifecycle.md](feature-lifecycle.md), and [../archive/phase5-version-control-and-deployment.md](../archive/phase5-version-control-and-deployment.md).
 
 ---
 
@@ -70,7 +70,7 @@ Repos under the same org (e.g. `edfp`, `repz`, `meshal-web`, `devkit`, `gymboy`,
   `python scripts/vercel_alias_audit.py --apply`  
   Ensures production alias matches `https://[github-repo-name].vercel.app`.
 
-Repos with `vercel.json` and build/output config: see [phase5-version-control-and-deployment.md](phase5-version-control-and-deployment.md) for the list and build commands.
+Repos with `vercel.json` and build/output config: see [../archive/phase5-version-control-and-deployment.md](../archive/phase5-version-control-and-deployment.md) for the list and build commands.
 
 ---
 
@@ -141,4 +141,4 @@ Workflow filenames in `.github/workflows/` follow these conventions:
 - [workflow.md](workflow.md) — Branch model, merge model, CI
 - [git-operations.md](git-operations.md) — Day-to-day Git mechanics
 - [merge-policy.md](merge-policy.md) — How branches land on `main`
-- [phase5-version-control-and-deployment.md](phase5-version-control-and-deployment.md) — Vercel repo list and steps
+- [../archive/phase5-version-control-and-deployment.md](../archive/phase5-version-control-and-deployment.md) — Vercel repo list and steps

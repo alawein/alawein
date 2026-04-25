@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Handoff — Design & Branding Plan Completion
 description: Context and automation for next session or agent to push, PR, merge, and deploy.
-last_updated: 2026-03-14
+last_updated: 2026-04-25
 ---
 
 # Handoff: Design & Branding Plan
@@ -14,7 +14,7 @@ last_updated: 2026-03-14
 
 - **Goal:** Complete the design/branding agent-executable plan across alawein workspace repos.
 - **Current state:** Phase 1–5 and Vercel deploy done for **11 of 12** Vercel repos. simcore PR #6 merged; repz and meshal-web fixes pushed and deployed. **Attributa:** add **GH_TOKEN** in Vercel (Settings → Environment Variables), then redeploy; see attributa README "Deployment (Vercel)" and `scripts/vercel-install.sh`.
-- **Authority:** [design-branding-summary.md](governance/design-branding-summary.md), [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md), [bulk-execution-progress.md](governance/bulk-execution-progress.md).
+- **Authority:** [design-branding-summary.md](governance/design-branding-summary.md), [remaining-steps-per-repo.md](archive/remaining-steps-per-repo.md), [bulk-execution-progress.md](archive/bulk-execution-progress.md).
 
 ## What was done
 
@@ -37,7 +37,7 @@ last_updated: 2026-03-14
 ## Next steps (in order)
 
 1. **Attributa only:** In Vercel project → Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope). Redeploy.
-2. **(Optional)** Phase 2 deep work and optional fixes per [remaining-steps-per-repo.md](governance/remaining-steps-per-repo.md).
+2. **(Optional)** Phase 2 deep work and optional fixes per [remaining-steps-per-repo.md](archive/remaining-steps-per-repo.md).
 
 ## Automation & one-liners
 

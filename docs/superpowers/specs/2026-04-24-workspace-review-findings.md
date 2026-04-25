@@ -56,6 +56,18 @@ feeds: [master-execution-plan]
 
 | Area | Criterion | Repo | Verdict | Evidence | Recommendation | Effort |
 |------|-----------|------|---------|----------|----------------|--------|
+| Secrets Hygiene | .env in .gitignore | bolts, repz, meshal-web, alembiq, design-system, knowledge-base | Pass | present in all 6 of these repos | — | — |
+| Secrets Hygiene | .env in .gitignore | fallax, workspace-tools | Fail | `.env` absent from .gitignore | Add `.env` to .gitignore | S |
+| Secrets Hygiene | *.pem in .gitignore | all sampled | Fail | `*.pem` absent from all 8 repos (bolts, repz, meshal-web, alembiq, fallax, design-system, workspace-tools, knowledge-base) | Add `*.pem` to .gitignore in all repos | S |
+| Secrets Hygiene | *.key in .gitignore | all sampled | Fail | `*.key` absent from all 8 repos | Add `*.key` to .gitignore in all repos | S |
+| Secrets Hygiene | node_modules/ in .gitignore | bolts, repz, meshal-web, design-system, workspace-tools, knowledge-base | Pass | present in all 6 of these repos | — | — |
+| Secrets Hygiene | node_modules/ in .gitignore | alembiq, fallax | Fail | `node_modules/` absent from .gitignore | Add `node_modules/` to .gitignore | S |
+| Secrets Hygiene | __pycache__/ in .gitignore | bolts, repz, alembiq, fallax, design-system, workspace-tools, knowledge-base | Pass | present in all 7 of these repos | — | — |
+| Secrets Hygiene | __pycache__/ in .gitignore | meshal-web | Fail | `__pycache__/` absent from .gitignore (not a Python repo but still a gap) | Add `__pycache__/` to .gitignore | S |
+| Secrets Hygiene | .DS_Store in .gitignore | bolts, repz, meshal-web, alembiq, design-system, knowledge-base | Pass | present in all 6 of these repos | — | — |
+| Secrets Hygiene | .DS_Store in .gitignore | fallax, workspace-tools | Fail | `.DS_Store` absent from .gitignore | Add `.DS_Store` to .gitignore | S |
+| Secrets Hygiene | .env.example | bolts, repz, meshal-web | Pass | present in all 3 product repos | — | — |
+| Branch Model | feat/fix/chore naming documented | bolts, repz, meshal-web, design-system, workspace-tools | Pass | All 5 repos document branch prefixes (`feat/`, `fix/`, `docs/`, `chore/`, `test/`) in CONTRIBUTING.md | — | — |
 
 ### A4. OSS README Conventions
 

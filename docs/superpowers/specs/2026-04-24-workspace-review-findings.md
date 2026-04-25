@@ -73,6 +73,31 @@ feeds: [master-execution-plan]
 
 | Area | Criterion | Repo | Verdict | Evidence | Recommendation | Effort |
 |------|-----------|------|---------|----------|----------------|--------|
+| README Conventions | No emoji in headings | all sampled | Pass | No emoji found in any heading across all 9 repos | — | — |
+| README Conventions | Factual one-sentence opener | design-system, workspace-tools, knowledge-base, bolts, repz | Pass | All open with repo name + factual one-sentence description | — | — |
+| README Conventions | Factual one-sentence opener | alawein | Partial | Profile README opens with a person name, not a repo description; generated output so not a traditional code repo opener | Acceptable for a profile README; note in doc contract that profile READMEs follow different rules | — |
+| README Conventions | Factual one-sentence opener | meshal-web | Partial | Opener is "Personal site for Meshal Alawein — Tokyo Dusk." — theme name appended reads as aesthetic, not factual description | Rewrite: "meshal-web is the personal site and portfolio for Meshal Alawein." | S |
+| README Conventions | Factual one-sentence opener | alembiq | Partial | Opener is a run-on that leads with the failure-mode problem statement rather than a factual "Alembiq is X" sentence | Rewrite opener to: "Alembiq is LLM training, alignment, and evaluation infrastructure." then start problem context on the next line | S |
+| README Conventions | Factual one-sentence opener | fallax | Partial | H1 "Fallax" is followed by bold-formatted opener `**Fallax** evaluates...` — bold name-in-body is a style affectation, not a clean opener | Remove bold; write as plain sentence | S |
+| README Conventions | For-whom + differentiator paragraph | design-system, workspace-tools, bolts, repz | Partial | Each describes what it does but omits an explicit differentiator vs the obvious alternative (a generic npm monorepo, ad hoc scripts, a generic SaaS template) | Add one sentence per repo naming the alternative it replaces or why its approach is preferred | S |
+| README Conventions | For-whom + differentiator paragraph | alawein | Fail | Profile README has no for-whom section (expected for a profile but is a gap vs the checklist criterion) | Out of scope for a profile README; record as N/A | — |
+| README Conventions | For-whom + differentiator paragraph | knowledge-base | Partial | States it is "successor to _pkos/" but does not explain what _pkos was or why this approach differs | Add one sentence: "It replaces the retired _pkos repo and adds a dashboard, config-audit tooling, and a career lane on a single explicit schema contract." | S |
+| README Conventions | For-whom + differentiator paragraph | fallax | Fail | "Why Fallax" section lists features only; no audience named, no alternative named | Add a paragraph: who this is for (researchers, engineers running evals), and what alternative it replaces (single-turn benchmarks) | S |
+| README Conventions | Quick start with exact commands | alawein | Fail | Profile README has no quick-start section (expected for a profile) | N/A for a profile README; mark as exempted | — |
+| README Conventions | Quick start with exact commands | design-system, workspace-tools, knowledge-base, bolts, repz, meshal-web, alembiq, fallax | Pass | All 8 non-profile repos include runnable commands | — | — |
+| README Conventions | Stack listed | bolts, fallax, meshal-web | Pass | Explicit "Stack" or "Tech Stack" section present | — | — |
+| README Conventions | Stack listed | design-system | Fail | No explicit stack section; Turborepo/TypeScript/Node not stated | Add a one-line "Stack" entry: TypeScript, Turborepo, Node.js | S |
+| README Conventions | Stack listed | repz | Fail | No explicit "Stack" section; Vite + React Router + Supabase mentioned inline only | Add explicit "Stack" section | S |
+| README Conventions | Stack listed | alembiq | Fail | No explicit "Stack" section; Python implied throughout but not declared | Add a one-line "Stack" entry: Python 3.12+, PyTorch, HuggingFace Transformers | S |
+| README Conventions | Stack listed | workspace-tools, knowledge-base | Partial | Stack (Python, Next.js) is mentioned inline in descriptions but there is no dedicated "Stack" section | Add a brief "Stack" line | S |
+| README Conventions | Stack listed | alawein | Fail | Profile README lists projects and focus areas but no technical stack | N/A for a profile README | — |
+| README Conventions | Badges — version badges | meshal-web | Fail | TypeScript 5.7, React 19, Vite 7 version badges — all pin specific versions that will go stale | Remove version badges; keep only License badge | S |
+| README Conventions | Badges — version badges | alembiq | Partial | CI badge (live, Pass) + Python 3.10+ version badge (unverifiable state) + License badge | Remove Python version badge; CI and License badges are acceptable | S |
+| README Conventions | Badges — version badges | fallax | Partial | Python 3.10+ version badge + License badge; no CI badge | Remove Python version badge; consider adding a CI badge instead | S |
+| README Conventions | Badges | alawein, design-system, workspace-tools, knowledge-base, bolts, repz | Pass | No badges or only license badges | — | — |
+| README Conventions | Contribution path | design-system, alembiq, fallax | Pass | CONTRIBUTING.md explicitly linked in README | — | — |
+| README Conventions | Contribution path | workspace-tools, knowledge-base, bolts, repz, meshal-web | Fail | CONTRIBUTING.md exists in each repo but is not linked or mentioned in README | Add a "Contributing" section with a link to CONTRIBUTING.md | S |
+| README Conventions | Contribution path | alawein | Fail | Profile README has no contribution path (CONTRIBUTING.md exists but not linked) | Add a brief "Contributing" or "Contact" section linking CONTRIBUTING.md | S |
 
 ### A5. Conventional Commits and Semver
 

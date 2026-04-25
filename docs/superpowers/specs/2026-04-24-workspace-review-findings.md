@@ -141,7 +141,15 @@ _Gaps from external standards with no internal governance equivalent._
 
 ### Spot-Check Accuracy Notes
 
-_To be filled by Tasks B1–B4._
+**Bolts spot-check (2026-04-24):** 3/3 Criticals confirmed. (1) `account/page.tsx` contains hardcoded `mockUser` with name/email/purchases and no auth check — confirmed. (2) `admin/page.tsx` has no auth gate at the component level (fetches `/api/revenue` via react-query with no session check visible) — confirmed. (3) `node_modules/@alawein/tokens` is v0.1.0 while `package.json` declares `"@alawein/tokens": "0.2.0"` — stale install confirmed; spec framing is accurate.
+
+**Design-system spot-check (2026-04-24):** 3/3 Criticals confirmed. `grep -i "errorboundary|emptystate|loadingspinner|pageloader"` on `@alawein/ui/src/index.ts` returned NONE FOUND — all three component gaps are real.
+
+**Alembiq spot-check (2026-04-24):** Legacy `import neper` not confirmed — source files use `from alembiq.*` throughout (rename is complete). CI SHA matches canonical `ed5ed61aef28cbdd761eeb0654808833bc4564be` exactly.
+
+**Alawein control plane spot-check (2026-04-24):** Broken hook event names confirmed — `.claude/settings.json` contains no `hooks:` key at all; its `_note` field explicitly documents that the three hook scripts (`scope-binding-check`, `observability-log`, `drift-detection`) are not wired as Claude Code hooks and should instead be git hooks. drift-detection.sh no-op confirmed — script uses `template_source=../../../knowledge-base` (relative path that resolves to nothing in most contexts) and silently `continue`s when template files are missing, printing "No governance drift detected." regardless.
+
+**Overall spec accuracy:** 10/11 findings confirmed (alembiq legacy-import finding was incorrect; all others held). Specs are reliable as Layer B input — the one false positive (neper imports) is a resolved migration item; the structural and security findings are accurate.
 
 ### Quick Wins (High impact, S–M effort)
 

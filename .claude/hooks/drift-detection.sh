@@ -1,59 +1,47 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
-# =============================================================================
-# drift-detection.sh — Governance Hook (I-2: Drift Is Debt)
-# Version: 1.1.0
-# Source:  knowledge-base/templates/governance-hooks/hooks/drift-detection.sh
-# =============================================================================
-#
-# Enforces Invariant I-2 (Drift Is Debt): governance files in each project
-# should stay aligned with the canonical governance templates. Sections marked
-# with <!-- CUSTOM OVERRIDE: ... --> are excluded from comparison.
-#
-# Usage:
-#   bash drift-detection.sh                         # auto-detect template source
-#   bash drift-detection.sh /path/to/template-root  # explicit template source
-#
-# Checked files: CLAUDE.md, AGENTS.md, GUIDELINES.md
-#
-# Configuration:
-#   DRIFT_CHECK_INTERVAL — set per-project in .claude/hooks/config.env
-#   (used by the scheduler/settings.json, not by this script directly)
-# =============================================================================
-
-# Source per-project configuration if it exists
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-if [ -f "$SCRIPT_DIR/config.env" ]; then
-  # shellcheck source=/dev/null
-  source "$SCRIPT_DIR/config.env"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+BASELINE="$SCRIPT_DIR/governance-checksums.json"
+
+if [ ! -f "$BASELINE" ]; then
+  echo "ERROR: governance-checksums.json not found at $BASELINE" >&2
+  echo "Run: bash .claude/hooks/update-checksums.sh" >&2
+  exit 1
 fi
 
-# Default: walk up from .claude/hooks/ to repo root, then to sibling knowledge-base
-template_source=${1:-../../../knowledge-base}
+python - "$BASELINE" "$REPO_ROOT" <<'PY'
+import json
+import hashlib
+import sys
+from pathlib import Path
 
-# Resolve to absolute path if relative
-if [[ ! "$template_source" = /* ]]; then
-  template_source="$(cd "$(dirname "$0")" && cd "$template_source" 2>/dev/null && pwd)" || true
-fi
+baseline_path = Path(sys.argv[1])
+repo_root = Path(sys.argv[2])
 
-drift_found=0
+baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+files = baseline.get("files", {})
 
-for file in CLAUDE.md AGENTS.md GUIDELINES.md; do
-  if [ ! -f "$file" ]; then continue; fi
-  if [ ! -f "$template_source/$file" ]; then continue; fi
+drift_found = False
 
-  # Extract non-custom sections and compare
-  grep -v "<!-- CUSTOM OVERRIDE" "$file" > /tmp/"$file".filtered 2>/dev/null || true
-  grep -v "<!-- CUSTOM OVERRIDE" "$template_source/$file" > /tmp/"$file".template.filtered 2>/dev/null || true
+for rel_path, expected_sha in files.items():
+    target = repo_root / rel_path
+    if not target.exists():
+        print(f"MISSING: {rel_path} (expected in governance-checksums.json)")
+        drift_found = True
+        continue
 
-  if ! diff -q /tmp/"$file".filtered /tmp/"$file".template.filtered > /dev/null 2>&1; then
-    echo "DRIFT DETECTED in $file (non-custom sections differ from the template source)"
-    echo "  Run: npx kohyr sync-template --dry-run"
-    drift_found=1
-  fi
-done
+    actual_sha = hashlib.sha256(target.read_bytes()).hexdigest()
+    if actual_sha != expected_sha:
+        print(f"DRIFT: {rel_path}")
+        print(f"  expected: {expected_sha}")
+        print(f"  actual:   {actual_sha}")
+        print(f"  If this change is intentional, run: bash .claude/hooks/update-checksums.sh")
+        drift_found = True
 
-if [ "$drift_found" -eq 0 ]; then
-  echo "No governance drift detected."
-fi
+if drift_found:
+    sys.exit(1)
+else:
+    print("Governance files unchanged.")
+PY

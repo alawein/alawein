@@ -202,14 +202,14 @@ jobs:
           ]
 
           legacy_token_exempt_prefixes = (
-              "docs/governance/phase",
+              "docs/archive/phase",
           )
           legacy_token_exempt_files = {
               "docs/HANDOFF-DESIGN-BRANDING.md",
               "docs/governance/branding-workflow-and-standards.md",
-              "docs/governance/bulk-execution-progress.md",
+              "docs/archive/bulk-execution-progress.md",
               "docs/governance/design-branding-summary.md",
-              "docs/governance/remaining-steps-per-repo.md",
+              "docs/archive/remaining-steps-per-repo.md",
               "docs/audits/technical-debt-report-20260311.md",
           }
 

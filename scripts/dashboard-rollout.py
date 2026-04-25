@@ -21,7 +21,7 @@ DEFAULT_ALLOW = [
     ".github/workflows/github-dashboard-sync.yml",
     "scripts/set-dashboard-token.ps1",
     "scripts/dashboard-rollout.py",
-    "docs/governance/dashboard-rollout-playbook.md",
+    "docs/archive/dashboard-rollout-playbook.md",
     ".env.example",
     ".tools/dashboard-rollout/",
     ".tools/",

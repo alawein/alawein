@@ -67,7 +67,6 @@ workspace governance for the `alawein` GitHub organization.
 
 - [`workspace-standardization.md`](./governance/workspace-standardization.md)
 - [`workspace-layout-audit.md`](./governance/workspace-layout-audit.md)
-- [`workspace-rename-matrix.md`](./governance/workspace-rename-matrix.md)
 - [`package-namespace-matrix.md`](./governance/package-namespace-matrix.md)
 - [`workspace-resource-map.md`](./governance/workspace-resource-map.md)
 - [`workspace-master-prompt.md`](./governance/workspace-master-prompt.md)

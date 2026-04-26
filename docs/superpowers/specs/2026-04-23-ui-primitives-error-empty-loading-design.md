@@ -1,5 +1,5 @@
 ---
-title: @alawein/ui Primitives Design — ErrorBoundary, EmptyState, Spinner, PageLoader
+title: "@alawein/ui Primitives Design — ErrorBoundary, EmptyState, Spinner, PageLoader"
 date: 2026-04-23
 status: active
 type: canonical

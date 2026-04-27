@@ -21,10 +21,10 @@ Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. 12 y
 
 | Project | What it is |
 |---------|-----------|
-| alembiq | LLM training, alignment, evaluation, and synthetic data platform |
-| attributa | Privacy-first attribution intelligence with AI detection and CWE scans |
-| llmworks | LLM evaluation, benchmarking, and security testing |
-| provegate | Epistemic reasoning framework and agent belief infrastructure |
+| [alembiq](https://alembiq.online) | LLM training, alignment, evaluation, and synthetic data platform |
+| [attributa](https://attributa.dev) | Privacy-first attribution intelligence with AI detection and CWE scans |
+| [llmworks](https://llmworks.dev) | LLM evaluation, benchmarking, and security testing |
+| [provegate](https://provegate.online) | Epistemic reasoning framework and agent belief infrastructure |
 
 *Most AI product repos are private. See [kohyr.com](https://kohyr.com) for details.*
 

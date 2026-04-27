@@ -17,7 +17,6 @@ domains:
 - ai-governance
 - hpc
 - web-systems
-- category-theory
 tags:
 - physics
 - ai
@@ -28,17 +27,20 @@ variant_default: balanced
 urls:
   website: https://meshal.ai
   morphism: https://kohyr.com
+  scholar: https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en
   email: mailto:contact@meshal.ai
   linkedin: https://linkedin.com/in/alawein
   github: https://github.com/alawein
 tagline: Computational scientist and AI systems engineer building auditable AI systems.
 tagline_quote: ''
-bio_short: Computational scientist and AI systems engineer building auditable AI,
-  scientific-computing, and product systems. Founder of Kohyr. PhD
-  in EECS from UC Berkeley.
-bio_long: Computational scientist and AI systems engineer building auditable AI,
-  scientific-computing, and product systems. Founder of Kohyr. PhD
-  in EECS from UC Berkeley.
+bio_short: |
+  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
+
+  I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+bio_long: |
+  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
+
+  I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
 bio_bullets: 'UC Berkeley PhD EECS
 
   Kohyr founder
@@ -49,9 +51,40 @@ bio_bullets: 'UC Berkeley PhD EECS
 linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Morphism
   Systems · PhD EECS, UC Berkeley
 profile_pins:
-  - meshal-web
-  - attributa
-  - bolts
-  - scribd
-  - alembiq
-  - llmworks
+  - qmatsim
+  - spincirc
+  - maglogic
+  - scicomp
+  - qubeml
+  - chshlab
+research_rows:
+  - slug: qmatsim
+    url: https://github.com/alawein/qmatsim
+    description: "Multiscale DFT+MD toolkit for strain engineering in 2D materials · *Phys. Rev. Materials 2025*"
+  - slug: spincirc
+    url: https://github.com/alawein/spincirc
+    description: "Spintronic device modeling via spin-circuit methods · *IEEE J-XCDC 2018*"
+  - slug: maglogic
+    url: https://github.com/alawein/maglogic
+    description: "Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019*"
+  - slug: scicomp
+    url: https://github.com/alawein/scicomp
+    description: "Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica"
+  - slug: qubeml
+    url: https://github.com/alawein/qubeml
+    description: "Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane"
+  - slug: chshlab
+    url: https://chshlab.online
+    description: "Interactive CHSH inequality lab — live physics demos and annotated theorem cards"
+
+product_rows:
+  - name: alembiq
+    description: "LLM training, alignment, evaluation, and synthetic data platform"
+  - name: attributa
+    description: "Privacy-first attribution intelligence with AI detection and CWE scans"
+  - name: llmworks
+    description: "LLM evaluation, benchmarking, and security testing"
+  - name: provegate
+    description: "Epistemic reasoning framework and agent belief infrastructure"
+
+stack: "Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase"

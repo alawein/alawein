@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-14",
+  "generatedAt": "2026-04-23",
   "repos": [
     {
       "slug": "meshal-web",
@@ -379,7 +379,7 @@
       "slug": "qmatsim",
       "repo": "alawein/qmatsim",
       "description": "Quantum material simulation research workspace.",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/qmatsim",
       "topics": [
         "quantum",
         "simulation",
@@ -401,7 +401,7 @@
       "slug": "qubeml",
       "repo": "alawein/qubeml",
       "description": "Quantum machine learning experiments and research.",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/qubeml",
       "topics": [
         "quantum",
         "machine-learning",
@@ -422,7 +422,7 @@
       "slug": "scicomp",
       "repo": "alawein/scicomp",
       "description": "Scientific computing utilities and shared numerical tooling.",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/scicomp",
       "topics": [
         "scientific-computing",
         "python",
@@ -443,7 +443,7 @@
       "slug": "spincirc",
       "repo": "alawein/spincirc",
       "description": "Spintronics circuit simulation and modeling research workspace.",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/spincirc",
       "topics": [
         "spintronics",
         "python",
@@ -464,7 +464,7 @@
       "slug": "maglogic",
       "repo": "alawein/maglogic",
       "description": "Magnetic logic gates and device simulation research.",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/maglogic",
       "topics": [
         "magnetics",
         "python",

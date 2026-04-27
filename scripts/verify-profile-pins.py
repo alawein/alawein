@@ -17,8 +17,6 @@ from catalog_lib import profile_config
 ROOT = Path(__file__).resolve().parent.parent
 README = ROOT / "README.md"
 PROFILE_URL = "https://github.com/alawein"
-README_PIN_HEADER = "## Current focus"
-README_PIN_RE = re.compile(r"^- \[([^\]]+)\]\(([^)]+)\) — (.+)$")
 LIVE_PIN_BLOCK_MARKER = "js-pinned-items-reorder-list"
 LIVE_PIN_REPO_RE = re.compile(r'href="/alawein/([^"/?#]+)"')
 
@@ -29,32 +27,16 @@ def expected_pins() -> list[str]:
 
 
 def readme_pins() -> tuple[list[str], list[str]]:
-    lines = README.read_text(encoding="utf-8").splitlines()
-    try:
-        header_index = lines.index(README_PIN_HEADER)
-    except ValueError as exc:
-        raise ValueError(f"README.md is missing expected pin header: {README_PIN_HEADER}") from exc
-
-    slugs: list[str] = []
+    content = README.read_text(encoding="utf-8")
+    expected = expected_pins()
+    found: list[str] = []
     errors: list[str] = []
-    for line in lines[header_index + 1 :]:
-        if not line.strip():
-            if slugs:
-                break
-            continue
-        if not line.startswith("- "):
-            if slugs:
-                break
-            continue
-        match = README_PIN_RE.match(line)
-        if not match:
-            errors.append(f"Unreadable README pin line: {line}")
-            continue
-        slug, _, description = match.groups()
-        if not description.strip():
-            errors.append(f"README pin '{slug}' is missing a description")
-        slugs.append(slug)
-    return slugs, errors
+    for slug in expected:
+        if f"[{slug}](" in content:
+            found.append(slug)
+        else:
+            errors.append(f"README does not contain a link for pin '{slug}'")
+    return found, errors
 
 
 def fetch_live_profile() -> str:

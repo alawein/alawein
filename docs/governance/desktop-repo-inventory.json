@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated": "2026-04-14",
+  "generated": "2026-04-23",
   "workspace_roots": [
     ".",
     "../morphism-systems",

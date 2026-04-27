@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-04-14",
+  "lastUpdated": "2026-04-23",
   "featured": [
     {
       "name": "meshal.ai",
@@ -146,7 +146,7 @@
         "OpenCV",
         "FastAPI"
       ],
-      "category": "planned",
+      "category": "frozen",
       "legacy_slugs": [
         "event-discovery-framework"
       ],
@@ -200,7 +200,7 @@
         "Vite",
         "Supabase"
       ],
-      "category": "active",
+      "category": "frozen",
       "url": "https://qmlab.online",
       "portfolio_domain": "Personal"
     },
@@ -329,31 +329,36 @@
       "name": "qmatsim",
       "slug": "qmatsim",
       "repo": "alawein/qmatsim",
-      "domain": "Quantum material simulation"
+      "domain": "Quantum material simulation",
+      "url": "https://github.com/alawein/qmatsim"
     },
     {
       "name": "qubeml",
       "slug": "qubeml",
       "repo": "alawein/qubeml",
-      "domain": "Quantum ML experiments"
+      "domain": "Quantum ML experiments",
+      "url": "https://github.com/alawein/qubeml"
     },
     {
       "name": "scicomp",
       "slug": "scicomp",
       "repo": "alawein/scicomp",
-      "domain": "Scientific computing utilities"
+      "domain": "Scientific computing utilities",
+      "url": "https://github.com/alawein/scicomp"
     },
     {
       "name": "spincirc",
       "slug": "spincirc",
       "repo": "alawein/spincirc",
-      "domain": "Spintronics circuit simulation"
+      "domain": "Spintronics circuit simulation",
+      "url": "https://github.com/alawein/spincirc"
     },
     {
       "name": "MagLogic",
       "slug": "maglogic",
       "repo": "alawein/maglogic",
-      "domain": "Magnetic logic gates"
+      "domain": "Magnetic logic gates",
+      "url": "https://github.com/alawein/maglogic"
     },
     {
       "name": "CHSH Lab",

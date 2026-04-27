@@ -764,7 +764,7 @@
         "research"
       ],
       "portfolio_domain": "Personal",
-      "research_domain": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO."
+      "research_domain": "Quadratic Assignment Problem solvers \u2014 equilibrium-guided optimization, spectral methods, QUBO."
     },
     {
       "name": "qmlab.online",
@@ -959,7 +959,7 @@
         "research"
       ],
       "portfolio_domain": "Personal",
-      "research_domain": "Computational physics research — Bell inequality, CHSH simulation"
+      "research_domain": "Computational physics research \u2014 Bell inequality, CHSH simulation"
     },
     {
       "name": "Adil",
@@ -1111,7 +1111,7 @@
       "theme_family": "dawn",
       "brand_family": "dawn",
       "status": "frozen",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/qmatsim",
       "canonical_description": "Quantum material simulation research workspace.",
       "tags": [
         "Python",
@@ -1169,7 +1169,7 @@
       "theme_family": "vibrant",
       "brand_family": "vibrant",
       "status": "frozen",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/qubeml",
       "canonical_description": "Quantum machine learning experiments and research.",
       "tags": [
         "Python",
@@ -1226,7 +1226,7 @@
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "status": "frozen",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/scicomp",
       "canonical_description": "Scientific computing utilities and shared numerical tooling.",
       "tags": [
         "Python",
@@ -1282,7 +1282,7 @@
       "theme_family": "forge",
       "brand_family": "forge",
       "status": "frozen",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/spincirc",
       "canonical_description": "Spintronics circuit simulation and modeling research workspace.",
       "tags": [
         "Python",
@@ -1339,7 +1339,7 @@
       "theme_family": "vibrant",
       "brand_family": "vibrant",
       "status": "frozen",
-      "homepage": "",
+      "homepage": "https://github.com/alawein/maglogic",
       "canonical_description": "Magnetic logic gates and device simulation research.",
       "tags": [
         "Python",
@@ -1432,7 +1432,7 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Quantum foundations — CHSH / Bell education site"
+      "research_domain": "Quantum foundations \u2014 CHSH / Bell education site"
     },
     {
       "name": "Helios",
@@ -1486,7 +1486,7 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Proprietary research archive — computational astrophysics"
+      "research_domain": "Proprietary research archive \u2014 computational astrophysics"
     },
     {
       "name": "Loophole Lab",
@@ -1547,7 +1547,7 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Research validation — adversarial claim stress-testing"
+      "research_domain": "Research validation \u2014 adversarial claim stress-testing"
     },
     {
       "name": "Provegate",
@@ -1611,7 +1611,7 @@
         "research",
         "infrastructure"
       ],
-      "research_domain": "Agent MCP tooling — drift, memory, proof"
+      "research_domain": "Agent MCP tooling \u2014 drift, memory, proof"
     },
     {
       "name": "Mercor LLM Failsafe",

@@ -1,8 +1,6 @@
 # Meshal Alawein
 
-Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
-
-I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. 12 years in scientific computing; 6+ in ML/AI.
 
 [meshal.ai](https://meshal.ai) · [kohyr.com](https://kohyr.com) · [Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en) · [contact@meshal.ai](mailto:contact@meshal.ai)
 
@@ -28,11 +26,7 @@ I build at the intersection of physics, machine learning, and auditable software
 | llmworks | LLM evaluation, benchmarking, and security testing |
 | provegate | Epistemic reasoning framework and agent belief infrastructure |
 
-*Most AI product repos are private. See [kohyr.com](https://kohyr.com) for product details.*
-
-## Working On
-
-Quantum computing · AI governance · HPC · Web systems
+*Most AI product repos are private. See [kohyr.com](https://kohyr.com) for details.*
 
 ---
 

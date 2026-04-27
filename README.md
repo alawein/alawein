@@ -10,34 +10,31 @@ Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. 12 y
 
 ---
 
-## Research & Scientific Computing
-
-| Repo | What it is |
-|------|-----------|
-| [qmatsim](https://github.com/alawein/qmatsim) | Multiscale DFT+MD toolkit for strain engineering in 2D materials · *Phys. Rev. Materials 2025* |
-| [spincirc](https://github.com/alawein/spincirc) | Spintronic device modeling via spin-circuit methods · *IEEE J-XCDC 2018* |
-| [maglogic](https://github.com/alawein/maglogic) | Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019* |
-| [scicomp](https://github.com/alawein/scicomp) | Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica |
-| [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane |
-| [fallax](https://github.com/alawein/fallax) | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
-
-## AI Systems & Products
-
-| Project | What it is |
-|---------|-----------|
-| [alembiq](https://alembiq.online) | LLM training, alignment, evaluation, and synthetic data platform |
-| [attributa](https://attributa.dev) | Privacy-first attribution intelligence with AI detection and CWE scans |
-| [llmworks](https://llmworks.dev) | LLM evaluation, benchmarking, and security testing |
-| [provegate](https://provegate.online) | Epistemic reasoning framework and agent belief infrastructure |
-
-*Most AI product repos are private. See [kohyr.com](https://kohyr.com) for details.*
+<table width="100%">
+<tr>
+<th align="left" width="50%">Research &amp; Scientific Computing</th>
+<th align="left" width="50%">AI Systems &amp; Products</th>
+</tr>
+<tr>
+<td valign="top">
+<a href="https://github.com/alawein/qmatsim">qmatsim</a> — DFT+MD for strain engineering in 2D materials · <em>PRM 2025</em><br>
+<a href="https://github.com/alawein/spincirc">spincirc</a> — Spintronic device modeling · <em>IEEE J-XCDC 2018</em><br>
+<a href="https://github.com/alawein/maglogic">maglogic</a> — Nanomagnetic logic simulation · <em>IEEE Mag. Letters 2019</em><br>
+<a href="https://github.com/alawein/scicomp">scicomp</a> — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica<br>
+<a href="https://github.com/alawein/qubeml">qubeml</a> — Quantum-classical ML · VQE, Qiskit/PennyLane<br>
+<a href="https://github.com/alawein/fallax">fallax</a> — LLM reasoning evaluation · logic, math, causal inference
+</td>
+<td valign="top">
+<a href="https://alembiq.online">alembiq</a> — LLM training, alignment, evaluation, synthetic data<br>
+<a href="https://attributa.dev">attributa</a> — Privacy-first attribution · AI detection, CWE scans<br>
+<a href="https://llmworks.dev">llmworks</a> — LLM evaluation, benchmarking, security testing<br>
+<a href="https://provegate.online">provegate</a> — Epistemic reasoning · agent belief infrastructure<br>
+<br>
+<em>Most repos are private. See <a href="https://kohyr.com">kohyr.com</a>.</em>
+</td>
+</tr>
+</table>
 
 ---
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=flat-square&logo=mathworks&logoColor=white)
-![CUDA](https://img.shields.io/badge/CUDA-76B900?style=flat-square&logo=nvidia&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)
+`Python` · `TypeScript` · `MATLAB` · `CUDA` · `PyTorch` · `Next.js` · `Supabase`

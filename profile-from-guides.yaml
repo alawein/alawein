@@ -56,7 +56,7 @@ profile_pins:
   - maglogic
   - scicomp
   - qubeml
-  - chshlab
+  - fallax
 research_rows:
   - slug: qmatsim
     url: https://github.com/alawein/qmatsim
@@ -73,9 +73,9 @@ research_rows:
   - slug: qubeml
     url: https://github.com/alawein/qubeml
     description: "Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane"
-  - slug: chshlab
-    url: https://chshlab.online
-    description: "Interactive CHSH inequality lab — live physics demos and annotated theorem cards"
+  - slug: fallax
+    url: https://github.com/alawein/fallax
+    description: "Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference"
 
 product_rows:
   - name: alembiq
@@ -86,7 +86,5 @@ product_rows:
     description: "LLM evaluation, benchmarking, and security testing"
   - name: provegate
     description: "Epistemic reasoning framework and agent belief infrastructure"
-  - name: fallax
-    description: "Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference"
 
 stack: "Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase"

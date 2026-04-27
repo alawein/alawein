@@ -17,7 +17,7 @@ I build at the intersection of physics, machine learning, and auditable software
 | [maglogic](https://github.com/alawein/maglogic) | Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019* |
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica |
 | [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane |
-| [chshlab](https://chshlab.online) | Interactive CHSH inequality lab — live physics demos and annotated theorem cards |
+| [fallax](https://github.com/alawein/fallax) | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
 
 ## AI Systems & Products
 
@@ -27,7 +27,6 @@ I build at the intersection of physics, machine learning, and auditable software
 | attributa | Privacy-first attribution intelligence with AI detection and CWE scans |
 | llmworks | LLM evaluation, benchmarking, and security testing |
 | provegate | Epistemic reasoning framework and agent belief infrastructure |
-| fallax | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
 
 *Most AI product repos are private. See [kohyr.com](https://kohyr.com) for product details.*
 

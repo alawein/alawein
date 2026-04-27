@@ -54,9 +54,9 @@ profile_pins:
   - qmatsim
   - spincirc
   - maglogic
-  - scicomp
-  - qubeml
+  - meatheadphysicist
   - fallax
+  - scicomp
 research_rows:
   - slug: qmatsim
     url: https://github.com/alawein/qmatsim
@@ -76,6 +76,9 @@ research_rows:
   - slug: fallax
     url: https://github.com/alawein/fallax
     description: "Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference"
+  - slug: meatheadphysicist
+    url: https://github.com/alawein/meatheadphysicist
+    description: "Bell inequality analysis, paper verification, and reproducible research publication — Python + FastAPI + Lean 4"
 
 product_rows:
   - name: alembiq

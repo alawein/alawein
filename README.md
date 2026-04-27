@@ -18,6 +18,7 @@ I build at the intersection of physics, machine learning, and auditable software
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica |
 | [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane |
 | [fallax](https://github.com/alawein/fallax) | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
+| [meatheadphysicist](https://github.com/alawein/meatheadphysicist) | Bell inequality analysis, paper verification, and reproducible research publication — Python + FastAPI + Lean 4 |
 
 ## AI Systems & Products
 

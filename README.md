@@ -27,6 +27,7 @@ I build at the intersection of physics, machine learning, and auditable software
 | attributa | Privacy-first attribution intelligence with AI detection and CWE scans |
 | llmworks | LLM evaluation, benchmarking, and security testing |
 | provegate | Epistemic reasoning framework and agent belief infrastructure |
+| fallax | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
 
 *Most AI product repos are private. See [kohyr.com](https://kohyr.com) for product details.*
 

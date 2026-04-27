@@ -86,5 +86,7 @@ product_rows:
     description: "LLM evaluation, benchmarking, and security testing"
   - name: provegate
     description: "Epistemic reasoning framework and agent belief infrastructure"
+  - name: fallax
+    description: "Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference"
 
 stack: "Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase"

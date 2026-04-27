@@ -1,8 +1,12 @@
+<div align="center">
+
 # Meshal Alawein
 
 Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. 12 years in scientific computing; 6+ in ML/AI.
 
 [meshal.ai](https://meshal.ai) · [kohyr.com](https://kohyr.com) · [Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en) · [contact@meshal.ai](mailto:contact@meshal.ai)
+
+</div>
 
 ---
 
@@ -30,4 +34,10 @@ Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. 12 y
 
 ---
 
-**Stack:** Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=flat-square&logo=mathworks&logoColor=white)
+![CUDA](https://img.shields.io/badge/CUDA-76B900?style=flat-square&logo=nvidia&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=flat-square&logo=supabase&logoColor=white)

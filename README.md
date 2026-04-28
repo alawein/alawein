@@ -1,39 +1,44 @@
-# Meshal Alawein
+<div align="center">
 
-Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:16213e&height=120&section=header&text=Meshal%20Alawein&fontSize=42&fontColor=c9d1d9&fontAlignY=65&animation=fadeIn" width="100%"/>
 
-I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+Founder @ Kohyr · AI Systems Engineer · Computational Scientist
 
-[meshal.ai](https://meshal.ai) · [kohyr.com](https://kohyr.com) · [Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en) · [contact@meshal.ai](mailto:contact@meshal.ai)
+[![meshal.ai](https://img.shields.io/badge/meshal.ai-0d1117?style=flat-square&logo=astro&logoColor=58a6ff)](https://meshal.ai)&nbsp;[![kohyr.com](https://img.shields.io/badge/%F0%9F%8F%A2%20kohyr.com-0d1117?style=flat-square&logoColor=58a6ff)](https://kohyr.com)&nbsp;[![Scholar](https://img.shields.io/badge/Scholar-0d1117?style=flat-square&logo=googlescholar&logoColor=58a6ff)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en)&nbsp;[![contact](https://img.shields.io/badge/contact@meshal.ai-0d1117?style=flat-square&logo=maildotru&logoColor=58a6ff)](mailto:contact@meshal.ai)
 
----
-
-## Research & Scientific Computing
-
-| Repo | What it is |
-|------|-----------|
-| [qmatsim](https://github.com/alawein/qmatsim) | Multiscale DFT+MD toolkit for strain engineering in 2D materials · *Phys. Rev. Materials 2025* |
-| [spincirc](https://github.com/alawein/spincirc) | Spintronic device modeling via spin-circuit methods · *IEEE J-XCDC 2018* |
-| [maglogic](https://github.com/alawein/maglogic) | Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019* |
-| [scicomp](https://github.com/alawein/scicomp) | Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica |
-| [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane |
-| [fallax](https://github.com/alawein/fallax) | Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference |
-
-## AI Systems & Products
-
-| Project | What it is |
-|---------|-----------|
-| alembiq | LLM training, alignment, evaluation, and synthetic data platform |
-| attributa | Privacy-first attribution intelligence with AI detection and CWE scans |
-| llmworks | LLM evaluation, benchmarking, and security testing |
-| provegate | Epistemic reasoning framework and agent belief infrastructure |
-
-*Most AI product repos are private. See [kohyr.com](https://kohyr.com) for product details.*
-
-## Working On
-
-Quantum computing · AI governance · HPC · Web systems
+</div>
 
 ---
 
-**Stack:** Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase
+<table width="100%">
+<tr>
+<th>Research & Scientific Computing</th>
+<th>AI Systems & Products</th>
+</tr>
+<tr>
+<td valign="top" width="50%">
+
+<a href="https://github.com/alawein/qmatsim"><strong>qmatsim</strong></a> — DFT+MD quantum materials simulator. <em>PRM 2025</em><br><br>
+<a href="https://github.com/alawein/spincirc"><strong>spincirc</strong></a> — Spintronic circuit modelling framework. <em>IEEE J-XCDC 2018</em><br><br>
+<a href="https://github.com/alawein/maglogic"><strong>maglogic</strong></a> — Nanomagnetic logic simulator. <em>IEEE Mag. Letters 2019</em><br><br>
+<a href="https://github.com/alawein/scicomp"><strong>scicomp</strong></a> — PDE solvers, PINNs, HPC utilities
+
+</td>
+<td valign="top" width="50%">
+
+<a href="https://alembiq.online"><strong>alembiq</strong></a> — LLM training, alignment, and fine-tuning infrastructure<br><br>
+<a href="https://attributa.dev"><strong>attributa</strong></a> — Privacy-first attribution and analytics<br><br>
+<a href="https://llmworks.dev"><strong>llmworks</strong></a> — LLM evaluation and benchmarking platform<br><br>
+<a href="https://provegate.online"><strong>provegate</strong></a> — Epistemic reasoning and provenance verification
+
+</td>
+</tr>
+</table>
+
+---
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-0d1117?style=flat-square&logo=python&logoColor=58a6ff)&nbsp;![TypeScript](https://img.shields.io/badge/TypeScript-0d1117?style=flat-square&logo=typescript&logoColor=58a6ff)&nbsp;![MATLAB](https://img.shields.io/badge/MATLAB-0d1117?style=flat-square&logo=matrix&logoColor=58a6ff)&nbsp;![CUDA](https://img.shields.io/badge/CUDA-0d1117?style=flat-square&logo=nvidia&logoColor=58a6ff)&nbsp;![PyTorch](https://img.shields.io/badge/PyTorch-0d1117?style=flat-square&logo=pytorch&logoColor=58a6ff)&nbsp;![Next.js](https://img.shields.io/badge/Next.js-0d1117?style=flat-square&logo=nextdotjs&logoColor=58a6ff)&nbsp;![Supabase](https://img.shields.io/badge/Supabase-0d1117?style=flat-square&logo=supabase&logoColor=58a6ff)
+
+</div>

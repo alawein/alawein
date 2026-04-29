@@ -4,7 +4,7 @@
 
 Founder @ Kohyr · AI Systems Engineer · Computational Scientist
 
-[![meshal.ai](https://img.shields.io/badge/meshal.ai-0d1117?style=flat-square&logo=astro&logoColor=58a6ff)](https://meshal.ai)&nbsp;[![kohyr.com](https://img.shields.io/badge/%F0%9F%8F%A2%20kohyr.com-0d1117?style=flat-square&logoColor=58a6ff)](https://kohyr.com)&nbsp;[![Scholar](https://img.shields.io/badge/Scholar-0d1117?style=flat-square&logo=googlescholar&logoColor=58a6ff)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en)&nbsp;[![contact](https://img.shields.io/badge/contact@meshal.ai-0d1117?style=flat-square&logo=maildotru&logoColor=58a6ff)](mailto:contact@meshal.ai)
+[![meshal.ai](https://img.shields.io/badge/meshal.ai-0d1117?style=flat-square&logo=astro&logoColor=58a6ff)](https://meshal.ai)&nbsp;[![kohyr.ai](https://img.shields.io/badge/%F0%9F%8F%A2%20kohyr.ai-0d1117?style=flat-square&logoColor=58a6ff)](https://kohyr.ai)&nbsp;[![Scholar](https://img.shields.io/badge/Scholar-0d1117?style=flat-square&logo=googlescholar&logoColor=58a6ff)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en)&nbsp;[![contact](https://img.shields.io/badge/contact@meshal.ai-0d1117?style=flat-square&logo=maildotru&logoColor=58a6ff)](mailto:contact@meshal.ai)
 
 </div>
 

@@ -28,7 +28,9 @@ generate_index() {
     last_updated="${existing_last_updated}"
   fi
   if [ -z "$last_updated" ]; then
-    last_updated="1970-01-01"
+    # Avoid a sentinel date that will immediately fail staleness checks when
+    # git metadata is unavailable (for example on first run).
+    last_updated="$(date +%F)"
   fi
 
   {

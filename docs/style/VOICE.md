@@ -33,8 +33,9 @@ approval.
 ### Structure
 
 - Lead with the claim. Context follows. Credentials do not open the paragraph.
-- Short declarative sentences are the default unit. Longer sentences are fine
-  when the mechanism genuinely needs them.
+- Medium sentences (12–20 words) carry claims; short sentences (5–8 words)
+  close them. Both are complete sentences. Longer sentences appear only when
+  the mechanism genuinely requires layering.
 - Use active voice. Use third-person only in formal papers and theses.
 - Do not add preambles explaining what is about to be said. Do not add recap
   paragraphs explaining what was just said.
@@ -80,7 +81,7 @@ These phrases are banned on governed surfaces:
 - Specific failure modes: "model fails on chirality constraints in Weyl
   semimetals", not "model has limitations with complex physics"
 - Direct boundaries: "I don't", not "I would prefer not to"
-- Honest scoping: "not looking for volume — looking for depth"
+- Honest scoping: "not looking for volume: looking for depth"
 
 ## Feynman register
 

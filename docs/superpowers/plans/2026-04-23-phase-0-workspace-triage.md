@@ -561,8 +561,6 @@ docs(superpowers): add workspace audit design spec and phase-0 triage plan
 Introduces the 6-document audit system (design spec + 5 deliverable specs)
 and the Phase 0 triage implementation plan. Triage document will be filled
 in during the same session after data collection runs.
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```

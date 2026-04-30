@@ -783,8 +783,6 @@ docs(superpowers): spec-a active products audit
 Full per-product and cross-product audit of 8 active product repos covering
 front-end quality, design-system adoption, architecture, portfolio presentation,
 and feature gaps. Feeds master execution plan (Session 6).
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```

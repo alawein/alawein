@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Profile sync from guides
 description: README About and profile copy sync with knowledge-base; export and sync flow.
-last_updated: 2026-04-15
+last_updated: 2026-04-30
 category: governance
 audience: [ai-agents, contributors]
 status: active

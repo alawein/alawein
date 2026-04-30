@@ -1,12 +1,16 @@
 ---
 type: canonical
-source: none
-sync: none
-sla: none
+source: alawein
+sla: on-change
 authority: canonical
 audience: [agents, contributors]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+kit-type: site-prompt
+version: 1.1.0
+parent-version: 1.0.0
+last-verified: 2026-04-30
+last_updated: 2026-04-30
+change-summary: "Added version tracking; no behavioral changes"
+downstream-consumers: [meshal-web]
 ---
 
 # Prompt kit for meshal-web

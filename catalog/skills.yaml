@@ -1,0 +1,159 @@
+# catalog/skills.yaml — workspace capability and domain registry
+# Tracks technical domains, stack coverage, maturity, and inter-repo dependencies.
+# Update when adding repos, changing stacks, or reclassifying maturity.
+version: 1
+last-updated: 2026-04-30
+
+domains:
+  - id: frontend
+    label: Frontend Engineering
+    repos:
+      - atelier-rounaq
+      - meshal-web
+      - repz
+      - gymboy
+      - bolts
+      - llmworks
+      - scribd
+    stack: [typescript, react, vite, tailwind, next.js]
+    maturity: production
+    notes: "atelier-rounaq uses Supabase auth + i18n; meshal-web is Next.js SSR"
+
+  - id: backend-api
+    label: Backend / API
+    repos:
+      - adil
+      - alembiq
+      - provegate
+    stack: [python, fastapi, supabase, postgresql]
+    maturity: production
+
+  - id: ml-research
+    label: ML / Quantum Research
+    repos:
+      - quantumalgo
+      - qmlab
+      - qubeml
+      - qmatsim
+      - scicomp
+      - simcore
+      - meatheadphysicist
+    stack: [python, numpy, scipy, qiskit, pytorch, jupyter]
+    maturity: research
+    notes: "quantumalgo targets QAOA / combinatorial optimization"
+
+  - id: design-system
+    label: Design System
+    repos:
+      - design-system
+    stack: [typescript, tailwind, storybook, turborepo, rollup]
+    maturity: production
+    notes: "29 themes / 8 families; two-layer token model (primitives → theme)"
+
+  - id: llmops
+    label: LLMOps / Prompt Engineering
+    repos:
+      - alawein
+      - llmworks
+      - prompty
+      - knowledge-base
+    stack: [markdown, yaml, python, github-actions, vale]
+    maturity: maturing
+    notes: "alawein owns canonical prompt kits; llmworks handles eval/provenance"
+
+  - id: devops-platform
+    label: DevOps / CI/CD Platform
+    repos:
+      - workspace-tools
+      - alawein
+    stack: [github-actions, python, bash, turborepo]
+    maturity: production
+    notes: "workspace-tools provides workspace-batch CLI; alawein owns CI templates"
+
+  - id: data-knowledge
+    label: Data / Knowledge Base
+    repos:
+      - knowledge-base
+      - loopholelab
+      - maglogic
+    stack: [python, next.js, supabase, postgresql]
+    maturity: maturing
+
+  - id: mobile-fitness
+    label: Mobile / Fitness Apps
+    repos:
+      - gymboy
+      - repz
+      - roka-oakland-hustle
+    stack: [typescript, react-native, expo]
+    maturity: production
+
+dependencies:
+  - from: all-product-repos
+    to: design-system
+    type: npm-package
+    packages:
+      - "@alawein/tokens"
+      - "@alawein/ui"
+    notes: "simcore, qmlab, repz require --legacy-peer-deps"
+
+  - from: all-repos
+    to: alawein
+    type: governance
+    artifacts:
+      - CI workflow templates (github-baseline.yaml)
+      - Voice + terminology rules (Vale)
+      - Canonical prompt kits (AGENT.md)
+      - Docs doctrine (validate-doctrine.py)
+
+  - from: knowledge-base
+    to: workspace-tools
+    type: tooling
+    artifacts:
+      - workspace-batch CLI
+      - "@alawein/eslint-config"
+      - "@alawein/prettier-config"
+      - "@alawein/tsconfig"
+
+  - from: alawein
+    to: workspace-tools
+    type: tooling
+    artifacts:
+      - "@alawein/eslint-config"
+      - "@alawein/prettier-config"
+      - "@alawein/tsconfig"
+
+onboarding-by-role:
+  - role: Frontend developer
+    entry-repos: [atelier-rounaq, meshal-web, repz]
+    first-reads:
+      - "target repo's AGENTS.md"
+      - "design-system/README.md"
+      - "docs/style/VOICE.md"
+
+  - role: Backend developer
+    entry-repos: [adil, alembiq, provegate]
+    first-reads:
+      - "target repo's AGENTS.md"
+      - "docs/governance/git-operations.md"
+
+  - role: ML / Research engineer
+    entry-repos: [quantumalgo, qmlab, simcore]
+    first-reads:
+      - "target repo's AGENTS.md"
+      - "docs/style/VOICE.md (mathematical writing section)"
+
+  - role: AI / LLMOps engineer
+    entry-repos: [alawein, llmworks, prompty]
+    first-reads:
+      - "prompt-kits/AGENT.md"
+      - "prompt-kits/registry.yaml"
+      - "docs/governance/workspace-master-prompt.md"
+      - "docs/governance/prompt-rollout.md"
+
+  - role: DevOps / Platform engineer
+    entry-repos: [workspace-tools, alawein]
+    first-reads:
+      - "github-baseline.yaml"
+      - "docs/governance/branch-and-deployment-convention.md"
+      - ".github/workflows/"

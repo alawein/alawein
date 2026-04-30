@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -163,12 +164,24 @@ def check_repo(entry: dict, errors: list[str]) -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="Audit GitHub baseline coverage.")
+    parser.add_argument(
+        "--local",
+        action="store_true",
+        help="Skip per-repo checks that require sibling repos on disk (for CI use).",
+    )
+    args = parser.parse_args()
+
     errors: list[str] = []
     check_manifest(errors)
-    check_readme(errors)
     check_control_plane_workflows(errors)
-    for entry in REPOS:
-        check_repo(entry, errors)
+    if not args.local:
+        # check_readme scans for banned widgets in sibling repo READMEs.
+        # In --local mode we only have the control-plane repo; its README is the
+        # org GitHub profile page, which has design latitude and is exempt.
+        check_readme(errors)
+        for entry in REPOS:
+            check_repo(entry, errors)
 
     if errors:
         print("GitHub baseline audit failed:")
@@ -176,8 +189,11 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    managed = [entry["repo"] for entry in REPOS if entry.get("sync") == "auto"]
-    print(f"GitHub baseline audit passed for {len(managed)} managed repos.")
+    if args.local:
+        print("GitHub baseline audit passed (control-plane only; --local skips repo checks).")
+    else:
+        managed = [entry["repo"] for entry in REPOS if entry.get("sync") == "auto"]
+        print(f"GitHub baseline audit passed for {len(managed)} managed repos.")
     return 0
 
 

@@ -1,0 +1,45 @@
+name: Documentation Update
+description: Propose a change to governance docs, style rules, or prompt kits
+title: "docs: "
+labels: ["docs", "triage"]
+body:
+  - type: dropdown
+    id: doc-class
+    attributes:
+      label: Document Class
+      description: Which class of document is changing?
+      options:
+        - "canonical — AGENTS.md / CLAUDE.md / SSOT.md"
+        - "governance — docs/governance/"
+        - "style — docs/style/ or VOICE.md"
+        - "prompt-kit — prompt-kits/"
+        - "operations — docs/operations/"
+        - "other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed Change
+      description: What should change and why? Include the current wording if applicable.
+      placeholder: "Currently says X. Should say Y because Z."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Downstream Impact
+      description: Which sibling repos or surfaces does this change affect?
+      placeholder: "Affects meshal-web copy; no product code changes."
+
+  - type: checkboxes
+    id: pre-flight
+    attributes:
+      label: Pre-flight
+      options:
+        - label: Reviewed `documentation-contract.md` freshness SLA for the target doc class
+        - label: Canary rollout order respected if style/voice change (alawein → meshal-web → workspace-tools → alembiq → rest)
+        - label: Frontmatter `last-verified` or `last_updated` will be bumped in the PR
+        - label: No secrets or tokens in the change

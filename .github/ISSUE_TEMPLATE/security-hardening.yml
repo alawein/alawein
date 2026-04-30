@@ -1,0 +1,51 @@
+name: Security Hardening
+description: Report a non-sensitive security gap or hardening opportunity (use SECURITY.md for vulnerabilities)
+title: "security: "
+labels: ["security", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        > **For actual vulnerabilities or secret leaks, follow the private disclosure process in [SECURITY.md](../SECURITY.md).**
+        > This template is for hardening gaps, missing controls, or policy improvements.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Branch protection / rulesets
+        - Secret / PAT management
+        - Dependency scanning
+        - Action pinning
+        - Workflow permissions
+        - Supply chain (SLSA, artifact signing)
+        - Access control
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: gap
+    attributes:
+      label: Gap Description
+      description: What control is missing or misconfigured?
+    validations:
+      required: true
+
+  - type: textarea
+    id: remediation
+    attributes:
+      label: Suggested Remediation
+      description: How should it be fixed?
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity Estimate
+      options:
+        - P1 — critical, exploitable now
+        - P2 — significant gap, fix soon
+        - P3 — hardening improvement, fix when convenient
+    validations:
+      required: true

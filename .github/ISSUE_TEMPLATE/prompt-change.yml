@@ -1,0 +1,63 @@
+name: Prompt Kit Change
+description: Propose a change to AGENT.md, PORTFOLIO.md, VOICE.md, or workspace-master-prompt
+title: "prompt: "
+labels: ["prompt-kit", "llmops", "triage"]
+body:
+  - type: dropdown
+    id: kit
+    attributes:
+      label: Prompt Kit
+      options:
+        - AGENT.md
+        - PORTFOLIO.md
+        - VOICE.md (forbidden/preferred register)
+        - docs/governance/workspace-master-prompt.md
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: version-bump
+    attributes:
+      label: Version Bump Type
+      description: "patch = wording only; minor = new constraint or section; major = breaking behavioral change"
+      options:
+        - "patch — wording or clarity only"
+        - "minor — new constraint, rule, or section"
+        - "major — breaking change to agent behavior"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behavior
+      description: What does the prompt currently produce or enforce?
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired
+    attributes:
+      label: Desired Behavior
+      description: What should it produce or enforce after the change?
+    validations:
+      required: true
+
+  - type: textarea
+    id: consumers
+    attributes:
+      label: Downstream Consumers
+      description: Which repos or surfaces consume this prompt kit?
+      placeholder: "meshal-web (PORTFOLIO.md), all repos via AGENTS.md (AGENT.md)"
+
+  - type: checkboxes
+    id: rollout
+    attributes:
+      label: Rollout Plan
+      options:
+        - label: Canary tested in alawein repo first
+        - label: "`prompt-kits/registry.yaml` rollout-status will be set to `canary` initially"
+        - label: Downstream impact assessed — consumers listed above
+        - label: "`prompt-kits/CHANGELOG.md` entry drafted"
+        - label: "`validate-prompt-kit.py` passes locally"

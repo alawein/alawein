@@ -1,0 +1,139 @@
+name: AI Agent Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, labeled]
+    paths:
+      - 'prompt-kits/**'
+      - 'docs/governance/**'
+      - 'docs/style/**'
+      - 'catalog/**'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prompt-kit-review:
+    name: Prompt Kit Impact Analysis
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'prompt-kit')
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Validate prompt kit structure
+        id: validate
+        run: |
+          python scripts/validate-prompt-kit.py > /tmp/validate-output.txt 2>&1
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Diff prompt kits vs base
+        id: diff
+        run: |
+          git diff origin/${{ github.base_ref }}...HEAD -- prompt-kits/ > /tmp/prompt-diff.txt
+          if [ -s /tmp/prompt-diff.txt ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Post review comment
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const fs = require('fs')
+            const validate = fs.existsSync('/tmp/validate-output.txt')
+              ? fs.readFileSync('/tmp/validate-output.txt', 'utf8').trim()
+              : 'validate-prompt-kit.py output unavailable'
+            const diff = fs.existsSync('/tmp/prompt-diff.txt')
+              ? fs.readFileSync('/tmp/prompt-diff.txt', 'utf8').trim()
+              : ''
+            const exitCode = '${{ steps.validate.outputs.exit_code }}'
+            const hasDiff = '${{ steps.diff.outputs.has_changes }}' === 'true'
+
+            const status = exitCode === '0' ? '✅ Validation passed' : '❌ Validation failed'
+            const diffSection = hasDiff
+              ? `\n\n<details><summary>Prompt kit diff</summary>\n\n\`\`\`diff\n${diff.slice(0, 4000)}\n\`\`\`\n</details>`
+              : '\n\nNo prompt-kit file changes detected.'
+
+            const checklist = [
+              '- [ ] Version bumped in frontmatter',
+              '- [ ] `prompt-kits/CHANGELOG.md` entry added',
+              '- [ ] `prompt-kits/registry.yaml` rollout-status set to `canary`',
+              '- [ ] Downstream consumers identified and notified',
+              '- [ ] Canary soak planned (48 h minimum before `staged`)',
+            ].join('\n')
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: [
+                '## Prompt Kit Review',
+                '',
+                `**Validation:** ${status}`,
+                '',
+                '```',
+                validate,
+                '```',
+                diffSection,
+                '',
+                '### Rollout Checklist',
+                '',
+                checklist,
+                '',
+                '_See `docs/governance/prompt-rollout.md` for the full rollout protocol._',
+              ].join('\n'),
+            })
+
+  catalog-change-summary:
+    name: Catalog Change Summary
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'catalog')
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Summarize catalog changes
+        id: summary
+        run: |
+          git diff origin/${{ github.base_ref }}...HEAD -- catalog/ > /tmp/catalog-diff.txt
+          added=$(git diff origin/${{ github.base_ref }}...HEAD -- catalog/ | grep '^+' | grep -c '"slug"' || true)
+          removed=$(git diff origin/${{ github.base_ref }}...HEAD -- catalog/ | grep '^-' | grep -c '"slug"' || true)
+          echo "added=$added" >> $GITHUB_OUTPUT
+          echo "removed=$removed" >> $GITHUB_OUTPUT
+
+      - name: Post catalog summary comment
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const added = '${{ steps.summary.outputs.added }}'
+            const removed = '${{ steps.summary.outputs.removed }}'
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: [
+                '## Catalog Change Summary',
+                '',
+                `- Repos added: **${added}**`,
+                `- Repos removed: **${removed}**`,
+                '',
+                '_Verify `catalog/repos.json` schema with `python scripts/validate-catalog.py --strict`._',
+              ].join('\n'),
+            })

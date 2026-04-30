@@ -1,0 +1,61 @@
+name: Issue Auto-Triage
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  triage:
+    name: Apply priority label and triage comment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8.0.0
+        with:
+          script: |
+            const issue = context.payload.issue
+            const labels = issue.labels.map(l => l.name)
+
+            // Priority assignment — highest matching label wins
+            let priority = 'P3'
+            if (labels.includes('security')) priority = 'P1'
+            else if (labels.includes('bug')) priority = 'P2'
+            else if (labels.includes('prompt-kit')) priority = 'P2'
+
+            // Add priority label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              labels: [priority],
+            })
+
+            // Routing guidance based on label
+            let routingNote = ''
+            if (labels.includes('security')) {
+              routingNote = '\n\n> **Security:** If this involves a secret leak or vulnerability, close this issue and follow [SECURITY.md](../SECURITY.md) for private disclosure.'
+            } else if (labels.includes('prompt-kit') || labels.includes('llmops')) {
+              routingNote = '\n\n> **Prompt Kit:** Follow the rollout protocol in `docs/governance/prompt-rollout.md` when implementing changes.'
+            } else if (labels.includes('docs')) {
+              routingNote = '\n\n> **Docs:** Confirm the target doc class and freshness SLA in `docs/governance/documentation-contract.md`.'
+            }
+
+            // Post triage comment
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.number,
+              body: [
+                `Thanks for filing this. Priority assigned: **${priority}**.`,
+                routingNote,
+                '',
+                '### Triage Checklist',
+                '',
+                '- [ ] Label is correct (update if needed)',
+                '- [ ] Assign to a milestone if time-sensitive',
+                '- [ ] Link to related issues or PRs',
+                '- [ ] Verify no sensitive data in the issue body',
+              ].join('\n'),
+            })

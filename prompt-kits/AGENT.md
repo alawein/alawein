@@ -1,12 +1,16 @@
 ---
 type: canonical
-source: none
-sync: none
-sla: none
+source: alawein
+sla: on-change
 authority: canonical
 audience: [agents, contributors]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+kit-type: system-prompt
+version: 1.3.0
+parent-version: 1.2.0
+last-verified: 2026-04-30
+last_updated: 2026-04-30
+change-summary: "Added version tracking; no behavioral changes"
+downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
 # Prompt kit for workspace agents

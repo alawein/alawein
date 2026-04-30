@@ -66,8 +66,10 @@ Summary:
 - Lead with the claim; paragraph openers state the conclusion, evidence follows
 - Medium sentences (12–20 words) carry claims; short sentences (5–8 words) close
   sequences and are always complete — never fragments
-- Colons connect cause to effect; em dashes wrap parenthetical insertions only
-- Em dash budget: 0–1 per section; 3+ in one paragraph is a blocking LLM tell
+- Colons introduce lists, evidential clauses, and claim-to-mechanism links;
+  em dashes wrap parenthetical insertions only
+- Em dash budget: 0–1 per section (tables exempt); 3+ in one paragraph
+  triggers a BLOCKING finding from the voice-check linter
 - Keep numbers and units explicit
 - Prefer concrete failure modes over generic positioning: named systems, not
   broad categories

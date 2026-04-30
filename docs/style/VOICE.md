@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+last_updated: 2026-04-30
+last-verified: 2026-04-30
 ---
 
 # Voice and style contract
@@ -33,9 +33,9 @@ approval.
 ### Structure
 
 - Lead with the claim. Context follows. Credentials do not open the paragraph.
-- Medium sentences (12–20 words) carry claims; short sentences (5–8 words)
-  close them. Both are complete sentences. Longer sentences appear only when
-  the mechanism genuinely requires layering.
+- See "Sentence rhythm and paragraph structure" below for sentence-length
+  targets. Longer sentences appear only when the mechanism genuinely requires
+  layering.
 - Use active voice. Use third-person only in formal papers and theses.
 - Do not add preambles explaining what is about to be said. Do not add recap
   paragraphs explaining what was just said.
@@ -52,16 +52,19 @@ next technical framing between paragraphs; do not write bridging prose.
 
 ### Punctuation discipline
 
-Colons connect cause to effect and claim to evidence. Em dashes wrap
-parenthetical insertions only.
+Colons introduce lists, set off explanatory or evidential clauses, and link
+claim to mechanism. Em dashes wrap parenthetical insertions only.
 
 Correct: `"This failure manifests through coordination effects: 2D crystals
-are less stable than their 3D counterparts."`
+are less stable than their 3D counterparts."` (claim: mechanism)
+
+Correct: `"not looking for volume: looking for depth"` (contrast via colon)
 
 Incorrect: `"The model doesn't just recall — it reasons under pressure."`
 
-Em dash budget: 0–1 per section. Three or more in one paragraph is a
-blocking LLM tell.
+Em dash budget: 0–1 per section (tables and inline code are exempt). Three
+or more in one paragraph is a blocking AI-generation signal — it triggers a
+BLOCKING finding from the voice-check linter.
 
 ### Forbidden register
 

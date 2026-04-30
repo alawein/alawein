@@ -26,7 +26,8 @@ canonical_terms:
   - term: theme family
     usage: "Controlled visual grouping applied to repo-level branding."
   - term: kohyr
-    usage: "Canonical company name (formerly Morphism Systems). URL: kohyr.ai."
+    usage: "Canonical company name. Use on all governed surfaces."
+    notes: "Formerly Morphism Systems (pre-2026 legal entity). Do not surface old name on governed output. URL: kohyr.com."
 banned_terms:
   - passionate about
   - leveraging
@@ -80,7 +81,9 @@ linter_rules:
       - aw-devkit
       - devkit
       - Morphism Systems
+      - morphism systems
       - morphism-systems
+      - morphism.systems
       - "@morphism/"
   tone:
     message: "Avoid promotional filler in governed docs: '%s'."

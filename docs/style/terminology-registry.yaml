@@ -1,5 +1,5 @@
 version: 1
-last_verified: 2026-04-15
+last_verified: 2026-04-30
 canonical_terms:
   - term: alawein
     usage: "Organization and governance control plane."
@@ -25,6 +25,8 @@ canonical_terms:
     usage: "Normalized scaffold classification such as next-app-router or python-library."
   - term: theme family
     usage: "Controlled visual grouping applied to repo-level branding."
+  - term: kohyr
+    usage: "Canonical company name (formerly Morphism Systems). URL: kohyr.ai."
 banned_terms:
   - passionate about
   - leveraging
@@ -60,6 +62,11 @@ banned_terms:
   - reasonbench
   - aw-devkit
   - devkit
+  - Morphism Systems
+  - morphism systems
+  - morphism-systems
+  - morphism.systems
+  - "@morphism/"
 linter_rules:
   terminology:
     message: "Use the canonical term '%s' from the terminology registry."
@@ -72,6 +79,9 @@ linter_rules:
       - reasonbench
       - aw-devkit
       - devkit
+      - Morphism Systems
+      - morphism-systems
+      - "@morphism/"
   tone:
     message: "Avoid promotional filler in governed docs: '%s'."
     level: error

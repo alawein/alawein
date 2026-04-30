@@ -112,6 +112,8 @@ EXEMPT_DOCS = {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/feature_request.yml",
+    # Historical session record — not a living governance doc; freshness SLA does not apply
+    "docs/operations/session-log.md",
 }
 
 

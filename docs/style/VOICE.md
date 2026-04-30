@@ -84,7 +84,7 @@ These phrases are banned on governed surfaces:
 - Specific failure modes: "model fails on chirality constraints in Weyl
   semimetals", not "model has limitations with complex physics"
 - Direct boundaries: "I don't", not "I would prefer not to"
-- Honest scoping: "Not looking for volume. Looking for depth."
+- Honest scoping: "not looking for volume: looking for depth"
 
 ## Feynman register
 

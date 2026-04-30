@@ -103,12 +103,16 @@ jobs:
           "$RUNNER_TEMP/vale-bin/vale" --version
 
       - name: Enforce writing voice and terminology with Vale
-        continue-on-error: true
         run: |
           set -euo pipefail
           vale sync
+          if [ "${{ github.event_name }}" = "push" ]; then
+            diff_range="${{ github.event.before }}...${{ github.sha }}"
+          else
+            diff_range="origin/main...HEAD"
+          fi
           mapfile -t changed_markdown < <(
-            git diff --name-only origin/main...HEAD \
+            git diff --name-only --diff-filter=ACMR "$diff_range" \
               | sed 's/\r$//' \
               | awk '/\.md$/'
           )

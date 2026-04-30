@@ -62,9 +62,9 @@ Correct: `"not looking for volume: looking for depth"` (contrast via colon)
 
 Incorrect: `"The model doesn't just recall — it reasons under pressure."`
 
-Em dash budget: 0–1 per section (tables and inline code are exempt). Three
-or more in one paragraph is a blocking AI-generation signal — it triggers a
-BLOCKING finding from the voice-check linter.
+Em dash budget: 0–1 per section (tables, inline code, and quoted examples are
+exempt). Three or more in one paragraph is a blocking AI-generation signal —
+it triggers a BLOCKING finding from the voice-check linter.
 
 ### Forbidden register
 

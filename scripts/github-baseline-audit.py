@@ -25,6 +25,10 @@ BANNED_WIDGET_PATTERNS = [
     "spotify-github-profile",
     "capsule-render",
 ]
+
+# Patterns intentionally used in the control-plane org profile README (decorative
+# header/banner use, not vanity-stat inflation). Excluded from check_readme.
+CONTROL_PLANE_README_EXEMPT = {"capsule-render"}
 PINNED_REF_RE = re.compile(r"^[0-9a-f]{40}$")
 USES_LINE_RE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)")
 
@@ -51,6 +55,8 @@ def check_manifest(errors: list[str]) -> None:
 def check_readme(errors: list[str]) -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     for pattern in BANNED_WIDGET_PATTERNS:
+        if pattern in CONTROL_PLANE_README_EXEMPT:
+            continue
         if pattern in readme:
             add_error(errors, f"README contains banned widget pattern: {pattern}")
 

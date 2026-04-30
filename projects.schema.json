@@ -19,7 +19,7 @@
         "tags": { "type": "array", "items": { "type": "string" } },
         "category": {
           "type": "string",
-          "enum": ["active", "maintained", "planned", "archived"]
+          "enum": ["active", "maintained", "planned", "archived", "frozen"]
         },
         "portfolio_domain": {
           "type": "string",

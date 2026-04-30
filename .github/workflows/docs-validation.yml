@@ -131,11 +131,37 @@ jobs:
               )
             fi
           fi
-          if [ "${#changed_markdown[@]}" -eq 0 ]; then
-            echo "No markdown files found to lint with Vale." | tee vale-report.txt
+          mapfile -t changed_vale_inputs < <(
+            git diff --name-only --diff-filter=ACMR "$diff_range" \
+              | sed 's/\r$//' \
+              | awk '
+                  /^styles\// ||
+                  /^\.vale\.ini$/ ||
+                  /^docs\/style\/terminology-registry\.yaml$/
+                '
+          )
+          if [ "${#changed_markdown[@]}" -gt 0 ]; then
+            vale_targets=("${changed_markdown[@]}")
+          elif [ "${#changed_vale_inputs[@]}" -gt 0 ]; then
+            echo "Vale rules/config changed without markdown changes; linting full documentation baseline." | tee vale-report.txt
+            vale_targets=(
+              AGENTS.md
+              CLAUDE.md
+              CODE_OF_CONDUCT.md
+              SECURITY.md
+              CHANGELOG.md
+              SSOT.md
+              LESSONS.md
+              docs/README.md
+              prompt-kits/*.md
+              docs/governance/*.md
+              docs/style/*.md
+            )
+          else
+            echo "No changed markdown or Vale config/rule files to lint with Vale." | tee vale-report.txt
             exit 0
           fi
-          vale --minAlertLevel=error "${changed_markdown[@]}" | tee vale-report.txt
+          vale --minAlertLevel=error "${vale_targets[@]}" | tee -a vale-report.txt
 
       - name: Run advisory style audit
         run: |

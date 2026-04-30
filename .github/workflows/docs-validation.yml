@@ -106,18 +106,33 @@ jobs:
         run: |
           set -euo pipefail
           vale sync
-          if [ "${{ github.event_name }}" = "push" ]; then
-            diff_range="${{ github.event.before }}...${{ github.sha }}"
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            mapfile -t changed_markdown < <(
+              git ls-files \
+                | sed 's/\r$//' \
+                | awk '/\.md$/'
+            )
           else
-            diff_range="origin/main...HEAD"
+            if [ "${{ github.event_name }}" = "push" ]; then
+              diff_range="${{ github.event.before }}...${{ github.sha }}"
+            else
+              diff_range="origin/main...HEAD"
+            fi
+            mapfile -t changed_markdown < <(
+              git diff --name-only --diff-filter=ACMR "$diff_range" \
+                | sed 's/\r$//' \
+                | awk '/\.md$/'
+            )
+            if [ "${#changed_markdown[@]}" -eq 0 ]; then
+              mapfile -t changed_markdown < <(
+                git ls-files \
+                  | sed 's/\r$//' \
+                  | awk '/\.md$/'
+              )
+            fi
           fi
-          mapfile -t changed_markdown < <(
-            git diff --name-only --diff-filter=ACMR "$diff_range" \
-              | sed 's/\r$//' \
-              | awk '/\.md$/'
-          )
           if [ "${#changed_markdown[@]}" -eq 0 ]; then
-            echo "No changed markdown files to lint with Vale." | tee vale-report.txt
+            echo "No markdown files found to lint with Vale." | tee vale-report.txt
             exit 0
           fi
           vale --minAlertLevel=error "${changed_markdown[@]}" | tee vale-report.txt

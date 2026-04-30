@@ -16,11 +16,9 @@ generate_index() {
 
   local index_file="${docs_dir}/INDEX.md"
   local title="Index — ${repo_name}"
-  local last_updated="unknown"
-
-  if git -C "$repo_root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    last_updated=$(git -C "$repo_root" log -1 --format=%cs -- "$docs_dir" 2>/dev/null || echo "unknown")
-  fi
+  # Use UTC date so generated frontmatter is stable across runner timezones.
+  local last_updated
+  last_updated=$(date -u +%F)
 
   {
     echo "---"

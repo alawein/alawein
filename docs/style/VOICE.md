@@ -41,6 +41,27 @@ approval.
 - Use paragraphs when explaining mechanisms, relationships, or reasoning.
   Reserve bullets for genuine enumeration.
 
+### Sentence rhythm and paragraph structure
+
+Medium sentences (12–20 words) carry claims. Short sentences (5–8 words) close
+claim sequences; they are complete sentences, never fragments.
+
+Paragraph openers state the conclusion. Evidence follows. Move directly to the
+next technical framing between paragraphs; do not write bridging prose.
+
+### Punctuation discipline
+
+Colons connect cause to effect and claim to evidence. Em dashes wrap
+parenthetical insertions only.
+
+Correct: `"This failure manifests through coordination effects: 2D crystals
+are less stable than their 3D counterparts."`
+
+Incorrect: `"The model doesn't just recall — it reasons under pressure."`
+
+Em dash budget: 0–1 per section. Three or more in one paragraph is a
+blocking LLM tell.
+
 ### Forbidden register
 
 These phrases are banned on governed surfaces:
@@ -70,7 +91,9 @@ computational-physics precision. Both apply. Neither cancels the other.
 
 - Physical intuition before formalism
 - Concrete examples before abstract categories
-- Rhetorical questions only when they sharpen focus
+- Rhetorical questions only when they sharpen focus; declarative + colon is
+  the preferred hook ("The story begins as good science often does: with a
+  hunch, some equations, and skepticism.")
 - Short sentences that land like facts
 
 ### Computational-physics precision
@@ -161,7 +184,7 @@ present tense, technical, and free of AI attribution.
 ### Repos and packages
 
 - Repos: lowercase-hyphenated (`workspace-tools`, `llm-engineering`)
-- npm packages: scoped lowercase (`@morphism/core`)
+- npm packages: scoped lowercase (`@kohyr/core`)
 - Python classes: `PascalCase`
 - Python functions and variables: `snake_case`
 - TypeScript and JavaScript identifiers: `camelCase`
@@ -170,7 +193,7 @@ present tense, technical, and free of AI attribution.
 
 | Name | Category | One-liner |
 |------|----------|-----------|
-| Morphism | Governance | Formal orchestration for governed, composable agent systems |
+| Kohyr | Governance | AI governance framework with category-theoretic proof witnesses |
 | Alembiq | AI Infrastructure | LLM training, alignment, and evaluation — SFT, DPO, LoRA, synthetic data |
 | Event Discovery Framework | Computer Vision | Physics-inspired video event detection via energy functionals |
 | OptiQAP | Optimization | Equilibrium-guided QAP solver: spectral methods, QUBO, simulated annealing |

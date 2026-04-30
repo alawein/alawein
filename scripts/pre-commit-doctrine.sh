@@ -40,7 +40,7 @@ done
 for file in $STAGED; do
   # Skip files in non-doc directories
   case "$file" in
-    .github/*|node_modules/*|.venv/*|.claude/settings*) continue ;;
+    .github/*|node_modules/*|.venv/*|.claude/settings*|claude-agent-platform/*) continue ;;
   esac
 
   ext="${file##*.}"

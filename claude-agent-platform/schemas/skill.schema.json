@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.claude-agent-platform/schemas/skill.schema.json",
+  "title": "Claude Agent Platform Skill",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "description",
+    "input_contract",
+    "output_contract",
+    "dependencies",
+    "execution_steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[A-Za-z0-9.-]+)?$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation": {
+      "type": "object",
+      "properties": {
+        "slash_command": {
+          "type": "string"
+        },
+        "auto_triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "disable_model_invocation": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "input_contract": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "default": {}
+        },
+        "required": [
+          "type",
+          "required"
+        ],
+        "additionalProperties": true
+      }
+    },
+    "output_contract": {
+      "type": "object",
+      "required": [
+        "format",
+        "fields"
+      ],
+      "properties": {
+        "format": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verdicts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "version"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "optional": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "writes_files": {
+          "type": "boolean"
+        },
+        "runs_shell": {
+          "type": "boolean"
+        },
+        "uses_network": {
+          "type": "boolean"
+        },
+        "requires_approval": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution_steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "agent",
+          "action",
+          "expected_output"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "agent": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "expected_output": {
+            "type": "string"
+          },
+          "on_failure": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "properties": {
+        "strategy": {
+          "type": "string"
+        },
+        "backup_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "memory_writes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflict_policy": {
+      "type": "string",
+      "enum": [
+        "fail-fast",
+        "local-wins",
+        "global-wins",
+        "highest-version"
+      ]
+    }
+  }
+}

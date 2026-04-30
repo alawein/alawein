@@ -555,6 +555,8 @@ def validate(root, ci_mode=False):
         "playwright-report",
         "test-results",
         "state",
+        # External platform tooling — governed by its own standards, not alawein doc doctrine
+        "claude-agent-platform",
     }
 
     for dirpath, dirnames, filenames in os.walk(root):

@@ -1,0 +1,64 @@
+# Bug Fix Workflow v1.0.0
+# Rationale: Bug fixes should reproduce first, change minimally, then lock behavior with tests.
+name: bug-fix
+version: 1.0.0
+description: reproduce -> root-cause -> fix -> regression-test -> review -> changelog -> commit
+input_contract:
+  error: {type: string|file, required: true}
+  target: {type: path|glob, required: false}
+  allow_impl_change: {type: boolean, required: false, default: true}
+output_contract:
+  format: workflow-verdict
+  fields: [root_cause, fix_diff, regression_tests, test_result, review_verdict, commit_message]
+steps:
+  - id: reproduce
+    skill: test-run
+    agent: Reviewer
+    command: reproduce-failure-or-summarize-error
+    on_failure: continue-if-error-is-sufficient
+  - id: root-cause
+    skill: lookup
+    agent: Research
+    command: inspect-code-path-and-patterns
+    depends_on: [reproduce]
+    on_failure: continue-with-hypothesis
+  - id: fix
+    skill: fix
+    agent: Cursor
+    command: minimal-correct-patch
+    depends_on: [root-cause]
+    approval_required: true
+    on_failure: halt
+  - id: regression-test
+    skill: test-gen
+    agent: Codex
+    command: add-regression-test
+    depends_on: [fix]
+    on_failure: halt
+  - id: verify
+    skill: test-run
+    agent: Reviewer
+    command: run-relevant-tests
+    depends_on: [regression-test]
+    on_failure: halt
+  - id: review
+    skill: review
+    agent: Reviewer
+    command: review-fix-and-test
+    depends_on: [verify]
+    on_failure: halt-on-blocker
+  - id: changelog
+    skill: changelog
+    agent: Codex
+    command: update-if-user-visible
+    depends_on: [review]
+    on_failure: continue-with-warning
+  - id: commit
+    skill: commit
+    agent: Reviewer
+    command: conventional-fix-commit
+    depends_on: [changelog]
+    approval_required: true
+rollback:
+  strategy: restore-backups-and-unstage
+  command: ~/.claude/bin/rollback.sh --target last-operation

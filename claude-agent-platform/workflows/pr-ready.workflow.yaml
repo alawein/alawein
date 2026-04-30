@@ -1,0 +1,58 @@
+# PR Ready Workflow v1.0.0
+# Rationale: PR preparation should fail fast on quality gates before git operations.
+name: pr-ready
+version: 1.0.0
+description: lint -> test -> review -> security -> changelog -> commit -> PR draft
+input_contract:
+  base_branch: {type: git-ref, required: false, default: main}
+  include_commit: {type: boolean, required: false, default: false}
+  include_pr: {type: boolean, required: false, default: true}
+output_contract:
+  format: workflow-verdict
+  fields: [lint_result, test_result, review_verdict, security_verdict, changelog_status, commit_status, pr_body]
+steps:
+  - id: lint
+    skill: lint-check
+    agent: Reviewer
+    command: detect-or-run-lint
+    on_failure: halt
+  - id: test
+    skill: test-run
+    agent: Reviewer
+    command: detect-or-run-tests
+    depends_on: [lint]
+    on_failure: halt
+  - id: review
+    skill: review
+    agent: Reviewer
+    command: review-current-diff
+    depends_on: [test]
+    on_failure: halt-on-blocker
+  - id: security
+    skill: security-scan
+    agent: Reviewer
+    command: scan-current-diff
+    depends_on: [review]
+    on_failure: halt-on-critical
+  - id: changelog
+    skill: changelog
+    agent: Codex
+    command: update-changelog-if-user-visible
+    depends_on: [security]
+    on_failure: continue-with-warning
+  - id: commit
+    skill: commit
+    agent: Reviewer
+    command: conventional-commit
+    depends_on: [changelog]
+    approval_required: true
+    on_failure: halt
+  - id: pr
+    skill: pr
+    agent: Reviewer
+    command: draft-pr-body
+    depends_on: [commit]
+    on_failure: report
+rollback:
+  strategy: restore-backups-and-unstage
+  command: ~/.claude/bin/rollback.sh --target last-operation

@@ -1,0 +1,56 @@
+# New Feature Workflow v1.0.0
+# Rationale: Features should start with requirements and architecture before code generation.
+name: new-feature
+version: 1.0.0
+description: research -> scaffold -> implement -> test -> docs -> review -> pr-ready
+input_contract:
+  feature_spec: {type: string|file, required: true}
+  target_area: {type: path, required: false}
+  acceptance_criteria: {type: string|file, required: false}
+output_contract:
+  format: workflow-verdict
+  fields: [requirements, architecture, files_changed, tests_added, docs_updated, review_verdict, pr_ready]
+steps:
+  - id: research
+    skill: patterns
+    agent: Research
+    command: find-local-and-canonical-patterns
+    on_failure: continue-with-assumptions
+  - id: scaffold
+    skill: scaffold
+    agent: Codex
+    command: create-feature-structure
+    depends_on: [research]
+    approval_required: true
+    on_failure: halt
+  - id: implement
+    skill: implement
+    agent: Codex
+    command: implement-feature
+    depends_on: [scaffold]
+    approval_required: true
+    on_failure: halt
+  - id: test
+    skill: test-gen
+    agent: Codex
+    command: generate-and-run-tests
+    depends_on: [implement]
+    on_failure: halt
+  - id: docs
+    skill: docs-gen
+    agent: Codex
+    command: update-docs
+    depends_on: [test]
+    on_failure: continue-with-warning
+  - id: review
+    skill: review
+    agent: Reviewer
+    command: review-feature
+    depends_on: [docs]
+    on_failure: halt-on-blocker
+  - id: pr-ready
+    workflow: pr-ready
+    depends_on: [review]
+rollback:
+  strategy: restore-backups-and-remove-generated-files
+  command: ~/.claude/bin/rollback.sh --target last-operation

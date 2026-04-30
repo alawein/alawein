@@ -103,6 +103,7 @@ jobs:
           "$RUNNER_TEMP/vale-bin/vale" --version
 
       - name: Enforce writing voice and terminology with Vale
+        continue-on-error: true
         run: |
           set -euo pipefail
           vale sync

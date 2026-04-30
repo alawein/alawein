@@ -65,7 +65,7 @@ Summary:
 
 - Lead with the claim; paragraph openers state the conclusion, evidence follows
 - Medium sentences (12–20 words) carry claims; short sentences (5–8 words) close
-  sequences and are always complete — never fragments
+  sequences and are always complete sentences, never fragments
 - Colons introduce lists, evidential clauses, and claim-to-mechanism links;
   em dashes wrap parenthetical insertions only
 - Em dash budget: 0–1 per section (tables exempt); 3+ in one paragraph

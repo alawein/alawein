@@ -106,17 +106,16 @@ jobs:
         run: |
           set -euo pipefail
           vale sync
-          vale --minAlertLevel=error \
-            AGENTS.md \
-            CLAUDE.md \
-            SECURITY.md \
-            CHANGELOG.md \
-            SSOT.md \
-            LESSONS.md \
-            README.md \
-            docs \
-            prompt-kits \
-            templates/scaffolding | tee vale-report.txt
+          mapfile -t changed_markdown < <(
+            git diff --name-only origin/main...HEAD \
+              | sed 's/\r$//' \
+              | awk '/\.md$/'
+          )
+          if [ "${#changed_markdown[@]}" -eq 0 ]; then
+            echo "No changed markdown files to lint with Vale." | tee vale-report.txt
+            exit 0
+          fi
+          vale --minAlertLevel=error "${changed_markdown[@]}" | tee vale-report.txt
 
       - name: Run advisory style audit
         run: |
@@ -144,9 +143,13 @@ jobs:
         run: |
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "## Style advisory audit" >> "$GITHUB_STEP_SUMMARY"
-          echo '```text' >> "$GITHUB_STEP_SUMMARY"
-          sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"
-          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f style-advisory-report.txt ]; then
+            echo '```text' >> "$GITHUB_STEP_SUMMARY"
+            sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- Style advisory report unavailable because an earlier step failed." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Enforce canonical docs base URL
         run: |

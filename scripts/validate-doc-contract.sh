@@ -112,6 +112,8 @@ EXEMPT_DOCS = {
     ".github/PULL_REQUEST_TEMPLATE.md",
     ".github/ISSUE_TEMPLATE/bug_report.yml",
     ".github/ISSUE_TEMPLATE/feature_request.yml",
+    # Historical session record — not a living governance doc; freshness SLA does not apply
+    "docs/operations/session-log.md",
 }
 
 
@@ -382,6 +384,8 @@ R8_ALLOWED_ROOT_FILES = {
     ".markdownlint.jsonc",
     ".vale.ini",
     "prettier.config.js",
+    # Utility script invoked at root by profile-from-guides workflow
+    "check_yaml.py",
 }
 
 
@@ -403,7 +407,8 @@ def check_root_whitelist(errors: List[str]) -> None:
 
 
 def markdown_files_for_links() -> Iterable[Path]:
-    skip_parts = {"node_modules", ".venv", "venv", "dist", "build", "__pycache__"}
+    skip_parts = {"node_modules", ".venv", "venv", "dist", "build", "__pycache__",
+                  "claude-agent-platform"}  # external platform tooling — its own link scope
     for path in sorted(ROOT.rglob("*.md")):
         rel = relative(path)
         if is_archive_doc(rel):

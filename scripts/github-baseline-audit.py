@@ -25,6 +25,16 @@ BANNED_WIDGET_PATTERNS = [
     "spotify-github-profile",
     "capsule-render",
 ]
+
+# Patterns intentionally used in the control-plane org profile README (decorative
+# header/banner use, not vanity-stat inflation). Excluded from check_readme.
+# check_readme only ever scans ROOT/README.md (the control-plane itself); this
+# exemption never applies to sibling repos. Keep this set minimal — additions
+# must have an explicit rationale comment.
+CONTROL_PLANE_README_EXEMPT: frozenset[str] = frozenset({"capsule-render"})
+assert len(CONTROL_PLANE_README_EXEMPT) <= 2, (  # noqa: S101
+    "CONTROL_PLANE_README_EXEMPT is growing — review each entry before extending"
+)
 PINNED_REF_RE = re.compile(r"^[0-9a-f]{40}$")
 USES_LINE_RE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)")
 
@@ -49,8 +59,18 @@ def check_manifest(errors: list[str]) -> None:
 
 
 def check_readme(errors: list[str]) -> None:
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_path = ROOT / "README.md"
+    if not readme_path.exists():
+        add_error(errors, "README.md is missing from the control-plane repo root")
+        return
+    try:
+        readme = readme_path.read_text(encoding="utf-8")
+    except OSError as exc:
+        add_error(errors, f"README.md could not be read: {exc}")
+        return
     for pattern in BANNED_WIDGET_PATTERNS:
+        if pattern in CONTROL_PLANE_README_EXEMPT:
+            continue
         if pattern in readme:
             add_error(errors, f"README contains banned widget pattern: {pattern}")
 

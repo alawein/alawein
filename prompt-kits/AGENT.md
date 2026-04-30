@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.3.0
-parent-version: 1.2.0
+version: 1.4.0
+parent-version: 1.3.0
 last-verified: 2026-04-30
 last_updated: 2026-04-30
-change-summary: "Added version tracking; no behavioral changes"
+change-summary: "Add em dash budget, colon preference, sentence rhythm, and fragment prohibition to voice summary"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -63,10 +63,14 @@ Full contract: `docs/style/VOICE.md`
 
 Summary:
 
-- Lead with the claim
-- Use short declarative sentences by default
+- Lead with the claim; paragraph openers state the conclusion, evidence follows
+- Medium sentences (12–20 words) carry claims; short sentences (5–8 words) close
+  sequences and are always complete — never fragments
+- Colons connect cause to effect; em dashes wrap parenthetical insertions only
+- Em dash budget: 0–1 per section; 3+ in one paragraph is a blocking LLM tell
 - Keep numbers and units explicit
-- Prefer concrete failure modes over generic positioning
+- Prefer concrete failure modes over generic positioning: named systems, not
+  broad categories
 - State direct boundaries
 
 ## Canonical facts

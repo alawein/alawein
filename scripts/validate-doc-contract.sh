@@ -445,6 +445,7 @@ def check_local_links(errors: List[str]) -> None:
 
 
 def check_freshness_updates(errors: List[str], base_ref: Optional[str]) -> None:
+    today_iso = date.today().isoformat()
     changed = changed_files(base_ref)
     freshness_map = {**CANONICAL_DOCS, **LESSON_DOCS, **MANAGED_DOCS}
     for rel, key in freshness_map.items():
@@ -455,6 +456,14 @@ def check_freshness_updates(errors: List[str], base_ref: Optional[str]) -> None:
         path = ROOT / rel
         if not path.exists():
             continue
+        # If the current freshness field already equals today's date the file
+        # is up-to-date even when multiple same-day commits touch it (the diff
+        # won't show the date line changing a second time).
+        meta, _meta_errors = parse_frontmatter(path)
+        if meta:
+            current_value, _line_num = meta.get(key, ("", 0))
+            if current_value == today_iso:
+                continue
         diff_text = combined_diff(rel, base_ref)
         if not diff_text:
             continue

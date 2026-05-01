@@ -1,26 +1,26 @@
-name: Docs Doctrine
+﻿name: Docs Doctrine
 
 on:
   push:
     paths:
       - "docs/**"
       - "*.md"
-      - "scripts/validate-doctrine.py"
-      - "scripts/generate-index.sh"
-      - "scripts/sync-claude.sh"
-      - "scripts/render-configs.sh"
+      - "scripts/doctrine/validate-doctrine.py"
+      - "scripts/ops/generate-index.sh"
+      - "scripts/ops/sync-claude.sh"
+      - "scripts/ops/render-configs.sh"
       - ".github/workflows/docs-doctrine.yml"
   pull_request:
     paths:
       - "docs/**"
       - "*.md"
-      - "scripts/validate-doctrine.py"
-      - "scripts/generate-index.sh"
-      - "scripts/sync-claude.sh"
-      - "scripts/render-configs.sh"
+      - "scripts/doctrine/validate-doctrine.py"
+      - "scripts/ops/generate-index.sh"
+      - "scripts/ops/sync-claude.sh"
+      - "scripts/ops/render-configs.sh"
       - ".github/workflows/docs-doctrine.yml"
   schedule:
-    # Monthly freshness audit — 1st of each month at 06:00 UTC
+    # Monthly freshness audit â€” 1st of each month at 06:00 UTC
     - cron: "0 6 1 * *"
 
 concurrency:
@@ -37,7 +37,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Run Doctrine Validator
-        run: python scripts/validate-doctrine.py --ci .
+        run: python scripts/doctrine/validate-doctrine.py --ci .
 
   drift-check:
     name: Derived File Drift Check
@@ -47,10 +47,10 @@ jobs:
       - name: Regenerate derived files
         run: |
           echo "=== generate-index.sh ==="
-          bash scripts/generate-index.sh .
+          bash scripts/ops/generate-index.sh .
 
           echo "=== render-configs.sh ==="
-          bash scripts/render-configs.sh
+          bash scripts/ops/render-configs.sh
 
       - name: Check for drift
         run: |

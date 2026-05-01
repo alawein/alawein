@@ -1,4 +1,4 @@
-name: Auto-Generate Architecture Docs
+﻿name: Auto-Generate Architecture Docs
 
 on:
   push:
@@ -30,7 +30,7 @@ jobs:
           python-version: '3.12'
 
       - name: Regenerate architecture repo topology
-        run: python scripts/generate-arch-diagram.py
+        run: python scripts/ops/generate-arch-diagram.py
 
       - name: Check for changes
         id: diff
@@ -48,7 +48,7 @@ jobs:
             or workflow files.
 
             - Updated: `docs/architecture.md` repo topology section
-            - Source: `scripts/generate-arch-diagram.py`
+            - Source: `scripts/ops/generate-arch-diagram.py`
 
             Review the diff and merge if the diagram looks correct.
           branch: chore/auto-arch-update

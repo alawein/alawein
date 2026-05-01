@@ -1,4 +1,4 @@
-name: CI - Documentation Contract
+﻿name: CI - Documentation Contract
 
 on:
   push:
@@ -35,11 +35,11 @@ jobs:
         if: github.event_name == 'push'
         env:
           DOC_CONTRACT_BASE_REF: ${{ github.event.before }}
-        run: ./scripts/validate-doc-contract.sh --full
+        run: ./scripts/doctrine/validate-doc-contract.sh --full
 
       - name: Validate documentation contract (pull request)
         if: github.event_name == 'pull_request'
-        run: ./scripts/validate-doc-contract.sh --changed-only "origin/${{ github.base_ref }}"
+        run: ./scripts/doctrine/validate-doc-contract.sh --changed-only "origin/${{ github.base_ref }}"
 
   test-scripts:
     runs-on: ubuntu-latest
@@ -86,6 +86,6 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
       - name: Run control-plane baseline audit
-        run: python scripts/github-baseline-audit.py --local
+        run: python scripts/github/github-baseline-audit.py --local
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

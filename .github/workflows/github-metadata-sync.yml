@@ -1,4 +1,4 @@
-name: GitHub Metadata Sync
+﻿name: GitHub Metadata Sync
 
 on:
   push:
@@ -6,19 +6,19 @@ on:
     paths:
       - 'catalog/**'
       - 'projects.json'
-      - 'scripts/build-catalog.py'
-      - 'scripts/catalog_lib.py'
-      - 'scripts/validate-catalog.py'
-      - 'scripts/sync-github-metadata.py'
+      - 'scripts/catalog/build-catalog.py'
+      - 'scripts/catalog/catalog_lib.py'
+      - 'scripts/catalog/validate-catalog.py'
+      - 'scripts/github/sync-github-metadata.py'
       - '.github/workflows/github-metadata-sync.yml'
   pull_request:
     paths:
       - 'catalog/**'
       - 'projects.json'
-      - 'scripts/build-catalog.py'
-      - 'scripts/catalog_lib.py'
-      - 'scripts/validate-catalog.py'
-      - 'scripts/sync-github-metadata.py'
+      - 'scripts/catalog/build-catalog.py'
+      - 'scripts/catalog/catalog_lib.py'
+      - 'scripts/catalog/validate-catalog.py'
+      - 'scripts/github/sync-github-metadata.py'
       - '.github/workflows/github-metadata-sync.yml'
   workflow_dispatch:
     inputs:
@@ -69,8 +69,8 @@ jobs:
 
       - name: Validate catalog and derived outputs
         run: |
-          python scripts/build-catalog.py --check
-          python scripts/validate-catalog.py --strict
+          python scripts/catalog/build-catalog.py --check
+          python scripts/catalog/validate-catalog.py --strict
 
       - name: Generate sync plan artifact
         run: |
@@ -96,7 +96,7 @@ jobs:
             args+=(--no-custom-properties)
           fi
 
-          python scripts/sync-github-metadata.py "${args[@]}" > github-metadata-sync-plan.json
+          python scripts/github/sync-github-metadata.py "${args[@]}" > github-metadata-sync-plan.json
 
       - name: Upload sync plan artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
@@ -148,8 +148,8 @@ jobs:
 
       - name: Validate catalog and derived outputs
         run: |
-          python scripts/build-catalog.py --check
-          python scripts/validate-catalog.py --strict
+          python scripts/catalog/build-catalog.py --check
+          python scripts/catalog/validate-catalog.py --strict
 
       - name: Apply metadata
         run: |
@@ -172,7 +172,7 @@ jobs:
             args+=(--no-custom-properties)
           fi
 
-          python scripts/sync-github-metadata.py "${args[@]}" > github-metadata-sync-apply.json
+          python scripts/github/sync-github-metadata.py "${args[@]}" > github-metadata-sync-apply.json
 
       - name: Upload apply report artifact
         uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0

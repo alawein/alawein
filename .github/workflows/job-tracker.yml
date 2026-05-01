@@ -1,4 +1,4 @@
-name: Job Tracker Summary
+﻿name: Job Tracker Summary
 
 on:
   schedule:
@@ -27,4 +27,4 @@ jobs:
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_ENGAGEMENTS_DB_ID: ${{ secrets.NOTION_ENGAGEMENTS_DB_ID }}
-        run: node scripts/job-tracker.mjs --from-notion
+        run: node scripts/ops/job-tracker.mjs --from-notion

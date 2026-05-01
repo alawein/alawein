@@ -1,9 +1,9 @@
-name: Daily Digest
+﻿name: Daily Digest
 
 on:
   schedule:
     # 8am PT (UTC-8) Mon-Fri = 16:00 UTC Mon-Fri
-    # Note: during PDT (UTC-7) this fires at 9am PT — adjust to 15 if needed
+    # Note: during PDT (UTC-7) this fires at 9am PT â€” adjust to 15 if needed
     - cron: '0 16 * * 1-5'
   workflow_dispatch:
 
@@ -29,4 +29,4 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NOTION_INBOX_DB_ID: ${{ secrets.NOTION_INBOX_DB_ID }}
-        run: node scripts/daily-digest.mjs
+        run: node scripts/ops/daily-digest.mjs

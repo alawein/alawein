@@ -1,4 +1,4 @@
-name: GitHub Dashboard Sync
+﻿name: GitHub Dashboard Sync
 
 on:
   workflow_dispatch:
@@ -49,7 +49,7 @@ jobs:
             echo "DASHBOARD_GITHUB_TOKEN secret is required."
             exit 1
           fi
-          python scripts/build-github-dashboard.py \
+          python scripts/github/build-github-dashboard.py \
             --owners "${{ steps.owners.outputs.value }}" \
             --output docs/dashboard \
             --retention 180

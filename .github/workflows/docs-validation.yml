@@ -1,4 +1,4 @@
-name: Documentation Audit
+﻿name: Documentation Audit
 
 on:
   push:
@@ -49,7 +49,7 @@ jobs:
       - name: Run full documentation contract validation
         env:
           DOC_CONTRACT_BASE_REF: ${{ github.event.before }}
-        run: ./scripts/validate-doc-contract.sh --full
+        run: ./scripts/doctrine/validate-doc-contract.sh --full
 
       - name: Setup Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
@@ -61,16 +61,16 @@ jobs:
 
       - name: Build catalog outputs and validate registry
         run: |
-          python scripts/build-catalog.py --check
-          python scripts/validate-catalog.py --strict
-          python scripts/validate-projects-json.py
-          python scripts/build-style-rules.py --check
+          python scripts/catalog/build-catalog.py --check
+          python scripts/catalog/validate-catalog.py --strict
+          python scripts/catalog/validate-projects-json.py
+          python scripts/doctrine/build-style-rules.py --check
 
       - name: Validate governed style surfaces
-        run: python scripts/validate.py --ci
+        run: python scripts/doctrine/validate.py --ci
 
       - name: Scan managed docs for AI attribution
-        run: python scripts/validate-no-ai-attribution.py
+        run: python scripts/doctrine/validate-no-ai-attribution.py
 
       - name: Setup Node.js
         uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
@@ -147,7 +147,7 @@ jobs:
 
       - name: Run advisory style audit
         run: |
-          python scripts/style-advisory-audit.py > style-advisory-report.txt
+          python scripts/doctrine/style-advisory-audit.py > style-advisory-report.txt
 
       - name: Publish Vale summary
         if: always()
@@ -228,7 +228,7 @@ jobs:
               r"retired",
               r"historical",
               r"`legacy_slugs`",
-              r"→",
+              r"â†’",
               r"->",
           ]
 
@@ -369,7 +369,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `## 📚 Documentation Validation Report\n\n${report}`
+              body: `## ðŸ“š Documentation Validation Report\n\n${report}`
             });
 
   summary:
@@ -380,7 +380,7 @@ jobs:
     steps:
       - name: Display summary
         run: |
-          echo "## 📋 Documentation Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## ðŸ“‹ Documentation Validation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Job Results" >> $GITHUB_STEP_SUMMARY
           echo "- **Documentation Validation**: ${{ needs.validate-docs.result }}" >> $GITHUB_STEP_SUMMARY

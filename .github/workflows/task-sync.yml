@@ -1,4 +1,4 @@
-name: Task Sync (Notion <-> GitHub Issues)
+﻿name: Task Sync (Notion <-> GitHub Issues)
 
 on:
   schedule:
@@ -27,4 +27,4 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_TASKS_DB_ID: ${{ secrets.NOTION_TASKS_DB_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node scripts/task-sync.mjs
+        run: node scripts/ops/task-sync.mjs

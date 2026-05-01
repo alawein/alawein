@@ -1,4 +1,4 @@
-name: Documentation Validation
+﻿name: Documentation Validation
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
       - name: Fetch validate.py from alawein control plane
         run: |
           curl -fsSL \
-            "https://raw.githubusercontent.com/alawein/alawein/ed5ed61aef28cbdd761eeb0654808833bc4564be/scripts/validate.py" \
+            "https://raw.githubusercontent.com/alawein/alawein/ed5ed61aef28cbdd761eeb0654808833bc4564be/scripts/doctrine/validate.py" \
             -o validate.py
 
       - name: Run forbidden register check
@@ -57,5 +57,5 @@ jobs:
           if [ -n "$FILES" ]; then
             npx --yes markdownlint-cli@0.39.0 $FILES
           else
-            echo "No managed markdown files found — skipping markdownlint."
+            echo "No managed markdown files found â€” skipping markdownlint."
           fi

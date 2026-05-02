@@ -15,7 +15,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 
 # Regex patterns (case-insensitive). Keep this list narrow to avoid false
 # positives on legitimate discussion of AI tooling in governance docs.

@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-04-23",
+  "lastVerified": "2026-05-01",
   "repos": [
     {
       "name": "meshal.ai",
       "slug": "meshal-web",
       "legacy_slugs": [],
       "repo": "alawein/meshal-web",
-      "local_path": "meshal-web",
+      "local_path": "apps/meshal-web",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -136,7 +136,7 @@
       "slug": "repz",
       "legacy_slugs": [],
       "repo": "alawein/repz",
-      "local_path": "repz",
+      "local_path": "apps/repz",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -201,7 +201,7 @@
         "gainboy"
       ],
       "repo": "alawein/gymboy",
-      "local_path": "gymboy",
+      "local_path": "apps/gymboy",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -262,7 +262,7 @@
       "slug": "scribd",
       "legacy_slugs": [],
       "repo": "alawein/scribd",
-      "local_path": "scribd",
+      "local_path": "apps/scribd",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -324,7 +324,7 @@
       "slug": "bolts",
       "legacy_slugs": [],
       "repo": "alawein/bolts",
-      "local_path": "bolts",
+      "local_path": "tools/bolts",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -389,7 +389,7 @@
         "rounaq-atelier"
       ],
       "repo": "alawein/atelier-rounaq",
-      "local_path": "atelier-rounaq",
+      "local_path": "apps/atelier-rounaq",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -450,7 +450,7 @@
       "slug": "attributa",
       "legacy_slugs": [],
       "repo": "alawein/attributa",
-      "local_path": "attributa",
+      "local_path": "tools/attributa",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -512,7 +512,7 @@
       "slug": "llmworks",
       "legacy_slugs": [],
       "repo": "alawein/llmworks",
-      "local_path": "llmworks",
+      "local_path": "tools/llmworks",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -579,7 +579,7 @@
         "event-discovery-framework"
       ],
       "repo": "alawein/edfp",
-      "local_path": "edfp",
+      "local_path": "research/edfp",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -643,7 +643,7 @@
         "neper"
       ],
       "repo": "alawein/alembiq",
-      "local_path": "alembiq",
+      "local_path": "research/alembiq",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -708,7 +708,7 @@
         "qaplibria"
       ],
       "repo": "alawein/optiqap",
-      "local_path": "optiqap",
+      "local_path": "research/optiqap",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -764,14 +764,14 @@
         "research"
       ],
       "portfolio_domain": "Personal",
-      "research_domain": "Quadratic Assignment Problem solvers \u2014 equilibrium-guided optimization, spectral methods, QUBO."
+      "research_domain": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO."
     },
     {
       "name": "qmlab.online",
       "slug": "qmlab",
       "legacy_slugs": [],
       "repo": "alawein/qmlab",
-      "local_path": "qmlab",
+      "local_path": "research/qmlab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -836,7 +836,7 @@
       "slug": "simcore",
       "legacy_slugs": [],
       "repo": "alawein/simcore",
-      "local_path": "simcore",
+      "local_path": "research/simcore",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -901,7 +901,7 @@
         "MeatheadPhysicist"
       ],
       "repo": "alawein/meatheadphysicist",
-      "local_path": "meatheadphysicist",
+      "local_path": "research/meatheadphysicist",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -959,14 +959,14 @@
         "research"
       ],
       "portfolio_domain": "Personal",
-      "research_domain": "Computational physics research \u2014 Bell inequality, CHSH simulation"
+      "research_domain": "Computational physics research — Bell inequality, CHSH simulation"
     },
     {
       "name": "Adil",
       "slug": "adil",
       "legacy_slugs": [],
       "repo": "alawein/adil",
-      "local_path": "adil",
+      "local_path": "ventures/adil",
       "type": "research",
       "surface": "cli",
       "stack": [
@@ -1031,7 +1031,7 @@
       "slug": "roka-oakland-hustle",
       "legacy_slugs": [],
       "repo": "alawein/roka-oakland-hustle",
-      "local_path": "roka-oakland-hustle",
+      "local_path": "apps/roka-oakland-hustle",
       "type": "product",
       "surface": "service",
       "stack": [
@@ -1092,7 +1092,7 @@
       "slug": "qmatsim",
       "legacy_slugs": [],
       "repo": "alawein/qmatsim",
-      "local_path": "qmatsim",
+      "local_path": "research/qmatsim",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1150,7 +1150,7 @@
       "slug": "qubeml",
       "legacy_slugs": [],
       "repo": "alawein/qubeml",
-      "local_path": "qubeml",
+      "local_path": "research/qubeml",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1207,7 +1207,7 @@
       "slug": "scicomp",
       "legacy_slugs": [],
       "repo": "alawein/scicomp",
-      "local_path": "scicomp",
+      "local_path": "research/scicomp",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1263,7 +1263,7 @@
       "slug": "spincirc",
       "legacy_slugs": [],
       "repo": "alawein/spincirc",
-      "local_path": "spincirc",
+      "local_path": "research/spincirc",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1320,7 +1320,7 @@
       "slug": "maglogic",
       "legacy_slugs": [],
       "repo": "alawein/maglogic",
-      "local_path": "maglogic",
+      "local_path": "research/maglogic",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1377,7 +1377,7 @@
       "slug": "chshlab",
       "legacy_slugs": [],
       "repo": "alawein/chshlab",
-      "local_path": "chshlab",
+      "local_path": "research/chshlab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1432,14 +1432,14 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Quantum foundations \u2014 CHSH / Bell education site"
+      "research_domain": "Quantum foundations — CHSH / Bell education site"
     },
     {
       "name": "Helios",
       "slug": "helios",
       "legacy_slugs": [],
       "repo": "alawein/helios",
-      "local_path": "helios",
+      "local_path": "research/helios",
       "type": "archive",
       "surface": "dataset",
       "stack": [
@@ -1486,14 +1486,14 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Proprietary research archive \u2014 computational astrophysics"
+      "research_domain": "Proprietary research archive — computational astrophysics"
     },
     {
       "name": "Loophole Lab",
       "slug": "loopholelab",
       "legacy_slugs": [],
       "repo": "alawein/loopholelab",
-      "local_path": "loopholelab",
+      "local_path": "ventures/loopholelab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1547,7 +1547,7 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Research validation \u2014 adversarial claim stress-testing"
+      "research_domain": "Research validation — adversarial claim stress-testing"
     },
     {
       "name": "Provegate",
@@ -1556,7 +1556,7 @@
         "epistemic-stack"
       ],
       "repo": "alawein/provegate",
-      "local_path": "provegate",
+      "local_path": "ventures/provegate",
       "type": "research",
       "surface": "workflow",
       "stack": [
@@ -1611,7 +1611,7 @@
         "research",
         "infrastructure"
       ],
-      "research_domain": "Agent MCP tooling \u2014 drift, memory, proof"
+      "research_domain": "Agent MCP tooling — drift, memory, proof"
     },
     {
       "name": "Mercor LLM Failsafe",
@@ -1676,7 +1676,7 @@
         "devkit"
       ],
       "repo": "alawein/design-system",
-      "local_path": "design-system",
+      "local_path": "tools/design-system",
       "type": "infra",
       "surface": "monorepo",
       "stack": [
@@ -1817,7 +1817,7 @@
       "slug": "workspace-tools",
       "legacy_slugs": [],
       "repo": "alawein/workspace-tools",
-      "local_path": "workspace-tools",
+      "local_path": "tools/workspace-tools",
       "type": "infra",
       "surface": "cli",
       "stack": [
@@ -1888,7 +1888,7 @@
         "pkos"
       ],
       "repo": "alawein/knowledge-base",
-      "local_path": "knowledge-base",
+      "local_path": "tools/knowledge-base",
       "type": "infra",
       "surface": "docs-hub",
       "stack": [
@@ -2021,7 +2021,7 @@
         "reasonbench"
       ],
       "repo": "alawein/fallax",
-      "local_path": "fallax",
+      "local_path": "research/fallax",
       "type": "tooling",
       "surface": "service",
       "stack": [

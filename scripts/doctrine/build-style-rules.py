@@ -9,7 +9,7 @@ from typing import Any
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 REGISTRY = ROOT / "docs" / "style" / "terminology-registry.yaml"
 STYLES_DIR = ROOT / "styles" / "Alawein"
 TONE_YML = STYLES_DIR / "Tone.yml"

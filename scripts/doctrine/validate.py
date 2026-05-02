@@ -9,7 +9,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Literal
 
-DEFAULT_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 SKIP_DIRS = {
     ".git",

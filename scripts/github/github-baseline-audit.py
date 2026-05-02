@@ -10,7 +10,7 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 WORKSPACE = ROOT.parent
 MANIFEST = yaml.safe_load((ROOT / "github-baseline.yaml").read_text(encoding="utf-8")) or {}
 REPOS = MANIFEST.get("repos", [])

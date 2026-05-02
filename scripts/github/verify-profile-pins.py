@@ -14,7 +14,7 @@ from typing import Any
 
 from catalog_lib import profile_config
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 README = ROOT / "README.md"
 PROFILE_URL = "https://github.com/alawein"
 LIVE_PIN_BLOCK_MARKER = "js-pinned-items-reorder-list"

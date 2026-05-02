@@ -36,7 +36,7 @@ class DirtyEntry:
 
 
 def repo_root() -> Path:
-    return Path(__file__).resolve().parent.parent
+    return Path(__file__).resolve().parent.parent.parent
 
 
 def run_git(args: Sequence[str], check: bool = True) -> subprocess.CompletedProcess[str]:

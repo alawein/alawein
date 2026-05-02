@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.1.0
-last_updated: 2026-03-28
+last_updated: 2026-05-02
 tags: [governance, workflow, branching, deployment, git]
 ---
 

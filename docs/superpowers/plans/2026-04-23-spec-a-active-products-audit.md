@@ -3,7 +3,7 @@ title: Spec A — Active Products Audit Implementation Plan
 date: 2026-04-23
 status: active
 type: canonical
-last_updated: 2026-04-23
+last_updated: 2026-04-30
 ---
 
 # Spec A — Active Products Audit Implementation Plan
@@ -783,8 +783,6 @@ docs(superpowers): spec-a active products audit
 Full per-product and cross-product audit of 8 active product repos covering
 front-end quality, design-system adoption, architecture, portfolio presentation,
 and feature gaps. Feeds master execution plan (Session 6).
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```

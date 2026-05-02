@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+last_updated: 2026-04-30
+last-verified: 2026-04-30
 ---
 
 # Voice and style contract
@@ -33,13 +33,38 @@ approval.
 ### Structure
 
 - Lead with the claim. Context follows. Credentials do not open the paragraph.
-- Short declarative sentences are the default unit. Longer sentences are fine
-  when the mechanism genuinely needs them.
+- See "Sentence rhythm and paragraph structure" below for sentence-length
+  targets. Longer sentences appear only when the mechanism genuinely requires
+  layering.
 - Use active voice. Use third-person only in formal papers and theses.
 - Do not add preambles explaining what is about to be said. Do not add recap
   paragraphs explaining what was just said.
 - Use paragraphs when explaining mechanisms, relationships, or reasoning.
   Reserve bullets for genuine enumeration.
+
+### Sentence rhythm and paragraph structure
+
+Medium sentences (12–20 words) carry claims. Short sentences (5–8 words) close
+claim sequences; they are complete sentences, never fragments.
+
+Paragraph openers state the conclusion. Evidence follows. Move directly to the
+next technical framing between paragraphs; do not write bridging prose.
+
+### Punctuation discipline
+
+Colons introduce lists, set off explanatory or evidential clauses, and link
+claim to mechanism. Em dashes wrap parenthetical insertions only.
+
+Correct: `"This failure manifests through coordination effects: 2D crystals
+are less stable than their 3D counterparts."` (claim: mechanism)
+
+Correct: `"not looking for volume: looking for depth"` (contrast via colon)
+
+Incorrect: `"The model doesn't just recall — it reasons under pressure."`
+
+Em dash budget: 0–1 per section (tables, inline code, and quoted examples are
+exempt). Three or more in one paragraph is a blocking AI-generation signal —
+it triggers a BLOCKING finding from the voice-check linter.
 
 ### Forbidden register
 
@@ -59,7 +84,7 @@ These phrases are banned on governed surfaces:
 - Specific failure modes: "model fails on chirality constraints in Weyl
   semimetals", not "model has limitations with complex physics"
 - Direct boundaries: "I don't", not "I would prefer not to"
-- Honest scoping: "not looking for volume — looking for depth"
+- Honest scoping: "Not looking for volume. Looking for depth."
 
 ## Feynman register
 
@@ -70,7 +95,9 @@ computational-physics precision. Both apply. Neither cancels the other.
 
 - Physical intuition before formalism
 - Concrete examples before abstract categories
-- Rhetorical questions only when they sharpen focus
+- Rhetorical questions only when they sharpen focus; declarative + colon is
+  the preferred hook ("The story begins as good science often does: with a
+  hunch, some equations, and skepticism.")
 - Short sentences that land like facts
 
 ### Computational-physics precision
@@ -161,7 +188,7 @@ present tense, technical, and free of AI attribution.
 ### Repos and packages
 
 - Repos: lowercase-hyphenated (`workspace-tools`, `llm-engineering`)
-- npm packages: scoped lowercase (`@morphism/core`)
+- npm packages: scoped lowercase (`@kohyr/core`)
 - Python classes: `PascalCase`
 - Python functions and variables: `snake_case`
 - TypeScript and JavaScript identifiers: `camelCase`
@@ -170,7 +197,7 @@ present tense, technical, and free of AI attribution.
 
 | Name | Category | One-liner |
 |------|----------|-----------|
-| Morphism | Governance | Formal orchestration for governed, composable agent systems |
+| Kohyr | Governance | AI governance framework with category-theoretic proof witnesses |
 | Alembiq | AI Infrastructure | LLM training, alignment, and evaluation — SFT, DPO, LoRA, synthetic data |
 | Event Discovery Framework | Computer Vision | Physics-inspired video event detection via energy functionals |
 | OptiQAP | Optimization | Equilibrium-guided QAP solver: spectral methods, QUBO, simulated annealing |

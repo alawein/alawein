@@ -6,7 +6,7 @@ sla: none
 authority: canonical
 last-verified: 2026-04-25
 audience: [ai-agents, contributors]
-last_updated: 2026-04-25
+last_updated: 2026-04-30
 ---
 
 # Bolts Dashboard Stats Implementation Plan
@@ -295,9 +295,7 @@ last_updated: 2026-04-25
   Replace three placeholder stats and hardcoded activity entries with
   live purchase data. Stats now show: Programs owned, Total invested,
   Member since. Recent Activity lists last 3 purchases or an empty state
-  with a Browse Programs link.
-
-  Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>"
+  with a Browse Programs link."
   ```
 
 - [ ] **Step 4: Push**

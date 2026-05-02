@@ -12,7 +12,7 @@ from typing import Any
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 REGISTRY = ROOT / "docs" / "style" / "terminology-registry.yaml"
 COMMENT_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".jsx"}
 MARKDOWN_SUFFIXES = {".md"}

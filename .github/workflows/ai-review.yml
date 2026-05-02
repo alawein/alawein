@@ -1,4 +1,4 @@
-name: AI Agent Review
+﻿name: AI Agent Review
 
 on:
   pull_request:
@@ -37,7 +37,7 @@ jobs:
       - name: Validate prompt kit structure
         id: validate
         run: |
-          python scripts/validate-prompt-kit.py > /tmp/validate-output.txt 2>&1
+          python scripts/doctrine/validate-prompt-kit.py > /tmp/validate-output.txt 2>&1
           echo "exit_code=$?" >> $GITHUB_OUTPUT
         continue-on-error: true
 
@@ -65,7 +65,7 @@ jobs:
             const exitCode = '${{ steps.validate.outputs.exit_code }}'
             const hasDiff = '${{ steps.diff.outputs.has_changes }}' === 'true'
 
-            const status = exitCode === '0' ? '✅ Validation passed' : '❌ Validation failed'
+            const status = exitCode === '0' ? 'âœ… Validation passed' : 'âŒ Validation failed'
             const diffSection = hasDiff
               ? `\n\n<details><summary>Prompt kit diff</summary>\n\n\`\`\`diff\n${diff.slice(0, 4000)}\n\`\`\`\n</details>`
               : '\n\nNo prompt-kit file changes detected.'
@@ -134,6 +134,6 @@ jobs:
                 `- Repos added: **${added}**`,
                 `- Repos removed: **${removed}**`,
                 '',
-                '_Verify `catalog/repos.json` schema with `python scripts/validate-catalog.py --strict`._',
+                '_Verify `catalog/repos.json` schema with `python scripts/catalog/validate-catalog.py --strict`._',
               ].join('\n'),
             })

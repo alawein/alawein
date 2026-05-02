@@ -16,6 +16,13 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.4.0 — 2026-04-30
+
+- Added sentence rhythm rule: medium sentences (12–20 words) carry claims; short sentences (5–8 words) close sequences
+- Added fragment prohibition: short sentences are complete sentences, never fragments
+- Added colon preference: colons connect cause to effect; em dashes wrap parenthetical insertions only
+- Added em dash budget: 0–1 per section; 3+ in one paragraph is a blocking LLM tell
+
 ### 1.3.0 — 2026-04-30
 
 - Added version, parent-version, change-summary, downstream-consumers frontmatter fields

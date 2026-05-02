@@ -8,7 +8,7 @@ from pathlib import Path
 
 from catalog_lib import profile_config
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 README = ROOT / "README.md"
 
 ACRONYMS = {"ai", "hpc", "llm", "api", "sdk", "ml", "ci", "cd", "sql", "os"}

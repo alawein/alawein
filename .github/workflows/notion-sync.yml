@@ -1,4 +1,4 @@
-name: Sync to Notion
+﻿name: Sync to Notion
 
 on:
   push:
@@ -36,7 +36,7 @@ jobs:
           NOTION_TAGS_PROPERTY: Stack
           NOTION_NAME_PROPERTY: Name
           NOTION_REPO_PROPERTY: Repo
-        run: node scripts/sync-to-notion.mjs
+        run: node scripts/notion/sync-to-notion.mjs
 
       - name: Verify canonical Notion state
         env:
@@ -46,4 +46,4 @@ jobs:
           NOTION_NAME_PROPERTY: Name
           NOTION_REPO_PROPERTY: Repo
           NOTION_EXPECTED_LEGACY_COUNT: 1
-        run: node scripts/verify-notion-canonical-state.mjs
+        run: node scripts/notion/verify-notion-canonical-state.mjs

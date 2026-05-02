@@ -3,7 +3,7 @@ title: Phase 0 — Workspace Triage Implementation Plan
 date: 2026-04-23
 status: active
 type: canonical
-last_updated: 2026-04-23
+last_updated: 2026-04-30
 ---
 
 # Phase 0 — Workspace Triage Implementation Plan
@@ -561,8 +561,6 @@ docs(superpowers): add workspace audit design spec and phase-0 triage plan
 Introduces the 6-document audit system (design spec + 5 deliverable specs)
 and the Phase 0 triage implementation plan. Triage document will be filled
 in during the same session after data collection runs.
-
-Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 EOF
 )"
 ```

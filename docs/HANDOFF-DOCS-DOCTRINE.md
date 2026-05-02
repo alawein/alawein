@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Handoff — Docs Doctrine Phase 3-5 and Supporting Tasks
 description: Actionable superpowers-formatted requests for completing the Docs Doctrine migration.
-last_updated: 2026-03-26
+last_updated: 2026-05-02
 ---
 
 > **Status: COMPLETE** — All 6 requests executed 2026-03-26. This document is
@@ -17,12 +17,12 @@ last_updated: 2026-03-26
 
 - **Goal:** Complete the Docs Doctrine file governance framework across the alawein workspace (28+ repos).
 - **Current state:** Phase 1 (org repo headers, 75 files) and Phase 2 (cross-repo migration, 166 files across 30 repos) are complete. 259 changed files remain **uncommitted** across 31 repos.
-- **Authority:** [`docs-doctrine.md`](governance/docs-doctrine.md), [`validate-doctrine.py`](../scripts/validate-doctrine.py), [`CLAUDE.md`](../CLAUDE.md)
+- **Authority:** [`docs-doctrine.md`](governance/docs-doctrine.md), [`validate-doctrine.py`](../scripts/doctrine/validate-doctrine.py), [`CLAUDE.md`](../CLAUDE.md)
 
 ## What was done
 
 - Docs Doctrine rules document placed at `docs/governance/docs-doctrine.md`
-- Validation script: `scripts/validate-doctrine.py` (10 rules, CI-ready)
+- Validation script: `scripts/doctrine/validate-doctrine.py` (10 rules, CI-ready)
 - CI workflow: `.github/workflows/docs-doctrine.yml` (validate + drift-check)
 - Pre-commit hook: `scripts/pre-commit-doctrine.sh`
 - Generator stubs: `generate-index.sh`, `sync-claude.sh`, `render-configs.sh`
@@ -36,7 +36,7 @@ last_updated: 2026-03-26
 | What | Where |
 |------|--------|
 | Doctrine rules | `docs/governance/docs-doctrine.md` |
-| Validator | `scripts/validate-doctrine.py` |
+| Validator | `scripts/doctrine/validate-doctrine.py` |
 | CI workflow | `.github/workflows/docs-doctrine.yml` |
 | Pre-commit hook | `scripts/pre-commit-doctrine.sh` |
 | Generator stubs | `scripts/generate-index.sh`, `scripts/sync-claude.sh`, `scripts/render-configs.sh` |
@@ -167,7 +167,7 @@ INDEX.md stays. CLAUDE.md stays. Everything else is suspect.
 Use the "superpowers brainstorming" skill. I need to execute Phase 5 of the
 Docs Doctrine: full enforcement.
 
-Context: The doctrine validator (scripts/validate-doctrine.py) and CI workflow
+Context: The doctrine validator (scripts/doctrine/validate-doctrine.py) and CI workflow
 (.github/workflows/docs-doctrine.yml) exist but are advisory. PRs can merge
 even if doctrine validation fails.
 
@@ -196,7 +196,7 @@ minimal docs shouldn't be blocked by governance overhead.
 Use the "superpowers brainstorming" skill. I want a lightweight dashboard
 showing doctrine compliance across all workspace repos.
 
-Context: The validator (scripts/validate-doctrine.py) can run in --ci mode and
+Context: The validator (scripts/doctrine/validate-doctrine.py) can run in --ci mode and
 produces structured output. The workspace has ~28 repos. _ops/ has a
 workspace-batch CLI for manifest-driven multi-repo execution.
 

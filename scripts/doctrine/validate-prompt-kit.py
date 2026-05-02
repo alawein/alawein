@@ -8,7 +8,7 @@ from pathlib import Path
 
 import yaml
 
-PROMPT_KITS_DIR = Path(__file__).resolve().parent.parent / "prompt-kits"
+PROMPT_KITS_DIR = Path(__file__).resolve().parent.parent.parent / "prompt-kits"
 
 EXEMPT_FILES = {"CHANGELOG.md"}
 

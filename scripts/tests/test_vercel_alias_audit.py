@@ -6,8 +6,10 @@ import unittest
 from pathlib import Path
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
+GITHUB_DIR = SCRIPTS_DIR / "github"
+for d in (str(SCRIPTS_DIR), str(GITHUB_DIR)):
+    if d not in sys.path:
+        sys.path.insert(0, d)
 
 import vercel_alias_audit as audit  # noqa: E402
 

@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.1.0
-last_updated: 2026-03-28
+last_updated: 2026-05-02
 tags: [governance, workflow, branching, deployment, git]
 ---
 
@@ -59,7 +59,7 @@ For multi-repo work, use the manifest-driven batch model described in
 ## Validation and CI
 
 - local enforcement entrypoint:
-  [`../../scripts/validate-doc-contract.sh`](../../scripts/validate-doc-contract.sh)
+  [`../../scripts/doctrine/validate-doc-contract.sh`](../../scripts/doctrine/validate-doc-contract.sh)
 - fast CI:
   [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
 - slower documentation audit:

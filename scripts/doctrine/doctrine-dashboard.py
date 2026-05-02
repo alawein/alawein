@@ -217,8 +217,8 @@ def main():
     parser = argparse.ArgumentParser(description="Docs Doctrine Compliance Dashboard")
     parser.add_argument(
         "--workspace",
-        default=str(Path(__file__).resolve().parent.parent.parent),
-        help="Workspace root (default: two levels up from script)",
+        default=str(Path(__file__).resolve().parent.parent.parent.parent),
+        help="Workspace root (default: three levels up from script — was two before scripts/ subfoldering)",
     )
     parser.add_argument("--json", action="store_true", help="Output as JSON")
     parser.add_argument("--output", "-o", help="Write to file instead of stdout")

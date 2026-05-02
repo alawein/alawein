@@ -16,10 +16,21 @@ generate_index() {
 
   local index_file="${docs_dir}/INDEX.md"
   local title="Index — ${repo_name}"
-  local last_updated="unknown"
-
-  if git -C "$repo_root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    last_updated=$(git -C "$repo_root" log -1 --format=%cs -- "$docs_dir" 2>/dev/null || echo "unknown")
+  # Derive last_updated from docs history so regeneration is stable when docs
+  # content has not changed.
+  local last_updated docs_rel existing_last_updated
+  docs_rel="${docs_dir#${repo_root}/}"
+  last_updated=$(git -C "$repo_root" log -1 --format=%cs -- "$docs_rel" 2>/dev/null || true)
+  if [ -z "$last_updated" ] && [ -f "$index_file" ]; then
+    existing_last_updated=$(
+      sed -n 's/^last_updated: //p' "$index_file" | head -n 1
+    )
+    last_updated="${existing_last_updated}"
+  fi
+  if [ -z "$last_updated" ]; then
+    # Avoid a sentinel date that will immediately fail staleness checks when
+    # git metadata is unavailable (for example on first run).
+    last_updated="$(date +%F)"
   fi
 
   {

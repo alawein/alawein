@@ -10,7 +10,7 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 WORKSPACE = ROOT.parent
 MANIFEST = yaml.safe_load((ROOT / "github-baseline.yaml").read_text(encoding="utf-8")) or {}
 REPOS = MANIFEST.get("repos", [])
@@ -32,9 +32,11 @@ BANNED_WIDGET_PATTERNS = [
 # exemption never applies to sibling repos. Keep this set minimal — additions
 # must have an explicit rationale comment.
 CONTROL_PLANE_README_EXEMPT: frozenset[str] = frozenset({"capsule-render"})
-assert len(CONTROL_PLANE_README_EXEMPT) <= 2, (  # noqa: S101
-    "CONTROL_PLANE_README_EXEMPT is growing — review each entry before extending"
-)
+if len(CONTROL_PLANE_README_EXEMPT) > 2:
+    raise ValueError(
+        "CONTROL_PLANE_README_EXEMPT has grown beyond 2 entries. "
+        "Review each entry, add a rationale comment, and raise this cap deliberately."
+    )
 PINNED_REF_RE = re.compile(r"^[0-9a-f]{40}$")
 USES_LINE_RE = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)")
 
@@ -196,9 +198,9 @@ def main() -> int:
     check_manifest(errors)
     check_control_plane_workflows(errors)
     if not args.local:
-        # check_readme scans for banned widgets in sibling repo READMEs.
-        # In --local mode we only have the control-plane repo; its README is the
-        # org GitHub profile page, which has design latitude and is exempt.
+        # check_readme audits ROOT/README.md (the control-plane org profile page).
+        # Skipped in --local mode because the org profile README has design latitude
+        # (capsule-render is exempted via CONTROL_PLANE_README_EXEMPT for full runs).
         check_readme(errors)
         for entry in REPOS:
             check_repo(entry, errors)

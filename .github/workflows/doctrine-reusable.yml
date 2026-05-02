@@ -1,4 +1,4 @@
-name: Doctrine Validation (Reusable)
+﻿name: Doctrine Validation (Reusable)
 
 # Reusable workflow for cross-repo doctrine validation.
 # Product repos call this via:
@@ -32,9 +32,9 @@ jobs:
             .vale.ini
             styles
             docs/style/terminology-registry.yaml
-            scripts/style-advisory-audit.py
-            scripts/validate.py
-            scripts/validate-doctrine.py
+            scripts/doctrine/style-advisory-audit.py
+            scripts/doctrine/validate.py
+            scripts/doctrine/validate-doctrine.py
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -46,17 +46,17 @@ jobs:
       - name: Run Doctrine Validator
         run: |
           if [ "${{ inputs.strict }}" = "true" ]; then
-            python org/scripts/validate-doctrine.py --ci repo
+            python org/scripts/doctrine/validate-doctrine.py --ci repo
           else
-            python org/scripts/validate-doctrine.py repo || echo "::warning::Doctrine validation found issues (non-blocking)"
+            python org/scripts/doctrine/validate-doctrine.py repo || echo "::warning::Doctrine validation found issues (non-blocking)"
           fi
 
       - name: Validate governed style surfaces
         run: |
           if [ "${{ inputs.strict }}" = "true" ]; then
-            python org/scripts/validate.py --root repo --ci
+            python org/scripts/doctrine/validate.py --root repo --ci
           else
-            python org/scripts/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
+            python org/scripts/doctrine/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
           fi
 
       - name: Install Vale CLI
@@ -86,7 +86,7 @@ jobs:
       - name: Run advisory repo style audit
         continue-on-error: true
         run: |
-          python org/scripts/style-advisory-audit.py --repo-root repo > style-advisory-report.txt
+          python org/scripts/doctrine/style-advisory-audit.py --repo-root repo > style-advisory-report.txt
 
       - name: Publish advisory repo style audit
         if: always()

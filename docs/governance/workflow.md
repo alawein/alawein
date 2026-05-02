@@ -59,7 +59,7 @@ For multi-repo work, use the manifest-driven batch model described in
 ## Validation and CI
 
 - local enforcement entrypoint:
-  [`../../scripts/validate-doc-contract.sh`](../../scripts/validate-doc-contract.sh)
+  [`../../scripts/doctrine/validate-doc-contract.sh`](../../scripts/doctrine/validate-doc-contract.sh)
 - fast CI:
   [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
 - slower documentation audit:

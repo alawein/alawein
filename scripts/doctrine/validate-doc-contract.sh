@@ -46,7 +46,7 @@ if ! command -v python3 >/dev/null 2>&1; then
 fi
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-repo_root="$(cd "$script_dir/.." && pwd)"
+repo_root="$(cd "$script_dir/../.." && pwd)"
 cd "$repo_root"
 
 export DOC_CONTRACT_MODE="$mode"
@@ -86,7 +86,7 @@ REQUIRED_FILES = [
     "docs/governance/documentation-contract.md",
     "docs/governance/workspace-master-prompt.md",
     "docs/governance/workflow.md",
-    "scripts/validate-doc-contract.sh",
+    "scripts/doctrine/validate-doc-contract.sh",
 ]
 
 CANONICAL_DOCS = {

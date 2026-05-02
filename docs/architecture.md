@@ -46,6 +46,55 @@ graph TB
   workspace -->|"CLI + config packages"| products
 ```
 
+
+<!-- AUTO-GENERATED REPO TOPOLOGY START -->
+<!-- last updated: 2026-05-02 — do not edit; run scripts/generate-arch-diagram.py -->
+
+### Repo Topology (auto-generated from catalog/repos.json)
+
+```mermaid
+graph TB
+  subgraph archive["Archive Repos"]
+    helios["helios\nProprietary research archive for co"]
+    mercor_llm_failsafe["mercor-llm-failsafe\nArchived employer project for LLM f"]
+  end
+  subgraph governance["Governance Repos"]
+    alawein["alawein\nGovernance control plane, catalog S"]
+  end
+  subgraph infra["Infra Repos"]
+    design_system["design-system\nShared design tokens, themes, UI co"]
+    workspace_tools["workspace-tools\nWorkspace execution layer for scaff"]
+    knowledge_base["knowledge-base\nSearchable discovery surface for re"]
+  end
+  subgraph product["Product Repos"]
+    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
+    morphism["morphism\nCategory-theoretic AI governance wi"]
+    repz["repz\nAI-powered coaching platform for fi"]
+    gymboy["gymboy\nFitness coaching platform with a re"]
+    scribd["scribd\nFitness publishing and content surf"]
+    bolts["bolts\nFitness transformation plans with N"]
+    atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
+    attributa["attributa\nPrivacy-first attribution intellige"]
+    more_product["… 2 more"]
+  end
+  subgraph research["Research Repos"]
+    edfp["edfp\nPhysics-inspired video event detect"]
+    alembiq["alembiq\nLLM training, alignment, evaluation"]
+    optiqap["optiqap\nQuadratic Assignment Problem solver"]
+    qmlab["qmlab\nQuantum ML web lab with React, Type"]
+    simcore["simcore\nScientific simulation core for inte"]
+    meatheadphysicist["meatheadphysicist\nComputational physics research plat"]
+    adil["adil\nLegal-ops CLI for assembling, valid"]
+    qmatsim["qmatsim\nQuantum material simulation researc"]
+    more_research["… 7 more"]
+  end
+  subgraph tooling["Tooling Repos"]
+    handshake_hai["handshake-hai\nLLM evaluation monorepo with shared"]
+    fallax["fallax\nLLM adversarial reasoning evaluatio"]
+  end
+```
+
+<!-- AUTO-GENERATED REPO TOPOLOGY END -->
 ## CI/CD Pipeline
 
 Every push to `main` and every PR triggers this pipeline. Status checks gate merges.

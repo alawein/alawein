@@ -2,7 +2,7 @@
   "meshal-web": {
     "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
-    "screenshot_folder": "meshal-web/docs/screenshots",
+    "screenshot_folder": "apps/meshal-web/docs/screenshots",
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/meshal-web/social-card.svg",
     "favicon_status": "generated"
@@ -10,7 +10,7 @@
   "repz": {
     "logo_source": "design-system/packages/icons/dist/brand/repz/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/repz/repo-banner.svg",
-    "screenshot_folder": "repz/docs/screenshots",
+    "screenshot_folder": "apps/repz/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/repz/social-card.svg",
     "favicon_status": "generated"
@@ -18,7 +18,7 @@
   "gymboy": {
     "logo_source": "design-system/packages/icons/dist/brand/gymboy/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/gymboy/repo-banner.svg",
-    "screenshot_folder": "gymboy/docs/screenshots",
+    "screenshot_folder": "apps/gymboy/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/gymboy/social-card.svg",
     "favicon_status": "generated"
@@ -26,7 +26,7 @@
   "scribd": {
     "logo_source": "design-system/packages/icons/dist/brand/scribd/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/scribd/repo-banner.svg",
-    "screenshot_folder": "scribd/docs/screenshots",
+    "screenshot_folder": "apps/scribd/docs/screenshots",
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
     "favicon_status": "generated"
@@ -34,7 +34,7 @@
   "bolts": {
     "logo_source": "design-system/packages/icons/dist/brand/bolts/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/bolts/repo-banner.svg",
-    "screenshot_folder": "bolts/docs/screenshots",
+    "screenshot_folder": "tools/bolts/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/bolts/social-card.svg",
     "favicon_status": "generated"
@@ -42,7 +42,7 @@
   "atelier-rounaq": {
     "logo_source": "design-system/packages/icons/dist/brand/atelier-rounaq/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/atelier-rounaq/repo-banner.svg",
-    "screenshot_folder": "atelier-rounaq/docs/screenshots",
+    "screenshot_folder": "apps/atelier-rounaq/docs/screenshots",
     "theme_family": "legacy",
     "social_preview_image": "design-system/packages/icons/dist/brand/atelier-rounaq/social-card.svg",
     "favicon_status": "generated"
@@ -50,7 +50,7 @@
   "attributa": {
     "logo_source": "design-system/packages/icons/dist/brand/attributa/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/attributa/repo-banner.svg",
-    "screenshot_folder": "attributa/docs/screenshots",
+    "screenshot_folder": "tools/attributa/docs/screenshots",
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/attributa/social-card.svg",
     "favicon_status": "generated"
@@ -58,7 +58,7 @@
   "llmworks": {
     "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
-    "screenshot_folder": "llmworks/docs/screenshots",
+    "screenshot_folder": "tools/llmworks/docs/screenshots",
     "theme_family": "wisdom",
     "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
     "favicon_status": "generated"
@@ -66,7 +66,7 @@
   "edfp": {
     "logo_source": "design-system/packages/icons/dist/brand/edfp/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/edfp/repo-banner.svg",
-    "screenshot_folder": "edfp/docs/screenshots",
+    "screenshot_folder": "research/edfp/docs/screenshots",
     "theme_family": "wisdom",
     "social_preview_image": "design-system/packages/icons/dist/brand/edfp/social-card.svg",
     "favicon_status": "generated"
@@ -74,7 +74,7 @@
   "qmlab": {
     "logo_source": "design-system/packages/icons/dist/brand/qmlab/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/qmlab/repo-banner.svg",
-    "screenshot_folder": "qmlab/docs/screenshots",
+    "screenshot_folder": "research/qmlab/docs/screenshots",
     "theme_family": "dawn",
     "social_preview_image": "design-system/packages/icons/dist/brand/qmlab/social-card.svg",
     "favicon_status": "generated"
@@ -82,7 +82,7 @@
   "simcore": {
     "logo_source": "design-system/packages/icons/dist/brand/simcore/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/simcore/repo-banner.svg",
-    "screenshot_folder": "simcore/docs/screenshots",
+    "screenshot_folder": "research/simcore/docs/screenshots",
     "theme_family": "dawn",
     "social_preview_image": "design-system/packages/icons/dist/brand/simcore/social-card.svg",
     "favicon_status": "generated"
@@ -90,7 +90,7 @@
   "meatheadphysicist": {
     "logo_source": "design-system/packages/icons/dist/brand/meatheadphysicist/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/meatheadphysicist/repo-banner.svg",
-    "screenshot_folder": "meatheadphysicist/docs/screenshots",
+    "screenshot_folder": "research/meatheadphysicist/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/meatheadphysicist/social-card.svg",
     "favicon_status": "generated"
@@ -98,7 +98,7 @@
   "roka-oakland-hustle": {
     "logo_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/repo-banner.svg",
-    "screenshot_folder": "roka-oakland-hustle/docs/screenshots",
+    "screenshot_folder": "apps/roka-oakland-hustle/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/roka-oakland-hustle/social-card.svg",
     "favicon_status": "generated"
@@ -106,7 +106,7 @@
   "chshlab": {
     "logo_source": "design-system/packages/icons/dist/brand/chshlab/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/chshlab/repo-banner.svg",
-    "screenshot_folder": "chshlab/docs/screenshots",
+    "screenshot_folder": "research/chshlab/docs/screenshots",
     "theme_family": "dawn",
     "social_preview_image": "design-system/packages/icons/dist/brand/chshlab/social-card.svg",
     "favicon_status": "generated"
@@ -114,7 +114,7 @@
   "loopholelab": {
     "logo_source": "design-system/packages/icons/dist/brand/loopholelab/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/loopholelab/repo-banner.svg",
-    "screenshot_folder": "loopholelab/docs/screenshots",
+    "screenshot_folder": "ventures/loopholelab/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/loopholelab/social-card.svg",
     "favicon_status": "generated"
@@ -138,7 +138,7 @@
   "knowledge-base": {
     "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
-    "screenshot_folder": "knowledge-base/docs/screenshots",
+    "screenshot_folder": "tools/knowledge-base/docs/screenshots",
     "theme_family": "dawn",
     "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
     "favicon_status": "generated"
@@ -146,7 +146,7 @@
   "fallax": {
     "logo_source": "design-system/packages/icons/dist/brand/fallax/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/fallax/repo-banner.svg",
-    "screenshot_folder": "fallax/docs/screenshots",
+    "screenshot_folder": "research/fallax/docs/screenshots",
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
     "favicon_status": "generated"

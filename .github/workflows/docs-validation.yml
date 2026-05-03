@@ -252,7 +252,7 @@ jobs:
               "docs/archive/bulk-execution-progress.md",
               "docs/governance/design-branding-summary.md",
               "docs/archive/remaining-steps-per-repo.md",
-              "docs/audits/technical-debt-report-20260311.md",
+              "docs/archive/audits-2026-03/technical-debt-report-20260311.md",
           }
 
           errors = []

@@ -5,14 +5,14 @@ sync: none
 sla: none
 title: Credential hygiene
 description: Rules for storing and referencing secrets; aligns with full-environment audit findings
-last_updated: 2026-03-16
+last_updated: 2026-05-03
 category: governance
 audience: [ai-agents, contributors]
 ---
 
 # Credential hygiene
 
-This document summarizes safe practices for credentials and secrets. It supports the remediation backlog from [docs/audits/full-environment-audit-2026-03-16.md](../audits/full-environment-audit-2026-03-16.md).
+This document summarizes safe practices for credentials and secrets. It supports the remediation backlog from [docs/archive/audits-2026-03/full-environment-audit-2026-03-16.md](../archive/audits-2026-03/full-environment-audit-2026-03-16.md).
 
 ## Rules
 
@@ -44,6 +44,6 @@ Set `GITHUB_PAT` in your environment (e.g. Windows user env vars, shell profile,
 
 ## References
 
-- Full environment audit: [docs/audits/full-environment-audit-2026-03-16.md](../audits/full-environment-audit-2026-03-16.md)
-- Remediation checklist (step-by-step): [docs/audits/remediation-checklist-2026-03-16.md](../audits/remediation-checklist-2026-03-16.md)
+- Full environment audit: [docs/archive/audits-2026-03/full-environment-audit-2026-03-16.md](../archive/audits-2026-03/full-environment-audit-2026-03-16.md)
+- Remediation checklist (step-by-step): [docs/archive/audits-2026-03/remediation-checklist-2026-03-16.md](../archive/audits-2026-03/remediation-checklist-2026-03-16.md)
 - AGENTS.md: "Never do — Store secrets or credentials"

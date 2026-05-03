@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: observed
-last-updated: 2026-03-26
+last-updated: 2026-05-03
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -30,7 +30,7 @@ audience: [ai-agents, contributors, future-self]
 - **Compare branch vs main before squash-merge**: Long-lived local branches that predate large mainline commits can show a diff that mostly deletes current work; squash-merging them is effectively a rollback. Check `git diff --stat main <branch>` first; cherry-pick or abandon.
 - **Doc contract and markdownlint are two gates**: `validate-doc-contract.sh` can pass while `markdownlint-cli` still fails on emphasis, list numbering, or tables—run both (or rely on CI) before calling the branch done.
 - **Repo-local links in markdown**: CI validates targets inside the checked-out repo only; sibling dirs such as `_workspace/` and `_ops/` are outside this clone—describe them in prose or backticks, not as clickable repo-relative markdown links.
-- **Close-out is commit + push + merge**: IDE/LLM sessions that stop at “looks good” strand work on disk; the task is not done until `git status` is clean and intended commits are on the remote (and merged per policy). Narrative: [`docs/audits/ide-llm-agent-completion-lessons-2026-03.md`](docs/audits/ide-llm-agent-completion-lessons-2026-03.md).
+- **Close-out is commit + push + merge**: IDE/LLM sessions that stop at “looks good” strand work on disk; the task is not done until `git status` is clean and intended commits are on the remote (and merged per policy). Narrative: [`docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md`](docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md).
 - **Resume/product URLs in showcase**: Org README project cards should link to **live sites or case-study URLs** in `projects.json` (`url`); `sync-readme.py` must prefer that field over inferred GitHub links so the grid matches resume and meshal surfaces.
 
 ## Anti-Patterns

@@ -12,6 +12,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "catalog"))
 from catalog_lib import profile_config
 
 ROOT = Path(__file__).resolve().parent.parent.parent

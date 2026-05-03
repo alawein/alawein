@@ -237,7 +237,7 @@ jobs:
               "docs/archive/phase",
           )
           legacy_token_exempt_files = {
-              "docs/HANDOFF-DESIGN-BRANDING.md",
+              "docs/archive/HANDOFF-DESIGN-BRANDING.md",
               "docs/governance/branding-workflow-and-standards.md",
               "docs/archive/bulk-execution-progress.md",
               "docs/governance/design-branding-summary.md",

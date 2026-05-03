@@ -375,8 +375,6 @@ R8_ALLOWED_ROOT_FILES = {
     "github-baseline.yaml",
     "profile-from-guides.yaml",
     "service-metadata.yaml",
-    # Profile asset rendered by GitHub org page
-    "avatar.svg",
     # Tooling config (must live at root for tool auto-discovery)
     ".editorconfig",
     ".env.example",
@@ -384,8 +382,6 @@ R8_ALLOWED_ROOT_FILES = {
     ".markdownlint.jsonc",
     ".vale.ini",
     "prettier.config.js",
-    # Utility script invoked at root by profile-from-guides workflow
-    "check_yaml.py",
 }
 
 

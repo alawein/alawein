@@ -228,6 +228,7 @@ jobs:
               r"retired",
               r"historical",
               r"`legacy_slugs`",
+              r"→",
               r"â†’",
               r"->",
           ]

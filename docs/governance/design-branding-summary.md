@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Design & Branding Plan — Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
-last_updated: 2026-04-25
+last_updated: 2026-05-03
 category: governance
 status: active
 ---
@@ -46,7 +46,7 @@ A **workspace-wide design and branding integration plan** across 16+ repos. Each
 | [remaining-steps-per-repo.md](../archive/remaining-steps-per-repo.md) | **Step-by-step plan per repo** (push, PR, deploy, optional fixes). |
 | [bulk-execution-progress.md](../archive/bulk-execution-progress.md) | Session log and per-repo Phase 3–5 status. |
 | [phase5-version-control-and-deployment.md](../archive/phase5-version-control-and-deployment.md) | Git workflow + Vercel table + automation one-liners. |
-| [HANDOFF-DESIGN-BRANDING.md](../HANDOFF-DESIGN-BRANDING.md) | Handoff for next session: context, commands, automation (gh, Vercel). |
+| [HANDOFF-DESIGN-BRANDING.md](../archive/HANDOFF-DESIGN-BRANDING.md) | Handoff for next session: context, commands, automation (gh, Vercel). |
 
 ---
 

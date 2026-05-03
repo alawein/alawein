@@ -106,8 +106,17 @@ jobs:
         run: |
           set -euo pipefail
           vale sync
-          # Helper: list tracked .md files (normalises CRLF line endings)
-          list_md_files() { git ls-files | sed 's/\r$//' | awk '/\.md$/'; }
+          # Helper: list tracked .md files (normalises CRLF line endings).
+          # Excludes:
+          # - docs/archive/ — frozen historical records, not subject to current
+          #   voice/terminology rules.
+          # - migration-history governance docs that legitimately reference
+          #   pre-rename slugs (must stay in sync with legacy_token_exempt_files
+          #   in the canonical-name audit step below).
+          list_md_files() {
+            git ls-files | sed 's/\r$//' | awk '/\.md$/' \
+              | grep -vE '^(docs/archive/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
+          }
           if [ "${{ github.event_name }}" = "schedule" ]; then
             mapfile -t vale_targets < <(list_md_files)
           else
@@ -128,7 +137,8 @@ jobs:
             mapfile -t changed_markdown < <(
               git diff --name-only --diff-filter=ACMR "$diff_range" \
                 | sed 's/\r$//' \
-                | awk '/\.md$/'
+                | awk '/\.md$/' \
+                | grep -vE '^(docs/archive/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
             )
             if [ "${#changed_markdown[@]}" -gt 0 ]; then
               vale_targets=("${changed_markdown[@]}")
@@ -237,7 +247,7 @@ jobs:
               "docs/archive/phase",
           )
           legacy_token_exempt_files = {
-              "docs/HANDOFF-DESIGN-BRANDING.md",
+              "docs/archive/HANDOFF-DESIGN-BRANDING.md",
               "docs/governance/branding-workflow-and-standards.md",
               "docs/archive/bulk-execution-progress.md",
               "docs/governance/design-branding-summary.md",

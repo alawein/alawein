@@ -38,19 +38,8 @@ last_updated: 2026-05-03
 
 ## audits/
 
-- [README-2026-03-17-skills-unification.md](audits/README-2026-03-17-skills-unification.md)
 - [README.md](audits/README.md)
-- [codebase-audit-2026-03-16.md](audits/codebase-audit-2026-03-16.md)
-- [doc-audit-2026-03-17.md](audits/doc-audit-2026-03-17.md)
-- [full-environment-audit-2026-03-16.md](audits/full-environment-audit-2026-03-16.md)
-- [ide-llm-agent-completion-lessons-2026-03.md](audits/ide-llm-agent-completion-lessons-2026-03.md)
-- [issue-c-phase2-consolidation-assessment-2026-03-17.md](audits/issue-c-phase2-consolidation-assessment-2026-03-17.md)
-- [machine-audit-mesha-2026-03-17.md](audits/machine-audit-mesha-2026-03-17.md)
 - [release-summary-2026-03-21.md](audits/release-summary-2026-03-21.md)
-- [remediation-checklist-2026-03-16.md](audits/remediation-checklist-2026-03-16.md)
-- [skills-unification-workstream-completion-2026-03-17.md](audits/skills-unification-workstream-completion-2026-03-17.md)
-- [skills-unification-workstream-report-2026-03-17.md](audits/skills-unification-workstream-report-2026-03-17.md)
-- [technical-debt-report-20260311.md](audits/technical-debt-report-20260311.md)
 
 ## dashboard/
 

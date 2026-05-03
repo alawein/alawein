@@ -33,7 +33,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "meshal-web",
+      "local_path": "apps/meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -134,7 +134,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "repz",
+      "local_path": "apps/repz",
       "catalog_groups": [
         "featured"
       ],
@@ -183,7 +183,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "gymboy",
+      "local_path": "apps/gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -231,7 +231,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "scribd",
+      "local_path": "apps/scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -280,7 +280,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "bolts",
+      "local_path": "tools/bolts",
       "catalog_groups": [
         "featured"
       ],
@@ -330,7 +330,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "atelier-rounaq",
+      "local_path": "apps/atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],
@@ -378,7 +378,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "attributa",
+      "local_path": "tools/attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -429,7 +429,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "llmworks",
+      "local_path": "tools/llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -478,7 +478,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "edfp",
+      "local_path": "research/edfp",
       "catalog_groups": [
         "featured",
         "research"
@@ -526,7 +526,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "alembiq",
+      "local_path": "research/alembiq",
       "catalog_groups": [
         "featured",
         "research"
@@ -575,7 +575,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "optiqap",
+      "local_path": "research/optiqap",
       "catalog_groups": [
         "featured",
         "research"

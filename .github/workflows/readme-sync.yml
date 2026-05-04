@@ -1,4 +1,4 @@
-﻿name: Sync README
+﻿name: Sync Catalog
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
       - 'profile-from-guides.yaml'
       - 'scripts/catalog/build-catalog.py'
       - 'scripts/catalog/catalog_lib.py'
-      - 'scripts/catalog/sync-readme.py'
   pull_request:
     paths:
       - 'projects.json'
@@ -17,8 +16,6 @@ on:
       - 'profile-from-guides.yaml'
       - 'scripts/catalog/build-catalog.py'
       - 'scripts/catalog/catalog_lib.py'
-      - 'scripts/catalog/sync-readme.py'
-      - 'README.md'
   schedule:
     # Weekly drift audit catches upstream dependency changes that bypass the
     # path filter set above (for example, logic edits in a helper module that
@@ -90,17 +87,18 @@ jobs:
         if: steps.detect.outputs.drift == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          commit-message: 'chore(catalog): regenerate derived README and catalog outputs'
-          branch: chore/readme-sync-drift
+          commit-message: 'chore(catalog): regenerate derived catalog outputs'
+          branch: chore/catalog-sync-drift
           delete-branch: true
-          title: 'chore(catalog): regenerate derived README and catalog outputs'
+          title: 'chore(catalog): regenerate derived catalog outputs'
           body: |
             Automated drift-repair PR opened by `readme-sync.yml` scheduled run.
 
-            The weekly audit regenerated catalog outputs and/or README and
-            found drift. Review the diff, then merge if the regeneration is
-            correct. If the diff looks wrong, the root cause is a change in a
-            helper module that needs investigation -- do not merge blindly.
+            The weekly audit ran `build-catalog.py` and found drift in derived
+            catalog outputs. README.md is intentionally hand-curated and excluded
+            from automated regeneration. Review the diff, then merge if the
+            regeneration is correct. If the diff looks wrong, the root cause is a
+            change in a helper module that needs investigation -- do not merge blindly.
           labels: |
             automation
             governance

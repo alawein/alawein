@@ -120,33 +120,43 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ]; then
             mapfile -t vale_targets < <(list_md_files)
           else
+            skip_diff=false
             if [ "${{ github.event_name }}" = "push" ]; then
-              diff_range="${{ github.event.before }}...${{ github.sha }}"
+              before="${{ github.event.before }}"
+              if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
+                # First push to a new branch — diff base is unknown; scan full baseline.
+                mapfile -t vale_targets < <(list_md_files)
+                skip_diff=true
+              else
+                diff_range="${before}...${{ github.sha }}"
+              fi
             else
               diff_range="origin/main...HEAD"
             fi
-            mapfile -t changed_vale_inputs < <(
-              git diff --name-only --diff-filter=ACMR "$diff_range" \
-                | sed 's/\r$//' \
-                | awk '
-                    /^styles\// ||
-                    /^\.vale\.ini$/ ||
-                    /^docs\/style\/terminology-registry\.yaml$/
-                  '
-            )
-            mapfile -t changed_markdown < <(
-              git diff --name-only --diff-filter=ACMR "$diff_range" \
-                | sed 's/\r$//' \
-                | awk '/\.md$/' \
-                | grep -vE '^(docs/archive/|docs/internal/|docs/superpowers/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
-            )
-            if [ "${#changed_markdown[@]}" -gt 0 ]; then
-              vale_targets=("${changed_markdown[@]}")
-            elif [ "${#changed_vale_inputs[@]}" -gt 0 ]; then
-              echo "Vale rules/config changed without markdown changes; linting full documentation baseline."
-              mapfile -t vale_targets < <(list_md_files)
-            else
-              vale_targets=()
+            if [ "$skip_diff" = "false" ]; then
+              mapfile -t changed_vale_inputs < <(
+                git diff --name-only --diff-filter=ACMR "$diff_range" \
+                  | sed 's/\r$//' \
+                  | awk '
+                      /^styles\// ||
+                      /^\.vale\.ini$/ ||
+                      /^docs\/style\/terminology-registry\.yaml$/
+                    '
+              )
+              mapfile -t changed_markdown < <(
+                git diff --name-only --diff-filter=ACMR "$diff_range" \
+                  | sed 's/\r$//' \
+                  | awk '/\.md$/' \
+                  | grep -vE '^(docs/archive/|docs/internal/|docs/superpowers/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
+              )
+              if [ "${#changed_markdown[@]}" -gt 0 ]; then
+                vale_targets=("${changed_markdown[@]}")
+              elif [ "${#changed_vale_inputs[@]}" -gt 0 ]; then
+                echo "Vale rules/config changed without markdown changes; linting full documentation baseline."
+                mapfile -t vale_targets < <(list_md_files)
+              else
+                vale_targets=()
+              fi
             fi
           fi
           if [ "${#vale_targets[@]}" -eq 0 ]; then

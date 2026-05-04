@@ -41,10 +41,6 @@ last_updated: 2026-05-04
 - [README.md](audits/README.md)
 - [release-summary-2026-03-21.md](audits/release-summary-2026-03-21.md)
 
-## dashboard/
-
-- [index.md](dashboard/index.md)
-
 ## governance/
 
 - [branch-and-deployment-convention.md](governance/branch-and-deployment-convention.md)

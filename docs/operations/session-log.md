@@ -16,3 +16,6 @@ last_updated: 2026-04-30
 | 2026-05-03 18:32 | 7ad606ba | fix(ci): re-pin validate.py SHA + exempt hand-curated README from sync check | 3 files | ~49 lines |
 | 2026-05-03 18:33 | 41ba52df | fix(ci): exclude hand-curated README.md from markdownlint in managed validation | 2 files | ~12 lines |
 | 2026-05-03 18:35 | e7617dad | fix(ci): re-pin validate.py SHA + exempt hand-curated README from sync check (#100) | 3 files | ~53 lines |
+| 2026-05-03 18:36 | d44c62a7 | chore(ops): update session log | 1 files | ~12 lines |
+| 2026-05-03 18:47 | 6d229a34 | feat(skill): recover voice-check skill + VOICE.md scoping fix from backup branch (#101) | 6 files | ~116 lines |
+| 2026-05-03 18:49 | b8cca82a | docs(arch): auto-update repo topology from catalog/repos.json (#98) | 2 files | ~4 lines |

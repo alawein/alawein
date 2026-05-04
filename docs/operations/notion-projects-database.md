@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Notion Projects (Canonical) — sync and checklist
 description: Runbook for syncing projects.json to Notion and required database properties.
-last_updated: 2026-03-25
+last_updated: 2026-05-03
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -41,7 +41,7 @@ node scripts/sync-to-notion.mjs
 pwsh -File scripts/run-notion-local.ps1
 ```
 
-That runs `validate-projects-json.mjs`, `sync-to-notion.mjs`, and `verify-notion-canonical-state.mjs` with the same property names as [`.github/workflows/notion-sync.yml`](../../.github/workflows/notion-sync.yml).
+That runs `validate-projects-json.mjs`, `sync-to-notion.mjs`, and `verify-notion-canonical-state.mjs` with the same property names as `notion-sync.yml` (private ops repo).
 
 Validate JSON contract locally before sync:
 
@@ -83,5 +83,5 @@ If `mcps/user-Notion/STATUS.md` says authentication is required, run **mcp_auth*
 
 ## CI
 
-[`.github/workflows/notion-sync.yml`](../../.github/workflows/notion-sync.yml) runs when `projects.json` changes on `main` (secrets: `NOTION_TOKEN`, `NOTION_DB_ID`).
+`notion-sync.yml` (private ops repo) runs when `projects.json` changes on `main` (secrets: `NOTION_TOKEN`, `NOTION_DB_ID`).
 It now also verifies canonical state (expected canonical rows present + expected archived legacy rows).

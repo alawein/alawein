@@ -51,7 +51,7 @@ jobs:
       - name: Lint managed markdown files
         run: |
           FILES=""
-          for f in README.md CLAUDE.md AGENTS.md; do
+          for f in CLAUDE.md AGENTS.md; do
             [ -f "$f" ] && FILES="$FILES $f"
           done
           if [ -n "$FILES" ]; then

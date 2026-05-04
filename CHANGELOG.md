@@ -32,7 +32,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Claude Code reference: [`docs/governance/claude-code-configuration-guide.md`](docs/governance/claude-code-configuration-guide.md) and copy-paste prompts/checklists [`docs/governance/claude-code-migration-prompts.md`](docs/governance/claude-code-migration-prompts.md) (extracted from internal reference material).
 - Audit doc [`docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md`](docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.
 - Portfolio **`portfolio_domain`** on `projects.json` featured entries (Notion Domain select). **`notion_sync`** array for Notion-only rows (qmlab, simcore, meatheadphysicist) without expanding README. Ops guide [`docs/operations/notion-projects-database.md`](docs/operations/notion-projects-database.md).
-- [`scripts/notion/run-notion-local.ps1`](scripts/notion/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as [`notion-sync.yml`](.github/workflows/notion-sync.yml).
+- [`scripts/notion/run-notion-local.ps1`](scripts/notion/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as `notion-sync.yml` (moved to private ops repo).
 
 ### Changed
 

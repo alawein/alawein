@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-04
+last_updated: 2026-05-03
 ---
 
 # Index — alawein
@@ -40,10 +40,6 @@ last_updated: 2026-05-04
 
 - [README.md](audits/README.md)
 - [release-summary-2026-03-21.md](audits/release-summary-2026-03-21.md)
-
-## dashboard/
-
-- [index.md](dashboard/index.md)
 
 ## governance/
 

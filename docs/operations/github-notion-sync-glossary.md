@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub ↔ Notion sync glossary and guardrails
 description: Definitions for Sync [project] vs GitHub Sync, canonical data flow, and out-of-scope rules for agents and operators.
-last_updated: 2026-05-02
+last_updated: 2026-05-03
 category: operations
 audience: [ai-agents, contributors, notion]
 status: active
@@ -23,7 +23,7 @@ This page is the **GitHub-side** counterpart to the Operations Hub handoff in No
 
 | Term | Meaning |
 |------|--------|
-| **Sync [project]** | Refresh **project row** data using the **canonical org path**: [`alawein/alawein`](https://github.com/alawein/alawein) → [`projects.json`](../../projects.json) → Notion (via [`notion-sync.yml`](../../.github/workflows/notion-sync.yml) and [`scripts/notion/sync-to-notion.mjs`](../../scripts/notion/sync-to-notion.mjs)). |
+| **Sync [project]** | Refresh **project row** data using the **canonical org path**: [`alawein/alawein`](https://github.com/alawein/alawein) → [`projects.json`](../../projects.json) → Notion (via `notion-sync.yml` (private ops repo) and [`scripts/notion/sync-to-notion.mjs`](../../scripts/notion/sync-to-notion.mjs)). |
 | **GitHub Sync** (operational) | **Activity scan** for a single GitHub repo: last commits, open PRs, open issues, emitted as `reports/sync-report.<repo>.json` by per-repo `scripts/github-sync-report.mjs` and the **Ops — GitHub sync report** workflow. **Does not** write to Notion. |
 
 ## Canonical flow (project rows)

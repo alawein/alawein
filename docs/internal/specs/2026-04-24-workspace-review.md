@@ -146,7 +146,7 @@ Repo | Severity | Finding | Area | Governance rule | Priority bucket | Effort | 
 
 ## Deliverable
 
-The review findings are written to a separate output document: `docs/superpowers/specs/2026-04-24-workspace-review-findings.md`. This file is the design spec; the output file is the populated review.
+The review findings are written to a separate output document: `docs/internal/specs/2026-04-24-workspace-review-findings.md`. This file is the design spec; the output file is the populated review.
 
 **Output document sections:**
 

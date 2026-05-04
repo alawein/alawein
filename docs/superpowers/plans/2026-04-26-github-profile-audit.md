@@ -3,7 +3,7 @@ title: GitHub Profile Audit Implementation Plan
 date: 2026-04-26
 status: active
 type: canonical
-last_updated: 2026-04-26
+last_updated: 2026-05-03
 ---
 
 # GitHub Profile Audit Implementation Plan
@@ -16,7 +16,7 @@ last_updated: 2026-04-26
 
 **Tech Stack:** Python (sync-readme.py, verify-profile-pins.py), YAML (profile-from-guides.yaml), GitHub MCP (dotfiles), GitHub UI (pinning, repo descriptions).
 
-**Spec:** `docs/superpowers/specs/2026-04-26-github-profile-audit-design.md`
+**Spec:** `docs/internal/specs/2026-04-26-github-profile-audit-design.md`
 
 ---
 

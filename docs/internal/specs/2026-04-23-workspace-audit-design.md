@@ -28,10 +28,10 @@ Design spec for a comprehensive audit and improvement planning system covering a
 
 ## Output System: Six Documents
 
-All documents live in `alawein/docs/superpowers/specs/`:
+All documents live in `alawein/docs/internal/specs/`:
 
 ```
-alawein/docs/superpowers/specs/
+alawein/docs/internal/specs/
 ├── 2026-04-23-workspace-triage.md           # Phase 0: Reset map (executed this session)
 ├── 2026-04-23-active-products-audit.md      # Spec A: Front-end, UX, architecture
 ├── 2026-04-23-shared-infrastructure-audit.md  # Spec B: design-system, workspace-tools, KB
@@ -224,7 +224,7 @@ Every finding from Specs A–D as a discrete work item:
 - Workspace root `CLAUDE.md` — add pointer to master execution plan for future session discoverability
 
 **Doctrine exemption:**
-- `docs/superpowers/specs/*.md` files are exempt from docs-doctrine frontmatter rules — they use this spec's frontmatter format
+- `docs/internal/specs/*.md` files are exempt from docs-doctrine frontmatter rules — they use this spec's frontmatter format
 
 ---
 

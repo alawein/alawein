@@ -6,7 +6,7 @@ sla: none
 authority: canonical
 last-verified: 2026-04-25
 audience: [ai-agents, contributors]
-last_updated: 2026-04-25
+last_updated: 2026-05-03
 ---
 
 # Active Product Integrity Implementation Plan
@@ -19,7 +19,7 @@ last_updated: 2026-04-25
 
 **Tech Stack:** Next.js 16, Vite + React Router, TypeScript, Supabase, Vitest
 
-**Source spec:** `docs/superpowers/specs/2026-04-25-active-product-integrity-design.md`
+**Source spec:** `docs/internal/specs/2026-04-25-active-product-integrity-design.md`
 
 ---
 
@@ -452,7 +452,7 @@ Replace the scoring block (approximately lines 130–145) with:
 ```typescript
 // TODO: Real benchmark scoring requires calling the target model's inference API
 // and evaluating output against ground truth. This is not yet implemented.
-// See: docs/superpowers/specs/2026-04-25-active-product-integrity-design.md L1
+// See: docs/internal/specs/2026-04-25-active-product-integrity-design.md L1
 throw new Error(
   'Benchmark scoring is not yet implemented. ' +
   'Results shown here are not real model evaluations.'

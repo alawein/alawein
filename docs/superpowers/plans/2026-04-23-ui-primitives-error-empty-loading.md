@@ -3,7 +3,7 @@ title: "@alawein/ui Primitives Implementation Plan — ErrorBoundary, EmptyState
 date: 2026-04-23
 status: active
 type: canonical
-last_updated: 2026-04-23
+last_updated: 2026-05-03
 ---
 
 # @alawein/ui Primitives Implementation Plan
@@ -16,7 +16,7 @@ last_updated: 2026-04-23
 
 **Tech Stack:** TypeScript + React 18/19 + Tailwind v4 + Radix + CVA (`class-variance-authority`) + `react-error-boundary@^4.1.2` + Lucide + vitest + `@testing-library/react` + tsup + Turborepo + Changesets.
 
-**Spec reference:** `docs/superpowers/specs/2026-04-23-ui-primitives-error-empty-loading-design.md`
+**Spec reference:** `docs/internal/specs/2026-04-23-ui-primitives-error-empty-loading-design.md`
 
 **Working directory for all tasks:** `C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system/`
 
@@ -1447,12 +1447,12 @@ Expected: prints `^4.1.2`.
 
 - [ ] **Step 9.5: Record the release**
 
-Append to `alawein/docs/superpowers/specs/2026-04-23-master-execution-plan.md` — mark MEP rows 16, 17, 18, 19 as `done` with today's date and the git commit SHA from Task 6.5 (the `chore(release): @alawein/ui@0.2.0` commit).
+Append to `alawein/docs/internal/specs/2026-04-23-master-execution-plan.md` — mark MEP rows 16, 17, 18, 19 as `done` with today's date and the git commit SHA from Task 6.5 (the `chore(release): @alawein/ui@0.2.0` commit).
 
 Commit:
 ```bash
 cd C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein
-git add docs/superpowers/specs/2026-04-23-master-execution-plan.md
+git add docs/internal/specs/2026-04-23-master-execution-plan.md
 git commit -m "docs(superpowers): mark MEP rows 16-19 done (@alawein/ui@0.2.0)"
 ```
 
@@ -1473,7 +1473,7 @@ All of the following must be true:
 - `npm test -w @alawein/ui` passes.
 - `npm run lint -w @alawein/ui` passes.
 - Bolts smoke test (Task 8) passed before publish.
-- MEP rows 16, 17, 18, 19 marked done in `alawein/docs/superpowers/specs/2026-04-23-master-execution-plan.md`.
+- MEP rows 16, 17, 18, 19 marked done in `alawein/docs/internal/specs/2026-04-23-master-execution-plan.md`.
 
 ---
 
@@ -1498,8 +1498,8 @@ npm publishes are effectively irreversible. If a regression is discovered after 
 
 ## References
 
-- Spec: `alawein/docs/superpowers/specs/2026-04-23-ui-primitives-error-empty-loading-design.md`
-- MEP: `alawein/docs/superpowers/specs/2026-04-23-master-execution-plan.md` (rows 16–26)
+- Spec: `alawein/docs/internal/specs/2026-04-23-ui-primitives-error-empty-loading-design.md`
+- MEP: `alawein/docs/internal/specs/2026-04-23-master-execution-plan.md` (rows 16–26)
 - Upstream: `react-error-boundary` — <https://github.com/bvaughn/react-error-boundary>
 - Existing conventions:
   - Component: `design-system/packages/ui/src/components/alert.tsx`, `skeleton.tsx`

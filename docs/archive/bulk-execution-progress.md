@@ -12,7 +12,7 @@ status: superseded
 
 # Bulk Execution Progress
 
-> **Superseded** by [master-execution-plan.md](../superpowers/specs/2026-04-23-master-execution-plan.md) on 2026-04-23 (MEP item R25). New workspace-wide work tracking lives in the master execution plan. This document is preserved as the 2026-03-12/13 session log for the design-and-branding phase-3/4/5 batch.
+> **Superseded** by [master-execution-plan.md](../internal/specs/2026-04-23-master-execution-plan.md) on 2026-04-23 (MEP item R25). New workspace-wide work tracking lives in the master execution plan. This document is preserved as the 2026-03-12/13 session log for the design-and-branding phase-3/4/5 batch.
 
 This document tracks execution of the design-and-branding agent-executable plan (see phase1–phase5 docs in this folder) so work can resume after session interruption. **Need a per-repo checklist?** Refer to [remaining-steps-per-repo.md](./remaining-steps-per-repo.md) for a repo-by-repo TODO status.
 

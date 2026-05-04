@@ -115,7 +115,7 @@ jobs:
           #   in the canonical-name audit step below).
           list_md_files() {
             git ls-files | sed 's/\r$//' | awk '/\.md$/' \
-              | grep -vE '^(docs/archive/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
+              | grep -vE '^(docs/archive/|docs/internal/|docs/superpowers/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
           }
           if [ "${{ github.event_name }}" = "schedule" ]; then
             mapfile -t vale_targets < <(list_md_files)
@@ -138,7 +138,7 @@ jobs:
               git diff --name-only --diff-filter=ACMR "$diff_range" \
                 | sed 's/\r$//' \
                 | awk '/\.md$/' \
-                | grep -vE '^(docs/archive/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
+                | grep -vE '^(docs/archive/|docs/internal/|docs/superpowers/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
             )
             if [ "${#changed_markdown[@]}" -gt 0 ]; then
               vale_targets=("${changed_markdown[@]}")

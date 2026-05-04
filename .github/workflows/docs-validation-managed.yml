@@ -37,7 +37,7 @@ jobs:
       - name: Fetch validate.py from alawein control plane
         run: |
           curl -fsSL \
-            "https://raw.githubusercontent.com/alawein/alawein/ed5ed61aef28cbdd761eeb0654808833bc4564be/scripts/doctrine/validate.py" \
+            "https://raw.githubusercontent.com/alawein/alawein/69799637239dd6a9f4cfd734fd7d07fbfce72e4d/scripts/doctrine/validate.py" \
             -o validate.py
 
       - name: Run forbidden register check

@@ -49,35 +49,8 @@ jobs:
       - name: Verify derived catalog outputs are up to date
         run: python scripts/catalog/build-catalog.py --check
 
-      - name: Sync README from canonical profile and project data
-        run: python scripts/catalog/sync-readme.py
-
-      - name: Verify README sync is stable
-        run: python scripts/catalog/sync-readme.py --check
-
-      - name: Check for README drift
-        id: diff
-        run: |
-          git diff --quiet README.md && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
-
-      - name: Capture README drift patch
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          git diff -- README.md > readme-sync.patch
-
-      - name: Upload README drift artifact
-        if: steps.diff.outputs.changed == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: readme-sync-drift
-          path: readme-sync.patch
-
-      - name: Fail on README drift
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          echo "README.md drift detected. Protected branch rules prevent this workflow from pushing directly to main." >> "$GITHUB_STEP_SUMMARY"
-          echo "Run 'python scripts/catalog/sync-readme.py', commit the regenerated README.md, and rerun the workflow." >> "$GITHUB_STEP_SUMMARY"
-          exit 1
+      - name: Skip README sync (manually curated)
+        run: echo "README.md is hand-curated (HTML layout, capsule-render banner, badges). Sync check skipped."
 
   auto-pr:
     # Only opens a PR on the weekly schedule or manual dispatch. We intentionally
@@ -99,19 +72,18 @@ jobs:
       - name: Install sync dependencies
         run: python -m pip install pyyaml
 
-      - name: Regenerate derived catalog outputs and README
+      - name: Regenerate derived catalog outputs
         run: |
           python scripts/catalog/build-catalog.py
-          python scripts/catalog/sync-readme.py
 
       - name: Detect drift
         id: detect
         run: |
-          if git diff --quiet; then
+          if git diff --quiet -- ':(exclude)README.md'; then
             echo "drift=false" >> "$GITHUB_OUTPUT"
           else
             echo "drift=true" >> "$GITHUB_OUTPUT"
-            git diff --stat >> "$GITHUB_STEP_SUMMARY"
+            git diff --stat -- ':(exclude)README.md' >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Open drift-repair PR

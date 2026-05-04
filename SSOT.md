@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-04-15
+last-verified: 2026-05-03
 audience: [ai-agents, contributors]
 ---
 
@@ -70,9 +70,9 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 - Workspace audit specs and execution plans:
-  [`docs/superpowers/specs/`](docs/superpowers/specs/) — triage, per-domain audits, and master execution plan
+  [`docs/internal/specs/`](docs/internal/specs/) — triage, per-domain audits, and master execution plan
   - Active products audit (Spec A):
-    [`docs/superpowers/specs/2026-04-23-active-products-audit.md`](docs/superpowers/specs/2026-04-23-active-products-audit.md) — 75 findings across 8 repos
+    [`docs/internal/specs/2026-04-23-active-products-audit.md`](docs/internal/specs/2026-04-23-active-products-audit.md) — 75 findings across 8 repos
 
 ## Structure
 

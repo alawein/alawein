@@ -3,7 +3,7 @@ title: Spec A — Active Products Audit Implementation Plan
 date: 2026-04-23
 status: active
 type: canonical
-last_updated: 2026-04-30
+last_updated: 2026-05-03
 ---
 
 # Spec A — Active Products Audit Implementation Plan
@@ -16,9 +16,9 @@ last_updated: 2026-04-30
 
 **Tech Stack:** Python/bash (data collection), filesystem inspection, markdown (output format). Repos are TypeScript/React — 3 Next.js (bolts, repz, scribd), 5 Vite/React (gymboy, llmworks, meshal-web, attributa, atelier-rounaq).
 
-**Spec:** `alawein/docs/superpowers/specs/2026-04-23-workspace-audit-design.md` § "Spec A"
-**Triage context:** `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md`
-**Output file:** `alawein/docs/superpowers/specs/2026-04-23-active-products-audit.md`
+**Spec:** `alawein/docs/internal/specs/2026-04-23-workspace-audit-design.md` § "Spec A"
+**Triage context:** `alawein/docs/internal/specs/2026-04-23-workspace-triage.md`
+**Output file:** `alawein/docs/internal/specs/2026-04-23-active-products-audit.md`
 
 ---
 
@@ -44,7 +44,7 @@ last_updated: 2026-04-30
 - Create: `alawein/docs/superpowers/.spec-a-data/attributa.txt`
 - Create: `alawein/docs/superpowers/.spec-a-data/atelier-rounaq.txt`
 - Create: `alawein/docs/superpowers/.spec-a-data/cross-product.txt`
-- Create: `alawein/docs/superpowers/specs/2026-04-23-active-products-audit.md`
+- Create: `alawein/docs/internal/specs/2026-04-23-active-products-audit.md`
 - Modify: `alawein/SSOT.md` (add Spec A pointer)
 
 ---
@@ -640,11 +640,11 @@ Expected: at least 6 section dividers.
 
 **Files:**
 - Read: all 9 `.spec-a-data/` files
-- Create: `alawein/docs/superpowers/specs/2026-04-23-active-products-audit.md`
+- Create: `alawein/docs/internal/specs/2026-04-23-active-products-audit.md`
 
 - [ ] **Step 1: Create Spec A document with required structure**
 
-Create `C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein/docs/superpowers/specs/2026-04-23-active-products-audit.md`:
+Create `C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein/docs/internal/specs/2026-04-23-active-products-audit.md`:
 
 ```markdown
 ---
@@ -734,7 +734,7 @@ Read all 9 data files and populate every section with real findings. Rules:
 - [ ] **Step 3: Verify document completeness**
 
 ```bash
-grep -c "^###\|^##" "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein/docs/superpowers/specs/2026-04-23-active-products-audit.md"
+grep -c "^###\|^##" "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein/docs/internal/specs/2026-04-23-active-products-audit.md"
 ```
 
 Expected: at least 15 heading lines (executive summary + 8 per-product + cross-product sections + portfolio assessment + summary counts).
@@ -745,7 +745,7 @@ Expected: at least 15 heading lines (executive summary + 8 per-product + cross-p
 
 **Files:**
 - Modify: `alawein/SSOT.md`
-- Commit: `docs/superpowers/specs/2026-04-23-active-products-audit.md` + `docs/superpowers/plans/2026-04-23-spec-a-active-products-audit.md` + `docs/superpowers/.spec-a-data/` + `SSOT.md`
+- Commit: `docs/internal/specs/2026-04-23-active-products-audit.md` + `docs/superpowers/plans/2026-04-23-spec-a-active-products-audit.md` + `docs/superpowers/.spec-a-data/` + `SSOT.md`
 
 - [ ] **Step 1: Update SSOT.md**
 
@@ -754,13 +754,13 @@ Read `C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein/SSOT.md`. In the sup
 Or add a new bullet after the existing superpowers line:
 ```
 - Active products audit (Spec A):
-  [`docs/superpowers/specs/2026-04-23-active-products-audit.md`](docs/superpowers/specs/2026-04-23-active-products-audit.md)
+  [`docs/internal/specs/2026-04-23-active-products-audit.md`](docs/internal/specs/2026-04-23-active-products-audit.md)
 ```
 
 - [ ] **Step 2: Stage only Phase A files**
 
 ```bash
-cd "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein" && git add docs/superpowers/specs/2026-04-23-active-products-audit.md docs/superpowers/plans/2026-04-23-spec-a-active-products-audit.md "docs/superpowers/.spec-a-data/" SSOT.md
+cd "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein" && git add docs/internal/specs/2026-04-23-active-products-audit.md docs/superpowers/plans/2026-04-23-spec-a-active-products-audit.md "docs/superpowers/.spec-a-data/" SSOT.md
 ```
 
 - [ ] **Step 3: Verify staged files**

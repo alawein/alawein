@@ -506,8 +506,8 @@ Specific per-product notes (from Spec A):
 
 ## 12. References
 
-- Spec A: `docs/superpowers/specs/2026-04-23-active-products-audit.md` — per-product primitive inventory
-- Spec B: `docs/superpowers/specs/2026-04-23-shared-infrastructure-audit.md` — `@alawein/ui` gap analysis
-- MEP: `docs/superpowers/specs/2026-04-23-master-execution-plan.md` — rows 16–26
+- Spec A: `docs/internal/specs/2026-04-23-active-products-audit.md` — per-product primitive inventory
+- Spec B: `docs/internal/specs/2026-04-23-shared-infrastructure-audit.md` — `@alawein/ui` gap analysis
+- MEP: `docs/internal/specs/2026-04-23-master-execution-plan.md` — rows 16–26
 - Current state: `design-system/packages/ui/src/index.ts` (44 existing exports, 0 of the four new components)
 - Upstream: `react-error-boundary` — <https://github.com/bvaughn/react-error-boundary>

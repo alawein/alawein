@@ -3,7 +3,7 @@ title: Phase 0 — Workspace Triage Implementation Plan
 date: 2026-04-23
 status: active
 type: canonical
-last_updated: 2026-04-30
+last_updated: 2026-05-03
 ---
 
 # Phase 0 — Workspace Triage Implementation Plan
@@ -16,15 +16,15 @@ last_updated: 2026-04-30
 
 **Tech Stack:** Python (data collection scripts), bash (git commands), markdown (output format). All commands run from inside individual repo directories or from the workspace root `C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/`.
 
-**Spec:** `alawein/docs/superpowers/specs/2026-04-23-workspace-audit-design.md`
+**Spec:** `alawein/docs/internal/specs/2026-04-23-workspace-audit-design.md`
 
-**Output file:** `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md`
+**Output file:** `alawein/docs/internal/specs/2026-04-23-workspace-triage.md`
 
 ---
 
 ## File Map
 
-- Create: `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md`
+- Create: `alawein/docs/internal/specs/2026-04-23-workspace-triage.md`
 - Modify: `alawein/SSOT.md` (add pointer to specs directory)
 - Modify: workspace root `CLAUDE.md` is not git-tracked — update via Dropbox path only (do not git commit it)
 
@@ -384,11 +384,11 @@ Expected: which RepoReady deliverables exist vs. are missing.
 ## Task 5: Write the Triage Document
 
 **Files:**
-- Create: `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md`
+- Create: `alawein/docs/internal/specs/2026-04-23-workspace-triage.md`
 
 - [ ] **Step 1: Create the triage document with header and structure**
 
-Create `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md` with this skeleton, then fill in each section from the data collected in Tasks 1–4:
+Create `alawein/docs/internal/specs/2026-04-23-workspace-triage.md` with this skeleton, then fill in each section from the data collected in Tasks 1–4:
 
 ```markdown
 ---
@@ -516,7 +516,7 @@ Read `alawein/SSOT.md`. Find the "Current State" section. Add a new entry after 
 
 ```markdown
 - Workspace audit specs and execution plans:
-  [`docs/superpowers/specs/`](docs/superpowers/specs/) — triage, per-domain audits, master execution plan
+  [`docs/internal/specs/`](docs/internal/specs/) — triage, per-domain audits, master execution plan
 ```
 
 - [ ] **Step 2: Verify the edit looks correct**
@@ -533,8 +533,8 @@ Expected: one matching line in the Current State section.
 ## Task 7: Commit Phase 0 Artifacts
 
 **Files:**
-- Commit: `alawein/docs/superpowers/specs/2026-04-23-workspace-audit-design.md`
-- Commit: `alawein/docs/superpowers/specs/2026-04-23-workspace-triage.md`
+- Commit: `alawein/docs/internal/specs/2026-04-23-workspace-audit-design.md`
+- Commit: `alawein/docs/internal/specs/2026-04-23-workspace-triage.md`
 - Commit: `alawein/docs/superpowers/plans/2026-04-23-phase-0-workspace-triage.md`
 - Commit: `alawein/SSOT.md`
 
@@ -550,7 +550,7 @@ cd "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein" && git add docs/super
 cd "C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/alawein" && git diff --staged --stat
 ```
 
-Expected: only `docs/superpowers/specs/2026-04-23-workspace-audit-design.md`, `docs/superpowers/specs/2026-04-23-workspace-triage.md`, `docs/superpowers/plans/2026-04-23-phase-0-workspace-triage.md`, and `SSOT.md`. If any other files appear in the diff, unstage them with `git restore --staged <file>`.
+Expected: only `docs/internal/specs/2026-04-23-workspace-audit-design.md`, `docs/internal/specs/2026-04-23-workspace-triage.md`, `docs/superpowers/plans/2026-04-23-phase-0-workspace-triage.md`, and `SSOT.md`. If any other files appear in the diff, unstage them with `git restore --staged <file>`.
 
 - [ ] **Step 3: Commit**
 

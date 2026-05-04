@@ -6,7 +6,7 @@ sla: none
 authority: canonical
 last-verified: 2026-04-24
 audience: [ai-agents, contributors]
-last_updated: 2026-04-24
+last_updated: 2026-05-03
 ---
 
 # Workspace Comprehensive Review Implementation Plan
@@ -17,7 +17,7 @@ last_updated: 2026-04-24
 
 **Architecture:** Three sequential phases. Phase A reads 8 sampled repos against external OSS standards and produces a scored findings table. Phase C reads the governance control plane and verdicts each subsystem as Sound/Overspecified/Undermaintained/Missing. Phase B synthesizes the 8 existing 2026-04-23 audit specs, spot-checks 4 repos to validate accuracy, then maps findings to priority buckets filtered by Phase C verdicts.
 
-**Tech Stack:** Bash file reads, existing audit specs in `alawein/docs/superpowers/specs/2026-04-23-*.md`, output written to `alawein/docs/superpowers/specs/2026-04-24-workspace-review-findings.md`.
+**Tech Stack:** Bash file reads, existing audit specs in `alawein/docs/internal/specs/2026-04-23-*.md`, output written to `alawein/docs/internal/specs/2026-04-24-workspace-review-findings.md`.
 
 ---
 
@@ -25,14 +25,14 @@ last_updated: 2026-04-24
 
 | File | Role |
 |------|------|
-| `docs/superpowers/specs/2026-04-24-workspace-review-findings.md` | **Create** — output document; each task populates one section |
-| `docs/superpowers/specs/2026-04-24-workspace-review.md` | **Read** — design spec; reference throughout |
-| `docs/superpowers/specs/2026-04-23-active-products-audit.md` | **Read** — Layer B input (Spec A) |
-| `docs/superpowers/specs/2026-04-23-shared-infrastructure-audit.md` | **Read** — Layer B input (Spec B) |
-| `docs/superpowers/specs/2026-04-23-governance-audit.md` | **Read** — Layer B input (Spec C) |
-| `docs/superpowers/specs/2026-04-23-research-portfolio-audit.md` | **Read** — Layer B input (Spec D) |
-| `docs/superpowers/specs/2026-04-23-master-execution-plan.md` | **Read** — sequencing reference for Layer B |
-| `docs/superpowers/specs/2026-04-23-workspace-triage.md` | **Read** — triage reference for Layer B |
+| `docs/internal/specs/2026-04-24-workspace-review-findings.md` | **Create** — output document; each task populates one section |
+| `docs/internal/specs/2026-04-24-workspace-review.md` | **Read** — design spec; reference throughout |
+| `docs/internal/specs/2026-04-23-active-products-audit.md` | **Read** — Layer B input (Spec A) |
+| `docs/internal/specs/2026-04-23-shared-infrastructure-audit.md` | **Read** — Layer B input (Spec B) |
+| `docs/internal/specs/2026-04-23-governance-audit.md` | **Read** — Layer B input (Spec C) |
+| `docs/internal/specs/2026-04-23-research-portfolio-audit.md` | **Read** — Layer B input (Spec D) |
+| `docs/internal/specs/2026-04-23-master-execution-plan.md` | **Read** — sequencing reference for Layer B |
+| `docs/internal/specs/2026-04-23-workspace-triage.md` | **Read** — triage reference for Layer B |
 | `docs/style/VOICE.md` | **Read** — Layer C governance critique |
 | `docs/governance/documentation-contract.md` | **Read** — Layer C governance critique |
 | `github-baseline.yaml` | **Read** — Layer C workflow baseline critique |
@@ -57,13 +57,13 @@ Sampled repos (read-only): `alawein/`, `design-system/`, `workspace-tools/`, `kn
 ### Task A1: Create the output document skeleton
 
 **Files:**
-- Create: `docs/superpowers/specs/2026-04-24-workspace-review-findings.md`
+- Create: `docs/internal/specs/2026-04-24-workspace-review-findings.md`
 
 - [ ] **Step 1: Create the output document with section stubs**
 
 ```bash
 # Run from: alawein/ repo root
-cat > docs/superpowers/specs/2026-04-24-workspace-review-findings.md << 'ENDDOC'
+cat > docs/internal/specs/2026-04-24-workspace-review-findings.md << 'ENDDOC'
 ---
 title: Workspace Comprehensive Review — Findings
 date: 2026-04-24
@@ -174,7 +174,7 @@ ENDDOC
 - [ ] **Step 2: Verify the file was created correctly**
 
 ```bash
-head -20 docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+head -20 docs/internal/specs/2026-04-24-workspace-review-findings.md
 ```
 
 Expected: frontmatter block followed by `# Workspace Comprehensive Review — Findings`.
@@ -182,7 +182,7 @@ Expected: frontmatter block followed by `# Workspace Comprehensive Review — Fi
 - [ ] **Step 3: Commit the skeleton**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs: add workspace review findings skeleton"
 ```
 
@@ -192,7 +192,7 @@ git commit -m "docs: add workspace review findings skeleton"
 
 **Files:**
 - Read: README.md, CONTRIBUTING.md, CODE_OF_CONDUCT.md, SECURITY.md, LICENSE, `.github/ISSUE_TEMPLATE/` in each sampled repo
-- Modify: `docs/superpowers/specs/2026-04-24-workspace-review-findings.md` — fill A1 table
+- Modify: `docs/internal/specs/2026-04-24-workspace-review-findings.md` — fill A1 table
 
 GitHub's community health checklist requires all six: README, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY, LICENSE, at least one issue template.
 
@@ -229,7 +229,7 @@ For each PASS across all repos (a criterion that passes everywhere), add one sum
 - [ ] **Step 3: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A community health findings"
 ```
 
@@ -290,7 +290,7 @@ Add one row per finding (Fail or Partial). Pass with no caveats across all repos
 - [ ] **Step 6: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A CI/SHA pinning findings"
 ```
 
@@ -339,7 +339,7 @@ done
 - [ ] **Step 4: Fill the A3 table and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A secrets hygiene and branch protection findings"
 ```
 
@@ -389,7 +389,7 @@ Note: `meshal-web` and `fallax` and `alembiq` carry status/version badges. Check
 One row per Fail or Partial finding. Aggregate all Pass criteria in a summary note above the table.
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A README conventions findings"
 ```
 
@@ -432,7 +432,7 @@ Check: do versions follow semver? Are there packages still at `0.0.1` or `1.0.0`
 - [ ] **Step 3: Fill A5 table and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A conventional commits and semver findings"
 ```
 
@@ -469,7 +469,7 @@ Add a gap list under `### A — Gap List` with one row per gap:
 - [ ] **Step 3: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer A gap list complete"
 ```
 
@@ -528,7 +528,7 @@ Cross-reference note: if Layer A found that badge URL staleness has no CI check,
 - [ ] **Step 4: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C voice contract verdict"
 ```
 
@@ -574,7 +574,7 @@ Key questions to answer in the rationale:
 - [ ] **Step 4: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C enforcement tiers verdict"
 ```
 
@@ -618,7 +618,7 @@ Focus the rationale on whether the SLA is maintainable: if more than 30% of mana
 - [ ] **Step 4: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C documentation doctrine verdict"
 ```
 
@@ -675,7 +675,7 @@ If absent, this is a Missing governance gap.
 - [ ] **Step 4: Write the Workflow baseline row and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C workflow baseline verdict"
 ```
 
@@ -720,7 +720,7 @@ grep "_pkos\|template_source" alawein/.claude/hooks/drift-detection.sh 2>/dev/nu
 Note specifically: any script that can silently no-op (exit 0 with no real check) is **Undermaintained** even if sound in design.
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C validation scripts verdict"
 ```
 
@@ -767,7 +767,7 @@ The verdict will likely be **Overspecified** or **Undermaintained** depending on
 - [ ] **Step 4: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer C governance overhead verdict"
 ```
 
@@ -780,7 +780,7 @@ git commit -m "docs(review): Layer C governance overhead verdict"
 ### Task B1: Spot-check bolts (most Criticals in Spec A)
 
 **Files:**
-- Read: `docs/superpowers/specs/2026-04-23-active-products-audit.md` § bolts (already read; see above)
+- Read: `docs/internal/specs/2026-04-23-active-products-audit.md` § bolts (already read; see above)
 - Read: `bolts/src/app/account/page.tsx`, `bolts/src/app/admin/page.tsx`, `bolts/node_modules/@alawein/tokens/package.json`
 - Modify: findings doc — annotate source spec accuracy for bolts findings
 
@@ -822,7 +822,7 @@ Add a brief accuracy annotation above the Layer B table:
 - [ ] **Step 5: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer B spot-check bolts"
 ```
 
@@ -831,7 +831,7 @@ git commit -m "docs(review): Layer B spot-check bolts"
 ### Task B2: Spot-check design-system (infra Criticals)
 
 **Files:**
-- Read: `docs/superpowers/specs/2026-04-23-shared-infrastructure-audit.md` § design-system
+- Read: `docs/internal/specs/2026-04-23-shared-infrastructure-audit.md` § design-system
 - Read: `design-system/packages/@alawein/ui/src/index.ts` (check exports)
 - Read: `design-system/packages/@alawein/morphism-themes/package.json`
 
@@ -855,7 +855,7 @@ cat C:/Users/mesha/Desktop/Dropbox/GitHub/alawein/design-system/packages/@alawei
 - [ ] **Step 3: Record accuracy note and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer B spot-check design-system"
 ```
 
@@ -864,7 +864,7 @@ git commit -m "docs(review): Layer B spot-check design-system"
 ### Task B3: Spot-check alembiq (recently renamed, migration risk)
 
 **Files:**
-- Read: `docs/superpowers/specs/2026-04-23-research-portfolio-audit.md` § alembiq
+- Read: `docs/internal/specs/2026-04-23-research-portfolio-audit.md` § alembiq
 - Read: `alembiq/README.md`, `alembiq/.github/workflows/ci.yml`, `alembiq/src/alembiq/` (check import names)
 
 Spec D marked alembiq Keep-live. The migration risk is that the repo was renamed from `neper` and Python imports still use the old name (`import neper`).
@@ -889,7 +889,7 @@ Check: is the reusable workflow ref the current SHA (`ed5ed61aef28cbdd761eeb0654
 - [ ] **Step 3: Record accuracy note and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer B spot-check alembiq"
 ```
 
@@ -924,7 +924,7 @@ Expected: `_pkos` appears in `template_source`; `_pkos/` does not exist → drif
 - [ ] **Step 3: Record accuracy note and commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer B spot-check alawein control plane"
 ```
 
@@ -967,7 +967,7 @@ Source column: cite the input spec by date and title abbreviation, e.g., `Spec A
 - [ ] **Step 4: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): Layer B priority action tables populated"
 ```
 
@@ -1007,7 +1007,7 @@ Write 3–5 such recommendations, each with: the cross-cutting pattern, which la
 - [ ] **Step 3: Commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): executive summary and cross-cutting recommendations"
 ```
 
@@ -1016,13 +1016,13 @@ git commit -m "docs(review): executive summary and cross-cutting recommendations
 ### Task S2: Final review pass and close
 
 **Files:**
-- Read: `docs/superpowers/specs/2026-04-24-workspace-review-findings.md` (full)
+- Read: `docs/internal/specs/2026-04-24-workspace-review-findings.md` (full)
 - Modify: findings doc — fix any remaining stubs or placeholder rows
 
 - [ ] **Step 1: Scan for empty table rows**
 
 ```bash
-grep "| |" alawein/docs/superpowers/specs/2026-04-24-workspace-review-findings.md | head -20
+grep "| |" alawein/docs/internal/specs/2026-04-24-workspace-review-findings.md | head -20
 ```
 
 Any row that is entirely `| | | | | | | |` is an unfilled placeholder. Either fill it or remove it.
@@ -1033,7 +1033,7 @@ Check that none of the `> _To be written last_` stubs remain:
 
 ```bash
 grep "To be written last\|stub\|TBD\|TODO" \
-  alawein/docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+  alawein/docs/internal/specs/2026-04-24-workspace-review-findings.md
 ```
 
 Expected: zero matches.
@@ -1041,7 +1041,7 @@ Expected: zero matches.
 - [ ] **Step 3: Final commit**
 
 ```bash
-git add docs/superpowers/specs/2026-04-24-workspace-review-findings.md
+git add docs/internal/specs/2026-04-24-workspace-review-findings.md
 git commit -m "docs(review): workspace comprehensive review complete"
 ```
 

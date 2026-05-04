@@ -50,12 +50,13 @@ jobs:
 
       - name: Lint managed markdown files
         run: |
-          FILES=""
+          set -euo pipefail
+          files=()
           for f in CLAUDE.md AGENTS.md; do
-            [ -f "$f" ] && FILES="$FILES $f"
+            [ -f “$f” ] && files+=(“$f”)
           done
-          if [ -n "$FILES" ]; then
-            npx --yes markdownlint-cli@0.39.0 $FILES
+          if [ “${#files[@]}” -gt 0 ]; then
+            npx --yes markdownlint-cli@0.39.0 “${files[@]}”
           else
-            echo "No managed markdown files found â€” skipping markdownlint."
+            echo “No managed markdown files found -- skipping markdownlint.”
           fi

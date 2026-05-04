@@ -55,6 +55,8 @@ credentials/
 !.claude/hooks/**
 !.claude/commands/
 !.claude/commands/**
+!.claude/skills/
+!.claude/skills/**
 .kilocode/
 .windsurf/
 *.swp

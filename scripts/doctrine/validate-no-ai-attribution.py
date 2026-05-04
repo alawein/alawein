@@ -40,7 +40,9 @@ EXEMPT_PATHS = {
     ".claude/AGENTS.md",
 }
 
-# Directory prefixes that are skipped entirely (archive, build artifacts).
+# Directory prefixes that are skipped entirely (archive, build artifacts,
+# and internal tooling configs that legitimately reference prohibited patterns
+# as part of their detection logic).
 SKIP_PREFIXES = (
     "docs/archive/",
     "node_modules/",
@@ -51,6 +53,9 @@ SKIP_PREFIXES = (
     ".next/",
     ".turbo/",
     ".git/",
+    ".claude/skills/",
+    ".claude/commands/",
+    ".claude/hooks/",
 )
 
 SCAN_SUFFIXES = {".md", ".mdx", ".txt"}

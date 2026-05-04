@@ -134,9 +134,12 @@ jobs:
               diff_range="origin/main...HEAD"
             fi
             if [ "$skip_diff" = "false" ]; then
+              # Run git diff once into a tempfile so its exit code is
+              # propagated (process substitution <(...) swallows it).
+              diff_out=$(mktemp)
+              git diff --name-only --diff-filter=ACMR "$diff_range" > "$diff_out"
               mapfile -t changed_vale_inputs < <(
-                git diff --name-only --diff-filter=ACMR "$diff_range" \
-                  | sed 's/\r$//' \
+                sed 's/\r$//' "$diff_out" \
                   | awk '
                       /^styles\// ||
                       /^\.vale\.ini$/ ||
@@ -144,11 +147,11 @@ jobs:
                     '
               )
               mapfile -t changed_markdown < <(
-                git diff --name-only --diff-filter=ACMR "$diff_range" \
-                  | sed 's/\r$//' \
+                sed 's/\r$//' "$diff_out" \
                   | awk '/\.md$/' \
                   | grep -vE '^(docs/archive/|docs/internal/|docs/superpowers/|docs/governance/design-branding-summary\.md|docs/governance/branding-workflow-and-standards\.md)'
               )
+              rm -f "$diff_out"
               if [ "${#changed_markdown[@]}" -gt 0 ]; then
                 vale_targets=("${changed_markdown[@]}")
               elif [ "${#changed_vale_inputs[@]}" -gt 0 ]; then
@@ -166,6 +169,7 @@ jobs:
           vale --minAlertLevel=error "${vale_targets[@]}" | tee vale-report.txt
 
       - name: Run advisory style audit
+        id: advisory-audit
         run: |
           python scripts/doctrine/style-advisory-audit.py > style-advisory-report.txt
 
@@ -191,7 +195,9 @@ jobs:
         run: |
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "## Style advisory audit" >> "$GITHUB_STEP_SUMMARY"
-          if [ -f style-advisory-report.txt ]; then
+          if [ "${{ steps.advisory-audit.outcome }}" != "success" ]; then
+            echo "- Style advisory audit FAILED -- see step log for details." >> "$GITHUB_STEP_SUMMARY"
+          elif [ -f style-advisory-report.txt ]; then
             echo '```text' >> "$GITHUB_STEP_SUMMARY"
             sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"
             echo '```' >> "$GITHUB_STEP_SUMMARY"

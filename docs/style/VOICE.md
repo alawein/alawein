@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-04-30
-last-verified: 2026-04-30
+last_updated: 2026-05-03
+last-verified: 2026-05-03
 ---
 
 # Voice and style contract

@@ -47,7 +47,8 @@ Status key: **Active** — maintained and enforced | **Reference** — stable, r
 | `slash-commands-catalog.md` | Reference | Available slash commands |
 | `tooling-quality-gates.md` | Active | CI quality gate definitions |
 | `workflow.md` | Active | Primary development workflow |
-| `workspace-layout-audit.md` | Frozen | Workspace layout audit snapshot (2026-03) |
+| `workspace-layout-audit.md` | Active | Workspace layout audit — per-repo layout status vs stack standards |
 | `workspace-master-prompt.md` | Active | Workspace master operator prompt |
 | `workspace-resource-map.md` | Reference | Resource map across workspace |
 | `workspace-standardization.md` | Active | Workspace-wide standardization rules |
+| `governance-index.md` | Active | This file — status index for all governance docs |

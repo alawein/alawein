@@ -47,6 +47,7 @@ last_updated: 2026-05-05
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
 - [design-branding-summary.md](governance/design-branding-summary.md)
+- [governance-index.md](governance/governance-index.md)
 - [docs-doctrine.md](governance/docs-doctrine.md)
 - [documentation-contract.md](governance/documentation-contract.md)
 - [documentation-philosophy.md](governance/documentation-philosophy.md)

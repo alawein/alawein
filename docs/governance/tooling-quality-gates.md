@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Tooling and quality gates
 description: Minimum npm/Python scripts and CI expectations; maps to @alawein/* packages.
-last_updated: 2026-05-05
+last_updated: 2026-05-06
 category: governance
 audience: [ai-agents, contributors]
 status: active

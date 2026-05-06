@@ -4,7 +4,7 @@ source: none
 sync: on-change
 sla: none
 title: Tooling and quality gates
-description: Minimum npm/Python scripts and CI expectations; maps to @alawein devkit packages.
+description: Minimum npm/Python scripts and CI expectations; maps to @alawein/* packages.
 last_updated: 2026-05-05
 category: governance
 audience: [ai-agents, contributors]
@@ -18,7 +18,7 @@ related:
 
 ## Node / TypeScript applications
 
-### Shared packages (Alawein devkit)
+### Shared packages (@alawein/*)
 
 Published from **`alawein/devkit`** (`@alawein/*` on npm):
 

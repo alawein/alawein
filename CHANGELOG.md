@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-05-04
+last_updated: 2026-05-05
 tags: [changelog, version-history, releases]
 ---
 
@@ -44,7 +44,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [2.1.0] — 2026-03-21
 
-Governance expansion, audits, skills layer, CI hardening, slug/workspace migrations, and operator lessons since v2.0.4. **Executive paste:** [`docs/audits/release-summary-2026-03-21.md`](docs/audits/release-summary-2026-03-21.md).
+Governance expansion, audits, skills layer, CI hardening, slug/workspace migrations, and operator lessons since v2.0.4. **Executive paste:** [`docs/archive/release-summary-2026-03-21.md`](docs/archive/release-summary-2026-03-21.md).
 
 ### Added
 

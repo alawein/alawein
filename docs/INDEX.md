@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-04
+last_updated: 2026-05-05
 ---
 
 # Index — alawein
@@ -36,11 +36,6 @@ last_updated: 2026-05-04
 - [skills-consolidation-reference-2026-03-17.md](archive/skills-consolidation-reference-2026-03-17.md)
 - [workspace-rename-matrix.md](archive/workspace-rename-matrix.md)
 
-## audits/
-
-- [README.md](audits/README.md)
-- [release-summary-2026-03-21.md](audits/release-summary-2026-03-21.md)
-
 ## governance/
 
 - [branch-and-deployment-convention.md](governance/branch-and-deployment-convention.md)
@@ -51,10 +46,7 @@ last_updated: 2026-05-04
 - [claude-code-worked-examples.md](governance/claude-code-worked-examples.md)
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
-- [cursor-agent-handoff-profile-sync.md](governance/cursor-agent-handoff-profile-sync.md)
-- [dashboard-governance.md](governance/dashboard-governance.md)
 - [design-branding-summary.md](governance/design-branding-summary.md)
-- [desktop-repo-inventory.md](governance/desktop-repo-inventory.md)
 - [docs-doctrine.md](governance/docs-doctrine.md)
 - [documentation-contract.md](governance/documentation-contract.md)
 - [documentation-philosophy.md](governance/documentation-philosophy.md)

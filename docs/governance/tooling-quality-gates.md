@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Tooling and quality gates
 description: Minimum npm/Python scripts and CI expectations; maps to @alawein devkit packages.
-last_updated: 2026-03-30
+last_updated: 2026-05-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -72,7 +72,7 @@ When adopting the shared Prettier config, run **`prettier --write`** in a **dedi
 From **`workspace-tools`**, after `npm ci` in repos you care about, aggregate
 **format / lint / type-check** (and optionally **`build`** with
 `--with-build`) against clones listed in
-[`desktop-repo-inventory.json`](./desktop-repo-inventory.json):
+[`desktop-repo-inventory.json`](../archive/desktop-repo-inventory.json) (archived):
 
 ```bash
 python scripts/repo_health_check.py --local

@@ -5,13 +5,13 @@ sync: on-change
 sla: none
 title: Repository layout standard
 description: Canonical top-level layout by stack archetype; aligns apps with AWS-style separation of code, infra, docs, and automation.
-last_updated: 2026-03-30
+last_updated: 2026-05-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
 related:
   - ./tooling-quality-gates.md
-  - ./desktop-repo-inventory.md
+  - ../archive/desktop-repo-inventory.md
   - ./workspace-standardization.md
 ---
 
@@ -99,7 +99,7 @@ Typical: `archive/`, `notebooks/`, large `data/` (often gitignored or LFS).
 
 ## Reference implementations
 
-Listed in [`desktop-repo-inventory.json`](./desktop-repo-inventory.json) under `golden_references`.
+Listed in [`desktop-repo-inventory.json`](../archive/desktop-repo-inventory.json) under `golden_references` (archived).
 
 ## Related
 

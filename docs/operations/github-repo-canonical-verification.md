@@ -5,14 +5,14 @@ sync: none
 sla: none
 title: GitHub canonical verification
 description: gh repo view notes for canonical repo names, redirects, and current workspace-core repo alignment.
-last_updated: 2026-04-15
+last_updated: 2026-05-05
 category: operations
 audience: [ai-agents, contributors]
 status: active
 related:
   - ./project-lifecycle-tiers.md
   - ../governance/repository-layout-standard.md
-  - ../governance/desktop-repo-inventory.md
+  - ../archive/desktop-repo-inventory.md
 ---
 
 # GitHub canonical verification (2026-03-24)
@@ -27,7 +27,7 @@ See also: [project lifecycle tiers](project-lifecycle-tiers.md) for how `project
 
 Underscore-prefixed workspace folders are **local conventions**; they often map to different GitHub repository names. Always verify with `git remote -v`.
 
-Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repository layout standard](../governance/repository-layout-standard.md). A machine-readable inventory of desktop clones lives in [desktop-repo-inventory.json](../governance/desktop-repo-inventory.json).
+Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repository layout standard](../governance/repository-layout-standard.md). A machine-readable inventory of desktop clones lives in [desktop-repo-inventory.json](../archive/desktop-repo-inventory.json) (archived).
 
 ## Morphism (two live repos)
 

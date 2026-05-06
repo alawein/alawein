@@ -2,6 +2,7 @@
 type: canonical
 source: none
 sla: on-change
+last_updated: 2026-05-05
 audience: [ai-agents, contributors]
 ---
 

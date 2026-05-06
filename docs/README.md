@@ -51,11 +51,9 @@ workspace governance for the `alawein` GitHub organization.
 
 ## Audits
 
-- Canonical audits index: [`audits/README.md`](./audits/README.md)
-- Release summary v2.1.0: [`release-summary-2026-03-21.md`](./audits/release-summary-2026-03-21.md)
 - Credential hygiene: [`credential-hygiene.md`](./governance/credential-hygiene.md)
 
-The 2026-03 audit cohort (codebase, environment, doc, machine, and skills-unification reports) is archived under [`archive/audits-2026-03/`](./archive/audits-2026-03/); see the audits [`README.md`](./audits/README.md) for the full list of archived reports.
+The 2026-03 audit cohort and release summary are archived under [`archive/`](./archive/).
 
 ## Workspace migration
 

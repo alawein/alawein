@@ -64,6 +64,12 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
   `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
 - Transitional identifiers are retained in `projects.json` via `legacy_slugs`
+- Global `~/.claude/` platform source (agent config, skills, workflows):
+  [`claude-agent-platform/`](claude-agent-platform/) — apply changes with
+  `bash claude-agent-platform/sync-to-home.sh` (push) or capture with
+  `bash claude-agent-platform/sync-from-home.sh` (pull)
+- Specs live in [`docs/internal/specs/`](docs/internal/specs/);
+  plans live in [`docs/internal/plans/`](docs/internal/plans/)
   for one migration cycle
 - D-1 consolidation status: canonical token source is `design-system/tokens/`;
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11

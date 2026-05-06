@@ -20,7 +20,7 @@ SCHEMAS_DIR = ROOT / "schemas"
 PROJECTS_JSON = ROOT / "projects.json"
 PROFILE_FROM_GUIDES = ROOT / "profile-from-guides.yaml"
 WORKSPACE_YAML = WORKSPACE_ROOT / "knowledge-base" / "WORKSPACE.yaml"
-INVENTORY_JSON = ROOT / "docs" / "governance" / "desktop-repo-inventory.json"
+INVENTORY_JSON = ROOT / "docs" / "archive" / "desktop-repo-inventory.json"
 STABLE_WORKSPACE_ROOTS = [
     ".",
     "../morphism-systems",

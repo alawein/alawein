@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-04
+last_updated: 2026-05-06
 ---
 
 # Index — alawein
@@ -24,7 +24,10 @@ last_updated: 2026-05-04
 - [HANDOFF-DESIGN-BRANDING.md](archive/HANDOFF-DESIGN-BRANDING.md)
 - [HANDOFF-DOCS-DOCTRINE.md](archive/HANDOFF-DOCS-DOCTRINE.md)
 - [bulk-execution-progress.md](archive/bulk-execution-progress.md)
+- [cursor-agent-handoff-profile-sync.md](archive/cursor-agent-handoff-profile-sync.md)
+- [dashboard-governance.md](archive/dashboard-governance.md)
 - [dashboard-rollout-playbook.md](archive/dashboard-rollout-playbook.md)
+- [desktop-repo-inventory.md](archive/desktop-repo-inventory.md)
 - [meshal-alawein-profile.md](archive/meshal-alawein-profile.md)
 - [parent-alawein-repo-removal-2026-03-18.md](archive/parent-alawein-repo-removal-2026-03-18.md)
 - [phase1-design-branding-analysis-alawein.md](archive/phase1-design-branding-analysis-alawein.md)
@@ -32,14 +35,10 @@ last_updated: 2026-05-04
 - [phase3-refactor-and-centralization.md](archive/phase3-refactor-and-centralization.md)
 - [phase4-testing-and-validation.md](archive/phase4-testing-and-validation.md)
 - [phase5-version-control-and-deployment.md](archive/phase5-version-control-and-deployment.md)
+- [release-summary-2026-03-21.md](archive/release-summary-2026-03-21.md)
 - [remaining-steps-per-repo.md](archive/remaining-steps-per-repo.md)
 - [skills-consolidation-reference-2026-03-17.md](archive/skills-consolidation-reference-2026-03-17.md)
 - [workspace-rename-matrix.md](archive/workspace-rename-matrix.md)
-
-## audits/
-
-- [README.md](audits/README.md)
-- [release-summary-2026-03-21.md](audits/release-summary-2026-03-21.md)
 
 ## governance/
 
@@ -51,10 +50,7 @@ last_updated: 2026-05-04
 - [claude-code-worked-examples.md](governance/claude-code-worked-examples.md)
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
-- [cursor-agent-handoff-profile-sync.md](governance/cursor-agent-handoff-profile-sync.md)
-- [dashboard-governance.md](governance/dashboard-governance.md)
 - [design-branding-summary.md](governance/design-branding-summary.md)
-- [desktop-repo-inventory.md](governance/desktop-repo-inventory.md)
 - [docs-doctrine.md](governance/docs-doctrine.md)
 - [documentation-contract.md](governance/documentation-contract.md)
 - [documentation-philosophy.md](governance/documentation-philosophy.md)
@@ -63,6 +59,7 @@ last_updated: 2026-05-04
 - [github-baseline.md](governance/github-baseline.md)
 - [github-metadata-rollout-policy.md](governance/github-metadata-rollout-policy.md)
 - [github-metadata-sync-runbook.md](governance/github-metadata-sync-runbook.md)
+- [governance-index.md](governance/governance-index.md)
 - [maintenance-skills-agents.md](governance/maintenance-skills-agents.md)
 - [merge-policy.md](governance/merge-policy.md)
 - [operating-model.md](governance/operating-model.md)

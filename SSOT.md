@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-05-03
+last-verified: 2026-05-05
 audience: [ai-agents, contributors]
 ---
 
@@ -65,6 +65,12 @@ governance contract for naming, portfolio truth, and migration sequencing.
   `gymboy`, `meatheadphysicist`, `atelier-rounaq`, and `edfp`
 - Transitional identifiers are retained in `projects.json` via `legacy_slugs`
   for one migration cycle
+- Global `~/.claude/` platform source (agent config, skills, workflows):
+  [`claude-agent-platform/`](claude-agent-platform/) — apply changes with
+  `bash claude-agent-platform/sync-to-home.sh` (push) or capture with
+  `bash claude-agent-platform/sync-from-home.sh` (pull)
+- Specs live in [`docs/internal/specs/`](docs/internal/specs/);
+  plans live in [`docs/internal/plans/`](docs/internal/plans/)
 - D-1 consolidation status: canonical token source is `design-system/tokens/`;
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
@@ -98,7 +104,6 @@ alawein/
 │       ├── clean-slate-workflow.md
 │       ├── changelog-entry.md
 │       ├── workspace-standardization.md
-│       ├── workspace-rename-matrix.md
 │       ├── workspace-layout-audit.md
 │       ├── workspace-resource-map.md
 │       └── github-baseline.md

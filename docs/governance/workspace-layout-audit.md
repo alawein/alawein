@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Layout Audit
 description: Repo-by-repo layout status against the current control-plane, design-system, research, and product standards.
-last_updated: 2026-04-16
+last_updated: 2026-05-05
 category: governance
 audience: contributors
 status: active
@@ -19,7 +19,7 @@ tags: [workspace, layout, audit, standardization, governance]
 This audit maps workspace repos to the current stack-aware layout standards
 while reporting canonical names first and physical slugs second when needed.
 
-**Archetype SSOT**: Use [repository-layout-standard.md](./repository-layout-standard.md) for required top-level folders per stack. **Desktop clone inventory**: [desktop-repo-inventory.json](./desktop-repo-inventory.json).
+**Archetype SSOT**: Use [repository-layout-standard.md](./repository-layout-standard.md) for required top-level folders per stack. **Desktop clone inventory**: [desktop-repo-inventory.json](../archive/desktop-repo-inventory.json) (archived).
 
 ## Status Labels
 

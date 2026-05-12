@@ -25,6 +25,7 @@ _Works as an AI system prompt and as a personal review checklist._
 ---
 
 ## Block 1 · Universal Core
+
 _Source: `alawein/docs/style/VOICE.md`. Applies to every surface, no exceptions._
 
 This is the authoritative style reference for governed Alawein surfaces:
@@ -288,6 +289,7 @@ Do not tighten advisory surfaces to blocking without a documented reason.
 ---
 
 ## Block 2 · Design-Defense Register
+
 _Applies to `[software-doc]` and `[notebook]` surfaces._
 _Not active for physics papers, READMEs, or prompt kits._
 
@@ -391,6 +393,7 @@ Rewrite as: "[We do Y] because [reason for X]."
 ---
 
 ## Block 3 · Surface Adjustments
+
 _Switch in the section that matches the surface tag. Block 1 always applies._
 
 ### §15 Software / AI systems docs
@@ -510,6 +513,7 @@ notation-discipline note.
 ---
 
 ## Block 4 · Polish Workflow
+
 ### §22 AI application instructions
 
 | Tag | Blocks active |

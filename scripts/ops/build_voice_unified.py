@@ -4,7 +4,7 @@ Reads four block source files (VOICE.md, voice-software-register.md,
 voice-surfaces.md, voice-workflow.md), strips frontmatter, drops the leading
 block-naming H1, demotes remaining headers one level, synthesizes block headers
 from the BLOCKS config, and writes voice-unified.md with frontmatter whose
-last_updated reflects the newest source file commit date.
+last_updated reflects the regeneration date in UTC.
 
 Run from the alawein repo root: python scripts/ops/build_voice_unified.py
 """
@@ -14,20 +14,24 @@ import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional, TypedDict
+from typing import TypedDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STYLE_DIR = REPO_ROOT / "docs" / "style"
 OUTPUT_PATH = STYLE_DIR / "voice-unified.md"
 
+# Matches both backtick-fence and tilde-fence openers/closers, with optional
+# leading whitespace. ` ```python `, `~~~`, ` ```` ` (4+ backticks) all count.
+_FENCE_RE = re.compile(r"^\s*(```+|~~~+)")
+
 
 class BlockSpec(TypedDict):
     file: Path
     title: str
-    subtitle: Optional[str]
+    subtitle: str | None
 
 
-BLOCKS: list[BlockSpec] = [
+BLOCKS: tuple[BlockSpec, ...] = (
     {
         "file": STYLE_DIR / "VOICE.md",
         "title": "Block 1 · Universal Core",
@@ -51,16 +55,21 @@ BLOCKS: list[BlockSpec] = [
         "title": "Block 4 · Polish Workflow",
         "subtitle": None,
     },
-]
+)
 
 
 def strip_frontmatter(text: str) -> str:
-    """Strip leading YAML frontmatter (--- ... ---) if present."""
+    """Strip leading YAML frontmatter (--- ... ---) if present.
+
+    Raises ValueError if the text starts with `---\\n` but never closes
+    the frontmatter block; silently returning unchanged in that case would
+    let malformed source files ship with raw frontmatter in the output.
+    """
     if not text.startswith("---\n"):
         return text
     end = text.find("\n---\n", 4)
     if end == -1:
-        return text
+        raise ValueError("unterminated YAML frontmatter (opening `---` with no closing `---`)")
     return text[end + len("\n---\n"):].lstrip("\n")
 
 
@@ -77,7 +86,6 @@ def drop_leading_h1(text: str) -> str:
             continue
         stripped = line.lstrip()
         if stripped.startswith("# ") and not stripped.startswith("## "):
-            # Drop leading blank lines, the H1 itself, and one trailing blank.
             del lines[: i + 1]
             if lines and not lines[0].strip():
                 del lines[0]
@@ -89,14 +97,18 @@ def drop_leading_h1(text: str) -> str:
 def demote_headers(text: str) -> str:
     """Add one `#` to every line beginning with `#+ ` (markdown header).
 
-    Skips lines inside fenced code blocks (between ``` markers) so that
-    code comments using `#` (Python, shell, etc.) are not corrupted.
+    Skips lines inside fenced code blocks (between ``` or ~~~ markers) so
+    that code comments using `#` (Python, shell, etc.) are not corrupted.
+
+    Raises ValueError if the text has an unbalanced fence (in_fence at end
+    of input) — silently treating the rest of the doc as code would skip
+    real headers and produce structurally broken output.
     """
     lines = text.splitlines(keepends=True)
     in_fence = False
-    out = []
+    out: list[str] = []
     for line in lines:
-        if line.lstrip().startswith("```"):
+        if _FENCE_RE.match(line):
             in_fence = not in_fence
             out.append(line)
             continue
@@ -104,18 +116,34 @@ def demote_headers(text: str) -> str:
             out.append(line)
         else:
             out.append(re.sub(r"^(#+)(\s)", r"#\1\2", line))
+    if in_fence:
+        raise ValueError("unbalanced fenced code block (opening fence with no matching close)")
     return "".join(out)
 
 
 def _process_block(spec: BlockSpec) -> str:
-    """Read one block source, strip frontmatter, drop leading H1, demote headers."""
-    raw = spec["file"].read_text(encoding="utf-8")
+    """Read one block source, strip frontmatter, drop leading H1, demote headers.
+
+    Wraps file I/O so that read failures (missing file, permission, decode
+    error) surface as a RuntimeError naming the offending source file rather
+    than a bare traceback.
+    """
+    try:
+        raw = spec["file"].read_text(encoding="utf-8")
+    except (FileNotFoundError, PermissionError, UnicodeDecodeError) as e:
+        raise RuntimeError(f"failed to read source {spec['file']}: {e}") from e
     body = drop_leading_h1(strip_frontmatter(raw))
     return demote_headers(body).rstrip() + "\n"
 
 
-def assemble(blocks: list[BlockSpec], today: str, last_updated: str) -> str:
-    """Assemble all blocks into the unified guide text."""
+def assemble(blocks: tuple[BlockSpec, ...] | list[BlockSpec], today: str, last_updated: str) -> str:
+    """Assemble all blocks into the unified guide text.
+
+    `today` and `last_updated` are accepted as separate arguments so callers
+    can pin them deterministically (used by tests). `main()` passes the same
+    UTC date for both — they happen to coincide in production but the API
+    leaves room for them to diverge if a future change needs that.
+    """
     sources_field = ", ".join(f"docs/style/{spec['file'].name}" for spec in blocks)
     parts = [
         "---\n",
@@ -144,8 +172,8 @@ def assemble(blocks: list[BlockSpec], today: str, last_updated: str) -> str:
 
     for spec in blocks:
         parts.append("\n---\n\n")
-        parts.append(f"## {spec['title']}\n")
-        if spec["subtitle"]:
+        parts.append(f"## {spec['title']}\n\n")
+        if spec["subtitle"] is not None:
             parts.append(f"{spec['subtitle']}\n\n")
         parts.append(_process_block(spec))
 
@@ -158,17 +186,27 @@ def main() -> int:
         print(f"ERROR: missing source files: {', '.join(missing)}", file=sys.stderr)
         return 1
 
-    # Use UTC date for last_updated so the doctrine validator's freshness check
-    # (which compares against today's UTC date in CI) passes consistently.
-    # Git log %cs of source files would be stable across same-day commits in
-    # the committer's local timezone, which doesn't satisfy the validator's
-    # "must bump on every commit" rule.
-    last_updated = datetime.now(timezone.utc).date().isoformat()
-    today = last_updated
-    body = assemble(BLOCKS, today=today, last_updated=last_updated)
+    # last_updated is the UTC date of *this regeneration*, not the source-file
+    # commit date. The doctrine validator (validate-doc-contract.sh) requires
+    # the field to advance whenever the file changes; using `git log %cs` of
+    # the sources would return their last-commit date, which doesn't change
+    # between regen runs and so wouldn't satisfy the freshness rule. UTC also
+    # matches the validator's `today_iso` comparison in CI.
+    today_utc = datetime.now(timezone.utc).date().isoformat()
 
-    OUTPUT_PATH.write_text(body, encoding="utf-8", newline="\n")
-    print(f"Wrote {OUTPUT_PATH} ({len(body):,} chars, last_updated={last_updated})")
+    try:
+        body = assemble(BLOCKS, today=today_utc, last_updated=today_utc)
+    except (RuntimeError, ValueError) as e:
+        print(f"ERROR: assembly failed: {e}", file=sys.stderr)
+        return 1
+
+    try:
+        OUTPUT_PATH.write_text(body, encoding="utf-8", newline="\n")
+    except OSError as e:
+        print(f"ERROR: failed to write {OUTPUT_PATH}: {e}", file=sys.stderr)
+        return 1
+
+    print(f"Wrote {OUTPUT_PATH} ({len(body):,} chars, last_updated={today_utc})")
     return 0
 
 

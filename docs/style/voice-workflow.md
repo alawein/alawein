@@ -21,7 +21,7 @@ last_updated: 2026-05-11
 | `[claude-md]` | Block 1 + §19 |
 | `[prompt-kit]` | Block 1 + §21 |
 
-Per-project voice contracts live in each project's own `guides/` directory and are not part of this guide.
+Per-project voice contracts (e.g., Mercor/Yosemite) live in each project's own `guides/` directory and are not part of this guide.
 
 When polishing existing text: apply the relevant blocks as a checklist. Find and
 fix each violation before returning output. Do not silently pass violations.

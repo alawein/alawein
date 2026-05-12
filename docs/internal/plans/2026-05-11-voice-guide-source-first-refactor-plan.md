@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: plan
 audience: [contributors, agents]
-last_updated: 2026-05-11
+last_updated: 2026-05-12
 ---
 
 # Voice guide source-first refactor — Implementation Plan

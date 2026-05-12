@@ -381,7 +381,7 @@ class BusinessSurfaceTagsTests(unittest.TestCase):
     def test_business_tags_in_how_to_use(self):
         """The 'How to use' prose must list both business surface tags."""
         result = assemble(
-            list(build_voice_unified.BLOCKS),
+            [{"file": FIXTURES / "source_a.md", "title": "Block 1 · Core", "subtitle": None}],
             today="2026-05-11",
             last_updated="2026-05-11",
         )

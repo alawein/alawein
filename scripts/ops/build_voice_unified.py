@@ -1,7 +1,7 @@
 """Assemble alawein/docs/style/voice-unified.md from block source files.
 
-Reads four block source files (VOICE.md, voice-software-register.md,
-voice-surfaces.md, voice-workflow.md), strips frontmatter, drops the leading
+Reads five block source files (VOICE.md, voice-software-register.md,
+voice-surfaces.md, voice-business.md, voice-workflow.md), strips frontmatter, drops the leading
 block-naming H1, demotes remaining headers one level, synthesizes block headers
 from the BLOCKS config, and writes voice-unified.md with frontmatter whose
 last_updated reflects the maximum last_updated across the source block files.
@@ -55,7 +55,7 @@ BLOCKS: tuple[BlockSpec, ...] = (
     },
     {
         "file": STYLE_DIR / "voice-business.md",
-        "title": "Block 3 · Business Surfaces",
+        "title": "Block 3b · Business Surfaces",
         "subtitle": None,
     },
     {

@@ -23,9 +23,7 @@ Applies when surface tag is `[business-web]`.
 Business web copy stakes a market position. Replace technical contribution staking
 (Block 2 §7) with the following four-beat structure:
 
-```text
 market condition  →  position  →  specific evidence  →  bounded commitment
-```
 
 *Market condition:* one factual sentence stating what is broken or absent. Not a
 TAM. Not a trend. A condition: "Agents open PRs faster than humans can review them."
@@ -107,29 +105,20 @@ Four structural moves, each 2–3 sentences maximum:
 Do not open with a preamble, a compliment, or a self-introduction. Open with the
 condition. The recipient's name may appear as a salutation line above the body.
 
-Bad:
-```text
-My name is Meshal and I'm the founder of Kohyr. I came across your work and was
-really impressed by what you're building...
-```
+Bad: "My name is Meshal and I'm the founder of Kohyr. I came across your work and was
+really impressed by what you're building..."
 
-Good:
-```text
-Hi [Name],
-
-Your team is shipping AI-authored PRs without a deterministic merge gate.
-```
+Good: "Hi [Name], [blank line] Your team is shipping AI-authored PRs without a
+deterministic merge gate."
 
 ### Credential handling
 
 Credentials do not open the email and do not appear in the body. They belong in the
 signature below the ask:
 
-```text
 Meshal Alawein
 PhD EECS, UC Berkeley · Founder, Kohyr
 meshal@kohyr.ai · kohyr.ai
-```
 
 If credentials must appear in the body (e.g., a pitch deck bio slide), use the
 canonical identity strings from Block 1 §Canonical identity strings exactly.

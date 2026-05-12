@@ -54,6 +54,11 @@ BLOCKS: tuple[BlockSpec, ...] = (
         "subtitle": None,
     },
     {
+        "file": STYLE_DIR / "voice-business.md",
+        "title": "Block 3 · Business Surfaces",
+        "subtitle": None,
+    },
+    {
         "file": STYLE_DIR / "voice-workflow.md",
         "title": "Block 4 · Polish Workflow",
         "subtitle": None,
@@ -212,7 +217,8 @@ def assemble(blocks: tuple[BlockSpec, ...] | list[BlockSpec], today: str, last_u
         "_Works as an AI system prompt and as a personal review checklist._\n\n",
         "## How to use\n\n",
         "**As an AI system prompt:** paste this guide in full, then tag the target surface: "
-        "`[software-doc]`, `[notebook]`, `[readme]`, `[physics-paper]`, `[claude-md]`, or `[prompt-kit]`. "
+        "`[software-doc]`, `[notebook]`, `[readme]`, `[physics-paper]`, `[claude-md]`, `[prompt-kit]`, "
+        "`[business-web]`, or `[business-outreach]`. "
         "Apply Block 1 universally. Apply Block 2 to `[software-doc]` and `[notebook]` surfaces. "
         "For `[physics-paper]`, apply only §10 and §11 from Block 2; all other Block 2 sections are inactive. "
         "Apply the matching § from Block 3 for surface-specific adjustments. "

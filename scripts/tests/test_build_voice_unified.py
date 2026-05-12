@@ -375,5 +375,19 @@ class MainTests(unittest.TestCase):
                 out_path.unlink()
 
 
+class BusinessSurfaceTagsTests(unittest.TestCase):
+    """Verify [business-web] and [business-outreach] appear in assembled output."""
+
+    def test_business_tags_in_how_to_use(self):
+        """The 'How to use' prose must list both business surface tags."""
+        result = assemble(
+            list(build_voice_unified.BLOCKS),
+            today="2026-05-11",
+            last_updated="2026-05-11",
+        )
+        self.assertIn("[business-web]", result)
+        self.assertIn("[business-outreach]", result)
+
+
 if __name__ == "__main__":
     unittest.main()

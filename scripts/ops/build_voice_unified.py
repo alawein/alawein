@@ -13,7 +13,7 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Iterable, Optional, TypedDict
 
@@ -166,8 +166,13 @@ def main() -> int:
         print(f"ERROR: missing source files: {', '.join(missing)}", file=sys.stderr)
         return 1
 
-    last_updated = get_last_updated(REPO_ROOT, [spec["file"] for spec in BLOCKS])
-    today = date.today().isoformat()
+    # Use UTC date for last_updated so the doctrine validator's freshness check
+    # (which compares against today's UTC date in CI) passes consistently.
+    # Git log %cs of source files would be stable across same-day commits in
+    # the committer's local timezone, which doesn't satisfy the validator's
+    # "must bump on every commit" rule.
+    last_updated = datetime.now(timezone.utc).date().isoformat()
+    today = last_updated
     body = assemble(BLOCKS, today=today, last_updated=last_updated)
 
     OUTPUT_PATH.write_text(body, encoding="utf-8", newline="\n")

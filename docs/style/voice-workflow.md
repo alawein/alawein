@@ -19,6 +19,8 @@ last_updated: 2026-05-11
 | `[physics-paper]` | Block 1 + §17 (Block 2 §10, §11 only) |
 | `[readme]` | Block 1 + §18 |
 | `[claude-md]` | Block 1 + §19 |
+| `[business-web]` | Block 1 + §20a |
+| `[business-outreach]` | Block 1 + §20b |
 | `[prompt-kit]` | Block 1 + §21 |
 
 Per-project voice contracts (e.g., Mercor/Yosemite) live in each project's own `guides/` directory and are not part of this guide.

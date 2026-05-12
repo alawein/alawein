@@ -51,11 +51,11 @@ Good: "The schema constraint does not solve the threshold problem. That requires
 
 ### Figure captions
 
-Format: *Figure N. One factual sentence.* Italic. Period-terminated.
+Format: _Figure N. One factual sentence._ Italic. Period-terminated.
 Caption states what the figure shows, not that it exists.
 
-Bad: *Figure 2. This figure shows the two-phase pipeline with all stage labels rendered.*
-Good: *Figure 2. Full pipeline with stage labels and color coding; every other figure is a zoom into one region of this map.*
+Bad: _Figure 2. This figure shows the two-phase pipeline with all stage labels rendered._
+Good: _Figure 2. Full pipeline with stage labels and color coding; every other figure is a zoom into one region of this map._
 
 ## §16 Technical notebooks (Jupyter)
 
@@ -91,7 +91,7 @@ Block 2 partially active: §10 (threshold discipline) and §11 (honest limitatio
 §7–9 and §12–14 do not apply.
 
 Feynman register: physical intuition before formalism; concrete before abstract.
-Notation: bold for vectors (**k**, **r**), italic for scalars (*E*, *ε*), hat for
+Notation: bold for vectors (**k**, **r**), italic for scalars (_E_, _ε_), hat for
 operators (Ĥ, V̂). Define symbols at first use. Keep subscript conventions consistent.
 
 Derivation structure: one or two sentences of physical motivation before each major

@@ -126,10 +126,13 @@ last_updated: <YYYY-MM-DD from git log of newest source>
 ---
 ```
 
-`last_updated` is computed by the assembler from the maximum
-`git log -1 --format=%cs` across all source files. No manual bumping. This dodges
-the `validate-doc-contract.sh` "must bump `last_updated`" trap and keeps
-regeneration idempotent.
+`last_updated` is computed by the assembler as today's UTC date
+(`datetime.now(timezone.utc).date()`). The earlier idea of using
+`git log -1 --format=%cs` of source files turned out not to dodge the
+`validate-doc-contract.sh` freshness check: same-day commits in the committer's
+local timezone return the same %cs date, but the validator runs in UTC and
+expects the field to advance. UTC date advances cleanly across CI runs and
+matches what the validator's `today_iso` comparison expects.
 
 **H1 strategy.** The output gets one H1 (the title `# Meshal Alawein — Voice
 Guide`). Block headings demote: `# Block 1 ·` becomes `## Block 1 ·`. The current

@@ -487,9 +487,9 @@ One hit in any governed surface: rewrite that sentence.
 
 **Note on the `voice-check:ignore-start/end` sentinels:** They are a forward-looking marker for the planned voice-check sentinel feature. Today they are inert HTML comments. Until the sentinel feature lands (Task 8 stopgap), the path-based skip handles the linter exemption.
 
-**Note on §22 yosemite removal:** Compare the original `BLOCK4` constant in `_assemble_voice_export.py` against the table above. The original has a `| `[yosemite]` | Block 1 + §20 |` row; this version omits it intentionally. Verify by `grep yosemite docs/style/voice-workflow.md` returning nothing.
+**Note on §22 yosemite removal:** Compare the original `BLOCK4` constant in `_assemble_voice_export.py` against the table above. The original has a `| `[yosemite]` | Block 1 + §20 |` row; this version omits it intentionally. The §22 footnote DOES mention "Mercor/Yosemite" as an example of where per-project voice contracts live, so a `grep -i yosemite` against this file returns exactly 1 hit (the footnote). Verify with `grep -ic yosemite docs/style/voice-workflow.md` returning `1`.
 
-**Note on §23 yosemite removal:** The original `BLOCK4` `## §23 Pre-write checklist` has a `[yosemite]:` line; this version drops it. Verify with `grep -i yosemite docs/style/voice-workflow.md` returning nothing.
+**Note on §23 yosemite removal:** The original `BLOCK4` `## §23 Pre-write checklist` has a `[yosemite]:` line; this version drops it. Verify with `grep "\[yosemite\]" docs/style/voice-workflow.md` returning nothing.
 
 **Note on §24 yosemite removal:** The original `BLOCK4` `## §24 Post-write audit` has step `8. **`[yosemite]` only:** number traceability...`. This version drops it (only steps 1–7 remain). Verify the file has 7 numbered post-write audit steps with `grep -c "^[0-9]\." docs/style/voice-workflow.md` returning 7.
 
@@ -497,11 +497,12 @@ One hit in any governed surface: rewrite that sentence.
 
 ```bash
 wc -l docs/style/voice-workflow.md
-grep -i yosemite docs/style/voice-workflow.md
+grep -ic yosemite docs/style/voice-workflow.md
+grep "\[yosemite\]" docs/style/voice-workflow.md
 grep -c "^[0-9]\. " docs/style/voice-workflow.md
 ```
 
-Expected: ~60 lines, no yosemite hits, 7 numbered audit steps.
+Expected: ~60 lines, exactly 1 case-insensitive yosemite hit (the §22 footnote), zero `[yosemite]` bracket-tag hits, 7 numbered audit steps.
 
 - [ ] **Step 3: Commit**
 
@@ -978,7 +979,7 @@ Expected:
 - Frontmatter at the top with `type: generated`, `last_updated: <date>`
 - Single `# Meshal Alawein — Voice Guide` H1 (count = 1)
 - Four `## Block N · ...` headers (count = 4)
-- Zero yosemite mentions
+- Exactly one yosemite mention (the §22 footnote referencing Mercor/Yosemite as a per-project example) — confirm with `grep "\[yosemite\]" docs/style/voice-unified.md` returning nothing (no §20 inclusion)
 
 - [ ] **Step 3: Run doctrine validation**
 

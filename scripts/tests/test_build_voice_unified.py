@@ -78,6 +78,29 @@ class DemoteHeadersTests(unittest.TestCase):
     def test_preserves_content_after_hashes(self):
         self.assertEqual(demote_headers("## §7 Contribution\n"), "### §7 Contribution\n")
 
+    def test_skips_inside_fenced_code_blocks(self):
+        text = (
+            "## Heading before fence\n"
+            "\n"
+            "```python\n"
+            "# k-points must be in reduced coordinates\n"
+            "## not a heading either\n"
+            "```\n"
+            "\n"
+            "## Heading after fence\n"
+        )
+        expected = (
+            "### Heading before fence\n"
+            "\n"
+            "```python\n"
+            "# k-points must be in reduced coordinates\n"
+            "## not a heading either\n"
+            "```\n"
+            "\n"
+            "### Heading after fence\n"
+        )
+        self.assertEqual(demote_headers(text), expected)
+
 
 class AssembleTests(unittest.TestCase):
     def test_assembles_two_fixtures_with_block_headers(self):

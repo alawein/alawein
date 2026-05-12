@@ -11,11 +11,10 @@ Run from the alawein repo root: python scripts/ops/build_voice_unified.py
 from __future__ import annotations
 
 import re
-import subprocess
 import sys
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Iterable, Optional, TypedDict
+from typing import Optional, TypedDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 STYLE_DIR = REPO_ROOT / "docs" / "style"
@@ -34,15 +33,18 @@ BLOCKS: list[BlockSpec] = [
         "title": "Block 1 · Universal Core",
         "subtitle": "_Source: `alawein/docs/style/VOICE.md`. Applies to every surface, no exceptions._",
     },
+    # Blocks 2-4 source files carry their own subtitle paragraph after the
+    # leading H1, so the assembler should not synthesize one (would duplicate).
+    # Block 1 (VOICE.md) does not, so its subtitle is synthesized above.
     {
         "file": STYLE_DIR / "voice-software-register.md",
         "title": "Block 2 · Design-Defense Register",
-        "subtitle": "_Applies to `[software-doc]` and `[notebook]` surfaces. Not active for physics papers, READMEs, or prompt kits._",
+        "subtitle": None,
     },
     {
         "file": STYLE_DIR / "voice-surfaces.md",
         "title": "Block 3 · Surface Adjustments",
-        "subtitle": "_Switch in the section that matches the surface tag. Block 1 always applies._",
+        "subtitle": None,
     },
     {
         "file": STYLE_DIR / "voice-workflow.md",
@@ -85,34 +87,24 @@ def drop_leading_h1(text: str) -> str:
 
 
 def demote_headers(text: str) -> str:
-    """Add one `#` to every line beginning with `#+ ` (markdown header)."""
-    return re.sub(r"^(#+)(\s)", r"#\1\2", text, flags=re.MULTILINE)
+    """Add one `#` to every line beginning with `#+ ` (markdown header).
 
-
-def get_last_updated(repo_root: Path, files: Iterable[Path]) -> str:
-    """Return the maximum git commit date (YYYY-MM-DD) across the given files.
-
-    Falls back to today's date for any file with no git history (e.g., not yet
-    committed). If no file has any history, returns today's date.
+    Skips lines inside fenced code blocks (between ``` markers) so that
+    code comments using `#` (Python, shell, etc.) are not corrupted.
     """
-    today = date.today().isoformat()
-    dates: list[str] = []
-    for f in files:
-        try:
-            rel = f.relative_to(repo_root)
-        except ValueError:
-            rel = f
-        result = subprocess.run(
-            ["git", "log", "-1", "--format=%cs", "--", str(rel)],
-            cwd=repo_root,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-        )
-        out = result.stdout.strip()
-        dates.append(out if (result.returncode == 0 and out) else today)
-    return max(dates) if dates else today
+    lines = text.splitlines(keepends=True)
+    in_fence = False
+    out = []
+    for line in lines:
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            out.append(line)
+            continue
+        if in_fence:
+            out.append(line)
+        else:
+            out.append(re.sub(r"^(#+)(\s)", r"#\1\2", line))
+    return "".join(out)
 
 
 def _process_block(spec: BlockSpec) -> str:

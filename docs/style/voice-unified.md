@@ -185,13 +185,13 @@ justification. They should not narrate syntax or restate visible code.
 Good:
 
 ```python
-## k-points must be in reduced coordinates; convert cartesian -> reduced first
+# k-points must be in reduced coordinates; convert cartesian -> reduced first
 ```
 
 Bad:
 
 ```python
-## loop over k-points
+# loop over k-points
 for kpt in kpoints:
     ...
 ```
@@ -288,8 +288,6 @@ Do not tighten advisory surfaces to blocking without a documented reason.
 ---
 
 ## Block 2 · Design-Defense Register
-_Applies to `[software-doc]` and `[notebook]` surfaces. Not active for physics papers, READMEs, or prompt kits._
-
 _Applies to `[software-doc]` and `[notebook]` surfaces._
 _Not active for physics papers, READMEs, or prompt kits._
 
@@ -393,8 +391,6 @@ Rewrite as: "[We do Y] because [reason for X]."
 ---
 
 ## Block 3 · Surface Adjustments
-_Switch in the section that matches the surface tag. Block 1 always applies._
-
 _Switch in the section that matches the surface tag. Block 1 always applies._
 
 ### §15 Software / AI systems docs

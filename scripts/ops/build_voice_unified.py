@@ -225,7 +225,7 @@ def assemble(blocks: tuple[BlockSpec, ...] | list[BlockSpec], today: str, last_u
     return "".join(parts)
 
 
-def main() -> int:
+def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Assemble docs/style/voice-unified.md from source block files.",
     )
@@ -237,7 +237,11 @@ def main() -> int:
             "Exit 0 if identical, exit 1 (with unified diff on stderr) if different."
         ),
     )
-    args = parser.parse_args()
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = _parse_args(argv)
 
     missing = [str(spec["file"]) for spec in BLOCKS if not spec["file"].exists()]
     if missing:

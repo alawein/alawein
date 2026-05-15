@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -269,6 +270,68 @@ class ProcessBlockTests(unittest.TestCase):
             _process_block(spec)
 
 
+class BlockOrderAndCountTests(unittest.TestCase):
+    """Tests that all blocks are emitted in input order and none are silently dropped."""
+
+    _blocks = [
+        {
+            "file": FIXTURES / "source_a.md",
+            "title": "Block A · Test Block",
+            "subtitle": "_Subtitle line for Block A._",
+        },
+        {
+            "file": FIXTURES / "source_b.md",
+            "title": "Block B · Another Test Block",
+            "subtitle": None,
+        },
+    ]
+
+    def test_blocks_emitted_in_input_order(self):
+        result = assemble(self._blocks, today="2026-05-11", last_updated="2026-05-11")
+        # "Block A" must appear before "Block B" in the assembled output.
+        self.assertLess(
+            result.index("Block A"),
+            result.index("Block B"),
+            "Block A header must appear before Block B header",
+        )
+
+    def test_all_blocks_present(self):
+        result = assemble(self._blocks, today="2026-05-11", last_updated="2026-05-11")
+        # Each block is introduced by a "## Block" section header; count must
+        # equal the number of input block specs.
+        header_count = len(re.findall(r"^## Block", result, re.MULTILINE))
+        self.assertEqual(
+            header_count,
+            len(self._blocks),
+            f"expected {len(self._blocks)} block headers, found {header_count}",
+        )
+
+    def test_production_blocks_config(self):
+        # The production BLOCKS tuple must list sources in this exact order and
+        # all subtitle values must be strings or None (type contract).
+        names = [b["file"].name for b in build_voice_unified.BLOCKS]
+        self.assertEqual(
+            names,
+            [
+                "VOICE.md",
+                "voice-software-register.md",
+                "voice-surfaces.md",
+                "voice-workflow.md",
+            ],
+        )
+        for spec in build_voice_unified.BLOCKS:
+            self.assertIn(
+                "title",
+                spec,
+                f"BLOCKS entry for {spec['file'].name} missing 'title'",
+            )
+            subtitle = spec.get("subtitle")
+            self.assertTrue(
+                subtitle is None or isinstance(subtitle, str),
+                f"BLOCKS entry for {spec['file'].name}: subtitle must be str or None",
+            )
+
+
 class MainTests(unittest.TestCase):
     def test_returns_1_on_missing_source(self):
         bad_blocks: tuple = (
@@ -276,7 +339,7 @@ class MainTests(unittest.TestCase):
         )
         with mock.patch.object(build_voice_unified, "BLOCKS", bad_blocks):
             with mock.patch("sys.stderr"):
-                self.assertEqual(main(), 1)
+                self.assertEqual(main(argv=[]), 1)
 
     def test_writes_output_on_success(self):
         good_blocks: tuple = (
@@ -286,7 +349,7 @@ class MainTests(unittest.TestCase):
         try:
             with mock.patch.object(build_voice_unified, "BLOCKS", good_blocks), \
                  mock.patch.object(build_voice_unified, "OUTPUT_PATH", out_path):
-                self.assertEqual(main(), 0)
+                self.assertEqual(main(argv=[]), 0)
             self.assertTrue(out_path.exists())
             content = out_path.read_text(encoding="utf-8")
             self.assertIn("# Meshal Alawein — Voice Guide\n", content)

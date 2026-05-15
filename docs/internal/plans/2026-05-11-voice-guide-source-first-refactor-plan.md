@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: plan
 audience: [contributors, agents]
-last_updated: 2026-05-12
+last_updated: 2026-05-15
 ---
 
 # Voice guide source-first refactor — Implementation Plan
@@ -18,7 +18,7 @@ last_updated: 2026-05-12
 
 **Tech Stack:** Python 3.12, `unittest` (matches existing `scripts/tests/` layout), `git` for `last_updated` derivation. Markdown source files. No external dependencies.
 
-**Spec deviation note:** The spec uses `build-voice-unified.py` (kebab-case) but the global CLAUDE.md mandates `snake_case.py` for Python files. This plan uses `build_voice_unified.py`.
+**Spec filename note:** The original spec draft used a kebab-case filename; the spec has since been corrected to `build_voice_unified.py` to match the global CLAUDE.md snake_case mandate for Python files.
 
 **Branch and PR strategy:** Single feature branch `feat/voice-guide-source-first-refactor` from `origin/main`. Multiple commits (frequent commits within the branch). One PR at the end.
 

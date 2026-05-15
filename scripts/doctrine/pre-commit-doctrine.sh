@@ -41,6 +41,7 @@ for file in $STAGED; do
   # Skip files in non-doc directories
   case "$file" in
     .github/*|node_modules/*|.venv/*|.claude/settings*|claude-agent-platform/*) continue ;;
+    scripts/doctrine/tests/fixtures/*) continue ;;
   esac
 
   ext="${file##*.}"

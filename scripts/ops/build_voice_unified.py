@@ -178,6 +178,11 @@ def _process_block(spec: BlockSpec) -> str:
     except (FileNotFoundError, PermissionError, UnicodeDecodeError) as e:
         raise RuntimeError(f"failed to read source {spec['file']}: {e}") from e
     body = drop_leading_h1(strip_frontmatter(raw))
+    if not body.strip():
+        raise RuntimeError(
+            f"source {spec['file']} produced an empty block "
+            "(file may be frontmatter-only or have no content after the leading H1)"
+        )
     return demote_headers(body).rstrip() + "\n"
 
 

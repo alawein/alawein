@@ -269,6 +269,22 @@ class ProcessBlockTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "failed to read"):
             _process_block(spec)
 
+    def test_frontmatter_only_source_raises_runtime_error(self):
+        # A source file that contains only frontmatter (no body content after
+        # the leading H1 is stripped) must fail loudly rather than silently
+        # emitting an empty section in voice-unified.md.
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".md", encoding="utf-8", delete=False
+        ) as f:
+            f.write("---\ntype: canonical\nlast_updated: 2026-05-11\n---\n\n# Title Only\n")
+            tmp_path = Path(f.name)
+        try:
+            spec = {"file": tmp_path, "title": "x", "subtitle": None}
+            with self.assertRaisesRegex(RuntimeError, "empty block"):
+                _process_block(spec)
+        finally:
+            tmp_path.unlink(missing_ok=True)
+
 
 class BlockOrderAndCountTests(unittest.TestCase):
     """Tests that all blocks are emitted in input order and none are silently dropped."""

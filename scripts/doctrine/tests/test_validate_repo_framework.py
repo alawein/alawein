@@ -119,3 +119,24 @@ def test_validate_repo_handles_non_utf8_readme(tmp_path):
     assert len(findings) == 1
     assert "not UTF-8" in findings[0]
     assert "bad-encoding" in findings[0]
+
+
+def test_parse_header_raises_on_duplicate_field():
+    """NEW-2: two `Status:` lines back-to-back inside the header block must
+    raise ValidationError, not silently keep the last value (the dict-comp
+    last-wins bug that survived the first C2 round)."""
+    text = (
+        "# repo-x\n\n"
+        "Status:      active\n"
+        "Status:      archived\n"
+        "Category:    products\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     duplicate field test.\n"
+        "Next action: continue\n"
+    )
+    with pytest.raises(ValidationError) as excinfo:
+        parse_header(text)
+    msg = str(excinfo.value).lower()
+    assert "duplicate" in msg
+    assert "status" in msg

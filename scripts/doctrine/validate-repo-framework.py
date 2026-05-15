@@ -76,7 +76,15 @@ def parse_header(text: str) -> dict[str, str]:
             # block ended
             break
     head = "\n".join(block)
-    found = {m.group(1): m.group(2) for m in _FIELD_RE.finditer(head)}
+    found: dict[str, str] = {}
+    for m in _FIELD_RE.finditer(head):
+        name, value = m.group(1), m.group(2)
+        if name in found:
+            raise ValidationError(
+                f"README header has duplicate field '{name}': "
+                f"first={found[name]!r}, second={value!r}"
+            )
+        found[name] = value
     missing = [f for f in REQUIRED_FIELDS if f not in found]
     if missing:
         raise ValidationError(

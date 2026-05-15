@@ -69,7 +69,7 @@ Enforced by `scripts/doctrine/validate-repo-framework.py`, run in the doctrine C
 | personal | public if portfolio-worthy, else private | Identity surface |
 | research | open if publishable, else private | Academic norms |
 | tools | public if sanitized, else private | Watch for workspace paths and credentials |
-| archive | match original | Do not flip visibility at archive time |
+| archive | match original (manual; not validator-enforced) | Do not flip visibility at archive time |
 
 ## Cross-org promotion rule
 
@@ -111,3 +111,4 @@ Archive procedure (idempotent):
 |---|---|
 | 2026-05-14 | Initial version. Supersedes `REPO_GOVERNANCE_INITIATIVE.md`. Spec source: `docs/superpowers/specs/2026-05-14-alawein-reorg-design.md`. |
 | 2026-05-15 | Quality-pass fixes: rename file to lowercase, clarify `_archive` vs `archive`, tighten archive Next action to `delete`. |
+| 2026-05-15 | Clarifier: visibility `match original` for `archive` is manual (not validator-enforced). |

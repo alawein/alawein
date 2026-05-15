@@ -4,15 +4,18 @@ Reads four block source files (VOICE.md, voice-software-register.md,
 voice-surfaces.md, voice-workflow.md), strips frontmatter, drops the leading
 block-naming H1, demotes remaining headers one level, synthesizes block headers
 from the BLOCKS config, and writes voice-unified.md with frontmatter whose
-last_updated reflects the regeneration date in UTC.
+last_updated reflects the maximum last_updated across the source block files.
 
-Run from the alawein repo root: python scripts/ops/build_voice_unified.py
+Run from the alawein repo root:
+  python scripts/ops/build_voice_unified.py          # build and write
+  python scripts/ops/build_voice_unified.py --check  # diff in-memory vs on-disk
 """
 from __future__ import annotations
 
+import argparse
+import difflib
 import re
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import TypedDict
 
@@ -56,6 +59,48 @@ BLOCKS: tuple[BlockSpec, ...] = (
         "subtitle": None,
     },
 )
+
+
+def _read_source_last_updated(spec: "BlockSpec") -> str:
+    """Return the last_updated frontmatter value from a source block file.
+
+    Raises RuntimeError naming the file if the field is absent or unparseable.
+    The generated guide's freshness IS its sources' freshness: when any source
+    is edited its own last_updated advances to that day, so the derived max is
+    current whenever a real rebuild happens; when nothing changed, the date
+    legitimately doesn't move.  This makes the build a pure function of its
+    inputs.
+    """
+    try:
+        raw = spec["file"].read_text(encoding="utf-8")
+    except (FileNotFoundError, PermissionError, UnicodeDecodeError) as e:
+        raise RuntimeError(f"failed to read source {spec['file']}: {e}") from e
+    if not raw.startswith("---\n"):
+        raise RuntimeError(
+            f"source {spec['file']} has no YAML frontmatter; cannot read last_updated"
+        )
+    end = raw.find("\n---\n", 4)
+    if end == -1:
+        raise RuntimeError(f"source {spec['file']} has unterminated YAML frontmatter")
+    frontmatter_block = raw[4:end]
+    for line in frontmatter_block.splitlines():
+        if line.startswith("last_updated:"):
+            value = line[len("last_updated:"):].strip()
+            if value:
+                return value
+    raise RuntimeError(
+        f"source {spec['file']} has no last_updated field in its frontmatter"
+    )
+
+
+def derive_last_updated(blocks: "tuple[BlockSpec, ...] | list[BlockSpec]") -> str:
+    """Return the lexically greatest last_updated across all source block files.
+
+    ISO-8601 date strings sort correctly as plain strings, so a lexical max is
+    equivalent to a chronological max.  Raises RuntimeError (naming the file)
+    if any source is missing the field.
+    """
+    return max(_read_source_last_updated(spec) for spec in blocks)
 
 
 def strip_frontmatter(text: str) -> str:
@@ -181,23 +226,64 @@ def assemble(blocks: tuple[BlockSpec, ...] | list[BlockSpec], today: str, last_u
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Assemble docs/style/voice-unified.md from source block files.",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help=(
+            "Build in memory and compare to the on-disk voice-unified.md. "
+            "Exit 0 if identical, exit 1 (with unified diff on stderr) if different."
+        ),
+    )
+    args = parser.parse_args()
+
     missing = [str(spec["file"]) for spec in BLOCKS if not spec["file"].exists()]
     if missing:
         print(f"ERROR: missing source files: {', '.join(missing)}", file=sys.stderr)
         return 1
 
-    # last_updated is the UTC date of *this regeneration*, not the source-file
-    # commit date. The doctrine validator (validate-doc-contract.sh) requires
-    # the field to advance whenever the file changes; using `git log %cs` of
-    # the sources would return their last-commit date, which doesn't change
-    # between regen runs and so wouldn't satisfy the freshness rule. UTC also
-    # matches the validator's `today_iso` comparison in CI.
-    today_utc = datetime.now(timezone.utc).date().isoformat()
+    # last_updated is derived from the maximum last_updated across the source
+    # block files, not the wall-clock UTC date.  The generated guide's freshness
+    # IS its sources' freshness: when any source is edited its own last_updated
+    # advances, so the derived max is current whenever a real rebuild happens;
+    # when nothing changed, the date legitimately doesn't move.  This makes the
+    # build a pure function of its inputs, which is what --check requires.
+    try:
+        last_updated = derive_last_updated(BLOCKS)
+    except RuntimeError as e:
+        print(f"ERROR: {e}", file=sys.stderr)
+        return 1
 
     try:
-        body = assemble(BLOCKS, today=today_utc, last_updated=today_utc)
+        body = assemble(BLOCKS, today=last_updated, last_updated=last_updated)
     except (RuntimeError, ValueError) as e:
         print(f"ERROR: assembly failed: {e}", file=sys.stderr)
+        return 1
+
+    if args.check:
+        if not OUTPUT_PATH.exists():
+            print(f"ERROR: {OUTPUT_PATH} does not exist; run without --check first.", file=sys.stderr)
+            return 1
+        on_disk = OUTPUT_PATH.read_text(encoding="utf-8")
+        if body == on_disk:
+            print(f"OK: {OUTPUT_PATH} is in sync with its sources.")
+            return 0
+        diff_lines = list(
+            difflib.unified_diff(
+                on_disk.splitlines(keepends=True),
+                body.splitlines(keepends=True),
+                fromfile=str(OUTPUT_PATH),
+                tofile="<assembled-from-sources>",
+            )
+        )
+        print(
+            f"DRIFT: {OUTPUT_PATH} is out of sync with its sources. "
+            "Run build_voice_unified.py (without --check) to regenerate.",
+            file=sys.stderr,
+        )
+        sys.stderr.writelines(diff_lines)
         return 1
 
     try:
@@ -206,7 +292,7 @@ def main() -> int:
         print(f"ERROR: failed to write {OUTPUT_PATH}: {e}", file=sys.stderr)
         return 1
 
-    print(f"Wrote {OUTPUT_PATH} ({len(body):,} chars, last_updated={today_utc})")
+    print(f"Wrote {OUTPUT_PATH} ({len(body):,} chars, last_updated={last_updated})")
     return 0
 
 

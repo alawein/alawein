@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """Validate the Repo Framework metadata header in every repo's README.
 
-Doctrine source: docs/governance/repo-framework.md
+This validator hardcodes the doctrine's five enums (Status, Category, Owner,
+Visibility, Next action) as constants below. The doctrine source of truth
+lives in docs/governance/repo-framework.md; when that file's enums change,
+the constants here MUST be updated in the same commit. There is no automated
+link between the two. The exhaustiveness tests assert the constants are
+consistent with themselves, not consistent with the doctrine.
 
 Usage:
     python validate-repo-framework.py [--root <path>]
@@ -9,7 +14,7 @@ Usage:
 Exit codes:
     0 -- all repos pass
     1 -- one or more repos fail
-    2 -- usage error
+    2 -- usage error, or no repos found under --root
 """
 
 from __future__ import annotations
@@ -46,12 +51,31 @@ class ValidationError(Exception):
 
 
 def parse_header(text: str) -> dict[str, str]:
-    """Extract the metadata header from a README. Searches the first 60 lines.
+    """Extract the metadata header block from a README.
+
+    Scans the first 60 lines and identifies the contiguous block of header
+    field lines (allowing blank lines inside the block). Stops at the first
+    non-blank, non-matching line after a field has been seen. This prevents
+    README body prose containing field-like patterns (e.g., `## Status`
+    followed by `Status: paused`) from silently overriding the real header.
 
     Returns a dict keyed by field name. Raises ValidationError if any required
     field is missing.
     """
-    head = "\n".join(text.splitlines()[:60])
+    lines = text.splitlines()[:60]
+    block: list[str] = []
+    started = False
+    for line in lines:
+        if _FIELD_RE.match(line):
+            started = True
+            block.append(line)
+        elif started:
+            if line.strip() == "":
+                # tolerate blank lines inside the header block
+                continue
+            # block ended
+            break
+    head = "\n".join(block)
     found = {m.group(1): m.group(2) for m in _FIELD_RE.finditer(head)}
     missing = [f for f in REQUIRED_FIELDS if f not in found]
     if missing:
@@ -97,6 +121,15 @@ _BUCKET_DIRS = (
     "products", "personal", "family", "research", "tools", "ventures", "jobs-projects",
 )
 
+# Doctrine consistency: _BUCKET_DIRS must equal ALLOWED_CATEGORY minus
+# 'archive'. The 'archive' bucket lives at _archive/ outside this walk, so
+# it is intentionally excluded here. Anyone adding a new active category
+# must update both sets.
+assert set(_BUCKET_DIRS) == ALLOWED_CATEGORY - {"archive"}, (
+    f"doctrine drift: _BUCKET_DIRS={_BUCKET_DIRS} does not match "
+    f"ALLOWED_CATEGORY - {{'archive'}} = {ALLOWED_CATEGORY - {'archive'}}"
+)
+
 
 def walk_alawein(root: Path) -> list[tuple[Path, str]]:
     """Return [(repo_path, bucket_name), ...] for every repo under alawein/<bucket>/."""
@@ -128,7 +161,9 @@ def main(argv: list[str] | None = None) -> int:
     all_findings: list[str] = []
     repos = walk_alawein(args.root)
     if not repos:
-        print(f"warning: no repos found under {args.root}", file=sys.stderr)
+        print(f"error: no repos found under {args.root}", file=sys.stderr)
+        print(f"       expected at least one of: {', '.join(_BUCKET_DIRS)}", file=sys.stderr)
+        return 2
     for repo, bucket in repos:
         findings = validate_repo(repo, bucket=bucket)
         if findings:

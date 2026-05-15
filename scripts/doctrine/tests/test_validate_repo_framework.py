@@ -14,6 +14,7 @@ from validate_repo_framework import (
     ValidationError,
     parse_header,
     validate_repo,
+    walk_alawein,
 )
 
 FIX = Path(__file__).parent / "fixtures"
@@ -75,3 +76,33 @@ def test_next_action_enum_is_exhaustive():
     assert ALLOWED_NEXT_ACTION == {
         "continue", "refactor", "merge", "archive", "delete",
     }
+
+
+def test_validate_repo_flags_each_invalid_enum_value():
+    """Validator's primary job: rejecting invalid enum values."""
+    findings = validate_repo(FIX / "repo_bad_enums", bucket="products")
+    joined = "\n".join(findings)
+    assert "Status 'wip'" in joined
+    assert "Owner 'meshal'" in joined
+    assert "Visibility 'internal'" in joined
+    assert "Next action 'ship'" in joined
+    assert len(findings) >= 4
+
+
+def test_walk_alawein_skips_non_bucket_and_non_git_dirs(tmp_path):
+    """walk_alawein only yields children that have a .git/ subdir, and
+    only inside the active bucket directories (not _archive, not docs)."""
+    (tmp_path / "products" / "real-repo" / ".git").mkdir(parents=True)
+    (tmp_path / "products" / "no-git-dir").mkdir(parents=True)
+    (tmp_path / "_archive" / "old-repo" / ".git").mkdir(parents=True)
+    (tmp_path / "docs").mkdir()
+    results = walk_alawein(tmp_path)
+    assert results == [(tmp_path / "products" / "real-repo", "products")]
+
+
+def test_validate_repo_flags_missing_readme(tmp_path):
+    """A repo without a README.md returns a single missing-readme finding."""
+    repo = tmp_path / "ghost-repo"
+    repo.mkdir()
+    findings = validate_repo(repo, bucket="products")
+    assert findings == ["ghost-repo: README.md missing"]

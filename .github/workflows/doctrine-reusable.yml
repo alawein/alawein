@@ -35,6 +35,7 @@ jobs:
             scripts/doctrine/style-advisory-audit.py
             scripts/doctrine/validate.py
             scripts/doctrine/validate-doctrine.py
+            scripts/doctrine/validate-repo-framework.py
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -58,6 +59,12 @@ jobs:
           else
             python org/scripts/doctrine/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
           fi
+
+      - name: Validate Repo Framework headers
+        continue-on-error: true  # temporary; removed in Task 18 after README headers ship
+        run: |
+          python org/scripts/doctrine/validate-repo-framework.py \
+            --root org/..
 
       - name: Install Vale CLI
         run: |

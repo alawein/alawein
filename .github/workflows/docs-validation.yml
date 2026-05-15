@@ -66,6 +66,9 @@ jobs:
           python scripts/catalog/validate-projects-json.py
           python scripts/doctrine/build-style-rules.py --check
 
+      - name: Verify voice-unified.md is in sync with sources
+        run: python scripts/ops/build_voice_unified.py --check
+
       - name: Validate governed style surfaces
         run: python scripts/doctrine/validate.py --ci
 

@@ -140,3 +140,43 @@ def test_parse_header_raises_on_duplicate_field():
     msg = str(excinfo.value).lower()
     assert "duplicate" in msg
     assert "status" in msg
+
+
+def test_parse_header_ignores_field_like_body_prose():
+    """C2 regression: body prose with `Status: paused` after a section
+    heading must NOT override the real header value. Previously, the
+    dict comprehension's last-wins semantics let body content silently
+    overwrite the header."""
+    text = (
+        "# repo-x\n\n"
+        "Status:      active\n"
+        "Category:    products\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     real header.\n"
+        "Next action: continue\n\n"
+        "## Status\n\n"
+        "Status: paused\n"
+    )
+    header = parse_header(text)
+    assert header["Status"] == "active"
+    assert header["Next action"] == "continue"
+
+
+def test_parse_header_tolerates_blank_lines_inside_block():
+    """C2: blank lines inside the contiguous header block are allowed.
+    The parser only stops collecting at the first non-blank, non-matching
+    line after a field has been seen."""
+    text = (
+        "# repo-x\n\n"
+        "Status:      active\n"
+        "Category:    products\n\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     blank-line tolerance test.\n"
+        "Next action: continue\n"
+    )
+    header = parse_header(text)
+    assert header["Owner"] == "alawein"
+    assert header["Status"] == "active"
+    assert header["Next action"] == "continue"

@@ -96,7 +96,13 @@ def validate_repo(repo_path: Path, bucket: str | None = None) -> list[str]:
     if not readme.exists():
         return [f"{repo_path.name}: README.md missing"]
     try:
-        header = parse_header(readme.read_text(encoding="utf-8"))
+        text = readme.read_text(encoding="utf-8")
+    except UnicodeDecodeError as e:
+        return [f"{repo_path.name}: README.md not UTF-8 ({e.reason} at byte {e.start})"]
+    except OSError as e:
+        return [f"{repo_path.name}: README.md unreadable: {e}"]
+    try:
+        header = parse_header(text)
     except ValidationError as e:
         return [f"{repo_path.name}: {e}"]
 

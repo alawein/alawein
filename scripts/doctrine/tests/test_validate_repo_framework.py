@@ -106,3 +106,16 @@ def test_validate_repo_flags_missing_readme(tmp_path):
     repo.mkdir()
     findings = validate_repo(repo, bucket="products")
     assert findings == ["ghost-repo: README.md missing"]
+
+
+def test_validate_repo_handles_non_utf8_readme(tmp_path):
+    """Non-UTF-8 README returns a per-repo finding instead of crashing the run."""
+    repo = tmp_path / "bad-encoding"
+    repo.mkdir()
+    readme = repo / "README.md"
+    # Latin-1 byte 0xff isn't valid UTF-8; this would crash read_text("utf-8") raw.
+    readme.write_bytes(b"# title\n\nStatus:\xff active\n")
+    findings = validate_repo(repo, bucket="products")
+    assert len(findings) == 1
+    assert "not UTF-8" in findings[0]
+    assert "bad-encoding" in findings[0]

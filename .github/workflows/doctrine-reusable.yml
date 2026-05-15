@@ -61,7 +61,11 @@ jobs:
           fi
 
       - name: Validate Repo Framework headers
-        continue-on-error: true  # temporary; removed in Task 18 after README headers ship
+        # Non-blocking until every governed repo carries the metadata header
+        # from docs/governance/repo-framework.md. Remove this guard once the
+        # rollout completes and the CI-effectiveness gap is resolved.
+        # Tracking: https://github.com/alawein/alawein/issues/111
+        continue-on-error: true
         run: |
           python org/scripts/doctrine/validate-repo-framework.py \
             --root org/..

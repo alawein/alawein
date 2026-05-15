@@ -19,3 +19,9 @@ last_updated: 2026-04-30
 | 2026-05-03 18:36 | d44c62a7 | chore(ops): update session log | 1 files | ~12 lines |
 | 2026-05-03 18:47 | 6d229a34 | feat(skill): recover voice-check skill + VOICE.md scoping fix from backup branch (#101) | 6 files | ~116 lines |
 | 2026-05-03 18:49 | b8cca82a | docs(arch): auto-update repo topology from catalog/repos.json (#98) | 2 files | ~4 lines |
+| 2026-05-05 21:31 | 191cd062 | fix(review): repair SSOT bullet split, correct governance-index status, add to nav | 3 files | ~9 lines |
+| 2026-05-05 21:34 | 191cd062 | fix(review): repair SSOT bullet split, correct governance-index status, add to nav | 4 files | ~10 lines |
+| 2026-05-05 21:35 | 6c313d9c | docs(claude-md): fix script paths, add docs/internal/ structure, document freshness rules | 2 files | ~48 lines |
+| 2026-05-05 21:37 | 6c313d9c | docs(claude-md): fix script paths, add docs/internal/ structure, document freshness rules | 2 files | ~49 lines |
+| 2026-05-05 21:42 | 6c313d9c | docs(claude-md): fix script paths, add docs/internal/ structure, document freshness rules | 2 files | ~50 lines |
+| 2026-05-05 21:58 | 5ec81036 | fix(ci): set INDEX.md last_updated to 2026-05-06 (UTC date used by CI generator) | 2 files | ~7 lines |

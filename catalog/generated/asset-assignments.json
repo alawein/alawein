@@ -122,7 +122,7 @@
   "mercor-llm-failsafe": {
     "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
-    "screenshot_folder": "jobs-projects/mercor-ai-ml-experts/docs/screenshots",
+    "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
     "theme_family": "legacy",
     "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
     "favicon_status": "generated"
@@ -141,6 +141,14 @@
     "screenshot_folder": "tools/knowledge-base/docs/screenshots",
     "theme_family": "dawn",
     "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
+    "favicon_status": "generated"
+  },
+  "turing": {
+    "logo_source": "design-system/packages/icons/dist/brand/turing/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/turing/repo-banner.svg",
+    "screenshot_folder": "jobs-projects/turing/docs/screenshots",
+    "theme_family": "legacy",
+    "social_preview_image": "design-system/packages/icons/dist/brand/turing/social-card.svg",
     "favicon_status": "generated"
   },
   "fallax": {

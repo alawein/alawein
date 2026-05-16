@@ -86,3 +86,69 @@ def test_derive_owner_fallback_without_slash_raises():
     entry = {k: v for k, v in SAMPLE.items() if k != "owner"}
     with pytest.raises(DeriveError, match="owner"):
         derive_header_fields("bolts", entry)
+
+
+from apply_readme_header import render_header, splice_header
+
+FIELDS = {
+    "Status": "active",
+    "Category": "products",
+    "Owner": "alawein",
+    "Visibility": "private",
+    "Purpose": "Fitness transformation plans.",
+    "Next action": "continue",
+}
+
+EXPECTED_BLOCK = (
+    "Status:      active\n"
+    "Category:    products\n"
+    "Owner:       alawein\n"
+    "Visibility:  private\n"
+    "Purpose:     Fitness transformation plans.\n"
+    "Next action: continue"
+)
+
+
+def test_render_header_aligns_values_at_column_14():
+    assert render_header(FIELDS) == EXPECTED_BLOCK
+
+
+def test_splice_inserts_after_title_when_no_block_present():
+    readme = "# bolts\n\nBolts is a fitness product.\n"
+    result = splice_header(readme, FIELDS)
+    assert result == (
+        "# bolts\n\n"
+        + EXPECTED_BLOCK
+        + "\n\nBolts is a fitness product.\n"
+    )
+
+
+def test_splice_inserts_when_no_blank_after_title():
+    readme = "# bolts\nBolts is a fitness product.\n"
+    result = splice_header(readme, FIELDS)
+    assert result == (
+        "# bolts\n\n"
+        + EXPECTED_BLOCK
+        + "\n\nBolts is a fitness product.\n"
+    )
+
+
+def test_splice_is_idempotent():
+    readme = "# bolts\n\nBolts is a fitness product.\n"
+    once = splice_header(readme, FIELDS)
+    twice = splice_header(once, FIELDS)
+    assert once == twice
+
+
+def test_splice_replaces_existing_block_in_place():
+    stale = {**FIELDS, "Category": "research", "Status": "paused"}
+    readme = splice_header("# bolts\n\nBody.\n", stale)
+    fixed = splice_header(readme, FIELDS)
+    assert "Category:    products" in fixed
+    assert "research" not in fixed
+    assert fixed.count("Status:") == 1
+
+
+def test_splice_raises_when_no_level1_heading():
+    with pytest.raises(DeriveError, match="heading"):
+        splice_header("No title here.\n\nBody.\n", FIELDS)

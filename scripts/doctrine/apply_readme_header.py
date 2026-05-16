@@ -9,6 +9,8 @@ See docs/governance/repo-framework.md for the header specification.
 """
 from __future__ import annotations
 
+import re
+
 # Canonical field order (matches docs/governance/repo-framework.md).
 HEADER_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
 
@@ -69,3 +71,62 @@ def derive_header_fields(slug: str, entry: dict) -> dict[str, str]:
         "Purpose": purpose,
         "Next action": DEFAULT_NEXT_ACTION,
     }
+
+
+LABEL_WIDTH = 13  # len("Next action:") + 1, so values align at column 14.
+
+_FIELD_LINE = re.compile(
+    r"^(Status|Category|Owner|Visibility|Purpose|Next action):"
+)
+
+
+def render_header(fields: dict[str, str]) -> str:
+    """Render the six fields as an aligned metadata block (no blank lines)."""
+    lines = []
+    for name in HEADER_FIELDS:
+        label = f"{name}:"
+        lines.append(f"{label:<{LABEL_WIDTH}}{fields[name]}")
+    return "\n".join(lines)
+
+
+def _find_block(lines: list[str]) -> tuple[int, int] | None:
+    """Return (start, end-exclusive) of a contiguous header block, or None."""
+    start = None
+    for i, line in enumerate(lines):
+        if _FIELD_LINE.match(line):
+            if start is None:
+                start = i
+        elif start is not None:
+            return (start, i)
+    if start is not None:
+        return (start, len(lines))
+    return None
+
+
+def splice_header(readme_text: str, fields: dict[str, str]) -> str:
+    """Insert or replace the Repo Framework block. Idempotent."""
+    block_lines = render_header(fields).splitlines()
+    lines = readme_text.splitlines()
+
+    # Drop an existing block plus its surrounding blank lines.
+    existing = _find_block(lines)
+    if existing:
+        start, end = existing
+        if end < len(lines) and lines[end].strip() == "":
+            end += 1
+        if start > 0 and lines[start - 1].strip() == "":
+            start -= 1
+        lines = lines[:start] + lines[end:]
+
+    title_idx = next(
+        (i for i, ln in enumerate(lines) if ln.startswith("# ")), None
+    )
+    if title_idx is None:
+        raise DeriveError("README has no level-1 '# ' heading; cannot place header")
+
+    body = lines[title_idx + 1:]
+    while body and body[0].strip() == "":
+        body.pop(0)
+
+    result = lines[: title_idx + 1] + [""] + block_lines + [""] + body
+    return "\n".join(result).rstrip("\n") + "\n"

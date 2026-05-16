@@ -10,8 +10,6 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
-import yaml
-
 ROOT = Path(__file__).resolve().parent.parent.parent
 WORKSPACE_ROOT = ROOT.parent
 CATALOG_DIR = ROOT / "catalog"
@@ -144,6 +142,8 @@ def load_json(path: Path) -> Any:
 
 
 def load_yaml(path: Path) -> Any:
+    import yaml  # local import: keeps PyYAML off the import path for pure-data helpers
+
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
@@ -159,6 +159,8 @@ def load_frontmatter_yaml(path: Path) -> dict[str, Any]:
 
 
 def _first_yaml_doc(payload: str) -> dict[str, Any]:
+    import yaml  # local import: see load_yaml
+
     # Use safe_load_all so a stray `---` inside the body does not trigger
     # yaml.ComposerError; we only care about the first document.
     if not payload:
@@ -262,6 +264,10 @@ def project_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["portfolio_domain"] = repo["portfolio_domain"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("status"):
+        entry["status"] = repo["status"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry
@@ -273,6 +279,7 @@ def research_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "slug": repo["slug"],
         "repo": repo["repo"],
         "domain": repo.get("research_domain") or repo["canonical_description"],
+        "description": repo["canonical_description"],
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]
@@ -282,6 +289,10 @@ def research_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["category"] = "archived"
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("status"):
+        entry["status"] = repo["status"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry
@@ -293,6 +304,7 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "slug": repo["slug"],
         "repo": repo["repo"],
         "purpose": repo["canonical_description"],
+        "description": repo["canonical_description"],  # cross-type alias; purpose is the schema-required key
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]
@@ -302,6 +314,8 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["status"] = repo["status"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry

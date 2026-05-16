@@ -31,6 +31,8 @@
           "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
           "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
         },
+        "status": { "type": "string" },
+        "visibility": { "type": "string", "enum": ["public", "private"] },
         "vercel": { "$ref": "#/$defs/vercelBlock" }
       }
     },
@@ -75,11 +77,14 @@
           "legacy_slugs": { "type": "array", "items": { "type": "string" } },
           "repo": { "type": "string" },
           "domain": { "type": "string" },
+          "description": { "type": "string" },
           "bucket": {
             "type": "string",
             "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
             "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
           },
+          "status": { "type": "string" },
+          "visibility": { "type": "string", "enum": ["public", "private"] },
           "vercel": { "$ref": "#/$defs/vercelBlock" }
         }
       }
@@ -109,7 +114,9 @@
           "repo": { "type": "string" },
           "url": { "type": "string", "format": "uri" },
           "purpose": { "type": "string" },
+          "description": { "type": "string" },
           "status": { "type": "string" },
+          "visibility": { "type": "string", "enum": ["public", "private"] },
           "note": { "type": "string" },
           "bucket": {
             "type": "string",

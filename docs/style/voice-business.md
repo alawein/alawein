@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-11
+last_updated: 2026-05-16
 ---
 
 # Block 3 · Business Surfaces

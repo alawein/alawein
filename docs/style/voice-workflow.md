@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-15
+last_updated: 2026-05-16
 ---
 
 # Block 4 · Polish Workflow

@@ -69,6 +69,7 @@ last_updated: 2026-05-15
 - [profile-sync-from-guides.md](governance/profile-sync-from-guides.md)
 - [prompt-rollout.md](governance/prompt-rollout.md)
 - [release-playbook.md](governance/release-playbook.md)
+- [repo-framework.md](governance/repo-framework.md)
 - [repo-standardization.md](governance/repo-standardization.md)
 - [repo-sweep-prompt.md](governance/repo-sweep-prompt.md)
 - [repository-layout-standard.md](governance/repository-layout-standard.md)

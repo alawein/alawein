@@ -123,8 +123,12 @@ jobs:
             skip_diff=false
             if [ "${{ github.event_name }}" = "push" ]; then
               before="${{ github.event.before }}"
-              if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
-                # First push to a new branch — diff base is unknown; scan full baseline.
+              if [ -z "$before" ] \
+                 || [ "$before" = "0000000000000000000000000000000000000000" ] \
+                 || ! git cat-file -e "${before}^{commit}" 2>/dev/null; then
+                # New branch (diff base unknown), or a force-push left 'before'
+                # pointing at an orphaned commit absent from history. Either
+                # way the diff base is unusable; scan the full baseline.
                 mapfile -t vale_targets < <(list_md_files)
                 skip_diff=true
               else

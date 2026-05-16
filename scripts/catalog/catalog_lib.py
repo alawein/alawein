@@ -262,6 +262,10 @@ def project_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["portfolio_domain"] = repo["portfolio_domain"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("status"):
+        entry["status"] = repo["status"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry
@@ -273,6 +277,7 @@ def research_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "slug": repo["slug"],
         "repo": repo["repo"],
         "domain": repo.get("research_domain") or repo["canonical_description"],
+        "description": repo["canonical_description"],
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]
@@ -282,6 +287,10 @@ def research_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["category"] = "archived"
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("status"):
+        entry["status"] = repo["status"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry
@@ -293,6 +302,7 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "slug": repo["slug"],
         "repo": repo["repo"],
         "purpose": repo["canonical_description"],
+        "description": repo["canonical_description"],
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]
@@ -302,6 +312,8 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["status"] = repo["status"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("visibility"):
+        entry["visibility"] = repo["visibility"]
     if repo.get("vercel"):
         entry["vercel"] = repo["vercel"]
     return entry

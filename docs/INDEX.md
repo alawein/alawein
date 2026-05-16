@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-06
+last_updated: 2026-05-15
 ---
 
 # Index — alawein
@@ -103,4 +103,8 @@ last_updated: 2026-05-06
 - [readme-style-guide.md](style/readme-style-guide.md)
 - [style-system.md](style/style-system.md)
 - [voice-and-tone.md](style/voice-and-tone.md)
+- [voice-software-register.md](style/voice-software-register.md)
+- [voice-surfaces.md](style/voice-surfaces.md)
+- [voice-unified.md](style/voice-unified.md)
+- [voice-workflow.md](style/voice-workflow.md)
 

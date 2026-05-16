@@ -13,7 +13,10 @@ import sys
 import unittest
 from pathlib import Path
 
-import jsonschema
+try:
+    import jsonschema
+except ImportError:  # optional dep — validate-projects-json.py covers CI
+    jsonschema = None
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 SCHEMA_PATH = ROOT / "projects.schema.json"
@@ -46,6 +49,7 @@ VALID_VERCEL = {
 }
 
 
+@unittest.skipUnless(jsonschema is not None, "jsonschema not installed")
 class VercelBlockValidation(unittest.TestCase):
     def setUp(self) -> None:
         self.validator = _load_validator()

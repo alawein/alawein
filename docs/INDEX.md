@@ -78,6 +78,7 @@ last_updated: 2026-05-16
 - [skills-install-policy.md](governance/skills-install-policy.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
+- [vercel-baseline.md](governance/vercel-baseline.md)
 - [workflow.md](governance/workflow.md)
 - [workspace-layout-audit.md](governance/workspace-layout-audit.md)
 - [workspace-master-prompt.md](governance/workspace-master-prompt.md)

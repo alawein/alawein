@@ -37,7 +37,7 @@ DEFAULT_NEXT_ACTION = "continue"
 
 
 class DeriveError(Exception):
-    """Raised when a registry entry lacks data needed to build a header."""
+    """Raised when input data -- a registry entry, a slug, or a README -- lacks what is needed to build or place the header."""
 
 
 def derive_header_fields(slug: str, entry: dict) -> dict[str, str]:
@@ -81,7 +81,7 @@ def derive_header_fields(slug: str, entry: dict) -> dict[str, str]:
     }
 
 
-LABEL_WIDTH = 13  # len("Next action:") + 1, so values align at column 14.
+LABEL_WIDTH = 13  # Width of the longest label ("Next action:" = 12 chars) + 1 trailing space.
 
 _FIELD_LINE = re.compile(
     r"^(Status|Category|Owner|Visibility|Purpose|Next action):"
@@ -103,9 +103,15 @@ def _header_block_after_title(
     """Return (start, end-exclusive) of an existing six-field header block.
 
     Only a contiguous run of exactly the six canonical fields, sitting
-    immediately after the title (blank lines between are allowed), counts.
-    This prevents body prose like 'Status: see issues' from being mistaken
-    for the header and destroyed.
+    immediately after the title (blank lines between are allowed), counts;
+    field order within the run does not matter -- the block is always
+    rewritten in canonical order. This prevents body prose like
+    'Status: see issues' from being mistaken for the header and destroyed.
+
+    Returns None when no field lines follow the title. Raises DeriveError
+    when a partial or otherwise malformed field run sits immediately after
+    the title (a stale or hand-broken header), so the repo is flagged rather
+    than silently given a duplicate block.
     """
     i = title_idx + 1
     while i < len(lines) and lines[i].strip() == "":
@@ -118,9 +124,15 @@ def _header_block_after_title(
             break
         names.append(match.group(1))
         i += 1
+    if not names:
+        return None
     if sorted(names) == sorted(HEADER_FIELDS):
         return (start, i)
-    return None
+    raise DeriveError(
+        f"README has a malformed header block after the title "
+        f"({len(names)} field line(s); expected the 6 canonical fields) -- "
+        f"fix it by hand before re-running"
+    )
 
 
 def splice_header(readme_text: str, fields: dict[str, str]) -> str:
@@ -163,26 +175,42 @@ def parse_slug(remote_url: str) -> str | None:
         return None
     slug = match.group(1)
     owner = slug.split("/", 1)[0]
-    # Reject a host-like owner (e.g. 'github.com/org' from a single-segment URL).
+    # Reject a host-like owner: 'https://github.com/org' with no repo path yields owner 'github.com'.
     return None if "." in owner else slug
 
 
 def slug_from_remote(repo_path: Path) -> str | None:
-    """Resolve a repo's 'owner/name' slug from its origin remote."""
+    """Resolve a repo's 'owner/name' slug from its origin remote.
+
+    Returns None -- logging the reason to stderr -- when git cannot be
+    invoked, the repo has no usable origin, or the URL cannot be parsed.
+    """
     try:
         out = subprocess.run(
             ["git", "-C", str(repo_path), "remote", "get-url", "origin"],
             capture_output=True, text=True, encoding="utf-8", errors="replace",
         )
-    except FileNotFoundError:
+    except OSError as exc:
+        print(f"skipped  {repo_path}: cannot invoke git: {exc}", file=sys.stderr)
         return None
     if out.returncode != 0:
+        detail = out.stderr.strip() or "git remote get-url origin failed"
+        print(f"skipped  {repo_path}: {detail}", file=sys.stderr)
         return None
-    return parse_slug(out.stdout)
+    raw = out.stdout.strip()
+    slug = parse_slug(raw)
+    if slug is None:
+        print(f"skipped  {repo_path}: cannot parse slug from remote {raw!r}",
+              file=sys.stderr)
+    return slug
 
 
 def find_repos(root: Path) -> list[Path]:
-    """Return every Git repo under root (no descent into nested repos)."""
+    """Return every Git repo under root (no descent into nested repos).
+
+    Skips node_modules, .git, and _archive directories. _archive is excluded
+    by policy: headers are not applied to archived repos.
+    """
     repos: list[Path] = []
     for dirpath, dirnames, _ in os.walk(root):
         if ".git" in dirnames:
@@ -198,16 +226,32 @@ def find_repos(root: Path) -> list[Path]:
 def apply_to_repo(
     repo_path: Path, slug: str, registry: dict, dry_run: bool
 ) -> tuple[str, str]:
-    """Apply (or preview) the header for one repo. Returns (status, detail)."""
+    """Apply (or preview) the header for one repo.
+
+    Returns (status, detail) where status is one of: changed, would-change,
+    unchanged, skipped, error. Never raises for a per-repo problem -- a bad
+    registry entry, a missing or headingless README, or an I/O failure all
+    return an ('error', ...) tuple (with the slug in detail) so one bad repo
+    cannot abort a bulk run.
+    """
     entry = registry.get(slug)
     if entry is None:
         return ("skipped", f"{slug}: not in registry")
-    fields = derive_header_fields(slug, entry)
     readme = repo_path / "README.md"
     if not readme.exists():
         return ("error", f"{slug}: no README.md")
-    original = readme.read_text(encoding="utf-8")
-    updated = splice_header(original, fields)
+    try:
+        fields = derive_header_fields(slug, entry)
+    except DeriveError as exc:
+        return ("error", f"{slug}: {exc}")
+    try:
+        original = readme.read_text(encoding="utf-8")
+    except OSError as exc:
+        return ("error", f"{slug}: cannot read README.md: {exc}")
+    try:
+        updated = splice_header(original, fields)
+    except DeriveError as exc:
+        return ("error", f"{slug}: {exc}")
     if updated == original:
         return ("unchanged", slug)
     if dry_run:
@@ -218,7 +262,10 @@ def apply_to_repo(
             tofile=f"{slug}/README.md (proposed)",
         ))
         return ("would-change", diff)
-    readme.write_text(updated, encoding="utf-8", newline="\n")
+    try:
+        readme.write_text(updated, encoding="utf-8", newline="\n")
+    except OSError as exc:
+        return ("error", f"{slug}: cannot write README.md: {exc}")
     return ("changed", slug)
 
 
@@ -243,6 +290,10 @@ def main(argv: list[str] | None = None) -> int:
     except RegistryError as exc:
         print(f"ERROR: cannot load registry: {exc}", file=sys.stderr)
         return 2
+    except Exception as exc:
+        print(f"ERROR: unexpected error loading registry {args.registry}: "
+              f"{type(exc).__name__}: {exc}", file=sys.stderr)
+        return 2
 
     targets = [args.repo] if args.repo else find_repos(args.root)
     if not targets:
@@ -256,15 +307,9 @@ def main(argv: list[str] | None = None) -> int:
     for repo_path in sorted(targets):
         slug = args.slug if (args.repo and args.slug) else slug_from_remote(repo_path)
         if slug is None:
-            print(f"skipped  {repo_path}: no resolvable origin slug")
             counts["skipped"] += 1
             continue
-        try:
-            status, detail = apply_to_repo(repo_path, slug, registry, args.dry_run)
-        except DeriveError as exc:
-            print(f"error    {exc}", file=sys.stderr)
-            counts["error"] += 1
-            continue
+        status, detail = apply_to_repo(repo_path, slug, registry, args.dry_run)
         counts[status] += 1
         if status == "would-change":
             print(detail)
@@ -274,6 +319,12 @@ def main(argv: list[str] | None = None) -> int:
             print(f"{status:<8} {slug}")
 
     print("\nsummary: " + ", ".join(f"{k}={v}" for k, v in counts.items()))
+    checked = (counts["changed"] + counts["would-change"]
+               + counts["unchanged"] + counts["error"])
+    if checked == 0 and targets:
+        print("ERROR: no repos were checked (all skipped) -- verify registry "
+              "slugs match git remote URLs", file=sys.stderr)
+        return 2
     return 1 if counts["error"] else 0
 
 

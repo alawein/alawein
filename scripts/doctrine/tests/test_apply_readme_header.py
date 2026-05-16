@@ -10,6 +10,7 @@ from apply_readme_header import (
     render_header,
     splice_header,
 )
+from validate_repo_framework import ALLOWED_STATUS
 
 SAMPLE = {
     "name": "Bolts",
@@ -22,6 +23,8 @@ SAMPLE = {
     "description": "Fitness transformation plans with Next.js, Stripe, Supabase.",
 }
 
+# Independent of SAMPLE: a pre-built header-fields dict used directly by the
+# render/splice tests, without going through derive_header_fields.
 FIELDS = {
     "Status": "active",
     "Category": "products",
@@ -88,8 +91,7 @@ def test_derive_missing_description_raises():
 
 
 def test_status_map_targets_are_valid_doctrine_enums():
-    allowed = {"active", "paused", "experimental", "deprecated", "archived"}
-    assert set(STATUS_MAP.values()) <= allowed
+    assert set(STATUS_MAP.values()) <= set(ALLOWED_STATUS)
 
 
 def test_derive_missing_status_raises():
@@ -228,3 +230,75 @@ def test_apply_to_repo_error_when_no_readme(tmp_path):
     status, detail = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
     assert status == "error"
     assert "no README" in detail
+
+
+@pytest.mark.parametrize("raw,expected", [
+    ("active", "active"),
+    ("maintained", "active"),
+    ("paused", "paused"),
+    ("experimental", "experimental"),
+    ("prototype", "experimental"),
+    ("deprecated", "deprecated"),
+    ("archived", "archived"),
+])
+def test_derive_status_mappings(raw, expected):
+    fields = derive_header_fields("alawein/bolts", dict(SAMPLE, status=raw))
+    assert fields["Status"] == expected
+
+
+@pytest.mark.parametrize("url", [
+    "https://github.com/bolts",
+    "https://github.com/bolts.git",
+])
+def test_parse_slug_returns_none_for_single_segment_url(url):
+    assert parse_slug(url) is None
+
+
+def test_splice_preserves_content_before_title():
+    readme = "[![CI](badge.svg)](link)\n\n# bolts\n\nBody.\n"
+    result = splice_header(readme, FIELDS)
+    assert result.startswith("[![CI](badge.svg)](link)\n\n# bolts\n")
+    assert "Status:      active" in result
+    assert "Body." in result
+
+
+def test_splice_raises_on_malformed_block_after_title():
+    readme = (
+        "# bolts\n\n"
+        "Status:      active\n"
+        "Category:    products\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     Something.\n\n"
+        "Body.\n"
+    )
+    with pytest.raises(DeriveError, match="malformed"):
+        splice_header(readme, FIELDS)
+
+
+def test_apply_to_repo_error_when_readme_has_no_heading(tmp_path):
+    readme = tmp_path / "README.md"
+    readme.write_text("No heading here.\n\nBody.\n", encoding="utf-8")
+    registry = {"alawein/bolts": SAMPLE}
+    status, detail = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "error"
+    assert "heading" in detail
+    assert "alawein/bolts" in detail
+
+
+def test_apply_to_repo_crlf_readme_normalizes_to_lf(tmp_path):
+    readme = tmp_path / "README.md"
+    readme.write_bytes(b"# bolts\r\n\r\nBody.\r\n")
+    registry = {"alawein/bolts": SAMPLE}
+    status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "changed"
+    assert b"\r\n" not in readme.read_bytes()
+
+
+def test_apply_to_repo_crlf_readme_second_run_unchanged(tmp_path):
+    readme = tmp_path / "README.md"
+    readme.write_bytes(b"# bolts\r\n\r\nBody.\r\n")
+    registry = {"alawein/bolts": SAMPLE}
+    apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "unchanged"

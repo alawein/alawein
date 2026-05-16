@@ -25,6 +25,11 @@
           "type": "string",
           "description": "Notion Domain select",
           "enum": ["Work", "Personal", "scientific-computing"]
+        },
+        "bucket": {
+          "type": "string",
+          "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+          "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
         }
       }
     }
@@ -51,7 +56,12 @@
           "slug": { "type": "string" },
           "legacy_slugs": { "type": "array", "items": { "type": "string" } },
           "repo": { "type": "string" },
-          "domain": { "type": "string" }
+          "domain": { "type": "string" },
+          "bucket": {
+            "type": "string",
+            "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+            "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
+          }
         }
       }
     },
@@ -81,7 +91,12 @@
           "url": { "type": "string", "format": "uri" },
           "purpose": { "type": "string" },
           "status": { "type": "string" },
-          "note": { "type": "string" }
+          "note": { "type": "string" },
+          "bucket": {
+            "type": "string",
+            "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+            "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
+          }
         }
       }
     }

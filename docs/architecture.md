@@ -48,7 +48,7 @@ graph TB
 
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-05-04 — do not edit; run scripts/generate-arch-diagram.py -->
+<!-- last updated: 2026-05-16 — do not edit; run scripts/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 

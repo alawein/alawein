@@ -197,21 +197,6 @@
       "url": "https://optiqap.online",
       "portfolio_domain": "Personal",
       "bucket": "research"
-    },
-    {
-      "name": "Veyra",
-      "slug": "veyra",
-      "repo": "alawein/veyra",
-      "description": "Voice governance tool for AI-assisted work; detects LLM-generated content and enforces voice consistency.",
-      "tags": [
-        "TypeScript",
-        "Node.js",
-        "Turborepo"
-      ],
-      "category": "active",
-      "url": "https://github.com/alawein/veyra",
-      "portfolio_domain": "Work",
-      "bucket": "ventures"
     }
   ],
   "notion_sync": [
@@ -322,7 +307,7 @@
       "name": "OptiQAP",
       "slug": "optiqap",
       "repo": "alawein/optiqap",
-      "domain": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
+      "domain": "Quadratic Assignment Problem solvers \u2014 equilibrium-guided optimization, spectral methods, QUBO.",
       "legacy_slugs": [
         "qaplibria"
       ],
@@ -349,7 +334,7 @@
       "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
-      "domain": "Computational physics research — Bell inequality, CHSH simulation",
+      "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",
       "legacy_slugs": [
         "MeatheadPhysicist"
       ],
@@ -407,7 +392,7 @@
       "name": "CHSH Lab",
       "slug": "chshlab",
       "repo": "alawein/chshlab",
-      "domain": "Quantum foundations — CHSH / Bell education site",
+      "domain": "Quantum foundations \u2014 CHSH / Bell education site",
       "url": "https://chshlab.online",
       "bucket": "research"
     },
@@ -415,7 +400,7 @@
       "name": "Helios",
       "slug": "helios",
       "repo": "alawein/helios",
-      "domain": "Proprietary research archive — computational astrophysics",
+      "domain": "Proprietary research archive \u2014 computational astrophysics",
       "category": "archived",
       "bucket": "research"
     },
@@ -423,7 +408,7 @@
       "name": "Loophole Lab",
       "slug": "loopholelab",
       "repo": "alawein/loopholelab",
-      "domain": "Research validation — adversarial claim stress-testing",
+      "domain": "Research validation \u2014 adversarial claim stress-testing",
       "url": "https://loopholelab.online",
       "bucket": "ventures"
     },
@@ -431,7 +416,7 @@
       "name": "Provegate",
       "slug": "provegate",
       "repo": "alawein/provegate",
-      "domain": "Agent MCP tooling — drift, memory, proof",
+      "domain": "Agent MCP tooling \u2014 drift, memory, proof",
       "legacy_slugs": [
         "epistemic-stack"
       ],
@@ -441,17 +426,10 @@
     {
       "name": "Mercor LLM Failsafe",
       "slug": "mercor-llm-failsafe",
-      "repo": "alawein/mercor",
+      "repo": "alawein/mercor-llm-failsafe",
       "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
       "category": "archived",
       "bucket": "jobs-projects"
-    },
-    {
-      "name": "QuantumAlgo",
-      "slug": "quantumalgo",
-      "repo": "alawein/quantumalgo",
-      "domain": "Quantum algorithms for combinatorial optimization; QAOA applied to quadratic assignment with OptiQAP baselines.",
-      "bucket": "research"
     }
   ],
   "infrastructure": [
@@ -512,14 +490,13 @@
     },
     {
       "name": "Handshake AI Eval",
-      "slug": "handshake",
-      "repo": "alawein/handshake",
+      "slug": "handshake-hai",
+      "repo": "alawein/handshake-hai",
       "purpose": "LLM evaluation monorepo with shared core and project validators.",
       "legacy_slugs": [
-        "handshake-hai",
         "eval"
       ],
-      "url": "https://github.com/alawein/handshake",
+      "url": "https://github.com/alawein/handshake-hai",
       "status": "active",
       "bucket": "jobs-projects"
     },
@@ -534,33 +511,6 @@
       "url": "https://fallax.online",
       "status": "active",
       "bucket": "research"
-    },
-    {
-      "name": "incore",
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "purpose": "Claude Code skill for scanning a workspace, extracting prompt-flavored assets, and producing a queryable asset library.",
-      "url": "https://github.com/alawein/incore",
-      "status": "active",
-      "bucket": "tools"
-    },
-    {
-      "name": "Prompty",
-      "slug": "prompty",
-      "repo": "alawein/prompty",
-      "purpose": "Agent-instructions compiler; turns rough intent into model-specific AI instructions for Claude Code, Codex, Cursor, and ChatGPT.",
-      "url": "https://github.com/alawein/prompty",
-      "status": "active",
-      "bucket": "tools"
-    },
-    {
-      "name": "Turing",
-      "slug": "turing",
-      "repo": "alawein/turing",
-      "purpose": "Catalog-collection repo for all Turing engagements.",
-      "url": "https://github.com/alawein/turing",
-      "status": "active",
-      "bucket": "jobs-projects"
     }
   ],
   "packages": [

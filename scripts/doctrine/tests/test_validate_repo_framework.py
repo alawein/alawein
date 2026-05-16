@@ -16,6 +16,7 @@ from validate_repo_framework import (
     parse_header,
     validate_repo,
     load_registry,
+    validate_repo_single,
     walk_alawein,
 )
 
@@ -208,3 +209,65 @@ def test_load_registry_raises_on_malformed_json(tmp_path):
 def test_load_registry_raises_on_missing_file(tmp_path):
     with pytest.raises(RegistryError):
         load_registry(tmp_path / "does-not-exist.json")
+
+
+def test_validate_repo_single_passes_for_matching_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/repo-passing", reg
+    )
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_validate_repo_single_flags_category_bucket_mismatch():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_wrong_category", "alawein/repo-wrong", reg
+    )
+    assert len(findings) == 1
+    assert "category" in findings[0].lower()
+
+
+def test_validate_repo_single_fails_when_repo_not_registered():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/not-registered", reg
+    )
+    assert len(findings) == 1
+    assert "not registered" in findings[0].lower()
+
+
+def test_validate_repo_single_fails_for_alawein_entry_without_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/repo-nobucket", reg
+    )
+    assert len(findings) == 1
+    assert "bucket" in findings[0].lower()
+
+
+def test_validate_repo_single_shape_only_for_cross_org_without_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    # Cross-org entry has no bucket; only header shape is checked, and
+    # repo_passing's header is well formed, so it passes.
+    findings = validate_repo_single(
+        FIX / "repo_passing", "menax-inc/cross-thing", reg
+    )
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_validate_repo_single_cross_org_still_catches_bad_enums():
+    reg = load_registry(FIX / "registry_sample.json")
+    # Shape-only mode must still reject invalid enum values.
+    findings = validate_repo_single(
+        FIX / "repo_bad_enums", "menax-inc/cross-thing", reg
+    )
+    assert findings, "expected enum findings even in shape-only mode"
+
+
+def test_validate_repo_uses_display_name_in_findings():
+    findings = validate_repo(
+        FIX / "repo_bad_enums", bucket=None, display_name="alawein/demo"
+    )
+    assert findings
+    assert all(f.startswith("alawein/demo:") for f in findings)

@@ -40,6 +40,7 @@ ALLOWED_OWNER = {
 }
 ALLOWED_VISIBILITY = {"public", "private"}
 ALLOWED_NEXT_ACTION = {"continue", "refactor", "merge", "archive", "delete"}
+ALAWEIN_OWNER = "alawein"
 
 _FIELD_RE = re.compile(
     r"^(Status|Category|Owner|Visibility|Purpose|Next action)\s*:\s*(.+?)\s*$",
@@ -98,40 +99,47 @@ def parse_header(text: str) -> dict[str, str]:
     return found
 
 
-def validate_repo(repo_path: Path, bucket: str | None = None) -> list[str]:
+def validate_repo(
+    repo_path: Path,
+    bucket: str | None = None,
+    display_name: str | None = None,
+) -> list[str]:
     """Validate one repo. Returns a list of human-readable findings.
 
-    `bucket` is the parent directory name (e.g., 'products', 'tools'); when
-    provided, the function asserts header.Category == bucket.
+    `bucket` is the expected Category; when provided, the function asserts
+    header.Category == bucket. `display_name` overrides the repo directory
+    name in finding messages; --repo mode passes the GitHub slug here so
+    messages name the real repo rather than the generic 'repo/' checkout.
     """
+    name = display_name or repo_path.name
     readme = repo_path / "README.md"
     findings: list[str] = []
     if not readme.exists():
-        return [f"{repo_path.name}: README.md missing"]
+        return [f"{name}: README.md missing"]
     try:
         text = readme.read_text(encoding="utf-8")
     except UnicodeDecodeError as e:
-        return [f"{repo_path.name}: README.md not UTF-8 ({e.reason} at byte {e.start})"]
+        return [f"{name}: README.md not UTF-8 ({e.reason} at byte {e.start})"]
     except OSError as e:
-        return [f"{repo_path.name}: README.md unreadable: {e}"]
+        return [f"{name}: README.md unreadable: {e}"]
     try:
         header = parse_header(text)
     except ValidationError as e:
-        return [f"{repo_path.name}: {e}"]
+        return [f"{name}: {e}"]
 
     if header["Status"] not in ALLOWED_STATUS:
-        findings.append(f"{repo_path.name}: Status '{header['Status']}' not in allowed set")
+        findings.append(f"{name}: Status '{header['Status']}' not in allowed set")
     if header["Category"] not in ALLOWED_CATEGORY:
-        findings.append(f"{repo_path.name}: Category '{header['Category']}' not in allowed set")
+        findings.append(f"{name}: Category '{header['Category']}' not in allowed set")
     if header["Owner"] not in ALLOWED_OWNER:
-        findings.append(f"{repo_path.name}: Owner '{header['Owner']}' not in allowed set")
+        findings.append(f"{name}: Owner '{header['Owner']}' not in allowed set")
     if header["Visibility"] not in ALLOWED_VISIBILITY:
-        findings.append(f"{repo_path.name}: Visibility '{header['Visibility']}' not in allowed set")
+        findings.append(f"{name}: Visibility '{header['Visibility']}' not in allowed set")
     if header["Next action"] not in ALLOWED_NEXT_ACTION:
-        findings.append(f"{repo_path.name}: Next action '{header['Next action']}' not in allowed set")
+        findings.append(f"{name}: Next action '{header['Next action']}' not in allowed set")
     if bucket is not None and header["Category"] != bucket:
         findings.append(
-            f"{repo_path.name}: Category '{header['Category']}' does not match bucket '{bucket}'"
+            f"{name}: Category '{header['Category']}' does not match bucket '{bucket}'"
         )
     return findings
 
@@ -174,6 +182,40 @@ def load_registry(path: Path) -> dict[str, dict]:
                 )
             out[slug] = entry
     return out
+
+
+def validate_repo_single(
+    repo_path: Path, repo_slug: str, registry: dict[str, dict]
+) -> list[str]:
+    """Validate one repo's README header against the projects.json registry.
+
+    `repo_slug` is the GitHub 'owner/name' slug, matched against the
+    registry's 'repo' field. The expected Category comes from the matched
+    entry's 'bucket'.
+
+    Rules:
+      - slug absent from the registry: fail.
+      - matched entry has a 'bucket': full check; Category must equal it.
+      - matched entry has no 'bucket' and owner is alawein: fail.
+      - matched entry has no 'bucket' and owner is cross-org: validate
+        header shape only (skip the Category cross-check).
+    """
+    entry = registry.get(repo_slug)
+    if entry is None:
+        return [
+            f"{repo_slug}: not registered in projects.json "
+            f"(no entry with repo == '{repo_slug}')"
+        ]
+    bucket = entry.get("bucket")
+    owner = repo_slug.split("/", 1)[0]
+    if bucket is None:
+        if owner == ALAWEIN_OWNER:
+            return [
+                f"{repo_slug}: projects.json entry has no 'bucket' field; "
+                f"every alawein-org repo must declare a bucket"
+            ]
+        return validate_repo(repo_path, bucket=None, display_name=repo_slug)
+    return validate_repo(repo_path, bucket=bucket, display_name=repo_slug)
 
 
 _BUCKET_DIRS = (

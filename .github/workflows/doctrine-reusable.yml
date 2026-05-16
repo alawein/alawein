@@ -65,8 +65,10 @@ jobs:
         # Per-repo gate: validates THIS repo's README header against
         # projects.json, the bucket source of truth. A repo adopts this
         # gate only by pinning a workspace SHA that contains this step,
-        # and adoption is gated by a verification sweep (see the CI
-        # enforcement plan), so the step is hard from the start.
+        # so the gate is authoritative from the moment of adoption.
+        # This step is an unconditional hard gate: it does NOT honor the
+        # workflow's `strict` input. Because adoption requires an explicit
+        # SHA pin, the gate must be authoritative once adopted.
         run: |
           python org/scripts/doctrine/validate-repo-framework.py \
             --repo repo \

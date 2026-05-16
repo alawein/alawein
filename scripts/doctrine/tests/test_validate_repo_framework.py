@@ -416,3 +416,40 @@ def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
     assert "alawein/baz" in msg
     assert "products" in msg
     assert "research" in msg
+
+
+# Fix 9 — new tests.
+
+def test_main_repo_mode_nondir_path_returns_2(tmp_path, capsys):
+    """--repo pointing at a file (not a directory) must return exit code 2."""
+    not_a_dir = tmp_path / "some_file.txt"
+    not_a_dir.write_text("hello", encoding="utf-8")
+    rc = main([
+        "--repo", str(not_a_dir),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()
+
+
+def test_load_registry_raises_when_top_level_is_list(tmp_path):
+    """A projects.json whose top-level value is a list (not an object) must
+    raise RegistryError."""
+    reg_file = tmp_path / "list_top.json"
+    reg_file.write_text('[{"repo": "alawein/foo", "bucket": "products"}]', encoding="utf-8")
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    assert "not a json object" in str(excinfo.value).lower()
+
+
+def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
+    """An entry whose 'repo' field is a non-string (e.g. a number) must raise
+    RegistryError rather than crashing with a raw TypeError downstream."""
+    reg_file = tmp_path / "nonstring_repo.json"
+    reg_file.write_text(
+        '{"repos": [{"repo": 42, "bucket": "products"}]}', encoding="utf-8"
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    assert "non-string" in str(excinfo.value).lower()

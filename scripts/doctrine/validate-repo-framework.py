@@ -298,7 +298,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.registry is None or args.repo_slug is None:
             print("error: --repo requires --registry and --repo-slug", file=sys.stderr)
             return 2
-        if "/" not in args.repo_slug or args.repo_slug.startswith("/") or args.repo_slug.endswith("/"):
+        parts = args.repo_slug.split("/")
+        if len(parts) != 2 or not all(parts):
             print("error: --repo-slug must be in 'owner/name' format", file=sys.stderr)
             return 2
         if not args.repo.is_dir():

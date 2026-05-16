@@ -335,6 +335,16 @@ def test_main_repo_mode_rejects_malformed_slug(capsys):
     assert "owner/name" in capsys.readouterr().err
 
 
+def test_main_repo_mode_rejects_multi_slash_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo/extra",
+    ])
+    assert rc == 2
+    assert "owner/name" in capsys.readouterr().err
+
+
 # Fix 3: --registry with workspace walk mode returns exit code 2.
 def test_main_root_mode_rejects_registry_flag(tmp_path, capsys):
     rc = main(["--root", str(tmp_path), "--registry", str(FIX / "registry_sample.json")])

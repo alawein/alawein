@@ -192,6 +192,12 @@ def is_exempt_markdown(path: Path, root: Path, content: str) -> bool:
         return True
     if rel in EXEMPT_TEMPLATE_MARKDOWN_PATHS:
         return True
+    # Repo-framework validator test fixtures: deliberately minimal repo
+    # READMEs used as inputs to that validator's test suite. They carry the
+    # Repo Framework metadata header by design, not doctrine frontmatter, so
+    # they are outside the doctrine contract.
+    if rel.startswith("scripts/doctrine/tests/fixtures/"):
+        return True
     if rel == "README.md" and content.startswith(PROFILE_README_MARKER):
         return True
     return False

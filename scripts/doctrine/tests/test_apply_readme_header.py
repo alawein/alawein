@@ -240,6 +240,7 @@ def test_apply_to_repo_error_when_no_readme(tmp_path):
     ("prototype", "experimental"),
     ("deprecated", "deprecated"),
     ("archived", "archived"),
+    ("frozen", "frozen"),
 ])
 def test_derive_status_mappings(raw, expected):
     fields = derive_header_fields("alawein/bolts", dict(SAMPLE, status=raw))

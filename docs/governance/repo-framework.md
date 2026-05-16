@@ -8,7 +8,7 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-05-15
+last_updated: 2026-05-16
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
@@ -49,7 +49,7 @@ Ownership determines the home org. Inside an org, content category determines th
 
 Every repo across all active orgs places a plain-markdown metadata block at the top of `README.md`, immediately after the `# <repo-name>` title. This metadata block is plain markdown, not YAML frontmatter; workspace policy forbids YAML frontmatter on public READMEs.
 
-    Status:      active | paused | experimental | deprecated | archived
+    Status:      active | paused | experimental | deprecated | archived | frozen
     Category:    products | personal | family | research | tools | ventures | jobs-projects | archive
     Owner:       alawein | menax-inc | blackmalejournal | kohyr
     Visibility:  public | private

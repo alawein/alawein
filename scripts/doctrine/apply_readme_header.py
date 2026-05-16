@@ -31,6 +31,7 @@ STATUS_MAP = {
     "prototype": "experimental",
     "deprecated": "deprecated",
     "archived": "archived",
+    "frozen": "frozen",
 }
 
 DEFAULT_NEXT_ACTION = "continue"

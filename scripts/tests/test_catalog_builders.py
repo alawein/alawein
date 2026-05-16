@@ -11,6 +11,7 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from typing import Any
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1]
 CATALOG_DIR = SCRIPTS_DIR / "catalog"
@@ -28,7 +29,7 @@ from catalog_lib import (  # noqa: E402
 # Shared sample repo dict used by all builder tests.
 # ---------------------------------------------------------------------------
 
-SAMPLE_REPO: dict = {
+SAMPLE_REPO: dict[str, Any] = {
     "name": "Example Repo",
     "slug": "example",
     "repo": "alawein/example",
@@ -149,6 +150,11 @@ class InfrastructureEntryStatusVisibilityDescriptionTests(unittest.TestCase):
 
     def test_visibility_is_carried(self) -> None:
         self.assertEqual(self.entry["visibility"], "private")
+
+    def test_status_absent_when_not_set(self) -> None:
+        repo = {k: v for k, v in SAMPLE_REPO.items() if k != "status"}
+        entry = infrastructure_entry_from_repo(repo)
+        self.assertNotIn("status", entry)
 
     def test_visibility_absent_when_not_set(self) -> None:
         repo = {k: v for k, v in SAMPLE_REPO.items() if k != "visibility"}

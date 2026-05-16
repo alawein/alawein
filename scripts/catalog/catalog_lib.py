@@ -302,7 +302,7 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "slug": repo["slug"],
         "repo": repo["repo"],
         "purpose": repo["canonical_description"],
-        "description": repo["canonical_description"],
+        "description": repo["canonical_description"],  # cross-type alias; purpose is the schema-required key
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]

@@ -5,12 +5,12 @@ sync: none
 sla: none
 title: Workspace Resource Map
 description: Canonical ownership map for governance docs, repo metadata, shared packages, design tokens, and batch/runtime surfaces.
-last_updated: 2026-05-03
+last_updated: 2026-05-11
 category: governance
 audience: contributors
 status: active
 author: alawein maintainers
-version: 1.2.0
+version: 1.2.1
 tags: [workspace, resources, governance, design-system, docs, mapping]
 ---
 
@@ -24,6 +24,7 @@ workspace.
 | Workspace operating contract | `alawein` | `docs/governance/workspace-master-prompt.md` | `alawein` maintainers | all repos | Active |
 | Documentation contract | `alawein` | `docs/governance/documentation-contract.md` | `alawein` maintainers | all repos | Active |
 | Canonical repo metadata | `alawein` | `catalog/repos.json` | `alawein` maintainers | generators, validators, README sync | Canonical |
+| Local git checkout inventory scan | `alawein` | `scripts/workspace_git_inventory.py` | `alawein` maintainers | deterministic remotes/commits vs catalog `local_path` | Active |
 | Derived project registry | `alawein` | `projects.json` | `alawein` maintainers | README, feeds, downstream sync | Derived |
 | Workspace rename inventory | `alawein` | `docs/governance/workspace-rename-matrix.md` | `alawein` maintainers | all repos | Active |
 | Workspace layout audit | `alawein` | `docs/governance/workspace-layout-audit.md` | `alawein` maintainers | all repos | Active |

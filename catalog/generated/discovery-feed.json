@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-05-01",
+  "generatedAt": "2026-05-11",
   "summary": {
-    "repoCount": 33,
+    "repoCount": 38,
     "typeCounts": {
-      "product": 10,
-      "research": 15,
+      "product": 11,
+      "research": 16,
       "archive": 2,
       "infra": 3,
       "governance": 1,
-      "tooling": 2
+      "tooling": 5
     },
     "lifecycleCounts": {
       "maintained": 2,
-      "active": 21,
+      "active": 26,
       "frozen": 8,
       "archived": 2
     }
@@ -97,9 +97,12 @@
       "markdown",
       "mcp",
       "nextjs",
+      "node",
+      "numpy",
       "ocr",
       "opencv",
       "optimization",
+      "pennylane",
       "physics",
       "plotly",
       "python",
@@ -111,6 +114,7 @@
       "scientific-computing",
       "spark",
       "spintronics",
+      "sqlite",
       "storybook",
       "supabase",
       "tailwind",
@@ -1226,7 +1230,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/handshake-hai",
+        "local_path": "jobs-projects/handshake",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1245,36 +1249,81 @@
         "release_automation": {}
       },
       {
-        "name": "Fallax",
-        "slug": "fallax",
-        "repo": "alawein/fallax",
+        "name": "Turing engagements",
+        "slug": "turing",
+        "repo": "alawein/turing",
         "type": "tooling",
-        "surface": "service",
-        "domain": "ai-governance",
+        "surface": "docs-hub",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "legacy",
+        "brand_family": "legacy",
+        "stack": [
+          "yaml",
+          "markdown",
+          "python"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/turing",
+        "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+        "topics": [
+          "benchmark",
+          "evaluation",
+          "documentation",
+          "private-workspace"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "jobs-projects/turing",
+        "catalog_groups": [
+          "infrastructure"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "turing-engagement-catalog"
+        ],
+        "version_source": "none",
+        "repo_archetype": "docs-hub",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "incore",
+        "slug": "incore",
+        "repo": "alawein/incore",
+        "type": "tooling",
+        "surface": "cli",
+        "domain": "governance",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "midnight",
         "brand_family": "midnight",
         "stack": [
           "python",
-          "llm",
-          "evaluation"
+          "sqlite",
+          "mcp"
         ],
         "audience": [
-          "internal",
-          "research"
+          "internal"
         ],
-        "homepage": "https://fallax.online",
-        "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+        "homepage": "https://github.com/alawein/incore",
+        "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
         "topics": [
-          "llm",
-          "evaluation",
-          "reasoning",
+          "automation",
+          "cli",
+          "inventory",
+          "mcp",
           "python"
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/fallax",
+        "local_path": "tools/incore",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1283,11 +1332,58 @@
           "alawein"
         ],
         "provides": [
-          "reasoning-benchmarks",
-          "adversarial-evals"
+          "inventory-core",
+          "asset-ingest-query"
         ],
         "version_source": "pyproject.toml",
-        "repo_archetype": "python-service",
+        "repo_archetype": "python-library",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "prompty",
+        "slug": "prompty",
+        "repo": "alawein/prompty",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "typescript",
+          "turborepo",
+          "node"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/prompty",
+        "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+        "topics": [
+          "llm",
+          "monorepo",
+          "prompt-engineering",
+          "turborepo",
+          "typescript"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "tools/prompty",
+        "catalog_groups": [
+          "infrastructure"
+        ],
+        "depends_on": [
+          "workspace-tools",
+          "alawein"
+        ],
+        "provides": [
+          "prompt-tooling-monorepo"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "node-monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -2569,7 +2665,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/mercor-ai-ml-experts",
+      "local_path": "jobs-projects/mercor",
       "catalog_groups": [
         "research"
       ],
@@ -2837,7 +2933,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/handshake-hai",
+      "local_path": "jobs-projects/handshake",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2848,6 +2944,242 @@
       "provides": [
         "project-validators",
         "eval-runtime"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "node-monorepo",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Turing engagements",
+      "slug": "turing",
+      "repo": "alawein/turing",
+      "type": "tooling",
+      "surface": "docs-hub",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "legacy",
+      "brand_family": "legacy",
+      "stack": [
+        "yaml",
+        "markdown",
+        "python"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/turing",
+      "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "topics": [
+        "benchmark",
+        "evaluation",
+        "documentation",
+        "private-workspace"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "jobs-projects/turing",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "turing-engagement-catalog"
+      ],
+      "version_source": "none",
+      "repo_archetype": "docs-hub",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "quantumalgo",
+      "slug": "quantumalgo",
+      "repo": "alawein/quantumalgo",
+      "type": "research",
+      "surface": "library",
+      "domain": "quantum",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "python",
+        "pennylane",
+        "numpy"
+      ],
+      "audience": [
+        "research",
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/quantumalgo",
+      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "topics": [
+        "pennylane",
+        "python",
+        "quantum-computing",
+        "optimization",
+        "research"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "research/quantumalgo",
+      "catalog_groups": [
+        "research"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "quantum-algorithm-prototypes"
+      ],
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-library",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "incore",
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "sqlite",
+        "mcp"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "tools/incore",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "inventory-core",
+        "asset-ingest-query"
+      ],
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-library",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "prompty",
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "ai-governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/prompty",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "tools/prompty",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "prompt-tooling-monorepo"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "node-monorepo",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Veyra",
+      "slug": "veyra",
+      "repo": "alawein/veyra",
+      "type": "product",
+      "surface": "monorepo",
+      "domain": "ai-governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "audience": [
+        "internal",
+        "client"
+      ],
+      "homepage": "https://github.com/alawein/veyra",
+      "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "topics": [
+        "agents",
+        "governance",
+        "monorepo",
+        "turborepo",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "ventures/veyra",
+      "catalog_groups": [],
+      "depends_on": [
+        "workspace-tools",
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "voice-governance-monorepo",
+        "llm-content-detection",
+        "voice-consistency-enforcement"
       ],
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
@@ -3711,7 +4043,7 @@
     "mercor-llm-failsafe": {
       "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
-      "screenshot_folder": "jobs-projects/mercor-ai-ml-experts/docs/screenshots",
+      "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
       "favicon_status": "generated"
@@ -3730,6 +4062,14 @@
       "screenshot_folder": "tools/knowledge-base/docs/screenshots",
       "theme_family": "dawn",
       "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
+      "favicon_status": "generated"
+    },
+    "turing": {
+      "logo_source": "design-system/packages/icons/dist/brand/turing/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/turing/repo-banner.svg",
+      "screenshot_folder": "jobs-projects/turing/docs/screenshots",
+      "theme_family": "legacy",
+      "social_preview_image": "design-system/packages/icons/dist/brand/turing/social-card.svg",
       "favicon_status": "generated"
     },
     "fallax": {
@@ -4276,7 +4616,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "planned",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -4461,6 +4801,115 @@
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "turing",
+      "repo": "alawein/turing",
+      "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "homepage": "https://github.com/alawein/turing",
+      "topics": [
+        "benchmark",
+        "evaluation",
+        "documentation",
+        "private-workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "minimal",
+        "brand_family": "legacy"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "quantumalgo",
+      "repo": "alawein/quantumalgo",
+      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "homepage": "https://github.com/alawein/quantumalgo",
+      "topics": [
+        "pennylane",
+        "python",
+        "quantum-computing",
+        "optimization",
+        "research"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "homepage": "https://github.com/alawein/incore",
+      "topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "homepage": "https://github.com/alawein/prompty",
+      "topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "veyra",
+      "repo": "alawein/veyra",
+      "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "homepage": "https://github.com/alawein/veyra",
+      "topics": [
+        "agents",
+        "governance",
+        "monorepo",
+        "turborepo",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}

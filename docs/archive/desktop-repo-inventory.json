@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated": "2026-05-01",
+  "generated": "2026-05-11",
   "workspace_roots": [
     ".",
     "../morphism-systems",
@@ -239,7 +239,7 @@
       "stack": "typescript, mcp, agents"
     },
     {
-      "folder": "jobs-projects/mercor-ai-ml-experts",
+      "folder": "jobs-projects/mercor",
       "remote_slug": "alawein/mercor-llm-failsafe",
       "archetype": "python-library",
       "tier": "archive",
@@ -274,11 +274,46 @@
       "stack": "nextjs, typescript, python"
     },
     {
-      "folder": "jobs-projects/handshake-hai",
+      "folder": "jobs-projects/handshake",
       "remote_slug": "alawein/handshake-hai",
       "archetype": "node-monorepo",
       "tier": "tooling",
       "stack": "typescript, evaluations"
+    },
+    {
+      "folder": "jobs-projects/turing",
+      "remote_slug": "alawein/turing",
+      "archetype": "docs-hub",
+      "tier": "tooling",
+      "stack": "yaml, markdown, python"
+    },
+    {
+      "folder": "research/quantumalgo",
+      "remote_slug": "alawein/quantumalgo",
+      "archetype": "python-library",
+      "tier": "research",
+      "stack": "python, pennylane, numpy"
+    },
+    {
+      "folder": "tools/incore",
+      "remote_slug": "alawein/incore",
+      "archetype": "python-library",
+      "tier": "tooling",
+      "stack": "python, sqlite, mcp"
+    },
+    {
+      "folder": "tools/prompty",
+      "remote_slug": "alawein/prompty",
+      "archetype": "node-monorepo",
+      "tier": "tooling",
+      "stack": "typescript, turborepo, node"
+    },
+    {
+      "folder": "ventures/veyra",
+      "remote_slug": "alawein/veyra",
+      "archetype": "node-monorepo",
+      "tier": "product",
+      "stack": "typescript, turborepo, node"
     },
     {
       "folder": "research/fallax",

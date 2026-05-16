@@ -1,7 +1,7 @@
 """Assemble alawein/docs/style/voice-unified.md from block source files.
 
-Reads four block source files (VOICE.md, voice-software-register.md,
-voice-surfaces.md, voice-workflow.md), strips frontmatter, drops the leading
+Reads five block source files (VOICE.md, voice-software-register.md,
+voice-surfaces.md, voice-business.md, voice-workflow.md), strips frontmatter, drops the leading
 block-naming H1, demotes remaining headers one level, synthesizes block headers
 from the BLOCKS config, and writes voice-unified.md with frontmatter whose
 last_updated reflects the maximum last_updated across the source block files.
@@ -51,6 +51,11 @@ BLOCKS: tuple[BlockSpec, ...] = (
     {
         "file": STYLE_DIR / "voice-surfaces.md",
         "title": "Block 3 · Surface Adjustments",
+        "subtitle": None,
+    },
+    {
+        "file": STYLE_DIR / "voice-business.md",
+        "title": "Block 3b · Business Surfaces",
         "subtitle": None,
     },
     {
@@ -212,7 +217,8 @@ def assemble(blocks: tuple[BlockSpec, ...] | list[BlockSpec], today: str, last_u
         "_Works as an AI system prompt and as a personal review checklist._\n\n",
         "## How to use\n\n",
         "**As an AI system prompt:** paste this guide in full, then tag the target surface: "
-        "`[software-doc]`, `[notebook]`, `[readme]`, `[physics-paper]`, `[claude-md]`, or `[prompt-kit]`. "
+        "`[software-doc]`, `[notebook]`, `[readme]`, `[physics-paper]`, `[claude-md]`, `[prompt-kit]`, "
+        "`[business-web]`, or `[business-outreach]`. "
         "Apply Block 1 universally. Apply Block 2 to `[software-doc]` and `[notebook]` surfaces. "
         "For `[physics-paper]`, apply only §10 and §11 from Block 2; all other Block 2 sections are inactive. "
         "Apply the matching § from Block 3 for surface-specific adjustments. "

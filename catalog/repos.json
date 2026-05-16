@@ -1,6 +1,12 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-05-01",
+  "lastVerified": "2026-05-11",
+  "git_inventory_suppress_uncatalogued": [
+    "tools/inventory/UsersmeshaDesktopincore"
+  ],
+  "git_inventory_treat_paths_as_catalogued": [
+    "_archive/meshal-web-legacy"
+  ],
   "repos": [
     {
       "name": "meshal.ai",
@@ -1033,13 +1039,13 @@
         "evidence-packets"
       ],
       "version_source": "pyproject.toml",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-05-11",
       "catalog_groups": [
         "notion_sync",
         "research"
       ],
       "portfolio_domain": "Personal",
-      "research_domain": "Arabic-dialect NLP research"
+      "research_domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow)."
     },
     {
       "name": "Roka: Oakland Hustle",
@@ -1553,7 +1559,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "planned",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -1567,7 +1573,7 @@
         "claim-stress-testing"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-05-11",
       "catalog_groups": [
         "research"
       ],
@@ -1643,7 +1649,7 @@
       "slug": "mercor-llm-failsafe",
       "legacy_slugs": [],
       "repo": "alawein/mercor-llm-failsafe",
-      "local_path": "jobs-projects/mercor-ai-ml-experts",
+      "local_path": "jobs-projects/mercor",
       "bucket": "jobs-projects",
       "type": "archive",
       "surface": "service",
@@ -1689,7 +1695,7 @@
         "failsafe-archive"
       ],
       "version_source": "pyproject.toml",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-05-11",
       "catalog_groups": [
         "research"
       ]
@@ -1990,7 +1996,7 @@
         "eval"
       ],
       "repo": "alawein/handshake-hai",
-      "local_path": "jobs-projects/handshake-hai",
+      "local_path": "jobs-projects/handshake",
       "bucket": "jobs-projects",
       "type": "tooling",
       "surface": "monorepo",
@@ -2040,10 +2046,316 @@
         "eval-runtime"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
       ]
+    },
+    {
+      "name": "Turing engagements",
+      "slug": "turing",
+      "legacy_slugs": [],
+      "repo": "alawein/turing",
+      "local_path": "jobs-projects/turing",
+      "bucket": "jobs-projects",
+      "type": "tooling",
+      "surface": "docs-hub",
+      "stack": [
+        "yaml",
+        "markdown",
+        "python"
+      ],
+      "domain": "governance",
+      "audience": [
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "legacy",
+      "brand_family": "legacy",
+      "status": "active",
+      "homepage": "https://github.com/alawein/turing",
+      "canonical_description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "tags": [
+        "Interview",
+        "Benchmarks",
+        "Catalog"
+      ],
+      "github_topics": [
+        "benchmark",
+        "evaluation",
+        "documentation",
+        "private-workspace"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "minimal",
+        "brand_family": "legacy"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "turing-engagement-catalog"
+      ],
+      "version_source": "none",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "infrastructure"
+      ]
+    },
+    {
+      "name": "quantumalgo",
+      "slug": "quantumalgo",
+      "legacy_slugs": [],
+      "repo": "alawein/quantumalgo",
+      "local_path": "research/quantumalgo",
+      "bucket": "research",
+      "type": "research",
+      "surface": "library",
+      "stack": [
+        "python",
+        "pennylane",
+        "numpy"
+      ],
+      "domain": "quantum",
+      "audience": [
+        "research",
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "status": "active",
+      "homepage": "https://github.com/alawein/quantumalgo",
+      "canonical_description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "tags": [
+        "Python",
+        "PennyLane",
+        "Optimization",
+        "Quantum"
+      ],
+      "github_topics": [
+        "pennylane",
+        "python",
+        "quantum-computing",
+        "optimization",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "quantum-algorithm-prototypes"
+      ],
+      "version_source": "pyproject.toml",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Quantum algorithms; combinatorial optimization"
+    },
+    {
+      "name": "incore",
+      "slug": "incore",
+      "legacy_slugs": [],
+      "repo": "alawein/incore",
+      "local_path": "tools/incore",
+      "bucket": "tools",
+      "type": "tooling",
+      "surface": "cli",
+      "stack": [
+        "python",
+        "sqlite",
+        "mcp"
+      ],
+      "domain": "governance",
+      "audience": [
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "status": "active",
+      "homepage": "https://github.com/alawein/incore",
+      "canonical_description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "tags": [
+        "Python",
+        "CLI",
+        "Inventory",
+        "MCP"
+      ],
+      "github_topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "inventory-core",
+        "asset-ingest-query"
+      ],
+      "version_source": "pyproject.toml",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "infrastructure"
+      ]
+    },
+    {
+      "name": "prompty",
+      "slug": "prompty",
+      "legacy_slugs": [],
+      "repo": "alawein/prompty",
+      "local_path": "tools/prompty",
+      "bucket": "tools",
+      "type": "tooling",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "domain": "ai-governance",
+      "audience": [
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "status": "active",
+      "homepage": "https://github.com/alawein/prompty",
+      "canonical_description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "tags": [
+        "TypeScript",
+        "Turbo",
+        "LLM",
+        "Prompts"
+      ],
+      "github_topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "prompt-tooling-monorepo"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "infrastructure"
+      ]
+    },
+    {
+      "name": "Veyra",
+      "slug": "veyra",
+      "legacy_slugs": [],
+      "repo": "alawein/veyra",
+      "local_path": "ventures/veyra",
+      "bucket": "ventures",
+      "type": "product",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "domain": "ai-governance",
+      "audience": [
+        "internal",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "status": "active",
+      "homepage": "https://github.com/alawein/veyra",
+      "canonical_description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "tags": [
+        "TypeScript",
+        "Turbo",
+        "Governance",
+        "Agents"
+      ],
+      "github_topics": [
+        "agents",
+        "governance",
+        "monorepo",
+        "turborepo",
+        "typescript"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "voice-governance-monorepo",
+        "llm-content-detection",
+        "voice-consistency-enforcement"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-05-11",
+      "catalog_groups": []
     },
     {
       "name": "Fallax",

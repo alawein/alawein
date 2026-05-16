@@ -25,16 +25,16 @@ Business web copy stakes a market position. Replace technical contribution staki
 
 market condition  →  position  →  specific evidence  →  bounded commitment
 
-*Market condition:* one factual sentence stating what is broken or absent. Not a
+_Market condition:_ one factual sentence stating what is broken or absent. Not a
 TAM. Not a trend. A condition: "Agents open PRs faster than humans can review them."
 
-*Position:* a direct claim about what Kohyr does. Not a mission statement.
+_Position:_ a direct claim about what Kohyr does. Not a mission statement.
 "Kohyr scores every AI-authored PR with a KCI and signs the verdict."
 
-*Specific evidence:* named, concrete, with units where they exist: "KCI ∈ [0, 100],"
+_Specific evidence:_ named, concrete, with units where they exist: "KCI ∈ [0, 100],"
 "evidence.json," "sha256-signed."
 
-*Bounded commitment:* what the product delivers. Not "we aim to" or "we strive for."
+_Bounded commitment:_ what the product delivers. Not "we aim to" or "we strive for."
 "Five minutes to governed."
 
 ### Reference implementation
@@ -85,19 +85,19 @@ Applies when surface tag is `[business-outreach]`.
 
 Four structural moves, each 2–3 sentences maximum:
 
-1. *The condition.* One sentence. What is broken for this specific recipient right now.
+1. _The condition._ One sentence. What is broken for this specific recipient right now.
    Named, concrete: "Your team ships 40+ AI-authored PRs per week" — not "AI is
    transforming software development."
 
-2. *The position.* What Kohyr does about it. One sentence. No credentials, no company
+2. _The position._ What Kohyr does about it. One sentence. No credentials, no company
    history. "Kohyr scores every commit with a KCI and signs the result — deterministically,
    without an LLM in the gate."
 
-3. *The specific evidence.* One or two concrete artifacts the recipient can verify:
+3. _The specific evidence._ One or two concrete artifacts the recipient can verify:
    "The CLI installs in 30 seconds. `kohyr doctor` runs on any git repo without
    configuration."
 
-4. *The ask.* Direct and bounded. "I'd like 20 minutes to show you the live output on
+4. _The ask._ Direct and bounded. "I'd like 20 minutes to show you the live output on
    one of your repos." Not "I would love to connect and explore synergies."
 
 ### Opener discipline

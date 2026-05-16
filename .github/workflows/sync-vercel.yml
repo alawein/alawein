@@ -1,0 +1,50 @@
+name: sync-vercel
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: python -m pip install --user 'jsonschema>=4.18'
+
+      - name: Validate schema before sync
+        run: python scripts/catalog/validate-projects-json.py
+
+      - name: Run sync-vercel.py
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: python scripts/vercel/sync-vercel.py
+
+      - name: Open PR if drift
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'chore(governance): sync vercel state'
+          title: 'chore(governance): sync vercel state ${{ github.run_id }}'
+          body: |
+            Automated drift sync from `scripts/vercel/sync-vercel.py`.
+
+            The sync rewrites `vercel:` blocks in `catalog/repos.json` and
+            regenerates `projects.json` and the `catalog/generated/*` feeds.
+
+            Review the diff before merging:
+            - Confirm new `state`/`production_url`/`custom_domain` values are accurate.
+            - If any entry is `state: "missing"`, the declared `project_slug` no longer exists in Vercel.
+            - Stderr orphan warnings (if any) appear in this job's logs.
+          branch: chore/vercel-sync-${{ github.run_id }}
+          base: main
+          delete-branch: true

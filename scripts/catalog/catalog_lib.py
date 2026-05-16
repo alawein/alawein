@@ -262,6 +262,8 @@ def project_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["portfolio_domain"] = repo["portfolio_domain"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("vercel"):
+        entry["vercel"] = repo["vercel"]
     return entry
 
 
@@ -280,6 +282,8 @@ def research_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["category"] = "archived"
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("vercel"):
+        entry["vercel"] = repo["vercel"]
     return entry
 
 
@@ -298,6 +302,8 @@ def infrastructure_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         entry["status"] = repo["status"]
     if repo.get("bucket"):
         entry["bucket"] = repo["bucket"]
+    if repo.get("vercel"):
+        entry["vercel"] = repo["vercel"]
     return entry
 
 

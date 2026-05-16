@@ -30,7 +30,25 @@
           "type": "string",
           "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
           "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
-        }
+        },
+        "vercel": { "$ref": "#/$defs/vercelBlock" }
+      }
+    },
+    "vercelBlock": {
+      "type": "object",
+      "description": "Vercel deployment state. Sourced in catalog/repos.json; team_slug and project_slug are declarative, the remaining four fields are rewritten by scripts/vercel/sync-vercel.py.",
+      "required": ["team_slug", "project_slug", "production_url", "custom_domain", "state", "last_synced_at"],
+      "additionalProperties": false,
+      "properties": {
+        "team_slug": { "type": "string", "minLength": 1 },
+        "project_slug": { "type": "string", "minLength": 1 },
+        "production_url": { "type": ["string", "null"] },
+        "custom_domain": { "type": ["string", "null"] },
+        "state": {
+          "type": "string",
+          "enum": ["production", "preview-only", "stale", "missing"]
+        },
+        "last_synced_at": { "type": "string" }
       }
     }
   },
@@ -61,7 +79,8 @@
             "type": "string",
             "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
             "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
-          }
+          },
+          "vercel": { "$ref": "#/$defs/vercelBlock" }
         }
       }
     },
@@ -96,7 +115,8 @@
             "type": "string",
             "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
             "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
-          }
+          },
+          "vercel": { "$ref": "#/$defs/vercelBlock" }
         }
       }
     }

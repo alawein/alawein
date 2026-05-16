@@ -310,3 +310,52 @@ def test_main_root_mode_still_reaches_walk(tmp_path, capsys):
     rc = main(["--root", str(tmp_path)])
     assert rc == 2
     assert "no repos found" in capsys.readouterr().err
+
+
+# Fix 1: empty 'repo' field raises RegistryError.
+def test_load_registry_raises_on_empty_repo_field(tmp_path):
+    registry_file = tmp_path / "bad_empty_repo.json"
+    registry_file.write_text(
+        '{"repos": [{"name": "oops", "repo": ""}]}', encoding="utf-8"
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(registry_file)
+    assert "empty" in str(excinfo.value).lower()
+    assert "'repo'" in str(excinfo.value)
+
+
+# Fix 2: --repo-slug without a '/' returns exit code 2.
+def test_main_repo_mode_rejects_malformed_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "noslash",
+    ])
+    assert rc == 2
+    assert "owner/name" in capsys.readouterr().err
+
+
+# Fix 3: --registry with workspace walk mode returns exit code 2.
+def test_main_root_mode_rejects_registry_flag(tmp_path, capsys):
+    rc = main(["--root", str(tmp_path), "--registry", str(FIX / "registry_sample.json")])
+    assert rc == 2
+    assert "--registry" in capsys.readouterr().err
+
+
+# Fix 4: partial --repo combos (one of the two required flags missing) return 2.
+def test_main_repo_mode_missing_only_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()
+
+
+def test_main_repo_mode_missing_only_registry(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()

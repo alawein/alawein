@@ -42,7 +42,7 @@ ALLOWED_OWNER = {
 }
 ALLOWED_VISIBILITY = {"public", "private"}
 ALLOWED_NEXT_ACTION = {"continue", "refactor", "merge", "archive", "delete"}
-ALAWEIN_OWNER = "alawein"
+ALAWEIN_OWNER = "alawein"  # Must match the corresponding entry in ALLOWED_OWNER
 
 _FIELD_RE = re.compile(
     r"^(Status|Category|Owner|Visibility|Purpose|Next action)\s*:\s*(.+?)\s*$",
@@ -176,8 +176,12 @@ def load_registry(path: Path) -> dict[str, dict]:
             if not isinstance(entry, dict):
                 continue
             slug = entry.get("repo")
-            if not slug:
+            if slug is None:
                 continue
+            if not slug:
+                raise RegistryError(
+                    f"registry {path} has an entry with an empty 'repo' field: {entry!r}"
+                )
             if slug in out:
                 raise RegistryError(
                     f"registry {path} has duplicate repo slug '{slug}'"
@@ -278,6 +282,9 @@ def main(argv: list[str] | None = None) -> int:
         if args.registry is None or args.repo_slug is None:
             print("error: --repo requires --registry and --repo-slug", file=sys.stderr)
             return 2
+        if "/" not in args.repo_slug or args.repo_slug.startswith("/") or args.repo_slug.endswith("/"):
+            print("error: --repo-slug must be in 'owner/name' format", file=sys.stderr)
+            return 2
         if not args.repo.is_dir():
             print(f"error: --repo not a directory: {args.repo}", file=sys.stderr)
             return 2
@@ -296,6 +303,9 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     # Workspace-walk mode (default).
+    if args.registry is not None or args.repo_slug is not None:
+        print("error: --registry and --repo-slug are only valid with --repo", file=sys.stderr)
+        return 2
     root = args.root if args.root is not None else Path.cwd()
     if not root.is_dir():
         print(f"error: root not a directory: {root}", file=sys.stderr)

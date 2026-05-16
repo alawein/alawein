@@ -36,13 +36,20 @@ def derive_header_fields(slug: str, entry: dict) -> dict[str, str]:
     if not bucket:
         raise DeriveError(f"{slug}: registry entry has no 'bucket'")
 
-    raw_status = str(entry.get("status") or "active").lower()
+    raw_status = entry.get("status")
+    if not raw_status:
+        raise DeriveError(f"{slug}: registry entry has no 'status'")
+    raw_status = str(raw_status).lower()
     if raw_status not in STATUS_MAP:
         raise DeriveError(
             f"{slug}: unknown status '{raw_status}' (extend STATUS_MAP or fix catalog)"
         )
 
-    owner = entry.get("owner") or slug.split("/", 1)[0]
+    owner = entry.get("owner")
+    if not owner:
+        if "/" not in slug:
+            raise DeriveError(f"{slug}: cannot derive owner from slug without '/'")
+        owner = slug.split("/", 1)[0]
 
     visibility = str(entry.get("visibility") or "").lower()
     if visibility not in ("public", "private"):

@@ -68,3 +68,21 @@ def test_derive_missing_description_raises():
 def test_status_map_targets_are_valid_doctrine_enums():
     allowed = {"active", "paused", "experimental", "deprecated", "archived"}
     assert set(STATUS_MAP.values()) <= allowed
+
+
+def test_derive_missing_status_raises():
+    entry = {k: v for k, v in SAMPLE.items() if k != "status"}
+    with pytest.raises(DeriveError, match="status"):
+        derive_header_fields("alawein/bolts", entry)
+
+
+def test_derive_none_status_raises():
+    entry = dict(SAMPLE, status=None)
+    with pytest.raises(DeriveError, match="status"):
+        derive_header_fields("alawein/bolts", entry)
+
+
+def test_derive_owner_fallback_without_slash_raises():
+    entry = {k: v for k, v in SAMPLE.items() if k != "owner"}
+    with pytest.raises(DeriveError, match="owner"):
+        derive_header_fields("bolts", entry)

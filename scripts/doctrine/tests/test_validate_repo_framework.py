@@ -12,9 +12,13 @@ from validate_repo_framework import (
     ALLOWED_VISIBILITY,
     ALLOWED_NEXT_ACTION,
     ValidationError,
+    RegistryError,
     parse_header,
     validate_repo,
+    load_registry,
+    validate_repo_single,
     walk_alawein,
+    main,
 )
 
 FIX = Path(__file__).parent / "fixtures"
@@ -180,3 +184,272 @@ def test_parse_header_tolerates_blank_lines_inside_block():
     assert header["Owner"] == "alawein"
     assert header["Status"] == "active"
     assert header["Next action"] == "continue"
+
+
+def test_load_registry_indexes_repo_entries():
+    reg = load_registry(FIX / "registry_sample.json")
+    assert "alawein/repo-passing" in reg
+    assert reg["alawein/repo-passing"]["bucket"] == "products"
+    assert "menax-inc/cross-thing" in reg
+
+
+def test_load_registry_skips_entries_without_repo():
+    reg = load_registry(FIX / "registry_sample.json")
+    # The 'packages' list entry has no 'repo' key and must not be indexed.
+    assert "@alawein/tokens" not in reg
+    assert all("/" in slug for slug in reg)
+
+
+def test_load_registry_raises_on_malformed_json(tmp_path):
+    bad = tmp_path / "bad.json"
+    bad.write_text("{ not json", encoding="utf-8")
+    with pytest.raises(RegistryError):
+        load_registry(bad)
+
+
+def test_load_registry_raises_on_missing_file(tmp_path):
+    with pytest.raises(RegistryError):
+        load_registry(tmp_path / "does-not-exist.json")
+
+
+def test_validate_repo_single_passes_for_matching_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/repo-passing", reg
+    )
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_validate_repo_single_flags_category_bucket_mismatch():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_wrong_category", "alawein/repo-wrong", reg
+    )
+    assert len(findings) == 1
+    assert "category" in findings[0].lower()
+
+
+def test_validate_repo_single_fails_when_repo_not_registered():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/not-registered", reg
+    )
+    assert len(findings) == 1
+    assert "not registered" in findings[0].lower()
+
+
+def test_validate_repo_single_fails_for_alawein_entry_without_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_passing", "alawein/repo-nobucket", reg
+    )
+    assert len(findings) == 1
+    assert "bucket" in findings[0].lower()
+
+
+def test_validate_repo_single_shape_only_for_cross_org_without_bucket():
+    reg = load_registry(FIX / "registry_sample.json")
+    # Cross-org entry has no bucket; only header shape is checked, and
+    # repo_passing's header is well formed, so it passes.
+    findings = validate_repo_single(
+        FIX / "repo_passing", "menax-inc/cross-thing", reg
+    )
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_validate_repo_single_cross_org_still_catches_bad_enums():
+    reg = load_registry(FIX / "registry_sample.json")
+    # Shape-only mode must still reject invalid enum values.
+    findings = validate_repo_single(
+        FIX / "repo_bad_enums", "menax-inc/cross-thing", reg
+    )
+    assert findings, "expected enum findings even in shape-only mode"
+
+
+def test_validate_repo_uses_display_name_in_findings():
+    findings = validate_repo(
+        FIX / "repo_bad_enums", bucket=None, display_name="alawein/demo"
+    )
+    assert findings
+    assert all(f.startswith("alawein/demo:") for f in findings)
+
+
+def test_main_repo_mode_passes(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 0
+    assert "PASS" in capsys.readouterr().out
+
+
+def test_main_repo_mode_fails_on_mismatch(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_wrong_category"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-wrong",
+    ])
+    assert rc == 1
+    assert "FAIL" in capsys.readouterr().out
+
+
+def test_main_repo_mode_requires_registry_and_slug():
+    rc = main(["--repo", str(FIX / "repo_passing")])
+    assert rc == 2
+
+
+def test_main_rejects_root_and_repo_together():
+    with pytest.raises(SystemExit):
+        main(["--root", str(FIX), "--repo", str(FIX / "repo_passing")])
+
+
+def test_main_root_mode_still_reaches_walk(tmp_path, capsys):
+    # An empty dir has no bucket subdirs; walk mode must still run and
+    # report 'no repos found' with exit code 2.
+    rc = main(["--root", str(tmp_path)])
+    assert rc == 2
+    assert "no repos found" in capsys.readouterr().err
+
+
+# Fix 1: empty 'repo' field raises RegistryError.
+def test_load_registry_raises_on_empty_repo_field(tmp_path):
+    registry_file = tmp_path / "bad_empty_repo.json"
+    registry_file.write_text(
+        '{"repos": [{"name": "oops", "repo": ""}]}', encoding="utf-8"
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(registry_file)
+    assert "empty" in str(excinfo.value).lower()
+    assert "'repo'" in str(excinfo.value)
+
+
+# Fix 2: --repo-slug without a '/' returns exit code 2.
+def test_main_repo_mode_rejects_malformed_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "noslash",
+    ])
+    assert rc == 2
+    assert "owner/name" in capsys.readouterr().err
+
+
+def test_main_repo_mode_rejects_multi_slash_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo/extra",
+    ])
+    assert rc == 2
+    assert "owner/name" in capsys.readouterr().err
+
+
+# Fix 3: --registry with workspace walk mode returns exit code 2.
+def test_main_root_mode_rejects_registry_flag(tmp_path, capsys):
+    rc = main(["--root", str(tmp_path), "--registry", str(FIX / "registry_sample.json")])
+    assert rc == 2
+    assert "--registry" in capsys.readouterr().err
+
+
+# Fix 4: partial --repo combos (one of the two required flags missing) return 2.
+def test_main_repo_mode_missing_only_slug(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()
+
+
+def test_main_repo_mode_missing_only_registry(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()
+
+
+# Duplicate-slug tolerance tests (cross-list listings in projects.json).
+
+def test_load_registry_tolerates_duplicate_slug_same_bucket(tmp_path):
+    """A slug in two lists with identical bucket values must not raise; the
+    indexed entry must carry that bucket."""
+    reg_file = tmp_path / "dup_same_bucket.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/foo", "bucket": "products"}],'
+        ' "ventures": [{"repo": "alawein/foo", "bucket": "products"}]}',
+        encoding="utf-8",
+    )
+    reg = load_registry(reg_file)
+    assert "alawein/foo" in reg
+    assert reg["alawein/foo"]["bucket"] == "products"
+
+
+def test_load_registry_tolerates_duplicate_slug_one_has_bucket(tmp_path):
+    """A slug appearing once with a bucket and once without must not raise;
+    the indexed entry must carry the bucket (prefer bucket-bearing entry)."""
+    reg_file = tmp_path / "dup_one_bucket.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/bar"}],'
+        ' "products": [{"repo": "alawein/bar", "bucket": "products"}]}',
+        encoding="utf-8",
+    )
+    reg = load_registry(reg_file)
+    assert "alawein/bar" in reg
+    assert reg["alawein/bar"].get("bucket") == "products"
+
+
+def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
+    """A slug in two lists with different bucket values is a data error and
+    must raise RegistryError naming the slug and both bucket values."""
+    reg_file = tmp_path / "dup_conflict.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/baz", "bucket": "products"}],'
+        ' "research": [{"repo": "alawein/baz", "bucket": "research"}]}',
+        encoding="utf-8",
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    msg = str(excinfo.value)
+    assert "alawein/baz" in msg
+    assert "products" in msg
+    assert "research" in msg
+
+
+# Fix 9 — new tests.
+
+def test_main_repo_mode_nondir_path_returns_2(tmp_path, capsys):
+    """--repo pointing at a file (not a directory) must return exit code 2."""
+    not_a_dir = tmp_path / "some_file.txt"
+    not_a_dir.write_text("hello", encoding="utf-8")
+    rc = main([
+        "--repo", str(not_a_dir),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 2
+    assert "error" in capsys.readouterr().err.lower()
+
+
+def test_load_registry_raises_when_top_level_is_list(tmp_path):
+    """A projects.json whose top-level value is a list (not an object) must
+    raise RegistryError."""
+    reg_file = tmp_path / "list_top.json"
+    reg_file.write_text('[{"repo": "alawein/foo", "bucket": "products"}]', encoding="utf-8")
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    assert "not a json object" in str(excinfo.value).lower()
+
+
+def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
+    """An entry whose 'repo' field is a non-string (e.g. a number) must raise
+    RegistryError rather than crashing with a raw TypeError downstream."""
+    reg_file = tmp_path / "nonstring_repo.json"
+    reg_file.write_text(
+        '{"repos": [{"repo": 42, "bucket": "products"}]}', encoding="utf-8"
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    assert "non-string" in str(excinfo.value).lower()

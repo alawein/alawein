@@ -15,7 +15,8 @@
       ],
       "category": "maintained",
       "url": "https://www.meshal.ai",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "personal"
     },
     {
       "name": "Morphism",
@@ -43,7 +44,8 @@
       ],
       "category": "active",
       "url": "https://repzcoach.com",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "products"
     },
     {
       "name": "Gymboy",
@@ -60,7 +62,8 @@
         "gainboy"
       ],
       "url": "https://gymboy.coach",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "products"
     },
     {
       "name": "Scribd",
@@ -74,7 +77,8 @@
       ],
       "category": "active",
       "url": "https://scribd.fit",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "products"
     },
     {
       "name": "Bolts",
@@ -88,7 +92,8 @@
       ],
       "category": "active",
       "url": "https://bolts.fit",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "products"
     },
     {
       "name": "Atelier Rounaq",
@@ -105,7 +110,8 @@
         "rounaq-atelier"
       ],
       "url": "https://atelier-rounaq.com",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "family"
     },
     {
       "name": "Attributa",
@@ -119,7 +125,8 @@
       ],
       "category": "active",
       "url": "https://attributa.dev",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "tools"
     },
     {
       "name": "LLMWorks",
@@ -134,7 +141,8 @@
       ],
       "category": "active",
       "url": "https://llmworks.dev",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "tools"
     },
     {
       "name": "Event Discovery Framework",
@@ -151,7 +159,8 @@
         "event-discovery-framework"
       ],
       "url": "https://edfp.online",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "research"
     },
     {
       "name": "Alembiq",
@@ -168,7 +177,8 @@
         "neper"
       ],
       "url": "https://alembiq.online",
-      "portfolio_domain": "scientific-computing"
+      "portfolio_domain": "scientific-computing",
+      "bucket": "research"
     },
     {
       "name": "OptiQAP",
@@ -185,7 +195,8 @@
         "qaplibria"
       ],
       "url": "https://optiqap.online",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "research"
     }
   ],
   "notion_sync": [
@@ -202,7 +213,8 @@
       ],
       "category": "frozen",
       "url": "https://qmlab.online",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "research"
     },
     {
       "name": "simcore.dev",
@@ -215,7 +227,8 @@
       ],
       "category": "active",
       "url": "https://simcore.dev",
-      "portfolio_domain": "Work"
+      "portfolio_domain": "Work",
+      "bucket": "research"
     },
     {
       "name": "meatheadphysicist",
@@ -233,7 +246,8 @@
         "MeatheadPhysicist"
       ],
       "url": "https://mhphys.online",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "research"
     },
     {
       "name": "Adil",
@@ -247,7 +261,8 @@
         "OCR"
       ],
       "category": "active",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "ventures"
     },
     {
       "name": "Roka: Oakland Hustle",
@@ -261,7 +276,8 @@
         "Game"
       ],
       "category": "active",
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "bucket": "personal"
     }
   ],
   "research": [
@@ -273,7 +289,8 @@
       "legacy_slugs": [
         "event-discovery-framework"
       ],
-      "url": "https://edfp.online"
+      "url": "https://edfp.online",
+      "bucket": "research"
     },
     {
       "name": "Alembiq",
@@ -283,7 +300,8 @@
       "legacy_slugs": [
         "neper"
       ],
-      "url": "https://alembiq.online"
+      "url": "https://alembiq.online",
+      "bucket": "research"
     },
     {
       "name": "OptiQAP",
@@ -293,21 +311,24 @@
       "legacy_slugs": [
         "qaplibria"
       ],
-      "url": "https://optiqap.online"
+      "url": "https://optiqap.online",
+      "bucket": "research"
     },
     {
       "name": "qmlab.online",
       "slug": "qmlab",
       "repo": "alawein/qmlab",
       "domain": "Quantum ML web lab (React/TS/Vite)",
-      "url": "https://qmlab.online"
+      "url": "https://qmlab.online",
+      "bucket": "research"
     },
     {
       "name": "simcore.dev",
       "slug": "simcore",
       "repo": "alawein/simcore",
       "domain": "Scientific simulation core",
-      "url": "https://simcore.dev"
+      "url": "https://simcore.dev",
+      "bucket": "research"
     },
     {
       "name": "meatheadphysicist",
@@ -317,69 +338,79 @@
       "legacy_slugs": [
         "MeatheadPhysicist"
       ],
-      "url": "https://mhphys.online"
+      "url": "https://mhphys.online",
+      "bucket": "research"
     },
     {
       "name": "Adil",
       "slug": "adil",
       "repo": "alawein/adil",
-      "domain": "Arabic-dialect NLP research"
+      "domain": "Arabic-dialect NLP research",
+      "bucket": "ventures"
     },
     {
       "name": "qmatsim",
       "slug": "qmatsim",
       "repo": "alawein/qmatsim",
       "domain": "Quantum material simulation",
-      "url": "https://github.com/alawein/qmatsim"
+      "url": "https://github.com/alawein/qmatsim",
+      "bucket": "research"
     },
     {
       "name": "qubeml",
       "slug": "qubeml",
       "repo": "alawein/qubeml",
       "domain": "Quantum ML experiments",
-      "url": "https://github.com/alawein/qubeml"
+      "url": "https://github.com/alawein/qubeml",
+      "bucket": "research"
     },
     {
       "name": "scicomp",
       "slug": "scicomp",
       "repo": "alawein/scicomp",
       "domain": "Scientific computing utilities",
-      "url": "https://github.com/alawein/scicomp"
+      "url": "https://github.com/alawein/scicomp",
+      "bucket": "research"
     },
     {
       "name": "spincirc",
       "slug": "spincirc",
       "repo": "alawein/spincirc",
       "domain": "Spintronics circuit simulation",
-      "url": "https://github.com/alawein/spincirc"
+      "url": "https://github.com/alawein/spincirc",
+      "bucket": "research"
     },
     {
       "name": "MagLogic",
       "slug": "maglogic",
       "repo": "alawein/maglogic",
       "domain": "Magnetic logic gates",
-      "url": "https://github.com/alawein/maglogic"
+      "url": "https://github.com/alawein/maglogic",
+      "bucket": "research"
     },
     {
       "name": "CHSH Lab",
       "slug": "chshlab",
       "repo": "alawein/chshlab",
       "domain": "Quantum foundations \u2014 CHSH / Bell education site",
-      "url": "https://chshlab.online"
+      "url": "https://chshlab.online",
+      "bucket": "research"
     },
     {
       "name": "Helios",
       "slug": "helios",
       "repo": "alawein/helios",
       "domain": "Proprietary research archive \u2014 computational astrophysics",
-      "category": "archived"
+      "category": "archived",
+      "bucket": "research"
     },
     {
       "name": "Loophole Lab",
       "slug": "loopholelab",
       "repo": "alawein/loopholelab",
       "domain": "Research validation \u2014 adversarial claim stress-testing",
-      "url": "https://loopholelab.online"
+      "url": "https://loopholelab.online",
+      "bucket": "ventures"
     },
     {
       "name": "Provegate",
@@ -389,14 +420,16 @@
       "legacy_slugs": [
         "epistemic-stack"
       ],
-      "url": "https://provegate.online"
+      "url": "https://provegate.online",
+      "bucket": "ventures"
     },
     {
       "name": "Mercor LLM Failsafe",
       "slug": "mercor-llm-failsafe",
       "repo": "alawein/mercor-llm-failsafe",
       "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
-      "category": "archived"
+      "category": "archived",
+      "bucket": "jobs-projects"
     }
   ],
   "infrastructure": [
@@ -409,7 +442,8 @@
         "epistemic-stack"
       ],
       "url": "https://provegate.online",
-      "status": "active"
+      "status": "active",
+      "bucket": "ventures"
     },
     {
       "name": "design-system",
@@ -421,7 +455,8 @@
         "devkit"
       ],
       "url": "https://github.com/alawein/design-system",
-      "status": "active"
+      "status": "active",
+      "bucket": "tools"
     },
     {
       "name": "alawein",
@@ -429,7 +464,8 @@
       "repo": "alawein/alawein",
       "purpose": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
       "url": "https://github.com/alawein/alawein",
-      "status": "active"
+      "status": "active",
+      "bucket": "tools"
     },
     {
       "name": "workspace-tools",
@@ -437,7 +473,8 @@
       "repo": "alawein/workspace-tools",
       "purpose": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
       "url": "https://github.com/alawein/workspace-tools",
-      "status": "active"
+      "status": "active",
+      "bucket": "tools"
     },
     {
       "name": "knowledge-base",
@@ -448,7 +485,8 @@
         "pkos"
       ],
       "url": "https://knowledge-base-alawein.vercel.app",
-      "status": "active"
+      "status": "active",
+      "bucket": "tools"
     },
     {
       "name": "Handshake AI Eval",
@@ -459,7 +497,8 @@
         "eval"
       ],
       "url": "https://github.com/alawein/handshake-hai",
-      "status": "active"
+      "status": "active",
+      "bucket": "jobs-projects"
     },
     {
       "name": "Fallax",
@@ -470,7 +509,8 @@
         "reasonbench"
       ],
       "url": "https://fallax.online",
-      "status": "active"
+      "status": "active",
+      "bucket": "research"
     }
   ],
   "packages": [

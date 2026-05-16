@@ -1,0 +1,11 @@
+{
+  "featured": [
+    { "name": "Passing", "slug": "repo-passing", "repo": "alawein/repo-passing", "bucket": "products" },
+    { "name": "Wrong Category", "slug": "repo-wrong", "repo": "alawein/repo-wrong", "bucket": "products" },
+    { "name": "No Bucket", "slug": "repo-nobucket", "repo": "alawein/repo-nobucket" },
+    { "name": "Cross Org", "slug": "cross-thing", "repo": "menax-inc/cross-thing" }
+  ],
+  "packages": [
+    { "name": "@alawein/tokens", "registry": "npm" }
+  ]
+}

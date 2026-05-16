@@ -36,6 +36,7 @@ jobs:
             scripts/doctrine/validate.py
             scripts/doctrine/validate-doctrine.py
             scripts/doctrine/validate-repo-framework.py
+            projects.json
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
@@ -60,15 +61,19 @@ jobs:
             python org/scripts/doctrine/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
           fi
 
-      - name: Validate Repo Framework headers
-        # Non-blocking until every governed repo carries the metadata header
-        # from docs/governance/repo-framework.md. Remove this guard once the
-        # rollout completes and the CI-effectiveness gap is resolved.
-        # Tracking: https://github.com/alawein/alawein/issues/111
-        continue-on-error: true
+      - name: Validate Repo Framework header
+        # Per-repo gate: validates THIS repo's README header against
+        # projects.json, the bucket source of truth. A repo adopts this
+        # gate only by pinning a workspace SHA that contains this step,
+        # so the gate is authoritative from the moment of adoption.
+        # This step is an unconditional hard gate: it does NOT honor the
+        # workflow's `strict` input. Because adoption requires an explicit
+        # SHA pin, the gate must be authoritative once adopted.
         run: |
           python org/scripts/doctrine/validate-repo-framework.py \
-            --root org/..
+            --repo repo \
+            --registry org/projects.json \
+            --repo-slug "${{ github.repository }}"
 
       - name: Install Vale CLI
         run: |

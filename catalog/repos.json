@@ -8,6 +8,7 @@
       "legacy_slugs": [],
       "repo": "alawein/meshal-web",
       "local_path": "apps/meshal-web",
+      "bucket": "personal",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -137,6 +138,7 @@
       "legacy_slugs": [],
       "repo": "alawein/repz",
       "local_path": "apps/repz",
+      "bucket": "products",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -202,6 +204,7 @@
       ],
       "repo": "alawein/gymboy",
       "local_path": "apps/gymboy",
+      "bucket": "products",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -263,6 +266,7 @@
       "legacy_slugs": [],
       "repo": "alawein/scribd",
       "local_path": "apps/scribd",
+      "bucket": "products",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -325,6 +329,7 @@
       "legacy_slugs": [],
       "repo": "alawein/bolts",
       "local_path": "tools/bolts",
+      "bucket": "products",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -390,6 +395,7 @@
       ],
       "repo": "alawein/atelier-rounaq",
       "local_path": "apps/atelier-rounaq",
+      "bucket": "family",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -451,6 +457,7 @@
       "legacy_slugs": [],
       "repo": "alawein/attributa",
       "local_path": "tools/attributa",
+      "bucket": "tools",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -513,6 +520,7 @@
       "legacy_slugs": [],
       "repo": "alawein/llmworks",
       "local_path": "tools/llmworks",
+      "bucket": "tools",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -580,6 +588,7 @@
       ],
       "repo": "alawein/edfp",
       "local_path": "research/edfp",
+      "bucket": "research",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -644,6 +653,7 @@
       ],
       "repo": "alawein/alembiq",
       "local_path": "research/alembiq",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -709,6 +719,7 @@
       ],
       "repo": "alawein/optiqap",
       "local_path": "research/optiqap",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -772,6 +783,7 @@
       "legacy_slugs": [],
       "repo": "alawein/qmlab",
       "local_path": "research/qmlab",
+      "bucket": "research",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -837,6 +849,7 @@
       "legacy_slugs": [],
       "repo": "alawein/simcore",
       "local_path": "research/simcore",
+      "bucket": "research",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -902,6 +915,7 @@
       ],
       "repo": "alawein/meatheadphysicist",
       "local_path": "research/meatheadphysicist",
+      "bucket": "research",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -967,6 +981,7 @@
       "legacy_slugs": [],
       "repo": "alawein/adil",
       "local_path": "ventures/adil",
+      "bucket": "ventures",
       "type": "research",
       "surface": "cli",
       "stack": [
@@ -1032,6 +1047,7 @@
       "legacy_slugs": [],
       "repo": "alawein/roka-oakland-hustle",
       "local_path": "apps/roka-oakland-hustle",
+      "bucket": "personal",
       "type": "product",
       "surface": "service",
       "stack": [
@@ -1093,6 +1109,7 @@
       "legacy_slugs": [],
       "repo": "alawein/qmatsim",
       "local_path": "research/qmatsim",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1151,6 +1168,7 @@
       "legacy_slugs": [],
       "repo": "alawein/qubeml",
       "local_path": "research/qubeml",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1208,6 +1226,7 @@
       "legacy_slugs": [],
       "repo": "alawein/scicomp",
       "local_path": "research/scicomp",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1264,6 +1283,7 @@
       "legacy_slugs": [],
       "repo": "alawein/spincirc",
       "local_path": "research/spincirc",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1321,6 +1341,7 @@
       "legacy_slugs": [],
       "repo": "alawein/maglogic",
       "local_path": "research/maglogic",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1378,6 +1399,7 @@
       "legacy_slugs": [],
       "repo": "alawein/chshlab",
       "local_path": "research/chshlab",
+      "bucket": "research",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1440,6 +1462,7 @@
       "legacy_slugs": [],
       "repo": "alawein/helios",
       "local_path": "research/helios",
+      "bucket": "research",
       "type": "archive",
       "surface": "dataset",
       "stack": [
@@ -1494,6 +1517,7 @@
       "legacy_slugs": [],
       "repo": "alawein/loopholelab",
       "local_path": "ventures/loopholelab",
+      "bucket": "ventures",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1557,6 +1581,7 @@
       ],
       "repo": "alawein/provegate",
       "local_path": "ventures/provegate",
+      "bucket": "ventures",
       "type": "research",
       "surface": "workflow",
       "stack": [
@@ -1619,6 +1644,7 @@
       "legacy_slugs": [],
       "repo": "alawein/mercor-llm-failsafe",
       "local_path": "jobs-projects/mercor-ai-ml-experts",
+      "bucket": "jobs-projects",
       "type": "archive",
       "surface": "service",
       "stack": [
@@ -1677,6 +1703,7 @@
       ],
       "repo": "alawein/design-system",
       "local_path": "tools/design-system",
+      "bucket": "tools",
       "type": "infra",
       "surface": "monorepo",
       "stack": [
@@ -1750,6 +1777,7 @@
       "legacy_slugs": [],
       "repo": "alawein/alawein",
       "local_path": "alawein",
+      "bucket": "tools",
       "type": "governance",
       "surface": "docs-hub",
       "stack": [
@@ -1818,6 +1846,7 @@
       "legacy_slugs": [],
       "repo": "alawein/workspace-tools",
       "local_path": "tools/workspace-tools",
+      "bucket": "tools",
       "type": "infra",
       "surface": "cli",
       "stack": [
@@ -1889,6 +1918,7 @@
       ],
       "repo": "alawein/knowledge-base",
       "local_path": "tools/knowledge-base",
+      "bucket": "tools",
       "type": "infra",
       "surface": "docs-hub",
       "stack": [
@@ -1961,6 +1991,7 @@
       ],
       "repo": "alawein/handshake-hai",
       "local_path": "jobs-projects/handshake-hai",
+      "bucket": "jobs-projects",
       "type": "tooling",
       "surface": "monorepo",
       "stack": [
@@ -2022,6 +2053,7 @@
       ],
       "repo": "alawein/fallax",
       "local_path": "research/fallax",
+      "bucket": "research",
       "type": "tooling",
       "surface": "service",
       "stack": [

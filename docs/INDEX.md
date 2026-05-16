@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-06
+last_updated: 2026-05-15
 ---
 
 # Index — alawein
@@ -69,6 +69,7 @@ last_updated: 2026-05-06
 - [profile-sync-from-guides.md](governance/profile-sync-from-guides.md)
 - [prompt-rollout.md](governance/prompt-rollout.md)
 - [release-playbook.md](governance/release-playbook.md)
+- [repo-framework.md](governance/repo-framework.md)
 - [repo-standardization.md](governance/repo-standardization.md)
 - [repo-sweep-prompt.md](governance/repo-sweep-prompt.md)
 - [repository-layout-standard.md](governance/repository-layout-standard.md)

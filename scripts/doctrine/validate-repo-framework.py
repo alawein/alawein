@@ -20,6 +20,7 @@ Exit codes:
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -48,6 +49,10 @@ _FIELD_RE = re.compile(
 
 class ValidationError(Exception):
     """Raised when the README header is missing or malformed."""
+
+
+class RegistryError(Exception):
+    """Raised when projects.json cannot be read, parsed, or indexed."""
 
 
 def parse_header(text: str) -> dict[str, str]:
@@ -129,6 +134,46 @@ def validate_repo(repo_path: Path, bucket: str | None = None) -> list[str]:
             f"{repo_path.name}: Category '{header['Category']}' does not match bucket '{bucket}'"
         )
     return findings
+
+
+def load_registry(path: Path) -> dict[str, dict]:
+    """Load projects.json and return a map of repo slug to entry.
+
+    Iterates every top-level list value; within each list, indexes every
+    dict entry that carries a 'repo' key (a GitHub 'owner/name' slug).
+    Entries with no 'repo' key (for example the 'packages' list) are
+    skipped.
+
+    Raises RegistryError if the file is missing, unreadable, not valid
+    JSON, not a JSON object at the top level, or contains two entries
+    sharing the same 'repo' slug.
+    """
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except OSError as e:
+        raise RegistryError(f"cannot read registry {path}: {e}") from e
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise RegistryError(f"registry {path} is not valid JSON: {e}") from e
+    if not isinstance(data, dict):
+        raise RegistryError(f"registry {path} top level is not a JSON object")
+    out: dict[str, dict] = {}
+    for value in data.values():
+        if not isinstance(value, list):
+            continue
+        for entry in value:
+            if not isinstance(entry, dict):
+                continue
+            slug = entry.get("repo")
+            if not slug:
+                continue
+            if slug in out:
+                raise RegistryError(
+                    f"registry {path} has duplicate repo slug '{slug}'"
+                )
+            out[slug] = entry
+    return out
 
 
 _BUCKET_DIRS = (

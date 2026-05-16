@@ -12,8 +12,10 @@ from validate_repo_framework import (
     ALLOWED_VISIBILITY,
     ALLOWED_NEXT_ACTION,
     ValidationError,
+    RegistryError,
     parse_header,
     validate_repo,
+    load_registry,
     walk_alawein,
 )
 
@@ -180,3 +182,29 @@ def test_parse_header_tolerates_blank_lines_inside_block():
     assert header["Owner"] == "alawein"
     assert header["Status"] == "active"
     assert header["Next action"] == "continue"
+
+
+def test_load_registry_indexes_repo_entries():
+    reg = load_registry(FIX / "registry_sample.json")
+    assert "alawein/repo-passing" in reg
+    assert reg["alawein/repo-passing"]["bucket"] == "products"
+    assert "menax-inc/cross-thing" in reg
+
+
+def test_load_registry_skips_entries_without_repo():
+    reg = load_registry(FIX / "registry_sample.json")
+    # The 'packages' list entry has no 'repo' key and must not be indexed.
+    assert "@alawein/tokens" not in reg
+    assert all("/" in slug for slug in reg)
+
+
+def test_load_registry_raises_on_malformed_json(tmp_path):
+    bad = tmp_path / "bad.json"
+    bad.write_text("{ not json", encoding="utf-8")
+    with pytest.raises(RegistryError):
+        load_registry(bad)
+
+
+def test_load_registry_raises_on_missing_file(tmp_path):
+    with pytest.raises(RegistryError):
+        load_registry(tmp_path / "does-not-exist.json")

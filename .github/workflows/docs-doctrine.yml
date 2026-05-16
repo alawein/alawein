@@ -54,9 +54,15 @@ jobs:
 
       - name: Check for drift
         run: |
-          if ! git diff --exit-code; then
+          # -I'last_updated' ignores hunks whose only changed lines are the
+          # last_updated stamp. generate-index.sh derives that field from
+          # wall-clock / commit dates, so it churns across date boundaries
+          # and checkout depths with no real content change. Structural
+          # drift (a missing or renamed entry) carries non-date lines and is
+          # still caught.
+          if ! git diff --exit-code -I'last_updated'; then
             echo "::error::Derived files are stale. Run generators and commit."
-            git diff --stat
+            git diff --stat -I'last_updated'
             exit 1
           fi
-          echo "All derived files are fresh."
+          echo "All derived files are fresh (last_updated churn ignored)."

@@ -359,3 +359,50 @@ def test_main_repo_mode_missing_only_registry(capsys):
     ])
     assert rc == 2
     assert "error" in capsys.readouterr().err.lower()
+
+
+# Duplicate-slug tolerance tests (cross-list listings in projects.json).
+
+def test_load_registry_tolerates_duplicate_slug_same_bucket(tmp_path):
+    """A slug in two lists with identical bucket values must not raise; the
+    indexed entry must carry that bucket."""
+    reg_file = tmp_path / "dup_same_bucket.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/foo", "bucket": "products"}],'
+        ' "ventures": [{"repo": "alawein/foo", "bucket": "products"}]}',
+        encoding="utf-8",
+    )
+    reg = load_registry(reg_file)
+    assert "alawein/foo" in reg
+    assert reg["alawein/foo"]["bucket"] == "products"
+
+
+def test_load_registry_tolerates_duplicate_slug_one_has_bucket(tmp_path):
+    """A slug appearing once with a bucket and once without must not raise;
+    the indexed entry must carry the bucket (prefer bucket-bearing entry)."""
+    reg_file = tmp_path / "dup_one_bucket.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/bar"}],'
+        ' "products": [{"repo": "alawein/bar", "bucket": "products"}]}',
+        encoding="utf-8",
+    )
+    reg = load_registry(reg_file)
+    assert "alawein/bar" in reg
+    assert reg["alawein/bar"].get("bucket") == "products"
+
+
+def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
+    """A slug in two lists with different bucket values is a data error and
+    must raise RegistryError naming the slug and both bucket values."""
+    reg_file = tmp_path / "dup_conflict.json"
+    reg_file.write_text(
+        '{"featured": [{"repo": "alawein/baz", "bucket": "products"}],'
+        ' "research": [{"repo": "alawein/baz", "bucket": "research"}]}',
+        encoding="utf-8",
+    )
+    with pytest.raises(RegistryError) as excinfo:
+        load_registry(reg_file)
+    msg = str(excinfo.value)
+    assert "alawein/baz" in msg
+    assert "products" in msg
+    assert "research" in msg

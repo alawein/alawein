@@ -154,9 +154,16 @@ def load_registry(path: Path) -> dict[str, dict]:
     Entries with no 'repo' key (for example the 'packages' list) are
     skipped.
 
+    A repo slug may appear in more than one list (for example, in both the
+    'featured' showcase and its category list); this is a legitimate
+    cross-list listing and is tolerated as long as the two entries agree on
+    their 'bucket' value. If both entries declare a 'bucket' and the values
+    differ, that is a data inconsistency and a RegistryError is raised naming
+    the slug and both conflicting bucket values.
+
     Raises RegistryError if the file is missing, unreadable, not valid
-    JSON, not a JSON object at the top level, or contains two entries
-    sharing the same 'repo' slug.
+    JSON, not a JSON object at the top level, or contains two entries that
+    share the same 'repo' slug but declare conflicting 'bucket' values.
     """
     try:
         raw = path.read_text(encoding="utf-8")
@@ -183,9 +190,18 @@ def load_registry(path: Path) -> dict[str, dict]:
                     f"registry {path} has an entry with an empty 'repo' field: {entry!r}"
                 )
             if slug in out:
-                raise RegistryError(
-                    f"registry {path} has duplicate repo slug '{slug}'"
-                )
+                stored_bucket = out[slug].get("bucket")
+                new_bucket = entry.get("bucket")
+                if stored_bucket is not None and new_bucket is not None and stored_bucket != new_bucket:
+                    raise RegistryError(
+                        f"registry {path} has duplicate repo slug '{slug}' "
+                        f"with conflicting bucket values: "
+                        f"'{stored_bucket}' vs '{new_bucket}'"
+                    )
+                # Legitimate cross-list duplicate. Prefer the entry that declares a bucket.
+                if new_bucket is not None and stored_bucket is None:
+                    out[slug] = entry
+                continue
             out[slug] = entry
     return out
 

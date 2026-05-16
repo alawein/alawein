@@ -4,7 +4,9 @@ import pytest
 from apply_readme_header import (
     STATUS_MAP,
     DeriveError,
+    apply_to_repo,
     derive_header_fields,
+    parse_slug,
     render_header,
     splice_header,
 )
@@ -173,9 +175,6 @@ def test_splice_ignores_partial_field_run_in_body():
     assert "Intro." in result
 
 
-from apply_readme_header import parse_slug, apply_to_repo
-
-
 @pytest.mark.parametrize("url,expected", [
     ("git@github.com:alawein/bolts.git", "alawein/bolts"),
     ("https://github.com/alawein/bolts.git", "alawein/bolts"),
@@ -222,3 +221,10 @@ def test_apply_to_repo_skips_unknown_slug(tmp_path):
     (tmp_path / "README.md").write_text("# x\n\nBody.\n", encoding="utf-8")
     status, _ = apply_to_repo(tmp_path, "alawein/ghost", {}, dry_run=True)
     assert status == "skipped"
+
+
+def test_apply_to_repo_error_when_no_readme(tmp_path):
+    registry = {"alawein/bolts": SAMPLE}
+    status, detail = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "error"
+    assert "no README" in detail

@@ -17,7 +17,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from validate_repo_framework import load_registry
+from validate_repo_framework import RegistryError, load_registry
 
 # Canonical field order (matches docs/governance/repo-framework.md).
 HEADER_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
@@ -153,13 +153,18 @@ def splice_header(readme_text: str, fields: dict[str, str]) -> str:
 # CLI layer: slug resolution, repo discovery, per-repo apply, entry point
 # ---------------------------------------------------------------------------
 
-_SLUG_RE = re.compile(r"[:/]([^/:]+/[^/:]+?)(?:\.git)?/?$")
+_SLUG_RE = re.compile(r"[:/]([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?/?$")
 
 
 def parse_slug(remote_url: str) -> str | None:
     """Extract an 'owner/name' slug from a Git remote URL, or None."""
     match = _SLUG_RE.search(remote_url.strip())
-    return match.group(1) if match else None
+    if not match:
+        return None
+    slug = match.group(1)
+    owner = slug.split("/", 1)[0]
+    # Reject a host-like owner (e.g. 'github.com/org' from a single-segment URL).
+    return None if "." in owner else slug
 
 
 def slug_from_remote(repo_path: Path) -> str | None:
@@ -235,15 +240,19 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         registry = load_registry(args.registry)
-    except Exception as exc:
+    except RegistryError as exc:
         print(f"ERROR: cannot load registry: {exc}", file=sys.stderr)
         return 2
 
     targets = [args.repo] if args.repo else find_repos(args.root)
+    if not targets:
+        print(f"ERROR: no git repos found under {args.root}", file=sys.stderr)
+        return 2
+    if args.root and args.slug:
+        print("WARNING: --slug is ignored with --root", file=sys.stderr)
 
     counts = {"changed": 0, "would-change": 0, "unchanged": 0,
               "skipped": 0, "error": 0}
-    had_error = False
     for repo_path in sorted(targets):
         slug = args.slug if (args.repo and args.slug) else slug_from_remote(repo_path)
         if slug is None:
@@ -255,19 +264,17 @@ def main(argv: list[str] | None = None) -> int:
         except DeriveError as exc:
             print(f"error    {exc}", file=sys.stderr)
             counts["error"] += 1
-            had_error = True
             continue
         counts[status] += 1
         if status == "would-change":
             print(detail)
         elif status == "error":
             print(f"error    {detail}", file=sys.stderr)
-            had_error = True
         else:
             print(f"{status:<8} {slug}")
 
     print("\nsummary: " + ", ".join(f"{k}={v}" for k, v in counts.items()))
-    return 1 if (had_error or counts["error"]) else 0
+    return 1 if counts["error"] else 0
 
 
 if __name__ == "__main__":

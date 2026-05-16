@@ -30,7 +30,7 @@ from pathlib import Path
 
 REQUIRED_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
 
-ALLOWED_STATUS = {"active", "paused", "experimental", "deprecated", "archived"}
+ALLOWED_STATUS = {"active", "paused", "experimental", "deprecated", "archived", "frozen"}
 ALLOWED_CATEGORY = {
     "products", "personal", "family", "research",
     "tools", "ventures", "jobs-projects", "archive",

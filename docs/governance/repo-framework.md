@@ -49,7 +49,7 @@ Ownership determines the home org. Inside an org, content category determines th
 
 Every repo across all active orgs places a plain-markdown metadata block at the top of `README.md`, immediately after the `# <repo-name>` title. This metadata block is plain markdown, not YAML frontmatter; workspace policy forbids YAML frontmatter on public READMEs.
 
-    Status:      active | paused | experimental | deprecated | archived
+    Status:      active | paused | experimental | deprecated | archived | frozen
     Category:    products | personal | family | research | tools | ventures | jobs-projects | archive
     Owner:       alawein | menax-inc | blackmalejournal | kohyr
     Visibility:  public | private

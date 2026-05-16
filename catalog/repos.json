@@ -2355,7 +2355,9 @@
       ],
       "version_source": "package.json",
       "last_verified": "2026-05-11",
-      "catalog_groups": []
+      "catalog_groups": [
+        "featured"
+      ]
     },
     {
       "name": "Fallax",

@@ -221,6 +221,23 @@
       "bucket": "research",
       "status": "maintained",
       "visibility": "public"
+    },
+    {
+      "name": "Veyra",
+      "slug": "veyra",
+      "repo": "alawein/veyra",
+      "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "tags": [
+        "TypeScript",
+        "Turbo",
+        "Governance",
+        "Agents"
+      ],
+      "category": "active",
+      "url": "https://github.com/alawein/veyra",
+      "bucket": "ventures",
+      "status": "active",
+      "visibility": "private"
     }
   ],
   "notion_sync": [

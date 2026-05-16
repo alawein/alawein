@@ -55,7 +55,7 @@ def test_validate_repo_flags_category_bucket_mismatch():
 
 def test_status_enum_is_exhaustive():
     assert ALLOWED_STATUS == {
-        "active", "paused", "experimental", "deprecated", "archived",
+        "active", "paused", "experimental", "deprecated", "archived", "frozen",
     }
 
 

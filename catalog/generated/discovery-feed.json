@@ -3170,7 +3170,9 @@
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
       "local_path": "ventures/veyra",
-      "catalog_groups": [],
+      "catalog_groups": [
+        "featured"
+      ],
       "depends_on": [
         "workspace-tools",
         "design-system",
@@ -5534,6 +5536,57 @@
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Veyra",
+        "slug": "veyra",
+        "repo": "alawein/veyra",
+        "type": "product",
+        "surface": "monorepo",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "typescript",
+          "turborepo",
+          "node"
+        ],
+        "audience": [
+          "internal",
+          "client"
+        ],
+        "homepage": "https://github.com/alawein/veyra",
+        "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+        "topics": [
+          "agents",
+          "governance",
+          "monorepo",
+          "turborepo",
+          "typescript"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "ventures/veyra",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "workspace-tools",
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "voice-governance-monorepo",
+          "llm-content-detection",
+          "voice-consistency-enforcement"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "node-monorepo",
+        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       }

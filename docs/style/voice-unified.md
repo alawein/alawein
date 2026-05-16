@@ -560,7 +560,7 @@ register to every CTA string.
 Bad: "Get started today and transform your workflow."
 Good: "kohyr doctor — free, no card."
 
-Bad: "Join thousands of teams leveraging Kohyr."
+Bad: "Join thousands of teams `leveraging` Kohyr."
 Good: "Request access."
 
 CTAs may use imperative CLI-style framing (`> kohyr doctor`, `Start free`) when the
@@ -630,8 +630,8 @@ Do not vary the format.
 
 #### Closing
 
-No "I hope this finds you well," "feel free to reach out," or "I look forward to
-hearing from you." These are in the forbidden register. Close with the ask and stop.
+No `I hope this finds you well`, `feel free to reach out`, or `I look forward to
+hearing from you`. These are in the forbidden register. Close with the ask and stop.
 A one-line factual sign-off is acceptable: "Available Thursday afternoon if that works."
 
 #### Em dash budget
@@ -646,19 +646,19 @@ When the startup-speak phrase surfaces first, use the right column:
 
 | Impulse (forbidden) | Voice-compliant replacement |
 |---|---|
-| "excited to share" | state the news directly |
-| "transformative platform" | name the capability and the problem class it resolves |
-| "leverage our technology" | name what the technology does |
-| "looking to partner with" | state what the partnership accomplishes and what you offer |
-| "we believe in" | drop belief framing; state the position |
-| "would love to connect" | state the ask and a specific time |
-| "happy to answer questions" | drop it, or name the one question you expect |
-| "our unique approach" | name the approach; let uniqueness be inferred from the claim |
-| "at the forefront of" | name the specific thing you are ahead on |
-| "seamlessly integrates" | name what it integrates with and what the integration does |
-| "robust solution" | name the mechanism and the failure mode it prevents |
-| "world-class team" | drop it entirely or name the relevant credential once |
-| "innovative" | name what is novel; if nothing is, drop the word |
+| `excited to share` | state the news directly |
+| `transformative platform` | name the capability and the problem class it resolves |
+| `leverage our technology` | name what the technology does |
+| `looking to partner with` | state what the partnership accomplishes and what you offer |
+| `we believe in` | drop belief framing; state the position |
+| `would love to connect` | state the ask and a specific time |
+| `happy to answer questions` | drop it, or name the one question you expect |
+| `our unique approach` | name the approach; let uniqueness be inferred from the claim |
+| `at the forefront of` | name the specific thing you are ahead on |
+| `seamlessly integrates` | name what it integrates with and what the integration does |
+| `robust solution` | name the mechanism and the failure mode it prevents |
+| `world-class team` | drop it entirely or name the relevant credential once |
+| `innovative` | name what is novel; if nothing is, drop the word |
 
 ---
 

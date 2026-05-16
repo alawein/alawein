@@ -18,6 +18,7 @@ from validate_repo_framework import (
     load_registry,
     validate_repo_single,
     walk_alawein,
+    main,
 )
 
 FIX = Path(__file__).parent / "fixtures"
@@ -271,3 +272,41 @@ def test_validate_repo_uses_display_name_in_findings():
     )
     assert findings
     assert all(f.startswith("alawein/demo:") for f in findings)
+
+
+def test_main_repo_mode_passes(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_passing"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-passing",
+    ])
+    assert rc == 0
+    assert "PASS" in capsys.readouterr().out
+
+
+def test_main_repo_mode_fails_on_mismatch(capsys):
+    rc = main([
+        "--repo", str(FIX / "repo_wrong_category"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-wrong",
+    ])
+    assert rc == 1
+    assert "FAIL" in capsys.readouterr().out
+
+
+def test_main_repo_mode_requires_registry_and_slug():
+    rc = main(["--repo", str(FIX / "repo_passing")])
+    assert rc == 2
+
+
+def test_main_rejects_root_and_repo_together():
+    with pytest.raises(SystemExit):
+        main(["--root", str(FIX), "--repo", str(FIX / "repo_passing")])
+
+
+def test_main_root_mode_still_reaches_walk(tmp_path, capsys):
+    # An empty dir has no bucket subdirs; walk mode must still run and
+    # report 'no repos found' with exit code 2.
+    rc = main(["--root", str(tmp_path)])
+    assert rc == 2
+    assert "no repos found" in capsys.readouterr().err

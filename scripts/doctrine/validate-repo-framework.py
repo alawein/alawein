@@ -9,7 +9,9 @@ link between the two. The exhaustiveness tests assert the constants are
 consistent with themselves, not consistent with the doctrine.
 
 Usage:
-    python validate-repo-framework.py [--root <path>]
+    Workspace mode:  python validate-repo-framework.py [--root <path>]
+    Single-repo:     python validate-repo-framework.py --repo <path>
+                         --registry <projects.json> --repo-slug <owner/name>
 
 Exit codes:
     0 -- all repos pass
@@ -247,22 +249,62 @@ def walk_alawein(root: Path) -> list[tuple[Path, str]]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate Repo Framework headers.")
-    parser.add_argument(
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument(
         "--root",
         type=Path,
-        default=Path.cwd(),
-        help="Path to alawein/ workspace root (contains products/, tools/, etc.). Defaults to current working directory.",
+        help="alawein/ workspace root; validate every repo under each "
+        "bucket directory. Defaults to the current directory when neither "
+        "--root nor --repo is given.",
+    )
+    mode.add_argument(
+        "--repo",
+        type=Path,
+        help="Path to a single repo checkout; validate its README header "
+        "against the registry. Requires --registry and --repo-slug.",
+    )
+    parser.add_argument(
+        "--registry",
+        type=Path,
+        help="Path to projects.json. Required with --repo.",
+    )
+    parser.add_argument(
+        "--repo-slug",
+        help="GitHub owner/name slug of the --repo target. Required with --repo.",
     )
     args = parser.parse_args(argv)
 
-    if not args.root.is_dir():
-        print(f"error: root not a directory: {args.root}", file=sys.stderr)
+    if args.repo is not None:
+        if args.registry is None or args.repo_slug is None:
+            print("error: --repo requires --registry and --repo-slug", file=sys.stderr)
+            return 2
+        if not args.repo.is_dir():
+            print(f"error: --repo not a directory: {args.repo}", file=sys.stderr)
+            return 2
+        try:
+            registry = load_registry(args.registry)
+        except RegistryError as e:
+            print(f"error: {e}", file=sys.stderr)
+            return 2
+        findings = validate_repo_single(args.repo, args.repo_slug, registry)
+        if findings:
+            print("FAIL:")
+            for f in findings:
+                print(f"  {f}")
+            return 1
+        print(f"PASS  {args.repo_slug}")
+        return 0
+
+    # Workspace-walk mode (default).
+    root = args.root if args.root is not None else Path.cwd()
+    if not root.is_dir():
+        print(f"error: root not a directory: {root}", file=sys.stderr)
         return 2
 
     all_findings: list[str] = []
-    repos = walk_alawein(args.root)
+    repos = walk_alawein(root)
     if not repos:
-        print(f"error: no repos found under {args.root}", file=sys.stderr)
+        print(f"error: no repos found under {root}", file=sys.stderr)
         print(f"       expected at least one of: {', '.join(_BUCKET_DIRS)}", file=sys.stderr)
         return 2
     for repo, bucket in repos:

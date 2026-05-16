@@ -5,6 +5,8 @@ from apply_readme_header import (
     STATUS_MAP,
     DeriveError,
     derive_header_fields,
+    render_header,
+    splice_header,
 )
 
 SAMPLE = {
@@ -17,6 +19,24 @@ SAMPLE = {
     "status": "maintained",
     "description": "Fitness transformation plans with Next.js, Stripe, Supabase.",
 }
+
+FIELDS = {
+    "Status": "active",
+    "Category": "products",
+    "Owner": "alawein",
+    "Visibility": "private",
+    "Purpose": "Fitness transformation plans.",
+    "Next action": "continue",
+}
+
+EXPECTED_BLOCK = (
+    "Status:      active\n"
+    "Category:    products\n"
+    "Owner:       alawein\n"
+    "Visibility:  private\n"
+    "Purpose:     Fitness transformation plans.\n"
+    "Next action: continue"
+)
 
 
 def test_derive_maps_status_and_copies_fields():
@@ -88,27 +108,6 @@ def test_derive_owner_fallback_without_slash_raises():
         derive_header_fields("bolts", entry)
 
 
-from apply_readme_header import render_header, splice_header
-
-FIELDS = {
-    "Status": "active",
-    "Category": "products",
-    "Owner": "alawein",
-    "Visibility": "private",
-    "Purpose": "Fitness transformation plans.",
-    "Next action": "continue",
-}
-
-EXPECTED_BLOCK = (
-    "Status:      active\n"
-    "Category:    products\n"
-    "Owner:       alawein\n"
-    "Visibility:  private\n"
-    "Purpose:     Fitness transformation plans.\n"
-    "Next action: continue"
-)
-
-
 def test_render_header_aligns_values_at_column_14():
     assert render_header(FIELDS) == EXPECTED_BLOCK
 
@@ -152,3 +151,23 @@ def test_splice_replaces_existing_block_in_place():
 def test_splice_raises_when_no_level1_heading():
     with pytest.raises(DeriveError, match="heading"):
         splice_header("No title here.\n\nBody.\n", FIELDS)
+
+
+def test_splice_preserves_body_lines_that_look_like_fields():
+    readme = (
+        "# bolts\n\nBody intro.\n\n"
+        "Status: see the GitHub issues for current state.\n\n"
+        "More body.\n"
+    )
+    result = splice_header(readme, FIELDS)
+    assert "Status: see the GitHub issues for current state." in result
+    assert "Body intro." in result
+    assert "More body." in result
+
+
+def test_splice_ignores_partial_field_run_in_body():
+    readme = "# bolts\n\nIntro.\n\nStatus: alpha\nCategory: web\n\nEnd.\n"
+    result = splice_header(readme, FIELDS)
+    assert "Status: alpha" in result
+    assert "Category: web" in result
+    assert "Intro." in result

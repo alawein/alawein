@@ -89,17 +89,29 @@ def render_header(fields: dict[str, str]) -> str:
     return "\n".join(lines)
 
 
-def _find_block(lines: list[str]) -> tuple[int, int] | None:
-    """Return (start, end-exclusive) of a contiguous header block, or None."""
-    start = None
-    for i, line in enumerate(lines):
-        if _FIELD_LINE.match(line):
-            if start is None:
-                start = i
-        elif start is not None:
-            return (start, i)
-    if start is not None:
-        return (start, len(lines))
+def _header_block_after_title(
+    lines: list[str], title_idx: int
+) -> tuple[int, int] | None:
+    """Return (start, end-exclusive) of an existing six-field header block.
+
+    Only a contiguous run of exactly the six canonical fields, sitting
+    immediately after the title (blank lines between are allowed), counts.
+    This prevents body prose like 'Status: see issues' from being mistaken
+    for the header and destroyed.
+    """
+    i = title_idx + 1
+    while i < len(lines) and lines[i].strip() == "":
+        i += 1
+    start = i
+    names: list[str] = []
+    while i < len(lines):
+        match = _FIELD_LINE.match(lines[i])
+        if not match:
+            break
+        names.append(match.group(1))
+        i += 1
+    if sorted(names) == sorted(HEADER_FIELDS):
+        return (start, i)
     return None
 
 
@@ -108,23 +120,20 @@ def splice_header(readme_text: str, fields: dict[str, str]) -> str:
     block_lines = render_header(fields).splitlines()
     lines = readme_text.splitlines()
 
-    # Drop an existing block plus its surrounding blank lines.
-    existing = _find_block(lines)
-    if existing:
-        start, end = existing
-        if end < len(lines) and lines[end].strip() == "":
-            end += 1
-        if start > 0 and lines[start - 1].strip() == "":
-            start -= 1
-        lines = lines[:start] + lines[end:]
-
     title_idx = next(
         (i for i, ln in enumerate(lines) if ln.startswith("# ")), None
     )
     if title_idx is None:
         raise DeriveError("README has no level-1 '# ' heading; cannot place header")
 
-    body = lines[title_idx + 1:]
+    existing = _header_block_after_title(lines, title_idx)
+    if existing:
+        start, end = existing
+        if end < len(lines) and lines[end].strip() == "":
+            end += 1
+        body = lines[end:]
+    else:
+        body = lines[title_idx + 1:]
     while body and body[0].strip() == "":
         body.pop(0)
 

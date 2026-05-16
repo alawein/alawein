@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-05-01",
+  "lastUpdated": "2026-05-11",
   "featured": [
     {
       "name": "meshal.ai",
@@ -345,7 +345,7 @@
       "name": "Adil",
       "slug": "adil",
       "repo": "alawein/adil",
-      "domain": "Arabic-dialect NLP research",
+      "domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow).",
       "bucket": "ventures"
     },
     {
@@ -430,6 +430,14 @@
       "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
       "category": "archived",
       "bucket": "jobs-projects"
+    },
+    {
+      "name": "quantumalgo",
+      "slug": "quantumalgo",
+      "repo": "alawein/quantumalgo",
+      "domain": "Quantum algorithms; combinatorial optimization",
+      "url": "https://github.com/alawein/quantumalgo",
+      "bucket": "research"
     }
   ],
   "infrastructure": [
@@ -499,6 +507,33 @@
       "url": "https://github.com/alawein/handshake-hai",
       "status": "active",
       "bucket": "jobs-projects"
+    },
+    {
+      "name": "Turing engagements",
+      "slug": "turing",
+      "repo": "alawein/turing",
+      "purpose": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "url": "https://github.com/alawein/turing",
+      "status": "active",
+      "bucket": "jobs-projects"
+    },
+    {
+      "name": "incore",
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "purpose": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "url": "https://github.com/alawein/incore",
+      "status": "active",
+      "bucket": "tools"
+    },
+    {
+      "name": "prompty",
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "purpose": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "url": "https://github.com/alawein/prompty",
+      "status": "active",
+      "bucket": "tools"
     },
     {
       "name": "Fallax",

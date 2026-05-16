@@ -332,6 +332,7 @@ class BlockOrderAndCountTests(unittest.TestCase):
                 "VOICE.md",
                 "voice-software-register.md",
                 "voice-surfaces.md",
+                "voice-business.md",
                 "voice-workflow.md",
             ],
         )

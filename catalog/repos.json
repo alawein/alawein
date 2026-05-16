@@ -2057,6 +2057,7 @@
       "legacy_slugs": [],
       "repo": "alawein/turing",
       "local_path": "jobs-projects/turing",
+      "bucket": "jobs-projects",
       "type": "tooling",
       "surface": "docs-hub",
       "stack": [
@@ -2114,6 +2115,7 @@
       "legacy_slugs": [],
       "repo": "alawein/quantumalgo",
       "local_path": "research/quantumalgo",
+      "bucket": "research",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -2175,6 +2177,7 @@
       "legacy_slugs": [],
       "repo": "alawein/incore",
       "local_path": "tools/incore",
+      "bucket": "tools",
       "type": "tooling",
       "surface": "cli",
       "stack": [
@@ -2236,6 +2239,7 @@
       "legacy_slugs": [],
       "repo": "alawein/prompty",
       "local_path": "tools/prompty",
+      "bucket": "tools",
       "type": "tooling",
       "surface": "monorepo",
       "stack": [
@@ -2296,6 +2300,7 @@
       "legacy_slugs": [],
       "repo": "alawein/veyra",
       "local_path": "ventures/veyra",
+      "bucket": "ventures",
       "type": "product",
       "surface": "monorepo",
       "stack": [

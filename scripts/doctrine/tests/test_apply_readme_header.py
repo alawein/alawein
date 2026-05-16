@@ -171,3 +171,54 @@ def test_splice_ignores_partial_field_run_in_body():
     assert "Status: alpha" in result
     assert "Category: web" in result
     assert "Intro." in result
+
+
+from apply_readme_header import parse_slug, apply_to_repo
+
+
+@pytest.mark.parametrize("url,expected", [
+    ("git@github.com:alawein/bolts.git", "alawein/bolts"),
+    ("https://github.com/alawein/bolts.git", "alawein/bolts"),
+    ("https://github.com/alawein/bolts", "alawein/bolts"),
+    ("ssh://git@github.com/alawein/repz.git", "alawein/repz"),
+])
+def test_parse_slug_extracts_owner_and_name(url, expected):
+    assert parse_slug(url) == expected
+
+
+def test_parse_slug_returns_none_for_garbage():
+    assert parse_slug("not-a-url") is None
+
+
+def test_apply_to_repo_changes_readme(tmp_path):
+    readme = tmp_path / "README.md"
+    readme.write_text("# bolts\n\nBody.\n", encoding="utf-8")
+    registry = {"alawein/bolts": SAMPLE}
+    status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "changed"
+    assert "Category:    products" in readme.read_text(encoding="utf-8")
+
+
+def test_apply_to_repo_second_run_is_unchanged(tmp_path):
+    readme = tmp_path / "README.md"
+    readme.write_text("# bolts\n\nBody.\n", encoding="utf-8")
+    registry = {"alawein/bolts": SAMPLE}
+    apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
+    assert status == "unchanged"
+
+
+def test_apply_to_repo_dry_run_does_not_write(tmp_path):
+    readme = tmp_path / "README.md"
+    original = "# bolts\n\nBody.\n"
+    readme.write_text(original, encoding="utf-8")
+    registry = {"alawein/bolts": SAMPLE}
+    status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=True)
+    assert status == "would-change"
+    assert readme.read_text(encoding="utf-8") == original
+
+
+def test_apply_to_repo_skips_unknown_slug(tmp_path):
+    (tmp_path / "README.md").write_text("# x\n\nBody.\n", encoding="utf-8")
+    status, _ = apply_to_repo(tmp_path, "alawein/ghost", {}, dry_run=True)
+    assert status == "skipped"

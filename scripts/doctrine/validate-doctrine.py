@@ -43,15 +43,16 @@ EXEMPT_TEMPLATE_MARKDOWN_PATHS = {
     "templates/scaffolding/README.tooling.md",
     "templates/scaffolding/docs-README.md",
 }
-# Internal / archived doc workspaces that sit outside the doctrine contract.
-# `archive/` and `_archive/` hold historical snapshots; `docs/superpowers/`
-# and `docs/internal/` hold agent-workflow scratch (brainstorm specs and
-# implementation plans) -- the consumer-repo equivalent of this repo's own
-# docs/internal/. Files under these directories are skipped during the walk,
-# so no rule (R1 header, R2 duplicate canonical, R5 naming, ...) applies to
-# them. `archive`/`_archive` are skipped anywhere; `superpowers`/`internal`
-# are skipped only directly under a `docs/` directory.
-EXEMPT_DIR_NAMES = {"archive", "_archive"}
+# Internal / archived / vendored trees that sit outside the doctrine contract.
+# `archive/`, `_archive/`, and `imports/` hold historical snapshots and
+# vendored third-party content; `docs/superpowers/` and `docs/internal/` hold
+# agent-workflow scratch (brainstorm specs and implementation plans) -- the
+# consumer-repo equivalent of this repo's own docs/internal/. Files under
+# these directories are skipped during the walk, so no rule (R1 header, R2
+# duplicate canonical, R5 naming, ...) applies to them. `archive`/`_archive`/
+# `imports` are skipped anywhere; `superpowers`/`internal` are skipped only
+# directly under a `docs/` directory.
+EXEMPT_DIR_NAMES = {"archive", "_archive", "imports"}
 EXEMPT_DOCS_SUBDIR_NAMES = {"superpowers", "internal"}
 # `fixtures` directly under a `tests/` or `test/` directory holds
 # deliberately minimal test-input files; doctrine frontmatter would
@@ -209,12 +210,6 @@ def is_exempt_markdown(path: Path, root: Path, content: str) -> bool:
         return True
     if rel in EXEMPT_TEMPLATE_MARKDOWN_PATHS:
         return True
-    # Repo-framework validator test fixtures: deliberately minimal repo
-    # READMEs used as inputs to that validator's test suite. They carry the
-    # Repo Framework metadata header by design, not doctrine frontmatter, so
-    # they are outside the doctrine contract.
-    if rel.startswith("scripts/doctrine/tests/fixtures/"):
-        return True
     if rel == "README.md" and content.startswith(PROFILE_README_MARKER):
         return True
     return False
@@ -236,15 +231,6 @@ def check_header(filepath, result, root):
         content = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, PermissionError):
         content = ""
-
-    # A README.md below the repo root and docs/ is a GitHub-facing surface,
-    # not a governed doctrine doc -- skip it entirely (neither require nor
-    # forbid frontmatter). The root README.md and docs/README.md fall through
-    # to the entrypoint check below.
-    rel = path.relative_to(root).as_posix()
-    if path.name == "README.md" and rel not in EXEMPT_MARKDOWN_PATHS:
-        result.ok()
-        return
 
     # GitHub-facing entrypoint READMEs are exempt from doctrine frontmatter so
     # repository surfaces do not render classification metadata to users.
@@ -566,8 +552,13 @@ def check_staleness(managed_files, result):
                 result.error(fp, "R10", msg)
 
 
-def validate(root, ci_mode=False):
-    """Run all validation checks."""
+def collect_results(root):
+    """Run all validation checks and return the ValidationResult.
+
+    No reporting and no process exit -- callers (validate(), tests) decide
+    what to do with the result. Exposed so tests can assert on the structured
+    errors/warnings rather than only validate()'s pass/fail boolean.
+    """
     result = ValidationResult()
     root = Path(root).resolve()
     managed_files = []
@@ -617,12 +608,21 @@ def validate(root, ci_mode=False):
             check_naming(fp, result)
 
             if Path(f).suffix in MANAGED_EXTENSIONS:
-                managed_files.append(fp)
                 try:
                     with open(fp, "r", encoding="utf-8") as fh:
                         all_contents[fp] = fh.read()
                 except (UnicodeDecodeError, PermissionError):
                     pass
+                # A README.md below the repo root / docs/ is a GitHub-facing
+                # surface, not a governed doc. Keep it in all_contents for
+                # reference detection but exclude it from managed_files, so no
+                # rule -- R1 header, R2 duplicate canonical, R6/R7/R9/R10 --
+                # validates it. The root README.md and docs/README.md stay
+                # governed (they carry the entrypoint no-frontmatter rule).
+                rel = Path(fp).relative_to(root).as_posix()
+                if f == "README.md" and rel not in EXEMPT_MARKDOWN_PATHS:
+                    continue
+                managed_files.append(fp)
 
     for fp in managed_files:
         check_header(fp, result, root)
@@ -633,7 +633,12 @@ def validate(root, ci_mode=False):
     check_sla_ci_wiring(managed_files, result, root)
     check_zombies(managed_files, all_contents, result)
     check_staleness(managed_files, result)
+    return result
 
+
+def validate(root, ci_mode=False):
+    """Run all checks, print the report, and (in ci_mode) exit 1 on failure."""
+    result = collect_results(root)
     success = result.report()
     if ci_mode and not success:
         sys.exit(1)

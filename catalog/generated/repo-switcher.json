@@ -33,7 +33,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/meshal-web",
+      "local_path": "personal/meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -134,7 +134,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/repz",
+      "local_path": "products/repz",
       "catalog_groups": [
         "featured"
       ],
@@ -183,7 +183,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/gymboy",
+      "local_path": "products/gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -231,7 +231,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/scribd",
+      "local_path": "products/scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -280,7 +280,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/bolts",
+      "local_path": "products/bolts",
       "catalog_groups": [
         "featured"
       ],
@@ -330,7 +330,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/atelier-rounaq",
+      "local_path": "family/atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],

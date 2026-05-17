@@ -20,16 +20,15 @@ repos:
     stack: node
     ci_template: node
     working_directory: "."
-    install_command: "npm ci"
+    # Matches `.github/workflows/ci.yml` install-command passed to `ci-node.yml`
+    # on GitHub-hosted Linux runners (native-binding shim after npm ci).
+    install_command: "npm ci && (npm install @rollup/rollup-linux-x64-gnu lightningcss-linux-x64-gnu @tailwindcss/oxide-linux-x64-gnu @esbuild/linux-x64 --no-save || true)"
     build_command: "npm run lint && npm run build"
     test_command: "npm test"
     codeql_languages:
       - javascript-typescript
-    # sync: manual because ci.yml has a linux-x64 native-binding install
-    # shim (@tailwindcss/oxide-linux-x64-gnu, @rollup/rollup-linux-x64-gnu,
-    # lightningcss, @esbuild/linux-x64) required for Storybook builds
-    # (npm/cli#4828). The baseline template does not model this extension;
-    # auto-sync would strip it.
+    # sync: manual because ci.yml carries the Linux native-binding shim above.
+    # Baseline now documents the same install line for audits and humans.
     sync: manual
 
   - repo: workspace-tools

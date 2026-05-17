@@ -53,6 +53,13 @@ EXEMPT_TEMPLATE_MARKDOWN_PATHS = {
 # are skipped only directly under a `docs/` directory.
 EXEMPT_DIR_NAMES = {"archive", "_archive"}
 EXEMPT_DOCS_SUBDIR_NAMES = {"superpowers", "internal"}
+# `fixtures` directly under a `tests/` or `test/` directory holds
+# deliberately minimal test-input files; doctrine frontmatter would
+# corrupt them as fixtures.
+EXEMPT_TESTS_SUBDIR_NAMES = {"fixtures"}
+# A repo-root `db/` is a record database (knowledge-base) with its own
+# per-record schema, not doctrine-governed documentation.
+EXEMPT_ROOT_DIR_NAMES = {"db"}
 
 
 class ValidationResult:
@@ -229,6 +236,15 @@ def check_header(filepath, result, root):
         content = path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, PermissionError):
         content = ""
+
+    # A README.md below the repo root and docs/ is a GitHub-facing surface,
+    # not a governed doctrine doc -- skip it entirely (neither require nor
+    # forbid frontmatter). The root README.md and docs/README.md fall through
+    # to the entrypoint check below.
+    rel = path.relative_to(root).as_posix()
+    if path.name == "README.md" and rel not in EXEMPT_MARKDOWN_PATHS:
+        result.ok()
+        return
 
     # GitHub-facing entrypoint READMEs are exempt from doctrine frontmatter so
     # repository surfaces do not render classification metadata to users.
@@ -577,8 +593,11 @@ def validate(root, ci_mode=False):
 
     for dirpath, dirnames, filenames in os.walk(root):
         # Skip hidden dirs, build dirs, known non-doc directories, and
-        # internal/archived doc workspaces outside the doctrine contract.
-        parent_is_docs = os.path.basename(dirpath) == "docs"
+        # internal/archived/test-fixture trees outside the doctrine contract.
+        dir_base = os.path.basename(dirpath)
+        parent_is_docs = dir_base == "docs"
+        parent_is_tests = dir_base in ("tests", "test")
+        is_repo_root = Path(dirpath) == root
         dirnames[:] = [
             d
             for d in dirnames
@@ -586,6 +605,8 @@ def validate(root, ci_mode=False):
             and d not in SKIP_DIRS
             and d not in EXEMPT_DIR_NAMES
             and not (parent_is_docs and d in EXEMPT_DOCS_SUBDIR_NAMES)
+            and not (parent_is_tests and d in EXEMPT_TESTS_SUBDIR_NAMES)
+            and not (is_repo_root and d in EXEMPT_ROOT_DIR_NAMES)
         ]
 
         for d in dirnames:

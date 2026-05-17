@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Security Policy
 description: Security vulnerability reporting and disclosure procedures
-last_updated: 2026-05-03
+last_updated: 2026-05-17
 category: governance
 audience: all
 status: active
@@ -19,6 +19,9 @@ tags: [governance, security, vulnerability, disclosure]
 ## Reporting Security Vulnerabilities
 
 Please report security vulnerabilities to `security@kohyr.com`.
+
+Routing guidance for multi-repo or ambiguous reports:
+[Security intake matrix](docs/governance/security-intake-matrix.md).
 
 Include the repository name, a clear description of the issue, reproduction steps (if available), and the expected impact.
 

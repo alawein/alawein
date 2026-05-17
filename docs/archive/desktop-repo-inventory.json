@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated": "2026-05-11",
+  "generated": "2026-05-17",
   "workspace_roots": [
     ".",
     "../morphism-systems",
@@ -9,7 +9,7 @@
   "golden_references": {
     "vite-react-spa": {
       "repo": "alawein/meshal-web",
-      "local_folder": "apps/meshal-web",
+      "local_folder": "personal/meshal-web",
       "notes": "Derived from catalog entry meshal-web"
     },
     "node-monorepo": {
@@ -19,7 +19,7 @@
     },
     "next-app-router": {
       "repo": "alawein/scribd",
-      "local_folder": "apps/scribd",
+      "local_folder": "products/scribd",
       "notes": "Derived from catalog entry scribd"
     },
     "python-service": {
@@ -39,7 +39,7 @@
     },
     "game-project": {
       "repo": "alawein/roka-oakland-hustle",
-      "local_folder": "apps/roka-oakland-hustle",
+      "local_folder": "personal/roka-oakland-hustle",
       "notes": "Derived from catalog entry roka-oakland-hustle"
     },
     "docs-hub": {
@@ -57,7 +57,7 @@
   ],
   "repos": [
     {
-      "folder": "apps/meshal-web",
+      "folder": "personal/meshal-web",
       "remote_slug": "alawein/meshal-web",
       "archetype": "vite-react-spa",
       "tier": "product",
@@ -71,35 +71,35 @@
       "stack": "typescript, python, governance"
     },
     {
-      "folder": "apps/repz",
+      "folder": "products/repz",
       "remote_slug": "alawein/repz",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, typescript, supabase"
     },
     {
-      "folder": "apps/gymboy",
+      "folder": "products/gymboy",
       "remote_slug": "alawein/gymboy",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, spark"
     },
     {
-      "folder": "apps/scribd",
+      "folder": "products/scribd",
       "remote_slug": "alawein/scribd",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, react, typescript"
     },
     {
-      "folder": "tools/bolts",
+      "folder": "products/bolts",
       "remote_slug": "alawein/bolts",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, typescript, python"
     },
     {
-      "folder": "apps/atelier-rounaq",
+      "folder": "family/atelier-rounaq",
       "remote_slug": "alawein/atelier-rounaq",
       "archetype": "vite-react-spa",
       "tier": "product",
@@ -169,7 +169,7 @@
       "stack": "python, legal-ai, cli, ocr"
     },
     {
-      "folder": "apps/roka-oakland-hustle",
+      "folder": "personal/roka-oakland-hustle",
       "remote_slug": "alawein/roka-oakland-hustle",
       "archetype": "game-project",
       "tier": "product",

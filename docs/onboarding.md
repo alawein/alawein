@@ -2,8 +2,8 @@
 type: canonical
 source: alawein
 sla: on-change
-last-verified: 2026-04-30
-last_updated: 2026-04-30
+last-verified: 2026-05-17
+last_updated: 2026-05-17
 audience: [new-contributors, agents]
 ---
 
@@ -74,20 +74,20 @@ Run these before opening a PR:
 
 ```bash
 # Doc contract (fast)
-bash scripts/validate-doc-contract.sh --full
+bash ./scripts/doctrine/validate-doc-contract.sh --full
 
 # Prompt kit structure
-python scripts/validate-prompt-kit.py
+python scripts/doctrine/validate-prompt-kit.py
 
 # Doctrine (full-repo)
-python scripts/validate-doctrine.py .
+python scripts/doctrine/validate-doctrine.py .
 
 # GitHub baseline (control-plane)
-python scripts/github-baseline-audit.py --local
+python scripts/github/github-baseline-audit.py --local
 
 # Style rules
-python scripts/build-style-rules.py --check
-python scripts/validate.py --ci
+python scripts/doctrine/build-style-rules.py --check
+python scripts/doctrine/validate.py --ci
 ```
 
 ---

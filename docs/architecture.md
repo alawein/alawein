@@ -48,7 +48,7 @@ graph TB
 
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-05-16 — do not edit; run scripts/generate-arch-diagram.py -->
+<!-- last updated: 2026-05-17 — do not edit; run scripts/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -75,7 +75,7 @@ graph TB
     bolts["bolts\nFitness transformation plans with N"]
     atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
     attributa["attributa\nPrivacy-first attribution intellige"]
-    more_product["… 2 more"]
+    more_product["… 3 more"]
   end
   subgraph research["Research Repos"]
     edfp["edfp\nPhysics-inspired video event detect"]
@@ -86,10 +86,13 @@ graph TB
     meatheadphysicist["meatheadphysicist\nComputational physics research plat"]
     adil["adil\nLegal-ops CLI for assembling, valid"]
     qmatsim["qmatsim\nQuantum material simulation researc"]
-    more_research["… 7 more"]
+    more_research["… 8 more"]
   end
   subgraph tooling["Tooling Repos"]
     handshake_hai["handshake-hai\nLLM evaluation monorepo with shared"]
+    turing["turing\nPrivate catalog-collection workspac"]
+    incore["incore\nCLI and MCP tooling for workspace a"]
+    prompty["prompty\nTurbo monorepo for prompt design, e"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
   end
 ```

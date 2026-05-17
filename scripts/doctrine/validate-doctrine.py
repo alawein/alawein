@@ -43,6 +43,16 @@ EXEMPT_TEMPLATE_MARKDOWN_PATHS = {
     "templates/scaffolding/README.tooling.md",
     "templates/scaffolding/docs-README.md",
 }
+# Internal / archived doc workspaces that sit outside the doctrine contract.
+# `archive/` and `_archive/` hold historical snapshots; `docs/superpowers/`
+# and `docs/internal/` hold agent-workflow scratch (brainstorm specs and
+# implementation plans) -- the consumer-repo equivalent of this repo's own
+# docs/internal/. Files under these directories are skipped during the walk,
+# so no rule (R1 header, R2 duplicate canonical, R5 naming, ...) applies to
+# them. `archive`/`_archive` are skipped anywhere; `superpowers`/`internal`
+# are skipped only directly under a `docs/` directory.
+EXEMPT_DIR_NAMES = {"archive", "_archive"}
+EXEMPT_DOCS_SUBDIR_NAMES = {"superpowers", "internal"}
 
 
 class ValidationResult:
@@ -566,11 +576,16 @@ def validate(root, ci_mode=False):
     }
 
     for dirpath, dirnames, filenames in os.walk(root):
-        # Skip hidden dirs, build dirs, and known non-doc directories
+        # Skip hidden dirs, build dirs, known non-doc directories, and
+        # internal/archived doc workspaces outside the doctrine contract.
+        parent_is_docs = os.path.basename(dirpath) == "docs"
         dirnames[:] = [
             d
             for d in dirnames
-            if not d.startswith(".") and d not in SKIP_DIRS
+            if not d.startswith(".")
+            and d not in SKIP_DIRS
+            and d not in EXEMPT_DIR_NAMES
+            and not (parent_is_docs and d in EXEMPT_DOCS_SUBDIR_NAMES)
         ]
 
         for d in dirnames:

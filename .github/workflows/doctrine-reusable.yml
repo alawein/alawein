@@ -45,6 +45,20 @@ jobs:
       - name: Install Python dependencies
         run: python -m pip install --disable-pip-version-check pyyaml
 
+      - name: Validate Repo Framework header
+        # Per-repo gate: validates THIS repo's README header against
+        # projects.json, the bucket source of truth. A repo adopts this
+        # gate only by pinning a workspace SHA that contains this step,
+        # so the gate is authoritative from the moment of adoption.
+        # This step is an unconditional hard gate: it does NOT honor the
+        # workflow's `strict` input, and it runs FIRST among the validation
+        # steps so a doctrine or style failure can never mask it.
+        run: |
+          python org/scripts/doctrine/validate-repo-framework.py \
+            --repo repo \
+            --registry org/projects.json \
+            --repo-slug "${{ github.repository }}"
+
       - name: Run Doctrine Validator
         run: |
           if [ "${{ inputs.strict }}" = "true" ]; then
@@ -60,20 +74,6 @@ jobs:
           else
             python org/scripts/doctrine/validate.py --root repo || echo "::warning::Style validation found issues (non-blocking)"
           fi
-
-      - name: Validate Repo Framework header
-        # Per-repo gate: validates THIS repo's README header against
-        # projects.json, the bucket source of truth. A repo adopts this
-        # gate only by pinning a workspace SHA that contains this step,
-        # so the gate is authoritative from the moment of adoption.
-        # This step is an unconditional hard gate: it does NOT honor the
-        # workflow's `strict` input. Because adoption requires an explicit
-        # SHA pin, the gate must be authoritative once adopted.
-        run: |
-          python org/scripts/doctrine/validate-repo-framework.py \
-            --repo repo \
-            --registry org/projects.json \
-            --repo-slug "${{ github.repository }}"
 
       - name: Install Vale CLI
         run: |
@@ -97,7 +97,12 @@ jobs:
           for file in "${files[@]}"; do
             prefixed+=("repo/${file}")
           done
-          vale --config org/.vale.ini --minAlertLevel=error "${prefixed[@]}"
+          if [ "${{ inputs.strict }}" = "true" ]; then
+            vale --config org/.vale.ini --minAlertLevel=error "${prefixed[@]}"
+          else
+            vale --config org/.vale.ini --minAlertLevel=error "${prefixed[@]}" \
+              || echo "::warning::Vale found issues (non-blocking)"
+          fi
 
       - name: Run advisory repo style audit
         continue-on-error: true

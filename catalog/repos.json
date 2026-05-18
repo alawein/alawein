@@ -340,8 +340,7 @@
       "surface": "web",
       "stack": [
         "nextjs",
-        "typescript",
-        "python"
+        "typescript"
       ],
       "domain": "fitness",
       "audience": [
@@ -360,8 +359,7 @@
       "canonical_description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
       "tags": [
         "Next.js",
-        "TypeScript",
-        "Python"
+        "TypeScript"
       ],
       "github_topics": [
         "fitness",
@@ -880,8 +878,10 @@
       "homepage": "https://simcore.dev",
       "canonical_description": "Scientific simulation core for interactive modeling and numerical exploration.",
       "tags": [
-        "Python",
-        "Scientific computing"
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
       ],
       "github_topics": [
         "simulation",
@@ -993,8 +993,7 @@
       "stack": [
         "python",
         "legal-ai",
-        "cli",
-        "ocr"
+        "cli"
       ],
       "domain": "legal-ops",
       "audience": [
@@ -1014,13 +1013,11 @@
       "tags": [
         "Python",
         "Legal AI",
-        "CLI",
-        "OCR"
+        "CLI"
       ],
       "github_topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -1409,9 +1406,9 @@
       "type": "research",
       "surface": "web",
       "stack": [
-        "typescript",
-        "react",
-        "vite"
+        "html",
+        "css",
+        "javascript"
       ],
       "domain": "quantum",
       "audience": [
@@ -1429,22 +1426,21 @@
       "homepage": "https://chshlab.online",
       "canonical_description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
       "tags": [
-        "TypeScript",
-        "React",
-        "Vite",
+        "HTML",
+        "CSS",
+        "JavaScript",
         "Quantum"
       ],
       "github_topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -1591,7 +1587,7 @@
       "type": "research",
       "surface": "workflow",
       "stack": [
-        "typescript",
+        "python",
         "mcp",
         "agents"
       ],
@@ -1611,7 +1607,7 @@
       "homepage": "https://provegate.online",
       "canonical_description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
       "tags": [
-        "TypeScript",
+        "Python",
         "MCP",
         "Agents"
       ],
@@ -1619,13 +1615,13 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -1636,7 +1632,7 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research",

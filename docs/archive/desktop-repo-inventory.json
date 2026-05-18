@@ -42,6 +42,11 @@
       "local_folder": "personal/roka-oakland-hustle",
       "notes": "Derived from catalog entry roka-oakland-hustle"
     },
+    "static-site": {
+      "repo": "alawein/chshlab",
+      "local_folder": "research/chshlab",
+      "notes": "Derived from catalog entry chshlab"
+    },
     "docs-hub": {
       "repo": "alawein/alawein",
       "local_folder": "alawein",
@@ -96,7 +101,7 @@
       "remote_slug": "alawein/bolts",
       "archetype": "next-app-router",
       "tier": "product",
-      "stack": "nextjs, typescript, python"
+      "stack": "nextjs, typescript"
     },
     {
       "folder": "family/atelier-rounaq",
@@ -166,7 +171,7 @@
       "remote_slug": "alawein/adil",
       "archetype": "python-service",
       "tier": "research",
-      "stack": "python, legal-ai, cli, ocr"
+      "stack": "python, legal-ai, cli"
     },
     {
       "folder": "personal/roka-oakland-hustle",
@@ -213,9 +218,9 @@
     {
       "folder": "research/chshlab",
       "remote_slug": "alawein/chshlab",
-      "archetype": "vite-react-spa",
+      "archetype": "static-site",
       "tier": "research",
-      "stack": "typescript, react, vite"
+      "stack": "html, css, javascript"
     },
     {
       "folder": "research/helios",
@@ -234,9 +239,9 @@
     {
       "folder": "ventures/provegate",
       "remote_slug": "alawein/provegate",
-      "archetype": "node-monorepo",
+      "archetype": "python-service",
       "tier": "research",
-      "stack": "typescript, mcp, agents"
+      "stack": "python, mcp, agents"
     },
     {
       "folder": "jobs-projects/mercor",

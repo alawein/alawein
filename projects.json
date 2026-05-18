@@ -97,8 +97,7 @@
       "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
       "tags": [
         "Next.js",
-        "TypeScript",
-        "Python"
+        "TypeScript"
       ],
       "category": "active",
       "url": "https://bolts.fit",
@@ -265,8 +264,10 @@
       "repo": "alawein/simcore",
       "description": "Scientific simulation core for interactive modeling and numerical exploration.",
       "tags": [
-        "Python",
-        "Scientific computing"
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
       ],
       "category": "active",
       "url": "https://simcore.dev",
@@ -304,8 +305,7 @@
       "tags": [
         "Python",
         "Legal AI",
-        "CLI",
-        "OCR"
+        "CLI"
       ],
       "category": "active",
       "portfolio_domain": "Personal",

@@ -81,6 +81,7 @@
       "archive",
       "automation",
       "cli",
+      "css",
       "evaluation",
       "evaluations",
       "fastapi",
@@ -90,6 +91,8 @@
       "godot",
       "governance",
       "hpc",
+      "html",
+      "javascript",
       "legal-ai",
       "llm",
       "llm-training",
@@ -99,7 +102,6 @@
       "nextjs",
       "node",
       "numpy",
-      "ocr",
       "opencv",
       "optimization",
       "pennylane",
@@ -449,8 +451,7 @@
         "brand_family": "forge",
         "stack": [
           "nextjs",
-          "typescript",
-          "python"
+          "typescript"
         ],
         "audience": [
           "client",
@@ -895,8 +896,7 @@
         "stack": [
           "python",
           "legal-ai",
-          "cli",
-          "ocr"
+          "cli"
         ],
         "audience": [
           "client",
@@ -907,7 +907,6 @@
         "topics": [
           "python",
           "cli",
-          "ocr",
           "legal-ops",
           "automation"
         ],
@@ -1653,8 +1652,7 @@
       "brand_family": "forge",
       "stack": [
         "nextjs",
-        "typescript",
-        "python"
+        "typescript"
       ],
       "audience": [
         "client",
@@ -2148,8 +2146,7 @@
       "stack": [
         "python",
         "legal-ai",
-        "cli",
-        "ocr"
+        "cli"
       ],
       "audience": [
         "client",
@@ -2160,7 +2157,6 @@
       "topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -2464,9 +2460,9 @@
       "theme_family": "dawn",
       "brand_family": "dawn",
       "stack": [
-        "typescript",
-        "react",
-        "vite"
+        "html",
+        "css",
+        "javascript"
       ],
       "audience": [
         "research",
@@ -2477,9 +2473,8 @@
       "topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -2495,7 +2490,7 @@
         "quantum-education-site"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "static-site",
       "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2601,7 +2596,7 @@
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
-        "typescript",
+        "python",
         "mcp",
         "agents"
       ],
@@ -2615,7 +2610,7 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "maintainer": "alawein-core",
@@ -2632,8 +2627,8 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-service",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -4422,7 +4417,6 @@
       "topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -4572,14 +4566,13 @@
       "topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -4636,13 +4629,13 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -5208,8 +5201,7 @@
         "brand_family": "forge",
         "stack": [
           "nextjs",
-          "typescript",
-          "python"
+          "typescript"
         ],
         "audience": [
           "client",

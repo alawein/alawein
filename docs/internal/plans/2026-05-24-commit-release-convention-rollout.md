@@ -60,7 +60,7 @@ $g = 'C:\Users\mesha\Desktop\Dropbox\GitHub\alawein\alawein'
 py -3.12 "$g\scripts\doctrine\validate.py" --ci
 ```
 Expected: `OK - no violations found.` (catches em-dashes/voice). Fix any finding.
-- [ ] **Step 3: Link it from CONTRIBUTING.** In `CONTRIBUTING.md`, add under its conventions/commits area: `See [docs/governance/commit-release-convention.md](docs/governance/commit-release-convention.md) for the full commit, branch, and release convention.` Bump `CONTRIBUTING.md` `last_updated` if it has frontmatter.
+- [ ] **Step 3: Link it from CONTRIBUTING.** In `CONTRIBUTING.md`, add under its conventions/commits area: `See docs/governance/commit-release-convention.md for the full commit, branch, and release convention.` Bump `CONTRIBUTING.md` `last_updated` if it has frontmatter.
 - [ ] **Step 4: Run the doctrine gate.**
 ```powershell
 Push-Location $g; try { bash ./scripts/doctrine/validate-doc-contract.sh --full } finally { Pop-Location }

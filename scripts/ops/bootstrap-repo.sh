@@ -114,7 +114,7 @@ cat > scripts/validate.sh << 'SCRIPT'
 # Wrapper: runs doctrine validator from org repo
 # Adjust ORG_PATH to your org repo location
 ORG_PATH="${ORG_REPO_PATH:-../org}"
-python "${ORG_PATH}/scripts/validate-doctrine.py" --ci .
+python "${ORG_PATH}/scripts/doctrine/validate-doctrine.py" --ci .
 SCRIPT
 chmod +x scripts/validate.sh
 

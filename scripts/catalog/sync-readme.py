@@ -29,7 +29,7 @@ def prettify_slug(slug: str) -> str:
 
 def render_link_row(profile: dict) -> str:
     urls = profile.get("urls") or {}
-    ordered_keys = ("website", "morphism", "scholar", "email")
+    ordered_keys = ("website", "kohyr", "scholar", "email")
     link_labels: dict[str, str] = {"scholar": "Scholar"}
     items: list[str] = []
     for key in ordered_keys:

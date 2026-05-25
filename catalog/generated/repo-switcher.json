@@ -53,56 +53,6 @@
       "release_automation": {}
     },
     {
-      "name": "Morphism",
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "type": "product",
-      "surface": "monorepo",
-      "domain": "ai-governance",
-      "lifecycle": "active",
-      "visibility": "public",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "typescript",
-        "python",
-        "governance"
-      ],
-      "audience": [
-        "public",
-        "client",
-        "research"
-      ],
-      "homepage": "https://kohyr.com",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "../morphism-systems/morphism",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "governance-runtime",
-        "proof-tooling",
-        "mcp-server"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "name": "REPZ",
       "slug": "repz",
       "repo": "alawein/repz",

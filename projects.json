@@ -21,22 +21,6 @@
       "visibility": "private"
     },
     {
-      "name": "Morphism",
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "tags": [
-        "TypeScript",
-        "Python",
-        "Governance"
-      ],
-      "category": "active",
-      "url": "https://kohyr.com",
-      "portfolio_domain": "Work",
-      "status": "active",
-      "visibility": "public"
-    },
-    {
       "name": "REPZ",
       "slug": "repz",
       "repo": "alawein/repz",
@@ -674,36 +658,6 @@
     }
   ],
   "packages": [
-    {
-      "name": "@morphism-systems/cli",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/cli",
-      "description": "Governance CLI for scaffold, validate, score, and heal operations."
-    },
-    {
-      "name": "@morphism-systems/mcp-server",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
-      "description": "MCP server for AI agent governance."
-    },
-    {
-      "name": "@morphism-systems/agentic-math",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
-      "description": "MCP math computation server."
-    },
-    {
-      "name": "@morphism-systems/plugin-bundle",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
-      "description": "Bundle installer for Morphism tools."
-    },
-    {
-      "name": "morphism",
-      "registry": "pypi",
-      "url": "https://pypi.org/project/morphism/",
-      "description": "Python category theory engine."
-    },
     {
       "name": "berkeley-scicomp",
       "registry": "pypi",

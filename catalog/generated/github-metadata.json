@@ -24,28 +24,6 @@
       "release_automation": {}
     },
     {
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "homepage": "https://kohyr.com",
-      "topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "slug": "repz",
       "repo": "alawein/repz",
       "description": "AI-powered coaching platform for fitness professionals and clients.",

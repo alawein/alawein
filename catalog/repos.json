@@ -76,69 +76,6 @@
       "portfolio_domain": "Personal"
     },
     {
-      "name": "Morphism",
-      "slug": "morphism",
-      "legacy_slugs": [],
-      "repo": "morphism-systems/morphism",
-      "local_path": "../morphism-systems/morphism",
-      "type": "product",
-      "surface": "monorepo",
-      "stack": [
-        "typescript",
-        "python",
-        "governance"
-      ],
-      "domain": "ai-governance",
-      "audience": [
-        "public",
-        "client",
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "morphism-systems",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "status": "active",
-      "homepage": "https://kohyr.com",
-      "canonical_description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "tags": [
-        "TypeScript",
-        "Python",
-        "Governance"
-      ],
-      "github_topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "governance-runtime",
-        "proof-tooling",
-        "mcp-server"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
       "name": "REPZ",
       "slug": "repz",
       "legacy_slugs": [],
@@ -1523,6 +1460,8 @@
       "type": "research",
       "surface": "web",
       "stack": [
+        "python",
+        "fastapi",
         "typescript",
         "react",
         "vite"
@@ -1543,6 +1482,8 @@
       "homepage": "https://loopholelab.online",
       "canonical_description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
       "tags": [
+        "Python",
+        "FastAPI",
         "TypeScript",
         "React",
         "Quantum",

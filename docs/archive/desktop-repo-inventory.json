@@ -12,11 +12,6 @@
       "local_folder": "personal/meshal-web",
       "notes": "Derived from catalog entry meshal-web"
     },
-    "node-monorepo": {
-      "repo": "morphism-systems/morphism",
-      "local_folder": "../morphism-systems/morphism",
-      "notes": "Derived from catalog entry morphism"
-    },
     "next-app-router": {
       "repo": "alawein/scribd",
       "local_folder": "products/scribd",
@@ -47,6 +42,11 @@
       "local_folder": "research/chshlab",
       "notes": "Derived from catalog entry chshlab"
     },
+    "node-monorepo": {
+      "repo": "alawein/design-system",
+      "local_folder": "tools/design-system",
+      "notes": "Derived from catalog entry design-system"
+    },
     "docs-hub": {
       "repo": "alawein/alawein",
       "local_folder": "alawein",
@@ -67,13 +67,6 @@
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "vite, react, typescript, tailwind"
-    },
-    {
-      "folder": "../morphism-systems/morphism",
-      "remote_slug": "morphism-systems/morphism",
-      "archetype": "node-monorepo",
-      "tier": "product",
-      "stack": "typescript, python, governance"
     },
     {
       "folder": "products/repz",
@@ -234,7 +227,7 @@
       "remote_slug": "alawein/loopholelab",
       "archetype": "vite-react-spa",
       "tier": "research",
-      "stack": "typescript, react, vite"
+      "stack": "python, fastapi, typescript, react, vite"
     },
     {
       "folder": "ventures/provegate",

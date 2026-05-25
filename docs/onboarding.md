@@ -2,12 +2,12 @@
 type: canonical
 source: alawein
 sla: on-change
-last-verified: 2026-05-17
-last_updated: 2026-05-17
+last-verified: 2026-05-23
+last_updated: 2026-05-23
 audience: [new-contributors, agents]
 ---
 
-# Onboarding — Alawein Workspace
+# Onboarding: Alawein Workspace
 
 ## What is this repo?
 
@@ -35,7 +35,7 @@ flowchart TD
   choose -->|"Adding a feature\nto a product repo"| product["cd into target repo\nRead its AGENTS.md\nFollow its CLAUDE.md"]
   choose -->|"Changing a governance\ndoc or style rule"| gov["Read documentation-contract.md\nOpen a docs-update issue\nFollow canary rollout order"]
   choose -->|"Changing a prompt kit\nor VOICE.md"| prompt["Read prompt-kits/registry.yaml\nRead prompt-rollout.md\nOpen a prompt-change issue"]
-  choose -->|"Adding a new repo\nto the org"| scaffold["Read docs/NEW_REPO.md\nRun scripts/bootstrap-repo.sh\nAdd to catalog/repos.json"]
+  choose -->|"Adding a new repo\nto the org"| scaffold["Read docs/NEW_REPO.md\nRun scripts/ops/bootstrap-repo.sh\nAdd to catalog/repos.json"]
   choose -->|"CI / workflow change"| ci["Read github-baseline.yaml\nRead branch-and-deployment-convention.md\nCODEOWNERS review required"]
 ```
 
@@ -45,12 +45,12 @@ flowchart TD
 
 | Role | First Read | Second Read | Third Read |
 |------|-----------|------------|-----------|
-| Frontend dev | target repo's `AGENTS.md` | `design-system/README.md` | `docs/style/VOICE.md` |
-| Backend dev | target repo's `AGENTS.md` | `docs/governance/git-operations.md` | — |
-| ML / Research | target repo's `AGENTS.md` | `docs/style/VOICE.md` (math section) | — |
+| Frontend dev | target repo's `AGENTS.md` | `tools/design-system/README.md` | `docs/style/VOICE.md` |
+| Backend dev | target repo's `AGENTS.md` | `docs/governance/git-operations.md` | n/a |
+| ML / Research | target repo's `AGENTS.md` | `docs/style/VOICE.md` (math section) | n/a |
 | AI / LLMOps | `prompt-kits/AGENT.md` | `prompt-kits/registry.yaml` | `docs/governance/prompt-rollout.md` |
 | DevOps | `github-baseline.yaml` | `docs/governance/branch-and-deployment-convention.md` | `.github/workflows/` |
-| New repo owner | `docs/NEW_REPO.md` | `scripts/bootstrap-repo.sh` | `catalog/repos.json` schema |
+| New repo owner | `docs/NEW_REPO.md` | `scripts/ops/bootstrap-repo.sh` | `catalog/repos.json` schema |
 
 Full capability-domain breakdown: `catalog/skills.yaml`.
 
@@ -58,9 +58,9 @@ Full capability-domain breakdown: `catalog/skills.yaml`.
 
 ## Hard Rules (applies workspace-wide)
 
-1. Each sibling repo is an independent git repo — do not assume shared state.
+1. Each sibling repo is an independent git repo; do not assume shared state.
 2. Never commit secrets, API keys, or `.env` files.
-3. `README.md` and `docs/README.md` are generated — do not hand-edit synced blocks.
+3. `README.md` and `docs/README.md` are generated; do not hand-edit synced blocks.
 4. All governance `.md` files require YAML frontmatter with `type:` and freshness field.
 5. Prompt kit changes require a rollout issue and follow `docs/governance/prompt-rollout.md`.
 6. CI workflow changes require CODEOWNERS review (`@alawein`).
@@ -96,5 +96,5 @@ python scripts/doctrine/validate.py --ci
 
 The canonical list of all workspace repos is `catalog/repos.json`. If you add a
 new repo, add it there before opening any governance PR. The `catalog/skills.yaml`
-file tracks capability domains — update it if the new repo introduces a new stack
+file tracks capability domains; update it if the new repo introduces a new stack
 or domain.

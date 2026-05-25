@@ -1,4 +1,4 @@
-# prompt-kits/registry.yaml — canonical prompt inventory
+# prompt-kits/registry.yaml: canonical prompt inventory
 # Every prompt kit consumed by agents or tooling must be registered here.
 # rollout-status: draft | canary | staged | ga | deprecated
 version: 1

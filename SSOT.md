@@ -4,14 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-05-05
+last-verified: 2026-05-23
+last_updated: 2026-05-23
 audience: [ai-agents, contributors]
 ---
 
-# SSOT — alawein
+# SSOT: alawein
 
 **Version:** 1.4
-**Last Updated:** 2026-04-15
+**Last Updated:** 2026-05-23
 **Status:** Active
 
 ---
@@ -41,24 +42,24 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Governance suite navigation:
   [`docs/README.md`](docs/README.md)
 - Canonical governance validation:
-  `./scripts/validate-doc-contract.sh --full`
+  `./scripts/doctrine/validate-doc-contract.sh --full`
 - GitHub baseline manifest and sync path are active:
-  `github-baseline.yaml`, `scripts/sync-github.sh`,
-  `scripts/github-baseline-audit.py`
+  `github-baseline.yaml`, `scripts/github/sync-github.sh`,
+  `scripts/github/github-baseline-audit.py`
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
 - Manifest-driven batch governance is active for multi-repo autonomous work
 - README is generated from canonical `catalog/repos.json` data and
   `profile-from-guides.yaml`; `projects.json` remains derived output from
-  `scripts/build-catalog.py`
+  `scripts/catalog/build-catalog.py`
 - Read-only profile pin drift verification is active via
-  `scripts/verify-profile-pins.py`
+  `scripts/github/verify-profile-pins.py`
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and
   remain render-first GitHub artifacts
 - Hybrid corpus refinement is active under `docs/style/`; canonical prompt
   surfaces live under `prompt-kits/`
 - Vale terminology/tone rules are derived from `docs/style/terminology-registry.yaml`
-  via `scripts/build-style-rules.py`
+  via `scripts/doctrine/build-style-rules.py`
 - Managed repo workflow consumers are generated from `github-baseline.yaml`
   using immutable reusable workflow refs
 - Canonical naming policy is active; hard cutover completed on 2026-03-11 for
@@ -66,19 +67,19 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Transitional identifiers are retained in `projects.json` via `legacy_slugs`
   for one migration cycle
 - Global `~/.claude/` platform source (agent config, skills, workflows):
-  [`claude-agent-platform/`](claude-agent-platform/) — apply changes with
+  [`claude-agent-platform/`](claude-agent-platform/), apply changes with
   `bash claude-agent-platform/sync-to-home.sh` (push) or capture with
   `bash claude-agent-platform/sync-from-home.sh` (pull)
 - Specs live in [`docs/internal/specs/`](docs/internal/specs/);
   plans live in [`docs/internal/plans/`](docs/internal/plans/)
-- D-1 consolidation status: canonical token source is `design-system/tokens/`;
+- D-1 consolidation status: canonical token source is `tools/design-system/tokens/`;
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
 - Workspace audit specs and execution plans:
-  [`docs/internal/specs/`](docs/internal/specs/) — triage, per-domain audits, and master execution plan
+  [`docs/internal/specs/`](docs/internal/specs/): triage, per-domain audits, and master execution plan
   - Active products audit (Spec A):
-    [`docs/internal/specs/2026-04-23-active-products-audit.md`](docs/internal/specs/2026-04-23-active-products-audit.md) — 75 findings across 8 repos
+    [`docs/internal/specs/2026-04-23-active-products-audit.md`](docs/internal/specs/2026-04-23-active-products-audit.md): 75 findings across 8 repos
 
 ## Structure
 
@@ -109,15 +110,11 @@ alawein/
 │       └── github-baseline.md
 ├── github-baseline.yaml
 └── scripts/
-    ├── validate-doc-contract.sh
-    ├── build-catalog.py
-    ├── build-style-rules.py
-    ├── sync-readme.py
-    ├── style-advisory-audit.py
-    ├── verify-profile-pins.py
-    ├── sync-github.sh
-    ├── github-baseline-audit.py
-    └── sync-to-notion.mjs
+    ├── doctrine/        # validate-doc-contract.sh, build-style-rules.py, style-advisory-audit.py
+    ├── catalog/         # build-catalog.py, sync-readme.py
+    ├── github/          # sync-github.sh, github-baseline-audit.py, verify-profile-pins.py
+    ├── ops/             # sync-claude.sh, render-configs.sh, generate-index.sh
+    └── notion/          # sync-to-notion.mjs
 ```
 
 ## What's Next

@@ -7,8 +7,8 @@ audience: [agents, contributors]
 kit-type: site-prompt
 version: 1.1.0
 parent-version: 1.0.0
-last-verified: 2026-04-30
-last_updated: 2026-04-30
+last-verified: 2026-05-23
+last_updated: 2026-05-23
 change-summary: "Added version tracking; no behavioral changes"
 downstream-consumers: [meshal-web]
 ---
@@ -89,13 +89,13 @@ heavy fills.
 
 | Name | Category | One-liner |
 |------|----------|-----------|
-| Morphism | Governance | Formal orchestration for governed, composable agent systems |
-| Alembiq | AI Infrastructure | LLM training, alignment, and evaluation — SFT, DPO, LoRA, synthetic data |
+| Kohyr | Governance | AI governance framework with category-theoretic proof witnesses |
+| Alembiq | AI Infrastructure | LLM training, alignment, and evaluation: SFT, DPO, LoRA, synthetic data |
 | Event Discovery Framework | Computer Vision | Physics-inspired video event detection via energy functionals |
 | OptiQAP | Optimization | Equilibrium-guided QAP solver: spectral methods, QUBO, simulated annealing |
 | REPZ | Coaching Platform | Elite coaching platform for fitness professionals |
-| LLMWorks | LLM Tooling | LLM evaluation and security testing — arena, benchmarks, provenance |
-| SimCore | Scientific Platform | Interactive scientific computing — 18 modules for quantum simulation |
+| LLMWorks | LLM Tooling | LLM evaluation and security testing: arena, benchmarks, provenance |
+| SimCore | Scientific Platform | Interactive scientific computing: 18 modules for quantum simulation |
 
 ## What to help with
 

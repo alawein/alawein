@@ -7,14 +7,14 @@ sla: manual
 
 # Templates
 
-Config file templates rendered by `scripts/render-configs.sh` across
+Config file templates rendered by `scripts/ops/render-configs.sh` across
 workspace repos.
 
 ## Available Templates
 
 | Template | Output | Purpose |
 |----------|--------|---------|
-| `.editorconfig.template` | `.editorconfig` | Editor formatting (indent, line endings, charset) |
+| `editorconfig.template` | `.editorconfig` | Editor formatting (indent, line endings, charset) |
 
 ## Variables
 
@@ -30,13 +30,13 @@ Templates support these substitution variables:
 
 ```bash
 # Render all templates to all workspace repos
-./scripts/render-configs.sh
+./scripts/ops/render-configs.sh
 
 # List available templates
-./scripts/render-configs.sh --list
+./scripts/ops/render-configs.sh --list
 
 # Check for config drift
-./scripts/render-configs.sh --check
+./scripts/ops/render-configs.sh --check
 ```
 
 ## Adding a Template

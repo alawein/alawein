@@ -1,26 +1,26 @@
 ---
 type: generated
-source: scripts/generate-arch-diagram.py
+source: scripts/ops/generate-arch-diagram.py
 sla: on-change
-last-verified: 2026-04-30
-last_updated: 2026-04-30
+last-verified: 2026-05-23
+last_updated: 2026-05-23
 ---
 
 # Alawein Workspace Architecture
 
 <!-- Prose sections are hand-maintained. Diagrams are auto-generated from
-     catalog/repos.json + .github/workflows/ via scripts/generate-arch-diagram.py.
-     To regenerate: python scripts/generate-arch-diagram.py -->
+     catalog/repos.json + .github/workflows/ via scripts/ops/generate-arch-diagram.py.
+     To regenerate: python scripts/ops/generate-arch-diagram.py -->
 
 ## System Context
 
 `alawein/alawein` is the governance control plane for the `@alawein` GitHub org.
 It owns CI policy templates, canonical prompt kits, voice contracts, docs doctrine,
-and the catalog registry that governs 33+ sibling repos. No product code lives here.
+and the catalog registry that governs 37+ sibling repos. No product code lives here.
 
 ```mermaid
 graph TB
-  subgraph alawein-org["@alawein GitHub Org (33+ repos)"]
+  subgraph alawein-org["@alawein GitHub Org (37+ repos)"]
     control["alawein/alawein\nControl Plane\n(CI templates · prompts · catalog)"]
     design["design-system\nTokens + UI packages\n(@alawein/tokens · @alawein/ui)"]
     workspace["workspace-tools\nCLI + Config packages\n(workspace-batch · eslint-config)"]
@@ -48,7 +48,7 @@ graph TB
 
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-05-17 — do not edit; run scripts/generate-arch-diagram.py -->
+<!-- last updated: 2026-05-24; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -68,14 +68,14 @@ graph TB
   end
   subgraph product["Product Repos"]
     meshal_web["meshal-web\nPersonal site and portfolio with pr"]
-    morphism["morphism\nCategory-theoretic AI governance wi"]
     repz["repz\nAI-powered coaching platform for fi"]
     gymboy["gymboy\nFitness coaching platform with a re"]
     scribd["scribd\nFitness publishing and content surf"]
     bolts["bolts\nFitness transformation plans with N"]
     atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
     attributa["attributa\nPrivacy-first attribution intellige"]
-    more_product["… 3 more"]
+    llmworks["llmworks\nLLM evaluation, benchmarking, and s"]
+    more_product["… 2 more"]
   end
   subgraph research["Research Repos"]
     edfp["edfp\nPhysics-inspired video event detect"]
@@ -151,7 +151,7 @@ graph LR
 ```mermaid
 graph TD
   subgraph authored["Authored (canonical sources)"]
-    repos_json["catalog/repos.json\n50+ repo metadata"]
+    repos_json["catalog/repos.json\n37+ repo metadata"]
     skills_yaml["catalog/skills.yaml\ncapability domains"]
     pk_registry["prompt-kits/registry.yaml\nprompt inventory"]
     baseline["github-baseline.yaml\nCI template manifest"]
@@ -161,13 +161,13 @@ graph TD
     disc["catalog/generated/discovery-feed.json"]
     gh_meta["catalog/generated/github-metadata.json"]
     switcher["catalog/generated/repo-switcher.json"]
-    arch_md["docs/architecture.md\n(this file — prose hand-maintained)"]
+    arch_md["docs/architecture.md\n(this file; prose hand-maintained)"]
   end
 
   subgraph scripts["Generation Scripts"]
-    build_cat["scripts/build-catalog.py"]
-    gen_arch["scripts/generate-arch-diagram.py"]
-    sync_readme["scripts/readme-sync.py"]
+    build_cat["scripts/catalog/build-catalog.py"]
+    gen_arch["scripts/ops/generate-arch-diagram.py"]
+    sync_readme["scripts/catalog/sync-readme.py"]
   end
 
   repos_json --> build_cat --> disc & gh_meta & switcher
@@ -201,8 +201,8 @@ graph TB
 
 | Path | Purpose |
 |------|---------|
-| `github-baseline.yaml` | CI template manifest — which repos use which template |
-| `catalog/repos.json` | Canonical repo registry (50+ repos, full metadata) |
+| `github-baseline.yaml` | CI template manifest: which repos use which template |
+| `catalog/repos.json` | Canonical repo registry (37+ repos, full metadata) |
 | `catalog/skills.yaml` | Capability domain registry |
 | `prompt-kits/AGENT.md` | Workspace system prompt (v1.3.0) |
 | `prompt-kits/PORTFOLIO.md` | meshal-web system prompt (v1.1.0) |
@@ -212,8 +212,8 @@ graph TB
 | `docs/governance/prompt-rollout.md` | Prompt versioning and rollout protocol |
 | `docs/style/VOICE.md` | Canonical voice contract (forbidden/preferred register) |
 | `docs/style/terminology-registry.yaml` | Vale linting source |
-| `scripts/validate-doctrine.py` | Full-repo doc doctrine validator |
-| `scripts/validate-prompt-kit.py` | Prompt kit structure + frontmatter validator |
-| `scripts/github-baseline-audit.py` | Action pinning + CI coverage auditor |
-| `scripts/generate-arch-diagram.py` | This diagram's source generator |
+| `scripts/doctrine/validate-doctrine.py` | Full-repo doc doctrine validator |
+| `scripts/doctrine/validate-prompt-kit.py` | Prompt kit structure + frontmatter validator |
+| `scripts/github/github-baseline-audit.py` | Action pinning + CI coverage auditor |
+| `scripts/ops/generate-arch-diagram.py` | This diagram's source generator |
 | `.github/rulesets/main-protection.json` | Branch ruleset definition (apply via GitHub UI) |

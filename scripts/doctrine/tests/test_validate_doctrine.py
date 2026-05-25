@@ -169,3 +169,78 @@ def test_governed_file_with_valid_header_passes(tmp_path):
 def test_governed_file_with_invalid_type_fails_r1(tmp_path):
     _write_md(tmp_path / "docs" / "guide.md", frontmatter=True, type_value="doc")
     assert _rules(tmp_path) == ["R1"]
+
+
+# --- R11 placeholder-residue: unfilled scaffold stubs must go RED ---
+
+def _write_doc(path: Path, body: str) -> None:
+    """Write a governed doc with valid frontmatter and a given body, so R1
+    passes and only body-content rules (R11) can fire."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(f"---\ntype: canonical\n---\n\n# Doc\n\n{body}\n", encoding="utf-8")
+
+
+def _r11_for(root):
+    return [(Path(p).name, msg) for p, rule, msg in _errors(root) if rule == "R11"]
+
+
+def test_residual_install_command_token_fails_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "guide.md", "Run `{{install_command}}` to begin.")
+    assert "R11" in _rules(tmp_path)
+
+
+def test_residual_mustache_token_fails_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "guide.md", "Maintainer: `{{maintainer}}`.")
+    assert "R11" in _rules(tmp_path)
+
+
+def test_residual_brace_placeholder_fails_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "setup.md", "Install with {INSTALL_COMMAND}.")
+    _write_doc(tmp_path / "docs" / "test.md", "Test with {TEST_COMMAND}.")
+    assert _rules(tmp_path).count("R11") >= 2
+
+
+def test_residual_placeholder_prose_fails_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "arch.md", "Summarize the main runtime, data flow, and dependencies.")
+    assert "R11" in _rules(tmp_path)
+
+
+def test_residual_deployment_prose_fails_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "deploy.md", "Document how production or preview environments are built.")
+    assert "R11" in _rules(tmp_path)
+
+
+def test_todo_linked_as_authoritative_fails_r11(tmp_path):
+    # A bare authoritative TODO line (blockquote) signals an unfilled stub.
+    _write_doc(tmp_path / "docs" / "ops.md", "> TODO: write the runbook.")
+    assert "R11" in _rules(tmp_path)
+
+
+def test_templates_dir_is_exempt_from_r11(tmp_path):
+    # Template SOURCES legitimately contain {{...}} tokens and placeholder
+    # prose; the rule must never fire inside templates/.
+    body = (
+        "Run `{{install_command}}`.\n\n"
+        "Summarize the main runtime, data flow, and dependencies.\n\n"
+        "Document how production or preview environments are built."
+    )
+    (tmp_path / "templates" / "scaffolding").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "templates" / "scaffolding" / "README.product.md").write_text(
+        f"# {{{{name}}}}\n\n{body}\n", encoding="utf-8"
+    )
+    assert "R11" not in _rules(tmp_path)
+
+
+def test_clean_doc_has_no_r11(tmp_path):
+    _write_doc(tmp_path / "docs" / "guide.md", "Run `pip install -e .` to begin.")
+    assert "R11" not in _rules(tmp_path)
+
+
+def test_shell_env_var_reference_is_not_r11(tmp_path):
+    # Regression: a documented env-var reference like `${GITHUB_PAT}` is a
+    # secure-pattern example, not an unfilled scaffold token.
+    _write_doc(
+        tmp_path / "docs" / "credential-hygiene.md",
+        'Use environment variable references (e.g. `"${GITHUB_PAT}"`).',
+    )
+    assert "R11" not in _rules(tmp_path)

@@ -62,6 +62,29 @@ EXEMPT_TESTS_SUBDIR_NAMES = {"fixtures"}
 # per-record schema, not doctrine-governed documentation.
 EXEMPT_ROOT_DIR_NAMES = {"db"}
 
+# R11 placeholder-residue: scaffold templates ship with fill-in tokens and
+# placeholder prose. Once a repo is scaffolded, those must be replaced. A doc
+# that still carries them is an unfilled stub masquerading as authoritative, so
+# the gate fails it. The template SOURCES under templates/ legitimately carry
+# the tokens (that is their job), so the whole templates/ tree is exempt.
+PLACEHOLDER_EXEMPT_PREFIXES = ("templates/",)
+# Mustache-style fill tokens: {{name}}, {{install_command}}, ...
+PLACEHOLDER_MUSTACHE_RE = re.compile(r"\{\{\s*[A-Za-z0-9_]+\s*\}\}")
+# Single-brace ALL-CAPS tokens used by CONTRIBUTING scaffolds: {INSTALL_COMMAND},
+# {TEST_COMMAND}, and the like. Require >= 2 chars to avoid matching JSON/code
+# fragments like {X}. A `$`-prefixed token (`${GITHUB_PAT}`) is a shell/env
+# variable reference, not a scaffold placeholder, so a negative lookbehind on
+# `$` keeps documented env-var examples from tripping the rule.
+PLACEHOLDER_BRACE_RE = re.compile(r"(?<!\$)\{[A-Z][A-Z0-9_]{2,}\}")
+# Verbatim placeholder prose copied from the scaffold READMEs.
+PLACEHOLDER_PHRASES = (
+    "Summarize the main runtime",
+    "Document how production",
+)
+# An authoritative blockquote TODO: a doc presenting `> TODO` as if it were
+# real content. Matches a blockquote line whose first word is TODO.
+PLACEHOLDER_TODO_RE = re.compile(r"^\s*>\s*TODO\b", re.IGNORECASE)
+
 
 class ValidationResult:
     def __init__(self):
@@ -157,7 +180,7 @@ def check_naming(filepath, result):
     name = path.name
     stem = path.stem
 
-    # R5 only applies to managed file types — skip source code, notebooks, etc.
+    # R5 only applies to managed file types; skip source code, notebooks, etc.
     if path.suffix not in MANAGED_EXTENSIONS:
         result.ok()
         return
@@ -528,7 +551,7 @@ def check_staleness(managed_files, result):
         if not header:
             continue
 
-        # Only files with last_updated are in scope — others already fail R1/R4.
+        # Only files with last_updated are in scope; others already fail R1/R4.
         raw_date = header.get("last_updated", "").strip()
         if not raw_date:
             continue
@@ -550,6 +573,57 @@ def check_staleness(managed_files, result):
                 result.warn(fp, "R10", msg)
             else:
                 result.error(fp, "R10", msg)
+
+
+def check_placeholder_residue(managed_files, result, root):
+    """Rule 11: residual scaffold placeholders make a stub doc fail.
+
+    Errors when a governed Markdown doc still carries fill-in tokens
+    ({{...}} or {ALL_CAPS}), verbatim placeholder prose, or an authoritative
+    `> TODO` blockquote. The templates/ tree is exempt because template
+    sources are supposed to contain these tokens. Fenced code blocks are
+    skipped so a doc that legitimately documents the token syntax in an
+    example does not trip the rule.
+    """
+    root = Path(root)
+    for fp in managed_files:
+        path = Path(fp)
+        if path.suffix != ".md":
+            continue
+        rel = path.relative_to(root).as_posix()
+        if any(rel.startswith(prefix) for prefix in PLACEHOLDER_EXEMPT_PREFIXES):
+            continue
+        try:
+            content = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, PermissionError):
+            continue
+
+        in_fence = False
+        for line_no, line in enumerate(content.splitlines(), start=1):
+            if line.lstrip().startswith("```"):
+                in_fence = not in_fence
+                continue
+            if in_fence:
+                continue
+            hit = None
+            if PLACEHOLDER_MUSTACHE_RE.search(line):
+                hit = "unfilled mustache token ({{...}})"
+            elif PLACEHOLDER_BRACE_RE.search(line):
+                hit = "unfilled placeholder token ({ALL_CAPS})"
+            elif PLACEHOLDER_TODO_RE.match(line):
+                hit = "authoritative `> TODO` placeholder"
+            else:
+                for phrase in PLACEHOLDER_PHRASES:
+                    if phrase in line:
+                        hit = f"placeholder scaffold prose: '{phrase}'"
+                        break
+            if hit:
+                result.error(
+                    fp,
+                    "R11",
+                    f"line {line_no}: residual scaffold placeholder ({hit}); "
+                    f"fill it before this doc is treated as authoritative",
+                )
 
 
 def collect_results(root):
@@ -578,7 +652,7 @@ def collect_results(root):
         "playwright-report",
         "test-results",
         "state",
-        # External platform tooling — governed by its own standards, not alawein doc doctrine
+        # External platform tooling; governed by its own standards, not alawein doc doctrine
         "claude-agent-platform",
     }
 
@@ -633,6 +707,7 @@ def collect_results(root):
     check_sla_ci_wiring(managed_files, result, root)
     check_zombies(managed_files, all_contents, result)
     check_staleness(managed_files, result)
+    check_placeholder_residue(managed_files, result, root)
     return result
 
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-05-11",
+  "lastVerified": "2026-05-17",
   "git_inventory_suppress_uncatalogued": [
     "tools/inventory/UsersmeshaDesktopincore"
   ],
@@ -13,7 +13,7 @@
       "slug": "meshal-web",
       "legacy_slugs": [],
       "repo": "alawein/meshal-web",
-      "local_path": "apps/meshal-web",
+      "local_path": "personal/meshal-web",
       "bucket": "personal",
       "type": "product",
       "surface": "web",
@@ -76,74 +76,11 @@
       "portfolio_domain": "Personal"
     },
     {
-      "name": "Morphism",
-      "slug": "morphism",
-      "legacy_slugs": [],
-      "repo": "morphism-systems/morphism",
-      "local_path": "../morphism-systems/morphism",
-      "type": "product",
-      "surface": "monorepo",
-      "stack": [
-        "typescript",
-        "python",
-        "governance"
-      ],
-      "domain": "ai-governance",
-      "audience": [
-        "public",
-        "client",
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "morphism-systems",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "status": "active",
-      "homepage": "https://kohyr.com",
-      "canonical_description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "tags": [
-        "TypeScript",
-        "Python",
-        "Governance"
-      ],
-      "github_topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "governance-runtime",
-        "proof-tooling",
-        "mcp-server"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
       "name": "REPZ",
       "slug": "repz",
       "legacy_slugs": [],
       "repo": "alawein/repz",
-      "local_path": "apps/repz",
+      "local_path": "products/repz",
       "bucket": "products",
       "type": "product",
       "surface": "web",
@@ -209,7 +146,7 @@
         "gainboy"
       ],
       "repo": "alawein/gymboy",
-      "local_path": "apps/gymboy",
+      "local_path": "products/gymboy",
       "bucket": "products",
       "type": "product",
       "surface": "web",
@@ -271,7 +208,7 @@
       "slug": "scribd",
       "legacy_slugs": [],
       "repo": "alawein/scribd",
-      "local_path": "apps/scribd",
+      "local_path": "products/scribd",
       "bucket": "products",
       "type": "product",
       "surface": "web",
@@ -334,14 +271,13 @@
       "slug": "bolts",
       "legacy_slugs": [],
       "repo": "alawein/bolts",
-      "local_path": "tools/bolts",
+      "local_path": "products/bolts",
       "bucket": "products",
       "type": "product",
       "surface": "web",
       "stack": [
         "nextjs",
-        "typescript",
-        "python"
+        "typescript"
       ],
       "domain": "fitness",
       "audience": [
@@ -360,8 +296,7 @@
       "canonical_description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
       "tags": [
         "Next.js",
-        "TypeScript",
-        "Python"
+        "TypeScript"
       ],
       "github_topics": [
         "fitness",
@@ -400,7 +335,7 @@
         "rounaq-atelier"
       ],
       "repo": "alawein/atelier-rounaq",
-      "local_path": "apps/atelier-rounaq",
+      "local_path": "family/atelier-rounaq",
       "bucket": "family",
       "type": "product",
       "surface": "web",
@@ -880,8 +815,10 @@
       "homepage": "https://simcore.dev",
       "canonical_description": "Scientific simulation core for interactive modeling and numerical exploration.",
       "tags": [
-        "Python",
-        "Scientific computing"
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
       ],
       "github_topics": [
         "simulation",
@@ -993,8 +930,7 @@
       "stack": [
         "python",
         "legal-ai",
-        "cli",
-        "ocr"
+        "cli"
       ],
       "domain": "legal-ops",
       "audience": [
@@ -1014,13 +950,11 @@
       "tags": [
         "Python",
         "Legal AI",
-        "CLI",
-        "OCR"
+        "CLI"
       ],
       "github_topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -1052,7 +986,7 @@
       "slug": "roka-oakland-hustle",
       "legacy_slugs": [],
       "repo": "alawein/roka-oakland-hustle",
-      "local_path": "apps/roka-oakland-hustle",
+      "local_path": "personal/roka-oakland-hustle",
       "bucket": "personal",
       "type": "product",
       "surface": "service",
@@ -1409,9 +1343,9 @@
       "type": "research",
       "surface": "web",
       "stack": [
-        "typescript",
-        "react",
-        "vite"
+        "html",
+        "css",
+        "javascript"
       ],
       "domain": "quantum",
       "audience": [
@@ -1429,22 +1363,21 @@
       "homepage": "https://chshlab.online",
       "canonical_description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
       "tags": [
-        "TypeScript",
-        "React",
-        "Vite",
+        "HTML",
+        "CSS",
+        "JavaScript",
         "Quantum"
       ],
       "github_topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -1527,6 +1460,8 @@
       "type": "research",
       "surface": "web",
       "stack": [
+        "python",
+        "fastapi",
         "typescript",
         "react",
         "vite"
@@ -1547,6 +1482,8 @@
       "homepage": "https://loopholelab.online",
       "canonical_description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
       "tags": [
+        "Python",
+        "FastAPI",
         "TypeScript",
         "React",
         "Quantum",
@@ -1591,7 +1528,7 @@
       "type": "research",
       "surface": "workflow",
       "stack": [
-        "typescript",
+        "python",
         "mcp",
         "agents"
       ],
@@ -1611,7 +1548,7 @@
       "homepage": "https://provegate.online",
       "canonical_description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
       "tags": [
-        "TypeScript",
+        "Python",
         "MCP",
         "Agents"
       ],
@@ -1619,13 +1556,13 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -1636,7 +1573,7 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research",

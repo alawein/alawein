@@ -22,11 +22,11 @@ tags:
 - ai
 - systems
 - governance
-updated: 2026-04-14
+updated: 2026-05-23
 variant_default: balanced
 urls:
   website: https://meshal.ai
-  morphism: https://kohyr.com
+  kohyr: https://kohyr.com
   scholar: https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en
   email: mailto:contact@meshal.ai
   linkedin: https://linkedin.com/in/alawein
@@ -36,11 +36,11 @@ tagline_quote: ''
 bio_short: |
   Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
 
-  I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
 bio_long: |
   Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
 
-  I build at the intersection of physics, machine learning, and auditable software — from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
 bio_bullets: 'UC Berkeley PhD EECS
 
   Kohyr founder
@@ -48,8 +48,8 @@ bio_bullets: 'UC Berkeley PhD EECS
   AI governance, HPC, and product systems
 
   San Francisco, CA'
-linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Morphism
-  Systems · PhD EECS, UC Berkeley
+linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Kohyr
+  · PhD EECS, UC Berkeley
 profile_pins:
   - qmatsim
   - spincirc
@@ -69,13 +69,13 @@ research_rows:
     description: "Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019*"
   - slug: scicomp
     url: https://github.com/alawein/scicomp
-    description: "Scientific computing library — PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica"
+    description: "Scientific computing library: PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica"
   - slug: qubeml
     url: https://github.com/alawein/qubeml
-    description: "Quantum-classical ML interface — VQE, materials informatics, Qiskit/PennyLane"
+    description: "Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane"
   - slug: fallax
     url: https://github.com/alawein/fallax
-    description: "Multi-step LLM reasoning evaluation — step-level correctness across logic, math, and causal inference"
+    description: "Multi-step LLM reasoning evaluation: step-level correctness across logic, math, and causal inference"
 
 product_rows:
   - name: alembiq

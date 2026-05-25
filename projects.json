@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-05-11",
+  "lastUpdated": "2026-05-17",
   "featured": [
     {
       "name": "meshal.ai",
@@ -19,22 +19,6 @@
       "bucket": "personal",
       "status": "maintained",
       "visibility": "private"
-    },
-    {
-      "name": "Morphism",
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "tags": [
-        "TypeScript",
-        "Python",
-        "Governance"
-      ],
-      "category": "active",
-      "url": "https://kohyr.com",
-      "portfolio_domain": "Work",
-      "status": "active",
-      "visibility": "public"
     },
     {
       "name": "REPZ",
@@ -97,8 +81,7 @@
       "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
       "tags": [
         "Next.js",
-        "TypeScript",
-        "Python"
+        "TypeScript"
       ],
       "category": "active",
       "url": "https://bolts.fit",
@@ -265,8 +248,10 @@
       "repo": "alawein/simcore",
       "description": "Scientific simulation core for interactive modeling and numerical exploration.",
       "tags": [
-        "Python",
-        "Scientific computing"
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
       ],
       "category": "active",
       "url": "https://simcore.dev",
@@ -304,8 +289,7 @@
       "tags": [
         "Python",
         "Legal AI",
-        "CLI",
-        "OCR"
+        "CLI"
       ],
       "category": "active",
       "portfolio_domain": "Personal",
@@ -674,36 +658,6 @@
     }
   ],
   "packages": [
-    {
-      "name": "@morphism-systems/cli",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/cli",
-      "description": "Governance CLI for scaffold, validate, score, and heal operations."
-    },
-    {
-      "name": "@morphism-systems/mcp-server",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
-      "description": "MCP server for AI agent governance."
-    },
-    {
-      "name": "@morphism-systems/agentic-math",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
-      "description": "MCP math computation server."
-    },
-    {
-      "name": "@morphism-systems/plugin-bundle",
-      "registry": "npm",
-      "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
-      "description": "Bundle installer for Morphism tools."
-    },
-    {
-      "name": "morphism",
-      "registry": "pypi",
-      "url": "https://pypi.org/project/morphism/",
-      "description": "Python category theory engine."
-    },
     {
       "name": "berkeley-scicomp",
       "registry": "pypi",

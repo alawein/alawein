@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11",
+  "generatedAt": "2026-05-17",
   "repos": [
     {
       "slug": "meshal-web",
@@ -17,28 +17,6 @@
         "lifecycle": "maintained",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "homepage": "https://kohyr.com",
-      "topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -339,7 +317,6 @@
       "topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -489,14 +466,13 @@
       "topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -553,13 +529,13 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },

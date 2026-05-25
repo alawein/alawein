@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-11",
+  "generatedAt": "2026-05-17",
   "summary": {
-    "repoCount": 38,
+    "repoCount": 37,
     "typeCounts": {
-      "product": 11,
+      "product": 10,
       "research": 16,
       "archive": 2,
       "infra": 3,
@@ -12,7 +12,7 @@
     },
     "lifecycleCounts": {
       "maintained": 2,
-      "active": 26,
+      "active": 25,
       "frozen": 8,
       "archived": 2
     }
@@ -81,6 +81,7 @@
       "archive",
       "automation",
       "cli",
+      "css",
       "evaluation",
       "evaluations",
       "fastapi",
@@ -88,8 +89,9 @@
       "gdscript",
       "github-actions",
       "godot",
-      "governance",
       "hpc",
+      "html",
+      "javascript",
       "legal-ai",
       "llm",
       "llm-training",
@@ -99,7 +101,6 @@
       "nextjs",
       "node",
       "numpy",
-      "ocr",
       "opencv",
       "optimization",
       "pennylane",
@@ -166,7 +167,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/meshal-web",
+        "local_path": "personal/meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -220,7 +221,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/meshal-web",
+        "local_path": "personal/meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -236,56 +237,6 @@
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
         "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Morphism",
-        "slug": "morphism",
-        "repo": "morphism-systems/morphism",
-        "type": "product",
-        "surface": "monorepo",
-        "domain": "ai-governance",
-        "lifecycle": "active",
-        "visibility": "public",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "python",
-          "governance"
-        ],
-        "audience": [
-          "public",
-          "client",
-          "research"
-        ],
-        "homepage": "https://kohyr.com",
-        "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-        "topics": [
-          "ai-governance",
-          "typescript",
-          "python",
-          "formal-methods",
-          "mcp"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "../morphism-systems/morphism",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [
-          "governance-runtime",
-          "proof-tooling",
-          "mcp-server"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       },
@@ -321,7 +272,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/repz",
+        "local_path": "products/repz",
         "catalog_groups": [
           "featured"
         ],
@@ -370,7 +321,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/gymboy",
+        "local_path": "products/gymboy",
         "catalog_groups": [
           "featured"
         ],
@@ -418,7 +369,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/scribd",
+        "local_path": "products/scribd",
         "catalog_groups": [
           "featured"
         ],
@@ -449,8 +400,7 @@
         "brand_family": "forge",
         "stack": [
           "nextjs",
-          "typescript",
-          "python"
+          "typescript"
         ],
         "audience": [
           "client",
@@ -467,7 +417,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/bolts",
+        "local_path": "products/bolts",
         "catalog_groups": [
           "featured"
         ],
@@ -517,7 +467,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/atelier-rounaq",
+        "local_path": "family/atelier-rounaq",
         "catalog_groups": [
           "featured"
         ],
@@ -576,6 +526,57 @@
         "provides": [
           "attribution-intelligence",
           "citation-checks"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "LLMWorks",
+        "slug": "llmworks",
+        "repo": "alawein/llmworks",
+        "type": "product",
+        "surface": "web",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "typescript",
+          "react",
+          "supabase",
+          "llm"
+        ],
+        "audience": [
+          "client",
+          "research",
+          "public"
+        ],
+        "homepage": "https://llmworks.dev",
+        "description": "LLM evaluation, benchmarking, and security testing playground.",
+        "topics": [
+          "llm",
+          "evaluation",
+          "benchmarking",
+          "react",
+          "supabase"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "tools/llmworks",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "llm-evals",
+          "security-benchmarks"
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
@@ -895,8 +896,7 @@
         "stack": [
           "python",
           "legal-ai",
-          "cli",
-          "ocr"
+          "cli"
         ],
         "audience": [
           "client",
@@ -907,7 +907,6 @@
         "topics": [
           "python",
           "cli",
-          "ocr",
           "legal-ops",
           "automation"
         ],
@@ -1424,7 +1423,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/meshal-web",
+      "local_path": "personal/meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -1440,56 +1439,6 @@
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
       "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Morphism",
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "type": "product",
-      "surface": "monorepo",
-      "domain": "ai-governance",
-      "lifecycle": "active",
-      "visibility": "public",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "typescript",
-        "python",
-        "governance"
-      ],
-      "audience": [
-        "public",
-        "client",
-        "research"
-      ],
-      "homepage": "https://kohyr.com",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "../morphism-systems/morphism",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "governance-runtime",
-        "proof-tooling",
-        "mcp-server"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -1525,7 +1474,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/repz",
+      "local_path": "products/repz",
       "catalog_groups": [
         "featured"
       ],
@@ -1574,7 +1523,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/gymboy",
+      "local_path": "products/gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -1622,7 +1571,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/scribd",
+      "local_path": "products/scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -1653,8 +1602,7 @@
       "brand_family": "forge",
       "stack": [
         "nextjs",
-        "typescript",
-        "python"
+        "typescript"
       ],
       "audience": [
         "client",
@@ -1671,7 +1619,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/bolts",
+      "local_path": "products/bolts",
       "catalog_groups": [
         "featured"
       ],
@@ -1721,7 +1669,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/atelier-rounaq",
+      "local_path": "family/atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],
@@ -2148,8 +2096,7 @@
       "stack": [
         "python",
         "legal-ai",
-        "cli",
-        "ocr"
+        "cli"
       ],
       "audience": [
         "client",
@@ -2160,7 +2107,6 @@
       "topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -2215,7 +2161,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps/roka-oakland-hustle",
+      "local_path": "personal/roka-oakland-hustle",
       "catalog_groups": [
         "notion_sync"
       ],
@@ -2464,9 +2410,9 @@
       "theme_family": "dawn",
       "brand_family": "dawn",
       "stack": [
-        "typescript",
-        "react",
-        "vite"
+        "html",
+        "css",
+        "javascript"
       ],
       "audience": [
         "research",
@@ -2477,9 +2423,8 @@
       "topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -2495,7 +2440,7 @@
         "quantum-education-site"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "static-site",
       "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2554,6 +2499,8 @@
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
+        "python",
+        "fastapi",
         "typescript",
         "react",
         "vite"
@@ -2601,7 +2548,7 @@
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
-        "typescript",
+        "python",
         "mcp",
         "agents"
       ],
@@ -2615,7 +2562,7 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "maintainer": "alawein-core",
@@ -2632,8 +2579,8 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-service",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -3733,88 +3680,6 @@
         "description": "Workspace-wide batch execution engine."
       },
       {
-        "slug": "morphism-cli",
-        "name": "@morphism-systems/cli",
-        "type": "package",
-        "package": "@morphism-systems/cli",
-        "registry": "npm",
-        "url": "https://www.npmjs.com/package/@morphism-systems/cli",
-        "source_repo": "morphism-systems/morphism",
-        "path": "packages/cli",
-        "owner": "morphism-systems",
-        "consumers": [
-          "operators",
-          "automation"
-        ],
-        "version_source": "package.json",
-        "description": "Governance CLI for scaffold, validate, score, and heal operations."
-      },
-      {
-        "slug": "morphism-mcp-server",
-        "name": "@morphism-systems/mcp-server",
-        "type": "package",
-        "package": "@morphism-systems/mcp-server",
-        "registry": "npm",
-        "url": "https://www.npmjs.com/package/@morphism-systems/mcp-server",
-        "source_repo": "morphism-systems/morphism",
-        "path": "packages/mcp-server",
-        "owner": "morphism-systems",
-        "consumers": [
-          "AI agents"
-        ],
-        "version_source": "package.json",
-        "description": "MCP server for AI agent governance."
-      },
-      {
-        "slug": "morphism-agentic-math",
-        "name": "@morphism-systems/agentic-math",
-        "type": "package",
-        "package": "@morphism-systems/agentic-math",
-        "registry": "npm",
-        "url": "https://www.npmjs.com/package/@morphism-systems/agentic-math",
-        "source_repo": "morphism-systems/morphism",
-        "path": "packages/agentic-math",
-        "owner": "morphism-systems",
-        "consumers": [
-          "AI agents",
-          "evaluation tooling"
-        ],
-        "version_source": "package.json",
-        "description": "MCP math computation server."
-      },
-      {
-        "slug": "morphism-plugin-bundle",
-        "name": "@morphism-systems/plugin-bundle",
-        "type": "package",
-        "package": "@morphism-systems/plugin-bundle",
-        "registry": "npm",
-        "url": "https://www.npmjs.com/package/@morphism-systems/plugin-bundle",
-        "source_repo": "morphism-systems/morphism",
-        "path": "packages/plugin-bundle",
-        "owner": "morphism-systems",
-        "consumers": [
-          "operators"
-        ],
-        "version_source": "package.json",
-        "description": "Bundle installer for Morphism tools."
-      },
-      {
-        "slug": "morphism-python",
-        "name": "morphism",
-        "type": "package",
-        "package": "morphism",
-        "registry": "pypi",
-        "url": "https://pypi.org/project/morphism/",
-        "source_repo": "morphism-systems/morphism",
-        "path": "python/morphism",
-        "owner": "morphism-systems",
-        "consumers": [
-          "Python consumers"
-        ],
-        "version_source": "pyproject.toml",
-        "description": "Python category theory engine."
-      },
-      {
         "slug": "berkeley-scicomp",
         "name": "berkeley-scicomp",
         "type": "package",
@@ -3925,7 +3790,7 @@
     "meshal-web": {
       "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
-      "screenshot_folder": "apps/meshal-web/docs/screenshots",
+      "screenshot_folder": "personal/meshal-web/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/meshal-web/social-card.svg",
       "favicon_status": "generated"
@@ -3933,7 +3798,7 @@
     "repz": {
       "logo_source": "design-system/packages/icons/dist/brand/repz/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/repz/repo-banner.svg",
-      "screenshot_folder": "apps/repz/docs/screenshots",
+      "screenshot_folder": "products/repz/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/repz/social-card.svg",
       "favicon_status": "generated"
@@ -3941,7 +3806,7 @@
     "gymboy": {
       "logo_source": "design-system/packages/icons/dist/brand/gymboy/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/gymboy/repo-banner.svg",
-      "screenshot_folder": "apps/gymboy/docs/screenshots",
+      "screenshot_folder": "products/gymboy/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/gymboy/social-card.svg",
       "favicon_status": "generated"
@@ -3949,7 +3814,7 @@
     "scribd": {
       "logo_source": "design-system/packages/icons/dist/brand/scribd/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/scribd/repo-banner.svg",
-      "screenshot_folder": "apps/scribd/docs/screenshots",
+      "screenshot_folder": "products/scribd/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
       "favicon_status": "generated"
@@ -3957,7 +3822,7 @@
     "bolts": {
       "logo_source": "design-system/packages/icons/dist/brand/bolts/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/bolts/repo-banner.svg",
-      "screenshot_folder": "tools/bolts/docs/screenshots",
+      "screenshot_folder": "products/bolts/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/bolts/social-card.svg",
       "favicon_status": "generated"
@@ -3965,7 +3830,7 @@
     "atelier-rounaq": {
       "logo_source": "design-system/packages/icons/dist/brand/atelier-rounaq/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/atelier-rounaq/repo-banner.svg",
-      "screenshot_folder": "apps/atelier-rounaq/docs/screenshots",
+      "screenshot_folder": "family/atelier-rounaq/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/atelier-rounaq/social-card.svg",
       "favicon_status": "generated"
@@ -4021,7 +3886,7 @@
     "roka-oakland-hustle": {
       "logo_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/repo-banner.svg",
-      "screenshot_folder": "apps/roka-oakland-hustle/docs/screenshots",
+      "screenshot_folder": "personal/roka-oakland-hustle/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/roka-oakland-hustle/social-card.svg",
       "favicon_status": "generated"
@@ -4100,28 +3965,6 @@
         "lifecycle": "maintained",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "morphism",
-      "repo": "morphism-systems/morphism",
-      "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-      "homepage": "https://kohyr.com",
-      "topics": [
-        "ai-governance",
-        "typescript",
-        "python",
-        "formal-methods",
-        "mcp"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -4422,7 +4265,6 @@
       "topics": [
         "python",
         "cli",
-        "ocr",
         "legal-ops",
         "automation"
       ],
@@ -4572,14 +4414,13 @@
       "topics": [
         "quantum",
         "bell-inequality",
-        "react",
-        "typescript",
-        "education"
+        "education",
+        "javascript"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -4636,13 +4477,13 @@
         "mcp",
         "agents",
         "governance",
-        "typescript",
+        "python",
         "verification"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -4979,7 +4820,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/meshal-web",
+        "local_path": "personal/meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -4995,56 +4836,6 @@
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
         "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Morphism",
-        "slug": "morphism",
-        "repo": "morphism-systems/morphism",
-        "type": "product",
-        "surface": "monorepo",
-        "domain": "ai-governance",
-        "lifecycle": "active",
-        "visibility": "public",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "python",
-          "governance"
-        ],
-        "audience": [
-          "public",
-          "client",
-          "research"
-        ],
-        "homepage": "https://kohyr.com",
-        "description": "Category-theoretic AI governance with proof witnesses and offline-first verification.",
-        "topics": [
-          "ai-governance",
-          "typescript",
-          "python",
-          "formal-methods",
-          "mcp"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "../morphism-systems/morphism",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [
-          "governance-runtime",
-          "proof-tooling",
-          "mcp-server"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       },
@@ -5080,7 +4871,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/repz",
+        "local_path": "products/repz",
         "catalog_groups": [
           "featured"
         ],
@@ -5129,7 +4920,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/gymboy",
+        "local_path": "products/gymboy",
         "catalog_groups": [
           "featured"
         ],
@@ -5177,7 +4968,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/scribd",
+        "local_path": "products/scribd",
         "catalog_groups": [
           "featured"
         ],
@@ -5208,8 +4999,7 @@
         "brand_family": "forge",
         "stack": [
           "nextjs",
-          "typescript",
-          "python"
+          "typescript"
         ],
         "audience": [
           "client",
@@ -5226,7 +5016,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/bolts",
+        "local_path": "products/bolts",
         "catalog_groups": [
           "featured"
         ],
@@ -5276,7 +5066,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "apps/atelier-rounaq",
+        "local_path": "family/atelier-rounaq",
         "catalog_groups": [
           "featured"
         ],

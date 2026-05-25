@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-03-20
+last_updated: 2026-05-24
 tags: [governance, contributing, workflow, development]
 ---
 
@@ -22,8 +22,9 @@ the actual operating details.
 
 ## References
 
-- Canonical SSOT (Morphism Bible): `morphism-framework/docs/morphism-bible`
-- Local workspace standards (when working from the full Morphism workspace): `../AGENTS.md`
+- Canonical SSOT: [`SSOT.md`](SSOT.md)
+- Commit, branch, and release convention (single source of truth): [`docs/governance/commit-release-convention.md`](docs/governance/commit-release-convention.md)
+- Local workspace standards (when working from the full workspace): `../AGENTS.md`
 - Workflow source: [`docs/governance/workflow.md`](docs/governance/workflow.md)
 - Operating model: [`docs/governance/operating-model.md`](docs/governance/operating-model.md)
 - Local documentation contract: [`docs/governance/documentation-contract.md`](docs/governance/documentation-contract.md)
@@ -90,7 +91,7 @@ for the full author and reviewer checklist.
 - For this repo, "relevant checks" means documentation checks only. There is no
   application build, package install, or artifact pipeline to run locally.
 - Run these before opening a PR:
-  - `./scripts/validate-doc-contract.sh --full`
+  - `./scripts/doctrine/validate-doc-contract.sh --full`
   - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md docs/README.md docs/governance/*.md`
 
 ## Documentation
@@ -101,10 +102,10 @@ for the full author and reviewer checklist.
 
 ## Releases
 
-- Use `v{major}.{minor}.{patch}` when the repo hits a meaningful milestone
-- Maintain `CHANGELOG.md` using Keep a Changelog format
-- Follow [`docs/governance/release-playbook.md`](docs/governance/release-playbook.md)
-  for tag and changelog decisions
+- Every repo uses uniform semver: `v{major}.{minor}.{patch}` tags + a GitHub release per tag
+- Maintain `CHANGELOG.md` using Keep a Changelog format; the tag and top entry are the version anchor
+- Follow [`docs/governance/commit-release-convention.md`](docs/governance/commit-release-convention.md)
+  for the full commit, branch, merge, and release rules
 
 ## Security & Safety
 

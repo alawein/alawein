@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-05-16
+last_updated: 2026-05-24
 ---
 
 # Index — alawein
@@ -49,6 +49,7 @@ last_updated: 2026-05-16
 - [claude-code-migration-prompts.md](governance/claude-code-migration-prompts.md)
 - [claude-code-worked-examples.md](governance/claude-code-worked-examples.md)
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
+- [commit-release-convention.md](governance/commit-release-convention.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
 - [design-branding-summary.md](governance/design-branding-summary.md)
 - [docs-doctrine.md](governance/docs-doctrine.md)
@@ -74,11 +75,13 @@ last_updated: 2026-05-16
 - [repo-sweep-prompt.md](governance/repo-sweep-prompt.md)
 - [repository-layout-standard.md](governance/repository-layout-standard.md)
 - [review-playbook.md](governance/review-playbook.md)
+- [security-intake-matrix.md](governance/security-intake-matrix.md)
 - [skills-agents-unification.md](governance/skills-agents-unification.md)
 - [skills-install-policy.md](governance/skills-install-policy.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
 - [vercel-baseline.md](governance/vercel-baseline.md)
+- [workflow-pin-inventory-and-bundle-v1.md](governance/workflow-pin-inventory-and-bundle-v1.md)
 - [workflow.md](governance/workflow.md)
 - [workspace-layout-audit.md](governance/workspace-layout-audit.md)
 - [workspace-master-prompt.md](governance/workspace-master-prompt.md)

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated": "2026-05-11",
+  "generated": "2026-05-17",
   "workspace_roots": [
     ".",
     "../morphism-systems",
@@ -9,17 +9,12 @@
   "golden_references": {
     "vite-react-spa": {
       "repo": "alawein/meshal-web",
-      "local_folder": "apps/meshal-web",
+      "local_folder": "personal/meshal-web",
       "notes": "Derived from catalog entry meshal-web"
-    },
-    "node-monorepo": {
-      "repo": "morphism-systems/morphism",
-      "local_folder": "../morphism-systems/morphism",
-      "notes": "Derived from catalog entry morphism"
     },
     "next-app-router": {
       "repo": "alawein/scribd",
-      "local_folder": "apps/scribd",
+      "local_folder": "products/scribd",
       "notes": "Derived from catalog entry scribd"
     },
     "python-service": {
@@ -39,8 +34,18 @@
     },
     "game-project": {
       "repo": "alawein/roka-oakland-hustle",
-      "local_folder": "apps/roka-oakland-hustle",
+      "local_folder": "personal/roka-oakland-hustle",
       "notes": "Derived from catalog entry roka-oakland-hustle"
+    },
+    "static-site": {
+      "repo": "alawein/chshlab",
+      "local_folder": "research/chshlab",
+      "notes": "Derived from catalog entry chshlab"
+    },
+    "node-monorepo": {
+      "repo": "alawein/design-system",
+      "local_folder": "tools/design-system",
+      "notes": "Derived from catalog entry design-system"
     },
     "docs-hub": {
       "repo": "alawein/alawein",
@@ -57,49 +62,42 @@
   ],
   "repos": [
     {
-      "folder": "apps/meshal-web",
+      "folder": "personal/meshal-web",
       "remote_slug": "alawein/meshal-web",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "vite, react, typescript, tailwind"
     },
     {
-      "folder": "../morphism-systems/morphism",
-      "remote_slug": "morphism-systems/morphism",
-      "archetype": "node-monorepo",
-      "tier": "product",
-      "stack": "typescript, python, governance"
-    },
-    {
-      "folder": "apps/repz",
+      "folder": "products/repz",
       "remote_slug": "alawein/repz",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, typescript, supabase"
     },
     {
-      "folder": "apps/gymboy",
+      "folder": "products/gymboy",
       "remote_slug": "alawein/gymboy",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, spark"
     },
     {
-      "folder": "apps/scribd",
+      "folder": "products/scribd",
       "remote_slug": "alawein/scribd",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, react, typescript"
     },
     {
-      "folder": "tools/bolts",
+      "folder": "products/bolts",
       "remote_slug": "alawein/bolts",
       "archetype": "next-app-router",
       "tier": "product",
-      "stack": "nextjs, typescript, python"
+      "stack": "nextjs, typescript"
     },
     {
-      "folder": "apps/atelier-rounaq",
+      "folder": "family/atelier-rounaq",
       "remote_slug": "alawein/atelier-rounaq",
       "archetype": "vite-react-spa",
       "tier": "product",
@@ -166,10 +164,10 @@
       "remote_slug": "alawein/adil",
       "archetype": "python-service",
       "tier": "research",
-      "stack": "python, legal-ai, cli, ocr"
+      "stack": "python, legal-ai, cli"
     },
     {
-      "folder": "apps/roka-oakland-hustle",
+      "folder": "personal/roka-oakland-hustle",
       "remote_slug": "alawein/roka-oakland-hustle",
       "archetype": "game-project",
       "tier": "product",
@@ -213,9 +211,9 @@
     {
       "folder": "research/chshlab",
       "remote_slug": "alawein/chshlab",
-      "archetype": "vite-react-spa",
+      "archetype": "static-site",
       "tier": "research",
-      "stack": "typescript, react, vite"
+      "stack": "html, css, javascript"
     },
     {
       "folder": "research/helios",
@@ -229,14 +227,14 @@
       "remote_slug": "alawein/loopholelab",
       "archetype": "vite-react-spa",
       "tier": "research",
-      "stack": "typescript, react, vite"
+      "stack": "python, fastapi, typescript, react, vite"
     },
     {
       "folder": "ventures/provegate",
       "remote_slug": "alawein/provegate",
-      "archetype": "node-monorepo",
+      "archetype": "python-service",
       "tier": "research",
-      "stack": "typescript, mcp, agents"
+      "stack": "python, mcp, agents"
     },
     {
       "folder": "jobs-projects/mercor",

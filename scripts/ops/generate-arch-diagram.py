@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-generate-arch-diagram.py — Regenerate the repo-topology section of docs/architecture.md
+generate-arch-diagram.py: Regenerate the repo-topology section of docs/architecture.md
 from catalog/repos.json.
 
 The script patches only the AUTO-GENERATED block between sentinel comments,
 preserving hand-maintained prose sections above and below it.
 
 Usage:
-  python scripts/generate-arch-diagram.py            # update docs/architecture.md in place
-  python scripts/generate-arch-diagram.py --dry-run  # print to stdout
+  python scripts/ops/generate-arch-diagram.py            # update docs/architecture.md in place
+  python scripts/ops/generate-arch-diagram.py --dry-run  # print to stdout
 """
 
 from __future__ import annotations
@@ -72,7 +72,7 @@ def patch_arch_md(current: str, new_block: str, today: str) -> str:
 
     replacement = (
         f"{SENTINEL_START}\n"
-        f"<!-- last updated: {today} — do not edit; run scripts/generate-arch-diagram.py -->\n\n"
+        f"<!-- last updated: {today}; do not edit; run scripts/ops/generate-arch-diagram.py -->\n\n"
         f"### Repo Topology (auto-generated from catalog/repos.json)\n\n"
         f"{new_block}\n\n"
         f"{SENTINEL_END}"
@@ -81,7 +81,7 @@ def patch_arch_md(current: str, new_block: str, today: str) -> str:
     if start_idx != -1 and end_idx != -1:
         return current[:start_idx] + replacement + current[end_idx + len(SENTINEL_END):]
 
-    # Sentinels not present — append after the first h2 section
+    # Sentinels not present; append after the first h2 section
     insert_after = current.find("\n## ")
     if insert_after == -1:
         return current + "\n\n" + replacement + "\n"

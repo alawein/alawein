@@ -119,5 +119,5 @@ jobs:
         run: |
           echo "## Style advisory audit" >> "$GITHUB_STEP_SUMMARY"
           echo '```text' >> "$GITHUB_STEP_SUMMARY"
-          sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"
+          if [ -f style-advisory-report.txt ]; then sed -n '1,200p' style-advisory-report.txt >> "$GITHUB_STEP_SUMMARY"; else echo "(no style advisory report produced)" >> "$GITHUB_STEP_SUMMARY"; fi
           echo '```' >> "$GITHUB_STEP_SUMMARY"

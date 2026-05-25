@@ -4,6 +4,12 @@
 
 set -eu
 
+# Capture this script's own directory BEFORE any cd into --root, so the sibling
+# repo-scanner.sh can still be located afterward (POSIX sh: use $0, not
+# BASH_SOURCE). Deriving this after `cd "$ROOT"` breaks when $0 is relative.
+# shellcheck disable=SC1007
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+
 ROOT="$(pwd)"
 ACTION="dry-run"
 FORCE="false"
@@ -75,16 +81,25 @@ EOF
   exit 0
 fi
 
-# Locate the scanner: prefer installed copy under CLAUDE_HOME; fall back to
-# the source tree (running from the unpacked repo before install).
-SCANNER="${CLAUDE_HOME:-$HOME/.claude}/bin/repo-scanner.sh"
-if [ ! -x "$SCANNER" ]; then
-  # shellcheck disable=SC1007
-  SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+# Locate the scanner: prefer the SIBLING copy shipped next to this script, then
+# fall back to the installed copy under CLAUDE_HOME.
+#
+# Rationale (Phase 3.1): generate-local-claude.sh and repo-scanner.sh are a
+# matched pair. The generator consumes vars (ROOT_DISPLAY, INSTALL_COMMAND,
+# REGISTRY_FOUND) that only the upgraded scanner emits. Preferring the deployed
+# CLAUDE_HOME copy meant a stale global scanner silently shadowed in-repo
+# changes, so registry-aware output never appeared when running from the source
+# tree. Resolving the sibling first keeps the pair coherent. An explicit
+# $REPO_SCANNER override still wins for tests and special deployments.
+if [ -n "${REPO_SCANNER:-}" ] && [ -x "${REPO_SCANNER:-}" ]; then
+  SCANNER="$REPO_SCANNER"
+elif [ -x "$SCRIPT_DIR/repo-scanner.sh" ]; then
   SCANNER="$SCRIPT_DIR/repo-scanner.sh"
+else
+  SCANNER="${CLAUDE_HOME:-$HOME/.claude}/bin/repo-scanner.sh"
 fi
 if [ ! -x "$SCANNER" ]; then
-  echo "Cannot find repo-scanner.sh (looked in CLAUDE_HOME/bin and script dir)" >&2
+  echo "Cannot find repo-scanner.sh (looked at REPO_SCANNER, script dir, and CLAUDE_HOME/bin)" >&2
   exit 2
 fi
 
@@ -93,6 +108,17 @@ trap 'rm -f "$SCAN_ENV"' EXIT
 "$SCANNER" --root "$ROOT_ABS" --env > "$SCAN_ENV"
 # shellcheck disable=SC1090
 . "$SCAN_ENV"
+
+# Phase 3.1: the scanner may resolve the org registries and override Root +
+# commands. Fall back gracefully for older scanners that do not emit these.
+ROOT_DISPLAY="${ROOT_DISPLAY:-$ROOT_ABS}"
+INSTALL_COMMAND="${INSTALL_COMMAND:-unknown}"
+REGISTRY_FOUND="${REGISTRY_FOUND:-false}"
+if [ "$REGISTRY_FOUND" = "true" ]; then
+  REGISTRY_MARKER="# registry: found ($PROJECT_NAME resolved from org catalog/baseline)"
+else
+  REGISTRY_MARKER="# registry: not found ($PROJECT_NAME absent from org registry; values are scanned, not authoritative)"
+fi
 
 # Informational notice when re-running after init unless --force is used.
 # (Only relevant when previewing; the message used to be misleading because it
@@ -127,9 +153,11 @@ source: claude-agent-platform-extender
 
 # Project Claude Configuration: $PROJECT_NAME
 
+$REGISTRY_MARKER
+
 ## Detected Project Profile
 
-- Root: \`$ROOT_ABS\`
+- Root: \`$ROOT_DISPLAY\`
 - Project type: \`$PROJECT_TYPE\`
 - Stack: \`$STACK\`
 - Frameworks: \`$FRAMEWORKS\`
@@ -141,6 +169,9 @@ source: claude-agent-platform-extender
 
 ## Project Commands
 
+$REGISTRY_MARKER
+
+- Install command: \`$INSTALL_COMMAND\`
 - Test command: \`$TEST_COMMAND\`
 - Build command: \`$BUILD_COMMAND\`
 - Lint command: \`$LINT_COMMAND\`
@@ -238,8 +269,11 @@ fi
 cat <<EOF
 [EXTENDER PROPOSAL]
 project_type: $PROJECT_TYPE
+root: $ROOT_DISPLAY
+registry: $([ "$REGISTRY_FOUND" = "true" ] && echo found || echo "not found")
 stack: [$STACK]
 commands_detected:
+  install: $INSTALL_COMMAND
   test: $TEST_COMMAND
   build: $BUILD_COMMAND
   lint: $LINT_COMMAND

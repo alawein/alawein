@@ -65,6 +65,18 @@ WORKFLOW_REF = str(data.get("workflow_ref") or "").strip()
 if not re.fullmatch(r"[0-9a-f]{40}", WORKFLOW_REF):
     raise SystemExit("github-baseline.yaml missing a valid 40-character workflow_ref")
 
+
+# Shared, tested repo-path resolver: one source of truth for this heredoc and
+# github-baseline-audit.py (scripts/github/_repo_paths.py).
+sys.path.insert(0, str(ORG_REPO / "scripts" / "github"))
+import _repo_paths
+
+LOCAL_PATHS = _repo_paths.load_local_path_map(ORG_REPO)
+
+
+def resolve_repo_dir(repo: str) -> Path:
+    return _repo_paths.resolve_repo_dir(WORKSPACE, LOCAL_PATHS, repo)
+
 TEMPLATE_MAP = {
     ".github/CODEOWNERS": ORG_REPO / ".github" / "CODEOWNERS",
     ".github/PULL_REQUEST_TEMPLATE.md": ORG_REPO / ".github" / "PULL_REQUEST_TEMPLATE.md",
@@ -412,7 +424,12 @@ def remove_legacy(path: Path, *, check: bool) -> list[str]:
 
 
 def sync_repo(entry: dict, *, check: bool) -> list[str]:
-    repo_dir = WORKSPACE / entry["repo"]
+    if entry["repo"] not in LOCAL_PATHS:
+        return [
+            f"UNCATALOGUED: {entry['repo']} (not in catalog/repos.json; cannot "
+            "resolve a bucketed path; catalog load failure or manifest/catalog drift)"
+        ]
+    repo_dir = resolve_repo_dir(entry["repo"])
     issues: list[str] = []
 
     if not repo_dir.exists():

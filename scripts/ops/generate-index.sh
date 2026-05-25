@@ -8,6 +8,10 @@
 #   WORKSPACE=/path/to/ws ./scripts/generate-index.sh --all  # all workspace repos
 set -euo pipefail
 
+# Stable, locale-independent ordering so generated INDEX.md matches across
+# platforms (Windows git-bash vs CI Linux differ in default collation).
+export LC_ALL=C
+
 generate_index() {
   local docs_dir="$1"
   local repo_name="$2"

@@ -11,7 +11,7 @@ You are working in the **alawein** organization profile repository (docs, govern
 
 ## Context
 
-Documentation-only control plane for the `alawein` GitHub org: portfolio truth, governance templates, and validation scripts — not an application service repo.
+Documentation-only control plane for the `alawein` GitHub org: portfolio truth, governance templates, and validation scripts, not an application service repo.
 
 ## Key files
 
@@ -29,8 +29,8 @@ Documentation-only control plane for the `alawein` GitHub org: portfolio truth, 
 
 Before committing:
 
-- `python scripts/sync-readme.py --check`
-- `./scripts/validate-doc-contract.sh --full`
+- `python scripts/catalog/sync-readme.py --check`
+- `./scripts/doctrine/validate-doc-contract.sh --full`
 
 ## Do not
 

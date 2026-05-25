@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-03
-last-verified: 2026-05-03
+last_updated: 2026-05-23
+last-verified: 2026-05-23
 ---
 
 # Voice and style contract
@@ -53,18 +53,21 @@ next technical framing between paragraphs; do not write bridging prose.
 ### Punctuation discipline
 
 Colons introduce lists, set off explanatory or evidential clauses, and link
-claim to mechanism. Em dashes wrap parenthetical insertions only.
+claim to mechanism. Em dashes are not used. Replace a parenthetical insertion
+with commas, parentheses, or a separate sentence.
 
 Correct: `"This failure manifests through coordination effects: 2D crystals
 are less stable than their 3D counterparts."` (claim: mechanism)
 
 Correct: `"not looking for volume: looking for depth"` (contrast via colon)
 
-Incorrect: `"The model doesn't just recall — it reasons under pressure."`
+Incorrect: `"The model doesn't just recall, it reasons under pressure."`
+(an em dash here would be a blocking voice-check finding)
 
-Em dash budget: 0–1 per section (tables, inline code, and quoted examples are
-exempt). Three or more in one paragraph is a blocking AI-generation signal —
-it triggers a BLOCKING finding from the voice-check linter.
+Em dash policy: none. Em dashes (U+2014) are prohibited on every governed
+surface, with no per-section budget and no table or inline-code exemption.
+Any em dash on a Blocking surface triggers a BLOCKING finding from the
+voice-check linter. Use the en dash (U+2013) only for numeric or date ranges.
 
 ### Forbidden register
 
@@ -198,12 +201,12 @@ present tense, technical, and free of AI attribution.
 | Name | Category | One-liner |
 |------|----------|-----------|
 | Kohyr | Governance | AI governance framework with category-theoretic proof witnesses |
-| Alembiq | AI Infrastructure | LLM training, alignment, and evaluation — SFT, DPO, LoRA, synthetic data |
+| Alembiq | AI Infrastructure | LLM training, alignment, and evaluation: SFT, DPO, LoRA, synthetic data |
 | Event Discovery Framework | Computer Vision | Physics-inspired video event detection via energy functionals |
 | OptiQAP | Optimization | Equilibrium-guided QAP solver: spectral methods, QUBO, simulated annealing |
 | REPZ | Coaching Platform | Elite coaching platform for fitness professionals |
-| LLMWorks | LLM Tooling | LLM evaluation and security testing — arena, benchmarks, provenance |
-| SimCore | Scientific Platform | Interactive scientific computing — 18 modules for quantum simulation |
+| LLMWorks | LLM Tooling | LLM evaluation and security testing: arena, benchmarks, provenance |
+| SimCore | Scientific Platform | Interactive scientific computing: 18 modules for quantum simulation |
 
 ### Canonical identity strings
 

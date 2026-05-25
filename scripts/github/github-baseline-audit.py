@@ -17,6 +17,18 @@ REPOS = MANIFEST.get("repos", [])
 WORKFLOW_REF = str(MANIFEST.get("workflow_ref") or "").strip()
 WORKFLOW_DIR = ROOT / ".github" / "workflows"
 
+# Shared, tested repo-path resolver: one source of truth for this script and the
+# sync-github.sh heredoc (scripts/github/_repo_paths.py). The sys.path insert
+# makes the import work both as a script and when loaded by file path in tests.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import _repo_paths  # noqa: E402
+
+LOCAL_PATHS = _repo_paths.load_local_path_map(ROOT)
+
+
+def resolve_repo_dir(repo: str) -> Path:
+    return _repo_paths.resolve_repo_dir(WORKSPACE, LOCAL_PATHS, repo)
+
 BANNED_WIDGET_PATTERNS = [
     "github-readme-stats",
     "github-profile-trophy",
@@ -29,7 +41,7 @@ BANNED_WIDGET_PATTERNS = [
 # Patterns intentionally used in the control-plane org profile README (decorative
 # header/banner use, not vanity-stat inflation). Excluded from check_readme.
 # check_readme only ever scans ROOT/README.md (the control-plane itself); this
-# exemption never applies to sibling repos. Keep this set minimal — additions
+# exemption never applies to sibling repos. Keep this set minimal; additions
 # must have an explicit rationale comment.
 CONTROL_PLANE_README_EXEMPT: frozenset[str] = frozenset({"capsule-render"})
 if len(CONTROL_PLANE_README_EXEMPT) > 2:
@@ -124,7 +136,15 @@ def check_repo(entry: dict, errors: list[str]) -> None:
     if entry.get("sync") != "auto":
         return
 
-    repo_dir = WORKSPACE / entry["repo"]
+    if entry["repo"] not in LOCAL_PATHS:
+        add_error(
+            errors,
+            f"{entry['repo']}: not found in catalog/repos.json; cannot resolve a "
+            "bucketed path (catalog failed to load, or the manifest and catalog have drifted)",
+        )
+        return
+
+    repo_dir = resolve_repo_dir(entry["repo"])
     if not repo_dir.exists():
         add_error(errors, f"{entry['repo']}: repo directory missing")
         return

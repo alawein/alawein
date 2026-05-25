@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-05-05
+last_updated: 2026-05-24
 audience: [ai-agents, contributors]
 ---
 
@@ -12,32 +12,33 @@ Status key: **Active** — maintained and enforced | **Reference** — stable, r
 
 | File | Status | Description |
 |------|--------|-------------|
-| `branch-and-deployment-convention.md` | Active | Branch naming and deployment rules |
+| `branch-and-deployment-convention.md` | Frozen | Superseded by commit-release-convention.md |
 | `branding-workflow-and-standards.md` | Active | Brand production workflow |
-| `changelog-entry.md` | Reference | Changelog format rules |
+| `changelog-entry.md` | Frozen | Superseded by commit-release-convention.md |
 | `claude-code-configuration-guide.md` | Active | Claude Code setup guide |
 | `claude-code-migration-prompts.md` | Reference | Migration prompt templates |
 | `claude-code-worked-examples.md` | Reference | Claude Code usage examples |
 | `clean-slate-workflow.md` | Reference | Session reset procedure |
+| `commit-release-convention.md` | Active | Commit authority, messages, branches, merge, releases (SSOT) |
 | `credential-hygiene.md` | Active | Secret and token management |
 | `design-branding-summary.md` | Reference | Brand design summary |
 | `docs-doctrine.md` | Active | Documentation standards and enforcement |
 | `documentation-contract.md` | Active | Cross-repo documentation contract |
 | `documentation-philosophy.md` | Reference | Principles behind docs-doctrine |
-| `feature-lifecycle.md` | Active | Feature development lifecycle |
+| `feature-lifecycle.md` | Frozen | Superseded by commit-release-convention.md |
 | `git-operations.md` | Reference | Git operation runbook |
 | `github-baseline.md` | Active | GitHub repo baseline contract |
 | `github-metadata-rollout-policy.md` | Active | GitHub metadata sync policy |
 | `github-metadata-sync-runbook.md` | Active | Metadata sync runbook |
 | `maintenance-skills-agents.md` | Reference | Skills and agents maintenance guide |
-| `merge-policy.md` | Active | Merge rules and approval requirements |
+| `merge-policy.md` | Frozen | Superseded by commit-release-convention.md |
 | `operating-model.md` | Active | Workspace operating model |
 | `operator-command-cheatsheet.md` | Reference | Common operator commands |
 | `package-namespace-matrix.md` | Reference | `@alawein/*` package naming |
 | `parallel-batch-execution.md` | Active | Multi-repo batch execution contract |
 | `profile-sync-from-guides.md` | Reference | Profile sync runbook |
 | `prompt-rollout.md` | Reference | Prompt kit rollout process |
-| `release-playbook.md` | Active | Release process |
+| `release-playbook.md` | Frozen | Superseded by commit-release-convention.md |
 | `repo-standardization.md` | Active | Per-repo standardization checklist |
 | `repo-sweep-prompt.md` | Reference | Repo sweep operator prompt |
 | `repository-layout-standard.md` | Active | Directory layout standard |

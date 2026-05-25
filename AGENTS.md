@@ -5,11 +5,11 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last_updated: 2026-05-17
-last-verified: 2026-05-17
+last_updated: 2026-05-24
+last-verified: 2026-05-24
 ---
 
-# AGENTS — alawein
+# AGENTS: alawein
 
 ## Workspace identity
 
@@ -40,6 +40,11 @@ rollout scripts for the sibling repos.
 7. Do not store secrets, build artifacts, or incidental local files in this
    repo.
 8. Do not use destructive git operations to force consistency.
+9. Agents may author commits per each repo's `commit_mode` (default `full`),
+   authored as `contact@meshal.ai` with no AI attribution. Two invariants always
+   apply: never commit secrets, and confirm before force-push or history rewrite
+   on a shared branch. See
+   [`docs/governance/commit-release-convention.md`](docs/governance/commit-release-convention.md).
 
 ## Ask first
 

@@ -242,3 +242,167 @@ repos:
     test_command: ""
     codeql_languages: []
     sync: manual
+
+  # --- CI-adoption rows added 2026-05-24 (fleet remediation Phase 2 Task 2.2) ---
+  # Confirm build/test against each repo, then validate with sync-github.sh --check --all
+  # and github-baseline-audit.py before committing. Flip maglogic/qmatsim to auto only
+  # after their SAFE-NOW (ruff) commits land.
+  - repo: incore
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: chshlab
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "bash build.sh"
+    test_command: "npm test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: fallax
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev,dashboard]"
+    build_command: "ruff check . && ruff format --check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: qubeml
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e ."
+    build_command: "ruff check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: quantumalgo
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check src tests scripts && mypy src/quantumalgo"
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    sync: auto
+
+  - repo: veyra
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    sync: auto
+
+  - repo: loopholelab
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: ""
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+      - javascript-typescript
+    sync: auto
+
+  - repo: maglogic
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    # sync: auto only AFTER the chore/cleanup SAFE-NOW (adds ruff config) is committed
+    sync: manual
+
+  - repo: qmatsim
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    # sync: auto only AFTER the chore/cleanup SAFE-NOW (ruff) is committed
+    sync: manual
+
+  - repo: scicomp
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e ."
+    build_command: ""
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    # BLOCKED: pytest aborts at collection until the conftest banner-quiet fix lands; linter unsettled
+    sync: manual
+
+  - repo: spincirc
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e ."
+    build_command: "ruff check python/"
+    test_command: "pytest python/ -v --tb=short"
+    codeql_languages:
+      - python
+    # BLOCKED: pip install fails until phantom-dep fix (sphinxcontrib-matlab to sphinxcontrib-matlabdomain) lands
+    sync: manual
+
+  - repo: provegate
+    stack: python
+    ci_template: python
+    working_directory: "."
+    install_command: "python -m pip install -e .[dev]"
+    build_command: "ruff check ."
+    test_command: "pytest tests/ -v --tb=short"
+    codeql_languages:
+      - python
+    # already has its own ci.yml whose mypy step is red; reconcile (per-file mypy, gated) before a competing ci.yml
+    sync: manual
+
+  - repo: prompty
+    stack: node
+    ci_template: node
+    working_directory: "."
+    install_command: "npm ci"
+    build_command: "npm run lint && npm run typecheck && npm run build"
+    test_command: "npm run test"
+    codeql_languages:
+      - javascript-typescript
+    # node/turbo monorepo (verified); dirty WIP at scan, confirm green before flipping to auto
+    sync: manual
+
+  - repo: helios
+    stack: docs
+    ci_template: manual
+    working_directory: "."
+    install_command: ""
+    build_command: ""
+    test_command: ""
+    codeql_languages: []
+    sync: manual

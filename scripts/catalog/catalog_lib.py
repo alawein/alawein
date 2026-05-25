@@ -675,6 +675,18 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
                     "error", f"Repo '{repo['slug']}' uses unknown domain '{repo.get('domain')}'"
                 )
             )
+        if "commit_mode" in repo:
+            from commit_mode import VALID_MODES
+
+            if repo["commit_mode"] not in VALID_MODES:
+                issues.append(
+                    ValidationIssue(
+                        "error",
+                        f"Repo '{repo['slug']}' has invalid commit_mode '{repo['commit_mode']}'; "
+                        f"expected one of {sorted(VALID_MODES)}",
+                    )
+                )
+
         if repo.get("slug") in CORE_AUTOMATION_REPOS:
             actions_settings = repo.get("github_actions_settings") or {}
             missing_actions_settings = [

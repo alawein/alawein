@@ -12,6 +12,7 @@ Describe the user-facing outcome in one paragraph.
 
 ## Quick start
 
+<!-- REQUIRED: fill before first PR -->
 ```bash
 {{install_command}}
 {{dev_command}}
@@ -19,11 +20,13 @@ Describe the user-facing outcome in one paragraph.
 
 ## Architecture
 
-Summarize the main runtime, data flow, and dependencies.
+<!-- REQUIRED: fill before first PR -->
 
+<!-- BEGIN surface:web|service -- keep this section only for web or service surfaces; delete it for library, CLI, or research surfaces (mirror README.research.md, which omits Deployment and substitutes Reproducibility). -->
 ## Deployment
 
-Document how production or preview environments are built and promoted.
+<!-- REQUIRED: fill before first PR -->
+<!-- END surface:web|service -->
 
 ## Docs map
 

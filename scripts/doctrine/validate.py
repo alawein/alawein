@@ -82,6 +82,14 @@ FORBIDDEN_PERSONAL_CLAIMS = [
 ]
 FRONTMATTER_RE = re.compile(r"\A---\s*\r?\n.*?\r?\n---\s*(?:\r?\n|$)", re.DOTALL)
 
+# D1: em-dashes (U+2014) are prohibited on governed surfaces. Use commas,
+# parentheses, or sentence breaks. The rule blocks on Blocking surfaces and
+# warns elsewhere. Source of truth: docs/style/VOICE.md :: Punctuation
+# discipline. The en-dash (U+2013) is intentionally not covered here; numeric
+# ranges (12-20) and date ranges legitimately use it.
+EM_DASH = "—"
+FENCE_RE = re.compile(r"^\s*```")
+
 
 @dataclass
 class Violation:
@@ -198,6 +206,35 @@ def check_frontmatter(path: Path, content: str, report: Report) -> None:
         )
 
 
+def check_emdash(path: Path, content: str, report: Report) -> None:
+    """D1: flag em-dashes (U+2014) outside fenced code blocks.
+
+    Blocking on Blocking surfaces (README/CLAUDE/AGENTS/prompt-kits), advisory
+    elsewhere. Fenced code blocks are skipped so quoted bad examples and shell
+    snippets do not trip the gate.
+    """
+    tier: Literal["blocking", "advisory"] = (
+        "blocking" if is_blocking_surface(path) else "advisory"
+    )
+    in_fence = False
+    for line_no, line in enumerate(content.splitlines(), start=1):
+        if FENCE_RE.match(line):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        if EM_DASH in line:
+            report.add(
+                Violation(
+                    path=path,
+                    line=line_no,
+                    rule="em-dash",
+                    detail=line.strip()[:160],
+                    tier=tier,
+                )
+            )
+
+
 def run_checks(paths: list[Path], checks: set[str], report: Report) -> None:
     for path in paths:
         try:
@@ -209,6 +246,9 @@ def run_checks(paths: list[Path], checks: set[str], report: Report) -> None:
 
         if "frontmatter" in checks:
             check_frontmatter(path, content, report)
+
+        if "emdash" in checks:
+            check_emdash(path, content, report)
 
         if "voice" in checks:
             add_match_violations(
@@ -255,7 +295,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Validate governed style surfaces")
     parser.add_argument(
         "--check",
-        choices=["frontmatter", "voice", "attribution", "identity", "claim", "all"],
+        choices=["frontmatter", "emdash", "voice", "attribution", "identity", "claim", "all"],
         default="all",
     )
     parser.add_argument("--paths", nargs="*", help="Specific file paths to check")
@@ -263,7 +303,7 @@ def main() -> int:
     parser.add_argument("--ci", action="store_true", help="Exit non-zero on blocking violations")
     args = parser.parse_args()
 
-    checks = {"frontmatter", "voice", "attribution", "identity", "claim"} if args.check == "all" else {args.check}
+    checks = {"frontmatter", "emdash", "voice", "attribution", "identity", "claim"} if args.check == "all" else {args.check}
     root = Path(args.root).resolve()
 
     if args.paths:

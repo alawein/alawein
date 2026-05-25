@@ -1,5 +1,5 @@
 <!-- ~/.claude/CLAUDE.md -->
-<!-- CLAUDE CODE GLOBAL AGENT PLATFORM — v1.0.0 -->
+<!-- CLAUDE CODE GLOBAL AGENT PLATFORM: v1.0.0 -->
 <!-- Rationale: Keep user-wide development behavior in the user-level file Claude Code loads for every project. -->
 
 # Global Claude Code Multi-Agent Development Platform

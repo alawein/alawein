@@ -18,18 +18,18 @@ Founder @ Kohyr · AI Systems Engineer · Computational Scientist
 <tr>
 <td valign="top" width="50%">
 
-<a href="https://github.com/alawein/qmatsim"><strong>qmatsim</strong></a> — DFT+MD quantum materials simulator. <em>PRM 2025</em><br><br>
-<a href="https://github.com/alawein/spincirc"><strong>spincirc</strong></a> — Spintronic circuit modelling framework. <em>IEEE J-XCDC 2018</em><br><br>
-<a href="https://github.com/alawein/maglogic"><strong>maglogic</strong></a> — Nanomagnetic logic simulator. <em>IEEE Mag. Letters 2019</em><br><br>
-<a href="https://github.com/alawein/scicomp"><strong>scicomp</strong></a> — PDE solvers, PINNs, HPC utilities
+<a href="https://github.com/alawein/qmatsim"><strong>qmatsim</strong></a>: DFT+MD quantum materials simulator. <em>PRM 2025</em><br><br>
+<a href="https://github.com/alawein/spincirc"><strong>spincirc</strong></a>: Spintronic circuit modelling framework. <em>IEEE J-XCDC 2018</em><br><br>
+<a href="https://github.com/alawein/maglogic"><strong>maglogic</strong></a>: Nanomagnetic logic simulator. <em>IEEE Mag. Letters 2019</em><br><br>
+<a href="https://github.com/alawein/scicomp"><strong>scicomp</strong></a>: PDE solvers, PINNs, HPC utilities
 
 </td>
 <td valign="top" width="50%">
 
-<a href="https://alembiq.online"><strong>alembiq</strong></a> — LLM training, alignment, and fine-tuning infrastructure<br><br>
-<a href="https://attributa.dev"><strong>attributa</strong></a> — Privacy-first attribution and analytics<br><br>
-<a href="https://llmworks.dev"><strong>llmworks</strong></a> — LLM evaluation and benchmarking platform<br><br>
-<a href="https://provegate.online"><strong>provegate</strong></a> — Epistemic reasoning and provenance verification
+<a href="https://alembiq.online"><strong>alembiq</strong></a>: LLM training, alignment, and fine-tuning infrastructure<br><br>
+<a href="https://attributa.dev"><strong>attributa</strong></a>: Privacy-first attribution and analytics<br><br>
+<a href="https://llmworks.dev"><strong>llmworks</strong></a>: LLM evaluation and benchmarking platform<br><br>
+<a href="https://provegate.online"><strong>provegate</strong></a>: Epistemic reasoning and provenance verification
 
 </td>
 </tr>

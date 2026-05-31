@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-05-23
-last_updated: 2026-05-23
+last-verified: 2026-05-30
+last_updated: 2026-05-30
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -109,6 +109,7 @@ Apply voice and prompt-surface changes in this order:
 - TypeScript: strict mode, explicit public return types, no casual `any`
 - Comments: explain invariants, assumptions, and failure modes
 - Commits: present tense, technical context
+- Shell scripts: LF line endings only. CRLF in a tracked `.sh` breaks `bash` on the Linux CI runner (`set: pipefail` / `invalid option name`). Enforce with a `.gitattributes` (`*.sh text eol=lf`); if added at repo root, whitelist `.gitattributes` in the doc-contract R8 root-file allowlist.
 
 ## Build and validate
 
@@ -130,6 +131,11 @@ python scripts/github/github-baseline-audit.py
 If validation fails because a checker is scanning generated or runtime state,
 fix the classification boundary in the validator. Do not patch generated output
 to silence the failure.
+
+The Documentation Audit and Docs Doctrine CI gates are sequential: each fails at
+the first violation and hides the rest, so a fix-and-push loop surfaces only one
+issue per run. Run the full set above locally first (the `/voice-resweep` skill
+wraps them) to clear every finding in one pass.
 
 ## Operating mode
 

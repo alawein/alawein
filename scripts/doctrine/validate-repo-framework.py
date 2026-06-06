@@ -151,6 +151,30 @@ def validate_repo(
     return findings
 
 
+def check_antirot_artifacts(
+    repo_path: Path,
+    bucket: str | None,
+    display_name: str | None = None,
+) -> list[str]:
+    """Code-archetype repos must carry the anti-rot artifacts: a debt ledger
+    (docs/DEBT.md) and an ADR directory (docs/adr/).
+
+    Non-code archetypes (family, personal, jobs-projects, archive) are exempt,
+    as is a cross-org repo with no declared bucket (bucket is None). This is a
+    separate concern from README-header validation, so it is composed alongside
+    validate_repo in the callers rather than folded into it.
+    """
+    if bucket is None or bucket not in CODE_ARCHETYPES:
+        return []
+    name = display_name or repo_path.name
+    findings: list[str] = []
+    if not (repo_path / "docs" / "DEBT.md").is_file():
+        findings.append(f"{name}: missing anti-rot debt ledger docs/DEBT.md")
+    if not (repo_path / "docs" / "adr").is_dir():
+        findings.append(f"{name}: missing anti-rot ADR directory docs/adr/")
+    return findings
+
+
 def load_registry(path: Path) -> dict[str, dict]:
     """Load projects.json and return a map of repo slug to entry.
 
@@ -257,8 +281,10 @@ def validate_repo_single(
                 f"{repo_slug}: projects.json entry has no 'bucket' field; "
                 f"every alawein-org repo must declare a bucket"
             ]
-        return validate_repo(repo_path, bucket=None, display_name=repo_slug)
-    return validate_repo(repo_path, bucket=bucket, display_name=repo_slug)
+        return validate_repo(repo_path, bucket=None, display_name=repo_slug) + \
+            check_antirot_artifacts(repo_path, None, display_name=repo_slug)
+    return validate_repo(repo_path, bucket=bucket, display_name=repo_slug) + \
+        check_antirot_artifacts(repo_path, bucket, display_name=repo_slug)
 
 
 _BUCKET_DIRS = (
@@ -272,6 +298,13 @@ _BUCKET_DIRS = (
 assert set(_BUCKET_DIRS) == ALLOWED_CATEGORY - {"archive"}, (
     f"doctrine drift: _BUCKET_DIRS={_BUCKET_DIRS} does not match "
     f"ALLOWED_CATEGORY - {{'archive'}} = {ALLOWED_CATEGORY - {'archive'}}"
+)
+
+CODE_ARCHETYPES = {"products", "ventures", "tools", "research"}
+
+assert CODE_ARCHETYPES <= ALLOWED_CATEGORY, (
+    f"CODE_ARCHETYPES {CODE_ARCHETYPES} must be a subset of "
+    f"ALLOWED_CATEGORY {ALLOWED_CATEGORY}"
 )
 
 
@@ -364,6 +397,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     for repo, bucket in repos:
         findings = validate_repo(repo, bucket=bucket)
+        findings += check_antirot_artifacts(repo, bucket)
         if findings:
             all_findings.extend(findings)
         else:

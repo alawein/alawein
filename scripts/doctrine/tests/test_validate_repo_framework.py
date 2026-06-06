@@ -19,6 +19,8 @@ from validate_repo_framework import (
     validate_repo_single,
     walk_alawein,
     main,
+    check_antirot_artifacts,
+    CODE_ARCHETYPES,
 )
 
 FIX = Path(__file__).parent / "fixtures"
@@ -453,3 +455,30 @@ def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
     with pytest.raises(RegistryError) as excinfo:
         load_registry(reg_file)
     assert "non-string" in str(excinfo.value).lower()
+
+
+def test_antirot_passes_when_present():
+    findings = check_antirot_artifacts(FIX / "repo_code_with_antirot", "products")
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_antirot_flags_missing_debt_and_adr():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "products")
+    joined = "\n".join(findings)
+    assert "docs/DEBT.md" in joined
+    assert "docs/adr" in joined
+    assert len(findings) == 2
+
+
+def test_antirot_exempt_for_noncode_archetype():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "family")
+    assert findings == []
+
+
+def test_antirot_exempt_for_none_bucket():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", None)
+    assert findings == []
+
+
+def test_code_archetypes_subset_of_categories():
+    assert CODE_ARCHETYPES <= ALLOWED_CATEGORY

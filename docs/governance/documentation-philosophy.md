@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Morphism Documentation Philosophy
 description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
-last_updated: 2026-04-15
+last_updated: 2026-06-07
 category: documentation
 audience: contributors
 status: historical
@@ -213,10 +213,12 @@ deterministic—same source always produces identical IR (verified via SHA256).
 
 **Observable Flow**:
 ```
-Source Code → [Deterministic Extract] → IR
-IR → [Policy Engine (YAML Rules)] → Violations
-Violations → [Baseline Comparison] → Drift Report
+Source Code
+  → [Deterministic Extract] → IR
+  → [Policy Engine (YAML Rules)] → Violations
+  → [Baseline Comparison] → Drift Report
 ```
+
 
 **Invariants Preserved**:
 ✓ Structural completeness: No information lost in IR conversion

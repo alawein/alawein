@@ -5,8 +5,8 @@ sync: manual
 sla: on-change
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+last_updated: 2026-06-07
+last-verified: 2026-06-07
 ---
 
 # Voice and tone
@@ -29,14 +29,14 @@ Write as if the reader will act on the guidance immediately. Prefer precise noun
 
 - State facts before interpretation.
 - Use neutral language for status, risk, and tradeoffs.
-- Prefer "active", "planned", "archived", and "maintained" over vague status labels like "coming soon", "next-gen", or "future-ready".
+- Prefer `active`, `planned`, `archived`, and `maintained` over vague status labels like `coming soon`, `next-gen`, or `future-ready`.
 - Describe capabilities, constraints, and dependencies explicitly.
 - Do not oversell repo importance or maturity.
 
 ## What to avoid
 
 - Marketing adjectives with no operational meaning.
-- Empty intensifiers such as "powerful", "seamless", "best-in-class", and "revolutionary".
+- Empty intensifiers such as `powerful`, `seamless`, `best-in-class`, and `revolutionary`.
 - First-person brand voice unless the document is explicitly personal profile copy.
 - Casual slang in governed docs.
 

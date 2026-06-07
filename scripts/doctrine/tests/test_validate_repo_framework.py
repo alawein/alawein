@@ -293,7 +293,10 @@ def test_main_repo_mode_fails_on_mismatch(capsys):
         "--repo-slug", "alawein/repo-wrong",
     ])
     assert rc == 1
-    assert "FAIL" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert "FAIL" in out
+    finding_lines = [ln for ln in out.splitlines() if "alawein/repo-wrong" in ln]
+    assert len(finding_lines) == 1, f"expected exactly one finding, got: {finding_lines}"
 
 
 def test_main_repo_mode_requires_registry_and_slug():
@@ -482,3 +485,11 @@ def test_antirot_exempt_for_none_bucket():
 
 def test_code_archetypes_subset_of_categories():
     assert CODE_ARCHETYPES <= ALLOWED_CATEGORY
+
+
+def test_antirot_uses_display_name_in_findings():
+    findings = check_antirot_artifacts(
+        FIX / "repo_code_missing_antirot", "products", display_name="owner/custom-name"
+    )
+    assert findings, "expected findings for a missing-artifact code repo"
+    assert all("owner/custom-name" in f for f in findings)

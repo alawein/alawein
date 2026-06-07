@@ -277,6 +277,7 @@ def validate_repo_single(
     owner = repo_slug.split("/", 1)[0]
     if bucket is None:
         if owner == ALAWEIN_OWNER:
+            # Registry misconfiguration (no bucket): antirot artifact check is intentionally skipped here.
             return [
                 f"{repo_slug}: projects.json entry has no 'bucket' field; "
                 f"every alawein-org repo must declare a bucket"

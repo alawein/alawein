@@ -3,7 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: on-change
-last_updated: 2026-06-06
+last_updated: 2026-06-07
 title: Anti-Rot Primitives
 description: Failure-mode guardrails for agentic work, their canonical homes, and the mapping onto existing platform tools.
 category: governance

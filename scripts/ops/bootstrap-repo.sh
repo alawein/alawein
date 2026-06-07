@@ -80,7 +80,7 @@ EOF
     mkdir -p docs/adr
     today="$(date +%F)"
     sed "s/{{last_updated}}/${today}/" \
-      "${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.md" > docs/DEBT.md 2>/dev/null || \
+      "${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.template.md" > docs/DEBT.md 2>/dev/null || \
     cat > docs/DEBT.md << 'EOF'
 ---
 type: canonical

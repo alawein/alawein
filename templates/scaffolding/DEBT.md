@@ -1,7 +1,7 @@
 ---
-type: canonical
+type: frozen
 source: none
-sla: on-change
+sla: none
 last_updated: "{{last_updated}}"
 audience: [ai-agents, contributors]
 ---

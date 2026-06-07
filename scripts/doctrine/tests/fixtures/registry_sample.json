@@ -3,7 +3,8 @@
     { "name": "Passing", "slug": "repo-passing", "repo": "alawein/repo-passing", "bucket": "products" },
     { "name": "Wrong Category", "slug": "repo-wrong", "repo": "alawein/repo-wrong", "bucket": "products" },
     { "name": "No Bucket", "slug": "repo-nobucket", "repo": "alawein/repo-nobucket" },
-    { "name": "Cross Org", "slug": "cross-thing", "repo": "menax-inc/cross-thing" }
+    { "name": "Cross Org", "slug": "cross-thing", "repo": "menax-inc/cross-thing" },
+    { "name": "Code Missing Antirot", "slug": "repo-code-missing-antirot", "repo": "alawein/repo-code-missing-antirot", "bucket": "products" }
   ],
   "packages": [
     { "name": "@alawein/tokens", "registry": "npm" }

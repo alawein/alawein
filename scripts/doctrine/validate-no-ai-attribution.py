@@ -33,7 +33,7 @@ PATTERNS = [
 # governance docs that quote the forbidden phrases). Exempt by exact repo-
 # relative path.
 EXEMPT_PATHS = {
-    "scripts/validate-no-ai-attribution.py",
+    "scripts/doctrine/validate-no-ai-attribution.py",
     "CLAUDE.md",
     "AGENTS.md",
     ".claude/CLAUDE.md",
@@ -45,6 +45,7 @@ EXEMPT_PATHS = {
 # as part of their detection logic).
 SKIP_PREFIXES = (
     "docs/archive/",
+    "docs/internal/",
     "node_modules/",
     ".venv/",
     "venv/",

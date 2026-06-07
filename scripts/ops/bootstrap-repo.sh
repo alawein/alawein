@@ -77,6 +77,54 @@ sla: on-change
 > Auto-generated. Do not edit.
 EOF
 
+    today="$(date +%F)"
+    _debt_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.template.md"
+    if [ -f "$_debt_tpl" ]; then
+      _debt_tmp="docs/.DEBT.md.tmp.$$"
+      sed "s/{{last_updated}}/${today}/" "$_debt_tpl" > "$_debt_tmp" && mv "$_debt_tmp" docs/DEBT.md \
+        || { rm -f "$_debt_tmp"; echo "error: failed to write docs/DEBT.md" >&2; exit 1; }
+    else
+      echo "warning: DEBT template not found at $_debt_tpl; writing minimal fallback" >&2
+      cat > docs/DEBT.md << EOF
+---
+type: canonical
+source: none
+sla: on-change
+last_updated: "${today}"
+audience: [ai-agents, contributors]
+---
+
+# Technical Debt Ledger
+
+Zero untracked debt is the goal. Append entries with /debt-log.
+EOF
+    fi
+    mkdir -p docs/adr
+    _adr_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/adr-template.md"
+    if [ -f "$_adr_tpl" ]; then
+      _adr_tmp="docs/adr/.0000-template.md.tmp.$$"
+      sed "s/{{last_updated}}/${today}/" "$_adr_tpl" > "$_adr_tmp" && mv "$_adr_tmp" docs/adr/0000-template.md \
+        || { rm -f "$_adr_tmp"; echo "error: failed to write docs/adr/0000-template.md" >&2; exit 1; }
+    else
+      echo "warning: ADR template not found at $_adr_tpl; writing minimal fallback" >&2
+      cat > docs/adr/0000-template.md << EOF
+---
+type: canonical
+source: none
+sla: on-change
+last_updated: "${today}"
+audience: [ai-agents, contributors]
+---
+
+# ADR-0000: <Title>
+- **Status:** Proposed
+- **Date:** YYYY-MM-DD
+## Context
+## Decision
+## Consequences
+EOF
+    fi
+
     echo "Created product repo structure."
     ;;
 

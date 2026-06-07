@@ -65,9 +65,11 @@ alawein/
 10. Any `.md` file you modify must have its `last_updated` frontmatter field
     bumped to today, or `validate-doc-contract.sh` exits 1. For `SSOT.md`,
     also bump `last-verified`.
-11. `docs/archive/` and `docs/internal/` are exempt from Vale/doctrine CI checks.
-    They are safe for internal or archived content without strict frontmatter
-    compliance.
+11. `docs/archive/` and `docs/internal/` are exempt from Vale/doctrine CI checks,
+    as are the agent-tooling scaffolding dirs `.claude/`, `.cursor/`, and
+    `.superpowers/` (added to the `doctrine-reusable.yml` Vale exclusion in #128).
+    These are internal or archived trees, safe without strict frontmatter or
+    governed-voice compliance.
 
 ## Style contract
 

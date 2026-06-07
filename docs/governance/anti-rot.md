@@ -52,5 +52,5 @@ The source anti-rot kit ships `code-reviewer`, `architecture-guardian`, and
 
 Code archetypes (`products`, `ventures`, `tools`, `research`) must carry
 `docs/DEBT.md` and `docs/adr/`, enforced by
-`scripts/doctrine/validate-repo-framework.py`. `_archive` and docs-only repos are
-exempt.
+`scripts/doctrine/validate-repo-framework.py`. Repos in the `archive`, `personal`,
+`family`, and `jobs-projects` buckets are exempt; exemption is by bucket, not by content.

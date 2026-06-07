@@ -77,16 +77,18 @@ sla: on-change
 > Auto-generated. Do not edit.
 EOF
 
-    mkdir -p docs/adr
     today="$(date +%F)"
-    sed "s/{{last_updated}}/${today}/" \
-      "${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.template.md" > docs/DEBT.md 2>/dev/null || \
-    cat > docs/DEBT.md << 'EOF'
+    _debt_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.template.md"
+    if [ -f "$_debt_tpl" ]; then
+      sed "s/{{last_updated}}/${today}/" "$_debt_tpl" > docs/DEBT.md
+    else
+      echo "warning: DEBT template not found at $_debt_tpl; writing minimal fallback" >&2
+      cat > docs/DEBT.md << EOF
 ---
 type: canonical
 source: none
 sla: on-change
-last_updated: "2026-01-01"
+last_updated: "${today}"
 audience: [ai-agents, contributors]
 ---
 
@@ -94,9 +96,22 @@ audience: [ai-agents, contributors]
 
 Zero untracked debt is the goal. Append entries with /debt-log.
 EOF
-    sed "s/{{last_updated}}/${today}/" \
-      "${ORG_REPO_PATH:-..}/templates/scaffolding/adr-template.md" > docs/adr/0000-template.md 2>/dev/null || \
-    cat > docs/adr/0000-template.md << 'EOF'
+    fi
+    mkdir -p docs/adr
+    _adr_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/adr-template.md"
+    if [ -f "$_adr_tpl" ]; then
+      sed "s/{{last_updated}}/${today}/" "$_adr_tpl" > docs/adr/0000-template.md
+    else
+      echo "warning: ADR template not found at $_adr_tpl; writing minimal fallback" >&2
+      cat > docs/adr/0000-template.md << EOF
+---
+type: canonical
+source: none
+sla: on-change
+last_updated: "${today}"
+audience: [ai-agents, contributors]
+---
+
 # ADR-0000: <Title>
 - **Status:** Proposed
 - **Date:** YYYY-MM-DD
@@ -104,6 +119,7 @@ EOF
 ## Decision
 ## Consequences
 EOF
+    fi
 
     echo "Created product repo structure."
     ;;

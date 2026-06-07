@@ -65,7 +65,8 @@ Every code-archetype repo (`products`, `ventures`, `tools`, `research`) carries:
 - `docs/DEBT.md`: the technical-debt ledger (see `docs/governance/anti-rot.md`).
 - `docs/adr/`: Architecture Decision Records, one decision per file.
 
-`_archive` and docs-only repos are exempt. Enforced by
+Repos in the `archive`, `personal`, `family`, and `jobs-projects` buckets are exempt;
+exemption is by bucket, not by content. Enforced by
 `scripts/doctrine/validate-repo-framework.py` in the doctrine CI step.
 
 ## Visibility defaults

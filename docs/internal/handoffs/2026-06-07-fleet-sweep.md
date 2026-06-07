@@ -85,8 +85,8 @@ Suggested agents: `/portfolio-ci-triage`, `/cross-repo-drift-auditor`,
 Anti-rot is merged, but the optiqap Vale pattern (legacy terms plus tone filler
 repo-wide) likely repeats elsewhere. Run a fleet voice resweep per repo with the
 org `.vale.ini` over the in-scope file set (exclusions now include
-`.claude/.cursor/.superpowers`). Watch banned terms (`qaplibria` to `optiqap`,
-`morphism-systems` to `kohyr`, `devkit` to `toolkit`, `gainboy` to `gymboy`) and
+`.claude/.cursor/.superpowers`). Watch banned terms (`qaplibria` -> `optiqap`,
+`morphism-systems` -> `kohyr`, `devkit` -> `toolkit`, `gainboy` -> `gymboy`) and
 `Alawein.Tone` filler. Validators: `validate-doctrine.py`, `validate.py`,
 `validate-repo-framework.py`.
 

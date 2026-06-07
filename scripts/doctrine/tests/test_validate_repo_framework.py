@@ -423,7 +423,7 @@ def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
     assert "research" in msg
 
 
-# Fix 9 — new tests.
+# Fix 9: new tests.
 
 def test_main_repo_mode_nondir_path_returns_2(tmp_path, capsys):
     """--repo pointing at a file (not a directory) must return exit code 2."""

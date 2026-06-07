@@ -90,9 +90,12 @@ jobs:
           set -euo pipefail
           # Exclude internal/archived/vendored trees, matching the doctrine
           # validator's exemptions (archive, superpowers, internal, imports,
-          # test fixtures, the db/ record tree).
+          # test fixtures, the db/ record tree) plus the agent-tooling
+          # scaffolding dirs (.claude, .cursor, .superpowers), which are the
+          # top-level equivalents of the already-exempt docs/superpowers and
+          # docs/internal trees and are not governed public docs.
           mapfile -t files < <(git -C repo ls-files '*.md' \
-            | grep -Ev '(^|/)(archive|_archive|\.archive|imports)/|(^|/)docs/(superpowers|internal)/|(^|/)tests?/fixtures/|^db/' \
+            | grep -Ev '(^|/)(archive|_archive|\.archive|imports)/|(^|/)\.(claude|cursor|superpowers)/|(^|/)docs/(superpowers|internal)/|(^|/)tests?/fixtures/|^db/' \
             || true)
           if [ "${#files[@]}" -eq 0 ]; then
             echo "No tracked Markdown files to audit."

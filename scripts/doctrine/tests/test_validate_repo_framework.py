@@ -544,6 +544,7 @@ def test_main_walk_mode_passes_with_antirot_present(tmp_path, capsys):
         encoding="utf-8",
     )
     (repo / "docs" / "adr").mkdir(parents=True)
+    (repo / "docs" / "adr" / "0000-template.md").write_text("# ADR template\n", encoding="utf-8")
     (repo / "docs" / "DEBT.md").write_text("# Debt\n", encoding="utf-8")
     rc = main(["--root", str(tmp_path)])
     assert rc == 0
@@ -583,6 +584,7 @@ def test_antirot_flags_only_missing_adr(tmp_path):
 def test_antirot_flags_only_missing_debt(tmp_path):
     """check_antirot_artifacts returns exactly one finding (DEBT) when only docs/adr/ is present."""
     (tmp_path / "docs" / "adr").mkdir(parents=True)
+    (tmp_path / "docs" / "adr" / "0000-template.md").write_text("x", encoding="utf-8")
     findings = check_antirot_artifacts(tmp_path, "products")
     assert len(findings) == 1
     assert "docs/DEBT.md" in findings[0]

@@ -49,6 +49,17 @@ assert ALAWEIN_OWNER in ALLOWED_OWNER, (
     f"ALAWEIN_OWNER {ALAWEIN_OWNER!r} must be a member of ALLOWED_OWNER"
 )
 
+# Buckets that carry active code and must maintain anti-rot hygiene artifacts
+# (docs/DEBT.md, docs/adr/). Non-code buckets (personal, family, jobs-projects,
+# archive) are deliberately excluded. If a new code-bearing bucket is added to
+# ALLOWED_CATEGORY, add it here too.
+CODE_ARCHETYPES = {"products", "ventures", "tools", "research"}
+
+assert CODE_ARCHETYPES <= ALLOWED_CATEGORY, (
+    f"CODE_ARCHETYPES {CODE_ARCHETYPES} must be a subset of "
+    f"ALLOWED_CATEGORY {ALLOWED_CATEGORY}"
+)
+
 _FIELD_RE = re.compile(
     r"^(Status|Category|Owner|Visibility|Purpose|Next action)\s*:\s*(.+?)\s*$",
     re.MULTILINE,
@@ -157,7 +168,7 @@ def check_antirot_artifacts(
     display_name: str | None = None,
 ) -> list[str]:
     """Code-archetype repos must carry the anti-rot artifacts: a debt ledger
-    (docs/DEBT.md) and an ADR directory (docs/adr/).
+    (docs/DEBT.md) and a non-empty docs/adr/ directory.
 
     Non-code archetypes (family, personal, jobs-projects, archive) are exempt,
     as is a cross-org repo with no declared bucket (bucket is None). This is a
@@ -168,10 +179,25 @@ def check_antirot_artifacts(
         return []
     name = display_name or repo_path.name
     findings: list[str] = []
-    if not (repo_path / "docs" / "DEBT.md").is_file():
+
+    debt_path = repo_path / "docs" / "DEBT.md"
+    try:
+        debt_present = debt_path.is_file()
+    except OSError as e:
+        findings.append(f"{name}: docs/DEBT.md unreadable: {e}")
+        debt_present = True
+    if not debt_present:
         findings.append(f"{name}: missing anti-rot debt ledger docs/DEBT.md")
-    if not (repo_path / "docs" / "adr").is_dir():
+
+    adr_dir = repo_path / "docs" / "adr"
+    try:
+        adr_present = adr_dir.is_dir() and any(adr_dir.iterdir())
+    except OSError as e:
+        findings.append(f"{name}: docs/adr/ unreadable: {e}")
+        adr_present = True
+    if not adr_present:
         findings.append(f"{name}: missing anti-rot ADR directory docs/adr/")
+
     return findings
 
 
@@ -277,7 +303,9 @@ def validate_repo_single(
     owner = repo_slug.split("/", 1)[0]
     if bucket is None:
         if owner == ALAWEIN_OWNER:
-            # Registry misconfiguration (no bucket): antirot artifact check is intentionally skipped here.
+            # Registry misconfiguration: an alawein repo with no bucket. Reported as an
+            # error; there is nothing further to validate. (check_antirot_artifacts is
+            # itself a no-op for bucket=None, so skipping it here changes nothing.)
             return [
                 f"{repo_slug}: projects.json entry has no 'bucket' field; "
                 f"every alawein-org repo must declare a bucket"
@@ -300,14 +328,6 @@ assert set(_BUCKET_DIRS) == ALLOWED_CATEGORY - {"archive"}, (
     f"doctrine drift: _BUCKET_DIRS={_BUCKET_DIRS} does not match "
     f"ALLOWED_CATEGORY - {{'archive'}} = {ALLOWED_CATEGORY - {'archive'}}"
 )
-
-CODE_ARCHETYPES = {"products", "ventures", "tools", "research"}
-
-assert CODE_ARCHETYPES <= ALLOWED_CATEGORY, (
-    f"CODE_ARCHETYPES {CODE_ARCHETYPES} must be a subset of "
-    f"ALLOWED_CATEGORY {ALLOWED_CATEGORY}"
-)
-
 
 def walk_alawein(root: Path) -> list[tuple[Path, str]]:
     """Return [(repo_path, bucket_name), ...] for every repo under alawein/<bucket>/.

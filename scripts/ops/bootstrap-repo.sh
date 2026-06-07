@@ -77,6 +77,34 @@ sla: on-change
 > Auto-generated. Do not edit.
 EOF
 
+    mkdir -p docs/adr
+    today="$(date +%F)"
+    sed "s/{{last_updated}}/${today}/" \
+      "${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.md" > docs/DEBT.md 2>/dev/null || \
+    cat > docs/DEBT.md << 'EOF'
+---
+type: canonical
+source: none
+sla: on-change
+last_updated: "2026-01-01"
+audience: [ai-agents, contributors]
+---
+
+# Technical Debt Ledger
+
+Zero untracked debt is the goal. Append entries with /debt-log.
+EOF
+    sed "s/{{last_updated}}/${today}/" \
+      "${ORG_REPO_PATH:-..}/templates/scaffolding/adr-template.md" > docs/adr/0000-template.md 2>/dev/null || \
+    cat > docs/adr/0000-template.md << 'EOF'
+# ADR-0000: <Title>
+- **Status:** Proposed
+- **Date:** YYYY-MM-DD
+## Context
+## Decision
+## Consequences
+EOF
+
     echo "Created product repo structure."
     ;;
 

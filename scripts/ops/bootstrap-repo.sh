@@ -80,7 +80,9 @@ EOF
     today="$(date +%F)"
     _debt_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/DEBT.template.md"
     if [ -f "$_debt_tpl" ]; then
-      sed "s/{{last_updated}}/${today}/" "$_debt_tpl" > docs/DEBT.md
+      _debt_tmp="docs/.DEBT.md.tmp.$$"
+      sed "s/{{last_updated}}/${today}/" "$_debt_tpl" > "$_debt_tmp" && mv "$_debt_tmp" docs/DEBT.md \
+        || { rm -f "$_debt_tmp"; echo "error: failed to write docs/DEBT.md" >&2; exit 1; }
     else
       echo "warning: DEBT template not found at $_debt_tpl; writing minimal fallback" >&2
       cat > docs/DEBT.md << EOF
@@ -100,7 +102,9 @@ EOF
     mkdir -p docs/adr
     _adr_tpl="${ORG_REPO_PATH:-..}/templates/scaffolding/adr-template.md"
     if [ -f "$_adr_tpl" ]; then
-      sed "s/{{last_updated}}/${today}/" "$_adr_tpl" > docs/adr/0000-template.md
+      _adr_tmp="docs/adr/.0000-template.md.tmp.$$"
+      sed "s/{{last_updated}}/${today}/" "$_adr_tpl" > "$_adr_tmp" && mv "$_adr_tmp" docs/adr/0000-template.md \
+        || { rm -f "$_adr_tmp"; echo "error: failed to write docs/adr/0000-template.md" >&2; exit 1; }
     else
       echo "warning: ADR template not found at $_adr_tpl; writing minimal fallback" >&2
       cat > docs/adr/0000-template.md << EOF

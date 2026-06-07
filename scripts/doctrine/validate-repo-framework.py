@@ -196,7 +196,7 @@ def check_antirot_artifacts(
         findings.append(f"{name}: docs/adr/ unreadable: {e}")
         adr_present = True
     if not adr_present:
-        findings.append(f"{name}: missing anti-rot ADR directory docs/adr/")
+        findings.append(f"{name}: docs/adr/ is absent or empty (must contain at least one ADR file)")
 
     return findings
 

@@ -632,3 +632,14 @@ def test_main_repo_mode_fails_on_mismatch_comment_check(capsys):
     # has docs/DEBT.md and docs/adr/ present.
     finding_lines = [ln for ln in out.splitlines() if "alawein/repo-wrong" in ln]
     assert len(finding_lines) == 1
+
+
+def test_antirot_flags_empty_adr_dir(tmp_path):
+    # docs/adr exists but is empty -> treated as missing (must contain at least one ADR).
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs" / "DEBT.md").write_text("ledger", encoding="utf-8")
+    (tmp_path / "docs" / "adr").mkdir()
+    findings = check_antirot_artifacts(tmp_path, "products")
+    assert len(findings) == 1
+    assert "docs/adr" in findings[0]
+    assert "docs/DEBT.md" not in findings[0]

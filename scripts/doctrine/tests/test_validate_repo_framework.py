@@ -19,6 +19,8 @@ from validate_repo_framework import (
     validate_repo_single,
     walk_alawein,
     main,
+    check_antirot_artifacts,
+    CODE_ARCHETYPES,
 )
 
 FIX = Path(__file__).parent / "fixtures"
@@ -291,7 +293,10 @@ def test_main_repo_mode_fails_on_mismatch(capsys):
         "--repo-slug", "alawein/repo-wrong",
     ])
     assert rc == 1
-    assert "FAIL" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert "FAIL" in out
+    finding_lines = [ln for ln in out.splitlines() if "alawein/repo-wrong" in ln]
+    assert len(finding_lines) == 1, f"expected exactly one finding, got: {finding_lines}"
 
 
 def test_main_repo_mode_requires_registry_and_slug():
@@ -418,7 +423,7 @@ def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
     assert "research" in msg
 
 
-# Fix 9 — new tests.
+# Fix 9: new tests.
 
 def test_main_repo_mode_nondir_path_returns_2(tmp_path, capsys):
     """--repo pointing at a file (not a directory) must return exit code 2."""
@@ -453,3 +458,188 @@ def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
     with pytest.raises(RegistryError) as excinfo:
         load_registry(reg_file)
     assert "non-string" in str(excinfo.value).lower()
+
+
+def test_antirot_passes_when_present():
+    findings = check_antirot_artifacts(FIX / "repo_code_with_antirot", "products")
+    assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_antirot_flags_missing_debt_and_adr():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "products")
+    joined = "\n".join(findings)
+    assert "docs/DEBT.md" in joined
+    assert "docs/adr" in joined
+    assert len(findings) == 2
+
+
+def test_antirot_exempt_for_noncode_archetype():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "family")
+    assert findings == []
+
+
+def test_antirot_exempt_for_none_bucket():
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", None)
+    assert findings == []
+
+
+def test_code_archetypes_subset_of_categories():
+    assert CODE_ARCHETYPES <= ALLOWED_CATEGORY
+
+
+def test_antirot_uses_display_name_in_findings():
+    findings = check_antirot_artifacts(
+        FIX / "repo_code_missing_antirot", "products", display_name="owner/custom-name"
+    )
+    assert findings, "expected findings for a missing-artifact code repo"
+    assert all("owner/custom-name" in f for f in findings)
+
+
+# Round 2: wiring coverage -- main() walk loop and validate_repo_single both compose
+# check_antirot_artifacts; deleting either call leaves all prior tests green.
+# The tests below are the regression net that makes either deletion detectable.
+
+
+def test_main_walk_mode_flags_missing_antirot(tmp_path, capsys):
+    """main() workspace-walk loop must include antirot findings.
+
+    Builds a minimal products/<repo>/ layout under tmp_path with a valid
+    README header but no docs/DEBT.md or docs/adr/. Expects exit code 1
+    and both antirot artifact names in stdout.
+    """
+    repo = tmp_path / "products" / "sample-repo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text(
+        "# sample-repo\n\n"
+        "Status:      active\n"
+        "Category:    products\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     Walk-mode antirot wiring test fixture.\n"
+        "Next action: continue\n",
+        encoding="utf-8",
+    )
+    rc = main(["--root", str(tmp_path)])
+    out = capsys.readouterr().out
+    assert rc == 1
+    assert "docs/DEBT.md" in out
+    assert "docs/adr" in out
+
+
+def test_main_walk_mode_passes_with_antirot_present(tmp_path, capsys):
+    """Walk mode must return exit code 0 when antirot artifacts are present.
+
+    Paired pass case for test_main_walk_mode_flags_missing_antirot.
+    """
+    repo = tmp_path / "products" / "sample-repo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text(
+        "# sample-repo\n\n"
+        "Status:      active\n"
+        "Category:    products\n"
+        "Owner:       alawein\n"
+        "Visibility:  private\n"
+        "Purpose:     Walk-mode antirot wiring test fixture (passing).\n"
+        "Next action: continue\n",
+        encoding="utf-8",
+    )
+    (repo / "docs" / "adr").mkdir(parents=True)
+    (repo / "docs" / "adr" / "0000-template.md").write_text("# ADR template\n", encoding="utf-8")
+    (repo / "docs" / "DEBT.md").write_text("# Debt\n", encoding="utf-8")
+    rc = main(["--root", str(tmp_path)])
+    assert rc == 0
+    assert "PASS" in capsys.readouterr().out
+
+
+def test_validate_repo_single_flags_missing_antirot():
+    """validate_repo_single must include antirot findings for a code-archetype repo.
+
+    Uses the repo_code_missing_antirot fixture (products bucket, no docs/DEBT.md
+    or docs/adr/) and the registry entry added in registry_sample.json.
+    Both the DEBT and adr findings must appear and carry the slug.
+    """
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_code_missing_antirot",
+        "alawein/repo-code-missing-antirot",
+        reg,
+    )
+    assert findings, "expected antirot findings for a code repo without artifacts"
+    joined = "\n".join(findings)
+    assert "docs/DEBT.md" in joined
+    assert "docs/adr" in joined
+    assert all("alawein/repo-code-missing-antirot" in f for f in findings)
+
+
+def test_antirot_flags_only_missing_adr(tmp_path):
+    """check_antirot_artifacts returns exactly one finding (adr) when only docs/DEBT.md is present."""
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs" / "DEBT.md").write_text("# Debt\n", encoding="utf-8")
+    findings = check_antirot_artifacts(tmp_path, "products")
+    assert len(findings) == 1
+    assert "docs/adr" in findings[0]
+    assert "docs/DEBT.md" not in findings[0]
+
+
+def test_antirot_flags_only_missing_debt(tmp_path):
+    """check_antirot_artifacts returns exactly one finding (DEBT) when only docs/adr/ is present."""
+    (tmp_path / "docs" / "adr").mkdir(parents=True)
+    (tmp_path / "docs" / "adr" / "0000-template.md").write_text("x", encoding="utf-8")
+    findings = check_antirot_artifacts(tmp_path, "products")
+    assert len(findings) == 1
+    assert "docs/DEBT.md" in findings[0]
+    assert "docs/adr" not in findings[0]
+
+
+def test_validate_repo_single_no_bucket_alawein_skips_antirot():
+    """The alawein no-bucket early return must not invoke check_antirot_artifacts.
+
+    Uses repo_code_missing_antirot (which lacks both antirot artifacts) as the
+    repo path. If antirot were erroneously called, it would add two more findings
+    -- bringing the total above 1. The assertion len == 1 locks the invariant.
+
+    Antirot is intentionally skipped on the no-bucket early return; using a
+    missing-artifacts repo locks that: any accidental invocation would inflate
+    the finding count beyond 1.
+    """
+    reg = load_registry(FIX / "registry_sample.json")
+    findings = validate_repo_single(
+        FIX / "repo_code_missing_antirot",
+        "alawein/repo-nobucket",
+        reg,
+    )
+    # Exactly one finding: the missing-bucket registry error; antirot adds zero.
+    assert len(findings) == 1
+    assert "bucket" in findings[0].lower()
+
+
+def test_main_repo_mode_fails_on_mismatch_comment_check(capsys):
+    """One category-mismatch finding; the fixture carries artifacts so antirot adds zero.
+
+    This documents why len(finding_lines) == 1 is the correct assertion in
+    test_main_repo_mode_fails_on_mismatch: repo_wrong_category has both
+    docs/DEBT.md and docs/adr/, so the only finding is the bucket mismatch.
+    """
+    rc = main([
+        "--repo", str(FIX / "repo_wrong_category"),
+        "--registry", str(FIX / "registry_sample.json"),
+        "--repo-slug", "alawein/repo-wrong",
+    ])
+    assert rc == 1
+    out = capsys.readouterr().out
+    assert "FAIL" in out
+    # One finding: category mismatch only; antirot passes because the fixture
+    # has docs/DEBT.md and docs/adr/ present.
+    finding_lines = [ln for ln in out.splitlines() if "alawein/repo-wrong" in ln]
+    assert len(finding_lines) == 1
+
+
+def test_antirot_flags_empty_adr_dir(tmp_path):
+    # docs/adr exists but is empty -> treated as missing (must contain at least one ADR).
+    (tmp_path / "docs").mkdir()
+    (tmp_path / "docs" / "DEBT.md").write_text("ledger", encoding="utf-8")
+    (tmp_path / "docs" / "adr").mkdir()
+    findings = check_antirot_artifacts(tmp_path, "products")
+    assert len(findings) == 1
+    assert "docs/adr" in findings[0]
+    assert "docs/DEBT.md" not in findings[0]

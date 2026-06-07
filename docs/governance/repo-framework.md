@@ -8,7 +8,7 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-05-16
+last_updated: 2026-06-06
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
@@ -57,6 +57,16 @@ Every repo across all active orgs places a plain-markdown metadata block at the 
     Next action: <continue | refactor | merge | archive | delete>
 
 Enforced by `scripts/doctrine/validate-repo-framework.py`, run in the doctrine CI step.
+
+## Per-repo anti-rot artifacts (mandatory for code archetypes)
+
+Every code-archetype repo (`products`, `ventures`, `tools`, `research`) carries:
+
+- `docs/DEBT.md`: the technical-debt ledger (see `docs/governance/anti-rot.md`).
+- `docs/adr/`: Architecture Decision Records, one decision per file.
+
+`_archive` and docs-only repos are exempt. Enforced by
+`scripts/doctrine/validate-repo-framework.py` in the doctrine CI step.
 
 ## Visibility defaults
 

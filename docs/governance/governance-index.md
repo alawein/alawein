@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-06
+last_updated: 2026-06-09
 audience: [ai-agents, contributors]
 ---
 
@@ -40,6 +40,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `profile-sync-from-guides.md` | Reference | Profile sync runbook |
 | `prompt-rollout.md` | Reference | Prompt kit rollout process |
 | `release-playbook.md` | Frozen | Superseded by commit-release-convention.md |
+| `release-roadmap-and-outcomes.md` | Active | Outcome-to-version bridge mapping product milestones to SemVer releases; parallel outcome track for outcome-based releasing |
 | `repo-standardization.md` | Active | Per-repo standardization checklist |
 | `repo-sweep-prompt.md` | Reference | Repo sweep operator prompt |
 | `repository-layout-standard.md` | Active | Directory layout standard |
@@ -48,6 +49,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
 | `slash-commands-catalog.md` | Reference | Available slash commands |
 | `tooling-quality-gates.md` | Active | CI quality gate definitions |
+| `version-history-audit.md` | Active | Repeatable protocol to take a repo from incoherent version history to a clean SemVer baseline by additive re-indexing |
 | `workflow.md` | Active | Primary development workflow |
 | `workspace-layout-audit.md` | Active | Workspace layout audit: per-repo layout status vs stack standards |
 | `workspace-master-prompt.md` | Active | Workspace master operator prompt |

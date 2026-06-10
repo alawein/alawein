@@ -30,7 +30,7 @@ The single sanctioned coupling between the outcome track and SemVer is the
 `1.0.0` graduation: graduating out of `0.x` is an explicit outcome decision,
 not a mechanical bump. Past `1.0`, strategy never forces a MAJOR increment. A
 post-`1.0` MAJOR fires only on a real contract break (see
-`commit-release-convention.md` section 5.2 for the explicit rule).
+`commit-release-convention.md` sections 5.2 and 5.4 for the explicit rule).
 
 ## Level 1: Outcome
 

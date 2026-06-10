@@ -40,7 +40,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `profile-sync-from-guides.md` | Reference | Profile sync runbook |
 | `prompt-rollout.md` | Reference | Prompt kit rollout process |
 | `release-playbook.md` | Frozen | Superseded by commit-release-convention.md |
-| `release-roadmap-and-outcomes.md` | Active | Outcome-to-version bridge mapping product milestones to SemVer releases; parallel outcome track for outcome-based releasing |
+| `release-roadmap-and-outcomes.md` | Active | Outcome-to-version bridge mapping product milestones to SemVer releases without redefining SemVer; parallel outcome track for outcome-based releasing |
 | `repo-standardization.md` | Active | Per-repo standardization checklist |
 | `repo-sweep-prompt.md` | Reference | Repo sweep operator prompt |
 | `repository-layout-standard.md` | Active | Directory layout standard |

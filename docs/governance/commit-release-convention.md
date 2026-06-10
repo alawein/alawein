@@ -212,6 +212,10 @@ categories, and prepend it directly below `## [Unreleased]`. Entry format:
 - Fixed a regression
 ```
 
+When the repo uses outcome-based releasing, add an `Outcome: <id(s)>` or
+`Maintenance:` line immediately after the version and date header, per
+`release-roadmap-and-outcomes.md`.
+
 Release flow: move `Unreleased` into the new version and date it, bump the
 derived version files, tag `vX.Y.Z`, push the tag, create the GitHub release. In
 `full` mode the agent performs this; in `guardrailed` and `local` it proposes it.

@@ -46,10 +46,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run full documentation contract validation
+      # Push / schedule: the incremental github.event.before base is correct
+      # (it scopes the check to what this push changed). Pull requests must
+      # NOT use it: github.event.before points at the branch's prior head, so
+      # the diff against the PR merge ref absorbs target-branch commits and
+      # falsely attributes them to the PR. Use the PR merge-base instead, the
+      # same pattern as ci.yml, so the freshness check sees only the PR's diff.
+      - name: Run full documentation contract validation (push / schedule)
+        if: github.event_name != 'pull_request'
         env:
           DOC_CONTRACT_BASE_REF: ${{ github.event.before }}
         run: ./scripts/doctrine/validate-doc-contract.sh --full
+
+      - name: Run full documentation contract validation (pull request)
+        if: github.event_name == 'pull_request'
+        run: ./scripts/doctrine/validate-doc-contract.sh --changed-only "origin/${{ github.base_ref }}"
 
       - name: Setup Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0

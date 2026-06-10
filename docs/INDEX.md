@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-06-06
+last_updated: 2026-06-09
 ---
 
 # Index — alawein
@@ -76,6 +76,7 @@ last_updated: 2026-06-06
 - [profile-sync-from-guides.md](governance/profile-sync-from-guides.md)
 - [prompt-rollout.md](governance/prompt-rollout.md)
 - [release-playbook.md](governance/release-playbook.md)
+- [release-roadmap-and-outcomes.md](governance/release-roadmap-and-outcomes.md)
 - [repo-framework.md](governance/repo-framework.md)
 - [repo-standardization.md](governance/repo-standardization.md)
 - [repo-sweep-prompt.md](governance/repo-sweep-prompt.md)
@@ -87,6 +88,7 @@ last_updated: 2026-06-06
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
 - [vercel-baseline.md](governance/vercel-baseline.md)
+- [version-history-audit.md](governance/version-history-audit.md)
 - [workflow-pin-inventory-and-bundle-v1.md](governance/workflow-pin-inventory-and-bundle-v1.md)
 - [workflow.md](governance/workflow.md)
 - [workspace-layout-audit.md](governance/workspace-layout-audit.md)

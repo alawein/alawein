@@ -8,7 +8,7 @@ description: Single source of truth for commit authority, commit messages, branc
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-05-24
+last_updated: 2026-06-09
 tags: [commits, branches, merge, releases, semver, agents, convention]
 ---
 
@@ -153,6 +153,50 @@ them. The `version-coherence` check enforces agreement.
 Bump rule, from the commits since the last tag: a `feat` is a minor bump; a `fix`
 or other non-feat change is a patch bump; a `BREAKING CHANGE` is a major bump.
 
+### 5.1 Pre-release identifiers
+
+Order pre-releases `X.Y.Z-alpha.N` < `X.Y.Z-beta.N` < `X.Y.Z-rc.N` < `X.Y.Z`.
+Use `-rc.N` tags on `release/*` stabilization. A pre-release tag may carry a
+provisional CHANGELOG entry; on final release those entries roll up into the
+single dated `X.Y.Z` entry. A pre-release tag never sets a new stable baseline
+for `version-coherence`.
+
+### 5.2 0.x semantics and the 1.0.0 trigger
+
+In `0.x` there is no MAJOR digit, so MINOR absorbs features and breaks: `feat`
+and `BREAKING CHANGE` both bump MINOR (`0.Y.0`); `fix` and other
+backward-compatible changes bump PATCH (`0.y.Z`). This keeps continuity with the
+`1.x` mapping; the only `0.x` deviation is that a break lands as MINOR.
+Graduating `0.x` to `1.0.0` is an outcome decision (first stable public contract,
+first external consumer, or the declared launch outcome), the single sanctioned
+coupling between versioning and outcomes (see `release-roadmap-and-outcomes.md`).
+Past `1.0`, strategy never forces a MAJOR; only a contract break (5.4) does.
+
+### 5.3 Monorepo versioning mode
+
+A repo is either fixed (one version, tag, and CHANGELOG for the whole repo) or
+independent (per-package, via changesets). Record the mode per repo in
+`catalog/repos.json` alongside `commit_mode` (for example `release_mode: fixed`);
+absent means fixed.
+
+### 5.4 Contract-surface definition
+
+"Breaking" is meaningful only against a declared, closed-world surface list,
+published where consumers see it (repo README or `CONTRACT.md`): anything not
+listed carries no stability promise. Review the list whenever a new external
+consumer appears. A `BREAKING CHANGE` footer is warranted only when a declared
+surface breaks.
+
+### 5.5 Independent contract versions
+
+An artifact may carry its own SemVer line (for example an attestation or wire
+schema). Independence is asymmetric: a backward-compatible schema bump is
+independent of the product version, but a breaking schema change is, by 5.4, a
+break of a declared surface and therefore also moves the product version. Keep a
+per-repo registry of these contracts and their current versions.
+
+### 5.6 Release operations
+
 CHANGELOG entry flow: inspect recent commits (`git log --oneline -20`), group
 them into Keep a Changelog categories (Added, Changed, Fixed, Removed, Security),
 write the next version entry in past tense with user-facing outcomes, omit empty
@@ -224,4 +268,6 @@ Operational runbooks (current, complementary): `git-operations.md`,
 
 Related: `parallel-batch-execution.md` (multi-repo rollout), `docs-doctrine.md`
 (documentation standards), `docs/style/VOICE.md` (voice and the em-dash ban),
-`credential-hygiene.md` (secrets).
+`credential-hygiene.md` (secrets), `version-history-audit.md` (version-history
+convergence protocol), `release-roadmap-and-outcomes.md` (outcome-to-version
+bridge).

@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-06
+last_updated: 2026-06-10
 audience: [ai-agents, contributors]
 ---
 
@@ -35,4 +35,12 @@ in the PR).
 - **What:** The 24 seeded repos hold their `docs/DEBT.md` and `docs/adr/` on local `docs/anti-rot` branches awaiting the maintainer's merge and push. Separately, `kohyr` already uses ADRs (for example ADR-049, ADR-053) but its ADR location was not reconciled to the standard `docs/adr/` path; it was deliberately not force-migrated.
 - **Risk if left:** Working trees do not carry the artifacts until the branches merge, so a working-tree doctrine walk still reports them missing; kohyr's ADR convention stays divergent from the fleet standard.
 - **Suggested fix:** Merge and push the `docs/anti-rot` branches per the fleet merge policy; separately, confirm kohyr's ADR directory and align it to `docs/adr/` (or record an ADR documenting the divergence).
+- **Owner:** alawein
+
+### docs-validation Audit no longer runs on non-main pushes or non-main-base PRs
+- **Date:** 2026-06-10
+- **Where:** `.github/workflows/docs-validation.yml` (`push:` and `pull_request:` triggers scoped to `branches: [main]`)
+- **What:** The `Audit Documentation` workflow was scoped to `branches: [main]` on both triggers (PR #136) to match `ci.yml` and to drop a redundant feature-branch push run whose `--full` freshness window absorbed target-branch commits after a `git merge main`. The side effect is that direct pushes to non-main branches, and pull requests whose base is not `main`, no longer run the documentation audit.
+- **Risk if left:** Doc drift introduced on a non-main branch that never reaches `main` through a PR is not audited. Low in practice: generated-doc autocommits land on `main` (still covered) and nearly all PRs target `main`, so the main-targeted `pull_request` run remains the authoritative gate.
+- **Suggested fix:** None required while the workflow mirrors `ci.yml`. If stacked PRs onto non-main bases become common, broaden the `pull_request` branches filter and rely on the `validate-doc-contract.sh` fail-loud-on-unresolvable-base guard so a non-main base cannot silently no-op the freshness check.
 - **Owner:** alawein

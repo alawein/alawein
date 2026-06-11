@@ -16,6 +16,7 @@ on:
       - '.github/markdown-link-check-config.json'
       - '.markdownlint.jsonc'
   pull_request:
+    branches: [main]
     paths:
       - 'docs/**'
       - 'prompt-kits/**'
@@ -47,12 +48,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Push / schedule: the incremental github.event.before base is correct
-      # (it scopes the check to what this push changed). Pull requests must
-      # NOT use it: github.event.before points at the branch's prior head, so
-      # the diff against the PR merge ref absorbs target-branch commits and
-      # falsely attributes them to the PR. Use the PR merge-base instead, the
-      # same pattern as ci.yml, so the freshness check sees only the PR's diff.
+      # Non-PR runs use --full. Push fires only on main (see the push trigger),
+      # where DOC_CONTRACT_BASE_REF=github.event.before scopes freshness to that
+      # push's own commits. On schedule there is no github.event.before, so the
+      # script falls back to HEAD^ (the last commit on main). Pull requests must
+      # NOT use github.event.before: it points at the branch's prior head, and
+      # the checked-out PR merge ref folds in target-branch commits, so that base
+      # would falsely attribute them to the PR. The PR step below diffs
+      # origin/<base>...HEAD (three-dot, the merge-base), the same pattern as
+      # ci.yml, so it sees only the PR's own diff.
       - name: Run full documentation contract validation (push / schedule)
         if: github.event_name != 'pull_request'
         env:

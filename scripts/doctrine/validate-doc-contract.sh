@@ -160,11 +160,44 @@ GENERATED_FRESHNESS_MARKERS = {
 }
 
 
+def ref_resolves(ref: str) -> bool:
+    return (
+        run_git(["rev-parse", "--verify", "--quiet", f"{ref}^{{commit}}"], check=False).returncode
+        == 0
+    )
+
+
 def base_ref_for_mode() -> Optional[str]:
     if MODE == "--changed-only":
-        return BASE_REF_INPUT or None
+        # A --changed-only run is a gate (CI/PR): the freshness check must diff
+        # against this base. An empty or unresolvable base must fail loud, never
+        # fall through to an empty changed-set that passes while checking nothing.
+        if not BASE_REF_INPUT:
+            sys.exit(
+                "validate-doc-contract: --changed-only requires a base ref, but none was "
+                "provided (was the workflow's github.base_ref empty?). Refusing to pass the "
+                "doc-freshness check against an unknown base."
+            )
+        if not ref_resolves(BASE_REF_INPUT):
+            sys.exit(
+                f"validate-doc-contract: base ref '{BASE_REF_INPUT}' does not resolve in this "
+                "checkout, so the doc-freshness check cannot diff against it and will not "
+                "silently pass. Ensure the base branch is fetched (the CI checkout needs "
+                "fetch-depth: 0)."
+            )
+        return BASE_REF_INPUT
     if ENV_BASE_REF and ENV_BASE_REF != ZERO_SHA:
-        return ENV_BASE_REF
+        if ref_resolves(ENV_BASE_REF):
+            return ENV_BASE_REF
+        # An orphaned/unfetched before-ref (e.g. after a force-push) must not be
+        # diffed into an empty changed-set; fall back to HEAD^ with a notice,
+        # mirroring the Vale step's handling of an unusable github.event.before.
+        print(
+            f"validate-doc-contract: DOC_CONTRACT_BASE_REF '{ENV_BASE_REF}' does not resolve; "
+            "falling back to HEAD^ for the freshness check.",
+            file=sys.stderr,
+        )
+        return None
     return None
 
 

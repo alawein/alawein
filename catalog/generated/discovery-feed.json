@@ -4,11 +4,11 @@
     "repoCount": 37,
     "typeCounts": {
       "product": 10,
-      "research": 16,
+      "research": 14,
+      "tooling": 7,
       "archive": 2,
       "infra": 3,
-      "governance": 1,
-      "tooling": 5
+      "governance": 1
     },
     "lifecycleCounts": {
       "maintained": 2,
@@ -515,7 +515,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/attributa",
+        "local_path": "ventures/attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -566,7 +566,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/llmworks",
+        "local_path": "ventures/llmworks",
         "catalog_groups": [
           "featured"
         ],
@@ -883,10 +883,101 @@
         "release_automation": {}
       },
       {
+        "name": "qmatsim",
+        "slug": "qmatsim",
+        "repo": "alawein/qmatsim",
+        "type": "research",
+        "surface": "library",
+        "domain": "quantum",
+        "lifecycle": "frozen",
+        "visibility": "public",
+        "theme_family": "dawn",
+        "brand_family": "dawn",
+        "stack": [
+          "python",
+          "scientific-computing"
+        ],
+        "audience": [
+          "research"
+        ],
+        "homepage": "https://github.com/alawein/qmatsim",
+        "description": "Quantum material simulation research workspace.",
+        "topics": [
+          "quantum",
+          "simulation",
+          "python",
+          "materials",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "research/qmatsim",
+        "catalog_groups": [
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "quantum-materials-simulation"
+        ],
+        "version_source": "pyproject.toml",
+        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "qubeml",
+        "slug": "qubeml",
+        "repo": "alawein/qubeml",
+        "type": "research",
+        "surface": "library",
+        "domain": "quantum",
+        "lifecycle": "frozen",
+        "visibility": "public",
+        "theme_family": "vibrant",
+        "brand_family": "vibrant",
+        "stack": [
+          "python",
+          "quantum-ml"
+        ],
+        "audience": [
+          "research"
+        ],
+        "homepage": "https://github.com/alawein/qubeml",
+        "description": "Quantum machine learning experiments and research.",
+        "topics": [
+          "quantum",
+          "machine-learning",
+          "python",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "research/qubeml",
+        "catalog_groups": [
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "quantum-ml-research"
+        ],
+        "version_source": "pyproject.toml",
+        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      }
+    ],
+    "internal_ops": [
+      {
         "name": "Adil",
         "slug": "adil",
         "repo": "alawein/adil",
-        "type": "research",
+        "type": "tooling",
         "surface": "cli",
         "domain": "legal-ops",
         "lifecycle": "active",
@@ -931,52 +1022,54 @@
         "release_automation": {}
       },
       {
-        "name": "qmatsim",
-        "slug": "qmatsim",
-        "repo": "alawein/qmatsim",
-        "type": "research",
-        "surface": "library",
-        "domain": "quantum",
-        "lifecycle": "frozen",
+        "name": "Provegate",
+        "slug": "provegate",
+        "repo": "alawein/provegate",
+        "type": "tooling",
+        "surface": "workflow",
+        "domain": "ai-governance",
+        "lifecycle": "active",
         "visibility": "public",
-        "theme_family": "dawn",
-        "brand_family": "dawn",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
         "stack": [
           "python",
-          "scientific-computing"
+          "mcp",
+          "agents"
         ],
         "audience": [
-          "research"
+          "research",
+          "client"
         ],
-        "homepage": "https://github.com/alawein/qmatsim",
-        "description": "Quantum material simulation research workspace.",
+        "homepage": "https://provegate.online",
+        "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
         "topics": [
-          "quantum",
-          "simulation",
+          "mcp",
+          "agents",
+          "governance",
           "python",
-          "materials",
-          "research"
+          "verification"
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/qmatsim",
+        "local_path": "ventures/provegate",
         "catalog_groups": [
-          "research"
+          "research",
+          "infrastructure"
         ],
         "depends_on": [
+          "workspace-tools",
           "alawein"
         ],
         "provides": [
-          "quantum-materials-simulation"
+          "agent-proof-tooling"
         ],
         "version_source": "pyproject.toml",
-        "repo_archetype": "python-library",
-        "compliance": "public-data",
+        "repo_archetype": "python-service",
+        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
-      }
-    ],
-    "internal_ops": [
+      },
       {
         "name": "design-system",
         "slug": "design-system",
@@ -1288,101 +1381,6 @@
         ],
         "version_source": "none",
         "repo_archetype": "docs-hub",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "incore",
-        "slug": "incore",
-        "repo": "alawein/incore",
-        "type": "tooling",
-        "surface": "cli",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "python",
-          "sqlite",
-          "mcp"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/incore",
-        "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-        "topics": [
-          "automation",
-          "cli",
-          "inventory",
-          "mcp",
-          "python"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "tools/incore",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "inventory-core",
-          "asset-ingest-query"
-        ],
-        "version_source": "pyproject.toml",
-        "repo_archetype": "python-library",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "prompty",
-        "slug": "prompty",
-        "repo": "alawein/prompty",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "ai-governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "turborepo",
-          "node"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/prompty",
-        "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-        "topics": [
-          "llm",
-          "monorepo",
-          "prompt-engineering",
-          "turborepo",
-          "typescript"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "tools/prompty",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "prompt-tooling-monorepo"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -1717,7 +1715,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/attributa",
+      "local_path": "ventures/attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -1768,7 +1766,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/llmworks",
+      "local_path": "ventures/llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -2086,7 +2084,7 @@
       "name": "Adil",
       "slug": "adil",
       "repo": "alawein/adil",
-      "type": "research",
+      "type": "tooling",
       "surface": "cli",
       "domain": "legal-ops",
       "lifecycle": "active",
@@ -2471,7 +2469,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/helios",
+      "local_path": "_archive/2026-06-helios",
       "catalog_groups": [
         "research"
       ],
@@ -2540,7 +2538,7 @@
       "name": "Provegate",
       "slug": "provegate",
       "repo": "alawein/provegate",
-      "type": "research",
+      "type": "tooling",
       "surface": "workflow",
       "domain": "ai-governance",
       "lifecycle": "active",
@@ -3838,7 +3836,7 @@
     "attributa": {
       "logo_source": "design-system/packages/icons/dist/brand/attributa/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/attributa/repo-banner.svg",
-      "screenshot_folder": "tools/attributa/docs/screenshots",
+      "screenshot_folder": "ventures/attributa/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/attributa/social-card.svg",
       "favicon_status": "generated"
@@ -3846,7 +3844,7 @@
     "llmworks": {
       "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
-      "screenshot_folder": "tools/llmworks/docs/screenshots",
+      "screenshot_folder": "ventures/llmworks/docs/screenshots",
       "theme_family": "wisdom",
       "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
       "favicon_status": "generated"
@@ -5114,7 +5112,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/attributa",
+        "local_path": "ventures/attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -5165,7 +5163,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/llmworks",
+        "local_path": "ventures/llmworks",
         "catalog_groups": [
           "featured"
         ],

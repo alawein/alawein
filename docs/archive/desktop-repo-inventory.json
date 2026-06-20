@@ -104,14 +104,14 @@
       "stack": "typescript, react, supabase"
     },
     {
-      "folder": "tools/attributa",
+      "folder": "ventures/attributa",
       "remote_slug": "alawein/attributa",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "typescript, react, vite"
     },
     {
-      "folder": "tools/llmworks",
+      "folder": "ventures/llmworks",
       "remote_slug": "alawein/llmworks",
       "archetype": "vite-react-spa",
       "tier": "product",
@@ -163,7 +163,7 @@
       "folder": "ventures/adil",
       "remote_slug": "alawein/adil",
       "archetype": "python-service",
-      "tier": "research",
+      "tier": "tooling",
       "stack": "python, legal-ai, cli"
     },
     {
@@ -216,7 +216,7 @@
       "stack": "html, css, javascript"
     },
     {
-      "folder": "research/helios",
+      "folder": "_archive/2026-06-helios",
       "remote_slug": "alawein/helios",
       "archetype": "research-archive",
       "tier": "archive",
@@ -233,7 +233,7 @@
       "folder": "ventures/provegate",
       "remote_slug": "alawein/provegate",
       "archetype": "python-service",
-      "tier": "research",
+      "tier": "tooling",
       "stack": "python, mcp, agents"
     },
     {

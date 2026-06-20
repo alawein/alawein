@@ -327,7 +327,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/attributa",
+      "local_path": "ventures/attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -378,7 +378,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/llmworks",
+      "local_path": "ventures/llmworks",
       "catalog_groups": [
         "featured"
       ],

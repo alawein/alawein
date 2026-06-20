@@ -123,7 +123,7 @@
       "category": "active",
       "url": "https://attributa.dev",
       "portfolio_domain": "Work",
-      "bucket": "tools",
+      "bucket": "ventures",
       "status": "active",
       "visibility": "private"
     },
@@ -141,7 +141,7 @@
       "category": "active",
       "url": "https://llmworks.dev",
       "portfolio_domain": "Work",
-      "bucket": "tools",
+      "bucket": "ventures",
       "status": "active",
       "visibility": "private"
     },
@@ -477,7 +477,7 @@
       "domain": "Proprietary research archive \u2014 computational astrophysics",
       "description": "Proprietary research archive for computational astrophysics and astronomy work.",
       "category": "archived",
-      "bucket": "research",
+      "bucket": "archive",
       "status": "archived",
       "visibility": "public"
     },

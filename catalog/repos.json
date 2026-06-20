@@ -397,8 +397,8 @@
       "slug": "attributa",
       "legacy_slugs": [],
       "repo": "alawein/attributa",
-      "local_path": "tools/attributa",
-      "bucket": "tools",
+      "local_path": "ventures/attributa",
+      "bucket": "ventures",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -460,8 +460,8 @@
       "slug": "llmworks",
       "legacy_slugs": [],
       "repo": "alawein/llmworks",
-      "local_path": "tools/llmworks",
-      "bucket": "tools",
+      "local_path": "ventures/llmworks",
+      "bucket": "ventures",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -925,7 +925,7 @@
       "repo": "alawein/adil",
       "local_path": "ventures/adil",
       "bucket": "ventures",
-      "type": "research",
+      "type": "tooling",
       "surface": "cli",
       "stack": [
         "python",
@@ -1400,8 +1400,8 @@
       "slug": "helios",
       "legacy_slugs": [],
       "repo": "alawein/helios",
-      "local_path": "research/helios",
-      "bucket": "research",
+      "local_path": "_archive/2026-06-helios",
+      "bucket": "archive",
       "type": "archive",
       "surface": "dataset",
       "stack": [
@@ -1525,7 +1525,7 @@
       "repo": "alawein/provegate",
       "local_path": "ventures/provegate",
       "bucket": "ventures",
-      "type": "research",
+      "type": "tooling",
       "surface": "workflow",
       "stack": [
         "python",

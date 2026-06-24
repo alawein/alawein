@@ -1583,12 +1583,14 @@
     },
     {
       "name": "Mercor LLM Failsafe",
-      "slug": "mercor-llm-failsafe",
-      "legacy_slugs": [],
+      "slug": "mercor",
+      "legacy_slugs": [
+        "mercor-llm-failsafe"
+      ],
       "repo": "alawein/mercor-llm-failsafe",
       "local_path": "jobs-projects/mercor",
       "bucket": "jobs-projects",
-      "type": "archive",
+      "type": "tooling",
       "surface": "service",
       "stack": [
         "python",
@@ -1598,28 +1600,26 @@
       "audience": [
         "internal"
       ],
-      "lifecycle": "archived",
+      "lifecycle": "active",
       "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
       "theme_family": "legacy",
       "brand_family": "legacy",
-      "status": "archived",
+      "status": "active",
       "homepage": "",
-      "canonical_description": "Archived employer project for LLM failsafe experimentation and evaluation.",
+      "canonical_description": "Employer project for LLM failsafe experimentation and evaluation.",
       "tags": [
         "Python",
-        "LLM",
-        "Archive"
+        "LLM"
       ],
       "github_topics": [
         "llm",
-        "python",
-        "archive"
+        "python"
       ],
       "github_custom_properties": {
-        "lifecycle": "archived",
+        "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",

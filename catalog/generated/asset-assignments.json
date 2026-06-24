@@ -119,12 +119,12 @@
     "social_preview_image": "design-system/packages/icons/dist/brand/loopholelab/social-card.svg",
     "favicon_status": "generated"
   },
-  "mercor-llm-failsafe": {
-    "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
-    "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
+  "mercor": {
+    "logo_source": "design-system/packages/icons/dist/brand/mercor/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/mercor/repo-banner.svg",
     "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
     "theme_family": "legacy",
-    "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
+    "social_preview_image": "design-system/packages/icons/dist/brand/mercor/social-card.svg",
     "favicon_status": "generated"
   },
   "alawein": {

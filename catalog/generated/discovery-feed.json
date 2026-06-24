@@ -5,16 +5,16 @@
     "typeCounts": {
       "product": 10,
       "research": 16,
-      "archive": 2,
+      "archive": 1,
+      "tooling": 6,
       "infra": 3,
-      "governance": 1,
-      "tooling": 5
+      "governance": 1
     },
     "lifecycleCounts": {
       "maintained": 2,
-      "active": 25,
+      "active": 26,
       "frozen": 8,
-      "archived": 2
+      "archived": 1
     }
   },
   "filters": {
@@ -978,6 +978,48 @@
     ],
     "internal_ops": [
       {
+        "name": "Mercor LLM Failsafe",
+        "slug": "mercor",
+        "repo": "alawein/mercor-llm-failsafe",
+        "type": "tooling",
+        "surface": "service",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "legacy",
+        "brand_family": "legacy",
+        "stack": [
+          "python",
+          "llm"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "",
+        "description": "Employer project for LLM failsafe experimentation and evaluation.",
+        "topics": [
+          "llm",
+          "python"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "jobs-projects/mercor",
+        "catalog_groups": [
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "failsafe-archive"
+        ],
+        "version_source": "pyproject.toml",
+        "repo_archetype": "python-library",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
         "name": "design-system",
         "slug": "design-system",
         "repo": "alawein/design-system",
@@ -1336,53 +1378,6 @@
         ],
         "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "prompty",
-        "slug": "prompty",
-        "repo": "alawein/prompty",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "ai-governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "turborepo",
-          "node"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/prompty",
-        "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-        "topics": [
-          "llm",
-          "monorepo",
-          "prompt-engineering",
-          "turborepo",
-          "typescript"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "tools/prompty",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "prompt-tooling-monorepo"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -2587,12 +2582,12 @@
     },
     {
       "name": "Mercor LLM Failsafe",
-      "slug": "mercor-llm-failsafe",
+      "slug": "mercor",
       "repo": "alawein/mercor-llm-failsafe",
-      "type": "archive",
+      "type": "tooling",
       "surface": "service",
       "domain": "ai-governance",
-      "lifecycle": "archived",
+      "lifecycle": "active",
       "visibility": "private",
       "theme_family": "legacy",
       "brand_family": "legacy",
@@ -2604,11 +2599,10 @@
         "internal"
       ],
       "homepage": "",
-      "description": "Archived employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "topics": [
         "llm",
-        "python",
-        "archive"
+        "python"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -3907,12 +3901,12 @@
       "social_preview_image": "design-system/packages/icons/dist/brand/loopholelab/social-card.svg",
       "favicon_status": "generated"
     },
-    "mercor-llm-failsafe": {
-      "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
-      "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
+    "mercor": {
+      "logo_source": "design-system/packages/icons/dist/brand/mercor/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/mercor/repo-banner.svg",
       "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
       "theme_family": "legacy",
-      "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
+      "social_preview_image": "design-system/packages/icons/dist/brand/mercor/social-card.svg",
       "favicon_status": "generated"
     },
     "alawein": {
@@ -4491,17 +4485,16 @@
       "release_automation": {}
     },
     {
-      "slug": "mercor-llm-failsafe",
+      "slug": "mercor",
       "repo": "alawein/mercor-llm-failsafe",
-      "description": "Archived employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "homepage": "",
       "topics": [
         "llm",
-        "python",
-        "archive"
+        "python"
       ],
       "custom_properties": {
-        "lifecycle": "archived",
+        "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",

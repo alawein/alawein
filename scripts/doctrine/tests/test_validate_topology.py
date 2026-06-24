@@ -1,5 +1,7 @@
 """Tests for validate-topology.py."""
 
+from pathlib import Path
+
 import pytest
 
 from validate_topology import (
@@ -8,7 +10,9 @@ from validate_topology import (
     TopologyError,
     is_archived,
     check_repo_data,
+    check_repo_disk,
     validate,
+    main,
 )
 
 
@@ -83,10 +87,6 @@ def test_is_archived_true_for_archive_type():
 def test_validate_aggregates_problems_across_repos():
     repos = [_repo(), _repo(slug="bad", bucket="widgets", local_path="widgets/bad")]
     assert len(validate(repos)) >= 1
-
-
-from pathlib import Path
-from validate_topology import check_repo_disk, main
 
 
 def test_disk_check_passes_when_folder_exists(tmp_path):

@@ -2612,7 +2612,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "_archive/2026-06-mercor",
+      "local_path": "jobs-projects/mercor",
       "catalog_groups": [
         "research"
       ],
@@ -3910,7 +3910,7 @@
     "mercor-llm-failsafe": {
       "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
-      "screenshot_folder": "_archive/2026-06-mercor/docs/screenshots",
+      "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
       "favicon_status": "generated"

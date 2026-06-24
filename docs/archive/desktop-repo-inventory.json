@@ -237,7 +237,7 @@
       "stack": "python, mcp, agents"
     },
     {
-      "folder": "_archive/2026-06-mercor",
+      "folder": "jobs-projects/mercor",
       "remote_slug": "alawein/mercor-llm-failsafe",
       "archetype": "python-library",
       "tier": "archive",

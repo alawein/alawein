@@ -1586,7 +1586,7 @@
       "slug": "mercor-llm-failsafe",
       "legacy_slugs": [],
       "repo": "alawein/mercor-llm-failsafe",
-      "local_path": "_archive/2026-06-mercor",
+      "local_path": "jobs-projects/mercor",
       "bucket": "jobs-projects",
       "type": "archive",
       "surface": "service",

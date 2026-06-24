@@ -47,6 +47,8 @@ def is_archived(r: dict) -> bool:
 
 def check_repo_data(r: dict) -> list[str]:
     """Disk-free coherence checks for one repo. Returns a list of problems."""
+    if not isinstance(r, dict):
+        return [f"<non-mapping repo entry in repos.json>: {r!r}"]
     slug = r.get("slug") or "<no-slug>"
     problems: list[str] = []
 
@@ -71,15 +73,20 @@ def check_repo_data(r: dict) -> list[str]:
 
     parts = Path(lp).parts
     if not is_archived(r):
-        if parts[-1] != slug:
+        if len(parts) < 2:
             problems.append(
-                f"{slug}: local_path folder {parts[-1]!r} does not match slug"
+                f"{slug}: local_path {lp!r} must be 'bucket/slug'"
             )
-        if parts[0] != r.get("bucket"):
-            problems.append(
-                f"{slug}: local_path root {parts[0]!r} does not match "
-                f"bucket {r.get('bucket')!r}"
-            )
+        else:
+            if parts[-1] != slug:
+                problems.append(
+                    f"{slug}: local_path folder {parts[-1]!r} does not match slug"
+                )
+            if parts[0] != r.get("bucket"):
+                problems.append(
+                    f"{slug}: local_path root {parts[0]!r} does not match "
+                    f"bucket {r.get('bucket')!r}"
+                )
     return problems
 
 

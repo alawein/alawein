@@ -89,6 +89,16 @@ def test_validate_aggregates_problems_across_repos():
     assert len(validate(repos)) >= 1
 
 
+def test_non_dict_repo_entry_is_flagged_not_crash():
+    problems = check_repo_data("not-a-dict")
+    assert problems and any("mapping" in p for p in problems)
+
+
+def test_single_segment_local_path_flagged_for_non_archived():
+    problems = check_repo_data(_repo(slug="foo", bucket="research", local_path="foo"))
+    assert any("bucket/slug" in p for p in problems)
+
+
 def test_disk_check_passes_when_folder_exists(tmp_path):
     (tmp_path / "research" / "demo").mkdir(parents=True)
     r = _repo(slug="demo", bucket="research", local_path="research/demo")

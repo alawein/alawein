@@ -515,7 +515,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/attributa",
+        "local_path": "ventures/attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -566,7 +566,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/llmworks",
+        "local_path": "ventures/llmworks",
         "catalog_groups": [
           "featured"
         ],
@@ -1229,7 +1229,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/handshake",
+        "local_path": "jobs-projects/handshake-hai",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1717,7 +1717,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/attributa",
+      "local_path": "ventures/attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -1768,7 +1768,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/llmworks",
+      "local_path": "ventures/llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -2471,7 +2471,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/helios",
+      "local_path": "_archive/2026-06-helios",
       "catalog_groups": [
         "research"
       ],
@@ -2612,7 +2612,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/mercor",
+      "local_path": "_archive/2026-06-mercor",
       "catalog_groups": [
         "research"
       ],
@@ -2880,7 +2880,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/handshake",
+      "local_path": "jobs-projects/handshake-hai",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3838,7 +3838,7 @@
     "attributa": {
       "logo_source": "design-system/packages/icons/dist/brand/attributa/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/attributa/repo-banner.svg",
-      "screenshot_folder": "tools/attributa/docs/screenshots",
+      "screenshot_folder": "ventures/attributa/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/attributa/social-card.svg",
       "favicon_status": "generated"
@@ -3846,7 +3846,7 @@
     "llmworks": {
       "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
-      "screenshot_folder": "tools/llmworks/docs/screenshots",
+      "screenshot_folder": "ventures/llmworks/docs/screenshots",
       "theme_family": "wisdom",
       "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
       "favicon_status": "generated"
@@ -3910,7 +3910,7 @@
     "mercor-llm-failsafe": {
       "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
-      "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
+      "screenshot_folder": "_archive/2026-06-mercor/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
       "favicon_status": "generated"
@@ -5114,7 +5114,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/attributa",
+        "local_path": "ventures/attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -5165,7 +5165,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/llmworks",
+        "local_path": "ventures/llmworks",
         "catalog_groups": [
           "featured"
         ],

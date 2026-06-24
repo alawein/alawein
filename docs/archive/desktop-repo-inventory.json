@@ -104,14 +104,14 @@
       "stack": "typescript, react, supabase"
     },
     {
-      "folder": "tools/attributa",
+      "folder": "ventures/attributa",
       "remote_slug": "alawein/attributa",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "typescript, react, vite"
     },
     {
-      "folder": "tools/llmworks",
+      "folder": "ventures/llmworks",
       "remote_slug": "alawein/llmworks",
       "archetype": "vite-react-spa",
       "tier": "product",
@@ -216,7 +216,7 @@
       "stack": "html, css, javascript"
     },
     {
-      "folder": "research/helios",
+      "folder": "_archive/2026-06-helios",
       "remote_slug": "alawein/helios",
       "archetype": "research-archive",
       "tier": "archive",
@@ -237,7 +237,7 @@
       "stack": "python, mcp, agents"
     },
     {
-      "folder": "jobs-projects/mercor",
+      "folder": "_archive/2026-06-mercor",
       "remote_slug": "alawein/mercor-llm-failsafe",
       "archetype": "python-library",
       "tier": "archive",
@@ -272,7 +272,7 @@
       "stack": "nextjs, typescript, python"
     },
     {
-      "folder": "jobs-projects/handshake",
+      "folder": "jobs-projects/handshake-hai",
       "remote_slug": "alawein/handshake-hai",
       "archetype": "node-monorepo",
       "tier": "tooling",

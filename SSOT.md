@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-05-23
+last-verified: 2026-06-23
 last_updated: 2026-05-23
 audience: [ai-agents, contributors]
 ---

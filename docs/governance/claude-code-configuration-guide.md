@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Claude Code configuration reference (.claude/, CLAUDE.md)
 description: Canonical layout and practices for Claude Code — project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
-last_updated: 2026-03-25
+last_updated: 2026-06-23
 last_verified: 2026-03-25
 category: governance
 audience: [ai-agents, contributors]

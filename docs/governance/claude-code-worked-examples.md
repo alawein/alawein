@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Claude Code worked examples (copy-paste)
 description: Concrete snippets for CLAUDE.md, rules/, commands/, skills/, agents/, and settings — extracted from the internal reference UI for use in product repos.
-last_updated: 2026-03-25
+last_updated: 2026-06-23
 last_verified: 2026-03-25
 category: governance
 audience: [ai-agents, contributors]

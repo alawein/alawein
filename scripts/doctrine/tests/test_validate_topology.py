@@ -83,3 +83,54 @@ def test_is_archived_true_for_archive_type():
 def test_validate_aggregates_problems_across_repos():
     repos = [_repo(), _repo(slug="bad", bucket="widgets", local_path="widgets/bad")]
     assert len(validate(repos)) >= 1
+
+
+from pathlib import Path
+from validate_topology import check_repo_disk, main
+
+
+def test_disk_check_passes_when_folder_exists(tmp_path):
+    (tmp_path / "research" / "demo").mkdir(parents=True)
+    r = _repo(slug="demo", bucket="research", local_path="research/demo")
+    assert check_repo_disk(r, tmp_path) == []
+
+
+def test_disk_check_flags_missing_folder(tmp_path):
+    r = _repo(slug="ghost", bucket="research", local_path="research/ghost")
+    problems = check_repo_disk(r, tmp_path)
+    assert any("does not exist" in p for p in problems)
+
+
+def test_disk_check_skips_hub(tmp_path):
+    r = _repo(slug="alawein", local_path="alawein")
+    assert check_repo_disk(r, tmp_path) == []
+
+
+def test_validate_runs_disk_checks_when_root_given(tmp_path):
+    r = _repo(slug="ghost", bucket="research", local_path="research/ghost")
+    assert validate([r], workspace_root=tmp_path)  # missing folder -> problem
+    assert validate([r]) == []  # data-only: clean
+
+
+def test_main_returns_zero_on_clean_repos_json(tmp_path):
+    good = tmp_path / "repos.json"
+    good.write_text(
+        '{"repos": [{"slug": "demo", "bucket": "research", "type": "research",'
+        ' "status": "active", "local_path": "research/demo"}]}',
+        encoding="utf-8",
+    )
+    assert main(["--repos-json", str(good)]) == 0
+
+
+def test_main_returns_one_on_dirty_repos_json(tmp_path):
+    bad = tmp_path / "repos.json"
+    bad.write_text(
+        '{"repos": [{"slug": "demo", "bucket": "widgets", "type": "research",'
+        ' "status": "active", "local_path": "widgets/demo"}]}',
+        encoding="utf-8",
+    )
+    assert main(["--repos-json", str(bad)]) == 1
+
+
+def test_main_returns_two_on_missing_file(tmp_path):
+    assert main(["--repos-json", str(tmp_path / "nope.json")]) == 2

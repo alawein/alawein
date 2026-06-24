@@ -83,8 +83,52 @@ def check_repo_data(r: dict) -> list[str]:
     return problems
 
 
+def check_repo_disk(r: dict, workspace_root: Path) -> list[str]:
+    """Disk-existence check for one repo. Requires the workspace root."""
+    slug = r.get("slug") or "<no-slug>"
+    if slug in HUB_SLUGS:
+        return []
+    lp = r.get("local_path")
+    if not lp:
+        return []  # the data check already reports a missing local_path
+    if not (workspace_root / lp).is_dir():
+        return [f"{slug}: local_path {lp!r} does not exist under {workspace_root}"]
+    return []
+
+
 def validate(repos: list[dict], workspace_root: Path | None = None) -> list[str]:
     problems: list[str] = []
     for r in repos:
         problems.extend(check_repo_data(r))
+        if workspace_root is not None:
+            problems.extend(check_repo_disk(r, workspace_root))
     return problems
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Validate repo-topology coherence.")
+    parser.add_argument("--repos-json", type=Path, default=REPOS_JSON)
+    parser.add_argument(
+        "--workspace-root",
+        type=Path,
+        default=None,
+        help="If given, also check that each local_path exists on disk.",
+    )
+    args = parser.parse_args(argv)
+    try:
+        repos = load_repos(args.repos_json)
+    except (TopologyError, OSError, json.JSONDecodeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 2
+    problems = validate(repos, args.workspace_root)
+    if problems:
+        print(f"topology: {len(problems)} problem(s):")
+        for p in problems:
+            print(f"  - {p}")
+        return 1
+    print(f"topology: OK ({len(repos)} repos)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

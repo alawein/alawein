@@ -10,20 +10,6 @@
 
 ---
 
-<div align="center">
-
-### `// currently building`
-
-| | |
-|:---:|:---|
-| 🔬 | **Eval infrastructure** for agentic AI systems &nbsp;`@ AGI, Inc.` |
-| 🏗️ | **Governed AI ops** platform &nbsp;`@ Kohyr` |
-| ⚡ | **LLM evaluation & benchmarking** &nbsp;`via llmworks` |
-
-</div>
-
----
-
 <table width="100%">
 <tr>
 <th>Research & Scientific Computing</th>

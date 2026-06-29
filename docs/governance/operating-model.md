@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.1.0
-last_updated: 2026-03-28
+last_updated: 2026-06-29
 tags: [governance, operating-model, workflow, navigation]
 ---
 

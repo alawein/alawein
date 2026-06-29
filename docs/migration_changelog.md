@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Migration changelog
 description: Timestamped notes for docs and catalog moves in this repository (informal log).
-last_updated: 2026-03-26
+last_updated: 2026-06-29
 category: documentation
 audience: [ai-agents, contributors]
 status: active

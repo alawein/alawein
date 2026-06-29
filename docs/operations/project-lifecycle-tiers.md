@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Project lifecycle tiers (SSOT)
 description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
-last_updated: 2026-03-30
+last_updated: 2026-06-29
 category: operations
 audience: [ai-agents, contributors]
 status: active

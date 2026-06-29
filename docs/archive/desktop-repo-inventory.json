@@ -238,7 +238,7 @@
     },
     {
       "folder": "jobs-projects/mercor",
-      "remote_slug": "alawein/mercor-llm-failsafe",
+      "remote_slug": "alawein/mercor",
       "archetype": "python-library",
       "tier": "tooling",
       "stack": "python, llm"

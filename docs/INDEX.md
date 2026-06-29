@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-06-09
+last_updated: 2026-06-29
 ---
 
 # Index — alawein
@@ -79,8 +79,8 @@ last_updated: 2026-06-09
 - [release-roadmap-and-outcomes.md](governance/release-roadmap-and-outcomes.md)
 - [repo-framework.md](governance/repo-framework.md)
 - [repo-standardization.md](governance/repo-standardization.md)
-- [repo-topology-canon.md](governance/repo-topology-canon.md)
 - [repo-sweep-prompt.md](governance/repo-sweep-prompt.md)
+- [repo-topology-canon.md](governance/repo-topology-canon.md)
 - [repository-layout-standard.md](governance/repository-layout-standard.md)
 - [review-playbook.md](governance/review-playbook.md)
 - [security-intake-matrix.md](governance/security-intake-matrix.md)

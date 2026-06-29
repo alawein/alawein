@@ -413,17 +413,17 @@ Wave 1 targets Tier 1. Wave 2+ tightens to Tier 2.
 
 ---
 
-## D. Validator follow-ups (propose; Wave 0 partial)
+## D. Validator follow-ups
 
-| Validator | Action | Priority |
-|-----------|--------|----------|
-| `validate-topology.py` | Implement per 2026-06-23 spec; bucket/path/slug/archive checks | P0 |
-| `validate-readme-topology.py` | New: section presence per type (Tier 1 aliases), architecture link, ASCII tree non-empty | P1 |
-| Extend `validate-repo-framework.py` | Cross-check `Category` vs catalog `bucket` | P0 |
-| Hub CI | Wire topology validator on PR | P0 |
-| Voice linter | README scope on changed files | P1 |
+| Validator | Status | Notes |
+|-----------|--------|-------|
+| `validate-topology.py` | Shipped | Hub `docs-doctrine.yml`; bucket/path/slug/archive checks |
+| `validate-readme-topology.py` | Shipped | Tier 1 aliases, `docs/architecture/topology.md` tree check; `--github-api`, `--workspace-root`, `--repo-path` modes |
+| Extend `validate-repo-framework.py` | Open | Cross-check `Category` vs catalog `bucket` |
+| Per-repo doctrine CI | Shipped | `doctrine-reusable.yml` runs README topology on each adopting repo |
+| Voice linter | Open | README scope on changed files |
 
-Do not block Wave 1 README beautify on full Tier 2 validator. Ship alias-based Tier 1 first.
+Fleet scan runs on hub schedule/PR via GitHub API (`main`). Local fleet scan: `python scripts/doctrine/validate-readme-topology.py --workspace-root <fleet-root>`.
 
 ---
 

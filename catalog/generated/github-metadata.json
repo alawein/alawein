@@ -544,7 +544,7 @@
     },
     {
       "slug": "mercor",
-      "repo": "alawein/mercor-llm-failsafe",
+      "repo": "alawein/mercor",
       "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "homepage": "",
       "topics": [

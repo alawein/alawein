@@ -980,7 +980,7 @@
       {
         "name": "Mercor LLM Failsafe",
         "slug": "mercor",
-        "repo": "alawein/mercor-llm-failsafe",
+        "repo": "alawein/mercor",
         "type": "tooling",
         "surface": "service",
         "domain": "ai-governance",
@@ -2583,7 +2583,7 @@
     {
       "name": "Mercor LLM Failsafe",
       "slug": "mercor",
-      "repo": "alawein/mercor-llm-failsafe",
+      "repo": "alawein/mercor",
       "type": "tooling",
       "surface": "service",
       "domain": "ai-governance",
@@ -4486,7 +4486,7 @@
     },
     {
       "slug": "mercor",
-      "repo": "alawein/mercor-llm-failsafe",
+      "repo": "alawein/mercor",
       "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "homepage": "",
       "topics": [

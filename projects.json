@@ -509,7 +509,7 @@
     {
       "name": "Mercor LLM Failsafe",
       "slug": "mercor",
-      "repo": "alawein/mercor-llm-failsafe",
+      "repo": "alawein/mercor",
       "domain": "Employer project for LLM failsafe experimentation and evaluation.",
       "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "legacy_slugs": [

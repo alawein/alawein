@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-06-23
+last_updated: 2026-06-29
 tags: [changelog, version-history, releases]
 ---
 
@@ -36,6 +36,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Portfolio **`portfolio_domain`** on `projects.json` featured entries (Notion Domain select). **`notion_sync`** array for Notion-only rows (qmlab, simcore, meatheadphysicist) without expanding README. Ops guide [`docs/operations/notion-projects-database.md`](docs/operations/notion-projects-database.md).
 - [`scripts/notion/run-notion-local.ps1`](scripts/notion/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as `notion-sync.yml` (moved to private ops repo).
 - Topology validator [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): enforces the two-axis repo model (`bucket` ownership, `type` role) with data-coherence checks (allowed values, slug vs `local_path`, archived-marker agreement) plus optional `--workspace-root` disk-existence checks. Hub and archived repos are exempt from path checks. Fixtures-based tests under `scripts/doctrine/tests/`.
+- [`scripts/doctrine/validate-readme-topology.py`](scripts/doctrine/validate-readme-topology.py): Tier 1 README section contracts per catalog `type` (with catalog-collection and alias maps), plus `docs/architecture/topology.md` ASCII tree check. Modes: fleet GitHub API (`--github-api`), local workspace (`--workspace-root`), single-repo (`--repo-path`). Wired in hub `docs-doctrine.yml` and per-repo `doctrine-reusable.yml`.
 
 ### Changed
 

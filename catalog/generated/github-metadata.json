@@ -543,17 +543,16 @@
       "release_automation": {}
     },
     {
-      "slug": "mercor-llm-failsafe",
+      "slug": "mercor",
       "repo": "alawein/mercor-llm-failsafe",
-      "description": "Archived employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Employer project for LLM failsafe experimentation and evaluation.",
       "homepage": "",
       "topics": [
         "llm",
-        "python",
-        "archive"
+        "python"
       ],
       "custom_properties": {
-        "lifecycle": "archived",
+        "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",

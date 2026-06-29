@@ -123,7 +123,7 @@
       "category": "active",
       "url": "https://attributa.dev",
       "portfolio_domain": "Work",
-      "bucket": "tools",
+      "bucket": "ventures",
       "status": "active",
       "visibility": "private"
     },
@@ -141,7 +141,7 @@
       "category": "active",
       "url": "https://llmworks.dev",
       "portfolio_domain": "Work",
-      "bucket": "tools",
+      "bucket": "ventures",
       "status": "active",
       "visibility": "private"
     },
@@ -508,13 +508,15 @@
     },
     {
       "name": "Mercor LLM Failsafe",
-      "slug": "mercor-llm-failsafe",
+      "slug": "mercor",
       "repo": "alawein/mercor-llm-failsafe",
-      "domain": "Archived employer project for LLM failsafe experimentation and evaluation.",
-      "description": "Archived employer project for LLM failsafe experimentation and evaluation.",
-      "category": "archived",
+      "domain": "Employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "legacy_slugs": [
+        "mercor-llm-failsafe"
+      ],
       "bucket": "jobs-projects",
-      "status": "archived",
+      "status": "active",
       "visibility": "private"
     },
     {

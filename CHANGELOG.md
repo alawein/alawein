@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-05-05
+last_updated: 2026-06-23
 tags: [changelog, version-history, releases]
 ---
 
@@ -25,7 +25,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- `projects.json` **infrastructure** entries: canonical `url` for GitHub (`aw-devkit`, `workspace-tools`, `pkos`, `handshake-hai`, `handshake-project-proctor`) and **`reasonbench`** row; schema allows optional `url`, `status`, `note` on infrastructure objects.
+- [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md): fleet axes, eleven archetypes, README unification spec, and execution waves.
+- [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md): Phase 1 fleet topology and README audit (37 repos).
+- [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): topology coherence validator for `catalog/repos.json` (bucket/type/local_path/slug rules).
 - [`scripts/doctrine/audit-last-commit-messages.ps1`](scripts/doctrine/audit-last-commit-messages.ps1): list top-level repos whose **latest** commit is still the bulk `chore: sync workspace changes` message (hygiene / follow-up triage).
 - Ops glossary [`docs/operations/github-notion-sync-glossary.md`](docs/operations/github-notion-sync-glossary.md): `Sync [project]` vs `GitHub Sync`, canonical `projects.json` → Notion flow, per-repo scan vs Notion push, **rule #4** out-of-scope guardrail for architecture drift, naming note for Kohyr Inc.
 - Claude Code **worked examples** (CLAUDE.md, rules, commands, skills, agents, settings): [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md). Cursor rule [`.cursor/rules/claude-code-governance.mdc`](.cursor/rules/claude-code-governance.mdc) applies when editing `.claude/` or `CLAUDE.md` (`.gitignore` now allows `.cursor/rules/`).
@@ -33,6 +35,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Audit doc [`docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md`](docs/archive/audits-2026-03/ide-llm-agent-completion-lessons-2026-03.md): IDE/LLM **completion gap** (commit/push/merge), stranded working tree, branch vs `main` reality, README/projects URL lessons, checklist; [`LESSONS.md`](LESSONS.md) bullets cross-linked.
 - Portfolio **`portfolio_domain`** on `projects.json` featured entries (Notion Domain select). **`notion_sync`** array for Notion-only rows (qmlab, simcore, meatheadphysicist) without expanding README. Ops guide [`docs/operations/notion-projects-database.md`](docs/operations/notion-projects-database.md).
 - [`scripts/notion/run-notion-local.ps1`](scripts/notion/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as `notion-sync.yml` (moved to private ops repo).
+- Topology validator [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): enforces the two-axis repo model (`bucket` ownership, `type` role) with data-coherence checks (allowed values, slug vs `local_path`, archived-marker agreement) plus optional `--workspace-root` disk-existence checks. Hub and archived repos are exempt from path checks. Fixtures-based tests under `scripts/doctrine/tests/`.
 
 ### Changed
 
@@ -41,6 +44,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Documentation contract: `AGENTS.md` / `CLAUDE.md` YAML frontmatter starts at line 1; [`.cursor/rules.md`](.cursor/rules.md) links repaired; root `REPO-SWEEP-PROMPT.md` moved to [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md) with frontmatter; `docs/migration_changelog.md` and `docs/operations/*.md` now include required frontmatter.
 - `scripts/sync-to-notion.mjs`: merges **featured + notion_sync**, writes **Domain** when `portfolio_domain` is set; optional **`NOTION_DOMAIN_PROPERTY`** env (see `.env.example`).
 - README **Projects**: intro copy is minimal/neutral (outside sync markers); table still regenerates from `projects.json` **featured** via `sync-readme.py`. Card links use each entry’s public `url` when set.
+- Topology drift reconciled in [`catalog/repos.json`](catalog/repos.json): `attributa` and `llmworks` moved `tools` → `ventures` (bucket and `local_path`); `helios` `local_path` set under `_archive/`; `handshake-hai` folder aligned to its slug. [`docs/architecture.md`](docs/architecture.md): two-axis legend added before the generated topology block, workflow count corrected to 16, repo-node labels fixed (`Application Repos`, `33 portfolio repos`).
 
 ## [2.1.0] — 2026-03-21
 

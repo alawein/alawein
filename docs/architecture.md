@@ -2,8 +2,8 @@
 type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
-last-verified: 2026-05-23
-last_updated: 2026-05-23
+last-verified: 2026-06-23
+last_updated: 2026-06-23
 ---
 
 # Alawein Workspace Architecture
@@ -16,21 +16,21 @@ last_updated: 2026-05-23
 
 `alawein/alawein` is the governance control plane for the `@alawein` GitHub org.
 It owns CI policy templates, canonical prompt kits, voice contracts, docs doctrine,
-and the catalog registry that governs 37+ sibling repos. No product code lives here.
+and the catalog registry that governs 37 sibling repos. No product code lives here.
 
 ```mermaid
 graph TB
-  subgraph alawein-org["@alawein GitHub Org (37+ repos)"]
+  subgraph alawein-org["@alawein GitHub Org (37 repos)"]
     control["alawein/alawein\nControl Plane\n(CI templates · prompts · catalog)"]
     design["design-system\nTokens + UI packages\n(@alawein/tokens · @alawein/ui)"]
     workspace["workspace-tools\nCLI + Config packages\n(workspace-batch · eslint-config)"]
     kb["knowledge-base\nDashboard + DB\n(Next.js · Supabase)"]
-    products["Product Repos (30+)\natelier-rounaq · meshal-web\nrepz · bolts · gymboy · …"]
+    products["Application Repos (30+)\natelier-rounaq · meshal-web\nrepz · bolts · gymboy · …"]
     research["Research Repos\nquantumalgo · qmlab\nqubeml · simcore · …"]
   end
 
   claude["Claude Code\nAI Agent"]
-  github["GitHub Actions\nCI/CD (17 workflows)"]
+  github["GitHub Actions\nCI/CD (16 workflows)"]
   notion["Notion\nTask + KB Sync"]
   vercel["Vercel\nDeployments"]
 
@@ -46,6 +46,15 @@ graph TB
   workspace -->|"CLI + config packages"| products
 ```
 
+
+The portfolio is organized on two independent axes. **Ownership** (`bucket` in
+`catalog/repos.json`) governs where a repo lives on disk: products, personal, family,
+research, ventures, tools, jobs-projects. **Role** (`type`) governs its function in the
+platform and drives the diagram below: governance, infra, product, research, tooling,
+archive. The two axes are deliberately distinct, so a repo's bucket and type often differ
+(a research-bucket repo can have role `tooling`). Coherence is enforced by
+`scripts/doctrine/validate-topology.py`. Full archetype and README rules live in
+[`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
 <!-- last updated: 2026-06-07; do not edit; run scripts/ops/generate-arch-diagram.py -->
@@ -135,7 +144,7 @@ graph LR
   agent["AGENT.md v1.3.0\nworkspace system prompt"]
   portfolio["PORTFOLIO.md v1.1.0\nmeshal-web prompt"]
   master["workspace-master-prompt.md v1.2.0\noperating contract"]
-  repos["33 product repos\nvia AGENTS.md"]
+  repos["sibling repos\nvia AGENTS.md"]
   meshal["meshal-web\nportfolio site"]
   claude2["Claude Code sessions"]
 
@@ -151,7 +160,7 @@ graph LR
 ```mermaid
 graph TD
   subgraph authored["Authored (canonical sources)"]
-    repos_json["catalog/repos.json\n37+ repo metadata"]
+    repos_json["catalog/repos.json\n37 repo metadata"]
     skills_yaml["catalog/skills.yaml\ncapability domains"]
     pk_registry["prompt-kits/registry.yaml\nprompt inventory"]
     baseline["github-baseline.yaml\nCI template manifest"]

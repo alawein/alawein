@@ -6,7 +6,7 @@ sla: none
 authority: canonical
 audience: [ai-agents, contributors]
 last_updated: 2026-05-24
-last-verified: 2026-05-24
+last-verified: 2026-06-23
 ---
 
 # AGENTS: alawein

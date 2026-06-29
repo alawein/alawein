@@ -50,7 +50,7 @@
   "attributa": {
     "logo_source": "design-system/packages/icons/dist/brand/attributa/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/attributa/repo-banner.svg",
-    "screenshot_folder": "tools/attributa/docs/screenshots",
+    "screenshot_folder": "ventures/attributa/docs/screenshots",
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/attributa/social-card.svg",
     "favicon_status": "generated"
@@ -58,7 +58,7 @@
   "llmworks": {
     "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
-    "screenshot_folder": "tools/llmworks/docs/screenshots",
+    "screenshot_folder": "ventures/llmworks/docs/screenshots",
     "theme_family": "wisdom",
     "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
     "favicon_status": "generated"
@@ -119,12 +119,12 @@
     "social_preview_image": "design-system/packages/icons/dist/brand/loopholelab/social-card.svg",
     "favicon_status": "generated"
   },
-  "mercor-llm-failsafe": {
-    "logo_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/logo-light.svg",
-    "banner_source": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/repo-banner.svg",
+  "mercor": {
+    "logo_source": "design-system/packages/icons/dist/brand/mercor/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/mercor/repo-banner.svg",
     "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
     "theme_family": "legacy",
-    "social_preview_image": "design-system/packages/icons/dist/brand/mercor-llm-failsafe/social-card.svg",
+    "social_preview_image": "design-system/packages/icons/dist/brand/mercor/social-card.svg",
     "favicon_status": "generated"
   },
   "alawein": {

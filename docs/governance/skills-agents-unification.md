@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills, Agents & Commands Unification
 description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website—not just governance.
-last_updated: 2026-03-20
+last_updated: 2026-06-23
 category: governance
 audience: [ai-agents, contributors]
 status: active

@@ -10,10 +10,17 @@
 
 ---
 
-**Currently Building**
-- → Eval infrastructure for agentic AI systems @ AGI, Inc.
-- → Governed AI ops platform @ Kohyr
-- → LLM evaluation & benchmarking via llmworks
+<div align="center">
+
+### `// currently building`
+
+| | |
+|:---:|:---|
+| 🔬 | **Eval infrastructure** for agentic AI systems &nbsp;`@ AGI, Inc.` |
+| 🏗️ | **Governed AI ops** platform &nbsp;`@ Kohyr` |
+| ⚡ | **LLM evaluation & benchmarking** &nbsp;`via llmworks` |
+
+</div>
 
 ---
 

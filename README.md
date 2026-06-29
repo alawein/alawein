@@ -2,11 +2,18 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:1a1a2e,100:16213e&height=120&section=header&text=Meshal%20Alawein&fontSize=42&fontColor=c9d1d9&fontAlignY=65&animation=fadeIn" width="100%"/>
 
-Founder @ Kohyr · AI Systems Engineer · Computational Scientist
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=2000&color=58A6FF&center=true&vCenter=true&width=600&lines=Founder+%40+Kohyr+%C2%B7+AI+Systems+Engineer;Computational+Scientist+%C2%B7+PhD+EECS+Berkeley;CUDA+%C2%B7+JAX+%C2%B7+PyTorch+%C2%B7+Python+%C2%B7+C%2B%2B;Builder%3A+evals%2C+governed+AI%2C+simulations" alt="Typing SVG" /></a>
 
 [![meshal.ai](https://img.shields.io/badge/meshal.ai-0d1117?style=flat-square&logo=astro&logoColor=58a6ff)](https://meshal.ai)&nbsp;[![kohyr.ai](https://img.shields.io/badge/%F0%9F%8F%A2%20kohyr.ai-0d1117?style=flat-square&logoColor=58a6ff)](https://kohyr.ai)&nbsp;[![Scholar](https://img.shields.io/badge/Scholar-0d1117?style=flat-square&logo=googlescholar&logoColor=58a6ff)](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en)&nbsp;[![contact](https://img.shields.io/badge/contact@meshal.ai-0d1117?style=flat-square&logo=maildotru&logoColor=58a6ff)](mailto:contact@meshal.ai)
 
 </div>
+
+---
+
+> **Currently Building**
+> → Eval infrastructure for agentic AI systems @ AGI, Inc.
+> → Governed AI ops platform @ Kohyr
+> → LLM evaluation & benchmarking via llmworks
 
 ---
 

@@ -36,6 +36,8 @@ jobs:
             scripts/doctrine/validate.py
             scripts/doctrine/validate-doctrine.py
             scripts/doctrine/validate-repo-framework.py
+            scripts/doctrine/validate-readme-topology.py
+            catalog/repos.json
             projects.json
 
       - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
@@ -57,6 +59,13 @@ jobs:
           python org/scripts/doctrine/validate-repo-framework.py \
             --repo repo \
             --registry org/projects.json \
+            --repo-slug "${{ github.repository }}"
+
+      - name: Validate README topology sections
+        run: |
+          python org/scripts/doctrine/validate-readme-topology.py \
+            --repo-path repo \
+            --repos-json org/catalog/repos.json \
             --repo-slug "${{ github.repository }}"
 
       - name: Run Doctrine Validator

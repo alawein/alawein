@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-09
+last_updated: 2026-06-29
 audience: [ai-agents, contributors]
 ---
 
@@ -42,6 +42,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `release-playbook.md` | Frozen | Superseded by commit-release-convention.md |
 | `release-roadmap-and-outcomes.md` | Active | Outcome-to-version bridge mapping product milestones to SemVer releases without redefining SemVer; parallel outcome track for outcome-based releasing |
 | `repo-standardization.md` | Active | Per-repo standardization checklist |
+| `repo-topology-canon.md` | Active | Fleet axes, archetypes, README unification spec |
 | `repo-sweep-prompt.md` | Reference | Repo sweep operator prompt |
 | `repository-layout-standard.md` | Active | Directory layout standard |
 | `review-playbook.md` | Active | Code review process |

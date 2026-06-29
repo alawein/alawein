@@ -25,7 +25,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- `projects.json` **infrastructure** entries: canonical `url` for GitHub (`aw-devkit`, `workspace-tools`, `pkos`, `handshake-hai`, `handshake-project-proctor`) and **`reasonbench`** row; schema allows optional `url`, `status`, `note` on infrastructure objects.
+- [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md): fleet axes, eleven archetypes, README unification spec, and execution waves.
+- [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md): Phase 1 fleet topology and README audit (37 repos).
+- [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): topology coherence validator for `catalog/repos.json` (bucket/type/local_path/slug rules).
 - [`scripts/doctrine/audit-last-commit-messages.ps1`](scripts/doctrine/audit-last-commit-messages.ps1): list top-level repos whose **latest** commit is still the bulk `chore: sync workspace changes` message (hygiene / follow-up triage).
 - Ops glossary [`docs/operations/github-notion-sync-glossary.md`](docs/operations/github-notion-sync-glossary.md): `Sync [project]` vs `GitHub Sync`, canonical `projects.json` → Notion flow, per-repo scan vs Notion push, **rule #4** out-of-scope guardrail for architecture drift, naming note for Kohyr Inc.
 - Claude Code **worked examples** (CLAUDE.md, rules, commands, skills, agents, settings): [`docs/governance/claude-code-worked-examples.md`](docs/governance/claude-code-worked-examples.md). Cursor rule [`.cursor/rules/claude-code-governance.mdc`](.cursor/rules/claude-code-governance.mdc) applies when editing `.claude/` or `CLAUDE.md` (`.gitignore` now allows `.cursor/rules/`).

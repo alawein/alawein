@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-06-07
-last_updated: 2026-06-07
+last-verified: 2026-06-29
+last_updated: 2026-06-29
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -70,6 +70,10 @@ alawein/
     `.superpowers/` (added to the `doctrine-reusable.yml` Vale exclusion in #128).
     These are internal or archived trees, safe without strict frontmatter or
     governed-voice compliance.
+12. `projects.json` and `catalog/generated/*` are generated from
+    `catalog/repos.json` by `scripts/catalog/build-catalog.py`. Edit the source
+    `repos.json`, then regenerate and run `validate-catalog.py --strict`; never
+    hand-edit the generated outputs.
 
 ## Style contract
 
@@ -112,6 +116,7 @@ Apply voice and prompt-surface changes in this order:
 - Comments: explain invariants, assumptions, and failure modes
 - Commits: present tense, technical context
 - Shell scripts: LF line endings only. CRLF in a tracked `.sh` breaks `bash` on the Linux CI runner (`set: pipefail` / `invalid option name`). Enforce with a `.gitattributes` (`*.sh text eol=lf`); if added at repo root, whitelist `.gitattributes` in the doc-contract R8 root-file allowlist.
+- GitHub Actions: pin every `uses:` to a full commit SHA (the repo pins all actions, e.g. `actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2`); reuse existing pins rather than floating tags.
 
 ## Build and validate
 

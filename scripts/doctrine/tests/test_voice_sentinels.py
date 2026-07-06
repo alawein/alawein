@@ -137,3 +137,21 @@ def test_collector_scans_governance_and_skips_exempt(tmp_path):
     assert "LESSONS.md" in collected
     assert "plan.md" not in collected
     assert "AGENTS.md" not in collected
+
+
+def test_nested_blocking_filenames_are_advisory_with_root(tmp_path):
+    # With a root, only the root README/CLAUDE/AGENTS, docs/README, and
+    # prompt-kits/ block; nested copies of those filenames are advisory.
+    (tmp_path / "packages" / "pkg").mkdir(parents=True)
+    nested = tmp_path / "packages" / "pkg" / "README.md"
+    nested.write_text("A comprehensive package.\n", encoding="utf-8")
+    top = tmp_path / "README.md"
+    top.write_text("A comprehensive repo.\n", encoding="utf-8")
+
+    report = validate.Report()
+    validate.run_checks([top.resolve(), nested.resolve()], {"voice"}, report, root=tmp_path.resolve())
+    tiers = {v.path.name: v.tier for v in report.violations}
+    blocking_paths = {v.path for v in report.blocking}
+    assert top.resolve() in blocking_paths
+    assert all(p == top.resolve() for p in blocking_paths)
+    assert len(report.advisory) == 1

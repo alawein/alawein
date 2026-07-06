@@ -4,10 +4,10 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/sync-github.sh --all
-  ./scripts/sync-github.sh --check --all
-  ./scripts/sync-github.sh <repo-name-or-path>
-  ./scripts/sync-github.sh --check <repo-name-or-path>
+  ./scripts/github/sync-github.sh --all
+  ./scripts/github/sync-github.sh --check --all
+  ./scripts/github/sync-github.sh <repo-name-or-path>
+  ./scripts/github/sync-github.sh --check <repo-name-or-path>
 
 The repo manifest lives in github-baseline.yaml. Repos marked sync: manual are
 reported but skipped by --all.

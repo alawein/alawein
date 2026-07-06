@@ -208,9 +208,10 @@ def collect_paths(root: Path) -> list[Path]:
 
 
 def ignored_line_set(content: str) -> tuple[set[int], int]:
-    """Line numbers inside voice-check ignore regions, plus the line of an
-    unterminated ignore-start (0 if none). Sentinels inside fenced code blocks
-    do not toggle; the sentinel lines themselves are ignored too."""
+    """Line numbers exempt from pattern rules: fenced code blocks (quoted bad
+    examples, shell snippets) and voice-check ignore regions. Returns the set
+    plus the line of an unterminated ignore-start (0 if none). Sentinels inside
+    fenced code blocks do not toggle; sentinel and fence lines are exempt."""
     ignored: set[int] = set()
     in_fence = False
     ignoring = False
@@ -218,17 +219,21 @@ def ignored_line_set(content: str) -> tuple[set[int], int]:
     for line_no, line in enumerate(content.splitlines(), start=1):
         if FENCE_RE.match(line):
             in_fence = not in_fence
+            ignored.add(line_no)
+            continue
+        if in_fence:
+            ignored.add(line_no)
+            continue
         stripped = line.strip()
-        if not in_fence:
-            if stripped == IGNORE_START:
-                ignoring = True
-                ignore_start_line = line_no
-                ignored.add(line_no)
-                continue
-            if stripped == IGNORE_END:
-                ignoring = False
-                ignored.add(line_no)
-                continue
+        if stripped == IGNORE_START:
+            ignoring = True
+            ignore_start_line = line_no
+            ignored.add(line_no)
+            continue
+        if stripped == IGNORE_END:
+            ignoring = False
+            ignored.add(line_no)
+            continue
         if ignoring:
             ignored.add(line_no)
     return ignored, (ignore_start_line if ignoring else 0)
@@ -283,12 +288,18 @@ def check_frontmatter(path: Path, content: str, report: Report, root: Path | Non
         )
 
 
-def check_emdash(path: Path, content: str, report: Report, root: Path | None = None) -> None:
+def check_emdash(
+    path: Path,
+    content: str,
+    report: Report,
+    root: Path | None = None,
+    ignored: set[int] | None = None,
+) -> None:
     """D1: flag em-dashes (U+2014) outside fenced code blocks.
 
     Blocking on Blocking surfaces (README/CLAUDE/AGENTS/prompt-kits), advisory
-    elsewhere. Fenced code blocks are skipped so quoted bad examples and shell
-    snippets do not trip the gate.
+    elsewhere. Fenced code blocks and voice-check ignore regions are skipped so
+    quoted bad examples and shell snippets do not trip the gate.
     """
     tier: Literal["blocking", "advisory"] = (
         "blocking" if is_blocking_surface(path, root) else "advisory"
@@ -299,6 +310,8 @@ def check_emdash(path: Path, content: str, report: Report, root: Path | None = N
             in_fence = not in_fence
             continue
         if in_fence:
+            continue
+        if ignored and line_no in ignored:
             continue
         if EM_DASH in line:
             report.add(
@@ -342,7 +355,7 @@ def run_checks(
             check_frontmatter(path, content, report, root=root)
 
         if "emdash" in checks:
-            check_emdash(path, content, report, root=root)
+            check_emdash(path, content, report, root=root, ignored=ignored)
 
         if "voice" in checks:
             add_match_violations(

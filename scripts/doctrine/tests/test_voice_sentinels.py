@@ -155,3 +155,34 @@ def test_nested_blocking_filenames_are_advisory_with_root(tmp_path):
     assert top.resolve() in blocking_paths
     assert all(p == top.resolve() for p in blocking_paths)
     assert len(report.advisory) == 1
+
+
+def test_emdash_inside_sentinels_is_skipped(tmp_path):
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "<!-- voice-check:ignore-start -->\n"
+        "A quoted bad example — with an em-dash.\n"
+        "<!-- voice-check:ignore-end -->\n"
+        "A real violation — outside the region.\n",
+        encoding="utf-8",
+    )
+    report = validate.Report()
+    validate.run_checks([doc.resolve()], {"emdash"}, report)
+    hits = [v for v in report.violations if v.rule == "em-dash"]
+    assert len(hits) == 1
+    assert hits[0].line == 4
+
+
+def test_banned_word_inside_code_fence_is_skipped(tmp_path):
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "Bad example:\n\n```text\nWe utilized the comprehensive framework.\n```\n\n"
+        "A robust real violation.\n",
+        encoding="utf-8",
+    )
+    report = _run_voice(doc)
+    hits = _rule(report, "forbidden-register")
+    assert len(hits) == 1
+    assert hits[0].line == 7

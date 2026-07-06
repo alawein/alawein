@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Tooling and quality gates
 description: Minimum npm/Python scripts and CI expectations; maps to @alawein/* packages.
-last_updated: 2026-05-06
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -26,7 +26,7 @@ Published from **`alawein/devkit`** (`@alawein/*` on npm):
 |---------|-----|
 | `@alawein/eslint-config` | Extend `react-vite` or `react-next` from flat config |
 | `@alawein/prettier-config` | `"prettier": "@alawein/prettier-config"` in `package.json` + `.prettierrc` string |
-| `@alawein/tsconfig` | **Optional per repo** — merge carefully with app-specific `paths` / `include`; do not blindly replace Next/Vite tsconfigs |
+| `@alawein/tsconfig` | **Optional per repo**: merge carefully with app-specific `paths` / `include`; do not blindly replace Next/Vite tsconfigs |
 
 Also declare **`globals`** when the ESLint config uses `import globals from 'globals'` for script overrides.
 
@@ -82,5 +82,5 @@ python scripts/repo_health_check.py --local --json   # stdout + state/repo-local
 ## Related
 
 - [Repository layout standard](./repository-layout-standard.md)
-- [Project lifecycle tiers](../operations/project-lifecycle-tiers.md) — tier vs CI strictness
+- [Project lifecycle tiers](../operations/project-lifecycle-tiers.md), tier vs CI strictness
 - [Package namespace matrix](./package-namespace-matrix.md)

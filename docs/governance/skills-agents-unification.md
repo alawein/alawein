@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 title: Skills, Agents & Commands Unification
-description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website—not just governance.
-last_updated: 2026-06-23
+description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website, not just governance.
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -27,7 +27,7 @@ Operational maintenance, scope changes, and tailoring procedures are tracked in
 
 | Where | What |
 |-------|------|
-| **Claude local plugins** | `~/.claude/plugins/cache/local/` — kohyr, repo-superpowers |
+| **Claude local plugins** | `~/.claude/plugins/cache/local/`, kohyr, repo-superpowers |
 | **Cursor plugins** | Public plugins under `~/.cursor/plugins/cache/cursor-public/` plus local parity plugin `~/.cursor/plugins/local/workspace-universal/` |
 | **Alawein repo** | Governance docs, [slash-commands-catalog.md](./slash-commands-catalog.md); no `.cursor/` or `.claude/` in repo |
 
@@ -52,7 +52,7 @@ Operational maintenance, scope changes, and tailoring procedures are tracked in
 | | `validation-reminder` | Remind to run validate before commit/PR |
 | | `daily-focus` | (skill backing command) |
 | | `weekly-review` | (skill backing command) |
-| **Agents** | `tenet-analyzer` | Comprehensive tenet scanning |
+| **Agents** | `tenet-analyzer` | Tenet scanning across all repos |
 | | `promotion-checker` | Dependency analysis for promote |
 | **Hooks** | session-init, boundary-guard, scope-trigger | SessionStart, PreToolUse, PostToolUse |
 | **Universal YAML** | morphism-validate, morphism-context, etc. | Reusable configs |
@@ -133,14 +133,14 @@ Proposed **universal** capabilities (names can be standardized):
 
 | Capability | Current home | Notes |
 |------------|---------------|--------|
-| **Session start / context** | — (missing as universal) | “What is this dir? One goal.” Works like kohyr session-start but repo-agnostic |
+| **Session start / context** |, (missing as universal) | “What is this dir? One goal.” Works like kohyr session-start but repo-agnostic |
 | **Audit / onboard** | repo-superpowers: codebase-audit | Keep; already “any repo” |
 | **Plan / brainstorm** | superpowers, compound-engineering | Use existing Cursor plugins; document in one place |
 | **Research** | parallel plugin | Document |
 | **Docs lookup** | context7:docs | Document |
 | **Quality checks (generic)** | repo-superpowers: check-patterns, check-complexity, audit-deps | Generic; no kohyr tenets |
 | **Cleanup / tech debt** | repo-superpowers: full-cleanup-pipeline, tech-debt-blitz, etc. | Keep as universal |
-| **Validate (generic)** | — | “Run project’s own checks” (e.g. npm test, make check); not kohyr:validate |
+| **Validate (generic)** | - | “Run project’s own checks” (e.g. npm test, make check); not kohyr:validate |
 | **Deploy** | vercel-deploy, deploy-docs | Document |
 
 ### 2.2 Ecosystem Layer (kohyr)
@@ -222,8 +222,8 @@ After revision, a single recommended flow:
 
 | Step | Action | Where it lives |
 |------|--------|-----------------|
-| 1 | **Session start / context** — “What is this? One goal.” | repo-superpowers (new) or universal plugin |
-| 2 | **(If repo) Audit** — health, stack, issues | repo-superpowers: codebase-audit |
+| 1 | **Session start / context**: “What is this? One goal.” | repo-superpowers (new) or universal plugin |
+| 2 | **(If repo) Audit**: health, stack, issues | repo-superpowers: codebase-audit |
 | 3 | **Plan** (if feature/task) | superpowers: brainstorm → write-plan; or compound-engineering: workflows:plan |
 | 4 | **Implement** | compound-engineering: workflows:work or execute-plan |
 | 5 | **Review** | compound-engineering: workflows:review |

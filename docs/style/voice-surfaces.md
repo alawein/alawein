@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-12
+last_updated: 2026-07-06
 ---
 
 # Block 3 · Surface Adjustments
@@ -61,24 +61,24 @@ Good: _Figure 2. Full pipeline with stage labels and color coding; every other f
 
 Applies when surface tag is `[notebook]`.
 
-**Block 2 (§7–14, Design-Defense Register) is fully active on this surface. §15 rules also apply — in particular: first-person design authority, motivation-before-mechanism structure, and figure caption format.**
+**Block 2 (§7–14, Design-Defense Register) is fully active on this surface. §15 rules also apply, in particular: first-person design authority, motivation-before-mechanism structure, and figure caption format.**
 
 ### Cell sequence
 
 Prose motivation → code cell → "What to notice in the output below: [element] and [why]."
 Never: code cell → bare output with no setup prose.
 
-### Callout box format — HTML only
+### Callout box format: HTML only
 
 Markdown blockquotes render inconsistently across JupyterLab, VS Code, and nbviewer.
 Use HTML `<div>` tags inside markdown cells. Use the exact callout format defined in §13
-(Block 2) without modification — amber `#fdf6e3`/`#b08800` for design notes,
+(Block 2) without modification: amber `#fdf6e3`/`#b08800` for design notes,
 red `#fff5f5`/`#b85450` for known limitations.
 
 ### Inline LaTeX
 
 All math in LaTeX: `$\hat{I}$`, `$n \times 4$`, `$V_1 \land V_2 \land V_3$`.
-No Unicode math symbols in prose (`≥`, `∧`, `∈`) — they render inconsistently in HTML export. This restriction applies to notebook output and HTML export. In §15 software docs rendered as plain Markdown, Unicode symbols are acceptable.
+No Unicode math symbols in prose (`≥`, `∧`, `∈`): they render inconsistently in HTML export. This restriction applies to notebook output and HTML export. In §15 software docs rendered as plain Markdown, Unicode symbols are acceptable.
 
 ### Execution counts
 

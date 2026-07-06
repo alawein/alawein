@@ -3,9 +3,9 @@ type: canonical
 source: none
 sync: none
 sla: none
-title: Repo sweep — universal agent prompt
+title: Repo sweep, universal agent prompt
 description: Stack-agnostic governance-aware prompt for cleaning and validating any repo under the alawein workspace.
-last_updated: 2026-06-29
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -14,7 +14,7 @@ related:
   - ../../CLAUDE.md
 ---
 
-# Repo sweep — universal agent prompt
+# Repo sweep: universal agent prompt
 
 > Drop into any agent on any repo under `alawein/`. Stack-agnostic, governance-aware.
 
@@ -22,14 +22,14 @@ related:
 
 ## Rules
 
-- **No features.** Fix, clean, document — nothing new.
+- **No features.** Fix, clean, document, nothing new.
 - **No push without confirmation.** Stage commits, show summary, wait for go.
 - **No destructive git.** No force-push, no rebase of shared branches, no history rewrite.
 - **Respect existing governance.** If `AGENTS.md` says "ask first", ask first.
 
 ---
 
-## Phase 0 — orient
+## Phase 0: orient
 
 Read governance files in this order (skip missing ones, note which are absent):
 
@@ -42,18 +42,18 @@ Then discover the stack:
 
 | Signal | Stack | Lint | Types | Test | Build |
 |--------|-------|------|-------|------|-------|
-| `pyproject.toml` / `requirements.txt` | Python | `ruff check .` | `mypy .` | `pytest` | — |
+| `pyproject.toml` / `requirements.txt` | Python | `ruff check .` | `mypy .` | `pytest` | - |
 | `package.json` + `tsconfig.json` | TS/Node | `npx eslint .` | `npx tsc --noEmit` | `npx vitest run` or `npx jest` | `npm run build` |
-| `package.json` (no tsconfig) | JS/Node | `npx eslint .` | — | `npx vitest run` or `npx jest` | `npm run build` |
+| `package.json` (no tsconfig) | JS/Node | `npx eslint .` | - | `npx vitest run` or `npx jest` | `npm run build` |
 | `Cargo.toml` | Rust | `cargo clippy` | (built-in) | `cargo test` | `cargo build` |
 | `go.mod` | Go | `golangci-lint run` | (built-in) | `go test ./...` | `go build ./...` |
-| `*.html` + no manifest | Static | — | — | — | — |
+| `*.html` + no manifest | Static | - |, | - |, |
 
 Record which commands exist and which don't. This is your baseline.
 
 ---
 
-## Phase 1 — validate
+## Phase 1: validate
 
 Run every available check from Phase 0. Record pass/fail counts as baseline:
 
@@ -69,21 +69,21 @@ If a command doesn't exist (e.g. no test runner configured), record `n/a`.
 
 ---
 
-## Phase 2 — fix (strict priority order)
+## Phase 2: fix (strict priority order)
 
 Work top-to-bottom. Do not skip ahead.
 
-1. **Build blockers** — missing deps, broken imports, config errors that prevent `build` from completing.
-2. **Type errors** — fix all `tsc --noEmit` / `mypy` failures.
-3. **Test failures** — fix failing tests. Do NOT add new tests or delete existing ones.
-4. **Lint errors** — fix auto-fixable first (`--fix`), then manual.
-5. **Dead code** — remove unused imports, unreachable code, commented-out blocks older than 30 days.
-6. **Security** — exposed secrets (remove + rotate), known vulnerable deps (`npm audit fix` / `pip audit`).
-7. **Dependency hygiene** — remove unused deps, pin floating versions, update lockfile.
+1. **Build blockers**: missing deps, broken imports, config errors that prevent `build` from completing.
+2. **Type errors**: fix all `tsc --noEmit` / `mypy` failures.
+3. **Test failures**: fix failing tests. Do NOT add new tests or delete existing ones.
+4. **Lint errors**: fix auto-fixable first (`--fix`), then manual.
+5. **Dead code**: remove unused imports, unreachable code, commented-out blocks older than 30 days.
+6. **Security**: exposed secrets (remove + rotate), known vulnerable deps (`npm audit fix` / `pip audit`).
+7. **Dependency hygiene**: remove unused deps, pin floating versions, update lockfile.
 
 ---
 
-## Phase 3 — governance
+## Phase 3: governance
 
 Verify these files exist and are accurate. Create missing ones from what the repo actually contains.
 
@@ -91,11 +91,11 @@ Verify these files exist and are accurate. Create missing ones from what the rep
 
 | File | Purpose | Create if missing? |
 |------|---------|-------------------|
-| `AGENTS.md` | Agent boundaries, always/never/ask-first | Yes — derive from repo purpose |
-| `CLAUDE.md` | Dev workflow, quality gates, structure | Yes — derive from stack + scripts |
-| `SSOT.md` | Current state, version, status | Yes — derive from repo contents |
-| `LESSONS.md` | Observed patterns and anti-patterns | Yes — minimal initial entry |
-| `README.md` | Project overview, setup, usage | Yes — derive from package manifest + src |
+| `AGENTS.md` | Agent boundaries, always/never/ask-first | Yes, derive from repo purpose |
+| `CLAUDE.md` | Dev workflow, quality gates, structure | Yes, derive from stack + scripts |
+| `SSOT.md` | Current state, version, status | Yes, derive from repo contents |
+| `LESSONS.md` | Observed patterns and anti-patterns | Yes, minimal initial entry |
+| `README.md` | Project overview, setup, usage | Yes, derive from package manifest + src |
 
 ### Governance file format
 
@@ -135,7 +135,7 @@ audience: [ai-agents, contributors]
 
 ---
 
-## Phase 4 — re-validate
+## Phase 4: re-validate
 
 Run the same checks from Phase 1. All must pass (or match `n/a` baseline).
 
@@ -151,7 +151,7 @@ If anything regressed, fix it before proceeding.
 
 ---
 
-## Phase 5 — commit
+## Phase 5: commit
 
 Stage commits grouped by scope, each independently revertible:
 
@@ -171,7 +171,7 @@ Examples:
 
 ---
 
-## Phase 6 — report
+## Phase 6: report
 
 Produce a summary table:
 
@@ -234,7 +234,7 @@ For batch execution, here are the repos grouped by stack:
 ## Notes
 
 - This prompt is stack-agnostic. Phase 0 auto-detects the stack.
-- It respects existing `AGENTS.md` boundaries — if a repo says "ask first" for something, the agent asks.
+- It respects existing `AGENTS.md` boundaries, if a repo says "ask first" for something, the agent asks.
 - It explicitly forbids adding features or pushing without confirmation.
 - Governance files follow the alawein YAML frontmatter convention.
 - For batch execution across multiple repos, see [parallel-batch-execution.md](./parallel-batch-execution.md).

@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.1.0
-last_updated: 2026-05-02
+last_updated: 2026-07-06
 tags: [governance, workflow, branching, deployment, git]
 ---
 
@@ -89,7 +89,7 @@ stash.
 
 ## See Also
 
-- [branch-and-deployment-convention.md](branch-and-deployment-convention.md) — single reference for branch naming, workflow, and Vercel
+- [branch-and-deployment-convention.md](branch-and-deployment-convention.md), single reference for branch naming, workflow, and Vercel
 - [parallel-batch-execution.md](parallel-batch-execution.md)
 - [operating-model.md](operating-model.md)
 - [git-operations.md](git-operations.md)

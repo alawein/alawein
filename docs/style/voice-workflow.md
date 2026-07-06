@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-16
+last_updated: 2026-07-06
 ---
 
 # Block 4 · Polish Workflow
@@ -46,7 +46,7 @@ Run in order. One hit = fix before proceeding.
 
 1. **Forbidden register scan.** Every phrase from §5 (in Block 1). One hit = rewrite the sentence.
 2. **Em-dash count.** More than 2 per section: rewrite. Three or more in one paragraph: definitive.
-3. **Sentence opener check.** More than half should open with a technical subject — a named quantity, entity, or operator — not a discourse marker or "The."
+3. **Sentence opener check.** More than half should open with a technical subject (a named quantity, entity, or operator), not a discourse marker or "The."
 4. **Hedge stacking.** Two or more hedging modifiers in sequence: remove all but one.
 5. **Uniform bullet check.** 4+ bullets of equal length: rewrite as prose with colons.
 6. **Threshold check.** Every threshold named explicitly with its value. No "the configured value."

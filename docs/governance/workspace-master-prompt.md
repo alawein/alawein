@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Alawein Workspace Master Prompt
 description: Canonical operating contract for workspace naming, control-plane ownership, portfolio synchronization, and manifest-driven batch execution.
-last_updated: 2026-04-16
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -14,7 +14,7 @@ version: 1.2.0
 tags: [workspace, governance, naming, directives, portfolio, batches]
 ---
 
-# Alawein Workspace — Master Prompt
+# Alawein Workspace: Master Prompt
 
 ## Context
 
@@ -88,13 +88,13 @@ These are binding names.
 
 | Directory | Canonical Name | Domain | Notes |
 | --- | --- | --- | --- |
-| `meatheadphysicist/` | `meatheadphysicist` | — | — |
-| `gymboy/` | `gymboy` | `gymboy.coach` | — |
+| `meatheadphysicist/` | `meatheadphysicist` | - |, |
+| `gymboy/` | `gymboy` | `gymboy.coach` | - |
 | `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
-| `meshal-web/` | `meshal-web` | `meshal.ai` | — |
-| `design-system/` | `design-system` | — | Canonical shared design-system repo; consolidated from legacy `aw-devkit` |
-| `workspace-tools/` | `workspace-tools` | — | Canonical batch/orchestration repo |
-| `knowledge-base/` | `knowledge-base` | — | Canonical records, profile export, and audit/config repo |
+| `meshal-web/` | `meshal-web` | `meshal.ai` | - |
+| `design-system/` | `design-system` | - | Canonical shared design-system repo; consolidated from legacy `aw-devkit` |
+| `workspace-tools/` | `workspace-tools` | - | Canonical batch/orchestration repo |
+| `knowledge-base/` | `knowledge-base` | - | Canonical records, profile export, and audit/config repo |
 
 ### External Tool Prefix Rule
 
@@ -124,7 +124,7 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 - Mobile-first and responsive.
 - Branding, metadata, and deploy config target `gymboy.coach`.
 
-### D-3: Repz — Comprehensive Heal & Fix
+### D-3: Repz: Heal and Fix
 
 - Full audit: broken builds, failing tests, lint errors, stale dependencies.
 - Resolve architectural debt and incomplete migrations.
@@ -139,7 +139,7 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 
 ### D-5: `meshal.ai` Refinement
 
-- `meshal-web/` requires comprehensive revision:
+- `meshal-web/` requires a full revision:
   content, design, performance, SEO, accessibility.
 - Align branding/messaging with current portfolio state.
 - Must accurately represent active Alawein projects.
@@ -154,8 +154,8 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 | `repz` | `repzcoach.com` | React Router, Vite, Supabase |
 | `attributa` | `attributa.dev` | React, Vite, Supabase |
 | `meshal-web` | `meshal.ai` | React, Vite, Tailwind |
-| `bolts` | — | Next.js, Supabase |
-| `helios` | — | — |
+| `bolts` | - | Next.js, Supabase |
+| `helios` | - |, |
 
 ### Research & Scientific Computing
 

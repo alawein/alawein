@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Layout Audit
 description: Repo-by-repo layout status against the current control-plane, design-system, research, and product standards.
-last_updated: 2026-05-05
+last_updated: 2026-07-06
 category: governance
 audience: contributors
 status: active
@@ -98,11 +98,11 @@ while reporting canonical names first and physical slugs second when needed.
 
 ## Priority Cleanup Queue
 
-1. `repz` — execute D-3 and standardize on `repzcoach.com`.
-2. `gymboy` — execute D-2 redesign and naming/domain consistency.
-3. `meshal-web` — execute D-5 refinement.
-4. `optiqap` — keep research, Pages, and notebook surfaces aligned.
-5. `meatheadphysicist` — maintain immutable-surface policy and repo health.
+1. `repz`, execute D-3 and standardize on `repzcoach.com`.
+2. `gymboy`, execute D-2 redesign and naming/domain consistency.
+3. `meshal-web`, execute D-5 refinement.
+4. `optiqap`, keep research, Pages, and notebook surfaces aligned.
+5. `meatheadphysicist`, maintain immutable-surface policy and repo health.
 
 ## Follow-On Rules
 

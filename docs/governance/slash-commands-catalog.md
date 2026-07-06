@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Slash Commands Catalog & Workflows
 description: Catalog of / slash commands from Cursor (and Claude Code) plugins, with run order and reusable workflows for any repo or directory.
-last_updated: 2026-06-23
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -19,7 +19,7 @@ This document lists slash commands available from **Cursor plugins** (and, where
 For the shortest daily command set, use [operator-command-cheatsheet.md](./operator-command-cheatsheet.md).
 
 **Machine setup (skills across IDEs):** Install the global `skills` CLI,
-allowlisted agents, and avoid colliding with plugin-owned skills — see
+allowlisted agents, and avoid colliding with plugin-owned skills, see
 [skills-install-policy.md](./skills-install-policy.md). Bootstrap:
 `workspace-tools/scripts/bootstrap-skills.ps1` /
 `workspace-tools/scripts/bootstrap-skills.sh`.
@@ -30,7 +30,7 @@ allowlisted agents, and avoid colliding with plugin-owned skills — see
 
 ### 1.0 Our Plugins (Claude Code, local)
 
-**Repo-Superpowers** — universal, any repo or directory (`~/.claude/plugins/cache/local/repo-superpowers/`):
+**Repo-Superpowers**: universal, any repo or directory (`~/.claude/plugins/cache/local/repo-superpowers/`):
 
 | Command | Description |
 |--------|-------------|
@@ -54,9 +54,9 @@ allowlisted agents, and avoid colliding with plugin-owned skills — see
 
 Legacy `/repo-superpowers:*` commands remain supported.
 
-**Morphism** — ecosystem-only, kohyr repos (`~/.claude/plugins/cache/local/morphism/`): see §1.8 below.
+**Morphism**: ecosystem-only, kohyr repos (`~/.claude/plugins/cache/local/morphism/`): see §1.8 below.
 
-**Workspace-Universal (Cursor local parity plugin)** — `~/.cursor/plugins/local/workspace-universal/`:
+**Workspace-Universal (Cursor local parity plugin)**: `~/.cursor/plugins/local/workspace-universal/`:
 
 | Command | Description |
 |--------|-------------|
@@ -117,7 +117,7 @@ Legacy `/repo-superpowers:*` commands remain supported.
 
 | Command | Description | Args |
 |--------|-------------|------|
-| `/parallel:parallel-setup` | Install Parallel CLI and authenticate. | — |
+| `/parallel:parallel-setup` | Install Parallel CLI and authenticate. | - |
 | `/parallel:parallel-search` | Web search (default for most research). | `<query>` |
 | `/parallel:parallel-extract` | Extract content from URLs (web, PDFs). | `<url> [url2] …` |
 | `/parallel:parallel-research` | Exhaustive multi-source research (use when explicitly requested). | `<topic>` |
@@ -159,7 +159,7 @@ Use from project root of a Vercel-ready app.
 
 ---
 
-### 1.7 Morphism (Claude Code, local — ecosystem only)
+### 1.7 Morphism (Claude Code, local: ecosystem only)
 
 Available in **Claude Code** when the Morphism plugin is installed (e.g. `~/.claude/plugins/cache/local/morphism/`). In **Cursor**, these may appear if the same plugin is installed for Cursor.
 
@@ -197,8 +197,8 @@ Available in **Claude Code** when the Morphism plugin is installed (e.g. `~/.cla
 
 ### 3.0 Universal session (any repo or dir)
 
-1. `/workspace:session-start` — detect project, state one goal, get suggested pre-commit checks.
-2. Optional: `/workspace:context` — show project type and scripts.
+1. `/workspace:session-start`, detect project, state one goal, get suggested pre-commit checks.
+2. Optional: `/workspace:context`, show project type and scripts.
 
 Use this first when opening a new folder or repo; then follow scenario-specific steps below.
 
@@ -300,14 +300,14 @@ Not slash commands; run in shell:
 | Goal | First command | Then |
 |------|----------------|------|
 | New feature | `workflows:brainstorm` or `brainstorm` | `workflows:plan` → `deepen-plan` → `workflows:work` → `workflows:review` |
-| Execute plan | `execute-plan` or `workflows:work` | — |
+| Execute plan | `execute-plan` or `workflows:work` | - |
 | Research | `parallel-search` or `parallel-research` | `parallel-result` if async run |
-| Docs lookup | `context7:docs <lib> [query]` | — |
+| Docs lookup | `context7:docs <lib> [query]` | - |
 | Bug | `reproduce-bug <issue#>` | fix → review |
-| Before commit (kohyr) | `morphism:validate --quick` | — |
-| Before commit (alawein) | `sync-readme.py --check` + `validate-doc-contract.sh --full` | — |
-| Deploy app | `vercel:vercel-deploy` | — |
-| Deploy docs | `deploy-docs` | — |
+| Before commit (kohyr) | `morphism:validate --quick` | - |
+| Before commit (alawein) | `sync-readme.py --check` + `validate-doc-contract.sh --full` | - |
+| Deploy app | `vercel:vercel-deploy` | - |
+| Deploy docs | `deploy-docs` | - |
 
 ---
 

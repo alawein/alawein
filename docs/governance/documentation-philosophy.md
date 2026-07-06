@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Morphism Documentation Philosophy
 description: Unified documentation aesthetic combining mathematics, physics, DevOps, and AI research principles
-last_updated: 2026-06-07
+last_updated: 2026-07-06
 category: documentation
 audience: contributors
 status: historical
@@ -158,7 +158,7 @@ validateGeneralization(patterns, testDataset);
 
 ## Visual Language
 
-**Equations** (not just decoration—they clarify):
+**Equations** (not just decoration, they clarify):
 ```
 Morphism φ: φ(S) = ⟨Structure ↦ Invariants ↦ Transform⟩
 

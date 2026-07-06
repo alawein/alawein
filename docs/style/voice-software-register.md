@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-11
+last_updated: 2026-07-06
 ---
 
 # Block 2 · Design-Defense Register
@@ -37,10 +37,10 @@ Examples: **two-layer bleed problem**, **synchronous canary pre-run**, **diversi
 
 Every system description includes both beats:
 
-**What is useful but not novel** — names the standard tools and prior work in use.
+**What is useful but not novel**: names the standard tools and prior work in use.
 Example: "KDE threshold estimation, LOO cross-validation, and Holm-Sidak FWER correction are all standard. The contribution is the scoring architecture that requires these checks before a checkpoint can promote."
 
-**What is missing** — states the honest scope gap.
+**What is missing**: states the honest scope gap.
 Example: "I have not found a clean way to attribute failure when V2 and V3 both fire simultaneously. The trace is dropped either way, but the diagnosis is ambiguous."
 
 Omitting these beats is a claim that everything described is novel and complete.
@@ -75,13 +75,15 @@ This is a cue, not a caption. States what matters in the output and why.
 Format: "What to notice in the output below: [specific element] and [why it matters]."
 
 Good: "What to notice in the output below: the three canary 4-vectors against their expected values, and the halt message on the third."
+<!-- voice-check:ignore-start -->
 Good: "What to notice: the KDE threshold moves by less than 0.02 between n = 200 and n = 500 — the floor matters, but the ceiling is flat."
+<!-- voice-check:ignore-end -->
 
-Appears in the markdown cell immediately preceding the output cell — not after.
+Appears in the markdown cell immediately preceding the output cell, not after.
 
 ## §13 Callout box format
 
-Use HTML `<div>` tags inside markdown cells. Never markdown blockquotes —
+Use HTML `<div>` tags inside markdown cells. Never markdown blockquotes:
 they render inconsistently across JupyterLab, VS Code, and nbviewer.
 
 Design note (amber):

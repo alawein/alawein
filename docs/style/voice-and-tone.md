@@ -5,8 +5,8 @@ sync: manual
 sla: on-change
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-06-07
-last-verified: 2026-06-07
+last_updated: 2026-07-06
+last-verified: 2026-07-06
 ---
 
 # Voice and tone
@@ -36,7 +36,9 @@ Write as if the reader will act on the guidance immediately. Prefer precise noun
 ## What to avoid
 
 - Marketing adjectives with no operational meaning.
+<!-- voice-check:ignore-start -->
 - Empty intensifiers such as `powerful`, `seamless`, `best-in-class`, and `revolutionary`.
+<!-- voice-check:ignore-end -->
 - First-person brand voice unless the document is explicitly personal profile copy.
 - Casual slang in governed docs.
 

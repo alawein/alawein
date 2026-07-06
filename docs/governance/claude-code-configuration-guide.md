@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 title: Claude Code configuration reference (.claude/, CLAUDE.md)
-description: Canonical layout and practices for Claude Code — project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
-last_updated: 2026-06-23
+description: Canonical layout and practices for Claude Code, project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
+last_updated: 2026-07-06
 last_verified: 2026-03-25
 category: governance
 audience: [ai-agents, contributors]
@@ -45,7 +45,7 @@ Use this in **product repositories** that ship a `.claude/` directory. This **or
 ## CLAUDE.md (root)
 
 - Loads at session start and **survives `/compact`** (unlike chat alone).
-- **Golden rule:** Only what the model **cannot infer from reading the repo** — build/test/lint commands, architecture boundaries, deploy quirks, naming that is not obvious from code.
+- **Golden rule:** Only what the model **cannot infer from reading the repo**: build/test/lint commands, architecture boundaries, deploy quirks, naming that is not obvious from code.
 - If the **linter/formatter** already enforces something, prefer a **hook** instead of repeating it in prose.
 - Target **under ~200 lines** per file; move depth to `.claude/rules/`.
 - Prefer phrasing **"Prefer X over Y"** instead of "Do not Y".
@@ -83,10 +83,10 @@ Example layout:
 **Skill frontmatter (typical):**
 
 - `name`, `description`
-- `context: fork` — isolated subagent context
-- `agent:` — which subagent runs the skill
-- `allowed-tools:` — restrict tools (e.g. read-only review)
-- `disable-model-invocation: true` — only when explicitly invoked
+- `context: fork`: isolated subagent context
+- `agent:`: which subagent runs the skill
+- `allowed-tools:`: restrict tools (e.g. read-only review)
+- `disable-model-invocation: true`: only when explicitly invoked
 
 **When to choose which**
 
@@ -111,8 +111,8 @@ Product note: **commands/** and **skills/** may converge over time; prefer **ski
 
 Pair:
 
-- **`.claude/settings.json`** — committed team defaults: `permissions.allow` / `permissions.deny`, `hooks`, shared config.
-- **`.claude/settings.local.json`** — personal; gitignore.
+- **`.claude/settings.json`**: committed team defaults: `permissions.allow` / `permissions.deny`, `hooks`, shared config.
+- **`.claude/settings.local.json`**: personal; gitignore.
 
 **Hooks:** Keep them **fast (under ~2s)**; they run frequently. Common patterns:
 
@@ -178,4 +178,4 @@ Treat **`.claude/` like CI config**: review changes in PRs. **Untrusted reposito
 
 ## Source
 
-Semantics from the internal Claude Code reference UI were merged into this guide and into [claude-code-worked-examples.md](./claude-code-worked-examples.md). **Do not rely on stray `.jsx` scratch files** — edit the Markdown here so the org hub stays the single source.
+Semantics from the internal Claude Code reference UI were merged into this guide and into [claude-code-worked-examples.md](./claude-code-worked-examples.md). **Do not rely on stray `.jsx` scratch files**: edit the Markdown here so the org hub stays the single source.

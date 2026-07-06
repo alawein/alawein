@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-04-30
+last_updated: 2026-07-06
 audience: [agents, contributors]
 ---
 
@@ -18,7 +18,7 @@ draft to general availability across the workspace.
 
 | Stage | Repos Active | Gate to Next Stage |
 |-------|-------------|-------------------|
-| `draft` | None — local testing only | `validate-prompt-kit.py` passes |
+| `draft` | None, local testing only | `validate-prompt-kit.py` passes |
 | `canary` | alawein repo only | PR merged; no regressions in CI for 48 h |
 | `staged` | alawein + meshal-web + workspace-tools | Manual review; downstream CI green |
 | `ga` | All `downstream-consumers` listed in registry | No P1/P2 issues after staged soak |
@@ -35,7 +35,7 @@ Rollout state is tracked in `prompt-kits/registry.yaml` → `rollout-status` fie
 1. Create a `feat/prompt-<kit>-v<version>` branch.
 2. Edit the prompt kit file and bump `version` in frontmatter.
 3. Add `CHANGELOG.md` entry.
-4. Run `python scripts/validate-prompt-kit.py` — must exit 0.
+4. Run `python scripts/validate-prompt-kit.py`, must exit 0.
 5. Update `prompt-kits/registry.yaml` → `rollout-status: canary`.
 
 ### 2. Canary

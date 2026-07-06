@@ -3,9 +3,9 @@ type: canonical
 source: none
 sync: none
 sla: none
-title: Notion Projects (Canonical) — sync and checklist
+title: Notion Projects (Canonical), sync and checklist
 description: Runbook for syncing projects.json to Notion and required database properties.
-last_updated: 2026-05-03
+last_updated: 2026-07-06
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -15,7 +15,7 @@ related:
   - ./github-notion-sync-glossary.md
 ---
 
-# Notion “Projects (Canonical)” — sync and checklist
+# Notion “Projects (Canonical)”: sync and checklist
 
 **Terminology:** [GitHub ↔ Notion sync glossary and guardrails](./github-notion-sync-glossary.md) (`Sync [project]` vs `GitHub Sync`, out-of-scope rules).
 
@@ -57,25 +57,25 @@ node scripts/verify-notion-canonical-state.mjs
 
 Data sources in [`projects.json`](../../projects.json):
 
-- **`featured`** — same list that drives the README (via `sync-readme.py`).
-- **`notion_sync`** — extra rows **only** for Notion (e.g. `qmlab`, `simcore`, `meatheadphysicist`).
+- **`featured`**: same list that drives the README (via `sync-readme.py`).
+- **`notion_sync`**: extra rows **only** for Notion (e.g. `qmlab`, `simcore`, `meatheadphysicist`).
 
 Each entry can set **`portfolio_domain`**: `Work` | `Personal` | `scientific-computing` (must exist as **select** options on the Notion database).
 
 ## Notion database setup (manual)
 
-1. **Integration** — Create at [notion.so/my-integrations](https://www.notion.so/my-integrations), invite it to the database.
-2. **Properties** — Align names and types with the script:
+1. **Integration**: Create at [notion.so/my-integrations](https://www.notion.so/my-integrations), invite it to the database.
+2. **Properties**: Align names and types with the script:
    - **Name** (title)
    - **Slug** (text)
    - **URL** (URL)
    - **Description** (text)
-   - **Tags** (multi-select) — add options matching `projects.json` tags, or sync will fail on unknown names.
-   - **Category** (select) — `active`, `maintained`, `planned`, `archived`
+ - **Tags** (multi-select), add options matching `projects.json` tags, or sync will fail on unknown names.
+ - **Category** (select), `active`, `maintained`, `planned`, `archived`
    - **Repo** (text)
-   - **Domain** (select) — at minimum add **`scientific-computing`** if you use it for Alembiq; otherwise change `portfolio_domain` for Alembiq to `Work` or `Personal` in JSON.
+ - **Domain** (select), at minimum add **`scientific-computing`** if you use it for Alembiq; otherwise change `portfolio_domain` for Alembiq to `Work` or `Personal` in JSON.
    - The sync script now runs a **preflight** and will fail early if Category/Domain/Tags options are missing (or wrong type). If your column names differ, set env overrides.
-3. **Legacy rows** — The archived set is `kohyr.com` (kept as historical reference). Verify script enforces `EXPECTED_LEGACY_COUNT=1`. Other orphan rows should be deleted in Notion.
+3. **Legacy rows**: The archived set is `kohyr.com` (kept as historical reference). Verify script enforces `EXPECTED_LEGACY_COUNT=1`. Other orphan rows should be deleted in Notion.
 
 ## Cursor Notion MCP
 

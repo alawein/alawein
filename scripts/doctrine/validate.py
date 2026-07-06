@@ -162,7 +162,20 @@ def is_generated(content: str) -> bool:
     return any(marker.lower() in head for marker in SKIP_GENERATED_MARKERS)
 
 
-def is_blocking_surface(path: Path) -> bool:
+def is_blocking_surface(path: Path, root: Path | None = None) -> bool:
+    # With a root, Blocking is exactly the pre-2026-07 gate set: the root
+    # README/CLAUDE/AGENTS, docs/README, and prompt-kits/. Nested copies of
+    # those filenames (package READMEs, vendored AGENTS.md) are advisory, so
+    # widening the scan does not turn fleet doctrine CI red overnight.
+    if root is not None:
+        try:
+            rel_to_root = path.relative_to(root).as_posix()
+        except ValueError:
+            rel_to_root = None
+        if rel_to_root is not None:
+            if rel_to_root in {"README.md", "docs/README.md", "CLAUDE.md", "AGENTS.md"}:
+                return True
+            return rel_to_root.startswith("prompt-kits/")
     rel = path.as_posix()
     if path.name == "README.md":
         return True
@@ -270,7 +283,7 @@ def check_frontmatter(path: Path, content: str, report: Report, root: Path | Non
         )
 
 
-def check_emdash(path: Path, content: str, report: Report) -> None:
+def check_emdash(path: Path, content: str, report: Report, root: Path | None = None) -> None:
     """D1: flag em-dashes (U+2014) outside fenced code blocks.
 
     Blocking on Blocking surfaces (README/CLAUDE/AGENTS/prompt-kits), advisory
@@ -278,7 +291,7 @@ def check_emdash(path: Path, content: str, report: Report) -> None:
     snippets do not trip the gate.
     """
     tier: Literal["blocking", "advisory"] = (
-        "blocking" if is_blocking_surface(path) else "advisory"
+        "blocking" if is_blocking_surface(path, root) else "advisory"
     )
     in_fence = False
     for line_no, line in enumerate(content.splitlines(), start=1):
@@ -329,7 +342,7 @@ def run_checks(
             check_frontmatter(path, content, report, root=root)
 
         if "emdash" in checks:
-            check_emdash(path, content, report)
+            check_emdash(path, content, report, root=root)
 
         if "voice" in checks:
             add_match_violations(
@@ -338,7 +351,7 @@ def run_checks(
                 content,
                 FORBIDDEN_REGISTER,
                 "forbidden-register",
-                "blocking" if is_blocking_surface(path) else "advisory",
+                "blocking" if is_blocking_surface(path, root) else "advisory",
                 ignored=ignored,
             )
 
@@ -349,7 +362,7 @@ def run_checks(
                 content,
                 AI_ATTRIBUTION_PATTERNS,
                 "ai-attribution",
-                "blocking" if is_blocking_surface(path) else "advisory",
+                "blocking" if is_blocking_surface(path, root) else "advisory",
                 ignored=ignored,
             )
 
@@ -360,7 +373,7 @@ def run_checks(
                 content,
                 STALE_IDENTITY_PATTERNS,
                 "stale-identity",
-                "blocking" if is_blocking_surface(path) else "advisory",
+                "blocking" if is_blocking_surface(path, root) else "advisory",
                 ignored=ignored,
             )
 
@@ -371,7 +384,7 @@ def run_checks(
                 content,
                 FORBIDDEN_PERSONAL_CLAIMS,
                 "stale-claim",
-                "blocking" if is_blocking_surface(path) else "advisory",
+                "blocking" if is_blocking_surface(path, root) else "advisory",
                 ignored=ignored,
             )
 

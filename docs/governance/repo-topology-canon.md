@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-06-29
+last_updated: 2026-07-06
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -376,7 +376,9 @@ Next action: continue|refactor|merge|archive|delete
 
 ### Voice and presentation
 
+<!-- voice-check:ignore-start -->
 Per [`docs/style/VOICE.md`](../style/VOICE.md): no em dashes, no banned register (`comprehensive`, `robust`, `leverage`, `streamline`, `seamless`, etc.). No badge walls (cap: 2 CI badges + license). No AI slop closings.
+<!-- voice-check:ignore-end -->
 
 ### Tiered compliance (migration)
 

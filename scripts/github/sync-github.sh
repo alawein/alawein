@@ -15,7 +15,8 @@ EOF
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ORG_REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+# The script lives in scripts/github/; the repo root is two levels up.
+ORG_REPO="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 MODE="${1:---help}"
 

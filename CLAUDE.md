@@ -5,7 +5,7 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-06-29
+last-verified: 2026-07-06
 last_updated: 2026-06-29
 ---
 

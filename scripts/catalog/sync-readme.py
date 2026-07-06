@@ -144,7 +144,7 @@ def main() -> int:
 
     if rendered != current:
         if check_only:
-            print("README.md is out of sync. Run: python scripts/sync-readme.py")
+            print("README.md is out of sync. Run: python scripts/catalog/sync-readme.py")
             return 1
         README.write_text(rendered, encoding="utf-8", newline="\n")
         print("README.md updated.")

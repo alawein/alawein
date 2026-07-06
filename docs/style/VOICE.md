@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-23
-last-verified: 2026-05-23
+last_updated: 2026-06-22
+last-verified: 2026-06-22
 ---
 
 # Voice and style contract
@@ -15,6 +15,13 @@ This is the authoritative style reference for governed Alawein surfaces:
 READMEs, docs, prompt kits, `CLAUDE.md` / `AGENTS.md`, code comments, and
 mathematical exposition. It is distilled from observed writing patterns, not
 aspirational brand language.
+
+The universal prose voice and the banned register are owned upstream by
+`~/.claude/voice-and-style.md`; this contract syncs them down and adds alawein
+surface rules. For a description of the long-form prose voice (the essay-level
+moves, with examples), see [`voice-fingerprint.md`](voice-fingerprint.md). For
+research notes, audits, and ledgers, use the research-ledger register defined in
+`~/.claude/voice-and-style.md`.
 
 ## The through-line
 
@@ -71,14 +78,18 @@ voice-check linter. Use the en dash (U+2013) only for numeric or date ranges.
 
 ### Forbidden register
 
-These phrases are banned on governed surfaces:
+These phrases are banned on governed surfaces. Synced from the global canonical list in
+`~/.claude/voice-and-style.md`: do not edit here. Edit the global file and re-sync. That file owns
+the universal prose voice and this banned register; this contract owns alawein surface rules.
 
-`passionate about`, `leveraging`, `innovative`, `cutting-edge`, `excited to`,
-`it's worth noting`, `interestingly`, `delve into`, `deep dive`, `utilize`,
-`in today's world`, `moving forward`, `synergy`, `holistic`, `game-changing`,
-`groundbreaking`, `seamlessly`, `robust solution`, `empower`,
-`transformative`, `I am pleased to`, `I hope this helps`, `feel free to`,
-`as mentioned above`.
+<!-- voice-check:ignore-start -->
+`comprehensive`, `robust`, `robust solution`, `leverage`, `leveraging`, `streamline`, `seamless`,
+`seamlessly`, `delve`, `delve into`, `deep dive`, `moreover`, `furthermore`, `utilize`, `holistic`,
+`cutting-edge`, `powerful`, `transformative`, `innovative`, `groundbreaking`, `game-changing`,
+`synergy`, `empower`, `passionate about`, `excited to`, `interestingly`, `moving forward`,
+`in today's world`, `it's worth noting`, `that being said`, `I am pleased to`, `I hope this helps`,
+`feel free to`, `as mentioned above`.
+<!-- voice-check:ignore-end -->
 
 ### Preferred register
 

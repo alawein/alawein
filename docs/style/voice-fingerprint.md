@@ -5,7 +5,7 @@ sync: manual
 sla: none
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-06-22
+last_updated: 2026-07-06
 last-verified: 2026-06-22
 ---
 

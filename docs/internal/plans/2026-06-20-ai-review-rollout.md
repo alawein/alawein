@@ -1,13 +1,22 @@
 ---
 title: AI Review Rollout: implementation plan
 date: 2026-06-20
-status: draft
+status: active
 type: implementation-plan
 source_spec: docs/internal/specs/2026-06-19-ai-code-review-architecture-design.md
 last_updated: 2026-07-07
 ---
 
 # AI Review Rollout Implementation Plan
+
+> Status note (2026-07-07): executed through Task 6 step 1. The gate is live on
+> all 13 Tier-A repos (hub #155 canonical + per-repo PRs, checksum-verified);
+> the secret is per-repo, not org-level (alawein is a user account, so Task 0's
+> org secret was impossible); pilot validated end to end on bolts (#17, #21);
+> the backstop (dispatch-only) and weekly liveness probe landed in hub #156.
+> Remaining, owner-only: the PORTFOLIO_PR_TOKEN fine-grained PAT (Task 5 step
+> 1), the first backstop smoke run and its cron (Task 5 steps 3-4), and the
+> renewal reminder (Task 6 step 2).
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

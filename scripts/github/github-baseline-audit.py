@@ -207,6 +207,13 @@ def check_repo(entry: dict, errors: list[str]) -> None:
     elif codeql_path.exists():
         add_error(errors, f"{entry['repo']}: unexpected codeql.yml for repo without CodeQL languages")
 
+    claude_review_path = repo_dir / ".github" / "workflows" / "claude-review.yml"
+    if entry.get("claude_review"):
+        if not claude_review_path.exists():
+            add_error(errors, f"{entry['repo']}: missing .github/workflows/claude-review.yml (claude_review: true)")
+    elif claude_review_path.exists():
+        add_error(errors, f"{entry['repo']}: unexpected claude-review.yml for repo without claude_review flag")
+
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Audit GitHub baseline coverage.")

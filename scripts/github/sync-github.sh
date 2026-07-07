@@ -66,6 +66,20 @@ WORKFLOW_REF = str(data.get("workflow_ref") or "").strip()
 if not re.fullmatch(r"[0-9a-f]{40}", WORKFLOW_REF):
     raise SystemExit("github-baseline.yaml missing a valid 40-character workflow_ref")
 
+# The claude_review flag must be a real boolean (a quoted "false" is truthy),
+# and flagging any repo without the canonical hub copy is invalid config.
+for _e in entries:
+    if not isinstance(_e.get("claude_review", False), bool):
+        raise SystemExit(
+            f"github-baseline.yaml: claude_review on {_e.get('repo')} must be a bare boolean"
+        )
+CLAUDE_REVIEW_SRC = ORG_REPO / ".github" / "workflows" / "claude-review.yml"
+if any(_e.get("claude_review") for _e in entries) and not CLAUDE_REVIEW_SRC.exists():
+    raise SystemExit(
+        "github-baseline.yaml flags repos with claude_review: true but the "
+        f"canonical workflow is missing: {CLAUDE_REVIEW_SRC}"
+    )
+
 
 # Shared, tested repo-path resolver: one source of truth for this heredoc and
 # github-baseline-audit.py (scripts/github/_repo_paths.py).
@@ -465,17 +479,21 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
             )
         )
 
-    # Claude review gate: distributed only to repos flagged claude_review: true
-    # in github-baseline.yaml (Tier-A). Canonical copy lives in the hub.
-    claude_review_src = ORG_REPO / ".github" / "workflows" / "claude-review.yml"
-    if entry.get("claude_review") and claude_review_src.exists():
+    # Claude review gate: distributed to repos flagged claude_review: true in
+    # github-baseline.yaml; the flag is the source of truth for who gets it.
+    # Canonical copy lives in the hub (existence enforced at load time above).
+    # sync: manual repos need an explicit per-repo run. Unflagging removes it.
+    claude_review_path = repo_dir / ".github" / "workflows" / "claude-review.yml"
+    if entry.get("claude_review"):
         issues.extend(
             ensure_text(
-                repo_dir / ".github" / "workflows" / "claude-review.yml",
-                claude_review_src.read_text(encoding="utf-8"),
+                claude_review_path,
+                CLAUDE_REVIEW_SRC.read_text(encoding="utf-8"),
                 check=check,
             )
         )
+    elif claude_review_path.exists():
+        issues.extend(remove_legacy(claude_review_path, check=check))
 
     for legacy in LEGACY_DELETE:
         issues.extend(remove_legacy(repo_dir / legacy, check=check))
@@ -485,6 +503,9 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
 
 def selected_entries() -> list[dict]:
     if TARGET == "--all":
+        for entry in entries:
+            if entry.get("sync") != "auto":
+                print(f"SKIPPED (manual): {entry.get('repo')}")
         return [entry for entry in entries if entry.get("sync") == "auto"]
 
     target_path = Path(TARGET)

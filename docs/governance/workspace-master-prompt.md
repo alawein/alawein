@@ -88,7 +88,7 @@ These are binding names.
 
 | Directory | Canonical Name | Domain | Notes |
 | --- | --- | --- | --- |
-| `meatheadphysicist/` | `meatheadphysicist` | - |, |
+| `meatheadphysicist/` | `meatheadphysicist` | - | - |
 | `gymboy/` | `gymboy` | `gymboy.coach` | - |
 | `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
 | `meshal-web/` | `meshal-web` | `meshal.ai` | - |
@@ -155,7 +155,7 @@ Track each to completion. None is done until `alawein/README.md` is updated.
 | `attributa` | `attributa.dev` | React, Vite, Supabase |
 | `meshal-web` | `meshal.ai` | React, Vite, Tailwind |
 | `bolts` | - | Next.js, Supabase |
-| `helios` | - |, |
+| `helios` | - | - |
 
 ### Research & Scientific Computing
 

@@ -78,7 +78,7 @@ Output is a table per repo showing present / missing / drifted files.
 
 ## What is not covered
 
-- Product-specific CI steps (e.g., Vercel deploy, Supabase migrations) , 
-  these are managed per-repo.
+- Product-specific CI steps (e.g., Vercel deploy, Supabase migrations)
+  are managed per-repo.
 - Branch protection rules, configured directly in GitHub repo settings.
 - npm publish workflows, managed in `design-system/` independently.

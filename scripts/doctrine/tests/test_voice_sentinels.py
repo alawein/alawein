@@ -150,7 +150,6 @@ def test_nested_blocking_filenames_are_advisory_with_root(tmp_path):
 
     report = validate.Report()
     validate.run_checks([top.resolve(), nested.resolve()], {"voice"}, report, root=tmp_path.resolve())
-    tiers = {v.path.name: v.tier for v in report.violations}
     blocking_paths = {v.path for v in report.blocking}
     assert top.resolve() in blocking_paths
     assert all(p == top.resolve() for p in blocking_paths)
@@ -186,3 +185,77 @@ def test_banned_word_inside_code_fence_is_skipped(tmp_path):
     hits = _rule(report, "forbidden-register")
     assert len(hits) == 1
     assert hits[0].line == 7
+
+
+def test_unclosed_fence_exempts_rest_and_warns(tmp_path):
+    # A stray fence exempts everything below it; the validator must say so.
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "# Note\n\n```\nA comprehensive line inside the never-closed fence.\n",
+        encoding="utf-8",
+    )
+    report = _run_voice(doc)
+    assert not _rule(report, "forbidden-register")
+    warnings = _rule(report, "unclosed-fence")
+    assert len(warnings) == 1
+    assert warnings[0].tier == "advisory"
+    assert warnings[0].line == 3
+
+
+def test_ignore_end_inside_fence_does_not_close_region(tmp_path):
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "<!-- voice-check:ignore-start -->\n"
+        "```\n<!-- voice-check:ignore-end -->\n```\n"
+        "robust\n",
+        encoding="utf-8",
+    )
+    report = _run_voice(doc)
+    assert not _rule(report, "forbidden-register")
+    assert len(_rule(report, "ignore-sentinel")) == 1
+
+
+def test_emdash_under_unterminated_sentinel_is_skipped(tmp_path):
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "<!-- voice-check:ignore-start -->\nAn em-dash — under an open region.\n",
+        encoding="utf-8",
+    )
+    report = validate.Report()
+    validate.run_checks([doc.resolve()], {"emdash"}, report)
+    assert not [v for v in report.violations if v.rule == "em-dash"]
+    assert len(_rule(report, "ignore-sentinel")) == 1
+
+
+def test_stray_ignore_end_is_inert(tmp_path):
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "<!-- voice-check:ignore-end -->\nA comprehensive real violation.\n",
+        encoding="utf-8",
+    )
+    report = _run_voice(doc)
+    assert len(_rule(report, "forbidden-register")) == 1
+    assert not _rule(report, "ignore-sentinel")
+    assert not _rule(report, "unclosed-fence")
+
+
+def test_malformed_sentinel_line_warns(tmp_path):
+    # A sentinel with trailing prose never toggles; it must be surfaced.
+    doc = tmp_path / "docs" / "note.md"
+    doc.parent.mkdir(parents=True)
+    doc.write_text(
+        "<!-- voice-check:ignore-start -->\n"
+        "comprehensive\n"
+        "<!-- voice-check:ignore-end --> Trailing prose.\n"
+        "more text\n"
+        "<!-- voice-check:ignore-end -->\n",
+        encoding="utf-8",
+    )
+    report = _run_voice(doc)
+    warnings = _rule(report, "sentinel-malformed")
+    assert len(warnings) == 1
+    assert warnings[0].line == 3

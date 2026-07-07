@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: observed
-last-updated: 2026-05-03
+last-updated: 2026-07-06
 audience: [ai-agents, contributors, future-self]
 ---
 

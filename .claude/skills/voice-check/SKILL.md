@@ -18,12 +18,16 @@ style opinions beyond the contract.
 
 ## BLOCKING violations
 
-These fail governed surfaces (README, CLAUDE.md, AGENTS.md, prompt kits, docs,
-bios, LinkedIn copy):
+These block on Blocking surfaces (root README, docs/README, CLAUDE.md,
+AGENTS.md, prompt kits) and are advisory on other governed surfaces (docs,
+bios, LinkedIn copy), matching the enforcement tiers in
+`docs/style/VOICE.md`:
 
 **1. Forbidden register.** Flag any occurrence of the banned register. The
 canonical list lives in `docs/style/VOICE.md` (synced from
-`~/.claude/voice-and-style.md`); quoted here for standalone use:
+`~/.claude/voice-and-style.md`), quoted here for standalone use, plus three
+skill-only additions (`next-gen`, `world-class`, `future-ready`) not yet in
+the canonical list or the validator:
 
 <!-- voice-check:ignore-start -->
 `comprehensive`, `robust`, `robust solution`, `leverage`, `leveraging`,
@@ -36,7 +40,9 @@ canonical list lives in `docs/style/VOICE.md` (synced from
 `world-class`, `future-ready`
 <!-- voice-check:ignore-end -->
 
-**2. Banned identity terms.** Flag:
+**2. Banned identity terms.** Flag the following. (The CI validator checks a
+narrower, different identity set: stale usernames and domains. This list is
+the manual-lint superset.)
 
 <!-- voice-check:ignore-start -->
 `Morphism Systems`, `morphism-systems`, `morphism.systems`, `@morphism/`,
@@ -50,8 +56,11 @@ canonical list lives in `docs/style/VOICE.md` (synced from
 `pursuing a PhD`, `pursuing my PhD`, `ABD`
 <!-- voice-check:ignore-end -->
 
-**4. Em dash overuse.** Count em dashes (U+2014) per paragraph. Flag any
-paragraph with 3 or more. Report paragraph excerpt and count.
+**4. Em dashes.** Flag every em dash (U+2014) outside fenced code blocks and
+voice-check ignore regions. The policy is none (VOICE.md, Punctuation
+discipline): blocking on Blocking surfaces, advisory elsewhere. Suggest a
+comma, colon, parentheses, or a sentence break; when the dash connects two
+independent clauses, suggest a colon.
 
 **5. Fragment sentences.** Flag any sentence lacking a subject or verb that is
 not a heading, list item label, or code block.
@@ -69,16 +78,7 @@ Examples to flag: `"Multi-round structured probing."` `"Deterministic scoring."`
 **7. Low-signal comment language.** Flag in code comments only:
 `simply`, `obviously`, `easy`, `easily`, `magic`, `hack`
 
-**8. Em dash as cause-effect connector.** Flag sentences where an em dash
-connects two independent clauses (neither side is a parenthetical insertion).
-
-<!-- voice-check:ignore-start -->
-Pattern: `[complete clause] — [complete clause]`.
-<!-- voice-check:ignore-end -->
-
-Report with suggested colon replacement.
-
-**9. Passive voice.** Flag:
+**8. Passive voice.** Flag:
 `it was found`, `it can be seen`, `it has been shown`, `it is noted that`,
 `it should be noted`
 

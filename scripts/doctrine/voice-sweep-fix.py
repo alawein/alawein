@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Apply house-voice fixes to README.md and in-scope docs/**/*.md."""
+"""Apply house-voice fixes to the root README.md and docs/**/*.md, excluding
+archive/internal/imports/reports/superpowers trees, docs/style/, generated
+files, fenced code blocks, and voice-check ignore regions (quoted banned
+patterns are teaching material, not violations)."""
 
 from __future__ import annotations
 
 import re
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from validate import ignored_line_set, is_generated  # noqa: E402
 
 EM_DASH = "\u2014"
 
@@ -14,7 +20,7 @@ EXCLUDE_DIR_PARTS = frozenset(
 )
 
 WORD_REPLACEMENTS: list[tuple[re.Pattern[str], str]] = [
-    (re.compile(r"[_*]?\bcomprehensive\b", re.I), "thorough"),
+    (re.compile(r"\bcomprehensive\b", re.I), "thorough"),
     (re.compile(r"\brobust solution\b", re.I), "reliable solution"),
     (re.compile(r"\brobust\b", re.I), "reliable"),
     (re.compile(r"\bleveraging\b", re.I), "using"),
@@ -66,7 +72,7 @@ def in_scope(path: Path, root: Path) -> bool:
         return False
     if any(part in EXCLUDE_DIR_PARTS for part in rel.parts):
         return False
-    if rel_posix.startswith("docs/internal/"):
+    if rel_posix.startswith(("docs/internal/", "docs/style/")):
         return False
     return True
 
@@ -95,12 +101,28 @@ def fix_em_dash_line(line: str) -> str:
 
 
 def fix_content(content: str) -> str:
+    # Same exemptions as validate.py: lines inside fenced code blocks or
+    # voice-check ignore regions quote the patterns deliberately; skip them.
+    exempt, _, _ = ignored_line_set(content)
+    raw_lines = content.splitlines()
+    # YAML frontmatter is config, not prose; leave it alone.
+    fm_end = 0
+    if raw_lines and raw_lines[0].strip() == "---":
+        for i, line in enumerate(raw_lines[1:], start=2):
+            if line.strip() == "---":
+                fm_end = i
+                break
     lines: list[str] = []
-    for line in content.splitlines():
+    for line_no, line in enumerate(raw_lines, start=1):
+        if line_no in exempt or line_no <= fm_end:
+            lines.append(line)
+            continue
         updated = line
         for pattern, replacement in WORD_REPLACEMENTS:
             updated = pattern.sub(replacement, updated)
         updated = fix_em_dash_line(updated)
+        if updated != line:
+            updated = re.sub(r"  +", " ", updated).rstrip()
         lines.append(updated)
     return "\n".join(lines) + ("\n" if content.endswith("\n") else "")
 
@@ -126,6 +148,9 @@ def main() -> int:
     changed: list[Path] = []
     for path in collect_files(root):
         original = path.read_text(encoding="utf-8")
+        if is_generated(original):
+            print(f"skip (generated): {path.relative_to(root).as_posix()}")
+            continue
         fixed = fix_content(original)
         if fixed != original:
             path.write_text(fixed, encoding="utf-8", newline="\n")

@@ -47,7 +47,7 @@ Then discover the stack:
 | `package.json` (no tsconfig) | JS/Node | `npx eslint .` | - | `npx vitest run` or `npx jest` | `npm run build` |
 | `Cargo.toml` | Rust | `cargo clippy` | (built-in) | `cargo test` | `cargo build` |
 | `go.mod` | Go | `golangci-lint run` | (built-in) | `go test ./...` | `go build ./...` |
-| `*.html` + no manifest | Static | - |, | - |, |
+| `*.html` + no manifest | Static | - | - | - | - |
 
 Record which commands exist and which don't. This is your baseline.
 

@@ -133,7 +133,9 @@ Do not vary the format.
 <!-- voice-check:ignore-start -->
 No `I hope this finds you well`, `feel free to reach out`, or `I look forward to
 hearing from you`. These are in the forbidden register.
-<!-- voice-check:ignore-end --> Close with the ask and stop.
+<!-- voice-check:ignore-end -->
+
+Close with the ask and stop.
 A one-line factual sign-off is acceptable: "Available Thursday afternoon if that works."
 
 ### Em dash budget

@@ -465,6 +465,18 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
             )
         )
 
+    # Claude review gate: distributed only to repos flagged claude_review: true
+    # in github-baseline.yaml (Tier-A). Canonical copy lives in the hub.
+    claude_review_src = ORG_REPO / ".github" / "workflows" / "claude-review.yml"
+    if entry.get("claude_review") and claude_review_src.exists():
+        issues.extend(
+            ensure_text(
+                repo_dir / ".github" / "workflows" / "claude-review.yml",
+                claude_review_src.read_text(encoding="utf-8"),
+                check=check,
+            )
+        )
+
     for legacy in LEGACY_DELETE:
         issues.extend(remove_legacy(repo_dir / legacy, check=check))
 

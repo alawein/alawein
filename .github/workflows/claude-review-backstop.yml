@@ -37,6 +37,10 @@ jobs:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.PORTFOLIO_PR_TOKEN }}
           show_full_output: true
+          # Default permission mode denies every gh call (verified: run
+          # 28906758988 ended 0/13 with "This command requires approval").
+          # Grant exactly the commands the prompt uses, nothing broader.
+          claude_args: --allowedTools "Bash(gh pr list:*),Bash(gh pr view:*),Bash(gh pr diff:*),Bash(gh pr comment:*)"
           prompt: |
             You are the portfolio review backstop. Work through these repos:
             alawein/bolts, alawein/gymboy, alawein/repz, alawein/scribd,

@@ -7,27 +7,11 @@ sla: none
 
 # Cursor Rules for alawein
 
-You are working in the **alawein** organization profile repository (docs, governance, `projects.json`, README sync).
+This repo's agent contract lives in [CLAUDE.md](../CLAUDE.md); governance
+boundaries live in [AGENTS.md](../AGENTS.md). Follow those two files; this
+file intentionally repeats nothing from them.
 
-## Context
-
-Documentation-only control plane for the `alawein` GitHub org: portfolio truth, governance templates, and validation scripts, not an application service repo.
-
-## Key files
-
-- Config: [CLAUDE.md](../CLAUDE.md), [AGENTS.md](../AGENTS.md), [SSOT.md](../SSOT.md)
-- Documentation contract: [documentation-contract.md](../docs/governance/documentation-contract.md)
-- Workspace operating contract: [workspace-master-prompt.md](../docs/governance/workspace-master-prompt.md)
-
-## Work style
-
-- Execute incrementally. Small, complete changes.
-- Read governance docs before structural changes.
-- No cross-project file access outside this repo unless the task explicitly requires it.
-
-## Quality gates (this repo)
-
-Before committing:
+## Quality gates (run before committing)
 
 - `python scripts/catalog/sync-readme.py --check`
 - `./scripts/doctrine/validate-doc-contract.sh --full`

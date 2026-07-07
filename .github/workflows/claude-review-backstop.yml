@@ -36,21 +36,30 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.PORTFOLIO_PR_TOKEN }}
+          show_full_output: true
           prompt: |
-            You are the portfolio review backstop. For each of these repos:
+            You are the portfolio review backstop. Work through these repos:
             alawein/bolts, alawein/gymboy, alawein/repz, alawein/scribd,
             alawein/veyra, alawein/attributa, alawein/llmworks,
             alawein/design-system, alawein/knowledge-base,
             alawein/workspace-tools, alawein/prompty, alawein/incore,
-            alawein/alawein - use `gh pr list` to enumerate open pull
-            requests. For any open PR that has no comment containing
-            "Claude Review" or authored by a claude bot, review its diff for
-            correctness bugs, security issues, and obvious
-            reuse/simplification gaps, then post ONE concise comment with
+            alawein/alawein.
+
+            For each repo, run `gh pr list --repo <repo> --state open` to
+            enumerate open pull requests. For each open PR, check its
+            comments (`gh pr view <n> --repo <repo> --comments`); if none
+            contains "Claude Review" and none is authored by a claude bot,
+            you MUST immediately: fetch the diff with `gh pr diff`, review
+            it for correctness bugs, security issues, and obvious
+            reuse/simplification gaps, and post ONE concise comment with
+            `gh pr comment <n> --repo <repo> --body "..."` containing
             high-confidence findings (or stating the review found nothing).
-            Never approve, request changes, or merge. Skip PRs that already
-            have a Claude review comment; never post duplicates. If a repo
-            is inaccessible, say so in the run log and continue.
+            Post the comment for each PR before moving to the next one; do
+            not defer, batch, or merely summarize. Never approve, request
+            changes, or merge. Never post a duplicate on a PR that already
+            has a Claude review comment. If a repo or command fails, state
+            the exact error and continue. Finish with a tally: PRs found,
+            reviewed, skipped, failed.
       - name: Fail on swallowed execution error
         if: always()
         run: |

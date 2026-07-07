@@ -29,6 +29,10 @@ jobs:
           fi
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: anthropics/claude-code-action@f87768c6d25f92ae6efa7175e223ef77d4cbf97f # v1.0.166
+        env:
+          # The gh CLI inside Claude's bash needs its own auth; the
+          # github_token input only feeds the action's internal tooling.
+          GH_TOKEN: ${{ secrets.PORTFOLIO_PR_TOKEN }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           github_token: ${{ secrets.PORTFOLIO_PR_TOKEN }}

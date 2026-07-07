@@ -40,7 +40,8 @@ jobs:
             Review this pull request for correctness bugs, security issues, and
             obvious reuse/simplification gaps. Be concise; report only
             high-confidence findings. Do NOT approve or merge. Post findings as
-            one sticky comment.
+            one sticky comment; if there are no findings, post the sticky
+            comment saying the review found nothing.
       - name: Fail on swallowed execution error
         if: always()
         run: |

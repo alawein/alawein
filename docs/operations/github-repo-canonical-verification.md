@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub canonical verification
 description: gh repo view notes for canonical repo names, redirects, and current workspace-core repo alignment.
-last_updated: 2026-05-05
+last_updated: 2026-07-06
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -33,8 +33,8 @@ Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repo
 
 | Remote | Status |
 |--------|--------|
-| `morphism-org/morphism` | Exists, not archived — **PKOS canonical** |
-| `morphism-systems/morphism` | Exists, not archived — companion / product line; do not treat as typo |
+| `morphism-org/morphism` | Exists, not archived, **PKOS canonical** |
+| `morphism-systems/morphism` | Exists, not archived, companion / product line; do not treat as typo |
 
 ## Gymboy (rename)
 
@@ -54,8 +54,8 @@ Stack-specific **directory layout** (Vite vs Next vs Python) is defined in [repo
 
 | Remote | Status |
 |--------|--------|
-| `alawein/edfp` | Exists, not archived — **canonical** for Event Discovery Framework (`edfp.online`) |
-| `meshal-alawein/event-discovery-framework` | Still exists, not archived — historical legacy slug; prefer `alawein/edfp` unless you explicitly maintain the user-org fork |
+| `alawein/edfp` | Exists, not archived, **canonical** for Event Discovery Framework (`edfp.online`) |
+| `meshal-alawein/event-discovery-framework` | Still exists, not archived, historical legacy slug; prefer `alawein/edfp` unless you explicitly maintain the user-org fork |
 
 ## Workspace folder → GitHub remote (tooling)
 

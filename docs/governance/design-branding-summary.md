@@ -3,14 +3,14 @@ type: canonical
 source: none
 sync: none
 sla: none
-title: Design & Branding Plan — Executive Summary
+title: Design & Branding Plan, Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
-last_updated: 2026-05-03
+last_updated: 2026-07-06
 category: governance
 status: active
 ---
 
-# Design & Branding Plan — Summary
+# Design & Branding Plan: Summary
 
 ## What this is
 
@@ -34,7 +34,7 @@ A **workspace-wide design and branding integration plan** across 16+ repos. Each
 
 ## What's left
 
-- **Required (one step):** **Attributa** — In Vercel project Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope), then redeploy. All other Vercel deploys (11/12) are green.
+- **Required (one step):** **Attributa**: In Vercel project Settings → Environment Variables, add **GH_TOKEN** (GitHub PAT with `repo` scope), then redeploy. All other Vercel deploys (11/12) are green.
 - **Optional:** Phase 2 deep work (tokens in CSS, component refactors, logo in shell); fix repz ESLint, meshal-web tests, gainboy rollup, event-discovery-framework notebook ruff.
 
 ---
@@ -58,6 +58,6 @@ alawein, event-discovery-framework, meshal-web, repz, devkit, bolts, gainboy, at
 
 **PR opened:** simcore PR #6 (historical reference; upstream PR link no longer resolves). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
 
-**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy — OK (11/12):** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, repz, meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** Install script + README in place; add **GH_TOKEN** in Vercel (repo scope) and redeploy for 12/12.
+**Done (2026-03-13):** simcore PR #6 merged; main pulled. **Vercel deploy, OK (11/12):** simcore, devkit, llmworks, qmlab, bolts, gainboy, rounaq-atelier, event-discovery-framework, repz, meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** Install script + README in place; add **GH_TOKEN** in Vercel (repo scope) and redeploy for 12/12.
 
 **Final status:** Plan execution complete except attributa deploy (blocked on GH_TOKEN in Vercel). Optional: Phase 2 deep work and lint/test fixes per remaining-steps-per-repo.

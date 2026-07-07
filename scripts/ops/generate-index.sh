@@ -19,7 +19,7 @@ generate_index() {
   repo_root=$(dirname "$docs_dir")
 
   local index_file="${docs_dir}/INDEX.md"
-  local title="Index — ${repo_name}"
+  local title="Index: ${repo_name}"
   # Derive last_updated from docs history so regeneration is stable when docs
   # content has not changed.
   local last_updated docs_rel existing_last_updated

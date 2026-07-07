@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Project lifecycle tiers (SSOT)
 description: Mapping projects.json category to portfolio posture; align Notion and PKOS.
-last_updated: 2026-06-29
+last_updated: 2026-07-06
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -25,7 +25,7 @@ This document defines how **`category`** in [`projects.json`](../../projects.jso
 | `category` | Meaning | Typical signals |
 |------------|---------|-----------------|
 | **active** | Default shipping mode: feature work, releases, or steady iteration. | Recent commits, `phase: active-development` in PKOS, or P0–P2 priority with ongoing intent. |
-| **maintained** | Product or surface stays live; **low churn** — fixes, deps, content tweaks, no major roadmap. | PKOS `phase: maintenance`, or stable portfolio site with rare commits. |
+| **maintained** | Product or surface stays live; **low churn**: fixes, deps, content tweaks, no major roadmap. | PKOS `phase: maintenance`, or stable portfolio site with rare commits. |
 | **planned** | Idea / early build: not yet a stable public product loop. | PKOS `phase: ideation` (or equivalent); may still have a repo and commits. |
 | **archived** | Intentionally sunset or **GitHub archived**; keep only for history or redirects. | GitHub `archived=true`, or explicit sunset note in PKOS. |
 

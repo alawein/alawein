@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills install policy (IDEs, platforms, repos)
 description: Single policy for where agent skills live, how to install without collisions, and how MCPs differ from skills.
-last_updated: 2026-06-23
+last_updated: 2026-07-06
 last_verified: 2026-03-19
 category: governance
 audience: [ai-agents, contributors]
@@ -36,9 +36,9 @@ This doc defines **how** skills are installed so Cursor, Claude Code, Codex, and
 
 | Tier | When | Mechanism |
 |------|------|-----------|
-| **1 — Machine global** | Same skills on every repo for this machine | `skills add <repo> -g -y` + **allowlisted** `-a` agents only |
-| **2 — Project** | Team- or repo-specific behavior | `./skills/` committed; document in README / AGENTS |
-| **3 — Plugins** | Skills bundled with commands, agents, hooks | Claude local plugins (`~/.claude/plugins/...`) |
+| **1, Machine global** | Same skills on every repo for this machine | `skills add <repo> -g -y` + **allowlisted** `-a` agents only |
+| **2, Project** | Team- or repo-specific behavior | `./skills/` committed; document in README / AGENTS |
+| **3, Plugins** | Skills bundled with commands, agents, hooks | Claude local plugins (`~/.claude/plugins/...`) |
 
 ### Collision rule
 
@@ -60,7 +60,7 @@ npm install -g skills
 
 **Allowlisted agents** (adjust if your stack changes): `cursor`, `claude-code`, `codex`.
 
-**Canonical global packages** (org default — edit here and in bootstrap scripts when you change):
+**Canonical global packages** (org default, edit here and in bootstrap scripts when you change):
 
 ```bash
 # Shared agent-skills (Vercel); install only to agents we use
@@ -86,7 +86,7 @@ Add more packages the same way (one `skills add` line per repo). Prefer **explic
 `workspace-tools/scripts/bootstrap-skills.sh` (full workspace clone) mirror
 the lines above.
 
-**Agent compatibility note:** The `skills` CLI automatically maps compatible agents (e.g., Cline, Kilo Code) to the universal skills path even if not explicitly listed in `-a` flags. This is by design — the CLI detects agent compatibility rather than restricting it per install. Policy defines **intended** agents (`cursor`, `claude-code`, `codex`); the CLI may show broader availability due to its agent-detection logic. This behavior cannot be overridden via `skills remove` (global skills are not installed per-agent).
+**Agent compatibility note:** The `skills` CLI automatically maps compatible agents (e.g., Cline, Kilo Code) to the universal skills path even if not explicitly listed in `-a` flags. This is by design, the CLI detects agent compatibility rather than restricting it per install. Policy defines **intended** agents (`cursor`, `claude-code`, `codex`); the CLI may show broader availability due to its agent-detection logic. This behavior cannot be overridden via `skills remove` (global skills are not installed per-agent).
 
 **Pre-bootstrap agent skill cleanup (2026-03-17):** Codex (`~/.codex/skills/`) and Kilo Code (`~/.kilocode/skills/`) historically accumulated pre-bootstrap skill sets (50 + 24 respectively). Consolidation audit identified 2 duplicates in Kilo with global Tier 1 (vercel-react-best-practices, web-design-guidelines) and removed them. Codex retained as-is; no collisions with plugin or global skills. Remaining per-agent skills are curated IDE-specific utilities with no overlap.
 

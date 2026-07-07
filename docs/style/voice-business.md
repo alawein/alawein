@@ -5,20 +5,20 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-05-16
+last_updated: 2026-07-06
 ---
 
 # Block 3 · Business Surfaces
 
 _Switch in the section that matches the surface tag. Block 1 always applies._
 
-## §20a [business-web] — Website and long-form public prose
+## §20a [business-web]: Website and long-form public prose
 
 Applies when surface tag is `[business-web]`.
 
 **Block 2 does not apply.**
 
-### Argument structure — market claim form
+### Argument structure: market claim form
 
 Business web copy stakes a market position. Replace technical contribution staking
 (Block 2 §7) with the following four-beat structure:
@@ -46,18 +46,20 @@ they would sit cleanly alongside the /about principles:
 > "Evidence, not assertions."
 > "Refusal is structure."
 
-That section is the calibration surface — not the design system, not the brand kit.
+That section is the calibration surface, not the design system, not the brand kit.
 
 ### CTA wording
 
 CTAs are the highest-risk surface for forbidden register. Apply Block 1 preferred
 register to every CTA string.
 
+<!-- voice-check:ignore-start -->
 Bad: "Get started today and transform your workflow."
 Good: "kohyr doctor — free, no card."
 
 Bad: "Join thousands of teams `leveraging` Kohyr."
 Good: "Request access."
+<!-- voice-check:ignore-end -->
 
 CTAs may use imperative CLI-style framing (`> kohyr doctor`, `Start free`) when the
 product is a CLI. This is product register, not a style relaxation.
@@ -75,23 +77,25 @@ Tag `[business-web]` by default. No YAML frontmatter exposed to readers. Open wi
 factual sentence. No motivational footers. Changelog entries are terse and imperative:
 state what changed, not why it is exciting.
 
-## §20b [business-outreach] — Email, proposals, pitch materials
+## §20b [business-outreach]: Email, proposals, pitch materials
 
 Applies when surface tag is `[business-outreach]`.
 
 **Block 2 does not apply.**
 
-### Argument structure — outreach form
+### Argument structure: outreach form
 
 Four structural moves, each 2–3 sentences maximum:
 
 1. _The condition._ One sentence. What is broken for this specific recipient right now.
-   Named, concrete: "Your team ships 40+ AI-authored PRs per week" — not "AI is
+   Named, concrete: "Your team ships 40+ AI-authored PRs per week", not "AI is
    transforming software development."
 
 2. _The position._ What Kohyr does about it. One sentence. No credentials, no company
+   <!-- voice-check:ignore-start -->
    history. "Kohyr scores every commit with a KCI and signs the result — deterministically,
    without an LLM in the gate."
+   <!-- voice-check:ignore-end -->
 
 3. _The specific evidence._ One or two concrete artifacts the recipient can verify:
    "The CLI installs in 30 seconds. `kohyr doctor` runs on any git repo without
@@ -126,8 +130,12 @@ Do not vary the format.
 
 ### Closing
 
+<!-- voice-check:ignore-start -->
 No `I hope this finds you well`, `feel free to reach out`, or `I look forward to
-hearing from you`. These are in the forbidden register. Close with the ask and stop.
+hearing from you`. These are in the forbidden register.
+<!-- voice-check:ignore-end -->
+
+Close with the ask and stop.
 A one-line factual sign-off is acceptable: "Available Thursday afternoon if that works."
 
 ### Em dash budget
@@ -140,6 +148,7 @@ not softer, in email.
 
 When the startup-speak phrase surfaces first, use the right column:
 
+<!-- voice-check:ignore-start -->
 | Impulse (forbidden) | Voice-compliant replacement |
 |---|---|
 | `excited to share` | state the news directly |
@@ -155,3 +164,4 @@ When the startup-speak phrase surfaces first, use the right column:
 | `robust solution` | name the mechanism and the failure mode it prevents |
 | `world-class team` | drop it entirely or name the relevant credential once |
 | `innovative` | name what is novel; if nothing is, drop the word |
+<!-- voice-check:ignore-end -->

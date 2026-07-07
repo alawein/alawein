@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 title: Claude Code worked examples (copy-paste)
-description: Concrete snippets for CLAUDE.md, rules/, commands/, skills/, agents/, and settings — extracted from the internal reference UI for use in product repos.
-last_updated: 2026-06-23
+description: Concrete snippets for CLAUDE.md, rules/, commands/, skills/, agents/, and settings, extracted from the internal reference UI for use in product repos.
+last_updated: 2026-07-06
 last_verified: 2026-03-25
 category: governance
 audience: [ai-agents, contributors]
@@ -174,7 +174,7 @@ Output a structured report with severity ratings:
 Critical | Warning | Info
 ```
 
-**Frontmatter cheat sheet:** `context: fork` — isolated subagent; `agent:` — which subagent runs the skill; `allowed-tools:` — restrict tools (e.g. read-only review); `disable-model-invocation: true` — only when explicitly invoked.
+**Frontmatter cheat sheet:** `context: fork`, isolated subagent; `agent:`, which subagent runs the skill; `allowed-tools:`, restrict tools (e.g. read-only review); `disable-model-invocation: true`, only when explicitly invoked.
 
 ---
 

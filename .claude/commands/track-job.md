@@ -15,10 +15,13 @@ Search Gmail for interview-related emails and create/update entries in the Notio
 ## Steps
 
 1. Search Gmail for recent interview-related emails using these queries (last 14 days):
+
+   <!-- voice-check:ignore-start -->
    - `newer_than:14d subject:(interview OR "phone screen" OR "technical screen")`
    - `newer_than:14d subject:(offer OR "next steps" OR "moving forward")`
    - `newer_than:14d subject:("coding challenge" OR "take-home" OR assessment)`
    - `newer_than:14d subject:(unfortunately OR "not moving forward" OR rejection)`
+   <!-- voice-check:ignore-end -->
 
 2. For each relevant email found, extract:
    - **Company**: from sender domain or email body
@@ -31,9 +34,12 @@ Search Gmail for interview-related emails and create/update entries in the Notio
 3. Deduplicate by company name + date (same company, same day = same engagement).
 
 4. Infer status from keywords:
+
+   <!-- voice-check:ignore-start -->
    - "interview", "schedule", "screen" → In Progress
    - "offer", "congratulations" → Offer
    - "unfortunately", "not moving forward", "rejection" → Declined
+   <!-- voice-check:ignore-end -->
 
 5. Write the extracted records to a temp JSON file at `/tmp/job-tracker-input.json` with this schema:
    ```json

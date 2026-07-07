@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Repository layout standard
 description: Canonical top-level layout by stack archetype; aligns apps with AWS-style separation of code, infra, docs, and automation.
-last_updated: 2026-05-05
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -33,8 +33,8 @@ This document defines **layout archetypes**, not a single folder shape for every
 ## Anti-patterns
 
 - Emitting TypeScript declaration files **into** `src/` alongside sources when using composite projects without a dedicated `declarationDir`.
-- Treating **workspace folder names** as GitHub slugs without checking `origin` — for example assuming `design-system/` or `workspace-tools/` must match a remote name without verification.
-- Standardizing **archive** or **notebook-only** trees to full app layout — use `research-archive` posture instead.
+- Treating **workspace folder names** as GitHub slugs without checking `origin`, for example assuming `design-system/` or `workspace-tools/` must match a remote name without verification.
+- Standardizing **archive** or **notebook-only** trees to full app layout, use `research-archive` posture instead.
 
 ## Archetype: `vite-react-spa`
 
@@ -47,7 +47,7 @@ This document defines **layout archetypes**, not a single folder shape for every
 | `docs/` | Optional deep docs |
 | `reports/` | Optional generated ops reports |
 
-**Tests**: Co-located `*.test.ts(x)` under `src/` or a dedicated `src/test/` / `e2e/` folder — pick one per repo and document in README.
+**Tests**: Co-located `*.test.ts(x)` under `src/` or a dedicated `src/test/` / `e2e/` folder, pick one per repo and document in README.
 
 ## Archetype: `next-app-router`
 

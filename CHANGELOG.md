@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-06-29
+last_updated: 2026-07-06
 tags: [changelog, version-history, releases]
 ---
 
@@ -47,7 +47,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - README **Projects**: intro copy is minimal/neutral (outside sync markers); table still regenerates from `projects.json` **featured** via `sync-readme.py`. Card links use each entry’s public `url` when set.
 - Topology drift reconciled in [`catalog/repos.json`](catalog/repos.json): `attributa` and `llmworks` moved `tools` → `ventures` (bucket and `local_path`); `helios` `local_path` set under `_archive/`; `handshake-hai` folder aligned to its slug. [`docs/architecture.md`](docs/architecture.md): two-axis legend added before the generated topology block, workflow count corrected to 16, repo-node labels fixed (`Application Repos`, `33 portfolio repos`).
 
-## [2.1.0] — 2026-03-21
+## [2.1.0] - 2026-03-21
 
 Governance expansion, audits, skills layer, CI hardening, slug/workspace migrations, and operator lessons since v2.0.4. **Executive paste:** [`docs/archive/release-summary-2026-03-21.md`](docs/archive/release-summary-2026-03-21.md).
 
@@ -149,13 +149,13 @@ Governance expansion, audits, skills layer, CI hardening, slug/workspace migrati
 - Updated `CLAUDE.md` repository structure to include `docs/audits/` and
   `docs/governance/credential-hygiene.md`.
 
-## [2.0.4] — 2026-03-07
+## [2.0.4] - 2026-03-07
 
 ### Changed
 - Started the `@alawein/*` producer-side namespace migration in `devkit/` and updated shared workspace registries to use the lowercase `qaplibria` repo slug.
 - Reconfirmed that the live `QAPlibria` root rename is still blocked by a Windows filesystem handle, so the physical rename remains deferred.
 
-## [2.0.3] — 2026-03-06
+## [2.0.3] - 2026-03-06
 
 ### Added
 - Added a shared package namespace matrix to track `@malawein` consumers and migration dependencies across the workspace.
@@ -163,7 +163,7 @@ Governance expansion, audits, skills layer, CI hardening, slug/workspace migrati
 ### Changed
 - Updated the workspace migration contract with confirmed repository slug audit results and the current blocker on the live `qaplibria` root rename.
 
-## [2.0.2] — 2026-03-06
+## [2.0.2] - 2026-03-06
 
 ### Added
 - Added a canonical workspace standardization guide covering root naming, stack-based layouts, shared package migration, and implementation phases.
@@ -171,7 +171,7 @@ Governance expansion, audits, skills layer, CI hardening, slug/workspace migrati
 ### Changed
 - Started workspace cleanup by renaming safe non-repository support directories with a leading underscore and documenting the deferred cases.
 
-## [2.0.1] — 2026-03-06
+## [2.0.1] - 2026-03-06
 
 ### Added
 - Added a dedicated changelog entry guide for drafting Keep a Changelog releases from recent commits.
@@ -179,7 +179,7 @@ Governance expansion, audits, skills layer, CI hardening, slug/workspace migrati
 ### Changed
 - Promoted changelog authoring to a first-class governance workflow alongside the existing contribution and release guidance.
 
-## [2.0.0] — 2026-03-06
+## [2.0.0] - 2026-03-06
 
 ### Added
 - Workspace standardization (P1-P20) across all 21 repos (#58)

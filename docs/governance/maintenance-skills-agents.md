@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills, Agents, and Commands Maintenance
 description: Operating guide for maintaining universal, ecosystem, and org layers across local Claude/Cursor plugins and alawein governance docs.
-last_updated: 2026-06-23
+last_updated: 2026-07-06
 last_verified: 2026-06-23
 category: governance
 audience: [ai-agents, contributors]
@@ -42,7 +42,7 @@ Use this document when:
 
 Related docs:
 
-- [docs/governance/skills-install-policy.md](./skills-install-policy.md) — tiers, collision rules, allowlisted agents, bootstrap scripts
+- [docs/governance/skills-install-policy.md](./skills-install-policy.md), tiers, collision rules, allowlisted agents, bootstrap scripts
 - [docs/governance/skills-agents-unification.md](./skills-agents-unification.md)
 - [docs/governance/slash-commands-catalog.md](./slash-commands-catalog.md)
 - [AGENTS.md](../../AGENTS.md)

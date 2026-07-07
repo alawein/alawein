@@ -24,14 +24,14 @@ node scripts/notion-kb-sync.mjs --diff
 ```
 
 3. Review the report. It shows:
-   - **Matched** — records that exist in both systems
-   - **Local only** — knowledge-base records not yet in Notion
-   - **Notion only** — Notion records not on the local filesystem
+ - **Matched**: records that exist in both systems
+ - **Local only**: knowledge-base records not yet in Notion
+ - **Notion only**: Notion records not on the local filesystem
 
 4. Based on the report, choose an action:
-   - `--push` — Create Notion pages for all local-only records
-   - `--pull` — Create local .md files for all Notion-only records
-   - `--diff` — Report only (default, safe)
+ - `--push`: Create Notion pages for all local-only records
+ - `--pull`: Create local .md files for all Notion-only records
+ - `--diff`: Report only (default, safe)
 
 5. After sync, show the updated sync state:
 ```bash

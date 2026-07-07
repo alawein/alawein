@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last_updated: 2026-04-25
+last_updated: 2026-07-06
 audience: [ai-agents, contributors]
 ---
 
@@ -19,7 +19,7 @@ Every managed repo receives the following files via `scripts/sync-github.sh`:
 
 | File | Purpose |
 |------|---------|
-| `.github/workflows/ci.yml` | Fast CI gate — lint, type-check, test (language-appropriate) |
+| `.github/workflows/ci.yml` | Fast CI gate, lint, type-check, test (language-appropriate) |
 | `.github/workflows/codeql.yml` | CodeQL security analysis on push to main |
 | `.github/dependabot.yml` | Automated dependency update PRs (weekly) |
 | `.github/CODEOWNERS` | Org-level review assignment |
@@ -28,7 +28,7 @@ Every managed repo receives the following files via `scripts/sync-github.sh`:
 | `.github/ISSUE_TEMPLATE/feature_request.yml` | Feature request form |
 
 As of 2026-04-25 the baseline is deployed to 14+ repos. The authoritative
-list is `projects.json` — any repo with `"managed": true` participates.
+list is `projects.json`, any repo with `"managed": true` participates.
 
 ## How baseline changes propagate
 
@@ -78,7 +78,7 @@ Output is a table per repo showing present / missing / drifted files.
 
 ## What is not covered
 
-- Product-specific CI steps (e.g., Vercel deploy, Supabase migrations) —
-  these are managed per-repo.
-- Branch protection rules — configured directly in GitHub repo settings.
-- npm publish workflows — managed in `design-system/` independently.
+- Product-specific CI steps (e.g., Vercel deploy, Supabase migrations)
+  are managed per-repo.
+- Branch protection rules, configured directly in GitHub repo settings.
+- npm publish workflows, managed in `design-system/` independently.

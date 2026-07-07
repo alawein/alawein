@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Profile sync from guides
 description: README About and profile copy sync with knowledge-base; export and sync flow.
-last_updated: 2026-05-05
+last_updated: 2026-07-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -62,5 +62,5 @@ status: active
 
 ## See also
 
-- **Cursor agent handoff:** [cursor-agent-handoff-profile-sync.md](../archive/cursor-agent-handoff-profile-sync.md) — summary, revision/enhancements plan, and syncing runbook (archived).
+- **Cursor agent handoff:** [cursor-agent-handoff-profile-sync.md](../archive/cursor-agent-handoff-profile-sync.md), summary, revision/enhancements plan, and syncing runbook (archived).
 - `knowledge-base`: `career/README.md`, `career/NOTION_PROFILE_SYNC.md`, `db/schema/export/profile-export.schema.yaml`.

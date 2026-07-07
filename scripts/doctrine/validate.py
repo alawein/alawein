@@ -40,7 +40,9 @@ SKIP_GENERATED_MARKERS = (
 )
 
 # Kept in sync with the banned register in docs/style/VOICE.md (source:
-# ~/.claude/voice-and-style.md). One pattern per banned word or phrase.
+# ~/.claude/voice-and-style.md). Every phrase in that list is matched;
+# multiword variants (robust solution, delve into) are subsumed by their
+# base-word patterns.
 FORBIDDEN_REGISTER = [
     r"\bpassionate about\b",
     r"\bleverages?\b",
@@ -207,31 +209,58 @@ def collect_paths(root: Path) -> list[Path]:
     return sorted(unique.values())
 
 
-def ignored_line_set(content: str) -> tuple[set[int], int]:
-    """Line numbers inside voice-check ignore regions, plus the line of an
-    unterminated ignore-start (0 if none). Sentinels inside fenced code blocks
-    do not toggle; the sentinel lines themselves are ignored too."""
+def malformed_sentinel_lines(content: str) -> list[int]:
+    """Lines that contain a voice-check sentinel marker but are not exactly the
+    marker. Such a line never toggles the region, which is how a region
+    silently swallows real prose; surface it instead."""
+    bad: list[int] = []
+    for line_no, line in enumerate(content.splitlines(), start=1):
+        stripped = line.strip()
+        if (IGNORE_START in line or IGNORE_END in line) and stripped not in (
+            IGNORE_START,
+            IGNORE_END,
+        ):
+            bad.append(line_no)
+    return bad
+
+
+def ignored_line_set(content: str) -> tuple[set[int], int, int]:
+    """Line numbers exempt from pattern rules: fenced code blocks (quoted bad
+    examples, shell snippets) and voice-check ignore regions. Returns the set,
+    the line of an unterminated ignore-start (0 if none), and the line of an
+    unclosed code fence (0 if none). Sentinels inside fenced code blocks do
+    not toggle; sentinel and fence lines are exempt."""
     ignored: set[int] = set()
     in_fence = False
+    fence_start_line = 0
     ignoring = False
     ignore_start_line = 0
     for line_no, line in enumerate(content.splitlines(), start=1):
         if FENCE_RE.match(line):
             in_fence = not in_fence
+            fence_start_line = line_no if in_fence else 0
+            ignored.add(line_no)
+            continue
+        if in_fence:
+            ignored.add(line_no)
+            continue
         stripped = line.strip()
-        if not in_fence:
-            if stripped == IGNORE_START:
-                ignoring = True
-                ignore_start_line = line_no
-                ignored.add(line_no)
-                continue
-            if stripped == IGNORE_END:
-                ignoring = False
-                ignored.add(line_no)
-                continue
+        if stripped == IGNORE_START:
+            ignoring = True
+            ignore_start_line = line_no
+            ignored.add(line_no)
+            continue
+        if stripped == IGNORE_END:
+            ignoring = False
+            ignored.add(line_no)
+            continue
         if ignoring:
             ignored.add(line_no)
-    return ignored, (ignore_start_line if ignoring else 0)
+    return (
+        ignored,
+        (ignore_start_line if ignoring else 0),
+        (fence_start_line if in_fence else 0),
+    )
 
 
 def add_match_violations(
@@ -283,12 +312,18 @@ def check_frontmatter(path: Path, content: str, report: Report, root: Path | Non
         )
 
 
-def check_emdash(path: Path, content: str, report: Report, root: Path | None = None) -> None:
+def check_emdash(
+    path: Path,
+    content: str,
+    report: Report,
+    root: Path | None = None,
+    ignored: set[int] | None = None,
+) -> None:
     """D1: flag em-dashes (U+2014) outside fenced code blocks.
 
     Blocking on Blocking surfaces (README/CLAUDE/AGENTS/prompt-kits), advisory
-    elsewhere. Fenced code blocks are skipped so quoted bad examples and shell
-    snippets do not trip the gate.
+    elsewhere. Fenced code blocks and voice-check ignore regions are skipped so
+    quoted bad examples and shell snippets do not trip the gate.
     """
     tier: Literal["blocking", "advisory"] = (
         "blocking" if is_blocking_surface(path, root) else "advisory"
@@ -299,6 +334,8 @@ def check_emdash(path: Path, content: str, report: Report, root: Path | None = N
             in_fence = not in_fence
             continue
         if in_fence:
+            continue
+        if ignored and line_no in ignored:
             continue
         if EM_DASH in line:
             report.add(
@@ -321,12 +358,22 @@ def run_checks(
     for path in paths:
         try:
             content = path.read_text(encoding="utf-8")
-        except (UnicodeDecodeError, PermissionError):
+        except (UnicodeDecodeError, PermissionError) as exc:
+            # An unreadable file must not silently pass the gate.
+            report.add(
+                Violation(
+                    path=path,
+                    line=1,
+                    rule="unreadable",
+                    detail=f"could not read file: {type(exc).__name__}",
+                    tier="advisory",
+                )
+            )
             continue
         if is_generated(content):
             continue
 
-        ignored, unterminated_line = ignored_line_set(content)
+        ignored, unterminated_line, unclosed_fence_line = ignored_line_set(content)
         if unterminated_line:
             report.add(
                 Violation(
@@ -337,12 +384,34 @@ def run_checks(
                     tier="advisory",
                 )
             )
+        for bad_line in malformed_sentinel_lines(content):
+            report.add(
+                Violation(
+                    path=path,
+                    line=bad_line,
+                    rule="sentinel-malformed",
+                    detail="sentinel must be alone on its line or it never toggles",
+                    tier="advisory",
+                )
+            )
+        if unclosed_fence_line:
+            # An unclosed fence exempts everything below it from every rule;
+            # surface that so a stray ``` cannot silently disable the gate.
+            report.add(
+                Violation(
+                    path=path,
+                    line=unclosed_fence_line,
+                    rule="unclosed-fence",
+                    detail="code fence is never closed; the rest of the file is exempt from checks",
+                    tier="advisory",
+                )
+            )
 
         if "frontmatter" in checks:
             check_frontmatter(path, content, report, root=root)
 
         if "emdash" in checks:
-            check_emdash(path, content, report, root=root)
+            check_emdash(path, content, report, root=root, ignored=ignored)
 
         if "voice" in checks:
             add_match_violations(

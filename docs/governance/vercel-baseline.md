@@ -7,7 +7,7 @@ authority: doctrine
 audience: [contributors, agents]
 owner: meshal@kohyr.ai
 status: active
-last_updated: 2026-05-16
+last_updated: 2026-07-06
 ---
 
 # Vercel baseline
@@ -29,7 +29,7 @@ Companion to [`github-baseline.md`](./github-baseline.md). Where `github-baselin
 }
 ```
 
-The first two fields are **declarative** — hand-edited, source of truth. The remaining four are **synced** — rewritten by `sync-vercel.py` from the Vercel API. The `catalog_lib.py` builders copy the block into the generated `projects.json` entry, so the curated index still answers "which Vercel team, what production URL, when last verified" in one file.
+The first two fields are **declarative**: hand-edited, source of truth. The remaining four are **synced**: rewritten by `sync-vercel.py` from the Vercel API. The `catalog_lib.py` builders copy the block into the generated `projects.json` entry, so the curated index still answers "which Vercel team, what production URL, when last verified" in one file.
 
 ## State vocabulary
 
@@ -57,7 +57,7 @@ Default mode writes `catalog/repos.json` and then runs `build-catalog.py` to reg
 
 `--check` recomputes every block against the live API and compares the result to the stored value; drift, an orphan, or any API failure exits 1. A transient API error never reads as a clean run.
 
-The weekly GitHub Action (`.github/workflows/sync-vercel.yml`) runs the sync mode every Monday 09:00 UTC and opens a PR if the catalog changed. The PR is a review checkpoint, not an auto-merge — every drift event gets a human look.
+The weekly GitHub Action (`.github/workflows/sync-vercel.yml`) runs the sync mode every Monday 09:00 UTC and opens a PR if the catalog changed. The PR is a review checkpoint, not an auto-merge, every drift event gets a human look.
 
 ## Adding a new project
 

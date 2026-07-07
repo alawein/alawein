@@ -1,7 +1,7 @@
 ---
 type: generated
 source: session-notes
-last_updated: 2026-04-30
+last_updated: 2026-07-07
 ---
 
 | 2026-05-03 17:22 | 69799637 | chore(docs): retire stale 2026-03 audit reports (PR 2 of cleanup series) (#99) | 20 files | ~87 lines |
@@ -25,3 +25,11 @@ last_updated: 2026-04-30
 | 2026-05-05 21:37 | 6c313d9c | docs(claude-md): fix script paths, add docs/internal/ structure, document freshness rules | 2 files | ~49 lines |
 | 2026-05-05 21:42 | 6c313d9c | docs(claude-md): fix script paths, add docs/internal/ structure, document freshness rules | 2 files | ~50 lines |
 | 2026-05-05 21:58 | 5ec81036 | fix(ci): set INDEX.md last_updated to 2026-05-06 (UTC date used by CI generator) | 2 files | ~7 lines |
+| 2026-07-06 18:36 | fa4fa947 | docs: regenerate the profile README from the catalog (#151) | 1 files | ~55 lines |
+| 2026-07-06 18:42 | fa4fa947 | docs: regenerate the profile README from the catalog (#151) | 2 files | ~56 lines |
+| 2026-07-06 19:21 | fa4fa947 | docs: regenerate the profile README from the catalog (#151) | 2 files | ~57 lines |
+| 2026-07-06 19:47 | fa4fa947 | docs: regenerate the profile README from the catalog (#151) | 2 files | ~58 lines |
+| 2026-07-06 20:04 | f39ae9fe | chore(claude): refresh the governance drift baseline | 2 files | ~14 lines |
+| 2026-07-06 21:15 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~187 lines |
+| 2026-07-06 21:27 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~188 lines |
+| 2026-07-06 21:28 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~189 lines |

@@ -1,0 +1,41 @@
+name: Claude Token Liveness
+
+# Weekly early warning for OAuth token expiry: runs the review action with
+# a trivial prompt and fails loudly if authentication breaks. A red run
+# here means re-mint with `claude setup-token` and update the
+# CLAUDE_CODE_OAUTH_TOKEN secret on every Tier-A repo.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * 1"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  liveness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require review token
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ]; then
+            echo "::error::CLAUDE_CODE_OAUTH_TOKEN is not set."
+            exit 1
+          fi
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: anthropics/claude-code-action@f87768c6d25f92ae6efa7175e223ef77d4cbf97f # v1.0.166
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Reply with exactly: ok. Do not use any tools.
+      - name: Fail on swallowed execution error
+        if: always()
+        run: |
+          out=/home/runner/work/_temp/claude-execution-output.json
+          [ -f "$out" ] || { echo "::error::No execution output; the action never ran Claude."; exit 1; }
+          if jq -e '[.[] | select(.is_error == true)] | length > 0' "$out" >/dev/null; then
+            echo "::error::Liveness probe recorded is_error; the OAuth token has likely lapsed."
+            exit 1
+          fi

@@ -1,0 +1,57 @@
+name: Claude Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, master]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
+concurrency:
+  group: claude-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  claude-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require review token
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}" ]; then
+            echo "::error::CLAUDE_CODE_OAUTH_TOKEN is not set; the Claude review cannot run."
+            exit 1
+          fi
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+      - uses: anthropics/claude-code-action@f87768c6d25f92ae6efa7175e223ef77d4cbf97f # v1.0.166
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          use_sticky_comment: true
+          prompt: |
+            Review this pull request for correctness bugs, security issues, and
+            obvious reuse/simplification gaps. Be concise; report only
+            high-confidence findings. Do NOT approve or merge. Post findings as
+            one sticky comment; if there are no findings, post the sticky
+            comment saying the review found nothing.
+      - name: Fail on swallowed execution error
+        if: always()
+        run: |
+          # The action can conclude green while its execution log records
+          # is_error (seen live: an invalid token yields success + no comment).
+          # Absent file means the action skipped before running Claude
+          # (e.g. GitHub's workflow-change validation) - nothing to check.
+          out=/home/runner/work/_temp/claude-execution-output.json
+          [ -f "$out" ] || exit 0
+          if jq -e '[.[] | select(.is_error == true)] | length > 0' "$out" >/dev/null; then
+            echo "::error::Claude review recorded is_error; no review was produced."
+            exit 1
+          fi

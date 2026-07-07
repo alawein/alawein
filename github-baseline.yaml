@@ -15,6 +15,9 @@ repos:
     test_command: ""
     codeql_languages: []
     sync: manual
+    # claude_review: sync-github.sh copies the hub's .github/workflows/claude-review.yml
+    # (per-PR Claude review gate) into flagged repos; unflagging removes it.
+    claude_review: true
 
   - repo: design-system
     stack: node
@@ -30,6 +33,7 @@ repos:
     # sync: manual because ci.yml carries the Linux native-binding shim above.
     # Baseline now documents the same install line for audits and humans.
     sync: manual
+    claude_review: true
 
   - repo: workspace-tools
     stack: python
@@ -42,6 +46,7 @@ repos:
       - python
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: knowledge-base
     stack: mixed
@@ -54,6 +59,7 @@ repos:
       - python
       - javascript-typescript
     sync: auto
+    claude_review: true
     node:
       working_directory: "."
       install_command: "npm ci"
@@ -112,6 +118,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: bolts
     stack: node
@@ -123,6 +130,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: gymboy
     stack: node
@@ -134,6 +142,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: llmworks
     stack: node
@@ -145,6 +154,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: meatheadphysicist
     stack: python
@@ -200,6 +210,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: scribd
     stack: node
@@ -211,6 +222,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: simcore
     stack: node
@@ -257,6 +269,7 @@ repos:
     codeql_languages:
       - python
     sync: auto
+    claude_review: true
 
   - repo: chshlab
     stack: node
@@ -312,6 +325,7 @@ repos:
     codeql_languages:
       - javascript-typescript
     sync: auto
+    claude_review: true
 
   - repo: loopholelab
     stack: python
@@ -396,6 +410,7 @@ repos:
       - javascript-typescript
     # node/turbo monorepo (verified); dirty WIP at scan, confirm green before flipping to auto
     sync: manual
+    claude_review: true
 
   - repo: helios
     stack: docs

@@ -5,7 +5,7 @@ sync: manual
 sla: none
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-06-22
+last_updated: 2026-07-06
 last-verified: 2026-06-22
 ---
 
@@ -30,10 +30,10 @@ than any paragraph does.
 
 > The discipline transfers. The certainty does not.
 > (`dft-to-llms-physics-to-ai`)
-
+>
 > The substrate had changed. The problem had not.
 > (`from-hpc-to-agent-infrastructure`)
-
+>
 > A passing eval suite is not evidence that your system is working. It's evidence
 > that your system works on the inputs you thought to test.
 > (`distribution-shift-production-ai`)
@@ -46,7 +46,7 @@ The reader knows the stakes before the second paragraph.
 > A demo is a system that works on the inputs you chose. A system is a system
 > that works on the inputs you didn't choose.
 > (`scoping-ai-work`)
-
+>
 > A prompt chain is a sequence of string transformations. An orchestrated agent
 > pipeline is a typed program.
 > (`on-typed-orchestration`)
@@ -62,7 +62,7 @@ the argument in miniature.
 > somewhere in the repetition the phrase stopped being a technical status message
 > and became something closer to a moral category.
 > (`from-hpc-to-agent-infrastructure`)
-
+>
 > In 1922, Stefan Banach proved that any contraction mapping on a complete metric
 > space has a unique fixed point [...] The proof is three lines. The implications
 > took a century to fully land.
@@ -76,7 +76,7 @@ is.
 
 > This is not a cost; it is the work.
 > (`on-typed-orchestration`)
-
+>
 > This is not overhead. This is the work.
 > (`what-a-governed-agent-looks-like`)
 
@@ -89,12 +89,12 @@ does not.
 > What does not survive is the certainty. [...] This is the analogy that earns
 > its keep, precisely because it is honest about where it stops.
 > (`dft-to-llms-physics-to-ai`)
-
+>
 > The mathematics has been settled for a hundred years. Choosing the metric,
 > designing the operators, and verifying that the fixed point is the behavior you
 > actually want: that is the engineering, and engineering is never finished.
 > (`convergence-proof-agent-governance`)
-
+>
 > None of this is novel. The alignment literature has been saying it for years in
 > various dialects.
 > (`boring-middle-of-preference-data`)
@@ -106,10 +106,10 @@ own, sometimes an imperative.
 
 > Don't ignore it.
 > (`distribution-shift-production-ai`)
-
+>
 > The boring middle. It is where the system is actually trained.
 > (`boring-middle-of-preference-data`)
-
+>
 > The scope is what you build. The vision is what you iterate toward.
 > (`scoping-ai-work`)
 
@@ -120,7 +120,7 @@ should not be buried, and for the beat after a long technical run.
 
 > Most teams don't.
 > (`distribution-shift-production-ai`)
-
+>
 > Not an empirical observation. A proof.
 > (`convergence-proof-agent-governance`)
 
@@ -132,7 +132,7 @@ mean something. Never a round number standing alone.
 > 2,300+ simulation jobs across 24,000 CPU-hours, a 70% runtime reduction,
 > $160K/year in annual cost savings.
 > (`from-hpc-to-agent-infrastructure`)
-
+>
 > If κ = 0.8, then after 10 applications, the worst-case deviation is
 > 0.8^10 ≈ 0.1 of the original. After 20, it's 0.01.
 > (`convergence-proof-agent-governance`)
@@ -146,7 +146,7 @@ discipline, and the essays confirm it is the default joint, not an occasional on
 > These are not aesthetic preferences. Each choice has a consequence downstream:
 > in the band structure, in the effective masses [...]
 > (`from-hpc-to-agent-infrastructure`)
-
+>
 > The point isn't to resolve disagreement; it's to stop pretending it isn't there.
 > (`boring-middle-of-preference-data`)
 

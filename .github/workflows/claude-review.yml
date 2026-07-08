@@ -38,15 +38,21 @@ jobs:
           use_sticky_comment: true
           # Default permission mode denies the sticky-comment tool and diff
           # reads (verified on alawein/alawein run 28906962685: green review,
-          # 4 permission denials, no comment posted). Grant exactly what a
-          # review needs: read the diff, post the one sticky comment.
-          claude_args: --allowedTools "mcp__github_comment__update_claude_comment,Bash(git diff:*),Bash(git log:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+          # 4 permission denials, no comment posted; run 28907543224 still
+          # denied 7 with the narrower list). Grant what a review needs:
+          # read the diff and history, post the one comment (sticky tool
+          # preferred, gh pr comment as fallback).
+          claude_args: --allowedTools "mcp__github_comment__update_claude_comment,Bash(git diff:*),Bash(git log:*),Bash(git fetch:*),Bash(git show:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),Bash(gh pr comment:*)"
           prompt: |
             Review this pull request for correctness bugs, security issues, and
             obvious reuse/simplification gaps. Be concise; report only
-            high-confidence findings. Do NOT approve or merge. Post findings as
-            one sticky comment; if there are no findings, post the sticky
-            comment saying the review found nothing.
+            high-confidence findings. Do NOT approve or merge. You MUST post
+            exactly one comment before finishing, even when there are no
+            findings (then say the review found nothing). Post it with the
+            mcp__github_comment__update_claude_comment tool; if that tool is
+            unavailable or fails, use
+            `gh pr comment <number> --body "..."` and start the body with
+            "**Claude Review**".
       - name: Fail on swallowed execution error
         if: always()
         run: |

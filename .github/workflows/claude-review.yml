@@ -36,6 +36,11 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           use_sticky_comment: true
+          # Default permission mode denies the sticky-comment tool and diff
+          # reads (verified on alawein/alawein run 28906962685: green review,
+          # 4 permission denials, no comment posted). Grant exactly what a
+          # review needs: read the diff, post the one sticky comment.
+          claude_args: --allowedTools "mcp__github_comment__update_claude_comment,Bash(git diff:*),Bash(git log:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
           prompt: |
             Review this pull request for correctness bugs, security issues, and
             obvious reuse/simplification gaps. Be concise; report only

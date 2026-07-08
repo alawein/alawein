@@ -2,12 +2,16 @@ name: Claude Review Backstop
 
 # Sweeps open PRs across the Tier-A repos and reviews any that carry no
 # Claude review comment (fast-merged or opened before the gate landed).
-# Dispatch-only until the manual runs prove clean; the cron comes after.
-# Needs PORTFOLIO_PR_TOKEN: a fine-grained PAT with Pull requests
-# read/write and Contents read on the active repos. Comment-only.
+# Proven on the 2026-07-08 manual run: 9/9 open PRs reviewed, 0 duplicates
+# (run 28907136521). Needs PORTFOLIO_PR_TOKEN: a fine-grained PAT with
+# Pull requests read/write and Contents read on the active repos; the PAT
+# authors comments as the account owner, and the "Claude Review" lead-in
+# is the dedupe marker. Comment-only.
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * 1-5"
 
 permissions:
   contents: read

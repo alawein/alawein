@@ -404,7 +404,7 @@
       "surface": "service",
       "domain": "scientific-computing",
       "lifecycle": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -452,7 +452,7 @@
       "surface": "library",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "vibrant",
       "brand_family": "vibrant",
       "stack": [
@@ -501,7 +501,7 @@
       "surface": "library",
       "domain": "scientific-computing",
       "lifecycle": "maintained",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [

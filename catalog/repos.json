@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-05-17",
+  "lastVerified": "2026-07-09",
   "git_inventory_suppress_uncatalogued": [
     "tools/inventory/UsersmeshaDesktopincore"
   ],
@@ -543,7 +543,7 @@
         "client"
       ],
       "lifecycle": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -608,7 +608,7 @@
         "client"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -674,7 +674,7 @@
         "client"
       ],
       "lifecycle": "maintained",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -873,7 +873,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -938,7 +938,7 @@
         "internal"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1235,7 +1235,7 @@
         "research"
       ],
       "lifecycle": "frozen",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1353,7 +1353,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1412,7 +1412,7 @@
         "research"
       ],
       "lifecycle": "archived",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1472,7 +1472,7 @@
         "public"
       ],
       "lifecycle": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1538,7 +1538,7 @@
         "client"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -2318,7 +2318,7 @@
         "research"
       ],
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",

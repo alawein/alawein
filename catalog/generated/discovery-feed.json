@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17",
+  "generatedAt": "2026-07-09",
   "summary": {
     "repoCount": 37,
     "typeCounts": {
@@ -594,7 +594,7 @@
         "surface": "service",
         "domain": "scientific-computing",
         "lifecycle": "frozen",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -642,7 +642,7 @@
         "surface": "library",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "vibrant",
         "brand_family": "vibrant",
         "stack": [
@@ -691,7 +691,7 @@
         "surface": "library",
         "domain": "scientific-computing",
         "lifecycle": "maintained",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "midnight",
         "brand_family": "midnight",
         "stack": [
@@ -840,7 +840,7 @@
         "surface": "service",
         "domain": "scientific-computing",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "forge",
         "brand_family": "forge",
         "stack": [
@@ -890,7 +890,7 @@
         "surface": "cli",
         "domain": "legal-ops",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "heritage",
         "brand_family": "heritage",
         "stack": [
@@ -1789,7 +1789,7 @@
       "surface": "service",
       "domain": "scientific-computing",
       "lifecycle": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -1837,7 +1837,7 @@
       "surface": "library",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "vibrant",
       "brand_family": "vibrant",
       "stack": [
@@ -1886,7 +1886,7 @@
       "surface": "library",
       "domain": "scientific-computing",
       "lifecycle": "maintained",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
@@ -2035,7 +2035,7 @@
       "surface": "service",
       "domain": "scientific-computing",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
@@ -2085,7 +2085,7 @@
       "surface": "cli",
       "domain": "legal-ops",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "heritage",
       "brand_family": "heritage",
       "stack": [
@@ -2313,7 +2313,7 @@
       "surface": "library",
       "domain": "scientific-computing",
       "lifecycle": "frozen",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
@@ -2401,7 +2401,7 @@
       "surface": "web",
       "domain": "quantum",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "dawn",
       "brand_family": "dawn",
       "stack": [
@@ -2448,7 +2448,7 @@
       "surface": "dataset",
       "domain": "scientific-computing",
       "lifecycle": "archived",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "legacy",
       "brand_family": "legacy",
       "stack": [
@@ -2490,7 +2490,7 @@
       "surface": "web",
       "domain": "quantum",
       "lifecycle": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
@@ -2539,7 +2539,7 @@
       "surface": "workflow",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
@@ -3138,7 +3138,7 @@
       "surface": "service",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
@@ -5184,7 +5184,7 @@
         "surface": "service",
         "domain": "scientific-computing",
         "lifecycle": "frozen",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -5232,7 +5232,7 @@
         "surface": "library",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "vibrant",
         "brand_family": "vibrant",
         "stack": [
@@ -5281,7 +5281,7 @@
         "surface": "library",
         "domain": "scientific-computing",
         "lifecycle": "maintained",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "midnight",
         "brand_family": "midnight",
         "stack": [

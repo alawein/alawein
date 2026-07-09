@@ -410,6 +410,7 @@ R8_ALLOWED_ROOT_FILES = {
     "service-metadata.yaml",
     # Tooling config (must live at root for tool auto-discovery)
     ".editorconfig",
+    ".gitattributes",
     ".env.example",
     ".gitignore",
     ".markdownlint.jsonc",

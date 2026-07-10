@@ -1932,7 +1932,7 @@
       "legacy_slugs": [
         "eval"
       ],
-      "repo": "alawein/handshake-hai",
+      "repo": "alawein/handshake",
       "local_path": "jobs-projects/handshake-hai",
       "bucket": "jobs-projects",
       "type": "tooling",

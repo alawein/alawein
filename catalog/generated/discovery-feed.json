@@ -1261,7 +1261,7 @@
           "internal",
           "client"
         ],
-        "homepage": "https://github.com/alawein/handshake-hai",
+        "homepage": "https://github.com/alawein/handshake",
         "description": "LLM evaluation monorepo with shared core and project validators.",
         "topics": [
           "llm",
@@ -2864,7 +2864,7 @@
         "internal",
         "client"
       ],
-      "homepage": "https://github.com/alawein/handshake-hai",
+      "homepage": "https://github.com/alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "topics": [
         "llm",
@@ -4624,7 +4624,7 @@
       "slug": "handshake-hai",
       "repo": "alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
-      "homepage": "https://github.com/alawein/handshake-hai",
+      "homepage": "https://github.com/alawein/handshake",
       "topics": [
         "llm",
         "evaluation",
@@ -4775,9 +4775,7 @@
   "inventoryReconciliation": {
     "catalog_only": [],
     "workspace_only": [],
-    "stale_inventory_entries": [
-      "alawein/handshake-hai"
-    ],
+    "stale_inventory_entries": [],
     "path_mismatches": []
   },
   "projectSwitcher": {

@@ -1928,12 +1928,13 @@
     },
     {
       "name": "Handshake AI Eval",
-      "slug": "handshake-hai",
+      "slug": "handshake",
       "legacy_slugs": [
-        "eval"
+        "eval",
+        "handshake-hai"
       ],
       "repo": "alawein/handshake",
-      "local_path": "jobs-projects/handshake-hai",
+      "local_path": "jobs-projects/handshake",
       "bucket": "jobs-projects",
       "type": "tooling",
       "surface": "monorepo",

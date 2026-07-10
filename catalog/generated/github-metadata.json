@@ -679,7 +679,7 @@
       }
     },
     {
-      "slug": "handshake-hai",
+      "slug": "handshake",
       "repo": "alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "homepage": "https://github.com/alawein/handshake",

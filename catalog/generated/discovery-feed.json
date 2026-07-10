@@ -1244,7 +1244,7 @@
       },
       {
         "name": "Handshake AI Eval",
-        "slug": "handshake-hai",
+        "slug": "handshake",
         "repo": "alawein/handshake",
         "type": "tooling",
         "surface": "monorepo",
@@ -1271,7 +1271,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/handshake-hai",
+        "local_path": "jobs-projects/handshake",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -2847,7 +2847,7 @@
     },
     {
       "name": "Handshake AI Eval",
-      "slug": "handshake-hai",
+      "slug": "handshake",
       "repo": "alawein/handshake",
       "type": "tooling",
       "surface": "monorepo",
@@ -2874,7 +2874,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/handshake-hai",
+      "local_path": "jobs-projects/handshake",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -4621,7 +4621,7 @@
       }
     },
     {
-      "slug": "handshake-hai",
+      "slug": "handshake",
       "repo": "alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "homepage": "https://github.com/alawein/handshake",

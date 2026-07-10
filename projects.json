@@ -599,12 +599,13 @@
     },
     {
       "name": "Handshake AI Eval",
-      "slug": "handshake-hai",
+      "slug": "handshake",
       "repo": "alawein/handshake",
       "purpose": "LLM evaluation monorepo with shared core and project validators.",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "legacy_slugs": [
-        "eval"
+        "eval",
+        "handshake-hai"
       ],
       "url": "https://github.com/alawein/handshake",
       "status": "active",

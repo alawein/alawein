@@ -272,7 +272,7 @@
       "stack": "nextjs, typescript, python"
     },
     {
-      "folder": "jobs-projects/handshake-hai",
+      "folder": "jobs-projects/handshake",
       "remote_slug": "alawein/handshake",
       "archetype": "node-monorepo",
       "tier": "tooling",

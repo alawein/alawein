@@ -1245,7 +1245,7 @@
       {
         "name": "Handshake AI Eval",
         "slug": "handshake-hai",
-        "repo": "alawein/handshake-hai",
+        "repo": "alawein/handshake",
         "type": "tooling",
         "surface": "monorepo",
         "domain": "ai-governance",
@@ -1261,7 +1261,7 @@
           "internal",
           "client"
         ],
-        "homepage": "https://github.com/alawein/handshake-hai",
+        "homepage": "https://github.com/alawein/handshake",
         "description": "LLM evaluation monorepo with shared core and project validators.",
         "topics": [
           "llm",
@@ -2848,7 +2848,7 @@
     {
       "name": "Handshake AI Eval",
       "slug": "handshake-hai",
-      "repo": "alawein/handshake-hai",
+      "repo": "alawein/handshake",
       "type": "tooling",
       "surface": "monorepo",
       "domain": "ai-governance",
@@ -2864,7 +2864,7 @@
         "internal",
         "client"
       ],
-      "homepage": "https://github.com/alawein/handshake-hai",
+      "homepage": "https://github.com/alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "topics": [
         "llm",
@@ -4622,9 +4622,9 @@
     },
     {
       "slug": "handshake-hai",
-      "repo": "alawein/handshake-hai",
+      "repo": "alawein/handshake",
       "description": "LLM evaluation monorepo with shared core and project validators.",
-      "homepage": "https://github.com/alawein/handshake-hai",
+      "homepage": "https://github.com/alawein/handshake",
       "topics": [
         "llm",
         "evaluation",

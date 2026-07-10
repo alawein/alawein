@@ -273,7 +273,7 @@
     },
     {
       "folder": "jobs-projects/handshake-hai",
-      "remote_slug": "alawein/handshake-hai",
+      "remote_slug": "alawein/handshake",
       "archetype": "node-monorepo",
       "tier": "tooling",
       "stack": "typescript, evaluations"

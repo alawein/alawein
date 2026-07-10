@@ -600,13 +600,13 @@
     {
       "name": "Handshake AI Eval",
       "slug": "handshake-hai",
-      "repo": "alawein/handshake-hai",
+      "repo": "alawein/handshake",
       "purpose": "LLM evaluation monorepo with shared core and project validators.",
       "description": "LLM evaluation monorepo with shared core and project validators.",
       "legacy_slugs": [
         "eval"
       ],
-      "url": "https://github.com/alawein/handshake-hai",
+      "url": "https://github.com/alawein/handshake",
       "status": "active",
       "bucket": "jobs-projects",
       "visibility": "private"

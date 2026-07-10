@@ -1932,7 +1932,7 @@
       "legacy_slugs": [
         "eval"
       ],
-      "repo": "alawein/handshake-hai",
+      "repo": "alawein/handshake",
       "local_path": "jobs-projects/handshake-hai",
       "bucket": "jobs-projects",
       "type": "tooling",
@@ -1954,7 +1954,7 @@
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "status": "active",
-      "homepage": "https://github.com/alawein/handshake-hai",
+      "homepage": "https://github.com/alawein/handshake",
       "canonical_description": "LLM evaluation monorepo with shared core and project validators.",
       "tags": [
         "TypeScript",

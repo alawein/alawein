@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-07-08; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-07-10; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -98,7 +98,7 @@ graph TB
   end
   subgraph tooling["Tooling Repos"]
     mercor["mercor\nEmployer project for LLM failsafe e"]
-    handshake_hai["handshake-hai\nLLM evaluation monorepo with shared"]
+    handshake["handshake\nLLM evaluation monorepo with shared"]
     turing["turing\nPrivate catalog-collection workspac"]
     incore["incore\nCLI and MCP tooling for workspace a"]
     prompty["prompty\nTurbo monorepo for prompt design, e"]

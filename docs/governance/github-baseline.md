@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub Baseline
 description: Canonical GitHub profile, repository metadata, workflow, and community-health baseline for the alawein workspace.
-last_updated: 2026-04-15
+last_updated: 2026-07-25
 category: governance
 audience: [ai-agents, contributors]
 status: active

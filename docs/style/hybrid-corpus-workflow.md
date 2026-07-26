@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [contributors, agents]
-last_updated: 2026-04-15
-last-verified: 2026-04-15
+last_updated: 2026-07-25
+last-verified: 2026-07-25
 ---
 
 # Hybrid corpus workflow

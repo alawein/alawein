@@ -19,31 +19,37 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Active keep roster (2026-07-25). Excludes GitHub-archived repos and
+        # the org .archive bucket. See docs/internal/audits/2026-07-25-github-repo-keep-roster.md
         repo:
           - adil
           - alawein
           - alembiq
           - atelier-rounaq
           - attributa
+          - auditraise
           - bolts
           - chshlab
           - design-system
-          - design-system-visual-fix
           - edfp
           - fallax
           - gymboy
-          - helios
+          - handshake
+          - incore
           - knowledge-base
-          - legacy-portfolio-temp
           - llmworks
           - loopholelab
           - maglogic
           - meatheadphysicist
+          - mercor
           - meshal-web
           - optiqap
+          - outpost
+          - prompty
           - provegate
           - qmatsim
           - qmlab
+          - quantumalgo
           - qubeml
           - repz
           - roka-oakland-hustle
@@ -51,6 +57,9 @@ jobs:
           - scribd
           - simcore
           - spincirc
+          - turing
+          - veyra
+          - workspace-control
           - workspace-tools
 
     steps:

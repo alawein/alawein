@@ -158,5 +158,13 @@
     "theme_family": "midnight",
     "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
     "favicon_status": "generated"
+  },
+  "auditraise": {
+    "logo_source": "design-system/packages/icons/dist/brand/auditraise/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/auditraise/repo-banner.svg",
+    "screenshot_folder": "products/auditraise/docs/screenshots",
+    "theme_family": "midnight",
+    "social_preview_image": "design-system/packages/icons/dist/brand/auditraise/social-card.svg",
+    "favicon_status": "generated"
   }
 }

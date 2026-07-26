@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "generated": "2026-07-09",
+  "generated": "2026-07-25",
   "workspace_roots": [
     ".",
     "../morphism-systems",
@@ -51,6 +51,11 @@
       "repo": "alawein/alawein",
       "local_folder": "alawein",
       "notes": "Derived from catalog entry alawein"
+    },
+    "python-platform-cli": {
+      "repo": "alawein/outpost",
+      "local_folder": "tools/outpost",
+      "notes": "Derived from catalog entry outpost"
     }
   },
   "excluded_paths": [
@@ -319,6 +324,27 @@
       "archetype": "python-service",
       "tier": "tooling",
       "stack": "python, llm, evaluation"
+    },
+    {
+      "folder": "tools/outpost",
+      "remote_slug": "alawein/outpost",
+      "archetype": "python-platform-cli",
+      "tier": "tooling",
+      "stack": "python, prompts, cli"
+    },
+    {
+      "folder": "products/auditraise",
+      "remote_slug": "alawein/auditraise",
+      "archetype": "next-app-router",
+      "tier": "product",
+      "stack": "typescript, nextjs, react"
+    },
+    {
+      "folder": "tools/workspace-control",
+      "remote_slug": "alawein/workspace-control",
+      "archetype": "python-platform-cli",
+      "tier": "infra",
+      "stack": "python, yaml, inventory"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09",
+  "generatedAt": "2026-07-25",
   "repos": [
     {
       "slug": "meshal-web",
@@ -823,6 +823,72 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "homepage": "https://github.com/alawein/outpost",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "homepage": "https://github.com/alawein/auditraise",
+      "topics": [
+        "accessibility",
+        "audit",
+        "nextjs",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "homepage": "https://github.com/alawein/workspace-control",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-platform-cli",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },

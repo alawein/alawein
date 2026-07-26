@@ -10,7 +10,7 @@ audience: [maintainers, contributors]
 status: active
 author: alawein maintainers
 version: 1.0.0
-last_updated: 2026-04-14
+last_updated: 2026-07-25
 tags: [github, metadata, rollout, policy, governance]
 ---
 

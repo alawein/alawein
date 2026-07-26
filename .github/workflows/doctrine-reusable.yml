@@ -113,8 +113,10 @@ jobs:
           # scaffolding dirs (.claude, .cursor, .superpowers), which are the
           # top-level equivalents of the already-exempt docs/superpowers and
           # docs/internal trees and are not governed public docs.
+          # Also skip product/kit trees and voice-definition docs that must
+          # name banned register words to ban them.
           mapfile -t files < <(git -C repo ls-files '*.md' \
-            | grep -Ev '(^|/)(archive|_archive|\.archive|imports)/|(^|/)\.(claude|cursor|superpowers)/|(^|/)docs/(superpowers|internal)/|(^|/)tests?/fixtures/|^db/|^MASTER_REFERENCE\.md$' \
+            | grep -Ev '(^|/)(archive|_archive|\.archive|imports|prompts|plugins|templates|projects|packages)/|(^|/)\.(claude|cursor|superpowers)/|(^|/)docs/(superpowers|internal|decisions|reviews|audit)/|(^|/)tests?/fixtures/|^db/|^MASTER_REFERENCE\.md$|(^|/)(writing-standard|VOICE|ledger-voice)\.md$' \
             || true)
           if [ "${#files[@]}" -eq 0 ]; then
             echo "No tracked Markdown files to audit."

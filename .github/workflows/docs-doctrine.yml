@@ -8,6 +8,7 @@ on:
       - "scripts/doctrine/validate-doctrine.py"
       - "scripts/doctrine/validate-topology.py"
       - "scripts/doctrine/validate-readme-topology.py"
+      - "scripts/doctrine/validate-readme-voice.py"
       - "scripts/doctrine/tests/**"
       - "catalog/repos.json"
       - "scripts/ops/generate-index.sh"
@@ -21,6 +22,7 @@ on:
       - "scripts/doctrine/validate-doctrine.py"
       - "scripts/doctrine/validate-topology.py"
       - "scripts/doctrine/validate-readme-topology.py"
+      - "scripts/doctrine/validate-readme-voice.py"
       - "scripts/doctrine/tests/**"
       - "catalog/repos.json"
       - "scripts/ops/generate-index.sh"
@@ -54,6 +56,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/doctrine/validate-readme-topology.py --github-api
+      - name: Validate fleet README voice (GitHub default branch)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/doctrine/validate-readme-voice.py --github-api
       - name: Run doctrine script tests
         run: python -m pytest scripts/doctrine/tests/ -v --tb=short
 

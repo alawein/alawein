@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-07-25
+last_updated: 2026-07-26
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -423,7 +423,7 @@ Wave 1 targets Tier 1. Wave 2+ tightens to Tier 2.
 | `validate-readme-topology.py` | Shipped | Tier 1 aliases, `docs/architecture/topology.md` tree check; `--github-api`, `--workspace-root`, `--repo-path` modes |
 | Extend `validate-repo-framework.py` | Shipped | `--catalog` SSOT for Category ↔ bucket; optional projects.json agreement check in `doctrine-reusable.yml` |
 | Per-repo doctrine CI | Shipped | `doctrine-reusable.yml` runs README topology on each adopting repo |
-| Voice linter | Open | README scope on changed files |
+| Voice linter | Shipped | `validate-readme-voice.py`: README-only banned register / em dash / AI attribution; `--github-api`, `--workspace-root`, `--repo-path`. Hub `docs-doctrine.yml` + `doctrine-reusable.yml` |
 
 Fleet scan runs on hub schedule/PR via GitHub API (`main`). Local fleet scan: `python scripts/doctrine/validate-readme-topology.py --workspace-root <fleet-root>`.
 

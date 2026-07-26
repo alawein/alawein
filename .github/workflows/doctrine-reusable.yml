@@ -37,6 +37,7 @@ jobs:
             scripts/doctrine/validate-doctrine.py
             scripts/doctrine/validate-repo-framework.py
             scripts/doctrine/validate-readme-topology.py
+            scripts/doctrine/validate-readme-voice.py
             catalog/repos.json
             projects.json
 
@@ -65,6 +66,13 @@ jobs:
       - name: Validate README topology sections
         run: |
           python org/scripts/doctrine/validate-readme-topology.py \
+            --repo-path repo \
+            --repos-json org/catalog/repos.json \
+            --repo-slug "${{ github.repository }}"
+
+      - name: Validate README voice
+        run: |
+          python org/scripts/doctrine/validate-readme-voice.py \
             --repo-path repo \
             --repos-json org/catalog/repos.json \
             --repo-slug "${{ github.repository }}"

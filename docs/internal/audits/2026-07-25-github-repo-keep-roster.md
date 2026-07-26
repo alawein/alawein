@@ -27,7 +27,7 @@ Overrides vs the initial “keep-tagged only” paste:
   `workspace-tools`, `meatheadphysicist`, `roka-oakland-hustle`
 - Kept recently active control plane: `workspace-control`
 - Cataloged keepers that were missing entries: `outpost`, `auditraise`,
-  `workspace-control`
+  `workspace-control` (temporary README-topology exempt until Wave 1+2 catch-up)
 
 ## Archived on GitHub (13)
 

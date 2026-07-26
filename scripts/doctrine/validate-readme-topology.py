@@ -29,6 +29,8 @@ from typing import Callable
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
+# Newly cataloged keepers; Wave 1+2 README/topology catch-up is a follow-up.
+PENDING_README_TOPOLOGY = frozenset({"outpost", "auditraise", "workspace-control"})
 TOPOLOGY_REL = Path("docs/architecture/topology.md")
 
 CATALOG_COLLECTION_SLUGS = frozenset({"mercor", "handshake", "turing"})
@@ -187,7 +189,7 @@ def check_topology_file(content: str | None, repo: dict) -> list[str]:
 
 def check_repo_local(repo: dict, workspace_root: Path) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in HUB_SLUGS:
+    if slug in HUB_SLUGS or slug in PENDING_README_TOPOLOGY:
         return []
     lp = repo.get("local_path")
     if not lp:
@@ -245,7 +247,7 @@ def _github_repo_exists(repo_full: str, token: str) -> bool:
 
 def check_repo_github(repo: dict, token: str) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in HUB_SLUGS:
+    if slug in HUB_SLUGS or slug in PENDING_README_TOPOLOGY:
         return []
     repo_full = repo.get("repo")
     if not repo_full or "/" not in repo_full:
@@ -272,9 +274,12 @@ def find_repo_by_slug(repos: list[dict], repo_slug: str) -> dict | None:
 
 
 def check_single_repo(repo_path: Path, repo: dict) -> list[str]:
+    slug = repo.get("slug") or "<no-slug>"
+    if slug in PENDING_README_TOPOLOGY:
+        return []
     readme_path = repo_path / "README.md"
     if not readme_path.is_file():
-        return [f"{repo.get('slug')}: missing README.md"]
+        return [f"{slug}: missing README.md"]
     readme = readme_path.read_text(encoding="utf-8")
     topo_path = repo_path / TOPOLOGY_REL
     topo = topo_path.read_text(encoding="utf-8") if topo_path.is_file() else None

@@ -110,6 +110,21 @@ def test_root_db_dir_is_exempt(tmp_path):
     assert _errors(tmp_path) == []
 
 
+def test_root_product_kit_dirs_are_exempt(tmp_path):
+    # Prompt packs, plugins, install templates, catalog-collection work
+    # products, and multi-package workspaces own their own schemas.
+    for name in ("prompts", "plugins", "templates", "projects", "packages"):
+        _write_md(tmp_path / name / "unit" / "x.md", frontmatter=False)
+    assert _errors(tmp_path) == []
+
+
+def test_docs_decision_ledger_dirs_are_exempt(tmp_path):
+    # Historical decision/review/audit ledgers use their own formats.
+    for name in ("decisions", "reviews", "audit"):
+        _write_md(tmp_path / "docs" / name / "note.md", frontmatter=False)
+    assert _errors(tmp_path) == []
+
+
 def test_non_root_db_dir_is_not_exempt(tmp_path):
     # db/ is exempt only at the repo root; a nested src/db/ stays governed.
     _write_md(tmp_path / "src" / "db" / "notes.md", frontmatter=False)

@@ -41,6 +41,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- [scripts/doctrine/validate-doctrine.py](scripts/doctrine/validate-doctrine.py): exempt product/kit trees (prompts/, plugins/, 	emplates/, projects/, packages/) and docs ledgers (decisions/, 
+eviews/, udit/) from the header walk so prompt kits and catalog collections can run strict: true.
 - Cleared `PENDING_README_TOPOLOGY` for `outpost`, `auditraise`, and `workspace-control` after Wave 1+2 README/topology catch-up. `validate-readme-topology.py` now fetches GitHub files from each repo default branch (needed for `auditraise` on `launch/v1`). Corrected `auditraise` catalog description/topics to match the marketing-audit product.
 - [`scripts/doctrine/validate-readme-voice.py`](scripts/doctrine/validate-readme-voice.py): fleet README voice linter (banned register, em dashes, AI attribution). Wired in `docs-doctrine.yml` and `doctrine-reusable.yml`.
 - [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py): Category ↔ bucket now prefers `catalog/repos.json` via `--catalog` (SSOT); optional `--registry` agreement check. Wired in `doctrine-reusable.yml`.

@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-07-06
+last_updated: 2026-07-25
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -421,7 +421,7 @@ Wave 1 targets Tier 1. Wave 2+ tightens to Tier 2.
 |-----------|--------|-------|
 | `validate-topology.py` | Shipped | Hub `docs-doctrine.yml`; bucket/path/slug/archive checks |
 | `validate-readme-topology.py` | Shipped | Tier 1 aliases, `docs/architecture/topology.md` tree check; `--github-api`, `--workspace-root`, `--repo-path` modes |
-| Extend `validate-repo-framework.py` | Open | Cross-check `Category` vs catalog `bucket` |
+| Extend `validate-repo-framework.py` | Shipped | `--catalog` SSOT for Category ↔ bucket; optional projects.json agreement check in `doctrine-reusable.yml` |
 | Per-repo doctrine CI | Shipped | `doctrine-reusable.yml` runs README topology on each adopting repo |
 | Voice linter | Open | README scope on changed files |
 

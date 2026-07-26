@@ -1,0 +1,14 @@
+{
+  "repos": [
+    {
+      "repo": "alawein/repo-passing",
+      "bucket": "products",
+      "slug": "repo-passing"
+    },
+    {
+      "repo": "alawein/repo-wrong",
+      "bucket": "products",
+      "slug": "repo-wrong"
+    }
+  ]
+}

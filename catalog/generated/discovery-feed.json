@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-07-09",
+  "generatedAt": "2026-07-25",
   "summary": {
-    "repoCount": 37,
+    "repoCount": 40,
     "typeCounts": {
-      "product": 10,
+      "product": 11,
       "research": 16,
       "archive": 1,
-      "tooling": 6,
-      "infra": 3,
+      "tooling": 7,
+      "infra": 4,
       "governance": 1
     },
     "lifecycleCounts": {
       "maintained": 2,
-      "active": 26,
+      "active": 29,
       "frozen": 8,
       "archived": 1
     }
@@ -91,6 +91,7 @@
       "godot",
       "hpc",
       "html",
+      "inventory",
       "javascript",
       "legal-ai",
       "llm",
@@ -106,6 +107,7 @@
       "pennylane",
       "physics",
       "plotly",
+      "prompts",
       "python",
       "pytorch",
       "quantum-ml",
@@ -3177,6 +3179,149 @@
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
+    },
+    {
+      "name": "Outpost",
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "public",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "prompts",
+        "cli"
+      ],
+      "audience": [
+        "internal",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "tools/outpost",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "agent-prompt-kit"
+      ],
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-platform-cli",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "type": "product",
+      "surface": "web",
+      "domain": "ai-governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/auditraise",
+      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "topics": [
+        "accessibility",
+        "audit",
+        "nextjs",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "products/auditraise",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "accessibility-audit-product"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Workspace Control",
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "type": "infra",
+      "surface": "cli",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "yaml",
+        "inventory"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "tools/workspace-control",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "workspace-inventory",
+        "control-plane-ops"
+      ],
+      "version_source": "pyproject.toml",
+      "repo_archetype": "python-platform-cli",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     }
   ],
   "collections": {
@@ -3939,6 +4084,14 @@
       "screenshot_folder": "research/fallax/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
+      "favicon_status": "generated"
+    },
+    "auditraise": {
+      "logo_source": "design-system/packages/icons/dist/brand/auditraise/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/auditraise/repo-banner.svg",
+      "screenshot_folder": "products/auditraise/docs/screenshots",
+      "theme_family": "midnight",
+      "social_preview_image": "design-system/packages/icons/dist/brand/auditraise/social-card.svg",
       "favicon_status": "generated"
     }
   },
@@ -4770,6 +4923,72 @@
       },
       "actions_settings": {},
       "release_automation": {}
+    },
+    {
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "homepage": "https://github.com/alawein/outpost",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "homepage": "https://github.com/alawein/auditraise",
+      "topics": [
+        "accessibility",
+        "audit",
+        "nextjs",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "homepage": "https://github.com/alawein/workspace-control",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
     }
   ],
   "inventoryReconciliation": {
@@ -5369,6 +5588,53 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Auditraise",
+        "slug": "auditraise",
+        "repo": "alawein/auditraise",
+        "type": "product",
+        "surface": "web",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "typescript",
+          "nextjs",
+          "react"
+        ],
+        "audience": [
+          "client",
+          "public"
+        ],
+        "homepage": "https://github.com/alawein/auditraise",
+        "description": "AI-assisted accessibility audits for product and compliance workflows.",
+        "topics": [
+          "accessibility",
+          "audit",
+          "nextjs",
+          "typescript"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "products/auditraise",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "accessibility-audit-product"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "next-app-router",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}

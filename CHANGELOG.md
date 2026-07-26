@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-07-06
+last_updated: 2026-07-25
 tags: [changelog, version-history, releases]
 ---
 
@@ -25,6 +25,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- [`docs/internal/audits/2026-07-25-github-repo-keep-roster.md`](docs/internal/audits/2026-07-25-github-repo-keep-roster.md): active GitHub keep roster; archived 13 dead/duplicate remotes; cataloged `outpost`, `auditraise`, `workspace-control`.
 - [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md): fleet axes, eleven archetypes, README unification spec, and execution waves.
 - [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md): Phase 1 fleet topology and README audit (37 repos).
 - [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): topology coherence validator for `catalog/repos.json` (bucket/type/local_path/slug rules).

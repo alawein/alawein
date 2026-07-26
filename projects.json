@@ -1,6 +1,6 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-07-09",
+  "lastUpdated": "2026-07-25",
   "featured": [
     {
       "name": "meshal.ai",
@@ -219,6 +219,23 @@
       "category": "active",
       "url": "https://github.com/alawein/veyra",
       "bucket": "ventures",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "Accessibility"
+      ],
+      "category": "active",
+      "url": "https://github.com/alawein/auditraise",
+      "portfolio_domain": "Ventures",
+      "bucket": "products",
       "status": "active",
       "visibility": "private"
     }
@@ -658,6 +675,28 @@
       "status": "active",
       "bucket": "research",
       "visibility": "public"
+    },
+    {
+      "name": "Outpost",
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "purpose": "Personal kit that installs prompts for coding agents.",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "url": "https://github.com/alawein/outpost",
+      "status": "active",
+      "bucket": "tools",
+      "visibility": "public"
+    },
+    {
+      "name": "Workspace Control",
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "purpose": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "url": "https://github.com/alawein/workspace-control",
+      "status": "active",
+      "bucket": "tools",
+      "visibility": "private"
     }
   ],
   "packages": [

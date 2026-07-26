@@ -31,7 +31,7 @@ REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
 TOPOLOGY_REL = Path("docs/architecture/topology.md")
 
-CATALOG_COLLECTION_SLUGS = frozenset({"mercor", "handshake-hai", "turing"})
+CATALOG_COLLECTION_SLUGS = frozenset({"mercor", "handshake", "turing"})
 
 SECTIONS_BY_TYPE: dict[str, list[str]] = {
     "product": [

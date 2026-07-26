@@ -592,6 +592,53 @@
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "type": "product",
+      "surface": "web",
+      "domain": "ai-governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/auditraise",
+      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "topics": [
+        "accessibility",
+        "audit",
+        "nextjs",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "products/auditraise",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "accessibility-audit-product"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
     }
   ],
   "entrypoints": {

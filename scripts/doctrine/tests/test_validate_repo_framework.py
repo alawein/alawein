@@ -16,6 +16,8 @@ from validate_repo_framework import (
     parse_header,
     validate_repo,
     load_registry,
+    load_catalog,
+    resolve_bucket_registry,
     validate_repo_single,
     walk_alawein,
     main,
@@ -643,3 +645,82 @@ def test_antirot_flags_empty_adr_dir(tmp_path):
     assert len(findings) == 1
     assert "docs/adr" in findings[0]
     assert "docs/DEBT.md" not in findings[0]
+
+
+def test_load_catalog_indexes_repo_bucket(tmp_path):
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos": [{"repo": "alawein/demo", "bucket": "tools", "slug": "demo"}]}',
+        encoding="utf-8",
+    )
+    loaded = load_catalog(catalog)
+    assert loaded["alawein/demo"]["bucket"] == "tools"
+
+
+def test_load_catalog_raises_on_duplicate_repo(tmp_path):
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos": ['
+        '{"repo": "alawein/demo", "bucket": "tools"},'
+        '{"repo": "alawein/demo", "bucket": "products"}'
+        "]}",
+        encoding="utf-8",
+    )
+    with pytest.raises(RegistryError, match="duplicate"):
+        load_catalog(catalog)
+
+
+def test_main_catalog_mode_flags_category_mismatch(capsys):
+    catalog = FIX / "catalog_sample.json"
+    rc = main(
+        [
+            "--repo",
+            str(FIX / "repo_wrong_category"),
+            "--catalog",
+            str(catalog),
+            "--repo-slug",
+            "alawein/repo-wrong",
+        ]
+    )
+    assert rc == 1
+    out = capsys.readouterr().out
+    assert "category" in out.lower() or "Category" in out
+
+
+def test_main_catalog_and_registry_disagree(capsys, tmp_path):
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos": [{"repo": "alawein/repo-passing", "bucket": "tools"}]}',
+        encoding="utf-8",
+    )
+    registry = tmp_path / "projects.json"
+    registry.write_text(
+        '{"featured": [{"repo": "alawein/repo-passing", "bucket": "products"}]}',
+        encoding="utf-8",
+    )
+    rc = main(
+        [
+            "--repo",
+            str(FIX / "repo_passing"),
+            "--catalog",
+            str(catalog),
+            "--registry",
+            str(registry),
+            "--repo-slug",
+            "alawein/repo-passing",
+        ]
+    )
+    assert rc == 1
+    out = capsys.readouterr().out
+    assert "disagrees" in out
+
+
+def test_resolve_bucket_registry_prefers_catalog():
+    catalog = {"alawein/x": {"repo": "alawein/x", "bucket": "tools"}}
+    registry = {"alawein/x": {"repo": "alawein/x", "bucket": "tools"}}
+    chosen, label, findings = resolve_bucket_registry(
+        catalog=catalog, registry=registry, repo_slug="alawein/x"
+    )
+    assert chosen is catalog
+    assert label == "catalog/repos.json"
+    assert findings == []

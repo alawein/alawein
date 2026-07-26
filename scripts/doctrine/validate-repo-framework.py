@@ -11,15 +11,20 @@ consistent with themselves, not consistent with the doctrine.
 Usage:
     Workspace mode:  python validate-repo-framework.py [--root <path>]
     Single-repo:     python validate-repo-framework.py --repo <path>
-                         --registry <projects.json> --repo-slug <owner/name>
+                         --repo-slug <owner/name>
+                         [--catalog catalog/repos.json]
+                         [--registry projects.json]
+
+    Prefer --catalog (SSOT). --registry remains for backward compatibility.
+    When both are given, Category is checked against catalog bucket, and the
+    two sources must agree on bucket.
 
 Exit codes:
     0 -- all checked repos pass
     1 -- one or more repos fail validation
-    2 -- usage error, no repos found under --root, or the registry
-         (projects.json) is missing, unreadable, or malformed
+    2 -- usage error, no repos found under --root, or the catalog/registry
+         is missing, unreadable, or malformed
 """
-
 from __future__ import annotations
 
 import argparse
@@ -71,7 +76,7 @@ class ValidationError(Exception):
 
 
 class RegistryError(Exception):
-    """Raised when projects.json cannot be read, parsed, or indexed."""
+    """Raised when projects.json / catalog cannot be read, parsed, or indexed."""
 
 
 def parse_header(text: str) -> dict[str, str]:
@@ -272,14 +277,59 @@ def load_registry(path: Path) -> dict[str, dict]:
     return out
 
 
+def load_catalog(path: Path) -> dict[str, dict]:
+    """Load catalog/repos.json and return a map of GitHub repo slug to entry.
+
+    Indexes each entry in the top-level ``repos`` list by its ``repo`` field
+    (``owner/name``). This is the SSOT for Category ↔ bucket checks.
+
+    Raises RegistryError if the file is missing, unreadable, not an object,
+    missing a ``repos`` list, or has invalid ``repo`` fields.
+    """
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except OSError as e:
+        raise RegistryError(f"cannot read catalog {path}: {e}") from e
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise RegistryError(f"catalog {path} is not valid JSON: {e}") from e
+    if not isinstance(data, dict):
+        raise RegistryError(f"catalog {path} top level is not a JSON object")
+    repos = data.get("repos")
+    if not isinstance(repos, list):
+        raise RegistryError(f"catalog {path} has no 'repos' list")
+    out: dict[str, dict] = {}
+    for entry in repos:
+        if not isinstance(entry, dict):
+            continue
+        slug = entry.get("repo")
+        if slug is None:
+            continue
+        if not isinstance(slug, str) or not slug:
+            raise RegistryError(
+                f"catalog {path} has an entry with an invalid 'repo' field: {entry!r}"
+            )
+        if slug in out:
+            raise RegistryError(
+                f"catalog {path} has duplicate repo slug '{slug}'"
+            )
+        out[slug] = entry
+    return out
+
+
 def validate_repo_single(
-    repo_path: Path, repo_slug: str, registry: dict[str, dict]
+    repo_path: Path,
+    repo_slug: str,
+    registry: dict[str, dict],
+    *,
+    source_label: str = "projects.json",
 ) -> list[str]:
-    """Validate one repo's README header against the projects.json registry.
+    """Validate one repo's README header against a bucket registry.
 
     `repo_slug` is the GitHub 'owner/name' slug, matched against the
     registry's 'repo' field. The expected Category comes from the matched
-    entry's 'bucket'.
+    entry's 'bucket' (catalog SSOT when loaded from catalog/repos.json).
 
     Rules:
       - slug absent from the registry: fail.
@@ -289,31 +339,63 @@ def validate_repo_single(
       - matched entry has no 'bucket' and owner is cross-org: delegate to
         validate_repo with bucket=None (full header-shape and enum validation
         runs; only the Category cross-check is skipped).
-    The rules above describe only the Category cross-check logic; all
-    branches that reach validate_repo inherit its full header-shape and
-    enum-set validation.
     """
     entry = registry.get(repo_slug)
     if entry is None:
         return [
-            f"{repo_slug}: not registered in projects.json "
+            f"{repo_slug}: not registered in {source_label} "
             f"(no entry with repo == '{repo_slug}')"
         ]
     bucket = entry.get("bucket")
     owner = repo_slug.split("/", 1)[0]
     if bucket is None:
         if owner == ALAWEIN_OWNER:
-            # Registry misconfiguration: an alawein repo with no bucket. Reported as an
-            # error; there is nothing further to validate. (check_antirot_artifacts is
-            # itself a no-op for bucket=None, so skipping it here changes nothing.)
             return [
-                f"{repo_slug}: projects.json entry has no 'bucket' field; "
+                f"{repo_slug}: {source_label} entry has no 'bucket' field; "
                 f"every alawein-org repo must declare a bucket"
             ]
         return validate_repo(repo_path, bucket=None, display_name=repo_slug) + \
             check_antirot_artifacts(repo_path, None, display_name=repo_slug)
     return validate_repo(repo_path, bucket=bucket, display_name=repo_slug) + \
         check_antirot_artifacts(repo_path, bucket, display_name=repo_slug)
+
+
+def resolve_bucket_registry(
+    *,
+    catalog: dict[str, dict] | None,
+    registry: dict[str, dict] | None,
+    repo_slug: str,
+) -> tuple[dict[str, dict], str, list[str]]:
+    """Pick the bucket source for ``repo_slug`` and report source disagreements.
+
+    Prefers catalog (SSOT). When both sources declare a bucket, they must agree.
+    """
+    findings: list[str] = []
+    if catalog is not None and registry is not None:
+        cat_entry = catalog.get(repo_slug)
+        reg_entry = registry.get(repo_slug)
+        if cat_entry is not None and reg_entry is not None:
+            cat_bucket = cat_entry.get("bucket")
+            reg_bucket = reg_entry.get("bucket")
+            if (
+                cat_bucket is not None
+                and reg_bucket is not None
+                and cat_bucket != reg_bucket
+            ):
+                findings.append(
+                    f"{repo_slug}: catalog bucket '{cat_bucket}' disagrees with "
+                    f"projects.json bucket '{reg_bucket}'"
+                )
+        if cat_entry is not None:
+            return catalog, "catalog/repos.json", findings
+        if reg_entry is not None:
+            return registry, "projects.json", findings
+        return catalog, "catalog/repos.json", findings
+    if catalog is not None:
+        return catalog, "catalog/repos.json", findings
+    if registry is not None:
+        return registry, "projects.json", findings
+    raise RegistryError("no catalog or registry provided")
 
 
 _BUCKET_DIRS = (
@@ -329,14 +411,14 @@ assert set(_BUCKET_DIRS) == ALLOWED_CATEGORY - {"archive"}, (
     f"ALLOWED_CATEGORY - {{'archive'}} = {ALLOWED_CATEGORY - {'archive'}}"
 )
 
+
 def walk_alawein(root: Path) -> list[tuple[Path, str]]:
     """Return [(repo_path, bucket_name), ...] for every repo under alawein/<bucket>/.
 
     Note on dual bucket sources: workspace-walk mode (this function) derives a
     repo's expected bucket from its physical parent directory name on disk.
-    --repo mode (validate_repo_single) derives the expected bucket from the
-    'bucket' field in the projects.json registry entry. These are two
-    intentionally different sources that cross-check each other independently.
+    --repo mode derives the expected bucket from catalog/repos.json (SSOT) or
+    projects.json when --catalog is omitted.
     """
     out: list[tuple[Path, str]] = []
     for bucket in _BUCKET_DIRS:
@@ -363,12 +445,20 @@ def main(argv: list[str] | None = None) -> int:
         "--repo",
         type=Path,
         help="Path to a single repo checkout; validate its README header "
-        "against the registry. Requires --registry and --repo-slug.",
+        "against the catalog/registry. Requires --repo-slug and at least "
+        "one of --catalog or --registry.",
+    )
+    parser.add_argument(
+        "--catalog",
+        type=Path,
+        help="Path to catalog/repos.json (SSOT for Category ↔ bucket). "
+        "Preferred with --repo.",
     )
     parser.add_argument(
         "--registry",
         type=Path,
-        help="Path to projects.json. Required with --repo.",
+        help="Path to projects.json. Optional with --catalog; required when "
+        "--catalog is omitted in --repo mode.",
     )
     parser.add_argument(
         "--repo-slug",
@@ -377,8 +467,14 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.repo is not None:
-        if args.registry is None or args.repo_slug is None:
-            print("error: --repo requires --registry and --repo-slug", file=sys.stderr)
+        if args.repo_slug is None:
+            print("error: --repo requires --repo-slug", file=sys.stderr)
+            return 2
+        if args.catalog is None and args.registry is None:
+            print(
+                "error: --repo requires --catalog and/or --registry",
+                file=sys.stderr,
+            )
             return 2
         parts = args.repo_slug.split("/")
         if len(parts) != 2 or not all(parts):
@@ -388,11 +484,25 @@ def main(argv: list[str] | None = None) -> int:
             print(f"error: --repo not a directory: {args.repo}", file=sys.stderr)
             return 2
         try:
-            registry = load_registry(args.registry)
+            catalog = load_catalog(args.catalog) if args.catalog is not None else None
+            registry = load_registry(args.registry) if args.registry is not None else None
+            bucket_registry, source_label, pre_findings = resolve_bucket_registry(
+                catalog=catalog,
+                registry=registry,
+                repo_slug=args.repo_slug,
+            )
         except RegistryError as e:
             print(f"error: {e}", file=sys.stderr)
             return 2
-        findings = validate_repo_single(args.repo, args.repo_slug, registry)
+        findings = list(pre_findings)
+        findings.extend(
+            validate_repo_single(
+                args.repo,
+                args.repo_slug,
+                bucket_registry,
+                source_label=source_label,
+            )
+        )
         if findings:
             print("FAIL:")
             for f in findings:
@@ -402,8 +512,15 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     # Workspace-walk mode (default).
-    if args.registry is not None or args.repo_slug is not None:
-        print("error: --registry and --repo-slug are only valid with --repo", file=sys.stderr)
+    if (
+        args.registry is not None
+        or args.repo_slug is not None
+        or args.catalog is not None
+    ):
+        print(
+            "error: --catalog, --registry, and --repo-slug are only valid with --repo",
+            file=sys.stderr,
+        )
         return 2
     root = args.root if args.root is not None else Path.cwd()
     if not root.is_dir():

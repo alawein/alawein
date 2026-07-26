@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-07-25
+last_updated: 2026-07-26
 tags: [changelog, version-history, releases]
 ---
 
@@ -41,6 +41,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py): Category ↔ bucket now prefers `catalog/repos.json` via `--catalog` (SSOT); optional `--registry` agreement check. Wired in `doctrine-reusable.yml`.
 - Tracked workspace index mirror [`docs/INDEX.md`](docs/INDEX.md) (keep in sync with workspace-root `INDEX.md` when cloning the full tree): infrastructure **GitHub** links for `_devkit`, `_ops`, `_pkos`; product list includes `reasonbench/`, `_handshake-hai/`, `handshake-project-proctor/`; non-repo table cleanup.
 - Author / entity metadata updated to **Kohyr Inc.** in repository frontmatter (`author:`) across managed governance and policy Markdown (replacing prior LLC references).
 - Documentation contract: `AGENTS.md` / `CLAUDE.md` YAML frontmatter starts at line 1; [`.cursor/rules.md`](.cursor/rules.md) links repaired; root `REPO-SWEEP-PROMPT.md` moved to [`docs/governance/repo-sweep-prompt.md`](docs/governance/repo-sweep-prompt.md) with frontmatter; `docs/migration_changelog.md` and `docs/operations/*.md` now include required frontmatter.

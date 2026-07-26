@@ -49,15 +49,16 @@ jobs:
 
       - name: Validate Repo Framework header
         # Per-repo gate: validates THIS repo's README header against
-        # projects.json, the bucket source of truth. A repo adopts this
-        # gate only by pinning a workspace SHA that contains this step,
-        # so the gate is authoritative from the moment of adoption.
+        # catalog/repos.json (SSOT) for Category ↔ bucket, with projects.json
+        # as a secondary agreement check. A repo adopts this gate only by
+        # pinning a workspace SHA that contains this step.
         # This step is an unconditional hard gate: it does NOT honor the
         # workflow's `strict` input, and it runs FIRST among the validation
         # steps so a doctrine or style failure can never mask it.
         run: |
           python org/scripts/doctrine/validate-repo-framework.py \
             --repo repo \
+            --catalog org/catalog/repos.json \
             --registry org/projects.json \
             --repo-slug "${{ github.repository }}"
 

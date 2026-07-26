@@ -856,11 +856,11 @@
     {
       "slug": "auditraise",
       "repo": "alawein/auditraise",
-      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
       "homepage": "https://github.com/alawein/auditraise",
       "topics": [
-        "accessibility",
         "audit",
+        "local-marketing",
         "nextjs",
         "typescript"
       ],

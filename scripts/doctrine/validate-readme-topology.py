@@ -29,8 +29,6 @@ from typing import Callable
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
-# Newly cataloged keepers; Wave 1+2 README/topology catch-up is a follow-up.
-PENDING_README_TOPOLOGY = frozenset({"outpost", "auditraise", "workspace-control"})
 TOPOLOGY_REL = Path("docs/architecture/topology.md")
 
 CATALOG_COLLECTION_SLUGS = frozenset({"mercor", "handshake", "turing"})
@@ -189,7 +187,7 @@ def check_topology_file(content: str | None, repo: dict) -> list[str]:
 
 def check_repo_local(repo: dict, workspace_root: Path) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in HUB_SLUGS or slug in PENDING_README_TOPOLOGY:
+    if slug in HUB_SLUGS:
         return []
     lp = repo.get("local_path")
     if not lp:
@@ -220,17 +218,33 @@ def _github_request(path: str, token: str) -> tuple[int, bytes]:
         return exc.code, exc.read()
 
 
-def _github_file(repo_full: str, file_path: str, token: str) -> str | None:
+def _github_default_branch(repo_full: str, token: str) -> str | None:
+    owner, name = repo_full.split("/", 1)
+    status, body = _github_request(f"/repos/{owner}/{name}", token)
+    if status == 404:
+        return None
+    if status != 200:
+        raise ReadmeTopologyError(
+            f"GitHub API {status} for {repo_full}: {body[:200]!r}"
+        )
+    payload = json.loads(body.decode("utf-8"))
+    branch = payload.get("default_branch")
+    return branch if isinstance(branch, str) and branch else "main"
+
+
+def _github_file(
+    repo_full: str, file_path: str, token: str, *, ref: str
+) -> str | None:
     owner, name = repo_full.split("/", 1)
     status, body = _github_request(
-        f"/repos/{owner}/{name}/contents/{file_path}?ref=main",
+        f"/repos/{owner}/{name}/contents/{file_path}?ref={ref}",
         token,
     )
     if status == 404:
         return None
     if status != 200:
         raise ReadmeTopologyError(
-            f"GitHub API {status} for {repo_full}:{file_path}: {body[:200]!r}"
+            f"GitHub API {status} for {repo_full}:{file_path}@{ref}: {body[:200]!r}"
         )
     payload = json.loads(body.decode("utf-8"))
     raw = payload.get("content")
@@ -239,28 +253,28 @@ def _github_file(repo_full: str, file_path: str, token: str) -> str | None:
     return base64.b64decode(raw).decode("utf-8")
 
 
-def _github_repo_exists(repo_full: str, token: str) -> bool:
-    owner, name = repo_full.split("/", 1)
-    status, _ = _github_request(f"/repos/{owner}/{name}", token)
-    return status == 200
-
-
 def check_repo_github(repo: dict, token: str) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in HUB_SLUGS or slug in PENDING_README_TOPOLOGY:
+    if slug in HUB_SLUGS:
         return []
     repo_full = repo.get("repo")
     if not repo_full or "/" not in repo_full:
         return [f"{slug}: missing repo field for GitHub API check"]
-    if not _github_repo_exists(repo_full, token):
+    try:
+        default_branch = _github_default_branch(repo_full, token)
+    except ReadmeTopologyError as exc:
+        return [f"{slug}: {exc}"]
+    if default_branch is None:
         return []
     try:
-        readme = _github_file(repo_full, "README.md", token)
-        topo = _github_file(repo_full, TOPOLOGY_REL.as_posix(), token)
+        readme = _github_file(repo_full, "README.md", token, ref=default_branch)
+        topo = _github_file(
+            repo_full, TOPOLOGY_REL.as_posix(), token, ref=default_branch
+        )
     except ReadmeTopologyError as exc:
         return [f"{slug}: {exc}"]
     if readme is None:
-        return [f"{slug}: missing README.md on main"]
+        return [f"{slug}: missing README.md on {default_branch}"]
     return check_readme_sections(readme, repo) + check_topology_file(topo, repo)
 
 
@@ -275,7 +289,7 @@ def find_repo_by_slug(repos: list[dict], repo_slug: str) -> dict | None:
 
 def check_single_repo(repo_path: Path, repo: dict) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in PENDING_README_TOPOLOGY:
+    if slug in HUB_SLUGS:
         return []
     readme_path = repo_path / "README.md"
     if not readme_path.is_file():

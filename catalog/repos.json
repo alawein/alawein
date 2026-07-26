@@ -2450,15 +2450,15 @@
       "brand_family": "midnight",
       "status": "active",
       "homepage": "https://github.com/alawein/auditraise",
-      "canonical_description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "canonical_description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
       "tags": [
         "TypeScript",
         "Next.js",
-        "Accessibility"
+        "Marketing"
       ],
       "github_topics": [
-        "accessibility",
         "audit",
+        "local-marketing",
         "nextjs",
         "typescript"
       ],

@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-07-25
+last_updated: 2026-07-26
 tags: [changelog, version-history, releases]
 ---
 

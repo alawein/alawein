@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Package Namespace Matrix
 description: Inventory of shared package producers, consumers, and namespace inconsistencies across the alawein workspace
-last_updated: 2026-04-16
+last_updated: 2026-07-25
 category: governance
 audience: contributors
 status: active

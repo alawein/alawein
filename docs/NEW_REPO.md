@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: New Repo Bootstrap Guide
 description: End-to-end process for adding a new doctrine-compliant repo to the alawein workspace
-last_updated: 2026-04-16
+last_updated: 2026-07-25
 category: governance
 audience: [contributors, ai-agents]
 status: active

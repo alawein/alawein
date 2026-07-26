@@ -53,14 +53,24 @@ EXEMPT_TEMPLATE_MARKDOWN_PATHS = {
 # `imports` are skipped anywhere; `superpowers`/`internal` are skipped only
 # directly under a `docs/` directory.
 EXEMPT_DIR_NAMES = {"archive", "_archive", "imports"}
-EXEMPT_DOCS_SUBDIR_NAMES = {"superpowers", "internal"}
+EXEMPT_DOCS_SUBDIR_NAMES = {"superpowers", "internal", "decisions", "reviews", "audit"}
 # `fixtures` directly under a `tests/` or `test/` directory holds
 # deliberately minimal test-input files; doctrine frontmatter would
 # corrupt them as fixtures.
 EXEMPT_TESTS_SUBDIR_NAMES = {"fixtures"}
 # A repo-root `db/` is a record database (knowledge-base) with its own
 # per-record schema, not doctrine-governed documentation.
-EXEMPT_ROOT_DIR_NAMES = {"db"}
+# Product/kit trees carry their own schemas (prompt packs, plugins, install
+# templates, catalog-collection work products, multi-package workspaces) and
+# must not be forced onto the docs-doctrine header contract.
+EXEMPT_ROOT_DIR_NAMES = {
+    "db",
+    "prompts",
+    "plugins",
+    "templates",
+    "projects",
+    "packages",
+}
 
 # R11 placeholder-residue: scaffold templates ship with fill-in tokens and
 # placeholder prose. Once a repo is scaffolded, those must be replaced. A doc

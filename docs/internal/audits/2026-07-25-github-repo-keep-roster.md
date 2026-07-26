@@ -1,6 +1,6 @@
 ---
 type: audit
-last_updated: 2026-07-25
+last_updated: 2026-07-26
 ---
 
 # GitHub repo keep roster (2026-07-25)
@@ -27,7 +27,7 @@ Overrides vs the initial “keep-tagged only” paste:
   `workspace-tools`, `meatheadphysicist`, `roka-oakland-hustle`
 - Kept recently active control plane: `workspace-control`
 - Cataloged keepers that were missing entries: `outpost`, `auditraise`,
-  `workspace-control` (temporary README-topology exempt until Wave 1+2 catch-up)
+  `workspace-control` (Wave 1+2 README/topology catch-up shipped; pending exemption cleared)
 
 ## Archived on GitHub (13)
 

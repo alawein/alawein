@@ -41,6 +41,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Cleared `PENDING_README_TOPOLOGY` for `outpost`, `auditraise`, and `workspace-control` after Wave 1+2 README/topology catch-up. `validate-readme-topology.py` now fetches GitHub files from each repo default branch (needed for `auditraise` on `launch/v1`). Corrected `auditraise` catalog description/topics to match the marketing-audit product.
 - [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py): Category ↔ bucket now prefers `catalog/repos.json` via `--catalog` (SSOT); optional `--registry` agreement check. Wired in `doctrine-reusable.yml`.
 - Tracked workspace index mirror [`docs/INDEX.md`](docs/INDEX.md) (keep in sync with workspace-root `INDEX.md` when cloning the full tree): infrastructure **GitHub** links for `_devkit`, `_ops`, `_pkos`; product list includes `reasonbench/`, `_handshake-hai/`, `handshake-project-proctor/`; non-repo table cleanup.
 - Author / entity metadata updated to **Kohyr Inc.** in repository frontmatter (`author:`) across managed governance and policy Markdown (replacing prior LLC references).

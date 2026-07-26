@@ -226,11 +226,11 @@
       "name": "Auditraise",
       "slug": "auditraise",
       "repo": "alawein/auditraise",
-      "description": "AI-assisted accessibility audits for product and compliance workflows.",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
       "tags": [
         "TypeScript",
         "Next.js",
-        "Accessibility"
+        "Marketing"
       ],
       "category": "active",
       "url": "https://github.com/alawein/auditraise",

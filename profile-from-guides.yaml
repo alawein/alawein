@@ -51,12 +51,12 @@ bio_bullets: 'UC Berkeley PhD EECS
 linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Kohyr
   · PhD EECS, UC Berkeley
 profile_pins:
-  - qmatsim
-  - spincirc
-  - maglogic
-  - scicomp
-  - qubeml
+  - outpost
   - fallax
+  - loopholelab
+  - chshlab
+  - qmatsim
+  - llmworks
 research_rows:
   - slug: qmatsim
     url: https://github.com/alawein/qmatsim

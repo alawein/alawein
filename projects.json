@@ -521,7 +521,7 @@
       "url": "https://provegate.online",
       "bucket": "ventures",
       "status": "active",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "Mercor LLM Failsafe",
@@ -561,7 +561,7 @@
       "url": "https://provegate.online",
       "status": "active",
       "bucket": "ventures",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "design-system",

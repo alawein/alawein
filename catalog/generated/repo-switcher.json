@@ -599,7 +599,7 @@
       "repo": "alawein/auditraise",
       "type": "product",
       "surface": "web",
-      "domain": "ai-governance",
+      "domain": "marketing",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "midnight",
@@ -632,7 +632,7 @@
         "alawein"
       ],
       "provides": [
-        "accessibility-audit-product"
+        "marketing-audit-product"
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",

@@ -43,6 +43,7 @@
       "game-dev",
       "governance",
       "legal-ops",
+      "marketing",
       "portfolio",
       "publishing",
       "quantum",
@@ -3235,7 +3236,7 @@
       "repo": "alawein/auditraise",
       "type": "product",
       "surface": "web",
-      "domain": "ai-governance",
+      "domain": "marketing",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "midnight",
@@ -3268,7 +3269,7 @@
         "alawein"
       ],
       "provides": [
-        "accessibility-audit-product"
+        "marketing-audit-product"
       ],
       "version_source": "package.json",
       "repo_archetype": "next-app-router",
@@ -3870,7 +3871,8 @@
         "design-system",
         "research-ops",
         "governance",
-        "game-dev"
+        "game-dev",
+        "marketing"
       ],
       "lifecycle": [
         "planned",
@@ -5598,7 +5600,7 @@
         "repo": "alawein/auditraise",
         "type": "product",
         "surface": "web",
-        "domain": "ai-governance",
+        "domain": "marketing",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "midnight",
@@ -5631,7 +5633,7 @@
           "alawein"
         ],
         "provides": [
-          "accessibility-audit-product"
+          "marketing-audit-product"
         ],
         "version_source": "package.json",
         "repo_archetype": "next-app-router",

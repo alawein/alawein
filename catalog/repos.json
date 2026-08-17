@@ -2436,7 +2436,7 @@
         "nextjs",
         "react"
       ],
-      "domain": "ai-governance",
+      "domain": "marketing",
       "audience": [
         "client",
         "public"
@@ -2474,10 +2474,10 @@
         "alawein"
       ],
       "provides": [
-        "accessibility-audit-product"
+        "marketing-audit-product"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-07-25",
+      "last_verified": "2026-08-17",
       "catalog_groups": [
         "featured"
       ],

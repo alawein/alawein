@@ -248,6 +248,9 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     legacy = repo.get("legacy_slugs") or []
     if legacy:
         slim["legacy_slugs"] = legacy
+    promotion = repo.get("promotion")
+    if isinstance(promotion, dict) and promotion:
+        slim["promotion"] = deepcopy(promotion)
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -331,6 +334,12 @@ def compile_repo(
             "audience": repo.get("audience") or ["internal"],
         }
     )
+
+    promotion = entry.get("promotion")
+    if isinstance(promotion, dict) and promotion:
+        repo["promotion"] = deepcopy(promotion)
+    else:
+        repo.pop("promotion", None)
 
     if entry.get("featured"):
         groups = set(repo.get("catalog_groups") or [])

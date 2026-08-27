@@ -80,7 +80,7 @@
       "name": "LLMWorks",
       "about": "LLM evaluation, benchmarking, and security testing playground.",
       "status": "active",
-      "visibility": "public",
+      "visibility": "private",
       "url": "https://llmworks.dev"
     },
     {
@@ -90,7 +90,7 @@
       "name": "Loophole Lab",
       "about": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
       "status": "frozen",
-      "visibility": "public",
+      "visibility": "private",
       "url": "https://loopholelab.online"
     },
     {
@@ -130,7 +130,7 @@
       "name": "Provegate",
       "about": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
       "status": "active",
-      "visibility": "public",
+      "visibility": "private",
       "url": "https://provegate.online"
     },
     {

@@ -320,7 +320,13 @@
         "research"
       ],
       "research_domain": "Quantum foundations — CHSH / Bell education site",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "grace_until": "2026-09-30",
+        "notes": "pinned; P0 candidate after README redo wave 1"
+      }
     },
     {
       "name": "Event Discovery Framework",
@@ -450,7 +456,13 @@
       "catalog_groups": [
         "infrastructure"
       ],
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "grace_until": "2026-09-30",
+        "notes": "pinned; P0 candidate after README redo wave 1; B6 by local gitleaks (0 leaks)"
+      }
     },
     {
       "name": "LLMWorks",
@@ -474,7 +486,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -541,7 +553,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -643,7 +655,12 @@
         "research"
       ],
       "research_domain": "Magnetic logic gates",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "notes": "cited research, CITATION.cff; P0 candidate"
+      }
     },
     {
       "name": "meatheadphysicist",
@@ -803,7 +820,7 @@
         "client"
       ],
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -905,7 +922,13 @@
         "research"
       ],
       "research_domain": "Quantum material simulation",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "grace_until": "2026-09-30",
+        "notes": "pinned; cited research; P0 candidate after README redo wave 1"
+      }
     },
     {
       "name": "qmlab.online",
@@ -1094,7 +1117,12 @@
         "research"
       ],
       "research_domain": "Quantum ML experiments",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "notes": "cited research (profile research row)"
+      }
     },
     {
       "name": "scicomp",
@@ -1152,7 +1180,12 @@
         "research"
       ],
       "research_domain": "Scientific computing utilities",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "notes": "cited research, CITATION.cff; P0 candidate"
+      }
     },
     {
       "name": "simcore.dev",
@@ -1278,7 +1311,12 @@
         "research"
       ],
       "research_domain": "Spintronics circuit simulation",
-      "lane": "lab"
+      "lane": "lab",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "notes": "cited research, CITATION.cff; P0 candidate"
+      }
     },
     {
       "name": "Veyra",
@@ -1414,7 +1452,13 @@
       "catalog_groups": [
         "infrastructure"
       ],
-      "lane": "platform"
+      "lane": "platform",
+      "promotion": {
+        "tier": "P2",
+        "scanned": "2026-08-27",
+        "grace_until": "2026-09-30",
+        "notes": "hub profile repo, cannot be private; B6 and B7 fail on the 2026-08-27 scan (secrets in history, CI red); fix in place, see docs/internal/audits/2026-08-27-public-visibility-matrix.md"
+      }
     },
     {
       "name": "design-system",
@@ -1692,7 +1736,13 @@
       "catalog_groups": [
         "infrastructure"
       ],
-      "lane": "platform"
+      "lane": "platform",
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-08-27",
+        "grace_until": "2026-09-30",
+        "notes": "pinned in catalog; seeded 2026-08-27; P0 review after README redo wave 1"
+      }
     },
     {
       "name": "prompty",

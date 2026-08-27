@@ -42,7 +42,7 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
 
 | slug | catalog | GitHub | pinned | type | bucket | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | tier | action |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: `CI - Documentation Contract` (ci.yml) red on main since 2026-08-17, run 32068929727 on HEAD; supporting detail, `Documentation Audit` (docs-validation.yml) and `Workspace Audit` (workspace-audit.yml) also red on HEAD | n/a | n/a | P1 | seed P1; hub, never pinned, never flipped; fix CI and history |
+| alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: `CI - Documentation Contract` (ci.yml) red on main since 2026-08-17, run 32068929727 on HEAD; supporting detail, `Documentation Audit` (docs-validation.yml) and `Workspace Audit` (workspace-audit.yml) also red on HEAD | n/a | n/a | P2 | seed P2 under grace to 2026-09-30; hub, never flipped; fix B6 and B7 in place |
 | chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, P0 candidate; no grace (no CITATION.cff, no research row) |
 | fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | pass: gitleaks local 0 leaks | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
 | llmworks | public | public | yes | product | lab | pass | pass | pass | pass | pass | fail: gitleaks local 1 leak (jwt) | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B6 |
@@ -134,10 +134,11 @@ way until the checks pass.
   (`workspace-audit.yml`) red on 2026-08-24 with 22 of 30 matrix legs failing
   at `Checkout repo` because the job's token cannot read private repos. The
   `Secrets Scan` failure is the B6 evidence and is not counted again here.
-- `alawein` stays public and P1 despite failing B6 and B7. It is the GitHub
-  profile repo; taking it private removes the profile README from every visitor.
-  The gate's flip rule does not apply to it. The two failures are fix items for
-  this cycle, and they are the sharpest open risk in this scan.
+- `alawein` stays public, seeded P2 under grace to 2026-09-30, because it
+  cannot be private and it fails B6 and B7. It is the GitHub profile repo;
+  taking it private removes the profile README from every visitor. The gate's
+  flip rule does not apply to it. The two failures are fix items for this
+  cycle, and they are the sharpest open risk in this scan.
 - `loopholelab` B5 fail, detail: `api/main.py` defines `/app`,
   `/app/dashboard`, `/share/{report_id}`, and `/health`, and FastAPI would serve
   `/docs`. The live host serves only the static landing page, so every one of

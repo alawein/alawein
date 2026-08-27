@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import importlib.util
+import json
+import os
 import sys
 import unittest
 from datetime import date
@@ -147,6 +149,48 @@ class EvaluateTests(unittest.TestCase):
         repo = _repo(slug="alawein", rtype="research", promotion=CURRENT_P1)
         live = {"alawein": _live(visibility="private", size=0, has_readme=False, has_license=False)}
         self.assertEqual(_codes(evaluate([repo], [], live, None, today=TODAY)), ["V1", "V2"])
+
+
+import subprocess  # noqa: E402
+
+
+class LiveMappingTests(unittest.TestCase):
+    def test_live_from_payloads_maps_fields(self) -> None:
+        meta = {"visibility": "public", "size": 42, "archived": False, "default_branch": "main"}
+        live = _mod.live_from_payloads(meta, readme_status=200, license_status=404)
+        self.assertEqual(
+            live,
+            {"exists": True, "visibility": "public", "size": 42, "archived": False, "has_readme": True, "has_license": False},
+        )
+
+    def test_live_from_payloads_missing_repo(self) -> None:
+        self.assertEqual(_mod.live_from_payloads(None, readme_status=404, license_status=404), {"exists": False})
+
+    def test_parse_pinned_graphql(self) -> None:
+        payload = {"data": {"user": {"pinnedItems": {"nodes": [{"name": "fallax"}, {"name": "qmatsim"}, {}]}}}}
+        self.assertEqual(_mod.parse_pinned(payload), ["fallax", "qmatsim"])
+
+
+class CliTests(unittest.TestCase):
+    def test_help_lists_flags(self) -> None:
+        result = subprocess.run([sys.executable, str(SCRIPT), "--help"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0)
+        for flag in ("--github-api", "--offline", "--slug", "--json", "--today"):
+            self.assertIn(flag, result.stdout)
+
+    def test_github_api_without_token_exits_2(self) -> None:
+        env = {k: v for k, v in os.environ.items() if k != "GITHUB_TOKEN"}
+        result = subprocess.run([sys.executable, str(SCRIPT), "--github-api"], capture_output=True, text=True, env=env)
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("GITHUB_TOKEN", result.stderr)
+
+    def test_offline_json_on_real_catalog_parses(self) -> None:
+        result = subprocess.run([sys.executable, str(SCRIPT), "--offline", "--json"], capture_output=True, text=True)
+        self.assertIn(result.returncode, (0, 1))
+        payload = json.loads(result.stdout)
+        self.assertIn("findings", payload)
+        self.assertIn("mode", payload)
+        self.assertEqual(payload["mode"], "offline")
 
 
 if __name__ == "__main__":

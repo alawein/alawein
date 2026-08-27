@@ -151,3 +151,138 @@ def evaluate(
                 findings.append(Finding(slug, "V7", "error", f"{slug}: live profile pin is {', '.join(problems)}"))
 
     return findings
+
+
+def _github_request(path: str, token: str, *, method: str = "GET", body: bytes | None = None) -> tuple[int, bytes]:
+    req = urllib.request.Request(
+        f"https://api.github.com{path}",
+        data=body,
+        method=method,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "Authorization": f"Bearer {token}",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+        },
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            return resp.status, resp.read()
+    except urllib.error.HTTPError as exc:
+        return exc.code, exc.read()
+
+
+def live_from_payloads(meta: dict[str, Any] | None, *, readme_status: int, license_status: int) -> dict[str, Any]:
+    """Map raw GitHub payloads to the shape evaluate() reads."""
+    if meta is None:
+        return {"exists": False}
+    return {
+        "exists": True,
+        "visibility": meta.get("visibility"),
+        "size": int(meta.get("size") or 0),
+        "archived": bool(meta.get("archived")),
+        "has_readme": readme_status == 200,
+        "has_license": license_status == 200,
+    }
+
+
+def fetch_live(repo_full: str, token: str) -> dict[str, Any]:
+    owner, name = repo_full.split("/", 1)
+    status, body = _github_request(f"/repos/{owner}/{name}", token)
+    if status == 404:
+        return live_from_payloads(None, readme_status=404, license_status=404)
+    if status != 200:
+        raise VisibilityError(f"GitHub API {status} for {repo_full}: {body[:200]!r}")
+    meta = json.loads(body.decode("utf-8"))
+    if not meta.get("size"):
+        return live_from_payloads(meta, readme_status=404, license_status=404)
+    ref = meta.get("default_branch") or "main"
+    readme_status, _ = _github_request(f"/repos/{owner}/{name}/readme?ref={ref}", token)
+    license_status, _ = _github_request(f"/repos/{owner}/{name}/contents/LICENSE?ref={ref}", token)
+    return live_from_payloads(meta, readme_status=readme_status, license_status=license_status)
+
+
+def parse_pinned(payload: dict[str, Any]) -> list[str]:
+    nodes = (((payload.get("data") or {}).get("user") or {}).get("pinnedItems") or {}).get("nodes") or []
+    return [n["name"] for n in nodes if isinstance(n, dict) and n.get("name")]
+
+
+def fetch_live_pins(login: str, token: str) -> list[str]:
+    query = (
+        '{ user(login: "%s") { pinnedItems(first: 6, types: REPOSITORY) '
+        "{ nodes { ... on Repository { name } } } } }" % login
+    )
+    status, body = _github_request("/graphql", token, method="POST", body=json.dumps({"query": query}).encode("utf-8"))
+    if status != 200:
+        raise VisibilityError(f"GitHub GraphQL {status}: {body[:200]!r}")
+    return parse_pinned(json.loads(body.decode("utf-8")))
+
+
+def load_repos(path: Path) -> list[dict[str, Any]]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    repos = data.get("repos")
+    if not isinstance(repos, list):
+        raise VisibilityError(f"{path}: no 'repos' list")
+    return repos
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Public readiness gate: catalog visibility vs live GitHub.")
+    parser.add_argument("--repos-json", type=Path, default=REPOS_JSON)
+    parser.add_argument("--github-api", action="store_true", help="Compare with live GitHub (default; needs GITHUB_TOKEN).")
+    parser.add_argument("--offline", action="store_true", help="Catalog-only checks V4 and V5; no network.")
+    parser.add_argument("--slug", type=str, default=None, help="Check one catalog slug.")
+    parser.add_argument("--json", action="store_true", help="Emit findings as JSON.")
+    parser.add_argument("--today", type=str, default=None, help="ISO date override for freshness math (tests).")
+    args = parser.parse_args(argv)
+
+    try:
+        repos = load_repos(args.repos_json)
+    except (VisibilityError, OSError, json.JSONDecodeError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    if args.slug:
+        repos = [r for r in repos if r.get("slug") == args.slug]
+        if not repos:
+            print(f"error: no catalog entry for {args.slug!r}", file=sys.stderr)
+            return 2
+
+    try:
+        today = date.fromisoformat(args.today) if args.today else date.today()
+    except ValueError:
+        print(f"error: --today must be an ISO date, got {args.today!r}", file=sys.stderr)
+        return 2
+
+    pins = [str(p) for p in (profile_config().get("profile_pins") or [])]
+    mode = "offline" if args.offline else "github-api"
+    live: dict[str, dict[str, Any]] | None = None
+    live_pins: list[str] | None = None
+    if mode == "github-api":
+        token = os.environ.get("GITHUB_TOKEN")
+        if not token:
+            print("error: GITHUB_TOKEN required for --github-api (use --offline for catalog-only checks)", file=sys.stderr)
+            return 2
+        try:
+            live = {str(r.get("slug")): fetch_live(str(r.get("repo")), token) for r in repos if r.get("repo")}
+            live_pins = fetch_live_pins(OWNER, token) if not args.slug else None
+        except VisibilityError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+
+    findings = evaluate(repos, pins, live, live_pins, today=today)
+    errors = [f for f in findings if f.level == "error"]
+
+    if args.json:
+        print(json.dumps({"mode": mode, "findings": [f._asdict() for f in findings]}, indent=2))
+    else:
+        if findings:
+            print(f"visibility-gate: {len(errors)} error(s), {len(findings) - len(errors)} warning(s) [mode={mode}]")
+            for f in findings:
+                print(f"  - [{f.level}] {f.code} {f.message}")
+        else:
+            print(f"visibility-gate: OK ({len(repos)} catalog entries, mode={mode})")
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

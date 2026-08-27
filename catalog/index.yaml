@@ -148,7 +148,6 @@ lanes:
   - slug: llmworks
     about: LLM evaluation, benchmarking, and security testing playground.
     name: LLMWorks
-    visibility: private
     url: https://llmworks.dev
     featured: true
   - slug: loopholelab
@@ -156,7 +155,6 @@ lanes:
       analysis.
     name: Loophole Lab
     status: frozen
-    visibility: private
     url: https://loopholelab.online
   - slug: maglogic
     about: Magnetic logic gates and device simulation research.
@@ -186,7 +184,6 @@ lanes:
     - qaplibria
   - slug: provegate
     about: Agent MCP tooling for drift control, memory, and proof-oriented orchestration.
-    visibility: private
     url: https://provegate.online
     legacy_slugs:
     - epistemic-stack

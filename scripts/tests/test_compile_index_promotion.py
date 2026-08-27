@@ -41,6 +41,11 @@ class CompileRepoPromotionTests(unittest.TestCase):
         repo = compile_repo("lab", "lab", _entry(promotion=newer), prior)
         self.assertEqual(repo["promotion"], newer)
 
+    def test_prior_visibility_is_not_resurrected(self) -> None:
+        prior = compile_repo("lab", "lab", _entry(visibility="public"), None)
+        repo = compile_repo("lab", "lab", {"slug": "demo", "about": "Demo repo."}, prior)
+        self.assertEqual(repo["visibility"], "private")
+
 
 class SlimEntryPromotionTests(unittest.TestCase):
     def test_slim_entry_keeps_promotion(self) -> None:

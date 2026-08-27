@@ -294,7 +294,7 @@ def compile_repo(
     name = str(entry.get("name") or repo.get("name") or slug_to_name(slug))
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
     status = str(entry.get("status") or repo.get("status") or defaults.get("lifecycle") or "active")
-    visibility = str(entry.get("visibility") or repo.get("visibility") or "private")
+    visibility = str(entry.get("visibility") or "private")
     homepage = str(entry.get("url") or entry.get("homepage") or repo.get("homepage") or "").strip()
 
     stack = entry.get("stack") or repo.get("stack") or defaults.get("stack") or ["typescript"]

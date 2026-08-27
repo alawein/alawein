@@ -1,61 +1,9 @@
 {
   "featured": [
     {
-      "name": "meshal.ai",
-      "slug": "meshal-web",
-      "repo": "alawein/meshal-web",
-      "type": "product",
-      "surface": "web",
-      "domain": "portfolio",
-      "lifecycle": "maintained",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "vite",
-        "react",
-        "typescript",
-        "tailwind"
-      ],
-      "audience": [
-        "public",
-        "hiring",
-        "client"
-      ],
-      "homepage": "https://www.meshal.ai",
-      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
-      "topics": [
-        "portfolio",
-        "react",
-        "vite",
-        "typescript",
-        "tailwindcss"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "sites\\meshal-web",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "portfolio",
-        "case-studies",
-        "contact-surface"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "repo": "alawein/repz",
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
       "type": "product",
       "surface": "web",
       "domain": "fitness",
@@ -64,27 +12,26 @@
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
-        "react",
-        "vite",
         "typescript",
+        "react",
         "supabase"
       ],
       "audience": [
-        "client",
-        "public"
+        "public",
+        "client"
       ],
-      "homepage": "https://repzcoach.com",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "homepage": "https://atelier-rounaq.com",
+      "description": "Studio and portfolio site for a luxury atelier.",
       "topics": [
-        "fitness",
+        "portfolio",
         "react",
-        "typescript",
         "supabase",
-        "coaching"
+        "luxury",
+        "design"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps\\repz",
+      "local_path": "apps/atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],
@@ -93,11 +40,106 @@
         "alawein"
       ],
       "provides": [
-        "coaching-platform",
-        "fitness-client-app"
+        "studio-site"
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "topics": [
+        "audit",
+        "local-marketing",
+        "nextjs",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/auditraise",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "marketing-audit-product"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "nextjs",
+        "typescript"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://bolts.fit",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/bolts",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein",
+        "workspace-tools"
+      ],
+      "provides": [
+        "fitness-plan-platform",
+        "payments-surface"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
       "compliance": "pii",
       "github_actions_settings": {},
       "release_automation": {}
@@ -133,7 +175,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps\\gymboy",
+      "local_path": "apps/gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -151,16 +193,66 @@
       "release_automation": {}
     },
     {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://repzcoach.com",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/repz",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "coaching-platform",
+        "fitness-client-app"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "Scribd",
       "slug": "scribd",
       "repo": "alawein/scribd",
       "type": "product",
       "surface": "web",
-      "domain": "publishing",
+      "domain": "fitness",
       "lifecycle": "active",
       "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
+      "theme_family": "forge",
+      "brand_family": "forge",
       "stack": [
         "nextjs",
         "react",
@@ -181,7 +273,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps\\scribd",
+      "local_path": "apps/scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -200,99 +292,51 @@
       "release_automation": {}
     },
     {
-      "name": "Bolts",
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "repo": "alawein/alembiq",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
       "lifecycle": "active",
       "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
       "stack": [
-        "nextjs",
-        "typescript"
+        "python",
+        "pytorch",
+        "llm-training"
       ],
       "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://bolts.fit",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps\\bolts",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein",
-        "workspace-tools"
-      ],
-      "provides": [
-        "fitness-plan-platform",
-        "payments-surface"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "type": "product",
-      "surface": "web",
-      "domain": "portfolio",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "legacy",
-      "brand_family": "legacy",
-      "stack": [
-        "typescript",
-        "react",
-        "supabase"
-      ],
-      "audience": [
-        "public",
+        "research",
         "client"
       ],
-      "homepage": "https://atelier-rounaq.com",
-      "description": "Studio and portfolio site for a luxury atelier.",
+      "homepage": "https://alembiq.online",
+      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
       "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
+        "python",
+        "pytorch",
+        "llm",
+        "alignment",
+        "training"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps\\atelier-rounaq",
+      "local_path": "lab/alembiq",
       "catalog_groups": [
-        "featured"
+        "featured",
+        "research"
       ],
       "depends_on": [
-        "design-system",
         "alawein"
       ],
       "provides": [
-        "studio-site"
+        "llm-training",
+        "synthetic-data"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
+      "repo_archetype": "python-library",
+      "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -300,13 +344,13 @@
       "name": "Attributa",
       "slug": "attributa",
       "repo": "alawein/attributa",
-      "type": "product",
-      "surface": "web",
-      "domain": "ai-governance",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
       "lifecycle": "active",
       "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
       "stack": [
         "typescript",
         "react",
@@ -327,7 +371,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "lab\\attributa",
+      "local_path": "lab/attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -346,12 +390,60 @@
       "release_automation": {}
     },
     {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "stack": [
+        "python",
+        "opencv",
+        "fastapi"
+      ],
+      "audience": [
+        "research",
+        "client"
+      ],
+      "homepage": "https://edfp.online",
+      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "topics": [
+        "python",
+        "computer-vision",
+        "fastapi",
+        "fft",
+        "research"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "lab/edfp",
+      "catalog_groups": [
+        "featured",
+        "research"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "spectral-event-detection"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "python-service",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "LLMWorks",
       "slug": "llmworks",
       "repo": "alawein/llmworks",
-      "type": "product",
-      "surface": "web",
-      "domain": "ai-governance",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
       "lifecycle": "active",
       "visibility": "public",
       "theme_family": "wisdom",
@@ -378,7 +470,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "lab\\llmworks",
+      "local_path": "lab/llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -397,113 +489,16 @@
       "release_automation": {}
     },
     {
-      "name": "Event Discovery Framework",
-      "slug": "edfp",
-      "repo": "alawein/edfp",
-      "type": "research",
-      "surface": "service",
-      "domain": "scientific-computing",
-      "lifecycle": "frozen",
-      "visibility": "private",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "stack": [
-        "python",
-        "opencv",
-        "fastapi"
-      ],
-      "audience": [
-        "research",
-        "client"
-      ],
-      "homepage": "https://edfp.online",
-      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
-      "topics": [
-        "python",
-        "computer-vision",
-        "fastapi",
-        "fft",
-        "research"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "lab\\edfp",
-      "catalog_groups": [
-        "featured",
-        "research"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "spectral-event-detection"
-      ],
-      "version_source": "pyproject.toml",
-      "repo_archetype": "python-service",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Alembiq",
-      "slug": "alembiq",
-      "repo": "alawein/alembiq",
-      "type": "research",
-      "surface": "library",
-      "domain": "ai-governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "vibrant",
-      "brand_family": "vibrant",
-      "stack": [
-        "python",
-        "pytorch",
-        "llm-training"
-      ],
-      "audience": [
-        "research",
-        "client"
-      ],
-      "homepage": "https://alembiq.online",
-      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
-      "topics": [
-        "python",
-        "pytorch",
-        "llm",
-        "alignment",
-        "training"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "lab\\alembiq",
-      "catalog_groups": [
-        "featured",
-        "research"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "llm-training",
-        "synthetic-data"
-      ],
-      "version_source": "pyproject.toml",
-      "repo_archetype": "python-library",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "name": "OptiQAP",
       "slug": "optiqap",
       "repo": "alawein/optiqap",
       "type": "research",
-      "surface": "library",
+      "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "maintained",
+      "lifecycle": "active",
       "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
       "stack": [
         "python",
         "optimization",
@@ -524,7 +519,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "lab\\optiqap",
+      "local_path": "lab/optiqap",
       "catalog_groups": [
         "featured",
         "research"
@@ -536,7 +531,7 @@
         "qap-solvers",
         "benchmarking"
       ],
-      "version_source": "pyproject.toml",
+      "version_source": "package.json",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -546,13 +541,13 @@
       "name": "Veyra",
       "slug": "veyra",
       "repo": "alawein/veyra",
-      "type": "product",
+      "type": "research",
       "surface": "monorepo",
-      "domain": "ai-governance",
+      "domain": "scientific-computing",
       "lifecycle": "active",
       "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
       "stack": [
         "typescript",
         "turborepo",
@@ -573,7 +568,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "lab\\veyra",
+      "local_path": "lab/veyra",
       "catalog_groups": [
         "featured"
       ],
@@ -594,36 +589,39 @@
       "release_automation": {}
     },
     {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
+      "name": "meshal.ai",
+      "slug": "meshal-web",
+      "repo": "alawein/meshal-web",
       "type": "product",
       "surface": "web",
-      "domain": "marketing",
-      "lifecycle": "active",
+      "domain": "portfolio",
+      "lifecycle": "maintained",
       "visibility": "private",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [
+        "vite",
+        "react",
         "typescript",
-        "nextjs",
-        "react"
+        "tailwind"
       ],
       "audience": [
-        "client",
-        "public"
+        "public",
+        "hiring",
+        "client"
       ],
-      "homepage": "https://github.com/alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "homepage": "https://www.meshal.ai",
+      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
       "topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
+        "portfolio",
+        "react",
+        "vite",
+        "typescript",
+        "tailwindcss"
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "apps\\auditraise",
+      "local_path": "sites/meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -632,11 +630,13 @@
         "alawein"
       ],
       "provides": [
-        "marketing-audit-product"
+        "portfolio",
+        "case-studies",
+        "contact-surface"
       ],
       "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "internal-only",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     }

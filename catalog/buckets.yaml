@@ -1,7 +1,8 @@
 ---
 schemaVersion: "1.0.0"
 lastVerified: "2026-08-27"
-# Minimal layout buckets for alawein/ on disk.
+# Minimal on-disk layout buckets for alawein/.
+# Human catalog edits: catalog/index.yaml → compile-index.py → repos.json
 # SSOT for validate-repo-framework.py and validate-topology.py enums.
 buckets:
   core:

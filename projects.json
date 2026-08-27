@@ -1,38 +1,56 @@
 {
   "$schema": "./projects.schema.json",
-  "lastUpdated": "2026-07-25",
+  "lastUpdated": "2026-08-27",
   "featured": [
     {
-      "name": "meshal.ai",
-      "slug": "meshal-web",
-      "repo": "alawein/meshal-web",
-      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
-      "tags": [
-        "React",
-        "Vite",
-        "TypeScript",
-        "Tailwind"
-      ],
-      "category": "maintained",
-      "url": "https://www.meshal.ai",
-      "portfolio_domain": "Personal",
-      "bucket": "sites",
-      "status": "maintained",
-      "visibility": "private"
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
       "tags": [
         "TypeScript",
         "React",
         "Supabase"
       ],
       "category": "active",
-      "url": "https://repzcoach.com",
-      "portfolio_domain": "Personal",
+      "legacy_slugs": [
+        "rounaq-atelier"
+      ],
+      "url": "https://atelier-rounaq.com",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "Marketing"
+      ],
+      "category": "active",
+      "url": "https://github.com/alawein/auditraise",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "tags": [
+        "Next.js",
+        "TypeScript"
+      ],
+      "category": "active",
+      "url": "https://bolts.fit",
+      "portfolio_domain": "Work",
       "bucket": "apps",
       "status": "active",
       "visibility": "private"
@@ -58,6 +76,23 @@
       "visibility": "private"
     },
     {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "category": "active",
+      "url": "https://repzcoach.com",
+      "portfolio_domain": "Personal",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
       "name": "Scribd",
       "slug": "scribd",
       "repo": "alawein/scribd",
@@ -72,97 +107,6 @@
       "portfolio_domain": "Work",
       "bucket": "apps",
       "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Bolts",
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "tags": [
-        "Next.js",
-        "TypeScript"
-      ],
-      "category": "active",
-      "url": "https://bolts.fit",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase"
-      ],
-      "category": "active",
-      "legacy_slugs": [
-        "rounaq-atelier"
-      ],
-      "url": "https://atelier-rounaq.com",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Attributa",
-      "slug": "attributa",
-      "repo": "alawein/attributa",
-      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Vite"
-      ],
-      "category": "active",
-      "url": "https://attributa.dev",
-      "portfolio_domain": "Work",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "LLMWorks",
-      "slug": "llmworks",
-      "repo": "alawein/llmworks",
-      "description": "LLM evaluation, benchmarking, and security testing playground.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase",
-        "LLM"
-      ],
-      "category": "active",
-      "url": "https://llmworks.dev",
-      "portfolio_domain": "Work",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "public"
-    },
-    {
-      "name": "Event Discovery Framework",
-      "slug": "edfp",
-      "repo": "alawein/edfp",
-      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
-      "tags": [
-        "Python",
-        "OpenCV",
-        "FastAPI"
-      ],
-      "category": "frozen",
-      "legacy_slugs": [
-        "event-discovery-framework"
-      ],
-      "url": "https://edfp.online",
-      "portfolio_domain": "Work",
-      "bucket": "lab",
-      "status": "frozen",
       "visibility": "private"
     },
     {
@@ -186,6 +130,61 @@
       "visibility": "private"
     },
     {
+      "name": "Attributa",
+      "slug": "attributa",
+      "repo": "alawein/attributa",
+      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite"
+      ],
+      "category": "active",
+      "url": "https://attributa.dev",
+      "portfolio_domain": "Work",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "FastAPI"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "event-discovery-framework"
+      ],
+      "url": "https://edfp.online",
+      "portfolio_domain": "Work",
+      "bucket": "lab",
+      "status": "frozen",
+      "visibility": "private"
+    },
+    {
+      "name": "LLMWorks",
+      "slug": "llmworks",
+      "repo": "alawein/llmworks",
+      "description": "LLM evaluation, benchmarking, and security testing playground.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase",
+        "LLM"
+      ],
+      "category": "active",
+      "url": "https://llmworks.dev",
+      "portfolio_domain": "Work",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "public"
+    },
+    {
       "name": "OptiQAP",
       "slug": "optiqap",
       "repo": "alawein/optiqap",
@@ -195,7 +194,7 @@
         "Optimization",
         "HPC"
       ],
-      "category": "maintained",
+      "category": "active",
       "legacy_slugs": [
         "qaplibria"
       ],
@@ -223,56 +222,38 @@
       "visibility": "private"
     },
     {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "name": "meshal.ai",
+      "slug": "meshal-web",
+      "repo": "alawein/meshal-web",
+      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
       "tags": [
+        "React",
+        "Vite",
         "TypeScript",
-        "Next.js",
-        "Marketing"
+        "Tailwind"
       ],
-      "category": "active",
-      "url": "https://github.com/alawein/auditraise",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
+      "category": "maintained",
+      "url": "https://www.meshal.ai",
+      "portfolio_domain": "Personal",
+      "bucket": "sites",
+      "status": "maintained",
       "visibility": "private"
     }
   ],
   "notion_sync": [
     {
-      "name": "qmlab.online",
-      "slug": "qmlab",
-      "repo": "alawein/qmlab",
-      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "name": "Adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
       "tags": [
-        "TypeScript",
-        "React",
-        "Vite",
-        "Supabase"
-      ],
-      "category": "frozen",
-      "url": "https://qmlab.online",
-      "portfolio_domain": "Personal",
-      "bucket": "lab",
-      "status": "frozen",
-      "visibility": "private"
-    },
-    {
-      "name": "simcore.dev",
-      "slug": "simcore",
-      "repo": "alawein/simcore",
-      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Vite",
-        "Plotly"
+        "Python",
+        "Legal AI",
+        "CLI"
       ],
       "category": "active",
-      "url": "https://simcore.dev",
-      "portfolio_domain": "Work",
+      "url": "https://github.com/alawein/adil",
+      "portfolio_domain": "Personal",
       "bucket": "lab",
       "status": "active",
       "visibility": "private"
@@ -299,17 +280,37 @@
       "visibility": "private"
     },
     {
-      "name": "Adil",
-      "slug": "adil",
-      "repo": "alawein/adil",
-      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
       "tags": [
-        "Python",
-        "Legal AI",
-        "CLI"
+        "TypeScript",
+        "React",
+        "Vite",
+        "Supabase"
       ],
       "category": "active",
+      "url": "https://qmlab.online",
       "portfolio_domain": "Personal",
+      "bucket": "lab",
+      "status": "frozen",
+      "visibility": "private"
+    },
+    {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
+      ],
+      "category": "active",
+      "url": "https://simcore.dev",
+      "portfolio_domain": "Work",
       "bucket": "lab",
       "status": "active",
       "visibility": "private"
@@ -325,7 +326,8 @@
         "RPG",
         "Game"
       ],
-      "category": "active",
+      "category": "maintained",
+      "url": "https://github.com/alawein/roka-oakland-hustle",
       "portfolio_domain": "Personal",
       "bucket": "sites",
       "status": "active",
@@ -333,6 +335,54 @@
     }
   ],
   "research": [
+    {
+      "name": "Helios",
+      "slug": "helios",
+      "repo": "alawein/helios",
+      "domain": "Proprietary research archive \u2014 computational astrophysics",
+      "description": "Proprietary research archive for computational astrophysics and astronomy work.",
+      "url": "https://github.com/alawein/helios",
+      "category": "archived",
+      "bucket": "archive",
+      "status": "archived",
+      "visibility": "private"
+    },
+    {
+      "name": "Adil",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow).",
+      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "url": "https://github.com/alawein/adil",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "repo": "alawein/alembiq",
+      "domain": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "url": "https://alembiq.online",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "CHSH Lab",
+      "slug": "chshlab",
+      "repo": "alawein/chshlab",
+      "domain": "Quantum foundations \u2014 CHSH / Bell education site",
+      "description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
+      "url": "https://chshlab.online",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "public"
+    },
     {
       "name": "Event Discovery Framework",
       "slug": "edfp",
@@ -348,15 +398,37 @@
       "visibility": "private"
     },
     {
-      "name": "Alembiq",
-      "slug": "alembiq",
-      "repo": "alawein/alembiq",
-      "domain": "LLM training, alignment, evaluation, and synthetic data platform.",
-      "description": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "name": "Loophole Lab",
+      "slug": "loopholelab",
+      "repo": "alawein/loopholelab",
+      "domain": "Research validation \u2014 adversarial claim stress-testing",
+      "description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
+      "url": "https://loopholelab.online",
+      "bucket": "lab",
+      "status": "frozen",
+      "visibility": "public"
+    },
+    {
+      "name": "MagLogic",
+      "slug": "maglogic",
+      "repo": "alawein/maglogic",
+      "domain": "Magnetic logic gates",
+      "description": "Magnetic logic gates and device simulation research.",
+      "url": "https://github.com/alawein/maglogic",
+      "bucket": "lab",
+      "status": "frozen",
+      "visibility": "public"
+    },
+    {
+      "name": "meatheadphysicist",
+      "slug": "meatheadphysicist",
+      "repo": "alawein/meatheadphysicist",
+      "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",
+      "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
       "legacy_slugs": [
-        "neper"
+        "MeatheadPhysicist"
       ],
-      "url": "https://alembiq.online",
+      "url": "https://mhphys.online",
       "bucket": "lab",
       "status": "active",
       "visibility": "private"
@@ -376,50 +448,18 @@
       "visibility": "private"
     },
     {
-      "name": "qmlab.online",
-      "slug": "qmlab",
-      "repo": "alawein/qmlab",
-      "domain": "Quantum ML web lab (React/TS/Vite)",
-      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
-      "url": "https://qmlab.online",
-      "bucket": "lab",
-      "status": "frozen",
-      "visibility": "private"
-    },
-    {
-      "name": "simcore.dev",
-      "slug": "simcore",
-      "repo": "alawein/simcore",
-      "domain": "Scientific simulation core",
-      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
-      "url": "https://simcore.dev",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "meatheadphysicist",
-      "slug": "meatheadphysicist",
-      "repo": "alawein/meatheadphysicist",
-      "domain": "Computational physics research \u2014 Bell inequality, CHSH simulation",
-      "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
+      "name": "Provegate",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "domain": "Agent MCP tooling \u2014 drift, memory, proof",
+      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
       "legacy_slugs": [
-        "MeatheadPhysicist"
+        "epistemic-stack"
       ],
-      "url": "https://mhphys.online",
+      "url": "https://provegate.online",
       "bucket": "lab",
       "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Adil",
-      "slug": "adil",
-      "repo": "alawein/adil",
-      "domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow).",
-      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "qmatsim",
@@ -431,6 +471,28 @@
       "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
+    },
+    {
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "domain": "Quantum ML web lab (React/TS/Vite)",
+      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "url": "https://qmlab.online",
+      "bucket": "lab",
+      "status": "frozen",
+      "visibility": "private"
+    },
+    {
+      "name": "quantumalgo",
+      "slug": "quantumalgo",
+      "repo": "alawein/quantumalgo",
+      "domain": "Quantum algorithms; combinatorial optimization",
+      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "url": "https://github.com/alawein/quantumalgo",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
     },
     {
       "name": "qubeml",
@@ -455,6 +517,17 @@
       "visibility": "public"
     },
     {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "domain": "Scientific simulation core",
+      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "url": "https://simcore.dev",
+      "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
       "name": "spincirc",
       "slug": "spincirc",
       "repo": "alawein/spincirc",
@@ -466,64 +539,6 @@
       "visibility": "public"
     },
     {
-      "name": "MagLogic",
-      "slug": "maglogic",
-      "repo": "alawein/maglogic",
-      "domain": "Magnetic logic gates",
-      "description": "Magnetic logic gates and device simulation research.",
-      "url": "https://github.com/alawein/maglogic",
-      "bucket": "lab",
-      "status": "frozen",
-      "visibility": "public"
-    },
-    {
-      "name": "CHSH Lab",
-      "slug": "chshlab",
-      "repo": "alawein/chshlab",
-      "domain": "Quantum foundations \u2014 CHSH / Bell education site",
-      "description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
-      "url": "https://chshlab.online",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "public"
-    },
-    {
-      "name": "Helios",
-      "slug": "helios",
-      "repo": "alawein/helios",
-      "domain": "Proprietary research archive \u2014 computational astrophysics",
-      "description": "Proprietary research archive for computational astrophysics and astronomy work.",
-      "category": "archived",
-      "bucket": "archive",
-      "status": "archived",
-      "visibility": "private"
-    },
-    {
-      "name": "Loophole Lab",
-      "slug": "loopholelab",
-      "repo": "alawein/loopholelab",
-      "domain": "Research validation \u2014 adversarial claim stress-testing",
-      "description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
-      "url": "https://loopholelab.online",
-      "bucket": "lab",
-      "status": "frozen",
-      "visibility": "public"
-    },
-    {
-      "name": "Provegate",
-      "slug": "provegate",
-      "repo": "alawein/provegate",
-      "domain": "Agent MCP tooling \u2014 drift, memory, proof",
-      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "legacy_slugs": [
-        "epistemic-stack"
-      ],
-      "url": "https://provegate.online",
-      "bucket": "lab",
-      "status": "active",
-      "visibility": "public"
-    },
-    {
       "name": "Mercor LLM Failsafe",
       "slug": "mercor",
       "repo": "alawein/mercor",
@@ -532,35 +547,22 @@
       "legacy_slugs": [
         "mercor-llm-failsafe"
       ],
+      "url": "https://github.com/alawein/mercor",
       "bucket": "work",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "quantumalgo",
-      "slug": "quantumalgo",
-      "repo": "alawein/quantumalgo",
-      "domain": "Quantum algorithms; combinatorial optimization",
-      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
-      "url": "https://github.com/alawein/quantumalgo",
-      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     }
   ],
   "infrastructure": [
     {
-      "name": "Provegate",
-      "slug": "provegate",
-      "repo": "alawein/provegate",
-      "purpose": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "legacy_slugs": [
-        "epistemic-stack"
-      ],
-      "url": "https://provegate.online",
+      "name": "alawein",
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "purpose": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "url": "https://github.com/alawein/alawein",
       "status": "active",
-      "bucket": "lab",
+      "bucket": "core",
       "visibility": "public"
     },
     {
@@ -579,23 +581,12 @@
       "visibility": "private"
     },
     {
-      "name": "alawein",
-      "slug": "alawein",
-      "repo": "alawein/alawein",
-      "purpose": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "url": "https://github.com/alawein/alawein",
-      "status": "active",
-      "bucket": "core",
-      "visibility": "public"
-    },
-    {
-      "name": "workspace-tools",
-      "slug": "workspace-tools",
-      "repo": "alawein/workspace-tools",
-      "purpose": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "url": "https://github.com/alawein/workspace-tools",
+      "name": "incore",
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "purpose": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "url": "https://github.com/alawein/incore",
       "status": "active",
       "bucket": "core",
       "visibility": "private"
@@ -613,6 +604,78 @@
       "status": "active",
       "bucket": "core",
       "visibility": "private"
+    },
+    {
+      "name": "Outpost",
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "purpose": "Personal kit that installs prompts for coding agents.",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "url": "https://github.com/alawein/outpost",
+      "status": "active",
+      "bucket": "core",
+      "visibility": "public"
+    },
+    {
+      "name": "prompty",
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "purpose": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "url": "https://github.com/alawein/prompty",
+      "status": "active",
+      "bucket": "core",
+      "visibility": "private"
+    },
+    {
+      "name": "Workspace Control",
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "purpose": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "url": "https://github.com/alawein/workspace-control",
+      "status": "active",
+      "bucket": "core",
+      "visibility": "private"
+    },
+    {
+      "name": "workspace-tools",
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "purpose": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "url": "https://github.com/alawein/workspace-tools",
+      "status": "active",
+      "bucket": "core",
+      "visibility": "private"
+    },
+    {
+      "name": "Fallax",
+      "slug": "fallax",
+      "repo": "alawein/fallax",
+      "purpose": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "legacy_slugs": [
+        "reasonbench"
+      ],
+      "url": "https://fallax.online",
+      "status": "active",
+      "bucket": "lab",
+      "visibility": "public"
+    },
+    {
+      "name": "Provegate",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "purpose": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "url": "https://provegate.online",
+      "status": "active",
+      "bucket": "lab",
+      "visibility": "public"
     },
     {
       "name": "Handshake AI Eval",
@@ -638,64 +701,6 @@
       "url": "https://github.com/alawein/turing",
       "status": "active",
       "bucket": "work",
-      "visibility": "private"
-    },
-    {
-      "name": "incore",
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "purpose": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "url": "https://github.com/alawein/incore",
-      "status": "active",
-      "bucket": "core",
-      "visibility": "private"
-    },
-    {
-      "name": "prompty",
-      "slug": "prompty",
-      "repo": "alawein/prompty",
-      "purpose": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-      "url": "https://github.com/alawein/prompty",
-      "status": "active",
-      "bucket": "core",
-      "visibility": "private"
-    },
-    {
-      "name": "Fallax",
-      "slug": "fallax",
-      "repo": "alawein/fallax",
-      "purpose": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "legacy_slugs": [
-        "reasonbench"
-      ],
-      "url": "https://fallax.online",
-      "status": "active",
-      "bucket": "lab",
-      "visibility": "public"
-    },
-    {
-      "name": "Outpost",
-      "slug": "outpost",
-      "repo": "alawein/outpost",
-      "purpose": "Personal kit that installs prompts for coding agents.",
-      "description": "Personal kit that installs prompts for coding agents.",
-      "url": "https://github.com/alawein/outpost",
-      "status": "active",
-      "bucket": "core",
-      "visibility": "public"
-    },
-    {
-      "name": "Workspace Control",
-      "slug": "workspace-control",
-      "repo": "alawein/workspace-control",
-      "purpose": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "url": "https://github.com/alawein/workspace-control",
-      "status": "active",
-      "bucket": "core",
       "visibility": "private"
     }
   ],

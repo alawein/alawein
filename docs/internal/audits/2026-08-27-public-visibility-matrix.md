@@ -28,7 +28,9 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
 - B6: two sources. GitHub secret-scanning open alerts, and a pattern scan of
   tracked paths on `main` for `.env`, `*.pem`, `*.key`, `id_rsa`, `secrets.json`,
   and similar. A committed `.env.example` is a template and does not fail.
-  Only `alawein` has a gitleaks history scan, from its own CI.
+  `alawein` has a gitleaks history scan from its own CI. `fallax` and
+  `llmworks` have secret scanning turned off, so each was scanned locally
+  with gitleaks 8.30.1 against a fresh read-only clone.
 - B7: judged on the repo's build and test workflow (`CI`, `ci`, or `test`) on
   `main` HEAD. Reporting workflows (`drift`, `CodeQL`, `OpenSSF Scorecard`,
   `Dependabot Updates`, `Docs Doctrine`) are recorded as warnings, not B7
@@ -40,10 +42,10 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
 
 | slug | catalog | GitHub | pinned | type | bucket | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | tier | action |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: Audit Documentation, Gitleaks, Workspace Audit red on HEAD | n/a | n/a | P1 | seed P1; hub, never pinned, never flipped; fix CI and history |
+| alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: `CI - Documentation Contract` (ci.yml) red on main since 2026-08-17, run 32068929727 on HEAD; supporting detail, `Documentation Audit` (docs-validation.yml) and `Workspace Audit` (workspace-audit.yml) also red on HEAD | n/a | n/a | P1 | seed P1; hub, never pinned, never flipped; fix CI and history |
 | chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, P0 candidate; no grace (no CITATION.cff, no research row) |
-| fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | not scanned: secret scanning off | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate; enable secret scanning |
-| llmworks | public | public | yes | product | lab | pass | pass | pass | pass | pass | not scanned: secret scanning off | pass | pass | fail: pinned without a P0 record | P1 | seed P1; enable secret scanning; fix the stale `e2e/` tree entry |
+| fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | pass: gitleaks local 0 leaks | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
+| llmworks | public | public | yes | product | lab | pass | pass | pass | pass | pass | fail: gitleaks local 1 leak (jwt) | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B6 |
 | loopholelab | public | public | yes | research | lab | pass | pass | pass | pass | fail: `/app`, `/app/dashboard`, `/docs` 404 on loopholelab.online | pass | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B5 |
 | maglogic | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
 | outpost | public | public | catalog only | tooling | core | pass | pass | pass | pass | pass | pass | pass | pass | fail: catalog pin without a P0 record, not in the live pin list | P1 | seed P1; settle the catalog pin against the live list |
@@ -53,8 +55,8 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
 | scicomp | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
 | spincirc | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
 
-Seven of the twelve pass every one of B1 to B8: `chshlab`, `maglogic`,
-`outpost`, `qmatsim`, `qubeml`, `scicomp`, `spincirc`.
+Eight of the twelve pass every one of B1 to B8: `chshlab`, `fallax`,
+`maglogic`, `outpost`, `qmatsim`, `qubeml`, `scicomp`, `spincirc`.
 
 ## Private on GitHub (28)
 
@@ -63,12 +65,12 @@ Seven of the twelve pass every one of B1 to B8: `chshlab`, `maglogic`,
 | adil | private | private | research | lab | active | P2 | active private lab |
 | alembiq | private | private | research | lab | active | P2 | active private lab |
 | atelier-rounaq | private | private | product | apps | active | P2 | open credibility flags (April audit) |
-| attributa | private | private | research | lab | active | P2 | active private lab; fails B3 topology, five missing README sections |
+| attributa | private | private | research | lab | active | P2 | active private lab; April audit headline is that the live domain shows the wrong product entirely, a fitness RPG instead of attribution intelligence; also fails B3 topology, five missing README sections |
 | auditraise | private | private | product | apps | active | P2 | apps bucket, private by policy |
 | bolts | private | private | product | apps | active | P2 | open credibility flags (April audit) |
 | design-system | private | private | infra | core | active | P2 | internal core tooling |
 | edfp | private | private | research | lab | frozen | P3 | dormant research |
-| gymboy | private | private | product | apps | active | P2 | open credibility flags (April audit) |
+| gymboy | private | private | product | apps | active | P2 | apps bucket; April audit found architecture, dependency, and hygiene issues but no credibility flags; next wave candidate |
 | handshake | private | private | product | work | active | P2 | work bucket, never public |
 | helios | private | private (archived) | archive | archive | archived | exempt | archived |
 | incore | private | private | tooling | core | active | P2 | internal core tooling |
@@ -93,13 +95,16 @@ Seven of the twelve pass every one of B1 to B8: `chshlab`, `maglogic`,
 
 | slug | why | catalog change | GitHub change | pin change |
 |---|---|---|---|---|
+| llmworks | B6: gitleaks on a fresh clone reports 1 leak, a Supabase anon JWT hardcoded in `src/integrations/supabase/client.ts` in history | visibility: private, no promotion | PATCH private=true | remove from the live pin list and from `profile_pins` |
 | loopholelab | B5: the README lists `/app`, `/app/dashboard`, and `/docs` as shipped routes; all three 404 on loopholelab.online, and the landing page's own buttons point at them | visibility: private, no promotion | PATCH private=true | remove from the live pin list and from `profile_pins` |
 | provegate | B7: the `CI` workflow's `test` job is red on `main` HEAD at the Lint step | visibility: private, no promotion | PATCH private=true | none, not pinned |
 
 The design expected this batch to hold `outpost` only. `outpost` was seeded on
-2026-08-27 and now passes every blocker, so it leaves the batch; `loopholelab`
-and `provegate` take its place. Either row can be cleared by fixing the named
-check instead of flipping, which is the cheaper path for both.
+2026-08-27 and now passes every blocker, so it leaves the batch; `llmworks`,
+`loopholelab`, and `provegate` take its place. Every row can be cleared by
+fixing the named check instead of flipping, which is the cheaper path for all
+three. Two of the three are live profile pins, so the pin list shrinks either
+way until the checks pass.
 
 ## Findings
 
@@ -120,10 +125,15 @@ check instead of flipping, which is the cheaper path for both.
   `platforms/` paths from the old monorepo layout. None of those paths exist in
   the current tree. The 224 findings were not triaged one by one; the count and
   the rule mix are the record.
-- `alawein` B7 fail, detail: on `main` HEAD, `Audit Documentation`, `Gitleaks`,
-  and the `sync` job are red, and 22 of 30 `Workspace Audit` matrix legs fail at
-  `Checkout repo` because the job's token cannot read private repos. `Docs
-  Doctrine` and `CI - Documentation Contract` were last red on 2026-08-17.
+- `alawein` B7 fail, detail: the workflow the B7 rule reaches is `CI -
+  Documentation Contract` (`.github/workflows/ci.yml`). Its latest run on main
+  is 32068929727, failure, 2026-08-17, on HEAD `0517918d06`, in the
+  `validate-contract` job at the step `Validate documentation contract (push)`.
+  Supporting detail on the same HEAD: `Documentation Audit`
+  (`docs-validation.yml`) red on 2026-08-24, and `Workspace Audit`
+  (`workspace-audit.yml`) red on 2026-08-24 with 22 of 30 matrix legs failing
+  at `Checkout repo` because the job's token cannot read private repos. The
+  `Secrets Scan` failure is the B6 evidence and is not counted again here.
 - `alawein` stays public and P1 despite failing B6 and B7. It is the GitHub
   profile repo; taking it private removes the profile README from every visitor.
   The gate's flip rule does not apply to it. The two failures are fix items for
@@ -155,9 +165,23 @@ check instead of flipping, which is the cheaper path for both.
   remains: the README architecture tree lists `e2e/` at the repo root, and the
   Playwright suite actually lives at `tests/e2e/`.
 - Secret scanning is off on `fallax` and `llmworks`; the alerts endpoint returns
-  404 on both. Their B6 cells read `not scanned`. Their tracked-path scan is
-  clean, so the gap is the alert feed, not a known exposure. Turning the feature
-  on is a one-click change and would move both to a full B1 to B8 pass.
+  404 on both. B6 was established locally instead, with gitleaks 8.30.1 against
+  a fresh read-only clone of each.
+- `fallax` B6 pass: 160 commits scanned, 1.29 MB, no leaks found. Nothing to
+  triage. This moves `fallax` to a full B1 to B8 pass.
+- `llmworks` B6 fail: 165 commits scanned, 3.97 MB, 3 findings, all from commit
+  `73a3648d43` dated 2026-01-03. Two are `curl-auth-header` hits in
+  `docs/API_REFERENCE.md` where the sample reads `-H "Authorization: Bearer
+  your-api-key"`; those are documentation placeholders and are excluded. The
+  third is a `jwt` hit in `src/integrations/supabase/client.ts` line 7, a
+  hardcoded `SUPABASE_PUBLISHABLE_KEY` next to the project URL. Its claims are
+  `role: anon`, project ref `xzuylggvftuglkdhnljs`, expiry 2035. A Supabase anon
+  key is meant to ship in the browser and is gated by row-level security, so the
+  blast radius is small, but it is a live credential-shaped value in a source
+  file rather than a fixture, so it counts as a leak. The current tree is clean:
+  `client.ts` reads `import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY`, and no `eyJ`
+  literal exists anywhere on `main`. The fix is to rotate the anon key and, if
+  the history matters, purge the blob; until then `llmworks` is P2.
 - Deploy checks, all 200: llmworks.dev, loopholelab.online (landing only),
   provegate.online, fallax.online, meshal.ai, kohyr.ai, kohyr.com.
 - Four public repos have no build or test workflow at all: `maglogic`,

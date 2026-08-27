@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-05-03
+last_updated: 2026-08-27
 tags: [git, branching, push, stash, recovery, workflow]
 ---
 

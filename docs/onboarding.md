@@ -2,8 +2,8 @@
 type: canonical
 source: alawein
 sla: on-change
-last-verified: 2026-05-23
-last_updated: 2026-05-23
+last-verified: 2026-08-27
+last_updated: 2026-08-27
 audience: [new-contributors, agents]
 ---
 

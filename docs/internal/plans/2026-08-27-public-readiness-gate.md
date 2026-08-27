@@ -1365,7 +1365,7 @@ Expected: four files; topology exit 1 with only `attributa` and `veyra` lines; v
 
 - [ ] **Step 2: Manual blockers B5 to B7 for the 11 public non-hub repos**
 
-For each of `chshlab, fallax, llmworks, loopholelab, maglogic, provegate, qmatsim, qubeml, scicomp, spincirc` and the hub `alawein`, run and record:
+For each of `chshlab, fallax, llmworks, loopholelab, maglogic, outpost, provegate, qmatsim, qubeml, scicomp, spincirc` and the hub `alawein`, run and record:
 
 ```powershell
 $r = "qmatsim"   # repeat per slug
@@ -1421,7 +1421,7 @@ B5 credibility, B6 secrets, B7 CI, B8 license, B9 pin rule. Tier is the proposed
 
 | slug | why | catalog change | GitHub change | pin change |
 |---|---|---|---|---|
-| outpost | public, empty (size 0), no README, first in profile_pins | visibility: private, no promotion | PATCH visibility=private | remove |
+| (one row per public repo that failed a blocker; write `none` if the batch is empty) | | visibility: private, no promotion | PATCH private=true | remove if pinned |
 
 ## Findings
 
@@ -1615,7 +1615,7 @@ git commit -m "Rewrite visibility defaults as private by default and record the 
 
 - [ ] **Step 1: Add `promotion` to the 11 public entries in `catalog/index.yaml`**
 
-For `alawein, chshlab, fallax, llmworks, loopholelab, maglogic, provegate, qmatsim, qubeml, scicomp, spincirc`, add under the entry (after `url:`), using the matrix tier; the five live pins get `grace_until`:
+For every public slug the matrix passed (expected: `alawein, chshlab, fallax, llmworks, loopholelab, maglogic, outpost, provegate, qmatsim, qubeml, scicomp, spincirc`), add under the entry (after `url:`), using the matrix tier; every slug in `profile_pins` gets `grace_until`:
 
 ```yaml
     promotion:
@@ -1624,13 +1624,15 @@ For `alawein, chshlab, fallax, llmworks, loopholelab, maglogic, provegate, qmats
       notes: scan v1, see docs/internal/audits/2026-08-27-public-visibility-matrix.md
 ```
 
-For `fallax, loopholelab, chshlab, qmatsim, llmworks` add `grace_until: '2026-09-30'` and the note `pinned; P0 after README redo wave 1`. For the cited research (`qmatsim, spincirc, maglogic, scicomp, qubeml`) add the note `cited research; CITATION.cff` where the file exists (`maglogic, scicomp, spincirc`).
+For the six `profile_pins` slugs (`outpost, fallax, loopholelab, chshlab, qmatsim, llmworks`) add `grace_until: '2026-09-30'` and the note `pinned; P0 after README redo wave 1`. For the cited research (`qmatsim, spincirc, maglogic, scicomp, qubeml`) add the note `cited research; CITATION.cff` where the file exists (`maglogic, scicomp, spincirc`).
 
 If the matrix marked any public repo as failing B5 to B7, do not seed it; it goes into the private-first batch in Task 9 instead.
 
-- [ ] **Step 2: Demote `outpost` in the catalog**
+- [ ] **Step 2: Demote every repo in the matrix's private-first batch**
 
-In `catalog/index.yaml`, `outpost` entry: remove the `visibility: public` line (absent means private) and leave it without `promotion`. In `profile-from-guides.yaml`, remove `  - outpost` from `profile_pins` and set `updated: 2026-08-27`.
+Status note (2026-08-27, during execution): `outpost` was seeded on GitHub today (README, LICENSE, size 219, pushed 20:24 UTC), after the plan was written. It is no longer an automatic demotion; it is scanned like the other public repos in Task 6 and, if it passes, seeded in Step 1 with the other pins (it is in `profile_pins`, so it gets `grace_until`). The expected private-first batch is now empty unless Task 6 finds a failing blocker.
+
+For each slug the matrix lists under `## Private-first batch`: in `catalog/index.yaml` remove its `visibility: public` line (absent means private) and give it no `promotion`; if it is in `profile_pins` in `profile-from-guides.yaml`, remove it and set `updated: 2026-08-27`. If the batch is empty, change nothing in this step and say so in the commit body of Step 5 (one line).
 
 - [ ] **Step 3: Rebuild and validate**
 
@@ -1643,7 +1645,7 @@ python scripts/catalog/sync-readme.py --check
 python scripts/github/validate-visibility.py --offline
 python -m pytest scripts/tests -q
 ```
-Expected: `validate-catalog.py` prints no promotion errors or warnings (the five pins are under grace, which the offline rule keeps silent so `--strict` in CI stays green); run `python scripts/catalog/validate-catalog.py --strict` too and expect exit 0; both `--check` commands exit 0; `--offline` prints 5 `V5` warnings, 0 errors, exit 0; pytest all pass. `verify-profile-pins.py --skip-live --check` still fails on README links (pre-existing, DEBT entry from Task 7).
+Expected: `validate-catalog.py` prints no promotion errors or warnings (the pins are under grace, which the offline rule keeps silent so `--strict` in CI stays green); run `python scripts/catalog/validate-catalog.py --strict` too and expect exit 0; both `--check` commands exit 0; `--offline` prints one `V5` warning per pinned slug (6 if `outpost` stays pinned), 0 errors, exit 0; pytest all pass. `verify-profile-pins.py --skip-live --check` still fails on README links (pre-existing, DEBT entry from Task 7).
 
 - [ ] **Step 4: Confirm the generated diff is only what the scripts produced**
 
@@ -1666,7 +1668,7 @@ git commit -m "Seed promotion records for public repos and demote outpost to pri
 
 - [ ] **Step 1: Show the batch table and ask**
 
-Present the `## Private-first batch` table from the matrix (expected: `outpost` only) and the exact command. Use AskUserQuestion with options `Approve the flip`, `Skip the flip this cycle`. Do not proceed on silence or on an earlier approval.
+Present the `## Private-first batch` table from the matrix and the exact command per row. If the table is empty (expected as of 2026-08-27 20:24 UTC, when `outpost` was seeded), record `Task 9: no flips this cycle (batch empty)` in the ledger and skip Steps 2 and 3. Otherwise use AskUserQuestion with options `Approve the flip`, `Skip the flip this cycle`. Do not proceed on silence or on an earlier approval.
 
 - [ ] **Step 2: On approval, flip and verify**
 

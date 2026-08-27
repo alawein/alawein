@@ -1,5 +1,12 @@
 # {{name}}
 
+Status:      {{status}}
+Category:    {{bucket}}
+Owner:       alawein
+Visibility:  {{visibility}}
+Purpose:     {{purpose}}
+Next action: continue
+
 ## Purpose
 
 State what this repo provides and who consumes it.
@@ -19,6 +26,12 @@ State what this repo provides and who consumes it.
 ## Architecture
 
 Describe packages, entry points, and integration boundaries.
+
+## Docs map
+
+- `docs/README.md`
+- `SSOT.md`
+- `LESSONS.md`
 
 ## Consumers
 

@@ -86,6 +86,7 @@ README_SECTIONS = {
         "Install",
         "Commands",
         "Architecture",
+        "Docs map",
         "Consumers",
         "Release and versioning",
     ],
@@ -94,16 +95,15 @@ README_SECTIONS = {
         "Install",
         "Commands",
         "Architecture",
+        "Docs map",
         "Consumers",
         "Release and versioning",
     ],
     "governance": [
         "Purpose",
-        "Install",
-        "Commands",
-        "Architecture",
-        "Consumers",
-        "Release and versioning",
+        "Catalog SSOT",
+        "Validators",
+        "Docs map",
     ],
     "research": [
         "Abstract",
@@ -115,9 +115,10 @@ README_SECTIONS = {
     ],
     "archive": [
         "Status",
-        "Historical purpose",
-        "Constraints",
-        "Retrieval notes",
+        "Archive reason",
+        "Contents",
+        "Access rules",
+        "Docs map",
     ],
 }
 
@@ -835,6 +836,8 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
         "README.product.md": README_SECTIONS["product"],
         "README.tooling.md": README_SECTIONS["tooling"],
         "README.research.md": README_SECTIONS["research"],
+        "README.governance.md": README_SECTIONS["governance"],
+        "README.archive.md": README_SECTIONS["archive"],
     }
     for filename, required in template_to_sections.items():
         path = templates_dir / filename

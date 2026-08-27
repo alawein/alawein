@@ -28,18 +28,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - [`catalog/buckets.yaml`](catalog/buckets.yaml): minimal six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`) with legacy map from the prior eight folders.
 - [`config/model-routing.yaml`](config/model-routing.yaml) and [`scripts/ops/openrouter_route.py`](scripts/ops/openrouter_route.py): OpenRouter task routes (Qwen, Gemini, GLM, Kimi) and named workflows (`voice-resweep`, `catalog-audit`, `pr-ready`).
 - [`scripts/ops/migrate_buckets.py`](scripts/ops/migrate_buckets.py): one-shot workspace migrator for catalog paths and README `Category` headers.
-
 - [`catalog/index.yaml`](catalog/index.yaml), [`catalog/lanes.yaml`](catalog/lanes.yaml), and [`scripts/catalog/compile_index.py`](scripts/catalog/compile_index.py): four-lane human catalog (`platform`, `ship`, `lab`, `work`, `archive`) compiles to full `repos.json`; `build-catalog.py` runs compile automatically and emits `catalog/generated/index-snapshot.json`.
-
-### Changed
-
-- Portfolio buckets collapsed from eight on-disk folders to six meaningful groups; `catalog/repos.json` `local_path` roots updated (`core/`, `apps/`, `lab/`, `sites/`, `work/`).
-- `compile_index.py` preserves existing catalog metadata (for example `type`) instead of overwriting from bucket defaults; inventory reconciliation uses projected workspace paths so derived feeds are CI-stable.
-- `projects.schema.json` bucket enum aligned to the six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`).
-- [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md), [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py), and [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): `Category` / `bucket` enums aligned to the minimal set.
-
-### Added
-
 - [`docs/internal/audits/2026-07-25-github-repo-keep-roster.md`](docs/internal/audits/2026-07-25-github-repo-keep-roster.md): active GitHub keep roster; archived 13 dead/duplicate remotes; cataloged `outpost`, `auditraise`, `workspace-control`.
 - [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md): fleet axes, eleven archetypes, README unification spec, and execution waves.
 - [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md): Phase 1 fleet topology and README audit (37 repos).
@@ -53,6 +42,17 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - [`scripts/notion/run-notion-local.ps1`](scripts/notion/run-notion-local.ps1): local Notion validate + sync + canonical verify using the same env mapping as `notion-sync.yml` (moved to private ops repo).
 - Topology validator [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): enforces the two-axis repo model (`bucket` ownership, `type` role) with data-coherence checks (allowed values, slug vs `local_path`, archived-marker agreement) plus optional `--workspace-root` disk-existence checks. Hub and archived repos are exempt from path checks. Fixtures-based tests under `scripts/doctrine/tests/`.
 - [`scripts/doctrine/validate-readme-topology.py`](scripts/doctrine/validate-readme-topology.py): Tier 1 README section contracts per catalog `type` (with catalog-collection and alias maps), plus `docs/architecture/topology.md` ASCII tree check. Modes: fleet GitHub API (`--github-api`), local workspace (`--workspace-root`), single-repo (`--repo-path`). Wired in hub `docs-doctrine.yml` and per-repo `doctrine-reusable.yml`.
+- Public readiness gate: `promotion` records in [`catalog/index.yaml`](catalog/index.yaml), offline rules in `validate-catalog.py`, and [`scripts/github/validate-visibility.py`](scripts/github/validate-visibility.py) comparing catalog visibility and pins with live GitHub. Design: `docs/internal/specs/2026-08-27-public-readiness-gate-design.md`.
+- [`templates/scaffolding/README.governance.md`](templates/scaffolding/README.governance.md) and [`README.archive.md`](templates/scaffolding/README.archive.md); framework header added to the product, research, and tooling templates.
+- [`docs/internal/audits/2026-08-27-public-visibility-matrix.md`](docs/internal/audits/2026-08-27-public-visibility-matrix.md): scan v1 of all 40 catalog slugs.
+
+### Changed
+
+- Portfolio buckets collapsed from eight on-disk folders to six meaningful groups; `catalog/repos.json` `local_path` roots updated (`core/`, `apps/`, `lab/`, `sites/`, `work/`).
+- `compile_index.py` preserves existing catalog metadata (for example `type`) instead of overwriting from bucket defaults; inventory reconciliation uses projected workspace paths so derived feeds are CI-stable.
+- `projects.schema.json` bucket enum aligned to the six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`).
+- [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md), [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py), and [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): `Category` / `bucket` enums aligned to the minimal set.
+- [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md): visibility defaults rewritten for the six buckets, private by default; [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md) bucket table aligned.
 
 ### Changed
 

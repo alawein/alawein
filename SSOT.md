@@ -54,6 +54,12 @@ governance contract for naming, portfolio truth, and migration sequencing.
   `scripts/catalog/build-catalog.py`
 - Read-only profile pin drift verification is active via
   `scripts/github/verify-profile-pins.py`
+- Public readiness gate is active: every repo is private unless
+  `catalog/index.yaml` carries a current `promotion` record (tier P0 or P1,
+  scan under 90 days); pins require P0. Enforced by
+  `scripts/github/validate-visibility.py` and the offline rules in
+  `scripts/catalog/validate-catalog.py`. Design:
+  `docs/internal/specs/2026-08-27-public-readiness-gate-design.md`
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and
   remain render-first GitHub artifacts
 - Hybrid corpus refinement is active under `docs/style/`; canonical prompt

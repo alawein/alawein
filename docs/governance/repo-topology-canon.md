@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-07-26
+last_updated: 2026-08-27
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -21,13 +21,12 @@ Where the repo lives. `local_path` first segment MUST equal `bucket` for non-arc
 
 | Value | Meaning |
 |-------|---------|
-| `products` | Shipped or shipping user products |
-| `ventures` | Product bets and venture surfaces |
-| `research` | Scientific and R&D code |
-| `tools` | Platform, infra, internal tooling |
-| `personal` | Portfolio and personal projects |
-| `family` | Family-operated sites |
-| `jobs-projects` | Employer engagement workspaces |
+| `core` | Control plane, shared infra, design system, workspace tooling |
+| `apps` | Shipped or monetizing products and family-maintained apps |
+| `lab` | Research, simulation, experiments, early-stage bets |
+| `sites` | Public portfolio and identity sites |
+| `work` | Interview, contract, and employer-adjacent work |
+| `archive` | Inactive but preserved; disk under `_archive/` |
 
 ### `type` (functional role)
 
@@ -42,7 +41,7 @@ What the repo does in the architecture diagram. Independent of `bucket`.
 | `tooling` | CLI, library, or eval harness consumed by agents or CI |
 | `archive` | Frozen or employer archive; read-mostly |
 
-**Legal:** `bucket=ventures` + `type=product` (attributa). **Illegal:** `bucket=tools` + disk `ventures/attributa`.
+**Legal:** bucket=lab + type=product (attributa). **Illegal:** bucket=core + disk lab/attributa.
 
 ### Archive convention
 
@@ -348,6 +347,8 @@ Purpose: <one line>
 Next action: continue|refactor|merge|archive|delete
 ```
 
+Visibility MUST agree with catalog visibility and live GitHub; the public readiness gate (validate-visibility.py) enforces it.
+
 `Category` MUST match catalog `bucket` after Wave 0 truth-up.
 
 ### Section order by `type`
@@ -424,6 +425,7 @@ Wave 1 targets Tier 1. Wave 2+ tightens to Tier 2.
 | Extend `validate-repo-framework.py` | Shipped | `--catalog` SSOT for Category ↔ bucket; optional projects.json agreement check in `doctrine-reusable.yml` |
 | Per-repo doctrine CI | Shipped | `doctrine-reusable.yml` runs README topology on each adopting repo |
 | Voice linter | Shipped | `validate-readme-voice.py`: README-only banned register / em dash / AI attribution; `--github-api`, `--workspace-root`, `--repo-path`. Hub `docs-doctrine.yml` + `doctrine-reusable.yml` |
+| `validate-visibility.py` | Shipped | Hub `docs-doctrine.yml`; catalog visibility vs live GitHub, empty or README-less public repos, pins require P0, LICENSE for public research and tooling |
 
 Fleet scan runs on hub schedule/PR via GitHub API (`main`). Local fleet scan: `python scripts/doctrine/validate-readme-topology.py --workspace-root <fleet-root>`.
 

@@ -34,6 +34,7 @@ Two refinements to the spec, decided while planning:
 
 - The `promotion` schema addition goes in `schemas/repo.schema.json` (the `repos.json` schema), not `projects.schema.json`. `promotion` is not propagated into `projects.json`; nothing consumes it there.
 - `grace_until` also suppresses the pinned-below-P0 rule (V5) during the fix wave, not only the research checks. The five current pins are P1 today and become P0 only after the README redo (sub-project 3). A recorded deadline is more honest than five provisional P0s.
+- Grace is silent in the offline catalog rule and a warning in the gate CLI. CI runs `validate-catalog.py --strict` (`docs-validation.yml:81`, `github-metadata-sync.yml:75,154`), which fails on warnings; a grace warning there would turn CI red for the whole fix wave. The deadline is still enforced: an expired grace is an error in both tools.
 
 ---
 
@@ -286,11 +287,16 @@ class ValidatePromotionTests(unittest.TestCase):
         msgs = _messages(validate_promotion([repo], [], today=TODAY))
         self.assertTrue(any("scan from 2026-05-01 is older than 90 days" in m for m in msgs), msgs)
 
-    def test_public_with_stale_scan_under_grace_is_warning(self) -> None:
+    def test_public_with_stale_scan_under_grace_is_clean(self) -> None:
+        # CI runs validate-catalog.py --strict, which fails on warnings, so an
+        # active grace is silent here; validate-visibility.py reports it.
         repo = _repo(visibility="public", promotion={"tier": "P1", "scanned": "2026-05-01", "grace_until": "2026-09-30"})
-        issues = validate_promotion([repo], [], today=TODAY)
-        self.assertEqual([i.level for i in issues], ["warning"])
-        self.assertIn("grace until 2026-09-30", issues[0].message)
+        self.assertEqual(validate_promotion([repo], [], today=TODAY), [])
+
+    def test_public_with_expired_grace_is_error(self) -> None:
+        repo = _repo(visibility="public", promotion={"tier": "P1", "scanned": "2026-05-01", "grace_until": "2026-08-01"})
+        msgs = _messages(validate_promotion([repo], [], today=TODAY))
+        self.assertTrue(any("older than 90 days" in m for m in msgs), msgs)
 
     def test_bad_tier_is_error(self) -> None:
         repo = _repo(visibility="public", promotion={"tier": "P9", "scanned": "2026-08-27"})
@@ -312,10 +318,9 @@ class ValidatePromotionTests(unittest.TestCase):
         msgs = _messages(validate_promotion([repo], ["demo"], today=TODAY))
         self.assertTrue(any("pinned repo 'demo' is not public" in m for m in msgs), msgs)
 
-    def test_pinned_p1_under_grace_is_warning(self) -> None:
+    def test_pinned_p1_under_grace_is_clean(self) -> None:
         repo = _repo(visibility="public", promotion={"tier": "P1", "scanned": "2026-08-27", "grace_until": "2026-09-30"})
-        issues = validate_promotion([repo], ["demo"], today=TODAY)
-        self.assertEqual([i.level for i in issues], ["warning"])
+        self.assertEqual(validate_promotion([repo], ["demo"], today=TODAY), [])
 
     def test_pinned_p0_public_is_clean(self) -> None:
         repo = _repo(visibility="public", promotion={"tier": "P0", "scanned": "2026-08-27"})
@@ -384,8 +389,10 @@ def validate_promotion(
     """Offline half of the public readiness gate (no network).
 
     Rules: a public repo needs a current P0/P1 scan; a pinned repo must be public
-    and P0. grace_until downgrades either failure to a warning until the date.
-    Archived repos are exempt.
+    and P0. While grace_until is in the future both rules are silent here (CI
+    runs validate-catalog.py --strict, which fails on warnings); the gate CLI
+    validate-visibility.py reports active grace as a warning instead. An
+    expired grace is enforced like any other failure. Archived repos are exempt.
     """
     issues: list[ValidationIssue] = []
     pins = {str(p).strip() for p in profile_pins}
@@ -410,24 +417,19 @@ def validate_promotion(
                         ValidationIssue("error", f"Repo '{slug}' has invalid promotion date '{promotion.get(key)}' in {key}")
                     )
 
-        if visibility == "public":
+        if visibility == "public" and not grace:
             if promotion is None:
-                level = "warning" if grace else "error"
-                issues.append(ValidationIssue(level, f"Repo '{slug}' is public without a promotion record"))
+                issues.append(ValidationIssue("error", f"Repo '{slug}' is public without a promotion record"))
             elif isinstance(promotion, dict) and promotion.get("tier") in PROMOTION_TIERS:
                 tier = promotion["tier"]
                 scanned = _parse_iso_date(promotion.get("scanned"))
                 if tier not in PUBLIC_TIERS:
-                    level = "warning" if grace else "error"
-                    suffix = f" (grace until {promotion.get('grace_until')})" if grace else ""
-                    issues.append(ValidationIssue(level, f"Repo '{slug}' tier '{tier}' does not allow public{suffix}"))
+                    issues.append(ValidationIssue("error", f"Repo '{slug}' tier '{tier}' does not allow public"))
                 elif scanned is not None and not promotion_is_current(promotion, today=today):
-                    level = "warning" if grace else "error"
-                    suffix = f" (grace until {promotion.get('grace_until')})" if grace else ""
                     issues.append(
                         ValidationIssue(
-                            level,
-                            f"Repo '{slug}' scan from {promotion.get('scanned')} is older than {PROMOTION_MAX_AGE_DAYS} days{suffix}",
+                            "error",
+                            f"Repo '{slug}' scan from {promotion.get('scanned')} is older than {PROMOTION_MAX_AGE_DAYS} days",
                         )
                     )
 
@@ -435,10 +437,8 @@ def validate_promotion(
             tier = promotion.get("tier") if isinstance(promotion, dict) else None
             if visibility != "public":
                 issues.append(ValidationIssue("error", f"Pinned repo '{slug}' is not public"))
-            elif tier != "P0":
-                level = "warning" if grace else "error"
-                suffix = f" (grace until {promotion.get('grace_until')})" if grace else ""
-                issues.append(ValidationIssue(level, f"Pinned repo '{slug}' is not tier P0{suffix}"))
+            elif tier != "P0" and not grace:
+                issues.append(ValidationIssue("error", f"Pinned repo '{slug}' is not tier P0"))
     return issues
 ```
 
@@ -453,7 +453,7 @@ In `validate_catalogs`, right after the `for raw_slug in profile_pins:` loop end
 - [ ] **Step 4: Run the new tests**
 
 Run: `python -m pytest scripts/tests/test_validate_promotion.py -q`
-Expected: 17 passed.
+Expected: 18 passed.
 
 - [ ] **Step 5: Run the real catalog and read the expected failures**
 
@@ -1643,7 +1643,7 @@ python scripts/catalog/sync-readme.py --check
 python scripts/github/validate-visibility.py --offline
 python -m pytest scripts/tests -q
 ```
-Expected: `validate-catalog.py` prints only `[warning] Pinned repo '<slug>' is not tier P0 (grace until 2026-09-30)` for the five pins and no errors; both `--check` commands exit 0; `--offline` prints 5 warnings, 0 errors, exit 0; pytest all pass. `verify-profile-pins.py --skip-live --check` still fails on README links (pre-existing, DEBT entry from Task 7).
+Expected: `validate-catalog.py` prints no promotion errors or warnings (the five pins are under grace, which the offline rule keeps silent so `--strict` in CI stays green); run `python scripts/catalog/validate-catalog.py --strict` too and expect exit 0; both `--check` commands exit 0; `--offline` prints 5 `V5` warnings, 0 errors, exit 0; pytest all pass. `verify-profile-pins.py --skip-live --check` still fails on README links (pre-existing, DEBT entry from Task 7).
 
 - [ ] **Step 4: Confirm the generated diff is only what the scripts produced**
 

@@ -84,6 +84,11 @@ class ValidatePromotionTests(unittest.TestCase):
         msgs = _messages(validate_promotion([repo], [], today=TODAY))
         self.assertTrue(any("invalid promotion tier 'P9'" in m for m in msgs), msgs)
 
+    def test_missing_scanned_is_error(self) -> None:
+        repo = _repo(visibility="public", promotion={"tier": "P1"})
+        msgs = _messages(validate_promotion([repo], [], today=TODAY))
+        self.assertTrue(any("promotion is missing scanned" in m for m in msgs), msgs)
+
     def test_bad_date_is_error(self) -> None:
         repo = _repo(visibility="public", promotion={"tier": "P1", "scanned": "yesterday"})
         msgs = _messages(validate_promotion([repo], [], today=TODAY))

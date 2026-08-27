@@ -653,6 +653,8 @@ def validate_promotion(
             tier = promotion.get("tier")
             if tier not in PROMOTION_TIERS:
                 issues.append(ValidationIssue("error", f"Repo '{slug}' has invalid promotion tier '{tier}'"))
+            if "scanned" not in promotion:
+                issues.append(ValidationIssue("error", f"Repo '{slug}' promotion is missing scanned"))
             for key in ("scanned", "grace_until"):
                 if key in promotion and _parse_iso_date(promotion.get(key)) is None:
                     issues.append(

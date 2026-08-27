@@ -2,18 +2,18 @@
 """Compile catalog/index.yaml into catalog/repos.json (minimal SSOT → full manifest).
 
 Human workflow:
-  1. Edit catalog/index.yaml (grouped by bucket; ~5 fields per repo).
-  2. python scripts/catalog/compile-index.py
-  3. python scripts/catalog/build-catalog.py
+  1. Edit catalog/index.yaml (four lanes; ~5 fields per repo).
+  2. python scripts/catalog/build-catalog.py   # compiles index automatically
 
-Export existing repos.json into index.yaml:
-  python scripts/catalog/compile-index.py --export
+Standalone compile / export:
+  python scripts/catalog/compile_index.py
+  python scripts/catalog/compile_index.py --export
+  python scripts/catalog/compile_index.py --check
 """
 from __future__ import annotations
 
 import argparse
 import json
-import re
 from copy import deepcopy
 from datetime import date
 from pathlib import Path
@@ -28,8 +28,11 @@ ROOT = Path(__file__).resolve().parents[2]
 INDEX_PATH = ROOT / "catalog" / "index.yaml"
 REPOS_PATH = ROOT / "catalog" / "repos.json"
 BUCKETS_PATH = ROOT / "catalog" / "buckets.yaml"
+LANES_PATH = ROOT / "catalog" / "lanes.yaml"
 
 TODAY = date.today().isoformat()
+LANE_ORDER = ["platform", "ship", "lab", "work", "archive"]
+BUCKET_ORDER = ["core", "apps", "lab", "sites", "work", "archive"]
 
 BUCKET_DEFAULTS: dict[str, dict[str, Any]] = {
     "core": {
@@ -105,10 +108,19 @@ SLUG_OVERRIDES: dict[str, dict[str, Any]] = {
     "workspace-tools": {"type": "tooling", "surface": "cli", "domain": "governance"},
 }
 
+SITES_SLUGS = {"meshal-web", "roka-oakland-hustle"}
+
 
 def _require_yaml() -> None:
     if yaml is None:
         raise SystemExit("PyYAML required: pip install pyyaml")
+
+
+def load_lane_config() -> dict[str, dict[str, Any]]:
+    _require_yaml()
+    data = yaml.safe_load(LANES_PATH.read_text(encoding="utf-8"))
+    lanes = data.get("lanes") or {}
+    return {str(k): v for k, v in lanes.items()}
 
 
 def load_buckets() -> set[str]:
@@ -125,11 +137,11 @@ def slug_to_name(slug: str) -> str:
 
 def normalize_local_path(bucket: str, slug: str, existing: str | None) -> str:
     if existing:
-        return existing.replace("\\", "/")
+        return str(existing).replace("\\", "/")
     if slug == "alawein" and bucket == "core":
         return "core/alawein"
     if bucket == "archive":
-        return existing or f"_archive/{slug}"
+        return existing or f"_archive/2026-06-{slug}" if slug == "helios" else f"_archive/{slug}"
     return f"{bucket}/{slug}"
 
 
@@ -144,70 +156,125 @@ def github_topics_from_stack(stack: list[str], slug: str) -> list[str]:
     return topics[:12]
 
 
-def flatten_index(index: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
-    allowed = load_buckets()
-    out: list[tuple[str, dict[str, Any]]] = []
+def bucket_for_lane(lane: str, entry: dict[str, Any], lane_cfg: dict[str, dict[str, Any]]) -> str:
+    cfg = lane_cfg.get(lane) or {}
+    if "default_bucket" in cfg:
+        if entry.get("site") or entry.get("bucket") == "sites" or entry.get("slug") in SITES_SLUGS:
+            return str(cfg.get("site_bucket") or "sites")
+        return str(cfg.get("default_bucket") or "apps")
+    bucket = cfg.get("bucket")
+    if not bucket:
+        raise SystemExit(f"catalog/lanes.yaml: lane {lane!r} has no bucket mapping")
+    return str(bucket)
+
+
+def lane_for_bucket(bucket: str) -> str:
+    if bucket == "core":
+        return "platform"
+    if bucket in {"apps", "sites"}:
+        return "ship"
+    if bucket in {"lab", "work", "archive"}:
+        return bucket
+    return bucket
+
+
+def flatten_index(index: dict[str, Any]) -> list[tuple[str, str, dict[str, Any]]]:
+    """Return (lane, bucket, entry) tuples."""
+    allowed_buckets = load_buckets()
+    lane_cfg = load_lane_config()
+    out: list[tuple[str, str, dict[str, Any]]] = []
+
+    lanes = index.get("lanes")
+    if lanes:
+        if not isinstance(lanes, dict):
+            raise SystemExit("catalog/index.yaml: 'lanes' must be a mapping")
+        for lane in LANE_ORDER:
+            if lane not in lanes:
+                continue
+            entries = lanes[lane]
+            if not isinstance(entries, list):
+                raise SystemExit(f"catalog/index.yaml: lane {lane!r} must be a list")
+            for entry in entries:
+                if not isinstance(entry, dict):
+                    raise SystemExit(f"catalog/index.yaml: entry in {lane!r} must be a mapping")
+                slug = str(entry.get("slug") or "").strip()
+                if not slug:
+                    raise SystemExit(f"catalog/index.yaml: missing slug in lane {lane!r}")
+                bucket = bucket_for_lane(lane, entry, lane_cfg)
+                if bucket not in allowed_buckets:
+                    raise SystemExit(f"catalog/index.yaml: lane {lane!r} maps to unknown bucket {bucket!r}")
+                out.append((lane, bucket, entry))
+        return out
+
     buckets = index.get("buckets") or {}
     if not isinstance(buckets, dict):
-        raise SystemExit("catalog/index.yaml: 'buckets' must be a mapping")
+        raise SystemExit("catalog/index.yaml: expected 'lanes' or 'buckets' mapping")
     for bucket, entries in buckets.items():
-        if bucket not in allowed:
+        if bucket not in allowed_buckets:
             raise SystemExit(f"catalog/index.yaml: unknown bucket {bucket!r}")
         if not isinstance(entries, list):
             raise SystemExit(f"catalog/index.yaml: bucket {bucket!r} must be a list")
+        lane = lane_for_bucket(bucket)
         for entry in entries:
             if not isinstance(entry, dict):
                 raise SystemExit(f"catalog/index.yaml: entry in {bucket!r} must be a mapping")
             slug = str(entry.get("slug") or "").strip()
             if not slug:
                 raise SystemExit(f"catalog/index.yaml: missing slug in bucket {bucket!r}")
-            out.append((bucket, entry))
+            out.append((lane, bucket, entry))
     return out
 
 
+def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
+    slug = repo["slug"]
+    slim: dict[str, Any] = {
+        "slug": slug,
+        "about": repo.get("canonical_description") or repo.get("name") or slug,
+    }
+    name = repo.get("name")
+    if name and name != slug_to_name(slug):
+        slim["name"] = name
+    status = repo.get("status")
+    if status and status != "active":
+        slim["status"] = status
+    visibility = repo.get("visibility")
+    if visibility and visibility != "private":
+        slim["visibility"] = visibility
+    homepage = str(repo.get("homepage") or "").strip()
+    if homepage:
+        slim["url"] = homepage
+    if repo.get("catalog_groups") and "featured" in repo["catalog_groups"]:
+        slim["featured"] = True
+    legacy = repo.get("legacy_slugs") or []
+    if legacy:
+        slim["legacy_slugs"] = legacy
+    if bucket == "sites":
+        slim["site"] = True
+    return slim
+
+
 def export_index(repos_data: dict[str, Any]) -> dict[str, Any]:
-    buckets: dict[str, list[dict[str, Any]]] = {}
+    lanes: dict[str, list[dict[str, Any]]] = {lane: [] for lane in LANE_ORDER}
     for repo in repos_data.get("repos") or []:
-        bucket = repo.get("bucket") or "core"
-        slug = repo["slug"]
-        slim: dict[str, Any] = {
-            "slug": slug,
-            "about": repo.get("canonical_description") or repo.get("name") or slug,
-        }
-        name = repo.get("name")
-        if name and name != slug_to_name(slug):
-            slim["name"] = name
-        status = repo.get("status")
-        if status and status != "active":
-            slim["status"] = status
-        visibility = repo.get("visibility")
-        if visibility and visibility != "private":
-            slim["visibility"] = visibility
-        homepage = str(repo.get("homepage") or "").strip()
-        if homepage:
-            slim["url"] = homepage
-        if repo.get("catalog_groups") and "featured" in repo["catalog_groups"]:
-            slim["featured"] = True
-        legacy = repo.get("legacy_slugs") or []
-        if legacy:
-            slim["legacy_slugs"] = legacy
-        buckets.setdefault(bucket, []).append(slim)
+        bucket = str(repo.get("bucket") or "core")
+        lane = lane_for_bucket(bucket)
+        lanes.setdefault(lane, []).append(slim_entry(repo, bucket=bucket))
 
-    order = ["core", "apps", "lab", "sites", "work", "archive"]
-    sorted_buckets = {b: sorted(buckets[b], key=lambda x: x["slug"]) for b in order if b in buckets}
-    for b in sorted(buckets.keys()):
-        if b not in sorted_buckets:
-            sorted_buckets[b] = sorted(buckets[b], key=lambda x: x["slug"])
-
+    sorted_lanes = {
+        lane: sorted(lanes[lane], key=lambda x: x["slug"])
+        for lane in LANE_ORDER
+        if lanes.get(lane)
+    }
     return {
         "schemaVersion": "1.0.0",
         "lastVerified": TODAY,
-        "note": "Edit buckets below. Run compile-index.py then build-catalog.py.",
-        "buckets": sorted_buckets,
+        "note": "Edit lanes below. build-catalog.py compiles to repos.json automatically.",
+        "lanes": sorted_lanes,
     }
 
 
 def compile_repo(
+    lane: str,
     bucket: str,
     entry: dict[str, Any],
     prior: dict[str, Any] | None,
@@ -237,6 +304,7 @@ def compile_repo(
             "repo": f"alawein/{slug}",
             "local_path": normalize_local_path(bucket, slug, repo.get("local_path")),
             "bucket": bucket,
+            "lane": lane,
             "visibility": visibility,
             "owner": "alawein",
             "maintainer": "alawein-core",
@@ -287,21 +355,71 @@ def compile_index(index: dict[str, Any], repos_data: dict[str, Any]) -> dict[str
     compiled: list[dict[str, Any]] = []
     seen: set[str] = set()
 
-    for bucket, entry in flatten_index(index):
+    for lane, bucket, entry in flatten_index(index):
         slug = entry["slug"]
         if slug in seen:
             raise SystemExit(f"duplicate slug in index.yaml: {slug}")
         seen.add(slug)
-        compiled.append(compile_repo(bucket, entry, prior_by_slug.get(slug)))
+        compiled.append(compile_repo(lane, bucket, entry, prior_by_slug.get(slug)))
 
     missing = set(prior_by_slug) - seen
     if missing:
-        print(f"warning: {len(missing)} repos only in repos.json (not in index): {', '.join(sorted(missing)[:8])}...")
+        names = ", ".join(sorted(missing)[:8])
+        suffix = "..." if len(missing) > 8 else ""
+        print(f"warning: {len(missing)} repos only in repos.json (not in index): {names}{suffix}")
 
     out = deepcopy(repos_data)
     out["lastVerified"] = index.get("lastVerified") or TODAY
-    out["repos"] = sorted(compiled, key=lambda r: (r.get("bucket", ""), r.get("slug", "")))
+    out["repos"] = sorted(compiled, key=lambda r: (r.get("lane", ""), r.get("bucket", ""), r.get("slug", "")))
     return out
+
+
+def build_index_snapshot(compiled: dict[str, Any]) -> dict[str, Any]:
+    rows = []
+    for repo in compiled.get("repos") or []:
+        rows.append(
+            {
+                "slug": repo.get("slug"),
+                "lane": repo.get("lane"),
+                "bucket": repo.get("bucket"),
+                "name": repo.get("name"),
+                "about": repo.get("canonical_description"),
+                "status": repo.get("status"),
+                "visibility": repo.get("visibility"),
+                "url": repo.get("homepage"),
+            }
+        )
+    return {
+        "schemaVersion": "1.0.0",
+        "generatedAt": TODAY,
+        "count": len(rows),
+        "repos": rows,
+    }
+
+
+def compile_index_file(*, check: bool = False, write: bool = True) -> int:
+    """Compile INDEX_PATH → REPOS_PATH. Used by build-catalog and CLI."""
+    _require_yaml()
+    if not INDEX_PATH.is_file():
+        return 0
+
+    repos_data = json.loads(REPOS_PATH.read_text(encoding="utf-8"))
+    index = yaml.safe_load(INDEX_PATH.read_text(encoding="utf-8"))
+    compiled = compile_index(index, repos_data)
+    rendered = json.dumps(compiled, indent=2, ensure_ascii=False) + "\n"
+    current = REPOS_PATH.read_text(encoding="utf-8")
+
+    if check:
+        if rendered != current:
+            print("catalog/repos.json is out of date with catalog/index.yaml; run compile_index.py")
+            return 1
+        return 0
+
+    if write and rendered != current:
+        REPOS_PATH.write_text(rendered, encoding="utf-8")
+        count = len(compiled.get("repos") or [])
+        print(f"compiled {INDEX_PATH.name} -> {REPOS_PATH.name} ({count} repos)")
+    return 0
 
 
 def dump_yaml(path: Path, data: dict[str, Any]) -> None:
@@ -324,28 +442,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.export:
         index = export_index(repos_data)
         dump_yaml(INDEX_PATH, index)
-        print(f"wrote {INDEX_PATH} ({sum(len(v) for v in index['buckets'].values())} repos)")
+        count = sum(len(v) for v in index["lanes"].values())
+        print(f"wrote {INDEX_PATH} ({count} repos, {len(index['lanes'])} lanes)")
         return 0
 
-    if not INDEX_PATH.is_file():
-        raise SystemExit(f"missing {INDEX_PATH}; run with --export first")
-
-    index = yaml.safe_load(INDEX_PATH.read_text(encoding="utf-8"))
-    compiled = compile_index(index, repos_data)
-    rendered = json.dumps(compiled, indent=2, ensure_ascii=False) + "\n"
-    current = REPOS_PATH.read_text(encoding="utf-8")
-
-    if args.check:
-        if rendered != current:
-            print("catalog/repos.json is out of date; run compile-index.py")
-            return 1
-        print("catalog/repos.json matches index.yaml")
-        return 0
-
-    REPOS_PATH.write_text(rendered, encoding="utf-8")
-    count = len(compiled.get("repos") or [])
-    print(f"wrote {REPOS_PATH} ({count} repos from {INDEX_PATH.name})")
-    return 0
+    return compile_index_file(check=args.check, write=not args.check)
 
 
 if __name__ == "__main__":

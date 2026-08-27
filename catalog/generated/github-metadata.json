@@ -2,137 +2,6 @@
   "generatedAt": "2026-08-27",
   "repos": [
     {
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "homepage": "https://atelier-rounaq.com",
-      "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "legacy"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "homepage": "https://github.com/alawein/auditraise",
-      "topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "homepage": "https://bolts.fit",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "homepage": "https://gymboy.coach",
-      "topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "homepage": "https://repzcoach.com",
-      "topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "homepage": "https://scribd.fit",
-      "topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "slug": "helios",
       "repo": "alawein/helios",
       "description": "Proprietary research archive for computational astrophysics and astronomy work.",
@@ -151,212 +20,6 @@
       },
       "actions_settings": {},
       "release_automation": {}
-    },
-    {
-      "slug": "alawein",
-      "repo": "alawein/alawein",
-      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "homepage": "https://github.com/alawein/alawein",
-      "topics": [
-        "governance",
-        "documentation",
-        "catalog",
-        "automation"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "docs-hub",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "slug": "design-system",
-      "repo": "alawein/design-system",
-      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
-      "homepage": "https://github.com/alawein/design-system",
-      "topics": [
-        "design-system",
-        "storybook",
-        "react",
-        "tokens",
-        "turborepo"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
-      }
-    },
-    {
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "homepage": "https://github.com/alawein/incore",
-      "topics": [
-        "automation",
-        "cli",
-        "inventory",
-        "mcp",
-        "python"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "knowledge-base",
-      "repo": "alawein/knowledge-base",
-      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
-      "homepage": "https://knowledge-base-alawein.vercel.app",
-      "topics": [
-        "knowledge-base",
-        "nextjs",
-        "search",
-        "documentation"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "slug": "outpost",
-      "repo": "alawein/outpost",
-      "description": "Personal kit that installs prompts for coding agents.",
-      "homepage": "https://github.com/alawein/outpost",
-      "topics": [
-        "ai-tools",
-        "claude-code",
-        "cli",
-        "coding-agents",
-        "developer-tools",
-        "prompts",
-        "python"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-platform-cli",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "prompty",
-      "repo": "alawein/prompty",
-      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-      "homepage": "https://github.com/alawein/prompty",
-      "topics": [
-        "llm",
-        "monorepo",
-        "prompt-engineering",
-        "turborepo",
-        "typescript"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "workspace-control",
-      "repo": "alawein/workspace-control",
-      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "homepage": "https://github.com/alawein/workspace-control",
-      "topics": [
-        "governance",
-        "inventory",
-        "python",
-        "workspace"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-platform-cli",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "workspace-tools",
-      "repo": "alawein/workspace-tools",
-      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "homepage": "https://github.com/alawein/workspace-tools",
-      "topics": [
-        "automation",
-        "python",
-        "cli",
-        "governance"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
     },
     {
       "slug": "adil",
@@ -784,6 +447,343 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "homepage": "https://github.com/alawein/alawein",
+      "topics": [
+        "governance",
+        "documentation",
+        "catalog",
+        "automation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "design-system",
+      "repo": "alawein/design-system",
+      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "homepage": "https://github.com/alawein/design-system",
+      "topics": [
+        "design-system",
+        "storybook",
+        "react",
+        "tokens",
+        "turborepo"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "changesets-publish",
+        "supports_release_prs": true,
+        "publishes_packages": true,
+        "requires_npm_token": true
+      }
+    },
+    {
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "homepage": "https://github.com/alawein/incore",
+      "topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "topics": [
+        "knowledge-base",
+        "nextjs",
+        "search",
+        "documentation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "homepage": "https://github.com/alawein/outpost",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "homepage": "https://github.com/alawein/prompty",
+      "topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "homepage": "https://github.com/alawein/workspace-control",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "homepage": "https://github.com/alawein/workspace-tools",
+      "topics": [
+        "automation",
+        "python",
+        "cli",
+        "governance"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "homepage": "https://atelier-rounaq.com",
+      "topics": [
+        "portfolio",
+        "react",
+        "supabase",
+        "luxury",
+        "design"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "legacy"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "homepage": "https://github.com/alawein/auditraise",
+      "topics": [
+        "audit",
+        "local-marketing",
+        "nextjs",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "homepage": "https://bolts.fit",
+      "topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "homepage": "https://gymboy.coach",
+      "topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "homepage": "https://repzcoach.com",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "homepage": "https://scribd.fit",
+      "topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },

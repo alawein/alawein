@@ -29,9 +29,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - [`config/model-routing.yaml`](config/model-routing.yaml) and [`scripts/ops/openrouter_route.py`](scripts/ops/openrouter_route.py): OpenRouter task routes (Qwen, Gemini, GLM, Kimi) and named workflows (`voice-resweep`, `catalog-audit`, `pr-ready`).
 - [`scripts/ops/migrate_buckets.py`](scripts/ops/migrate_buckets.py): one-shot workspace migrator for catalog paths and README `Category` headers.
 
-### Added
-
-- [`catalog/index.yaml`](catalog/index.yaml) and [`scripts/catalog/compile-index.py`](scripts/catalog/compile-index.py): minimal grouped catalog (slug, about, status, url) compiles to full `repos.json`.
+- [`catalog/index.yaml`](catalog/index.yaml), [`catalog/lanes.yaml`](catalog/lanes.yaml), and [`scripts/catalog/compile_index.py`](scripts/catalog/compile_index.py): four-lane human catalog (`platform`, `ship`, `lab`, `work`, `archive`) compiles to full `repos.json`; `build-catalog.py` runs compile automatically and emits `catalog/generated/index-snapshot.json`.
 
 ### Changed
 

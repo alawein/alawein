@@ -7,50 +7,50 @@
     "../blackmalejournal"
   ],
   "golden_references": {
-    "vite-react-spa": {
-      "repo": "alawein/atelier-rounaq",
-      "local_folder": "apps/atelier-rounaq",
-      "notes": "Derived from catalog entry atelier-rounaq"
-    },
-    "next-app-router": {
-      "repo": "alawein/auditraise",
-      "local_folder": "apps/auditraise",
-      "notes": "Derived from catalog entry auditraise"
-    },
     "research-archive": {
       "repo": "alawein/helios",
       "local_folder": "_archive/2026-06-helios",
       "notes": "Derived from catalog entry helios"
+    },
+    "python-service": {
+      "repo": "alawein/adil",
+      "local_folder": "lab/adil",
+      "notes": "Derived from catalog entry adil"
+    },
+    "python-library": {
+      "repo": "alawein/alembiq",
+      "local_folder": "lab/alembiq",
+      "notes": "Derived from catalog entry alembiq"
+    },
+    "vite-react-spa": {
+      "repo": "alawein/attributa",
+      "local_folder": "lab/attributa",
+      "notes": "Derived from catalog entry attributa"
+    },
+    "static-site": {
+      "repo": "alawein/chshlab",
+      "local_folder": "lab/chshlab",
+      "notes": "Derived from catalog entry chshlab"
+    },
+    "node-monorepo": {
+      "repo": "alawein/veyra",
+      "local_folder": "lab/veyra",
+      "notes": "Derived from catalog entry veyra"
     },
     "docs-hub": {
       "repo": "alawein/alawein",
       "local_folder": "core/alawein",
       "notes": "Derived from catalog entry alawein"
     },
-    "node-monorepo": {
-      "repo": "alawein/design-system",
-      "local_folder": "core/design-system",
-      "notes": "Derived from catalog entry design-system"
-    },
-    "python-library": {
-      "repo": "alawein/incore",
-      "local_folder": "core/incore",
-      "notes": "Derived from catalog entry incore"
+    "next-app-router": {
+      "repo": "alawein/knowledge-base",
+      "local_folder": "core/knowledge-base",
+      "notes": "Derived from catalog entry knowledge-base"
     },
     "python-platform-cli": {
       "repo": "alawein/outpost",
       "local_folder": "core/outpost",
       "notes": "Derived from catalog entry outpost"
-    },
-    "python-service": {
-      "repo": "alawein/workspace-tools",
-      "local_folder": "core/workspace-tools",
-      "notes": "Derived from catalog entry workspace-tools"
-    },
-    "static-site": {
-      "repo": "alawein/chshlab",
-      "local_folder": "lab/chshlab",
-      "notes": "Derived from catalog entry chshlab"
     },
     "game-project": {
       "repo": "alawein/roka-oakland-hustle",
@@ -67,109 +67,11 @@
   ],
   "repos": [
     {
-      "folder": "apps/atelier-rounaq",
-      "remote_slug": "alawein/atelier-rounaq",
-      "archetype": "vite-react-spa",
-      "tier": "product",
-      "stack": "typescript, react, supabase"
-    },
-    {
-      "folder": "apps/auditraise",
-      "remote_slug": "alawein/auditraise",
-      "archetype": "next-app-router",
-      "tier": "product",
-      "stack": "typescript, nextjs, react"
-    },
-    {
-      "folder": "apps/bolts",
-      "remote_slug": "alawein/bolts",
-      "archetype": "next-app-router",
-      "tier": "product",
-      "stack": "nextjs, typescript"
-    },
-    {
-      "folder": "apps/gymboy",
-      "remote_slug": "alawein/gymboy",
-      "archetype": "vite-react-spa",
-      "tier": "product",
-      "stack": "react, vite, spark"
-    },
-    {
-      "folder": "apps/repz",
-      "remote_slug": "alawein/repz",
-      "archetype": "vite-react-spa",
-      "tier": "product",
-      "stack": "react, vite, typescript, supabase"
-    },
-    {
-      "folder": "apps/scribd",
-      "remote_slug": "alawein/scribd",
-      "archetype": "next-app-router",
-      "tier": "product",
-      "stack": "nextjs, react, typescript"
-    },
-    {
       "folder": "_archive/2026-06-helios",
       "remote_slug": "alawein/helios",
       "archetype": "research-archive",
       "tier": "archive",
       "stack": "archive"
-    },
-    {
-      "folder": "core/alawein",
-      "remote_slug": "alawein/alawein",
-      "archetype": "docs-hub",
-      "tier": "governance",
-      "stack": "python, markdown, github-actions"
-    },
-    {
-      "folder": "core/design-system",
-      "remote_slug": "alawein/design-system",
-      "archetype": "node-monorepo",
-      "tier": "infra",
-      "stack": "typescript, react, turborepo, storybook"
-    },
-    {
-      "folder": "core/incore",
-      "remote_slug": "alawein/incore",
-      "archetype": "python-library",
-      "tier": "tooling",
-      "stack": "python, sqlite, mcp"
-    },
-    {
-      "folder": "core/knowledge-base",
-      "remote_slug": "alawein/knowledge-base",
-      "archetype": "next-app-router",
-      "tier": "infra",
-      "stack": "nextjs, typescript, python"
-    },
-    {
-      "folder": "core/outpost",
-      "remote_slug": "alawein/outpost",
-      "archetype": "python-platform-cli",
-      "tier": "tooling",
-      "stack": "python, prompts, cli"
-    },
-    {
-      "folder": "core/prompty",
-      "remote_slug": "alawein/prompty",
-      "archetype": "node-monorepo",
-      "tier": "tooling",
-      "stack": "typescript, turborepo, node"
-    },
-    {
-      "folder": "core/workspace-control",
-      "remote_slug": "alawein/workspace-control",
-      "archetype": "python-platform-cli",
-      "tier": "tooling",
-      "stack": "python, yaml, inventory"
-    },
-    {
-      "folder": "core/workspace-tools",
-      "remote_slug": "alawein/workspace-tools",
-      "archetype": "python-service",
-      "tier": "tooling",
-      "stack": "python, yaml, automation"
     },
     {
       "folder": "lab/adil",
@@ -310,6 +212,104 @@
       "archetype": "node-monorepo",
       "tier": "research",
       "stack": "typescript, turborepo, node"
+    },
+    {
+      "folder": "core/alawein",
+      "remote_slug": "alawein/alawein",
+      "archetype": "docs-hub",
+      "tier": "governance",
+      "stack": "python, markdown, github-actions"
+    },
+    {
+      "folder": "core/design-system",
+      "remote_slug": "alawein/design-system",
+      "archetype": "node-monorepo",
+      "tier": "infra",
+      "stack": "typescript, react, turborepo, storybook"
+    },
+    {
+      "folder": "core/incore",
+      "remote_slug": "alawein/incore",
+      "archetype": "python-library",
+      "tier": "tooling",
+      "stack": "python, sqlite, mcp"
+    },
+    {
+      "folder": "core/knowledge-base",
+      "remote_slug": "alawein/knowledge-base",
+      "archetype": "next-app-router",
+      "tier": "infra",
+      "stack": "nextjs, typescript, python"
+    },
+    {
+      "folder": "core/outpost",
+      "remote_slug": "alawein/outpost",
+      "archetype": "python-platform-cli",
+      "tier": "tooling",
+      "stack": "python, prompts, cli"
+    },
+    {
+      "folder": "core/prompty",
+      "remote_slug": "alawein/prompty",
+      "archetype": "node-monorepo",
+      "tier": "tooling",
+      "stack": "typescript, turborepo, node"
+    },
+    {
+      "folder": "core/workspace-control",
+      "remote_slug": "alawein/workspace-control",
+      "archetype": "python-platform-cli",
+      "tier": "tooling",
+      "stack": "python, yaml, inventory"
+    },
+    {
+      "folder": "core/workspace-tools",
+      "remote_slug": "alawein/workspace-tools",
+      "archetype": "python-service",
+      "tier": "tooling",
+      "stack": "python, yaml, automation"
+    },
+    {
+      "folder": "apps/atelier-rounaq",
+      "remote_slug": "alawein/atelier-rounaq",
+      "archetype": "vite-react-spa",
+      "tier": "product",
+      "stack": "typescript, react, supabase"
+    },
+    {
+      "folder": "apps/auditraise",
+      "remote_slug": "alawein/auditraise",
+      "archetype": "next-app-router",
+      "tier": "product",
+      "stack": "typescript, nextjs, react"
+    },
+    {
+      "folder": "apps/bolts",
+      "remote_slug": "alawein/bolts",
+      "archetype": "next-app-router",
+      "tier": "product",
+      "stack": "nextjs, typescript"
+    },
+    {
+      "folder": "apps/gymboy",
+      "remote_slug": "alawein/gymboy",
+      "archetype": "vite-react-spa",
+      "tier": "product",
+      "stack": "react, vite, spark"
+    },
+    {
+      "folder": "apps/repz",
+      "remote_slug": "alawein/repz",
+      "archetype": "vite-react-spa",
+      "tier": "product",
+      "stack": "react, vite, typescript, supabase"
+    },
+    {
+      "folder": "apps/scribd",
+      "remote_slug": "alawein/scribd",
+      "archetype": "next-app-router",
+      "tier": "product",
+      "stack": "nextjs, react, typescript"
     },
     {
       "folder": "sites/meshal-web",

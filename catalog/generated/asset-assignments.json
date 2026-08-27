@@ -1,4 +1,20 @@
 {
+  "alawein": {
+    "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
+    "screenshot_folder": "core/alawein/docs/screenshots",
+    "theme_family": "midnight",
+    "social_preview_image": "design-system/packages/icons/dist/brand/alawein/social-card.svg",
+    "favicon_status": "generated"
+  },
+  "knowledge-base": {
+    "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
+    "screenshot_folder": "core/knowledge-base/docs/screenshots",
+    "theme_family": "midnight",
+    "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
+    "favicon_status": "generated"
+  },
   "atelier-rounaq": {
     "logo_source": "design-system/packages/icons/dist/brand/atelier-rounaq/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/atelier-rounaq/repo-banner.svg",
@@ -45,22 +61,6 @@
     "screenshot_folder": "apps/scribd/docs/screenshots",
     "theme_family": "forge",
     "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
-    "favicon_status": "generated"
-  },
-  "alawein": {
-    "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
-    "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
-    "screenshot_folder": "core/alawein/docs/screenshots",
-    "theme_family": "midnight",
-    "social_preview_image": "design-system/packages/icons/dist/brand/alawein/social-card.svg",
-    "favicon_status": "generated"
-  },
-  "knowledge-base": {
-    "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
-    "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
-    "screenshot_folder": "core/knowledge-base/docs/screenshots",
-    "theme_family": "midnight",
-    "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
     "favicon_status": "generated"
   },
   "meshal-web": {

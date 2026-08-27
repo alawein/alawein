@@ -3,113 +3,6 @@
   "lastUpdated": "2026-08-27",
   "featured": [
     {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase"
-      ],
-      "category": "active",
-      "legacy_slugs": [
-        "rounaq-atelier"
-      ],
-      "url": "https://atelier-rounaq.com",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "tags": [
-        "TypeScript",
-        "Next.js",
-        "Marketing"
-      ],
-      "category": "active",
-      "url": "https://github.com/alawein/auditraise",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Bolts",
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "tags": [
-        "Next.js",
-        "TypeScript"
-      ],
-      "category": "active",
-      "url": "https://bolts.fit",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Gymboy",
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "tags": [
-        "React",
-        "Vite",
-        "Spark"
-      ],
-      "category": "active",
-      "legacy_slugs": [
-        "gainboy"
-      ],
-      "url": "https://gymboy.coach",
-      "portfolio_domain": "Personal",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase"
-      ],
-      "category": "active",
-      "url": "https://repzcoach.com",
-      "portfolio_domain": "Personal",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
-      "name": "Scribd",
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "tags": [
-        "Next.js",
-        "React",
-        "TypeScript"
-      ],
-      "category": "active",
-      "url": "https://scribd.fit",
-      "portfolio_domain": "Work",
-      "bucket": "apps",
-      "status": "active",
-      "visibility": "private"
-    },
-    {
       "name": "Alembiq",
       "slug": "alembiq",
       "repo": "alawein/alembiq",
@@ -218,6 +111,113 @@
       "category": "active",
       "url": "https://github.com/alawein/veyra",
       "bucket": "lab",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "rounaq-atelier"
+      ],
+      "url": "https://atelier-rounaq.com",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "tags": [
+        "TypeScript",
+        "Next.js",
+        "Marketing"
+      ],
+      "category": "active",
+      "url": "https://github.com/alawein/auditraise",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "tags": [
+        "Next.js",
+        "TypeScript"
+      ],
+      "category": "active",
+      "url": "https://bolts.fit",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "tags": [
+        "React",
+        "Vite",
+        "Spark"
+      ],
+      "category": "active",
+      "legacy_slugs": [
+        "gainboy"
+      ],
+      "url": "https://gymboy.coach",
+      "portfolio_domain": "Personal",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "category": "active",
+      "url": "https://repzcoach.com",
+      "portfolio_domain": "Personal",
+      "bucket": "apps",
+      "status": "active",
+      "visibility": "private"
+    },
+    {
+      "name": "Scribd",
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript"
+      ],
+      "category": "active",
+      "url": "https://scribd.fit",
+      "portfolio_domain": "Work",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -555,6 +555,34 @@
   ],
   "infrastructure": [
     {
+      "name": "Fallax",
+      "slug": "fallax",
+      "repo": "alawein/fallax",
+      "purpose": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "legacy_slugs": [
+        "reasonbench"
+      ],
+      "url": "https://fallax.online",
+      "status": "active",
+      "bucket": "lab",
+      "visibility": "public"
+    },
+    {
+      "name": "Provegate",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "purpose": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "url": "https://provegate.online",
+      "status": "active",
+      "bucket": "lab",
+      "visibility": "public"
+    },
+    {
       "name": "alawein",
       "slug": "alawein",
       "repo": "alawein/alawein",
@@ -648,34 +676,6 @@
       "status": "active",
       "bucket": "core",
       "visibility": "private"
-    },
-    {
-      "name": "Fallax",
-      "slug": "fallax",
-      "repo": "alawein/fallax",
-      "purpose": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "legacy_slugs": [
-        "reasonbench"
-      ],
-      "url": "https://fallax.online",
-      "status": "active",
-      "bucket": "lab",
-      "visibility": "public"
-    },
-    {
-      "name": "Provegate",
-      "slug": "provegate",
-      "repo": "alawein/provegate",
-      "purpose": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "legacy_slugs": [
-        "epistemic-stack"
-      ],
-      "url": "https://provegate.online",
-      "status": "active",
-      "bucket": "lab",
-      "visibility": "public"
     },
     {
       "name": "Handshake AI Eval",

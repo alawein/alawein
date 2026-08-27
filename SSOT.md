@@ -12,7 +12,7 @@ audience: [ai-agents, contributors]
 # SSOT: alawein
 
 **Version:** 1.4
-**Last Updated:** 2026-05-23
+**Last Updated:** 2026-08-27
 **Status:** Active
 
 ---
@@ -49,8 +49,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Managed-doc canonical name/domain audit:
   `.github/workflows/docs-validation.yml` (with `docs/archive/**` exemption)
 - Manifest-driven batch governance is active for multi-repo autonomous work
-- README is generated from canonical `catalog/repos.json` data and
-  `profile-from-guides.yaml`; `projects.json` remains derived output from
+- README is generated from compiled `catalog/repos.json` (source: `catalog/index.yaml`)
+  and `profile-from-guides.yaml`; `projects.json` remains derived output from
   `scripts/catalog/build-catalog.py`
 - Read-only profile pin drift verification is active via
   `scripts/github/verify-profile-pins.py`

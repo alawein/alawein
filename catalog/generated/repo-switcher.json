@@ -1,297 +1,6 @@
 {
   "featured": [
     {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "typescript",
-        "react",
-        "supabase"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://atelier-rounaq.com",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/atelier-rounaq",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "studio-site"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "typescript",
-        "nextjs",
-        "react"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://github.com/alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/auditraise",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "marketing-audit-product"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Bolts",
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "nextjs",
-        "typescript"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://bolts.fit",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/bolts",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein",
-        "workspace-tools"
-      ],
-      "provides": [
-        "fitness-plan-platform",
-        "payments-surface"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Gymboy",
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "react",
-        "vite",
-        "spark"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://gymboy.coach",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/gymboy",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "fitness-coaching-ui"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "react",
-        "vite",
-        "typescript",
-        "supabase"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://repzcoach.com",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/repz",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "coaching-platform",
-        "fitness-client-app"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Scribd",
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "nextjs",
-        "react",
-        "typescript"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://scribd.fit",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/scribd",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "editorial-surface",
-        "content-platform"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "name": "Alembiq",
       "slug": "alembiq",
       "repo": "alawein/alembiq",
@@ -585,6 +294,297 @@
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
       "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "typescript",
+        "react",
+        "supabase"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://atelier-rounaq.com",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "topics": [
+        "portfolio",
+        "react",
+        "supabase",
+        "luxury",
+        "design"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/atelier-rounaq",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "studio-site"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "topics": [
+        "audit",
+        "local-marketing",
+        "nextjs",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/auditraise",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "marketing-audit-product"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "nextjs",
+        "typescript"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://bolts.fit",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/bolts",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein",
+        "workspace-tools"
+      ],
+      "provides": [
+        "fitness-plan-platform",
+        "payments-surface"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "react",
+        "vite",
+        "spark"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://gymboy.coach",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/gymboy",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "fitness-coaching-ui"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://repzcoach.com",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/repz",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "coaching-platform",
+        "fitness-client-app"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Scribd",
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "nextjs",
+        "react",
+        "typescript"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://scribd.fit",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/scribd",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "editorial-surface",
+        "content-platform"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     },

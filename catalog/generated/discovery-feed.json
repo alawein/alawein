@@ -3,16 +3,16 @@
   "summary": {
     "repoCount": 40,
     "typeCounts": {
-      "product": 11,
       "archive": 1,
+      "research": 20,
       "governance": 1,
       "infra": 2,
       "tooling": 5,
-      "research": 20
+      "product": 11
     },
     "lifecycleCounts": {
-      "active": 37,
       "archived": 1,
+      "active": 37,
       "maintained": 2
     }
   },
@@ -175,355 +175,6 @@
     ],
     "clients": [
       {
-        "name": "Atelier Rounaq",
-        "slug": "atelier-rounaq",
-        "repo": "alawein/atelier-rounaq",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "typescript",
-          "react",
-          "supabase"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://atelier-rounaq.com",
-        "description": "Studio and portfolio site for a luxury atelier.",
-        "topics": [
-          "portfolio",
-          "react",
-          "supabase",
-          "luxury",
-          "design"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/atelier-rounaq",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "studio-site"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Auditraise",
-        "slug": "auditraise",
-        "repo": "alawein/auditraise",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "typescript",
-          "nextjs",
-          "react"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://github.com/alawein/auditraise",
-        "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-        "topics": [
-          "audit",
-          "local-marketing",
-          "nextjs",
-          "typescript"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/auditraise",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "marketing-audit-product"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Bolts",
-        "slug": "bolts",
-        "repo": "alawein/bolts",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "nextjs",
-          "typescript"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://bolts.fit",
-        "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-        "topics": [
-          "fitness",
-          "nextjs",
-          "typescript",
-          "stripe",
-          "supabase"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/bolts",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein",
-          "workspace-tools"
-        ],
-        "provides": [
-          "fitness-plan-platform",
-          "payments-surface"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Gymboy",
-        "slug": "gymboy",
-        "repo": "alawein/gymboy",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "react",
-          "vite",
-          "spark"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://gymboy.coach",
-        "description": "Fitness coaching platform with a retro progression-first training interface.",
-        "topics": [
-          "fitness",
-          "retro-ui",
-          "react",
-          "vite",
-          "coaching"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/gymboy",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "fitness-coaching-ui"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "REPZ",
-        "slug": "repz",
-        "repo": "alawein/repz",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "react",
-          "vite",
-          "typescript",
-          "supabase"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://repzcoach.com",
-        "description": "AI-powered coaching platform for fitness professionals and clients.",
-        "topics": [
-          "fitness",
-          "react",
-          "typescript",
-          "supabase",
-          "coaching"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/repz",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "coaching-platform",
-          "fitness-client-app"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Scribd",
-        "slug": "scribd",
-        "repo": "alawein/scribd",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "nextjs",
-          "react",
-          "typescript"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://scribd.fit",
-        "description": "Fitness publishing and content surface aligned with the shared design system.",
-        "topics": [
-          "publishing",
-          "nextjs",
-          "react",
-          "typescript",
-          "design-system"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/scribd",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "editorial-surface",
-          "content-platform"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "design-system",
-        "slug": "design-system",
-        "repo": "alawein/design-system",
-        "type": "infra",
-        "surface": "monorepo",
-        "domain": "design-system",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "react",
-          "turborepo",
-          "storybook"
-        ],
-        "audience": [
-          "internal",
-          "client"
-        ],
-        "homepage": "https://github.com/alawein/design-system",
-        "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
-        "topics": [
-          "design-system",
-          "storybook",
-          "react",
-          "tokens",
-          "turborepo"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "core/design-system",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [
-          "design-tokens",
-          "ui-components",
-          "brand-assets"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
-        "github_actions_settings": {
-          "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": true
-        },
-        "release_automation": {
-          "mode": "changesets-publish",
-          "supports_release_prs": true,
-          "publishes_packages": true,
-          "requires_npm_token": true
-        }
-      },
-      {
         "name": "Adil",
         "slug": "adil",
         "repo": "alawein/adil",
@@ -568,6 +219,351 @@
         "version_source": "package.json",
         "repo_archetype": "python-service",
         "compliance": "regulated",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Alembiq",
+        "slug": "alembiq",
+        "repo": "alawein/alembiq",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "pytorch",
+          "llm-training"
+        ],
+        "audience": [
+          "research",
+          "client"
+        ],
+        "homepage": "https://alembiq.online",
+        "description": "LLM training, alignment, evaluation, and synthetic data platform.",
+        "topics": [
+          "python",
+          "pytorch",
+          "llm",
+          "alignment",
+          "training"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/alembiq",
+        "catalog_groups": [
+          "featured",
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "llm-training",
+          "synthetic-data"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-library",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Attributa",
+        "slug": "attributa",
+        "repo": "alawein/attributa",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "typescript",
+          "react",
+          "vite"
+        ],
+        "audience": [
+          "client",
+          "public"
+        ],
+        "homepage": "https://attributa.dev",
+        "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+        "topics": [
+          "ai-governance",
+          "attribution",
+          "react",
+          "typescript",
+          "security"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/attributa",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "attribution-intelligence",
+          "citation-checks"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Event Discovery Framework",
+        "slug": "edfp",
+        "repo": "alawein/edfp",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "opencv",
+          "fastapi"
+        ],
+        "audience": [
+          "research",
+          "client"
+        ],
+        "homepage": "https://edfp.online",
+        "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+        "topics": [
+          "python",
+          "computer-vision",
+          "fastapi",
+          "fft",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/edfp",
+        "catalog_groups": [
+          "featured",
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "spectral-event-detection"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-service",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "LLMWorks",
+        "slug": "llmworks",
+        "repo": "alawein/llmworks",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "typescript",
+          "react",
+          "supabase",
+          "llm"
+        ],
+        "audience": [
+          "client",
+          "research",
+          "public"
+        ],
+        "homepage": "https://llmworks.dev",
+        "description": "LLM evaluation, benchmarking, and security testing playground.",
+        "topics": [
+          "llm",
+          "evaluation",
+          "benchmarking",
+          "react",
+          "supabase"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/llmworks",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "llm-evals",
+          "security-benchmarks"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "OptiQAP",
+        "slug": "optiqap",
+        "repo": "alawein/optiqap",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "optimization",
+          "hpc"
+        ],
+        "audience": [
+          "research",
+          "client"
+        ],
+        "homepage": "https://optiqap.online",
+        "description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+        "topics": [
+          "python",
+          "optimization",
+          "qubo",
+          "hpc",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/optiqap",
+        "catalog_groups": [
+          "featured",
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "qap-solvers",
+          "benchmarking"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Provegate",
+        "slug": "provegate",
+        "repo": "alawein/provegate",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "mcp",
+          "agents"
+        ],
+        "audience": [
+          "research",
+          "client"
+        ],
+        "homepage": "https://provegate.online",
+        "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+        "topics": [
+          "mcp",
+          "agents",
+          "governance",
+          "python",
+          "verification"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/provegate",
+        "catalog_groups": [
+          "research",
+          "infrastructure"
+        ],
+        "depends_on": [
+          "workspace-tools",
+          "alawein"
+        ],
+        "provides": [
+          "agent-proof-tooling"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-service",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "simcore.dev",
+        "slug": "simcore",
+        "repo": "alawein/simcore",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "typescript",
+          "react",
+          "vite",
+          "plotly"
+        ],
+        "audience": [
+          "research",
+          "client"
+        ],
+        "homepage": "https://simcore.dev",
+        "description": "Scientific simulation core for interactive modeling and numerical exploration.",
+        "topics": [
+          "simulation",
+          "scientific-computing",
+          "react",
+          "vite",
+          "plotly"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/simcore",
+        "catalog_groups": [
+          "notion_sync",
+          "research"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "simulation-ui"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       }
@@ -1382,297 +1378,6 @@
   },
   "repos": [
     {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "typescript",
-        "react",
-        "supabase"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://atelier-rounaq.com",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/atelier-rounaq",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "studio-site"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "typescript",
-        "nextjs",
-        "react"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://github.com/alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/auditraise",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "marketing-audit-product"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Bolts",
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "nextjs",
-        "typescript"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://bolts.fit",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/bolts",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein",
-        "workspace-tools"
-      ],
-      "provides": [
-        "fitness-plan-platform",
-        "payments-surface"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Gymboy",
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "react",
-        "vite",
-        "spark"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://gymboy.coach",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/gymboy",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "fitness-coaching-ui"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "react",
-        "vite",
-        "typescript",
-        "supabase"
-      ],
-      "audience": [
-        "client",
-        "public"
-      ],
-      "homepage": "https://repzcoach.com",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/repz",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "coaching-platform",
-        "fitness-client-app"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
-      "compliance": "pii",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Scribd",
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "stack": [
-        "nextjs",
-        "react",
-        "typescript"
-      ],
-      "audience": [
-        "public",
-        "client"
-      ],
-      "homepage": "https://scribd.fit",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "apps/scribd",
-      "catalog_groups": [
-        "featured"
-      ],
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "editorial-surface",
-        "content-platform"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "name": "Helios",
       "slug": "helios",
       "repo": "alawein/helios",
@@ -1713,420 +1418,6 @@
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
-    },
-    {
-      "name": "alawein",
-      "slug": "alawein",
-      "repo": "alawein/alawein",
-      "type": "governance",
-      "surface": "docs-hub",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "public",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "python",
-        "markdown",
-        "github-actions"
-      ],
-      "audience": [
-        "internal",
-        "public"
-      ],
-      "homepage": "https://github.com/alawein/alawein",
-      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "topics": [
-        "governance",
-        "documentation",
-        "catalog",
-        "automation"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/alawein",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [],
-      "provides": [
-        "catalog-ssot",
-        "governance-docs",
-        "profile-generation"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "docs-hub",
-      "compliance": "public-data",
-      "github_actions_settings": {
-        "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "name": "design-system",
-      "slug": "design-system",
-      "repo": "alawein/design-system",
-      "type": "infra",
-      "surface": "monorepo",
-      "domain": "design-system",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "typescript",
-        "react",
-        "turborepo",
-        "storybook"
-      ],
-      "audience": [
-        "internal",
-        "client"
-      ],
-      "homepage": "https://github.com/alawein/design-system",
-      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
-      "topics": [
-        "design-system",
-        "storybook",
-        "react",
-        "tokens",
-        "turborepo"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/design-system",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "design-tokens",
-        "ui-components",
-        "brand-assets"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
-      }
-    },
-    {
-      "name": "incore",
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "type": "tooling",
-      "surface": "monorepo",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "python",
-        "sqlite",
-        "mcp"
-      ],
-      "audience": [
-        "internal"
-      ],
-      "homepage": "https://github.com/alawein/incore",
-      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "topics": [
-        "automation",
-        "cli",
-        "inventory",
-        "mcp",
-        "python"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/incore",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "workspace-tools",
-        "alawein"
-      ],
-      "provides": [
-        "inventory-core",
-        "asset-ingest-query"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "python-library",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "knowledge-base",
-      "slug": "knowledge-base",
-      "repo": "alawein/knowledge-base",
-      "type": "infra",
-      "surface": "docs-hub",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "nextjs",
-        "typescript",
-        "python"
-      ],
-      "audience": [
-        "internal"
-      ],
-      "homepage": "https://knowledge-base-alawein.vercel.app",
-      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
-      "topics": [
-        "knowledge-base",
-        "nextjs",
-        "search",
-        "documentation"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/knowledge-base",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "alawein",
-        "workspace-tools"
-      ],
-      "provides": [
-        "catalog-ui",
-        "inventory-search",
-        "onboarding-docs"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "next-app-router",
-      "compliance": "internal-only",
-      "github_actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "name": "Outpost",
-      "slug": "outpost",
-      "repo": "alawein/outpost",
-      "type": "tooling",
-      "surface": "monorepo",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "public",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "python",
-        "prompts",
-        "cli"
-      ],
-      "audience": [
-        "internal",
-        "public"
-      ],
-      "homepage": "https://github.com/alawein/outpost",
-      "description": "Personal kit that installs prompts for coding agents.",
-      "topics": [
-        "ai-tools",
-        "claude-code",
-        "cli",
-        "coding-agents",
-        "developer-tools",
-        "prompts",
-        "python"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/outpost",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "agent-prompt-kit"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "python-platform-cli",
-      "compliance": "public-data",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "prompty",
-      "slug": "prompty",
-      "repo": "alawein/prompty",
-      "type": "tooling",
-      "surface": "monorepo",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "typescript",
-        "turborepo",
-        "node"
-      ],
-      "audience": [
-        "internal"
-      ],
-      "homepage": "https://github.com/alawein/prompty",
-      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-      "topics": [
-        "llm",
-        "monorepo",
-        "prompt-engineering",
-        "turborepo",
-        "typescript"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/prompty",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "workspace-tools",
-        "alawein"
-      ],
-      "provides": [
-        "prompt-tooling-monorepo"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "Workspace Control",
-      "slug": "workspace-control",
-      "repo": "alawein/workspace-control",
-      "type": "tooling",
-      "surface": "monorepo",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "python",
-        "yaml",
-        "inventory"
-      ],
-      "audience": [
-        "internal"
-      ],
-      "homepage": "https://github.com/alawein/workspace-control",
-      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "topics": [
-        "governance",
-        "inventory",
-        "python",
-        "workspace"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/workspace-control",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "workspace-tools",
-        "alawein"
-      ],
-      "provides": [
-        "workspace-inventory",
-        "control-plane-ops"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "python-platform-cli",
-      "compliance": "internal-only",
-      "github_actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "name": "workspace-tools",
-      "slug": "workspace-tools",
-      "repo": "alawein/workspace-tools",
-      "type": "tooling",
-      "surface": "cli",
-      "domain": "governance",
-      "lifecycle": "active",
-      "visibility": "private",
-      "theme_family": "midnight",
-      "brand_family": "midnight",
-      "stack": [
-        "python",
-        "yaml",
-        "automation"
-      ],
-      "audience": [
-        "internal"
-      ],
-      "homepage": "https://github.com/alawein/workspace-tools",
-      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "topics": [
-        "automation",
-        "python",
-        "cli",
-        "governance"
-      ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "local_path": "core/workspace-tools",
-      "catalog_groups": [
-        "infrastructure"
-      ],
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "workspace-batch",
-        "scaffolding",
-        "drift-audits"
-      ],
-      "version_source": "package.json",
-      "repo_archetype": "python-service",
-      "compliance": "internal-only",
-      "github_actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
     },
     {
       "name": "Adil",
@@ -3085,6 +2376,711 @@
       "release_automation": {}
     },
     {
+      "name": "alawein",
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "type": "governance",
+      "surface": "docs-hub",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "public",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "markdown",
+        "github-actions"
+      ],
+      "audience": [
+        "internal",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/alawein",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "topics": [
+        "governance",
+        "documentation",
+        "catalog",
+        "automation"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/alawein",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [],
+      "provides": [
+        "catalog-ssot",
+        "governance-docs",
+        "profile-generation"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "docs-hub",
+      "compliance": "public-data",
+      "github_actions_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "name": "design-system",
+      "slug": "design-system",
+      "repo": "alawein/design-system",
+      "type": "infra",
+      "surface": "monorepo",
+      "domain": "design-system",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "react",
+        "turborepo",
+        "storybook"
+      ],
+      "audience": [
+        "internal",
+        "client"
+      ],
+      "homepage": "https://github.com/alawein/design-system",
+      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "topics": [
+        "design-system",
+        "storybook",
+        "react",
+        "tokens",
+        "turborepo"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/design-system",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "design-tokens",
+        "ui-components",
+        "brand-assets"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "node-monorepo",
+      "compliance": "internal-only",
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "changesets-publish",
+        "supports_release_prs": true,
+        "publishes_packages": true,
+        "requires_npm_token": true
+      }
+    },
+    {
+      "name": "incore",
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "sqlite",
+        "mcp"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/incore",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "inventory-core",
+        "asset-ingest-query"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "python-library",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "knowledge-base",
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "type": "infra",
+      "surface": "docs-hub",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "nextjs",
+        "typescript",
+        "python"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "topics": [
+        "knowledge-base",
+        "nextjs",
+        "search",
+        "documentation"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/knowledge-base",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein",
+        "workspace-tools"
+      ],
+      "provides": [
+        "catalog-ui",
+        "inventory-search",
+        "onboarding-docs"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "name": "Outpost",
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "public",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "prompts",
+        "cli"
+      ],
+      "audience": [
+        "internal",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/outpost",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "agent-prompt-kit"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "python-platform-cli",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "prompty",
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/prompty",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/prompty",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "prompt-tooling-monorepo"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "node-monorepo",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Workspace Control",
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "yaml",
+        "inventory"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/workspace-control",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "workspace-inventory",
+        "control-plane-ops"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "python-platform-cli",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "workspace-tools",
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "yaml",
+        "automation"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/workspace-tools",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "topics": [
+        "automation",
+        "python",
+        "cli",
+        "governance"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/workspace-tools",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "workspace-batch",
+        "scaffolding",
+        "drift-audits"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "python-service",
+      "compliance": "internal-only",
+      "github_actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "typescript",
+        "react",
+        "supabase"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://atelier-rounaq.com",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "topics": [
+        "portfolio",
+        "react",
+        "supabase",
+        "luxury",
+        "design"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/atelier-rounaq",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "studio-site"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Auditraise",
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://github.com/alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "topics": [
+        "audit",
+        "local-marketing",
+        "nextjs",
+        "typescript"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/auditraise",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "marketing-audit-product"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "nextjs",
+        "typescript"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://bolts.fit",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/bolts",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein",
+        "workspace-tools"
+      ],
+      "provides": [
+        "fitness-plan-platform",
+        "payments-surface"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "react",
+        "vite",
+        "spark"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://gymboy.coach",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/gymboy",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "fitness-coaching-ui"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "audience": [
+        "client",
+        "public"
+      ],
+      "homepage": "https://repzcoach.com",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/repz",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "coaching-platform",
+        "fitness-client-app"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "pii",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Scribd",
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "nextjs",
+        "react",
+        "typescript"
+      ],
+      "audience": [
+        "public",
+        "client"
+      ],
+      "homepage": "https://scribd.fit",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "apps/scribd",
+      "catalog_groups": [
+        "featured"
+      ],
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "editorial-surface",
+        "content-platform"
+      ],
+      "version_source": "package.json",
+      "repo_archetype": "next-app-router",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "meshal.ai",
       "slug": "meshal-web",
       "repo": "alawein/meshal-web",
@@ -3921,6 +3917,22 @@
     ]
   },
   "assetAssignments": {
+    "alawein": {
+      "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
+      "screenshot_folder": "core/alawein/docs/screenshots",
+      "theme_family": "midnight",
+      "social_preview_image": "design-system/packages/icons/dist/brand/alawein/social-card.svg",
+      "favicon_status": "generated"
+    },
+    "knowledge-base": {
+      "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
+      "screenshot_folder": "core/knowledge-base/docs/screenshots",
+      "theme_family": "midnight",
+      "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
+      "favicon_status": "generated"
+    },
     "atelier-rounaq": {
       "logo_source": "design-system/packages/icons/dist/brand/atelier-rounaq/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/atelier-rounaq/repo-banner.svg",
@@ -3969,22 +3981,6 @@
       "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
       "favicon_status": "generated"
     },
-    "alawein": {
-      "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
-      "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
-      "screenshot_folder": "core/alawein/docs/screenshots",
-      "theme_family": "midnight",
-      "social_preview_image": "design-system/packages/icons/dist/brand/alawein/social-card.svg",
-      "favicon_status": "generated"
-    },
-    "knowledge-base": {
-      "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
-      "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
-      "screenshot_folder": "core/knowledge-base/docs/screenshots",
-      "theme_family": "midnight",
-      "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
-      "favicon_status": "generated"
-    },
     "meshal-web": {
       "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
@@ -4004,137 +4000,6 @@
   },
   "githubMetadata": [
     {
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "homepage": "https://atelier-rounaq.com",
-      "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "legacy"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "auditraise",
-      "repo": "alawein/auditraise",
-      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "homepage": "https://github.com/alawein/auditraise",
-      "topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "homepage": "https://bolts.fit",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "homepage": "https://gymboy.coach",
-      "topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "homepage": "https://repzcoach.com",
-      "topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "homepage": "https://scribd.fit",
-      "topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
       "slug": "helios",
       "repo": "alawein/helios",
       "description": "Proprietary research archive for computational astrophysics and astronomy work.",
@@ -4153,212 +4018,6 @@
       },
       "actions_settings": {},
       "release_automation": {}
-    },
-    {
-      "slug": "alawein",
-      "repo": "alawein/alawein",
-      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "homepage": "https://github.com/alawein/alawein",
-      "topics": [
-        "governance",
-        "documentation",
-        "catalog",
-        "automation"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "docs-hub",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "slug": "design-system",
-      "repo": "alawein/design-system",
-      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
-      "homepage": "https://github.com/alawein/design-system",
-      "topics": [
-        "design-system",
-        "storybook",
-        "react",
-        "tokens",
-        "turborepo"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "changesets-publish",
-        "supports_release_prs": true,
-        "publishes_packages": true,
-        "requires_npm_token": true
-      }
-    },
-    {
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "homepage": "https://github.com/alawein/incore",
-      "topics": [
-        "automation",
-        "cli",
-        "inventory",
-        "mcp",
-        "python"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "knowledge-base",
-      "repo": "alawein/knowledge-base",
-      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
-      "homepage": "https://knowledge-base-alawein.vercel.app",
-      "topics": [
-        "knowledge-base",
-        "nextjs",
-        "search",
-        "documentation"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "slug": "outpost",
-      "repo": "alawein/outpost",
-      "description": "Personal kit that installs prompts for coding agents.",
-      "homepage": "https://github.com/alawein/outpost",
-      "topics": [
-        "ai-tools",
-        "claude-code",
-        "cli",
-        "coding-agents",
-        "developer-tools",
-        "prompts",
-        "python"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-platform-cli",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "prompty",
-      "repo": "alawein/prompty",
-      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-      "homepage": "https://github.com/alawein/prompty",
-      "topics": [
-        "llm",
-        "monorepo",
-        "prompt-engineering",
-        "turborepo",
-        "typescript"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "workspace-control",
-      "repo": "alawein/workspace-control",
-      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "homepage": "https://github.com/alawein/workspace-control",
-      "topics": [
-        "governance",
-        "inventory",
-        "python",
-        "workspace"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-platform-cli",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "workspace-tools",
-      "repo": "alawein/workspace-tools",
-      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "homepage": "https://github.com/alawein/workspace-tools",
-      "topics": [
-        "automation",
-        "python",
-        "cli",
-        "governance"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
     },
     {
       "slug": "adil",
@@ -4793,6 +4452,343 @@
       "release_automation": {}
     },
     {
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "homepage": "https://github.com/alawein/alawein",
+      "topics": [
+        "governance",
+        "documentation",
+        "catalog",
+        "automation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "design-system",
+      "repo": "alawein/design-system",
+      "description": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "homepage": "https://github.com/alawein/design-system",
+      "topics": [
+        "design-system",
+        "storybook",
+        "react",
+        "tokens",
+        "turborepo"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "changesets-publish",
+        "supports_release_prs": true,
+        "publishes_packages": true,
+        "requires_npm_token": true
+      }
+    },
+    {
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "homepage": "https://github.com/alawein/incore",
+      "topics": [
+        "automation",
+        "cli",
+        "inventory",
+        "mcp",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "knowledge-base",
+      "repo": "alawein/knowledge-base",
+      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "topics": [
+        "knowledge-base",
+        "nextjs",
+        "search",
+        "documentation"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "homepage": "https://github.com/alawein/outpost",
+      "topics": [
+        "ai-tools",
+        "claude-code",
+        "cli",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "prompty",
+      "repo": "alawein/prompty",
+      "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "homepage": "https://github.com/alawein/prompty",
+      "topics": [
+        "llm",
+        "monorepo",
+        "prompt-engineering",
+        "turborepo",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "homepage": "https://github.com/alawein/workspace-control",
+      "topics": [
+        "governance",
+        "inventory",
+        "python",
+        "workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-platform-cli",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "homepage": "https://github.com/alawein/workspace-tools",
+      "topics": [
+        "automation",
+        "python",
+        "cli",
+        "governance"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
+    },
+    {
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "homepage": "https://atelier-rounaq.com",
+      "topics": [
+        "portfolio",
+        "react",
+        "supabase",
+        "luxury",
+        "design"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "legacy"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "auditraise",
+      "repo": "alawein/auditraise",
+      "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "homepage": "https://github.com/alawein/auditraise",
+      "topics": [
+        "audit",
+        "local-marketing",
+        "nextjs",
+        "typescript"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "homepage": "https://bolts.fit",
+      "topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "homepage": "https://gymboy.coach",
+      "topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "homepage": "https://repzcoach.com",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "homepage": "https://scribd.fit",
+      "topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "meshal-web",
       "repo": "alawein/meshal-web",
       "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
@@ -4918,54 +4914,9 @@
     "stale_inventory_entries": [],
     "path_mismatches": [
       {
-        "slug": "atelier-rounaq",
-        "catalog_path": "apps/atelier-rounaq",
-        "workspace_path": "atelier-rounaq"
-      },
-      {
-        "slug": "bolts",
-        "catalog_path": "apps/bolts",
-        "workspace_path": "bolts"
-      },
-      {
-        "slug": "gymboy",
-        "catalog_path": "apps/gymboy",
-        "workspace_path": "gymboy"
-      },
-      {
-        "slug": "repz",
-        "catalog_path": "apps/repz",
-        "workspace_path": "repz"
-      },
-      {
-        "slug": "scribd",
-        "catalog_path": "apps/scribd",
-        "workspace_path": "scribd"
-      },
-      {
         "slug": "helios",
         "catalog_path": "_archive/2026-06-helios",
         "workspace_path": "helios"
-      },
-      {
-        "slug": "alawein",
-        "catalog_path": "core/alawein",
-        "workspace_path": "alawein"
-      },
-      {
-        "slug": "design-system",
-        "catalog_path": "core/design-system",
-        "workspace_path": "design-system"
-      },
-      {
-        "slug": "knowledge-base",
-        "catalog_path": "core/knowledge-base",
-        "workspace_path": "knowledge-base"
-      },
-      {
-        "slug": "workspace-tools",
-        "catalog_path": "core/workspace-tools",
-        "workspace_path": "workspace-tools"
       },
       {
         "slug": "adil",
@@ -5063,6 +5014,51 @@
         "workspace_path": "spincirc"
       },
       {
+        "slug": "alawein",
+        "catalog_path": "core/alawein",
+        "workspace_path": "alawein"
+      },
+      {
+        "slug": "design-system",
+        "catalog_path": "core/design-system",
+        "workspace_path": "design-system"
+      },
+      {
+        "slug": "knowledge-base",
+        "catalog_path": "core/knowledge-base",
+        "workspace_path": "knowledge-base"
+      },
+      {
+        "slug": "workspace-tools",
+        "catalog_path": "core/workspace-tools",
+        "workspace_path": "workspace-tools"
+      },
+      {
+        "slug": "atelier-rounaq",
+        "catalog_path": "apps/atelier-rounaq",
+        "workspace_path": "atelier-rounaq"
+      },
+      {
+        "slug": "bolts",
+        "catalog_path": "apps/bolts",
+        "workspace_path": "bolts"
+      },
+      {
+        "slug": "gymboy",
+        "catalog_path": "apps/gymboy",
+        "workspace_path": "gymboy"
+      },
+      {
+        "slug": "repz",
+        "catalog_path": "apps/repz",
+        "workspace_path": "repz"
+      },
+      {
+        "slug": "scribd",
+        "catalog_path": "apps/scribd",
+        "workspace_path": "scribd"
+      },
+      {
         "slug": "meshal-web",
         "catalog_path": "sites/meshal-web",
         "workspace_path": "meshal-web"
@@ -5076,297 +5072,6 @@
   },
   "projectSwitcher": {
     "featured": [
-      {
-        "name": "Atelier Rounaq",
-        "slug": "atelier-rounaq",
-        "repo": "alawein/atelier-rounaq",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "typescript",
-          "react",
-          "supabase"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://atelier-rounaq.com",
-        "description": "Studio and portfolio site for a luxury atelier.",
-        "topics": [
-          "portfolio",
-          "react",
-          "supabase",
-          "luxury",
-          "design"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/atelier-rounaq",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "studio-site"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Auditraise",
-        "slug": "auditraise",
-        "repo": "alawein/auditraise",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "typescript",
-          "nextjs",
-          "react"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://github.com/alawein/auditraise",
-        "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-        "topics": [
-          "audit",
-          "local-marketing",
-          "nextjs",
-          "typescript"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/auditraise",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "marketing-audit-product"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Bolts",
-        "slug": "bolts",
-        "repo": "alawein/bolts",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "nextjs",
-          "typescript"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://bolts.fit",
-        "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-        "topics": [
-          "fitness",
-          "nextjs",
-          "typescript",
-          "stripe",
-          "supabase"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/bolts",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein",
-          "workspace-tools"
-        ],
-        "provides": [
-          "fitness-plan-platform",
-          "payments-surface"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Gymboy",
-        "slug": "gymboy",
-        "repo": "alawein/gymboy",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "react",
-          "vite",
-          "spark"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://gymboy.coach",
-        "description": "Fitness coaching platform with a retro progression-first training interface.",
-        "topics": [
-          "fitness",
-          "retro-ui",
-          "react",
-          "vite",
-          "coaching"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/gymboy",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "fitness-coaching-ui"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "REPZ",
-        "slug": "repz",
-        "repo": "alawein/repz",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "react",
-          "vite",
-          "typescript",
-          "supabase"
-        ],
-        "audience": [
-          "client",
-          "public"
-        ],
-        "homepage": "https://repzcoach.com",
-        "description": "AI-powered coaching platform for fitness professionals and clients.",
-        "topics": [
-          "fitness",
-          "react",
-          "typescript",
-          "supabase",
-          "coaching"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/repz",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "coaching-platform",
-          "fitness-client-app"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "pii",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Scribd",
-        "slug": "scribd",
-        "repo": "alawein/scribd",
-        "type": "product",
-        "surface": "web",
-        "domain": "fitness",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "forge",
-        "brand_family": "forge",
-        "stack": [
-          "nextjs",
-          "react",
-          "typescript"
-        ],
-        "audience": [
-          "public",
-          "client"
-        ],
-        "homepage": "https://scribd.fit",
-        "description": "Fitness publishing and content surface aligned with the shared design system.",
-        "topics": [
-          "publishing",
-          "nextjs",
-          "react",
-          "typescript",
-          "design-system"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "apps/scribd",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "editorial-surface",
-          "content-platform"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
       {
         "name": "Alembiq",
         "slug": "alembiq",
@@ -5661,6 +5366,297 @@
         "version_source": "package.json",
         "repo_archetype": "node-monorepo",
         "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Atelier Rounaq",
+        "slug": "atelier-rounaq",
+        "repo": "alawein/atelier-rounaq",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "typescript",
+          "react",
+          "supabase"
+        ],
+        "audience": [
+          "public",
+          "client"
+        ],
+        "homepage": "https://atelier-rounaq.com",
+        "description": "Studio and portfolio site for a luxury atelier.",
+        "topics": [
+          "portfolio",
+          "react",
+          "supabase",
+          "luxury",
+          "design"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/atelier-rounaq",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "studio-site"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Auditraise",
+        "slug": "auditraise",
+        "repo": "alawein/auditraise",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "typescript",
+          "nextjs",
+          "react"
+        ],
+        "audience": [
+          "client",
+          "public"
+        ],
+        "homepage": "https://github.com/alawein/auditraise",
+        "description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+        "topics": [
+          "audit",
+          "local-marketing",
+          "nextjs",
+          "typescript"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/auditraise",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "marketing-audit-product"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "next-app-router",
+        "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Bolts",
+        "slug": "bolts",
+        "repo": "alawein/bolts",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "nextjs",
+          "typescript"
+        ],
+        "audience": [
+          "client",
+          "public"
+        ],
+        "homepage": "https://bolts.fit",
+        "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+        "topics": [
+          "fitness",
+          "nextjs",
+          "typescript",
+          "stripe",
+          "supabase"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/bolts",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein",
+          "workspace-tools"
+        ],
+        "provides": [
+          "fitness-plan-platform",
+          "payments-surface"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "next-app-router",
+        "compliance": "pii",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Gymboy",
+        "slug": "gymboy",
+        "repo": "alawein/gymboy",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "react",
+          "vite",
+          "spark"
+        ],
+        "audience": [
+          "public",
+          "client"
+        ],
+        "homepage": "https://gymboy.coach",
+        "description": "Fitness coaching platform with a retro progression-first training interface.",
+        "topics": [
+          "fitness",
+          "retro-ui",
+          "react",
+          "vite",
+          "coaching"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/gymboy",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "fitness-coaching-ui"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "pii",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "REPZ",
+        "slug": "repz",
+        "repo": "alawein/repz",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "react",
+          "vite",
+          "typescript",
+          "supabase"
+        ],
+        "audience": [
+          "client",
+          "public"
+        ],
+        "homepage": "https://repzcoach.com",
+        "description": "AI-powered coaching platform for fitness professionals and clients.",
+        "topics": [
+          "fitness",
+          "react",
+          "typescript",
+          "supabase",
+          "coaching"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/repz",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "coaching-platform",
+          "fitness-client-app"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "vite-react-spa",
+        "compliance": "pii",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Scribd",
+        "slug": "scribd",
+        "repo": "alawein/scribd",
+        "type": "product",
+        "surface": "web",
+        "domain": "fitness",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "forge",
+        "brand_family": "forge",
+        "stack": [
+          "nextjs",
+          "react",
+          "typescript"
+        ],
+        "audience": [
+          "public",
+          "client"
+        ],
+        "homepage": "https://scribd.fit",
+        "description": "Fitness publishing and content surface aligned with the shared design system.",
+        "topics": [
+          "publishing",
+          "nextjs",
+          "react",
+          "typescript",
+          "design-system"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "apps/scribd",
+        "catalog_groups": [
+          "featured"
+        ],
+        "depends_on": [
+          "design-system",
+          "alawein"
+        ],
+        "provides": [
+          "editorial-surface",
+          "content-platform"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "next-app-router",
+        "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
       },

@@ -31,8 +31,8 @@ rollout scripts for the sibling repos.
 
 1. Keep `README.md` aligned with the current portfolio and canonical repo
    metadata.
-2. Keep `catalog/repos.json` as the authored metadata source and
-   `projects.json` as derived output.
+2. Keep `catalog/index.yaml` as the human-edited catalog source; `build-catalog.py`
+   compiles it to `catalog/repos.json` and derived outputs including `projects.json`.
 3. Keep README entrypoints frontmatter-free and path-validated.
 4. Treat `VOICE.md` and `prompt-kits/` as the canonical style authority.
 5. Fix generators and validators instead of patching synced output by hand.
@@ -58,6 +58,8 @@ rollout scripts for the sibling repos.
 |------|---------|
 | Sync README | `python scripts/catalog/sync-readme.py` |
 | Check README drift | `python scripts/catalog/sync-readme.py --check` |
+| Compile catalog index | `python scripts/catalog/compile_index.py` |
+| Check catalog index drift | `python scripts/catalog/compile_index.py --check` |
 | Check live profile drift | `python scripts/github/verify-profile-pins.py --skip-live --check` |
 | Check style-rule drift | `python scripts/doctrine/build-style-rules.py --check` |
 | Validate governed style surfaces | `python scripts/doctrine/validate.py --ci` |

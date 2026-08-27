@@ -9,384 +9,6 @@
   ],
   "repos": [
     {
-      "name": "Atelier Rounaq",
-      "slug": "atelier-rounaq",
-      "legacy_slugs": [
-        "rounaq-atelier"
-      ],
-      "repo": "alawein/atelier-rounaq",
-      "local_path": "apps/atelier-rounaq",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "typescript",
-        "react",
-        "supabase"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "public",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://atelier-rounaq.com",
-      "canonical_description": "Studio and portfolio site for a luxury atelier.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase"
-      ],
-      "github_topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "legacy"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "studio-site"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
-      "name": "Auditraise",
-      "slug": "auditraise",
-      "legacy_slugs": [],
-      "repo": "alawein/auditraise",
-      "local_path": "apps/auditraise",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "typescript",
-        "nextjs",
-        "react"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "client",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://github.com/alawein/auditraise",
-      "canonical_description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
-      "tags": [
-        "TypeScript",
-        "Next.js",
-        "Marketing"
-      ],
-      "github_topics": [
-        "audit",
-        "local-marketing",
-        "nextjs",
-        "typescript"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "marketing-audit-product"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-08-17",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
-      "name": "Bolts",
-      "slug": "bolts",
-      "legacy_slugs": [],
-      "repo": "alawein/bolts",
-      "local_path": "apps/bolts",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "nextjs",
-        "typescript"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "client",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://bolts.fit",
-      "canonical_description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "tags": [
-        "Next.js",
-        "TypeScript"
-      ],
-      "github_topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein",
-        "workspace-tools"
-      ],
-      "provides": [
-        "fitness-plan-platform",
-        "payments-surface"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
-      "name": "Gymboy",
-      "slug": "gymboy",
-      "legacy_slugs": [
-        "gainboy"
-      ],
-      "repo": "alawein/gymboy",
-      "local_path": "apps/gymboy",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "react",
-        "vite",
-        "spark"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "public",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://gymboy.coach",
-      "canonical_description": "Fitness coaching platform with a retro progression-first training interface.",
-      "tags": [
-        "React",
-        "Vite",
-        "Spark"
-      ],
-      "github_topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "fitness-coaching-ui"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Personal"
-    },
-    {
-      "name": "REPZ",
-      "slug": "repz",
-      "legacy_slugs": [],
-      "repo": "alawein/repz",
-      "local_path": "apps/repz",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "react",
-        "vite",
-        "typescript",
-        "supabase"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "client",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://repzcoach.com",
-      "canonical_description": "AI-powered coaching platform for fitness professionals and clients.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase"
-      ],
-      "github_topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "coaching-platform",
-        "fitness-client-app"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Personal"
-    },
-    {
-      "name": "Scribd",
-      "slug": "scribd",
-      "legacy_slugs": [],
-      "repo": "alawein/scribd",
-      "local_path": "apps/scribd",
-      "bucket": "apps",
-      "type": "product",
-      "surface": "web",
-      "stack": [
-        "nextjs",
-        "react",
-        "typescript"
-      ],
-      "domain": "fitness",
-      "audience": [
-        "public",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "forge",
-      "brand_family": "forge",
-      "status": "active",
-      "homepage": "https://scribd.fit",
-      "canonical_description": "Fitness publishing and content surface aligned with the shared design system.",
-      "tags": [
-        "Next.js",
-        "React",
-        "TypeScript"
-      ],
-      "github_topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "editorial-surface",
-        "content-platform"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
       "name": "Helios",
       "slug": "helios",
       "legacy_slugs": [],
@@ -439,7 +61,1290 @@
       "catalog_groups": [
         "research"
       ],
-      "research_domain": "Proprietary research archive — computational astrophysics"
+      "research_domain": "Proprietary research archive — computational astrophysics",
+      "lane": "archive"
+    },
+    {
+      "name": "Adil",
+      "slug": "adil",
+      "legacy_slugs": [],
+      "repo": "alawein/adil",
+      "local_path": "lab/adil",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "legal-ai",
+        "cli"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "client",
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://github.com/alawein/adil",
+      "canonical_description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "tags": [
+        "Python",
+        "Legal AI",
+        "CLI"
+      ],
+      "github_topics": [
+        "python",
+        "cli",
+        "legal-ops",
+        "automation"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "regulated",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "heritage"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "legal-ops-cli",
+        "evidence-packets"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "notion_sync",
+        "research"
+      ],
+      "portfolio_domain": "Personal",
+      "research_domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow).",
+      "lane": "lab"
+    },
+    {
+      "name": "Alembiq",
+      "slug": "alembiq",
+      "legacy_slugs": [
+        "neper"
+      ],
+      "repo": "alawein/alembiq",
+      "local_path": "lab/alembiq",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "pytorch",
+        "llm-training"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://alembiq.online",
+      "canonical_description": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "tags": [
+        "Python",
+        "PyTorch",
+        "LLM Training"
+      ],
+      "github_topics": [
+        "python",
+        "pytorch",
+        "llm",
+        "alignment",
+        "training"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "vibrant"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "llm-training",
+        "synthetic-data"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured",
+        "research"
+      ],
+      "portfolio_domain": "scientific-computing",
+      "research_domain": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "lane": "lab"
+    },
+    {
+      "name": "Attributa",
+      "slug": "attributa",
+      "legacy_slugs": [],
+      "repo": "alawein/attributa",
+      "local_path": "lab/attributa",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "react",
+        "vite"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "client",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://attributa.dev",
+      "canonical_description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite"
+      ],
+      "github_topics": [
+        "ai-governance",
+        "attribution",
+        "react",
+        "typescript",
+        "security"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "attribution-intelligence",
+        "citation-checks"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Work",
+      "lane": "lab"
+    },
+    {
+      "name": "CHSH Lab",
+      "slug": "chshlab",
+      "legacy_slugs": [],
+      "repo": "alawein/chshlab",
+      "local_path": "lab/chshlab",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "html",
+        "css",
+        "javascript"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://chshlab.online",
+      "canonical_description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Quantum"
+      ],
+      "github_topics": [
+        "quantum",
+        "bell-inequality",
+        "education",
+        "javascript"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "static-site",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "quantum-education-site"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-08-26",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Quantum foundations — CHSH / Bell education site",
+      "lane": "lab"
+    },
+    {
+      "name": "Event Discovery Framework",
+      "slug": "edfp",
+      "legacy_slugs": [
+        "event-discovery-framework"
+      ],
+      "repo": "alawein/edfp",
+      "local_path": "lab/edfp",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "opencv",
+        "fastapi"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://edfp.online",
+      "canonical_description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "tags": [
+        "Python",
+        "OpenCV",
+        "FastAPI"
+      ],
+      "github_topics": [
+        "python",
+        "computer-vision",
+        "fastapi",
+        "fft",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "planned",
+        "compliance": "public-data",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "spectral-event-detection"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured",
+        "research"
+      ],
+      "portfolio_domain": "Work",
+      "research_domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering.",
+      "lane": "lab"
+    },
+    {
+      "name": "Fallax",
+      "slug": "fallax",
+      "legacy_slugs": [
+        "reasonbench"
+      ],
+      "repo": "alawein/fallax",
+      "local_path": "lab/fallax",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "llm",
+        "evaluation"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "internal",
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://fallax.online",
+      "canonical_description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "tags": [
+        "Python",
+        "LLM",
+        "Evaluation"
+      ],
+      "github_topics": [
+        "llm",
+        "evaluation",
+        "reasoning",
+        "python"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "reasoning-benchmarks",
+        "adversarial-evals"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "infrastructure"
+      ],
+      "lane": "lab"
+    },
+    {
+      "name": "LLMWorks",
+      "slug": "llmworks",
+      "legacy_slugs": [],
+      "repo": "alawein/llmworks",
+      "local_path": "lab/llmworks",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "react",
+        "supabase",
+        "llm"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "client",
+        "research",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://llmworks.dev",
+      "canonical_description": "LLM evaluation, benchmarking, and security testing playground.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase",
+        "LLM"
+      ],
+      "github_topics": [
+        "llm",
+        "evaluation",
+        "benchmarking",
+        "react",
+        "supabase"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "llm-evals",
+        "security-benchmarks"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-08-26",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Work",
+      "lane": "lab"
+    },
+    {
+      "name": "Loophole Lab",
+      "slug": "loopholelab",
+      "legacy_slugs": [],
+      "repo": "alawein/loopholelab",
+      "local_path": "lab/loopholelab",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "fastapi",
+        "typescript",
+        "react",
+        "vite"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://loopholelab.online",
+      "canonical_description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
+      "tags": [
+        "Python",
+        "FastAPI",
+        "TypeScript",
+        "React",
+        "Quantum",
+        "Research"
+      ],
+      "github_topics": [
+        "quantum",
+        "validation",
+        "react",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "planned",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "claim-stress-testing"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-08-26",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Research validation — adversarial claim stress-testing",
+      "lane": "lab"
+    },
+    {
+      "name": "MagLogic",
+      "slug": "maglogic",
+      "legacy_slugs": [],
+      "repo": "alawein/maglogic",
+      "local_path": "lab/maglogic",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "magnetics"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://github.com/alawein/maglogic",
+      "canonical_description": "Magnetic logic gates and device simulation research.",
+      "tags": [
+        "Python",
+        "Magnetics",
+        "Research"
+      ],
+      "github_topics": [
+        "magnetics",
+        "python",
+        "logic-gates",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "vibrant"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "magnetic-logic-models"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Magnetic logic gates",
+      "lane": "lab"
+    },
+    {
+      "name": "meatheadphysicist",
+      "slug": "meatheadphysicist",
+      "legacy_slugs": [
+        "MeatheadPhysicist"
+      ],
+      "repo": "alawein/meatheadphysicist",
+      "local_path": "lab/meatheadphysicist",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "physics",
+        "fastapi",
+        "research"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://mhphys.online",
+      "canonical_description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
+      "tags": [
+        "Python",
+        "Physics",
+        "FastAPI",
+        "Research"
+      ],
+      "github_topics": [
+        "physics",
+        "python",
+        "fastapi",
+        "simulation",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "research-archive",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "physics-research",
+        "claim-verification"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "notion_sync",
+        "research"
+      ],
+      "portfolio_domain": "Personal",
+      "research_domain": "Computational physics research — Bell inequality, CHSH simulation",
+      "lane": "lab"
+    },
+    {
+      "name": "OptiQAP",
+      "slug": "optiqap",
+      "legacy_slugs": [
+        "qaplibria"
+      ],
+      "repo": "alawein/optiqap",
+      "local_path": "lab/optiqap",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "optimization",
+        "hpc"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "maintained",
+      "homepage": "https://optiqap.online",
+      "canonical_description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+      "tags": [
+        "Python",
+        "Optimization",
+        "HPC"
+      ],
+      "github_topics": [
+        "python",
+        "optimization",
+        "qubo",
+        "hpc",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "maintained",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "qap-solvers",
+        "benchmarking"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured",
+        "research"
+      ],
+      "portfolio_domain": "Personal",
+      "research_domain": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO.",
+      "lane": "lab"
+    },
+    {
+      "name": "Provegate",
+      "slug": "provegate",
+      "legacy_slugs": [
+        "epistemic-stack"
+      ],
+      "repo": "alawein/provegate",
+      "local_path": "lab/provegate",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "mcp",
+        "agents"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://provegate.online",
+      "canonical_description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "tags": [
+        "Python",
+        "MCP",
+        "Agents"
+      ],
+      "github_topics": [
+        "mcp",
+        "agents",
+        "governance",
+        "python",
+        "verification"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "alawein"
+      ],
+      "provides": [
+        "agent-proof-tooling"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research",
+        "infrastructure"
+      ],
+      "research_domain": "Agent MCP tooling — drift, memory, proof",
+      "lane": "lab"
+    },
+    {
+      "name": "qmatsim",
+      "slug": "qmatsim",
+      "legacy_slugs": [],
+      "repo": "alawein/qmatsim",
+      "local_path": "lab/qmatsim",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "scientific-computing"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://github.com/alawein/qmatsim",
+      "canonical_description": "Quantum material simulation research workspace.",
+      "tags": [
+        "Python",
+        "Quantum",
+        "Simulation"
+      ],
+      "github_topics": [
+        "quantum",
+        "simulation",
+        "python",
+        "materials",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "quantum-materials-simulation"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Quantum material simulation",
+      "lane": "lab"
+    },
+    {
+      "name": "qmlab.online",
+      "slug": "qmlab",
+      "legacy_slugs": [],
+      "repo": "alawein/qmlab",
+      "local_path": "lab/qmlab",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "react",
+        "vite",
+        "supabase"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://qmlab.online",
+      "canonical_description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Supabase"
+      ],
+      "github_topics": [
+        "quantum",
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "quantum-lab"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "notion_sync",
+        "research"
+      ],
+      "portfolio_domain": "Personal",
+      "research_domain": "Quantum ML web lab (React/TS/Vite)",
+      "lane": "lab"
+    },
+    {
+      "name": "quantumalgo",
+      "slug": "quantumalgo",
+      "legacy_slugs": [],
+      "repo": "alawein/quantumalgo",
+      "local_path": "lab/quantumalgo",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "pennylane",
+        "numpy"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "internal"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://github.com/alawein/quantumalgo",
+      "canonical_description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "tags": [
+        "Python",
+        "PennyLane",
+        "Optimization",
+        "Quantum"
+      ],
+      "github_topics": [
+        "pennylane",
+        "python",
+        "quantum-computing",
+        "optimization",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "quantum-algorithm-prototypes"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Quantum algorithms; combinatorial optimization",
+      "lane": "lab"
+    },
+    {
+      "name": "qubeml",
+      "slug": "qubeml",
+      "legacy_slugs": [],
+      "repo": "alawein/qubeml",
+      "local_path": "lab/qubeml",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "quantum-ml"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://github.com/alawein/qubeml",
+      "canonical_description": "Quantum machine learning experiments and research.",
+      "tags": [
+        "Python",
+        "Quantum ML",
+        "Research"
+      ],
+      "github_topics": [
+        "quantum",
+        "machine-learning",
+        "python",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "vibrant"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "quantum-ml-research"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Quantum ML experiments",
+      "lane": "lab"
+    },
+    {
+      "name": "scicomp",
+      "slug": "scicomp",
+      "legacy_slugs": [],
+      "repo": "alawein/scicomp",
+      "local_path": "lab/scicomp",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "scientific-computing"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://github.com/alawein/scicomp",
+      "canonical_description": "Scientific computing utilities and shared numerical tooling.",
+      "tags": [
+        "Python",
+        "Scientific computing"
+      ],
+      "github_topics": [
+        "scientific-computing",
+        "python",
+        "numerics",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "scientific-utilities"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Scientific computing utilities",
+      "lane": "lab"
+    },
+    {
+      "name": "simcore.dev",
+      "slug": "simcore",
+      "legacy_slugs": [],
+      "repo": "alawein/simcore",
+      "local_path": "lab/simcore",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "react",
+        "vite",
+        "plotly"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://simcore.dev",
+      "canonical_description": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Vite",
+        "Plotly"
+      ],
+      "github_topics": [
+        "simulation",
+        "scientific-computing",
+        "react",
+        "vite",
+        "plotly"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "simulation-ui"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "notion_sync",
+        "research"
+      ],
+      "portfolio_domain": "Work",
+      "research_domain": "Scientific simulation core",
+      "lane": "lab"
+    },
+    {
+      "name": "spincirc",
+      "slug": "spincirc",
+      "legacy_slugs": [],
+      "repo": "alawein/spincirc",
+      "local_path": "lab/spincirc",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "python",
+        "spintronics"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "research"
+      ],
+      "lifecycle": "active",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "frozen",
+      "homepage": "https://github.com/alawein/spincirc",
+      "canonical_description": "Spintronics circuit simulation and modeling research workspace.",
+      "tags": [
+        "Python",
+        "Spintronics",
+        "Research"
+      ],
+      "github_topics": [
+        "spintronics",
+        "python",
+        "simulation",
+        "research"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "spintronics-simulation"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "research"
+      ],
+      "research_domain": "Spintronics circuit simulation",
+      "lane": "lab"
+    },
+    {
+      "name": "Veyra",
+      "slug": "veyra",
+      "legacy_slugs": [],
+      "repo": "alawein/veyra",
+      "local_path": "lab/veyra",
+      "bucket": "lab",
+      "type": "research",
+      "surface": "monorepo",
+      "stack": [
+        "typescript",
+        "turborepo",
+        "node"
+      ],
+      "domain": "scientific-computing",
+      "audience": [
+        "internal",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "status": "active",
+      "homepage": "https://github.com/alawein/veyra",
+      "canonical_description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "tags": [
+        "TypeScript",
+        "Turbo",
+        "Governance",
+        "Agents"
+      ],
+      "github_topics": [
+        "agents",
+        "governance",
+        "monorepo",
+        "turborepo",
+        "typescript"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "workspace-tools",
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "voice-governance-monorepo",
+        "llm-content-detection",
+        "voice-consistency-enforcement"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-05-11",
+      "catalog_groups": [
+        "featured"
+      ],
+      "lane": "lab"
     },
     {
       "name": "alawein",
@@ -508,7 +1413,8 @@
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "design-system",
@@ -585,7 +1491,8 @@
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "incore",
@@ -647,7 +1554,8 @@
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "knowledge-base",
@@ -720,7 +1628,8 @@
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "Outpost",
@@ -782,7 +1691,8 @@
       "last_verified": "2026-07-25",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "prompty",
@@ -843,7 +1753,8 @@
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "Workspace Control",
@@ -903,7 +1814,8 @@
       "last_verified": "2026-07-25",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
       "name": "workspace-tools",
@@ -973,667 +1885,28 @@
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "platform"
     },
     {
-      "name": "Adil",
-      "slug": "adil",
-      "legacy_slugs": [],
-      "repo": "alawein/adil",
-      "local_path": "lab/adil",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "legal-ai",
-        "cli"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "client",
-        "internal"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://github.com/alawein/adil",
-      "canonical_description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
-      "tags": [
-        "Python",
-        "Legal AI",
-        "CLI"
-      ],
-      "github_topics": [
-        "python",
-        "cli",
-        "legal-ops",
-        "automation"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "regulated",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "heritage"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "legal-ops-cli",
-        "evidence-packets"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-05-11",
-      "catalog_groups": [
-        "notion_sync",
-        "research"
-      ],
-      "portfolio_domain": "Personal",
-      "research_domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow)."
-    },
-    {
-      "name": "Alembiq",
-      "slug": "alembiq",
+      "name": "Atelier Rounaq",
+      "slug": "atelier-rounaq",
       "legacy_slugs": [
-        "neper"
+        "rounaq-atelier"
       ],
-      "repo": "alawein/alembiq",
-      "local_path": "lab/alembiq",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "pytorch",
-        "llm-training"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://alembiq.online",
-      "canonical_description": "LLM training, alignment, evaluation, and synthetic data platform.",
-      "tags": [
-        "Python",
-        "PyTorch",
-        "LLM Training"
-      ],
-      "github_topics": [
-        "python",
-        "pytorch",
-        "llm",
-        "alignment",
-        "training"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "vibrant"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "llm-training",
-        "synthetic-data"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured",
-        "research"
-      ],
-      "portfolio_domain": "scientific-computing",
-      "research_domain": "LLM training, alignment, evaluation, and synthetic data platform."
-    },
-    {
-      "name": "Attributa",
-      "slug": "attributa",
-      "legacy_slugs": [],
-      "repo": "alawein/attributa",
-      "local_path": "lab/attributa",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
+      "repo": "alawein/atelier-rounaq",
+      "local_path": "apps/atelier-rounaq",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
       "stack": [
         "typescript",
-        "react",
-        "vite"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "client",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://attributa.dev",
-      "canonical_description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Vite"
-      ],
-      "github_topics": [
-        "ai-governance",
-        "attribution",
-        "react",
-        "typescript",
-        "security"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "attribution-intelligence",
-        "citation-checks"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
-      "name": "CHSH Lab",
-      "slug": "chshlab",
-      "legacy_slugs": [],
-      "repo": "alawein/chshlab",
-      "local_path": "lab/chshlab",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "html",
-        "css",
-        "javascript"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://chshlab.online",
-      "canonical_description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
-      "tags": [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Quantum"
-      ],
-      "github_topics": [
-        "quantum",
-        "bell-inequality",
-        "education",
-        "javascript"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "static-site",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "quantum-education-site"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-08-26",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Quantum foundations — CHSH / Bell education site"
-    },
-    {
-      "name": "Event Discovery Framework",
-      "slug": "edfp",
-      "legacy_slugs": [
-        "event-discovery-framework"
-      ],
-      "repo": "alawein/edfp",
-      "local_path": "lab/edfp",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "opencv",
-        "fastapi"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://edfp.online",
-      "canonical_description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
-      "tags": [
-        "Python",
-        "OpenCV",
-        "FastAPI"
-      ],
-      "github_topics": [
-        "python",
-        "computer-vision",
-        "fastapi",
-        "fft",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "planned",
-        "compliance": "public-data",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "wisdom"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "spectral-event-detection"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured",
-        "research"
-      ],
-      "portfolio_domain": "Work",
-      "research_domain": "Physics-inspired video event detection. FFT spectral analysis, hierarchical filtering."
-    },
-    {
-      "name": "Fallax",
-      "slug": "fallax",
-      "legacy_slugs": [
-        "reasonbench"
-      ],
-      "repo": "alawein/fallax",
-      "local_path": "lab/fallax",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "llm",
-        "evaluation"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "internal",
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://fallax.online",
-      "canonical_description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "tags": [
-        "Python",
-        "LLM",
-        "Evaluation"
-      ],
-      "github_topics": [
-        "llm",
-        "evaluation",
-        "reasoning",
-        "python"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "workspace-tools",
-        "alawein"
-      ],
-      "provides": [
-        "reasoning-benchmarks",
-        "adversarial-evals"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "infrastructure"
-      ]
-    },
-    {
-      "name": "LLMWorks",
-      "slug": "llmworks",
-      "legacy_slugs": [],
-      "repo": "alawein/llmworks",
-      "local_path": "lab/llmworks",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "typescript",
-        "react",
-        "supabase",
-        "llm"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "client",
-        "research",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://llmworks.dev",
-      "canonical_description": "LLM evaluation, benchmarking, and security testing playground.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Supabase",
-        "LLM"
-      ],
-      "github_topics": [
-        "llm",
-        "evaluation",
-        "benchmarking",
         "react",
         "supabase"
       ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "wisdom"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "llm-evals",
-        "security-benchmarks"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-08-26",
-      "catalog_groups": [
-        "featured"
-      ],
-      "portfolio_domain": "Work"
-    },
-    {
-      "name": "Loophole Lab",
-      "slug": "loopholelab",
-      "legacy_slugs": [],
-      "repo": "alawein/loopholelab",
-      "local_path": "lab/loopholelab",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "fastapi",
-        "typescript",
-        "react",
-        "vite"
-      ],
-      "domain": "scientific-computing",
+      "domain": "fitness",
       "audience": [
-        "research",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://loopholelab.online",
-      "canonical_description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
-      "tags": [
-        "Python",
-        "FastAPI",
-        "TypeScript",
-        "React",
-        "Quantum",
-        "Research"
-      ],
-      "github_topics": [
-        "quantum",
-        "validation",
-        "react",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "planned",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "claim-stress-testing"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-08-26",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Research validation — adversarial claim stress-testing"
-    },
-    {
-      "name": "MagLogic",
-      "slug": "maglogic",
-      "legacy_slugs": [],
-      "repo": "alawein/maglogic",
-      "local_path": "lab/maglogic",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "magnetics"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://github.com/alawein/maglogic",
-      "canonical_description": "Magnetic logic gates and device simulation research.",
-      "tags": [
-        "Python",
-        "Magnetics",
-        "Research"
-      ],
-      "github_topics": [
-        "magnetics",
-        "python",
-        "logic-gates",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "vibrant"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "magnetic-logic-models"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Magnetic logic gates"
-    },
-    {
-      "name": "meatheadphysicist",
-      "slug": "meatheadphysicist",
-      "legacy_slugs": [
-        "MeatheadPhysicist"
-      ],
-      "repo": "alawein/meatheadphysicist",
-      "local_path": "lab/meatheadphysicist",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "physics",
-        "fastapi",
-        "research"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://mhphys.online",
-      "canonical_description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
-      "tags": [
-        "Python",
-        "Physics",
-        "FastAPI",
-        "Research"
-      ],
-      "github_topics": [
-        "physics",
-        "python",
-        "fastapi",
-        "simulation",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "research-archive",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "physics-research",
-        "claim-verification"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "notion_sync",
-        "research"
-      ],
-      "portfolio_domain": "Personal",
-      "research_domain": "Computational physics research — Bell inequality, CHSH simulation"
-    },
-    {
-      "name": "OptiQAP",
-      "slug": "optiqap",
-      "legacy_slugs": [
-        "qaplibria"
-      ],
-      "repo": "alawein/optiqap",
-      "local_path": "lab/optiqap",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "optimization",
-        "hpc"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
+        "public",
         "client"
       ],
       "lifecycle": "active",
@@ -1641,601 +1914,363 @@
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "maintained",
-      "homepage": "https://optiqap.online",
-      "canonical_description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
-      "tags": [
-        "Python",
-        "Optimization",
-        "HPC"
-      ],
-      "github_topics": [
-        "python",
-        "optimization",
-        "qubo",
-        "hpc",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "maintained",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "qap-solvers",
-        "benchmarking"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "featured",
-        "research"
-      ],
-      "portfolio_domain": "Personal",
-      "research_domain": "Quadratic Assignment Problem solvers — equilibrium-guided optimization, spectral methods, QUBO."
-    },
-    {
-      "name": "Provegate",
-      "slug": "provegate",
-      "legacy_slugs": [
-        "epistemic-stack"
-      ],
-      "repo": "alawein/provegate",
-      "local_path": "lab/provegate",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "mcp",
-        "agents"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
+      "theme_family": "forge",
+      "brand_family": "forge",
       "status": "active",
-      "homepage": "https://provegate.online",
-      "canonical_description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "tags": [
-        "Python",
-        "MCP",
-        "Agents"
-      ],
-      "github_topics": [
-        "mcp",
-        "agents",
-        "governance",
-        "python",
-        "verification"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-service",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "depends_on": [
-        "workspace-tools",
-        "alawein"
-      ],
-      "provides": [
-        "agent-proof-tooling"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research",
-        "infrastructure"
-      ],
-      "research_domain": "Agent MCP tooling — drift, memory, proof"
-    },
-    {
-      "name": "qmatsim",
-      "slug": "qmatsim",
-      "legacy_slugs": [],
-      "repo": "alawein/qmatsim",
-      "local_path": "lab/qmatsim",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "scientific-computing"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://github.com/alawein/qmatsim",
-      "canonical_description": "Quantum material simulation research workspace.",
-      "tags": [
-        "Python",
-        "Quantum",
-        "Simulation"
-      ],
-      "github_topics": [
-        "quantum",
-        "simulation",
-        "python",
-        "materials",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "quantum-materials-simulation"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Quantum material simulation"
-    },
-    {
-      "name": "qmlab.online",
-      "slug": "qmlab",
-      "legacy_slugs": [],
-      "repo": "alawein/qmlab",
-      "local_path": "lab/qmlab",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "typescript",
-        "react",
-        "vite",
-        "supabase"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "public"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://qmlab.online",
-      "canonical_description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "homepage": "https://atelier-rounaq.com",
+      "canonical_description": "Studio and portfolio site for a luxury atelier.",
       "tags": [
         "TypeScript",
         "React",
-        "Vite",
         "Supabase"
       ],
       "github_topics": [
-        "quantum",
+        "portfolio",
         "react",
-        "vite",
-        "typescript",
-        "supabase"
+        "supabase",
+        "luxury",
+        "design"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
+        "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "legacy"
       },
       "depends_on": [
         "design-system",
         "alawein"
       ],
       "provides": [
-        "quantum-lab"
+        "studio-site"
       ],
       "version_source": "package.json",
       "last_verified": "2026-04-14",
       "catalog_groups": [
-        "notion_sync",
-        "research"
-      ],
-      "portfolio_domain": "Personal",
-      "research_domain": "Quantum ML web lab (React/TS/Vite)"
-    },
-    {
-      "name": "quantumalgo",
-      "slug": "quantumalgo",
-      "legacy_slugs": [],
-      "repo": "alawein/quantumalgo",
-      "local_path": "lab/quantumalgo",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "pennylane",
-        "numpy"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "internal"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://github.com/alawein/quantumalgo",
-      "canonical_description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
-      "tags": [
-        "Python",
-        "PennyLane",
-        "Optimization",
-        "Quantum"
-      ],
-      "github_topics": [
-        "pennylane",
-        "python",
-        "quantum-computing",
-        "optimization",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "quantum-algorithm-prototypes"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-05-11",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Quantum algorithms; combinatorial optimization"
-    },
-    {
-      "name": "qubeml",
-      "slug": "qubeml",
-      "legacy_slugs": [],
-      "repo": "alawein/qubeml",
-      "local_path": "lab/qubeml",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "quantum-ml"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://github.com/alawein/qubeml",
-      "canonical_description": "Quantum machine learning experiments and research.",
-      "tags": [
-        "Python",
-        "Quantum ML",
-        "Research"
-      ],
-      "github_topics": [
-        "quantum",
-        "machine-learning",
-        "python",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "vibrant"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "quantum-ml-research"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Quantum ML experiments"
-    },
-    {
-      "name": "scicomp",
-      "slug": "scicomp",
-      "legacy_slugs": [],
-      "repo": "alawein/scicomp",
-      "local_path": "lab/scicomp",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "scientific-computing"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://github.com/alawein/scicomp",
-      "canonical_description": "Scientific computing utilities and shared numerical tooling.",
-      "tags": [
-        "Python",
-        "Scientific computing"
-      ],
-      "github_topics": [
-        "scientific-computing",
-        "python",
-        "numerics",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "wisdom"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "scientific-utilities"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Scientific computing utilities"
-    },
-    {
-      "name": "simcore.dev",
-      "slug": "simcore",
-      "legacy_slugs": [],
-      "repo": "alawein/simcore",
-      "local_path": "lab/simcore",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "typescript",
-        "react",
-        "vite",
-        "plotly"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research",
-        "client"
-      ],
-      "lifecycle": "active",
-      "visibility": "private",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "active",
-      "homepage": "https://simcore.dev",
-      "canonical_description": "Scientific simulation core for interactive modeling and numerical exploration.",
-      "tags": [
-        "TypeScript",
-        "React",
-        "Vite",
-        "Plotly"
-      ],
-      "github_topics": [
-        "simulation",
-        "scientific-computing",
-        "react",
-        "vite",
-        "plotly"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "depends_on": [
-        "design-system",
-        "alawein"
-      ],
-      "provides": [
-        "simulation-ui"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "notion_sync",
-        "research"
+        "featured"
       ],
       "portfolio_domain": "Work",
-      "research_domain": "Scientific simulation core"
+      "lane": "ship"
     },
     {
-      "name": "spincirc",
-      "slug": "spincirc",
+      "name": "Auditraise",
+      "slug": "auditraise",
       "legacy_slugs": [],
-      "repo": "alawein/spincirc",
-      "local_path": "lab/spincirc",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
-      "stack": [
-        "python",
-        "spintronics"
-      ],
-      "domain": "scientific-computing",
-      "audience": [
-        "research"
-      ],
-      "lifecycle": "active",
-      "visibility": "public",
-      "owner": "alawein",
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
-      "status": "frozen",
-      "homepage": "https://github.com/alawein/spincirc",
-      "canonical_description": "Spintronics circuit simulation and modeling research workspace.",
-      "tags": [
-        "Python",
-        "Spintronics",
-        "Research"
-      ],
-      "github_topics": [
-        "spintronics",
-        "python",
-        "simulation",
-        "research"
-      ],
-      "github_custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "depends_on": [
-        "alawein"
-      ],
-      "provides": [
-        "spintronics-simulation"
-      ],
-      "version_source": "package.json",
-      "last_verified": "2026-04-14",
-      "catalog_groups": [
-        "research"
-      ],
-      "research_domain": "Spintronics circuit simulation"
-    },
-    {
-      "name": "Veyra",
-      "slug": "veyra",
-      "legacy_slugs": [],
-      "repo": "alawein/veyra",
-      "local_path": "lab/veyra",
-      "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
+      "repo": "alawein/auditraise",
+      "local_path": "apps/auditraise",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
       "stack": [
         "typescript",
-        "turborepo",
-        "node"
+        "nextjs",
+        "react"
       ],
-      "domain": "scientific-computing",
+      "domain": "fitness",
       "audience": [
-        "internal",
-        "client"
+        "client",
+        "public"
       ],
       "lifecycle": "active",
       "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "theme_family": "wisdom",
-      "brand_family": "wisdom",
+      "theme_family": "forge",
+      "brand_family": "forge",
       "status": "active",
-      "homepage": "https://github.com/alawein/veyra",
-      "canonical_description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "homepage": "https://github.com/alawein/auditraise",
+      "canonical_description": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
       "tags": [
         "TypeScript",
-        "Turbo",
-        "Governance",
-        "Agents"
+        "Next.js",
+        "Marketing"
       ],
       "github_topics": [
-        "agents",
-        "governance",
-        "monorepo",
-        "turborepo",
+        "audit",
+        "local-marketing",
+        "nextjs",
         "typescript"
       ],
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
       "depends_on": [
-        "workspace-tools",
         "design-system",
         "alawein"
       ],
       "provides": [
-        "voice-governance-monorepo",
-        "llm-content-detection",
-        "voice-consistency-enforcement"
+        "marketing-audit-product"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-05-11",
+      "last_verified": "2026-08-17",
       "catalog_groups": [
         "featured"
-      ]
+      ],
+      "portfolio_domain": "Work",
+      "lane": "ship"
+    },
+    {
+      "name": "Bolts",
+      "slug": "bolts",
+      "legacy_slugs": [],
+      "repo": "alawein/bolts",
+      "local_path": "apps/bolts",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
+      "stack": [
+        "nextjs",
+        "typescript"
+      ],
+      "domain": "fitness",
+      "audience": [
+        "client",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "status": "active",
+      "homepage": "https://bolts.fit",
+      "canonical_description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "tags": [
+        "Next.js",
+        "TypeScript"
+      ],
+      "github_topics": [
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein",
+        "workspace-tools"
+      ],
+      "provides": [
+        "fitness-plan-platform",
+        "payments-surface"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Work",
+      "lane": "ship"
+    },
+    {
+      "name": "Gymboy",
+      "slug": "gymboy",
+      "legacy_slugs": [
+        "gainboy"
+      ],
+      "repo": "alawein/gymboy",
+      "local_path": "apps/gymboy",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
+      "stack": [
+        "react",
+        "vite",
+        "spark"
+      ],
+      "domain": "fitness",
+      "audience": [
+        "public",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "status": "active",
+      "homepage": "https://gymboy.coach",
+      "canonical_description": "Fitness coaching platform with a retro progression-first training interface.",
+      "tags": [
+        "React",
+        "Vite",
+        "Spark"
+      ],
+      "github_topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "fitness-coaching-ui"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Personal",
+      "lane": "ship"
+    },
+    {
+      "name": "REPZ",
+      "slug": "repz",
+      "legacy_slugs": [],
+      "repo": "alawein/repz",
+      "local_path": "apps/repz",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
+      "stack": [
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "domain": "fitness",
+      "audience": [
+        "client",
+        "public"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "status": "active",
+      "homepage": "https://repzcoach.com",
+      "canonical_description": "AI-powered coaching platform for fitness professionals and clients.",
+      "tags": [
+        "TypeScript",
+        "React",
+        "Supabase"
+      ],
+      "github_topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "coaching-platform",
+        "fitness-client-app"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Personal",
+      "lane": "ship"
+    },
+    {
+      "name": "Scribd",
+      "slug": "scribd",
+      "legacy_slugs": [],
+      "repo": "alawein/scribd",
+      "local_path": "apps/scribd",
+      "bucket": "apps",
+      "type": "product",
+      "surface": "web",
+      "stack": [
+        "nextjs",
+        "react",
+        "typescript"
+      ],
+      "domain": "fitness",
+      "audience": [
+        "public",
+        "client"
+      ],
+      "lifecycle": "active",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "status": "active",
+      "homepage": "https://scribd.fit",
+      "canonical_description": "Fitness publishing and content surface aligned with the shared design system.",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript"
+      ],
+      "github_topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "design-system",
+        "alawein"
+      ],
+      "provides": [
+        "editorial-surface",
+        "content-platform"
+      ],
+      "version_source": "package.json",
+      "last_verified": "2026-04-14",
+      "catalog_groups": [
+        "featured"
+      ],
+      "portfolio_domain": "Work",
+      "lane": "ship"
     },
     {
       "name": "meshal.ai",
@@ -2302,7 +2337,8 @@
       "catalog_groups": [
         "featured"
       ],
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "lane": "ship"
     },
     {
       "name": "Roka: Oakland Hustle",
@@ -2364,7 +2400,8 @@
       "catalog_groups": [
         "notion_sync"
       ],
-      "portfolio_domain": "Personal"
+      "portfolio_domain": "Personal",
+      "lane": "ship"
     },
     {
       "name": "Handshake AI Eval",
@@ -2427,7 +2464,8 @@
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "work"
     },
     {
       "name": "Mercor LLM Failsafe",
@@ -2483,7 +2521,8 @@
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "research"
-      ]
+      ],
+      "lane": "work"
     },
     {
       "name": "Turing engagements",
@@ -2541,7 +2580,8 @@
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
-      ]
+      ],
+      "lane": "work"
     }
   ]
 }

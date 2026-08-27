@@ -1,8 +1,8 @@
 schemaVersion: 1.0.0
 lastVerified: '2026-08-27'
-note: Edit buckets below. Run compile-index.py then build-catalog.py.
-buckets:
-  core:
+note: Edit lanes below. build-catalog.py compiles to repos.json automatically.
+lanes:
+  platform:
   - slug: alawein
     about: Governance control plane, catalog SSOT, profile generation, and documentation
       enforcement.
@@ -46,7 +46,7 @@ buckets:
       and rollout automation.
     name: workspace-tools
     url: https://github.com/alawein/workspace-tools
-  apps:
+  ship:
   - slug: atelier-rounaq
     about: Studio and portfolio site for a luxury atelier.
     url: https://atelier-rounaq.com
@@ -69,11 +69,23 @@ buckets:
     featured: true
     legacy_slugs:
     - gainboy
+  - slug: meshal-web
+    about: Personal site and portfolio with project deep-dives, case studies, and
+      contact.
+    status: maintained
+    url: https://www.meshal.ai
+    featured: true
+    site: true
   - slug: repz
     about: AI-powered coaching platform for fitness professionals and clients.
     name: REPZ
     url: https://repzcoach.com
     featured: true
+  - slug: roka-oakland-hustle
+    about: Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.
+    name: 'Roka: Oakland Hustle'
+    url: https://github.com/alawein/roka-oakland-hustle
+    site: true
   - slug: scribd
     about: Fitness publishing and content surface aligned with the shared design system.
     url: https://scribd.fit
@@ -81,6 +93,7 @@ buckets:
   lab:
   - slug: adil
     about: Legal-ops CLI for assembling, validating, and submitting evidence packets.
+    url: https://github.com/alawein/adil
   - slug: alembiq
     about: LLM training, alignment, evaluation, and synthetic data platform.
     url: https://alembiq.online
@@ -197,16 +210,6 @@ buckets:
       monorepo).'
     url: https://github.com/alawein/veyra
     featured: true
-  sites:
-  - slug: meshal-web
-    about: Personal site and portfolio with project deep-dives, case studies, and
-      contact.
-    status: maintained
-    url: https://www.meshal.ai
-    featured: true
-  - slug: roka-oakland-hustle
-    about: Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.
-    name: 'Roka: Oakland Hustle'
   work:
   - slug: handshake
     about: LLM evaluation monorepo with shared core and project validators.
@@ -218,6 +221,7 @@ buckets:
   - slug: mercor
     about: Employer project for LLM failsafe experimentation and evaluation.
     name: Mercor LLM Failsafe
+    url: https://github.com/alawein/mercor
     legacy_slugs:
     - mercor-llm-failsafe
   - slug: turing
@@ -230,3 +234,4 @@ buckets:
     about: Proprietary research archive for computational astrophysics and astronomy
       work.
     status: archived
+    url: https://github.com/alawein/helios

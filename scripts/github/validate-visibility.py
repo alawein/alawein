@@ -170,6 +170,15 @@ def _github_request(path: str, token: str, *, method: str = "GET", body: bytes |
             return resp.status, resp.read()
     except urllib.error.HTTPError as exc:
         return exc.code, exc.read()
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise VisibilityError(f"GitHub API request failed for {path}: {exc}") from exc
+
+
+def _decode_json(body: bytes, context: str) -> Any:
+    try:
+        return json.loads(body.decode("utf-8"))
+    except (ValueError, UnicodeDecodeError) as exc:
+        raise VisibilityError(f"GitHub API returned non-JSON for {context}: {body[:200]!r}") from exc
 
 
 def live_from_payloads(meta: dict[str, Any] | None, *, readme_status: int, license_status: int) -> dict[str, Any]:
@@ -193,7 +202,7 @@ def fetch_live(repo_full: str, token: str) -> dict[str, Any]:
         return live_from_payloads(None, readme_status=404, license_status=404)
     if status != 200:
         raise VisibilityError(f"GitHub API {status} for {repo_full}: {body[:200]!r}")
-    meta = json.loads(body.decode("utf-8"))
+    meta = _decode_json(body, repo_full)
     if not meta.get("size"):
         return live_from_payloads(meta, readme_status=404, license_status=404)
     ref = meta.get("default_branch") or "main"
@@ -203,6 +212,9 @@ def fetch_live(repo_full: str, token: str) -> dict[str, Any]:
 
 
 def parse_pinned(payload: dict[str, Any]) -> list[str]:
+    errors = payload.get("errors")
+    if errors:
+        raise VisibilityError(f"GitHub GraphQL errors: {errors[:3]!r}")
     nodes = (((payload.get("data") or {}).get("user") or {}).get("pinnedItems") or {}).get("nodes") or []
     return [n["name"] for n in nodes if isinstance(n, dict) and n.get("name")]
 
@@ -215,7 +227,7 @@ def fetch_live_pins(login: str, token: str) -> list[str]:
     status, body = _github_request("/graphql", token, method="POST", body=json.dumps({"query": query}).encode("utf-8"))
     if status != 200:
         raise VisibilityError(f"GitHub GraphQL {status}: {body[:200]!r}")
-    return parse_pinned(json.loads(body.decode("utf-8")))
+    return parse_pinned(_decode_json(body, f"pinned repos for {login}"))
 
 
 def load_repos(path: Path) -> list[dict[str, Any]]:
@@ -253,15 +265,18 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: --today must be an ISO date, got {args.today!r}", file=sys.stderr)
         return 2
 
-    pins = [str(p) for p in (profile_config().get("profile_pins") or [])]
     mode = "offline" if args.offline else "github-api"
-    live: dict[str, dict[str, Any]] | None = None
-    live_pins: list[str] | None = None
+    token = None
     if mode == "github-api":
         token = os.environ.get("GITHUB_TOKEN")
         if not token:
             print("error: GITHUB_TOKEN required for --github-api (use --offline for catalog-only checks)", file=sys.stderr)
             return 2
+
+    pins = [str(p) for p in (profile_config().get("profile_pins") or [])]
+    live: dict[str, dict[str, Any]] | None = None
+    live_pins: list[str] | None = None
+    if mode == "github-api":
         try:
             live = {str(r.get("slug")): fetch_live(str(r.get("repo")), token) for r in repos if r.get("repo")}
             live_pins = fetch_live_pins(OWNER, token) if not args.slug else None

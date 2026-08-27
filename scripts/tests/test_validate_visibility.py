@@ -7,8 +7,10 @@ import json
 import os
 import sys
 import unittest
+import urllib.error
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "scripts" / "github" / "validate-visibility.py"
@@ -191,6 +193,32 @@ class CliTests(unittest.TestCase):
         self.assertIn("findings", payload)
         self.assertIn("mode", payload)
         self.assertEqual(payload["mode"], "offline")
+
+
+class ApiFailureTests(unittest.TestCase):
+    def test_fetch_live_non_json_raises(self) -> None:
+        with patch.object(_mod, "_github_request", return_value=(200, b"not json")):
+            with self.assertRaises(_mod.VisibilityError):
+                _mod.fetch_live("alawein/demo", "t")
+
+    def test_fetch_live_404_maps_to_missing(self) -> None:
+        with patch.object(_mod, "_github_request", return_value=(404, b"")):
+            self.assertEqual(_mod.fetch_live("alawein/demo", "t"), {"exists": False})
+
+    def test_fetch_live_pins_graphql_errors_raise(self) -> None:
+        body = json.dumps({"errors": [{"message": "bad"}]}).encode()
+        with patch.object(_mod, "_github_request", return_value=(200, body)):
+            with self.assertRaises(_mod.VisibilityError):
+                _mod.fetch_live_pins("alawein", "t")
+
+    def test_parse_pinned_raises_on_errors(self) -> None:
+        with self.assertRaises(_mod.VisibilityError):
+            _mod.parse_pinned({"errors": [{"message": "x"}]})
+
+    def test_github_request_url_error_raises(self) -> None:
+        with patch.object(_mod.urllib.request, "urlopen", side_effect=urllib.error.URLError("down")):
+            with self.assertRaises(_mod.VisibilityError):
+                _mod._github_request("/repos/x/y", "t")
 
 
 if __name__ == "__main__":

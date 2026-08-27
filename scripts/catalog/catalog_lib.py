@@ -67,6 +67,10 @@ REQUIRED_RELEASE_AUTOMATION_FIELDS = [
     "requires_npm_token",
 ]
 
+PROMOTION_TIERS = ("P0", "P1", "P2", "P3")
+PUBLIC_TIERS = {"P0", "P1"}
+PROMOTION_MAX_AGE_DAYS = 90
+
 README_SECTIONS = {
     "product": [
         "Value proposition",
@@ -126,6 +130,33 @@ class ValidationIssue:
 
 def today_iso() -> str:
     return date.today().isoformat()
+
+
+def _parse_iso_date(value: Any) -> date | None:
+    try:
+        return date.fromisoformat(str(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def promotion_is_current(promotion: dict[str, Any] | None, *, today: date) -> bool:
+    """True when the record has a public tier and a scan within PROMOTION_MAX_AGE_DAYS."""
+    if not isinstance(promotion, dict):
+        return False
+    if promotion.get("tier") not in PUBLIC_TIERS:
+        return False
+    scanned = _parse_iso_date(promotion.get("scanned"))
+    if scanned is None:
+        return False
+    return (today - scanned).days <= PROMOTION_MAX_AGE_DAYS
+
+
+def grace_active(promotion: dict[str, Any] | None, *, today: date) -> bool:
+    """True while grace_until is strictly in the future."""
+    if not isinstance(promotion, dict):
+        return False
+    deadline = _parse_iso_date(promotion.get("grace_until"))
+    return deadline is not None and today < deadline
 
 
 def catalog_timestamp(catalogs: dict[str, Any]) -> str:
@@ -591,6 +622,68 @@ def headings_in_markdown(path: Path) -> list[str]:
     return headings
 
 
+def validate_promotion(
+    repos: list[dict[str, Any]],
+    profile_pins: list[str],
+    *,
+    today: date,
+) -> list[ValidationIssue]:
+    """Offline half of the public readiness gate (no network).
+
+    Rules: a public repo needs a current P0/P1 scan; a pinned repo must be public
+    and P0. While grace_until is in the future both rules are silent here (CI
+    runs validate-catalog.py --strict, which fails on warnings); the gate CLI
+    validate-visibility.py reports active grace as a warning instead. An
+    expired grace is enforced like any other failure. Archived repos are exempt.
+    """
+    issues: list[ValidationIssue] = []
+    pins = {str(p).strip() for p in profile_pins}
+    for repo in repos:
+        slug = repo.get("slug") or "<unknown>"
+        if repo.get("status") == "archived":
+            continue
+        promotion = repo.get("promotion")
+        visibility = repo.get("visibility")
+        grace = grace_active(promotion, today=today)
+
+        if promotion is not None:
+            if not isinstance(promotion, dict):
+                issues.append(ValidationIssue("error", f"Repo '{slug}' promotion must be a mapping"))
+                continue
+            tier = promotion.get("tier")
+            if tier not in PROMOTION_TIERS:
+                issues.append(ValidationIssue("error", f"Repo '{slug}' has invalid promotion tier '{tier}'"))
+            for key in ("scanned", "grace_until"):
+                if key in promotion and _parse_iso_date(promotion.get(key)) is None:
+                    issues.append(
+                        ValidationIssue("error", f"Repo '{slug}' has invalid promotion date '{promotion.get(key)}' in {key}")
+                    )
+
+        if visibility == "public" and not grace:
+            if promotion is None:
+                issues.append(ValidationIssue("error", f"Repo '{slug}' is public without a promotion record"))
+            elif isinstance(promotion, dict) and promotion.get("tier") in PROMOTION_TIERS:
+                tier = promotion["tier"]
+                scanned = _parse_iso_date(promotion.get("scanned"))
+                if tier not in PUBLIC_TIERS:
+                    issues.append(ValidationIssue("error", f"Repo '{slug}' tier '{tier}' does not allow public"))
+                elif scanned is not None and not promotion_is_current(promotion, today=today):
+                    issues.append(
+                        ValidationIssue(
+                            "error",
+                            f"Repo '{slug}' scan from {promotion.get('scanned')} is older than {PROMOTION_MAX_AGE_DAYS} days",
+                        )
+                    )
+
+        if slug in pins:
+            tier = promotion.get("tier") if isinstance(promotion, dict) else None
+            if visibility != "public":
+                issues.append(ValidationIssue("error", f"pinned repo '{slug}' is not public"))
+            elif tier != "P0" and not grace:
+                issues.append(ValidationIssue("error", f"pinned repo '{slug}' is not tier P0"))
+    return issues
+
+
 def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     repos = repo_entries(catalogs)
@@ -641,6 +734,8 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
             issues.append(
                 ValidationIssue("error", f"Pinned repo '{slug}' is missing homepage in catalog/repos.json")
             )
+
+    issues.extend(validate_promotion(repos, [str(p) for p in profile_pins], today=date.today()))
 
     for repo in repos:
         missing = [field for field in REQUIRED_REPO_FIELDS if field not in repo]

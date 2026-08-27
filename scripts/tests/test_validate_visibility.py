@@ -133,10 +133,20 @@ class EvaluateTests(unittest.TestCase):
         self.assertEqual(_codes(findings), ["V1"])
         self.assertIn("not found on GitHub", findings[0].message)
 
-    def test_hub_slug_skips_readme_license_checks_but_not_visibility(self) -> None:
-        repo = _repo(slug="alawein", rtype="governance", promotion=CURRENT_P1)
-        findings = evaluate([repo], [], {"alawein": _live(has_license=False)}, None, today=TODAY)
+    def test_offline_mode_ignores_live_pins(self) -> None:
+        repo = _repo(slug="hidden", visibility="private")
+        findings = evaluate([repo], [], None, ["hidden"], today=TODAY)
         self.assertEqual(findings, [])
+
+    def test_hub_slug_skips_readme_and_license_checks(self) -> None:
+        repo = _repo(slug="alawein", rtype="research", promotion=CURRENT_P1)
+        live = {"alawein": _live(has_readme=False, has_license=False)}
+        self.assertEqual(evaluate([repo], [], live, None, today=TODAY), [])
+
+    def test_hub_slug_still_gets_visibility_and_empty_checks(self) -> None:
+        repo = _repo(slug="alawein", rtype="research", promotion=CURRENT_P1)
+        live = {"alawein": _live(visibility="private", size=0, has_readme=False, has_license=False)}
+        self.assertEqual(_codes(evaluate([repo], [], live, None, today=TODAY)), ["V1", "V2"])
 
 
 if __name__ == "__main__":

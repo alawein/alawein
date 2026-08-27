@@ -133,20 +133,21 @@ def evaluate(
                 findings.append(Finding(slug, "V6", "error", f"{slug}: public {repo.get('type')} repo without LICENSE"))
 
     # V7: every live pin must be a public, non-archived, non-empty catalog repo.
-    for slug in live_pins or []:
-        repo = by_slug.get(slug)
-        meta = (live or {}).get(slug) or {}
-        if repo is None:
-            findings.append(Finding(slug, "V7", "error", f"{slug}: live profile pin is not in catalog"))
-            continue
-        problems = []
-        if meta.get("visibility", repo.get("visibility")) != "public":
-            problems.append("private")
-        if meta.get("archived") or repo.get("status") == "archived":
-            problems.append("archived")
-        if live is not None and not meta.get("size", 1):
-            problems.append("empty")
-        if problems:
-            findings.append(Finding(slug, "V7", "error", f"{slug}: live profile pin is {', '.join(problems)}"))
+    if live is not None:
+        for slug in live_pins or []:
+            repo = by_slug.get(slug)
+            meta = (live or {}).get(slug) or {}
+            if repo is None:
+                findings.append(Finding(slug, "V7", "error", f"{slug}: live profile pin is not in catalog"))
+                continue
+            problems = []
+            if meta.get("visibility", repo.get("visibility")) != "public":
+                problems.append("private")
+            if meta.get("archived") or repo.get("status") == "archived":
+                problems.append("archived")
+            if not meta.get("size", 1):
+                problems.append("empty")
+            if problems:
+                findings.append(Finding(slug, "V7", "error", f"{slug}: live profile pin is {', '.join(problems)}"))
 
     return findings

@@ -1,7 +1,7 @@
 # repo-passing
 
 Status:      active
-Category:    products
+Category:    apps
 Owner:       alawein
 Visibility:  private
 Purpose:     Test fixture for the passing case.

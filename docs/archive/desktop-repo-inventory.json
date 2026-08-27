@@ -9,52 +9,52 @@
   "golden_references": {
     "vite-react-spa": {
       "repo": "alawein/meshal-web",
-      "local_folder": "personal/meshal-web",
+      "local_folder": "sites\\meshal-web",
       "notes": "Derived from catalog entry meshal-web"
     },
     "next-app-router": {
       "repo": "alawein/scribd",
-      "local_folder": "products/scribd",
+      "local_folder": "apps\\scribd",
       "notes": "Derived from catalog entry scribd"
     },
     "python-service": {
       "repo": "alawein/edfp",
-      "local_folder": "research/edfp",
+      "local_folder": "lab\\edfp",
       "notes": "Derived from catalog entry edfp"
     },
     "python-library": {
       "repo": "alawein/alembiq",
-      "local_folder": "research/alembiq",
+      "local_folder": "lab\\alembiq",
       "notes": "Derived from catalog entry alembiq"
     },
     "research-archive": {
       "repo": "alawein/meatheadphysicist",
-      "local_folder": "research/meatheadphysicist",
+      "local_folder": "lab\\meatheadphysicist",
       "notes": "Derived from catalog entry meatheadphysicist"
     },
     "game-project": {
       "repo": "alawein/roka-oakland-hustle",
-      "local_folder": "personal/roka-oakland-hustle",
+      "local_folder": "sites\\roka-oakland-hustle",
       "notes": "Derived from catalog entry roka-oakland-hustle"
     },
     "static-site": {
       "repo": "alawein/chshlab",
-      "local_folder": "research/chshlab",
+      "local_folder": "lab\\chshlab",
       "notes": "Derived from catalog entry chshlab"
     },
     "node-monorepo": {
       "repo": "alawein/design-system",
-      "local_folder": "tools/design-system",
+      "local_folder": "core\\design-system",
       "notes": "Derived from catalog entry design-system"
     },
     "docs-hub": {
       "repo": "alawein/alawein",
-      "local_folder": "alawein",
+      "local_folder": "core/alawein",
       "notes": "Derived from catalog entry alawein"
     },
     "python-platform-cli": {
       "repo": "alawein/outpost",
-      "local_folder": "tools/outpost",
+      "local_folder": "core\\outpost",
       "notes": "Derived from catalog entry outpost"
     }
   },
@@ -67,154 +67,154 @@
   ],
   "repos": [
     {
-      "folder": "personal/meshal-web",
+      "folder": "sites\\meshal-web",
       "remote_slug": "alawein/meshal-web",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "vite, react, typescript, tailwind"
     },
     {
-      "folder": "products/repz",
+      "folder": "apps\\repz",
       "remote_slug": "alawein/repz",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, typescript, supabase"
     },
     {
-      "folder": "products/gymboy",
+      "folder": "apps\\gymboy",
       "remote_slug": "alawein/gymboy",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "react, vite, spark"
     },
     {
-      "folder": "products/scribd",
+      "folder": "apps\\scribd",
       "remote_slug": "alawein/scribd",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, react, typescript"
     },
     {
-      "folder": "products/bolts",
+      "folder": "apps\\bolts",
       "remote_slug": "alawein/bolts",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, typescript"
     },
     {
-      "folder": "family/atelier-rounaq",
+      "folder": "apps\\atelier-rounaq",
       "remote_slug": "alawein/atelier-rounaq",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "typescript, react, supabase"
     },
     {
-      "folder": "ventures/attributa",
+      "folder": "lab\\attributa",
       "remote_slug": "alawein/attributa",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "typescript, react, vite"
     },
     {
-      "folder": "ventures/llmworks",
+      "folder": "lab\\llmworks",
       "remote_slug": "alawein/llmworks",
       "archetype": "vite-react-spa",
       "tier": "product",
       "stack": "typescript, react, supabase, llm"
     },
     {
-      "folder": "research/edfp",
+      "folder": "lab\\edfp",
       "remote_slug": "alawein/edfp",
       "archetype": "python-service",
       "tier": "research",
       "stack": "python, opencv, fastapi"
     },
     {
-      "folder": "research/alembiq",
+      "folder": "lab\\alembiq",
       "remote_slug": "alawein/alembiq",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, pytorch, llm-training"
     },
     {
-      "folder": "research/optiqap",
+      "folder": "lab\\optiqap",
       "remote_slug": "alawein/optiqap",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, optimization, hpc"
     },
     {
-      "folder": "research/qmlab",
+      "folder": "lab\\qmlab",
       "remote_slug": "alawein/qmlab",
       "archetype": "vite-react-spa",
       "tier": "research",
       "stack": "typescript, react, vite, supabase"
     },
     {
-      "folder": "research/simcore",
+      "folder": "lab\\simcore",
       "remote_slug": "alawein/simcore",
       "archetype": "vite-react-spa",
       "tier": "research",
       "stack": "typescript, react, vite, plotly"
     },
     {
-      "folder": "research/meatheadphysicist",
+      "folder": "lab\\meatheadphysicist",
       "remote_slug": "alawein/meatheadphysicist",
       "archetype": "research-archive",
       "tier": "research",
       "stack": "python, physics, fastapi, research"
     },
     {
-      "folder": "ventures/adil",
+      "folder": "lab\\adil",
       "remote_slug": "alawein/adil",
       "archetype": "python-service",
       "tier": "research",
       "stack": "python, legal-ai, cli"
     },
     {
-      "folder": "personal/roka-oakland-hustle",
+      "folder": "sites\\roka-oakland-hustle",
       "remote_slug": "alawein/roka-oakland-hustle",
       "archetype": "game-project",
       "tier": "product",
       "stack": "godot, gdscript, rpg, game"
     },
     {
-      "folder": "research/qmatsim",
+      "folder": "lab\\qmatsim",
       "remote_slug": "alawein/qmatsim",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, scientific-computing"
     },
     {
-      "folder": "research/qubeml",
+      "folder": "lab\\qubeml",
       "remote_slug": "alawein/qubeml",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, quantum-ml"
     },
     {
-      "folder": "research/scicomp",
+      "folder": "lab\\scicomp",
       "remote_slug": "alawein/scicomp",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, scientific-computing"
     },
     {
-      "folder": "research/spincirc",
+      "folder": "lab\\spincirc",
       "remote_slug": "alawein/spincirc",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, spintronics"
     },
     {
-      "folder": "research/maglogic",
+      "folder": "lab\\maglogic",
       "remote_slug": "alawein/maglogic",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, magnetics"
     },
     {
-      "folder": "research/chshlab",
+      "folder": "lab\\chshlab",
       "remote_slug": "alawein/chshlab",
       "archetype": "static-site",
       "tier": "research",
@@ -228,119 +228,119 @@
       "stack": "archive"
     },
     {
-      "folder": "ventures/loopholelab",
+      "folder": "lab\\loopholelab",
       "remote_slug": "alawein/loopholelab",
       "archetype": "vite-react-spa",
       "tier": "research",
       "stack": "python, fastapi, typescript, react, vite"
     },
     {
-      "folder": "ventures/provegate",
+      "folder": "lab\\provegate",
       "remote_slug": "alawein/provegate",
       "archetype": "python-service",
       "tier": "research",
       "stack": "python, mcp, agents"
     },
     {
-      "folder": "jobs-projects/mercor",
+      "folder": "work\\mercor",
       "remote_slug": "alawein/mercor",
       "archetype": "python-library",
       "tier": "tooling",
       "stack": "python, llm"
     },
     {
-      "folder": "tools/design-system",
+      "folder": "core\\design-system",
       "remote_slug": "alawein/design-system",
       "archetype": "node-monorepo",
       "tier": "infra",
       "stack": "typescript, react, turborepo, storybook"
     },
     {
-      "folder": "alawein",
+      "folder": "core/alawein",
       "remote_slug": "alawein/alawein",
       "archetype": "docs-hub",
       "tier": "governance",
       "stack": "python, markdown, github-actions"
     },
     {
-      "folder": "tools/workspace-tools",
+      "folder": "core\\workspace-tools",
       "remote_slug": "alawein/workspace-tools",
       "archetype": "python-service",
       "tier": "infra",
       "stack": "python, yaml, automation"
     },
     {
-      "folder": "tools/knowledge-base",
+      "folder": "core\\knowledge-base",
       "remote_slug": "alawein/knowledge-base",
       "archetype": "next-app-router",
       "tier": "infra",
       "stack": "nextjs, typescript, python"
     },
     {
-      "folder": "jobs-projects/handshake",
+      "folder": "work\\handshake",
       "remote_slug": "alawein/handshake",
       "archetype": "node-monorepo",
       "tier": "tooling",
       "stack": "typescript, evaluations"
     },
     {
-      "folder": "jobs-projects/turing",
+      "folder": "work\\turing",
       "remote_slug": "alawein/turing",
       "archetype": "docs-hub",
       "tier": "tooling",
       "stack": "yaml, markdown, python"
     },
     {
-      "folder": "research/quantumalgo",
+      "folder": "lab\\quantumalgo",
       "remote_slug": "alawein/quantumalgo",
       "archetype": "python-library",
       "tier": "research",
       "stack": "python, pennylane, numpy"
     },
     {
-      "folder": "tools/incore",
+      "folder": "core\\incore",
       "remote_slug": "alawein/incore",
       "archetype": "python-library",
       "tier": "tooling",
       "stack": "python, sqlite, mcp"
     },
     {
-      "folder": "tools/prompty",
+      "folder": "core\\prompty",
       "remote_slug": "alawein/prompty",
       "archetype": "node-monorepo",
       "tier": "tooling",
       "stack": "typescript, turborepo, node"
     },
     {
-      "folder": "ventures/veyra",
+      "folder": "lab\\veyra",
       "remote_slug": "alawein/veyra",
       "archetype": "node-monorepo",
       "tier": "product",
       "stack": "typescript, turborepo, node"
     },
     {
-      "folder": "research/fallax",
+      "folder": "lab\\fallax",
       "remote_slug": "alawein/fallax",
       "archetype": "python-service",
       "tier": "tooling",
       "stack": "python, llm, evaluation"
     },
     {
-      "folder": "tools/outpost",
+      "folder": "core\\outpost",
       "remote_slug": "alawein/outpost",
       "archetype": "python-platform-cli",
       "tier": "tooling",
       "stack": "python, prompts, cli"
     },
     {
-      "folder": "products/auditraise",
+      "folder": "apps\\auditraise",
       "remote_slug": "alawein/auditraise",
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "typescript, nextjs, react"
     },
     {
-      "folder": "tools/workspace-control",
+      "folder": "core\\workspace-control",
       "remote_slug": "alawein/workspace-control",
       "archetype": "python-platform-cli",
       "tier": "infra",

@@ -170,7 +170,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "personal/meshal-web",
+        "local_path": "sites\\meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -224,7 +224,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "personal/meshal-web",
+        "local_path": "sites\\meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -275,7 +275,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/repz",
+        "local_path": "apps\\repz",
         "catalog_groups": [
           "featured"
         ],
@@ -324,7 +324,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/gymboy",
+        "local_path": "apps\\gymboy",
         "catalog_groups": [
           "featured"
         ],
@@ -372,7 +372,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/scribd",
+        "local_path": "apps\\scribd",
         "catalog_groups": [
           "featured"
         ],
@@ -420,7 +420,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/bolts",
+        "local_path": "apps\\bolts",
         "catalog_groups": [
           "featured"
         ],
@@ -470,7 +470,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "family/atelier-rounaq",
+        "local_path": "apps\\atelier-rounaq",
         "catalog_groups": [
           "featured"
         ],
@@ -518,7 +518,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/attributa",
+        "local_path": "lab\\attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -569,7 +569,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/llmworks",
+        "local_path": "lab\\llmworks",
         "catalog_groups": [
           "featured"
         ],
@@ -620,7 +620,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/edfp",
+        "local_path": "lab\\edfp",
         "catalog_groups": [
           "featured",
           "research"
@@ -668,7 +668,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/alembiq",
+        "local_path": "lab\\alembiq",
         "catalog_groups": [
           "featured",
           "research"
@@ -717,7 +717,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/optiqap",
+        "local_path": "lab\\optiqap",
         "catalog_groups": [
           "featured",
           "research"
@@ -767,7 +767,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/qmlab",
+        "local_path": "lab\\qmlab",
         "catalog_groups": [
           "notion_sync",
           "research"
@@ -817,7 +817,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/simcore",
+        "local_path": "lab\\simcore",
         "catalog_groups": [
           "notion_sync",
           "research"
@@ -867,7 +867,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/meatheadphysicist",
+        "local_path": "lab\\meatheadphysicist",
         "catalog_groups": [
           "notion_sync",
           "research"
@@ -915,7 +915,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/adil",
+        "local_path": "lab\\adil",
         "catalog_groups": [
           "notion_sync",
           "research"
@@ -962,7 +962,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/qmatsim",
+        "local_path": "lab\\qmatsim",
         "catalog_groups": [
           "research"
         ],
@@ -1006,7 +1006,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/mercor",
+        "local_path": "work\\mercor",
         "catalog_groups": [
           "research"
         ],
@@ -1054,7 +1054,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/design-system",
+        "local_path": "core\\design-system",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1110,7 +1110,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "alawein",
+        "local_path": "core/alawein",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1163,7 +1163,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/workspace-tools",
+        "local_path": "core\\workspace-tools",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1218,7 +1218,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/knowledge-base",
+        "local_path": "core\\knowledge-base",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1274,7 +1274,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/handshake",
+        "local_path": "work\\handshake",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1321,7 +1321,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "jobs-projects/turing",
+        "local_path": "work\\turing",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1367,7 +1367,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "tools/incore",
+        "local_path": "core\\incore",
         "catalog_groups": [
           "infrastructure"
         ],
@@ -1421,7 +1421,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "personal/meshal-web",
+      "local_path": "sites\\meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -1472,7 +1472,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/repz",
+      "local_path": "apps\\repz",
       "catalog_groups": [
         "featured"
       ],
@@ -1521,7 +1521,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/gymboy",
+      "local_path": "apps\\gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -1569,7 +1569,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/scribd",
+      "local_path": "apps\\scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -1617,7 +1617,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/bolts",
+      "local_path": "apps\\bolts",
       "catalog_groups": [
         "featured"
       ],
@@ -1667,7 +1667,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "family/atelier-rounaq",
+      "local_path": "apps\\atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],
@@ -1715,7 +1715,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/attributa",
+      "local_path": "lab\\attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -1766,7 +1766,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/llmworks",
+      "local_path": "lab\\llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -1815,7 +1815,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/edfp",
+      "local_path": "lab\\edfp",
       "catalog_groups": [
         "featured",
         "research"
@@ -1863,7 +1863,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/alembiq",
+      "local_path": "lab\\alembiq",
       "catalog_groups": [
         "featured",
         "research"
@@ -1912,7 +1912,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/optiqap",
+      "local_path": "lab\\optiqap",
       "catalog_groups": [
         "featured",
         "research"
@@ -1962,7 +1962,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/qmlab",
+      "local_path": "lab\\qmlab",
       "catalog_groups": [
         "notion_sync",
         "research"
@@ -2012,7 +2012,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/simcore",
+      "local_path": "lab\\simcore",
       "catalog_groups": [
         "notion_sync",
         "research"
@@ -2062,7 +2062,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/meatheadphysicist",
+      "local_path": "lab\\meatheadphysicist",
       "catalog_groups": [
         "notion_sync",
         "research"
@@ -2110,7 +2110,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/adil",
+      "local_path": "lab\\adil",
       "catalog_groups": [
         "notion_sync",
         "research"
@@ -2159,7 +2159,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "personal/roka-oakland-hustle",
+      "local_path": "sites\\roka-oakland-hustle",
       "catalog_groups": [
         "notion_sync"
       ],
@@ -2204,7 +2204,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/qmatsim",
+      "local_path": "lab\\qmatsim",
       "catalog_groups": [
         "research"
       ],
@@ -2248,7 +2248,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/qubeml",
+      "local_path": "lab\\qubeml",
       "catalog_groups": [
         "research"
       ],
@@ -2292,7 +2292,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/scicomp",
+      "local_path": "lab\\scicomp",
       "catalog_groups": [
         "research"
       ],
@@ -2336,7 +2336,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/spincirc",
+      "local_path": "lab\\spincirc",
       "catalog_groups": [
         "research"
       ],
@@ -2380,7 +2380,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/maglogic",
+      "local_path": "lab\\maglogic",
       "catalog_groups": [
         "research"
       ],
@@ -2426,7 +2426,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/chshlab",
+      "local_path": "lab\\chshlab",
       "catalog_groups": [
         "research"
       ],
@@ -2517,7 +2517,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/loopholelab",
+      "local_path": "lab\\loopholelab",
       "catalog_groups": [
         "research"
       ],
@@ -2565,7 +2565,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/provegate",
+      "local_path": "lab\\provegate",
       "catalog_groups": [
         "research",
         "infrastructure"
@@ -2609,7 +2609,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/mercor",
+      "local_path": "work\\mercor",
       "catalog_groups": [
         "research"
       ],
@@ -2657,7 +2657,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/design-system",
+      "local_path": "core\\design-system",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2713,7 +2713,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "alawein",
+      "local_path": "core/alawein",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2766,7 +2766,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/workspace-tools",
+      "local_path": "core\\workspace-tools",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2821,7 +2821,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/knowledge-base",
+      "local_path": "core\\knowledge-base",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2877,7 +2877,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/handshake",
+      "local_path": "work\\handshake",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2924,7 +2924,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "jobs-projects/turing",
+      "local_path": "work\\turing",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -2971,7 +2971,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/quantumalgo",
+      "local_path": "lab\\quantumalgo",
       "catalog_groups": [
         "research"
       ],
@@ -3017,7 +3017,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/incore",
+      "local_path": "core\\incore",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3065,7 +3065,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/prompty",
+      "local_path": "core\\prompty",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3113,7 +3113,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/veyra",
+      "local_path": "lab\\veyra",
       "catalog_groups": [
         "featured"
       ],
@@ -3163,7 +3163,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/fallax",
+      "local_path": "lab\\fallax",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3214,7 +3214,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/outpost",
+      "local_path": "core\\outpost",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3260,7 +3260,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/auditraise",
+      "local_path": "apps\\auditraise",
       "catalog_groups": [
         "featured"
       ],
@@ -3306,7 +3306,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "tools/workspace-control",
+      "local_path": "core\\workspace-control",
       "catalog_groups": [
         "infrastructure"
       ],
@@ -3931,7 +3931,7 @@
     "meshal-web": {
       "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
-      "screenshot_folder": "personal/meshal-web/docs/screenshots",
+      "screenshot_folder": "sites\\meshal-web/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/meshal-web/social-card.svg",
       "favicon_status": "generated"
@@ -3939,7 +3939,7 @@
     "repz": {
       "logo_source": "design-system/packages/icons/dist/brand/repz/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/repz/repo-banner.svg",
-      "screenshot_folder": "products/repz/docs/screenshots",
+      "screenshot_folder": "apps\\repz/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/repz/social-card.svg",
       "favicon_status": "generated"
@@ -3947,7 +3947,7 @@
     "gymboy": {
       "logo_source": "design-system/packages/icons/dist/brand/gymboy/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/gymboy/repo-banner.svg",
-      "screenshot_folder": "products/gymboy/docs/screenshots",
+      "screenshot_folder": "apps\\gymboy/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/gymboy/social-card.svg",
       "favicon_status": "generated"
@@ -3955,7 +3955,7 @@
     "scribd": {
       "logo_source": "design-system/packages/icons/dist/brand/scribd/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/scribd/repo-banner.svg",
-      "screenshot_folder": "products/scribd/docs/screenshots",
+      "screenshot_folder": "apps\\scribd/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
       "favicon_status": "generated"
@@ -3963,7 +3963,7 @@
     "bolts": {
       "logo_source": "design-system/packages/icons/dist/brand/bolts/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/bolts/repo-banner.svg",
-      "screenshot_folder": "products/bolts/docs/screenshots",
+      "screenshot_folder": "apps\\bolts/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/bolts/social-card.svg",
       "favicon_status": "generated"
@@ -3971,7 +3971,7 @@
     "atelier-rounaq": {
       "logo_source": "design-system/packages/icons/dist/brand/atelier-rounaq/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/atelier-rounaq/repo-banner.svg",
-      "screenshot_folder": "family/atelier-rounaq/docs/screenshots",
+      "screenshot_folder": "apps\\atelier-rounaq/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/atelier-rounaq/social-card.svg",
       "favicon_status": "generated"
@@ -3979,7 +3979,7 @@
     "attributa": {
       "logo_source": "design-system/packages/icons/dist/brand/attributa/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/attributa/repo-banner.svg",
-      "screenshot_folder": "ventures/attributa/docs/screenshots",
+      "screenshot_folder": "lab\\attributa/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/attributa/social-card.svg",
       "favicon_status": "generated"
@@ -3987,7 +3987,7 @@
     "llmworks": {
       "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
-      "screenshot_folder": "ventures/llmworks/docs/screenshots",
+      "screenshot_folder": "lab\\llmworks/docs/screenshots",
       "theme_family": "wisdom",
       "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
       "favicon_status": "generated"
@@ -3995,7 +3995,7 @@
     "edfp": {
       "logo_source": "design-system/packages/icons/dist/brand/edfp/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/edfp/repo-banner.svg",
-      "screenshot_folder": "research/edfp/docs/screenshots",
+      "screenshot_folder": "lab\\edfp/docs/screenshots",
       "theme_family": "wisdom",
       "social_preview_image": "design-system/packages/icons/dist/brand/edfp/social-card.svg",
       "favicon_status": "generated"
@@ -4003,7 +4003,7 @@
     "qmlab": {
       "logo_source": "design-system/packages/icons/dist/brand/qmlab/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/qmlab/repo-banner.svg",
-      "screenshot_folder": "research/qmlab/docs/screenshots",
+      "screenshot_folder": "lab\\qmlab/docs/screenshots",
       "theme_family": "dawn",
       "social_preview_image": "design-system/packages/icons/dist/brand/qmlab/social-card.svg",
       "favicon_status": "generated"
@@ -4011,7 +4011,7 @@
     "simcore": {
       "logo_source": "design-system/packages/icons/dist/brand/simcore/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/simcore/repo-banner.svg",
-      "screenshot_folder": "research/simcore/docs/screenshots",
+      "screenshot_folder": "lab\\simcore/docs/screenshots",
       "theme_family": "dawn",
       "social_preview_image": "design-system/packages/icons/dist/brand/simcore/social-card.svg",
       "favicon_status": "generated"
@@ -4019,7 +4019,7 @@
     "meatheadphysicist": {
       "logo_source": "design-system/packages/icons/dist/brand/meatheadphysicist/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meatheadphysicist/repo-banner.svg",
-      "screenshot_folder": "research/meatheadphysicist/docs/screenshots",
+      "screenshot_folder": "lab\\meatheadphysicist/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/meatheadphysicist/social-card.svg",
       "favicon_status": "generated"
@@ -4027,7 +4027,7 @@
     "roka-oakland-hustle": {
       "logo_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/roka-oakland-hustle/repo-banner.svg",
-      "screenshot_folder": "personal/roka-oakland-hustle/docs/screenshots",
+      "screenshot_folder": "sites\\roka-oakland-hustle/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/roka-oakland-hustle/social-card.svg",
       "favicon_status": "generated"
@@ -4035,7 +4035,7 @@
     "chshlab": {
       "logo_source": "design-system/packages/icons/dist/brand/chshlab/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/chshlab/repo-banner.svg",
-      "screenshot_folder": "research/chshlab/docs/screenshots",
+      "screenshot_folder": "lab\\chshlab/docs/screenshots",
       "theme_family": "dawn",
       "social_preview_image": "design-system/packages/icons/dist/brand/chshlab/social-card.svg",
       "favicon_status": "generated"
@@ -4043,7 +4043,7 @@
     "loopholelab": {
       "logo_source": "design-system/packages/icons/dist/brand/loopholelab/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/loopholelab/repo-banner.svg",
-      "screenshot_folder": "ventures/loopholelab/docs/screenshots",
+      "screenshot_folder": "lab\\loopholelab/docs/screenshots",
       "theme_family": "forge",
       "social_preview_image": "design-system/packages/icons/dist/brand/loopholelab/social-card.svg",
       "favicon_status": "generated"
@@ -4051,7 +4051,7 @@
     "mercor": {
       "logo_source": "design-system/packages/icons/dist/brand/mercor/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/mercor/repo-banner.svg",
-      "screenshot_folder": "jobs-projects/mercor/docs/screenshots",
+      "screenshot_folder": "work\\mercor/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/mercor/social-card.svg",
       "favicon_status": "generated"
@@ -4059,7 +4059,7 @@
     "alawein": {
       "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
-      "screenshot_folder": "alawein/docs/screenshots",
+      "screenshot_folder": "core/alawein/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/alawein/social-card.svg",
       "favicon_status": "generated"
@@ -4067,7 +4067,7 @@
     "knowledge-base": {
       "logo_source": "design-system/packages/icons/dist/brand/knowledge-base/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/knowledge-base/repo-banner.svg",
-      "screenshot_folder": "tools/knowledge-base/docs/screenshots",
+      "screenshot_folder": "core\\knowledge-base/docs/screenshots",
       "theme_family": "dawn",
       "social_preview_image": "design-system/packages/icons/dist/brand/knowledge-base/social-card.svg",
       "favicon_status": "generated"
@@ -4075,7 +4075,7 @@
     "turing": {
       "logo_source": "design-system/packages/icons/dist/brand/turing/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/turing/repo-banner.svg",
-      "screenshot_folder": "jobs-projects/turing/docs/screenshots",
+      "screenshot_folder": "work\\turing/docs/screenshots",
       "theme_family": "legacy",
       "social_preview_image": "design-system/packages/icons/dist/brand/turing/social-card.svg",
       "favicon_status": "generated"
@@ -4083,7 +4083,7 @@
     "fallax": {
       "logo_source": "design-system/packages/icons/dist/brand/fallax/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/fallax/repo-banner.svg",
-      "screenshot_folder": "research/fallax/docs/screenshots",
+      "screenshot_folder": "lab\\fallax/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
       "favicon_status": "generated"
@@ -4091,7 +4091,7 @@
     "auditraise": {
       "logo_source": "design-system/packages/icons/dist/brand/auditraise/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/auditraise/repo-banner.svg",
-      "screenshot_folder": "products/auditraise/docs/screenshots",
+      "screenshot_folder": "apps\\auditraise/docs/screenshots",
       "theme_family": "midnight",
       "social_preview_image": "design-system/packages/icons/dist/brand/auditraise/social-card.svg",
       "favicon_status": "generated"
@@ -4994,10 +4994,180 @@
     }
   ],
   "inventoryReconciliation": {
-    "catalog_only": [],
-    "workspace_only": [],
+    "catalog_only": [
+      "auditraise",
+      "handshake",
+      "incore",
+      "mercor",
+      "outpost",
+      "prompty",
+      "turing",
+      "veyra",
+      "workspace-control"
+    ],
+    "workspace_only": [
+      "handshake-hai",
+      "mercor-llm-failsafe",
+      "morphism"
+    ],
     "stale_inventory_entries": [],
-    "path_mismatches": []
+    "path_mismatches": [
+      {
+        "slug": "meshal-web",
+        "catalog_path": "sites\\meshal-web",
+        "workspace_path": "meshal-web"
+      },
+      {
+        "slug": "repz",
+        "catalog_path": "apps\\repz",
+        "workspace_path": "repz"
+      },
+      {
+        "slug": "gymboy",
+        "catalog_path": "apps\\gymboy",
+        "workspace_path": "gymboy"
+      },
+      {
+        "slug": "scribd",
+        "catalog_path": "apps\\scribd",
+        "workspace_path": "scribd"
+      },
+      {
+        "slug": "bolts",
+        "catalog_path": "apps\\bolts",
+        "workspace_path": "bolts"
+      },
+      {
+        "slug": "atelier-rounaq",
+        "catalog_path": "apps\\atelier-rounaq",
+        "workspace_path": "atelier-rounaq"
+      },
+      {
+        "slug": "attributa",
+        "catalog_path": "lab\\attributa",
+        "workspace_path": "attributa"
+      },
+      {
+        "slug": "llmworks",
+        "catalog_path": "lab\\llmworks",
+        "workspace_path": "llmworks"
+      },
+      {
+        "slug": "edfp",
+        "catalog_path": "lab\\edfp",
+        "workspace_path": "edfp"
+      },
+      {
+        "slug": "alembiq",
+        "catalog_path": "lab\\alembiq",
+        "workspace_path": "alembiq"
+      },
+      {
+        "slug": "optiqap",
+        "catalog_path": "lab\\optiqap",
+        "workspace_path": "optiqap"
+      },
+      {
+        "slug": "qmlab",
+        "catalog_path": "lab\\qmlab",
+        "workspace_path": "qmlab"
+      },
+      {
+        "slug": "simcore",
+        "catalog_path": "lab\\simcore",
+        "workspace_path": "simcore"
+      },
+      {
+        "slug": "meatheadphysicist",
+        "catalog_path": "lab\\meatheadphysicist",
+        "workspace_path": "meatheadphysicist"
+      },
+      {
+        "slug": "adil",
+        "catalog_path": "lab\\adil",
+        "workspace_path": "adil"
+      },
+      {
+        "slug": "roka-oakland-hustle",
+        "catalog_path": "sites\\roka-oakland-hustle",
+        "workspace_path": "roka-oakland-hustle"
+      },
+      {
+        "slug": "qmatsim",
+        "catalog_path": "lab\\qmatsim",
+        "workspace_path": "qmatsim"
+      },
+      {
+        "slug": "qubeml",
+        "catalog_path": "lab\\qubeml",
+        "workspace_path": "qubeml"
+      },
+      {
+        "slug": "scicomp",
+        "catalog_path": "lab\\scicomp",
+        "workspace_path": "scicomp"
+      },
+      {
+        "slug": "spincirc",
+        "catalog_path": "lab\\spincirc",
+        "workspace_path": "spincirc"
+      },
+      {
+        "slug": "maglogic",
+        "catalog_path": "lab\\maglogic",
+        "workspace_path": "maglogic"
+      },
+      {
+        "slug": "chshlab",
+        "catalog_path": "lab\\chshlab",
+        "workspace_path": "chshlab"
+      },
+      {
+        "slug": "helios",
+        "catalog_path": "_archive/2026-06-helios",
+        "workspace_path": "helios"
+      },
+      {
+        "slug": "loopholelab",
+        "catalog_path": "lab\\loopholelab",
+        "workspace_path": "loopholelab"
+      },
+      {
+        "slug": "provegate",
+        "catalog_path": "lab\\provegate",
+        "workspace_path": "provegate"
+      },
+      {
+        "slug": "design-system",
+        "catalog_path": "core\\design-system",
+        "workspace_path": "design-system"
+      },
+      {
+        "slug": "alawein",
+        "catalog_path": "core/alawein",
+        "workspace_path": "alawein"
+      },
+      {
+        "slug": "workspace-tools",
+        "catalog_path": "core\\workspace-tools",
+        "workspace_path": "workspace-tools"
+      },
+      {
+        "slug": "knowledge-base",
+        "catalog_path": "core\\knowledge-base",
+        "workspace_path": "knowledge-base"
+      },
+      {
+        "slug": "quantumalgo",
+        "catalog_path": "lab\\quantumalgo",
+        "workspace_path": "quantumalgo"
+      },
+      {
+        "slug": "fallax",
+        "catalog_path": "lab\\fallax",
+        "workspace_path": "fallax"
+      }
+    ]
   },
   "projectSwitcher": {
     "featured": [
@@ -5034,7 +5204,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "personal/meshal-web",
+        "local_path": "sites\\meshal-web",
         "catalog_groups": [
           "featured"
         ],
@@ -5085,7 +5255,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/repz",
+        "local_path": "apps\\repz",
         "catalog_groups": [
           "featured"
         ],
@@ -5134,7 +5304,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/gymboy",
+        "local_path": "apps\\gymboy",
         "catalog_groups": [
           "featured"
         ],
@@ -5182,7 +5352,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/scribd",
+        "local_path": "apps\\scribd",
         "catalog_groups": [
           "featured"
         ],
@@ -5230,7 +5400,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/bolts",
+        "local_path": "apps\\bolts",
         "catalog_groups": [
           "featured"
         ],
@@ -5280,7 +5450,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "family/atelier-rounaq",
+        "local_path": "apps\\atelier-rounaq",
         "catalog_groups": [
           "featured"
         ],
@@ -5328,7 +5498,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/attributa",
+        "local_path": "lab\\attributa",
         "catalog_groups": [
           "featured"
         ],
@@ -5379,7 +5549,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/llmworks",
+        "local_path": "lab\\llmworks",
         "catalog_groups": [
           "featured"
         ],
@@ -5428,7 +5598,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/edfp",
+        "local_path": "lab\\edfp",
         "catalog_groups": [
           "featured",
           "research"
@@ -5476,7 +5646,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/alembiq",
+        "local_path": "lab\\alembiq",
         "catalog_groups": [
           "featured",
           "research"
@@ -5525,7 +5695,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "research/optiqap",
+        "local_path": "lab\\optiqap",
         "catalog_groups": [
           "featured",
           "research"
@@ -5574,7 +5744,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "ventures/veyra",
+        "local_path": "lab\\veyra",
         "catalog_groups": [
           "featured"
         ],
@@ -5624,7 +5794,7 @@
         ],
         "maintainer": "alawein-core",
         "docs_owner": "alawein-core",
-        "local_path": "products/auditraise",
+        "local_path": "apps\\auditraise",
         "catalog_groups": [
           "featured"
         ],

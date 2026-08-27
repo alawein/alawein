@@ -13,8 +13,8 @@
       "slug": "meshal-web",
       "legacy_slugs": [],
       "repo": "alawein/meshal-web",
-      "local_path": "personal/meshal-web",
-      "bucket": "personal",
+      "local_path": "sites\\meshal-web",
+      "bucket": "sites",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -80,8 +80,8 @@
       "slug": "repz",
       "legacy_slugs": [],
       "repo": "alawein/repz",
-      "local_path": "products/repz",
-      "bucket": "products",
+      "local_path": "apps\\repz",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -146,8 +146,8 @@
         "gainboy"
       ],
       "repo": "alawein/gymboy",
-      "local_path": "products/gymboy",
-      "bucket": "products",
+      "local_path": "apps\\gymboy",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -208,8 +208,8 @@
       "slug": "scribd",
       "legacy_slugs": [],
       "repo": "alawein/scribd",
-      "local_path": "products/scribd",
-      "bucket": "products",
+      "local_path": "apps\\scribd",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -271,8 +271,8 @@
       "slug": "bolts",
       "legacy_slugs": [],
       "repo": "alawein/bolts",
-      "local_path": "products/bolts",
-      "bucket": "products",
+      "local_path": "apps\\bolts",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -335,8 +335,8 @@
         "rounaq-atelier"
       ],
       "repo": "alawein/atelier-rounaq",
-      "local_path": "family/atelier-rounaq",
-      "bucket": "family",
+      "local_path": "apps\\atelier-rounaq",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -397,8 +397,8 @@
       "slug": "attributa",
       "legacy_slugs": [],
       "repo": "alawein/attributa",
-      "local_path": "ventures/attributa",
-      "bucket": "ventures",
+      "local_path": "lab\\attributa",
+      "bucket": "lab",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -460,8 +460,8 @@
       "slug": "llmworks",
       "legacy_slugs": [],
       "repo": "alawein/llmworks",
-      "local_path": "ventures/llmworks",
-      "bucket": "ventures",
+      "local_path": "lab\\llmworks",
+      "bucket": "lab",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -528,8 +528,8 @@
         "event-discovery-framework"
       ],
       "repo": "alawein/edfp",
-      "local_path": "research/edfp",
-      "bucket": "research",
+      "local_path": "lab\\edfp",
+      "bucket": "lab",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -593,8 +593,8 @@
         "neper"
       ],
       "repo": "alawein/alembiq",
-      "local_path": "research/alembiq",
-      "bucket": "research",
+      "local_path": "lab\\alembiq",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -659,8 +659,8 @@
         "qaplibria"
       ],
       "repo": "alawein/optiqap",
-      "local_path": "research/optiqap",
-      "bucket": "research",
+      "local_path": "lab\\optiqap",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -723,8 +723,8 @@
       "slug": "qmlab",
       "legacy_slugs": [],
       "repo": "alawein/qmlab",
-      "local_path": "research/qmlab",
-      "bucket": "research",
+      "local_path": "lab\\qmlab",
+      "bucket": "lab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -789,8 +789,8 @@
       "slug": "simcore",
       "legacy_slugs": [],
       "repo": "alawein/simcore",
-      "local_path": "research/simcore",
-      "bucket": "research",
+      "local_path": "lab\\simcore",
+      "bucket": "lab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -857,8 +857,8 @@
         "MeatheadPhysicist"
       ],
       "repo": "alawein/meatheadphysicist",
-      "local_path": "research/meatheadphysicist",
-      "bucket": "research",
+      "local_path": "lab\\meatheadphysicist",
+      "bucket": "lab",
       "type": "research",
       "surface": "service",
       "stack": [
@@ -923,8 +923,8 @@
       "slug": "adil",
       "legacy_slugs": [],
       "repo": "alawein/adil",
-      "local_path": "ventures/adil",
-      "bucket": "ventures",
+      "local_path": "lab\\adil",
+      "bucket": "lab",
       "type": "research",
       "surface": "cli",
       "stack": [
@@ -986,8 +986,8 @@
       "slug": "roka-oakland-hustle",
       "legacy_slugs": [],
       "repo": "alawein/roka-oakland-hustle",
-      "local_path": "personal/roka-oakland-hustle",
-      "bucket": "personal",
+      "local_path": "sites\\roka-oakland-hustle",
+      "bucket": "sites",
       "type": "product",
       "surface": "service",
       "stack": [
@@ -1048,8 +1048,8 @@
       "slug": "qmatsim",
       "legacy_slugs": [],
       "repo": "alawein/qmatsim",
-      "local_path": "research/qmatsim",
-      "bucket": "research",
+      "local_path": "lab\\qmatsim",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1107,8 +1107,8 @@
       "slug": "qubeml",
       "legacy_slugs": [],
       "repo": "alawein/qubeml",
-      "local_path": "research/qubeml",
-      "bucket": "research",
+      "local_path": "lab\\qubeml",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1165,8 +1165,8 @@
       "slug": "scicomp",
       "legacy_slugs": [],
       "repo": "alawein/scicomp",
-      "local_path": "research/scicomp",
-      "bucket": "research",
+      "local_path": "lab\\scicomp",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1222,8 +1222,8 @@
       "slug": "spincirc",
       "legacy_slugs": [],
       "repo": "alawein/spincirc",
-      "local_path": "research/spincirc",
-      "bucket": "research",
+      "local_path": "lab\\spincirc",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1280,8 +1280,8 @@
       "slug": "maglogic",
       "legacy_slugs": [],
       "repo": "alawein/maglogic",
-      "local_path": "research/maglogic",
-      "bucket": "research",
+      "local_path": "lab\\maglogic",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -1338,8 +1338,8 @@
       "slug": "chshlab",
       "legacy_slugs": [],
       "repo": "alawein/chshlab",
-      "local_path": "research/chshlab",
-      "bucket": "research",
+      "local_path": "lab\\chshlab",
+      "bucket": "lab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1401,7 +1401,7 @@
       "legacy_slugs": [],
       "repo": "alawein/helios",
       "local_path": "_archive/2026-06-helios",
-      "bucket": "research",
+      "bucket": "archive",
       "type": "archive",
       "surface": "dataset",
       "stack": [
@@ -1455,8 +1455,8 @@
       "slug": "loopholelab",
       "legacy_slugs": [],
       "repo": "alawein/loopholelab",
-      "local_path": "ventures/loopholelab",
-      "bucket": "ventures",
+      "local_path": "lab\\loopholelab",
+      "bucket": "lab",
       "type": "research",
       "surface": "web",
       "stack": [
@@ -1523,8 +1523,8 @@
         "epistemic-stack"
       ],
       "repo": "alawein/provegate",
-      "local_path": "ventures/provegate",
-      "bucket": "ventures",
+      "local_path": "lab\\provegate",
+      "bucket": "lab",
       "type": "research",
       "surface": "workflow",
       "stack": [
@@ -1588,8 +1588,8 @@
         "mercor-llm-failsafe"
       ],
       "repo": "alawein/mercor",
-      "local_path": "jobs-projects/mercor",
-      "bucket": "jobs-projects",
+      "local_path": "work\\mercor",
+      "bucket": "work",
       "type": "tooling",
       "surface": "service",
       "stack": [
@@ -1645,8 +1645,8 @@
         "devkit"
       ],
       "repo": "alawein/design-system",
-      "local_path": "tools/design-system",
-      "bucket": "tools",
+      "local_path": "core\\design-system",
+      "bucket": "core",
       "type": "infra",
       "surface": "monorepo",
       "stack": [
@@ -1719,8 +1719,8 @@
       "slug": "alawein",
       "legacy_slugs": [],
       "repo": "alawein/alawein",
-      "local_path": "alawein",
-      "bucket": "tools",
+      "local_path": "core/alawein",
+      "bucket": "core",
       "type": "governance",
       "surface": "docs-hub",
       "stack": [
@@ -1788,8 +1788,8 @@
       "slug": "workspace-tools",
       "legacy_slugs": [],
       "repo": "alawein/workspace-tools",
-      "local_path": "tools/workspace-tools",
-      "bucket": "tools",
+      "local_path": "core\\workspace-tools",
+      "bucket": "core",
       "type": "infra",
       "surface": "cli",
       "stack": [
@@ -1860,8 +1860,8 @@
         "pkos"
       ],
       "repo": "alawein/knowledge-base",
-      "local_path": "tools/knowledge-base",
-      "bucket": "tools",
+      "local_path": "core\\knowledge-base",
+      "bucket": "core",
       "type": "infra",
       "surface": "docs-hub",
       "stack": [
@@ -1934,8 +1934,8 @@
         "handshake-hai"
       ],
       "repo": "alawein/handshake",
-      "local_path": "jobs-projects/handshake",
-      "bucket": "jobs-projects",
+      "local_path": "work\\handshake",
+      "bucket": "work",
       "type": "tooling",
       "surface": "monorepo",
       "stack": [
@@ -1994,8 +1994,8 @@
       "slug": "turing",
       "legacy_slugs": [],
       "repo": "alawein/turing",
-      "local_path": "jobs-projects/turing",
-      "bucket": "jobs-projects",
+      "local_path": "work\\turing",
+      "bucket": "work",
       "type": "tooling",
       "surface": "docs-hub",
       "stack": [
@@ -2052,8 +2052,8 @@
       "slug": "quantumalgo",
       "legacy_slugs": [],
       "repo": "alawein/quantumalgo",
-      "local_path": "research/quantumalgo",
-      "bucket": "research",
+      "local_path": "lab\\quantumalgo",
+      "bucket": "lab",
       "type": "research",
       "surface": "library",
       "stack": [
@@ -2114,8 +2114,8 @@
       "slug": "incore",
       "legacy_slugs": [],
       "repo": "alawein/incore",
-      "local_path": "tools/incore",
-      "bucket": "tools",
+      "local_path": "core\\incore",
+      "bucket": "core",
       "type": "tooling",
       "surface": "cli",
       "stack": [
@@ -2176,8 +2176,8 @@
       "slug": "prompty",
       "legacy_slugs": [],
       "repo": "alawein/prompty",
-      "local_path": "tools/prompty",
-      "bucket": "tools",
+      "local_path": "core\\prompty",
+      "bucket": "core",
       "type": "tooling",
       "surface": "monorepo",
       "stack": [
@@ -2237,8 +2237,8 @@
       "slug": "veyra",
       "legacy_slugs": [],
       "repo": "alawein/veyra",
-      "local_path": "ventures/veyra",
-      "bucket": "ventures",
+      "local_path": "lab\\veyra",
+      "bucket": "lab",
       "type": "product",
       "surface": "monorepo",
       "stack": [
@@ -2304,8 +2304,8 @@
         "reasonbench"
       ],
       "repo": "alawein/fallax",
-      "local_path": "research/fallax",
-      "bucket": "research",
+      "local_path": "lab\\fallax",
+      "bucket": "lab",
       "type": "tooling",
       "surface": "service",
       "stack": [
@@ -2365,8 +2365,8 @@
       "slug": "outpost",
       "legacy_slugs": [],
       "repo": "alawein/outpost",
-      "local_path": "tools/outpost",
-      "bucket": "tools",
+      "local_path": "core\\outpost",
+      "bucket": "core",
       "type": "tooling",
       "surface": "cli",
       "stack": [
@@ -2427,8 +2427,8 @@
       "slug": "auditraise",
       "legacy_slugs": [],
       "repo": "alawein/auditraise",
-      "local_path": "products/auditraise",
-      "bucket": "products",
+      "local_path": "apps\\auditraise",
+      "bucket": "apps",
       "type": "product",
       "surface": "web",
       "stack": [
@@ -2488,8 +2488,8 @@
       "slug": "workspace-control",
       "legacy_slugs": [],
       "repo": "alawein/workspace-control",
-      "local_path": "tools/workspace-control",
-      "bucket": "tools",
+      "local_path": "core\\workspace-control",
+      "bucket": "core",
       "type": "infra",
       "surface": "cli",
       "stack": [

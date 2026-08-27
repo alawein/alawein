@@ -15,10 +15,10 @@ from validate_readme_topology import (
 def _repo(**kw):
     base = {
         "slug": "demo",
-        "bucket": "research",
+        "bucket": "lab",
         "type": "research",
         "status": "active",
-        "local_path": "research/demo",
+        "local_path": "lab/demo",
         "repo": "alawein/demo",
         "surface": "library",
     }
@@ -120,7 +120,7 @@ See topology doc.
 
 Maintainer.
 """
-    repo = _repo(type="product", bucket="products", surface="library")
+    repo = _repo(type="product", bucket="apps", surface="library")
     problems = check_readme_sections(readme, repo)
     assert not any("Deployment" in p for p in problems)
 
@@ -184,16 +184,16 @@ def test_find_repo_by_slug():
 def test_main_requires_mode(tmp_path):
     repos_json = tmp_path / "repos.json"
     repos_json.write_text(
-        '{"repos": [{"slug": "demo", "type": "research", "local_path": "research/demo",'
-        ' "repo": "alawein/demo", "bucket": "research", "status": "active"}]}',
+        '{"repos": [{"slug": "demo", "type": "research", "local_path": "lab/demo",'
+        ' "repo": "alawein/demo", "bucket": "lab", "status": "active"}]}',
         encoding="utf-8",
     )
     assert main(["--repos-json", str(repos_json)]) == 2
 
 
 def test_main_workspace_mode_passes(tmp_path):
-    (tmp_path / "research" / "demo").mkdir(parents=True)
-    root = tmp_path / "research" / "demo"
+    (tmp_path / "lab" / "demo").mkdir(parents=True)
+    root = tmp_path / "lab" / "demo"
     (root / "README.md").write_text(GOOD_README, encoding="utf-8")
     topo_dir = root / "docs" / "architecture"
     topo_dir.mkdir(parents=True)

@@ -1,0 +1,67 @@
+---
+schemaVersion: "1.0.0"
+lastVerified: "2026-08-27"
+provider: openrouter
+base_url: https://openrouter.ai/api/v1
+# Load OPENROUTER_API_KEY from (first hit): ~/.openrouter.env, workspace .env.local, repo .env.local
+env_files:
+  - ~/.openrouter.env
+  - ../.env.local
+  - .env.local
+defaults:
+  temperature: 0.2
+  max_tokens: 8192
+routes:
+  fast:
+    model: qwen/qwen3.8-flash
+    use: bulk lint, grep summaries, catalog diffs, short rewrites
+  code:
+    model: moonshotai/kimi-k3
+    use: implementation, refactors, test fixes, multi-file edits
+  code_batch:
+    model: moonshotai/kimi-k2.7-code
+    use: large codegen batches, scaffold generation
+  reason:
+    model: z-ai/glm-5.3
+    use: architecture, governance tradeoffs, audit synthesis
+  reason_fast:
+    model: z-ai/glm-5.3-flash
+    use: quick planning, triage, classification
+  docs:
+    model: google/gemini-3.7-flash
+    use: long doc reads, voice passes, README/profile generation
+  heavy:
+    model: qwen/qwen3.8-max
+    use: deep review, cross-repo migration planning
+workflows:
+  voice-resweep:
+    steps:
+      - route: docs
+        task: governed markdown voice and contract review
+      - route: fast
+        task: fix trivial lint (spacing, tabs, headers)
+  catalog-audit:
+    steps:
+      - route: fast
+        task: diff catalog/repos.json vs GitHub metadata
+      - route: reason_fast
+        task: classify drift severity
+  bucket-migrate:
+    steps:
+      - route: reason
+        task: validate bucket map and path renames
+      - route: code
+        task: apply scripted moves and header updates
+  pr-ready:
+    steps:
+      - route: fast
+        task: run local validators and collect failures
+      - route: code
+        task: fix blockers in diff scope
+      - route: docs
+        task: draft PR summary from git log
+fallbacks:
+  fast: qwen/qwen3.7-flash
+  code: moonshotai/kimi-k2.5
+  reason: z-ai/glm-5.2
+  docs: google/gemini-3.5-flash

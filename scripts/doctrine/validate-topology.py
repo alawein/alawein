@@ -17,14 +17,14 @@ import sys
 from pathlib import Path
 
 ALLOWED_BUCKET = {
-    "products", "personal", "family", "research", "ventures", "tools", "jobs-projects",
+    "core", "apps", "lab", "sites", "work", "archive",
 }
 ALLOWED_TYPE = {
     "governance", "infra", "product", "research", "tooling", "archive",
 }
 
-# The hub itself has no bucket folder (local_path == "alawein").
-HUB_SLUGS = {"alawein"}
+# Hub lives at core/alawein after the minimal-bucket migration (catalog/buckets.yaml).
+HUB_SLUGS: set[str] = set()
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 

@@ -19,10 +19,10 @@ from validate_topology import (
 def _repo(**kw):
     base = {
         "slug": "demo",
-        "bucket": "research",
+        "bucket": "lab",
         "type": "research",
         "status": "active",
-        "local_path": "research/demo",
+        "local_path": "lab/demo",
     }
     base.update(kw)
     return base
@@ -43,12 +43,12 @@ def test_type_not_in_set_is_flagged():
 
 
 def test_slug_must_match_local_path_folder():
-    problems = check_repo_data(_repo(slug="demo", local_path="research/other"))
+    problems = check_repo_data(_repo(slug="demo", local_path="lab/other"))
     assert any("does not match slug" in p for p in problems)
 
 
 def test_bucket_must_match_local_path_root():
-    problems = check_repo_data(_repo(bucket="research", local_path="tools/demo"))
+    problems = check_repo_data(_repo(bucket="lab", local_path="core/demo"))
     assert any("does not match bucket" in p for p in problems)
 
 
@@ -57,7 +57,7 @@ def test_archived_repo_is_exempt_from_slug_and_bucket():
         slug="old-thing",
         type="archive",
         status="archived",
-        bucket="research",
+        bucket="archive",
         local_path="_archive/2026-06-old",
     )
     assert check_repo_data(r) == []
@@ -68,8 +68,8 @@ def test_archived_markers_must_agree():
     assert any("archived markers disagree" in p for p in problems)
 
 
-def test_hub_is_exempt_from_path_checks():
-    r = _repo(slug="alawein", bucket="tools", type="governance", local_path="alawein")
+def test_hub_follows_core_path_pattern():
+    r = _repo(slug="alawein", bucket="core", type="governance", local_path="core/alawein")
     assert check_repo_data(r) == []
 
 
@@ -95,29 +95,30 @@ def test_non_dict_repo_entry_is_flagged_not_crash():
 
 
 def test_single_segment_local_path_flagged_for_non_archived():
-    problems = check_repo_data(_repo(slug="foo", bucket="research", local_path="foo"))
+    problems = check_repo_data(_repo(slug="foo", bucket="lab", local_path="foo"))
     assert any("bucket/slug" in p for p in problems)
 
 
 def test_disk_check_passes_when_folder_exists(tmp_path):
-    (tmp_path / "research" / "demo").mkdir(parents=True)
-    r = _repo(slug="demo", bucket="research", local_path="research/demo")
+    (tmp_path / "lab" / "demo").mkdir(parents=True)
+    r = _repo(slug="demo", bucket="lab", local_path="lab/demo")
     assert check_repo_disk(r, tmp_path) == []
 
 
 def test_disk_check_flags_missing_folder(tmp_path):
-    r = _repo(slug="ghost", bucket="research", local_path="research/ghost")
+    r = _repo(slug="ghost", bucket="lab", local_path="lab/ghost")
     problems = check_repo_disk(r, tmp_path)
     assert any("does not exist" in p for p in problems)
 
 
-def test_disk_check_skips_hub(tmp_path):
-    r = _repo(slug="alawein", local_path="alawein")
+def test_disk_check_skips_hub_slug_without_path(tmp_path):
+    (tmp_path / "core" / "alawein").mkdir(parents=True)
+    r = _repo(slug="alawein", bucket="core", local_path="core/alawein")
     assert check_repo_disk(r, tmp_path) == []
 
 
 def test_validate_runs_disk_checks_when_root_given(tmp_path):
-    r = _repo(slug="ghost", bucket="research", local_path="research/ghost")
+    r = _repo(slug="ghost", bucket="lab", local_path="lab/ghost")
     assert validate([r], workspace_root=tmp_path)  # missing folder -> problem
     assert validate([r]) == []  # data-only: clean
 
@@ -125,8 +126,8 @@ def test_validate_runs_disk_checks_when_root_given(tmp_path):
 def test_main_returns_zero_on_clean_repos_json(tmp_path):
     good = tmp_path / "repos.json"
     good.write_text(
-        '{"repos": [{"slug": "demo", "bucket": "research", "type": "research",'
-        ' "status": "active", "local_path": "research/demo"}]}',
+        '{"repos": [{"slug": "demo", "bucket": "lab", "type": "research",'
+        ' "status": "active", "local_path": "lab/demo"}]}',
         encoding="utf-8",
     )
     assert main(["--repos-json", str(good)]) == 0

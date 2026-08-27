@@ -16,7 +16,7 @@
       "category": "maintained",
       "url": "https://www.meshal.ai",
       "portfolio_domain": "Personal",
-      "bucket": "personal",
+      "bucket": "sites",
       "status": "maintained",
       "visibility": "private"
     },
@@ -33,7 +33,7 @@
       "category": "active",
       "url": "https://repzcoach.com",
       "portfolio_domain": "Personal",
-      "bucket": "products",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -53,7 +53,7 @@
       ],
       "url": "https://gymboy.coach",
       "portfolio_domain": "Personal",
-      "bucket": "products",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -70,7 +70,7 @@
       "category": "active",
       "url": "https://scribd.fit",
       "portfolio_domain": "Work",
-      "bucket": "products",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -86,7 +86,7 @@
       "category": "active",
       "url": "https://bolts.fit",
       "portfolio_domain": "Work",
-      "bucket": "products",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -106,7 +106,7 @@
       ],
       "url": "https://atelier-rounaq.com",
       "portfolio_domain": "Work",
-      "bucket": "family",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     },
@@ -123,7 +123,7 @@
       "category": "active",
       "url": "https://attributa.dev",
       "portfolio_domain": "Work",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -141,7 +141,7 @@
       "category": "active",
       "url": "https://llmworks.dev",
       "portfolio_domain": "Work",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "public"
     },
@@ -161,7 +161,7 @@
       ],
       "url": "https://edfp.online",
       "portfolio_domain": "Work",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "private"
     },
@@ -181,7 +181,7 @@
       ],
       "url": "https://alembiq.online",
       "portfolio_domain": "scientific-computing",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -201,7 +201,7 @@
       ],
       "url": "https://optiqap.online",
       "portfolio_domain": "Personal",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "maintained",
       "visibility": "private"
     },
@@ -218,7 +218,7 @@
       ],
       "category": "active",
       "url": "https://github.com/alawein/veyra",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -235,7 +235,7 @@
       "category": "active",
       "url": "https://github.com/alawein/auditraise",
       "portfolio_domain": "Work",
-      "bucket": "products",
+      "bucket": "apps",
       "status": "active",
       "visibility": "private"
     }
@@ -255,7 +255,7 @@
       "category": "frozen",
       "url": "https://qmlab.online",
       "portfolio_domain": "Personal",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "private"
     },
@@ -273,7 +273,7 @@
       "category": "active",
       "url": "https://simcore.dev",
       "portfolio_domain": "Work",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -294,7 +294,7 @@
       ],
       "url": "https://mhphys.online",
       "portfolio_domain": "Personal",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -310,7 +310,7 @@
       ],
       "category": "active",
       "portfolio_domain": "Personal",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -327,7 +327,7 @@
       ],
       "category": "active",
       "portfolio_domain": "Personal",
-      "bucket": "personal",
+      "bucket": "sites",
       "status": "active",
       "visibility": "private"
     }
@@ -343,7 +343,7 @@
         "event-discovery-framework"
       ],
       "url": "https://edfp.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "private"
     },
@@ -357,7 +357,7 @@
         "neper"
       ],
       "url": "https://alembiq.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -371,7 +371,7 @@
         "qaplibria"
       ],
       "url": "https://optiqap.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "maintained",
       "visibility": "private"
     },
@@ -382,7 +382,7 @@
       "domain": "Quantum ML web lab (React/TS/Vite)",
       "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
       "url": "https://qmlab.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "private"
     },
@@ -393,7 +393,7 @@
       "domain": "Scientific simulation core",
       "description": "Scientific simulation core for interactive modeling and numerical exploration.",
       "url": "https://simcore.dev",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -407,7 +407,7 @@
         "MeatheadPhysicist"
       ],
       "url": "https://mhphys.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -417,7 +417,7 @@
       "repo": "alawein/adil",
       "domain": "Legal-ops automation: matter records, evidence processing, agency or court submission packets (solo or small-firm workflow).",
       "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     },
@@ -428,7 +428,7 @@
       "domain": "Quantum material simulation",
       "description": "Quantum material simulation research workspace.",
       "url": "https://github.com/alawein/qmatsim",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -439,7 +439,7 @@
       "domain": "Quantum ML experiments",
       "description": "Quantum machine learning experiments and research.",
       "url": "https://github.com/alawein/qubeml",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -450,7 +450,7 @@
       "domain": "Scientific computing utilities",
       "description": "Scientific computing utilities and shared numerical tooling.",
       "url": "https://github.com/alawein/scicomp",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -461,7 +461,7 @@
       "domain": "Spintronics circuit simulation",
       "description": "Spintronics circuit simulation and modeling research workspace.",
       "url": "https://github.com/alawein/spincirc",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -472,7 +472,7 @@
       "domain": "Magnetic logic gates",
       "description": "Magnetic logic gates and device simulation research.",
       "url": "https://github.com/alawein/maglogic",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -483,7 +483,7 @@
       "domain": "Quantum foundations \u2014 CHSH / Bell education site",
       "description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
       "url": "https://chshlab.online",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "public"
     },
@@ -494,7 +494,7 @@
       "domain": "Proprietary research archive \u2014 computational astrophysics",
       "description": "Proprietary research archive for computational astrophysics and astronomy work.",
       "category": "archived",
-      "bucket": "research",
+      "bucket": "archive",
       "status": "archived",
       "visibility": "private"
     },
@@ -505,7 +505,7 @@
       "domain": "Research validation \u2014 adversarial claim stress-testing",
       "description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
       "url": "https://loopholelab.online",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "frozen",
       "visibility": "public"
     },
@@ -519,7 +519,7 @@
         "epistemic-stack"
       ],
       "url": "https://provegate.online",
-      "bucket": "ventures",
+      "bucket": "lab",
       "status": "active",
       "visibility": "public"
     },
@@ -532,7 +532,7 @@
       "legacy_slugs": [
         "mercor-llm-failsafe"
       ],
-      "bucket": "jobs-projects",
+      "bucket": "work",
       "status": "active",
       "visibility": "private"
     },
@@ -543,7 +543,7 @@
       "domain": "Quantum algorithms; combinatorial optimization",
       "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
       "url": "https://github.com/alawein/quantumalgo",
-      "bucket": "research",
+      "bucket": "lab",
       "status": "active",
       "visibility": "private"
     }
@@ -560,7 +560,7 @@
       ],
       "url": "https://provegate.online",
       "status": "active",
-      "bucket": "ventures",
+      "bucket": "lab",
       "visibility": "public"
     },
     {
@@ -575,7 +575,7 @@
       ],
       "url": "https://github.com/alawein/design-system",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     },
     {
@@ -586,7 +586,7 @@
       "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
       "url": "https://github.com/alawein/alawein",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "public"
     },
     {
@@ -597,7 +597,7 @@
       "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
       "url": "https://github.com/alawein/workspace-tools",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     },
     {
@@ -611,7 +611,7 @@
       ],
       "url": "https://knowledge-base-alawein.vercel.app",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     },
     {
@@ -626,7 +626,7 @@
       ],
       "url": "https://github.com/alawein/handshake",
       "status": "active",
-      "bucket": "jobs-projects",
+      "bucket": "work",
       "visibility": "private"
     },
     {
@@ -637,7 +637,7 @@
       "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
       "url": "https://github.com/alawein/turing",
       "status": "active",
-      "bucket": "jobs-projects",
+      "bucket": "work",
       "visibility": "private"
     },
     {
@@ -648,7 +648,7 @@
       "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
       "url": "https://github.com/alawein/incore",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     },
     {
@@ -659,7 +659,7 @@
       "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
       "url": "https://github.com/alawein/prompty",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     },
     {
@@ -673,7 +673,7 @@
       ],
       "url": "https://fallax.online",
       "status": "active",
-      "bucket": "research",
+      "bucket": "lab",
       "visibility": "public"
     },
     {
@@ -684,7 +684,7 @@
       "description": "Personal kit that installs prompts for coding agents.",
       "url": "https://github.com/alawein/outpost",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "public"
     },
     {
@@ -695,7 +695,7 @@
       "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
       "url": "https://github.com/alawein/workspace-control",
       "status": "active",
-      "bucket": "tools",
+      "bucket": "core",
       "visibility": "private"
     }
   ],

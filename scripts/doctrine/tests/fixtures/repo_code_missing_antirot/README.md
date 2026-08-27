@@ -1,7 +1,7 @@
 # repo-code-missing-antirot
 
 Status:      active
-Category:    products
+Category:    apps
 Owner:       alawein
 Visibility:  private
 Purpose:     Fixture: a code-archetype repo with no anti-rot artifacts.

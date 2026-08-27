@@ -33,7 +33,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "personal/meshal-web",
+      "local_path": "sites\\meshal-web",
       "catalog_groups": [
         "featured"
       ],
@@ -84,7 +84,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/repz",
+      "local_path": "apps\\repz",
       "catalog_groups": [
         "featured"
       ],
@@ -133,7 +133,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/gymboy",
+      "local_path": "apps\\gymboy",
       "catalog_groups": [
         "featured"
       ],
@@ -181,7 +181,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/scribd",
+      "local_path": "apps\\scribd",
       "catalog_groups": [
         "featured"
       ],
@@ -229,7 +229,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/bolts",
+      "local_path": "apps\\bolts",
       "catalog_groups": [
         "featured"
       ],
@@ -279,7 +279,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "family/atelier-rounaq",
+      "local_path": "apps\\atelier-rounaq",
       "catalog_groups": [
         "featured"
       ],
@@ -327,7 +327,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/attributa",
+      "local_path": "lab\\attributa",
       "catalog_groups": [
         "featured"
       ],
@@ -378,7 +378,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/llmworks",
+      "local_path": "lab\\llmworks",
       "catalog_groups": [
         "featured"
       ],
@@ -427,7 +427,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/edfp",
+      "local_path": "lab\\edfp",
       "catalog_groups": [
         "featured",
         "research"
@@ -475,7 +475,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/alembiq",
+      "local_path": "lab\\alembiq",
       "catalog_groups": [
         "featured",
         "research"
@@ -524,7 +524,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "research/optiqap",
+      "local_path": "lab\\optiqap",
       "catalog_groups": [
         "featured",
         "research"
@@ -573,7 +573,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "ventures/veyra",
+      "local_path": "lab\\veyra",
       "catalog_groups": [
         "featured"
       ],
@@ -623,7 +623,7 @@
       ],
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
-      "local_path": "products/auditraise",
+      "local_path": "apps\\auditraise",
       "catalog_groups": [
         "featured"
       ],

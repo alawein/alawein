@@ -2,12 +2,12 @@
   "repos": [
     {
       "repo": "alawein/repo-passing",
-      "bucket": "products",
+      "bucket": "apps",
       "slug": "repo-passing"
     },
     {
       "repo": "alawein/repo-wrong",
-      "bucket": "products",
+      "bucket": "apps",
       "slug": "repo-wrong"
     }
   ]

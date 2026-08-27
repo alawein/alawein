@@ -34,7 +34,7 @@ def test_parse_header_extracts_all_six_fields():
     for field in REQUIRED_FIELDS:
         assert field in header, f"missing field: {field}"
     assert header["Status"] == "active"
-    assert header["Category"] == "products"
+    assert header["Category"] == "apps"
 
 
 def test_parse_header_raises_when_block_missing():
@@ -45,16 +45,16 @@ def test_parse_header_raises_when_block_missing():
 
 
 def test_validate_repo_passes_for_consistent_fixture():
-    findings = validate_repo(FIX / "repo_passing", bucket="products")
+    findings = validate_repo(FIX / "repo_passing", bucket="apps")
     assert findings == [], f"unexpected findings: {findings}"
 
 
 def test_validate_repo_flags_category_bucket_mismatch():
-    findings = validate_repo(FIX / "repo_wrong_category", bucket="products")
+    findings = validate_repo(FIX / "repo_wrong_category", bucket="apps")
     assert len(findings) == 1
     assert "category" in findings[0].lower()
-    assert "research" in findings[0]
-    assert "products" in findings[0]
+    assert "sites" in findings[0]
+    assert "apps" in findings[0]
 
 
 def test_status_enum_is_exhaustive():
@@ -65,8 +65,7 @@ def test_status_enum_is_exhaustive():
 
 def test_category_enum_is_exhaustive():
     assert ALLOWED_CATEGORY == {
-        "products", "personal", "family", "research",
-        "tools", "ventures", "jobs-projects", "archive",
+        "core", "apps", "lab", "sites", "work", "archive",
     }
 
 
@@ -88,7 +87,7 @@ def test_next_action_enum_is_exhaustive():
 
 def test_validate_repo_flags_each_invalid_enum_value():
     """Validator's primary job: rejecting invalid enum values."""
-    findings = validate_repo(FIX / "repo_bad_enums", bucket="products")
+    findings = validate_repo(FIX / "repo_bad_enums", bucket="apps")
     joined = "\n".join(findings)
     assert "Status 'wip'" in joined
     assert "Owner 'meshal'" in joined
@@ -100,19 +99,19 @@ def test_validate_repo_flags_each_invalid_enum_value():
 def test_walk_alawein_skips_non_bucket_and_non_git_dirs(tmp_path):
     """walk_alawein only yields children that have a .git/ subdir, and
     only inside the active bucket directories (not _archive, not docs)."""
-    (tmp_path / "products" / "real-repo" / ".git").mkdir(parents=True)
-    (tmp_path / "products" / "no-git-dir").mkdir(parents=True)
+    (tmp_path / "apps" / "real-repo" / ".git").mkdir(parents=True)
+    (tmp_path / "apps" / "no-git-dir").mkdir(parents=True)
     (tmp_path / "_archive" / "old-repo" / ".git").mkdir(parents=True)
     (tmp_path / "docs").mkdir()
     results = walk_alawein(tmp_path)
-    assert results == [(tmp_path / "products" / "real-repo", "products")]
+    assert results == [(tmp_path / "apps" / "real-repo", "apps")]
 
 
 def test_validate_repo_flags_missing_readme(tmp_path):
     """A repo without a README.md returns a single missing-readme finding."""
     repo = tmp_path / "ghost-repo"
     repo.mkdir()
-    findings = validate_repo(repo, bucket="products")
+    findings = validate_repo(repo, bucket="apps")
     assert findings == ["ghost-repo: README.md missing"]
 
 
@@ -123,7 +122,7 @@ def test_validate_repo_handles_non_utf8_readme(tmp_path):
     readme = repo / "README.md"
     # Latin-1 byte 0xff isn't valid UTF-8; this would crash read_text("utf-8") raw.
     readme.write_bytes(b"# title\n\nStatus:\xff active\n")
-    findings = validate_repo(repo, bucket="products")
+    findings = validate_repo(repo, bucket="apps")
     assert len(findings) == 1
     assert "not UTF-8" in findings[0]
     assert "bad-encoding" in findings[0]
@@ -137,7 +136,7 @@ def test_parse_header_raises_on_duplicate_field():
         "# repo-x\n\n"
         "Status:      active\n"
         "Status:      archived\n"
-        "Category:    products\n"
+        "Category:    apps\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     duplicate field test.\n"
@@ -158,7 +157,7 @@ def test_parse_header_ignores_field_like_body_prose():
     text = (
         "# repo-x\n\n"
         "Status:      active\n"
-        "Category:    products\n"
+        "Category:    apps\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     real header.\n"
@@ -178,7 +177,7 @@ def test_parse_header_tolerates_blank_lines_inside_block():
     text = (
         "# repo-x\n\n"
         "Status:      active\n"
-        "Category:    products\n\n"
+        "Category:    apps\n\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     blank-line tolerance test.\n"
@@ -193,7 +192,7 @@ def test_parse_header_tolerates_blank_lines_inside_block():
 def test_load_registry_indexes_repo_entries():
     reg = load_registry(FIX / "registry_sample.json")
     assert "alawein/repo-passing" in reg
-    assert reg["alawein/repo-passing"]["bucket"] == "products"
+    assert reg["alawein/repo-passing"]["bucket"] == "apps"
     assert "menax-inc/cross-thing" in reg
 
 
@@ -385,13 +384,13 @@ def test_load_registry_tolerates_duplicate_slug_same_bucket(tmp_path):
     indexed entry must carry that bucket."""
     reg_file = tmp_path / "dup_same_bucket.json"
     reg_file.write_text(
-        '{"featured": [{"repo": "alawein/foo", "bucket": "products"}],'
-        ' "ventures": [{"repo": "alawein/foo", "bucket": "products"}]}',
+        '{"featured": [{"repo": "alawein/foo", "bucket": "apps"}],'
+        ' "ventures": [{"repo": "alawein/foo", "bucket": "apps"}]}',
         encoding="utf-8",
     )
     reg = load_registry(reg_file)
     assert "alawein/foo" in reg
-    assert reg["alawein/foo"]["bucket"] == "products"
+    assert reg["alawein/foo"]["bucket"] == "apps"
 
 
 def test_load_registry_tolerates_duplicate_slug_one_has_bucket(tmp_path):
@@ -400,12 +399,12 @@ def test_load_registry_tolerates_duplicate_slug_one_has_bucket(tmp_path):
     reg_file = tmp_path / "dup_one_bucket.json"
     reg_file.write_text(
         '{"featured": [{"repo": "alawein/bar"}],'
-        ' "products": [{"repo": "alawein/bar", "bucket": "products"}]}',
+        ' "products": [{"repo": "alawein/bar", "bucket": "apps"}]}',
         encoding="utf-8",
     )
     reg = load_registry(reg_file)
     assert "alawein/bar" in reg
-    assert reg["alawein/bar"].get("bucket") == "products"
+    assert reg["alawein/bar"].get("bucket") == "apps"
 
 
 def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
@@ -413,16 +412,16 @@ def test_load_registry_raises_on_duplicate_slug_conflicting_buckets(tmp_path):
     must raise RegistryError naming the slug and both bucket values."""
     reg_file = tmp_path / "dup_conflict.json"
     reg_file.write_text(
-        '{"featured": [{"repo": "alawein/baz", "bucket": "products"}],'
-        ' "research": [{"repo": "alawein/baz", "bucket": "research"}]}',
+        '{"featured": [{"repo": "alawein/baz", "bucket": "apps"}],'
+        ' "research": [{"repo": "alawein/baz", "bucket": "lab"}]}',
         encoding="utf-8",
     )
     with pytest.raises(RegistryError) as excinfo:
         load_registry(reg_file)
     msg = str(excinfo.value)
     assert "alawein/baz" in msg
-    assert "products" in msg
-    assert "research" in msg
+    assert "apps" in msg
+    assert "lab" in msg
 
 
 # Fix 9: new tests.
@@ -444,7 +443,7 @@ def test_load_registry_raises_when_top_level_is_list(tmp_path):
     """A projects.json whose top-level value is a list (not an object) must
     raise RegistryError."""
     reg_file = tmp_path / "list_top.json"
-    reg_file.write_text('[{"repo": "alawein/foo", "bucket": "products"}]', encoding="utf-8")
+    reg_file.write_text('[{"repo": "alawein/foo", "bucket": "apps"}]', encoding="utf-8")
     with pytest.raises(RegistryError) as excinfo:
         load_registry(reg_file)
     assert "not a json object" in str(excinfo.value).lower()
@@ -455,7 +454,7 @@ def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
     RegistryError rather than crashing with a raw TypeError downstream."""
     reg_file = tmp_path / "nonstring_repo.json"
     reg_file.write_text(
-        '{"repos": [{"repo": 42, "bucket": "products"}]}', encoding="utf-8"
+        '{"repos": [{"repo": 42, "bucket": "apps"}]}', encoding="utf-8"
     )
     with pytest.raises(RegistryError) as excinfo:
         load_registry(reg_file)
@@ -463,12 +462,12 @@ def test_load_registry_raises_on_nonstring_repo_field(tmp_path):
 
 
 def test_antirot_passes_when_present():
-    findings = check_antirot_artifacts(FIX / "repo_code_with_antirot", "products")
+    findings = check_antirot_artifacts(FIX / "repo_code_with_antirot", "apps")
     assert findings == [], f"unexpected findings: {findings}"
 
 
 def test_antirot_flags_missing_debt_and_adr():
-    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "products")
+    findings = check_antirot_artifacts(FIX / "repo_code_missing_antirot", "apps")
     joined = "\n".join(findings)
     assert "docs/DEBT.md" in joined
     assert "docs/adr" in joined
@@ -491,7 +490,7 @@ def test_code_archetypes_subset_of_categories():
 
 def test_antirot_uses_display_name_in_findings():
     findings = check_antirot_artifacts(
-        FIX / "repo_code_missing_antirot", "products", display_name="owner/custom-name"
+        FIX / "repo_code_missing_antirot", "apps", display_name="owner/custom-name"
     )
     assert findings, "expected findings for a missing-artifact code repo"
     assert all("owner/custom-name" in f for f in findings)
@@ -505,16 +504,16 @@ def test_antirot_uses_display_name_in_findings():
 def test_main_walk_mode_flags_missing_antirot(tmp_path, capsys):
     """main() workspace-walk loop must include antirot findings.
 
-    Builds a minimal products/<repo>/ layout under tmp_path with a valid
+    Builds a minimal apps/<repo>/ layout under tmp_path with a valid
     README header but no docs/DEBT.md or docs/adr/. Expects exit code 1
     and both antirot artifact names in stdout.
     """
-    repo = tmp_path / "products" / "sample-repo"
+    repo = tmp_path / "apps" / "sample-repo"
     (repo / ".git").mkdir(parents=True)
     (repo / "README.md").write_text(
         "# sample-repo\n\n"
         "Status:      active\n"
-        "Category:    products\n"
+        "Category:    apps\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     Walk-mode antirot wiring test fixture.\n"
@@ -533,12 +532,12 @@ def test_main_walk_mode_passes_with_antirot_present(tmp_path, capsys):
 
     Paired pass case for test_main_walk_mode_flags_missing_antirot.
     """
-    repo = tmp_path / "products" / "sample-repo"
+    repo = tmp_path / "apps" / "sample-repo"
     (repo / ".git").mkdir(parents=True)
     (repo / "README.md").write_text(
         "# sample-repo\n\n"
         "Status:      active\n"
-        "Category:    products\n"
+        "Category:    apps\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     Walk-mode antirot wiring test fixture (passing).\n"
@@ -577,7 +576,7 @@ def test_antirot_flags_only_missing_adr(tmp_path):
     """check_antirot_artifacts returns exactly one finding (adr) when only docs/DEBT.md is present."""
     (tmp_path / "docs").mkdir()
     (tmp_path / "docs" / "DEBT.md").write_text("# Debt\n", encoding="utf-8")
-    findings = check_antirot_artifacts(tmp_path, "products")
+    findings = check_antirot_artifacts(tmp_path, "apps")
     assert len(findings) == 1
     assert "docs/adr" in findings[0]
     assert "docs/DEBT.md" not in findings[0]
@@ -587,7 +586,7 @@ def test_antirot_flags_only_missing_debt(tmp_path):
     """check_antirot_artifacts returns exactly one finding (DEBT) when only docs/adr/ is present."""
     (tmp_path / "docs" / "adr").mkdir(parents=True)
     (tmp_path / "docs" / "adr" / "0000-template.md").write_text("x", encoding="utf-8")
-    findings = check_antirot_artifacts(tmp_path, "products")
+    findings = check_antirot_artifacts(tmp_path, "apps")
     assert len(findings) == 1
     assert "docs/DEBT.md" in findings[0]
     assert "docs/adr" not in findings[0]
@@ -641,7 +640,7 @@ def test_antirot_flags_empty_adr_dir(tmp_path):
     (tmp_path / "docs").mkdir()
     (tmp_path / "docs" / "DEBT.md").write_text("ledger", encoding="utf-8")
     (tmp_path / "docs" / "adr").mkdir()
-    findings = check_antirot_artifacts(tmp_path, "products")
+    findings = check_antirot_artifacts(tmp_path, "apps")
     assert len(findings) == 1
     assert "docs/adr" in findings[0]
     assert "docs/DEBT.md" not in findings[0]
@@ -662,7 +661,7 @@ def test_load_catalog_raises_on_duplicate_repo(tmp_path):
     catalog.write_text(
         '{"repos": ['
         '{"repo": "alawein/demo", "bucket": "tools"},'
-        '{"repo": "alawein/demo", "bucket": "products"}'
+        '{"repo": "alawein/demo", "bucket": "apps"}'
         "]}",
         encoding="utf-8",
     )
@@ -695,7 +694,7 @@ def test_main_catalog_and_registry_disagree(capsys, tmp_path):
     )
     registry = tmp_path / "projects.json"
     registry.write_text(
-        '{"featured": [{"repo": "alawein/repo-passing", "bucket": "products"}]}',
+        '{"featured": [{"repo": "alawein/repo-passing", "bucket": "apps"}]}',
         encoding="utf-8",
     )
     rc = main(

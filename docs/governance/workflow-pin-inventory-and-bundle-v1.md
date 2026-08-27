@@ -7,7 +7,7 @@ title: Workflow pin inventory and bundle v1 policy
 description: >-
   Inventory of reusable workflow SHAs for the infrastructure spine and policy
   for when pins must align versus intentionally diverge.
-last_updated: 2026-05-17
+last_updated: 2026-08-27
 category: governance
 audience: [agents, contributors, platform]
 ---

@@ -8,7 +8,7 @@ description: Superseded; consolidated into the commit, branch, and release conve
 category: governance
 audience: [ai-agents, contributors]
 status: frozen
-last_updated: 2026-05-24
+last_updated: 2026-08-27
 tags: [changelog, releases, documentation, workflow]
 ---
 

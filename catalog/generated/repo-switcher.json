@@ -353,7 +353,7 @@
       "surface": "web",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -392,7 +392,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     },

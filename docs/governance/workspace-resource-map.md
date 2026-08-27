@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Resource Map
 description: Canonical ownership map for governance docs, repo metadata, shared packages, design tokens, and batch/runtime surfaces.
-last_updated: 2026-05-11
+last_updated: 2026-08-27
 category: governance
 audience: contributors
 status: active

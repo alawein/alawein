@@ -143,7 +143,7 @@
       "portfolio_domain": "Work",
       "bucket": "ventures",
       "status": "active",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "Event Discovery Framework",
@@ -485,7 +485,7 @@
       "url": "https://chshlab.online",
       "bucket": "research",
       "status": "active",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "Helios",
@@ -507,7 +507,7 @@
       "url": "https://loopholelab.online",
       "bucket": "ventures",
       "status": "frozen",
-      "visibility": "private"
+      "visibility": "public"
     },
     {
       "name": "Provegate",

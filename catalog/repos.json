@@ -477,7 +477,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -501,7 +501,7 @@
       ],
       "github_custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
+        "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
@@ -515,7 +515,7 @@
         "security-benchmarks"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-08-26",
       "catalog_groups": [
         "featured"
       ],
@@ -1353,7 +1353,7 @@
         "public"
       ],
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1389,7 +1389,7 @@
         "quantum-education-site"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-08-26",
       "catalog_groups": [
         "research"
       ],
@@ -1472,7 +1472,7 @@
         "public"
       ],
       "lifecycle": "frozen",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -1510,7 +1510,7 @@
         "claim-stress-testing"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-05-11",
+      "last_verified": "2026-08-26",
       "catalog_groups": [
         "research"
       ],

@@ -544,7 +544,7 @@
         "surface": "web",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "private",
+        "visibility": "public",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -583,7 +583,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
+        "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
       }
@@ -1741,7 +1741,7 @@
       "surface": "web",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -1780,7 +1780,7 @@
       ],
       "version_source": "package.json",
       "repo_archetype": "vite-react-spa",
-      "compliance": "internal-only",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -2404,7 +2404,7 @@
       "surface": "web",
       "domain": "quantum",
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "dawn",
       "brand_family": "dawn",
       "stack": [
@@ -2493,7 +2493,7 @@
       "surface": "web",
       "domain": "quantum",
       "lifecycle": "frozen",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "forge",
       "brand_family": "forge",
       "stack": [
@@ -4266,7 +4266,7 @@
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
+        "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
@@ -5354,7 +5354,7 @@
         "surface": "web",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "private",
+        "visibility": "public",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -5393,7 +5393,7 @@
         ],
         "version_source": "package.json",
         "repo_archetype": "vite-react-spa",
-        "compliance": "internal-only",
+        "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
       },

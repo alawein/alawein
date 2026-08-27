@@ -1,4 +1,20 @@
 {
+  "fallax": {
+    "logo_source": "design-system/packages/icons/dist/brand/fallax/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/fallax/repo-banner.svg",
+    "screenshot_folder": "lab/fallax/docs/screenshots",
+    "theme_family": "wisdom",
+    "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
+    "favicon_status": "generated"
+  },
+  "llmworks": {
+    "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
+    "screenshot_folder": "lab/llmworks/docs/screenshots",
+    "theme_family": "wisdom",
+    "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
+    "favicon_status": "generated"
+  },
   "alawein": {
     "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",

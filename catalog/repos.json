@@ -397,14 +397,14 @@
       "repo": "alawein/fallax",
       "local_path": "lab/fallax",
       "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
+      "type": "tooling",
+      "surface": "service",
       "stack": [
         "python",
         "llm",
         "evaluation"
       ],
-      "domain": "scientific-computing",
+      "domain": "ai-governance",
       "audience": [
         "internal",
         "research"
@@ -459,15 +459,15 @@
       "repo": "alawein/llmworks",
       "local_path": "lab/llmworks",
       "bucket": "lab",
-      "type": "research",
-      "surface": "monorepo",
+      "type": "product",
+      "surface": "web",
       "stack": [
         "typescript",
         "react",
         "supabase",
         "llm"
       ],
-      "domain": "scientific-computing",
+      "domain": "ai-governance",
       "audience": [
         "client",
         "research",

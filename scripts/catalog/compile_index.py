@@ -284,6 +284,9 @@ def compile_repo(
     defaults.update(SLUG_OVERRIDES.get(slug, {}))
 
     repo: dict[str, Any] = deepcopy(prior) if prior else {}
+    for key, value in defaults.items():
+        if key not in repo:
+            repo[key] = deepcopy(value)
 
     name = str(entry.get("name") or repo.get("name") or slug_to_name(slug))
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
@@ -295,7 +298,6 @@ def compile_repo(
     if isinstance(stack, str):
         stack = [stack]
 
-    repo.update(defaults)
     repo.update(
         {
             "name": name,

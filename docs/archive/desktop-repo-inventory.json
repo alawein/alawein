@@ -112,14 +112,14 @@
       "folder": "lab/fallax",
       "remote_slug": "alawein/fallax",
       "archetype": "python-service",
-      "tier": "research",
+      "tier": "tooling",
       "stack": "python, llm, evaluation"
     },
     {
       "folder": "lab/llmworks",
       "remote_slug": "alawein/llmworks",
       "archetype": "vite-react-spa",
-      "tier": "research",
+      "tier": "product",
       "stack": "typescript, react, supabase, llm"
     },
     {

@@ -4,11 +4,11 @@
     "repoCount": 40,
     "typeCounts": {
       "archive": 1,
-      "research": 20,
+      "research": 18,
+      "tooling": 6,
+      "product": 12,
       "governance": 1,
-      "infra": 2,
-      "tooling": 5,
-      "product": 11
+      "infra": 2
     },
     "lifecycleCounts": {
       "archived": 1,
@@ -30,9 +30,11 @@
       "dataset",
       "docs-hub",
       "monorepo",
+      "service",
       "web"
     ],
     "domain": [
+      "ai-governance",
       "design-system",
       "fitness",
       "governance",
@@ -372,9 +374,9 @@
         "name": "LLMWorks",
         "slug": "llmworks",
         "repo": "alawein/llmworks",
-        "type": "research",
-        "surface": "monorepo",
-        "domain": "scientific-computing",
+        "type": "product",
+        "surface": "web",
+        "domain": "ai-governance",
         "lifecycle": "active",
         "visibility": "public",
         "theme_family": "wisdom",
@@ -811,105 +813,6 @@
         "release_automation": {}
       },
       {
-        "name": "Fallax",
-        "slug": "fallax",
-        "repo": "alawein/fallax",
-        "type": "research",
-        "surface": "monorepo",
-        "domain": "scientific-computing",
-        "lifecycle": "active",
-        "visibility": "public",
-        "theme_family": "wisdom",
-        "brand_family": "wisdom",
-        "stack": [
-          "python",
-          "llm",
-          "evaluation"
-        ],
-        "audience": [
-          "internal",
-          "research"
-        ],
-        "homepage": "https://fallax.online",
-        "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-        "topics": [
-          "llm",
-          "evaluation",
-          "reasoning",
-          "python"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "lab/fallax",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "reasoning-benchmarks",
-          "adversarial-evals"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "python-service",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "LLMWorks",
-        "slug": "llmworks",
-        "repo": "alawein/llmworks",
-        "type": "research",
-        "surface": "monorepo",
-        "domain": "scientific-computing",
-        "lifecycle": "active",
-        "visibility": "public",
-        "theme_family": "wisdom",
-        "brand_family": "wisdom",
-        "stack": [
-          "typescript",
-          "react",
-          "supabase",
-          "llm"
-        ],
-        "audience": [
-          "client",
-          "research",
-          "public"
-        ],
-        "homepage": "https://llmworks.dev",
-        "description": "LLM evaluation, benchmarking, and security testing playground.",
-        "topics": [
-          "llm",
-          "evaluation",
-          "benchmarking",
-          "react",
-          "supabase"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "lab/llmworks",
-        "catalog_groups": [
-          "featured"
-        ],
-        "depends_on": [
-          "design-system",
-          "alawein"
-        ],
-        "provides": [
-          "llm-evals",
-          "security-benchmarks"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
         "name": "Loophole Lab",
         "slug": "loopholelab",
         "repo": "alawein/loopholelab",
@@ -957,9 +860,151 @@
         "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
+      },
+      {
+        "name": "MagLogic",
+        "slug": "maglogic",
+        "repo": "alawein/maglogic",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "magnetics"
+        ],
+        "audience": [
+          "research"
+        ],
+        "homepage": "https://github.com/alawein/maglogic",
+        "description": "Magnetic logic gates and device simulation research.",
+        "topics": [
+          "magnetics",
+          "python",
+          "logic-gates",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/maglogic",
+        "catalog_groups": [
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "magnetic-logic-models"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "meatheadphysicist",
+        "slug": "meatheadphysicist",
+        "repo": "alawein/meatheadphysicist",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "physics",
+          "fastapi",
+          "research"
+        ],
+        "audience": [
+          "research",
+          "public"
+        ],
+        "homepage": "https://mhphys.online",
+        "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
+        "topics": [
+          "physics",
+          "python",
+          "fastapi",
+          "simulation",
+          "research"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/meatheadphysicist",
+        "catalog_groups": [
+          "notion_sync",
+          "research"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "physics-research",
+          "claim-verification"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "research-archive",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
       }
     ],
     "internal_ops": [
+      {
+        "name": "Fallax",
+        "slug": "fallax",
+        "repo": "alawein/fallax",
+        "type": "tooling",
+        "surface": "service",
+        "domain": "ai-governance",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "python",
+          "llm",
+          "evaluation"
+        ],
+        "audience": [
+          "internal",
+          "research"
+        ],
+        "homepage": "https://fallax.online",
+        "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+        "topics": [
+          "llm",
+          "evaluation",
+          "reasoning",
+          "python"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/fallax",
+        "catalog_groups": [
+          "infrastructure"
+        ],
+        "depends_on": [
+          "workspace-tools",
+          "alawein"
+        ],
+        "provides": [
+          "reasoning-benchmarks",
+          "adversarial-evals"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-service",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
       {
         "name": "alawein",
         "slug": "alawein",
@@ -1318,61 +1363,6 @@
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
-      },
-      {
-        "name": "workspace-tools",
-        "slug": "workspace-tools",
-        "repo": "alawein/workspace-tools",
-        "type": "tooling",
-        "surface": "cli",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "python",
-          "yaml",
-          "automation"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/workspace-tools",
-        "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-        "topics": [
-          "automation",
-          "python",
-          "cli",
-          "governance"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "core/workspace-tools",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [
-          "workspace-batch",
-          "scaffolding",
-          "drift-audits"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "python-service",
-        "compliance": "internal-only",
-        "github_actions_settings": {
-          "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": false
-        },
-        "release_automation": {
-          "mode": "none",
-          "supports_release_prs": false,
-          "publishes_packages": false,
-          "requires_npm_token": false
-        }
       }
     ]
   },
@@ -1664,9 +1654,9 @@
       "name": "Fallax",
       "slug": "fallax",
       "repo": "alawein/fallax",
-      "type": "research",
-      "surface": "monorepo",
-      "domain": "scientific-computing",
+      "type": "tooling",
+      "surface": "service",
+      "domain": "ai-governance",
       "lifecycle": "active",
       "visibility": "public",
       "theme_family": "wisdom",
@@ -1712,9 +1702,9 @@
       "name": "LLMWorks",
       "slug": "llmworks",
       "repo": "alawein/llmworks",
-      "type": "research",
-      "surface": "monorepo",
-      "domain": "scientific-computing",
+      "type": "product",
+      "surface": "web",
+      "domain": "ai-governance",
       "lifecycle": "active",
       "visibility": "public",
       "theme_family": "wisdom",
@@ -3917,6 +3907,22 @@
     ]
   },
   "assetAssignments": {
+    "fallax": {
+      "logo_source": "design-system/packages/icons/dist/brand/fallax/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/fallax/repo-banner.svg",
+      "screenshot_folder": "lab/fallax/docs/screenshots",
+      "theme_family": "wisdom",
+      "social_preview_image": "design-system/packages/icons/dist/brand/fallax/social-card.svg",
+      "favicon_status": "generated"
+    },
+    "llmworks": {
+      "logo_source": "design-system/packages/icons/dist/brand/llmworks/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/llmworks/repo-banner.svg",
+      "screenshot_folder": "lab/llmworks/docs/screenshots",
+      "theme_family": "wisdom",
+      "social_preview_image": "design-system/packages/icons/dist/brand/llmworks/social-card.svg",
+      "favicon_status": "generated"
+    },
     "alawein": {
       "logo_source": "design-system/packages/icons/dist/brand/alawein/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/alawein/repo-banner.svg",
@@ -4895,180 +4901,10 @@
     }
   ],
   "inventoryReconciliation": {
-    "catalog_only": [
-      "auditraise",
-      "handshake",
-      "incore",
-      "mercor",
-      "outpost",
-      "prompty",
-      "turing",
-      "veyra",
-      "workspace-control"
-    ],
-    "workspace_only": [
-      "handshake-hai",
-      "mercor-llm-failsafe",
-      "morphism"
-    ],
+    "catalog_only": [],
+    "workspace_only": [],
     "stale_inventory_entries": [],
-    "path_mismatches": [
-      {
-        "slug": "helios",
-        "catalog_path": "_archive/2026-06-helios",
-        "workspace_path": "helios"
-      },
-      {
-        "slug": "adil",
-        "catalog_path": "lab/adil",
-        "workspace_path": "adil"
-      },
-      {
-        "slug": "alembiq",
-        "catalog_path": "lab/alembiq",
-        "workspace_path": "alembiq"
-      },
-      {
-        "slug": "attributa",
-        "catalog_path": "lab/attributa",
-        "workspace_path": "attributa"
-      },
-      {
-        "slug": "chshlab",
-        "catalog_path": "lab/chshlab",
-        "workspace_path": "chshlab"
-      },
-      {
-        "slug": "edfp",
-        "catalog_path": "lab/edfp",
-        "workspace_path": "edfp"
-      },
-      {
-        "slug": "fallax",
-        "catalog_path": "lab/fallax",
-        "workspace_path": "fallax"
-      },
-      {
-        "slug": "llmworks",
-        "catalog_path": "lab/llmworks",
-        "workspace_path": "llmworks"
-      },
-      {
-        "slug": "loopholelab",
-        "catalog_path": "lab/loopholelab",
-        "workspace_path": "loopholelab"
-      },
-      {
-        "slug": "maglogic",
-        "catalog_path": "lab/maglogic",
-        "workspace_path": "maglogic"
-      },
-      {
-        "slug": "meatheadphysicist",
-        "catalog_path": "lab/meatheadphysicist",
-        "workspace_path": "meatheadphysicist"
-      },
-      {
-        "slug": "optiqap",
-        "catalog_path": "lab/optiqap",
-        "workspace_path": "optiqap"
-      },
-      {
-        "slug": "provegate",
-        "catalog_path": "lab/provegate",
-        "workspace_path": "provegate"
-      },
-      {
-        "slug": "qmatsim",
-        "catalog_path": "lab/qmatsim",
-        "workspace_path": "qmatsim"
-      },
-      {
-        "slug": "qmlab",
-        "catalog_path": "lab/qmlab",
-        "workspace_path": "qmlab"
-      },
-      {
-        "slug": "quantumalgo",
-        "catalog_path": "lab/quantumalgo",
-        "workspace_path": "quantumalgo"
-      },
-      {
-        "slug": "qubeml",
-        "catalog_path": "lab/qubeml",
-        "workspace_path": "qubeml"
-      },
-      {
-        "slug": "scicomp",
-        "catalog_path": "lab/scicomp",
-        "workspace_path": "scicomp"
-      },
-      {
-        "slug": "simcore",
-        "catalog_path": "lab/simcore",
-        "workspace_path": "simcore"
-      },
-      {
-        "slug": "spincirc",
-        "catalog_path": "lab/spincirc",
-        "workspace_path": "spincirc"
-      },
-      {
-        "slug": "alawein",
-        "catalog_path": "core/alawein",
-        "workspace_path": "alawein"
-      },
-      {
-        "slug": "design-system",
-        "catalog_path": "core/design-system",
-        "workspace_path": "design-system"
-      },
-      {
-        "slug": "knowledge-base",
-        "catalog_path": "core/knowledge-base",
-        "workspace_path": "knowledge-base"
-      },
-      {
-        "slug": "workspace-tools",
-        "catalog_path": "core/workspace-tools",
-        "workspace_path": "workspace-tools"
-      },
-      {
-        "slug": "atelier-rounaq",
-        "catalog_path": "apps/atelier-rounaq",
-        "workspace_path": "atelier-rounaq"
-      },
-      {
-        "slug": "bolts",
-        "catalog_path": "apps/bolts",
-        "workspace_path": "bolts"
-      },
-      {
-        "slug": "gymboy",
-        "catalog_path": "apps/gymboy",
-        "workspace_path": "gymboy"
-      },
-      {
-        "slug": "repz",
-        "catalog_path": "apps/repz",
-        "workspace_path": "repz"
-      },
-      {
-        "slug": "scribd",
-        "catalog_path": "apps/scribd",
-        "workspace_path": "scribd"
-      },
-      {
-        "slug": "meshal-web",
-        "catalog_path": "sites/meshal-web",
-        "workspace_path": "meshal-web"
-      },
-      {
-        "slug": "roka-oakland-hustle",
-        "catalog_path": "sites/roka-oakland-hustle",
-        "workspace_path": "roka-oakland-hustle"
-      }
-    ]
+    "path_mismatches": []
   },
   "projectSwitcher": {
     "featured": [
@@ -5222,9 +5058,9 @@
         "name": "LLMWorks",
         "slug": "llmworks",
         "repo": "alawein/llmworks",
-        "type": "research",
-        "surface": "monorepo",
-        "domain": "scientific-computing",
+        "type": "product",
+        "surface": "web",
+        "domain": "ai-governance",
         "lifecycle": "active",
         "visibility": "public",
         "theme_family": "wisdom",

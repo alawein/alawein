@@ -44,9 +44,9 @@ def test_resolve_uses_bucketed_local_path() -> None:
 
 
 def test_resolve_concrete_known_repo() -> None:
-    # incore lives at tools/incore; the old flat layout looked for WORKSPACE/incore.
+    # incore lives at core/incore; the old flat layout looked for WORKSPACE/incore.
     if "incore" in audit.LOCAL_PATHS:
-        assert audit.resolve_repo_dir("incore") == audit.WORKSPACE / "tools" / "incore"
+        assert audit.resolve_repo_dir("incore") == audit.WORKSPACE / "core" / "incore"
 
 
 def test_resolve_falls_back_to_flat_for_uncatalogued_slug() -> None:

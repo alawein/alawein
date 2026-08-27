@@ -34,6 +34,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - Portfolio buckets collapsed from eight on-disk folders to six meaningful groups; `catalog/repos.json` `local_path` roots updated (`core/`, `apps/`, `lab/`, `sites/`, `work/`).
+- `compile_index.py` preserves existing catalog metadata (for example `type`) instead of overwriting from bucket defaults; inventory reconciliation uses projected workspace paths so derived feeds are CI-stable.
 - [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md), [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py), and [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): `Category` / `bucket` enums aligned to the minimal set.
 
 ### Added

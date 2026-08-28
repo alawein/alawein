@@ -1,5 +1,12 @@
 # {{name}}
 
+Status:      {{status}}
+Category:    {{bucket}}
+Owner:       alawein
+Visibility:  {{visibility}}
+Purpose:     {{purpose}}
+Next action: continue
+
 ## Value proposition
 
 Describe the user-facing outcome in one paragraph.

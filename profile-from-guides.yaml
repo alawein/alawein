@@ -22,7 +22,7 @@ tags:
 - ai
 - systems
 - governance
-updated: 2026-05-23
+updated: 2026-08-27
 variant_default: balanced
 urls:
   website: https://meshal.ai
@@ -53,10 +53,8 @@ linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Koh
 profile_pins:
   - outpost
   - fallax
-  - loopholelab
   - chshlab
   - qmatsim
-  - llmworks
 research_rows:
   - slug: qmatsim
     url: https://github.com/alawein/qmatsim

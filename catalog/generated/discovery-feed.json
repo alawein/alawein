@@ -378,7 +378,7 @@
         "surface": "web",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -478,7 +478,7 @@
         "surface": "monorepo",
         "domain": "scientific-computing",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -820,7 +820,7 @@
         "surface": "monorepo",
         "domain": "scientific-computing",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [
@@ -1706,7 +1706,7 @@
       "surface": "web",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -1757,7 +1757,7 @@
       "surface": "monorepo",
       "domain": "scientific-computing",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -1949,7 +1949,7 @@
       "surface": "monorepo",
       "domain": "scientific-computing",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -5062,7 +5062,7 @@
         "surface": "web",
         "domain": "ai-governance",
         "lifecycle": "active",
-        "visibility": "public",
+        "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
         "stack": [

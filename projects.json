@@ -75,7 +75,7 @@
       "portfolio_domain": "Work",
       "bucket": "lab",
       "status": "active",
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "name": "OptiQAP",
@@ -406,7 +406,7 @@
       "url": "https://loopholelab.online",
       "bucket": "lab",
       "status": "frozen",
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "name": "MagLogic",
@@ -459,7 +459,7 @@
       "url": "https://provegate.online",
       "bucket": "lab",
       "status": "active",
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "name": "qmatsim",
@@ -580,7 +580,7 @@
       "url": "https://provegate.online",
       "status": "active",
       "bucket": "lab",
-      "visibility": "public"
+      "visibility": "private"
     },
     {
       "name": "alawein",

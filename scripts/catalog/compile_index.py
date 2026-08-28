@@ -248,6 +248,9 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     legacy = repo.get("legacy_slugs") or []
     if legacy:
         slim["legacy_slugs"] = legacy
+    promotion = repo.get("promotion")
+    if isinstance(promotion, dict) and promotion:
+        slim["promotion"] = deepcopy(promotion)
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -291,7 +294,7 @@ def compile_repo(
     name = str(entry.get("name") or repo.get("name") or slug_to_name(slug))
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
     status = str(entry.get("status") or repo.get("status") or defaults.get("lifecycle") or "active")
-    visibility = str(entry.get("visibility") or repo.get("visibility") or "private")
+    visibility = str(entry.get("visibility") or "private")
     homepage = str(entry.get("url") or entry.get("homepage") or repo.get("homepage") or "").strip()
 
     stack = entry.get("stack") or repo.get("stack") or defaults.get("stack") or ["typescript"]
@@ -331,6 +334,12 @@ def compile_repo(
             "audience": repo.get("audience") or ["internal"],
         }
     )
+
+    promotion = entry.get("promotion")
+    if isinstance(promotion, dict) and promotion:
+        repo["promotion"] = deepcopy(promotion)
+    else:
+        repo.pop("promotion", None)
 
     if entry.get("featured"):
         groups = set(repo.get("catalog_groups") or [])
@@ -391,9 +400,12 @@ def build_index_snapshot(compiled: dict[str, Any]) -> dict[str, Any]:
                 "url": repo.get("homepage"),
             }
         )
+    # Anchor to the catalog's own lastVerified, not the wall clock: a wall-clock
+    # stamp makes build-catalog.py --check fail in CI on every day after the
+    # snapshot was committed.
     return {
         "schemaVersion": "1.0.0",
-        "generatedAt": TODAY,
+        "generatedAt": compiled.get("lastVerified") or TODAY,
         "count": len(rows),
         "repos": rows,
     }

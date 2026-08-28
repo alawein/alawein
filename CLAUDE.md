@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-08-27
-last_updated: 2026-08-27
+last-verified: 2026-08-28
+last_updated: 2026-08-28
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -132,6 +132,7 @@ python scripts/doctrine/style-advisory-audit.py --repo-root .
 python scripts/catalog/sync-readme.py --check
 python scripts/catalog/build-catalog.py --check
 python scripts/github/verify-profile-pins.py --skip-live --check
+python scripts/github/validate-visibility.py --offline
 ./scripts/github/sync-github.sh --check --all
 python scripts/github/github-baseline-audit.py
 ```

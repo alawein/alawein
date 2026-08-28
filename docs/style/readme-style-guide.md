@@ -5,7 +5,7 @@ sync: manual
 sla: on-change
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-07-25
+last_updated: 2026-08-27
 last-verified: 2026-07-25
 ---
 
@@ -57,9 +57,10 @@ Use `VOICE.md` as the canonical README authority.
 ### Archive
 
 1. Status
-2. Historical purpose
-3. Constraints
-4. Retrieval notes
+2. Archive reason
+3. Contents
+4. Access rules
+5. Docs map
 
 ## Formatting rules
 

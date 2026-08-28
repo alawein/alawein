@@ -1,5 +1,12 @@
 # {{name}}
 
+Status:      {{status}}
+Category:    {{bucket}}
+Owner:       alawein
+Visibility:  {{visibility}}
+Purpose:     {{purpose}}
+Next action: continue
+
 ## Abstract
 
 State the research question, model, or system under study.

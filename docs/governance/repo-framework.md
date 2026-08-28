@@ -8,7 +8,7 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-08-27
+last_updated: 2026-08-28
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
@@ -71,16 +71,25 @@ exemption is by bucket, not by content. Enforced by
 
 ## Visibility defaults
 
-| Category | Default | Rationale |
+Every repo is private unless it holds a current public scan. The gate lives in
+`docs/internal/specs/2026-08-27-public-readiness-gate-design.md` and is
+enforced by `scripts/github/validate-visibility.py` (catalog vs live GitHub)
+and `scripts/catalog/validate-catalog.py` (offline rules).
+
+| Bucket | Default | Public when |
 |---|---|---|
-| products | private | Stripe keys, customer data risk |
-| ventures | private | Until ready to ship |
-| family | private | Not yours to publicize |
-| jobs-projects | private | NDA risk |
-| personal | public if portfolio-worthy, else private | Identity surface |
-| research | open if publishable, else private | Academic norms |
-| tools | public if sanitized, else private | Watch for workspace paths and credentials |
-| archive | match original (manual; not validator-enforced) | Do not flip visibility at archive time |
+| core | private | `promotion.tier` P0 or P1 with a scan under 90 days; no workspace paths or credentials in tree |
+| apps | private | same, plus payment and auth paths real or explicitly disabled |
+| lab | private | same; grace per the gate's grace rule (cited research, current pins during the redo wave) |
+| sites | private until scanned; expected to end public | same |
+| work | private | never, unless the client or employer approves in writing |
+| archive | match original | do not flip visibility at archive time |
+
+The hub profile repo (`alawein`) cannot be private; it holds a P2 record
+under grace until its own blockers clear.
+
+Profile pins draw only from tier P0. Flips and pin edits are manual, one
+approved table at a time; no script changes visibility.
 
 ## Cross-org promotion rule
 
@@ -91,7 +100,7 @@ A repo stays inside `alawein/` unless ONE of the following becomes true:
 - Ownership transferred to a friend or client (move to their org; pattern: `blackmalejournal`).
 - Sold or formally handed off (move to acquirer's org).
 
-Sole-owned commercial products (the fitness cluster: bolts, gymboy, repz, scribd) stay inside `alawein/products/` and do not need a separate org until one of the conditions above is triggered.
+Sole-owned commercial products (the fitness cluster: bolts, gymboy, repz, scribd) stay inside `alawein/apps/` and do not need a separate org until one of the conditions above is triggered.
 
 ## Archive criteria
 

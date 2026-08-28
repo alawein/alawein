@@ -154,7 +154,7 @@
       "surface": "web",
       "domain": "ai-governance",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [

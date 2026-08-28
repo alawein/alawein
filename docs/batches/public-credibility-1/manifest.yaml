@@ -1,0 +1,44 @@
+wave: public-credibility-1
+date: 2026-08-28
+spec: docs/internal/specs/2026-08-28-readme-redo-wave-design.md
+checklist: docs/internal/audits/2026-08-28-public-benchmark-patterns.md
+branch: docs/readme-redo-public
+default_visibility: private
+promote_only_if: p0_checklist_pass
+repos:
+  - slug: qmatsim
+    type: research
+    tasks: [header, first-paragraph, status, reproduction, citation, planning-voice]
+    pr: null
+    merged: null
+    decision: pending
+  - slug: spincirc
+    type: research
+    tasks: [header, first-paragraph, status, reproduction, planning-voice]
+    pr: null
+    merged: null
+    decision: pending
+  - slug: maglogic
+    type: research
+    tasks: [header, first-paragraph, status, reproduction, compose-path, planning-voice]
+    pr: null
+    merged: null
+    decision: pending
+  - slug: scicomp
+    type: research
+    tasks: [header, first-paragraph, status, reproduction, planning-voice]
+    pr: null
+    merged: null
+    decision: pending
+  - slug: chshlab
+    type: research
+    tasks: [header, first-paragraph, status, live-surface, build, citation, internal-note]
+    pr: null
+    merged: null
+    decision: pending
+  - slug: fallax
+    type: tooling
+    tasks: [header, first-paragraph, status, live-surface, reproduction, publish-mode, consumers]
+    pr: null
+    merged: null
+    decision: pending

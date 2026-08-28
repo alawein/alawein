@@ -400,9 +400,12 @@ def build_index_snapshot(compiled: dict[str, Any]) -> dict[str, Any]:
                 "url": repo.get("homepage"),
             }
         )
+    # Anchor to the catalog's own lastVerified, not the wall clock: a wall-clock
+    # stamp makes build-catalog.py --check fail in CI on every day after the
+    # snapshot was committed.
     return {
         "schemaVersion": "1.0.0",
-        "generatedAt": TODAY,
+        "generatedAt": compiled.get("lastVerified") or TODAY,
         "count": len(rows),
         "repos": rows,
     }

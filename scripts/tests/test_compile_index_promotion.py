@@ -10,7 +10,7 @@ CATALOG_DIR = Path(__file__).resolve().parents[1] / "catalog"
 if str(CATALOG_DIR) not in sys.path:
     sys.path.insert(0, str(CATALOG_DIR))
 
-from compile_index import compile_repo, slim_entry  # noqa: E402
+from compile_index import build_index_snapshot, compile_repo, slim_entry  # noqa: E402
 
 PROMOTION = {"tier": "P1", "scanned": "2026-08-27", "notes": "scan v1"}
 
@@ -57,6 +57,13 @@ class SlimEntryPromotionTests(unittest.TestCase):
         repo = compile_repo("lab", "lab", _entry(), None)
         slim = slim_entry(repo, bucket="lab")
         self.assertNotIn("promotion", slim)
+
+
+class SnapshotStabilityTests(unittest.TestCase):
+    def test_generated_at_uses_catalog_last_verified(self) -> None:
+        snapshot = build_index_snapshot({"lastVerified": "2026-01-01", "repos": []})
+        self.assertEqual(snapshot["generatedAt"], "2026-01-01")
+        self.assertEqual(snapshot["count"], 0)
 
 
 if __name__ == "__main__":

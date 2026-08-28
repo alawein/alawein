@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-08-27
+last_updated: 2026-08-28
 audience: [ai-agents, contributors]
 ---
 
@@ -83,4 +83,12 @@ in the PR).
 - **What:** After the six-bucket move the control plane lives at `alawein/core/alawein`, so `ROOT.parent` is `alawein/core/` and both commands report every sibling as missing (`core/core/*`, `core/lab/*`). CI runs the audit with `--local`.
 - **Risk if left:** Two commands in the CLAUDE.md validation list are permanently red locally.
 - **Suggested fix:** Resolve the workspace root as `ROOT.parents[1]` or from `catalog/buckets.yaml` `on_disk_prefix`, with a test.
+- **Owner:** alawein
+
+### Gate CI step runs offline because ALAWEIN_METADATA_SYNC_TOKEN is dead
+- **Date:** 2026-08-28
+- **Where:** `.github/workflows/docs-doctrine.yml` (step "Validate public readiness gate"), repo secret `ALAWEIN_METADATA_SYNC_TOKEN`, `.github/workflows/github-metadata-sync.yml`
+- **What:** The first CI run of `validate-visibility.py --github-api` got `401 Bad credentials` from the secret, so the step now runs `--offline` (catalog rules V4 and V5 only). The metadata sync workflow uses the same secret and will fail the same way.
+- **Risk if left:** Catalog-vs-GitHub drift (V1, V2, V3, V6, V7, V8) is caught only when someone runs the gate locally before a PR.
+- **Suggested fix:** Issue a fine-grained PAT with metadata read on all repos, store it as `ALAWEIN_METADATA_SYNC_TOKEN`, and switch the step back to `--github-api` with that secret in `env`.
 - **Owner:** alawein

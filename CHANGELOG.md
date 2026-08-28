@@ -53,9 +53,6 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `projects.schema.json` bucket enum aligned to the six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`).
 - [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md), [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py), and [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): `Category` / `bucket` enums aligned to the minimal set.
 - [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md): visibility defaults rewritten for the six buckets, private by default; [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md) bucket table aligned.
-
-### Changed
-
 - [scripts/doctrine/validate-doctrine.py](scripts/doctrine/validate-doctrine.py): exempt product/kit trees (prompts/, plugins/, templates/, projects/, packages/) and docs ledgers (decisions/, reviews/, audit/) from the header walk so prompt kits and catalog collections can run strict: true.
 - Cleared `PENDING_README_TOPOLOGY` for `outpost`, `auditraise`, and `workspace-control` after Wave 1+2 README/topology catch-up. `validate-readme-topology.py` now fetches GitHub files from each repo default branch (needed for `auditraise` on `launch/v1`). Corrected `auditraise` catalog description/topics to match the marketing-audit product.
 - [`scripts/doctrine/validate-readme-voice.py`](scripts/doctrine/validate-readme-voice.py): fleet README voice linter (banned register, em dashes, AI attribution). Wired in `docs-doctrine.yml` and `doctrine-reusable.yml`.

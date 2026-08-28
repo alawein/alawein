@@ -347,7 +347,7 @@ Purpose: <one line>
 Next action: continue|refactor|merge|archive|delete
 ```
 
-Visibility MUST agree with catalog visibility and live GitHub; the public readiness gate (validate-visibility.py) enforces it.
+The gate (`validate-visibility.py`) checks catalog visibility against live GitHub; the README `Visibility` header is fixed by hand in the redo wave and is validated only as an enum by `validate-repo-framework.py`.
 
 `Category` MUST match catalog `bucket` after Wave 0 truth-up.
 

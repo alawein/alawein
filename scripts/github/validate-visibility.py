@@ -17,7 +17,7 @@ Checks:
   V3 catalog public and no README on the default branch
   V4 catalog public without a current P0/P1 promotion record
   V5 pinned in profile-from-guides.yaml but not (public and P0)
-  V6 catalog public, type research or tooling, no LICENSE
+  V6 catalog public, type research, tooling, or infra, no LICENSE
   V7 live pinned repo is private, archived, empty, or not in catalog
   V8 archived on GitHub but catalog status is not archived (warning)
 V4 and V5 downgrade to warning while promotion.grace_until is in the future.
@@ -108,7 +108,7 @@ def evaluate(
             continue
         meta = live.get(slug)
         if not meta or not meta.get("exists", True):
-            findings.append(Finding(slug, "V1", "error", f"{slug}: not found on GitHub"))
+            findings.append(Finding(slug, "V1", "error", f"{slug}: not found on GitHub, or GITHUB_TOKEN cannot see it"))
             continue
 
         # V1: visibility must agree.

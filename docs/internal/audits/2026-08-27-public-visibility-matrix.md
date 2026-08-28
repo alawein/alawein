@@ -37,23 +37,26 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
   fails, because their failures are token and configuration problems rather
   than code. A repo with no build workflow passes B7 only if its README Status
   section states the honest lifecycle and claims no green CI.
+- Grace: current profile pins and the hub get grace_until 2026-09-30 in the
+  seeded records (plan refinement); cited research would get it only if
+  failing B3, B4, or B8, and none does today.
 
 ## Public on GitHub (12)
 
 | slug | catalog | GitHub | pinned | type | bucket | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | tier | action |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: `CI - Documentation Contract` (ci.yml) red on main since 2026-08-17, run 32068929727 on HEAD; supporting detail, `Documentation Audit` (docs-validation.yml) and `Workspace Audit` (workspace-audit.yml) also red on HEAD | n/a | n/a | P2 | seed P2 under grace to 2026-09-30; hub, never flipped; fix B6 and B7 in place |
-| chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, P0 candidate; no grace (no CITATION.cff, no research row) |
+| chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, P0 candidate; grace to 2026-09-30 as a current pin |
 | fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | pass: gitleaks local 0 leaks | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
 | llmworks | public | public | yes | product | lab | pass | pass | pass | pass | pass | fail: gitleaks local 1 leak (jwt) | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B6 |
 | loopholelab | public | public | yes | research | lab | pass | pass | pass | pass | fail: `/app`, `/app/dashboard`, `/docs` 404 on loopholelab.online | pass | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B5 |
-| maglogic | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
-| outpost | public | public | catalog only | tooling | core | pass | pass | pass | pass | pass | pass | pass | pass | fail: catalog pin without a P0 record, not in the live pin list | P1 | seed P1; settle the catalog pin against the live list |
+| maglogic | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
+| outpost | public | public | catalog only | tooling | core | pass | pass | pass | pass | pass | pass | pass | pass | fail: catalog pin without a P0 record, in profile_pins; live pin pending manual UI step | P1 | seed P1; settle the catalog pin against the live list |
 | provegate | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | fail: CI `test` red on HEAD at the Lint step | pass | n/a | P2 | private-first batch, B7 |
 | qmatsim | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
-| qubeml | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30 |
-| scicomp | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
-| spincirc | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, grace to 2026-09-30, P0 candidate |
+| qubeml | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current |
+| scicomp | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
+| spincirc | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
 
 Eight of the twelve pass every one of B1 to B8: `chshlab`, `fallax`,
 `maglogic`, `outpost`, `qmatsim`, `qubeml`, `scicomp`, `spincirc`.
@@ -95,7 +98,7 @@ Eight of the twelve pass every one of B1 to B8: `chshlab`, `fallax`,
 
 | slug | why | catalog change | GitHub change | pin change |
 |---|---|---|---|---|
-| llmworks | B6: gitleaks on a fresh clone reports 1 leak, a Supabase anon JWT hardcoded in `src/integrations/supabase/client.ts` in history | visibility: private, no promotion | PATCH private=true | remove from the live pin list and from `profile_pins` |
+| llmworks | B6: gitleaks on a fresh clone: 3 hits (2 curl-auth-header documentation placeholders excluded, 1 jwt real), a Supabase anon key in one source file in history; current tree reads the key from env. Rotate. | visibility: private, no promotion | PATCH private=true | remove from the live pin list and from `profile_pins` |
 | loopholelab | B5: the README lists `/app`, `/app/dashboard`, and `/docs` as shipped routes; all three 404 on loopholelab.online, and the landing page's own buttons point at them | visibility: private, no promotion | PATCH private=true | remove from the live pin list and from `profile_pins` |
 | provegate | B7: the `CI` workflow's `test` job is red on `main` HEAD at the Lint step | visibility: private, no promotion | PATCH private=true | none, not pinned |
 
@@ -108,10 +111,11 @@ way until the checks pass.
 
 ## Findings
 
+- Exact locations are in the private scan ledger, not in this file.
 - Validators: `validate-readme-topology.py --github-api` exits 1 on `attributa`
   and `veyra` only, both private, five missing README sections each.
   `validate-readme-voice.py --github-api` exits 0 across all 40 entries.
-  `validate-visibility.py --github-api --json` returns 18 errors: 12 V4 (public
+  `validate-visibility.py --github-api --json` returns 18 errors (pre-seed run): 12 V4 (public
   without a promotion record) and 6 V5 (pinned without P0). No V1, V2, V3, V6,
   V7, or V8. Catalog visibility matches GitHub on all 40 slugs.
 - Live pins (5): `fallax`, `loopholelab`, `chshlab`, `qmatsim`, `llmworks`.
@@ -119,12 +123,10 @@ way until the checks pass.
   live list disagree by that one slug.
 - `alawein` B6 fail, detail: the Gitleaks job on `main` HEAD reports 224
   findings across git history (145 generic-api-key, 42 jwt, 33 curl-auth-header,
-  4 private-key). Separately, two GitHub secret-scanning alerts are open, a
-  Supabase service key from 2025-12-06 and a Supabase personal access token
-  from 2026-04-16, both at historical `repz-llc/`, `organizations/`, and
-  `platforms/` paths from the old monorepo layout. None of those paths exist in
-  the current tree. The 224 findings were not triaged one by one; the count and
-  the rule mix are the record.
+  4 private-key). Separately, 2 open GitHub secret-scanning alerts (a Supabase
+  service key from 2025-12-06 and a Supabase personal access token from
+  2026-04-16) at historical paths not in the current tree. The 224 findings
+  were not triaged one by one; the count and the rule mix are the record.
 - `alawein` B7 fail, detail: the workflow the B7 rule reaches is `CI -
   Documentation Contract` (`.github/workflows/ci.yml`). Its latest run on main
   is 32068929727, failure, 2026-08-17, on HEAD `0517918d06`, in the
@@ -170,31 +172,23 @@ way until the checks pass.
   a fresh read-only clone of each.
 - `fallax` B6 pass: 160 commits scanned, 1.29 MB, no leaks found. Nothing to
   triage. This moves `fallax` to a full B1 to B8 pass.
-- `llmworks` B6 fail: 165 commits scanned, 3.97 MB, 3 findings, all from commit
-  `73a3648d43` dated 2026-01-03. Two are `curl-auth-header` hits in
-  `docs/API_REFERENCE.md` where the sample reads `-H "Authorization: Bearer
-  your-api-key"`; those are documentation placeholders and are excluded. The
-  third is a `jwt` hit in `src/integrations/supabase/client.ts` line 7, a
-  hardcoded `SUPABASE_PUBLISHABLE_KEY` next to the project URL. Its claims are
-  `role: anon`, project ref `xzuylggvftuglkdhnljs`, expiry 2035. A Supabase anon
-  key is meant to ship in the browser and is gated by row-level security, so the
-  blast radius is small, but it is a live credential-shaped value in a source
-  file rather than a fixture, so it counts as a leak. The current tree is clean:
-  `client.ts` reads `import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY`, and no `eyJ`
-  literal exists anywhere on `main`. The fix is to rotate the anon key and, if
-  the history matters, purge the blob; until then `llmworks` is P2.
+- `llmworks` B6 fail: gitleaks on a fresh clone: 3 hits (2 curl-auth-header
+  documentation placeholders excluded, 1 jwt real), a Supabase anon key in one
+  source file in history; current tree reads the key from env. Rotate. Until
+  fixed, `llmworks` is P2.
 - Deploy checks, all 200: llmworks.dev, loopholelab.online (landing only),
   provegate.online, fallax.online, meshal.ai, kohyr.ai, kohyr.com.
 - Four public repos have no build or test workflow at all: `maglogic`,
   `qubeml`, `scicomp`, `spincirc`. Each README Status section states
   `Lifecycle: frozen` with a verification date and scope, and none displays a CI
   badge, so none claims a green build it does not have.
-- Grace eligibility is narrower than the design's preliminary tier table
-  implies. `CITATION.cff` exists on `main` in `maglogic`, `scicomp`, and
-  `spincirc` only. Adding the `research_rows` entries in
-  `profile-from-guides.yaml` gives six grace-eligible slugs: `fallax`,
-  `maglogic`, `qmatsim`, `qubeml`, `scicomp`, `spincirc`. `chshlab` is a P0
-  candidate but has neither, so it gets no grace window.
+- Grace as seeded sits with five slugs: `alawein` (hub profile repo, cannot
+  be private, holds grace while it clears B6 and B7), and `outpost`,
+  `chshlab`, `fallax`, `qmatsim` (current profile pins, grace through the
+  README redo wave so each can reach P0). `maglogic`, `qubeml`, `scicomp`,
+  and `spincirc` are cited research (`CITATION.cff` or a profile research
+  row) but pass every blocker already, so they hold no grace window; grace
+  would only apply to them if one failed B3, B4, or B8.
 - Four public READMEs carry a framework header that reads `Visibility: private`
   while the repo is public: `chshlab`, `fallax`, `llmworks`, `spincirc`. This is
   a header field out of date with reality, not a capability claim, so it does

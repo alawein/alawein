@@ -68,3 +68,19 @@ in the PR).
 - **Risk if left:** GitHub custom properties misstate data handling.
 - **Suggested fix:** Derive `compliance` from visibility when unset, and audit the seven by hand.
 - **Owner:** alawein
+
+### Promotion grace and scan expiries turn CI red on fixed dates
+- **Date:** 2026-08-27
+- **Where:** `catalog/index.yaml` promotion records, `scripts/catalog/catalog_lib.py` (`grace_active`, `promotion_is_current`)
+- **What:** `grace_until` is 2026-09-30 on `alawein`, `outpost`, `chshlab`, `fallax`, `qmatsim`; all nine scans (2026-08-27) age out after 90 days on 2026-11-25. On each date, `validate-catalog.py --strict` (`docs-validation.yml`, `github-metadata-sync.yml`) and the docs-doctrine gate go red.
+- **Risk if left:** CI fails on main with no warning.
+- **Suggested fix:** Before 2026-09-30, the README redo wave promotes the four pins to P0 or they leave `profile_pins`, and the hub fixes B6/B7 or its grace is renewed with a reason; re-scan every public repo before 2026-11-25 and bump `scanned`.
+- **Owner:** alawein
+
+### sync-github.sh --check --all and github-baseline-audit.py resolve siblings from ROOT.parent
+- **Date:** 2026-08-27
+- **Where:** `scripts/github/sync-github.sh`, `scripts/github/github-baseline-audit.py`, `scripts/catalog/catalog_lib.py` (`WORKSPACE_ROOT = ROOT.parent`)
+- **What:** After the six-bucket move the control plane lives at `alawein/core/alawein`, so `ROOT.parent` is `alawein/core/` and both commands report every sibling as missing (`core/core/*`, `core/lab/*`). CI runs the audit with `--local`.
+- **Risk if left:** Two commands in the CLAUDE.md validation list are permanently red locally.
+- **Suggested fix:** Resolve the workspace root as `ROOT.parents[1]` or from `catalog/buckets.yaml` `on_disk_prefix`, with a test.
+- **Owner:** alawein

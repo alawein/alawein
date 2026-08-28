@@ -1457,7 +1457,7 @@
         "tier": "P2",
         "scanned": "2026-08-27",
         "grace_until": "2026-09-30",
-        "notes": "hub profile repo, cannot be private; B6 and B7 fail on the 2026-08-27 scan (secrets in history, CI red); fix in place, see docs/internal/audits/2026-08-27-public-visibility-matrix.md"
+        "notes": "hub profile repo, cannot be private; B6 and B7 fail on the 2026-08-27 scan (B6 and B7 open); fix in place, see docs/internal/audits/2026-08-27-public-visibility-matrix.md"
       }
     },
     {

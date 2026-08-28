@@ -80,10 +80,13 @@ and `scripts/catalog/validate-catalog.py` (offline rules).
 |---|---|---|
 | core | private | `promotion.tier` P0 or P1 with a scan under 90 days; no workspace paths or credentials in tree |
 | apps | private | same, plus payment and auth paths real or explicitly disabled |
-| lab | private | same; cited research (CITATION.cff or a profile research row) gets one fix wave of grace |
+| lab | private | same; grace per the gate's grace rule (cited research, current pins during the redo wave) |
 | sites | private until scanned; expected to end public | same |
 | work | private | never, unless the client or employer approves in writing |
 | archive | match original | do not flip visibility at archive time |
+
+The hub profile repo (`alawein`) cannot be private; it holds a P2 record
+under grace until its own blockers clear.
 
 Profile pins draw only from tier P0. Flips and pin edits are manual, one
 approved table at a time; no script changes visibility.

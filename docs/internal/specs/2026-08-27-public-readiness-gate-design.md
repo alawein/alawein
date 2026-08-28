@@ -61,7 +61,7 @@ one approved table at a time.
 | B5 | Credibility: no claim a skeptical senior engineer can falsify from the code (fake AI, stub API, simulated scores, payment without fulfillment, dead deploy) | manual, recorded |
 | B6 | Secrets: no secret in tree or history, no committed `.env`; gitleaks run noted | manual, recorded |
 | B7 | CI green, or an honest Status section that says preview-only | manual, recorded |
-| B8 | `LICENSE` present for public research or tooling | validator (local or API) |
+| B8 | `LICENSE` present for public research, tooling, or infra | validator (local or API) |
 | B9 | Pinned implies public and tier P0 | validator |
 
 ### Warnings (fix before pin, not required for public)
@@ -85,10 +85,16 @@ Archived repos (catalog `status: archived`) are exempt from flips and tiers.
 
 ### Grace rule
 
-A repo with `CITATION.cff` or a `research_rows` entry in
-`profile-from-guides.yaml` may stay public while failing B3, B4, or B8 until
-`promotion.grace_until`, which is set once, to the end of the current fix
-wave. After that date the validator fails it like any other repo.
+`promotion.grace_until` keeps a public repo public past a failing gate check
+until that date (the day itself is not included). While it runs, the offline
+catalog rule is silent and `validate-visibility.py` reports a warning; after
+it, both fail. It downgrades only V4 (public without a current P0 or P1 scan)
+and V5 (pinned below P0); LICENSE (V6), empty repos (V2), and missing READMEs
+(V3) are never graced. Who gets it: cited research (CITATION.cff or a profile
+research row) for one fix wave; the current profile pins during the README
+redo wave, so they can reach P0; and the hub profile repo, which cannot be
+private, while it clears its own blockers. Anyone else needs a stated reason
+in `notes`.
 
 ### Promotion order (never reversed)
 

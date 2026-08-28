@@ -39,6 +39,7 @@ class ReadmeTemplateTests(unittest.TestCase):
             lines = (TEMPLATES / name).read_text(encoding="utf-8").splitlines()
             self.assertEqual(lines[0], "# {{name}}", name)
             block = lines[2:8]
+            self.assertEqual(len(block), 6, name)
             for expected, actual in zip(HEADER_LINES, block):
                 self.assertTrue(actual.startswith(expected), f"{name}: expected {expected!r}, got {actual!r}")
 

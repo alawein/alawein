@@ -16,7 +16,7 @@ SAMPLE = {
     "name": "Bolts",
     "slug": "bolts",
     "repo": "alawein/bolts",
-    "bucket": "products",
+    "bucket": "apps",
     "owner": "alawein",
     "visibility": "private",
     "status": "maintained",
@@ -27,7 +27,7 @@ SAMPLE = {
 # render/splice tests, without going through derive_header_fields.
 FIELDS = {
     "Status": "active",
-    "Category": "products",
+    "Category": "apps",
     "Owner": "alawein",
     "Visibility": "private",
     "Purpose": "Fitness transformation plans.",
@@ -36,7 +36,7 @@ FIELDS = {
 
 EXPECTED_BLOCK = (
     "Status:      active\n"
-    "Category:    products\n"
+    "Category:    apps\n"
     "Owner:       alawein\n"
     "Visibility:  private\n"
     "Purpose:     Fitness transformation plans.\n"
@@ -47,7 +47,7 @@ EXPECTED_BLOCK = (
 def test_derive_maps_status_and_copies_fields():
     fields = derive_header_fields("alawein/bolts", SAMPLE)
     assert fields["Status"] == "active"          # maintained -> active
-    assert fields["Category"] == "products"      # from bucket
+    assert fields["Category"] == "apps"      # from bucket
     assert fields["Owner"] == "alawein"
     assert fields["Visibility"] == "private"
     assert fields["Purpose"].startswith("Fitness transformation")
@@ -147,7 +147,7 @@ def test_splice_replaces_existing_block_in_place():
     stale = {**FIELDS, "Category": "research", "Status": "paused"}
     readme = splice_header("# bolts\n\nBody.\n", stale)
     fixed = splice_header(readme, FIELDS)
-    assert "Category:    products" in fixed
+    assert "Category:    apps" in fixed
     assert "research" not in fixed
     assert fixed.count("Status:") == 1
 
@@ -197,7 +197,7 @@ def test_apply_to_repo_changes_readme(tmp_path):
     registry = {"alawein/bolts": SAMPLE}
     status, _ = apply_to_repo(tmp_path, "alawein/bolts", registry, dry_run=False)
     assert status == "changed"
-    assert "Category:    products" in readme.read_text(encoding="utf-8")
+    assert "Category:    apps" in readme.read_text(encoding="utf-8")
 
 
 def test_apply_to_repo_second_run_is_unchanged(tmp_path):
@@ -267,7 +267,7 @@ def test_splice_raises_on_malformed_block_after_title():
     readme = (
         "# bolts\n\n"
         "Status:      active\n"
-        "Category:    products\n"
+        "Category:    apps\n"
         "Owner:       alawein\n"
         "Visibility:  private\n"
         "Purpose:     Something.\n\n"

@@ -1,132 +1,20 @@
 {
-  "generatedAt": "2026-07-25",
+  "generatedAt": "2026-08-27",
   "repos": [
     {
-      "slug": "meshal-web",
-      "repo": "alawein/meshal-web",
-      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
-      "homepage": "https://www.meshal.ai",
+      "slug": "helios",
+      "repo": "alawein/helios",
+      "description": "Proprietary research archive for computational astrophysics and astronomy work.",
+      "homepage": "https://github.com/alawein/helios",
       "topics": [
-        "portfolio",
-        "react",
-        "vite",
-        "typescript",
-        "tailwindcss"
+        "astronomy",
+        "archive",
+        "research"
       ],
       "custom_properties": {
-        "lifecycle": "maintained",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "repz",
-      "repo": "alawein/repz",
-      "description": "AI-powered coaching platform for fitness professionals and clients.",
-      "homepage": "https://repzcoach.com",
-      "topics": [
-        "fitness",
-        "react",
-        "typescript",
-        "supabase",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "gymboy",
-      "repo": "alawein/gymboy",
-      "description": "Fitness coaching platform with a retro progression-first training interface.",
-      "homepage": "https://gymboy.coach",
-      "topics": [
-        "fitness",
-        "retro-ui",
-        "react",
-        "vite",
-        "coaching"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "scribd",
-      "repo": "alawein/scribd",
-      "description": "Fitness publishing and content surface aligned with the shared design system.",
-      "homepage": "https://scribd.fit",
-      "topics": [
-        "publishing",
-        "nextjs",
-        "react",
-        "typescript",
-        "design-system"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "bolts",
-      "repo": "alawein/bolts",
-      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
-      "homepage": "https://bolts.fit",
-      "topics": [
-        "fitness",
-        "nextjs",
-        "typescript",
-        "stripe",
-        "supabase"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "pii",
-        "repo_archetype": "next-app-router",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "atelier-rounaq",
-      "repo": "alawein/atelier-rounaq",
-      "description": "Studio and portfolio site for a luxury atelier.",
-      "homepage": "https://atelier-rounaq.com",
-      "topics": [
-        "portfolio",
-        "react",
-        "supabase",
-        "luxury",
-        "design"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "lifecycle": "archived",
+        "compliance": "internal-only",
+        "repo_archetype": "research-archive",
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
@@ -134,67 +22,22 @@
       "release_automation": {}
     },
     {
-      "slug": "attributa",
-      "repo": "alawein/attributa",
-      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
-      "homepage": "https://attributa.dev",
-      "topics": [
-        "ai-governance",
-        "attribution",
-        "react",
-        "typescript",
-        "security"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "llmworks",
-      "repo": "alawein/llmworks",
-      "description": "LLM evaluation, benchmarking, and security testing playground.",
-      "homepage": "https://llmworks.dev",
-      "topics": [
-        "llm",
-        "evaluation",
-        "benchmarking",
-        "react",
-        "supabase"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "wisdom"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "edfp",
-      "repo": "alawein/edfp",
-      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
-      "homepage": "https://edfp.online",
+      "slug": "adil",
+      "repo": "alawein/adil",
+      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "homepage": "https://github.com/alawein/adil",
       "topics": [
         "python",
-        "computer-vision",
-        "fastapi",
-        "fft",
-        "research"
+        "cli",
+        "legal-ops",
+        "automation"
       ],
       "custom_properties": {
-        "lifecycle": "planned",
-        "compliance": "public-data",
+        "lifecycle": "active",
+        "compliance": "regulated",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
-        "brand_family": "wisdom"
+        "brand_family": "heritage"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -222,21 +65,21 @@
       "release_automation": {}
     },
     {
-      "slug": "optiqap",
-      "repo": "alawein/optiqap",
-      "description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
-      "homepage": "https://optiqap.online",
+      "slug": "attributa",
+      "repo": "alawein/attributa",
+      "description": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "homepage": "https://attributa.dev",
       "topics": [
-        "python",
-        "optimization",
-        "qubo",
-        "hpc",
-        "research"
+        "ai-governance",
+        "attribution",
+        "react",
+        "typescript",
+        "security"
       ],
       "custom_properties": {
-        "lifecycle": "maintained",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -244,21 +87,20 @@
       "release_automation": {}
     },
     {
-      "slug": "qmlab",
-      "repo": "alawein/qmlab",
-      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
-      "homepage": "https://qmlab.online",
+      "slug": "chshlab",
+      "repo": "alawein/chshlab",
+      "description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
+      "homepage": "https://chshlab.online",
       "topics": [
         "quantum",
-        "react",
-        "vite",
-        "typescript",
-        "supabase"
+        "bell-inequality",
+        "education",
+        "javascript"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "compliance": "public-data",
+        "repo_archetype": "static-site",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -266,23 +108,108 @@
       "release_automation": {}
     },
     {
-      "slug": "simcore",
-      "repo": "alawein/simcore",
-      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
-      "homepage": "https://simcore.dev",
+      "slug": "edfp",
+      "repo": "alawein/edfp",
+      "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "homepage": "https://edfp.online",
       "topics": [
-        "simulation",
-        "scientific-computing",
-        "react",
-        "vite",
-        "plotly"
+        "python",
+        "computer-vision",
+        "fastapi",
+        "fft",
+        "research"
+      ],
+      "custom_properties": {
+        "lifecycle": "planned",
+        "compliance": "public-data",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "fallax",
+      "repo": "alawein/fallax",
+      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "homepage": "https://fallax.online",
+      "topics": [
+        "llm",
+        "evaluation",
+        "reasoning",
+        "python"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
+        "compliance": "public-data",
+        "repo_archetype": "python-service",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "llmworks",
+      "repo": "alawein/llmworks",
+      "description": "LLM evaluation, benchmarking, and security testing playground.",
+      "homepage": "https://llmworks.dev",
+      "topics": [
+        "llm",
+        "evaluation",
+        "benchmarking",
+        "react",
+        "supabase"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "loopholelab",
+      "repo": "alawein/loopholelab",
+      "description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
+      "homepage": "https://loopholelab.online",
+      "topics": [
+        "quantum",
+        "validation",
+        "react",
+        "research"
+      ],
+      "custom_properties": {
+        "lifecycle": "planned",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "maglogic",
+      "repo": "alawein/maglogic",
+      "description": "Magnetic logic gates and device simulation research.",
+      "homepage": "https://github.com/alawein/maglogic",
+      "topics": [
+        "magnetics",
+        "python",
+        "logic-gates",
+        "research"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "vibrant"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -310,44 +237,45 @@
       "release_automation": {}
     },
     {
-      "slug": "adil",
-      "repo": "alawein/adil",
-      "description": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
-      "homepage": "",
+      "slug": "optiqap",
+      "repo": "alawein/optiqap",
+      "description": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+      "homepage": "https://optiqap.online",
       "topics": [
         "python",
-        "cli",
-        "legal-ops",
-        "automation"
+        "optimization",
+        "qubo",
+        "hpc",
+        "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "regulated",
-        "repo_archetype": "python-service",
+        "lifecycle": "maintained",
+        "compliance": "public-data",
+        "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "heritage"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
     },
     {
-      "slug": "roka-oakland-hustle",
-      "repo": "alawein/roka-oakland-hustle",
-      "description": "Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.",
-      "homepage": "",
+      "slug": "provegate",
+      "repo": "alawein/provegate",
+      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "homepage": "https://provegate.online",
       "topics": [
-        "godot",
-        "rpg",
-        "game-dev",
-        "narrative",
-        "retro"
+        "mcp",
+        "agents",
+        "governance",
+        "python",
+        "verification"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "game-project",
+        "compliance": "internal-only",
+        "repo_archetype": "python-service",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -370,6 +298,50 @@
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
         "brand_family": "dawn"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "qmlab",
+      "repo": "alawein/qmlab",
+      "description": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "homepage": "https://qmlab.online",
+      "topics": [
+        "quantum",
+        "react",
+        "vite",
+        "typescript",
+        "supabase"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "quantumalgo",
+      "repo": "alawein/quantumalgo",
+      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "homepage": "https://github.com/alawein/quantumalgo",
+      "topics": [
+        "pennylane",
+        "python",
+        "quantum-computing",
+        "optimization",
+        "research"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -417,6 +389,28 @@
       "release_automation": {}
     },
     {
+      "slug": "simcore",
+      "repo": "alawein/simcore",
+      "description": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "homepage": "https://simcore.dev",
+      "topics": [
+        "simulation",
+        "scientific-computing",
+        "react",
+        "vite",
+        "plotly"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "dawn"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "spincirc",
       "repo": "alawein/spincirc",
       "description": "Spintronics circuit simulation and modeling research workspace.",
@@ -438,104 +432,21 @@
       "release_automation": {}
     },
     {
-      "slug": "maglogic",
-      "repo": "alawein/maglogic",
-      "description": "Magnetic logic gates and device simulation research.",
-      "homepage": "https://github.com/alawein/maglogic",
+      "slug": "veyra",
+      "repo": "alawein/veyra",
+      "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "homepage": "https://github.com/alawein/veyra",
       "topics": [
-        "magnetics",
-        "python",
-        "logic-gates",
-        "research"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "vibrant"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "chshlab",
-      "repo": "alawein/chshlab",
-      "description": "Quantum foundations education site for CHSH and Bell inequality experiments.",
-      "homepage": "https://chshlab.online",
-      "topics": [
-        "quantum",
-        "bell-inequality",
-        "education",
-        "javascript"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "static-site",
-        "docs_maturity": "managed",
-        "brand_family": "dawn"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "helios",
-      "repo": "alawein/helios",
-      "description": "Proprietary research archive for computational astrophysics and astronomy work.",
-      "homepage": "",
-      "topics": [
-        "astronomy",
-        "archive",
-        "research"
-      ],
-      "custom_properties": {
-        "lifecycle": "archived",
-        "compliance": "internal-only",
-        "repo_archetype": "research-archive",
-        "docs_maturity": "managed",
-        "brand_family": "legacy"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "loopholelab",
-      "repo": "alawein/loopholelab",
-      "description": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
-      "homepage": "https://loopholelab.online",
-      "topics": [
-        "quantum",
-        "validation",
-        "react",
-        "research"
-      ],
-      "custom_properties": {
-        "lifecycle": "planned",
-        "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "provegate",
-      "repo": "alawein/provegate",
-      "description": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
-      "homepage": "https://provegate.online",
-      "topics": [
-        "mcp",
         "agents",
         "governance",
-        "python",
-        "verification"
+        "monorepo",
+        "turborepo",
+        "typescript"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-service",
+        "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -543,23 +454,33 @@
       "release_automation": {}
     },
     {
-      "slug": "mercor",
-      "repo": "alawein/mercor",
-      "description": "Employer project for LLM failsafe experimentation and evaluation.",
-      "homepage": "",
+      "slug": "alawein",
+      "repo": "alawein/alawein",
+      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "homepage": "https://github.com/alawein/alawein",
       "topics": [
-        "llm",
-        "python"
+        "governance",
+        "documentation",
+        "catalog",
+        "automation"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "repo_archetype": "docs-hub",
         "docs_maturity": "managed",
-        "brand_family": "legacy"
+        "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "actions_settings": {
+        "default_workflow_permissions": "write",
+        "can_approve_pull_request_reviews": true
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
     },
     {
       "slug": "design-system",
@@ -592,62 +513,26 @@
       }
     },
     {
-      "slug": "alawein",
-      "repo": "alawein/alawein",
-      "description": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
-      "homepage": "https://github.com/alawein/alawein",
-      "topics": [
-        "governance",
-        "documentation",
-        "catalog",
-        "automation"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "public-data",
-        "repo_archetype": "docs-hub",
-        "docs_maturity": "managed",
-        "brand_family": "midnight"
-      },
-      "actions_settings": {
-        "default_workflow_permissions": "write",
-        "can_approve_pull_request_reviews": true
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
-    },
-    {
-      "slug": "workspace-tools",
-      "repo": "alawein/workspace-tools",
-      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
-      "homepage": "https://github.com/alawein/workspace-tools",
+      "slug": "incore",
+      "repo": "alawein/incore",
+      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "homepage": "https://github.com/alawein/incore",
       "topics": [
         "automation",
-        "python",
         "cli",
-        "governance"
+        "inventory",
+        "mcp",
+        "python"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-service",
+        "repo_archetype": "python-library",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {
-        "default_workflow_permissions": "read",
-        "can_approve_pull_request_reviews": false
-      },
-      "release_automation": {
-        "mode": "none",
-        "supports_release_prs": false,
-        "publishes_packages": false,
-        "requires_npm_token": false
-      }
+      "actions_settings": {},
+      "release_automation": {}
     },
     {
       "slug": "knowledge-base",
@@ -679,85 +564,23 @@
       }
     },
     {
-      "slug": "handshake",
-      "repo": "alawein/handshake",
-      "description": "LLM evaluation monorepo with shared core and project validators.",
-      "homepage": "https://github.com/alawein/handshake",
+      "slug": "outpost",
+      "repo": "alawein/outpost",
+      "description": "Personal kit that installs prompts for coding agents.",
+      "homepage": "https://github.com/alawein/outpost",
       "topics": [
-        "llm",
-        "evaluation",
-        "typescript",
-        "monorepo"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
-        "docs_maturity": "managed",
-        "brand_family": "wisdom"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "turing",
-      "repo": "alawein/turing",
-      "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
-      "homepage": "https://github.com/alawein/turing",
-      "topics": [
-        "benchmark",
-        "evaluation",
-        "documentation",
-        "private-workspace"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "docs-hub",
-        "docs_maturity": "minimal",
-        "brand_family": "legacy"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "quantumalgo",
-      "repo": "alawein/quantumalgo",
-      "description": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
-      "homepage": "https://github.com/alawein/quantumalgo",
-      "topics": [
-        "pennylane",
-        "python",
-        "quantum-computing",
-        "optimization",
-        "research"
-      ],
-      "custom_properties": {
-        "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
-        "docs_maturity": "managed",
-        "brand_family": "forge"
-      },
-      "actions_settings": {},
-      "release_automation": {}
-    },
-    {
-      "slug": "incore",
-      "repo": "alawein/incore",
-      "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-      "homepage": "https://github.com/alawein/incore",
-      "topics": [
-        "automation",
+        "ai-tools",
+        "claude-code",
         "cli",
-        "inventory",
-        "mcp",
+        "coding-agents",
+        "developer-tools",
+        "prompts",
         "python"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
-        "repo_archetype": "python-library",
+        "compliance": "public-data",
+        "repo_archetype": "python-platform-cli",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -787,21 +610,20 @@
       "release_automation": {}
     },
     {
-      "slug": "veyra",
-      "repo": "alawein/veyra",
-      "description": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
-      "homepage": "https://github.com/alawein/veyra",
+      "slug": "workspace-control",
+      "repo": "alawein/workspace-control",
+      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "homepage": "https://github.com/alawein/workspace-control",
       "topics": [
-        "agents",
         "governance",
-        "monorepo",
-        "turborepo",
-        "typescript"
+        "inventory",
+        "python",
+        "workspace"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "python-platform-cli",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -809,46 +631,52 @@
       "release_automation": {}
     },
     {
-      "slug": "fallax",
-      "repo": "alawein/fallax",
-      "description": "LLM adversarial reasoning evaluation system and benchmarking surface.",
-      "homepage": "https://fallax.online",
+      "slug": "workspace-tools",
+      "repo": "alawein/workspace-tools",
+      "description": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "homepage": "https://github.com/alawein/workspace-tools",
       "topics": [
-        "llm",
-        "evaluation",
-        "reasoning",
-        "python"
+        "automation",
+        "python",
+        "cli",
+        "governance"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "public-data",
+        "compliance": "internal-only",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
-      "actions_settings": {},
-      "release_automation": {}
+      "actions_settings": {
+        "default_workflow_permissions": "read",
+        "can_approve_pull_request_reviews": false
+      },
+      "release_automation": {
+        "mode": "none",
+        "supports_release_prs": false,
+        "publishes_packages": false,
+        "requires_npm_token": false
+      }
     },
     {
-      "slug": "outpost",
-      "repo": "alawein/outpost",
-      "description": "Personal kit that installs prompts for coding agents.",
-      "homepage": "https://github.com/alawein/outpost",
+      "slug": "atelier-rounaq",
+      "repo": "alawein/atelier-rounaq",
+      "description": "Studio and portfolio site for a luxury atelier.",
+      "homepage": "https://atelier-rounaq.com",
       "topics": [
-        "ai-tools",
-        "claude-code",
-        "cli",
-        "coding-agents",
-        "developer-tools",
-        "prompts",
-        "python"
+        "portfolio",
+        "react",
+        "supabase",
+        "luxury",
+        "design"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "python-platform-cli",
+        "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "legacy"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -875,22 +703,194 @@
       "release_automation": {}
     },
     {
-      "slug": "workspace-control",
-      "repo": "alawein/workspace-control",
-      "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-      "homepage": "https://github.com/alawein/workspace-control",
+      "slug": "bolts",
+      "repo": "alawein/bolts",
+      "description": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "homepage": "https://bolts.fit",
       "topics": [
-        "governance",
-        "inventory",
-        "python",
-        "workspace"
+        "fitness",
+        "nextjs",
+        "typescript",
+        "stripe",
+        "supabase"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "gymboy",
+      "repo": "alawein/gymboy",
+      "description": "Fitness coaching platform with a retro progression-first training interface.",
+      "homepage": "https://gymboy.coach",
+      "topics": [
+        "fitness",
+        "retro-ui",
+        "react",
+        "vite",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "repz",
+      "repo": "alawein/repz",
+      "description": "AI-powered coaching platform for fitness professionals and clients.",
+      "homepage": "https://repzcoach.com",
+      "topics": [
+        "fitness",
+        "react",
+        "typescript",
+        "supabase",
+        "coaching"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "pii",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "scribd",
+      "repo": "alawein/scribd",
+      "description": "Fitness publishing and content surface aligned with the shared design system.",
+      "homepage": "https://scribd.fit",
+      "topics": [
+        "publishing",
+        "nextjs",
+        "react",
+        "typescript",
+        "design-system"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "next-app-router",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "meshal-web",
+      "repo": "alawein/meshal-web",
+      "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",
+      "homepage": "https://www.meshal.ai",
+      "topics": [
+        "portfolio",
+        "react",
+        "vite",
+        "typescript",
+        "tailwindcss"
+      ],
+      "custom_properties": {
+        "lifecycle": "maintained",
+        "compliance": "public-data",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "roka-oakland-hustle",
+      "repo": "alawein/roka-oakland-hustle",
+      "description": "Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.",
+      "homepage": "https://github.com/alawein/roka-oakland-hustle",
+      "topics": [
+        "godot",
+        "rpg",
+        "game-dev",
+        "narrative",
+        "retro"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "game-project",
+        "docs_maturity": "managed",
+        "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "handshake",
+      "repo": "alawein/handshake",
+      "description": "LLM evaluation monorepo with shared core and project validators.",
+      "homepage": "https://github.com/alawein/handshake",
+      "topics": [
+        "llm",
+        "evaluation",
+        "typescript",
+        "monorepo"
       ],
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-platform-cli",
+        "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "mercor",
+      "repo": "alawein/mercor",
+      "description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "homepage": "https://github.com/alawein/mercor",
+      "topics": [
+        "llm",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "python-library",
+        "docs_maturity": "managed",
+        "brand_family": "legacy"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "turing",
+      "repo": "alawein/turing",
+      "description": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "homepage": "https://github.com/alawein/turing",
+      "topics": [
+        "benchmark",
+        "evaluation",
+        "documentation",
+        "private-workspace"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "docs-hub",
+        "docs_maturity": "minimal",
+        "brand_family": "legacy"
       },
       "actions_settings": {},
       "release_automation": {}

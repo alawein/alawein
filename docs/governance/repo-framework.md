@@ -8,7 +8,7 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-06-07
+last_updated: 2026-08-27
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
@@ -36,21 +36,21 @@ Ownership determines the home org. Inside an org, content category determines th
 
 ## Bucket decision tree (inside `alawein/`)
 
-    Paying or monetizing, shipped to customers?          -> products/
-    Early-stage idea, MVP, hypothesis?                   -> ventures/
-    Research (papers, simulations, experiments)?         -> research/
-    Infrastructure or small utility?                     -> tools/
-    Portfolio or personal creative?                      -> personal/
-    Maintained for family, unpaid?                       -> family/
-    Interview or job-search?                             -> jobs-projects/
-    Inactive but worth preserving?                       -> _archive/  (write Category: archive)
+    Control plane, shared infra, design system, workspace tooling?  -> core/
+    Shipped or monetizing product, or family-maintained app?          -> apps/
+    Research, simulation, experiment, or early-stage bet?             -> lab/
+    Public portfolio or identity site?                                -> sites/
+    Interview, contract, or employer-adjacent work?                   -> work/
+    Inactive but worth preserving?                                    -> _archive/  (Category: archive)
+
+Six active buckets replace the prior eight (`products`, `personal`, `family`, `research`, `tools`, `ventures`, `jobs-projects`). Canonical map: `catalog/buckets.yaml`.
 
 ## Per-repo README metadata header (mandatory)
 
 Every repo across all active orgs places a plain-markdown metadata block at the top of `README.md`, immediately after the `# <repo-name>` title. This metadata block is plain markdown, not YAML frontmatter; workspace policy forbids YAML frontmatter on public READMEs.
 
     Status:      active | paused | experimental | deprecated | archived | frozen
-    Category:    products | personal | family | research | tools | ventures | jobs-projects | archive
+    Category:    core | apps | lab | sites | work | archive
     Owner:       alawein | menax-inc | blackmalejournal | kohyr
     Visibility:  public | private
     Purpose:     <one or two sentences explaining why this repo exists>
@@ -60,12 +60,12 @@ Enforced by `scripts/doctrine/validate-repo-framework.py`, run in the doctrine C
 
 ## Per-repo anti-rot artifacts (mandatory for code archetypes)
 
-Every code-archetype repo (`products`, `ventures`, `tools`, `research`) carries:
+Every code-archetype repo (`core`, `apps`, `lab`) carries:
 
 - `docs/DEBT.md`: the technical-debt ledger (see `docs/governance/anti-rot.md`).
 - `docs/adr/`: Architecture Decision Records, one decision per file.
 
-Repos in the `archive`, `personal`, `family`, and `jobs-projects` buckets are exempt;
+Repos in the `archive`, `sites`, and `work` buckets are exempt;
 exemption is by bucket, not by content. Enforced by
 `scripts/doctrine/validate-repo-framework.py` in the doctrine CI step.
 

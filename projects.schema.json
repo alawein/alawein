@@ -28,7 +28,7 @@
         },
         "bucket": {
           "type": "string",
-          "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+          "enum": ["core", "apps", "lab", "sites", "work", "archive"],
           "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
         },
         "status": { "type": "string" },
@@ -80,7 +80,7 @@
           "description": { "type": "string" },
           "bucket": {
             "type": "string",
-            "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+            "enum": ["core", "apps", "lab", "sites", "work", "archive"],
             "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
           },
           "status": { "type": "string" },
@@ -120,7 +120,7 @@
           "note": { "type": "string" },
           "bucket": {
             "type": "string",
-            "enum": ["products", "personal", "family", "research", "tools", "ventures", "jobs-projects", "archive"],
+            "enum": ["core", "apps", "lab", "sites", "work", "archive"],
             "description": "Top-level alawein/ bucket. Set for alawein-org repos; omitted for cross-org entries."
           },
           "vercel": { "$ref": "#/$defs/vercelBlock" }

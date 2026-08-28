@@ -218,7 +218,7 @@ def _github_request(path: str, token: str) -> tuple[int, bytes]:
         return exc.code, exc.read()
 
 
-def _github_default_branch(repo_full: str, token: str) -> str | None:
+def _github_repo(repo_full: str, token: str) -> dict | None:
     owner, name = repo_full.split("/", 1)
     status, body = _github_request(f"/repos/{owner}/{name}", token)
     if status == 404:
@@ -228,6 +228,13 @@ def _github_default_branch(repo_full: str, token: str) -> str | None:
             f"GitHub API {status} for {repo_full}: {body[:200]!r}"
         )
     payload = json.loads(body.decode("utf-8"))
+    return payload if isinstance(payload, dict) else None
+
+
+def _github_default_branch(repo_full: str, token: str) -> str | None:
+    payload = _github_repo(repo_full, token)
+    if payload is None:
+        return None
     branch = payload.get("default_branch")
     return branch if isinstance(branch, str) and branch else "main"
 
@@ -261,11 +268,16 @@ def check_repo_github(repo: dict, token: str) -> list[str]:
     if not repo_full or "/" not in repo_full:
         return [f"{slug}: missing repo field for GitHub API check"]
     try:
-        default_branch = _github_default_branch(repo_full, token)
+        meta = _github_repo(repo_full, token)
     except ReadmeTopologyError as exc:
         return [f"{slug}: {exc}"]
-    if default_branch is None:
+    if meta is None:
         return []
+    if not meta.get("size"):
+        return []
+    default_branch = meta.get("default_branch") if isinstance(meta.get("default_branch"), str) else "main"
+    if not default_branch:
+        default_branch = "main"
     try:
         readme = _github_file(repo_full, "README.md", token, ref=default_branch)
         topo = _github_file(

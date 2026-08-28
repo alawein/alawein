@@ -1,0 +1,26 @@
+---
+schemaVersion: "1.0.0"
+lastVerified: "2026-08-27"
+# Four human lanes → six on-disk buckets (see catalog/buckets.yaml).
+lanes:
+  platform:
+    label: Platform
+    bucket: core
+    meaning: Control plane, design system, workspace tooling
+  ship:
+    label: Ship
+    default_bucket: apps
+    site_bucket: sites
+    meaning: Products, family apps, and public portfolio sites
+  lab:
+    label: Lab
+    bucket: lab
+    meaning: Research, experiments, and early bets
+  work:
+    label: Work
+    bucket: work
+    meaning: Contract and employer-adjacent repositories
+  archive:
+    label: Archive
+    bucket: archive
+    meaning: Frozen repos under _archive/

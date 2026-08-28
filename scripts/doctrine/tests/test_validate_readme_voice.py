@@ -16,10 +16,10 @@ from validate_readme_voice import (
 def _repo(**kw):
     base = {
         "slug": "demo",
-        "bucket": "research",
+        "bucket": "lab",
         "type": "research",
         "status": "active",
-        "local_path": "research/demo",
+        "local_path": "lab/demo",
         "repo": "alawein/demo",
         "surface": "library",
     }

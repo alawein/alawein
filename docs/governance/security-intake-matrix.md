@@ -6,7 +6,7 @@ sla: on-change
 title: Security intake matrix
 description: >-
   Single routing table for vulnerability reports across spine repositories.
-last_updated: 2026-05-17
+last_updated: 2026-08-27
 category: governance
 audience: [contributors, researchers, agents]
 ---

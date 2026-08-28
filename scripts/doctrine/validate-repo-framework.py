@@ -37,8 +37,7 @@ REQUIRED_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next
 
 ALLOWED_STATUS = {"active", "paused", "experimental", "deprecated", "archived", "frozen"}
 ALLOWED_CATEGORY = {
-    "products", "personal", "family", "research",
-    "tools", "ventures", "jobs-projects", "archive",
+    "core", "apps", "lab", "sites", "work", "archive",
 }
 ALLOWED_OWNER = {
     # Active orgs only. The validator walks active bucket dirs; archive
@@ -55,10 +54,9 @@ assert ALAWEIN_OWNER in ALLOWED_OWNER, (
 )
 
 # Buckets that carry active code and must maintain anti-rot hygiene artifacts
-# (docs/DEBT.md, docs/adr/). Non-code buckets (personal, family, jobs-projects,
-# archive) are deliberately excluded. If a new code-bearing bucket is added to
-# ALLOWED_CATEGORY, add it here too.
-CODE_ARCHETYPES = {"products", "ventures", "tools", "research"}
+# (docs/DEBT.md, docs/adr/). Non-code buckets (sites, work, archive) are
+# deliberately excluded.
+CODE_ARCHETYPES = {"core", "apps", "lab"}
 
 assert CODE_ARCHETYPES <= ALLOWED_CATEGORY, (
     f"CODE_ARCHETYPES {CODE_ARCHETYPES} must be a subset of "
@@ -399,7 +397,7 @@ def resolve_bucket_registry(
 
 
 _BUCKET_DIRS = (
-    "products", "personal", "family", "research", "tools", "ventures", "jobs-projects",
+    "core", "apps", "lab", "sites", "work",
 )
 
 # Doctrine consistency: _BUCKET_DIRS must equal ALLOWED_CATEGORY minus

@@ -1,0 +1,237 @@
+schemaVersion: 1.0.0
+lastVerified: '2026-08-27'
+note: Edit lanes below. build-catalog.py compiles to repos.json automatically.
+lanes:
+  platform:
+  - slug: alawein
+    about: Governance control plane, catalog SSOT, profile generation, and documentation
+      enforcement.
+    name: alawein
+    visibility: public
+    url: https://github.com/alawein/alawein
+  - slug: design-system
+    about: Shared design tokens, themes, UI components, and generated brand asset
+      packs.
+    name: design-system
+    url: https://github.com/alawein/design-system
+    legacy_slugs:
+    - aw-devkit
+    - devkit
+  - slug: incore
+    about: CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and
+      querying across agent-oriented repos.
+    name: incore
+    url: https://github.com/alawein/incore
+  - slug: knowledge-base
+    about: Searchable discovery surface for repositories, tools, assets, templates,
+      and onboarding.
+    name: knowledge-base
+    url: https://knowledge-base-alawein.vercel.app
+    legacy_slugs:
+    - pkos
+  - slug: outpost
+    about: Personal kit that installs prompts for coding agents.
+    visibility: public
+    url: https://github.com/alawein/outpost
+  - slug: prompty
+    about: Turbo monorepo for prompt design, evaluation workspaces, and related LLM
+      tooling packages.
+    name: prompty
+    url: https://github.com/alawein/prompty
+  - slug: workspace-control
+    about: Workspace control-plane inventory engine, registry, and operational tooling.
+    url: https://github.com/alawein/workspace-control
+  - slug: workspace-tools
+    about: Workspace execution layer for scaffolding, audits, sync, drift detection,
+      and rollout automation.
+    name: workspace-tools
+    url: https://github.com/alawein/workspace-tools
+  ship:
+  - slug: atelier-rounaq
+    about: Studio and portfolio site for a luxury atelier.
+    url: https://atelier-rounaq.com
+    featured: true
+    legacy_slugs:
+    - rounaq-atelier
+  - slug: auditraise
+    about: AI-assisted local marketing audits with operator dashboard and follow-up
+      content workflows.
+    url: https://github.com/alawein/auditraise
+    featured: true
+  - slug: bolts
+    about: Fitness transformation plans with Next.js, Stripe, Supabase, and Python
+      tooling.
+    url: https://bolts.fit
+    featured: true
+  - slug: gymboy
+    about: Fitness coaching platform with a retro progression-first training interface.
+    url: https://gymboy.coach
+    featured: true
+    legacy_slugs:
+    - gainboy
+  - slug: meshal-web
+    about: Personal site and portfolio with project deep-dives, case studies, and
+      contact.
+    status: maintained
+    url: https://www.meshal.ai
+    featured: true
+    site: true
+  - slug: repz
+    about: AI-powered coaching platform for fitness professionals and clients.
+    name: REPZ
+    url: https://repzcoach.com
+    featured: true
+  - slug: roka-oakland-hustle
+    about: Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.
+    name: 'Roka: Oakland Hustle'
+    url: https://github.com/alawein/roka-oakland-hustle
+    site: true
+  - slug: scribd
+    about: Fitness publishing and content surface aligned with the shared design system.
+    url: https://scribd.fit
+    featured: true
+  lab:
+  - slug: adil
+    about: Legal-ops CLI for assembling, validating, and submitting evidence packets.
+    url: https://github.com/alawein/adil
+  - slug: alembiq
+    about: LLM training, alignment, evaluation, and synthetic data platform.
+    url: https://alembiq.online
+    featured: true
+    legacy_slugs:
+    - neper
+  - slug: attributa
+    about: Privacy-first attribution intelligence with AI detection, citation checks,
+      and CWE scans.
+    url: https://attributa.dev
+    featured: true
+  - slug: chshlab
+    about: Quantum foundations education site for CHSH and Bell inequality experiments.
+    name: CHSH Lab
+    visibility: public
+    url: https://chshlab.online
+  - slug: edfp
+    about: Physics-inspired video event detection with FFT spectral analysis and hierarchical
+      filtering.
+    name: Event Discovery Framework
+    status: frozen
+    url: https://edfp.online
+    featured: true
+    legacy_slugs:
+    - event-discovery-framework
+  - slug: fallax
+    about: LLM adversarial reasoning evaluation system and benchmarking surface.
+    visibility: public
+    url: https://fallax.online
+    legacy_slugs:
+    - reasonbench
+  - slug: llmworks
+    about: LLM evaluation, benchmarking, and security testing playground.
+    name: LLMWorks
+    visibility: public
+    url: https://llmworks.dev
+    featured: true
+  - slug: loopholelab
+    about: Research validation surface for adversarial claim stress-testing and loophole
+      analysis.
+    name: Loophole Lab
+    status: frozen
+    visibility: public
+    url: https://loopholelab.online
+  - slug: maglogic
+    about: Magnetic logic gates and device simulation research.
+    name: MagLogic
+    status: frozen
+    visibility: public
+    url: https://github.com/alawein/maglogic
+  - slug: meatheadphysicist
+    about: Computational physics research platform for Bell inequality analysis, CHSH
+      simulation, and claim verification.
+    name: meatheadphysicist
+    url: https://mhphys.online
+    legacy_slugs:
+    - MeatheadPhysicist
+  - slug: optiqap
+    about: Quadratic Assignment Problem solvers with equilibrium-guided optimization
+      and spectral methods.
+    name: OptiQAP
+    status: maintained
+    url: https://optiqap.online
+    featured: true
+    legacy_slugs:
+    - qaplibria
+  - slug: provegate
+    about: Agent MCP tooling for drift control, memory, and proof-oriented orchestration.
+    visibility: public
+    url: https://provegate.online
+    legacy_slugs:
+    - epistemic-stack
+  - slug: qmatsim
+    about: Quantum material simulation research workspace.
+    name: qmatsim
+    status: frozen
+    visibility: public
+    url: https://github.com/alawein/qmatsim
+  - slug: qmlab
+    about: Quantum ML web lab with React, TypeScript, Vite, and Supabase.
+    name: qmlab.online
+    status: frozen
+    url: https://qmlab.online
+  - slug: quantumalgo
+    about: Python library and experiments for quantum algorithms applied to combinatorial
+      optimization.
+    name: quantumalgo
+    url: https://github.com/alawein/quantumalgo
+  - slug: qubeml
+    about: Quantum machine learning experiments and research.
+    name: qubeml
+    status: frozen
+    visibility: public
+    url: https://github.com/alawein/qubeml
+  - slug: scicomp
+    about: Scientific computing utilities and shared numerical tooling.
+    name: scicomp
+    status: frozen
+    visibility: public
+    url: https://github.com/alawein/scicomp
+  - slug: simcore
+    about: Scientific simulation core for interactive modeling and numerical exploration.
+    name: simcore.dev
+    url: https://simcore.dev
+  - slug: spincirc
+    about: Spintronics circuit simulation and modeling research workspace.
+    name: spincirc
+    status: frozen
+    visibility: public
+    url: https://github.com/alawein/spincirc
+  - slug: veyra
+    about: 'Voice governance for AI-assisted writing: LLM-generated content signals,
+      voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo
+      monorepo).'
+    url: https://github.com/alawein/veyra
+    featured: true
+  work:
+  - slug: handshake
+    about: LLM evaluation monorepo with shared core and project validators.
+    name: Handshake AI Eval
+    url: https://github.com/alawein/handshake
+    legacy_slugs:
+    - eval
+    - handshake-hai
+  - slug: mercor
+    about: Employer project for LLM failsafe experimentation and evaluation.
+    name: Mercor LLM Failsafe
+    url: https://github.com/alawein/mercor
+    legacy_slugs:
+    - mercor-llm-failsafe
+  - slug: turing
+    about: Private catalog-collection workspace for Turing interview and engagement
+      artifacts (benchmarks, evaluations, specs).
+    name: Turing engagements
+    url: https://github.com/alawein/turing
+  archive:
+  - slug: helios
+    about: Proprietary research archive for computational astrophysics and astronomy
+      work.
+    status: archived
+    url: https://github.com/alawein/helios

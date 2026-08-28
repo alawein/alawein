@@ -3,7 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: none
-last_updated: 2026-05-23
+last_updated: 2026-08-27
 ---
 
 # Docs Doctrine
@@ -134,7 +134,7 @@ mismatch.
 | CLAUDE.md (root) | Canonical | Per-repo root | No | N/A | n/a | Project-specific, human-owned |
 | .claude/CLAUDE.md | Derived | org/governance-templates | Yes | On-change | `sync-claude.sh` | Governance template; preserves per-repo description |
 | INDEX.md | Derived | Directory structure | Yes | On-change | `generate-index.sh` | Auto-generated, never hand-edited |
-| projects.json | Derived | `catalog/repos.json` | Yes | On-change | `build-catalog.py` | Regenerated from the catalog manifests; never hand-edited |
+| projects.json | Derived | `catalog/index.yaml` → `catalog/repos.json` | Yes | On-change | `build-catalog.py` | Compiled index then regenerated; never hand-edited |
 | Project README | Canonical | Project repo root | No | N/A | n/a | Human-owned |
 | Batch templates | Canonical | templates/ dir | No | N/A | n/a | Never duplicated into repos |
 | Generated configs | Derived | Templates | Yes | On-change | `render-configs.sh` | Deterministic rendering |

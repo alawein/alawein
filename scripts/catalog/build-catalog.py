@@ -21,6 +21,7 @@ from catalog_lib import (
     repo_entries,
     validate_catalogs,
 )
+from compile_index import INDEX_PATH, build_index_snapshot, compile_index_file
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -31,6 +32,11 @@ def main(argv: list[str] | None = None) -> int:
         help="Exit non-zero if derived files would change.",
     )
     args = parser.parse_args(argv)
+
+    if INDEX_PATH.exists():
+        rc = compile_index_file(check=args.check, write=not args.check)
+        if rc != 0:
+            return rc
 
     catalogs = load_catalogs()
     issues = validate_catalogs(catalogs)
@@ -45,9 +51,12 @@ def main(argv: list[str] | None = None) -> int:
     generated_at = catalog_timestamp(catalogs)
     github_feed = build_github_metadata_feed(repo_entries(catalogs), generated_at)
     inventory = build_inventory_manifest(repo_entries(catalogs), generated_at)
+    repos_payload = json.loads((GENERATED_DIR.parent / "repos.json").read_text(encoding="utf-8"))
+    snapshot = build_index_snapshot(repos_payload)
 
     outputs = {
         PROJECTS_JSON: json.dumps(projects_manifest, indent=2) + "\n",
+        GENERATED_DIR / "index-snapshot.json": json.dumps(snapshot, indent=2) + "\n",
         GENERATED_DIR / "discovery-feed.json": json.dumps(discovery_feed, indent=2) + "\n",
         GENERATED_DIR / "repo-switcher.json": json.dumps(
             discovery_feed["projectSwitcher"], indent=2

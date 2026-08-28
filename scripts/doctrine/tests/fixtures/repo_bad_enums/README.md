@@ -1,7 +1,7 @@
 # repo-bad-enums
 
 Status:      wip
-Category:    products
+Category:    apps
 Owner:       meshal
 Visibility:  internal
 Purpose:     Test fixture for invalid enum value rejection.

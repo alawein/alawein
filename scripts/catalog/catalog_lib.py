@@ -501,7 +501,7 @@ def build_inventory_manifest(
 
 
 def inventory_reconciliation(repos: list[dict[str, Any]]) -> dict[str, Any]:
-    workspace = workspace_manifest(repos)
+    workspace = projected_workspace_manifest(repos)
     workspace_repos = workspace.get("repos") or {}
     workspace_keys = set(workspace_repos.keys())
     catalog_keys = {repo["slug"] for repo in repos}

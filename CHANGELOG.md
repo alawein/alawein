@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-07-26
+last_updated: 2026-08-27
 tags: [changelog, version-history, releases]
 ---
 
@@ -22,6 +22,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- [`catalog/buckets.yaml`](catalog/buckets.yaml): minimal six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`) with legacy map from the prior eight folders.
+- [`config/model-routing.yaml`](config/model-routing.yaml) and [`scripts/ops/openrouter_route.py`](scripts/ops/openrouter_route.py): OpenRouter task routes (Qwen, Gemini, GLM, Kimi) and named workflows (`voice-resweep`, `catalog-audit`, `pr-ready`).
+- [`scripts/ops/migrate_buckets.py`](scripts/ops/migrate_buckets.py): one-shot workspace migrator for catalog paths and README `Category` headers.
+
+- [`catalog/index.yaml`](catalog/index.yaml), [`catalog/lanes.yaml`](catalog/lanes.yaml), and [`scripts/catalog/compile_index.py`](scripts/catalog/compile_index.py): four-lane human catalog (`platform`, `ship`, `lab`, `work`, `archive`) compiles to full `repos.json`; `build-catalog.py` runs compile automatically and emits `catalog/generated/index-snapshot.json`.
+
+### Changed
+
+- Portfolio buckets collapsed from eight on-disk folders to six meaningful groups; `catalog/repos.json` `local_path` roots updated (`core/`, `apps/`, `lab/`, `sites/`, `work/`).
+- `compile_index.py` preserves existing catalog metadata (for example `type`) instead of overwriting from bucket defaults; inventory reconciliation uses projected workspace paths so derived feeds are CI-stable.
+- `projects.schema.json` bucket enum aligned to the six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`).
+- [`docs/governance/repo-framework.md`](docs/governance/repo-framework.md), [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py), and [`scripts/doctrine/validate-topology.py`](scripts/doctrine/validate-topology.py): `Category` / `bucket` enums aligned to the minimal set.
 
 ### Added
 
@@ -41,8 +56,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- [scripts/doctrine/validate-doctrine.py](scripts/doctrine/validate-doctrine.py): exempt product/kit trees (prompts/, plugins/, 	emplates/, projects/, packages/) and docs ledgers (decisions/, 
-eviews/, udit/) from the header walk so prompt kits and catalog collections can run strict: true.
+- [scripts/doctrine/validate-doctrine.py](scripts/doctrine/validate-doctrine.py): exempt product/kit trees (prompts/, plugins/, templates/, projects/, packages/) and docs ledgers (decisions/, reviews/, audit/) from the header walk so prompt kits and catalog collections can run strict: true.
 - Cleared `PENDING_README_TOPOLOGY` for `outpost`, `auditraise`, and `workspace-control` after Wave 1+2 README/topology catch-up. `validate-readme-topology.py` now fetches GitHub files from each repo default branch (needed for `auditraise` on `launch/v1`). Corrected `auditraise` catalog description/topics to match the marketing-audit product.
 - [`scripts/doctrine/validate-readme-voice.py`](scripts/doctrine/validate-readme-voice.py): fleet README voice linter (banned register, em dashes, AI attribution). Wired in `docs-doctrine.yml` and `doctrine-reusable.yml`.
 - [`scripts/doctrine/validate-repo-framework.py`](scripts/doctrine/validate-repo-framework.py): Category ↔ bucket now prefers `catalog/repos.json` via `--catalog` (SSOT); optional `--registry` agreement check. Wired in `doctrine-reusable.yml`.

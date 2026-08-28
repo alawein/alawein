@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-08-27",
+  "count": 40,
+  "repos": [
+    {
+      "slug": "helios",
+      "lane": "archive",
+      "bucket": "archive",
+      "name": "Helios",
+      "about": "Proprietary research archive for computational astrophysics and astronomy work.",
+      "status": "archived",
+      "visibility": "private",
+      "url": "https://github.com/alawein/helios"
+    },
+    {
+      "slug": "adil",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Adil",
+      "about": "Legal-ops CLI for assembling, validating, and submitting evidence packets.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/adil"
+    },
+    {
+      "slug": "alembiq",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Alembiq",
+      "about": "LLM training, alignment, evaluation, and synthetic data platform.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://alembiq.online"
+    },
+    {
+      "slug": "attributa",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Attributa",
+      "about": "Privacy-first attribution intelligence with AI detection, citation checks, and CWE scans.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://attributa.dev"
+    },
+    {
+      "slug": "chshlab",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "CHSH Lab",
+      "about": "Quantum foundations education site for CHSH and Bell inequality experiments.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://chshlab.online"
+    },
+    {
+      "slug": "edfp",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Event Discovery Framework",
+      "about": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
+      "status": "frozen",
+      "visibility": "private",
+      "url": "https://edfp.online"
+    },
+    {
+      "slug": "fallax",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Fallax",
+      "about": "LLM adversarial reasoning evaluation system and benchmarking surface.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://fallax.online"
+    },
+    {
+      "slug": "llmworks",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "LLMWorks",
+      "about": "LLM evaluation, benchmarking, and security testing playground.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://llmworks.dev"
+    },
+    {
+      "slug": "loopholelab",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Loophole Lab",
+      "about": "Research validation surface for adversarial claim stress-testing and loophole analysis.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://loopholelab.online"
+    },
+    {
+      "slug": "maglogic",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "MagLogic",
+      "about": "Magnetic logic gates and device simulation research.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://github.com/alawein/maglogic"
+    },
+    {
+      "slug": "meatheadphysicist",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "meatheadphysicist",
+      "about": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://mhphys.online"
+    },
+    {
+      "slug": "optiqap",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "OptiQAP",
+      "about": "Quadratic Assignment Problem solvers with equilibrium-guided optimization and spectral methods.",
+      "status": "maintained",
+      "visibility": "private",
+      "url": "https://optiqap.online"
+    },
+    {
+      "slug": "provegate",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Provegate",
+      "about": "Agent MCP tooling for drift control, memory, and proof-oriented orchestration.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://provegate.online"
+    },
+    {
+      "slug": "qmatsim",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "qmatsim",
+      "about": "Quantum material simulation research workspace.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://github.com/alawein/qmatsim"
+    },
+    {
+      "slug": "qmlab",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "qmlab.online",
+      "about": "Quantum ML web lab with React, TypeScript, Vite, and Supabase.",
+      "status": "frozen",
+      "visibility": "private",
+      "url": "https://qmlab.online"
+    },
+    {
+      "slug": "quantumalgo",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "quantumalgo",
+      "about": "Python library and experiments for quantum algorithms applied to combinatorial optimization.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/quantumalgo"
+    },
+    {
+      "slug": "qubeml",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "qubeml",
+      "about": "Quantum machine learning experiments and research.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://github.com/alawein/qubeml"
+    },
+    {
+      "slug": "scicomp",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "scicomp",
+      "about": "Scientific computing utilities and shared numerical tooling.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://github.com/alawein/scicomp"
+    },
+    {
+      "slug": "simcore",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "simcore.dev",
+      "about": "Scientific simulation core for interactive modeling and numerical exploration.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://simcore.dev"
+    },
+    {
+      "slug": "spincirc",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "spincirc",
+      "about": "Spintronics circuit simulation and modeling research workspace.",
+      "status": "frozen",
+      "visibility": "public",
+      "url": "https://github.com/alawein/spincirc"
+    },
+    {
+      "slug": "veyra",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Veyra",
+      "about": "Voice governance for AI-assisted writing: LLM-generated content signals, voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo monorepo).",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/veyra"
+    },
+    {
+      "slug": "alawein",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "alawein",
+      "about": "Governance control plane, catalog SSOT, profile generation, and documentation enforcement.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://github.com/alawein/alawein"
+    },
+    {
+      "slug": "design-system",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "design-system",
+      "about": "Shared design tokens, themes, UI components, and generated brand asset packs.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/design-system"
+    },
+    {
+      "slug": "incore",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "incore",
+      "about": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/incore"
+    },
+    {
+      "slug": "knowledge-base",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "knowledge-base",
+      "about": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://knowledge-base-alawein.vercel.app"
+    },
+    {
+      "slug": "outpost",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "Outpost",
+      "about": "Personal kit that installs prompts for coding agents.",
+      "status": "active",
+      "visibility": "public",
+      "url": "https://github.com/alawein/outpost"
+    },
+    {
+      "slug": "prompty",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "prompty",
+      "about": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/prompty"
+    },
+    {
+      "slug": "workspace-control",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "Workspace Control",
+      "about": "Workspace control-plane inventory engine, registry, and operational tooling.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/workspace-control"
+    },
+    {
+      "slug": "workspace-tools",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "workspace-tools",
+      "about": "Workspace execution layer for scaffolding, audits, sync, drift detection, and rollout automation.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/workspace-tools"
+    },
+    {
+      "slug": "atelier-rounaq",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Atelier Rounaq",
+      "about": "Studio and portfolio site for a luxury atelier.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://atelier-rounaq.com"
+    },
+    {
+      "slug": "auditraise",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Auditraise",
+      "about": "AI-assisted local marketing audits with operator dashboard and follow-up content workflows.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/auditraise"
+    },
+    {
+      "slug": "bolts",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Bolts",
+      "about": "Fitness transformation plans with Next.js, Stripe, Supabase, and Python tooling.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://bolts.fit"
+    },
+    {
+      "slug": "gymboy",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Gymboy",
+      "about": "Fitness coaching platform with a retro progression-first training interface.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://gymboy.coach"
+    },
+    {
+      "slug": "repz",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "REPZ",
+      "about": "AI-powered coaching platform for fitness professionals and clients.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://repzcoach.com"
+    },
+    {
+      "slug": "scribd",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Scribd",
+      "about": "Fitness publishing and content surface aligned with the shared design system.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://scribd.fit"
+    },
+    {
+      "slug": "meshal-web",
+      "lane": "ship",
+      "bucket": "sites",
+      "name": "meshal.ai",
+      "about": "Personal site and portfolio with project deep-dives, case studies, and contact.",
+      "status": "maintained",
+      "visibility": "private",
+      "url": "https://www.meshal.ai"
+    },
+    {
+      "slug": "roka-oakland-hustle",
+      "lane": "ship",
+      "bucket": "sites",
+      "name": "Roka: Oakland Hustle",
+      "about": "Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/roka-oakland-hustle"
+    },
+    {
+      "slug": "handshake",
+      "lane": "work",
+      "bucket": "work",
+      "name": "Handshake AI Eval",
+      "about": "LLM evaluation monorepo with shared core and project validators.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/handshake"
+    },
+    {
+      "slug": "mercor",
+      "lane": "work",
+      "bucket": "work",
+      "name": "Mercor LLM Failsafe",
+      "about": "Employer project for LLM failsafe experimentation and evaluation.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/mercor"
+    },
+    {
+      "slug": "turing",
+      "lane": "work",
+      "bucket": "work",
+      "name": "Turing engagements",
+      "about": "Private catalog-collection workspace for Turing interview and engagement artifacts (benchmarks, evaluations, specs).",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/turing"
+    }
+  ]
+}

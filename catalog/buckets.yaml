@@ -1,0 +1,46 @@
+---
+schemaVersion: "1.0.0"
+lastVerified: "2026-08-27"
+# Minimal on-disk layout buckets for alawein/.
+# Human catalog edits: catalog/index.yaml → compile-index.py → repos.json
+# SSOT for validate-repo-framework.py and validate-topology.py enums.
+buckets:
+  core:
+    label: Core
+    meaning: Control plane, shared infra, design system, and workspace tooling
+    code_archetype: true
+    absorbs: [tools]
+  apps:
+    label: Apps
+    meaning: Shippable products and family-maintained applications
+    code_archetype: true
+    absorbs: [products, family]
+  lab:
+    label: Lab
+    meaning: Research, simulations, and early-stage product bets
+    code_archetype: true
+    absorbs: [research, ventures]
+  sites:
+    label: Sites
+    meaning: Public portfolio and identity web surfaces
+    code_archetype: false
+    absorbs: [personal]
+  work:
+    label: Work
+    meaning: Contract, interview, and employer-adjacent repositories
+    code_archetype: false
+    absorbs: [jobs-projects]
+  archive:
+    label: Archive
+    meaning: Frozen repositories under _archive/ (Category archive)
+    code_archetype: false
+    on_disk_prefix: _archive
+legacy_bucket_map:
+  tools: core
+  products: apps
+  family: apps
+  research: lab
+  ventures: lab
+  personal: sites
+  jobs-projects: work
+  archive: archive

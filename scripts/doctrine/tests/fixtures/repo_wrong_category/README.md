@@ -1,7 +1,7 @@
 # repo-wrong-category
 
 Status:      active
-Category:    research
+Category:    sites
 Owner:       alawein
 Visibility:  private
 Purpose:     Test fixture for category mismatch (placed inside products/).

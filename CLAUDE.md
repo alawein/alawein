@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-07-06
-last_updated: 2026-06-29
+last-verified: 2026-08-27
+last_updated: 2026-08-27
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -71,9 +71,10 @@ alawein/
     These are internal or archived trees, safe without strict frontmatter or
     governed-voice compliance.
 12. `projects.json` and `catalog/generated/*` are generated from
-    `catalog/repos.json` by `scripts/catalog/build-catalog.py`. Edit the source
-    `repos.json`, then regenerate and run `validate-catalog.py --strict`; never
-    hand-edit the generated outputs.
+    `catalog/index.yaml` (compiled to `catalog/repos.json`) by
+    `scripts/catalog/build-catalog.py`. Edit `catalog/index.yaml` (lanes layout),
+    then run `build-catalog.py` and `validate-catalog.py --strict`; never hand-edit
+    generated outputs.
 
 ## Style contract
 

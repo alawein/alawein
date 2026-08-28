@@ -8,6 +8,7 @@ on:
       - 'catalog/**'
       - 'profile-from-guides.yaml'
       - 'scripts/catalog/build-catalog.py'
+      - 'scripts/catalog/compile_index.py'
       - 'scripts/catalog/catalog_lib.py'
   pull_request:
     paths:
@@ -15,6 +16,7 @@ on:
       - 'catalog/**'
       - 'profile-from-guides.yaml'
       - 'scripts/catalog/build-catalog.py'
+      - 'scripts/catalog/compile_index.py'
       - 'scripts/catalog/catalog_lib.py'
   schedule:
     # Weekly drift audit catches upstream dependency changes that bypass the

@@ -1,13 +1,22 @@
 ---
 title: Public readiness gate: implementation plan
 date: 2026-08-27
-status: draft
+status: completed
 type: implementation-plan
 source_spec: docs/internal/specs/2026-08-27-public-readiness-gate-design.md
 last_updated: 2026-08-27
 ---
 
 # Public Readiness Gate Implementation Plan
+
+> Status note (2026-08-27): Tasks 0 to 9 executed on `feat/public-readiness-gate`
+> (16 commits plus the final fix wave). Deviations from the text below are
+> recorded in the SDD ledger rulings and mirrored in the final report:
+> `outpost` was seeded during the run and scanned like the others; the batch
+> became llmworks, loopholelab, provegate (flipped private with approval);
+> `alawein` holds a P2 record under grace; the compiler no longer resurrects a
+> prior `visibility`; grace is silent offline and a warning in the gate CLI.
+> Task 10 ends with the PR, opened stacked on PR #184.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

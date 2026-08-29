@@ -322,10 +322,9 @@
       "research_domain": "Quantum foundations — CHSH / Bell education site",
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "grace_until": "2026-09-30",
-        "notes": "pinned; P0 candidate after README redo wave 1"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {
@@ -458,10 +457,9 @@
       ],
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "grace_until": "2026-09-30",
-        "notes": "pinned; P0 candidate after README redo wave 1; B6 by local gitleaks (0 leaks)"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {
@@ -657,9 +655,9 @@
       "research_domain": "Magnetic logic gates",
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "notes": "cited research, CITATION.cff; P0 candidate"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {
@@ -924,10 +922,9 @@
       "research_domain": "Quantum material simulation",
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "grace_until": "2026-09-30",
-        "notes": "pinned; cited research; P0 candidate after README redo wave 1"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {
@@ -1182,9 +1179,9 @@
       "research_domain": "Scientific computing utilities",
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "notes": "cited research, CITATION.cff; P0 candidate"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {
@@ -1313,9 +1310,9 @@
       "research_domain": "Spintronics circuit simulation",
       "lane": "lab",
       "promotion": {
-        "tier": "P1",
-        "scanned": "2026-08-27",
-        "notes": "cited research, CITATION.cff; P0 candidate"
+        "tier": "P0",
+        "scanned": "2026-08-29",
+        "notes": "P0 via README redo PR"
       }
     },
     {

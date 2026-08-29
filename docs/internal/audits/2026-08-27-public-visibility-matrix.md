@@ -1,7 +1,7 @@
 ---
 type: audit
 status: draft
-last_updated: 2026-08-27
+last_updated: 2026-08-29
 owner: meshal
 ---
 
@@ -46,17 +46,17 @@ or `not scanned` where the tool was unavailable. All GitHub calls were read-only
 | slug | catalog | GitHub | pinned | type | bucket | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | tier | action |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | alawein | public | public | no | governance | core | pass | pass | n/a | n/a | pass | fail: 224 gitleaks findings in history, 2 open alerts | fail: `CI - Documentation Contract` (ci.yml) red on main since 2026-08-17, run 32068929727 on HEAD; supporting detail, `Documentation Audit` (docs-validation.yml) and `Workspace Audit` (workspace-audit.yml) also red on HEAD | n/a | n/a | P2 | seed P2 under grace to 2026-09-30; hub, never flipped; fix B6 and B7 in place |
-| chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, P0 candidate; grace to 2026-09-30 as a current pin |
-| fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | pass: gitleaks local 0 leaks | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
+| chshlab | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P0 | P0 via PR #73 (README redo wave 1, merged 2026-08-29) |
+| fallax | public | public | yes | tooling | lab | pass | pass | pass | pass | pass | pass: gitleaks local 0 leaks | pass | pass | fail: pinned without a P0 record | P0 | P0 via PR #65 (README redo wave 1, merged 2026-08-29) |
 | llmworks | public | public | yes | product | lab | pass | pass | pass | pass | pass | fail: gitleaks local 1 leak (jwt) | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B6 |
 | loopholelab | public | public | yes | research | lab | pass | pass | pass | pass | fail: `/app`, `/app/dashboard`, `/docs` 404 on loopholelab.online | pass | pass | pass | fail: pinned without a P0 record | P2 | private-first batch, B5 |
-| maglogic | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
+| maglogic | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P0 | P0 via PR #94 (README redo wave 1, merged 2026-08-29) |
 | outpost | public | public | catalog only | tooling | core | pass | pass | pass | pass | pass | pass | pass | pass | fail: catalog pin without a P0 record, in profile_pins; live pin pending manual UI step | P1 | seed P1; settle the catalog pin against the live list |
 | provegate | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | fail: CI `test` red on HEAD at the Lint step | pass | n/a | P2 | private-first batch, B7 |
-| qmatsim | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P1 | seed P1, grace to 2026-09-30, P0 candidate |
+| qmatsim | public | public | yes | research | lab | pass | pass | pass | pass | pass | pass | pass | pass | fail: pinned without a P0 record | P0 | P0 via PR #42 (README redo wave 1, merged 2026-08-29) |
 | qubeml | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current |
-| scicomp | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
-| spincirc | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P1 | seed P1, no grace; cited research, scan current, P0 candidate |
+| scicomp | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P0 | P0 via PR #101 (README redo wave 1, merged 2026-08-29) |
+| spincirc | public | public | no | research | lab | pass | pass | pass | pass | pass | pass | pass: no build workflow, Status says frozen | pass | n/a | P0 | P0 via PR #101 (README redo wave 1, merged 2026-08-29) |
 
 Eight of the twelve pass every one of B1 to B8: `chshlab`, `fallax`,
 `maglogic`, `outpost`, `qmatsim`, `qubeml`, `scicomp`, `spincirc`.
@@ -110,6 +110,8 @@ three. Two of the three are live profile pins, so the pin list shrinks either
 way until the checks pass.
 
 ## Findings
+
+- README redo wave 1 merged 2026-08-29: qmatsim, spincirc, maglogic, scicomp, chshlab, fallax now hold P0 records (scanned 2026-08-29, no grace); pins under grace drop to outpost only.
 
 - Exact locations are in the private scan ledger, not in this file.
 - Validators: `validate-readme-topology.py --github-api` exits 1 on `attributa`

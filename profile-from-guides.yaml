@@ -22,7 +22,7 @@ tags:
 - ai
 - systems
 - governance
-updated: 2026-08-27
+updated: 2026-08-29
 variant_default: balanced
 urls:
   website: https://meshal.ai
@@ -51,10 +51,12 @@ bio_bullets: 'UC Berkeley PhD EECS
 linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Kohyr
   · PhD EECS, UC Berkeley
 profile_pins:
-  - outpost
+  - qmatsim
+  - spincirc
+  - maglogic
+  - scicomp
   - fallax
   - chshlab
-  - qmatsim
 research_rows:
   - slug: qmatsim
     url: https://github.com/alawein/qmatsim

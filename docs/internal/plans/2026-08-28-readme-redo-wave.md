@@ -1,13 +1,20 @@
 ---
 title: README redo wave: implementation plan
 date: 2026-08-28
-status: draft
+status: completed
 type: implementation-plan
 source_spec: docs/internal/specs/2026-08-28-readme-redo-wave-design.md
-last_updated: 2026-08-28
+last_updated: 2026-08-29
 ---
 
 # README Redo Wave Implementation Plan
+
+> Status note (2026-08-29): all five tasks executed. Six sibling PRs merged
+> 2026-08-29 (qmatsim #42, spincirc #101, maglogic #94, scicomp #101,
+> chshlab #73, fallax #65); records at P0; final report written. Deviations:
+> spincirc carried a one-line requirements fix; scicomp names the framework
+> check under a prerequisite line; the qmatsim and chshlab CITATION.cff files
+> ship without a DOI; the report file is named public-portfolio-report.md.
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -289,7 +296,7 @@ For each PR: `gh pr checks <n> --watch --interval 30`; when every required check
 - Modify: `catalog/index.yaml` (six records), regenerate outputs
 - Modify: `docs/internal/audits/2026-08-27-public-visibility-matrix.md` (six rows, `last_updated`)
 - Modify: `docs/batches/public-credibility-1/manifest.yaml` (results)
-- Create: `docs/internal/audits/2026-08-28-public-portfolio-sweep.md`
+- Create: `docs/internal/audits/2026-08-28-public-portfolio-report.md`
 - Modify: `CHANGELOG.md` (`[Unreleased]` bullets)
 
 - [ ] **Step 1: Fleet validators after the last merge**
@@ -319,7 +326,7 @@ Matrix: the six rows get tier `P0` and action `P0 via PR #<n>`; the Findings sec
 
 - [ ] **Step 4: Final sweep report**
 
-`docs/internal/audits/2026-08-28-public-portfolio-sweep.md` (frontmatter as the matrix) with: executive summary (public to private count: 3; promoted to P0: 6; pins delta: catalog 6 to 4, live 5 to 3, proposal below); the visibility matrix summary table (40 rows compressed to slug, visibility, tier); benchmark patterns applied (link the patterns doc, list the P0 items most often failed before the wave); repos still blocked with owner action (alawein B6 and B7, the three demoted repos, the dead metadata token, outpost pin); recommended next wave (qubeml and outpost READMEs, `sites` bucket promotion of meshal-web, secret rotation).
+`docs/internal/audits/2026-08-28-public-portfolio-report.md` (frontmatter as the matrix) with: executive summary (public to private count: 3; promoted to P0: 6; pins delta: catalog 6 to 4, live 5 to 3, proposal below); the visibility matrix summary table (40 rows compressed to slug, visibility, tier); benchmark patterns applied (link the patterns doc, list the P0 items most often failed before the wave); repos still blocked with owner action (alawein B6 and B7, the three demoted repos, the dead metadata token, outpost pin); recommended next wave (qubeml and outpost READMEs, `sites` bucket promotion of meshal-web, secret rotation).
 
 Pin proposal (user decides, max 6, P0 only): qmatsim, spincirc, maglogic, scicomp, fallax, chshlab. State that `outpost` is P1 under grace and would have to leave `profile_pins` if the six are taken.
 
@@ -330,7 +337,7 @@ Add under `[Unreleased]` `### Added`: the patterns doc, the batch record, the sw
 - [ ] **Step 6: Commit, PR, merge**
 
 ```bash
-git add catalog/index.yaml catalog/repos.json projects.json catalog/generated README.md docs/internal/audits/2026-08-27-public-visibility-matrix.md docs/internal/audits/2026-08-28-public-portfolio-sweep.md docs/batches/public-credibility-1/manifest.yaml CHANGELOG.md
+git add catalog/index.yaml catalog/repos.json projects.json catalog/generated README.md docs/internal/audits/2026-08-27-public-visibility-matrix.md docs/internal/audits/2026-08-28-public-portfolio-report.md docs/batches/public-credibility-1/manifest.yaml CHANGELOG.md
 git commit -m "Promote six pin candidates to P0 and record the portfolio sweep"
 ```
 Push and PR need the user's send word; merge is pre-approved once CI is green. PR title `Promote six pin candidates to P0 after the README redo wave`.

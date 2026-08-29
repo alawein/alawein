@@ -9,36 +9,36 @@ repos:
   - slug: qmatsim
     type: research
     tasks: [header, first-paragraph, status, reproduction, citation, planning-voice]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 42
+    merged: 2a1237aa
+    decision: PUBLIC-P0-PIN
   - slug: spincirc
     type: research
     tasks: [header, first-paragraph, status, reproduction, planning-voice]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 101
+    merged: e91a38c9
+    decision: PUBLIC-P0-PIN
   - slug: maglogic
     type: research
     tasks: [header, first-paragraph, status, reproduction, compose-path, planning-voice]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 94
+    merged: 2c237bfd
+    decision: PUBLIC-P0-PIN
   - slug: scicomp
     type: research
     tasks: [header, first-paragraph, status, reproduction, planning-voice]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 101
+    merged: 7012a4c2
+    decision: PUBLIC-P0-PIN
   - slug: chshlab
     type: research
     tasks: [header, first-paragraph, status, live-surface, build, citation, internal-note]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 73
+    merged: 67046374
+    decision: PUBLIC-P0-PIN
   - slug: fallax
     type: tooling
     tasks: [header, first-paragraph, status, live-surface, reproduction, publish-mode, consumers]
-    pr: null
-    merged: null
-    decision: pending
+    pr: 65
+    merged: 207cc6e5
+    decision: PUBLIC-P0-PIN

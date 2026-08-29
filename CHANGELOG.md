@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-08-28
+last_updated: 2026-08-29
 tags: [changelog, version-history, releases]
 ---
 
@@ -25,6 +25,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- [`docs/internal/audits/2026-08-28-public-benchmark-patterns.md`](docs/internal/audits/2026-08-28-public-benchmark-patterns.md): benchmark study behind the P0 README checklist.
+- [`docs/batches/public-credibility-1/manifest.yaml`](docs/batches/public-credibility-1/manifest.yaml): record of the README redo wave (six PRs, merge SHAs, decisions).
+- [`docs/internal/audits/2026-08-28-public-portfolio-report.md`](docs/internal/audits/2026-08-28-public-portfolio-report.md): final report of the private-by-default work.
 - [`catalog/buckets.yaml`](catalog/buckets.yaml): minimal six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`) with legacy map from the prior eight folders.
 - [`config/model-routing.yaml`](config/model-routing.yaml) and [`scripts/ops/openrouter_route.py`](scripts/ops/openrouter_route.py): OpenRouter task routes (Qwen, Gemini, GLM, Kimi) and named workflows (`voice-resweep`, `catalog-audit`, `pr-ready`).
 - [`scripts/ops/migrate_buckets.py`](scripts/ops/migrate_buckets.py): one-shot workspace migrator for catalog paths and README `Category` headers.
@@ -48,6 +51,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- Six pin candidates (qmatsim, spincirc, maglogic, scicomp, chshlab, fallax) promoted to `promotion.tier: P0` after the README redo wave; grace removed from their records.
 - Portfolio buckets collapsed from eight on-disk folders to six meaningful groups; `catalog/repos.json` `local_path` roots updated (`core/`, `apps/`, `lab/`, `sites/`, `work/`).
 - `compile_index.py` preserves existing catalog metadata (for example `type`) instead of overwriting from bucket defaults; inventory reconciliation uses projected workspace paths so derived feeds are CI-stable.
 - `projects.schema.json` bucket enum aligned to the six-bucket layout (`core`, `apps`, `lab`, `sites`, `work`, `archive`).

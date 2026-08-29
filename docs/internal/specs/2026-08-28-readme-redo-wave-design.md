@@ -1,7 +1,7 @@
 ---
 type: managed
 status: draft
-last_updated: 2026-08-28
+last_updated: 2026-08-29
 owner: meshal
 ---
 
@@ -157,7 +157,7 @@ the owner cannot self-give. Commit subject `docs(readme): <what changed>`.
 3. Matrix rows updated (tier, action) with `last_updated` bumped.
 4. Pin proposal for the user: up to 6 from P0. `outpost` is P1 under grace
    and not part of this wave; keeping or dropping its pin is the user's call.
-5. Final report `docs/internal/audits/2026-08-28-public-portfolio-sweep.md`:
+5. Final report `docs/internal/audits/2026-08-28-public-portfolio-report.md`:
    public to private count, promoted count, pins delta, patterns applied,
    repos still blocked with owner action, next wave.
 6. Batch record `docs/batches/public-credibility-1/manifest.yaml`: wave,

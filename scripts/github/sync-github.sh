@@ -56,7 +56,7 @@ import yaml
 ORG_REPO = Path(sys.argv[1]).resolve()
 CHECK = sys.argv[2] == "true"
 TARGET = sys.argv[3]
-WORKSPACE = ORG_REPO.parent
+WORKSPACE = ORG_REPO.parent.parent
 MANIFEST_PATH = ORG_REPO / "github-baseline.yaml"
 
 data = yaml.safe_load(MANIFEST_PATH.read_text(encoding="utf-8")) or {}

@@ -387,8 +387,8 @@
       "slug": "mercor",
       "lane": "work",
       "bucket": "work",
-      "name": "Mercor LLM Failsafe",
-      "about": "Employer project for LLM failsafe experimentation and evaluation.",
+      "name": "Mercor AI/ML Experts Catalog",
+      "about": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "status": "active",
       "visibility": "private",
       "url": "https://github.com/alawein/mercor"

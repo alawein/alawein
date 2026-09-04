@@ -254,11 +254,11 @@ lanes:
     - eval
     - handshake-hai
   - slug: mercor
-    about: Employer project for LLM failsafe experimentation and evaluation.
-    name: Mercor LLM Failsafe
+    about: 'Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review
+      knowledge bases, physics problem writing, SWE documentation, public physics-benchmark
+      solving, and executive deck production.'
+    name: Mercor AI/ML Experts Catalog
     url: https://github.com/alawein/mercor
-    legacy_slugs:
-    - mercor-llm-failsafe
   - slug: turing
     about: Private catalog-collection workspace for Turing interview and engagement
       artifacts (benchmarks, evaluations, specs).

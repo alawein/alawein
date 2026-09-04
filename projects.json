@@ -49,7 +49,7 @@
         "OpenCV",
         "FastAPI"
       ],
-      "category": "active",
+      "category": "frozen",
       "legacy_slugs": [
         "event-discovery-framework"
       ],
@@ -290,7 +290,7 @@
         "Vite",
         "Supabase"
       ],
-      "category": "active",
+      "category": "frozen",
       "url": "https://qmlab.online",
       "portfolio_domain": "Personal",
       "bucket": "lab",
@@ -539,14 +539,11 @@
       "visibility": "public"
     },
     {
-      "name": "Mercor LLM Failsafe",
+      "name": "Mercor AI/ML Experts Catalog",
       "slug": "mercor",
       "repo": "alawein/mercor",
-      "domain": "Employer project for LLM failsafe experimentation and evaluation.",
-      "description": "Employer project for LLM failsafe experimentation and evaluation.",
-      "legacy_slugs": [
-        "mercor-llm-failsafe"
-      ],
+      "domain": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
+      "description": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "url": "https://github.com/alawein/mercor",
       "bucket": "work",
       "status": "active",

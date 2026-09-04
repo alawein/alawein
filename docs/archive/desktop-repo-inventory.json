@@ -335,7 +335,7 @@
     {
       "folder": "work/mercor",
       "remote_slug": "alawein/mercor",
-      "archetype": "python-library",
+      "archetype": "docs-hub",
       "tier": "product",
       "stack": "python, llm"
     },

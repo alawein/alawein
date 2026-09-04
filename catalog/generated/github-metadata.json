@@ -145,7 +145,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -209,7 +209,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -253,7 +253,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -297,7 +297,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -341,7 +341,7 @@
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -362,7 +362,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -405,7 +405,7 @@
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -426,7 +426,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -448,7 +448,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -550,7 +550,7 @@
         "compliance": "internal-only",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "midnight"
       },
       "actions_settings": {
         "default_workflow_permissions": "read",
@@ -676,7 +676,7 @@
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "legacy"
+        "brand_family": "forge"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -785,7 +785,7 @@
         "compliance": "public-data",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "forge"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -829,7 +829,7 @@
         "compliance": "public-data",
         "repo_archetype": "game-project",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -850,7 +850,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "wisdom"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -858,7 +858,7 @@
     {
       "slug": "mercor",
       "repo": "alawein/mercor",
-      "description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "homepage": "https://github.com/alawein/mercor",
       "topics": [
         "llm",
@@ -867,7 +867,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-library",
+        "repo_archetype": "docs-hub",
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
@@ -890,7 +890,7 @@
         "compliance": "internal-only",
         "repo_archetype": "docs-hub",
         "docs_maturity": "minimal",
-        "brand_family": "legacy"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}

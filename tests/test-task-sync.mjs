@@ -39,7 +39,6 @@ const LABEL_TO_PRIORITY = {
 
 const REPO_TO_DOMAIN = {
   "meshal-web": "Personal",
-  morphism: "Work",
   neper: "Scientific Computing",
   qaplibria: "Scientific Computing",
   edfp: "Scientific Computing",
@@ -76,10 +75,10 @@ describe("parseExternalId", () => {
   });
 
   it("roundtrips with makeExternalId", () => {
-    const id = makeExternalId("alawein", "morphism", 99);
+    const id = makeExternalId("alawein", "meshal-web", 99);
     const parsed = parseExternalId(id);
     assert.equal(parsed.owner, "alawein");
-    assert.equal(parsed.repo, "morphism");
+    assert.equal(parsed.repo, "meshal-web");
     assert.equal(parsed.number, 99);
   });
 });
@@ -140,7 +139,6 @@ describe("LABEL_TO_PRIORITY", () => {
 describe("REPO_TO_DOMAIN", () => {
   it("maps all target repos", () => {
     assert.equal(REPO_TO_DOMAIN["meshal-web"], "Personal");
-    assert.equal(REPO_TO_DOMAIN.morphism, "Work");
     assert.equal(REPO_TO_DOMAIN.neper, "Scientific Computing");
     assert.equal(REPO_TO_DOMAIN.qaplibria, "Scientific Computing");
     assert.equal(REPO_TO_DOMAIN.edfp, "Scientific Computing");

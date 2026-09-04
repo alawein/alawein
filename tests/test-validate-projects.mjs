@@ -11,7 +11,7 @@ import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 
-const SCRIPT = join(import.meta.dirname, "..", "scripts", "validate-projects-json.mjs");
+const SCRIPT = join(import.meta.dirname, "..", "scripts", "catalog", "validate-projects-json.py");
 
 function makeTmpDir() {
   const dir = join(tmpdir(), `test-validate-${Date.now()}-${Math.random().toString(36).slice(2)}`);
@@ -28,7 +28,7 @@ function runValidator(dir) {
   // We can't easily override that, so we test via a wrapper that patches the path.
   // Instead, test the actual projects.json in the repo.
   try {
-    const out = execFileSync("node", [SCRIPT], {
+    const out = execFileSync("python3", [SCRIPT], {
       cwd: join(import.meta.dirname, ".."),
       encoding: "utf8",
       timeout: 10000,
@@ -43,6 +43,6 @@ describe("validate-projects-json", () => {
   it("passes on the real projects.json", () => {
     const result = runValidator();
     assert.equal(result.exitCode, 0, `Expected exit 0, got ${result.exitCode}. stderr: ${result.stderr}`);
-    assert.match(result.stdout, /validation passed/);
+    assert.match(result.stdout + result.stderr, /validation passed/);
   });
 });

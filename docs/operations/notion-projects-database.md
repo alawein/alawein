@@ -5,14 +5,15 @@ sync: none
 sla: none
 title: Notion Projects (Canonical), sync and checklist
 description: Runbook for syncing projects.json to Notion and required database properties.
-last_updated: 2026-07-06
+last_updated: 2026-09-04
 category: operations
 audience: [ai-agents, contributors]
 status: active
 related:
   - ../../projects.json
-  - ../../scripts/sync-to-notion.mjs
+  - ../../scripts/notion/sync-to-notion.mjs
   - ./github-notion-sync-glossary.md
+  - ./admin-ops-integration-checklist.md
 ---
 
 # Notion “Projects (Canonical)”: sync and checklist
@@ -32,27 +33,27 @@ export NOTION_DB_ID="..."
 # export NOTION_CATEGORY_PROPERTY="Status"
 # export NOTION_TAGS_PROPERTY="Stack"
 
-node scripts/sync-to-notion.mjs
+node scripts/notion/sync-to-notion.mjs
 ```
 
 **Windows (CI-parity env):** put `NOTION_TOKEN` and `NOTION_DB_ID` in `.env.local`, then from the repo root:
 
 ```powershell
-pwsh -File scripts/run-notion-local.ps1
+pwsh -File scripts/notion/run-notion-local.ps1
 ```
 
-That runs `validate-projects-json.mjs`, `sync-to-notion.mjs`, and `verify-notion-canonical-state.mjs` with the same property names as `notion-sync.yml` (private ops repo).
+That runs `validate-projects-json.py`, `sync-to-notion.mjs`, and `verify-notion-canonical-state.mjs` with the same property names as `notion-sync.yml` (private ops repo).
 
 Validate JSON contract locally before sync:
 
 ```bash
-node scripts/validate-projects-json.mjs
+python3 scripts/catalog/validate-projects-json.py
 ```
 
 Optional post-sync invariant check:
 
 ```bash
-node scripts/verify-notion-canonical-state.mjs
+node scripts/notion/verify-notion-canonical-state.mjs
 ```
 
 Data sources in [`projects.json`](../../projects.json):

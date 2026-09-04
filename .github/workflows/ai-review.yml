@@ -100,6 +100,14 @@ jobs:
               ].join('\n'),
             })
 
+      - name: Enforce validation result
+        if: always()
+        run: |
+          if [ "${{ steps.validate.outputs.exit_code }}" != "0" ]; then
+            echo "prompt kit validation failed (exit ${{ steps.validate.outputs.exit_code }})"
+            exit 1
+          fi
+
   catalog-change-summary:
     name: Catalog Change Summary
     runs-on: ubuntu-latest

@@ -1,3 +1,11 @@
+---
+type: canonical
+source: executing-plans session 2026-09-04
+sla: on-change
+last_updated: 2026-09-04
+audience: [ai-agents, contributors]
+---
+
 # Control Plane Audit Remediation Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` (recommended) or `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

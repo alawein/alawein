@@ -13,6 +13,8 @@ import importlib.util
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent.parent
 SCRIPT = ROOT / "scripts" / "github" / "github-baseline-audit.py"
 
@@ -112,3 +114,38 @@ def test_check_repo_skips_manual_repos() -> None:
     errors: list[str] = []
     audit.check_repo({"repo": "some-uncatalogued-manual-repo", "sync": "manual"}, errors)
     assert errors == []
+
+
+# --- resolve_repo_dir rejects catalog data that would escape the workspace ---
+
+
+def test_resolve_rejects_absolute_local_path(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    absolute = str((tmp_path / "elsewhere").resolve())
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": absolute}, "evil")
+
+
+def test_resolve_rejects_parent_traversal(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "../../etc/passwd"}, "evil")
+
+
+def test_resolve_still_returns_flat_fallback_for_uncatalogued_slug_after_fix(tmp_path) -> None:
+    # The traversal/absolute guard only applies to catalogued local_path values;
+    # the uncatalogued flat-slug fallback (a plain repo slug, not catalog data)
+    # must keep working exactly as before.
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    resolved = _repo_paths.resolve_repo_dir(workspace, {}, "not-catalogued")
+    assert resolved == workspace / "not-catalogued"
+
+
+def test_resolve_still_returns_normal_bucketed_path(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    resolved = _repo_paths.resolve_repo_dir(workspace, {"incore": "core/incore"}, "incore")
+    assert resolved == workspace / "core" / "incore"

@@ -68,9 +68,11 @@ Summary:
 - Medium sentences (12–20 words) carry claims; short sentences (5–8 words) close
   sequences and are always complete sentences, never fragments
 - Colons introduce lists, evidential clauses, and claim-to-mechanism links;
-  em dashes wrap parenthetical insertions only
-- Em dash budget: 0–1 per section (tables exempt); 3+ in one paragraph
-  triggers a BLOCKING finding from the voice-check linter
+  replace a parenthetical insertion with commas, parentheses, or a separate
+  sentence instead
+- Em dash policy: none. Em dashes (U+2014) are prohibited on every governed
+  surface, with no per-section budget and no table or inline-code exemption;
+  any em dash triggers a BLOCKING finding from the voice-check linter
 - Keep numbers and units explicit
 - Prefer concrete failure modes over generic positioning: named systems, not
   broad categories

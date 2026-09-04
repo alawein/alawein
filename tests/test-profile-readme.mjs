@@ -5,7 +5,7 @@ import { join } from "node:path";
 
 const profilePath = join(import.meta.dirname, "..", "profile-from-guides.yaml");
 const readmePath = join(import.meta.dirname, "..", "README.md");
-const README_PIN_HEADER = "Pinned below on GitHub carries the portfolio signal. The current focus set is:";
+const RESEARCH_HEADER = "## Research & Scientific Computing";
 
 function parseProfilePins(yamlText) {
   const lines = yamlText.split(/\r?\n/);
@@ -24,49 +24,37 @@ function parseProfilePins(yamlText) {
   return pins;
 }
 
-function parseReadmePins(readmeText) {
+function parseResearchRows(readmeText) {
   const lines = readmeText.split(/\r?\n/);
-  const start = lines.findIndex((line) => line.trim() === README_PIN_HEADER);
-  assert.notEqual(start, -1, "README.md must contain the profile pin header");
+  const start = lines.findIndex((line) => line.trim() === RESEARCH_HEADER);
+  assert.notEqual(start, -1, "README.md must contain the research section");
 
-  const pins = [];
-  const pinLines = [];
-  for (const line of lines.slice(start + 1)) {
-    if (!line.trim()) {
-      if (pins.length) break;
-      continue;
-    }
-    if (!line.startsWith("- ")) {
-      if (pins.length) break;
-      continue;
-    }
-    pinLines.push(line);
-    const match = line.match(/^- \[([^\]]+)\]\(([^)]+)\) - (.+)$/);
-    assert.ok(match, `README pin line is not parseable: ${line}`);
-    pins.push({
-      slug: match[1],
-      url: match[2],
-      description: match[3].trim(),
-    });
+  const rows = [];
+  for (const line of lines.slice(start + 4)) {
+    if (!line.startsWith("|")) break;
+    const match = line.match(/^\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*(.*?)\s*\|$/);
+    assert.ok(match, `README research row is not parseable: ${line}`);
+    rows.push({ slug: match[1], url: match[2], description: match[3] });
   }
-  return { pins, pinLines };
+  return rows;
 }
 
-describe("profile README pin block", () => {
-  const expectedPins = parseProfilePins(readFileSync(profilePath, "utf8"));
-  const { pins } = parseReadmePins(readFileSync(readmePath, "utf8"));
+describe("profile README research rows", () => {
+  const profilePins = parseProfilePins(readFileSync(profilePath, "utf8"));
+  const researchRows = parseResearchRows(readFileSync(readmePath, "utf8"));
+  const pinnedRows = researchRows.slice(0, profilePins.length);
 
-  it("matches profile-from-guides.yaml ordering", () => {
+  it("starts with profile-from-guides.yaml pin ordering", () => {
     assert.deepEqual(
-      pins.map((pin) => pin.slug),
-      expectedPins,
-      "README pin ordering must match profile-from-guides.yaml"
+      pinnedRows.map((row) => row.slug),
+      profilePins,
+      "first README research rows must match profile-from-guides.yaml pins"
     );
   });
 
-  it("renders non-empty descriptions for each pin", () => {
-    for (const pin of pins) {
-      assert.ok(pin.description.length > 0, `README pin '${pin.slug}' must have a description`);
+  it("renders non-empty descriptions for pinned research rows", () => {
+    for (const row of pinnedRows) {
+      assert.ok(row.description.length > 0, `README research row '${row.slug}' must have a description`);
     }
   });
 });

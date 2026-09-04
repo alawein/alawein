@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-05-24
+last_updated: 2026-09-04
 tags: [governance, contributing, workflow, development]
 ---
 
@@ -93,6 +93,10 @@ for the full author and reviewer checklist.
 - Run these before opening a PR:
   - `./scripts/doctrine/validate-doc-contract.sh --full`
   - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md docs/README.md docs/governance/*.md`
+- Run Python script tests from PowerShell with third-party pytest plugins
+  disabled:
+  - `$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = "1"`
+  - `python -m pytest scripts/tests/ -v --tb=short`
 
 ## Documentation
 

@@ -34,7 +34,9 @@ except ImportError:
 
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-WORKSPACE_ROOT = ROOT.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from workspace_paths import workspace_root_for  # noqa: E402
+
 PROJECTS = ROOT / "projects.json"
 SCHEMA = ROOT / "projects.schema.json"
 CATALOG_REPOS = ROOT / "catalog" / "repos.json"
@@ -58,12 +60,13 @@ def validate_schema(projects: dict[str, Any]) -> list[str]:
 
 def validate_local_paths(catalog_repos: list[dict[str, Any]]) -> list[str]:
     errors: list[str] = []
+    workspace_root = workspace_root_for(ROOT)
     for repo in catalog_repos:
         local = repo.get("local_path")
         slug = repo.get("slug", "<unknown>")
         if not local:
             continue
-        resolved = (WORKSPACE_ROOT / local).resolve()
+        resolved = (workspace_root / local).resolve()
         if not resolved.exists():
             errors.append(
                 f"local_path: '{local}' (slug={slug}) does not resolve relative to workspace root"

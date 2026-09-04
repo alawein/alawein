@@ -7,11 +7,13 @@ on:
       - 'docs/**'
       - 'prompt-kits/**'
       - '*.md'
+      - 'profile-from-guides.yaml'
       - 'catalog/**'
       - 'schemas/**'
       - 'styles/**'
       - '.vale.ini'
       - 'scripts/**'
+      - 'tests/**'
       - '.github/workflows/docs-validation.yml'
       - '.github/markdown-link-check-config.json'
       - '.markdownlint.jsonc'
@@ -21,11 +23,13 @@ on:
       - 'docs/**'
       - 'prompt-kits/**'
       - '*.md'
+      - 'profile-from-guides.yaml'
       - 'catalog/**'
       - 'schemas/**'
       - 'styles/**'
       - '.vale.ini'
       - 'scripts/**'
+      - 'tests/**'
       - '.github/workflows/docs-validation.yml'
       - '.github/markdown-link-check-config.json'
       - '.markdownlint.jsonc'
@@ -95,6 +99,9 @@ jobs:
         uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
         with:
           node-version: '20'
+
+      - name: Run Node metadata tests
+        run: node --test tests/*.mjs
 
       - name: Validate markdown syntax
         run: |

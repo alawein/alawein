@@ -27,6 +27,24 @@ audit = _mod
 sys.path.insert(0, str(ROOT / "scripts" / "github"))
 import _repo_paths  # noqa: E402  (shared resolver module both callers use)
 
+sys.path.insert(0, str(ROOT / "scripts"))
+import workspace_paths  # noqa: E402
+
+
+def test_workspace_root_uses_explicit_environment_override(tmp_path) -> None:
+    configured = tmp_path / "configured-workspace"
+
+    assert workspace_paths.workspace_root_for(
+        tmp_path / "core" / "alawein",
+        {"ALAWEIN_WORKSPACE_ROOT": str(configured)},
+    ) == configured.resolve()
+
+
+def test_workspace_root_uses_parent_of_bucket_for_bucketed_repo(tmp_path) -> None:
+    repo_root = tmp_path / "workspace" / "core" / "alawein"
+
+    assert workspace_paths.workspace_root_for(repo_root, {}) == repo_root.parent.parent
+
 
 def test_catalog_local_paths_loaded() -> None:
     # The catalog must load into a non-empty slug -> local_path map.

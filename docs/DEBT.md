@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-08-28
+last_updated: 2026-09-04
 audience: [ai-agents, contributors]
 ---
 
@@ -79,10 +79,10 @@ in the PR).
 
 ### sync-github.sh --check --all and github-baseline-audit.py resolve siblings from ROOT.parent
 - **Date:** 2026-08-27
-- **Where:** `scripts/github/sync-github.sh`, `scripts/github/github-baseline-audit.py`, `scripts/catalog/catalog_lib.py` (`WORKSPACE_ROOT = ROOT.parent`)
-- **What:** After the six-bucket move the control plane lives at `alawein/core/alawein`, so `ROOT.parent` is `alawein/core/` and both commands report every sibling as missing (`core/core/*`, `core/lab/*`). CI runs the audit with `--local`.
-- **Risk if left:** Two commands in the CLAUDE.md validation list are permanently red locally.
-- **Suggested fix:** Resolve the workspace root as `ROOT.parents[1]` or from `catalog/buckets.yaml` `on_disk_prefix`, with a test.
+- **Closed:** 2026-09-04
+- **Where:** `scripts/github/sync-github.sh`, `scripts/github/github-baseline-audit.py`, `scripts/catalog/catalog_lib.py`
+- **What:** After the six-bucket move the control plane lives at `alawein/core/alawein`, so `ROOT.parent` is `alawein/core/` and sibling resolution missed bucketed paths.
+- **Resolution:** All four call sites (`sync-github.sh`, `github-baseline-audit.py`, `catalog_lib.py`, `validate-projects-json.py`) now resolve through one shared `scripts/workspace_paths.py::workspace_root_for()` instead of independently computing `.parent` depth. It infers the workspace root from the known bucket names (`apps/core/lab/sites/work/_archive`) and accepts an `ALAWEIN_WORKSPACE_ROOT` override for linked worktrees, where a fixed-depth `.parent.parent` breaks. `catalog_lib.WORKSPACE_YAML` resolves under `core/knowledge-base`.
 - **Owner:** alawein
 
 ### Gate CI step runs offline because ALAWEIN_METADATA_SYNC_TOKEN is dead

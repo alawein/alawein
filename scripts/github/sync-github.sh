@@ -11,6 +11,9 @@ Usage:
 
 The repo manifest lives in github-baseline.yaml. Repos marked sync: manual are
 reported but skipped by --all.
+
+ALAWEIN_WORKSPACE_ROOT may set the workspace containing bucket directories.
+It is required when this script runs from a linked worktree.
 EOF
 }
 
@@ -56,8 +59,12 @@ import yaml
 ORG_REPO = Path(sys.argv[1]).resolve()
 CHECK = sys.argv[2] == "true"
 TARGET = sys.argv[3]
-WORKSPACE = ORG_REPO.parent.parent
 MANIFEST_PATH = ORG_REPO / "github-baseline.yaml"
+
+sys.path.insert(0, str(ORG_REPO / "scripts"))
+from workspace_paths import workspace_root_for
+
+WORKSPACE = workspace_root_for(ORG_REPO)
 
 data = yaml.safe_load(MANIFEST_PATH.read_text(encoding="utf-8")) or {}
 entries = data.get("repos", [])

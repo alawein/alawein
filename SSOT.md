@@ -4,15 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-08-28
-last_updated: 2026-08-28
+last-verified: 2026-09-04
+last_updated: 2026-09-04
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
-**Version:** 1.4
-**Last Updated:** 2026-08-28
+**Version:** 1.5
+**Last Updated:** 2026-09-04
 **Status:** Active
 
 ---
@@ -23,11 +23,21 @@ Organization profile and portfolio governance source for the `@alawein` GitHub
 organization. This repository is docs-only and owns the canonical workspace
 governance contract for naming, portfolio truth, and migration sequencing.
 
+---
+
 ## Current State
 
-- Organization profile and documentation: ✅ Active
+- Organization profile and documentation: Active
+- Workspace root on disk: `Desktop/GitHub/alawein` (not a git root). Sibling
+  repos live under buckets `apps/`, `core/`, `lab/`, `sites/`, `work/`, and
+  `_archive/`. This control plane is `core/alawein`. Disk SSOT:
+  [`catalog/buckets.yaml`](catalog/buckets.yaml) and
+  [`docs/governance/repo-topology-canon.md`](docs/governance/repo-topology-canon.md).
+  Portfolio lanes (`platform` / `ship` / `lab` / `work` / `archive`) live in
+  `catalog/index.yaml` and are a different axis from disk buckets.
 - Workspace operating contract:
   [`docs/governance/workspace-master-prompt.md`](docs/governance/workspace-master-prompt.md)
+  (layout tables may lag; prefer topology-canon + catalog `local_path`)
 - Workspace batch execution contract:
   [`docs/governance/parallel-batch-execution.md`](docs/governance/parallel-batch-execution.md)
 - Local documentation contract:
@@ -75,63 +85,55 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Global `~/.claude/` platform source (agent config, skills, workflows):
   [`claude-agent-platform/`](claude-agent-platform/), apply changes with
   `bash claude-agent-platform/sync-to-home.sh` (push) or capture with
-  `bash claude-agent-platform/sync-from-home.sh` (pull)
+  `bash claude-agent-platform/sync-from-home.sh` (pull). Retired
+  `scripts/ops/sync-claude.sh` and `render-configs.sh` live under
+  `scripts/ops/_retired/`.
 - Specs live in [`docs/internal/specs/`](docs/internal/specs/);
   plans live in [`docs/internal/plans/`](docs/internal/plans/)
 - D-1 consolidation status: canonical token source is `tools/design-system/tokens/`;
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
-- Workspace audit specs and execution plans:
-  [`docs/internal/specs/`](docs/internal/specs/): triage, per-domain audits, and master execution plan
-  - Active products audit (Spec A):
-    [`docs/internal/specs/2026-04-23-active-products-audit.md`](docs/internal/specs/2026-04-23-active-products-audit.md): 75 findings across 8 repos
 
 ## Structure
 
 ```text
-alawein/
+core/alawein/                 (inside bucketed workspace root)
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── SSOT.md
 ├── LESSONS.md
+├── catalog/                  index.yaml -> repos.json; buckets.yaml
+├── prompt-kits/
+├── claude-agent-platform/
+├── profile-from-guides.yaml
+├── projects.json             generated
 ├── docs/
 │   ├── README.md
-│   └── governance/
-│       ├── workspace-master-prompt.md
-│       ├── operating-model.md
-│       ├── documentation-contract.md
-│       ├── workflow.md
-│       ├── parallel-batch-execution.md
-│       ├── git-operations.md
-│       ├── feature-lifecycle.md
-│       ├── review-playbook.md
-│       ├── merge-policy.md
-│       ├── release-playbook.md
-│       ├── clean-slate-workflow.md
-│       ├── changelog-entry.md
-│       ├── workspace-standardization.md
-│       ├── workspace-layout-audit.md
-│       ├── workspace-resource-map.md
-│       └── github-baseline.md
+│   ├── governance/           see docs/README.md for the golden path
+│   ├── style/
+│   ├── internal/             specs, plans, audits (doctrine-exempt)
+│   └── operations/
 ├── github-baseline.yaml
 └── scripts/
-    ├── doctrine/        # validate-doc-contract.sh, build-style-rules.py, style-advisory-audit.py
-    ├── catalog/         # build-catalog.py, sync-readme.py
-    ├── github/          # sync-github.sh, github-baseline-audit.py, verify-profile-pins.py
-    ├── ops/             # sync-claude.sh, render-configs.sh, generate-index.sh
-    └── notion/          # sync-to-notion.mjs
+    ├── doctrine/             validate-doc-contract.sh, build-style-rules.py, ...
+    ├── catalog/              build-catalog.py, sync-readme.py, catalog_lib.py
+    ├── github/               sync-github.sh, github-baseline-audit.py, verify-profile-pins.py
+    ├── ops/                  generate-index.sh; retired scripts in _retired/
+    └── notion/               sync-to-notion.mjs
 ```
 
 ## What's Next
 
-- Keep canonical files fresh (last-verified ≤ 30 days)
+- Keep canonical files fresh (last-verified ≤ 30 days) and semantically true
+  after layout or generator changes
 - Keep README/project data/workspace docs synchronized for any naming or domain
   change
 - Keep the GitHub baseline manifest and generated repo files in sync for the
   active cohort
-- Complete phased workspace directives (D-1 through D-5) with org README sync
-  at each structural milestone
+- Before 2026-09-30: clear or renew public-readiness grace on `alawein` (and any
+  remaining grace pins); see `docs/DEBT.md`
+- Push catalog `about` text to GitHub About where drift remains (fleet hygiene)
 
 ---
 

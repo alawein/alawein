@@ -16,8 +16,6 @@ on:
       - "scripts/doctrine/tests/**"
       - "catalog/repos.json"
       - "scripts/ops/generate-index.sh"
-      - "scripts/ops/sync-claude.sh"
-      - "scripts/ops/render-configs.sh"
       - ".github/workflows/docs-doctrine.yml"
   pull_request:
     paths:
@@ -34,11 +32,9 @@ on:
       - "scripts/doctrine/tests/**"
       - "catalog/repos.json"
       - "scripts/ops/generate-index.sh"
-      - "scripts/ops/sync-claude.sh"
-      - "scripts/ops/render-configs.sh"
       - ".github/workflows/docs-doctrine.yml"
   schedule:
-    # Monthly freshness audit â€” 1st of each month at 06:00 UTC
+    # Monthly freshness audit - 1st of each month at 06:00 UTC
     - cron: "0 6 1 * *"
 
 concurrency:
@@ -74,6 +70,8 @@ jobs:
       - name: Validate public readiness gate (catalog rules)
         run: python scripts/github/validate-visibility.py --offline
       - name: Run doctrine script tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
         run: python -m pytest scripts/doctrine/tests/ -v --tb=short
 
   drift-check:
@@ -85,9 +83,7 @@ jobs:
         run: |
           echo "=== generate-index.sh ==="
           bash scripts/ops/generate-index.sh .
-
-          echo "=== render-configs.sh ==="
-          bash scripts/ops/render-configs.sh
+          # sync-claude.sh and render-configs.sh were retired to scripts/ops/_retired/
 
       - name: Check for drift
         run: |

@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# RETIRED 2026-09-01 (command-center-plan-v0-3, decision 1): superseded by
+# native AGENTS.md support across Claude Code, Cursor, Codex, Copilot, and
+# Kilo Code. Kept for reference, not run. See knowledge-base/db/plans/command-center-plan-v0-3.md.
 # render-configs.sh -- renders config files from templates
 # Part of Docs Doctrine (Phase 3: Introduce Generation)
 #

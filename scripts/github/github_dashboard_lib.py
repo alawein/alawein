@@ -890,7 +890,21 @@ th {
 
 
 def render_app_js() -> str:
-    return """async function loadDashboard() {
+    return """function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (ch) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[ch]);
+}
+
+function safeGitHubUrl(url) {
+  return typeof url === "string" && /^https:\\/\\/github\\.com\\//.test(url) ? url : "#";
+}
+
+async function loadDashboard() {
   const meta = document.getElementById("meta");
   const cards = document.getElementById("kpi-cards");
   const releases = document.getElementById("recent-releases");
@@ -921,7 +935,7 @@ def render_app_js() -> str:
     for (const [label, value, delta] of kpis) {
       const el = document.createElement("article");
       el.className = "card";
-      el.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div><div class="delta">Delta: ${delta}</div>`;
+      el.innerHTML = `<div class="label">${escapeHtml(label)}</div><div class="value">${escapeHtml(value)}</div><div class="delta">Delta: ${escapeHtml(delta)}</div>`;
       cards.appendChild(el);
     }
 
@@ -929,9 +943,9 @@ def render_app_js() -> str:
     for (const row of data.recentReleases.slice(0, 8)) {
       const el = document.createElement("div");
       el.className = "row";
-      el.innerHTML = `<strong>${row.nameWithOwner} · ${row.tagName}</strong>
-        <div class="muted">${row.publishedAt || "n/a"}</div>
-        <div class="muted">${(row.description || "No release notes").slice(0, 220)}</div>`;
+      el.innerHTML = `<strong>${escapeHtml(row.nameWithOwner)} · ${escapeHtml(row.tagName)}</strong>
+        <div class="muted">${escapeHtml(row.publishedAt || "n/a")}</div>
+        <div class="muted">${escapeHtml((row.description || "No release notes").slice(0, 220))}</div>`;
       releases.appendChild(el);
     }
     if (!data.recentReleases.length) {
@@ -942,10 +956,10 @@ def render_app_js() -> str:
     for (const row of data.attention.repos.filter((repo) => repo.score > 0).slice(0, 8)) {
       const el = document.createElement("div");
       el.className = "row";
-      const flags = row.flags.map((flag) => flag.label).join(", ");
+      const flags = row.flags.map((flag) => escapeHtml(flag.label)).join(", ");
       const warn = row.level === "high" ? "warn" : "";
-      el.innerHTML = `<strong>${row.nameWithOwner}</strong>
-        <div class="muted ${warn}">${row.level} (${row.score})</div>
+      el.innerHTML = `<strong>${escapeHtml(row.nameWithOwner)}</strong>
+        <div class="muted ${warn}">${escapeHtml(row.level)} (${escapeHtml(row.score)})</div>
         <div class="muted">${flags || "No flags"}</div>`;
       attention.appendChild(el);
     }
@@ -956,13 +970,13 @@ def render_app_js() -> str:
     repoRows.innerHTML = "";
     for (const repo of data.repos) {
       const tr = document.createElement("tr");
-      tr.innerHTML = `<td><a href="${repo.url}" target="_blank" rel="noreferrer">${repo.nameWithOwner}</a></td>
-        <td>${repo.status}</td>
-        <td>${repo.stars}</td>
-        <td>${repo.openIssues}</td>
-        <td>${repo.openPullRequests}</td>
-        <td>${(repo.lastPush || "").split("T")[0] || "n/a"}</td>
-        <td>${repo.roadmapTag || "none"}</td>`;
+      tr.innerHTML = `<td><a href="${safeGitHubUrl(repo.url)}" target="_blank" rel="noreferrer">${escapeHtml(repo.nameWithOwner)}</a></td>
+        <td>${escapeHtml(repo.status)}</td>
+        <td>${escapeHtml(repo.stars)}</td>
+        <td>${escapeHtml(repo.openIssues)}</td>
+        <td>${escapeHtml(repo.openPullRequests)}</td>
+        <td>${escapeHtml((repo.lastPush || "").split("T")[0] || "n/a")}</td>
+        <td>${escapeHtml(repo.roadmapTag || "none")}</td>`;
       repoRows.appendChild(tr);
     }
   } catch (err) {

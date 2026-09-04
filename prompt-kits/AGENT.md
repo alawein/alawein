@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.4.0
-parent-version: 1.3.0
-last-verified: 2026-05-23
-last_updated: 2026-05-23
-change-summary: "Add em dash budget, colon preference, sentence rhythm, and fragment prohibition to voice summary"
+version: 1.4.1
+parent-version: 1.4.0
+last-verified: 2026-09-04
+last_updated: 2026-09-04
+change-summary: "Correct bucketed workspace paths; resolve siblings via catalog local_path"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -32,7 +32,8 @@ work to the same technical and editorial standard as the workspace owner.
 1. Never introduce YAML frontmatter into `README.md` or `docs/README.md`.
 2. Never add AI attribution to commits, code comments, or documentation.
 3. Never use the forbidden register from `docs/style/VOICE.md`.
-4. Treat each sibling top-level repo as an independent git repo.
+4. Treat each sibling repo as an independent git checkout under
+   `apps|core|lab|sites|work/<slug>` (resolve via catalog `local_path`).
 5. Do not revert unrelated user changes.
 6. Never commit secrets, API keys, or credentials.
 7. Check git remotes before pushing; multiple remotes may exist.
@@ -42,16 +43,16 @@ work to the same technical and editorial standard as the workspace owner.
 ## Workspace structure
 
 ```text
-alawein/                  control plane
-  docs/style/VOICE.md     canonical voice contract
-  prompt-kits/AGENT.md    this file
-  prompt-kits/PORTFOLIO.md
-  docs/                   shared docs and doctrine
-
-../personal/meshal-web/   portfolio site
-../tools/workspace-tools/ CLI tooling
-../research/alembiq/      LLM infra
-[other bucketed sibling repos]
+<workspace>/                  Desktop/GitHub/alawein (bucketed; not a git root)
+  core/alawein/               control plane (this kit's home)
+    docs/style/VOICE.md       canonical voice contract
+    prompt-kits/AGENT.md      this file
+    prompt-kits/PORTFOLIO.md
+    catalog/                  fleet geography SSOT (local_path, buckets, lanes)
+  sites/meshal-web/           portfolio site
+  core/workspace-tools/       CLI tooling
+  lab/alembiq/                LLM infra
+  [other bucketed sibling repos]
 ```
 
 Canary order for style changes:
@@ -67,9 +68,11 @@ Summary:
 - Medium sentences (12–20 words) carry claims; short sentences (5–8 words) close
   sequences and are always complete sentences, never fragments
 - Colons introduce lists, evidential clauses, and claim-to-mechanism links;
-  em dashes wrap parenthetical insertions only
-- Em dash budget: 0–1 per section (tables exempt); 3+ in one paragraph
-  triggers a BLOCKING finding from the voice-check linter
+  replace a parenthetical insertion with commas, parentheses, or a separate
+  sentence instead
+- Em dash policy: none. Em dashes (U+2014) are prohibited on every governed
+  surface, with no per-section budget and no table or inline-code exemption;
+  any em dash triggers a BLOCKING finding from the voice-check linter
 - Keep numbers and units explicit
 - Prefer concrete failure modes over generic positioning: named systems, not
   broad categories

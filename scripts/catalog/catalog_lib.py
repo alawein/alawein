@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import sys
 from collections import Counter
 from dataclasses import dataclass
 from datetime import date
@@ -11,13 +12,18 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-WORKSPACE_ROOT = ROOT.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from workspace_paths import workspace_root_for  # noqa: E402
+
+# Control plane lives at <workspace>/<bucket>/<slug> after the bucketed layout;
+# workspace_root_for() also honors ALAWEIN_WORKSPACE_ROOT for linked worktrees.
+WORKSPACE_ROOT = workspace_root_for(ROOT)
 CATALOG_DIR = ROOT / "catalog"
 GENERATED_DIR = CATALOG_DIR / "generated"
 SCHEMAS_DIR = ROOT / "schemas"
 PROJECTS_JSON = ROOT / "projects.json"
 PROFILE_FROM_GUIDES = ROOT / "profile-from-guides.yaml"
-WORKSPACE_YAML = WORKSPACE_ROOT / "knowledge-base" / "WORKSPACE.yaml"
+WORKSPACE_YAML = WORKSPACE_ROOT / "core" / "knowledge-base" / "WORKSPACE.yaml"
 INVENTORY_JSON = ROOT / "docs" / "archive" / "desktop-repo-inventory.json"
 STABLE_WORKSPACE_ROOTS = [
     ".",

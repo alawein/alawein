@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-08-28
-last_updated: 2026-08-28
+last-verified: 2026-09-04
+last_updated: 2026-09-04
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -17,8 +17,10 @@ The `alawein` repo is the control plane for the Alawein workspace. It owns the
 shared style contract, prompt kits, documentation doctrine, and reusable CI
 policies used across sibling repos.
 
-This repo does not own product code. Each sibling top-level directory in the
-workspace is an independent git repo.
+This repo does not own product code. Sibling repos live one bucket deep under
+the workspace root (`apps/`, `core/`, `lab/`, `sites/`, `work/`, plus `_archive/`).
+Each is an independent git checkout. Resolve disk paths from catalog
+`local_path` in `catalog/repos.json`, not from a flat sibling of this repo.
 
 Company: Kohyr (Cache Me Outside LLC)  
 GitHub: `github.com/alawein`  
@@ -27,29 +29,33 @@ Contact: `contact@meshal.ai`
 ## Directory structure
 
 ```text
-alawein/
-  README.md                 generated public profile README
-  AGENTS.md                 governance boundaries
-  CLAUDE.md                 agent-facing contract for this repo
-  SSOT.md                   current state and active decisions
-  docs/
-    README.md
-    governance/             governed docs; filenames must be lowercase kebab-case
-    internal/
-      specs/                brainstorming output (design specs)
-      plans/                writing-plans output (implementation plans)
-    style/
-      VOICE.md              canonical voice contract
-  prompt-kits/
-    AGENT.md                canonical workspace prompt
-    PORTFOLIO.md            canonical meshal-web prompt
-  scripts/
-    doctrine/               validation scripts (validate.py, validate-doc-contract.sh, etc.)
-    ops/                    operational scripts (sync-claude.sh, generate-index.sh, etc.)
-    github/                 GitHub sync and audit scripts
-    catalog/                catalog build scripts
+<workspace>/                      Desktop/GitHub/alawein (not a git root)
+  apps|core|lab|sites|work/<repo> independent git checkouts
+  core/alawein/                   this control plane
+    README.md                     generated public profile README
+    AGENTS.md                     governance boundaries
+    CLAUDE.md                     agent-facing contract for this repo
+    SSOT.md                       current state and active decisions
+    catalog/                      index.yaml -> repos.json (SSOT for fleet geography)
+    docs/
+      governance/                 governed docs; lowercase kebab-case filenames
+      internal/                   specs and plans (doctrine-exempt)
+      style/VOICE.md              canonical voice contract
+    prompt-kits/
+      AGENT.md                    canonical workspace prompt
+      PORTFOLIO.md                canonical meshal-web prompt
+    claude-agent-platform/        home Claude config; sync-to-home.sh / sync-from-home.sh
+    scripts/
+      doctrine/                   validate-doc-contract.sh, validate.py, ...
+      ops/                        generate-index.sh and other live ops (retired scripts in _retired/)
+      github/                     sync-github.sh, baseline audit, profile pins
+      catalog/                    build-catalog.py, sync-readme.py
 ```
 
+Disk buckets and portfolio lanes are different axes. Buckets (`catalog/buckets.yaml`,
+`docs/governance/repo-topology-canon.md`) are on-disk homes. Lanes in
+`catalog/index.yaml` (`platform` / `ship` / `lab` / `work` / `archive`) group the
+public portfolio. Do not collapse them.
 ## Hard constraints
 
 1. Never introduce YAML frontmatter into `README.md` or `docs/README.md`.

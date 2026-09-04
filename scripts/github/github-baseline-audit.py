@@ -14,7 +14,10 @@ except ModuleNotFoundError:  # needed for a real run, not for importing the reso
     yaml = None
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-WORKSPACE = ROOT.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from workspace_paths import workspace_root_for  # noqa: E402
+
+WORKSPACE = workspace_root_for(ROOT)
 MANIFEST = (yaml.safe_load((ROOT / "github-baseline.yaml").read_text(encoding="utf-8")) if yaml else {}) or {}
 REPOS = MANIFEST.get("repos", [])
 WORKFLOW_REF = str(MANIFEST.get("workflow_ref") or "").strip()

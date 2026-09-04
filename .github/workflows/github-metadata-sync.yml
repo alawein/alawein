@@ -75,12 +75,16 @@ jobs:
           python scripts/catalog/validate-catalog.py --strict
 
       - name: Generate sync plan artifact
+        env:
+          TARGET_INPUT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target || 'all' }}
+          REPO_INPUT: ${{ github.event.inputs.repo }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
         run: |
           set -euo pipefail
           args=()
-          target="${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target || 'all' }}"
-          repo_input="${{ github.event.inputs.repo }}"
-          include_custom_properties="${{ github.event.inputs.include_custom_properties != 'false' }}"
+          target="$TARGET_INPUT"
+          repo_input="$REPO_INPUT"
+          include_custom_properties="$INCLUDE_CUSTOM_PROPERTIES_INPUT"
 
           if [ "$target" = "repo" ]; then
             if [ -z "$repo_input" ]; then
@@ -107,14 +111,21 @@ jobs:
           path: github-metadata-sync-plan.json
 
       - name: Publish workflow summary
+        env:
+          ADVISORY_MODE: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.apply != 'true' }}
+          TARGET_INPUT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target || 'all' }}
+          REPO_INPUT: ${{ github.event.inputs.repo }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
         run: |
-          echo "## GitHub metadata sync plan" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- Advisory mode: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.apply != 'true' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Target: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target || 'all' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Repo override: ${{ github.event.inputs.repo || 'n/a' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Custom properties: ${{ github.event.inputs.include_custom_properties != 'false' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Plan artifact: github-metadata-sync-plan" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## GitHub metadata sync plan"
+            echo ""
+            echo "- Advisory mode: $ADVISORY_MODE"
+            echo "- Target: $TARGET_INPUT"
+            echo "- Repo override: ${REPO_INPUT:-n/a}"
+            echo "- Custom properties: $INCLUDE_CUSTOM_PROPERTIES_INPUT"
+            echo "- Plan artifact: github-metadata-sync-plan"
+          } >> "$GITHUB_STEP_SUMMARY"
 
   apply:
     name: Apply metadata changes
@@ -137,13 +148,16 @@ jobs:
         run: python -m pip install pyyaml
 
       - name: Validate sync token is available
+        env:
+          TARGET_INPUT: ${{ github.event.inputs.target }}
+          REPO_INPUT: ${{ github.event.inputs.repo }}
         run: |
           set -euo pipefail
           if [ -z "$GH_TOKEN" ]; then
             echo "ALAWEIN_METADATA_SYNC_TOKEN is required for apply mode."
             exit 1
           fi
-          if [ "${{ github.event.inputs.target }}" = "repo" ] && [ -z "${{ github.event.inputs.repo }}" ]; then
+          if [ "$TARGET_INPUT" = "repo" ] && [ -z "$REPO_INPUT" ]; then
             echo "repo input is required when workflow_dispatch target=repo"
             exit 1
           fi
@@ -154,12 +168,16 @@ jobs:
           python scripts/catalog/validate-catalog.py --strict
 
       - name: Apply metadata
+        env:
+          TARGET_INPUT: ${{ github.event.inputs.target }}
+          REPO_INPUT: ${{ github.event.inputs.repo }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
         run: |
           set -euo pipefail
           args=(--apply)
-          target="${{ github.event.inputs.target }}"
-          repo_input="${{ github.event.inputs.repo }}"
-          include_custom_properties="${{ github.event.inputs.include_custom_properties != 'false' }}"
+          target="$TARGET_INPUT"
+          repo_input="$REPO_INPUT"
+          include_custom_properties="$INCLUDE_CUSTOM_PROPERTIES_INPUT"
 
           if [ "$target" = "repo" ]; then
             args+=(--repo "$repo_input")
@@ -183,10 +201,16 @@ jobs:
           path: github-metadata-sync-apply.json
 
       - name: Publish apply summary
+        env:
+          TARGET_INPUT: ${{ github.event.inputs.target }}
+          REPO_INPUT: ${{ github.event.inputs.repo }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
         run: |
-          echo "## GitHub metadata sync apply" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- Target: ${{ github.event.inputs.target }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Repo override: ${{ github.event.inputs.repo || 'n/a' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Custom properties: ${{ github.event.inputs.include_custom_properties != 'false' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Apply artifact: github-metadata-sync-apply" >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## GitHub metadata sync apply"
+            echo ""
+            echo "- Target: $TARGET_INPUT"
+            echo "- Repo override: ${REPO_INPUT:-n/a}"
+            echo "- Custom properties: $INCLUDE_CUSTOM_PROPERTIES_INPUT"
+            echo "- Apply artifact: github-metadata-sync-apply"
+          } >> "$GITHUB_STEP_SUMMARY"

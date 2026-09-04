@@ -34,8 +34,17 @@ def load_local_path_map(org_repo: Path, catalog_path: Path | None = None) -> dic
     mapping: dict[str, str] = {}
     for item in repos or []:
         if isinstance(item, dict) and item.get("slug") and item.get("local_path"):
-            mapping[item["slug"]] = str(item["local_path"]).strip("/")
+            # Strip only a trailing separator here. A leading "/" must survive
+            # into resolve_repo_dir's Path.is_absolute() check below -- an
+            # earlier version stripped both ends and silently turned an
+            # absolute local_path (e.g. "/etc/passwd") into a relative one
+            # ("etc/passwd"), defeating the absolute-path guard entirely.
+            mapping[item["slug"]] = str(item["local_path"]).rstrip("/")
     return mapping
+
+
+class PathEscapesWorkspaceError(ValueError):
+    """Raised when a catalog `local_path` would resolve outside the workspace."""
 
 
 def resolve_repo_dir(workspace: Path, local_paths: dict[str, str], repo: str) -> Path:
@@ -44,5 +53,22 @@ def resolve_repo_dir(workspace: Path, local_paths: dict[str, str], repo: str) ->
     The flat-slug fallback is a last resort, not a silent default: callers should
     verify `repo in local_paths` first and surface a miss as drift or a catalog
     load failure.
+
+    Raises `PathEscapesWorkspaceError` when `repo` is catalogued and its
+    `local_path` is absolute or escapes `workspace` via `..` traversal.
+    Catalog data must never let this tooling write or delete files outside
+    the workspace (callers use this path for file writes and legacy-file
+    deletion). The uncatalogued flat-slug fallback (`repo` itself) is not
+    validated here since it is a plain repo slug, not catalog-sourced input.
     """
-    return workspace / local_paths.get(repo, repo)
+    raw = local_paths.get(repo)
+    if raw is None:
+        return workspace / repo
+    if Path(raw).is_absolute():
+        raise PathEscapesWorkspaceError(f"{repo}: local_path must be relative, got {raw!r}")
+    candidate = workspace / raw
+    try:
+        candidate.resolve().relative_to(workspace.resolve())
+    except ValueError:
+        raise PathEscapesWorkspaceError(f"{repo}: local_path escapes workspace ({raw!r})") from None
+    return candidate

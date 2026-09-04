@@ -19,6 +19,7 @@ from github_dashboard_lib import (  # noqa: E402
     make_scope_key,
     parse_roadmap_tag,
     prune_snapshot_paths,
+    render_app_js,
     resolve_category,
 )
 
@@ -106,6 +107,25 @@ class GitHubDashboardLibTests(unittest.TestCase):
         self.assertIn("docs/dashboard/index.html", normalized)
         self.assertIn("docs/dashboard/app.js", normalized)
         self.assertIn("docs/dashboard/styles.css", normalized)
+
+    def test_app_js_escapes_github_sourced_fields(self) -> None:
+        # Regression guard for stored XSS: every GitHub-sourced field rendered
+        # via innerHTML must go through escapeHtml, and hrefs through
+        # safeGitHubUrl, not be interpolated raw.
+        js = render_app_js()
+        self.assertIn("function escapeHtml", js)
+        self.assertIn("function safeGitHubUrl", js)
+        for unsafe in (
+            "${row.nameWithOwner}",
+            "${row.tagName}",
+            "${row.description",
+            "${repo.nameWithOwner}",
+            "${repo.status}",
+            "${repo.stars}",
+            "${repo.roadmapTag",
+        ):
+            self.assertNotIn(unsafe, js, f"unescaped interpolation still present: {unsafe}")
+        self.assertIn('href="${safeGitHubUrl(repo.url)}"', js)
 
 
 if __name__ == "__main__":

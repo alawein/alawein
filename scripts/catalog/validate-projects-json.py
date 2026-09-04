@@ -66,7 +66,15 @@ def validate_local_paths(catalog_repos: list[dict[str, Any]]) -> list[str]:
         slug = repo.get("slug", "<unknown>")
         if not local:
             continue
+        if Path(local).is_absolute():
+            errors.append(f"local_path: '{local}' (slug={slug}) must be relative, not absolute")
+            continue
         resolved = (workspace_root / local).resolve()
+        try:
+            resolved.relative_to(workspace_root.resolve())
+        except ValueError:
+            errors.append(f"local_path: '{local}' (slug={slug}) escapes the workspace root")
+            continue
         if not resolved.exists():
             errors.append(
                 f"local_path: '{local}' (slug={slug}) does not resolve relative to workspace root"

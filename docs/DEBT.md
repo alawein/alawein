@@ -47,10 +47,10 @@ in the PR).
 
 ### verify-profile-pins README link check fails for non-research pins
 - **Date:** 2026-08-27
+- **Closed:** 2026-09-04
 - **Where:** `scripts/github/verify-profile-pins.py:30-39`, `scripts/catalog/sync-readme.py`
 - **What:** The README pin check requires a `[slug](` link for every pin, but the generated README links only the research rows, so `fallax`-style pins from other rows fail `--skip-live --check`. Pre-existing before the gate work.
-- **Risk if left:** The CLAUDE.md validation list has one permanently red command; people learn to ignore it.
-- **Suggested fix:** Have `sync-readme.py` emit a pinned-repos line, or drop the README half of the check now that `validate-visibility.py` V5 and V7 cover pins.
+- **Resolution:** All six configured `profile_pins` (`qmatsim`, `spincirc`, `maglogic`, `scicomp`, `fallax`, `chshlab`) are now research-row pins with matching README links, so `verify-profile-pins.py --skip-live --check` passes. Re-open if a future pin is added outside `research_rows`.
 - **Owner:** alawein
 
 ### CLAUDE.md cites a /voice-resweep skill that does not exist on disk

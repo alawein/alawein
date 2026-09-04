@@ -34,7 +34,12 @@ def load_local_path_map(org_repo: Path, catalog_path: Path | None = None) -> dic
     mapping: dict[str, str] = {}
     for item in repos or []:
         if isinstance(item, dict) and item.get("slug") and item.get("local_path"):
-            mapping[item["slug"]] = str(item["local_path"]).strip("/")
+            # Strip only a trailing separator here. A leading "/" must survive
+            # into resolve_repo_dir's Path.is_absolute() check below -- an
+            # earlier version stripped both ends and silently turned an
+            # absolute local_path (e.g. "/etc/passwd") into a relative one
+            # ("etc/passwd"), defeating the absolute-path guard entirely.
+            mapping[item["slug"]] = str(item["local_path"]).rstrip("/")
     return mapping
 
 

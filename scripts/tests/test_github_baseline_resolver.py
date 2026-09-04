@@ -85,10 +85,13 @@ def test_local_path_map_parses_dict_with_repos(tmp_path) -> None:
     assert _repo_paths.load_local_path_map(tmp_path,cat) == {"x": "tools/x"}
 
 
-def test_local_path_map_accepts_top_level_list_and_strips_slashes(tmp_path) -> None:
+def test_local_path_map_accepts_top_level_list_and_strips_trailing_slash(tmp_path) -> None:
     cat = tmp_path / "repos.json"
     cat.write_text('[{"slug": "y", "local_path": "/research/y/"}]', encoding="utf-8")
-    assert _repo_paths.load_local_path_map(tmp_path,cat) == {"y": "research/y"}
+    # Only the trailing "/" is stripped; the leading "/" survives so that a
+    # genuinely absolute local_path still trips resolve_repo_dir's
+    # Path.is_absolute() guard instead of being silently made relative.
+    assert _repo_paths.load_local_path_map(tmp_path, cat) == {"y": "/research/y"}
 
 
 def test_local_path_map_accepts_dict_of_dicts(tmp_path) -> None:
@@ -167,3 +170,24 @@ def test_resolve_still_returns_normal_bucketed_path(tmp_path) -> None:
     workspace.mkdir()
     resolved = _repo_paths.resolve_repo_dir(workspace, {"incore": "core/incore"}, "incore")
     assert resolved == workspace / "core" / "incore"
+
+
+def test_load_local_path_map_preserves_absolute_paths_for_the_guard(tmp_path) -> None:
+    # Regression: load_local_path_map used to strip() both leading and trailing
+    # "/" off local_path, so a catalogued absolute path like "/etc/passwd" came
+    # back as the relative "etc/passwd" and sailed past resolve_repo_dir's
+    # Path.is_absolute() guard. The two functions must be tested together --
+    # calling resolve_repo_dir directly with a hand-built dict (as the tests
+    # above do) does not exercise this normalization at all.
+    catalog_path = tmp_path / "repos.json"
+    catalog_path.write_text(
+        '{"repos": [{"slug": "evil", "local_path": "/etc/passwd"}]}',
+        encoding="utf-8",
+    )
+    local_paths = _repo_paths.load_local_path_map(tmp_path, catalog_path=catalog_path)
+    assert local_paths["evil"] == "/etc/passwd"
+
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, local_paths, "evil")

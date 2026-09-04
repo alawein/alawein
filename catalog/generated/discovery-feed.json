@@ -12,8 +12,8 @@
     },
     "lifecycleCounts": {
       "archived": 1,
-      "active": 30,
-      "frozen": 7,
+      "active": 29,
+      "frozen": 8,
       "maintained": 2
     }
   },
@@ -872,7 +872,7 @@
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "public",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -1809,7 +1809,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -4131,7 +4131,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
@@ -4195,7 +4195,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -4216,7 +4216,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -4304,7 +4304,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -4326,7 +4326,7 @@
         "supabase"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -4369,7 +4369,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -4390,7 +4390,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -4433,7 +4433,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",

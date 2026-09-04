@@ -371,7 +371,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
@@ -575,7 +575,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -613,7 +613,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -635,7 +635,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -902,7 +902,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -971,7 +971,7 @@
         "supabase"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -1096,7 +1096,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -1159,7 +1159,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -1290,7 +1290,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",

@@ -49,7 +49,7 @@
         "OpenCV",
         "FastAPI"
       ],
-      "category": "archived",
+      "category": "maintained",
       "legacy_slugs": [
         "event-discovery-framework"
       ],
@@ -290,7 +290,7 @@
         "Vite",
         "Supabase"
       ],
-      "category": "archived",
+      "category": "maintained",
       "url": "https://qmlab.online",
       "portfolio_domain": "Personal",
       "bucket": "lab",

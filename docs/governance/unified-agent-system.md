@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.0.0
+version: 1.1.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -36,7 +36,7 @@ flowchart TB
     C[@Cursor]
     CL[@Claude]
     CP[@Computer]
-    CG[@ChatGPT]
+    CG[@Codex]
     N[@Notion AI]
     GH[@GitHub]
   end
@@ -50,7 +50,7 @@ flowchart TB
   subgraph CursorMCP["Cursor MCP plane"]
     G[Gmail / Calendar / Drive]
     R[Railway / Vercel CLI]
-    X[Broken: GitHub MCP, Supermemory, Slack dup]
+    X[Split: GitHub desktop ready / Cloud error; Slack dup Cloud leftover]
   end
 
   subgraph Canon["Governance SSOT (alawein)"]
@@ -87,7 +87,8 @@ flowchart TB
 | **Claude** | Slack bot | Legacy Slack | Slack reads, audits, synthesis | Ready (Tag pending) |
 | **Claude Code** | IDE / terminal | Claude | Repo mutation, terminal, MCP | Ready |
 | **Computer** | Slack, Perplexity web | Perplexity | Browser audit, design docs, verification | Needs auth (Slack) |
-| **ChatGPT** | Slack | GPT | Gap-fill verification, diff-only replies | Present |
+| **Codex** | Slack | GPT Codex | Gap-fill after ChatGPT Codex connect | Needs auth |
+| **ChatGPT** | Slack | GPT | Replaced by Codex; never posted | Replaced |
 | **Notion AI** | Slack, Notion | Notion AI | Notion workspace reads | Ready |
 | **GitHub for Slack** | Slack | — | PR thread mirroring | Ready |
 
@@ -98,7 +99,8 @@ flowchart TB
 | Composer 2.5 | Cursor Cloud Agent | `contact@meshal.ai` | This session's default |
 | Claude (legacy Slack) | `@Claude` in Slack | Per-user connect | Enable Claude Tag for modern routing |
 | Perplexity | `@Computer` / web | User session | Produced `slack-workspace-design.md` v1.1 |
-| GPT | `@ChatGPT` in Slack | OpenAI connect | Verification diff role |
+| GPT Codex | `@Codex` in Slack | ChatGPT Codex connect | Needs account link; S4 remapped |
+| GPT | `@ChatGPT` in Slack | — | Replaced; user `U0BUNH33CCA` silent |
 | Notion AI | `@Notion AI` | `contact@meshal.ai` | Workspace `8116d8de-…` |
 | Workflow bot LLMs | Slack workflows | Unknown | Backends not inventoried yet |
 
@@ -114,9 +116,9 @@ Canonical account: **`contact@meshal.ai`**. Any other account is a re-auth candi
 | Notion | `contact@meshal.ai` | Needs auth | Notion AI | Locked | 2026-09-05 |
 | Railway | `contact@meshal.ai` | Ready | — | Locked | 2026-09-05 |
 | Vercel (`alawein`) | Team | CLI only | 32 projects; 8 UNVERIFIED | Locked | 2026-09-05 |
-| GitHub | Scoped token | MCP error | GitHub for Slack | Action required | 2026-09-05 |
-| Supermemory | — | Error | — | Action required | 2026-09-05 |
-| Slack MCP (dup) | — | Error | — | Remove | 2026-09-05 |
+| GitHub | Scoped token | Desktop ready / Cloud error | GitHub for Slack | Split | 2026-09-05 |
+| Supermemory | — | Dropped (desktop) / Cloud error | — | Dropped | 2026-09-05 |
+| Slack MCP (dup) | — | Desktop removed / Cloud error | — | Remove (Cloud leftover) | 2026-09-05 |
 | Granola / Neon / Mobbin / PostHog / Zoom / etc. | — | Needs auth | — | Unconnected | 2026-09-05 |
 
 **Cross-surface matching rule:** when Slack claims an integration exists, confirm
@@ -128,12 +130,12 @@ the same account and scope in Cursor MCP (or mark `UNVERIFIED`).
 
 | Task type | Primary agent | Secondary | Never |
 | --- | --- | --- | --- |
-| Code + PR + governance commit | **Cursor** | Claude Code | ChatGPT alone |
+| Code + PR + governance commit | **Cursor** | Claude Code | Codex alone |
 | Slack channel/bot live reads | **Claude** or Cursor | — | Assert without read |
-| Browser / GUI verification | **Computer** | ChatGPT | Cursor without MCP |
-| Notion / Drive file ownership | **Computer** then ChatGPT | Cursor MCP | Inherited claims |
+| Browser / GUI verification | **Computer** | Codex (after connect) | Cursor without MCP |
+| Notion / Drive file ownership | **Computer** then Codex | Cursor MCP | Inherited claims |
 | Design doc lock (`.md`) | **Computer** | Cursor commit | Duplicate narratives |
-| Connector gap-fill (diff only) | **ChatGPT** | Computer | Full re-audit |
+| Connector gap-fill (diff only) | **Codex** (after connect) | Computer | Full re-audit |
 
 ### 5.2 Multi-agent dispatch protocol
 
@@ -151,7 +153,7 @@ sequenceDiagram
   participant C as Cursor
   participant CL as Claude
   participant CP as Computer
-  participant CG as ChatGPT
+  participant CG as Codex
 
   M->>C: Tag + scoped task
   C->>C: Live MCP / git work
@@ -239,12 +241,14 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 
 ### 7.2 Open unification gaps
 
-- [ ] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook) after human approval
-- [ ] Merge Phase 2 closeout PR after #196 (Gmail sweep, MCP repair doc, YAML)
-- [ ] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
-- [ ] Fix Cursor MCP: GitHub, Supermemory, remove Slack duplicate — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md)
+- [x] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook)
+- [x] Merge Phase 2 closeout ([PR #198](https://github.com/alawein/alawein/pull/198); #197 closed)
+- [x] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
+- [ ] Optional `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social`
+- [ ] Fix Cloud Agent leftover Slack MCP error; GitHub MCP ready on desktop only
 - [ ] Authenticate Computer in Slack
-- [ ] Enable Claude Tag or document legacy limits
+- [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
+- [ ] Enable Claude Tag or keep documenting legacy limits
 - [ ] Vercel browser inspect: `sam-eval-roadmap`, `guides-eval-loop-app`
 - [ ] Add `validate-agent-integrations.py` (future): YAML schema check in CI
 
@@ -279,6 +283,12 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.1.0 (2026-09-05)
+
+- OpenAI Slack surface remapped from `@ChatGPT` to `@Codex`.
+- Closed merge and Cursor-invite checklist rows after #196 / #198 / live invites.
+- Pointed remaining MCP work at Cloud vs desktop split.
 
 ### v1.0.0 (2026-09-05)
 

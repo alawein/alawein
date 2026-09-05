@@ -22,6 +22,17 @@ def _entry(**kw):
 
 
 class CompileRepoPromotionTests(unittest.TestCase):
+    def test_nonterminal_archive_override_is_rejected(self) -> None:
+        with self.assertRaisesRegex(SystemExit, "archive.*terminal"):
+            compile_repo("lab", "lab", _entry(type="archive", status="active"), None)
+
+    def test_terminal_archive_override_is_preserved(self) -> None:
+        repo = compile_repo(
+            "lab", "lab", _entry(type="archive", status="archived"), None
+        )
+        self.assertEqual(repo["type"], "archive")
+        self.assertEqual(repo["status"], "archived")
+
     def test_promotion_is_carried_from_entry(self) -> None:
         repo = compile_repo("lab", "lab", _entry(promotion=PROMOTION), None)
         self.assertEqual(repo["promotion"], PROMOTION)

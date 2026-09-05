@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Profile sync from guides
 description: README About and profile copy sync with knowledge-base; export and sync flow.
-last_updated: 2026-07-06
+last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -52,6 +52,12 @@ status: active
 - `python scripts/sync-readme.py --check` verifies the generated README is in sync with both `projects.json` and `profile-from-guides.yaml`.
 - **PyYAML:** `sync-readme.py` requires `pyyaml` because the generated README depends on `profile-from-guides.yaml`.
 - The generated README is intentionally minimal. Detailed project descriptions remain in `projects.json`, not in the profile README itself.
+- The public profile keeps two project tables. Their lifecycle labels come from
+  `profile-from-guides.yaml`: outpost, fallax, and chshlab are active; science
+  repositories are in maintenance; other product repositories are private.
+- The profile names Meshal Alawein as the person and Kohyr as the company.
+  Kohyr copy describes verification of agent actions with a gate and signed
+  record, not governance.
 - The `Sync README` GitHub Actions workflow is advisory only. Protected branch rules on `main` block bot-authored direct pushes, so the workflow uploads a drift patch artifact and expects the regenerated `README.md` to be committed through the normal review path.
 
 ## Knowledge-base location and naming

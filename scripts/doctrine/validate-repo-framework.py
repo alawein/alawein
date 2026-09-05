@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the Repo Framework metadata header in every repo's README.
+"""Validate public README identity and private Repo Framework record cards.
 
 This validator hardcodes the doctrine's five enums (Status, Category, Owner,
 Visibility, Next action) as constants below. The doctrine source of truth
@@ -33,7 +33,11 @@ import re
 import sys
 from pathlib import Path
 
-REQUIRED_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
+from readme_contract import sections
+
+PRIVATE_RECORD_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
+REQUIRED_FIELDS = ["title", "value proposition", "claim", "run path"]
+PUBLIC_CLAIM_HEADINGS = {"the claim", "what fallax measures", "status"}
 
 ALLOWED_STATUS = {"active", "paused", "experimental", "deprecated", "archived", "frozen"}
 ALLOWED_CATEGORY = {
@@ -112,7 +116,7 @@ def parse_header(text: str) -> dict[str, str]:
                 f"first={found[name]!r}, second={value!r}"
             )
         found[name] = value
-    missing = [f for f in REQUIRED_FIELDS if f not in found]
+    missing = [f for f in PRIVATE_RECORD_FIELDS if f not in found]
     if missing:
         raise ValidationError(
             f"README header missing required fields: {', '.join(missing)}"
@@ -124,6 +128,8 @@ def validate_repo(
     repo_path: Path,
     bucket: str | None = None,
     display_name: str | None = None,
+    visibility: str | None = None,
+    lifecycle: str | None = None,
 ) -> list[str]:
     """Validate one repo. Returns a list of human-readable findings.
 
@@ -143,6 +149,33 @@ def validate_repo(
         return [f"{name}: README.md not UTF-8 ({e.reason} at byte {e.start})"]
     except OSError as e:
         return [f"{name}: README.md unreadable: {e}"]
+    if visibility == "public":
+        if _FIELD_RE.search("\n".join(text.splitlines()[:60])):
+            return [f"{name}: public README contains a banned record-card field"]
+        if name == "alawein/alawein":
+            return []
+        first_screen = text.splitlines()[:40]
+        if not first_screen or not re.match(r"^#\s+\S", first_screen[0]):
+            findings.append(f"{name}: public README first screen is missing its title")
+        first_h2 = next((i for i, line in enumerate(first_screen) if line.startswith("## ")), len(first_screen))
+        if not any(line.startswith("> ") for line in first_screen[:first_h2]):
+            findings.append(f"{name}: public README first screen is missing its value proposition")
+        parsed = sections(text)
+        headings = {
+            section.heading.casefold(): section
+            for section in parsed
+            if section.line <= 40
+        }
+        archival = lifecycle in {"archived", "frozen", "deprecated"}
+        if not archival and not set(headings).intersection(PUBLIC_CLAIM_HEADINGS):
+            findings.append(f"{name}: public README first screen is missing its claim")
+        if "run it" not in headings:
+            findings.append(f"{name}: public README first screen is missing 'Run it'")
+        return findings
+    if visibility is None and re.search(
+        r"^\s*Visibility\s*:\s*public\s*$", text, re.MULTILINE | re.IGNORECASE
+    ):
+        return [f"{name}: public record card requires authoritative visibility selection"]
     try:
         header = parse_header(text)
     except ValidationError as e:
@@ -352,9 +385,21 @@ def validate_repo_single(
                 f"{repo_slug}: {source_label} entry has no 'bucket' field; "
                 f"every alawein-org repo must declare a bucket"
             ]
-        return validate_repo(repo_path, bucket=None, display_name=repo_slug) + \
+        return validate_repo(
+            repo_path,
+            bucket=None,
+            display_name=repo_slug,
+            visibility=entry.get("visibility"),
+            lifecycle=entry.get("status"),
+        ) + \
             check_antirot_artifacts(repo_path, None, display_name=repo_slug)
-    return validate_repo(repo_path, bucket=bucket, display_name=repo_slug) + \
+    return validate_repo(
+        repo_path,
+        bucket=bucket,
+        display_name=repo_slug,
+        visibility=entry.get("visibility"),
+        lifecycle=entry.get("status"),
+    ) + \
         check_antirot_artifacts(repo_path, bucket, display_name=repo_slug)
 
 
@@ -509,14 +554,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"PASS  {args.repo_slug}")
         return 0
 
-    # Workspace-walk mode (default).
-    if (
-        args.registry is not None
-        or args.repo_slug is not None
-        or args.catalog is not None
-    ):
+    # Workspace-walk mode (default). A catalog supplies authoritative public
+    # visibility; without one, legacy private validation remains available.
+    if args.registry is not None or args.repo_slug is not None:
         print(
-            "error: --catalog, --registry, and --repo-slug are only valid with --repo",
+            "error: --registry and --repo-slug are only valid with --repo",
             file=sys.stderr,
         )
         return 2
@@ -525,6 +567,11 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: root not a directory: {root}", file=sys.stderr)
         return 2
 
+    try:
+        workspace_catalog = load_catalog(args.catalog) if args.catalog is not None else {}
+    except RegistryError as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 2
     all_findings: list[str] = []
     repos = walk_alawein(root)
     if not repos:
@@ -532,7 +579,21 @@ def main(argv: list[str] | None = None) -> int:
         print(f"       expected at least one of: {', '.join(_BUCKET_DIRS)}", file=sys.stderr)
         return 2
     for repo, bucket in repos:
-        findings = validate_repo(repo, bucket=bucket)
+        if args.catalog is not None:
+            slug = f"alawein/{repo.name}"
+            entry = workspace_catalog.get(slug)
+            if entry is None:
+                all_findings.append(f"{repo.name}: missing catalog entry {slug}")
+                continue
+        else:
+            slug, entry = repo.name, {}
+        findings = validate_repo(
+            repo,
+            bucket=bucket,
+            display_name=slug,
+            visibility=entry.get("visibility"),
+            lifecycle=entry.get("status"),
+        )
         findings += check_antirot_artifacts(repo, bucket)
         if findings:
             all_findings.extend(findings)

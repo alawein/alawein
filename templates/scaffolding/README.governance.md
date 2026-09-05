@@ -1,30 +1,31 @@
 # {{name}}
 
-Status:      {{status}}
-Category:    core
-Owner:       alawein
-Visibility:  {{visibility}}
-Purpose:     {{purpose}}
-Next action: continue
+> {{value_proposition}}
 
-## Purpose
+## The claim
 
-State what this control plane owns and which repos consume it.
+State the policy or validation result this repository makes checkable.
 
-## Catalog SSOT
-
-- Edit surface: `catalog/index.yaml`
-- Compiled manifest: `catalog/repos.json`
-- Build: `python scripts/catalog/build-catalog.py`
-
-## Validators
+## Run it
 
 ```bash
 {{validate_command}}
 ```
 
+## What it is
+
+Describe the control plane and its users.
+
+## What it is not
+
+State the boundary of its authority.
+
 ## Docs map
 
-- `docs/README.md`
-- `SSOT.md`
-- `LESSONS.md`
+- [Documentation](docs/README.md)
+- [Decisions](docs/adr/)
+- [Changelog](CHANGELOG.md)
+
+## License
+
+MIT. See [LICENSE](LICENSE).

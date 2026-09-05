@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Branding Workflow and Standards
 description: Per-repo checklist and icon/favicon/theme standard for design and branding.
-last_updated: 2026-07-06
+last_updated: 2026-09-05
 category: governance
 status: active
 ---
@@ -16,8 +16,8 @@ This document is the single source of truth for how we apply branding across ala
 
 ## Workflow (per repo)
 
-1. **Design authority:** Consume design authority from devkit and/or repz (tokens, STYLE_GUIDE, branding docs). Link README to the design authority.
-2. **Tokens and theme:** Apply tokens/STYLE_GUIDE: use `@alawein/tokens` or repo-level `theme/tokens.ts` aligned with devkit. Document which theme the app uses (e.g. repz REPZ tokens, gainboy D-2 Game Boy palette).
+1. **Design authority:** Consume design authority from design-system and/or repz (tokens, STYLE_GUIDE, branding docs). Link README to the design authority.
+2. **Tokens and theme:** Apply tokens/STYLE_GUIDE: use `@alawein/tokens` or repo-level `theme/tokens.ts` aligned with design-system. Document which theme the app uses (e.g. repz REPZ tokens, gymboy D-2 Game Boy palette).
 3. **Logo in shell:** Ensure logo appears in header, footer, and loading screens where the app has a shell.
 4. **Favicon and icons:** Provide at least one favicon in `public/` (or repo root); link from `index.html`. Prefer committed assets; no random external URLs. Optionally add `site.webmanifest` with consistent naming.
 5. **Quality and deploy:** Run format and lint; fix blocking errors; then deploy (Vercel where applicable).
@@ -75,7 +75,7 @@ Product-to-theme assignments are defined in the canonical registry:
 `design-system/packages/@alawein/tokens/tokens/themes/theme-registry.json` (see `productAssignments` section).
 
 | App | Theme Family | CSS Package |
-|-----|-------------|-------------|
+| --- | --- | --- |
 | meshal-web | midnight | theme-base |
 | bolts | forge | theme-strategic |
 | repz | forge | theme-strategic |
@@ -108,12 +108,12 @@ Product-to-theme assignments are defined in the canonical registry:
 - **Source:** `design-system/packages/icons/src/brand/alawein-mark.tsx`: React SVG component with 4 variants (color, light, dark, mono).
 - **Generated:** `design-system/packages/icons/output/alawein/`: favicon suite generated from the A-Prism logomark.
 
-## Favicon audit (2026-04-04, all green)
+## Favicon audit (reported 2026-04-04, all green)
 
-All 19 web-facing repos now have the full 9-file favicon suite deployed:
+The 2026-04-04 audit reported that all 19 web-facing repos had the full 9-file favicon suite deployed. This historical result was not reverified for the 2026-09-05 terminology update.
 
 | Repo | Domain | Favicon Suite | SEO Tags | Social Links |
-|------|--------|--------------|----------|-------------|
+| --- | --- | --- | --- | --- |
 | meshal-web | meshal.ai | 9/9 | Full | Full |
 | bolts | bolts.fit | 9/9 | Full (layout.tsx) | - |
 | repz | repzcoach.com | 9/9 | Full | Full |

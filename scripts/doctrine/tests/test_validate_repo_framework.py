@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 
 from validate_repo_framework import (
-    REQUIRED_FIELDS,
+    PRIVATE_RECORD_FIELDS,
     ALLOWED_STATUS,
     ALLOWED_CATEGORY,
     ALLOWED_OWNER,
@@ -31,7 +31,7 @@ FIX = Path(__file__).parent / "fixtures"
 def test_parse_header_extracts_all_six_fields():
     text = (FIX / "repo_passing" / "README.md").read_text(encoding="utf-8")
     header = parse_header(text)
-    for field in REQUIRED_FIELDS:
+    for field in PRIVATE_RECORD_FIELDS:
         assert field in header, f"missing field: {field}"
     assert header["Status"] == "active"
     assert header["Category"] == "apps"
@@ -47,6 +47,92 @@ def test_parse_header_raises_when_block_missing():
 def test_validate_repo_passes_for_consistent_fixture():
     findings = validate_repo(FIX / "repo_passing", bucket="apps")
     assert findings == [], f"unexpected findings: {findings}"
+
+
+def test_public_repo_accepts_canonical_readme_without_record_card(tmp_path):
+    repo = tmp_path / "public-demo"
+    repo.mkdir()
+    (repo / "README.md").write_text(
+        "# Demo\n\n> Measured claim.\n\n## The claim\n\nEvidence.\n\n"
+        "## Run it\n\n```bash\ndemo\n```\n\n## What it is\n\nA tool.\n\n"
+        "## What it is not\n\nA service.\n\n## Docs map\n\n- [Docs](docs/)\n\n"
+        "## License\n\nMIT.\n",
+        encoding="utf-8",
+    )
+    assert validate_repo(repo, visibility="public") == []
+
+
+def test_public_repo_rejects_private_record_card():
+    findings = validate_repo(FIX / "repo_passing", visibility="public")
+    assert any("record-card" in finding for finding in findings)
+
+
+def test_private_repo_still_requires_record_card(tmp_path):
+    repo = tmp_path / "private-demo"
+    repo.mkdir()
+    (repo / "README.md").write_text("# Demo\n\nPrivate work.\n", encoding="utf-8")
+    findings = validate_repo(repo, visibility="private")
+    assert any("missing required fields" in finding for finding in findings)
+
+
+def test_public_repo_rejects_empty_front_door(tmp_path):
+    repo = tmp_path / "public-empty"
+    repo.mkdir()
+    (repo / "README.md").write_text("", encoding="utf-8")
+    findings = validate_repo(repo, visibility="public")
+    assert len(findings) == 4
+    assert any("title" in finding for finding in findings)
+    assert any("value proposition" in finding for finding in findings)
+    assert any("Run it" in finding for finding in findings)
+
+
+def test_unknown_visibility_still_fails_closed_without_private_card(tmp_path):
+    repo = tmp_path / "unknown"
+    repo.mkdir()
+    (repo / "README.md").write_text("# Unknown\n", encoding="utf-8")
+    findings = validate_repo(repo)
+    assert any("missing required fields" in finding for finding in findings)
+
+
+def test_unknown_visibility_rejects_public_record_card(tmp_path):
+    repo = tmp_path / "unknown-public"
+    repo.mkdir()
+    text = (FIX / "repo_passing" / "README.md").read_text(encoding="utf-8")
+    (repo / "README.md").write_text(
+        text.replace("Visibility:  private", "Visibility:  public"), encoding="utf-8"
+    )
+    findings = validate_repo(repo)
+    assert any("authoritative visibility" in finding for finding in findings)
+
+
+def test_public_archive_does_not_require_claim(tmp_path):
+    repo = tmp_path / "archive"
+    repo.mkdir()
+    (repo / "README.md").write_text(
+        "# Archive\n\n> Preserved results.\n\n## Run it\n\n```bash\npytest\n```\n\n"
+        "## What it is\n\nAn archive for researchers.\n\n## What it is not\n\n"
+        "It is not under active development.\n",
+        encoding="utf-8",
+    )
+    assert validate_repo(repo, visibility="public", lifecycle="archived") == []
+
+
+def test_public_active_repo_requires_claim(tmp_path):
+    repo = tmp_path / "active"
+    repo.mkdir()
+    (repo / "README.md").write_text(
+        "# Active\n\n> A tool.\n\n## Run it\n\n```bash\ntool\n```\n\n"
+        "## What it is\n\nA tool for operators.\n\n## What it is not\n\nNot a service.\n",
+        encoding="utf-8",
+    )
+    assert any("claim" in f for f in validate_repo(repo, visibility="public", lifecycle="active"))
+
+
+def test_profile_public_readme_is_explicitly_exempt(tmp_path):
+    (tmp_path / "README.md").write_text("# Meshal Alawein\n", encoding="utf-8")
+    assert validate_repo(
+        tmp_path, display_name="alawein/alawein", visibility="public"
+    ) == []
 
 
 def test_validate_repo_flags_category_bucket_mismatch():
@@ -356,6 +442,50 @@ def test_main_root_mode_rejects_registry_flag(tmp_path, capsys):
     rc = main(["--root", str(tmp_path), "--registry", str(FIX / "registry_sample.json")])
     assert rc == 2
     assert "--registry" in capsys.readouterr().err
+
+
+def test_main_root_mode_uses_catalog_visibility(tmp_path, capsys):
+    repo = tmp_path / "sites" / "public-demo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text(
+        "# Public demo\n\nStatus: active\nCategory: sites\nOwner: alawein\n"
+        "Visibility: public\nPurpose: Demo.\nNext action: continue\n",
+        encoding="utf-8",
+    )
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos":[{"repo":"alawein/public-demo","slug":"public-demo",'
+        '"bucket":"sites","visibility":"public","status":"active"}]}',
+        encoding="utf-8",
+    )
+    assert main(["--root", str(tmp_path), "--catalog", str(catalog)]) == 1
+    assert "banned record-card" in capsys.readouterr().out
+
+
+def test_main_root_mode_requires_exact_catalog_owner(tmp_path, capsys):
+    repo = tmp_path / "sites" / "public-demo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text("# Public demo\n", encoding="utf-8")
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos":[{"repo":"other-org/public-demo","slug":"public-demo",'
+        '"bucket":"sites","visibility":"public","status":"active"}]}',
+        encoding="utf-8",
+    )
+
+    assert main(["--root", str(tmp_path), "--catalog", str(catalog)]) == 1
+    assert "missing catalog entry alawein/public-demo" in capsys.readouterr().out
+
+
+def test_main_root_mode_rejects_missing_authoritative_catalog_entry(tmp_path, capsys):
+    repo = tmp_path / "sites" / "public-demo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text("# Public demo\n", encoding="utf-8")
+    catalog = tmp_path / "repos.json"
+    catalog.write_text('{"repos":[]}', encoding="utf-8")
+
+    assert main(["--root", str(tmp_path), "--catalog", str(catalog)]) == 1
+    assert "missing catalog entry alawein/public-demo" in capsys.readouterr().out
 
 
 # Fix 4: partial --repo combos (one of the two required flags missing) return 2.

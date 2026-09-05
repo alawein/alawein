@@ -3,7 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: on-change
-last_updated: 2026-06-07
+last_updated: 2026-09-05
 title: Anti-Rot Primitives
 description: Failure-mode guardrails for agentic work, their canonical homes, and the mapping onto existing platform tools.
 category: governance
@@ -50,7 +50,7 @@ The source anti-rot kit ships `code-reviewer`, `architecture-guardian`, and
 
 ## Which repos must carry the artifacts
 
-Code archetypes (`products`, `ventures`, `tools`, `research`) must carry
+Code buckets (`core`, `apps`, `lab`) must carry
 `docs/DEBT.md` and `docs/adr/`, enforced by
-`scripts/doctrine/validate-repo-framework.py`. Repos in the `archive`, `personal`,
-`family`, and `jobs-projects` buckets are exempt; exemption is by bucket, not by content.
+`scripts/doctrine/validate-repo-framework.py`. Repos in the `sites`, `work`,
+and `archive` buckets are exempt; exemption is by bucket, not by content.

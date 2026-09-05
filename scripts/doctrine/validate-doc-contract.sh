@@ -426,6 +426,12 @@ def check_root_whitelist(errors: List[str]) -> None:
         name = entry.name
         if name in R8_ALLOWED_ROOT_FILES:
             continue
+        # Linked worktrees represent Git metadata with a root .git pointer file.
+        # Accept it only when Git confirms this checkout has a valid metadata dir.
+        if name == ".git":
+            git_dir = run_git(["rev-parse", "--absolute-git-dir"], check=False)
+            if git_dir.returncode == 0 and Path(git_dir.stdout.strip()).is_dir():
+                continue
         # Gitignored files are not considered part of the committed surface
         # and are therefore outside R8's jurisdiction.
         check = run_git(["check-ignore", "-q", name], check=False)
@@ -442,6 +448,16 @@ def markdown_files_for_links() -> Iterable[Path]:
     for path in sorted(ROOT.rglob("*.md")):
         rel = relative(path)
         if is_archive_doc(rel):
+            continue
+        # README scaffolds contain destination-relative links. They are checked
+        # after instantiation as live README files in the target repository.
+        if rel in {
+            "templates/scaffolding/README.archive.md",
+            "templates/scaffolding/README.governance.md",
+            "templates/scaffolding/README.product.md",
+            "templates/scaffolding/README.research.md",
+            "templates/scaffolding/README.tooling.md",
+        }:
             continue
         if skip_parts.intersection(path.parts):
             continue

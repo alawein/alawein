@@ -1,11 +1,12 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T12:45:00Z'
+lastVerified: '2026-09-05T14:00:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
-  any auth change.
+  any auth change. Desktop IDE hardening session 2026-09-05 recorded results in
+  docs/governance/ide-integration-hardening-session.md Part 4.
 
 account_canon: contact@meshal.ai
 
@@ -18,6 +19,9 @@ agents:
     llm_default: composer-2.5
     dispatch_roles: [implement, commit, pr, mcp-orchestration, governance-docs]
     status: ready
+    notes: >
+      Cloud Agent reads 3 channels (admin-ops, kohyr-dev, all-alawein-workspace)
+      after invites; lists 7. IDE Slack MCP (Meshal) reads all 7.
     last_verified: 2026-09-05
   - id: claude-slack
     display_name: Claude
@@ -26,7 +30,9 @@ agents:
     llm_default: claude-legacy-slack
     dispatch_roles: [slack-read, channel-audit, prose-synthesis]
     status: ready
-    notes: Legacy Slack bot; Claude Tag not enabled
+    notes: >
+      Legacy Slack bot; Claude Tag not enabled. S2 smoke timeout in IDE
+      hardening thread (no reply after mention U0AQQFJT8AC).
     last_verified: 2026-09-05
   - id: claude-code
     display_name: Claude Code
@@ -42,7 +48,9 @@ agents:
     llm_default: perplexity
     dispatch_roles: [browser-audit, design-docs, cross-service-verification]
     status: needs_auth
-    notes: Slack session reported auth blocked; web session produced v1.1 design
+    notes: >
+      S3 smoke: no reply after mention U0APW7F9S4A; Slack re-auth still required.
+      Web session previously produced v1.1 design.
     last_verified: 2026-09-05
   - id: chatgpt-slack
     display_name: ChatGPT
@@ -50,7 +58,10 @@ agents:
     slack_handle: '@ChatGPT'
     llm_default: gpt
     dispatch_roles: [connector-gap-fill, diff-only-verification]
-    status: present
+    status: suspended
+    notes: >
+      NOT Codex. No resolvable Slack user ID in workspace history; never posted.
+      Suspend from dispatch until Manage apps re-auth proves Reply OK (S4).
     last_verified: 2026-09-05
   - id: notion-ai-slack
     display_name: Notion AI
@@ -61,6 +72,9 @@ agents:
     status: ready
     account: contact@meshal.ai
     workspace: Meshal's Workspace
+    notes: >
+      S5 smoke timeout in IDE hardening thread (no reply after mention
+      U0AQ8UNAKTK). Prior workspace identity still contact@meshal.ai.
     last_verified: 2026-09-05
   - id: github-slack
     display_name: GitHub for Slack
@@ -101,67 +115,78 @@ integrations:
   - id: gmail
     provider: Google
     account: contact@meshal.ai
-    cursor_mcp: ready
+    cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      AGI (archive) label Label_367; 22 threads labeled and archived 2026-09-05;
-      0 theagi.company threads remain in INBOX.
+      Cloud Agent 2026-09-05: AGI (archive) Label_367; 22 threads archived;
+      0 theagi.company in INBOX. Desktop IDE session: Gmail MCP not in dynamic
+      tool catalog (T1/T2 not re-run on desktop).
     last_verified: 2026-09-05
   - id: google-calendar
     provider: Google
     account: contact@meshal.ai
-    cursor_mcp: ready
+    cursor_mcp: cloud_ready_desktop_absent
     status: locked
     last_verified: 2026-09-05
   - id: google-drive
     provider: Google
     account: contact@meshal.ai
-    cursor_mcp: ready
+    cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      fullText search returns 50+ AGI-related files (employment docs, eval
-      artifacts, workspace notes); all sampled files owned by contact@meshal.ai;
-      review sharing on parent folder 1LIKjxbv296LhTWsYQeTdH8-S6hO-T3ar.
+      Cloud Agent: 50+ AGI-related files; sampled owners contact@meshal.ai.
+      Desktop IDE: Drive MCP absent (T3 not re-run).
     last_verified: 2026-09-05
   - id: notion
     provider: Notion
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
-    cursor_mcp: needs_auth
+    cursor_mcp: absent
     status: locked
+    notes: Notion MCP not present in desktop IDE catalog; Notion AI Slack remains surface.
     last_verified: 2026-09-05
   - id: railway
     provider: Railway
     account: contact@meshal.ai
-    cursor_mcp: ready
+    cursor_mcp: absent
     status: locked
+    notes: >
+      Desktop: Railway plugin cached but MCP namespace not loaded; CLI
+      `npx @railway/cli whoami` returned Unauthorized (T4 fail on desktop).
     last_verified: 2026-09-05
   - id: vercel
     provider: Vercel
     team: alawein
-    cursor_mcp: unavailable
+    cursor_mcp: needs_auth
     status: locked
-    notes: 32 deployments verified via CLI; 8 need browser inspection
+    notes: 32 deployments verified via CLI historically; 8 need browser inspection
     last_verified: 2026-09-05
   - id: github-mcp
     provider: GitHub
-    cursor_mcp: error
+    cursor_mcp: ready
     gh_cli: scoped
-    status: action_required
+    status: locked
+    notes: >
+      Desktop IDE 2026-09-05: plugin-github-github namespaceStatus=ready (T5 pass).
+      gh auth scopes include repo, workflow, admin:org.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
     last_verified: 2026-09-05
   - id: supermemory
     provider: Supermemory
-    cursor_mcp: error
-    status: action_required
-    notes: CURSOR_PLUGIN_ROOT resolution failure
+    cursor_mcp: dropped
+    status: dropped
+    notes: >
+      Phase F Drop: not installed on desktop (no namespace, no plugin entry).
+      Repo SSOT + user rules sufficient; optional prefs layer not needed.
     repair_doc: docs/governance/cursor-mcp-repair.md#3-supermemory-mcp
     last_verified: 2026-09-05
   - id: slack-mcp-duplicate
     provider: Slack
-    cursor_mcp: error
-    status: remove
-    notes: Redundant with Cursor Slack Tools; remove third-party Slack MCP entry
+    cursor_mcp: removed
+    status: removed
+    notes: >
+      T7 pass: only plugin-slack-slack ready; no third-party Slack MCP error
+      in desktop catalog. Keep Cursor Slack Tools / plugin-slack-slack.
     repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
     last_verified: 2026-09-05
   - id: granola
@@ -173,14 +198,14 @@ integrations:
 slack_channels:
   - id: admin-ops
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt]
+    agents_present: [cursor, claude, computer, notion-ai, github]
     cursor_can_read: true
   - id: posts
     tier: hub-bot
     cursor_can_read: false
   - id: kohyr-dev
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
   - id: content-pipeline
     tier: domain
     cursor_can_read: false
@@ -189,7 +214,7 @@ slack_channels:
     cursor_can_read: false
   - id: all-alawein-workspace
     tier: broadcast
-    cursor_can_read: false
+    cursor_can_read: true
   - id: social
     tier: default
     cursor_can_read: false

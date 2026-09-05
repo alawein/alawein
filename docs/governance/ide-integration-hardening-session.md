@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.0.0
+version: 1.1.0
 tags: [cursor, ide, slack, mcp, integrations, hardening]
 ---
 
@@ -323,25 +323,45 @@ One-line next step for anything still blocked.
 
 ---
 
-## Part 4 — Test results (fill during session)
+## Part 4 — Test results (filled 2026-09-05 desktop IDE session)
 
 | ID | Test | Result | Evidence | Date |
 | --- | --- | --- | --- | --- |
-| T1 | Gmail labels | | | |
-| T2 | AGI inbox empty | | | |
-| T3 | Drive AGI search | | | |
-| T4 | Railway whoami | | | |
-| T5 | GitHub MCP | | | |
-| T6 | Supermemory | | | |
-| T7 | Slack MCP dup removed | | | |
-| T8 | PR merge status | | | |
-| S1 | @Cursor channels | | | |
-| S2 | @Claude apps | | | |
-| S3 | @Computer #posts | | | |
-| S4 | @ChatGPT reply | | | |
-| S5 | @Notion AI identity | | | |
-| W1 | Monday Kickoff | | | |
-| W2 | Workflow bots | | | |
+| T1 | Gmail labels | blocked (desktop) | Gmail MCP absent from desktop dynamic catalog; Cloud 2026-09-05 verified AGI (archive) | 2026-09-05 |
+| T2 | AGI inbox empty | blocked (desktop) | Same; Cloud verified 0 `from:theagi.company in:inbox` | 2026-09-05 |
+| T3 | Drive AGI search | blocked (desktop) | Drive MCP absent on desktop; Cloud verified 50+ files / contact@meshal.ai | 2026-09-05 |
+| T4 | Railway whoami | fail (desktop) | `npx @railway/cli whoami` → Unauthorized; Railway MCP namespace not loaded | 2026-09-05 |
+| T5 | GitHub MCP | pass | `plugin-github-github` namespaceStatus=ready | 2026-09-05 |
+| T6 | Supermemory | drop | Not installed; Phase F Drop (repo SSOT enough) | 2026-09-05 |
+| T7 | Slack MCP dup removed | pass | Only `plugin-slack-slack` ready; no errored Slack dup | 2026-09-05 |
+| T8 | PR merge status | pass | #196 merged; #197 closed (base deleted); #198 merged (Phase 2 closeout) | 2026-09-05 |
+| S1 | @Cursor channels | pass (partial) | IDE lists 7/7; Cloud Agent reads 3 (admin-ops, kohyr-dev, all-alawein-workspace) | 2026-09-05 |
+| S2 | @Claude apps | timeout | Mention U0AQQFJT8AC; no reply in hardening thread | 2026-09-05 |
+| S3 | @Computer #posts | blocked | Mention U0APW7F9S4A; no reply; needs Slack re-auth | 2026-09-05 |
+| S4 | @ChatGPT reply | fail | No resolvable ChatGPT Slack user ID; status suspended | 2026-09-05 |
+| S5 | @Notion AI identity | timeout | Mention U0AQ8UNAKTK; no reply in hardening thread | 2026-09-05 |
+| W1 | Monday Kickoff | pass | `#posts` contains Monday Weekly Kickoff (e.g. 2026-08-31) | 2026-09-05 |
+| W2 | Workflow bots | pass | All 5 YAML rows status=working; engagement_30d=0 | 2026-09-05 |
+
+### Before / After (session deliverable)
+
+| Area | Before | After | Evidence |
+| --- | --- | --- | --- |
+| PR #196/#197 | open / draft | #196 merged; #197 closed; Phase 2 via #198 merged | https://github.com/alawein/alawein/pull/196 https://github.com/alawein/alawein/pull/198 |
+| GitHub MCP | error (Cloud) | ready (desktop) | T5 |
+| Supermemory | error | dropped | T6 / Phase F |
+| ChatGPT Slack | no reply | suspended | S4 |
+| Cursor channel read | admin-ops only | Cloud reads 3; IDE lists 7 | S1 Cloud Agent reply |
+| YAML | pre-hardening | refreshed 2026-09-05T14:00:00Z | `catalog/agent-integrations.yaml` |
+
+Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788616243786809
+
+### Changelog
+
+#### v1.1.0 (2026-09-05)
+
+- Filled Part 4 from desktop IDE hardening session.
+- Documented Supermemory Drop; ChatGPT suspended; Cloud Agent 3-channel read.
 
 ---
 

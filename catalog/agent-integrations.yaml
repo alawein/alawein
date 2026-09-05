@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T15:16:00Z'
+lastVerified: '2026-09-05T15:40:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -80,9 +80,9 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Joined #admin-ops 14:27:21. Replied 14:28:50: connect ChatGPT Codex
-      account. Tagged Reply OK at 14:30:56; no confirmed OK. Channel membership
-      observed in #admin-ops only.
+      Joined #admin-ops 14:27:21. Connect prompt 14:28:50 and again 15:39:56
+      (ts 1788622796.091419) after Meshal tagged Reply OK. Not S4. ChatGPT
+      stays installed. Channel membership observed in #admin-ops only.
     last_verified: 2026-09-05
   - id: notion-ai-slack
     display_name: Notion AI

@@ -68,7 +68,7 @@ organization is membership, not topology:
 | `@Computer` | `U0APW7F9S4A` | Browser verify | Needs Slack re-auth | Joined `#kohyr-dev` + `#all-alawein-workspace` ~13:55; silent on S3 |
 | `@Notion AI` | `U0AQ8UNAKTK` | Notion reads | Present; S5 unanswered | No identity reply in hardening thread |
 | `@GitHub` | `U0APESWEF2T` | PR thread mirror | Ready | Joined `#admin-ops` 11:28 |
-| `@Codex` | `U0BV7V8M3NW` | OpenAI Slack surface (new) | Needs ChatGPT Codex connect | Joined `#admin-ops` 14:27:21; connect prompt 14:28:50 |
+| `@Codex` | `U0BV7V8M3NW` | OpenAI Slack surface (new) | Needs ChatGPT Codex connect | Connect prompt 14:28:50 and 15:39:56 (`1788622796.091419`); not Reply OK |
 | `@ChatGPT` | `U0BUNH33CCA` | Old OpenAI Slack app | Replaced / silent | Joined 11:28; never posted |
 
 Workflow bots (Cloud Agent now reads `#posts`): Daily Agenda (DM), Daily
@@ -144,7 +144,7 @@ Agent can call the tool.
 | S1 | pass (partial), reads 3 | **Lane D** now 7/7 after `#job-search` 15:14 and `#social` 15:16 |
 | S2 | timeout | **Late pass** — Claude replied 14:02:51 with app table + Claude Tag note |
 | S3 | blocked | Unchanged; Computer still silent on `#posts` |
-| S4 | ChatGPT fail / suspended | **Remapped** — Codex is the OpenAI Slack app; connect prompt, no Reply OK |
+| S4 | ChatGPT fail / suspended | Still fail. Codex connect prompt at 15:39:56, not Reply OK |
 | S5 | timeout | Unchanged; Notion AI silent |
 | T1–T2 | Cloud-only | Re-proved on Cloud Agent |
 | T4 | desktop fail | Cloud Agent Railway ready |
@@ -187,9 +187,10 @@ lane D after Meshal started channel invites.
 | `#job-search` | yes | Cursor join `1788621248.955629` (15:14:08) |
 | `#social` | yes | Cursor join `1788621362.488249` (15:16:02) |
 
-`@ChatGPT` (`U0BUNH33CCA`) stays installed. No Codex `Reply OK` in the
-`#admin-ops` thread. Lanes A–B remain browser OAuth (Playwright Slack login
-blocked on an auth code); hand to Meshal desktop or Sider/Claw.
+`@ChatGPT` (`U0BUNH33CCA`) stays installed. Codex replied 15:39:56 with the
+connect prompt (`1788622796.091419`), not `Reply OK`. Lanes A–B remain
+browser OAuth (Playwright Slack login blocked on an auth code); hand to
+Meshal desktop or Sider/Claw.
 
 ## What this rescan did not change
 

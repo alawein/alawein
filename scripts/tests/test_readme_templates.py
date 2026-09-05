@@ -6,6 +6,7 @@ import re
 import sys
 import unittest
 from pathlib import Path
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[2]
 TEMPLATES = ROOT / "templates" / "scaffolding"
@@ -57,7 +58,8 @@ class ReadmeTemplateTests(unittest.TestCase):
         script = ROOT / "scripts" / "doctrine" / "validate-readme-topology.py"
         spec = importlib.util.spec_from_file_location("vrt", script)
         mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
+        with mock.patch.object(sys, "path", [str(script.parent), *sys.path]):
+            spec.loader.exec_module(mod)
         for rtype in ("product", "research", "tooling", "infra"):
             self.assertEqual(
                 [section for section in README_SECTIONS[rtype] if section not in {"Contributing", "Citation"}],

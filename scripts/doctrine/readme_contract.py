@@ -36,7 +36,7 @@ def rendered_lines(markdown: str) -> list[RenderedLine]:
     for number, raw in enumerate(markdown.splitlines(), 1):
         stripped = raw.lstrip()
         if fence is not None:
-            if re.match(rf"^\s*{re.escape(fence)}\s*$", raw):
+            if re.match(rf"^\s*{re.escape(fence[0])}{{{len(fence)},}}\s*$", raw):
                 fence = None
             continue
         match = re.match(r"^\s*(`{3,}|~{3,})", raw)
@@ -90,17 +90,17 @@ def runnable_body(section: Section, *, through_line: int | None = None) -> bool:
     ]
     body = "\n".join(line.text for line in lines)
     inline = re.findall(r"`([^`\n]+)`", body)
-    if any(_looks_like_command(value) for value in inline):
+    if any(looks_like_command(value) for value in inline):
         return True
     # Fenced blocks are removed from rendered prose, so inspect the original
     # line interval separately in callers when needed.
     return any(
-        _looks_like_command(line.text)
+        looks_like_command(line.text)
         for line in lines
     )
 
 
-def _looks_like_command(value: str) -> bool:
+def looks_like_command(value: str) -> bool:
     text = re.sub(r"^\s*(?:[$>]\s*)?", "", value).strip()
     return bool(re.match(
         r"^(?:python\d*(?:\.\d+)?\s+(?:-[\w-]+|[\w./\\-]+\.py\b)|pip\d*\s+\w|uv\s+\w|npm\s+\w|pnpm\s+\w|yarn\s+\w|bun\s+\w|make(?:\s+\w+)?$|cargo\s+\w|go\s+\w|docker\s+\w|pytest(?:\s|$)|\.\\|\.\/|[\w.-]+\s+--?[\w-]+\b)",
@@ -110,6 +110,10 @@ def _looks_like_command(value: str) -> bool:
 
 
 def strip_markdown_prefix(line: str) -> str:
-    text = re.sub(r"^\s*(?:[-+*]|\d+[.)])\s+", "", line)
-    text = re.sub(r"^\s*>\s*", "", text)
+    text = line
+    while True:
+        stripped = re.sub(r"^\s*(?:(?:[-+*]|\d+[.)])\s+|>\s*)", "", text)
+        if stripped == text:
+            break
+        text = stripped
     return re.sub(r"[*_~`]", "", text).strip()

@@ -122,6 +122,17 @@ def test_public_presentation_rules_cover_rendered_prose_at_any_line():
         assert problems, line
 
 
+def test_nested_quote_and_list_prefixes_do_not_hide_record_cards():
+    for prefix in ("> - ", "- > ", "> > 1. "):
+        assert check_public_contract(prefix + "**Status:** active\n", _repo())
+
+
+def test_longer_closing_fence_does_not_hide_subsequent_prose():
+    for fence in ("```", "~~~"):
+        readme = f"{fence}text\nexample\n{fence}{fence[0]}\n\nStatus: active\n"
+        assert check_public_contract(readme, _repo())
+
+
 def test_verified_date_allowed_only_in_reproducibility():
     readme = "# Demo\n\n## Reproducibility\n\nVerified 2026-09-05: 10 passed.\n"
     assert check_public_contract(readme, _repo()) == []

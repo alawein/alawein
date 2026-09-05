@@ -27,7 +27,7 @@ import urllib.request
 from pathlib import Path
 from typing import Callable
 
-from readme_contract import meaningful_body, rendered_lines, runnable_body, sections, uses_public_contract
+from readme_contract import looks_like_command, meaningful_body, rendered_lines, runnable_body, sections, uses_public_contract
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
@@ -227,12 +227,21 @@ def check_readme_sections(readme: str, repo: dict, *, allow_legacy_public: bool 
             )
             end = min(through_line or len(raw_lines), next_heading - 1)
             body = "\n".join(raw_lines[section.line:min(end, len(raw_lines))])
-            match = re.search(
-                r"^\s*```(?:bash|sh|shell|console|powershell|ps1)?\s*$\n([\s\S]*?)^\s*```\s*$",
-                body,
-                re.MULTILINE,
-            )
-            return bool(match and match.group(1).strip())
+            fence = None
+            has_command = False
+            for line in body.splitlines():
+                if fence is None:
+                    match = re.match(r"^\s*(`{3,}|~{3,})(?:bash|sh|shell|console|powershell|ps1)?\s*$", line)
+                    if match:
+                        fence = match.group(1)
+                        has_command = False
+                elif re.match(rf"^\s*{re.escape(fence[0])}{{{len(fence)},}}\s*$", line):
+                    if has_command:
+                        return True
+                    fence = None
+                elif looks_like_command(line):
+                    has_command = True
+            return False
 
         for name in first_screen_required:
             section = by_name.get(name)

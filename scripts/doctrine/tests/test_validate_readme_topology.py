@@ -127,6 +127,17 @@ def test_missing_section_flagged():
     assert any("Run it" in p for p in problems)
 
 
+def test_run_it_fence_requires_a_command():
+    for content in ("A benchmark exists.", "# TODO: add an invocation"):
+        problems = check_readme_sections(GOOD_README.replace("pytest", content), _repo())
+        assert any("runnable invocation" in problem for problem in problems)
+
+
+def test_longer_closing_fence_preserves_following_sections():
+    readme = GOOD_README.replace("pytest\n```", "pytest\n````")
+    assert check_readme_sections(readme, _repo()) == []
+
+
 def test_private_repo_keeps_legacy_type_contract():
     repo = _repo(visibility="private")
     legacy = """# Demo

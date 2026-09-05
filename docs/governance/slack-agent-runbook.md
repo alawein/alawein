@@ -100,7 +100,7 @@ health problem.
 | --- | --- | --- | --- |
 | Slack workspace | `contact@meshal.ai` (U0APM5W630C) | Ready | Claude live channel and DM reads |
 | Gmail account | `contact@meshal.ai` | Ready | Cursor `list_labels` MCP |
-| Gmail custom labels (5) | `✈️ Travel`, `📋 Docs`, `💳 Finance/Billing`, `Blocked`, `Notion` | Clean | Cursor `list_labels` MCP |
+| Gmail custom labels (6) | `✈️ Travel`, `📋 Docs`, `💳 Finance/Billing`, `Blocked`, `Notion`, `AGI (archive)` | Clean | Cursor `list_labels` MCP; `AGI (archive)` created 2026-09-05 |
 | Google Drive account | `contact@meshal.ai` | Ready | Cursor `list_recent_files` MCP |
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
@@ -157,8 +157,8 @@ Four active AGI-domain threads (last 90 days, inbox, no user labels):
 
 Query: `in:inbox after:2026-06-07 has:nouserlabels from:theagi.company`
 
-These are legitimate post-employment threads, not label drift. **Action:** create
-`AGI (archive)` label, apply to all four, archive from inbox.
+These are legitimate post-employment threads, not label drift. **Done (2026-09-05):**
+`AGI (archive)` label created; applied to all four threads; archived from inbox.
 
 ### 3.5 Account discipline (locked policy)
 
@@ -181,8 +181,7 @@ These are legitimate post-employment threads, not label drift. **Action:** creat
    lookup fails).
 5. **Google Drive:** Decide on `Superfine Kitchen Order`; remove access if not
    needed.
-6. **Gmail:** Create `AGI (archive)` label; apply to four identified threads;
-   archive.
+6. **Gmail:** Done — `AGI (archive)` label created; four AGI threads labeled and archived.
 7. **Cursor MCPs:** Fix GitHub MCP; remove duplicate Slack MCP; repair
    Supermemory; decide on Todoist and Figma.
 8. **Claude Tag:** Enable or accept legacy limits.

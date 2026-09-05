@@ -174,7 +174,7 @@ integrations:
   - id: railway
     provider: Railway
     account: contact@meshal.ai
-    cursor_mcp: absent
+    cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
       Cloud Agent 14:32 UTC: whoami Meshal Alawein / contact@meshal.ai

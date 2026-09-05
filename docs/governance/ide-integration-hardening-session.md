@@ -52,7 +52,7 @@ browser verification.
 
 | Status | Items |
 | --- | --- |
-| 🟢 Ready | Gmail, Calendar, Drive, Railway, Cursor Slack Tools, Notion AI (Slack) |
+| 🟢 Ready | Gmail, Calendar, Drive, Railway (Cloud Agent); Cursor Slack Tools; Notion AI (Slack) |
 | 🟡 Partial | Vercel (32 projects, 8 need browser inspect); governance on branch not `main` |
 | 🔴 Broken | GitHub MCP, Supermemory MCP, Slack MCP duplicate |
 | 🔴 No output | `@ChatGPT` (`U0BUNH33CCA`) silent; replaced by `@Codex` |
@@ -165,7 +165,7 @@ Layer 3 — Memory (optional convenience)
 | MCP | Action |
 | --- | --- |
 | Gmail / Calendar / Drive | Keep — working |
-| Railway | Keep — working |
+| Railway | Keep — Cloud Agent ready; desktop CLI auth still needed |
 | GitHub | **Fix** — re-auth OAuth or PAT |
 | Supermemory | **Fix or remove** — decide after smoke test |
 | Slack (third-party) | **Remove** — use Cursor Slack Tools for Cloud Agent only |
@@ -356,7 +356,7 @@ One-line next step for anything still blocked.
 | Cursor channel read | admin-ops only | Cloud reads 3; IDE lists 7 | S1 + 14:32 rescan |
 | YAML | pre-hardening | refreshed 2026-09-05T14:45:00Z | `catalog/agent-integrations.yaml` |
 
-Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788616243786809
+Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788618711648629?thread_ts=1788618711.648629&cid=C0B9SRMDJFK
 
 ### Changelog
 

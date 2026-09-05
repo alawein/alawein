@@ -336,10 +336,10 @@ One-line next step for anything still blocked.
 | T6 | Supermemory | drop | Not installed; Phase F Drop (repo SSOT enough) | 2026-09-05 |
 | T7 | Slack MCP dup removed | pass | Only `plugin-slack-slack` ready; no errored Slack dup | 2026-09-05 |
 | T8 | PR merge status | pass | #196 merged; #197 closed (base deleted); #198 merged (Phase 2 closeout) | 2026-09-05 |
-| S1 | @Cursor channels | pass (partial) | IDE lists 7/7; Cloud Agent reads 3 (admin-ops, kohyr-dev, all-alawein-workspace) | 2026-09-05 |
+| S1 | @Cursor channels | pass | IDE lists 7/7; Cloud Agent reads 7/7 (lane C complete 15:16) | 2026-09-05 |
 | S2 | @Claude apps | late pass | Claude replied 14:02:51 (app table + Claude Tag prompt) | 2026-09-05 |
 | S3 | @Computer #posts | blocked | No reply; joined `#kohyr-dev` and `#all-alawein-workspace`; needs Slack re-auth | 2026-09-05 |
-| S4 | @Codex reply | remapped | Codex `U0BV7V8M3NW` joined 14:27; connect prompt; ChatGPT replaced | 2026-09-05 |
+| S4 | @Codex reply | fail | Connect prompt again 15:39:56 (`1788622796.091419`); not Reply OK; ChatGPT stays | 2026-09-05 |
 | S5 | @Notion AI identity | timeout | Mention U0AQ8UNAKTK; no reply in hardening thread | 2026-09-05 |
 | W1 | Monday Kickoff | pass | `#posts` contains Monday Weekly Kickoff (e.g. 2026-08-31) | 2026-09-05 |
 | W2 | Workflow bots | pass | All 5 YAML rows status=working; engagement_30d=0 | 2026-09-05 |
@@ -353,8 +353,8 @@ One-line next step for anything still blocked.
 | Supermemory | error | dropped | T6 / Phase F |
 | ChatGPT Slack | no reply | replaced by Codex | S4 remap 14:27 UTC |
 | Codex Slack | absent | needs ChatGPT Codex connect | `U0BV7V8M3NW` join + connect prompt |
-| Cursor channel read | admin-ops only | Cloud reads 3; IDE lists 7 | S1 + 14:32 rescan |
-| YAML | pre-hardening | refreshed 2026-09-05T14:45:00Z | `catalog/agent-integrations.yaml` |
+| Cursor channel read | admin-ops only | Cloud reads 7; IDE lists 7 | S1 + Lane D complete 15:16 |
+| YAML | pre-hardening | refreshed 2026-09-05T15:53:00Z (7/7 + Sider/Claw finalize) | `catalog/agent-integrations.yaml` |
 
 Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788618711648629?thread_ts=1788618711.648629&cid=C0B9SRMDJFK
 

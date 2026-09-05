@@ -278,7 +278,9 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook)
 - [x] Merge Phase 2 closeout ([PR #198](https://github.com/alawein/alawein/pull/198); #197 closed)
 - [x] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
-- [ ] Optional `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social`
+- [x] `/invite @Cursor` in `#posts` (2026-09-05 14:59 UTC)
+- [x] `/invite @Cursor` in `#content-pipeline` (2026-09-05 15:12 UTC)
+- [x] `/invite @Cursor` in `#job-search` (15:14) and `#social` (15:16)
 - [ ] Fix Cloud Agent leftover Slack MCP error; GitHub MCP ready on desktop only
 - [ ] Authenticate Computer in Slack
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
@@ -324,6 +326,10 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
   canon, and diff-only agents.
 - Documented desktop vs Cloud MCP non-collapse rule and Codex vs ChatGPT
   uninstall gate.
+- Closed `#posts` Cursor-invite row after Lane D read at 14:59 UTC.
+- Closed `#content-pipeline` Cursor-invite row after Lane D read at 15:12 UTC.
+- Closed `#job-search` and `#social` Cursor-invite rows after Lane D reads
+  at 15:14 and 15:16 UTC (Cloud Agent 7/7).
 
 ### v1.1.0 (2026-09-05)
 

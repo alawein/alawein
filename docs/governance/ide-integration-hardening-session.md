@@ -354,7 +354,7 @@ One-line next step for anything still blocked.
 | ChatGPT Slack | no reply | replaced by Codex | S4 remap 14:27 UTC |
 | Codex Slack | absent | needs ChatGPT Codex connect | `U0BV7V8M3NW` join + connect prompt |
 | Cursor channel read | admin-ops only | Cloud reads 7; IDE lists 7 | S1 + Lane D complete 15:16 |
-| YAML | pre-hardening | refreshed 2026-09-05T15:16:00Z | `catalog/agent-integrations.yaml` |
+| YAML | pre-hardening | refreshed 2026-09-05T15:53:00Z (7/7 + Sider/Claw finalize) | `catalog/agent-integrations.yaml` |
 
 Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788618711648629?thread_ts=1788618711.648629&cid=C0B9SRMDJFK
 

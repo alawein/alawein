@@ -188,9 +188,19 @@ lane D after Meshal started channel invites.
 | `#social` | yes | Cursor join `1788621362.488249` (15:16:02) |
 
 `@ChatGPT` (`U0BUNH33CCA`) stays installed. Codex replied 15:39:56 with the
-connect prompt (`1788622796.091419`), not `Reply OK`. Lanes A–B remain
-browser OAuth (Playwright Slack login blocked on an auth code); hand to
-Meshal desktop or Sider/Claw.
+connect prompt (`1788622796.091419`), not `Reply OK`.
+
+## Sider/Claw finalize (2026-09-05 15:52 UTC)
+
+Desktop browser run. Inventory rows updated in
+`catalog/agent-integrations.yaml` (`finalize_sider_claw`).
+
+| Lane | Result | Evidence | Blocker |
+| --- | --- | --- | --- |
+| A Codex | fail | Connect prompt `1788622796.091419`; Connect clicks (DOM + native x4) launched no OAuth popup | Meshal Connect / OAuth popup |
+| B Computer | fail | DM welcome only (Mar 30 / Apr 1); no Reconnect/Sign-in in Slack app UI | Perplexity re-auth (Meshal) |
+| C Invites | pass | Joins `1788620374` `1788621136` `1788621248` `1788621362`; Cloud Agent 7/7 | none |
+| D Notion | skip | Optional; not probed | optional |
 
 ## What this rescan did not change
 

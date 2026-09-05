@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T15:40:00Z'
+lastVerified: '2026-09-05T15:53:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -23,10 +23,10 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads all 7 channels after lane C invites completed
-      2026-09-05 15:16 UTC (#job-search 15:14, #social 15:16). Lane D
-      re-probe run bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0. IDE Slack MCP
-      (Meshal) also reads all 7.
+      Cloud Agent cursor_can_read=yes on all 7 public channels (was 3/7).
+      Lane C invites by Meshal; joins 1788620374 (#posts), 1788621136
+      (#content-pipeline), 1788621248 (#job-search), 1788621362 (#social).
+      Sider/Claw finalize 15:52 UTC: C pass. IDE Slack MCP also reads 7.
     last_verified: 2026-09-05
   - id: claude-slack
     display_name: Claude
@@ -56,8 +56,9 @@ agents:
     slack_user_id: U0APW7F9S4A
     status: needs_auth
     notes: >
-      S3 smoke: no reply after mention; Slack re-auth still required.
-      Joined #kohyr-dev and #all-alawein-workspace ~13:55. Silent on #posts.
+      Sider/Claw finalize 15:52 UTC: B fail. Computer DM shows only welcome
+      blurbs (Mar 30 / Apr 1). No Reconnect/Sign-in surface in Slack app UI.
+      Blocker: Perplexity re-auth OAuth (Meshal). Silent on #posts.
     last_verified: 2026-09-05
   - id: chatgpt-slack
     display_name: ChatGPT
@@ -80,9 +81,11 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Joined #admin-ops 14:27:21. Connect prompt 14:28:50 and again 15:39:56
-      (ts 1788622796.091419) after Meshal tagged Reply OK. Not S4. ChatGPT
-      stays installed. Channel membership observed in #admin-ops only.
+      Installed in #admin-ops (C0B9SRMDJFK). Sider/Claw finalize 15:52 UTC:
+      A fail. Connect prompt ts 1788622796.091419 (not Reply OK). Connect
+      button clicks (DOM + native x4) launched no OAuth popup/tab and no
+      error UI. Blocker: Meshal must complete Connect in a browser that
+      allows the OAuth popup. ChatGPT stays installed.
     last_verified: 2026-09-05
   - id: notion-ai-slack
     display_name: Notion AI
@@ -95,8 +98,9 @@ agents:
     account: contact@meshal.ai
     workspace: Meshal's Workspace
     notes: >
-      S5 still unanswered after mention. Prior workspace identity remains
-      contact@meshal.ai / Meshal's Workspace (8116d8de-2215-81ce-b71b-00031e833a2d).
+      Sider/Claw finalize 15:52 UTC: D skip (optional, not probed). S5
+      still unanswered. Prior identity: contact@meshal.ai / Meshal's
+      Workspace (8116d8de-2215-81ce-b71b-00031e833a2d).
     last_verified: 2026-09-05
   - id: github-slack
     display_name: GitHub for Slack
@@ -257,6 +261,9 @@ slack_channels:
     tier: hub
     agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex]
     cursor_can_read: true
+    notes: >
+      Codex (U0BV7V8M3NW) installed here. ChatGPT (U0BUNH33CCA) still
+      present; do not uninstall until Codex Reply OK.
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
@@ -338,3 +345,35 @@ cursor_mcp_cloud_agent:
     - Posthog
     - Wonder
     - Zoom
+
+finalize_sider_claw:
+  at: '2026-09-05T15:52:00Z'
+  source: Sider/Claw desktop browser
+  lanes:
+    - id: A
+      owner: Codex
+      result: fail
+      evidence: >
+        Connect prompt ts 1788622796.091419, not Reply OK. Connect button
+        clicks (DOM + native x4) launched no OAuth popup/tab.
+      blocker: Meshal must complete Connect in a browser that allows OAuth popup
+    - id: B
+      owner: Computer
+      result: fail
+      evidence: >
+        Computer DM welcome blurbs only (Mar 30 / Apr 1). No Reconnect or
+        Sign-in surface in Slack app UI.
+      blocker: Perplexity re-auth OAuth (Meshal)
+    - id: C
+      owner: Cursor invites
+      result: pass
+      evidence: >
+        /invite @Cursor in #posts #content-pipeline #job-search #social.
+        Joins 1788620374, 1788621136, 1788621248, 1788621362. Cloud Agent
+        reads 7/7 (was 3/7).
+      blocker: none
+    - id: D
+      owner: Notion AI
+      result: skip
+      evidence: Optional lane; not probed this finalize.
+      blocker: optional

@@ -48,6 +48,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `review-playbook.md` | Active | Code review process |
 | `skills-agents-unification.md` | Reference | Skills and agents unification notes |
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
+| `cursor-mcp-repair.md` | Active | Repair steps for broken Cursor MCP integrations |
 | `slack-agent-runbook.md` | Active | Slack channel, workflow-bot, and integration governance for agent routing |
 | `unified-agent-system.md` | Active | Master agent orchestration, inventory SSOT, dispatch routing, output standards |
 | `slash-commands-catalog.md` | Reference | Available slash commands |

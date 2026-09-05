@@ -39,7 +39,7 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 | --- | --- | --- | --- | --- | --- |
 | `#admin-ops` | `C0B9SRMDJFK` | Agent command center; ops, infra, cross-tool coordination | yes | Hub (human+agent) | Active |
 | `#posts` | `C0APWF615H7` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | yes (invite 14:59) | Hub (bot-only) | Active |
-| `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | no (listed) | Domain | Low use |
+| `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | yes (invite 15:12) | Domain | Low use |
 | `#kohyr-dev` | `C0B9JJZSVQT` | Kohyr engineering (renamed from morphism-dev) | yes | Domain | Dormant since 2026-06-11 |
 | `#job-search` | `C0B9NTUUGR4` | Job and career tracking | no (listed) | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
@@ -191,8 +191,9 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
 7. **Cursor Slack access:** Done for `#kohyr-dev`,
-   `#all-alawein-workspace` (2026-09-05 ~13:55), and `#posts` (14:59).
-   Optional remaining invites: `#content-pipeline`, `#job-search`, `#social`.
+   `#all-alawein-workspace` (2026-09-05 ~13:55), `#posts` (14:59), and
+   `#content-pipeline` (15:12). Optional remaining invites: `#job-search`,
+   `#social`.
 
 ### Phase 3 — Trial (2026-09-05 through 2026-09-19)
 

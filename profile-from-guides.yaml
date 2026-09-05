@@ -14,7 +14,7 @@ role:
 - ai-systems-engineer
 domains:
 - quantum-computing
-- ai-governance
+- ai-assurance
 - hpc
 - web-systems
 tags:
@@ -26,30 +26,33 @@ updated: 2026-08-29
 variant_default: balanced
 urls:
   website: https://meshal.ai
-  kohyr: https://kohyr.com
+  kohyr: https://kohyr.ai
   scholar: https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en
   email: mailto:contact@meshal.ai
   linkedin: https://linkedin.com/in/alawein
   github: https://github.com/alawein
+thesis: |
+  I build evidence-first scientific software and AI systems whose claims can be checked.
+  At Kohyr, I work on verifying agent actions with gates and signed records that remain checkable offline.
 tagline: Computational scientist and AI systems engineer building auditable AI systems.
 tagline_quote: ''
 bio_short: |
-  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
+  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.ai). 12 years in scientific computing; 6+ in ML/AI.
 
-  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation and agent-action verification.
 bio_long: |
-  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.com). 12 years in scientific computing; 6+ in ML/AI.
+  Computational physicist turned AI systems engineer. PhD, EECS, UC Berkeley. Founder of [Kohyr](https://kohyr.ai). 12 years in scientific computing; 6+ in ML/AI.
 
-  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation platforms and AI governance tooling.
+  I build at the intersection of physics, machine learning, and auditable software, from micromagnetic simulators and quantum transport frameworks to LLM evaluation and agent-action verification.
 bio_bullets: 'UC Berkeley PhD EECS
 
   Kohyr founder
 
-  AI governance, HPC, and product systems
+  AI assurance, HPC, and product systems
 
   San Francisco, CA'
-linkedin_headline: Computational Scientist & AI Systems Engineer · Founder, Kohyr
-  · PhD EECS, UC Berkeley
+linkedin_headline: Computational Scientist & AI Systems Engineer | Founder, Kohyr
+  | PhD EECS, UC Berkeley
 profile_pins:
   - qmatsim
   - spincirc
@@ -59,35 +62,50 @@ profile_pins:
   - chshlab
 research_rows:
   - slug: qmatsim
+    lifecycle: Maintenance
     url: https://github.com/alawein/qmatsim
-    description: "Multiscale DFT+MD toolkit for strain engineering in 2D materials · *Phys. Rev. Materials 2025*"
+    description: "Multiscale DFT+MD toolkit for strain engineering in 2D materials (*Phys. Rev. Materials 2025*)"
   - slug: spincirc
+    lifecycle: Maintenance
     url: https://github.com/alawein/spincirc
-    description: "Spintronic device modeling via spin-circuit methods · *IEEE J-XCDC 2018*"
+    description: "Spintronic device modeling via spin-circuit methods (*IEEE J-XCDC 2018*)"
   - slug: maglogic
+    lifecycle: Maintenance
     url: https://github.com/alawein/maglogic
-    description: "Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019*"
+    description: "Nanomagnetic logic simulation with OOMMF/MuMax3 (*IEEE Magnetics Letters 2019*)"
   - slug: scicomp
+    lifecycle: Maintenance
     url: https://github.com/alawein/scicomp
-    description: "Scientific computing library: PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica"
+    description: "Scientific computing library: PDE solvers, PINNs, and HPC in Python, MATLAB, and Mathematica"
   - slug: fallax
+    lifecycle: Active
     url: https://github.com/alawein/fallax
     description: "Multi-step LLM reasoning evaluation: step-level correctness across logic, math, and causal inference"
   - slug: chshlab
+    lifecycle: Active
     url: https://chshlab.online
     description: "Quantum foundations education site for CHSH and Bell inequality experiments."
   - slug: qubeml
+    lifecycle: Maintenance
     url: https://github.com/alawein/qubeml
     description: "Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane"
 
 product_rows:
+  - name: outpost
+    url: https://github.com/alawein/outpost
+    lifecycle: Active
+    description: "Prompt kit and installers for coding-agent workflows, with drift checks"
   - name: alembiq
+    lifecycle: Private
     description: "LLM training, alignment, evaluation, and synthetic data platform"
   - name: attributa
+    lifecycle: Private
     description: "Privacy-first attribution intelligence with AI detection and CWE scans"
   - name: llmworks
+    lifecycle: Private
     description: "LLM evaluation, benchmarking, and security testing"
   - name: provegate
+    lifecycle: Private
     description: "Epistemic reasoning framework and agent belief infrastructure"
 
-stack: "Python · TypeScript · MATLAB · CUDA · PyTorch · Next.js · Supabase"
+stack: "Python | TypeScript | MATLAB | CUDA | PyTorch | Next.js | Supabase"

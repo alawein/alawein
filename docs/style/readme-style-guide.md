@@ -5,7 +5,7 @@ sync: manual
 sla: on-change
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-08-27
+last_updated: 2026-09-05
 last-verified: 2026-07-25
 ---
 
@@ -24,43 +24,14 @@ Use `VOICE.md` as the canonical README authority.
 - Keep badges optional and minimal. Do not place decorative badge walls at the top of the file.
 - Do not duplicate content already governed in `docs/README.md`.
 
-## Required sections by archetype
+## Required public sections
 
-### Product
-
-1. Value proposition
-2. Demo and status
-3. Quick start
-4. Architecture
-5. Deployment
-6. Docs map
-7. Ownership
-
-### Tooling and infrastructure
-
-1. Purpose
-2. Install
-3. Commands
-4. Architecture
-5. Consumers
-6. Release and versioning
-
-### Research
-
-1. Abstract
-2. Status
-3. Runtime requirements
-4. Reproducibility
-5. Datasets
-6. Docs map
-
-### Archive
-
-1. Status
-2. Archive reason
-3. Contents
-4. Access rules
+1. The claim (optional for archival repositories)
+2. Run it
+3. What it is
+4. What it is not
 5. Docs map
+6. License
 
 ## Formatting rules
 

@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 from validate_readme_voice import (
+    check_public_contract,
     check_readme_text,
     check_single_repo,
     main,
@@ -22,6 +23,7 @@ def _repo(**kw):
         "local_path": "lab/demo",
         "repo": "alawein/demo",
         "surface": "library",
+        "visibility": "public",
     }
     base.update(kw)
     return base
@@ -29,7 +31,8 @@ def _repo(**kw):
 
 def test_should_skip_hub_and_archive():
     assert should_skip(_repo(slug="alawein", type="governance"))
-    assert should_skip(_repo(slug="helios", type="archive"))
+    assert not should_skip(_repo(slug="helios", type="archive"))
+    assert should_skip(_repo(slug="helios", type="archive", visibility="private"))
     assert not should_skip(_repo())
 
 
@@ -69,6 +72,44 @@ def test_fenced_emdash_exempt():
 def test_single_repo_mode(tmp_path):
     (tmp_path / "README.md").write_text("# Demo\n\nClean.\n", encoding="utf-8")
     assert check_single_repo(tmp_path, _repo()) == []
+
+
+def test_public_readme_rejects_record_card_and_generated_markers(tmp_path):
+    (tmp_path / "README.md").write_text(
+        "# Demo\n\nStatus: active\n<!-- GENERATED:README -->\n", encoding="utf-8"
+    )
+    problems = check_single_repo(tmp_path, _repo())
+    assert any("record-card" in problem for problem in problems)
+    assert any("generated marker" in problem for problem in problems)
+
+
+def test_public_presentation_rules_cover_rendered_prose_at_any_line():
+    padding = "\n".join(f"Line {i}." for i in range(65))
+    cases = [
+        "- **Verification date:** 2026-09-05",
+        "Verified 2026-09-05: 10 passed.",
+        "**Status:** active",
+    ]
+    for line in cases:
+        problems = check_public_contract(padding + "\n" + line, _repo())
+        assert problems, line
+
+
+def test_verified_date_allowed_only_in_reproducibility():
+    readme = "# Demo\n\n## Reproducibility\n\nVerified 2026-09-05: 10 passed.\n"
+    assert check_public_contract(readme, _repo()) == []
+
+
+def test_fenced_and_commented_presentation_examples_are_ignored():
+    readme = """# Demo
+
+```markdown
+Status: active
+Verification date: 2026-09-05
+```
+<!-- Status: active -->
+"""
+    assert check_public_contract(readme, _repo()) == []
 
 
 def test_main_repo_path_mode(tmp_path):

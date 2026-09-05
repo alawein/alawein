@@ -1,30 +1,26 @@
 # {{name}}
 
-Status:      archived
-Category:    archive
-Owner:       alawein
-Visibility:  {{visibility}}
-Purpose:     {{purpose}}
-Next action: archive
+> {{value_proposition}}
 
-## Status
+## Run it
 
-- Archived: `{{archived_on}}`
-- Last verified: `{{last_verified}}`
+```bash
+git log -1 --oneline
+```
 
-## Archive reason
+## What it is
 
-One or two sentences on why the work stopped and what superseded it.
+Describe what is preserved and its historical audience.
 
-## Contents
+## What it is not
 
-Short list of what is preserved here and what was dropped.
-
-## Access rules
-
-- Read-only. No new branches or PRs.
-- Restore by forking into a live bucket, never by reviving this repo.
+State that active development has ended and name any successor.
 
 ## Docs map
 
-- `docs/README.md`
+- [Documentation](docs/README.md)
+- [Changelog](CHANGELOG.md)
+
+## License
+
+MIT. See [LICENSE](LICENSE).

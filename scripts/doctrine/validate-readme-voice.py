@@ -20,6 +20,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import sys
 import tempfile
 import urllib.error
@@ -31,6 +32,7 @@ if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
 
 import validate as style_validate
+from readme_contract import rendered_lines, sections, strip_markdown_prefix
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
@@ -62,7 +64,7 @@ def should_skip(repo: dict) -> bool:
     slug = repo.get("slug") or ""
     if slug in HUB_SLUGS:
         return True
-    if repo.get("type") in SKIP_TYPES:
+    if repo.get("visibility") != "public" and repo.get("type") in SKIP_TYPES:
         return True
     return False
 
@@ -80,6 +82,36 @@ def check_readme_text(readme: str, slug: str) -> list[str]:
         return problems
 
 
+def check_public_contract(readme: str, repo: dict) -> list[str]:
+    if repo.get("visibility") != "public":
+        return []
+    slug = repo.get("slug") or "<no-slug>"
+    problems: list[str] = []
+    prose_lines = rendered_lines(readme)
+    normalized = [strip_markdown_prefix(line.text) for line in prose_lines]
+    if any(re.match(r"^(Status|Category|Owner|Visibility|Purpose|Next action)\s*:", line, re.I)
+           for line in normalized):
+        problems.append(f"{slug}: public README contains a banned record-card field")
+    if re.search(r"<!--\s*GENERATED(?::[^-]*)?-->", readme, re.IGNORECASE):
+        problems.append(f"{slug}: public README contains a generated marker comment")
+    if any(re.match(r"^Verification date\s*:", line, re.I) for line in normalized):
+        problems.append(f"{slug}: public README contains a banned Verification date line")
+    parsed = sections(readme)
+    reproduction_ranges = [
+        (section.line, parsed[i + 1].line if i + 1 < len(parsed) else 10**9)
+        for i, section in enumerate(parsed)
+        if section.heading.casefold() == "reproducibility"
+    ]
+    for line, normalized_line in zip(prose_lines, normalized):
+        if not re.match(r"^Verified\s+\d{4}-\d{2}-\d{2}\s*:", normalized_line, re.I):
+            continue
+        if not any(start < line.number < end for start, end in reproduction_ranges):
+            problems.append(
+                f"{slug}: public README evidence date must appear under Reproducibility"
+            )
+    return problems
+
+
 def check_repo_local(repo: dict, workspace_root: Path) -> list[str]:
     if should_skip(repo):
         return []
@@ -90,7 +122,8 @@ def check_repo_local(repo: dict, workspace_root: Path) -> list[str]:
     readme_path = workspace_root / lp / "README.md"
     if not readme_path.is_file():
         return [f"{slug}: missing README.md under {lp}"]
-    return check_readme_text(readme_path.read_text(encoding="utf-8"), slug)
+    readme = readme_path.read_text(encoding="utf-8")
+    return check_readme_text(readme, slug) + check_public_contract(readme, repo)
 
 
 def check_single_repo(repo_path: Path, repo: dict) -> list[str]:
@@ -100,7 +133,8 @@ def check_single_repo(repo_path: Path, repo: dict) -> list[str]:
     readme_path = repo_path / "README.md"
     if not readme_path.is_file():
         return [f"{slug}: missing README.md"]
-    return check_readme_text(readme_path.read_text(encoding="utf-8"), slug)
+    readme = readme_path.read_text(encoding="utf-8")
+    return check_readme_text(readme, slug) + check_public_contract(readme, repo)
 
 
 def _github_request(path: str, token: str, *, retries: int = 2) -> tuple[int, bytes]:
@@ -189,7 +223,7 @@ def check_repo_github(repo: dict, token: str) -> list[str]:
         return [f"{slug}: {exc}"]
     if readme is None:
         return [f"{slug}: missing README.md on {default_branch}"]
-    return check_readme_text(readme, slug)
+    return check_readme_text(readme, slug) + check_public_contract(readme, repo)
 
 
 def validate_all(

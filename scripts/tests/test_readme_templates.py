@@ -15,7 +15,7 @@ if str(CATALOG_DIR) not in sys.path:
 
 from catalog_lib import README_SECTIONS  # noqa: E402
 
-HEADER_LINES = ["Status:", "Category:", "Owner:", "Visibility:", "Purpose:", "Next action:"]
+PRIVATE_HEADER_LINES = ["Status:", "Category:", "Owner:", "Visibility:", "Purpose:", "Next action:"]
 TEMPLATE_TYPES = {
     "README.product.md": "product",
     "README.research.md": "research",
@@ -34,14 +34,12 @@ class ReadmeTemplateTests(unittest.TestCase):
         for name in TEMPLATE_TYPES:
             self.assertTrue((TEMPLATES / name).is_file(), name)
 
-    def test_header_block_follows_title(self) -> None:
+    def test_public_value_proposition_follows_title(self) -> None:
         for name in TEMPLATE_TYPES:
             lines = (TEMPLATES / name).read_text(encoding="utf-8").splitlines()
             self.assertEqual(lines[0], "# {{name}}", name)
-            block = lines[2:8]
-            self.assertEqual(len(block), 6, name)
-            for expected, actual in zip(HEADER_LINES, block):
-                self.assertTrue(actual.startswith(expected), f"{name}: expected {expected!r}, got {actual!r}")
+            self.assertTrue(lines[2].startswith("> "), name)
+            self.assertFalse(any(line.startswith(tuple(PRIVATE_HEADER_LINES)) for line in lines[:20]), name)
 
     def test_h2_order_matches_canon(self) -> None:
         for name, rtype in TEMPLATE_TYPES.items():
@@ -60,8 +58,13 @@ class ReadmeTemplateTests(unittest.TestCase):
         spec = importlib.util.spec_from_file_location("vrt", script)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        for rtype in ("product", "research", "tooling", "infra", "archive"):
-            self.assertEqual(README_SECTIONS[rtype], mod.SECTIONS_BY_TYPE[rtype], rtype)
+        for rtype in ("product", "research", "tooling", "infra"):
+            self.assertEqual(
+                [section for section in README_SECTIONS[rtype] if section not in {"Contributing", "Citation"}],
+                mod.PUBLIC_REQUIRED_SECTIONS[:0] + ["The claim", *mod.PUBLIC_REQUIRED_SECTIONS],
+                rtype,
+            )
+        self.assertEqual(README_SECTIONS["archive"], mod.PUBLIC_REQUIRED_SECTIONS)
 
 
 if __name__ == "__main__":

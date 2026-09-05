@@ -1,36 +1,36 @@
 # {{name}}
 
-Status:      {{status}}
-Category:    {{bucket}}
-Owner:       alawein
-Visibility:  {{visibility}}
-Purpose:     {{purpose}}
-Next action: continue
+> {{value_proposition}}
 
-## Abstract
+## The claim
 
-State the research question, model, or system under study.
+State the measured result, reproduced benchmark, or honest unmeasured status.
 
-## Status
+## Run it
 
-- Lifecycle: `{{lifecycle}}`
-- Verification date: `{{last_verified}}`
+```bash
+{{install_command}}
+{{reproduce_command}}
+```
 
-## Runtime requirements
+## What it is
 
-List languages, packages, hardware, or datasets needed to run the work.
+State the research question and who can use the work.
 
-## Reproducibility
+## What it is not
 
-Document how to reproduce main results or experiments.
-
-## Datasets
-
-- `{{dataset_one}}`
-- `{{dataset_two}}`
+State the model boundary and non-goals.
 
 ## Docs map
 
-- `docs/README.md`
-- `SSOT.md`
-- `LESSONS.md`
+- [Documentation](docs/README.md)
+- [Architecture](docs/architecture/topology.md)
+- [Changelog](CHANGELOG.md)
+
+## Citation
+
+See [CITATION.cff](CITATION.cff).
+
+## License
+
+MIT. See [LICENSE](LICENSE).

@@ -8,7 +8,7 @@ description: Single source of truth for commit authority, commit messages, branc
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-06-09
+last_updated: 2026-09-05
 tags: [commits, branches, merge, releases, semver, agents, convention]
 ---
 
@@ -63,6 +63,10 @@ Conventional Commits, house-tuned:
 - Footers: `BREAKING CHANGE: <description>` for incompatible changes; issue
   references such as `Closes #123` or `Refs #123`.
 - Hard rules: no AI attribution, no em-dashes, American spelling.
+
+Forward-only owner exception: the profile repo (`alawein/alawein`) and
+`alawein/outpost` adopt this convention for new commits from 2026-09-04. Older
+plain imperative subjects remain valid history and are not rewritten.
 
 Commit types drive the version bump (section 5). Keep commits small and frequent;
 keep unrelated changes out of the same commit.

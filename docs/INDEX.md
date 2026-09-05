@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-07-06
+last_updated: 2026-09-05
 ---
 
 # Index: alawein
@@ -22,6 +22,7 @@ last_updated: 2026-07-06
 ## adr/
 
 - [0001-adopt-anti-rot-primitives.md](adr/0001-adopt-anti-rot-primitives.md)
+- [0002-public-readme-contract.md](adr/0002-public-readme-contract.md)
 
 ## archive/
 

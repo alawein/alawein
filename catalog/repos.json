@@ -1599,7 +1599,7 @@
       "lane": "platform"
     },
     {
-      "name": "knowledge-base",
+      "name": "Command Center",
       "slug": "knowledge-base",
       "legacy_slugs": [
         "pkos"
@@ -1626,8 +1626,8 @@
       "theme_family": "midnight",
       "brand_family": "midnight",
       "status": "active",
-      "homepage": "https://knowledge-base-alawein.vercel.app",
-      "canonical_description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "homepage": "https://github.com/alawein/knowledge-base",
+      "canonical_description": "Private local workspace records and operating tools.",
       "tags": [
         "Next.js",
         "TypeScript",

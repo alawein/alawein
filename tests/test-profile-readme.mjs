@@ -32,9 +32,9 @@ function parseResearchRows(readmeText) {
   const rows = [];
   for (const line of lines.slice(start + 4)) {
     if (!line.startsWith("|")) break;
-    const match = line.match(/^\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*(.*?)\s*\|$/);
+    const match = line.match(/^\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)\|\s*(.*?)\s*\|$/);
     assert.ok(match, `README research row is not parseable: ${line}`);
-    rows.push({ slug: match[1], url: match[2], description: match[3] });
+    rows.push({ slug: match[1], url: match[2], lifecycle: match[3].trim(), description: match[4] });
   }
   return rows;
 }
@@ -56,5 +56,12 @@ describe("profile README research rows", () => {
     for (const row of pinnedRows) {
       assert.ok(row.description.length > 0, `README research row '${row.slug}' must have a description`);
     }
+  });
+
+  it("labels active and maintenance work honestly", () => {
+    const lifecycle = Object.fromEntries(researchRows.map((row) => [row.slug, row.lifecycle]));
+    assert.equal(lifecycle.fallax, "Active");
+    assert.equal(lifecycle.chshlab, "Active");
+    assert.equal(lifecycle.qmatsim, "Maintenance");
   });
 });

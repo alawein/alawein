@@ -28,10 +28,9 @@ lanes:
     name: incore
     url: https://github.com/alawein/incore
   - slug: knowledge-base
-    about: Searchable discovery surface for repositories, tools, assets, templates,
-      and onboarding.
-    name: knowledge-base
-    url: https://knowledge-base-alawein.vercel.app
+    about: Private local workspace records and operating tools.
+    name: Command Center
+    url: https://github.com/alawein/knowledge-base
     legacy_slugs:
     - pkos
   - slug: outpost

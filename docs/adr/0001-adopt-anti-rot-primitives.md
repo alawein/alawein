@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-06
+last_updated: 2026-09-05
 audience: [ai-agents, contributors]
 ---
 
@@ -36,3 +36,15 @@ primitives and defer `/check-ssot`, `/doc-sync`, and CODEOWNERS.
   doctrine finding type appears until they comply.
 - **Follow-ups:** pilot then fleet rollout; revisit `/check-ssot` and `/doc-sync`
   in a v2.
+
+## Revalidation (2026-09-05)
+
+The decision remains accepted. The current catalog buckets enforced by
+`validate-repo-framework.py` are `core`, `apps`, and `lab`.
+`bootstrap-repo.sh` still creates the debt ledger and ADR template; the
+[active policy](../governance/anti-rot.md) uses those current bucket names.
+
+The original skill implementation targeted Claude Code user skills under
+`~/.claude/skills/`. It did not establish a cross-tool installation contract.
+This review checked the policy, validator, bootstrap, and implementation plan;
+it did not reverify deployment across the fleet.

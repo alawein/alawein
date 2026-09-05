@@ -27,6 +27,8 @@ import urllib.request
 from pathlib import Path
 from typing import Callable
 
+from readme_contract import looks_like_command, meaningful_body, rendered_lines, runnable_body, sections, uses_public_contract
+
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
 TOPOLOGY_REL = Path("docs/architecture/topology.md")
@@ -78,6 +80,8 @@ SECTIONS_BY_TYPE: dict[str, list[str]] = {
     ],
 }
 
+PUBLIC_REQUIRED_SECTIONS = ["Run it", "What it is", "What it is not", "Docs map", "License"]
+
 SECTIONS_CATALOG_COLLECTION: list[str] = [
     "Purpose",
     "Structure",
@@ -88,6 +92,7 @@ SECTIONS_CATALOG_COLLECTION: list[str] = [
 
 # Tier 1 aliases from docs/governance/repo-topology-canon.md
 SECTION_ALIASES: dict[str, list[str]] = {
+    "The claim": ["What Fallax measures", "Status"],
     "Value proposition": ["Public value", "What it does", "What ships"],
     "Quick start": ["Setup", "Development", "Install"],
     "Docs map": ["Documentation", "Governance"],
@@ -157,26 +162,122 @@ def sections_for_repo(repo: dict) -> list[str]:
     return []
 
 
-def check_readme_sections(readme: str, repo: dict) -> list[str]:
+def check_readme_sections(readme: str, repo: dict, *, allow_legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
     rtype = repo.get("type")
-    if slug in HUB_SLUGS or rtype == "governance":
+    if slug in HUB_SLUGS:
         return []
-    required = sections_for_repo(repo)
+    is_public = uses_public_contract(readme, repo, allow_legacy_public=allow_legacy_public)
+    if is_public:
+        required = list(PUBLIC_REQUIRED_SECTIONS)
+        if repo.get("status") not in {"archived", "frozen", "deprecated"}:
+            required.insert(0, "The claim")
+    else:
+        required = sections_for_repo(repo)
     if not required:
         return [f"{slug}: unknown type {rtype!r} for README section check"]
     problems: list[str] = []
-    for section in required:
-        if OPTIONAL_SECTION.get((rtype, section), lambda _r: False)(repo):
-            continue
-        if not section_present(readme, section):
-            problems.append(f"{slug}: missing README section {section!r} (type={rtype})")
+    if not is_public:
+        for section in required:
+            if OPTIONAL_SECTION.get((rtype, section), lambda _r: False)(repo):
+                continue
+            if not section_present(readme, section):
+                problems.append(f"{slug}: missing README section {section!r} (type={rtype})")
+    if is_public:
+        parsed = sections(readme)
+        canonical = ["The claim", *PUBLIC_REQUIRED_SECTIONS]
+        if repo.get("status") in {"archived", "frozen", "deprecated"}:
+            canonical.remove("The claim")
+
+        def canonical_name(heading: str) -> str | None:
+            folded = heading.casefold()
+            for expected in canonical:
+                names = [expected, *SECTION_ALIASES.get(expected, [])]
+                if folded in {name.casefold() for name in names}:
+                    return expected
+            return None
+
+        observed = [name for section in parsed if (name := canonical_name(section.heading))]
+        positions = [canonical.index(name) for name in observed]
+        if positions != sorted(positions):
+            problems.append(f"{slug}: public README sections are not in canonical order")
+
+        by_name = {
+            name: section
+            for section in parsed
+            if (name := canonical_name(section.heading)) is not None
+        }
+        for name in required:
+            if name not in by_name:
+                problems.append(f"{slug}: missing README section {name!r} (type={rtype})")
+        for name in canonical:
+            section = by_name.get(name)
+            if section is not None and not meaningful_body(section) and name != "Run it":
+                problems.append(f"{slug}: {name!r} has an empty body")
+
+        first_screen_required = ["Run it"]
+        if "The claim" in canonical:
+            first_screen_required.insert(0, "The claim")
+        raw_lines = readme.splitlines()
+
+        def has_fenced_invocation(section, *, through_line=None):
+            next_heading = next(
+                (candidate.line for candidate in parsed if candidate.line > section.line),
+                len(raw_lines) + 1,
+            )
+            end = min(through_line or len(raw_lines), next_heading - 1)
+            body = "\n".join(raw_lines[section.line:min(end, len(raw_lines))])
+            fence = None
+            has_command = False
+            for line in body.splitlines():
+                if fence is None:
+                    match = re.match(r"^\s*(`{3,}|~{3,})(?:bash|sh|shell|console|powershell|ps1)?\s*$", line)
+                    if match:
+                        fence = match.group(1)
+                        has_command = False
+                elif re.match(rf"^\s*{re.escape(fence[0])}{{{len(fence)},}}\s*$", line):
+                    if has_command:
+                        return True
+                    fence = None
+                elif looks_like_command(line):
+                    has_command = True
+            return False
+
+        for name in first_screen_required:
+            section = by_name.get(name)
+            if section is None or section.line > 40:
+                problems.append(f"{slug}: {name!r} must appear in the first 40 lines")
+            elif not meaningful_body(section, through_line=40) and not (
+                name == "Run it" and has_fenced_invocation(section, through_line=40)
+            ):
+                problems.append(f"{slug}: {name!r} has an empty body in the first 40 lines")
+
+        run_section = by_name.get("Run it")
+        if run_section is not None:
+            if not runnable_body(
+                run_section, through_line=40
+            ) and not has_fenced_invocation(run_section, through_line=40):
+                problems.append(
+                    f"{slug}: 'Run it' must contain a runnable invocation in the first 40 lines"
+                )
+
+        prose = "\n".join(line.text for line in rendered_lines(readme))
+        linked_badges = re.findall(r"\[!\[[^]]*\]\([^)]*\)\]\([^)]*\)", prose)
+        shield_badges = re.findall(
+            r"(?<!\[)!\[[^]]*\]\([^)]*(?:shields\.io|badge)[^)]*\)",
+            prose,
+            re.IGNORECASE,
+        )
+        badges = len(linked_badges) + len(shield_badges)
+        if badges > 3:
+            problems.append(f"{slug}: public README has {badges} badges; maximum is 3")
     return problems
 
 
-def check_topology_file(content: str | None, repo: dict) -> list[str]:
+def check_topology_file(content: str | None, repo: dict, *, legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
-    if slug in HUB_SLUGS or repo.get("type") == "governance":
+    if (slug in HUB_SLUGS or repo.get("type") == "governance"
+            or (repo.get("visibility") == "public" and not legacy_public)):
         return []
     if content is None:
         return [f"{slug}: missing {TOPOLOGY_REL.as_posix()}"]
@@ -260,7 +361,7 @@ def _github_file(
     return base64.b64decode(raw).decode("utf-8")
 
 
-def check_repo_github(repo: dict, token: str) -> list[str]:
+def check_repo_github(repo: dict, token: str, *, allow_legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
     if slug in HUB_SLUGS:
         return []
@@ -287,7 +388,12 @@ def check_repo_github(repo: dict, token: str) -> list[str]:
         return [f"{slug}: {exc}"]
     if readme is None:
         return [f"{slug}: missing README.md on {default_branch}"]
-    return check_readme_sections(readme, repo) + check_topology_file(topo, repo)
+    legacy_public = repo.get("visibility") == "public" and not uses_public_contract(
+        readme, repo, allow_legacy_public=allow_legacy_public
+    )
+    return check_readme_sections(readme, repo, allow_legacy_public=allow_legacy_public) + check_topology_file(
+        topo, repo, legacy_public=legacy_public
+    )
 
 
 def find_repo_by_slug(repos: list[dict], repo_slug: str) -> dict | None:
@@ -317,13 +423,14 @@ def validate_all(
     *,
     workspace_root: Path | None = None,
     github_token: str | None = None,
+    allow_legacy_public: bool = False,
 ) -> list[str]:
     problems: list[str] = []
     for repo in repos:
         if workspace_root is not None:
             problems.extend(check_repo_local(repo, workspace_root))
         elif github_token:
-            problems.extend(check_repo_github(repo, github_token))
+            problems.extend(check_repo_github(repo, github_token, allow_legacy_public=allow_legacy_public))
     return problems
 
 
@@ -343,7 +450,11 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="GitHub repo slug owner/name or catalog slug for --repo-path mode.",
     )
+    parser.add_argument("--allow-legacy-public", action="store_true",
+                        help="During staged rollout, accept the prior contract in GitHub fleet audits.")
     args = parser.parse_args(argv)
+    if args.allow_legacy_public and (not args.github_api or args.repo_path is not None or args.workspace_root is not None):
+        parser.error("--allow-legacy-public requires GitHub fleet mode only")
 
     try:
         repos = load_repos(args.repos_json)
@@ -365,7 +476,7 @@ def main(argv: list[str] | None = None) -> int:
         if not token:
             print("error: GITHUB_TOKEN required for --github-api", file=sys.stderr)
             return 2
-        problems = validate_all(repos, github_token=token)
+        problems = validate_all(repos, github_token=token, allow_legacy_public=args.allow_legacy_public)
     elif args.workspace_root is not None:
         problems = validate_all(repos, workspace_root=args.workspace_root)
     else:

@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-07-06
+last_updated: 2026-09-05
 ---
 
 # Index: alawein
@@ -86,8 +86,10 @@ last_updated: 2026-07-06
 - [security-intake-matrix.md](governance/security-intake-matrix.md)
 - [skills-agents-unification.md](governance/skills-agents-unification.md)
 - [skills-install-policy.md](governance/skills-install-policy.md)
+- [slack-agent-runbook.md](governance/slack-agent-runbook.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
+- [unified-agent-system.md](governance/unified-agent-system.md)
 - [vercel-baseline.md](governance/vercel-baseline.md)
 - [version-history-audit.md](governance/version-history-audit.md)
 - [workflow-pin-inventory-and-bundle-v1.md](governance/workflow-pin-inventory-and-bundle-v1.md)

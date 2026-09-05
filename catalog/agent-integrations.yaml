@@ -1,0 +1,179 @@
+schemaVersion: 1.0.0
+lastVerified: '2026-09-05'
+owner: contact@meshal.ai
+note: >
+  Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
+  Cross-check against docs/governance/unified-agent-system.md and
+  docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
+  any auth change.
+
+account_canon: contact@meshal.ai
+
+agents:
+  - id: cursor-cloud
+    display_name: Cursor
+    surfaces: [slack, cloud-agent, ide]
+    slack_handle: '@Cursor'
+    primary_repo: alawein/alawein
+    llm_default: composer-2.5
+    dispatch_roles: [implement, commit, pr, mcp-orchestration, governance-docs]
+    status: ready
+    last_verified: 2026-09-05
+  - id: claude-slack
+    display_name: Claude
+    surfaces: [slack]
+    slack_handle: '@Claude'
+    llm_default: claude-legacy-slack
+    dispatch_roles: [slack-read, channel-audit, prose-synthesis]
+    status: ready
+    notes: Legacy Slack bot; Claude Tag not enabled
+    last_verified: 2026-09-05
+  - id: claude-code
+    display_name: Claude Code
+    surfaces: [ide, terminal]
+    llm_default: claude
+    dispatch_roles: [repo-mutation, terminal, mcp]
+    status: ready
+    last_verified: 2026-09-05
+  - id: computer-perplexity
+    display_name: Computer
+    surfaces: [slack, perplexity-web]
+    slack_handle: '@Computer'
+    llm_default: perplexity
+    dispatch_roles: [browser-audit, design-docs, cross-service-verification]
+    status: needs_auth
+    notes: Slack session reported auth blocked; web session produced v1.1 design
+    last_verified: 2026-09-05
+  - id: chatgpt-slack
+    display_name: ChatGPT
+    surfaces: [slack]
+    slack_handle: '@ChatGPT'
+    llm_default: gpt
+    dispatch_roles: [connector-gap-fill, diff-only-verification]
+    status: present
+    last_verified: 2026-09-05
+  - id: notion-ai-slack
+    display_name: Notion AI
+    surfaces: [slack, notion]
+    slack_handle: '@Notion AI'
+    llm_default: notion-ai
+    dispatch_roles: [notion-read, workspace-docs]
+    status: ready
+    account: contact@meshal.ai
+    workspace: Meshal's Workspace
+    last_verified: 2026-09-05
+  - id: github-slack
+    display_name: GitHub for Slack
+    surfaces: [slack]
+    slack_handle: '@GitHub'
+    dispatch_roles: [pr-thread-mirror]
+    status: ready
+    last_verified: 2026-09-05
+
+workflow_bots:
+  - id: daily-agenda
+    schedule: 'daily 08:00'
+    output: dm
+    status: working
+    engagement_30d: 0
+  - id: daily-briefing
+    schedule: 'daily 09:00'
+    output: '#posts'
+    status: working
+    engagement_30d: 0
+  - id: friday-weekly-review
+    schedule: 'fri 16:00'
+    output: '#posts'
+    status: working
+    engagement_30d: 0
+  - id: monday-weekly-kickoff
+    schedule: 'mon 09:00'
+    output: '#posts'
+    status: working
+    engagement_30d: 0
+  - id: weekly-content-planner
+    schedule: 'weekly 09:00'
+    output: '#content-pipeline'
+    status: working
+    engagement_30d: 0
+
+integrations:
+  - id: gmail
+    provider: Google
+    account: contact@meshal.ai
+    cursor_mcp: ready
+    status: locked
+    last_verified: 2026-09-05
+  - id: google-calendar
+    provider: Google
+    account: contact@meshal.ai
+    cursor_mcp: ready
+    status: locked
+    last_verified: 2026-09-05
+  - id: google-drive
+    provider: Google
+    account: contact@meshal.ai
+    cursor_mcp: ready
+    status: locked
+    last_verified: 2026-09-05
+  - id: notion
+    provider: Notion
+    account: contact@meshal.ai
+    workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
+    cursor_mcp: needs_auth
+    status: locked
+    last_verified: 2026-09-05
+  - id: railway
+    provider: Railway
+    account: contact@meshal.ai
+    cursor_mcp: ready
+    status: locked
+    last_verified: 2026-09-05
+  - id: vercel
+    provider: Vercel
+    team: alawein
+    cursor_mcp: unavailable
+    status: locked
+    notes: 32 deployments verified via CLI; 8 need browser inspection
+    last_verified: 2026-09-05
+  - id: github-mcp
+    provider: GitHub
+    cursor_mcp: error
+    gh_cli: scoped
+    status: action_required
+    last_verified: 2026-09-05
+  - id: supermemory
+    provider: Supermemory
+    cursor_mcp: error
+    status: action_required
+    last_verified: 2026-09-05
+  - id: slack-mcp-duplicate
+    provider: Slack
+    cursor_mcp: error
+    status: remove
+    notes: Redundant with Cursor Slack Tools
+    last_verified: 2026-09-05
+
+slack_channels:
+  - id: admin-ops
+    tier: hub
+    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt]
+    cursor_can_read: true
+  - id: posts
+    tier: hub-bot
+    cursor_can_read: false
+  - id: kohyr-dev
+    tier: domain
+    cursor_can_read: false
+  - id: content-pipeline
+    tier: domain
+    cursor_can_read: false
+  - id: job-search
+    tier: domain
+    cursor_can_read: false
+  - id: all-alawein-workspace
+    tier: broadcast
+    cursor_can_read: false
+  - id: social
+    tier: default
+    cursor_can_read: false

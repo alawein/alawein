@@ -462,6 +462,32 @@ def test_main_root_mode_uses_catalog_visibility(tmp_path, capsys):
     assert "banned record-card" in capsys.readouterr().out
 
 
+def test_main_root_mode_requires_exact_catalog_owner(tmp_path, capsys):
+    repo = tmp_path / "sites" / "public-demo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text("# Public demo\n", encoding="utf-8")
+    catalog = tmp_path / "repos.json"
+    catalog.write_text(
+        '{"repos":[{"repo":"other-org/public-demo","slug":"public-demo",'
+        '"bucket":"sites","visibility":"public","status":"active"}]}',
+        encoding="utf-8",
+    )
+
+    assert main(["--root", str(tmp_path), "--catalog", str(catalog)]) == 1
+    assert "missing catalog entry alawein/public-demo" in capsys.readouterr().out
+
+
+def test_main_root_mode_rejects_missing_authoritative_catalog_entry(tmp_path, capsys):
+    repo = tmp_path / "sites" / "public-demo"
+    (repo / ".git").mkdir(parents=True)
+    (repo / "README.md").write_text("# Public demo\n", encoding="utf-8")
+    catalog = tmp_path / "repos.json"
+    catalog.write_text('{"repos":[]}', encoding="utf-8")
+
+    assert main(["--root", str(tmp_path), "--catalog", str(catalog)]) == 1
+    assert "missing catalog entry alawein/public-demo" in capsys.readouterr().out
+
+
 # Fix 4: partial --repo combos (one of the two required flags missing) return 2.
 def test_main_repo_mode_missing_only_slug(capsys):
     rc = main([

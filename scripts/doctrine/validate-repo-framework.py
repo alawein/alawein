@@ -579,18 +579,14 @@ def main(argv: list[str] | None = None) -> int:
         print(f"       expected at least one of: {', '.join(_BUCKET_DIRS)}", file=sys.stderr)
         return 2
     for repo, bucket in repos:
-        matches = [
-            (slug, entry)
-            for slug, entry in workspace_catalog.items()
-            if slug.rsplit("/", 1)[-1] == repo.name
-        ]
-        if len(matches) > 1:
-            all_findings.append(
-                f"{repo.name}: catalog visibility is ambiguous across "
-                + ", ".join(slug for slug, _entry in matches)
-            )
-            continue
-        slug, entry = matches[0] if matches else (repo.name, {})
+        if args.catalog is not None:
+            slug = f"alawein/{repo.name}"
+            entry = workspace_catalog.get(slug)
+            if entry is None:
+                all_findings.append(f"{repo.name}: missing catalog entry {slug}")
+                continue
+        else:
+            slug, entry = repo.name, {}
         findings = validate_repo(
             repo,
             bucket=bucket,

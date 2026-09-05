@@ -358,6 +358,16 @@ def compile_repo(
     if entry.get("type"):
         repo["type"] = entry["type"]
 
+    if repo.get("type") == "archive" and repo.get("status") not in {
+        "archived",
+        "deprecated",
+        "frozen",
+    }:
+        raise SystemExit(
+            f"archive repo {slug!r} requires a terminal status "
+            "(archived, deprecated, or frozen)"
+        )
+
     return repo
 
 

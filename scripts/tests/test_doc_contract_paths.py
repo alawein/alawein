@@ -43,13 +43,10 @@ def linked_worktree(tmp_path_factory: pytest.TempPathFactory) -> Path:
     base = tmp_path_factory.mktemp("doc-contract-git")
     source = base / "source"
     linked = base / "linked"
-    (source / "scripts" / "doctrine").mkdir(parents=True)
-    shutil.copy2(SCRIPT, source / SCRIPT.relative_to(ROOT))
-    subprocess.run(["git", "init", "-q", source], check=True)
-    subprocess.run(["git", "-C", source, "config", "user.email", "test@example.com"], check=True)
-    subprocess.run(["git", "-C", source, "config", "user.name", "Doc Contract Test"], check=True)
-    subprocess.run(["git", "-C", source, "add", "scripts/doctrine/validate-doc-contract.sh"], check=True)
-    subprocess.run(["git", "-C", source, "commit", "-qm", "fixture"], check=True)
+    subprocess.run(
+        ["git", "clone", "-q", "--no-hardlinks", ROOT, source],
+        check=True,
+    )
     subprocess.run(["git", "-C", source, "worktree", "add", "-q", linked], check=True)
     return linked
 
@@ -57,6 +54,7 @@ def linked_worktree(tmp_path_factory: pytest.TempPathFactory) -> Path:
 def test_linked_worktree_git_pointer_is_not_an_r8_root_file(linked_worktree: Path) -> None:
     assert (linked_worktree / ".git").is_file()
     result = _run_gate(linked_worktree)
+    assert result.returncode == 0, result.stderr
     assert ".git:1: root file not in R8 whitelist" not in result.stderr
 
 
@@ -68,6 +66,7 @@ def test_scaffolding_readme_links_are_validated_at_runtime_destination(
     template.write_text("[docs](docs/README.md)\n", encoding="utf-8")
     try:
         result = _run_gate(linked_worktree)
+        assert result.returncode == 0, result.stderr
         assert "templates/scaffolding/README.product.md" not in result.stderr
     finally:
         template.unlink()

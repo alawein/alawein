@@ -219,8 +219,9 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 - Notion moved DRAFT to LOCKED (`contact@meshal.ai` / Meshal's Workspace).
 - Vercel moved DRAFT to LOCKED; corrected "two old-job deployments" claim.
 - Google Drive moved DRAFT to LOCKED; one AGI-domain file identified.
-- Gmail thread drift moved DRAFT to LOCKED; reframed as missing archive label.
+- Gmail thread drift moved DRAFT to LOCKED; `AGI (archive)` label applied.
 - Committed to `alawein/docs/governance/slack-agent-runbook.md`.
+- Superseded as routing SSOT by [`unified-agent-system.md`](unified-agent-system.md) for orchestration; this runbook remains Slack-specific policy.
 
 ### v1.0.0 (2026-09-05)
 

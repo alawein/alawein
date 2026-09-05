@@ -49,6 +49,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `skills-agents-unification.md` | Reference | Skills and agents unification notes |
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
 | `slack-agent-runbook.md` | Active | Slack channel, workflow-bot, and integration governance for agent routing |
+| `unified-agent-system.md` | Active | Master agent orchestration, inventory SSOT, dispatch routing, output standards |
 | `slash-commands-catalog.md` | Reference | Available slash commands |
 | `tooling-quality-gates.md` | Active | CI quality gate definitions |
 | `version-history-audit.md` | Active | Repeatable protocol to take a repo from incoherent version history to a clean SemVer baseline by additive re-indexing |

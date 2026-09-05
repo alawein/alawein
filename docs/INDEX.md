@@ -89,6 +89,7 @@ last_updated: 2026-09-05
 - [slack-agent-runbook.md](governance/slack-agent-runbook.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
+- [unified-agent-system.md](governance/unified-agent-system.md)
 - [vercel-baseline.md](governance/vercel-baseline.md)
 - [version-history-audit.md](governance/version-history-audit.md)
 - [workflow-pin-inventory-and-bundle-v1.md](governance/workflow-pin-inventory-and-bundle-v1.md)

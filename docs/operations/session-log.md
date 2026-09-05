@@ -33,3 +33,9 @@ last_updated: 2026-07-07
 | 2026-07-06 21:15 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~187 lines |
 | 2026-07-06 21:27 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~188 lines |
 | 2026-07-06 21:28 | d28094e1 | chore(claude): scope local config to control-plane work (#152) | 6 files | ~189 lines |
+| 2026-09-05 12:03 | 24b358ba | Fix INDEX title drift and markdownlint ordered-list prefixes | 2 files | ~26 lines |
+| 2026-09-05 12:06 | 33439e71 | Map frozen lifecycle to maintained category in projects.json | 3 files | ~7 lines |
+| 2026-09-05 12:09 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~475 lines |
+| 2026-09-05 12:11 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~476 lines |
+| 2026-09-05 12:13 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~477 lines |
+| 2026-09-05 12:32 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~478 lines |

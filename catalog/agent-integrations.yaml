@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05'
+lastVerified: '2026-09-05T12:45:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -103,6 +103,9 @@ integrations:
     account: contact@meshal.ai
     cursor_mcp: ready
     status: locked
+    notes: >
+      AGI (archive) label Label_367; 22 threads labeled and archived 2026-09-05;
+      0 theagi.company threads remain in INBOX.
     last_verified: 2026-09-05
   - id: google-calendar
     provider: Google
@@ -115,6 +118,10 @@ integrations:
     account: contact@meshal.ai
     cursor_mcp: ready
     status: locked
+    notes: >
+      fullText search returns 50+ AGI-related files (employment docs, eval
+      artifacts, workspace notes); all sampled files owned by contact@meshal.ai;
+      review sharing on parent folder 1LIKjxbv296LhTWsYQeTdH8-S6hO-T3ar.
     last_verified: 2026-09-05
   - id: notion
     provider: Notion
@@ -141,17 +148,26 @@ integrations:
     cursor_mcp: error
     gh_cli: scoped
     status: action_required
+    repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
     last_verified: 2026-09-05
   - id: supermemory
     provider: Supermemory
     cursor_mcp: error
     status: action_required
+    notes: CURSOR_PLUGIN_ROOT resolution failure
+    repair_doc: docs/governance/cursor-mcp-repair.md#3-supermemory-mcp
     last_verified: 2026-09-05
   - id: slack-mcp-duplicate
     provider: Slack
     cursor_mcp: error
     status: remove
-    notes: Redundant with Cursor Slack Tools
+    notes: Redundant with Cursor Slack Tools; remove third-party Slack MCP entry
+    repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
+    last_verified: 2026-09-05
+  - id: granola
+    provider: Granola
+    cursor_mcp: needs_auth
+    status: unconnected
     last_verified: 2026-09-05
 
 slack_channels:

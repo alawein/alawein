@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T15:13:00Z'
+lastVerified: '2026-09-05T15:16:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -23,12 +23,10 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads 5 channels (admin-ops, kohyr-dev,
-      all-alawein-workspace, posts, content-pipeline) after content-pipeline
-      invite 15:12 UTC. Lists 7. Remaining invites: job-search, social.
-      Lane D re-probe 2026-09-05 15:12 UTC run
-      bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0. IDE Slack MCP (Meshal) reads
-      all 7.
+      Cloud Agent reads all 7 channels after lane C invites completed
+      2026-09-05 15:16 UTC (#job-search 15:14, #social 15:16). Lane D
+      re-probe run bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0. IDE Slack MCP
+      (Meshal) also reads all 7.
     last_verified: 2026-09-05
   - id: claude-slack
     display_name: Claude
@@ -283,7 +281,11 @@ slack_channels:
   - id: job-search
     slack_id: C0B9NTUUGR4
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
+    notes: >
+      Cloud Agent joined 2026-09-05 15:14:08 UTC (ts 1788621248.955629).
+      Setup-only. Welcome claims a Sunday weekly tracker; no bot posts in
+      history. Notion AI present. Welcome text still mentions Morphism.
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
     tier: broadcast
@@ -292,7 +294,10 @@ slack_channels:
   - id: social
     slack_id: C0AP24SRVQF
     tier: default
-    cursor_can_read: false
+    cursor_can_read: true
+    notes: >
+      Cloud Agent joined 2026-09-05 15:16:02 UTC (ts 1788621362.488249).
+      Empty except joins (Meshal 2026-03-28, Notion AI 2026-03-31).
 
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-05T14:40:00Z'

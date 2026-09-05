@@ -41,9 +41,9 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 | `#posts` | `C0APWF615H7` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | yes (invite 14:59) | Hub (bot-only) | Active |
 | `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | yes (invite 15:12) | Domain | Low use |
 | `#kohyr-dev` | `C0B9JJZSVQT` | Kohyr engineering (renamed from morphism-dev) | yes | Domain | Dormant since 2026-06-11 |
-| `#job-search` | `C0B9NTUUGR4` | Job and career tracking | no (listed) | Domain | Setup-only |
+| `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes (invite 15:14) | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
-| `#social` | `C0AP24SRVQF` | Non-work | no (listed) | Default | Empty |
+| `#social` | `C0AP24SRVQF` | Non-work | yes (invite 15:16) | Default | Empty |
 
 ### 1.2 Naming convention (locked)
 
@@ -190,10 +190,8 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    GitHub MCP, remove duplicate Slack MCP, repair Supermemory; decide on
    Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
-7. **Cursor Slack access:** Done for `#kohyr-dev`,
-   `#all-alawein-workspace` (2026-09-05 ~13:55), `#posts` (14:59), and
-   `#content-pipeline` (15:12). Optional remaining invites: `#job-search`,
-   `#social`.
+7. **Cursor Slack access:** Done for all 7 public channels as of
+   2026-09-05 15:16 UTC (`#job-search` 15:14, `#social` 15:16).
 
 ### Phase 3 — Trial (2026-09-05 through 2026-09-19)
 

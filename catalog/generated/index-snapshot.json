@@ -247,11 +247,11 @@
       "slug": "knowledge-base",
       "lane": "platform",
       "bucket": "core",
-      "name": "knowledge-base",
-      "about": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "name": "Command Center",
+      "about": "Private local workspace records and operating tools.",
       "status": "active",
       "visibility": "private",
-      "url": "https://knowledge-base-alawein.vercel.app"
+      "url": "https://github.com/alawein/knowledge-base"
     },
     {
       "slug": "outpost",

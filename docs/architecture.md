@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-07-08; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-04; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -71,38 +71,37 @@ graph TB
   end
   subgraph infra["Infra Repos"]
     design_system["design-system\nShared design tokens, themes, UI co"]
-    workspace_tools["workspace-tools\nWorkspace execution layer for scaff"]
     knowledge_base["knowledge-base\nSearchable discovery surface for re"]
   end
   subgraph product["Product Repos"]
-    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
-    repz["repz\nAI-powered coaching platform for fi"]
-    gymboy["gymboy\nFitness coaching platform with a re"]
-    scribd["scribd\nFitness publishing and content surf"]
-    bolts["bolts\nFitness transformation plans with N"]
-    atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
-    attributa["attributa\nPrivacy-first attribution intellige"]
     llmworks["llmworks\nLLM evaluation, benchmarking, and s"]
-    more_product["… 2 more"]
+    atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
+    auditraise["auditraise\nAI-assisted local marketing audits "]
+    bolts["bolts\nFitness transformation plans with N"]
+    gymboy["gymboy\nFitness coaching platform with a re"]
+    repz["repz\nAI-powered coaching platform for fi"]
+    scribd["scribd\nFitness publishing and content surf"]
+    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
+    more_product["… 4 more"]
   end
   subgraph research["Research Repos"]
-    edfp["edfp\nPhysics-inspired video event detect"]
-    alembiq["alembiq\nLLM training, alignment, evaluation"]
-    optiqap["optiqap\nQuadratic Assignment Problem solver"]
-    qmlab["qmlab\nQuantum ML web lab with React, Type"]
-    simcore["simcore\nScientific simulation core for inte"]
-    meatheadphysicist["meatheadphysicist\nComputational physics research plat"]
     adil["adil\nLegal-ops CLI for assembling, valid"]
-    qmatsim["qmatsim\nQuantum material simulation researc"]
-    more_research["… 8 more"]
+    alembiq["alembiq\nLLM training, alignment, evaluation"]
+    attributa["attributa\nPrivacy-first attribution intellige"]
+    chshlab["chshlab\nQuantum foundations education site "]
+    edfp["edfp\nPhysics-inspired video event detect"]
+    loopholelab["loopholelab\nResearch validation surface for adv"]
+    maglogic["maglogic\nMagnetic logic gates and device sim"]
+    meatheadphysicist["meatheadphysicist\nComputational physics research plat"]
+    more_research["… 10 more"]
   end
   subgraph tooling["Tooling Repos"]
-    mercor["mercor\nEmployer project for LLM failsafe e"]
-    handshake_hai["handshake-hai\nLLM evaluation monorepo with shared"]
-    turing["turing\nPrivate catalog-collection workspac"]
-    incore["incore\nCLI and MCP tooling for workspace a"]
-    prompty["prompty\nTurbo monorepo for prompt design, e"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
+    incore["incore\nCLI and MCP tooling for workspace a"]
+    outpost["outpost\nPersonal kit that installs prompts "]
+    prompty["prompty\nTurbo monorepo for prompt design, e"]
+    workspace_control["workspace-control\nWorkspace control-plane inventory e"]
+    workspace_tools["workspace-tools\nWorkspace execution layer for scaff"]
   end
 ```
 

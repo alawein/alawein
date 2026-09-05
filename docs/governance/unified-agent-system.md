@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.0
+version: 1.2.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -181,6 +181,40 @@ sequenceDiagram
 **Rule:** parallel chat agents are coordinated by Meshal tags, not agent-to-agent
 messages. Parallel repo work uses `workspace-tools` batch manifests.
 
+### 5.4 Parallel lane template (`#admin-ops`)
+
+When closing integration gaps, run lanes **at the same time**. Do not serialize
+browser OAuth behind Cloud Agent probes.
+
+| Lane | Owner | Work | Pass |
+| --- | --- | --- | --- |
+| A | Meshal or Sider/Claw (browser) | Connect `@Codex` to ChatGPT Codex; DM `Reply OK` | Codex replies |
+| B | Meshal or Sider/Claw (browser) | Re-auth `@Computer` | S3 evidence on `#posts` |
+| C | Meshal (Slack UI) | `/invite @Cursor` in `#posts` `#content-pipeline` `#job-search` `#social` | Cloud Agent reads 7/7 |
+| D | `@Cursor` Cloud Agent | Re-probe channel reads + Cloud MCP matrix | Table with evidence |
+| E | Desktop IDE Cursor | Merge PRs, update YAML/audit, local MCP repair | Canon on `main` |
+| F | `@Claude` / `@Notion AI` | Diff-only Slack / Notion rows | One table each |
+
+**Desktop vs Cloud MCP rule:** never collapse statuses. A desktop `ready` does
+not imply Cloud Agent can call the tool (and the reverse). Inventory rows keep
+both surfaces (`cursor_mcp` notes or split columns).
+
+**OpenAI Slack rule:** dispatch `@Codex` only after connect + `Reply OK`. Keep
+`@ChatGPT` (`U0BUNH33CCA`) installed but `replaced` until Codex proves reply;
+then uninstall ChatGPT.
+
+Sample dispatch (paste into `#admin-ops`):
+
+```markdown
+Parallel finalize — run lanes A–F now (do not wait on each other).
+A/B: browser OAuth (Meshal or Sider/Claw)
+C: /invite @Cursor in #posts #content-pipeline #job-search #social
+D: @Cursor re-probe 7-channel reads
+E: IDE Cursor lands canon
+F: @Claude / @Notion AI diff-only
+Do not uninstall ChatGPT until Codex Reply OK.
+```
+
 ## 6. Chat output standards
 
 Apply in Slack and governance docs. Voice contract:
@@ -283,6 +317,13 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.2.0 (2026-09-05)
+
+- Added §5.4 parallel lane template (A–F) for OAuth, invites, Cloud probe, IDE
+  canon, and diff-only agents.
+- Documented desktop vs Cloud MCP non-collapse rule and Codex vs ChatGPT
+  uninstall gate.
 
 ### v1.1.0 (2026-09-05)
 

@@ -175,29 +175,29 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ### Phase 2 — Cleanup (week of 2026-09-07 through 2026-09-13)
 
-3. **Vercel:** Browser-inspect eight UNVERIFIED projects; prioritize
+1. **Vercel:** Browser-inspect eight UNVERIFIED projects; prioritize
    `sam-eval-roadmap` and `guides-eval-loop-app`.
-4. **Vercel:** Resolve `tech-blog-frontend` stub (project exists; deployment
+2. **Vercel:** Resolve `tech-blog-frontend` stub (project exists; deployment
    lookup fails).
-5. **Google Drive:** Decide on `Superfine Kitchen Order`; remove access if not
+3. **Google Drive:** Decide on `Superfine Kitchen Order`; remove access if not
    needed.
-6. **Gmail:** Done — `AGI (archive)` label created; four AGI threads labeled and archived.
-7. **Cursor MCPs:** Fix GitHub MCP; remove duplicate Slack MCP; repair
+4. **Gmail:** Done — `AGI (archive)` label created; four AGI threads labeled and archived.
+5. **Cursor MCPs:** Fix GitHub MCP; remove duplicate Slack MCP; repair
    Supermemory; decide on Todoist and Figma.
-8. **Claude Tag:** Enable or accept legacy limits.
-9. **Cursor Slack access:** Invite `@Cursor` to `#kohyr-dev` and
+6. **Claude Tag:** Enable or accept legacy limits.
+7. **Cursor Slack access:** Invite `@Cursor` to `#kohyr-dev` and
    `#all-alawein-workspace`.
 
 ### Phase 3 — Trial (2026-09-05 through 2026-09-19)
 
-10. Bot engagement trial per §2.2.
-11. Channel usage trial: post at least once in `#kohyr-dev`, `#content-pipeline`,
-    and `#job-search`.
+1. Bot engagement trial per §2.2.
+2. Channel usage trial: post at least once in `#kohyr-dev`, `#content-pipeline`,
+   and `#job-search`.
 
 ### Phase 4 — Review (2026-09-19)
 
-12. Bot review gate; disable zero-engagement bots.
-13. Channel review gate; archive persistently empty channels.
+1. Bot review gate; disable zero-engagement bots.
+2. Channel review gate; archive persistently empty channels.
 
 ## 5. Locked vs draft status
 

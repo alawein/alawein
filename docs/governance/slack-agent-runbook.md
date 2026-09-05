@@ -181,9 +181,12 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    lookup fails).
 3. **Google Drive:** Decide on `Superfine Kitchen Order`; remove access if not
    needed.
-4. **Gmail:** Done — `AGI (archive)` label created; four AGI threads labeled and archived.
-5. **Cursor MCPs:** Fix GitHub MCP; remove duplicate Slack MCP; repair
-   Supermemory; decide on Todoist and Figma.
+4. **Gmail:** Done — `AGI (archive)` label (`Label_367`); **22** AGI threads
+   labeled and archived; 0 `theagi.company` threads in INBOX (verified
+   2026-09-05).
+5. **Cursor MCPs:** See [`cursor-mcp-repair.md`](cursor-mcp-repair.md); fix
+   GitHub MCP, remove duplicate Slack MCP, repair Supermemory; decide on
+   Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
 7. **Cursor Slack access:** Invite `@Cursor` to `#kohyr-dev` and
    `#all-alawein-workspace`.

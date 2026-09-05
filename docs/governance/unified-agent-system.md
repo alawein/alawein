@@ -239,9 +239,10 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 
 ### 7.2 Open unification gaps
 
-- [ ] Merge [PR #195](https://github.com/alawein/alawein/pull/195) (runbook) after human approval
+- [ ] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook) after human approval
+- [ ] Merge Phase 2 closeout PR after #196 (Gmail sweep, MCP repair doc, YAML)
 - [ ] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
-- [ ] Fix Cursor MCP: GitHub, Supermemory, remove Slack duplicate
+- [ ] Fix Cursor MCP: GitHub, Supermemory, remove Slack duplicate — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md)
 - [ ] Authenticate Computer in Slack
 - [ ] Enable Claude Tag or document legacy limits
 - [ ] Vercel browser inspect: `sam-eval-roadmap`, `guides-eval-loop-app`
@@ -256,6 +257,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 | [`workspace-resource-map.md`](workspace-resource-map.md) | Fleet resource ownership |
 | [`credential-hygiene.md`](credential-hygiene.md) | Secret handling |
 | [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml) | Machine-readable inventory SSOT |
+| [`cursor-mcp-repair.md`](cursor-mcp-repair.md) | Broken Cursor MCP repair steps |
 
 ## 9. Claude handoff (remaining work)
 

@@ -30,7 +30,7 @@ Live-verified 2026-09-05 from a Cloud Agent session. Use this when
 | Gmail / Calendar / Drive | Absent from desktop catalog | Ready (re-probed) | None on Cloud |
 | Railway | CLI Unauthorized | Ready (`whoami`) | Desktop CLI auth if needed |
 | Notion | Absent | Absent | Notion AI Slack remains the surface |
-| Figma / 1password / Todoist | — | Error | Ignore unless a task needs them |
+| Figma / 1password / Todoist | Absent | Error | Ignore unless a task needs them |
 
 ## 2. GitHub MCP
 
@@ -72,7 +72,7 @@ plugin, and re-authenticate. Use `gh auth status` in terminal as a parallel chec
 fixed on desktop. Treat desktop fix as canonical; Cloud Agent row stays
 `action_required` until Cursor documents Cloud parity.
 
-## 4. Slack MCP (duplicate — remove)
+## 4. Slack MCP (duplicate, remove)
 
 **Symptom:** A second `Slack` MCP namespace errors on discovery while **Cursor Slack
 Tools** (built-in, bound to the launch thread) works.
@@ -86,7 +86,7 @@ Tools** (built-in, bound to the launch thread) works.
 5. Verify: `Slack` namespace should either disappear or show only Cursor Slack
    Tools; `list_slack_channels` and `read_slack_messages` should work.
 
-**Do not** remove Cursor Slack Tools — that is the canonical Slack surface for
+**Do not** remove Cursor Slack Tools. That is the canonical Slack surface for
 Cloud Agents launched from Slack.
 
 ## 5. Verification checklist

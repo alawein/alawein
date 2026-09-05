@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.2.0
+version: 1.3.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -38,12 +38,12 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 | Channel | Slack ID | Purpose | Cloud Agent read | Tier | Status |
 | --- | --- | --- | --- | --- | --- |
 | `#admin-ops` | `C0B9SRMDJFK` | Agent command center; ops, infra, cross-tool coordination | yes | Hub (human+agent) | Active |
-| `#posts` | `C0APWF615H7` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | no (listed) | Hub (bot-only) | Active |
-| `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | no (listed) | Domain | Low use |
+| `#posts` | `C0APWF615H7` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | yes | Hub (bot-only) | Active |
+| `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | yes | Domain | Low use |
 | `#kohyr-dev` | `C0B9JJZSVQT` | Kohyr engineering (renamed from morphism-dev) | yes | Domain | Dormant since 2026-06-11 |
-| `#job-search` | `C0B9NTUUGR4` | Job and career tracking | no (listed) | Domain | Setup-only |
+| `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
-| `#social` | `C0AP24SRVQF` | Non-work | no (listed) | Default | Empty |
+| `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
 
 ### 1.2 Naming convention (locked)
 
@@ -190,9 +190,8 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    GitHub MCP, remove duplicate Slack MCP, repair Supermemory; decide on
    Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
-7. **Cursor Slack access:** Done for `#kohyr-dev` and
-   `#all-alawein-workspace` (2026-09-05 ~13:55). Optional remaining invites:
-   `#posts`, `#content-pipeline`, `#job-search`, `#social`.
+7. **Cursor Slack access:** Done. Cloud Agent reads all 7 public channels
+   (lane C invites 2026-09-05 14:59 through 15:16 UTC).
 
 ### Phase 3 — Trial (2026-09-05 through 2026-09-19)
 
@@ -219,6 +218,10 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.0 (2026-09-05)
+
+- Cloud Agent `cursor_can_read` now 7/7 after lane C invites.
 
 ### v1.2.0 (2026-09-05)
 

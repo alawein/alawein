@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T14:45:00Z'
+lastVerified: '2026-09-05T15:26:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -23,9 +23,9 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads 3 channels (admin-ops, kohyr-dev, all-alawein-workspace)
-      after invites; lists 7. IDE Slack MCP (Meshal) reads all 7. Re-proved
-      2026-09-05 14:32 UTC Cloud Agent rescan.
+      Cloud Agent reads 7/7 after lane C invites (2026-09-05 15:16 UTC).
+      Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
+      job-search 1788621248.955629, social 1788621362.488249.
     last_verified: 2026-09-05
   - id: claude-slack
     display_name: Claude
@@ -259,7 +259,7 @@ slack_channels:
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
-    cursor_can_read: false
+    cursor_can_read: true
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
@@ -267,11 +267,11 @@ slack_channels:
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
   - id: job-search
     slack_id: C0B9NTUUGR4
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
     tier: broadcast
@@ -280,7 +280,7 @@ slack_channels:
   - id: social
     slack_id: C0AP24SRVQF
     tier: default
-    cursor_can_read: false
+    cursor_can_read: true
 
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-05T14:40:00Z'

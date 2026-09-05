@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T15:26:00Z'
+lastVerified: '2026-09-05T15:52:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -55,8 +55,9 @@ agents:
     slack_user_id: U0APW7F9S4A
     status: needs_auth
     notes: >
-      S3 smoke: no reply after mention; Slack re-auth still required.
-      Joined #kohyr-dev and #all-alawein-workspace ~13:55. Silent on #posts.
+      Lane B fail (Sider/Claw 2026-09-05 15:52). Computer DMs are welcome
+      blurbs only (2026-03-30 / 2026-04-01). No Reconnect/Sign-in surface in
+      Slack app UI. Perplexity OAuth still required (Meshal). Not in #posts.
     last_verified: 2026-09-05
   - id: chatgpt-slack
     display_name: ChatGPT
@@ -67,8 +68,8 @@ agents:
     dispatch_roles: []
     status: replaced
     notes: >
-      Joined #admin-ops 11:28; never posted. Replaced as OpenAI Slack surface
-      by Codex (U0BV7V8M3NW) at 14:27. Do not dispatch. Not the Cursor MCP.
+      Joined #admin-ops 11:28; never posted. Keep installed until Codex S4
+      Reply OK. Do not dispatch. Not the Cursor MCP.
     last_verified: 2026-09-05
   - id: codex-slack
     display_name: Codex
@@ -79,9 +80,10 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Joined #admin-ops 14:27:21. Replied 14:28:50: connect ChatGPT Codex
-      account. Tagged Reply OK at 14:30:56; no confirmed OK. Channel membership
-      observed in #admin-ops only.
+      Installed in #admin-ops (C0B9SRMDJFK) only. Lane A fail (Sider/Claw
+      15:52): Reply OK probe got connect prompt ts 1788622796.091419, not OK.
+      Connect button clicks (DOM + native x4) launched no OAuth popup.
+      Manual Connect click still required (Meshal browser).
     last_verified: 2026-09-05
   - id: notion-ai-slack
     display_name: Notion AI
@@ -94,8 +96,8 @@ agents:
     account: contact@meshal.ai
     workspace: Meshal's Workspace
     notes: >
-      S5 still unanswered after mention. Prior workspace identity remains
-      contact@meshal.ai / Meshal's Workspace (8116d8de-2215-81ce-b71b-00031e833a2d).
+      Lane D/F skip on 2026-09-05 finalize (optional, not probed).
+      Prior identity remains contact@meshal.ai / Meshal's Workspace.
     last_verified: 2026-09-05
   - id: github-slack
     display_name: GitHub for Slack
@@ -260,6 +262,7 @@ slack_channels:
     slack_id: C0APWF615H7
     tier: hub-bot
     cursor_can_read: true
+    notes: Cursor join 1788620374.004189 (lane C)
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
@@ -268,10 +271,12 @@ slack_channels:
     slack_id: C0B9R0NS4QJ
     tier: domain
     cursor_can_read: true
+    notes: Cursor join 1788621136.545159 (lane C)
   - id: job-search
     slack_id: C0B9NTUUGR4
     tier: domain
     cursor_can_read: true
+    notes: Cursor join 1788621248.955629 (lane C)
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
     tier: broadcast
@@ -281,6 +286,7 @@ slack_channels:
     slack_id: C0AP24SRVQF
     tier: default
     cursor_can_read: true
+    notes: Cursor join 1788621362.488249 (lane C)
 
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-05T14:40:00Z'

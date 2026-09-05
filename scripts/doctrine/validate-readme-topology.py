@@ -27,7 +27,7 @@ import urllib.request
 from pathlib import Path
 from typing import Callable
 
-from readme_contract import meaningful_body, rendered_lines, runnable_body, sections
+from readme_contract import meaningful_body, rendered_lines, runnable_body, sections, uses_public_contract
 
 REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
@@ -162,12 +162,13 @@ def sections_for_repo(repo: dict) -> list[str]:
     return []
 
 
-def check_readme_sections(readme: str, repo: dict) -> list[str]:
+def check_readme_sections(readme: str, repo: dict, *, allow_legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
     rtype = repo.get("type")
     if slug in HUB_SLUGS:
         return []
-    if repo.get("visibility") == "public":
+    is_public = uses_public_contract(readme, repo, allow_legacy_public=allow_legacy_public)
+    if is_public:
         required = list(PUBLIC_REQUIRED_SECTIONS)
         if repo.get("status") not in {"archived", "frozen", "deprecated"}:
             required.insert(0, "The claim")
@@ -176,7 +177,6 @@ def check_readme_sections(readme: str, repo: dict) -> list[str]:
     if not required:
         return [f"{slug}: unknown type {rtype!r} for README section check"]
     problems: list[str] = []
-    is_public = repo.get("visibility") == "public"
     if not is_public:
         for section in required:
             if OPTIONAL_SECTION.get((rtype, section), lambda _r: False)(repo):
@@ -265,10 +265,10 @@ def check_readme_sections(readme: str, repo: dict) -> list[str]:
     return problems
 
 
-def check_topology_file(content: str | None, repo: dict) -> list[str]:
+def check_topology_file(content: str | None, repo: dict, *, legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
     if (slug in HUB_SLUGS or repo.get("type") == "governance"
-            or repo.get("visibility") == "public"):
+            or (repo.get("visibility") == "public" and not legacy_public)):
         return []
     if content is None:
         return [f"{slug}: missing {TOPOLOGY_REL.as_posix()}"]
@@ -352,7 +352,7 @@ def _github_file(
     return base64.b64decode(raw).decode("utf-8")
 
 
-def check_repo_github(repo: dict, token: str) -> list[str]:
+def check_repo_github(repo: dict, token: str, *, allow_legacy_public: bool = False) -> list[str]:
     slug = repo.get("slug") or "<no-slug>"
     if slug in HUB_SLUGS:
         return []
@@ -379,7 +379,12 @@ def check_repo_github(repo: dict, token: str) -> list[str]:
         return [f"{slug}: {exc}"]
     if readme is None:
         return [f"{slug}: missing README.md on {default_branch}"]
-    return check_readme_sections(readme, repo) + check_topology_file(topo, repo)
+    legacy_public = repo.get("visibility") == "public" and not uses_public_contract(
+        readme, repo, allow_legacy_public=allow_legacy_public
+    )
+    return check_readme_sections(readme, repo, allow_legacy_public=allow_legacy_public) + check_topology_file(
+        topo, repo, legacy_public=legacy_public
+    )
 
 
 def find_repo_by_slug(repos: list[dict], repo_slug: str) -> dict | None:
@@ -409,13 +414,14 @@ def validate_all(
     *,
     workspace_root: Path | None = None,
     github_token: str | None = None,
+    allow_legacy_public: bool = False,
 ) -> list[str]:
     problems: list[str] = []
     for repo in repos:
         if workspace_root is not None:
             problems.extend(check_repo_local(repo, workspace_root))
         elif github_token:
-            problems.extend(check_repo_github(repo, github_token))
+            problems.extend(check_repo_github(repo, github_token, allow_legacy_public=allow_legacy_public))
     return problems
 
 
@@ -435,7 +441,11 @@ def main(argv: list[str] | None = None) -> int:
         default=None,
         help="GitHub repo slug owner/name or catalog slug for --repo-path mode.",
     )
+    parser.add_argument("--allow-legacy-public", action="store_true",
+                        help="During staged rollout, accept the prior contract in GitHub fleet audits.")
     args = parser.parse_args(argv)
+    if args.allow_legacy_public and (not args.github_api or args.repo_path is not None or args.workspace_root is not None):
+        parser.error("--allow-legacy-public requires GitHub fleet mode only")
 
     try:
         repos = load_repos(args.repos_json)
@@ -457,7 +467,7 @@ def main(argv: list[str] | None = None) -> int:
         if not token:
             print("error: GITHUB_TOKEN required for --github-api", file=sys.stderr)
             return 2
-        problems = validate_all(repos, github_token=token)
+        problems = validate_all(repos, github_token=token, allow_legacy_public=args.allow_legacy_public)
     elif args.workspace_root is not None:
         problems = validate_all(repos, workspace_root=args.workspace_root)
     else:

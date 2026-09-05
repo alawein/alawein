@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import pytest
 from pathlib import Path
 
 from validate_readme_voice import (
@@ -81,6 +82,32 @@ def test_public_readme_rejects_record_card_and_generated_markers(tmp_path):
     problems = check_single_repo(tmp_path, _repo())
     assert any("record-card" in problem for problem in problems)
     assert any("generated marker" in problem for problem in problems)
+
+
+def test_fleet_transition_preserves_legacy_presentation_only():
+    legacy = "# Demo\n\nStatus: active\n<!-- GENERATED:README -->\n"
+    assert check_public_contract(legacy, _repo())
+    assert check_public_contract(legacy, _repo(), allow_legacy_public=True) == []
+    adopted = legacy + "\n## Run it\n\n`pytest`\n"
+    assert check_public_contract(adopted, _repo(), allow_legacy_public=True)
+    assert check_readme_text(legacy + "\nA comprehensive solution.\n", "demo")
+
+
+def test_transition_option_is_restricted_to_github_fleet():
+    with pytest.raises(SystemExit) as exc:
+        main(["--allow-legacy-public", "--workspace-root", "."])
+    assert exc.value.code == 2
+
+
+def test_github_transition_keeps_basic_voice_checks(monkeypatch):
+    from validate_readme_voice import _m as validator
+
+    monkeypatch.setattr(validator, "_github_repo", lambda *args: {"size": 1, "default_branch": "main"})
+    monkeypatch.setattr(validator, "_github_readme", lambda *args, **kw:
+                        "# Demo\n\nStatus: active\n\nA comprehensive solution.\n")
+    problems = validator.validate_all([_repo()], github_token="test", allow_legacy_public=True)
+    assert problems
+    assert all("forbidden-register" in problem for problem in problems)
 
 
 def test_public_presentation_rules_cover_rendered_prose_at_any_line():

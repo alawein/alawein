@@ -86,6 +86,41 @@ def test_research_readme_sections_pass():
     assert check_readme_sections(GOOD_README, _repo()) == []
 
 
+def test_fleet_transition_validates_legacy_without_relaxing_default():
+    legacy = "\n".join(f"## {name}\nText.\n" for name in (
+        "Abstract", "Status", "Runtime requirements", "Reproducibility",
+        "Datasets", "Docs map",
+    ))
+    assert check_readme_sections(legacy, _repo())
+    assert check_readme_sections(legacy, _repo(), allow_legacy_public=True) == []
+    assert check_readme_sections(legacy.replace("## Datasets", "## Removed"),
+                                 _repo(), allow_legacy_public=True)
+    assert check_readme_sections(GOOD_README, _repo(), allow_legacy_public=True) == []
+    assert check_readme_sections(GOOD_README.replace("## License", "## Removed"),
+                                 _repo(), allow_legacy_public=True)
+
+
+def test_transition_option_is_restricted_to_github_fleet():
+    with pytest.raises(SystemExit) as exc:
+        main(["--allow-legacy-public", "--repo-path", ".", "--repo-slug", "demo"])
+    assert exc.value.code == 2
+
+
+def test_github_transition_still_requires_legacy_topology(monkeypatch):
+    from validate_readme_topology import _m as validator
+
+    legacy = "\n".join(f"## {name}\nText.\n" for name in (
+        "Abstract", "Status", "Runtime requirements", "Reproducibility",
+        "Datasets", "Docs map",
+    ))
+    monkeypatch.setattr(validator, "_github_repo", lambda *args: {"size": 1, "default_branch": "main"})
+    monkeypatch.setattr(validator, "_github_file", lambda _repo, path, *_args, **_kw:
+                        legacy if path == "README.md" else None)
+    problems = validator.validate_all([_repo()], github_token="test", allow_legacy_public=True)
+    assert len(problems) == 1
+    assert "missing docs/architecture/topology.md" in problems[0]
+
+
 def test_missing_section_flagged():
     readme = "## The claim\n\nOnly one section.\n"
     problems = check_readme_sections(readme, _repo())

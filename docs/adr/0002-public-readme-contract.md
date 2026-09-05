@@ -33,3 +33,10 @@ Source: [GitHub Actions contexts reference](https://docs.github.com/en/actions/r
 
 Contracts, validators, fixtures, templates, and generated profile output must
 change together. Public docs maps no longer require `SSOT.md` or `LESSONS.md`.
+
+Fallax is the first pilot. Until the staged rollout completes, the hub's
+GitHub fleet audits use `--allow-legacy-public`: existing READMEs retain their
+type-based section and topology checks. READMEs containing `Run it`, `What it
+is`, or `What it is not` use the new contract. Basic voice checks always run.
+The transition option is unavailable in local or single-repo validation;
+the reusable workflow and pilot always enforce the new contract.

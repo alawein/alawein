@@ -18,6 +18,16 @@ class Section:
     body: tuple[RenderedLine, ...]
 
 
+def uses_public_contract(markdown: str, repo: dict, *, allow_legacy_public: bool = False) -> bool:
+    """Keep fleet migration explicit; adopted README sections always stay strict."""
+    if repo.get("visibility") != "public":
+        return False
+    if not allow_legacy_public:
+        return True
+    adoption_headings = {"run it", "what it is", "what it is not"}
+    return any(section.heading.casefold() in adoption_headings for section in sections(markdown))
+
+
 def rendered_lines(markdown: str) -> list[RenderedLine]:
     """Return prose lines, excluding fenced blocks and HTML comments."""
     result: list[RenderedLine] = []

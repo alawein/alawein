@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.0
+version: 1.2.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -28,20 +28,22 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 - Cursor MCP connector reads (2026-09-05)
 - External verification session (2026-09-05; Vercel CLI, Google Drive,
   Gmail search, Notion fetch)
+- Cloud Agent rescan 2026-09-05 14:32 UTC (run `bc-01698bb5-…`):
+  `docs/internal/audits/2026-09-05-slack-integrations-rescan.md`
 
 ## 1. Channel structure and naming
 
 ### 1.1 Current channels (locked)
 
-| Channel | Purpose | 30d msgs | Tier | Status |
-| --- | --- | --- | --- | --- |
-| `#admin-ops` | Agent command center; ops, infra, cross-tool coordination | ~21 | Hub (human+agent) | Active |
-| `#posts` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | ~40 | Hub (bot-only) | Active |
-| `#content-pipeline` | Content strategy; Weekly Content Planner target | 6 | Domain | Low use |
-| `#kohyr-dev` | Kohyr engineering | 0 | Domain | Dormant since 2026-06-11 |
-| `#job-search` | Job and career tracking | 1 | Domain | Setup-only |
-| `#all-alawein-workspace` | Workspace announcements | 1 | Broadcast | Setup-only |
-| `#social` | Non-work | 0 | Default | Empty |
+| Channel | Slack ID | Purpose | Cloud Agent read | Tier | Status |
+| --- | --- | --- | --- | --- | --- |
+| `#admin-ops` | `C0B9SRMDJFK` | Agent command center; ops, infra, cross-tool coordination | yes | Hub (human+agent) | Active |
+| `#posts` | `C0APWF615H7` | Bot digest hub for Daily Briefing, Friday Review, Monday Kickoff | no (listed) | Hub (bot-only) | Active |
+| `#content-pipeline` | `C0B9R0NS4QJ` | Content strategy; Weekly Content Planner target | no (listed) | Domain | Low use |
+| `#kohyr-dev` | `C0B9JJZSVQT` | Kohyr engineering (renamed from morphism-dev) | yes | Domain | Dormant since 2026-06-11 |
+| `#job-search` | `C0B9NTUUGR4` | Job and career tracking | no (listed) | Domain | Setup-only |
+| `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
+| `#social` | `C0AP24SRVQF` | Non-work | no (listed) | Default | Empty |
 
 ### 1.2 Naming convention (locked)
 
@@ -105,7 +107,7 @@ health problem.
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
-| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub for Slack, ChatGPT | Present | Claude channel membership |
+| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
 | GitHub (Cursor MCP) | — | Error (`gh` CLI works) | Cursor MCP discovery failure |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
@@ -188,8 +190,9 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    GitHub MCP, remove duplicate Slack MCP, repair Supermemory; decide on
    Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
-7. **Cursor Slack access:** Invite `@Cursor` to `#kohyr-dev` and
-   `#all-alawein-workspace`.
+7. **Cursor Slack access:** Done for `#kohyr-dev` and
+   `#all-alawein-workspace` (2026-09-05 ~13:55). Optional remaining invites:
+   `#posts`, `#content-pipeline`, `#job-search`, `#social`.
 
 ### Phase 3 — Trial (2026-09-05 through 2026-09-19)
 
@@ -216,6 +219,14 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.2.0 (2026-09-05)
+
+- Recorded Slack channel IDs and Cloud Agent read membership (3 of 7).
+- OpenAI Slack surface remapped: `@Codex` (`U0BV7V8M3NW`) replaced silent
+  `@ChatGPT` (`U0BUNH33CCA`).
+- Cursor invites to `#kohyr-dev` and `#all-alawein-workspace` marked done.
+- Evidence pointer to internal rescan audit.
 
 ### v1.1.0 (2026-09-05)
 

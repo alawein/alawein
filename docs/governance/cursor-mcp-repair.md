@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.0.0
+version: 1.1.0
 tags: [cursor, mcp, integrations, repair]
 ---
 
@@ -22,14 +22,15 @@ Live-verified 2026-09-05 from a Cloud Agent session. Use this when
 
 ## 1. Status snapshot
 
-| Integration | Cursor MCP | Workaround | Action |
+| Integration | Desktop IDE | Cloud Agent (14:32 UTC) | Action |
 | --- | --- | --- | --- |
-| GitHub | Error (discovery fails) | `gh` CLI scoped token works | Re-auth or fix server config (§2) |
-| Supermemory | Error (`CURSOR_PLUGIN_ROOT`) | None in session | Reinstall plugin / fix env (§3) |
-| Slack (duplicate) | Error | **Cursor Slack Tools** (built-in) | Remove duplicate entry (§4) |
-| Gmail / Calendar / Drive | Ready | — | None |
-| Railway | Ready | — | None |
-| Notion | Needs auth | Notion AI in Slack | Authenticate in Cursor Settings → MCP |
+| GitHub | Ready (T5) | Error (discovery fails) | Keep desktop; Cloud still uses `gh` (§2) |
+| Supermemory | Dropped (not installed) | Error | Leave dropped; not inventory SSOT (§3) |
+| Slack (duplicate) | Removed (T7) | Error | Remove Cloud leftover; keep Cursor Slack Tools (§4) |
+| Gmail / Calendar / Drive | Absent from desktop catalog | Ready (re-probed) | None on Cloud |
+| Railway | CLI Unauthorized | Ready (`whoami`) | Desktop CLI auth if needed |
+| Notion | Absent | Absent | Notion AI Slack remains the surface |
+| Figma / 1password / Todoist | — | Error | Ignore unless a task needs them |
 
 ## 2. GitHub MCP
 
@@ -98,10 +99,25 @@ After repairs, re-run this checklist in an Agent session:
 - [ ] Update `catalog/agent-integrations.yaml` `last_verified` and `cursor_mcp` rows
 - [ ] Bump `last_updated` on this file if steps change
 
-## 6. Related canon
+## 6. Cloud vs desktop
+
+A desktop pass does not clear the Cloud Agent row. Re-scan both after any
+MCP install or OAuth change. Live Cloud matrix: `catalog/agent-integrations.yaml`
+`cursor_mcp_cloud_agent`. Narrative:
+`docs/internal/audits/2026-09-05-slack-integrations-rescan.md`.
+
+## 7. Related canon
 
 | Doc | Role |
 | --- | --- |
 | [`unified-agent-system.md`](unified-agent-system.md) | Integration registry and dispatch |
 | [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml) | Machine-readable MCP status |
 | [`credential-hygiene.md`](credential-hygiene.md) | Token handling |
+
+## 8. Changelog
+
+### v1.1.0 (2026-09-05)
+
+- Split desktop vs Cloud Agent status. GitHub ready on desktop only.
+- Slack duplicate still errors on Cloud Agent after desktop T7 pass.
+- Pointer to `cursor_mcp_cloud_agent` in the inventory YAML.

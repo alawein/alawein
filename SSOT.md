@@ -4,15 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-04
-last_updated: 2026-09-04
+last-verified: 2026-09-05
+last_updated: 2026-09-05
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
 **Version:** 1.5
-**Last Updated:** 2026-09-04
+**Last Updated:** 2026-09-05
 **Status:** Active
 
 ---
@@ -70,6 +70,11 @@ governance contract for naming, portfolio truth, and migration sequencing.
   `scripts/github/validate-visibility.py` and the offline rules in
   `scripts/catalog/validate-catalog.py`. Design:
   `docs/internal/specs/2026-08-27-public-readiness-gate-design.md`
+- Slack and Cursor MCP inventory SSOT:
+  [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
+  Latest live rescan:
+  [`docs/internal/audits/2026-09-05-slack-integrations-rescan.md`](docs/internal/audits/2026-09-05-slack-integrations-rescan.md).
+  Channel policy: [`docs/governance/slack-agent-runbook.md`](docs/governance/slack-agent-runbook.md).
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and
   remain render-first GitHub artifacts
 - Hybrid corpus refinement is active under `docs/style/`; canonical prompt

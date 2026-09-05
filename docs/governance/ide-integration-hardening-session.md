@@ -9,7 +9,7 @@ last_updated: 2026-09-05
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.0
+version: 1.2.0
 tags: [cursor, ide, slack, mcp, integrations, hardening]
 ---
 
@@ -55,8 +55,8 @@ browser verification.
 | 🟢 Ready | Gmail, Calendar, Drive, Railway, Cursor Slack Tools, Notion AI (Slack) |
 | 🟡 Partial | Vercel (32 projects, 8 need browser inspect); governance on branch not `main` |
 | 🔴 Broken | GitHub MCP, Supermemory MCP, Slack MCP duplicate |
-| 🔴 No output | `@ChatGPT` in Slack (installed, never replied in dispatch) |
-| 🔴 Blocked | `@Computer` Slack auth; Cursor reads only `#admin-ops` |
+| 🔴 No output | `@ChatGPT` (`U0BUNH33CCA`) silent; replaced by `@Codex` |
+| 🔴 Blocked | `@Computer` Slack auth; `@Codex` needs ChatGPT Codex connect |
 
 ### Gmail cleanup (done via Cloud Agent)
 
@@ -88,12 +88,12 @@ fails on pre-existing sibling-repo `fallax` README (not introduced by these PRs)
 
 | Thing | What it is |
 | --- | --- |
-| `@ChatGPT` in Slack | OpenAI "ChatGPT for Slack" app — Slack OAuth, **not** a Cursor MCP |
-| Codex | OpenAI coding agent (ChatGPT/API) — separate product |
-| "Codex" in `claude-agent-platform` | Behavioral profile name in workflows — **unrelated** to Slack |
+| `@ChatGPT` (`U0BUNH33CCA`) | Old OpenAI Slack app. Joined `#admin-ops` 11:28. Never posted. Replaced. |
+| `@Codex` (`U0BV7V8M3NW`) | Current OpenAI Slack surface. Joined 14:27. Needs ChatGPT Codex account connect. |
+| "Codex" in `claude-agent-platform` | Behavioral profile name in workflows. Unrelated to this Slack app. |
 
-`@ChatGPT` has no Cursor MCP. If it never replies in Slack, re-auth the Slack
-app (Settings → Manage apps → ChatGPT), not Codex.
+S4 is now: tag `@Codex` after connecting the ChatGPT Codex account. Do not
+re-auth the silent ChatGPT Slack app unless you intend to keep both.
 
 ### Agent dispatch model (locked in docs)
 
@@ -102,7 +102,7 @@ app (Settings → Manage apps → ChatGPT), not Codex.
 | Code, PR, governance commits | **Cursor** |
 | Slack live reads | **Claude** or Cursor |
 | Browser/GUI verification | **Computer** |
-| Connector gap-fill (diff only) | **ChatGPT** (if working) |
+| Connector gap-fill (diff only) | **Codex** (after connect) |
 | MCP integration live diff | **Cursor** |
 
 ### Output standards (every agent turn)
@@ -138,7 +138,7 @@ Layer 3 — Memory (optional convenience)
 
 | Channel | Role | Agents |
 | --- | --- | --- |
-| `#admin-ops` | Hub — dispatch, audits, PR links | Cursor, Claude, Computer*, Notion AI, GitHub, ChatGPT* |
+| `#admin-ops` | Hub — dispatch, audits, PR links | Cursor, Claude, Computer*, Notion AI, GitHub, Codex* |
 | `#posts` | Workflow bot digest hub | bots only |
 | `#kohyr-dev` | Product dev | invite Cursor |
 | `#content-pipeline` | Content workflow | bots |
@@ -146,7 +146,7 @@ Layer 3 — Memory (optional convenience)
 | `#all-alawein-workspace` | Broadcast | invite Cursor |
 | `#social` | Default | — |
 
-\*Computer needs Slack re-auth; ChatGPT drop from dispatch until it proves it can reply.
+\*Computer needs Slack re-auth; Codex needs ChatGPT Codex account connect.
 
 ### Agents (reduce to 4 active in dispatch)
 
@@ -157,7 +157,8 @@ Layer 3 — Memory (optional convenience)
 | Computer | Yes (after auth) | Browser verification |
 | Notion AI | Yes | Notion workspace reads |
 | GitHub for Slack | Yes | PR mirror only (not an auditor) |
-| ChatGPT | **Suspend** until re-auth proves reply | Was assigned gap-fill; never output |
+| Codex | **Hold** until ChatGPT Codex connect + Reply OK | Replaced ChatGPT as OpenAI Slack surface |
+| ChatGPT | **Drop** from dispatch | User `U0BUNH33CCA`; never posted |
 
 ### Cursor MCP (desktop IDE)
 
@@ -207,7 +208,7 @@ We audited the Alawein Slack workspace + integrations. Key outcomes:
 - Gmail: 22 AGI threads archived under label `AGI (archive)`; 0 in inbox
 - Drive: 50+ AGI files; all sampled owned by contact@meshal.ai
 - Broken MCPs: GitHub (discovery error), Supermemory (CURSOR_PLUGIN_ROOT), Slack dup
-- @ChatGPT in Slack: installed but NEVER replied in multi-agent dispatch — NOT Codex
+- @ChatGPT in Slack: silent (U0BUNH33CCA). OpenAI Slack surface is now @Codex.
 - @Computer: Slack auth blocked
 - Cursor Cloud Agent: reads only #admin-ops; not invited to #kohyr-dev, #all-alawein-workspace
 - Claude: legacy Slack bot; §9 handoff pending (Slack app list, bot LLM backends)
@@ -241,10 +242,10 @@ Guide Meshal through:
 
 1. `/invite @Cursor` in #kohyr-dev and #all-alawein-workspace
 2. Re-auth @Computer in Slack
-3. ChatGPT Slack app: Settings → Manage apps → ChatGPT → re-auth OpenAI account
-   - Test: DM @ChatGPT "Reply OK if connected"
-   - If no reply in 2 min: uninstall/reinstall ChatGPT for Slack
-   - Clarify: this is NOT Codex; Codex is a separate OpenAI product
+3. Codex Slack app: connect the ChatGPT Codex account when prompted
+   - Test: tag @Codex "Reply OK"
+   - Ignore or uninstall the silent @ChatGPT app (U0BUNH33CCA)
+   - Do not treat desktop Codex CLI skills as this Slack app
 
 ## Phase D — Trigger tests (run each; record pass/fail)
 
@@ -268,7 +269,7 @@ Guide Meshal through:
 | S1 | @Cursor | "List Slack channels you can read" | Lists 7; notes which are readable |
 | S2 | @Claude | "List Slack apps installed in this workspace" | Table with app names |
 | S3 | @Computer | "Confirm you can read #posts" | Evidence or UNVERIFIED |
-| S4 | @ChatGPT | "Reply OK" | Any reply within 2 min |
+| S4 | @Codex | "Reply OK" | Any reply within 2 min after Codex account connect |
 | S5 | @Notion AI | "Confirm workspace identity" | contact@meshal.ai / Meshal's Workspace |
 
 ### Workflow bot check (read-only)
@@ -336,9 +337,9 @@ One-line next step for anything still blocked.
 | T7 | Slack MCP dup removed | pass | Only `plugin-slack-slack` ready; no errored Slack dup | 2026-09-05 |
 | T8 | PR merge status | pass | #196 merged; #197 closed (base deleted); #198 merged (Phase 2 closeout) | 2026-09-05 |
 | S1 | @Cursor channels | pass (partial) | IDE lists 7/7; Cloud Agent reads 3 (admin-ops, kohyr-dev, all-alawein-workspace) | 2026-09-05 |
-| S2 | @Claude apps | timeout | Mention U0AQQFJT8AC; no reply in hardening thread | 2026-09-05 |
-| S3 | @Computer #posts | blocked | Mention U0APW7F9S4A; no reply; needs Slack re-auth | 2026-09-05 |
-| S4 | @ChatGPT reply | fail | No resolvable ChatGPT Slack user ID; status suspended | 2026-09-05 |
+| S2 | @Claude apps | late pass | Claude replied 14:02:51 (app table + Claude Tag prompt) | 2026-09-05 |
+| S3 | @Computer #posts | blocked | No reply; joined `#kohyr-dev` and `#all-alawein-workspace`; needs Slack re-auth | 2026-09-05 |
+| S4 | @Codex reply | remapped | Codex `U0BV7V8M3NW` joined 14:27; connect prompt; ChatGPT replaced | 2026-09-05 |
 | S5 | @Notion AI identity | timeout | Mention U0AQ8UNAKTK; no reply in hardening thread | 2026-09-05 |
 | W1 | Monday Kickoff | pass | `#posts` contains Monday Weekly Kickoff (e.g. 2026-08-31) | 2026-09-05 |
 | W2 | Workflow bots | pass | All 5 YAML rows status=working; engagement_30d=0 | 2026-09-05 |
@@ -350,13 +351,19 @@ One-line next step for anything still blocked.
 | PR #196/#197 | open / draft | #196 merged; #197 closed; Phase 2 via #198 merged | https://github.com/alawein/alawein/pull/196 https://github.com/alawein/alawein/pull/198 |
 | GitHub MCP | error (Cloud) | ready (desktop) | T5 |
 | Supermemory | error | dropped | T6 / Phase F |
-| ChatGPT Slack | no reply | suspended | S4 |
-| Cursor channel read | admin-ops only | Cloud reads 3; IDE lists 7 | S1 Cloud Agent reply |
-| YAML | pre-hardening | refreshed 2026-09-05T14:00:00Z | `catalog/agent-integrations.yaml` |
+| ChatGPT Slack | no reply | replaced by Codex | S4 remap 14:27 UTC |
+| Codex Slack | absent | needs ChatGPT Codex connect | `U0BV7V8M3NW` join + connect prompt |
+| Cursor channel read | admin-ops only | Cloud reads 3; IDE lists 7 | S1 + 14:32 rescan |
+| YAML | pre-hardening | refreshed 2026-09-05T14:45:00Z | `catalog/agent-integrations.yaml` |
 
 Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788616243786809
 
 ### Changelog
+
+#### v1.2.0 (2026-09-05)
+
+- S2 late pass (Claude 14:02:51). S4 remapped to `@Codex`.
+- Pointer to Cloud Agent rescan audit and YAML `14:45:00Z` refresh.
 
 #### v1.1.0 (2026-09-05)
 

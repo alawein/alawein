@@ -6,3 +6,10 @@ updates:
       interval: "weekly"
       day: "monday"
     open-pull-requests-limit: 10
+    # Phase 0 bot-fleet hygiene (2026-09-05): one grouped PR + cooldown
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns:
+          - "*"

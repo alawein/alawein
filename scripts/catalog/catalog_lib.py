@@ -292,7 +292,7 @@ def project_entry_from_repo(repo: dict[str, Any]) -> dict[str, Any]:
         "repo": repo["repo"],
         "description": repo["canonical_description"],
         "tags": repo.get("tags") or repo.get("stack") or [],
-        "category": repo["lifecycle"],
+        "category": "maintained" if repo["lifecycle"] == "frozen" else repo["lifecycle"],
     }
     if repo.get("legacy_slugs"):
         entry["legacy_slugs"] = repo["legacy_slugs"]

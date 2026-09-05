@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-29
+last_updated: 2026-09-05
 audience: [ai-agents, contributors]
 ---
 
@@ -48,6 +48,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `review-playbook.md` | Active | Code review process |
 | `skills-agents-unification.md` | Reference | Skills and agents unification notes |
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
+| `slack-agent-runbook.md` | Active | Slack channel, workflow-bot, and integration governance for agent routing |
 | `slash-commands-catalog.md` | Reference | Available slash commands |
 | `tooling-quality-gates.md` | Active | CI quality gate definitions |
 | `version-history-audit.md` | Active | Repeatable protocol to take a repo from incoherent version history to a clean SemVer baseline by additive re-indexing |

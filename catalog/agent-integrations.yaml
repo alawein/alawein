@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T14:45:00Z'
+lastVerified: '2026-09-05T15:00:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -23,9 +23,12 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads 3 channels (admin-ops, kohyr-dev, all-alawein-workspace)
-      after invites; lists 7. IDE Slack MCP (Meshal) reads all 7. Re-proved
-      2026-09-05 14:32 UTC Cloud Agent rescan.
+      Cloud Agent reads 4 channels (admin-ops, kohyr-dev,
+      all-alawein-workspace, posts) after #posts invite 14:59 UTC. Lists 7.
+      Remaining invites: content-pipeline, job-search, social. Lane D
+      re-probe 2026-09-05 14:59 UTC run
+      bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0. IDE Slack MCP (Meshal) reads
+      all 7.
     last_verified: 2026-09-05
   - id: claude-slack
     display_name: Claude
@@ -259,7 +262,12 @@ slack_channels:
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
-    cursor_can_read: false
+    cursor_can_read: true
+    notes: >
+      Cloud Agent joined 2026-09-05 14:59:34 UTC (ts 1788620374.004189).
+      Verified Daily Briefing B0B9BA0V03E (last 2026-09-04 16:00 UTC),
+      Friday Review B0B91C6L7RR (2026-09-04 23:00 UTC), Monday Kickoff
+      B0BA9SU11MW (2026-08-31 16:00 UTC). Computer not present. Engagement 0.
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain

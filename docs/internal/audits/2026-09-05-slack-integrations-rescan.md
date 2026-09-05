@@ -24,19 +24,22 @@ those, not a second full audit.
 The seven-channel layout is still the right shape. Do not rename, merge, or
 archive anything this cycle. What changed since #199 is the OpenAI Slack
 surface: `@Codex` (`U0BV7V8M3NW`) replaced `@ChatGPT`. Cursor Cloud Agent
-still reads three channels. Four invites and three OAuth steps remain.
+now reads four channels (`#posts` invite 14:59 UTC). Three invites and
+three OAuth steps remain.
 
 ## Slack channel inventory (live)
 
 `list_slack_channels` returned 7 public channels. `read_slack_messages`
-proved membership on 3. Listing a channel is not read access.
+proved membership on 4 (Lane D re-probe 14:59 UTC, run
+`bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0`). Listing a channel is not read
+access.
 
 | Channel | ID | Tier | Cloud Agent read | Purpose (live topic / description) | 30d use |
 | --- | --- | --- | --- | --- | --- |
 | `#admin-ops` | `C0B9SRMDJFK` | Hub | yes | Infra, subscriptions, DNS, billing, ops | Active (command center) |
 | `#kohyr-dev` | `C0B9JJZSVQT` | Domain | yes (invite ~13:56) | Kohyr engineering; renamed from `morphism-dev` 2026-06-11 | Dormant since 2026-06-11 except bot joins |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Broadcast | yes (invite ~13:54) | Workspace announcements | Setup-only; Fireflies added 2026-06-13 |
-| `#posts` | `C0APWF615H7` | Hub-bot | listed, not member | Workflow-bot digest hub | Active (bots); Cloud Agent cannot verify |
+| `#posts` | `C0APWF615H7` | Hub-bot | yes (invite 14:59) | Workflow-bot digest hub | Active (bots); 0 replies |
 | `#content-pipeline` | `C0B9R0NS4QJ` | Domain | listed, not member | Weekly Content Planner target | Low use; Cloud Agent cannot verify |
 | `#job-search` | `C0B9NTUUGR4` | Domain | listed, not member | Job and career tracking | Setup-only; Cloud Agent cannot verify |
 | `#social` | `C0AP24SRVQF` | Default | listed, not member | Non-work | Empty; Cloud Agent cannot verify |
@@ -48,8 +51,8 @@ IDE Slack MCP (Meshal account, earlier today): reads 7/7.
 Keep all seven. Locked in `slack-agent-runbook.md` §1.3. Remaining
 organization is membership, not topology:
 
-1. `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social`
-   if Cloud Agent should match IDE read coverage.
+1. `/invite @Cursor` in `#content-pipeline`, `#job-search`, `#social`
+   if Cloud Agent should match IDE read coverage. `#posts` done 14:59 UTC.
 2. Leave `#kohyr-dev` named as-is. Description already says Kohyr; welcome
    text still mentions Morphism (cosmetic, not a rename).
 3. Fireflies (`B0BA8NTJAR4`) is installed on `#all-alawein-workspace`. Cursor
@@ -60,7 +63,7 @@ organization is membership, not topology:
 
 | Handle | Slack ID | Role | Status now | Evidence |
 | --- | --- | --- | --- | --- |
-| `@Cursor` | `U0APW2Z3GG2` | Implement, commit, inventory | Ready | This run; reads 3 channels |
+| `@Cursor` | `U0APW2Z3GG2` | Implement, commit, inventory | Ready | Lane D run `bc-eaa2dc84-…`; reads 4 channels |
 | `@Claude` | `U0AQQFJT8AC` | Slack reads, synthesis | Ready (legacy) | S2 reply 14:02:51; asked to enable Claude Tag |
 | `@Computer` | `U0APW7F9S4A` | Browser verify | Needs Slack re-auth | Joined `#kohyr-dev` + `#all-alawein-workspace` ~13:55; silent on S3 |
 | `@Notion AI` | `U0AQ8UNAKTK` | Notion reads | Present; S5 unanswered | No identity reply in hardening thread |
@@ -68,10 +71,12 @@ organization is membership, not topology:
 | `@Codex` | `U0BV7V8M3NW` | OpenAI Slack surface (new) | Needs ChatGPT Codex connect | Joined `#admin-ops` 14:27:21; connect prompt 14:28:50 |
 | `@ChatGPT` | `U0BUNH33CCA` | Old OpenAI Slack app | Replaced / silent | Joined 11:28; never posted |
 
-Workflow bots (unchanged; Cloud Agent cannot read `#posts`): Daily Agenda
-(DM), Daily Briefing (`#posts`), Friday Review (`#posts`), Monday Kickoff
-(`#posts`), Weekly Content Planner (`#content-pipeline`). Trial through
-2026-09-19. Engagement still 0 as of last lock.
+Workflow bots (Cloud Agent now reads `#posts`): Daily Agenda (DM), Daily
+Briefing `B0B9BA0V03E` last fire 2026-09-04 16:00 UTC, Friday Review
+`B0B91C6L7RR` last fire 2026-09-04 23:00 UTC, Monday Kickoff `B0BA9SU11MW`
+last fire 2026-08-31 16:00 UTC, Weekly Content Planner (`#content-pipeline`,
+still unread). Trial through 2026-09-19. Engagement still 0. Computer is
+not in `#posts`.
 
 ## Cursor MCP namespace matrix (this Cloud Agent)
 
@@ -81,7 +86,7 @@ Scanned via dynamic tool discovery at 14:32–14:40 UTC.
 
 | Namespace | Probe | Result |
 | --- | --- | --- |
-| Cursor Slack Tools | `list_slack_channels`, `read_slack_messages` | 7 listed; 3 readable |
+| Cursor Slack Tools | `list_slack_channels`, `read_slack_messages` | 7 listed; 4 readable after `#posts` 14:59 |
 | Gmail | `list_labels`, `search_threads` | 6 user labels; `AGI (archive)` = 22 threads; `from:theagi.company in:inbox` = 0 |
 | Google-calendar | `list_calendars` | `meshal.ai`, Work, Personal, US Holidays; TZ America/Los_Angeles |
 | Google-drive | `list_recent_files` | Recent files owned by `contact@meshal.ai` (Morphism audits, Systems, Knowledge OS) |
@@ -127,7 +132,7 @@ UNVERIFIED).
 | GitHub MCP | Ready | Error |
 | Slack third-party | Removed | Error (still present) |
 | Supermemory | Dropped / not installed | Error |
-| Slack channel read | 7/7 (Meshal Slack MCP) | 3/7 (bot membership) |
+| Slack channel read | 7/7 (Meshal Slack MCP) | 4/7 (bot membership; `#posts` 14:59) |
 
 Inventory rows must keep both columns. A desktop pass does not mean Cloud
 Agent can call the tool.
@@ -136,7 +141,7 @@ Agent can call the tool.
 
 | ID | #199 row | This rescan |
 | --- | --- | --- |
-| S1 | pass (partial), reads 3 | Unchanged; re-proved |
+| S1 | pass (partial), reads 3 | **Lane D** — now 4/7 after `#posts` invite 14:59 |
 | S2 | timeout | **Late pass** — Claude replied 14:02:51 with app table + Claude Tag note |
 | S3 | blocked | Unchanged; Computer still silent on `#posts` |
 | S4 | ChatGPT fail / suspended | **Remapped** — Codex is the OpenAI Slack app; connect prompt, no Reply OK |
@@ -160,13 +165,32 @@ Agent can call the tool.
    `Reply OK`. Uninstall or ignore the silent ChatGPT app (`U0BUNH33CCA`).
 3. Re-tag `@Notion AI` for workspace identity (`contact@meshal.ai` / Meshal's
    Workspace) if you still want S5 closed.
-4. Optional: `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`,
-   `#social`.
+4. Optional remaining: `/invite @Cursor` in `#content-pipeline`,
+   `#job-search`, `#social`. `#posts` done 14:59 UTC.
 5. Optional: enable Claude Tag (legacy bot works; Tag is a product upgrade).
 6. Desktop: Railway CLI auth if you want T4 green on the workstation.
 7. Phase 2 leftovers (unchanged): Vercel browser inspect of 8 UNVERIFIED
    projects; Drive access on Superfine Kitchen Order; workflow-bot trial to
    2026-09-19.
+
+## Lane D re-probe (2026-09-05 14:59 UTC)
+
+Cloud Agent run `bc-eaa2dc84-9e66-54b6-95d8-00d308d2e5c0`. Parallel finalize
+lane D after Meshal started channel invites.
+
+| Channel | can_read | Evidence |
+| --- | --- | --- |
+| `#admin-ops` | yes | parent `1788618711.648629` |
+| `#kohyr-dev` | yes | Computer join `1788616579.964689` |
+| `#all-alawein-workspace` | yes | Computer join `1788616513.454089` |
+| `#posts` | yes | Cursor join `1788620374.004189` (14:59:34) |
+| `#content-pipeline` | no | not a member |
+| `#job-search` | no | not a member |
+| `#social` | no | not a member |
+
+`@ChatGPT` (`U0BUNH33CCA`) stays installed. No Codex `Reply OK` in the
+`#admin-ops` thread. Lanes A–B remain browser OAuth (Playwright Slack login
+blocked on an auth code); hand to Meshal desktop or Sider/Claw.
 
 ## What this rescan did not change
 

@@ -19,7 +19,7 @@ tags: [cursor, ide, slack, mcp, integrations, hardening]
 
 Use this doc to run a **desktop Cursor IDE** session that repairs integrations,
 merges governance PRs, and smoke-tests the full agent stack. Cloud Agents from
-Slack cannot complete MCP OAuth or desktop plugin repair — this session is
+Slack cannot complete MCP OAuth or desktop plugin repair. This session is
 required for end-to-end verification.
 
 **Open in IDE:** `alawein/alawein` repo, branch `main` (after PR merges) or
@@ -27,7 +27,7 @@ required for end-to-end verification.
 
 ---
 
-## Part 1 — Audit context (2026-09-05)
+## Part 1, Audit context (2026-09-05)
 
 ### What triggered this
 
@@ -42,11 +42,11 @@ browser verification.
 
 | Prior claim | Verdict |
 | --- | --- |
-| Monday Kickoff workflow bot broken | **Wrong** — fires Mon → `#posts` |
-| 4 empty Slack channels | **Wrong** — all 7 have activity |
-| Notion on old AGI account | **Wrong** — `contact@meshal.ai` / Meshal's Workspace |
-| Gmail label AGI drift | **Partially wrong** — threads were unlabeled, not drift |
-| Vercel "2 old-job deployments" | **Not supported** — 32 projects; 8 UNVERIFIED |
+| Monday Kickoff workflow bot broken | **Wrong**, fires Mon → `#posts` |
+| 4 empty Slack channels | **Wrong**, all 7 have activity |
+| Notion on old AGI account | **Wrong**, `contact@meshal.ai` / Meshal's Workspace |
+| Gmail label AGI drift | **Partially wrong**, threads were unlabeled, not drift |
+| Vercel "2 old-job deployments" | **Not supported**, 32 projects; 8 UNVERIFIED |
 
 ### Live-verified integration state
 
@@ -78,8 +78,8 @@ All sampled files owned by `contact@meshal.ai`. Review sharing on parent folder
 
 ### PRs (merge order)
 
-1. [PR #196](https://github.com/alawein/alawein/pull/196) — unified system + runbook + YAML (base governance)
-2. [PR #197](https://github.com/alawein/alawein/pull/197) — Phase 2 closeout (Gmail sweep, MCP repair doc, YAML refresh)
+1. [PR #196](https://github.com/alawein/alawein/pull/196), unified system + runbook + YAML (base governance)
+2. [PR #197](https://github.com/alawein/alawein/pull/197), Phase 2 closeout (Gmail sweep, MCP repair doc, YAML refresh)
 
 Required CI passes on #196. Merge blocked on human approval. Doctrine Validation
 fails on pre-existing sibling-repo `fallax` README (not introduced by these PRs).
@@ -112,7 +112,7 @@ blocked · ⚪ unverified. No duplicate audits; diff-only on open rows.
 
 ---
 
-## Part 2 — Ideal setup (from scratch)
+## Part 2, Ideal setup (from scratch)
 
 If rebuilding today with what we now know:
 
@@ -134,17 +134,17 @@ Layer 3 — Memory (optional convenience)
   Supermemory          → session prefs only; NOT inventory SSOT
 ```
 
-### Slack (7 channels — keep)
+### Slack (7 channels, keep)
 
 | Channel | Role | Agents |
 | --- | --- | --- |
-| `#admin-ops` | Hub — dispatch, audits, PR links | Cursor, Claude, Computer*, Notion AI, GitHub, Codex* |
+| `#admin-ops` | Hub (dispatch, audits, PR links) | Cursor, Claude, Computer*, Notion AI, GitHub, Codex* |
 | `#posts` | Workflow bot digest hub | bots only |
 | `#kohyr-dev` | Product dev | invite Cursor |
 | `#content-pipeline` | Content workflow | bots |
-| `#job-search` | Job search domain | — |
+| `#job-search` | Job search domain | None |
 | `#all-alawein-workspace` | Broadcast | invite Cursor |
-| `#social` | Default | — |
+| `#social` | Default | None |
 
 \*Computer needs Slack re-auth; Codex needs ChatGPT Codex account connect.
 
@@ -164,11 +164,11 @@ Layer 3 — Memory (optional convenience)
 
 | MCP | Action |
 | --- | --- |
-| Gmail / Calendar / Drive | Keep — working |
-| Railway | Keep — Cloud Agent ready; desktop CLI auth still needed |
-| GitHub | **Fix** — re-auth OAuth or PAT |
-| Supermemory | **Fix or remove** — decide after smoke test |
-| Slack (third-party) | **Remove** — use Cursor Slack Tools for Cloud Agent only |
+| Gmail / Calendar / Drive | Keep, working |
+| Railway | Keep, Cloud Agent ready; desktop CLI auth still needed |
+| GitHub | **Fix**, re-auth OAuth or PAT |
+| Supermemory | **Fix or remove**, decide after smoke test |
+| Slack (third-party) | **Remove**, use Cursor Slack Tools for Cloud Agent only |
 | Notion | Authenticate if needed for IDE reads |
 
 ### Context sharing rules
@@ -184,7 +184,7 @@ Layer 3 — Memory (optional convenience)
 
 ---
 
-## Part 3 — Copy-paste IDE agent prompt
+## Part 3, Copy-paste IDE agent prompt
 
 Paste everything below into a **new Cursor IDE Agent chat** (desktop, not Cloud
 Agent from Slack):
@@ -324,7 +324,7 @@ One-line next step for anything still blocked.
 
 ---
 
-## Part 4 — Test results (filled 2026-09-05 desktop IDE session)
+## Part 4, Test results (filled 2026-09-05 desktop IDE session)
 
 | ID | Test | Result | Evidence | Date |
 | --- | --- | --- | --- | --- |
@@ -376,7 +376,7 @@ Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p178861871164862
 
 ---
 
-## Part 5 — Related canon
+## Part 5, Related canon
 
 | Doc | Role |
 | --- | --- |

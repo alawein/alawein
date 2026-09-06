@@ -49,7 +49,7 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 
 Format: `#<tier-prefix>-<domain>`
 
-- **Hub channels** (no prefix): `admin-ops`, `posts` — cross-cutting coordination.
+- **Hub channels** (no prefix): `admin-ops`, `posts` (cross-cutting coordination).
 - **Domain channels** (`#dev-*`, `#work-*`, `#content-*`): one project or workstream.
 - **Personal/admin** (`#personal-*`): out of scope for professional automation.
 - **Broadcast** (`#all-*`): Slack default; do not create additional broadcast channels.
@@ -108,7 +108,7 @@ health problem.
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
 | Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
-| GitHub (Cursor MCP) | — | Error (`gh` CLI works) | Cursor MCP discovery failure |
+| GitHub (Cursor MCP) | None | Error (`gh` CLI works) | Cursor MCP discovery failure |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
 
@@ -121,10 +121,10 @@ browser check.
 
 | Category | Count | Notes |
 | --- | --- | --- |
-| Personal (`alawein/*`) — keep | 18 | Portfolio projects under `alawein` org |
-| Kohyr / Morphism — keep | 4 | `kohyr`, `kohyr-wip`, `kohyr-internal`, `morphism` |
-| Non-`alawein` org (`menax-inc/menax`) — review | 1 | Ownership context unclear |
-| UNVERIFIED (missing source metadata) — inspect via browser | 8 | `web`, `sam-eval-roadmap`, `dist`, `guides-eval-loop-app`, `graphics-engine`, `kiosk-ipad-app`, `knowledge-base-wiki`, `tech-blog-frontend` |
+| Personal (`alawein/*`), keep | 18 | Portfolio projects under `alawein` org |
+| Kohyr / Morphism, keep | 4 | `kohyr`, `kohyr-wip`, `kohyr-internal`, `morphism` |
+| Non-`alawein` org (`menax-inc/menax`), review | 1 | Ownership context unclear |
+| UNVERIFIED (missing source metadata), inspect via browser | 8 | `web`, `sam-eval-roadmap`, `dist`, `guides-eval-loop-app`, `graphics-engine`, `kiosk-ipad-app`, `knowledge-base-wiki`, `tech-blog-frontend` |
 
 **Priority browser inspection:** `sam-eval-roadmap` and `guides-eval-loop-app`
 are name-suggestive of prior AGI Inc work. Delete if employer-affiliated.
@@ -137,11 +137,11 @@ Nine `sharedWithMe` items enumerated. Only one AGI-affiliated file:
 | --- | --- | --- | --- | --- |
 | Superfine Kitchen Order | `chaitanya@theagi.company` | `theagi.company` | 2026-09-04 | Review or remove access |
 | Documents | `mario@kohyr.ai` | `kohyr.ai` | 2026-06-24 | Keep |
-| NDA Form — Meshal Alawein | `adam@sycamore.so` | `sycamore.so` | 2026-05-07 | Keep |
+| NDA Form (Meshal Alawein) | `adam@sycamore.so` | `sycamore.so` | 2026-05-07 | Keep |
 | Meshal.pdf, JD Jan 2026.pdf | `ashley.n@mobiusdtaas.ai` | `mobiusdtaas.ai` | 2026-01-29 | Keep |
-| Douglas Frey Departure letter | `lifelongmychart@gmail.com` | UNVERIFIED | 2026-05-22 | Personal — keep |
-| Reports examples | `maxim.kunakov@turing.com` | UNVERIFIED | 2026-05-04 | Job-search context — keep |
-| BMJ Palettes, Logos | `theblackmalejournal@gmail.com` | UNVERIFIED | 2026-03-16 | Own project — keep |
+| Douglas Frey Departure letter | `lifelongmychart@gmail.com` | UNVERIFIED | 2026-05-22 | Personal, keep |
+| Reports examples | `maxim.kunakov@turing.com` | UNVERIFIED | 2026-05-04 | Job-search context, keep |
+| BMJ Palettes, Logos | `theblackmalejournal@gmail.com` | UNVERIFIED | 2026-03-16 | Own project, keep |
 
 **Shared drives:** only `bell-inequality-analysis` is accessible. No
 prior-employer shared drives.
@@ -170,12 +170,12 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ## 4. Implementation plan
 
-### Phase 1 — Lock (2026-09-05) — complete
+### Phase 1, Lock (2026-09-05), complete
 
 1. This runbook committed to `alawein/docs/governance/`.
 2. Pin reference link in `#admin-ops`.
 
-### Phase 2 — Cleanup (week of 2026-09-07 through 2026-09-13)
+### Phase 2, Cleanup (week of 2026-09-07 through 2026-09-13)
 
 1. **Vercel:** Browser-inspect eight UNVERIFIED projects; prioritize
    `sam-eval-roadmap` and `guides-eval-loop-app`.
@@ -183,7 +183,7 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    lookup fails).
 3. **Google Drive:** Decide on `Superfine Kitchen Order`; remove access if not
    needed.
-4. **Gmail:** Done — `AGI (archive)` label (`Label_367`); **22** AGI threads
+4. **Gmail:** Done, `AGI (archive)` label (`Label_367`); **22** AGI threads
    labeled and archived; 0 `theagi.company` threads in INBOX (verified
    2026-09-05).
 5. **Cursor MCPs:** See [`cursor-mcp-repair.md`](cursor-mcp-repair.md); fix
@@ -193,13 +193,13 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 7. **Cursor Slack access:** Done. Cloud Agent reads all 7 public channels
    (lane C invites 2026-09-05 14:59 through 15:16 UTC).
 
-### Phase 3 — Trial (2026-09-05 through 2026-09-19)
+### Phase 3, Trial (2026-09-05 through 2026-09-19)
 
 1. Bot engagement trial per §2.2.
 2. Channel usage trial: post at least once in `#kohyr-dev`, `#content-pipeline`,
    and `#job-search`.
 
-### Phase 4 — Review (2026-09-19)
+### Phase 4, Review (2026-09-19)
 
 1. Bot review gate; disable zero-engagement bots.
 2. Channel review gate; archive persistently empty channels.

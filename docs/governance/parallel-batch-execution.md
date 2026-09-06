@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: alawein maintainers
 version: 1.0.0
-last_updated: 2026-06-23
+last_updated: 2026-09-05
 tags: [governance, automation, workspace, batches, orchestration]
 ---
 
@@ -47,7 +47,7 @@ Healthy batch behavior is:
 - Keep one branch and one PR per repo.
 - Use branch names in the form `codex/<batch-id>/<initiative-slug>`.
 - Advance repos through:
-  `discover -> preflight -> mutate -> validate -> package -> publish -> summarize`
+  `discover → preflight → mutate → validate → package → publish → summarize`
 
 ## Communication Model
 

@@ -90,7 +90,7 @@ flowchart TB
 | **Codex** | Slack | GPT Codex | Gap-fill after ChatGPT Codex connect | Needs auth |
 | **ChatGPT** | Slack | GPT | Replaced by Codex; never posted | Replaced |
 | **Notion AI** | Slack, Notion | Notion AI | Notion workspace reads | Ready |
-| **GitHub for Slack** | Slack | — | PR thread mirroring | Ready |
+| **GitHub for Slack** | Slack | None | PR thread mirroring | Ready |
 
 ### LLM backends in use (tracked)
 
@@ -100,7 +100,7 @@ flowchart TB
 | Claude (legacy Slack) | `@Claude` in Slack | Per-user connect | Enable Claude Tag for modern routing |
 | Perplexity | `@Computer` / web | User session | Produced `slack-workspace-design.md` v1.1 |
 | GPT Codex | `@Codex` in Slack | ChatGPT Codex connect | Needs account link; S4 remapped |
-| GPT | `@ChatGPT` in Slack | — | Replaced; user `U0BUNH33CCA` silent |
+| GPT | `@ChatGPT` in Slack | None | Replaced; user `U0BUNH33CCA` silent |
 | Notion AI | `@Notion AI` | `contact@meshal.ai` | Workspace `8116d8de-…` |
 | Workflow bot LLMs | Slack workflows | Unknown | Backends not inventoried yet |
 
@@ -110,16 +110,16 @@ Canonical account: **`contact@meshal.ai`**. Any other account is a re-auth candi
 
 | Integration | Account | Cursor MCP | Slack / other | Status | Last verified |
 | --- | --- | --- | --- | --- | --- |
-| Gmail | `contact@meshal.ai` | Ready | — | Locked | 2026-09-05 |
-| Google Calendar | `contact@meshal.ai` | Ready | — | Locked | 2026-09-05 |
+| Gmail | `contact@meshal.ai` | Ready | None | Locked | 2026-09-05 |
+| Google Calendar | `contact@meshal.ai` | Ready | None | Locked | 2026-09-05 |
 | Google Drive | `contact@meshal.ai` | Ready | Computer session | Locked | 2026-09-05 |
 | Notion | `contact@meshal.ai` | Needs auth | Notion AI | Locked | 2026-09-05 |
-| Railway | `contact@meshal.ai` | Ready | — | Locked | 2026-09-05 |
+| Railway | `contact@meshal.ai` | Ready | None | Locked | 2026-09-05 |
 | Vercel (`alawein`) | Team | CLI only | 32 projects; 8 UNVERIFIED | Locked | 2026-09-05 |
 | GitHub | Scoped token | Desktop ready / Cloud error | GitHub for Slack | Split | 2026-09-05 |
-| Supermemory | — | Dropped (desktop) / Cloud error | — | Dropped | 2026-09-05 |
-| Slack MCP (dup) | — | Desktop removed / Cloud error | — | Remove (Cloud leftover) | 2026-09-05 |
-| Granola / Neon / Mobbin / PostHog / Zoom / etc. | — | Needs auth | — | Unconnected | 2026-09-05 |
+| Supermemory | None | Dropped (desktop) / Cloud error | None | Dropped | 2026-09-05 |
+| Slack MCP (dup) | None | Desktop removed / Cloud error | None | Remove (Cloud leftover) | 2026-09-05 |
+| Granola / Neon / Mobbin / PostHog / Zoom / etc. | None | Needs auth | None | Unconnected | 2026-09-05 |
 
 **Cross-surface matching rule:** when Slack claims an integration exists, confirm
 the same account and scope in Cursor MCP (or mark `UNVERIFIED`).
@@ -131,7 +131,7 @@ the same account and scope in Cursor MCP (or mark `UNVERIFIED`).
 | Task type | Primary agent | Secondary | Never |
 | --- | --- | --- | --- |
 | Code + PR + governance commit | **Cursor** | Claude Code | Codex alone |
-| Slack channel/bot live reads | **Claude** or Cursor | — | Assert without read |
+| Slack channel/bot live reads | **Claude** or Cursor | None | Assert without read |
 | Browser / GUI verification | **Computer** | Codex (after connect) | Cursor without MCP |
 | Notion / Drive file ownership | **Computer** then Codex | Cursor MCP | Inherited claims |
 | Design doc lock (`.md`) | **Computer** | Cursor commit | Duplicate narratives |
@@ -141,11 +141,11 @@ the same account and scope in Cursor MCP (or mark `UNVERIFIED`).
 
 Use this in `#admin-ops` threads:
 
-1. **Tag in priority order** — state who answers first.
+1. **Tag in priority order**, state who answers first.
 2. **Each agent posts once** with tables + evidence; no restating prior audits.
-3. **Diff-only follow-ups** — later agents fill `UNVERIFIED` rows only.
-4. **Cursor lands artifacts** — commits to `alawein/docs/governance/`.
-5. **No fake handoffs** — agents cannot invoke each other; Meshal tags the next.
+3. **Diff-only follow-ups**, later agents fill `UNVERIFIED` rows only.
+4. **Cursor lands artifacts**, commits to `alawein/docs/governance/`.
+5. **No fake handoffs**, agents cannot invoke each other; Meshal tags the next.
 
 ```mermaid
 sequenceDiagram
@@ -306,12 +306,12 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 >
 > **Deliver three sections only:**
 >
-> 1. **External inventory diff** — compare YAML integrations against every
+> 1. **External inventory diff**, compare YAML integrations against every
 >    connector you can read live (Slack apps list, Notion, any Google scope).
 >    Table: `id | yaml_status | live_status | match? | evidence`
-> 2. **LLM backend map** — for each Slack app and workflow bot, state the
+> 2. **LLM backend map**, for each Slack app and workflow bot, state the
 >    vendor/model if discoverable; else `UNVERIFIED`.
-> 3. **Optimized dispatch v2** — one mermaid diagram + 5-row routing table
+> 3. **Optimized dispatch v2**, one mermaid diagram + 5-row routing table
 >    revising §5.1 if your live reads suggest changes.
 >
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.

@@ -48,3 +48,13 @@ def test_repo_specific_namespace_is_preserved():
 def test_duplicate_identity_rejected():
     with pytest.raises(ValueError):
         MODULE.plan([record(), record()], VOCAB)
+
+
+def test_check_exit_status_tracks_observed_drift(tmp_path, capsys):
+    observations = tmp_path / "records.json"
+    observations.write_text(json.dumps([record()]))
+    assert MODULE.main([str(observations)]) == 0
+    assert MODULE.main([str(observations), "--check"]) == 1
+    observations.write_text(json.dumps([record(labels=["type:docs"])]))
+    assert MODULE.main([str(observations), "--check"]) == 0
+    capsys.readouterr()

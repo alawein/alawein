@@ -13,6 +13,8 @@ scope:
   github_retroactive_writes: open-records-with-unambiguous-classification
   linear_retroactive_writes: owner-and-type-on-all-existing-issues-preserving-state
   history: preserve-identities-tags-releases-and-automation-labels
+  ongoing_audit: read-only-own-repository-issues-and-prs
+  instruction_adapters: alawein-only-AGENTS-CLAUDE-and-Cursor
 canary:
   repository: alawein/alawein
   record: pull/211

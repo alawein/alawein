@@ -4,6 +4,22 @@ title: "prompt: "
 labels: ["prompt-kit", "llmops", "triage"]
 body:
   - type: dropdown
+    id: work-kind
+    attributes:
+      label: Work kind
+      description: Choose the primary outcome. Triage must apply its shared type label; this field does not set labels.
+      options:
+        - bug
+        - feature
+        - docs
+        - maintenance
+        - research
+        - security
+        - question
+    validations:
+      required: true
+
+  - type: dropdown
     id: kit
     attributes:
       label: Prompt Kit

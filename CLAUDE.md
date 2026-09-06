@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-09-04
-last_updated: 2026-09-04
+last-verified: 2026-09-06
+last_updated: 2026-09-06
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -59,7 +59,8 @@ public portfolio. Do not collapse them.
 ## Hard constraints
 
 1. Never introduce YAML frontmatter into `README.md` or `docs/README.md`.
-2. Never add AI attribution to commits, code comments, or documentation.
+2. Keep AI attribution out of commit messages, code comments and product prose.
+   Record actual execution and review roles in task, PR or batch evidence.
 3. Never use the forbidden register defined in `docs/style/VOICE.md`.
 4. Treat each sibling repo as independent. Do not assume shared git state.
 5. Do not revert unrelated user changes in sibling repos.
@@ -81,6 +82,13 @@ public portfolio. Do not collapse them.
     `scripts/catalog/build-catalog.py`. Edit `catalog/index.yaml` (lanes layout),
     then run `build-catalog.py` and `validate-catalog.py --strict`; never hand-edit
     generated outputs.
+13. Meshal is the sole maintainer and final approver. Read the
+    [role contract](docs/governance/operating-model.md#people-and-agents) and
+    [change evidence contract](docs/governance/work-record-taxonomy.md#change-evidence).
+    Record the assigned scope before execution. When executing in Claude Code,
+    the default independent reviewer is Cursor; record any substitution. Review
+    the exact revision, keep self-review separate, and leave acceptance pending
+    until Meshal records a decision. Tool availability does not grant permissions.
 
 ## Style contract
 

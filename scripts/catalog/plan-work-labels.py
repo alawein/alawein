@@ -64,14 +64,17 @@ def plan(records, vocabulary):
     return sorted(result, key=lambda row: (row["repo"], row["number"]))
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("observations", type=Path)
     parser.add_argument("--taxonomy", type=Path, default=ROOT / "catalog/taxonomy.json")
-    args = parser.parse_args()
+    parser.add_argument("--check", action="store_true", help="Exit 1 when observed open records need a label or classification review")
+    args = parser.parse_args(argv)
     vocabulary = json.loads(args.taxonomy.read_text())["workRecords"]
-    print(json.dumps(plan(json.loads(args.observations.read_text()), vocabulary), indent=2))
+    rows = plan(json.loads(args.observations.read_text()), vocabulary)
+    print(json.dumps(rows, indent=2))
+    return int(args.check and any(row["action"] in {"add", "review"} for row in rows))
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last_updated: 2026-09-04
-last-verified: 2026-09-04
+last_updated: 2026-09-06
+last-verified: 2026-09-06
 ---
 
 # AGENTS: alawein
@@ -49,6 +49,12 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
    apply: never commit secrets, and confirm before force-push or history rewrite
    on a shared branch. See
    [`docs/governance/commit-release-convention.md`](docs/governance/commit-release-convention.md).
+10. Meshal is the sole maintainer and final approver. Before execution, record the
+    assigned scope and executor in the task or batch. Follow the role rotation in
+    [`operating-model.md`](docs/governance/operating-model.md#people-and-agents)
+    and the [change evidence contract](docs/governance/work-record-taxonomy.md#change-evidence).
+    A separate tool reviews the revision when feasible. Record unavailable review
+    and pending acceptance explicitly; a skill or commit mode does not grant access.
 
 ## Ask first
 

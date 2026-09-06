@@ -119,6 +119,35 @@ discussions and unavailable label definitions as separate coverage states.
 
 ## Maintenance
 
+The hub's `Work Taxonomy Audit` workflow reads all open issues and PRs in its own
+repository on PR, issue and main-branch events, or manual dispatch. It uses
+`scripts/github/audit-work-labels.py` and the existing migration planner. It has
+read permissions and makes no label, settings, comment or approval writes.
+
+The JSON artifact records the collection interval, per-record timestamps and
+planned actions. Exit 0 means the observed active records have one canonical kind;
+exit 1 reports missing or conflicting classification; exit 2 means coverage is
+unverified after an API, pagination or input failure. This audit does not verify
+review evidence, native settings, label colors, discussions or other systems.
+It is an additional audit, not a required merge check unless the effective
+ruleset is deliberately changed. Event coverage starts after the workflow is
+merged; one successful PR run does not establish fleet adoption.
+
+For an authorized repository, run a read-only audit from this checkout:
+
+```bash
+python scripts/github/audit-work-labels.py --repo OWNER/REPO --output /tmp/work-taxonomy-report.json
+```
+
+For an existing observation export, use
+`python scripts/catalog/plan-work-labels.py observations.json --check`.
+Keep private observations and artifacts within their source's access boundary.
+The workflow does not collect other repositories. The bug, feature, docs and
+security forms add their canonical kind while preserving legacy labels. Prompt
+changes require an explicit kind selection and triage label application.
+Verify that form label definitions exist before accepting the rollout; a form's
+configuration alone does not prove GitHub applied the label.
+
 Run a read-only drift plan weekly during rollout and after taxonomy or integration
 changes. Meshal resolves ambiguous classifications and records exceptions. Add a
 new kind only for repeated work that the existing vocabulary cannot describe.

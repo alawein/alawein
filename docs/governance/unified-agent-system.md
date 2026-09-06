@@ -9,7 +9,7 @@ last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.4.0
+version: 1.4.1
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -50,7 +50,7 @@ flowchart TB
   subgraph CursorMCP["Cursor MCP plane"]
     G[Gmail / Calendar / Drive]
     R[Railway / Vercel CLI]
-    X[Split: GitHub desktop ready / Cloud error; Slack dup Cloud leftover]
+    X[GitHub MCP ready on Cloud; third-party Slack MCP redundant — optional remove]
   end
 
   subgraph Canon["Governance SSOT (alawein)"]
@@ -116,13 +116,21 @@ Canonical account: **`contact@meshal.ai`**. Any other account is a re-auth candi
 | Notion | `contact@meshal.ai` | Needs auth | Notion AI | Locked | 2026-09-05 |
 | Railway | `contact@meshal.ai` | Ready | None | Locked | 2026-09-05 |
 | Vercel (`alawein`) | Team | CLI only | 32 projects; 8 UNVERIFIED | Locked | 2026-09-05 |
-| GitHub | Scoped token | Desktop ready / Cloud error | GitHub for Slack | Split | 2026-09-05 |
+| GitHub | Scoped token | Desktop ready / Cloud ready | GitHub for Slack | Ready | 2026-09-06 |
 | Supermemory | None | Dropped (desktop) / Cloud error | None | Dropped | 2026-09-05 |
-| Slack MCP (dup) | None | Desktop removed / Cloud error | None | Remove (Cloud leftover) | 2026-09-05 |
+| Slack MCP (dup) | None | Desktop removed / may appear in Cloud discovery | None | Documented redundant; optional Cloud remove | 2026-09-06 |
 | Granola / Neon / Mobbin / PostHog / Zoom / etc. | None | Needs auth | None | Unconnected | 2026-09-05 |
 
 **Cross-surface matching rule:** when Slack claims an integration exists, confirm
 the same account and scope in Cursor MCP (or mark `UNVERIFIED`).
+
+### 4.1 Slack MCP routing
+
+Slack-launched Cloud Agents use **Cursor Slack Tools** only for thread reads,
+posts, and channel discovery. A third-party `Slack` MCP namespace may still
+appear in Cloud Agent tool discovery; it is redundant and can be ignored or left
+disabled. Do not route Slack work through the duplicate namespace. Policy and
+verification steps: [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1.
 
 ## 5. Dispatch and orchestration
 
@@ -280,7 +288,8 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
 - [x] `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social` (7/7 reads)
 - [x] Fix Cloud Agent GitHub MCP (ready 2026-09-06 rescan)
-- [ ] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
+- [x] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
+  — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1; registry §4.1
 - [ ] Authenticate Computer in Slack
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
 - [ ] Enable Claude Tag — runbook: `docs/governance/claude-tag-migration.md`
@@ -320,6 +329,11 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.4.1 (2026-09-06)
+
+- Closed Slack MCP redundancy checklist row; added §4.1 Slack MCP routing policy.
+- GitHub MCP Cloud ready; third-party Slack MCP documented redundant (optional remove).
 
 ### v1.4.0 (2026-09-06)
 

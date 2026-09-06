@@ -13,6 +13,8 @@ import importlib.util
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent.parent
 SCRIPT = ROOT / "scripts" / "github" / "github-baseline-audit.py"
 
@@ -24,6 +26,24 @@ audit = _mod
 
 sys.path.insert(0, str(ROOT / "scripts" / "github"))
 import _repo_paths  # noqa: E402  (shared resolver module both callers use)
+
+sys.path.insert(0, str(ROOT / "scripts"))
+import workspace_paths  # noqa: E402
+
+
+def test_workspace_root_uses_explicit_environment_override(tmp_path) -> None:
+    configured = tmp_path / "configured-workspace"
+
+    assert workspace_paths.workspace_root_for(
+        tmp_path / "core" / "alawein",
+        {"ALAWEIN_WORKSPACE_ROOT": str(configured)},
+    ) == configured.resolve()
+
+
+def test_workspace_root_uses_parent_of_bucket_for_bucketed_repo(tmp_path) -> None:
+    repo_root = tmp_path / "workspace" / "core" / "alawein"
+
+    assert workspace_paths.workspace_root_for(repo_root, {}) == repo_root.parent.parent
 
 
 def test_catalog_local_paths_loaded() -> None:
@@ -65,10 +85,13 @@ def test_local_path_map_parses_dict_with_repos(tmp_path) -> None:
     assert _repo_paths.load_local_path_map(tmp_path,cat) == {"x": "tools/x"}
 
 
-def test_local_path_map_accepts_top_level_list_and_strips_slashes(tmp_path) -> None:
+def test_local_path_map_accepts_top_level_list_and_strips_trailing_slash(tmp_path) -> None:
     cat = tmp_path / "repos.json"
     cat.write_text('[{"slug": "y", "local_path": "/research/y/"}]', encoding="utf-8")
-    assert _repo_paths.load_local_path_map(tmp_path,cat) == {"y": "research/y"}
+    # Only the trailing "/" is stripped; the leading "/" survives so that a
+    # genuinely absolute local_path still trips resolve_repo_dir's
+    # Path.is_absolute() guard instead of being silently made relative.
+    assert _repo_paths.load_local_path_map(tmp_path, cat) == {"y": "/research/y"}
 
 
 def test_local_path_map_accepts_dict_of_dicts(tmp_path) -> None:
@@ -112,3 +135,59 @@ def test_check_repo_skips_manual_repos() -> None:
     errors: list[str] = []
     audit.check_repo({"repo": "some-uncatalogued-manual-repo", "sync": "manual"}, errors)
     assert errors == []
+
+
+# --- resolve_repo_dir rejects catalog data that would escape the workspace ---
+
+
+def test_resolve_rejects_absolute_local_path(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    absolute = str((tmp_path / "elsewhere").resolve())
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": absolute}, "evil")
+
+
+def test_resolve_rejects_parent_traversal(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "../../etc/passwd"}, "evil")
+
+
+def test_resolve_still_returns_flat_fallback_for_uncatalogued_slug_after_fix(tmp_path) -> None:
+    # The traversal/absolute guard only applies to catalogued local_path values;
+    # the uncatalogued flat-slug fallback (a plain repo slug, not catalog data)
+    # must keep working exactly as before.
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    resolved = _repo_paths.resolve_repo_dir(workspace, {}, "not-catalogued")
+    assert resolved == workspace / "not-catalogued"
+
+
+def test_resolve_still_returns_normal_bucketed_path(tmp_path) -> None:
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    resolved = _repo_paths.resolve_repo_dir(workspace, {"incore": "core/incore"}, "incore")
+    assert resolved == workspace / "core" / "incore"
+
+
+def test_load_local_path_map_preserves_absolute_paths_for_the_guard(tmp_path) -> None:
+    # Regression: load_local_path_map used to strip() both leading and trailing
+    # "/" off local_path, so a catalogued absolute path like "/etc/passwd" came
+    # back as the relative "etc/passwd" and sailed past resolve_repo_dir's
+    # Path.is_absolute() guard. The two functions must be tested together --
+    # calling resolve_repo_dir directly with a hand-built dict (as the tests
+    # above do) does not exercise this normalization at all.
+    catalog_path = tmp_path / "repos.json"
+    catalog_path.write_text(
+        '{"repos": [{"slug": "evil", "local_path": "/etc/passwd"}]}',
+        encoding="utf-8",
+    )
+    local_paths = _repo_paths.load_local_path_map(tmp_path, catalog_path=catalog_path)
+    assert local_paths["evil"] == "/etc/passwd"
+
+    workspace = tmp_path / "workspace"
+    workspace.mkdir()
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, local_paths, "evil")

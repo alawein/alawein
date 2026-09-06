@@ -32,7 +32,7 @@ const githubToken = requireEnv('GITHUB_TOKEN');
 const notionDbId = requireEnv('NOTION_TASKS_DB_ID').replaceAll('-', '');
 
 const GITHUB_OWNER = 'alawein';
-const TARGET_REPOS = ['meshal-web', 'morphism', 'neper', 'qaplibria', 'edfp'];
+const TARGET_REPOS = ['meshal-web', 'neper', 'qaplibria', 'edfp'];
 
 // Notion property names (must match Master Tasks DB schema)
 const PROP = {
@@ -68,7 +68,6 @@ const LABEL_TO_PRIORITY = {
 // Map repo name to Domain
 const REPO_TO_DOMAIN = {
   'meshal-web':  'Personal',
-  'morphism':    'Work',
   'neper':       'Scientific Computing',
   'qaplibria':   'Scientific Computing',
   'edfp':        'Scientific Computing',

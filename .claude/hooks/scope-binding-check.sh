@@ -30,14 +30,33 @@ fi
 SCOPE_THRESHOLD="${SCOPE_THRESHOLD:-3}"
 warn_only=${1:-false}
 
-file_count=$(git diff --cached --name-only | wc -l)
+file_count=$(git diff --cached --name-only 2>/dev/null | wc -l | tr -d ' ')
+
+permission_decision="allow"
+permission_reason="Scope within threshold ($file_count files, limit $SCOPE_THRESHOLD)."
 
 if [ "$file_count" -gt "$SCOPE_THRESHOLD" ]; then
-  msg="WARNING: About to commit changes to $file_count files (threshold: $SCOPE_THRESHOLD). Verify this is one logical unit, not scope creep (I-4)."
+  msg="About to commit changes to $file_count files (threshold: $SCOPE_THRESHOLD). Verify this is one logical unit, not scope creep (I-4)."
   if [ "$warn_only" = "--warn-only" ]; then
-    echo "$msg"
+    permission_reason="WARNING: $msg"
+    echo "WARNING: $msg" >&2
   else
-    echo "ERROR: $msg"
-    exit 1
+    permission_decision="deny"
+    permission_reason="ERROR: $msg"
+    echo "ERROR: $msg" >&2
   fi
+fi
+
+cat <<EOF
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PreToolUse",
+    "permissionDecision": "$permission_decision",
+    "permissionDecisionReason": "$permission_reason"
+  }
+}
+EOF
+
+if [ "$permission_decision" = "deny" ]; then
+  exit 1
 fi

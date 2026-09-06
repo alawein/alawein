@@ -78,7 +78,7 @@
         "legal-ai",
         "cli"
       ],
-      "domain": "scientific-computing",
+      "domain": "legal-ops",
       "audience": [
         "client",
         "internal"
@@ -185,7 +185,7 @@
         "llm-training",
         "synthetic-data"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "featured",
@@ -328,6 +328,61 @@
       }
     },
     {
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "version_source": "package.json",
+      "name": "Chshlab Paper",
+      "slug": "chshlab-paper",
+      "legacy_slugs": [],
+      "repo": "alawein/chshlab-paper",
+      "local_path": "lab/chshlab-paper",
+      "bucket": "lab",
+      "lane": "lab",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/chshlab-paper",
+      "canonical_description": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+      "tags": [
+        "Latex",
+        "Jupyter Notebook",
+        "Html"
+      ],
+      "github_topics": [
+        "chshlab-paper",
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "Event Discovery Framework",
       "slug": "edfp",
       "legacy_slugs": [
@@ -348,7 +403,7 @@
         "research",
         "client"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -371,7 +426,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
@@ -383,7 +438,7 @@
       "provides": [
         "spectral-event-detection"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "featured",
@@ -440,7 +495,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "workspace-tools",
@@ -450,7 +505,7 @@
         "reasoning-benchmarks",
         "adversarial-evals"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
@@ -550,7 +605,7 @@
         "research",
         "public"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -575,7 +630,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -613,7 +668,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -635,11 +690,11 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -647,7 +702,7 @@
       "provides": [
         "magnetic-logic-models"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research"
@@ -719,7 +774,7 @@
         "physics-research",
         "claim-verification"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "notion_sync",
@@ -777,7 +832,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -786,7 +841,7 @@
         "qap-solvers",
         "benchmarking"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "featured",
@@ -853,7 +908,7 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research",
@@ -879,7 +934,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -902,11 +957,11 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -914,7 +969,7 @@
       "provides": [
         "quantum-materials-simulation"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research"
@@ -947,7 +1002,7 @@
         "research",
         "public"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -971,7 +1026,7 @@
         "supabase"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -1041,7 +1096,7 @@
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -1049,7 +1104,7 @@
       "provides": [
         "quantum-algorithm-prototypes"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "research"
@@ -1074,7 +1129,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -1096,11 +1151,11 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -1108,7 +1163,7 @@
       "provides": [
         "quantum-ml-research"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research"
@@ -1138,7 +1193,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -1159,7 +1214,7 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -1171,7 +1226,7 @@
       "provides": [
         "scientific-utilities"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research"
@@ -1232,7 +1287,7 @@
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "design-system",
@@ -1268,7 +1323,7 @@
       "audience": [
         "research"
       ],
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
@@ -1290,11 +1345,11 @@
         "research"
       ],
       "github_custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "alawein"
@@ -1302,7 +1357,7 @@
       "provides": [
         "spintronics-simulation"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "research"
@@ -1329,7 +1384,7 @@
         "turborepo",
         "node"
       ],
-      "domain": "scientific-computing",
+      "domain": "ai-governance",
       "audience": [
         "internal",
         "client"
@@ -1362,7 +1417,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "depends_on": [
         "workspace-tools",
@@ -1444,7 +1499,7 @@
         "governance-docs",
         "profile-generation"
       ],
-      "version_source": "package.json",
+      "version_source": "CHANGELOG.md",
       "last_verified": "2026-04-14",
       "catalog_groups": [
         "infrastructure"
@@ -1536,6 +1591,61 @@
       "lane": "platform"
     },
     {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Dotclaude",
+      "slug": "dotclaude",
+      "legacy_slugs": [],
+      "repo": "alawein/dotclaude",
+      "local_path": "core/dotclaude",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/dotclaude",
+      "canonical_description": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+      "tags": [
+        "Python",
+        "Markdown",
+        "Powershell"
+      ],
+      "github_topics": [
+        "dotclaude",
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "incore",
       "slug": "incore",
       "legacy_slugs": [],
@@ -1591,12 +1701,64 @@
         "inventory-core",
         "asset-ingest-query"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"
       ],
       "lane": "platform"
+    },
+    {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Kcompiler",
+      "slug": "kcompiler",
+      "legacy_slugs": [],
+      "repo": "alawein/kcompiler",
+      "local_path": "core/kcompiler",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/kcompiler",
+      "canonical_description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+      "tags": [
+        "Python",
+        "Sqlite"
+      ],
+      "github_topics": [
+        "kcompiler",
+        "python",
+        "sqlite"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "sqlite"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
     },
     {
       "name": "knowledge-base",
@@ -1644,7 +1806,7 @@
         "compliance": "internal-only",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "midnight"
       },
       "github_actions_settings": {
         "default_workflow_permissions": "read",
@@ -1804,6 +1966,61 @@
       "lane": "platform"
     },
     {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Repo Drift",
+      "slug": "repo-drift",
+      "legacy_slugs": [],
+      "repo": "alawein/repo-drift",
+      "local_path": "core/repo-drift",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/repo-drift",
+      "canonical_description": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+      "tags": [
+        "Python",
+        "Cli",
+        "Github Actions"
+      ],
+      "github_topics": [
+        "repo-drift",
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "Workspace Control",
       "slug": "workspace-control",
       "legacy_slugs": [],
@@ -1857,7 +2074,7 @@
         "workspace-inventory",
         "control-plane-ops"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "last_verified": "2026-07-25",
       "catalog_groups": [
         "infrastructure"
@@ -1951,7 +2168,7 @@
         "react",
         "supabase"
       ],
-      "domain": "fitness",
+      "domain": "portfolio",
       "audience": [
         "public",
         "client"
@@ -1983,7 +2200,7 @@
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "legacy"
+        "brand_family": "forge"
       },
       "depends_on": [
         "design-system",
@@ -2014,7 +2231,7 @@
         "nextjs",
         "react"
       ],
-      "domain": "fitness",
+      "domain": "marketing",
       "audience": [
         "client",
         "public"
@@ -2301,7 +2518,7 @@
         "compliance": "public-data",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "forge"
       },
       "depends_on": [
         "design-system",
@@ -2434,7 +2651,7 @@
         "compliance": "public-data",
         "repo_archetype": "game-project",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "midnight"
       },
       "depends_on": [
         "alawein"
@@ -2497,7 +2714,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "wisdom"
+        "brand_family": "midnight"
       },
       "depends_on": [
         "workspace-tools",
@@ -2515,11 +2732,9 @@
       "lane": "work"
     },
     {
-      "name": "Mercor LLM Failsafe",
+      "name": "Mercor AI/ML Experts Catalog",
       "slug": "mercor",
-      "legacy_slugs": [
-        "mercor-llm-failsafe"
-      ],
+      "legacy_slugs": [],
       "repo": "alawein/mercor",
       "local_path": "work/mercor",
       "bucket": "work",
@@ -2542,7 +2757,7 @@
       "brand_family": "midnight",
       "status": "active",
       "homepage": "https://github.com/alawein/mercor",
-      "canonical_description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "canonical_description": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "tags": [
         "Python",
         "LLM"
@@ -2554,7 +2769,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-library",
+        "repo_archetype": "docs-hub",
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
@@ -2562,9 +2777,12 @@
         "alawein"
       ],
       "provides": [
-        "failsafe-archive"
+        "engagement-deliverables",
+        "lit-review-catalog",
+        "benchmark-solutions",
+        "exec-deck-production"
       ],
-      "version_source": "package.json",
+      "version_source": "none",
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "research"
@@ -2615,7 +2833,7 @@
         "compliance": "internal-only",
         "repo_archetype": "docs-hub",
         "docs_maturity": "minimal",
-        "brand_family": "legacy"
+        "brand_family": "midnight"
       },
       "depends_on": [
         "alawein"
@@ -2623,7 +2841,7 @@
       "provides": [
         "turing-engagement-catalog"
       ],
-      "version_source": "package.json",
+      "version_source": "none",
       "last_verified": "2026-05-11",
       "catalog_groups": [
         "infrastructure"

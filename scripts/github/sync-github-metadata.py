@@ -142,6 +142,49 @@ def blocked_command_result(
     }
 
 
+_CUSTOM_PROPERTIES_DOC_FRAGMENT = "custom-properties"
+
+
+def _parse_gh_error_body(stdout: str | None) -> dict[str, Any] | None:
+    """Best-effort parse of the JSON error body `gh api` writes to stdout."""
+    text = (stdout or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    return parsed if isinstance(parsed, dict) else None
+
+
+def is_custom_properties_unsupported(exc: subprocess.CalledProcessError) -> bool:
+    """True only for GitHub's documented "this repo can't take custom
+    property values" response.
+
+    Custom properties are an organization-only GitHub feature. Calling the
+    properties/values endpoint against a personal-account repo (or any repo
+    the endpoint can't serve) returns HTTP 404 with a body whose
+    `documentation_url` points at the custom-properties docs, e.g.:
+
+        {"message": "Not Found",
+         "documentation_url": ".../rest/repos/custom-properties#...",
+         "status": "404"}
+
+    (verified directly against `gh api .../properties/values` for a repo
+    owned by a User account). Any other response -- 401 bad credentials, 403
+    permission denial, a 404 from a different endpoint, 422 validation
+    errors, 429 rate limiting, 5xx, or a body we can't parse at all -- is a
+    genuine failure and must propagate rather than be silently downgraded.
+    """
+    body = _parse_gh_error_body(exc.stdout)
+    if body is None:
+        return False
+    if str(body.get("status")) != "404":
+        return False
+    doc_url = str(body.get("documentation_url") or "")
+    return _CUSTOM_PROPERTIES_DOC_FRAGMENT in doc_url
+
+
 def _repo_index(feed: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {str(repo["slug"]): repo for repo in (feed.get("repos") or [])}
 
@@ -266,7 +309,7 @@ def main(argv: list[str] | None = None) -> int:
                 try:
                     results.append(run_command(command))
                 except subprocess.CalledProcessError as exc:
-                    if command["name"] != "custom_properties":
+                    if command["name"] != "custom_properties" or not is_custom_properties_unsupported(exc):
                         raise
                     repo_payload["status"] = "applied-with-blockers"
                     results.append(blocked_command_result(command, exc))

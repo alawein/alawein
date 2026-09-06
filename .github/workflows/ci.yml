@@ -49,8 +49,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install pytest
-        run: pip install pytest pyyaml
+        run: pip install pytest pyyaml 'jsonschema>=4.18'
       - name: Run script tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
         run: python -m pytest scripts/tests/ -v --tb=short
 
   lint-managed-markdown:

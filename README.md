@@ -16,8 +16,9 @@ I build at the intersection of physics, machine learning, and auditable software
 | [spincirc](https://github.com/alawein/spincirc) | Spintronic device modeling via spin-circuit methods · *IEEE J-XCDC 2018* |
 | [maglogic](https://github.com/alawein/maglogic) | Nanomagnetic logic simulation with OOMMF/MuMax3 · *IEEE Magnetics Letters 2019* |
 | [scicomp](https://github.com/alawein/scicomp) | Scientific computing library: PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica |
-| [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane |
 | [fallax](https://github.com/alawein/fallax) | Multi-step LLM reasoning evaluation: step-level correctness across logic, math, and causal inference |
+| [chshlab](https://chshlab.online) | Quantum foundations education site for CHSH and Bell inequality experiments. |
+| [qubeml](https://github.com/alawein/qubeml) | Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane |
 
 ## AI Systems & Products
 

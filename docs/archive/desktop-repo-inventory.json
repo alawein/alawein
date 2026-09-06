@@ -32,6 +32,11 @@
       "local_folder": "lab/chshlab",
       "notes": "Derived from catalog entry chshlab"
     },
+    "monorepo": {
+      "repo": "alawein/chshlab-paper",
+      "local_folder": "lab/chshlab-paper",
+      "notes": "Derived from catalog entry chshlab-paper"
+    },
     "node-monorepo": {
       "repo": "alawein/veyra",
       "local_folder": "lab/veyra",
@@ -100,6 +105,13 @@
       "archetype": "static-site",
       "tier": "research",
       "stack": "html, css, javascript"
+    },
+    {
+      "folder": "lab/chshlab-paper",
+      "remote_slug": "alawein/chshlab-paper",
+      "archetype": "monorepo",
+      "tier": "research",
+      "stack": "latex, jupyter-notebook, html"
     },
     {
       "folder": "lab/edfp",
@@ -228,11 +240,25 @@
       "stack": "typescript, react, turborepo, storybook"
     },
     {
+      "folder": "core/dotclaude",
+      "remote_slug": "alawein/dotclaude",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "python, markdown, powershell"
+    },
+    {
       "folder": "core/incore",
       "remote_slug": "alawein/incore",
       "archetype": "python-library",
       "tier": "tooling",
       "stack": "python, sqlite, mcp"
+    },
+    {
+      "folder": "core/kcompiler",
+      "remote_slug": "alawein/kcompiler",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "python, sqlite"
     },
     {
       "folder": "core/knowledge-base",
@@ -254,6 +280,13 @@
       "archetype": "node-monorepo",
       "tier": "tooling",
       "stack": "typescript, turborepo, node"
+    },
+    {
+      "folder": "core/repo-drift",
+      "remote_slug": "alawein/repo-drift",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "python, cli, github-actions"
     },
     {
       "folder": "core/workspace-control",
@@ -335,7 +368,7 @@
     {
       "folder": "work/mercor",
       "remote_slug": "alawein/mercor",
-      "archetype": "python-library",
+      "archetype": "docs-hub",
       "tier": "product",
       "stack": "python, llm"
     },

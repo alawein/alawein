@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills, Agents & Commands Unification
 description: Revise and unify Cursor/Claude skills, agents, and commands into a clear set that works for any repo, project, or website, not just governance.
-last_updated: 2026-07-06
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -29,7 +29,7 @@ Operational maintenance, scope changes, and tailoring procedures are tracked in
 |-------|------|
 | **Claude local plugins** | `~/.claude/plugins/cache/local/`, kohyr, repo-superpowers |
 | **Cursor plugins** | Public plugins under `~/.cursor/plugins/cache/cursor-public/` plus local parity plugin `~/.cursor/plugins/local/workspace-universal/` |
-| **Alawein repo** | Governance docs, [slash-commands-catalog.md](./slash-commands-catalog.md); no `.cursor/` or `.claude/` in repo |
+| **Alawein repo** | Governance docs, [slash-commands-catalog.md](./slash-commands-catalog.md), committed `.cursor/rules/`, `.claude/settings.json` + hooks, repo-local `.claude/skills/voice-check/` |
 
 ### 1.2 Morphism Plugin (Claude, local)
 

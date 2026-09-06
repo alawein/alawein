@@ -35,6 +35,7 @@ jobs:
       - uses: anthropics/claude-code-action@f87768c6d25f92ae6efa7175e223ef77d4cbf97f # v1.0.166
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          allowed_bots: cursor
           use_sticky_comment: true
           # Default permission mode denies the sticky-comment tool and diff
           # reads (verified on alawein/alawein run 28906962685: green review,

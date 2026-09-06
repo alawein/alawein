@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-06-29
+last_updated: 2026-09-06
 audience: [ai-agents, contributors]
 ---
 
@@ -18,7 +18,9 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `changelog-entry.md` | Frozen | Superseded by commit-release-convention.md |
 | `claude-code-configuration-guide.md` | Active | Claude Code setup guide |
 | `claude-code-migration-prompts.md` | Reference | Migration prompt templates |
-| `claude-code-worked-examples.md` | Reference | Claude Code usage examples |
+| `claude-tag-migration.md` | Active | Admin runbook to migrate Slack from legacy Claude to Claude Tag |
+| `slack-voice-exemptions.md` | Active | Workflow-bot and Slack surfaces exempt from VOICE.md |
+| `slack-agent-voice.md` | Active | Thread and Canvas formatting for agent status updates |
 | `clean-slate-workflow.md` | Reference | Session reset procedure |
 | `commit-release-convention.md` | Active | Commit authority, messages, branches, merge, releases (SSOT) |
 | `credential-hygiene.md` | Active | Secret and token management |
@@ -48,6 +50,10 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `review-playbook.md` | Active | Code review process |
 | `skills-agents-unification.md` | Reference | Skills and agents unification notes |
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
+| `ide-integration-hardening-session.md` | Active | IDE copy-paste prompt for E2E integration hardening |
+| `cursor-mcp-repair.md` | Active | Repair steps for broken Cursor MCP integrations |
+| `slack-agent-runbook.md` | Active | Slack channel, workflow-bot, and integration governance for agent routing |
+| `unified-agent-system.md` | Active | Master agent orchestration, inventory SSOT, dispatch routing, output standards |
 | `slash-commands-catalog.md` | Reference | Available slash commands |
 | `tooling-quality-gates.md` | Active | CI quality gate definitions |
 | `version-history-audit.md` | Active | Repeatable protocol to take a repo from incoherent version history to a clean SemVer baseline by additive re-indexing |

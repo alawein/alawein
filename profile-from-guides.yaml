@@ -70,12 +70,15 @@ research_rows:
   - slug: scicomp
     url: https://github.com/alawein/scicomp
     description: "Scientific computing library: PDE solvers, PINNs, HPC · Python / MATLAB / Mathematica"
-  - slug: qubeml
-    url: https://github.com/alawein/qubeml
-    description: "Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane"
   - slug: fallax
     url: https://github.com/alawein/fallax
     description: "Multi-step LLM reasoning evaluation: step-level correctness across logic, math, and causal inference"
+  - slug: chshlab
+    url: https://chshlab.online
+    description: "Quantum foundations education site for CHSH and Bell inequality experiments."
+  - slug: qubeml
+    url: https://github.com/alawein/qubeml
+    description: "Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane"
 
 product_rows:
   - name: alembiq

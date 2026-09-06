@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last_updated: 2026-08-27
-last-verified: 2026-08-27
+last_updated: 2026-09-06
+last-verified: 2026-09-06
 ---
 
 # AGENTS: alawein
@@ -15,10 +15,14 @@ last-verified: 2026-08-27
 
 This repo is the control plane for the `alawein` workspace. It owns shared
 governance, README/profile generation, style rules, prompt kits, and managed
-rollout scripts for the sibling repos.
+rollout scripts for the sibling repos. Disk layout SSOT is
+`catalog/buckets.yaml` plus `docs/governance/repo-topology-canon.md`. Portfolio
+lanes are `catalog/index.yaml`. Resolve sibling paths via catalog `local_path`
+under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
 
 ## Governance sources
 
+- `docs/governance/repo-topology-canon.md`
 - `docs/governance/workspace-master-prompt.md`
 - `docs/governance/parallel-batch-execution.md`
 - `docs/governance/documentation-contract.md`
@@ -65,6 +69,7 @@ rollout scripts for the sibling repos.
 | Validate governed style surfaces | `python scripts/doctrine/validate.py --ci` |
 | Run advisory style audit | `python scripts/doctrine/style-advisory-audit.py --repo-root .` |
 | Run governance validation | `bash ./scripts/doctrine/validate-doc-contract.sh --full` |
+| Validate agent/integration inventory | `python scripts/catalog/validate-agent-integrations.py --strict` |
 
 ## Notes
 

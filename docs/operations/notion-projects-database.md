@@ -3,9 +3,9 @@ type: canonical
 source: none
 sync: none
 sla: none
-title: Notion Projects (Canonical), sync and checklist
-description: Runbook for syncing projects.json to Notion and required database properties.
-last_updated: 2026-09-04
+title: Notion Projects sync
+description: Run the existing Projects pipeline with process-injected credentials.
+last_updated: 2026-09-06
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -13,76 +13,76 @@ related:
   - ../../projects.json
   - ../../scripts/notion/sync-to-notion.mjs
   - ./github-notion-sync-glossary.md
-  - ./admin-ops-integration-checklist.md
 ---
 
-# Notion “Projects (Canonical)”: sync and checklist
+# Notion Projects sync
 
-**Terminology:** [GitHub ↔ Notion sync glossary and guardrails](./github-notion-sync-glossary.md) (`Sync [project]` vs `GitHub Sync`, out-of-scope rules).
+The existing pipeline projects `featured` and `notion_sync` entries from
+`projects.json` into Projects (Canonical). Edit `catalog/index.yaml`, then run
+`scripts/catalog/build-catalog.py` to generate the manifest. Do not edit the
+manifest by hand or add another Projects synchronization route.
 
-## Automated sync
+## Validate locally
 
-From the repo root (`alawein/`):
+From the repository root:
 
 ```bash
-export NOTION_TOKEN="secret_..."
-export NOTION_DB_ID="..."
-# Optional if your property is not named "Domain":
-# export NOTION_DOMAIN_PROPERTY="Domain"
-# Optional if your properties are not named Category/Tags:
-# export NOTION_CATEGORY_PROPERTY="Status"
-# export NOTION_TAGS_PROPERTY="Stack"
-
-node scripts/notion/sync-to-notion.mjs
+python scripts/catalog/build-catalog.py --check
+python scripts/catalog/validate-projects-json.py
 ```
 
-**Windows (CI-parity env):** put `NOTION_TOKEN` and `NOTION_DB_ID` in `.env.local`, then from the repo root:
+## Run an authorized sync
+
+Keep credentials in 1Password. Configure `NOTION_TOKEN` and `NOTION_DB_ID` as
+secret references in the process environment, then let `op run` resolve them.
+Do not store secret values in `.env`, `.env.local`, scripts, or documentation.
+The runner uses its inherited environment and does not load credential files.
 
 ```powershell
-pwsh -File scripts/notion/run-notion-local.ps1
+op run -- pwsh -NoProfile -File scripts/notion/run-notion-local.ps1
 ```
 
-That runs `validate-projects-json.py`, `sync-to-notion.mjs`, and `verify-notion-canonical-state.mjs` with the same property names as `notion-sync.yml` (private ops repo).
+The runner resolves the repository root from its own location, validates the
+manifest, synchronizes rows, and verifies canonical state. It stops on the
+first failed command. The command writes existing canonical project fields
+and can create missing rows or schema options; run it only within the approved
+database and field scope.
 
-Validate JSON contract locally before sync:
+To verify existing state without synchronizing it, use the same injected
+environment and the canonical category mapping:
 
-```bash
-python3 scripts/catalog/validate-projects-json.py
+```powershell
+$env:NOTION_STATUS_PROPERTY = 'Category'
+op run -- node scripts/notion/verify-notion-canonical-state.mjs
 ```
 
-Optional post-sync invariant check:
+## Canonical database contract
 
-```bash
-node scripts/notion/verify-notion-canonical-state.mjs
-```
+| Property | Type | Purpose |
+|----------|------|---------|
+| Name | title | Project name |
+| Slug | rich text | Stable project identity |
+| Repo | rich text or URL | Repository identity and fallback match |
+| URL | URL | Public project link |
+| Description | rich text | Generated project description |
+| Tags | multi-select | Project tags |
+| Category | select | active, maintained, planned, archived |
+| Domain | select | Portfolio domain when supplied |
 
-Data sources in [`projects.json`](../../projects.json):
+The runner sets `Category`, `Tags`, and `Domain` to match this contract. Direct
+script calls accept the property overrides listed in each script. The sync
+preflight checks required property types and option names. Set
+`NOTION_AUTO_CREATE_OPTIONS=0` when schema expansion is outside the approved
+scope; missing options then fail validation.
 
-- **`featured`**: same list that drives the README (via `sync-readme.py`).
-- **`notion_sync`**: extra rows **only** for Notion (e.g. `qmlab`, `simcore`, `meatheadphysicist`).
+The verifier expects one historical `kohyr.com` row with Category `archived`.
+That category is not Notion's page archive state. Preserve historical records;
+do not delete unexpected rows to satisfy a count check. Investigate differences
+against the approved manifest and database before changing either.
 
-Each entry can set **`portfolio_domain`**: `Work` | `Personal` | `scientific-computing` (must exist as **select** options on the Notion database).
+## Ownership and scheduling
 
-## Notion database setup (manual)
-
-1. **Integration**: Create at [notion.so/my-integrations](https://www.notion.so/my-integrations), invite it to the database.
-2. **Properties**: Align names and types with the script:
-   - **Name** (title)
-   - **Slug** (text)
-   - **URL** (URL)
-   - **Description** (text)
- - **Tags** (multi-select), add options matching `projects.json` tags, or sync will fail on unknown names.
- - **Category** (select), `active`, `maintained`, `planned`, `archived`
-   - **Repo** (text)
- - **Domain** (select), at minimum add **`scientific-computing`** if you use it for Alembiq; otherwise change `portfolio_domain` for Alembiq to `Work` or `Personal` in JSON.
-   - The sync script now runs a **preflight** and will fail early if Category/Domain/Tags options are missing (or wrong type). If your column names differ, set env overrides.
-3. **Legacy rows**: The archived set is `kohyr.com` (kept as historical reference). Verify script enforces `EXPECTED_LEGACY_COUNT=1`. Other orphan rows should be deleted in Notion.
-
-## Cursor Notion MCP
-
-If `mcps/user-Notion/STATUS.md` says authentication is required, run **mcp_auth** for the Notion server in Cursor (empty args). After login, MCP tools can edit pages; bulk updates still match GitHub best via `sync-to-notion.mjs`.
-
-## CI
-
-`notion-sync.yml` (private ops repo) runs when `projects.json` changes on `main` (secrets: `NOTION_TOKEN`, `NOTION_DB_ID`).
-It now also verifies canonical state (expected canonical rows present + expected archived legacy rows).
+The [sync glossary](github-notion-sync-glossary.md) separates this Projects
+pipeline from repository activity reports. A scheduler outside this repository
+must be verified at its live source before claiming scheduled execution.
+Successful local tests or a merged PR do not prove a live sync completed.

@@ -1,18 +1,19 @@
 {
   "generatedAt": "2026-08-27",
   "summary": {
-    "repoCount": 40,
+    "repoCount": 44,
     "typeCounts": {
       "archive": 1,
-      "research": 18,
-      "tooling": 6,
+      "research": 19,
+      "tooling": 9,
       "product": 12,
       "governance": 1,
       "infra": 2
     },
     "lifecycleCounts": {
       "archived": 1,
-      "active": 37,
+      "active": 33,
+      "frozen": 8,
       "maintained": 2
     }
   },
@@ -38,12 +39,15 @@
       "design-system",
       "fitness",
       "governance",
+      "legal-ops",
+      "marketing",
       "portfolio",
       "scientific-computing"
     ],
     "lifecycle": [
       "active",
       "archived",
+      "frozen",
       "maintained"
     ],
     "visibility": [
@@ -79,6 +83,8 @@
       "html",
       "inventory",
       "javascript",
+      "jupyter-notebook",
+      "latex",
       "legal-ai",
       "llm",
       "llm-training",
@@ -93,6 +99,7 @@
       "pennylane",
       "physics",
       "plotly",
+      "powershell",
       "prompts",
       "python",
       "pytorch",
@@ -182,7 +189,7 @@
         "repo": "alawein/adil",
         "type": "research",
         "surface": "monorepo",
-        "domain": "scientific-computing",
+        "domain": "legal-ops",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "wisdom",
@@ -267,7 +274,7 @@
           "llm-training",
           "synthetic-data"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -329,7 +336,7 @@
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -364,7 +371,7 @@
         "provides": [
           "spectral-event-detection"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -464,7 +471,7 @@
           "qap-solvers",
           "benchmarking"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -513,7 +520,7 @@
         "provides": [
           "agent-proof-tooling"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -577,7 +584,7 @@
         "repo": "alawein/adil",
         "type": "research",
         "surface": "monorepo",
-        "domain": "scientific-computing",
+        "domain": "legal-ops",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "wisdom",
@@ -662,7 +669,7 @@
           "llm-training",
           "synthetic-data"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -765,13 +772,54 @@
         "release_automation": {}
       },
       {
+        "name": "Chshlab Paper",
+        "slug": "chshlab-paper",
+        "repo": "alawein/chshlab-paper",
+        "type": "research",
+        "surface": "monorepo",
+        "domain": "scientific-computing",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "wisdom",
+        "brand_family": "wisdom",
+        "stack": [
+          "latex",
+          "jupyter-notebook",
+          "html"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/chshlab-paper",
+        "description": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+        "topics": [
+          "chshlab-paper",
+          "latex",
+          "jupyter-notebook",
+          "html"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "lab/chshlab-paper",
+        "catalog_groups": [],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [],
+        "version_source": "package.json",
+        "repo_archetype": "monorepo",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
         "name": "Event Discovery Framework",
         "slug": "edfp",
         "repo": "alawein/edfp",
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -806,7 +854,7 @@
         "provides": [
           "spectral-event-detection"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -819,7 +867,7 @@
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -868,7 +916,7 @@
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "public",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -899,58 +947,8 @@
         "provides": [
           "magnetic-logic-models"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "meatheadphysicist",
-        "slug": "meatheadphysicist",
-        "repo": "alawein/meatheadphysicist",
-        "type": "research",
-        "surface": "monorepo",
-        "domain": "scientific-computing",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "wisdom",
-        "brand_family": "wisdom",
-        "stack": [
-          "python",
-          "physics",
-          "fastapi",
-          "research"
-        ],
-        "audience": [
-          "research",
-          "public"
-        ],
-        "homepage": "https://mhphys.online",
-        "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
-        "topics": [
-          "physics",
-          "python",
-          "fastapi",
-          "simulation",
-          "research"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "lab/meatheadphysicist",
-        "catalog_groups": [
-          "notion_sync",
-          "research"
-        ],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [
-          "physics-research",
-          "claim-verification"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "research-archive",
         "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
@@ -999,7 +997,7 @@
           "reasoning-benchmarks",
           "adversarial-evals"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -1045,7 +1043,7 @@
           "governance-docs",
           "profile-generation"
         ],
-        "version_source": "package.json",
+        "version_source": "CHANGELOG.md",
         "repo_archetype": "docs-hub",
         "compliance": "public-data",
         "github_actions_settings": {
@@ -1118,6 +1116,47 @@
         }
       },
       {
+        "name": "Dotclaude",
+        "slug": "dotclaude",
+        "repo": "alawein/dotclaude",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "python",
+          "markdown",
+          "powershell"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/dotclaude",
+        "description": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+        "topics": [
+          "dotclaude",
+          "python",
+          "markdown",
+          "powershell"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "core/dotclaude",
+        "catalog_groups": [],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [],
+        "version_source": "package.json",
+        "repo_archetype": "monorepo",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
         "name": "incore",
         "slug": "incore",
         "repo": "alawein/incore",
@@ -1159,9 +1198,48 @@
           "inventory-core",
           "asset-ingest-query"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "internal-only",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Kcompiler",
+        "slug": "kcompiler",
+        "repo": "alawein/kcompiler",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "python",
+          "sqlite"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/kcompiler",
+        "description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+        "topics": [
+          "kcompiler",
+          "python",
+          "sqlite"
+        ],
+        "maintainer": "alawein-core",
+        "docs_owner": "alawein-core",
+        "local_path": "core/kcompiler",
+        "catalog_groups": [],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [],
+        "version_source": "package.json",
+        "repo_archetype": "monorepo",
+        "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
       },
@@ -1269,100 +1347,6 @@
         "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
-      },
-      {
-        "name": "prompty",
-        "slug": "prompty",
-        "repo": "alawein/prompty",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "typescript",
-          "turborepo",
-          "node"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/prompty",
-        "description": "Turbo monorepo for prompt design, evaluation workspaces, and related LLM tooling packages.",
-        "topics": [
-          "llm",
-          "monorepo",
-          "prompt-engineering",
-          "turborepo",
-          "typescript"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "core/prompty",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "prompt-tooling-monorepo"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Workspace Control",
-        "slug": "workspace-control",
-        "repo": "alawein/workspace-control",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "python",
-          "yaml",
-          "inventory"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/workspace-control",
-        "description": "Workspace control-plane inventory engine, registry, and operational tooling.",
-        "topics": [
-          "governance",
-          "inventory",
-          "python",
-          "workspace"
-        ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
-        "local_path": "core/workspace-control",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "workspace-inventory",
-          "control-plane-ops"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "python-platform-cli",
-        "compliance": "internal-only",
-        "github_actions_settings": {},
-        "release_automation": {}
       }
     ]
   },
@@ -1415,7 +1399,7 @@
       "repo": "alawein/adil",
       "type": "research",
       "surface": "monorepo",
-      "domain": "scientific-computing",
+      "domain": "legal-ops",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "wisdom",
@@ -1500,7 +1484,7 @@
         "llm-training",
         "synthetic-data"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -1603,13 +1587,54 @@
       "release_automation": {}
     },
     {
+      "name": "Chshlab Paper",
+      "slug": "chshlab-paper",
+      "repo": "alawein/chshlab-paper",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "stack": [
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/chshlab-paper",
+      "description": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+      "topics": [
+        "chshlab-paper",
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "lab/chshlab-paper",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "Event Discovery Framework",
       "slug": "edfp",
       "repo": "alawein/edfp",
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -1644,7 +1669,7 @@
       "provides": [
         "spectral-event-detection"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -1692,7 +1717,7 @@
         "reasoning-benchmarks",
         "adversarial-evals"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -1756,7 +1781,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -1805,7 +1830,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -1836,7 +1861,7 @@
       "provides": [
         "magnetic-logic-models"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -1886,7 +1911,7 @@
         "physics-research",
         "claim-verification"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "research-archive",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -1935,7 +1960,7 @@
         "qap-solvers",
         "benchmarking"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -1984,7 +2009,7 @@
       "provides": [
         "agent-proof-tooling"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-service",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -1997,7 +2022,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -2029,7 +2054,7 @@
       "provides": [
         "quantum-materials-simulation"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -2042,7 +2067,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -2126,7 +2151,7 @@
       "provides": [
         "quantum-algorithm-prototypes"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -2139,7 +2164,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -2170,7 +2195,7 @@
       "provides": [
         "quantum-ml-research"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -2183,7 +2208,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -2214,7 +2239,7 @@
       "provides": [
         "scientific-utilities"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -2277,7 +2302,7 @@
       "type": "research",
       "surface": "monorepo",
       "domain": "scientific-computing",
-      "lifecycle": "active",
+      "lifecycle": "frozen",
       "visibility": "public",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
@@ -2308,7 +2333,7 @@
       "provides": [
         "spintronics-simulation"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "public-data",
       "github_actions_settings": {},
@@ -2320,7 +2345,7 @@
       "repo": "alawein/veyra",
       "type": "research",
       "surface": "monorepo",
-      "domain": "scientific-computing",
+      "domain": "ai-governance",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "wisdom",
@@ -2405,7 +2430,7 @@
         "governance-docs",
         "profile-generation"
       ],
-      "version_source": "package.json",
+      "version_source": "CHANGELOG.md",
       "repo_archetype": "docs-hub",
       "compliance": "public-data",
       "github_actions_settings": {
@@ -2478,6 +2503,47 @@
       }
     },
     {
+      "name": "Dotclaude",
+      "slug": "dotclaude",
+      "repo": "alawein/dotclaude",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/dotclaude",
+      "description": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+      "topics": [
+        "dotclaude",
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/dotclaude",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "incore",
       "slug": "incore",
       "repo": "alawein/incore",
@@ -2519,9 +2585,48 @@
         "inventory-core",
         "asset-ingest-query"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
       "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "Kcompiler",
+      "slug": "kcompiler",
+      "repo": "alawein/kcompiler",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "sqlite"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/kcompiler",
+      "description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+      "topics": [
+        "kcompiler",
+        "python",
+        "sqlite"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/kcompiler",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -2678,6 +2783,47 @@
       "release_automation": {}
     },
     {
+      "name": "Repo Drift",
+      "slug": "repo-drift",
+      "repo": "alawein/repo-drift",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/repo-drift",
+      "description": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+      "topics": [
+        "repo-drift",
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "local_path": "core/repo-drift",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "Workspace Control",
       "slug": "workspace-control",
       "repo": "alawein/workspace-control",
@@ -2718,7 +2864,7 @@
         "workspace-inventory",
         "control-plane-ops"
       ],
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "repo_archetype": "python-platform-cli",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -2785,7 +2931,7 @@
       "repo": "alawein/atelier-rounaq",
       "type": "product",
       "surface": "web",
-      "domain": "fitness",
+      "domain": "portfolio",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "forge",
@@ -2833,7 +2979,7 @@
       "repo": "alawein/auditraise",
       "type": "product",
       "surface": "web",
-      "domain": "fitness",
+      "domain": "marketing",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "forge",
@@ -3217,7 +3363,7 @@
       "release_automation": {}
     },
     {
-      "name": "Mercor LLM Failsafe",
+      "name": "Mercor AI/ML Experts Catalog",
       "slug": "mercor",
       "repo": "alawein/mercor",
       "type": "product",
@@ -3235,7 +3381,7 @@
         "internal"
       ],
       "homepage": "https://github.com/alawein/mercor",
-      "description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "topics": [
         "llm",
         "python"
@@ -3250,10 +3396,13 @@
         "alawein"
       ],
       "provides": [
-        "failsafe-archive"
+        "engagement-deliverables",
+        "lit-review-catalog",
+        "benchmark-solutions",
+        "exec-deck-production"
       ],
-      "version_source": "package.json",
-      "repo_archetype": "python-library",
+      "version_source": "none",
+      "repo_archetype": "docs-hub",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -3297,7 +3446,7 @@
       "provides": [
         "turing-engagement-catalog"
       ],
-      "version_source": "package.json",
+      "version_source": "none",
       "repo_archetype": "docs-hub",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -4112,6 +4261,27 @@
       "release_automation": {}
     },
     {
+      "slug": "chshlab-paper",
+      "repo": "alawein/chshlab-paper",
+      "description": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+      "homepage": "https://github.com/alawein/chshlab-paper",
+      "topics": [
+        "chshlab-paper",
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "edfp",
       "repo": "alawein/edfp",
       "description": "Physics-inspired video event detection with FFT spectral analysis and hierarchical filtering.",
@@ -4124,7 +4294,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
@@ -4149,7 +4319,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-service",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4188,7 +4358,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "planned",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -4209,11 +4379,11 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4257,7 +4427,7 @@
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4297,11 +4467,11 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4319,7 +4489,7 @@
         "supabase"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
@@ -4345,7 +4515,7 @@
         "compliance": "internal-only",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4362,11 +4532,11 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "vibrant"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4383,7 +4553,7 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
@@ -4409,7 +4579,7 @@
         "compliance": "internal-only",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4426,11 +4596,11 @@
         "research"
       ],
       "custom_properties": {
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "compliance": "public-data",
         "repo_archetype": "python-library",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4452,7 +4622,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "wisdom"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4517,6 +4687,27 @@
       }
     },
     {
+      "slug": "dotclaude",
+      "repo": "alawein/dotclaude",
+      "description": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+      "homepage": "https://github.com/alawein/dotclaude",
+      "topics": [
+        "dotclaude",
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "incore",
       "repo": "alawein/incore",
       "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
@@ -4539,6 +4730,26 @@
       "release_automation": {}
     },
     {
+      "slug": "kcompiler",
+      "repo": "alawein/kcompiler",
+      "description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+      "homepage": "https://github.com/alawein/kcompiler",
+      "topics": [
+        "kcompiler",
+        "python",
+        "sqlite"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "knowledge-base",
       "repo": "alawein/knowledge-base",
       "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
@@ -4554,7 +4765,7 @@
         "compliance": "internal-only",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "dawn"
+        "brand_family": "midnight"
       },
       "actions_settings": {
         "default_workflow_permissions": "read",
@@ -4607,6 +4818,27 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "repo-drift",
+      "repo": "alawein/repo-drift",
+      "description": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+      "homepage": "https://github.com/alawein/repo-drift",
+      "topics": [
+        "repo-drift",
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -4680,7 +4912,7 @@
         "compliance": "public-data",
         "repo_archetype": "vite-react-spa",
         "docs_maturity": "managed",
-        "brand_family": "legacy"
+        "brand_family": "forge"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4789,7 +5021,7 @@
         "compliance": "public-data",
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "forge"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4833,7 +5065,7 @@
         "compliance": "public-data",
         "repo_archetype": "game-project",
         "docs_maturity": "managed",
-        "brand_family": "forge"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4854,7 +5086,7 @@
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
-        "brand_family": "wisdom"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4862,7 +5094,7 @@
     {
       "slug": "mercor",
       "repo": "alawein/mercor",
-      "description": "Employer project for LLM failsafe experimentation and evaluation.",
+      "description": "Consulting-delivery catalog for Mercor client engagements: AI/ML literature-review knowledge bases, physics problem writing, SWE documentation, public physics-benchmark solving, and executive deck production.",
       "homepage": "https://github.com/alawein/mercor",
       "topics": [
         "llm",
@@ -4871,7 +5103,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-library",
+        "repo_archetype": "docs-hub",
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
@@ -4894,7 +5126,7 @@
         "compliance": "internal-only",
         "repo_archetype": "docs-hub",
         "docs_maturity": "minimal",
-        "brand_family": "legacy"
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -4951,7 +5183,7 @@
           "llm-training",
           "synthetic-data"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -5013,7 +5245,7 @@
         "type": "research",
         "surface": "monorepo",
         "domain": "scientific-computing",
-        "lifecycle": "active",
+        "lifecycle": "frozen",
         "visibility": "private",
         "theme_family": "wisdom",
         "brand_family": "wisdom",
@@ -5048,7 +5280,7 @@
         "provides": [
           "spectral-event-detection"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-service",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -5148,7 +5380,7 @@
           "qap-solvers",
           "benchmarking"
         ],
-        "version_source": "package.json",
+        "version_source": "pyproject.toml",
         "repo_archetype": "python-library",
         "compliance": "public-data",
         "github_actions_settings": {},
@@ -5160,7 +5392,7 @@
         "repo": "alawein/veyra",
         "type": "research",
         "surface": "monorepo",
-        "domain": "scientific-computing",
+        "domain": "ai-governance",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "wisdom",
@@ -5211,7 +5443,7 @@
         "repo": "alawein/atelier-rounaq",
         "type": "product",
         "surface": "web",
-        "domain": "fitness",
+        "domain": "portfolio",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "forge",
@@ -5259,7 +5491,7 @@
         "repo": "alawein/auditraise",
         "type": "product",
         "surface": "web",
-        "domain": "fitness",
+        "domain": "marketing",
         "lifecycle": "active",
         "visibility": "private",
         "theme_family": "forge",

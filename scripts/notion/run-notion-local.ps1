@@ -1,45 +1,31 @@
 #Requires -Version 5.1
 <#
-  Local Notion sync + canonical verify with the same property mapping as
-  .github/workflows/notion-sync.yml
+  Local Notion sync + canonical verification.
 
-  Prerequisites: set NOTION_TOKEN and NOTION_DB_ID in .env.local (see ..\.env.example)
+  Prerequisites: inject NOTION_TOKEN and NOTION_DB_ID with 1Password op run.
 
-  Usage (from repo root alawein/alawein):
-    pwsh -File scripts/notion/run-notion-local.ps1
+  Usage (from repo root alawein/):
+    op run -- pwsh -NoProfile -File scripts/notion/run-notion-local.ps1
 #>
 $ErrorActionPreference = 'Stop'
 # scripts/notion/ -> repo root (alawein/) where projects.json lives
 $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $root
 
-foreach ($name in @('.env.local', '.env')) {
-  $envFile = Join-Path $root $name
-  if (-not (Test-Path $envFile)) { continue }
-  Get-Content $envFile | ForEach-Object {
-    if ($_ -match '^\s*([^#=]+)=(.*)$') {
-      $n = $matches[1].Trim()
-      $v = $matches[2].Trim().Trim('"')
-      if ($v.Length -gt 0) { Set-Item -Path "Env:$n" -Value $v }
-    }
-  }
-  break
-}
-
-# Align with notion-sync.yml
+# Match the canonical Notion database schema.
 $env:NOTION_DOMAIN_PROPERTY = 'Domain'
-$env:NOTION_CATEGORY_PROPERTY = 'Status'
-$env:NOTION_TAGS_PROPERTY = 'Stack'
+$env:NOTION_CATEGORY_PROPERTY = 'Category'
+$env:NOTION_TAGS_PROPERTY = 'Tags'
 $env:NOTION_NAME_PROPERTY = 'Name'
 $env:NOTION_REPO_PROPERTY = 'Repo'
-$env:NOTION_STATUS_PROPERTY = 'Status'
+$env:NOTION_STATUS_PROPERTY = 'Category'
 $env:NOTION_EXPECTED_LEGACY_COUNT = '1'
 
-python3 scripts/catalog/validate-projects-json.py
+python scripts/catalog/validate-projects-json.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 if (-not $env:NOTION_TOKEN -or -not $env:NOTION_DB_ID) {
-  Write-Error 'projects.json OK. Set NOTION_TOKEN and NOTION_DB_ID in .env.local (see .env.example), then re-run for Notion sync + verify.'
+  Write-Error 'projects.json OK. Inject NOTION_TOKEN and NOTION_DB_ID with op run, then re-run for Notion sync + verify.'
   exit 1
 }
 

@@ -65,7 +65,7 @@ jobs:
             const exitCode = '${{ steps.validate.outputs.exit_code }}'
             const hasDiff = '${{ steps.diff.outputs.has_changes }}' === 'true'
 
-            const status = exitCode === '0' ? 'âœ… Validation passed' : 'âŒ Validation failed'
+            const status = exitCode === '0' ? 'Validation passed' : 'Validation failed'
             const diffSection = hasDiff
               ? `\n\n<details><summary>Prompt kit diff</summary>\n\n\`\`\`diff\n${diff.slice(0, 4000)}\n\`\`\`\n</details>`
               : '\n\nNo prompt-kit file changes detected.'
@@ -99,6 +99,14 @@ jobs:
                 '_See `docs/governance/prompt-rollout.md` for the full rollout protocol._',
               ].join('\n'),
             })
+
+      - name: Enforce validation result
+        if: always()
+        run: |
+          if [ "${{ steps.validate.outputs.exit_code }}" != "0" ]; then
+            echo "prompt kit validation failed (exit ${{ steps.validate.outputs.exit_code }})"
+            exit 1
+          fi
 
   catalog-change-summary:
     name: Catalog Change Summary

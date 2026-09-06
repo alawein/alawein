@@ -79,9 +79,10 @@ Review while delivery evidence is pending. Done requires acceptance evidence.
 Use a separate Ready for Release state only when that distinction helps the
 project. Blocked work has a blocking relation, reason, owner, and next check.
 
-Configure PR linking first. A merge advances to delivery-pending unless merge
-itself satisfies acceptance. Multi-PR work records every required PR or uses
-child issues. Test state transitions before enabling broader issue sync.
+Configure PR linking first. After merge, keep the issue In Review while delivery
+evidence is pending. Move it to Done only when all acceptance criteria are met
+and the evidence is linked. Multi-PR work records every required PR or uses child
+issues. Test state transitions before enabling broader issue sync.
 
 Use native priority, assignee, project and state fields. Map a small work-kind
 and risk vocabulary; preserve repo-specific automation and evidence labels until

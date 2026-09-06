@@ -67,7 +67,7 @@ fitness_products:
     deployment_or_visibility_change: false
     evidence:
       - source: catalog/index.yaml
-        claim: gymboy is an existing fitness product entry.
+        claim: gymboy is an existing fitness coaching product entry.
   - slug: scribd
     lifecycle: predecessor
     domain: fitness
@@ -99,11 +99,15 @@ workspace_batch:
   owning_repository: workspace-tools
   package: workspace-batch
   installation_and_auth:
-    state: unverified
+    state: canary
     review_required: true
-    source: docs/governance/parallel-batch-execution.md
-    note: Link to the owning repository and existing contract only; installation and authentication
-      behavior must be confirmed from workspace-tools before being documented as supported.
+    source: https://github.com/alawein/workspace-tools/pull/25
+    python: '>=3.12'
+    operator_install: python -m pip install -e .
+    contributor_install: python -m pip install -e ".[dev]"
+    github_auth_precedence: [GITHUB_TOKEN, GH_TOKEN, gh_cli]
+    note: The owning-repo canary defines and tests this contract. Keep review_required true until
+      workspace-tools PR #25 is reviewed and merged.
 
 design_system:
   reference_consumers:
@@ -111,7 +115,7 @@ design_system:
       compatibility: unproven
       review_required: true
       evidence:
-        - source: https://github.com/alawein/repz/blob/main/tsconfig.json
+        - source: https://github.com/alawein/repz/blob/main/tsconfig.app.json
           claim: A tsconfig alias to ./design-system/src does not prove published package compatibility.
   unsupported_claims_removed:
     - slug: scribd

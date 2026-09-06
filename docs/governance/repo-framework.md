@@ -115,23 +115,30 @@ Sole-owned commercial products (the fitness cluster: bolts, gymboy, repz, scribd
 A repo archives when ANY are true:
 
 - No commits in 180 days AND no roadmap item.
-- Replaced by a successor (record successor in `projects.json`).
+- Replaced by a successor (record it in the existing archive decision).
 - Hypothesis disproved (ventures, research).
 - Explicitly marked done by the owner.
 
 Archive procedure (idempotent):
 
-1. GitHub: `gh repo archive <org>/<repo>` (read-only).
+1. GitHub: `gh repo archive <org>/<repo>` makes the repository read-only.
 2. Local: move to `alawein/_archive/<YYYY-MM>-<repo>/`.
-3. `projects.json`: set `status: archived`, `archivedDate`, optional `successor`.
-4. README header: `Status: archived`, `Next action: delete`.
+3. Set `status: archived` in `catalog/index.yaml` and run
+   `scripts/catalog/build-catalog.py`. Record the archive date and any successor
+   in the existing archive decision; do not hand-edit `projects.json`.
+4. Private README: retain the record card with `Status: archived` and
+   `Next action: delete`. Public README: follow the
+   [archive scaffold](../../templates/scaffolding/README.archive.md), explaining
+   what is preserved, that development has ended, and any successor. Keep the
+   run command, docs map, and license; omit internal record-card fields.
 
 ## Naming convention
 
 - `lowercase-kebab-case` for repo names.
 - Forbidden names: `test`, `demo`, `new-*`, `*-final`, generic categories (`app`, `tool`, `website`, `backend`, `frontend`).
 - Local directory name matches GitHub remote name.
-- Renames preserve `legacy_slugs[]` in `projects.json` and rely on GitHub 301 redirects.
+- Renames preserve `legacy_slugs[]` in `catalog/index.yaml`, regenerate the catalog
+  outputs, and rely on GitHub 301 redirects.
 
 ## Change log
 

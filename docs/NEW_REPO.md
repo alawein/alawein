@@ -23,22 +23,26 @@ can run the same checks the control-plane CI runs.
 ## 0. Prerequisites
 
 - Write access to `github.com/alawein` (or the target org)
-- `gh` CLI authenticated as an org admin
+- `gh` CLI authenticated for the target repository
 - Local clone of `alawein/alawein` at
-  `~/Desktop/Dropbox/GitHub/alawein/alawein/`
+  `~/Desktop/GitHub/alawein/core/alawein/`, outside cloud-synced folders
 - Python 3.12+, Node 20+, `uv` for Python dependency management
 
 ## 1. Scaffold the directory
 
-From the workspace root (`~/Desktop/Dropbox/GitHub/alawein/`):
+Set the existing workspace path, then scaffold a product in its `apps` bucket:
 
 ```bash
-bash alawein/scripts/bootstrap-repo.sh product <repo-slug>
+WORKSPACE_ROOT="$HOME/Desktop/GitHub/alawein"
+CONTROL_PLANE="$WORKSPACE_ROOT/core/alawein"
+export ORG_REPO_PATH="$CONTROL_PLANE"
+cd "$WORKSPACE_ROOT/apps"
+bash "$CONTROL_PLANE/scripts/ops/bootstrap-repo.sh" product <repo-slug>
 cd <repo-slug>
 ```
 
-`bootstrap-repo.sh` emits `README.md`, a derived `CLAUDE.md` pointing at
-the org canonical, `docs/INDEX.md`, `.gitignore`, and `scripts/validate.sh`.
+`bootstrap-repo.sh` emits `README.md`, a placeholder `CLAUDE.md`,
+`docs/INDEX.md`, `.gitignore`, and `scripts/validate.sh`.
 
 Repo type selector:
 
@@ -49,8 +53,8 @@ Repo type selector:
 
 ## 2. Add the required canonical surfaces
 
-`bootstrap-repo.sh` emits the minimum. The documentation contract (`scripts/
-validate-doc-contract.sh --full`) requires these additional files at the
+`bootstrap-repo.sh` emits the minimum. The documentation contract
+(`scripts/doctrine/validate-doc-contract.sh --full`) requires these additional files at the
 repository root:
 
 - `AGENTS.md` -- agent-facing contract (frontmatter: `type: canonical`,
@@ -61,7 +65,7 @@ repository root:
 - `SSOT.md` -- current state and active decisions (`type: canonical`,
   `last-verified`)
 - `LESSONS.md` (`type: canonical`, `last-updated`)
-- `LICENSE` -- MIT unless the repo owner specifies otherwise
+- `LICENSE` -- the license approved by the repo owner
 - `docs/README.md`
 - `docs/governance/documentation-contract.md`
 - `docs/governance/workspace-master-prompt.md`
@@ -76,8 +80,17 @@ with a public scaffold.
 
 ```bash
 # Approved public product repositories only:
-cp ../alawein/templates/scaffolding/README.product.md README.md
-cp ../alawein/templates/scaffolding/docs-README.md docs/README.md
+cp "$CONTROL_PLANE/templates/scaffolding/README.product.md" README.md
+cp "$CONTROL_PLANE/templates/scaffolding/docs-README.md" docs/README.md
+```
+
+Install the repository-owned checks from the control plane. These two scripts
+resolve the repository from their own location, so preserve the directory depth:
+
+```bash
+mkdir -p scripts/doctrine
+cp "$CONTROL_PLANE/scripts/doctrine/validate-doc-contract.sh" scripts/doctrine/
+cp "$CONTROL_PLANE/scripts/doctrine/validate-no-ai-attribution.py" scripts/doctrine/
 ```
 
 Every canonical markdown file needs doctrine frontmatter. Template:
@@ -98,65 +111,49 @@ must not carry visible frontmatter -- the `docs-doctrine.md` rule and
 
 ## 3. Register in the catalog
 
-The catalog (`alawein/catalog/repos.json`) is the single source of truth
-for repo metadata. `projects.json` is derived from the catalog by
-`scripts/build-catalog.py`; do not hand-edit `projects.json`.
+Edit `catalog/index.yaml` in the control-plane repo. Add the repository under
+its existing portfolio lane (`platform`, `ship`, `lab`, `work`, or `archive`).
+The compiler supplies the full manifest fields. For example, append this
+entry under `lanes.ship` for a private product:
 
-Add an entry including every field in `catalog_lib.REQUIRED_REPO_FIELDS`.
-Minimum viable entry:
-
-```json
-{
-  "name": "My Repo",
-  "slug": "my-repo",
-  "repo": "alawein/my-repo",
-  "local_path": "my-repo",
-  "type": "product",
-  "surface": "web",
-  "stack": ["Next.js", "TypeScript"],
-  "domain": "personal",
-  "lifecycle": "active",
-  "visibility": "public",
-  "owner": "alawein",
-  "maintainer": "contact@meshal.ai",
-  "docs_owner": "contact@meshal.ai",
-  "theme_family": "neutral",
-  "brand_family": "alawein",
-  "status": "active",
-  "canonical_description": "One-line description for README pins.",
-  "github_topics": ["nextjs", "typescript"],
-  "github_custom_properties": { "repo_archetype": "product" },
-  "depends_on": [],
-  "provides": [],
-  "version_source": "package.json",
-  "last_verified": "YYYY-MM-DD",
-  "catalog_groups": ["featured"]
-}
+```yaml
+- slug: my-repo
+  about: One factual sentence describing the product.
+  url: https://github.com/alawein/my-repo
+  visibility: private
+  stack: [nextjs, typescript]
 ```
 
-Run the derivers:
+Lane configuration determines the disk bucket; this example resolves to
+`apps/my-repo`. Set only verified overrides. Public visibility requires the
+[existing readiness gate](governance/repo-framework.md#visibility-defaults).
+Do not hand-edit `catalog/repos.json`, `projects.json`, or `catalog/generated/`.
+
+From the control-plane root, regenerate and validate:
 
 ```bash
-python alawein/scripts/build-catalog.py
-python alawein/scripts/sync-readme.py
+python scripts/catalog/build-catalog.py
+python scripts/catalog/validate-catalog.py --strict
+python scripts/catalog/sync-readme.py
 ```
 
-Commit `catalog/repos.json`, `projects.json`, and `README.md` together. The
-`readme-sync.yml` workflow will fail on drift if they land in separate
-commits.
+Commit `catalog/index.yaml` and all changed generated outputs together in the
+control-plane PR, including `catalog/repos.json`, `projects.json`,
+`catalog/generated/`, and `README.md`. Inspect the generator diff before staging
+explicit paths.
 
 ## 4. Wire GitHub repo settings
 
-From within `alawein/`:
+From the control-plane root, preview the metadata plan for the catalog slug:
 
 ```bash
-python scripts/github-baseline-audit.py --repo alawein/<slug> --apply
-python scripts/sync-github-metadata.py --repo alawein/<slug>
+python scripts/github/sync-github-metadata.py --repo <repo-slug>
 ```
 
-This applies the governed label set, branch protection, default workflow
-permissions, and custom properties declared in `github-baseline.yaml` and
-`catalog/repos.json`.
+This prints a plan; it does not apply changes. Follow the
+[metadata runbook](governance/github-metadata-sync-runbook.md) for approved
+application and the [GitHub baseline](governance/github-baseline.md) for settings
+and review requirements. `github-baseline-audit.py` is an audit, not an apply tool.
 
 ## 5. Configure CI
 
@@ -171,42 +168,49 @@ on:
     branches: [main]
 jobs:
   doctrine:
-    uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@main
+    uses: alawein/alawein/.github/workflows/doctrine-reusable.yml@<reviewed-control-plane-sha>
     with:
       strict: "true"
 ```
 
-Language-specific CI should follow the shapes in
-`alawein/.github/workflows/ci-node.yml` and `ci-python.yml` (Node and Python
+Merge the control-plane registration PR first, then replace the placeholder
+with a reviewed full commit SHA that includes that registration. The reusable
+workflow reads its catalog from the pinned revision; match any governed
+workflow-ref requirement for the target repo.
+Language-specific CI should follow the shapes in the control plane's
+`.github/workflows/ci-node.yml` and `ci-python.yml` (Node and Python
 respectively). Pin all action versions to a commit SHA, not a tag.
 
 ## 6. Wire Vercel (only for web surfaces)
 
-```bash
-vercel link --yes --scope alawein --project <slug>
-vercel env pull .env.local
-```
-
-Then record the deployment in `knowledge-base/db/assets/domain-registry.md`
--- that file is the domain SSOT. Record the entry *before* creating custom
-domains or DNS records, not after. If the registry and live DNS disagree,
-the registry wins.
+Use the repository's approved deployment runbook and verified project/team
+identity. Keep credentials in the active secret manager. Record any approved
+deployment and domain changes in their existing canonical inventory. A local
+scaffold or catalog entry does not establish a deployment.
 
 ## 7. Verify doctrine validation passes
 
 From the new repo root:
 
 ```bash
-bash ../alawein/scripts/validate-doc-contract.sh --full
-python ../alawein/scripts/validate-doctrine.py . --ci
-python ../alawein/scripts/validate-no-ai-attribution.py
+bash scripts/doctrine/validate-doc-contract.sh --full
+python "$CONTROL_PLANE/scripts/doctrine/validate-doctrine.py" . --ci
+python scripts/doctrine/validate-no-ai-attribution.py
 ```
 
-All three must exit 0. Common failures and remedies:
+For public or private README validation, target the new checkout explicitly:
+
+```bash
+python "$CONTROL_PLANE/scripts/doctrine/validate-readme-topology.py" --repo-path . --repo-slug <repo-slug>
+python "$CONTROL_PLANE/scripts/doctrine/validate-readme-voice.py" --repo-path . --repo-slug <repo-slug>
+```
+
+All checks must exit 0. Common failures and remedies:
 
 - `missing required file: SSOT.md` -- add the file from step 2.
-- `<doc> is N days old; canonical docs must be <= 30 days old` -- bump the
-  `last-verified:` key in frontmatter.
+- `<doc> is N days old; canonical docs must be <= 30 days old` -- verify the
+  content, then update the reported freshness key (`last-verified`,
+  `last-updated`, or `last_updated`).
 - `broken local link target` -- the referenced file does not exist relative
   to the markdown file; fix the target path or remove the markdown link.
 - `Duplicate canonical: CLAUDE.md` -- the repo-local `.claude/CLAUDE.md`
@@ -214,35 +218,36 @@ All three must exit 0. Common failures and remedies:
 - `forbidden attribution` -- remove AI attribution trailers or robot emoji
   from managed docs.
 
-## 8. Sync the org-level CLAUDE.md
+## 8. Verify agent entrypoints
 
-```bash
-bash ../alawein/scripts/sync-claude.sh
-```
-
-This projects the org `CLAUDE.md` into the repo's `.claude/CLAUDE.md` with
-per-repo filters. Commit the result in the same PR as the catalog entry
-so the projection stays aligned with the registered repo metadata.
+Keep root `AGENTS.md` and repo-specific `CLAUDE.md` aligned with the repository's
+actual boundaries and commands. Replace the bootstrap's placeholder source and
+sync metadata with the real ownership, following the existing
+[Claude configuration guide](governance/claude-code-configuration-guide.md).
+Verify instruction discovery in the active coding tool. `sync-claude.sh` was
+retired; do not create generated `.claude/` mirrors with that script.
 
 ## 9. Open the first PR
 
-The first PR should contain:
+The new repository's first PR should contain:
 
 - All files from steps 1-2 (scaffold + canonical surfaces)
-- The catalog entry from step 3, plus the regenerated `projects.json` and
-  `README.md`
+- The repository-owned checks from step 2
 - The doctrine workflow from step 5
-- The projected `.claude/CLAUDE.md` from step 8
+- The verified agent entrypoints from step 8
 
-Expected green checks: `doctrine`, `docs-validation` (upstream in `alawein`),
-`ci-node` or `ci-python`, `codeql`.
+Keep the catalog registration and generated outputs in a separate control-plane
+PR. Link the two PRs. Require the checks and human review configured for each
+repository before merging.
 
 ## 10. Post-merge
 
-- Add to the Notion project database. See `.claude/commands/notion-sync.md`.
-- Pin on the GitHub profile if relevant: edit `profile-from-guides.yaml`
-  `profile_pins` in `alawein/`; `sync-readme.py` will regenerate the
-  profile README with the new pin.
+- Let the existing `projects.json` to `scripts/notion/sync-to-notion.mjs` pipeline
+  populate Notion. Use the [Projects runbook](operations/notion-projects-database.md);
+  do not add a parallel registration path.
+- For an approved profile-pin change, update `profile-from-guides.yaml` and
+  the actual pins in GitHub. Regenerate with `scripts/catalog/sync-readme.py`,
+  then run `python scripts/github/verify-profile-pins.py --check`.
 - Announce in the `workspace-tools` changelog if the repo introduces a new
   automation surface that other repos should adopt.
 
@@ -250,9 +255,9 @@ Expected green checks: `doctrine`, `docs-validation` (upstream in `alawein`),
 
 | Validator | Location | Purpose |
 | --- | --- | --- |
-| `validate-doc-contract.sh` | `alawein/scripts/` | Required files, frontmatter keys, canonical age, naming, local links |
-| `validate-doctrine.py` | `alawein/scripts/` | Doctrine rules R1-R5, R9 (classification, duplicates, naming, zombies) |
-| `validate-catalog.py` | `alawein/scripts/` | `catalog/repos.json` integrity and taxonomy compliance |
-| `validate-projects-json.py` | `alawein/scripts/` | `projects.json` schema conformance and archived-CI drift |
-| `validate-no-ai-attribution.py` | `alawein/scripts/` | Scans managed docs for forbidden AI attribution |
-| `sync-readme.py --check` | `alawein/scripts/` | Confirms the generated profile README matches catalog + profile config |
+| `validate-doc-contract.sh` | Repo-owned `scripts/doctrine/` | Required files, frontmatter keys, canonical age, naming, local links |
+| `validate-doctrine.py` | Control-plane `scripts/doctrine/` | Doctrine rules for the explicit target directory |
+| `validate-catalog.py` | Control-plane `scripts/catalog/` | Compiled catalog integrity and taxonomy compliance |
+| `validate-projects-json.py` | Control-plane `scripts/catalog/` | `projects.json` schema conformance and archived-CI drift |
+| `validate-no-ai-attribution.py` | Repo-owned `scripts/doctrine/` | Scans that repo's managed docs for forbidden AI attribution |
+| `sync-readme.py --check` | Control-plane `scripts/catalog/` | Confirms the generated profile README matches `profile-from-guides.yaml` |

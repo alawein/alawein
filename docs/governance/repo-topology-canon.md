@@ -407,6 +407,12 @@ Per [`docs/style/VOICE.md`](../style/VOICE.md): no em dashes, no banned register
 
 ### Tiered compliance (migration)
 
+This legacy table and the exemplars below describe private READMEs and public
+READMEs that have not adopted the public front door. Legacy public acceptance
+is limited to the explicit fleet-transition check. Adopted public READMEs and
+local public validation use the public contract above, without record-card
+fields.
+
 | Tier | Rule |
 |------|------|
 | Tier 1 | Framework header + alias map (e.g. `Public value` counts as Value proposition / Abstract) |

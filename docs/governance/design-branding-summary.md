@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Design & Branding Plan, Executive Summary
 description: One-page summary of plan state, what's done, and what's left.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 status: active
 ---
@@ -14,7 +14,7 @@ status: active
 
 ## What this is
 
-This document preserves a March 2026 report for a **workspace-wide design and branding integration plan** across 16+ repos. The report classified each repo (front-end, SaaS, docs, research, etc.), assigned a design and branding strategy, and provided a 5-phase agent-executable implementation plan. It recorded **Phases 1-5 and Vercel deployment as complete for 11 of 12 Vercel repos**, with simcore PR #6 merged, repz and meshal-web fixes deployed, and Attributa awaiting a GH_TOKEN in Vercel before redeployment. These historical deployment claims were not reverified for this terminology update.
+This document preserves a March 2026 report for a **workspace-wide design and branding integration plan** across 16+ repos. The report classified each repo (front-end, SaaS, docs, research, etc.), assigned a design and branding strategy, and provided a 5-phase agent-executable implementation plan. It reported **Phases 1-5 complete and 11 of 12 Vercel deployments successful**, with simcore PR #6 merged, repz and meshal-web fixes deployed, and Attributa awaiting a GH_TOKEN in Vercel before redeployment. The [session log](../archive/bulk-execution-progress.md) documents ten successful deployments; the reported 11/12 count is unsupported. Current deployment status was not reverified.
 
 **Authority:** Tokens → `design-system/packages/@alawein/tokens/`; brand manifests and guides → `repz/branding/`. Governance → `alawein/docs/governance/`.
 
@@ -34,7 +34,7 @@ This document preserves a March 2026 report for a **workspace-wide design and br
 
 ## What's left
 
-- **Reported outstanding step:** The March 2026 report said Attributa still needed a **GH_TOKEN** (GitHub PAT with `repo` scope) in Vercel project Settings → Environment Variables before redeployment. It marked the other 11 Vercel deployments green.
+- **Reported outstanding step:** The March 2026 report said Attributa still needed a **GH_TOKEN** (GitHub PAT with `repo` scope) in Vercel project Settings → Environment Variables before redeployment. The session log names ten successful deployments; the report's larger count is unsupported.
 - **Optional:** Phase 2 deep work (tokens in CSS, component refactors, logo in shell); fix repz ESLint, meshal-web tests, the historically reported `gainboy` rollup issue, and event-discovery-framework notebook ruff.
 
 ---
@@ -58,6 +58,6 @@ The historical report lists alawein, event-discovery-framework, meshal-web, repz
 
 **PR opened:** simcore PR #6 (historical reference; upstream PR link no longer resolves). Other 12 repos: remote reports no commits between main and feature branch (may already be merged or in sync).
 
-**Reported done (2026-03-13):** simcore PR #6 merged; main pulled. **Reported Vercel deploy, OK (11/12):** simcore, historical slugs `devkit` and `gainboy`, llmworks, qmlab, bolts, rounaq-atelier, event-discovery-framework, repz, and meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** The report said the install script and README were in place, while a **GH_TOKEN** in Vercel and a redeployment remained outstanding.
+**Reported done (2026-03-13):** simcore PR #6 merged; main pulled. **Named successful Vercel deployments (10, historical report):** simcore, historical slugs `devkit` and `gainboy`, llmworks, qmlab, bolts, rounaq-atelier, event-discovery-framework, repz, and meshal-web. meshal-web: pinned @clerk/react to 6.1.0 and use Show. **attributa:** The report said the install script and README were in place, while a **GH_TOKEN** in Vercel and a redeployment remained outstanding.
 
 **Reported final status (2026-03-13):** Plan execution was complete except the Attributa deployment, which was blocked on GH_TOKEN in Vercel. Optional work included Phase 2 deep work and lint/test fixes listed in remaining-steps-per-repo.

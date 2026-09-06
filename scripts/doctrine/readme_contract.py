@@ -77,7 +77,8 @@ def sections(markdown: str) -> list[Section]:
 
 def meaningful_body(section: Section, *, through_line: int | None = None) -> bool:
     return any(
-        line.text.strip() and not line.text.lstrip().startswith("#")
+        any(char.isalnum() for char in line.text)
+        and not line.text.lstrip().startswith("#")
         for line in section.body
         if through_line is None or line.number <= through_line
     )

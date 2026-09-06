@@ -182,6 +182,24 @@ def test_public_readme_rejects_empty_section_and_run_without_invocation():
     assert any("runnable" in problem for problem in problems)
 
 
+@pytest.mark.parametrize("body", ["---", "-", ">", "***", "_ _ _", "| :-- |"])
+@pytest.mark.parametrize("section,content", [
+    ("The claim", "About the work."),
+    ("What it is", "A Python 3.11+ benchmark for model evaluators."),
+    ("What it is not", "It does not rank models for general use."),
+    ("Docs map", "- docs/README.md"),
+    ("License", "MIT."),
+])
+def test_public_readme_rejects_markdown_only_section_bodies(body, section, content):
+    problems = check_readme_sections(GOOD_README.replace(content, body), _repo())
+    assert any("empty body" in problem and f"'{section}'" in problem for problem in problems)
+
+
+@pytest.mark.parametrize("body", ["- Evidence.", "> Measured result.", "[Report](report.md)", "42", "\u6d4b\u91cf\u7ed3\u679c"])
+def test_public_readme_accepts_substantive_formatted_section_bodies(body):
+    assert check_readme_sections(GOOD_README.replace("About the work.", body), _repo()) == []
+
+
 def test_public_readme_keeps_audience_wording_flexible_for_human_review():
     padding = "\n".join(f"Context line {i}." for i in range(45))
     readme = GOOD_README.replace(

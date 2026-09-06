@@ -39,8 +39,9 @@ primitives and defer `/check-ssot`, `/doc-sync`, and CODEOWNERS.
 
 ## Revalidation (2026-09-05)
 
-The decision remains accepted. The current catalog buckets enforced by
-`validate-repo-framework.py` are `core`, `apps`, and `lab`.
+The decision remains accepted. `validate-repo-framework.py` accepts six catalog
+buckets: `core`, `apps`, `lab`, `sites`, `work`, and `archive`. It requires the
+debt ledger and ADR directory only for `core`, `apps`, and `lab`.
 `bootstrap-repo.sh` still creates the debt ledger and ADR template; the
 [active policy](../governance/anti-rot.md) uses those current bucket names.
 

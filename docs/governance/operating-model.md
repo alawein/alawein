@@ -14,7 +14,7 @@ last_updated: 2026-09-06
 tags: [governance, operating-model, workflow, navigation]
 ---
 
-# Operating model
+# Operating Model
 
 Keep one authoritative home for each kind of work. This repository owns shared
 policy and public portfolio metadata. Product repositories own code, technical

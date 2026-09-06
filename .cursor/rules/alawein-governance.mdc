@@ -10,7 +10,7 @@ When working in `alawein/alawein`:
 1. Keep governance docs aligned (`AGENTS.md`, `CLAUDE.md`, `SSOT.md`, and docs under `docs/governance/`).
 2. Before suggesting a commit or PR, run:
    - `python scripts/catalog/sync-readme.py --check`
-   - `bash scripts/doctrine/validate-doc-contract.sh --full`
+   - `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 3. Treat `AGENTS.md` and `docs/governance/` (repo root paths) as authoritative boundaries for this repo.
 4. Do not skip required governance validations for managed docs.
 5. Read `docs/governance/operating-model.md` and `docs/governance/work-record-taxonomy.md`.

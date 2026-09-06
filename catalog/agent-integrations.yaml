@@ -1,14 +1,17 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T15:52:00Z'
+lastVerified: '2026-09-06T03:15:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md. Cloud Agent rescan
-  2026-09-05 14:32 UTC: docs/internal/audits/2026-09-05-slack-integrations-rescan.md.
-  Desktop and Cloud Agent MCP status can diverge; keep both.
+  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
+  rescan 2026-09-06 03:15 UTC:
+  docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
+  docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
+  Agent MCP status can diverge; keep both. CI drift check:
+  python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
 
@@ -23,10 +26,13 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads 7/7 after lane C invites (2026-09-05 15:16 UTC).
+      Cloud Agent reads 7/7 public channels after 2026-09-05 invite sweep
+      (#posts 14:59, #content-pipeline 15:12, #job-search 15:14, #social 15:16).
       Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
       job-search 1788621248.955629, social 1788621362.488249.
-    last_verified: 2026-09-05
+      Cursor Slack Tools is the canonical Slack surface for agents launched from
+      Slack. Re-proved 2026-09-06 03:15 UTC rescan (run bc-8ca615eb-…).
+    last_verified: 2026-09-06
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -36,9 +42,10 @@ agents:
     status: ready
     slack_user_id: U0AQQFJT8AC
     notes: >
-      Legacy Slack bot; Claude Tag not enabled. S2 late pass 14:02:51
-      (app table + Claude Tag prompt).
-    last_verified: 2026-09-05
+      Legacy Slack bot; Claude Tag not enabled. Migration runbook:
+      docs/governance/claude-tag-migration.md. Target lane after migration:
+      #me-agents-ops (see slack-channel-migration-plan.md).
+    last_verified: 2026-09-06
   - id: claude-code
     display_name: Claude Code
     surfaces: [ide, terminal]
@@ -192,14 +199,17 @@ integrations:
     last_verified: 2026-09-05
   - id: github-mcp
     provider: GitHub
-    cursor_mcp: ready
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready
+    cursor_mcp_cloud_agent_prior: error
     gh_cli: scoped
     status: locked
     notes: >
-      Desktop IDE 2026-09-05: plugin-github-github ready (T5). Cloud Agent
-      14:32 UTC: Github namespace still error (discovery fail). Split status.
+      Desktop IDE 2026-09-05 (T5): ready. Cloud Agent 2026-09-05 14:32 UTC
+      (bc-01698bb5): error. Cloud Agent 2026-09-06 03:15 UTC (bc-8ca615eb):
+      ready. Status is time-stamped; do not collapse runs.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
-    last_verified: 2026-09-05
+    last_verified: 2026-09-06
   - id: supermemory
     provider: Supermemory
     cursor_mcp: dropped
@@ -211,13 +221,16 @@ integrations:
     last_verified: 2026-09-05
   - id: slack-mcp-duplicate
     provider: Slack
-    cursor_mcp: cloud_error_desktop_removed
-    status: remove
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready_redundant
+    cursor_mcp_cloud_agent_prior: error
+    status: redundant
     notes: >
-      Desktop T7: only plugin-slack-slack ready. Cloud Agent 14:32 UTC: Slack
-      namespace still errors. Keep Cursor Slack Tools; remove Cloud leftover.
+      Third-party Slack MCP: Cloud Agent error 2026-09-05 14:32 UTC
+      (bc-01698bb5), ready 2026-09-06 03:15 UTC (bc-8ca615eb) but redundant.
+      Canonical surface for Slack-launched agents is Cursor Slack Tools.
     repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
-    last_verified: 2026-09-05
+    last_verified: 2026-09-06
   - id: granola
     provider: Granola
     cursor_mcp: needs_auth
@@ -252,6 +265,24 @@ slack:
   team_id: T0APHHXJV4J
   workspace: Alawein Workspace
 
+slack_channel_reads:
+  cloud_agent_current:
+    run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
+    verified_at: '2026-09-06T03:15:00Z'
+    listed: 7
+    readable: 7
+    evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
+  cloud_agent_prior:
+    run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
+    verified_at: '2026-09-05T14:32:00Z'
+    listed: 7
+    readable: 3
+    evidence: docs/internal/audits/2026-09-05-slack-integrations-rescan.md
+  ide_slack_mcp:
+    verified_at: '2026-09-05'
+    readable: 7
+    notes: Meshal desktop IDE Slack MCP; not re-probed on 2026-09-06 Cloud run.
+
 slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
@@ -262,7 +293,7 @@ slack_channels:
     slack_id: C0APWF615H7
     tier: hub-bot
     cursor_can_read: true
-    notes: Cursor join 1788620374.004189 (lane C)
+    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C)
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
@@ -271,12 +302,12 @@ slack_channels:
     slack_id: C0B9R0NS4QJ
     tier: domain
     cursor_can_read: true
-    notes: Cursor join 1788621136.545159 (lane C)
+    notes: Cursor joined 2026-09-05 15:12 UTC (join ts 1788621136.545159, lane C)
   - id: job-search
     slack_id: C0B9NTUUGR4
     tier: domain
     cursor_can_read: true
-    notes: Cursor join 1788621248.955629 (lane C)
+    notes: Cursor joined 2026-09-05 15:14 UTC (join ts 1788621248.955629, lane C)
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
     tier: broadcast
@@ -286,13 +317,15 @@ slack_channels:
     slack_id: C0AP24SRVQF
     tier: default
     cursor_can_read: true
-    notes: Cursor join 1788621362.488249 (lane C)
+    notes: Cursor joined 2026-09-05 15:16 UTC (join ts 1788621362.488249, lane C)
 
 cursor_mcp_cloud_agent:
-  scanned_at: '2026-09-05T14:40:00Z'
-  run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
+  scanned_at: '2026-09-06T03:15:00Z'
+  run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
   ready:
     - Cursor Slack Tools
+    - Slack
+    - Github
     - Gmail
     - Google-calendar
     - Google-drive
@@ -304,12 +337,11 @@ cursor_mcp_cloud_agent:
     - cursor-cloud
     - cursor-subscriptions
   error:
-    - Slack
-    - Github
-    - Supermemory
     - Figma
-    - 1password
     - Todoist
+  loading:
+    - Supermemory
+    - 1password
   needs_auth:
     - Calendly
     - Cloudflare-bindings

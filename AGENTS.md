@@ -75,6 +75,7 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
 | Validate governed style surfaces | `python scripts/doctrine/validate.py --ci` |
 | Run advisory style audit | `python scripts/doctrine/style-advisory-audit.py --repo-root .` |
 | Run governance validation | `bash ./scripts/doctrine/validate-doc-contract.sh --full` |
+| Validate agent/integration inventory | `python scripts/catalog/validate-agent-integrations.py --strict` |
 
 ## Notes
 

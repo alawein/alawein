@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Cursor MCP repair runbook
 description: Repair steps for broken Cursor MCP integrations identified during the unified agent system audit.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.0
+version: 1.2.0
 tags: [cursor, mcp, integrations, repair]
 ---
 
@@ -17,16 +17,16 @@ tags: [cursor, mcp, integrations, repair]
 
 **Owner:** Meshal M. Alawein (`contact@meshal.ai`)
 
-Live-verified 2026-09-05 from a Cloud Agent session. Use this when
+Live-verified 2026-09-06 from a Cloud Agent session. Use this when
 `catalog/agent-integrations.yaml` rows show `error` or `remove`.
 
 ## 1. Status snapshot
 
-| Integration | Desktop IDE | Cloud Agent (14:32 UTC) | Action |
+| Integration | Desktop IDE | Cloud Agent (2026-09-06 rescan) | Action |
 | --- | --- | --- | --- |
-| GitHub | Ready (T5) | Error (discovery fails) | Keep desktop; Cloud still uses `gh` (§2) |
+| GitHub | Ready (T5) | Ready | None; verify `Github` namespace discovery (§5) |
 | Supermemory | Dropped (not installed) | Error | Leave dropped; not inventory SSOT (§3) |
-| Slack (duplicate) | Removed (T7) | Error | Remove Cloud leftover; keep Cursor Slack Tools (§4) |
+| Slack (duplicate) | Removed (T7) | Documented redundant; may still appear in discovery | Ignore or optional remove; Cursor Slack Tools canonical (§4, §4.1) |
 | Gmail / Calendar / Drive | Absent from desktop catalog | Ready (re-probed) | None on Cloud |
 | Railway | CLI Unauthorized | Ready (`whoami`) | Desktop CLI auth if needed |
 | Notion | Absent | Absent | Notion AI Slack remains the surface |
@@ -89,13 +89,28 @@ Tools** (built-in, bound to the launch thread) works.
 **Do not** remove Cursor Slack Tools. That is the canonical Slack surface for
 Cloud Agents launched from Slack.
 
+### 4.1 Cloud Agent policy (no remove required)
+
+On Cloud Agent VMs, a third-party `Slack` MCP namespace may still appear in
+dynamic tool discovery even after desktop removal. **No Cloud-side remove is
+required** for agents to operate correctly.
+
+| Surface | Canonical Slack tools | Third-party Slack MCP |
+| --- | --- | --- |
+| Slack-launched Cloud Agent | **Cursor Slack Tools** (`send_slack_message`, `read_slack_messages`, etc.) | Redundant; ignore or leave disabled |
+| Desktop IDE agent | Cursor Slack Tools when bound to a thread | Remove if present (§4 steps 1–3) |
+
+Agents launched from Slack must route all Slack reads, posts, and channel
+discovery through Cursor Slack Tools. Do not call the duplicate namespace for
+Slack work even if it appears in the tool catalog.
+
 ## 5. Verification checklist
 
 After repairs, re-run this checklist in an Agent session:
 
-- [ ] `Github` namespace: `namespaceStatus` = `ready`
+- [x] `Github` namespace: `namespaceStatus` = `ready` (Cloud Agent, 2026-09-06 rescan)
 - [ ] `Supermemory` namespace: `supermemory_search` callable
-- [ ] No duplicate `Slack` MCP error alongside working Cursor Slack Tools
+- [x] Cursor Slack Tools canonical; third-party `Slack` MCP redundant (may appear in discovery; no remove required — §4.1)
 - [ ] Update `catalog/agent-integrations.yaml` `last_verified` and `cursor_mcp` rows
 - [ ] Bump `last_updated` on this file if steps change
 
@@ -115,6 +130,12 @@ MCP install or OAuth change. Live Cloud matrix: `catalog/agent-integrations.yaml
 | [`credential-hygiene.md`](credential-hygiene.md) | Token handling |
 
 ## 8. Changelog
+
+### v1.2.0 (2026-09-06)
+
+- GitHub MCP ready on Cloud Agent (2026-09-06 rescan).
+- Added §4.1 Cloud Agent policy: third-party Slack MCP redundant; no remove required.
+- Updated verification checklist for GitHub Cloud ready and Slack routing policy.
 
 ### v1.1.0 (2026-09-05)
 

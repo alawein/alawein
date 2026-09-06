@@ -5,8 +5,8 @@ sync: none
 sla: none
 title: Claude Code configuration reference (.claude/, CLAUDE.md)
 description: Canonical layout and practices for Claude Code, project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
-last_updated: 2026-07-06
-last_verified: 2026-03-25
+last_updated: 2026-09-06
+last-verified: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -25,7 +25,7 @@ Use this in **product repositories** that ship a `.claude/` directory. This **or
 
 **Copy-paste prompts and checklists:** [claude-code-migration-prompts.md](./claude-code-migration-prompts.md).
 
-**Cursor:** This repo’s `.cursor/` tree is not committed. In product repos that use Cursor, mirror **durable** constraints in `.cursor/rules.md` (or rule files) and keep long-form rationale here or in `CLAUDE.md`.
+**Cursor:** This org hub commits `.cursor/rules.md` and `.cursor/rules/*.mdc` as governance reminders. Product repos mirror durable constraints in `.cursor/rules` and keep long-form rationale in `CLAUDE.md` or governance docs.
 
 ---
 

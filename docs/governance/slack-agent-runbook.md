@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -28,6 +28,8 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 - Cursor MCP connector reads (2026-09-05)
 - External verification session (2026-09-05; Vercel CLI, Google Drive,
   Gmail search, Notion fetch)
+- Cloud Agent rescan 2026-09-06 03:15 UTC (run `bc-8ca615eb-…`):
+  `docs/internal/audits/2026-09-06-slack-integrations-rescan.md`
 - Cloud Agent rescan 2026-09-05 14:32 UTC (run `bc-01698bb5-…`):
   `docs/internal/audits/2026-09-05-slack-integrations-rescan.md`
 
@@ -191,7 +193,8 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    Todoist and Figma.
 6. **Claude Tag:** Enable or accept legacy limits.
 7. **Cursor Slack access:** Done. Cloud Agent reads all 7 public channels
-   (lane C invites 2026-09-05 14:59 through 15:16 UTC).
+   (lane C invites 2026-09-05 14:59 through 15:16 UTC; verified 2026-09-06
+   rescan).
 
 ### Phase 3, Trial (2026-09-05 through 2026-09-19)
 
@@ -219,9 +222,14 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ## 6. Changelog
 
-### v1.3.0 (2026-09-05)
+### v1.3.0 (2026-09-06)
 
-- Cloud Agent `cursor_can_read` now 7/7 after lane C invites.
+- Cursor Cloud Agent read membership: 7/7 public channels (invite sweep
+  completed 2026-09-05).
+- Cloud Agent GitHub and third-party Slack MCP namespaces now ready; Cursor
+  Slack Tools remains canonical for Slack-launched agents.
+- Added drift detection: `validate-agent-integrations.py` + snapshot baseline.
+- Evidence pointer to `2026-09-06-slack-integrations-rescan.md`.
 
 ### v1.2.0 (2026-09-05)
 

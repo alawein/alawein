@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -278,13 +278,14 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook)
 - [x] Merge Phase 2 closeout ([PR #198](https://github.com/alawein/alawein/pull/198); #197 closed)
 - [x] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
-- [x] `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social` (7/7 reads 2026-09-05 15:16)
-- [ ] Fix Cloud Agent leftover Slack MCP error; GitHub MCP ready on desktop only
+- [x] `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social` (7/7 reads)
+- [x] Fix Cloud Agent GitHub MCP (ready 2026-09-06 rescan)
+- [ ] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
 - [ ] Authenticate Computer in Slack
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
 - [ ] Enable Claude Tag or keep documenting legacy limits
 - [ ] Vercel browser inspect: `sam-eval-roadmap`, `guides-eval-loop-app`
-- [ ] Add `validate-agent-integrations.py` (future): YAML schema check in CI
+- [x] Add `validate-agent-integrations.py`: YAML schema + drift check in CI
 
 ## 8. Related canon
 
@@ -318,9 +319,11 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 
 ## 10. Changelog
 
-### v1.3.0 (2026-09-05)
+### v1.3.0 (2026-09-06)
 
-- Lane C closed: Cloud Agent reads all 7 public Slack channels.
+- Cursor invite sweep complete: Cloud Agent reads 7/7 public channels.
+- Cloud Agent GitHub MCP ready; third-party Slack MCP documented as redundant.
+- Added `validate-agent-integrations.py` with snapshot drift detection in CI.
 
 ### v1.2.0 (2026-09-05)
 

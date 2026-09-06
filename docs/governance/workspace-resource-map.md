@@ -5,12 +5,12 @@ sync: none
 sla: none
 title: Workspace Resource Map
 description: Canonical ownership map for governance docs, repo metadata, shared packages, design tokens, and batch/runtime surfaces.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: contributors
 status: active
 author: alawein maintainers
-version: 1.2.1
+version: 1.2.2
 tags: [workspace, resources, governance, design-system, docs, mapping]
 ---
 
@@ -39,6 +39,7 @@ workspace.
 | Unified agent inventory | `alawein` | `catalog/agent-integrations.yaml` | `alawein` maintainers | Slack agents, Cursor MCP, dispatch routing | Canonical |
 | Unified agent orchestration | `alawein` | `docs/governance/unified-agent-system.md` | `alawein` maintainers | all agents, `#admin-ops` | Active |
 | Slack agent runbook | `alawein` | `docs/governance/slack-agent-runbook.md` | `alawein` maintainers | Slack workspace, workflow bots | Active |
+| Slack live map | Slack | canvas `F0BV7PDBJT0`; lists `F0BV9M3BEAW`, `F0BUUASKHT9` | `alawein` maintainers | channel rename and agent invites | Active |
 | Profile copy and structured records | `knowledge-base` | `career/`, `db/`, `db/schema/export/` | `knowledge-base` maintainers | profile sync, exports, audits | Canonical |
 | Retired legacy shared-resource repo | `aw-devkit` | retired from workspace root | migration owners | historical reference only | Retired on 2026-03-11 |
 | Design/branding implementation (Phase 1–5) | `alawein` | `docs/governance/phase1-design-branding-analysis-*.md`, `phase3-refactor-and-centralization.md`, `phase4-testing-and-validation.md`, `phase5-version-control-and-deployment.md`, `bulk-execution-progress.md`, `remaining-steps-per-repo.md`, `design-branding-summary.md`; `docs/archive/HANDOFF-DESIGN-BRANDING.md` | `alawein` maintainers | agents, contributors | Active |

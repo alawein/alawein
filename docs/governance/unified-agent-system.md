@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.2.0
+version: 1.3.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -190,7 +190,7 @@ browser OAuth behind Cloud Agent probes.
 | --- | --- | --- | --- |
 | A | Meshal or Sider/Claw (browser) | Connect `@Codex` to ChatGPT Codex; DM `Reply OK` | Codex replies |
 | B | Meshal or Sider/Claw (browser) | Re-auth `@Computer` | S3 evidence on `#posts` |
-| C | Meshal (Slack UI) | `/invite @Cursor` in `#posts` `#content-pipeline` `#job-search` `#social` | Cloud Agent reads 7/7 |
+| C | Meshal (Slack UI) | `/invite @Cursor` in remaining work channels | Done 2026-09-06: Cloud Agent reads 7/7 |
 | D | `@Cursor` Cloud Agent | Re-probe channel reads + Cloud MCP matrix | Table with evidence |
 | E | Desktop IDE Cursor | Merge PRs, update YAML/audit, local MCP repair | Canon on `main` |
 | F | `@Claude` / `@Notion AI` | Diff-only Slack / Notion rows | One table each |
@@ -208,8 +208,8 @@ Sample dispatch (paste into `#admin-ops`):
 ```markdown
 Parallel finalize — run lanes A–F now (do not wait on each other).
 A/B: browser OAuth (Meshal or Sider/Claw)
-C: /invite @Cursor in #posts #content-pipeline #job-search #social
-D: @Cursor re-probe 7-channel reads
+C: done (Cursor reads 7/7). Remaining: /invite @Claude @Computer @Codex @GitHub per slack-agent-runbook.md §1.5
+D: @Cursor apply Slack rename map (human UI) + pin Slack Map canvas
 E: IDE Cursor lands canon
 F: @Claude / @Notion AI diff-only
 Do not uninstall ChatGPT until Codex Reply OK.
@@ -278,7 +278,8 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] Merge [PR #196](https://github.com/alawein/alawein/pull/196) (unified system + runbook)
 - [x] Merge Phase 2 closeout ([PR #198](https://github.com/alawein/alawein/pull/198); #197 closed)
 - [x] `/invite @Cursor` in `#kohyr-dev`, `#all-alawein-workspace`
-- [ ] Optional `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social`
+- [x] `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social` (2026-09-06)
+- [ ] Apply Slack rename map in `slack-agent-runbook.md` §1.3 (human UI)
 - [ ] Fix Cloud Agent leftover Slack MCP error; GitHub MCP ready on desktop only
 - [ ] Authenticate Computer in Slack
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
@@ -317,6 +318,13 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.3.0 (2026-09-06)
+
+- Cursor Cloud Agent reads all seven public channels.
+- Lane C marked done. Remaining Slack UI work is the §1.3 rename map plus
+  Claude, Computer, Codex, and GitHub invites.
+- Slack live map: canvas `F0BV7PDBJT0`, lists `F0BV9M3BEAW` and `F0BUUASKHT9`.
 
 ### v1.2.0 (2026-09-05)
 

@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-05T14:45:00Z'
+lastVerified: '2026-09-06T02:50:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -23,10 +23,9 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads 3 channels (admin-ops, kohyr-dev, all-alawein-workspace)
-      after invites; lists 7. IDE Slack MCP (Meshal) reads all 7. Re-proved
-      2026-09-05 14:32 UTC Cloud Agent rescan.
-    last_verified: 2026-09-05
+      Cloud Agent reads all 7 public channels (proved 2026-09-06). IDE Slack
+      MCP also lists 7. Rename map lives in slack-agent-runbook.md v1.3.0.
+    last_verified: 2026-09-06
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -38,7 +37,7 @@ agents:
     notes: >
       Legacy Slack bot; Claude Tag not enabled. S2 late pass 14:02:51
       (app table + Claude Tag prompt).
-    last_verified: 2026-09-05
+    last_verified: 2026-09-06
   - id: claude-code
     display_name: Claude Code
     surfaces: [ide, terminal]
@@ -56,8 +55,9 @@ agents:
     status: needs_auth
     notes: >
       S3 smoke: no reply after mention; Slack re-auth still required.
-      Joined #kohyr-dev and #all-alawein-workspace ~13:55. Silent on #posts.
-    last_verified: 2026-09-05
+      In #admin-ops, #kohyr-dev, #all-alawein-workspace. Still missing #posts.
+      Invite + Slack re-auth still required.
+    last_verified: 2026-09-06
   - id: chatgpt-slack
     display_name: ChatGPT
     surfaces: [slack]
@@ -68,8 +68,9 @@ agents:
     status: replaced
     notes: >
       Joined #admin-ops 11:28; never posted. Replaced as OpenAI Slack surface
-      by Codex (U0BV7V8M3NW) at 14:27. Do not dispatch. Not the Cursor MCP.
-    last_verified: 2026-09-05
+      by Codex (U0BV7V8M3NW) at 14:27. Not in #admin-ops roster on 2026-09-06
+      membership read. Do not dispatch.
+    last_verified: 2026-09-06
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -81,8 +82,8 @@ agents:
     notes: >
       Joined #admin-ops 14:27:21. Replied 14:28:50: connect ChatGPT Codex
       account. Tagged Reply OK at 14:30:56; no confirmed OK. Channel membership
-      observed in #admin-ops only.
-    last_verified: 2026-09-05
+      observed in #admin-ops only. Invite to #kohyr-dev still needed.
+    last_verified: 2026-09-06
   - id: notion-ai-slack
     display_name: Notion AI
     surfaces: [slack, notion]
@@ -94,9 +95,10 @@ agents:
     account: contact@meshal.ai
     workspace: Meshal's Workspace
     notes: >
-      S5 still unanswered after mention. Prior workspace identity remains
-      contact@meshal.ai / Meshal's Workspace (8116d8de-2215-81ce-b71b-00031e833a2d).
-    last_verified: 2026-09-05
+      Workspace identity re-proved 2026-09-06: contact@meshal.ai / Meshal's
+      Workspace (8116d8de-2215-81ce-b71b-00031e833a2d). Present in all 7
+      public channels.
+    last_verified: 2026-09-06
   - id: github-slack
     display_name: GitHub for Slack
     surfaces: [slack]
@@ -167,10 +169,12 @@ integrations:
     provider: Notion
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
-    cursor_mcp: absent
+    cursor_mcp: cloud_ready
     status: locked
-    notes: Notion MCP not present in desktop IDE catalog; Notion AI Slack remains surface.
-    last_verified: 2026-09-05
+    notes: >
+      Cloud Agent 2026-09-06: notion-fetch(self) succeeded (Meshal's Workspace).
+      Desktop IDE catalog may still omit Notion MCP. Slack surface is Notion AI.
+    last_verified: 2026-09-06
   - id: railway
     provider: Railway
     account: contact@meshal.ai
@@ -253,34 +257,41 @@ slack:
 slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
+    rename_to: ops
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex]
+    agents_present: [cursor, claude, computer, notion-ai, github, codex]
     cursor_can_read: true
   - id: posts
     slack_id: C0APWF615H7
+    rename_to: digest
     tier: hub-bot
-    cursor_can_read: false
+    cursor_can_read: true
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
+    rename_to: eng
     tier: domain
     cursor_can_read: true
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
+    rename_to: content
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
   - id: job-search
     slack_id: C0B9NTUUGR4
+    rename_to: career
     tier: domain
-    cursor_can_read: false
+    cursor_can_read: true
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
+    rename_to: announce
     tier: broadcast
     cursor_can_read: true
     notes: Fireflies.ai integration B0BA8NTJAR4 added 2026-06-13
   - id: social
     slack_id: C0AP24SRVQF
+    rename_to: social
     tier: default
-    cursor_can_read: false
+    cursor_can_read: true
 
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-05T14:40:00Z'

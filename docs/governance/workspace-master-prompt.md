@@ -4,280 +4,79 @@ source: none
 sync: none
 sla: none
 title: Alawein Workspace Master Prompt
-description: Canonical operating contract for workspace naming, control-plane ownership, portfolio synchronization, and manifest-driven batch execution.
-last_updated: 2026-07-06
+description: Six-rule operating contract. Agent prompt, portfolio inventory, and batch execution live in their own sources.
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
 author: alawein maintainers
-version: 1.2.0
+version: 1.3.0
 tags: [workspace, governance, naming, directives, portfolio, batches]
 ---
 
 # Alawein Workspace: Master Prompt
 
-## Context
+**Owner:** Meshal M. Alawein (`contact@meshal.ai`)
 
-This is the `@alawein` GitHub organization workspace. It contains repositories
-across web apps, research/scientific computing, tooling, and external
-integrations.
+This file is the six-rule operating contract. Do not copy inventory, session
+workflow, or style rules here.
 
-The canonical portfolio index is `alawein/README.md`. It must always reflect
-the true current state of the workspace.
+| Concern | Canonical source |
+| --- | --- |
+| Agent system prompt | [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) |
+| Portfolio and repo geography | `catalog/index.yaml` (compiled to `catalog/repos.json`) |
+| Batch execution | [`parallel-batch-execution.md`](parallel-batch-execution.md) |
+| Branch, commit, merge | [`commit-release-convention.md`](commit-release-convention.md) |
+| Current decisions | [`SSOT.md`](../../SSOT.md) |
 
-## Workspace Rules
+## Workspace rules
 
 These are non-negotiable. Violations block merge.
 
-### R-1: Single Source of Truth
+### R-1: Single source of truth
 
 - Every repo has an `SSOT.md` declaring canonical current state.
-- `alawein/README.md` is the org-level SSOT for portfolio structure and domains.
+- `alawein/README.md` is the org-level portfolio surface. It is generated from
+  the catalog. Do not hand-edit it.
 - Read `SSOT.md` and `AGENTS.md` before making non-trivial changes.
 
-### R-2: Scope Before Action
+### R-2: Scope before action
 
-- Read target repo `AGENTS.md` before editing.
-- Respect that repo's `always do`, `ask first`, and `never do` boundaries.
+- Read the target repo `AGENTS.md` before editing.
+- Respect that repo's always-do, ask-first, and never-do boundaries.
 - Cross-repo changes require reading both repos' governance files first.
 
-### R-3: Observable Changes
+### R-3: Observable changes
 
 - Use commit messages: `type(scope): description`.
 - Every structural change must be traceable.
 
-### R-4: Reject With Evidence
+### R-4: Reject with evidence
 
 - If a request violates a rule, refuse and explain why.
-- Cite the exact file and line for the violated rule.
+- Cite the exact file for the violated rule.
 - Provide the compliant path forward.
 
-### R-5: Sync or It Didn't Happen
+### R-5: Sync or it did not happen
 
-- Any structural change (rename, move, add, remove) must be reflected in
-  `alawein/README.md`.
+- Any structural change (rename, move, add, remove) must be reflected in the
+  catalog, then `python scripts/catalog/sync-readme.py`.
 - Config, imports, deploy targets, and documentation must be updated together.
 - A change is incomplete until every reference is consistent.
 
-### R-6: Batch Contract
+### R-6: Batch contract
 
-- Multi-repo autonomous execution must start from
-  `workspace-tools/docs/batches/<batch-id>/manifest.yaml`.
-- Use `workspace-tools/config/repo-capabilities.yaml` as the repo registry.
-- Use `workspace-tools/state/<batch-id>/` as the only valid runtime state
-  location.
+- Multi-repo autonomous execution starts from a
+  `workspace-tools` batch `manifest.yaml`.
+- Use `workspace-tools` repo-capability and state paths from
+  [`parallel-batch-execution.md`](parallel-batch-execution.md).
 - Healthy batch runs should not emit routine progress chatter between kickoff
   and final report.
 
-## Phased Migration Semantics
+## Naming
 
-During naming transitions, canonical names are authoritative in governance docs,
-while physical repo slugs may temporarily differ.
-
-- Canonical display format in docs:
-  `canonical-name (repo: physical-slug)`.
-- Links stay pointed to the physical repo slug until cutover.
-- Legacy names are only allowed in explicit alias contexts or migration matrices.
-- `docs/archive/**` remains exempt unless a cleanup is explicitly scoped.
-- Hard cutover status (2026-03-11): `gymboy`, `meatheadphysicist`,
-  `atelier-rounaq`, and `edfp` now have canonical=physical repo slugs.
-
-## Canonical Names & Structure
-
-These are binding names.
-
-| Directory | Canonical Name | Domain | Notes |
-| --- | --- | --- | --- |
-| `meatheadphysicist/` | `meatheadphysicist` | - | - |
-| `gymboy/` | `gymboy` | `gymboy.coach` | - |
-| `repz/` | `repz` | `repzcoach.com` | Canonical domain is `repzcoach.com` |
-| `meshal-web/` | `meshal-web` | `meshal.ai` | - |
-| `design-system/` | `design-system` | - | Canonical shared design-system repo; consolidated from legacy `aw-devkit` |
-| `workspace-tools/` | `workspace-tools` | - | Canonical batch/orchestration repo |
-| `knowledge-base/` | `knowledge-base` | - | Canonical records, profile export, and audit/config repo |
-
-### External Tool Prefix Rule
-
-All external or remote tool directories and related documentation must be
-underscore-prefixed. Internal repos remain unprefixed.
-
-## Active Directives
-
-Track each to completion. None is done until `alawein/README.md` is updated.
-
-### D-1: Design-System Consolidation
-
-- Status: completed on 2026-03-11 (canonical tokens in
-  `design-system/tokens/`, `aw-devkit` physical root retired from the active
-  workspace).
-- Merge `aw-devkit/` contents into `design-system/`.
-- Deduplicate conflicts in favor of the more complete implementation.
-- Update all cross-references to `design-system/`.
-- Delete or archive `aw-devkit/` once migration is verified.
-- Token source of truth is `design-system/tokens/`.
-
-### D-2: Gymboy Redesign (`gymboy.coach`)
-
-- Complete visual redesign with Game Boy-inspired aesthetic.
-- Character/progression model should reference Habitica-style systems.
-- Keep retro-modern interface with Game Boy palette sensibilities.
-- Mobile-first and responsive.
-- Branding, metadata, and deploy config target `gymboy.coach`.
-
-### D-3: Repz: Heal and Fix
-
-- Full audit: broken builds, failing tests, lint errors, stale dependencies.
-- Resolve architectural debt and incomplete migrations.
-- CI must pass end-to-end before completion.
-
-### D-4: Ninja Visual Token System
-
-- All ninja characters share identical core visual tokens.
-- Each ninja keeps distinct individual specs within token constraints.
-- Source of truth is `design-system/tokens/`, imported elsewhere.
-- Consistency is mandatory; individuality is constrained expression.
-
-### D-5: `meshal.ai` Refinement
-
-- `meshal-web/` requires a full revision:
-  content, design, performance, SEO, accessibility.
-- Align branding/messaging with current portfolio state.
-- Must accurately represent active Alawein projects.
-
-## Workspace Inventory
-
-### Web Apps
-
-| Repo | Domain | Stack |
-| --- | --- | --- |
-| `gymboy` | `gymboy.coach` | React, Vite, Spark, Tailwind v4 |
-| `repz` | `repzcoach.com` | React Router, Vite, Supabase |
-| `attributa` | `attributa.dev` | React, Vite, Supabase |
-| `meshal-web` | `meshal.ai` | React, Vite, Tailwind |
-| `bolts` | - | Next.js, Supabase |
-| `helios` | - | - |
-
-### Research & Scientific Computing
-
-| Repo | Domain |
-| --- | --- |
-| `alembiq` | Research platform and information-theoretic experiments |
-| `fallax` | Benchmark and reasoning-failure evaluation |
-| `optiqap` | QAP research and optimization experiments |
-| `qmatsim` | Quantum material simulation |
-| `qmlab` | Quantum mechanics lab tools |
-| `qubeml` | Quantum ML experiments |
-| `quantumalgo` | Quantum algorithms for QAP and related research |
-| `simcore` | Scientific simulation core |
-| `scicomp` | Scientific computing utilities |
-| `spincirc` | Spintronics circuit simulation |
-| `maglogic` | Magnetic logic gates |
-| `meatheadphysicist` | Physics research & writing |
-
-### AI & NLP
-
-| Repo | Domain |
-| --- | --- |
-| `attributa` | Browser-first entity extraction and attribution workflows |
-| `adil` | Legal-ops CLI and matter-local automation surfaces |
-| `llmworks` | LLM infrastructure, evaluation, and security-testing workbench |
-
-### Tooling & Infrastructure
-
-| Repo | Purpose |
-| --- | --- |
-| `design-system` | Design tokens, packages, Storybook, and shared UI infrastructure |
-| `design-system-visual-fix` | Design-system sibling snapshot / rollout surface |
-| `workspace-tools` | Workspace orchestration, manifests, runtime state, and governance deployment |
-| `knowledge-base` | Structured records, exports, templates, and audit/config surfaces |
-| `alawein` | Control plane for governance, generators, style, and rollout work |
-
-## Branch and deployment
-
-- **Branch naming:** Use canonical prefixes: `feat/*`, `fix/*`, `hotfix/*`, `release/*`, `fast/*`, `chore/*`, or `codex/<batch-id>/<slug>` for batch work. Kebab-case; intent-revealing.
-- **Workflow:** Branch from `main` → work → push branch → PR → squash merge to `main`. No direct push to `main`.
-- **Vercel:** Production from `main` (Git integration or `vercel deploy --prod`). Preview per branch/PR. Audit aliases from alawein: `python scripts/vercel_alias_audit.py`.
-- **Other repos:** Same convention per repo; one branch per repo for multi-repo work.
-
-Single reference: [branch-and-deployment-convention.md](branch-and-deployment-convention.md).
-
-## Session Workflow
-
-```bash
-# 1. Orient
-git log --oneline -20
-git status
-
-# 2. Read governance
-cat AGENTS.md
-cat SSOT.md
-
-# 3. Scope the task
-# "The one thing is: [X]. Done means: [Y]."
-```
-
-### Working on Complex Tasks
-
-- Break work into atomic units.
-- Identify dependencies between units.
-- Use one verified unit at a time for single-repo work.
-- Use manifest-driven parallel batches for multi-repo work.
-- Treat structured exceptions as the only approved interruption path during a
-  healthy batch run.
-
-### Validation
-
-```bash
-# JS/TS repos (when applicable)
-npm run lint && npm run typecheck && npm run test
-
-# Python repos
-ruff check src/ tests/ && mypy src/ && pytest tests/
-
-# Org-level governance
-./scripts/validate-doc-contract.sh --full
-
-# Batch planning/execution (from workspace root)
-python -m workspace_batch plan workspace-tools/docs/batches/<batch-id>/manifest.yaml
-python -m workspace_batch run workspace-tools/docs/batches/<batch-id>/manifest.yaml
-```
-
-## Refusal Templates
-
-### Scope Violation
-
-```text
-Cannot implement feature X
-
-Reason: AGENTS.md defines this repo's scope as [scope]
-Recommendation: Document in deferred work or route to correct repo
-```
-
-### Name Violation
-
-```text
-Cannot use non-canonical name.
-
-Reason: Canonical name is [canonical]
-Recommendation: Update to canonical name before proceeding
-```
-
-### Unsynchronized Change
-
-```text
-Cannot complete this change — README sync missing
-
-Reason: alawein README does not reflect the change (R-5)
-Recommendation: Update alawein/README.md to match new state
-```
-
-## Done Checklist
-
-- [ ] Target repo `SSOT.md` is current
-- [ ] Target repo `AGENTS.md` boundaries are respected
-- [ ] Commit messages follow `type(scope): description`
-- [ ] Canonical names are used (legacy aliases only in approved contexts)
-- [ ] Imports/configs/docs/deploy targets are all updated
-- [ ] `alawein/README.md` reflects the true current state
-- [ ] Batch artifacts are present when batch mode was used
-- [ ] Tests pass, lint is clean, and no regressions remain
+During naming transitions, canonical names are authoritative in governance
+docs. Physical repo slugs may temporarily differ. Format:
+`canonical-name (repo: physical-slug)`. Links stay on the physical slug until
+cutover. Disk homes are `apps|core|lab|sites|work/<slug>` via catalog
+`local_path`. See [`repo-topology-canon.md`](repo-topology-canon.md).

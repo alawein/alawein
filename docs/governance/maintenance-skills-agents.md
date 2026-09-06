@@ -5,8 +5,8 @@ sync: none
 sla: none
 title: Skills, Agents, and Commands Maintenance
 description: Operating guide for maintaining universal, ecosystem, and org layers across local Claude/Cursor plugins and alawein governance docs.
-last_updated: 2026-07-06
-last_verified: 2026-06-23
+last_updated: 2026-09-06
+last_verified: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -39,6 +39,9 @@ Use this document when:
 | Org | alawein repo | `docs/governance/`, `AGENTS.md`, `CLAUDE.md`, `scripts/` | governance contracts, command catalog, quality-gate scripts |
 | Cursor org hints | alawein repo | `.cursor/rules/` | repo-level Cursor reminders/guardrails |
 | Global skill installs | `skills` CLI (npm) | `~/.agents/skills/` (universal for Cursor/Claude/Codex); `~/.codex/skills/`, `~/.kilocode/skills/` (agent-specific pre-bootstrap installs) | Canonical location `~/.agents/skills/`; symlinked or auto-detected per agent; **policy:** [skills-install-policy.md](./skills-install-policy.md) |
+
+[`skills-agents-unification.md`](./skills-agents-unification.md) is a pointer
+into this hub. Keep inventory and checklists here.
 
 Related docs:
 

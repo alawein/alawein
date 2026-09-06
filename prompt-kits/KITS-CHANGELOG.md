@@ -22,6 +22,11 @@ major for breaking behavioral changes.
 - Keep attribution out of commit messages, code comments, and product prose
 - Keep this revision at canary under the existing rollout protocol
 
+### 1.4.2 - 2026-09-06
+
+- Point to `docs/governance/workspace-master-prompt.md` for R-1 through R-6
+- Keep portfolio inventory in `catalog/index.yaml`, not in prompt prose
+
 ### 1.4.1 - 2026-09-04
 
 - Correct bucketed workspace paths and resolve sibling repositories through catalog local_path
@@ -69,6 +74,12 @@ major for breaking behavioral changes.
 ---
 
 ## workspace-master-prompt.md
+
+### 1.3.0 - 2026-09-06
+
+- Keep R-1 through R-6 as the operating contract
+- Move portfolio inventory to `catalog/index.yaml`
+- Point session workflow and style rules at `prompt-kits/AGENT.md`
 
 ### 1.2.0 - 2026-03-20
 

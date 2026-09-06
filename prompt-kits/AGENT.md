@@ -132,6 +132,14 @@ For research repos:
 - Comments: explain invariants, failure modes, and tradeoffs
 - Commit messages: present tense, technical context
 
+## Workspace operating rules
+
+The six-rule contract lives in
+[`docs/governance/workspace-master-prompt.md`](../docs/governance/workspace-master-prompt.md)
+(R-1 through R-6). Portfolio rows live in `catalog/index.yaml`, not in prompt
+prose. Multi-repo work uses
+[`docs/governance/parallel-batch-execution.md`](../docs/governance/parallel-batch-execution.md).
+
 ## Operating mode
 
 When the task is clear: execute, then report what changed.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-27",
-  "count": 40,
+  "count": 44,
   "repos": [
     {
       "slug": "helios",
@@ -52,6 +52,16 @@
       "status": "active",
       "visibility": "public",
       "url": "https://chshlab.online"
+    },
+    {
+      "slug": "chshlab-paper",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "Chshlab Paper",
+      "about": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/chshlab-paper"
     },
     {
       "slug": "edfp",
@@ -234,6 +244,16 @@
       "url": "https://github.com/alawein/design-system"
     },
     {
+      "slug": "dotclaude",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "Dotclaude",
+      "about": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/dotclaude"
+    },
+    {
       "slug": "incore",
       "lane": "platform",
       "bucket": "core",
@@ -242,6 +262,16 @@
       "status": "active",
       "visibility": "private",
       "url": "https://github.com/alawein/incore"
+    },
+    {
+      "slug": "kcompiler",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "Kcompiler",
+      "about": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/kcompiler"
     },
     {
       "slug": "knowledge-base",
@@ -272,6 +302,16 @@
       "status": "active",
       "visibility": "private",
       "url": "https://github.com/alawein/prompty"
+    },
+    {
+      "slug": "repo-drift",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "Repo Drift",
+      "about": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/repo-drift"
     },
     {
       "slug": "workspace-control",

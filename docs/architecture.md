@@ -2,8 +2,8 @@
 type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
-last-verified: 2026-06-23
-last_updated: 2026-06-23
+last-verified: 2026-09-06
+last_updated: 2026-09-06
 ---
 
 # Alawein Workspace Architecture
@@ -16,11 +16,11 @@ last_updated: 2026-06-23
 
 `alawein/alawein` is the governance control plane for the `@alawein` GitHub org.
 It owns CI policy templates, canonical prompt kits, voice contracts, docs doctrine,
-and the catalog registry that governs 37 sibling repos. No product code lives here.
+and the catalog registry that governs 43 sibling repos. No product code lives here.
 
 ```mermaid
 graph TB
-  subgraph alawein-org["@alawein GitHub Org (37 repos)"]
+  subgraph alawein-org["@alawein GitHub Org (44 repos)"]
     control["alawein/alawein\nControl Plane\n(CI templates · prompts · catalog)"]
     design["design-system\nTokens + UI packages\n(@alawein/tokens · @alawein/ui)"]
     workspace["workspace-tools\nCLI + Config packages\n(workspace-batch · eslint-config)"]
@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-07-08; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-06; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -71,38 +71,40 @@ graph TB
   end
   subgraph infra["Infra Repos"]
     design_system["design-system\nShared design tokens, themes, UI co"]
-    workspace_tools["workspace-tools\nWorkspace execution layer for scaff"]
     knowledge_base["knowledge-base\nSearchable discovery surface for re"]
   end
   subgraph product["Product Repos"]
-    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
-    repz["repz\nAI-powered coaching platform for fi"]
-    gymboy["gymboy\nFitness coaching platform with a re"]
-    scribd["scribd\nFitness publishing and content surf"]
-    bolts["bolts\nFitness transformation plans with N"]
-    atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
-    attributa["attributa\nPrivacy-first attribution intellige"]
     llmworks["llmworks\nLLM evaluation, benchmarking, and s"]
-    more_product["… 2 more"]
+    atelier_rounaq["atelier-rounaq\nStudio and portfolio site for a lux"]
+    auditraise["auditraise\nAI-assisted local marketing audits "]
+    bolts["bolts\nFitness transformation plans with N"]
+    gymboy["gymboy\nFitness coaching platform with a re"]
+    repz["repz\nAI-powered coaching platform for fi"]
+    scribd["scribd\nFitness publishing and content surf"]
+    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
+    more_product["… 4 more"]
   end
   subgraph research["Research Repos"]
-    edfp["edfp\nPhysics-inspired video event detect"]
-    alembiq["alembiq\nLLM training, alignment, evaluation"]
-    optiqap["optiqap\nQuadratic Assignment Problem solver"]
-    qmlab["qmlab\nQuantum ML web lab with React, Type"]
-    simcore["simcore\nScientific simulation core for inte"]
-    meatheadphysicist["meatheadphysicist\nComputational physics research plat"]
     adil["adil\nLegal-ops CLI for assembling, valid"]
-    qmatsim["qmatsim\nQuantum material simulation researc"]
-    more_research["… 8 more"]
+    alembiq["alembiq\nLLM training, alignment, evaluation"]
+    attributa["attributa\nPrivacy-first attribution intellige"]
+    chshlab["chshlab\nQuantum foundations education site "]
+    chshlab_paper["chshlab-paper\nCitable paper artifact (arXiv sourc"]
+    edfp["edfp\nPhysics-inspired video event detect"]
+    loopholelab["loopholelab\nResearch validation surface for adv"]
+    maglogic["maglogic\nMagnetic logic gates and device sim"]
+    more_research["… 11 more"]
   end
   subgraph tooling["Tooling Repos"]
-    mercor["mercor\nEmployer project for LLM failsafe e"]
-    handshake_hai["handshake-hai\nLLM evaluation monorepo with shared"]
-    turing["turing\nPrivate catalog-collection workspac"]
-    incore["incore\nCLI and MCP tooling for workspace a"]
-    prompty["prompty\nTurbo monorepo for prompt design, e"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
+    dotclaude["dotclaude\nPrivate backup and version control "]
+    incore["incore\nCLI and MCP tooling for workspace a"]
+    kcompiler["kcompiler\nKnowledge compiler that turns evide"]
+    outpost["outpost\nPersonal kit that installs prompts "]
+    prompty["prompty\nTurbo monorepo for prompt design, e"]
+    repo_drift["repo-drift\nConfigurable CLI and GitHub Action "]
+    workspace_control["workspace-control\nWorkspace control-plane inventory e"]
+    more_tooling["… 1 more"]
   end
 ```
 
@@ -160,7 +162,7 @@ graph LR
 ```mermaid
 graph TD
   subgraph authored["Authored (canonical sources)"]
-    repos_json["catalog/repos.json\n37 repo metadata"]
+    repos_json["catalog/repos.json\n44 repo metadata"]
     skills_yaml["catalog/skills.yaml\ncapability domains"]
     pk_registry["prompt-kits/registry.yaml\nprompt inventory"]
     baseline["github-baseline.yaml\nCI template manifest"]
@@ -211,7 +213,7 @@ graph TB
 | Path | Purpose |
 |------|---------|
 | `github-baseline.yaml` | CI template manifest: which repos use which template |
-| `catalog/repos.json` | Canonical repo registry (37+ repos, full metadata) |
+| `catalog/repos.json` | Canonical repo registry (44 repos, full metadata) |
 | `catalog/skills.yaml` | Capability domain registry |
 | `prompt-kits/AGENT.md` | Workspace system prompt (v1.3.0) |
 | `prompt-kits/PORTFOLIO.md` | meshal-web system prompt (v1.1.0) |

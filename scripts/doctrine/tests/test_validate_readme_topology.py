@@ -166,8 +166,20 @@ Rules.
 
 - docs/
 """
-    repo = _repo(slug="turing", type="tooling")
+    repo = _repo(
+        slug="turing",
+        type="tooling",
+        github_custom_properties={"readme_archetype": "catalog-collection"},
+    )
     assert check_readme_sections(readme, repo) == []
+
+
+def test_catalog_collection_requires_custom_property_not_slug():
+    """A catalog-collection slug without the custom property falls back to type rules."""
+    readme = "# Demo\n\n## Purpose\n\nCatalog.\n"
+    repo = _repo(slug="turing", type="tooling")
+    problems = check_readme_sections(readme, repo)
+    assert problems, "expected type-based section requirements without readme_archetype"
 
 
 def test_topology_file_missing():

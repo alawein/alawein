@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-08-27
+last_updated: 2026-09-06
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -11,7 +11,7 @@ authority: canonical
 
 Single readable reference for where repos live on disk, what role they play in the fleet, which code layout fits each shape, and how READMEs should read. Clean Architecture is a mental model, not a folder structure (Paul Iusztin). Boundaries follow what code does: workflows, tools, state, I/O adapters. Layers are optional modules inside a package, not mandatory top-level siblings.
 
-Companion audit: [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](../internal/audits/2026-06-29-fleet-topology-readme-audit.md).
+Historical Phase 1 snapshot (superseded, evidence preserved): [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](../internal/audits/2026-06-29-fleet-topology-readme-audit.md).
 
 ## A. Fleet axes
 
@@ -140,7 +140,7 @@ docs/
 
 **Anti-patterns:** One-file packages created "for symmetry." README package table missing workspace members (handshake `alloy` gap).
 
-**Repos (5):** design-system, prompty, veyra, handshake-hai.
+**Repos (5):** design-system, prompty, veyra, handshake.
 
 ---
 
@@ -284,11 +284,18 @@ CLAUDE.md AGENTS.md
 
 **README contract:** Tooling template sections: Purpose, Structure, Add work, Separation policy. Framework header or YAML frontmatter (pick one in Wave 0).
 
-**Repos (3):** mercor, turing, handshake-hai.
+**Repos (3):** mercor, turing, handshake.
 
 ---
 
-## Archetype map (all 37 repos)
+## Archetype map (all 44 repos)
+
+The `mercor`, `turing`, and `handshake` rows use README section rules for the
+`catalog-collection` archetype rather than their catalog `type`. This scope
+exception is declared once, in `catalog/repos.json`
+(`github_custom_properties.readme_archetype: catalog-collection`), and
+`scripts/doctrine/validate-readme-topology.py` reads that field directly —
+there is no separate hardcoded repo list in the validator to keep in sync.
 
 | Slug | Primary archetype | Catalog `repo_archetype` | Notes |
 |------|-------------------|--------------------------|-------|
@@ -327,8 +334,15 @@ CLAUDE.md AGENTS.md
 | incore | python-research-package | python-library | type=tooling; rename drift inventory/incore |
 | prompty | node-monorepo | node-monorepo | type=tooling |
 | mercor | catalog-collection | python-library | Slug `mercor`; active tooling at `jobs-projects/mercor` |
-| handshake-hai | catalog-collection | node-monorepo | |
+| handshake | catalog-collection | node-monorepo | Renamed from `handshake-hai`; legacy slug retained in catalog |
 | turing | catalog-collection | docs-hub | |
+| auditraise | next-app-router | next-app-router | Added post-2026-07-08 sweep |
+| chshlab-paper | monorepo | monorepo | Not yet classified against defined archetypes; catalog value shown |
+| dotclaude | monorepo | monorepo | Not yet classified against defined archetypes; catalog value shown |
+| kcompiler | monorepo | monorepo | Not yet classified against defined archetypes; catalog value shown |
+| outpost | python-platform-cli | python-platform-cli | |
+| repo-drift | monorepo | monorepo | Not yet classified against defined archetypes; catalog value shown |
+| workspace-control | python-platform-cli | python-platform-cli | |
 
 ---
 

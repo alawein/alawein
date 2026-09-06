@@ -145,6 +145,7 @@ python scripts/doctrine/validate.py --ci
 python scripts/doctrine/validate-doctrine.py .
 bash ./scripts/doctrine/validate-doc-contract.sh --full
 python scripts/doctrine/style-advisory-audit.py --repo-root .
+python scripts/doctrine/audit-todo-fixme.py
 python scripts/catalog/sync-readme.py --check
 python scripts/catalog/build-catalog.py --check
 python scripts/github/verify-profile-pins.py --skip-live --check

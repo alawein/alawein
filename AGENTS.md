@@ -68,6 +68,7 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
 | Check style-rule drift | `python scripts/doctrine/build-style-rules.py --check` |
 | Validate governed style surfaces | `python scripts/doctrine/validate.py --ci` |
 | Run advisory style audit | `python scripts/doctrine/style-advisory-audit.py --repo-root .` |
+| Audit TODO/FIXME (executable source only) | `python scripts/doctrine/audit-todo-fixme.py` |
 | Run governance validation | `bash ./scripts/doctrine/validate-doc-contract.sh --full` |
 | Validate agent/integration inventory | `python scripts/catalog/validate-agent-integrations.py --strict` |
 

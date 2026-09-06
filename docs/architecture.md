@@ -16,7 +16,7 @@ last_updated: 2026-09-06
 
 `alawein/alawein` is the governance control plane for the `@alawein` GitHub org.
 It owns CI policy templates, canonical prompt kits, voice contracts, docs doctrine,
-and the catalog registry that governs 43 sibling repos. No product code lives here.
+and the catalog registry that governs 44 repos. No product code lives here.
 
 ```mermaid
 graph TB

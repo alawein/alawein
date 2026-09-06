@@ -20,7 +20,12 @@ def test_root_whitelist_accepts_git_worktree_metadata(tmp_path, monkeypatch):
     monkeypatch.setenv("DOC_CONTRACT_MODE", "--full")
     monkeypatch.setenv("DOC_CONTRACT_BASE_REF_INPUT", "")
     script = ROOT / "scripts/doctrine/validate-doc-contract.sh"
-    code = script.read_text(encoding="utf-8").split("python3 - <<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    content = script.read_text(encoding="utf-8")
+    marker = "python3 - <<'PY'\n"
+    assert marker in content, "Documentation validator Python heredoc start is missing"
+    body = content.split(marker, 1)[1]
+    assert "\nPY" in body, "Documentation validator Python heredoc end is missing"
+    code = body.rsplit("\nPY", 1)[0]
     namespace = {"__name__": "doc_contract_under_test"}
     exec(compile(code, str(script), "exec"), namespace)
     errors = []

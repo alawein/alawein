@@ -1,14 +1,17 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-06T02:50:00Z'
+lastVerified: '2026-09-06T03:15:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md. Cloud Agent rescan
-  2026-09-05 14:32 UTC: docs/internal/audits/2026-09-05-slack-integrations-rescan.md.
-  Desktop and Cloud Agent MCP status can diverge; keep both.
+  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
+  rescan 2026-09-06 03:15 UTC:
+  docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
+  docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
+  Agent MCP status can diverge; keep both. CI drift check:
+  python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
 
@@ -23,8 +26,12 @@ agents:
     status: ready
     slack_user_id: U0APW2Z3GG2
     notes: >
-      Cloud Agent reads all 7 public channels (proved 2026-09-06). IDE Slack
-      MCP also lists 7. Rename map lives in slack-agent-runbook.md v1.3.0.
+      Cloud Agent reads 7/7 public channels after 2026-09-05 invite sweep
+      (#posts 14:59, #content-pipeline 15:12, #job-search 15:14, #social 15:16).
+      Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
+      job-search 1788621248.955629, social 1788621362.488249.
+      Cursor Slack Tools is the canonical Slack surface for agents launched from
+      Slack. Re-proved 2026-09-06 03:15 UTC rescan (run bc-8ca615eb-…).
     last_verified: 2026-09-06
   - id: claude-slack
     display_name: Claude
@@ -35,8 +42,9 @@ agents:
     status: ready
     slack_user_id: U0AQQFJT8AC
     notes: >
-      Legacy Slack bot; Claude Tag not enabled. S2 late pass 14:02:51
-      (app table + Claude Tag prompt).
+      Legacy Slack bot; Claude Tag not enabled. Migration runbook:
+      docs/governance/claude-tag-migration.md. Target lane after migration:
+      #me-agents-ops (see slack-channel-migration-plan.md).
     last_verified: 2026-09-06
   - id: claude-code
     display_name: Claude Code
@@ -54,10 +62,10 @@ agents:
     slack_user_id: U0APW7F9S4A
     status: needs_auth
     notes: >
-      S3 smoke: no reply after mention; Slack re-auth still required.
-      In #admin-ops, #kohyr-dev, #all-alawein-workspace. Still missing #posts.
-      Invite + Slack re-auth still required.
-    last_verified: 2026-09-06
+      Lane B fail (Sider/Claw 2026-09-05 15:52). Computer DMs are welcome
+      blurbs only (2026-03-30 / 2026-04-01). No Reconnect/Sign-in surface in
+      Slack app UI. Perplexity OAuth still required (Meshal). Not in #posts.
+    last_verified: 2026-09-05
   - id: chatgpt-slack
     display_name: ChatGPT
     surfaces: [slack]
@@ -67,10 +75,9 @@ agents:
     dispatch_roles: []
     status: replaced
     notes: >
-      Joined #admin-ops 11:28; never posted. Replaced as OpenAI Slack surface
-      by Codex (U0BV7V8M3NW) at 14:27. Not in #admin-ops roster on 2026-09-06
-      membership read. Do not dispatch.
-    last_verified: 2026-09-06
+      Joined #admin-ops 11:28; never posted. Keep installed until Codex S4
+      Reply OK. Do not dispatch. Not the Cursor MCP.
+    last_verified: 2026-09-05
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -80,10 +87,11 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Joined #admin-ops 14:27:21. Replied 14:28:50: connect ChatGPT Codex
-      account. Tagged Reply OK at 14:30:56; no confirmed OK. Channel membership
-      observed in #admin-ops only. Invite to #kohyr-dev still needed.
-    last_verified: 2026-09-06
+      Installed in #admin-ops (C0B9SRMDJFK) only. Lane A fail (Sider/Claw
+      15:52): Reply OK probe got connect prompt ts 1788622796.091419, not OK.
+      Connect button clicks (DOM + native x4) launched no OAuth popup.
+      Manual Connect click still required (Meshal browser).
+    last_verified: 2026-09-05
   - id: notion-ai-slack
     display_name: Notion AI
     surfaces: [slack, notion]
@@ -95,10 +103,9 @@ agents:
     account: contact@meshal.ai
     workspace: Meshal's Workspace
     notes: >
-      Workspace identity re-proved 2026-09-06: contact@meshal.ai / Meshal's
-      Workspace (8116d8de-2215-81ce-b71b-00031e833a2d). Present in all 7
-      public channels.
-    last_verified: 2026-09-06
+      Lane D/F skip on 2026-09-05 finalize (optional, not probed).
+      Prior identity remains contact@meshal.ai / Meshal's Workspace.
+    last_verified: 2026-09-05
   - id: github-slack
     display_name: GitHub for Slack
     surfaces: [slack]
@@ -169,12 +176,10 @@ integrations:
     provider: Notion
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
-    cursor_mcp: cloud_ready
+    cursor_mcp: absent
     status: locked
-    notes: >
-      Cloud Agent 2026-09-06: notion-fetch(self) succeeded (Meshal's Workspace).
-      Desktop IDE catalog may still omit Notion MCP. Slack surface is Notion AI.
-    last_verified: 2026-09-06
+    notes: Notion MCP not present in desktop IDE catalog; Notion AI Slack remains surface.
+    last_verified: 2026-09-05
   - id: railway
     provider: Railway
     account: contact@meshal.ai
@@ -194,14 +199,17 @@ integrations:
     last_verified: 2026-09-05
   - id: github-mcp
     provider: GitHub
-    cursor_mcp: ready
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready
+    cursor_mcp_cloud_agent_prior: error
     gh_cli: scoped
     status: locked
     notes: >
-      Desktop IDE 2026-09-05: plugin-github-github ready (T5). Cloud Agent
-      14:32 UTC: Github namespace still error (discovery fail). Split status.
+      Desktop IDE 2026-09-05 (T5): ready. Cloud Agent 2026-09-05 14:32 UTC
+      (bc-01698bb5): error. Cloud Agent 2026-09-06 03:15 UTC (bc-8ca615eb):
+      ready. Status is time-stamped; do not collapse runs.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
-    last_verified: 2026-09-05
+    last_verified: 2026-09-06
   - id: supermemory
     provider: Supermemory
     cursor_mcp: dropped
@@ -213,13 +221,16 @@ integrations:
     last_verified: 2026-09-05
   - id: slack-mcp-duplicate
     provider: Slack
-    cursor_mcp: cloud_error_desktop_removed
-    status: remove
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready_redundant
+    cursor_mcp_cloud_agent_prior: error
+    status: redundant
     notes: >
-      Desktop T7: only plugin-slack-slack ready. Cloud Agent 14:32 UTC: Slack
-      namespace still errors. Keep Cursor Slack Tools; remove Cloud leftover.
+      Third-party Slack MCP: Cloud Agent error 2026-09-05 14:32 UTC
+      (bc-01698bb5), ready 2026-09-06 03:15 UTC (bc-8ca615eb) but redundant.
+      Canonical surface for Slack-launched agents is Cursor Slack Tools.
     repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
-    last_verified: 2026-09-05
+    last_verified: 2026-09-06
   - id: granola
     provider: Granola
     cursor_mcp: needs_auth
@@ -254,50 +265,67 @@ slack:
   team_id: T0APHHXJV4J
   workspace: Alawein Workspace
 
+slack_channel_reads:
+  cloud_agent_current:
+    run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
+    verified_at: '2026-09-06T03:15:00Z'
+    listed: 7
+    readable: 7
+    evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
+  cloud_agent_prior:
+    run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
+    verified_at: '2026-09-05T14:32:00Z'
+    listed: 7
+    readable: 3
+    evidence: docs/internal/audits/2026-09-05-slack-integrations-rescan.md
+  ide_slack_mcp:
+    verified_at: '2026-09-05'
+    readable: 7
+    notes: Meshal desktop IDE Slack MCP; not re-probed on 2026-09-06 Cloud run.
+
 slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
-    rename_to: ops
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, codex]
+    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex]
     cursor_can_read: true
   - id: posts
     slack_id: C0APWF615H7
-    rename_to: digest
     tier: hub-bot
     cursor_can_read: true
+    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C)
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
-    rename_to: eng
     tier: domain
     cursor_can_read: true
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
-    rename_to: content
     tier: domain
     cursor_can_read: true
+    notes: Cursor joined 2026-09-05 15:12 UTC (join ts 1788621136.545159, lane C)
   - id: job-search
     slack_id: C0B9NTUUGR4
-    rename_to: career
     tier: domain
     cursor_can_read: true
+    notes: Cursor joined 2026-09-05 15:14 UTC (join ts 1788621248.955629, lane C)
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
-    rename_to: announce
     tier: broadcast
     cursor_can_read: true
     notes: Fireflies.ai integration B0BA8NTJAR4 added 2026-06-13
   - id: social
     slack_id: C0AP24SRVQF
-    rename_to: social
     tier: default
     cursor_can_read: true
+    notes: Cursor joined 2026-09-05 15:16 UTC (join ts 1788621362.488249, lane C)
 
 cursor_mcp_cloud_agent:
-  scanned_at: '2026-09-05T14:40:00Z'
-  run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
+  scanned_at: '2026-09-06T03:15:00Z'
+  run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
   ready:
     - Cursor Slack Tools
+    - Slack
+    - Github
     - Gmail
     - Google-calendar
     - Google-drive
@@ -309,12 +337,11 @@ cursor_mcp_cloud_agent:
     - cursor-cloud
     - cursor-subscriptions
   error:
-    - Slack
-    - Github
-    - Supermemory
     - Figma
-    - 1password
     - Todoist
+  loading:
+    - Supermemory
+    - 1password
   needs_auth:
     - Calendly
     - Cloudflare-bindings

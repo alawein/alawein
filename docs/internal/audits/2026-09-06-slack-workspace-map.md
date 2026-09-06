@@ -1,5 +1,8 @@
 ---
-type: audit
+type: canonical
+source: none
+sync: none
+sla: none
 status: draft
 last_updated: 2026-09-06
 owner: meshal
@@ -7,25 +10,33 @@ owner: meshal
 
 # Slack workspace map (2026-09-06)
 
-Cloud Agent launched from `#admin-ops` (`C0B9SRMDJFK`) by Meshal
+The prior report states that a Cloud Agent was launched from `#admin-ops` (`C0B9SRMDJFK`) by Meshal
 (`U0APM5W630C`). Account canon: `contact@meshal.ai`. Slack team:
 `T0APHHXJV4J`.
 
-This file is the live diff against
-`docs/internal/audits/2026-09-05-slack-integrations-rescan.md`. Channel policy
-is `docs/governance/slack-agent-runbook.md` v1.3.0.
+This is a dated proposal preserved from
+[PR #208 at 47927774](https://github.com/alawein/alawein/commit/479277744e0e06bee305b15ced421735cc661cde),
+not a current runtime verification or an approval record. The observations below
+were reported by that revision and were not re-probed in this review.
 
-## Verdict
+Active policy remains in the [Slack agent runbook](../../governance/slack-agent-runbook.md).
+The [channel migration plan](../../governance/slack-channel-migration-plan.md)
+is also a draft. Neither proposal authorizes a rename, new channel, integration
+invite, bot cut, deployment deletion, or access change. Preserve the current
+channel names through the September 19 review gate and obtain a recorded decision
+before applying a proposed policy change.
 
-Keep the seven-channel shape. Rename in place. Do not create duplicates. Do
-not archive before the 2026-09-19 gate.
+## Reported proposal
+
+The prior report proposed keeping seven channels, renaming in place, and avoiding
+archives before the 2026-09-19 gate. Its reported observations follow.
 
 Cursor is now in all seven public channels. ChatGPT is gone from the
 `#admin-ops` roster. Codex is the OpenAI Slack surface. Notion and Gmail
 remain on `contact@meshal.ai`. Five workflow bots still fire with zero
 engagement.
 
-## Slack artifacts created
+## Reported Slack artifacts
 
 | Artifact | ID | URL |
 | --- | --- | --- |
@@ -37,7 +48,7 @@ engagement.
 | Notion draft (private leftover) | `3d36d8de-2215-816e-9d36-dd4428a22246` | https://app.notion.com/p/3d36d8de2215816e9d36dd4428a22246 |
 | Setup Audit canvas | `F0BUXDR4J9L` | marked superseded, points at the new map |
 
-## Rename map
+## Proposed rename map (not approved)
 
 | Current | Rename to | Action |
 | --- | --- | --- |
@@ -61,7 +72,7 @@ engagement.
 | `#all-alawein-workspace` | contact, Cursor, Computer, Notion AI, Claude |
 | `#social` | contact, Cursor, Notion AI |
 
-## Invites still needed
+## Reported invite suggestions (not approved)
 
 - `/invite @Claude` in `#content-pipeline` and `#job-search`
 - `/invite @Computer` in `#posts`
@@ -78,6 +89,6 @@ engagement.
 | Grok Slack user | not found |
 | Granola MCP | needsAuth |
 | Supermemory MCP | error |
-| Vercel `sam-eval-roadmap` | Computer: delete (no repo, 84d) |
-| Vercel `guides-eval-loop-app` | Computer: delete (no repo, 88d) |
+| Vercel `sam-eval-roadmap` | Prior deletion suggestion (84d); current state and approval unverified |
+| Vercel `guides-eval-loop-app` | Prior deletion suggestion (88d); current state and approval unverified |
 | Drive Superfine Kitchen Order | owner `chaitanya@theagi.company`; anyone writer |

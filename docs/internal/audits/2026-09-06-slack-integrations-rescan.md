@@ -34,8 +34,10 @@ rename/merge/archive this cycle.
 | Artifacts only in draft PR #209 | **Correct.** Nothing lands until merge. |
 | 7/7 vs 3/7 channel reads | **Both true, different timestamps.** 3/7 at 14:32 UTC; invite sweep 13:54–15:16 UTC; 7/7 re-proved 03:15 UTC 2026-09-06. See `slack_channel_reads` in YAML. |
 | GitHub/Slack MCP ready vs error | **Both true, different runs.** Error on `bc-01698bb5`; ready on `bc-8ca615eb`. YAML now carries `_prior` columns. |
-| Validator un-runnable on main | **Correct until #209 merges.** | Remaining human actions: Claude Tag migration, Computer re-auth,
-Codex connect, workflow-bot engagement trial through 2026-09-19.
+| Validator un-runnable on main | **Correct until #209 merges.** |
+
+Remaining human actions: Claude Tag migration, Computer re-auth, Codex connect,
+workflow-bot engagement trial through 2026-09-19.
 
 ## Delta since 2026-09-05
 

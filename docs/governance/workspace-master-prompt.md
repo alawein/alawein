@@ -25,6 +25,8 @@ workflow, or style rules here.
 | --- | --- |
 | Agent system prompt | [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) |
 | Portfolio and repo geography | `catalog/index.yaml` (compiled to `catalog/repos.json`) |
+| Public profile README | `profile-from-guides.yaml` |
+| Project directives | [Directive mapping](workspace-standardization.md#directive-mapping-d-1-through-d-5) |
 | Batch execution | [`parallel-batch-execution.md`](parallel-batch-execution.md) |
 | Branch, commit, merge | [`commit-release-convention.md`](commit-release-convention.md) |
 | Current decisions | [`SSOT.md`](../../SSOT.md) |
@@ -36,8 +38,8 @@ These are non-negotiable. Violations block merge.
 ### R-1: Single source of truth
 
 - Every repo has an `SSOT.md` declaring canonical current state.
-- `alawein/README.md` is the org-level portfolio surface. It is generated from
-  the catalog. Do not hand-edit it.
+- `alawein/README.md` is the public profile surface. It is generated from
+  `profile-from-guides.yaml`. Do not hand-edit it.
 - Read `SSOT.md` and `AGENTS.md` before making non-trivial changes.
 
 ### R-2: Scope before action
@@ -59,8 +61,10 @@ These are non-negotiable. Violations block merge.
 
 ### R-5: Sync or it did not happen
 
-- Any structural change (rename, move, add, remove) must be reflected in the
-  catalog, then `python scripts/catalog/sync-readme.py`.
+- Reflect structural changes in `catalog/index.yaml`, then run
+  `python scripts/catalog/build-catalog.py` to update derived catalog files.
+- Reflect public profile changes in `profile-from-guides.yaml`, then run
+  `python scripts/catalog/sync-readme.py` to update the README.
 - Config, imports, deploy targets, and documentation must be updated together.
 - A change is incomplete until every reference is consistent.
 

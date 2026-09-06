@@ -40,6 +40,6 @@ prompts:
     consumers:
       - all
     test-suite: null
-    rollout-status: ga
+    rollout-status: canary
     deprecated-version: null
     sunset-date: null

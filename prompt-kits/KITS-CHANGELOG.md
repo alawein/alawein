@@ -26,6 +26,7 @@ major for breaking behavioral changes.
 
 - Point to `docs/governance/workspace-master-prompt.md` for R-1 through R-6
 - Keep portfolio inventory in `catalog/index.yaml`, not in prompt prose
+- Keep this revision at canary until the existing rollout gates pass
 
 ### 1.4.1 - 2026-09-04
 
@@ -80,6 +81,9 @@ major for breaking behavioral changes.
 - Keep R-1 through R-6 as the operating contract
 - Move portfolio inventory to `catalog/index.yaml`
 - Point session workflow and style rules at `prompt-kits/AGENT.md`
+- Preserve project requirements in the existing directive mapping
+- Name the separate catalog and public profile generation paths
+- Keep this revision at canary until the existing rollout gates pass
 
 ### 1.2.0 - 2026-03-20
 

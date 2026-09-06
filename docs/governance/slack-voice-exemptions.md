@@ -31,7 +31,7 @@ lists Slack surfaces that intentionally use a different register.
 
 | Surface | Rule |
 | --- | --- |
-| `#admin-ops` human and agent posts | Lead with claim; tables for evidence; no banned register |
+| `#admin-ops` human and agent posts | [`slack-agent-voice.md`](slack-agent-voice.md) for thread format; VOICE.md for long-form claims |
 | Future `#me-agents-eng`, `#me-agents-ops` | Same as `#admin-ops` |
 | Pinned posting guides | Short, imperative, no hype |
 

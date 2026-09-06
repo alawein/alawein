@@ -20,6 +20,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `claude-code-migration-prompts.md` | Reference | Migration prompt templates |
 | `claude-tag-migration.md` | Active | Admin runbook to migrate Slack from legacy Claude to Claude Tag |
 | `slack-voice-exemptions.md` | Active | Workflow-bot and Slack surfaces exempt from VOICE.md |
+| `slack-agent-voice.md` | Active | Thread and Canvas formatting for agent status updates |
 | `clean-slate-workflow.md` | Reference | Session reset procedure |
 | `commit-release-convention.md` | Active | Commit authority, messages, branches, merge, releases (SSOT) |
 | `credential-hygiene.md` | Active | Secret and token management |

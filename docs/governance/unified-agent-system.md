@@ -9,7 +9,7 @@ last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.4.1
+version: 1.4.2
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -265,7 +265,7 @@ One sentence: what Meshal or the next tagged agent should do.
 
 | Surface | Format |
 | --- | --- |
-| Slack thread | Short tables (≤2), checklist, link to PR or doc |
+| Slack thread | [`slack-agent-voice.md`](slack-agent-voice.md): labeled fields, no em dash, Canvas for tables |
 | `alawein` governance | Full tables, mermaid, versioned changelog |
 | Computer design | `slack-workspace-design.md` → Cursor commits runbook |
 
@@ -329,6 +329,11 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.4.2 (2026-09-06)
+
+- Added [`slack-agent-voice.md`](slack-agent-voice.md): thread and Canvas format
+  contract for agent status updates (no em dash, syntax highlighting, sparse emoji).
 
 ### v1.4.1 (2026-09-06)
 

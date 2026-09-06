@@ -1,0 +1,17 @@
+---
+description: Slack thread and Canvas voice for agent status updates to Meshal.
+alwaysApply: true
+---
+
+# Slack agent voice
+
+When posting to Slack threads for Meshal, follow
+`docs/governance/slack-agent-voice.md`.
+
+Quick rules:
+
+1. First line = ask or status (mobile preview).
+2. Bold field labels only (`*Next:*`). Backtick code paths and commands.
+3. No em dash. No pipe tables in threads. Use Canvas for tables.
+4. Line breaks between blocks. Max 6 lines (routine), 3 (FYI), 4 (incident).
+5. Mention Meshal only when a decision is needed. Emoji sparse, optional.

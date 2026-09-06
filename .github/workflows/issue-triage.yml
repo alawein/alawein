@@ -20,8 +20,8 @@ jobs:
 
             // Priority assignment — highest matching label wins
             let priority = 'P3'
-            if (labels.includes('security')) priority = 'P1'
-            else if (labels.includes('bug')) priority = 'P2'
+            if (labels.includes('security') || labels.includes('type:security')) priority = 'P1'
+            else if (labels.includes('bug') || labels.includes('type:bug')) priority = 'P2'
             else if (labels.includes('prompt-kit')) priority = 'P2'
 
             // Add priority label
@@ -34,11 +34,11 @@ jobs:
 
             // Routing guidance based on label
             let routingNote = ''
-            if (labels.includes('security')) {
+            if (labels.includes('security') || labels.includes('type:security')) {
               routingNote = '\n\n> **Security:** If this involves a secret leak or vulnerability, close this issue and follow [SECURITY.md](../SECURITY.md) for private disclosure.'
             } else if (labels.includes('prompt-kit') || labels.includes('llmops')) {
               routingNote = '\n\n> **Prompt Kit:** Follow the rollout protocol in `docs/governance/prompt-rollout.md` when implementing changes.'
-            } else if (labels.includes('docs')) {
+            } else if (labels.includes('docs') || labels.includes('type:docs')) {
               routingNote = '\n\n> **Docs:** Confirm the target doc class and freshness SLA in `docs/governance/documentation-contract.md`.'
             }
 

@@ -4,12 +4,12 @@ source: none
 sync: none
 sla: none
 title: Operating Model
-description: Source ownership, delivery states, evidence, and a project-scoped team workflow pilot
+description: Source ownership, delivery states, evidence, and Meshal's solo-maintainer workflow with independent tool review
 category: governance
 audience: contributors
 status: active
 author: Kohyr Inc.
-version: 1.2.0
+version: 1.3.0
 last_updated: 2026-09-06
 tags: [governance, operating-model, workflow, navigation]
 ---
@@ -18,7 +18,7 @@ tags: [governance, operating-model, workflow, navigation]
 
 Keep one authoritative home for each kind of work. This repository owns shared
 policy and public portfolio metadata. Product repositories own code, technical
-decisions, checks, and releases. Team projects may adopt Linear for delivery
+decisions, checks, and releases. Meshal-maintained projects may adopt Linear for delivery
 through the pilot below; existing task ownership remains until their recorded
 cutover. Notion holds shared briefs and onboarding. Slack carries coordination.
 
@@ -60,8 +60,9 @@ or a second editable task backlog. A failed read is unknown, not an empty result
    each overlapping file set.
 6. Run the documented checks and self-review the current diff. Record what ran,
    its revision, and its result. A written test is not an executed test.
-7. Obtain the review required by the repo's team, solo, or external-contributor
-   profile. AI review is advisory unless a separately approved rule says otherwise.
+7. Obtain independent tool review when feasible, then Meshal's final decision.
+   Preserve any stricter external-contributor or client review requirements.
+   Automated review is evidence, not a human GitHub approval.
 8. Merge under current protections, deliver the artifact, and verify acceptance.
 9. Close the work item with evidence and link any remaining debt.
 
@@ -84,21 +85,49 @@ evidence is pending. Move it to Done only when all acceptance criteria are met
 and the evidence is linked. Multi-PR work records every required PR or uses child
 issues. Test state transitions before enabling broader issue sync.
 
-Use native priority, assignee, project and state fields. Map a small work-kind
-and risk vocabulary; preserve repo-specific automation and evidence labels until
-their consumers are known. Store source and target IDs so imports are idempotent.
+Use native priority, assignee, project and state fields. Apply the shared
+[work-record-taxonomy.md](work-record-taxonomy.md) vocabulary; preserve
+repo-specific automation and evidence labels until their consumers are known.
+Store source and target IDs so imports are idempotent.
 Retain original records and links during cutover. Do not propagate deletion.
 
-Pilot one team and one low-risk repository. Verify capture, failed checks,
-requested changes, delivery, duplicate intake, and rollback. Expand only after
-the pilot has ten accepted deliveries, no duplicate replay, and a backup
-maintainer who can operate the path.
+Pilot the Meshal team and one low-risk repository. Verify capture, failed checks,
+requested changes, delivery, duplicate intake, and rollback. Expand delivery
+automation after ten accepted deliveries, no duplicate replay, and a recovery
+exercise Meshal can perform with another authorized tool. Read-only inventory
+and approved additive taxonomy batches can cover other repositories before this
+gate; those batches do not migrate their task authority or integrations.
 
 ## People and agents
 
-Each project names an owner and backup. Shared-team changes have a qualified
-reviewer; outside contributions have an internal sponsor. Do not infer ownership
-or skill from repository visibility, namespace, or commit counts.
+Meshal Alawein is the sole developer, accountable maintainer and final approver
+for this rollout. There is no assumed second human maintainer. Preserve actual
+repository namespace ownership and external/client approval requirements.
+
+Assign an executor and an independent reviewer per change. Rotate the tools to
+avoid a permanent author/reviewer pairing, using this default cycle:
+
+| Change | Executor | Independent reviewer | Final approver |
+| --- | --- | --- | --- |
+| A | Claude Code | Cursor | Meshal |
+| B | Cursor | ChatGPT | Meshal |
+| C | ChatGPT | Claude Code | Meshal |
+
+Any of the three tools, or Meshal, may plan, execute or review within assigned
+permissions and verified capability. The executor cannot certify its own work as
+independent review. A different tool reviews the exact revision with the task,
+diff, applicable policy and check evidence. Revisions after review require a
+recorded review of the new changes; earlier review is not silently carried forward.
+
+If the preferred reviewer is unavailable, use another authorized tool and record
+the substitution. If none is available, record independent review as not performed
+and retain Meshal's explicit risk decision. High-risk governance, security and
+release changes wait for independent review or a scoped exception from Meshal.
+No policy text grants a tool access, permits messages, or bypasses native controls.
+
+For each change record author, executor, reviewer, checks and Meshal's final
+approval using the [change evidence contract](work-record-taxonomy.md#change-evidence).
+An implementation instruction is not final approval of an unseen revision.
 
 Route agents by capability, access and verified runtime. Track source presence,
 installation, instruction loading and behavioral verification separately. Pin
@@ -117,14 +146,16 @@ bounded retries and replay must not create duplicates or regress newer state.
 
 Check schema and links on changes. Re-verify capability after integration
 changes. Review unowned work, duplicate tracking and failed links weekly during
-the pilot. Recheck skill sources and exceptions monthly. Keep an owner and a
-backup for every automation, plus a tested rollback.
+the pilot. Recheck skill sources and exceptions monthly. Meshal owns each
+automation; record a tested rollback, credential recovery path and an alternative
+authorized tool. Do not invent backup personnel or copy credentials between tools.
 
 ## Runbooks
 
 | Task | Reference |
 | --- | --- |
 | High-level workflow | [workflow.md](workflow.md) |
+| Shared taxonomy and change evidence | [work-record-taxonomy.md](work-record-taxonomy.md) |
 | Commit, branch, merge and release convention | [commit-release-convention.md](commit-release-convention.md) |
 | Git mechanics and recovery | [git-operations.md](git-operations.md) |
 | Focused branches and worktree hygiene | [clean-slate-workflow.md](clean-slate-workflow.md) |

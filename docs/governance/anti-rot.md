@@ -3,7 +3,7 @@ type: canonical
 source: none
 sync: none
 sla: on-change
-last_updated: 2026-06-07
+last_updated: 2026-09-06
 title: Anti-Rot Primitives
 description: Failure-mode guardrails for agentic work, their canonical homes, and the mapping onto existing platform tools.
 category: governance
@@ -38,6 +38,19 @@ Each named failure mode of agentic coding maps to a guardrail with a canonical h
 - Architecture decisions: `docs/adr/` (one decision per record, append-only,
   supersede rather than rewrite). Scaffold with `/new-adr`.
 - Known shortcuts and debt: `docs/DEBT.md`. Append with `/debt-log`.
+
+## Solo rollout evidence
+
+Meshal owns the review cadence and acceptance decision. Record author, executor,
+independent reviewer, revision, checks and final approval in the change's owning
+task or PR, following [work-record-taxonomy.md](work-record-taxonomy.md).
+Another authorized tool reviews the executor's revision when feasible; self-review
+is identified separately. A missing result or inaccessible setting is unverified.
+
+During rollout, review classification drift and unowned work weekly, and skill
+sources and exceptions monthly. Review the content before refreshing document
+dates. A new date, prepared test or tracked issue does not prove implementation.
+Preserve prior evidence and record the delivered outcome before marking work Done.
 
 ## Overlap with existing platform tools (do not re-add the kit versions)
 

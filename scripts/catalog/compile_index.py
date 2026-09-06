@@ -251,6 +251,10 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     promotion = repo.get("promotion")
     if isinstance(promotion, dict) and promotion:
         slim["promotion"] = deepcopy(promotion)
+    # Export must retain explicit ownership, including per-repository exceptions.
+    for key in ("owner", "maintainer", "docs_owner"):
+        if repo.get(key):
+            slim[key] = repo[key]
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -281,6 +285,7 @@ def compile_repo(
     bucket: str,
     entry: dict[str, Any],
     prior: dict[str, Any] | None,
+    ownership_defaults: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     slug = entry["slug"]
     defaults = deepcopy(BUCKET_DEFAULTS.get(bucket, BUCKET_DEFAULTS["core"]))
@@ -311,9 +316,9 @@ def compile_repo(
             "bucket": bucket,
             "lane": lane,
             "visibility": visibility,
-            "owner": "alawein",
-            "maintainer": "alawein-core",
-            "docs_owner": "alawein-core",
+            "owner": entry.get("owner") or repo.get("owner") or "alawein",
+            "maintainer": entry.get("maintainer") or (ownership_defaults or {}).get("maintainer") or repo.get("maintainer") or "unassigned",
+            "docs_owner": entry.get("docs_owner") or (ownership_defaults or {}).get("docs_owner") or repo.get("docs_owner") or "unassigned",
             "status": status,
             "homepage": homepage or repo.get("homepage") or f"https://github.com/alawein/{slug}",
             "canonical_description": about,
@@ -371,7 +376,7 @@ def compile_index(index: dict[str, Any], repos_data: dict[str, Any]) -> dict[str
         if slug in seen:
             raise SystemExit(f"duplicate slug in index.yaml: {slug}")
         seen.add(slug)
-        compiled.append(compile_repo(lane, bucket, entry, prior_by_slug.get(slug)))
+        compiled.append(compile_repo(lane, bucket, entry, prior_by_slug.get(slug), index.get("ownership_defaults")))
 
     missing = set(prior_by_slug) - seen
     if missing:

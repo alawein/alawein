@@ -94,6 +94,7 @@ last_updated: 2026-09-05
 - [unified-agent-system.md](governance/unified-agent-system.md)
 - [vercel-baseline.md](governance/vercel-baseline.md)
 - [version-history-audit.md](governance/version-history-audit.md)
+- [work-record-taxonomy.md](governance/work-record-taxonomy.md)
 - [workflow-pin-inventory-and-bundle-v1.md](governance/workflow-pin-inventory-and-bundle-v1.md)
 - [workflow.md](governance/workflow.md)
 - [workspace-layout-audit.md](governance/workspace-layout-audit.md)

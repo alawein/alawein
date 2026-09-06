@@ -16,7 +16,7 @@ prompts:
       - workspace-tools
       - atelier-rounaq
     test-suite: tests/prompts/test-agent-kit.py
-    rollout-status: ga
+    rollout-status: canary
     deprecated-version: null
     sunset-date: null
 
@@ -40,6 +40,6 @@ prompts:
     consumers:
       - all
     test-suite: null
-    rollout-status: ga
+    rollout-status: canary
     deprecated-version: null
     sunset-date: null

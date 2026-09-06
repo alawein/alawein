@@ -47,6 +47,12 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
 | `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
 
+**Planned v2 topology (draft):** see
+[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not
+rename channels until Phase 0 gate (2026-09-19) passes.
+
+**Claude Tag migration:** see [`claude-tag-migration.md`](claude-tag-migration.md).
+
 ### 1.2 Naming convention (locked)
 
 Format: `#<tier-prefix>-<domain>`

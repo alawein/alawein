@@ -283,7 +283,8 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [ ] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
 - [ ] Authenticate Computer in Slack
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
-- [ ] Enable Claude Tag or keep documenting legacy limits
+- [ ] Enable Claude Tag — runbook: `docs/governance/claude-tag-migration.md`
+- [ ] Execute channel v2 migration — plan: `docs/governance/slack-channel-migration-plan.md` (gate 2026-09-19)
 - [ ] Vercel browser inspect: `sam-eval-roadmap`, `guides-eval-loop-app`
 - [x] Add `validate-agent-integrations.py`: YAML schema + drift check in CI
 
@@ -296,7 +297,8 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 | [`workspace-resource-map.md`](workspace-resource-map.md) | Fleet resource ownership |
 | [`credential-hygiene.md`](credential-hygiene.md) | Secret handling |
 | [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml) | Machine-readable inventory SSOT |
-| [`cursor-mcp-repair.md`](cursor-mcp-repair.md) | Broken Cursor MCP repair steps |
+| [`claude-tag-migration.md`](claude-tag-migration.md) | Legacy → Claude Tag admin steps |
+| [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md) | Proposed v2 channel topology |
 
 ## 9. Claude handoff (remaining work)
 
@@ -318,6 +320,11 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.4.0 (2026-09-06)
+
+- Added Claude Tag migration runbook and draft Slack channel v2 migration plan.
+- Linked inventory and checklist rows to new governance docs.
 
 ### v1.3.0 (2026-09-06)
 

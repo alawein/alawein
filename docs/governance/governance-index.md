@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 audience: [ai-agents, contributors]
 ---
 
@@ -18,7 +18,8 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `changelog-entry.md` | Frozen | Superseded by commit-release-convention.md |
 | `claude-code-configuration-guide.md` | Active | Claude Code setup guide |
 | `claude-code-migration-prompts.md` | Reference | Migration prompt templates |
-| `claude-code-worked-examples.md` | Reference | Claude Code usage examples |
+| `claude-tag-migration.md` | Active | Admin runbook to migrate Slack from legacy Claude to Claude Tag |
+| `slack-channel-migration-plan.md` | Draft | Proposed v2 channel topology and phased rename plan |
 | `clean-slate-workflow.md` | Reference | Session reset procedure |
 | `commit-release-convention.md` | Active | Commit authority, messages, branches, merge, releases (SSOT) |
 | `credential-hygiene.md` | Active | Secret and token management |

@@ -42,8 +42,9 @@ agents:
     status: ready
     slack_user_id: U0AQQFJT8AC
     notes: >
-      Legacy Slack bot; Claude Tag not enabled. S2 late pass 14:02:51
-      (app table + Claude Tag prompt).
+      Legacy Slack bot; Claude Tag not enabled. Migration runbook:
+      docs/governance/claude-tag-migration.md. Target lane after migration:
+      #me-agents-ops (see slack-channel-migration-plan.md).
     last_verified: 2026-09-06
   - id: claude-code
     display_name: Claude Code

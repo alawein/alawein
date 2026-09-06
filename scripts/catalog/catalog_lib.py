@@ -891,6 +891,8 @@ def validate_governance_decisions(
 ) -> list[ValidationIssue]:
     """Validate the reversible Phase 3 governance extension."""
     issues: list[ValidationIssue] = []
+    if not isinstance(governance, dict):
+        return [ValidationIssue("error", "governance-decisions.yaml must be a mapping")]
     if governance.get("schema_version") != 1:
         issues.append(ValidationIssue("error", "governance-decisions.yaml schema_version must be 1"))
     if not governance.get("last_verified"):
@@ -899,10 +901,23 @@ def validate_governance_decisions(
     for section in ("roles", "fitness_products", "research_clusters"):
         if not isinstance(governance.get(section), list) or not governance[section]:
             issues.append(ValidationIssue("error", f"governance-decisions.yaml requires non-empty {section}"))
+        elif any(not isinstance(entry, dict) or not entry for entry in governance[section]):
+            issues.append(ValidationIssue("error", f"governance {section} entries must be non-empty mappings"))
+    if issues:
+        return issues
+
+    def has_evidence(entry: dict[str, Any]) -> bool:
+        evidence = entry.get("evidence")
+        return isinstance(evidence, list) and bool(evidence) and all(
+            isinstance(item, dict)
+            and isinstance(item.get("source"), str) and bool(item["source"].strip())
+            and isinstance(item.get("claim"), str) and bool(item["claim"].strip())
+            for item in evidence
+        )
 
     required_roles = {"knowledge-base", "workspace-tools", "incore"}
     roles = governance.get("roles") or []
-    role_ids = {entry.get("id") for entry in roles if isinstance(entry, dict)}
+    role_ids = {entry.get("id") for entry in roles if isinstance(entry.get("id"), str)}
     missing_roles = sorted(required_roles - role_ids)
     if missing_roles:
         issues.append(
@@ -910,41 +925,48 @@ def validate_governance_decisions(
         )
 
     for entry in roles:
-        if not isinstance(entry, dict):
-            continue
-        if "evidence" not in entry or "review_required" not in entry:
+        if not has_evidence(entry) or not isinstance(entry.get("review_required"), bool):
             issues.append(
                 ValidationIssue("error", f"governance role '{entry.get('id', '<unknown>')}' requires evidence and review_required")
             )
 
     for entry in governance.get("fitness_products") or []:
-        if not isinstance(entry, dict):
-            continue
         slug = entry.get("slug")
-        if slug not in repo_slugs:
+        if not isinstance(slug, str) or slug not in repo_slugs:
             issues.append(ValidationIssue("error", f"governance fitness product '{slug}' is not in catalog/repos.json"))
-        if "evidence" not in entry or "review_required" not in entry:
+        if not has_evidence(entry) or not isinstance(entry.get("review_required"), bool):
             issues.append(
                 ValidationIssue("error", f"governance fitness product '{slug}' requires evidence and review_required")
             )
 
     for cluster in governance.get("research_clusters") or []:
-        if not isinstance(cluster, dict):
-            continue
         members = cluster.get("members") or []
+        if not isinstance(members, list) or not members or not all(isinstance(member, str) for member in members):
+            issues.append(ValidationIssue("error", "governance research clusters require a non-empty member list"))
+            continue
         unknown = sorted(set(members) - repo_slugs)
         if unknown:
             issues.append(
                 ValidationIssue("error", f"governance research cluster '{cluster.get('id')}' has unknown members: {', '.join(unknown)}")
             )
-        if not cluster.get("preservation_guarantees"):
+        guarantees = cluster.get("preservation_guarantees")
+        if not isinstance(guarantees, list) or not guarantees or not all(isinstance(value, str) and value.strip() for value in guarantees):
             issues.append(
                 ValidationIssue("error", f"governance research cluster '{cluster.get('id')}' requires preservation_guarantees")
             )
+        if not isinstance(cluster.get("review_required"), bool):
+            issues.append(ValidationIssue("error", "governance research clusters require a boolean review_required"))
 
     batch = governance.get("workspace_batch") or {}
-    if batch.get("owning_repository") != "workspace-tools" or "installation_and_auth" not in batch:
+    if not isinstance(batch, dict) or batch.get("owning_repository") != "workspace-tools":
         issues.append(ValidationIssue("error", "governance workspace_batch must link ownership and installation_and_auth"))
+    contract = batch.get("installation_and_auth") if isinstance(batch, dict) else None
+    if (
+        not isinstance(contract, dict)
+        or not all(isinstance(contract.get(key), str) and contract[key].strip() for key in ("state", "source"))
+        or not isinstance(contract.get("review_required"), bool)
+    ):
+        issues.append(ValidationIssue("error", "governance installation_and_auth requires state, source and boolean review_required"))
 
     repz = next(
         (entry for entry in (governance.get("design_system") or {}).get("reference_consumers", [])

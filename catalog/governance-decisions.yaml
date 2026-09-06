@@ -37,7 +37,7 @@ roles:
 
 acknowledgements:
   - id: workspace-control-issue-20
-    subject: workspace-control issue #20
+    subject: "workspace-control issue #20"
     state: acknowledged
     review_required: true
     source: https://github.com/alawein/workspace-control/issues/20
@@ -106,7 +106,8 @@ workspace_batch:
     operator_install: python -m pip install -e .
     contributor_install: python -m pip install -e ".[dev]"
     github_auth_precedence: [GITHUB_TOKEN, GH_TOKEN, gh_cli]
-    note: The owning-repo canary defines and tests this contract. Keep review_required true until
+    note: >-
+      The owning-repo canary defines and tests this contract. Keep review_required true until
       workspace-tools PR #25 is reviewed and merged.
 
 design_system:

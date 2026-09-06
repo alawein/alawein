@@ -76,6 +76,7 @@ last_updated: 2026-09-06
 - [operator-command-cheatsheet.md](governance/operator-command-cheatsheet.md)
 - [package-namespace-matrix.md](governance/package-namespace-matrix.md)
 - [parallel-batch-execution.md](governance/parallel-batch-execution.md)
+- [phase3-workstream-e.md](governance/phase3-workstream-e.md)
 - [profile-sync-from-guides.md](governance/profile-sync-from-guides.md)
 - [prompt-rollout.md](governance/prompt-rollout.md)
 - [release-playbook.md](governance/release-playbook.md)

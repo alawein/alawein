@@ -105,23 +105,23 @@ Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
 
 ### Phase 2 — Team renames (week 2)
 
-5. Rename `admin-ops` → `team-ops`
-6. Rename `all-alawein-workspace` → `team-general`
-7. Rename `kohyr-dev` → `team-eng`
-8. Create `#team-eng-alerts`; point GitHub/CI bots there
+1. Rename `admin-ops` → `team-ops`
+2. Rename `all-alawein-workspace` → `team-general`
+3. Rename `kohyr-dev` → `team-eng`
+4. Create `#team-eng-alerts`; point GitHub/CI bots there
 
 ### Phase 3 — Content merge (week 3)
 
-9. Reroute workflow bots off `#posts`
-10. Rename `content-pipeline` → `team-content`
-11. Archive `#posts`
-12. Rename `social` → `team-social`; `job-search` → `me-job-search`
+1. Reroute workflow bots off `#posts`
+2. Rename `content-pipeline` → `team-content`
+3. Archive `#posts`
+4. Rename `social` → `team-social`; `job-search` → `me-job-search`
 
 ### Phase 4 — Inventory lock (week 4)
 
-13. Update `catalog/agent-integrations.yaml` `slack_channels` + snapshot
-14. Bump `slack-agent-runbook.md` to v2 channel lock
-15. `validate-agent-integrations.py --write-snapshot --strict`
+1. Update `catalog/agent-integrations.yaml` `slack_channels` + snapshot
+2. Bump `slack-agent-runbook.md` to v2 channel lock
+3. `validate-agent-integrations.py --write-snapshot --strict`
 
 ## 7. Open assumptions
 

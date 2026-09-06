@@ -199,13 +199,15 @@ integrations:
     last_verified: 2026-09-05
   - id: github-mcp
     provider: GitHub
-    cursor_mcp: ready
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready
+    cursor_mcp_cloud_agent_prior: error
     gh_cli: scoped
     status: locked
     notes: >
-      Desktop IDE 2026-09-05: plugin-github-github ready (T5). Cloud Agent
-      2026-09-06 03:15 UTC: Github namespace ready (discovery pass). Keep gh
-      CLI as fallback when MCP auth flakes.
+      Desktop IDE 2026-09-05 (T5): ready. Cloud Agent 2026-09-05 14:32 UTC
+      (bc-01698bb5): error. Cloud Agent 2026-09-06 03:15 UTC (bc-8ca615eb):
+      ready. Status is time-stamped; do not collapse runs.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
     last_verified: 2026-09-06
   - id: supermemory
@@ -219,12 +221,14 @@ integrations:
     last_verified: 2026-09-05
   - id: slack-mcp-duplicate
     provider: Slack
-    cursor_mcp: ready_redundant
+    cursor_mcp_desktop: ready
+    cursor_mcp_cloud_agent: ready_redundant
+    cursor_mcp_cloud_agent_prior: error
     status: redundant
     notes: >
-      Third-party Slack MCP is ready on Cloud Agent 2026-09-06 but redundant.
-      Canonical surface for Slack-launched agents is Cursor Slack Tools. Desktop
-      T7: plugin-slack-slack ready. Do not route agents to both in one turn.
+      Third-party Slack MCP: Cloud Agent error 2026-09-05 14:32 UTC
+      (bc-01698bb5), ready 2026-09-06 03:15 UTC (bc-8ca615eb) but redundant.
+      Canonical surface for Slack-launched agents is Cursor Slack Tools.
     repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
     last_verified: 2026-09-06
   - id: granola
@@ -260,6 +264,24 @@ integrations:
 slack:
   team_id: T0APHHXJV4J
   workspace: Alawein Workspace
+
+slack_channel_reads:
+  cloud_agent_current:
+    run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
+    verified_at: '2026-09-06T03:15:00Z'
+    listed: 7
+    readable: 7
+    evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
+  cloud_agent_prior:
+    run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
+    verified_at: '2026-09-05T14:32:00Z'
+    listed: 7
+    readable: 3
+    evidence: docs/internal/audits/2026-09-05-slack-integrations-rescan.md
+  ide_slack_mcp:
+    verified_at: '2026-09-05'
+    readable: 7
+    notes: Meshal desktop IDE Slack MCP; not re-probed on 2026-09-06 Cloud run.
 
 slack_channels:
   - id: admin-ops

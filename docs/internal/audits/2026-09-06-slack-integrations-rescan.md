@@ -21,9 +21,20 @@ Prior rescan: `docs/internal/audits/2026-09-05-slack-integrations-rescan.md`.
 ## Verdict
 
 Topology unchanged (seven public channels). **Membership and MCP posture
-improved:** Cursor now reads all seven channels; Cloud Agent GitHub and
-third-party Slack MCP namespaces are ready. No channel rename/merge/archive
-this cycle. Remaining human actions: Claude Tag migration, Computer re-auth,
+improved after the 2026-09-05 invite sweep:** Cursor Cloud Agent reads 7/7
+channels on this run (was 3/7 on the prior same-day scan at 14:32 UTC before
+invites completed). GitHub and third-party Slack MCP namespaces flipped from
+error to ready between runs `bc-01698bb5` and `bc-8ca615eb`. No channel
+rename/merge/archive this cycle.
+
+## Reconciliation (Claude Code sync, 2026-09-06)
+
+| Claim | Resolution |
+| --- | --- |
+| Artifacts only in draft PR #209 | **Correct.** Nothing lands until merge. |
+| 7/7 vs 3/7 channel reads | **Both true, different timestamps.** 3/7 at 14:32 UTC; invite sweep 13:54–15:16 UTC; 7/7 re-proved 03:15 UTC 2026-09-06. See `slack_channel_reads` in YAML. |
+| GitHub/Slack MCP ready vs error | **Both true, different runs.** Error on `bc-01698bb5`; ready on `bc-8ca615eb`. YAML now carries `_prior` columns. |
+| Validator un-runnable on main | **Correct until #209 merges.** | Remaining human actions: Claude Tag migration, Computer re-auth,
 Codex connect, workflow-bot engagement trial through 2026-09-19.
 
 ## Delta since 2026-09-05

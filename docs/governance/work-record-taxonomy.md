@@ -37,6 +37,10 @@ Preserve Linear's existing Bug, Feature and Improvement identities and names.
 Their group permits one primary kind. Use the same logical keys in exports;
 different product display names do not create separate vocabularies.
 
+For Meshal's requested Linear normalization, apply accountable ownership and
+Type to existing issues, including canceled onboarding records. Keep their
+state, original author and history intact; classification does not reopen work.
+
 ## Field authority
 
 | Field | Canonical writer | Representation elsewhere |
@@ -89,7 +93,7 @@ result. A delegated metadata batch may cite Meshal's authorization and its exact
 manifest; it must still retain before/after observations and exceptions. Do not
 create historical executor, reviewer or approval claims from commit counts.
 
-## Retroactive migration
+## GitHub retroactive migration
 
 1. Discover source IDs, current labels, consumers, timestamps and permissions.
 2. Save a manifest and before-values. Reuse the existing migration work item.

@@ -10,7 +10,8 @@ phases: [discover, preflight, mutate, validate, package, publish, summarize]
 scope:
   repositories: all-accessible-meshal-maintained
   linear: all-existing-issues
-  retroactive_writes: open-records-with-unambiguous-classification
+  github_retroactive_writes: open-records-with-unambiguous-classification
+  linear_retroactive_writes: owner-and-type-on-all-existing-issues-preserving-state
   history: preserve-identities-tags-releases-and-automation-labels
 canary:
   repository: alawein/alawein

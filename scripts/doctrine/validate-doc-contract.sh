@@ -424,6 +424,9 @@ def check_root_whitelist(errors: List[str]) -> None:
         if not entry.is_file():
             continue
         name = entry.name
+        # Linked worktrees use a .git pointer file, not governed repo content.
+        if name == ".git":
+            continue
         if name in R8_ALLOWED_ROOT_FILES:
             continue
         # Gitignored files are not considered part of the committed surface

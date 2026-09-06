@@ -172,6 +172,45 @@ def test_resolve_still_returns_normal_bucketed_path(tmp_path) -> None:
     assert resolved == workspace / "core" / "incore"
 
 
+def test_resolve_rejects_symlink_escaping_workspace(tmp_path) -> None:
+    # A symlink whose target lands outside the workspace must be rejected even
+    # though the *lexical* local_path never contains ".." or a leading "/".
+    workspace = tmp_path / "workspace"
+    (workspace / "core").mkdir(parents=True)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (workspace / "core" / "evilrepo").symlink_to(outside)
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "core/evilrepo"}, "evil")
+
+
+def test_resolve_rejects_symlink_redirecting_to_another_repo_within_workspace(tmp_path) -> None:
+    # Regression: a symlink planted *inside* the workspace that redirects one
+    # repo's bucketed directory onto another repo's checkout (e.g. this
+    # control-plane repo) never escapes the workspace boundary, so the plain
+    # relative_to(workspace) containment check alone does not catch it. A
+    # mutation caller (sync-github.sh's sync_repo) that trusted this path
+    # would silently write/delete files in the wrong checkout.
+    workspace = tmp_path / "workspace"
+    control_plane = workspace / "core" / "alawein"
+    control_plane.mkdir(parents=True)
+    (control_plane / "SENSITIVE.md").write_text("do not touch", encoding="utf-8")
+    (workspace / "apps").mkdir()
+    (workspace / "apps" / "evilrepo").symlink_to(control_plane)
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "apps/evilrepo"}, "evil")
+
+
+def test_resolve_accepts_real_bucketed_directory_with_no_symlinks(tmp_path) -> None:
+    # Sanity check: the new symlink-consistency guard must not reject a
+    # perfectly normal, symlink-free bucketed checkout.
+    workspace = tmp_path / "workspace"
+    real_dir = workspace / "core" / "incore"
+    real_dir.mkdir(parents=True)
+    resolved = _repo_paths.resolve_repo_dir(workspace, {"incore": "core/incore"}, "incore")
+    assert resolved == real_dir
+
+
 def test_load_local_path_map_preserves_absolute_paths_for_the_guard(tmp_path) -> None:
     # Regression: load_local_path_map used to strip() both leading and trailing
     # "/" off local_path, so a catalogued absolute path like "/etc/passwd" came

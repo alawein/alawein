@@ -86,18 +86,36 @@ jobs:
           repo_input="$REPO_INPUT"
           include_custom_properties="$INCLUDE_CUSTOM_PROPERTIES_INPUT"
 
-          if [ "$target" = "repo" ]; then
-            if [ -z "$repo_input" ]; then
-              echo "repo input is required when workflow_dispatch target=repo"
+          # Strict allowlist: reject anything that isn't one of the known
+          # target values instead of silently falling through to --all.
+          case "$target" in
+            all)
+              args+=(--all)
+              ;;
+            canary|cohort-1)
+              args+=(--cohort "$target")
+              ;;
+            repo)
+              if [ -z "$repo_input" ]; then
+                echo "repo input is required when workflow_dispatch target=repo"
+                exit 1
+              fi
+              if ! [[ "$repo_input" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; then
+                echo "repo input must be a valid repo slug (letters, digits, '.', '_', '-'; max 100 chars): $repo_input"
+                exit 1
+              fi
+              args+=(--repo "$repo_input")
+              ;;
+            *)
+              echo "Unsupported target: $target"
               exit 1
-            fi
-            args+=(--repo "$repo_input")
-          elif [ "$target" = "canary" ] || [ "$target" = "cohort-1" ]; then
-            args+=(--cohort "$target")
-          else
-            args+=(--all)
-          fi
+              ;;
+          esac
 
+          if [ "$include_custom_properties" != "true" ] && [ "$include_custom_properties" != "false" ]; then
+            echo "include_custom_properties must resolve to true or false, got: $include_custom_properties"
+            exit 1
+          fi
           if [ "$include_custom_properties" != "true" ]; then
             args+=(--no-custom-properties)
           fi
@@ -157,9 +175,22 @@ jobs:
             echo "ALAWEIN_METADATA_SYNC_TOKEN is required for apply mode."
             exit 1
           fi
-          if [ "$TARGET_INPUT" = "repo" ] && [ -z "$REPO_INPUT" ]; then
-            echo "repo input is required when workflow_dispatch target=repo"
-            exit 1
+          case "$TARGET_INPUT" in
+            canary|cohort-1|repo) ;;
+            *)
+              echo "Apply mode only supports target=canary, target=cohort-1, or target=repo. Got: $TARGET_INPUT"
+              exit 1
+              ;;
+          esac
+          if [ "$TARGET_INPUT" = "repo" ]; then
+            if [ -z "$REPO_INPUT" ]; then
+              echo "repo input is required when workflow_dispatch target=repo"
+              exit 1
+            fi
+            if ! [[ "$REPO_INPUT" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; then
+              echo "repo input must be a valid repo slug (letters, digits, '.', '_', '-'; max 100 chars): $REPO_INPUT"
+              exit 1
+            fi
           fi
 
       - name: Validate catalog and derived outputs
@@ -179,15 +210,34 @@ jobs:
           repo_input="$REPO_INPUT"
           include_custom_properties="$INCLUDE_CUSTOM_PROPERTIES_INPUT"
 
-          if [ "$target" = "repo" ]; then
-            args+=(--repo "$repo_input")
-          elif [ "$target" = "canary" ] || [ "$target" = "cohort-1" ]; then
-            args+=(--cohort "$target")
-          else
-            echo "Apply mode only supports target=canary, target=cohort-1, or target=repo."
+          # Re-validated here too: this step's env is independent of the
+          # previous step's, and defense-in-depth means no step trusts a
+          # dispatch input without its own strict format check.
+          case "$target" in
+            repo)
+              if [ -z "$repo_input" ]; then
+                echo "repo input is required when workflow_dispatch target=repo"
+                exit 1
+              fi
+              if ! [[ "$repo_input" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,99}$ ]]; then
+                echo "repo input must be a valid repo slug (letters, digits, '.', '_', '-'; max 100 chars): $repo_input"
+                exit 1
+              fi
+              args+=(--repo "$repo_input")
+              ;;
+            canary|cohort-1)
+              args+=(--cohort "$target")
+              ;;
+            *)
+              echo "Apply mode only supports target=canary, target=cohort-1, or target=repo."
+              exit 1
+              ;;
+          esac
+
+          if [ "$include_custom_properties" != "true" ] && [ "$include_custom_properties" != "false" ]; then
+            echo "include_custom_properties must resolve to true or false, got: $include_custom_properties"
             exit 1
           fi
-
           if [ "$include_custom_properties" != "true" ]; then
             args+=(--no-custom-properties)
           fi

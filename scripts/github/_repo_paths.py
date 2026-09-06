@@ -15,6 +15,7 @@ import stays safe in `--local` CI, partial clones, and tests.
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 
@@ -55,11 +56,17 @@ def resolve_repo_dir(workspace: Path, local_paths: dict[str, str], repo: str) ->
     load failure.
 
     Raises `PathEscapesWorkspaceError` when `repo` is catalogued and its
-    `local_path` is absolute or escapes `workspace` via `..` traversal.
-    Catalog data must never let this tooling write or delete files outside
-    the workspace (callers use this path for file writes and legacy-file
-    deletion). The uncatalogued flat-slug fallback (`repo` itself) is not
-    validated here since it is a plain repo slug, not catalog-sourced input.
+    `local_path` is absolute, escapes `workspace` via `..` traversal, or
+    resolves (following symlinks) somewhere other than its own lexical
+    location under `workspace`. That last check catches a symlink planted
+    *inside* the workspace that redirects a repo's bucketed directory onto
+    another repo's checkout (e.g. this control-plane repo) without ever
+    escaping the workspace boundary itself, which the traversal check alone
+    would not detect. Catalog data must never let this tooling write or
+    delete files outside the expected repository checkout (callers use this
+    path for file writes and legacy-file deletion). The uncatalogued
+    flat-slug fallback (`repo` itself) is not validated here since it is a
+    plain repo slug, not catalog-sourced input.
     """
     raw = local_paths.get(repo)
     if raw is None:
@@ -67,8 +74,19 @@ def resolve_repo_dir(workspace: Path, local_paths: dict[str, str], repo: str) ->
     if Path(raw).is_absolute():
         raise PathEscapesWorkspaceError(f"{repo}: local_path must be relative, got {raw!r}")
     candidate = workspace / raw
+    resolved_workspace = workspace.resolve()
+    resolved_candidate = candidate.resolve()
     try:
-        candidate.resolve().relative_to(workspace.resolve())
+        resolved_candidate.relative_to(resolved_workspace)
     except ValueError:
         raise PathEscapesWorkspaceError(f"{repo}: local_path escapes workspace ({raw!r})") from None
+    # Lexical (symlink-blind) expectation: workspace's own resolved root plus
+    # a `..`-collapsed but otherwise untouched `raw`. If a symlink anywhere
+    # under the workspace redirects the path, the filesystem-resolved
+    # `resolved_candidate` above will diverge from this expectation.
+    expected = resolved_workspace / os.path.normpath(raw)
+    if resolved_candidate != expected:
+        raise PathEscapesWorkspaceError(
+            f"{repo}: local_path resolves through an unexpected symlink ({raw!r})"
+        )
     return candidate

@@ -222,6 +222,7 @@ def load_catalogs() -> dict[str, Any]:
         "workflows": load_json(CATALOG_DIR / "workflows.json"),
         "automations": load_json(CATALOG_DIR / "automations.json"),
         "components": load_json(CATALOG_DIR / "components.json"),
+        "governance_decisions": load_yaml(CATALOG_DIR / "governance-decisions.yaml"),
     }
 
 
@@ -696,6 +697,7 @@ def validate_promotion(
 def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
     repos = repo_entries(catalogs)
+    governance = catalogs.get("governance_decisions") or {}
     taxonomy = catalogs["taxonomy"].get("axes", {})
     profile = profile_config()
 
@@ -745,6 +747,7 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
             )
 
     issues.extend(validate_promotion(repos, [str(p) for p in profile_pins], today=date.today()))
+    issues.extend(validate_governance_decisions(governance, {repo["slug"] for repo in repos}))
 
     for repo in repos:
         missing = [field for field in REQUIRED_REPO_FIELDS if field not in repo]
@@ -880,4 +883,74 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
             )
         )
 
+    return issues
+
+
+def validate_governance_decisions(
+    governance: dict[str, Any], repo_slugs: set[str]
+) -> list[ValidationIssue]:
+    """Validate the reversible Phase 3 governance extension."""
+    issues: list[ValidationIssue] = []
+    if governance.get("schema_version") != 1:
+        issues.append(ValidationIssue("error", "governance-decisions.yaml schema_version must be 1"))
+    if not governance.get("last_verified"):
+        issues.append(ValidationIssue("error", "governance-decisions.yaml requires last_verified"))
+
+    for section in ("roles", "fitness_products", "research_clusters"):
+        if not isinstance(governance.get(section), list) or not governance[section]:
+            issues.append(ValidationIssue("error", f"governance-decisions.yaml requires non-empty {section}"))
+
+    required_roles = {"knowledge-base", "workspace-tools", "incore"}
+    roles = governance.get("roles") or []
+    role_ids = {entry.get("id") for entry in roles if isinstance(entry, dict)}
+    missing_roles = sorted(required_roles - role_ids)
+    if missing_roles:
+        issues.append(
+            ValidationIssue("error", f"governance-decisions.yaml missing roles: {', '.join(missing_roles)}")
+        )
+
+    for entry in roles:
+        if not isinstance(entry, dict):
+            continue
+        if "evidence" not in entry or "review_required" not in entry:
+            issues.append(
+                ValidationIssue("error", f"governance role '{entry.get('id', '<unknown>')}' requires evidence and review_required")
+            )
+
+    for entry in governance.get("fitness_products") or []:
+        if not isinstance(entry, dict):
+            continue
+        slug = entry.get("slug")
+        if slug not in repo_slugs:
+            issues.append(ValidationIssue("error", f"governance fitness product '{slug}' is not in catalog/repos.json"))
+        if "evidence" not in entry or "review_required" not in entry:
+            issues.append(
+                ValidationIssue("error", f"governance fitness product '{slug}' requires evidence and review_required")
+            )
+
+    for cluster in governance.get("research_clusters") or []:
+        if not isinstance(cluster, dict):
+            continue
+        members = cluster.get("members") or []
+        unknown = sorted(set(members) - repo_slugs)
+        if unknown:
+            issues.append(
+                ValidationIssue("error", f"governance research cluster '{cluster.get('id')}' has unknown members: {', '.join(unknown)}")
+            )
+        if not cluster.get("preservation_guarantees"):
+            issues.append(
+                ValidationIssue("error", f"governance research cluster '{cluster.get('id')}' requires preservation_guarantees")
+            )
+
+    batch = governance.get("workspace_batch") or {}
+    if batch.get("owning_repository") != "workspace-tools" or "installation_and_auth" not in batch:
+        issues.append(ValidationIssue("error", "governance workspace_batch must link ownership and installation_and_auth"))
+
+    repz = next(
+        (entry for entry in (governance.get("design_system") or {}).get("reference_consumers", [])
+         if isinstance(entry, dict) and entry.get("slug") == "repz"),
+        None,
+    )
+    if not repz or repz.get("compatibility") != "unproven" or repz.get("review_required") is not True:
+        issues.append(ValidationIssue("error", "repz design-system compatibility must remain unproven and review_required"))
     return issues

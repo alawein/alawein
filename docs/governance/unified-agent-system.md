@@ -9,7 +9,7 @@ last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.4.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 

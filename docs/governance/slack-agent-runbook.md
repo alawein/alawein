@@ -51,6 +51,10 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not
 rename channels until Phase 0 gate (2026-09-19) passes.
 
+**Voice exemptions:** workflow bots and system messages are exempt from
+[`VOICE.md`](../style/VOICE.md); see
+[`slack-voice-exemptions.md`](slack-voice-exemptions.md).
+
 **Claude Tag migration:** see [`claude-tag-migration.md`](claude-tag-migration.md).
 
 ### 1.2 Naming convention (locked)

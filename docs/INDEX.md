@@ -91,6 +91,7 @@ last_updated: 2026-09-06
 - [skills-install-policy.md](governance/skills-install-policy.md)
 - [slack-agent-runbook.md](governance/slack-agent-runbook.md)
 - [slack-channel-migration-plan.md](governance/slack-channel-migration-plan.md)
+- [slack-voice-exemptions.md](governance/slack-voice-exemptions.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
 - [unified-agent-system.md](governance/unified-agent-system.md)

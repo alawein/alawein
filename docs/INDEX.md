@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 ---
 
 # Index: alawein
@@ -54,6 +54,7 @@ last_updated: 2026-09-05
 - [claude-code-configuration-guide.md](governance/claude-code-configuration-guide.md)
 - [claude-code-migration-prompts.md](governance/claude-code-migration-prompts.md)
 - [claude-code-worked-examples.md](governance/claude-code-worked-examples.md)
+- [claude-tag-migration.md](governance/claude-tag-migration.md)
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
 - [commit-release-convention.md](governance/commit-release-convention.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
@@ -89,6 +90,9 @@ last_updated: 2026-09-05
 - [skills-agents-unification.md](governance/skills-agents-unification.md)
 - [skills-install-policy.md](governance/skills-install-policy.md)
 - [slack-agent-runbook.md](governance/slack-agent-runbook.md)
+- [slack-agent-voice.md](governance/slack-agent-voice.md)
+- [slack-channel-migration-plan.md](governance/slack-channel-migration-plan.md)
+- [slack-voice-exemptions.md](governance/slack-voice-exemptions.md)
 - [slash-commands-catalog.md](governance/slash-commands-catalog.md)
 - [tooling-quality-gates.md](governance/tooling-quality-gates.md)
 - [unified-agent-system.md](governance/unified-agent-system.md)

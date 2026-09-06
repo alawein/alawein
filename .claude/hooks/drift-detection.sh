@@ -11,7 +11,7 @@ if [ ! -f "$BASELINE" ]; then
   exit 1
 fi
 
-python - "$BASELINE" "$REPO_ROOT" <<'PY'
+python3 - "$BASELINE" "$REPO_ROOT" <<'PY'
 import json
 import hashlib
 import sys

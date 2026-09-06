@@ -8,7 +8,7 @@ TODAY="$(date '+%Y-%m-%d')"
 
 cd "$REPO_ROOT"
 
-python - "$BASELINE" "$TODAY" <<'PY'
+python3 - "$BASELINE" "$TODAY" <<'PY'
 import json
 import hashlib
 import sys

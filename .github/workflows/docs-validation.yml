@@ -84,6 +84,7 @@ jobs:
           python scripts/catalog/build-catalog.py --check
           python scripts/catalog/validate-catalog.py --strict
           python scripts/catalog/validate-projects-json.py
+          python scripts/catalog/validate-agent-integrations.py --strict
           python scripts/doctrine/build-style-rules.py --check
 
       - name: Verify voice-unified.md is in sync with sources

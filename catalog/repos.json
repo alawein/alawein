@@ -328,6 +328,61 @@
       }
     },
     {
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "version_source": "package.json",
+      "name": "Chshlab Paper",
+      "slug": "chshlab-paper",
+      "legacy_slugs": [],
+      "repo": "alawein/chshlab-paper",
+      "local_path": "lab/chshlab-paper",
+      "bucket": "lab",
+      "lane": "lab",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/chshlab-paper",
+      "canonical_description": "Citable paper artifact (arXiv source, notebooks, rendered paper) for CHSH Lab, kept independently accessible if chshlab goes private.",
+      "tags": [
+        "Latex",
+        "Jupyter Notebook",
+        "Html"
+      ],
+      "github_topics": [
+        "chshlab-paper",
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "latex",
+        "jupyter-notebook",
+        "html"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "Event Discovery Framework",
       "slug": "edfp",
       "legacy_slugs": [
@@ -1536,6 +1591,61 @@
       "lane": "platform"
     },
     {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Dotclaude",
+      "slug": "dotclaude",
+      "legacy_slugs": [],
+      "repo": "alawein/dotclaude",
+      "local_path": "core/dotclaude",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/dotclaude",
+      "canonical_description": "Private backup and version control for the personal Claude Code / cross-tool agent platform configuration (agents, skills, hooks, doctrine, prompt kits).",
+      "tags": [
+        "Python",
+        "Markdown",
+        "Powershell"
+      ],
+      "github_topics": [
+        "dotclaude",
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "markdown",
+        "powershell"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "incore",
       "slug": "incore",
       "legacy_slugs": [],
@@ -1597,6 +1707,58 @@
         "infrastructure"
       ],
       "lane": "platform"
+    },
+    {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Kcompiler",
+      "slug": "kcompiler",
+      "legacy_slugs": [],
+      "repo": "alawein/kcompiler",
+      "local_path": "core/kcompiler",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/kcompiler",
+      "canonical_description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
+      "tags": [
+        "Python",
+        "Sqlite"
+      ],
+      "github_topics": [
+        "kcompiler",
+        "python",
+        "sqlite"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "sqlite"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
     },
     {
       "name": "knowledge-base",
@@ -1802,6 +1964,61 @@
         "infrastructure"
       ],
       "lane": "platform"
+    },
+    {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "Repo Drift",
+      "slug": "repo-drift",
+      "legacy_slugs": [],
+      "repo": "alawein/repo-drift",
+      "local_path": "core/repo-drift",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "alawein-core",
+      "docs_owner": "alawein-core",
+      "status": "active",
+      "homepage": "https://github.com/alawein/repo-drift",
+      "canonical_description": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+      "tags": [
+        "Python",
+        "Cli",
+        "Github Actions"
+      ],
+      "github_topics": [
+        "repo-drift",
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "cli",
+        "github-actions"
+      ],
+      "last_verified": "2026-09-05",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
     },
     {
       "name": "Workspace Control",

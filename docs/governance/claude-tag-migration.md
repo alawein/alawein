@@ -39,7 +39,7 @@ the Claude org (Admin alone cannot complete setup).
 
 ## 2. Pair workspace (one-time)
 
-1. Open [claude.ai/admin-settings/claude-tag](https://claude.ai/admin-settings/claude-tag).
+1. Open the [Claude Tag admin console](https://claude.com/docs/claude-tag/admins/migrate-from-earlier) (Settings → Claude Tag).
 2. In any Slack channel, send: `@Claude connect`
 3. Copy the pairing code from Claude's reply.
 4. Paste the code in the Claude admin console and finish workspace pairing.

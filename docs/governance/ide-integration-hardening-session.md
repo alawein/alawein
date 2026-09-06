@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: IDE integration hardening session
 description: Copy-paste Cursor IDE session prompt for end-to-end Slack, MCP, and agent stack hardening after the 2026-09-05 unified agent audit.
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -356,7 +356,7 @@ One-line next step for anything still blocked.
 | Cursor channel read | admin-ops only | Cloud reads 7/7 | lane C invites + 15:26 re-probe |
 | YAML | pre-hardening | refreshed 2026-09-05T15:26:00Z | `catalog/agent-integrations.yaml` |
 
-Thread: https://alaweinworkspace.slack.com/archives/C0B9SRMDJFK/p1788618711648629?thread_ts=1788618711.648629&cid=C0B9SRMDJFK
+Thread: `#admin-ops` lane coordination (2026-09-05; Slack permalink auth-gated).
 
 ### Changelog
 

@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: New Repo Bootstrap Guide
 description: End-to-end process for adding a new doctrine-compliant repo to the alawein workspace
-last_updated: 2026-07-25
+last_updated: 2026-09-06
 category: governance
 audience: [contributors, ai-agents]
 status: active
@@ -67,9 +67,15 @@ repository root:
 - `docs/governance/workspace-master-prompt.md`
 - `docs/governance/workflow.md`
 
-Copy from `templates/scaffolding/` where a template exists:
+Choose the README path from the catalog's visibility. For an approved public
+product repository, copy the public scaffold below. For a private repository,
+keep or construct the [Repo Framework record card](governance/repo-framework.md#private-repository-record-card)
+and the [private type sections](governance/repo-topology-canon.md#private-legacy-section-order-by-type).
+Fill commands and links from the repository. Do not replace a private README
+with a public scaffold.
 
 ```bash
+# Approved public product repositories only:
 cp ../alawein/templates/scaffolding/README.product.md README.md
 cp ../alawein/templates/scaffolding/docs-README.md docs/README.md
 ```

@@ -22,11 +22,26 @@ lanes:
     legacy_slugs:
     - aw-devkit
     - devkit
+  - slug: dotclaude
+    about: Private backup and version control for the personal Claude Code / cross-tool
+      agent platform configuration (agents, skills, hooks, doctrine, prompt kits).
+    url: https://github.com/alawein/dotclaude
+    stack:
+    - python
+    - markdown
+    - powershell
   - slug: incore
     about: CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and
       querying across agent-oriented repos.
     name: incore
     url: https://github.com/alawein/incore
+  - slug: kcompiler
+    about: Knowledge compiler that turns evidence into claims and a compiled wiki,
+      with a curated personal knowledge base.
+    url: https://github.com/alawein/kcompiler
+    stack:
+    - python
+    - sqlite
   - slug: knowledge-base
     about: Private local workspace records and operating tools.
     name: Command Center
@@ -47,6 +62,14 @@ lanes:
       tooling packages.
     name: prompty
     url: https://github.com/alawein/prompty
+  - slug: repo-drift
+    about: Configurable CLI and GitHub Action that validates repository claims
+      and configuration against declared rules.
+    url: https://github.com/alawein/repo-drift
+    stack:
+    - python
+    - cli
+    - github-actions
   - slug: workspace-control
     about: Workspace control-plane inventory engine, registry, and operational tooling.
     url: https://github.com/alawein/workspace-control
@@ -123,6 +146,14 @@ lanes:
       tier: P0
       scanned: '2026-08-29'
       notes: P0 via README redo PR #73, merged 67046374; see docs/internal/audits/2026-08-28-public-benchmark-patterns.md
+  - slug: chshlab-paper
+    about: Citable paper artifact (arXiv source, notebooks, rendered paper) for
+      CHSH Lab, kept independently accessible if chshlab goes private.
+    url: https://github.com/alawein/chshlab-paper
+    stack:
+    - latex
+    - jupyter-notebook
+    - html
   - slug: edfp
     about: Physics-inspired video event detection with FFT spectral analysis and hierarchical
       filtering.

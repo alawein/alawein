@@ -36,12 +36,12 @@ Ownership determines the home org. Inside an org, content category determines th
 
 ## Bucket decision tree (inside `alawein/`)
 
-    Control plane, shared infra, design system, workspace tooling?  -> core/
-    Shipped or monetizing product, or family-maintained app?          -> apps/
-    Research, simulation, experiment, or early-stage bet?             -> lab/
-    Public portfolio or identity site?                                -> sites/
-    Interview, contract, or employer-adjacent work?                   -> work/
-    Inactive but worth preserving?                                    -> _archive/  (Category: archive)
+    Control plane, shared infra, design system, workspace tooling?  → core/
+    Shipped or monetizing product, or family-maintained app?          → apps/
+    Research, simulation, experiment, or early-stage bet?             → lab/
+    Public portfolio or identity site?                                → sites/
+    Interview, contract, or employer-adjacent work?                   → work/
+    Inactive but worth preserving?                                    → _archive/  (Category: archive)
 
 Six active buckets replace the prior eight (`products`, `personal`, `family`, `research`, `tools`, `ventures`, `jobs-projects`). Canonical map: `catalog/buckets.yaml`.
 

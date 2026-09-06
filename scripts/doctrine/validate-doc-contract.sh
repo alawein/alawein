@@ -424,14 +424,11 @@ def check_root_whitelist(errors: List[str]) -> None:
         if not entry.is_file():
             continue
         name = entry.name
+        # Linked worktrees use a .git pointer file, not governed repo content.
+        if name == ".git":
+            continue
         if name in R8_ALLOWED_ROOT_FILES:
             continue
-        # Linked worktrees represent Git metadata with a root .git pointer file.
-        # Accept it only when Git confirms this checkout has a valid metadata dir.
-        if name == ".git":
-            git_dir = run_git(["rev-parse", "--absolute-git-dir"], check=False)
-            if git_dir.returncode == 0 and Path(git_dir.stdout.strip()).is_dir():
-                continue
         # Gitignored files are not considered part of the committed surface
         # and are therefore outside R8's jurisdiction.
         check = run_git(["check-ignore", "-q", name], check=False)

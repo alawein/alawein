@@ -103,7 +103,7 @@ def runnable_body(section: Section, *, through_line: int | None = None) -> bool:
 def looks_like_command(value: str) -> bool:
     text = re.sub(r"^\s*(?:[$>]\s*)?", "", value).strip()
     return bool(re.match(
-        r"^(?:python\d*(?:\.\d+)?\s+(?:-[\w-]+|[\w./\\-]+\.py\b)|pip\d*\s+\w|uv\s+\w|npm\s+\w|pnpm\s+\w|yarn\s+\w|bun\s+\w|make(?:\s+\w+)?$|cargo\s+\w|go\s+\w|docker\s+\w|pytest(?:\s|$)|\.\\|\.\/|[\w.-]+\s+--?[\w-]+\b)",
+        r"^(?:python\d*(?:\.\d+)?\s+(?:-[\w-]+|[\w./\\-]+\.py\b)|pip\d*\s+\w|uv\s+\w|npm\s+\w|pnpm\s+\w|yarn\s+\w|bun\s+\w|make(?:\s+\w+)?$|cargo\s+\w|go\s+\w|docker\s+\w|git\s+log\b|pytest(?:\s|$)|\.\\|\.\/|[\w.-]+\s+--?[\w-]+\b)",
         text,
         re.IGNORECASE,
     ))

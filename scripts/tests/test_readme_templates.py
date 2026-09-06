@@ -47,6 +47,37 @@ class ReadmeTemplateTests(unittest.TestCase):
             h2s = _h2s((TEMPLATES / name).read_text(encoding="utf-8"))
             self.assertEqual(h2s, README_SECTIONS[rtype], name)
 
+    def test_instantiated_public_templates_pass_section_validation(self) -> None:
+        import importlib.util
+
+        script = ROOT / "scripts/doctrine/validate-readme-topology.py"
+        spec = importlib.util.spec_from_file_location("template_topology", script)
+        mod = importlib.util.module_from_spec(spec)
+        with mock.patch.object(sys, "path", [str(script.parent), *sys.path]):
+            spec.loader.exec_module(mod)
+        replacements = {
+            "name": "example", "value_proposition": "Run a documented example.",
+            "install_command": "npm install", "dev_command": "npm run dev",
+            "test_command": "npm test", "reproduce_command": "python reproduce.py",
+            "validate_command": "python validate.py",
+        }
+        for name, rtype in TEMPLATE_TYPES.items():
+            with self.subTest(template=name):
+                text = (TEMPLATES / name).read_text(encoding="utf-8")
+                for key, value in replacements.items():
+                    text = text.replace("{{" + key + "}}", value)
+                repo = {
+                    "slug": "example", "type": rtype, "visibility": "public",
+                    "status": "archived" if rtype == "archive" else "active",
+                }
+                self.assertEqual(mod.check_readme_sections(text, repo), [])
+                voice_script = ROOT / "scripts/doctrine/validate-readme-voice.py"
+                voice_spec = importlib.util.spec_from_file_location("template_voice", voice_script)
+                voice = importlib.util.module_from_spec(voice_spec)
+                with mock.patch.object(sys, "path", [str(voice_script.parent), *sys.path]):
+                    voice_spec.loader.exec_module(voice)
+                self.assertEqual(voice.check_public_contract(text, repo), [])
+
     def test_no_em_dash(self) -> None:
         for name in TEMPLATE_TYPES:
             text = (TEMPLATES / name).read_text(encoding="utf-8")

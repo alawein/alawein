@@ -8,7 +8,7 @@ kit-type: system-prompt
 version: 1.4.1
 parent-version: 1.4.0
 last-verified: 2026-09-04
-last_updated: 2026-09-04
+last_updated: 2026-09-05
 change-summary: "Correct bucketed workspace paths; resolve siblings via catalog local_path"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
@@ -56,7 +56,7 @@ work to the same technical and editorial standard as the workspace owner.
 ```
 
 Canary order for style changes:
-`alawein -> meshal-web -> workspace-tools -> alembiq -> rest`
+`alawein → meshal-web → workspace-tools → alembiq → rest`
 
 ## Voice and style
 

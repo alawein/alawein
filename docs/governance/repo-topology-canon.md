@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -369,14 +369,21 @@ sections until a separately approved private migration.
 This table applies only to private repositories that retain the internal
 record-card system. Public repositories use the front-door sequence above.
 
-| type | Order (H2 names) | Template |
-|------|------------------|----------|
-| product | Value proposition → Demo and status → Quick start → Architecture → Deploy (if web) → Docs map → Ownership | `README.product.md` |
-| research | Abstract → Status → Runtime requirements → Reproducibility → Datasets → Docs map | `README.research.md` |
-| tooling | Purpose → Install → Commands → Architecture → Docs map → Consumers → Release and versioning | `README.tooling.md` |
-| infra | Same as tooling | `README.tooling.md` |
-| governance | Purpose → Catalog SSOT → Validators → Docs map | New `README.governance.md` (Wave 0) |
-| archive | Status → Archive reason → Contents → Access rules → Docs map | New `README.archive.md` (Wave 0) |
+| type | Order (H2 names) |
+|------|------------------|
+| product | Value proposition → Demo and status → Quick start → Architecture → Deploy (if web) → Docs map → Ownership |
+| research | Abstract → Status → Runtime requirements → Reproducibility → Datasets → Docs map |
+| tooling | Purpose → Install → Commands → Architecture → Docs map → Consumers → Release and versioning |
+| infra | Same as tooling |
+| governance | Purpose → Catalog SSOT → Validators → Docs map |
+| archive | Status → Archive reason → Contents → Access rules → Docs map |
+
+For a private README, start with the metadata record card in
+[Repo Framework](repo-framework.md#private-repository-record-card), then add the type's
+sections above. Keep an existing valid private README when available. Fill its
+commands and links from the actual repository. The scaffolds in
+`templates/scaffolding/README.*.md` implement the public contract and must not
+replace a private README.
 
 ### Architecture section rules
 

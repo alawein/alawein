@@ -1,0 +1,111 @@
+{
+  "generated_from": "catalog/agent-integrations.yaml",
+  "lastVerified": "2026-09-06T03:15:00Z",
+  "slack_channels": [
+    {
+      "id": "admin-ops",
+      "slack_id": "C0B9SRMDJFK",
+      "cursor_can_read": true
+    },
+    {
+      "id": "posts",
+      "slack_id": "C0APWF615H7",
+      "cursor_can_read": true
+    },
+    {
+      "id": "kohyr-dev",
+      "slack_id": "C0B9JJZSVQT",
+      "cursor_can_read": true
+    },
+    {
+      "id": "content-pipeline",
+      "slack_id": "C0B9R0NS4QJ",
+      "cursor_can_read": true
+    },
+    {
+      "id": "job-search",
+      "slack_id": "C0B9NTUUGR4",
+      "cursor_can_read": true
+    },
+    {
+      "id": "all-alawein-workspace",
+      "slack_id": "C0APE5RSWAZ",
+      "cursor_can_read": true
+    },
+    {
+      "id": "social",
+      "slack_id": "C0AP24SRVQF",
+      "cursor_can_read": true
+    }
+  ],
+  "agents": [
+    {
+      "id": "cursor-cloud"
+    },
+    {
+      "id": "claude-slack"
+    },
+    {
+      "id": "claude-code"
+    },
+    {
+      "id": "computer-perplexity"
+    },
+    {
+      "id": "chatgpt-slack"
+    },
+    {
+      "id": "codex-slack"
+    },
+    {
+      "id": "notion-ai-slack"
+    },
+    {
+      "id": "github-slack"
+    }
+  ],
+  "integrations": [
+    {
+      "id": "gmail"
+    },
+    {
+      "id": "google-calendar"
+    },
+    {
+      "id": "google-drive"
+    },
+    {
+      "id": "notion"
+    },
+    {
+      "id": "railway"
+    },
+    {
+      "id": "vercel"
+    },
+    {
+      "id": "github-mcp"
+    },
+    {
+      "id": "supermemory"
+    },
+    {
+      "id": "slack-mcp-duplicate"
+    },
+    {
+      "id": "granola"
+    },
+    {
+      "id": "playwright"
+    },
+    {
+      "id": "treg"
+    },
+    {
+      "id": "fireflies"
+    },
+    {
+      "id": "godaddy"
+    }
+  ]
+}

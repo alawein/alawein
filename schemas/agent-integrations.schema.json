@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./agent-integrations.schema.json",
+  "title": "Agent and integration inventory",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "lastVerified",
+    "owner",
+    "account_canon",
+    "agents",
+    "integrations",
+    "slack",
+    "slack_channels"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "minLength": 1 },
+    "lastVerified": { "type": "string", "minLength": 1 },
+    "owner": { "type": "string", "format": "email" },
+    "account_canon": { "type": "string", "format": "email" },
+    "note": { "type": "string" },
+    "agents": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/agent" }
+    },
+    "workflow_bots": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/workflow_bot" }
+    },
+    "integrations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/integration" }
+    },
+    "slack": { "$ref": "#/$defs/slack_meta" },
+    "slack_channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/slack_channel" }
+    },
+    "cursor_mcp_cloud_agent": { "$ref": "#/$defs/cloud_mcp_matrix" }
+  },
+  "$defs": {
+    "agent": {
+      "type": "object",
+      "required": ["id", "display_name", "surfaces", "status", "last_verified"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "slack_handle": { "type": "string" },
+        "slack_user_id": { "type": "string", "pattern": "^U[A-Z0-9]+$" },
+        "status": {
+          "type": "string",
+          "enum": ["ready", "needs_auth", "replaced", "dropped", "unavailable"]
+        },
+        "last_verified": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "workflow_bot": {
+      "type": "object",
+      "required": ["id", "schedule", "output", "status"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "schedule": { "type": "string", "minLength": 1 },
+        "output": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "integration": {
+      "type": "object",
+      "required": ["id", "provider", "status", "last_verified"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "provider": { "type": "string", "minLength": 1 },
+        "status": {
+          "type": "string",
+          "enum": [
+            "locked",
+            "available",
+            "needs_auth",
+            "unconnected",
+            "dropped",
+            "remove",
+            "redundant",
+            "slack_installed",
+            "partial"
+          ]
+        },
+        "last_verified": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      },
+      "additionalProperties": true
+    },
+    "slack_meta": {
+      "type": "object",
+      "required": ["team_id", "workspace"],
+      "properties": {
+        "team_id": { "type": "string", "pattern": "^T[A-Z0-9]+$" },
+        "workspace": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "slack_channel": {
+      "type": "object",
+      "required": ["id", "slack_id", "tier", "cursor_can_read"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "slack_id": { "type": "string", "pattern": "^C[A-Z0-9]+$" },
+        "tier": { "type": "string", "minLength": 1 },
+        "cursor_can_read": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "cloud_mcp_matrix": {
+      "type": "object",
+      "required": ["scanned_at"],
+      "properties": {
+        "scanned_at": { "type": "string", "minLength": 1 },
+        "run": { "type": "string" },
+        "ready": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "error": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "needs_auth": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

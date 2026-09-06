@@ -6,7 +6,7 @@ sla: none
 authority: canonical
 audience: [ai-agents, contributors]
 last-verified: 2026-09-04
-last_updated: 2026-09-04
+last_updated: 2026-09-06
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -115,6 +115,16 @@ Apply voice and prompt-surface changes in this order:
 3. `workspace-tools`
 4. `alembiq`
 5. remaining governed repos
+
+## Simplicity defaults
+
+- Make the smallest change that solves the current task.
+- Reuse one source of truth, owner, and execution path.
+- Prefer native features, direct code, and deterministic rules.
+- Add abstractions, dependencies, services, or automation only for a repeated
+  need that the existing path cannot handle.
+- Update or delete an existing surface before creating another.
+- Keep pull requests single-purpose and reports short.
 
 ## Code conventions
 

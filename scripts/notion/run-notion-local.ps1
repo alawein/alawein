@@ -3,14 +3,14 @@
   Local Notion sync + canonical verify with the same property mapping as
   .github/workflows/notion-sync.yml
 
-  Prerequisites: set NOTION_TOKEN and NOTION_DB_ID in .env.local (see ..\.env.example)
+  Prerequisites: set NOTION_TOKEN and NOTION_DB_ID in .env.local (see ..\..\.env.example)
 
-  Usage (from repo root alawein/alawein):
-    pwsh -File scripts/run-notion-local.ps1
+  Usage (from repo root alawein/):
+    pwsh -File scripts/notion/run-notion-local.ps1
 #>
 $ErrorActionPreference = 'Stop'
-# scripts/ -> repo root (alawein/) where projects.json lives
-$root = Split-Path -Parent $PSScriptRoot
+# scripts/notion/ -> repo root (alawein/) where projects.json lives
+$root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $root
 
 foreach ($name in @('.env.local', '.env')) {
@@ -26,13 +26,13 @@ foreach ($name in @('.env.local', '.env')) {
   break
 }
 
-# Align with notion-sync.yml
+# Match the canonical Notion database schema.
 $env:NOTION_DOMAIN_PROPERTY = 'Domain'
-$env:NOTION_CATEGORY_PROPERTY = 'Status'
-$env:NOTION_TAGS_PROPERTY = 'Stack'
+$env:NOTION_CATEGORY_PROPERTY = 'Category'
+$env:NOTION_TAGS_PROPERTY = 'Tags'
 $env:NOTION_NAME_PROPERTY = 'Name'
 $env:NOTION_REPO_PROPERTY = 'Repo'
-$env:NOTION_STATUS_PROPERTY = 'Status'
+$env:NOTION_STATUS_PROPERTY = 'Category'
 $env:NOTION_EXPECTED_LEGACY_COUNT = '1'
 
 node scripts/validate-projects-json.mjs
@@ -43,8 +43,8 @@ if (-not $env:NOTION_TOKEN -or -not $env:NOTION_DB_ID) {
   exit 1
 }
 
-node scripts/sync-to-notion.mjs
+node scripts/notion/sync-to-notion.mjs
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
-node scripts/verify-notion-canonical-state.mjs
+node scripts/notion/verify-notion-canonical-state.mjs
 exit $LASTEXITCODE

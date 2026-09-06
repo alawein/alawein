@@ -17,7 +17,7 @@ tags: [slack, channels, agents, migration]
 
 **Owner:** Meshal M. Alawein (`contact@meshal.ai`)
 
-**Status:** DRAFT — does not supersede locked channel decisions in
+**Status:** DRAFT. Does not supersede locked channel decisions in
 [`slack-agent-runbook.md`](slack-agent-runbook.md) until Phase 1 completes and
 the runbook is bumped.
 
@@ -69,10 +69,10 @@ to dedicated `#me-agents-*` lanes.
 | `kohyr-dev` | `C0B9JJZSVQT` | Rename | `team-eng` |
 | `admin-ops` | `C0B9SRMDJFK` | Rename | `team-ops` |
 | `content-pipeline` | `C0B9R0NS4QJ` | Rename + absorb `posts` | `team-content` |
-| `posts` | `C0APWF615H7` | Archive after bot reroute | — |
+| `posts` | `C0APWF615H7` | Archive after bot reroute | n/a |
 | `social` | `C0AP24SRVQF` | Rename | `team-social` |
 | `job-search` | `C0B9NTUUGR4` | Rename | `me-job-search` |
-| — | — | Create | `team-eng-alerts`, `me-agents-eng`, `me-agents-ops`, `me-inbox` |
+| n/a | n/a | Create | `team-eng-alerts`, `me-agents-eng`, `me-agents-ops`, `me-inbox` |
 
 ## 5. Workflow bot rerouting
 
@@ -90,34 +90,34 @@ Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
 
 ## 6. Implementation phases
 
-### Phase 0 — Gate (2026-09-19)
+### Phase 0: Gate (2026-09-19)
 
 - [ ] Workflow-bot engagement trial complete
 - [ ] Claude Tag migration complete ([`claude-tag-migration.md`](claude-tag-migration.md))
 - [ ] `@Codex` connected or marked dropped in inventory
 
-### Phase 1 — Agent lanes (week 1)
+### Phase 1: Agent lanes (week 1)
 
 1. Create `#me-agents-eng`, `#me-agents-ops`, `#me-inbox`
 2. Pin posting guide in each (5 lines max)
 3. `/invite @Cursor` to `#me-agents-eng` and `#team-eng` (after rename)
 4. Route all agent tasks to thread-per-task pattern
 
-### Phase 2 — Team renames (week 2)
+### Phase 2: Team renames (week 2)
 
 1. Rename `admin-ops` → `team-ops`
 2. Rename `all-alawein-workspace` → `team-general`
 3. Rename `kohyr-dev` → `team-eng`
 4. Create `#team-eng-alerts`; point GitHub/CI bots there
 
-### Phase 3 — Content merge (week 3)
+### Phase 3: Content merge (week 3)
 
 1. Reroute workflow bots off `#posts`
 2. Rename `content-pipeline` → `team-content`
 3. Archive `#posts`
 4. Rename `social` → `team-social`; `job-search` → `me-job-search`
 
-### Phase 4 — Inventory lock (week 4)
+### Phase 4: Inventory lock (week 4)
 
 1. Update `catalog/agent-integrations.yaml` `slack_channels` + snapshot
 2. Bump `slack-agent-runbook.md` to v2 channel lock

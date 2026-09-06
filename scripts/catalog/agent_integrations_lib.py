@@ -66,9 +66,32 @@ def parse_last_verified(value: str | date | datetime) -> datetime:
 
 def inventory_age_days(payload: dict[str, Any], today: date | None = None) -> int:
     anchor = today or date.today()
-    verified = parse_last_verified(str(payload["lastVerified"]))
+    try:
+        verified = parse_last_verified(str(payload["lastVerified"]))
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError(f"invalid lastVerified: {exc}") from exc
     verified_date = verified.astimezone(timezone.utc).date()
     return (anchor - verified_date).days
+
+
+def _row_id(row: dict[str, Any], label: str) -> str:
+    value = row.get("id")
+    if not value:
+        raise KeyError(f"missing {label} id")
+    return str(value)
+
+
+def _channel_snapshot_key(row: dict[str, Any]) -> tuple[str, str, bool]:
+    channel_id = _row_id(row, "channel")
+    slack_id = row.get("slack_id")
+    if not slack_id:
+        raise KeyError(f"channel {channel_id} missing slack_id")
+    cursor_can_read = bool(row.get("cursor_can_read", False))
+    return channel_id, str(slack_id), cursor_can_read
+
+
+def _integration_snapshot_key(row: dict[str, Any]) -> str:
+    return _row_id(row, "integration")
 
 
 def unique_field_values(
@@ -115,7 +138,10 @@ def validate_schema(payload: dict[str, Any]) -> list[ValidationIssue]:
         return issues
 
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-    validator = jsonschema.Draft202012Validator(schema)
+    validator = jsonschema.Draft202012Validator(
+        schema,
+        format_checker=jsonschema.Draft202012Validator.FORMAT_CHECKER,
+    )
     for error in sorted(validator.iter_errors(payload), key=lambda item: list(item.path)):
         path = ".".join(str(part) for part in error.path) or "<root>"
         issues.append(ValidationIssue("error", f"schema: {path}: {error.message}"))
@@ -164,19 +190,29 @@ def validate_snapshot(payload: dict[str, Any]) -> list[ValidationIssue]:
         return issues
 
     snapshot = json.loads(SNAPSHOT_PATH.read_text(encoding="utf-8"))
-    current_channels = sorted(
-        {
-            str(row["id"]): str(row["slack_id"])
-            for row in payload.get("slack_channels", [])
-        }.items()
-    )
-    baseline_channels = sorted(
-        {
-            str(row["id"]): str(row["slack_id"])
-            for row in snapshot.get("slack_channels", [])
-        }.items()
-    )
-    if current_channels != baseline_channels:
+    current_channels: list[tuple[str, str, bool]] = []
+    for row in payload.get("slack_channels", []):
+        if not isinstance(row, dict):
+            issues.append(ValidationIssue("error", "slack_channels row must be a mapping"))
+            continue
+        try:
+            current_channels.append(_channel_snapshot_key(row))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot: {exc}"))
+
+    baseline_channels: list[tuple[str, str, bool]] = []
+    for row in snapshot.get("slack_channels", []):
+        if not isinstance(row, dict):
+            issues.append(
+                ValidationIssue("error", "snapshot slack_channels row must be a mapping")
+            )
+            continue
+        try:
+            baseline_channels.append(_channel_snapshot_key(row))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot baseline: {exc}"))
+
+    if sorted(current_channels) != sorted(baseline_channels):
         issues.append(
             ValidationIssue(
                 "error",
@@ -185,9 +221,58 @@ def validate_snapshot(payload: dict[str, Any]) -> list[ValidationIssue]:
             )
         )
 
-    current_agent_ids = sorted(row["id"] for row in payload.get("agents", []))
-    baseline_agent_ids = sorted(row["id"] for row in snapshot.get("agents", []))
-    if current_agent_ids != baseline_agent_ids:
+    current_integration_ids: list[str] = []
+    for row in payload.get("integrations", []):
+        if not isinstance(row, dict):
+            issues.append(ValidationIssue("error", "integrations row must be a mapping"))
+            continue
+        try:
+            current_integration_ids.append(_integration_snapshot_key(row))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot: {exc}"))
+
+    baseline_integration_ids: list[str] = []
+    for row in snapshot.get("integrations", []):
+        if not isinstance(row, dict):
+            issues.append(
+                ValidationIssue("error", "snapshot integrations row must be a mapping")
+            )
+            continue
+        try:
+            baseline_integration_ids.append(_integration_snapshot_key(row))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot baseline: {exc}"))
+
+    if sorted(current_integration_ids) != sorted(baseline_integration_ids):
+        issues.append(
+            ValidationIssue(
+                "error",
+                "integration roster drifted from catalog/generated/"
+                "agent-integrations.snapshot.json; update snapshot after review",
+            )
+        )
+
+    current_agent_ids: list[str] = []
+    for row in payload.get("agents", []):
+        if not isinstance(row, dict):
+            issues.append(ValidationIssue("error", "agents row must be a mapping"))
+            continue
+        try:
+            current_agent_ids.append(_row_id(row, "agent"))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot: {exc}"))
+
+    baseline_agent_ids: list[str] = []
+    for row in snapshot.get("agents", []):
+        if not isinstance(row, dict):
+            issues.append(ValidationIssue("error", "snapshot agents row must be a mapping"))
+            continue
+        try:
+            baseline_agent_ids.append(_row_id(row, "agent"))
+        except KeyError as exc:
+            issues.append(ValidationIssue("error", f"snapshot baseline: {exc}"))
+
+    if sorted(current_agent_ids) != sorted(baseline_agent_ids):
         issues.append(
             ValidationIssue(
                 "warning",
@@ -205,17 +290,33 @@ def validate_inventory(
     today: date | None = None,
 ) -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
-    issues.extend(validate_schema(payload))
+    schema_issues = validate_schema(payload)
+    issues.extend(schema_issues)
+    has_schema_errors = any(issue.level == "error" for issue in schema_issues)
+    if has_schema_errors:
+        return issues
 
-    age_days = inventory_age_days(payload, today=today)
-    if age_days > STALE_ERROR_DAYS:
+    try:
+        age_days = inventory_age_days(payload, today=today)
+    except ValueError as exc:
+        issues.append(ValidationIssue("error", str(exc)))
+        age_days = None
+
+    if age_days is not None and age_days < 0:
+        issues.append(
+            ValidationIssue(
+                "error",
+                "lastVerified is in the future; fix inventory timestamp",
+            )
+        )
+    elif age_days is not None and age_days > STALE_ERROR_DAYS:
         issues.append(
             ValidationIssue(
                 "error",
                 f"lastVerified is {age_days} days old; re-run live rescan",
             )
         )
-    elif age_days > STALE_WARN_DAYS:
+    elif age_days is not None and age_days > STALE_WARN_DAYS:
         issues.append(
             ValidationIssue(
                 "warning",

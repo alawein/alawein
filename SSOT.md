@@ -74,7 +74,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:
   [`docs/internal/audits/2026-09-06-slack-integrations-rescan.md`](docs/internal/audits/2026-09-06-slack-integrations-rescan.md).
-  Drift check: `python scripts/catalog/validate-agent-integrations.py --strict`.
+  Drift check: `python3 scripts/catalog/validate-agent-integrations.py --strict`.
   Channel policy: [`docs/governance/slack-agent-runbook.md`](docs/governance/slack-agent-runbook.md).
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and
   remain render-first GitHub artifacts

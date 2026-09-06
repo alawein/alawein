@@ -14,4 +14,5 @@ Quick rules:
 2. Bold field labels only (`*Next:*`). Backtick code paths and commands.
 3. No em dash. No pipe tables in threads. Use Canvas for tables.
 4. Line breaks between blocks. Max 6 lines (routine), 3 (FYI), 4 (incident).
-5. Mention Meshal only when a decision is needed. Emoji sparse, optional.
+5. Mention Meshal when a decision is needed, when a reply is required, or on
+   the first ping of an incident. Emoji sparse, optional.

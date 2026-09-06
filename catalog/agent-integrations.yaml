@@ -11,7 +11,7 @@ note: >
   docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
   docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
   Agent MCP status can diverge; keep both. CI drift check:
-  python scripts/catalog/validate-agent-integrations.py --strict.
+  python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
 

@@ -9,20 +9,30 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parent.parent.parent
 SKILLS_DIR = ROOT / "claude-agent-platform" / "skills"
 REGISTRY_PATH = SKILLS_DIR / "registry.json"
 
 
+def parse_frontmatter(text: str) -> dict[str, object]:
+    if not text.startswith("---"):
+        return {}
+    end = text.find("\n---", 3)
+    if end == -1:
+        return {}
+    block = text[3:end].strip()
+    payload = yaml.safe_load(block)
+    return payload if isinstance(payload, dict) else {}
+
+
 def parse_skill(skill_md: Path) -> dict[str, str]:
     text = skill_md.read_text(encoding="utf-8")
-    name = skill_md.parent.name
-    version = "0.0.0"
-    description = ""
-    if match := re.search(r"^version:\s*([^\n]+)", text, re.MULTILINE):
-        version = match.group(1).strip().strip('"')
-    if match := re.search(r"^description:\s*(.+)$", text, re.MULTILINE):
-        description = match.group(1).strip().strip('"')
+    frontmatter = parse_frontmatter(text)
+    name = str(frontmatter.get("name") or skill_md.parent.name)
+    version = str(frontmatter.get("version") or "0.0.0").strip().strip('"')
+    description = str(frontmatter.get("description") or "").strip().strip('"')
     return {
         "name": name,
         "version": version,
@@ -40,6 +50,13 @@ def build_registry() -> dict:
     }
 
 
+def comparable_registry(registry: dict) -> dict:
+    return {
+        "path_convention": registry.get("path_convention"),
+        "skills": registry.get("skills"),
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     argv = argv or sys.argv[1:]
     registry = build_registry()
@@ -48,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Missing registry: {REGISTRY_PATH}", file=sys.stderr)
             return 1
         existing = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
-        if existing.get("skills") != registry["skills"]:
+        if comparable_registry(existing) != comparable_registry(registry):
             print("registry.json is stale; run build-skill-registry.py", file=sys.stderr)
             return 1
         print("Skill registry is up to date.")

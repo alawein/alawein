@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T04:43:40Z",
+  "generated_at": "2026-09-06T07:04:57Z",
   "path_convention": "repo-relative",
   "skills": [
     {
@@ -240,7 +240,7 @@
       "name": "vercel-composition-patterns",
       "version": "0.0.0",
       "path": "claude-agent-platform/skills/vercel-composition-patterns/SKILL.md",
-      "description": "React composition patterns that scale. Use when refactoring components with"
+      "description": "React composition patterns that scale. Use when refactoring components with boolean prop proliferation, building flexible component libraries, or designing reusable APIs. Triggers on tasks involving compound components, render props, context providers, or component architecture. Includes React 19 API changes."
     },
     {
       "name": "vercel-react-best-practices",
@@ -252,7 +252,7 @@
       "name": "vercel-react-native-skills",
       "version": "0.0.0",
       "path": "claude-agent-platform/skills/vercel-react-native-skills/SKILL.md",
-      "description": "React Native and Expo best practices for building performant mobile apps. Use"
+      "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native modules. Triggers on tasks involving React Native, Expo, mobile performance, or native platform APIs."
     },
     {
       "name": "vercel-react-view-transitions",

@@ -226,8 +226,8 @@ Adopt this block in Cloud Agent Slack turns:
 Slack thread voice: first line = ask or status. Bold field labels only.
 Backtick technical names (`PR #209`, paths, commands). No em dash. No pipe
 tables in threads; link Canvas for tables. Line breaks between blocks. Emoji
-sparse (max one if it helps scan). Mention Meshal only when a decision is
-needed. Max 6 lines routine, 3 FYI, 4 incident. Omit empty fields.
+sparse (max one if it helps scan). Mention Meshal when a decision is needed,
+when a reply is required, or on the first ping of an incident. Max 6 lines routine, 3 FYI, 4 incident. Omit empty fields.
 ```
 
 ## Related canon

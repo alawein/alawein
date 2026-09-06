@@ -20,11 +20,13 @@ def classify(record, vocabulary):
     canonical = {x["key"] for x in kinds if x["github"] in labels}
     if len(canonical) > 1:
         return None, "conflicting canonical work kinds"
-    if canonical:
-        return next(iter(canonical)), "existing canonical label"
     aliases = {x["key"] for x in kinds if labels.intersection(x.get("aliases", []))}
     if len(aliases) > 1:
         return None, "conflicting legacy work kinds"
+    if canonical:
+        if aliases - canonical:
+            return None, "canonical label conflicts with legacy label"
+        return next(iter(canonical)), "existing canonical label"
     title = re.match(r"^([a-z]+)(?:\([^\n)]+\))?!?:\s+", record.get("title", ""))
     prefix_kind = vocabulary["titlePrefixes"].get(title.group(1)) if title else None
     if aliases and prefix_kind and prefix_kind not in aliases:

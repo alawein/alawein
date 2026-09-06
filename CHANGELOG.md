@@ -10,7 +10,7 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-08-29
+last_updated: 2026-09-06
 tags: [changelog, version-history, releases]
 ---
 
@@ -22,6 +22,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Fixed
+
+- Detect conflicting work labels and apply validated prompt-form work kinds with private security-reporting guidance.
 
 ### Added
 

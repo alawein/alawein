@@ -3,11 +3,14 @@ description: Propose a change to AGENT.md, PORTFOLIO.md, VOICE.md, or workspace-
 title: "prompt: "
 labels: ["prompt-kit", "llmops", "triage"]
 body:
+  - type: markdown
+    attributes:
+      value: Do not include vulnerability details or credentials here. Use the [private reporting policy](https://github.com/alawein/alawein/security/policy).
   - type: dropdown
     id: work-kind
     attributes:
       label: Work kind
-      description: Choose the primary outcome. Triage must apply its shared type label; this field does not set labels.
+      description: Choose the primary outcome. Triage applies its shared type label unless an existing type conflicts.
       options:
         - bug
         - feature
@@ -75,5 +78,5 @@ body:
         - label: Canary tested in alawein repo first
         - label: "`prompt-kits/registry.yaml` rollout-status will be set to `canary` initially"
         - label: Downstream impact assessed — consumers listed above
-        - label: "`prompt-kits/CHANGELOG.md` entry drafted"
+        - label: "`prompt-kits/KITS-CHANGELOG.md` entry drafted"
         - label: "`validate-prompt-kit.py` passes locally"

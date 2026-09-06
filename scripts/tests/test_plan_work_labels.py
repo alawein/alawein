@@ -58,3 +58,22 @@ def test_check_exit_status_tracks_observed_drift(tmp_path, capsys):
     observations.write_text(json.dumps([record(labels=["type:docs"])]))
     assert MODULE.main([str(observations), "--check"]) == 0
     capsys.readouterr()
+
+
+@pytest.mark.parametrize("labels", [
+    ["type:bug", "docs"], ["type:docs", "security"],
+    ["type:bug", "bug", "docs"],
+])
+def test_canonical_and_legacy_conflicts_require_review(labels):
+    source = record(labels=labels)
+    result = MODULE.plan([source], VOCAB)[0]
+    assert result["action"] == "review"
+    assert result["add"] == []
+    assert source["labels"] == labels
+    source["state"] = "closed"
+    assert MODULE.plan([source], VOCAB)[0]["action"] == "preserve"
+
+
+def test_agreeing_canonical_and_legacy_labels_are_unchanged():
+    result = MODULE.plan([record(labels=["type:docs", "docs", "documentation"])], VOCAB)[0]
+    assert result["action"] == "unchanged"

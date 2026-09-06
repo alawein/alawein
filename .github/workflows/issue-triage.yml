@@ -18,9 +18,36 @@ jobs:
             const issue = context.payload.issue
             const labels = issue.labels.map(l => l.name)
 
+            // The issue form supplies data, never executable code or arbitrary labels.
+            const workKinds = new Set([
+              'bug', 'feature', 'docs', 'maintenance', 'research', 'security', 'question',
+            ])
+            const aliasKinds = {
+              bug: 'bug', enhancement: 'feature', 'type:feat': 'feature',
+              docs: 'docs', documentation: 'docs', dependencies: 'maintenance',
+              ci: 'maintenance', chore: 'maintenance', research: 'research',
+              security: 'security', question: 'question',
+            }
+            const fields = (issue.body || '').replace(/\r\n/g, '\n').split(/^### /m)
+              .filter(section => section.startsWith('Work kind\n'))
+              .map(section => section.slice('Work kind\n'.length).trim())
+            const workKind = labels.includes('prompt-kit') && fields.length === 1
+              && workKinds.has(fields[0]) ? fields[0] : null
+            const workLabel = workKind ? `type:${workKind}` : null
+            const conflictingKind = workLabel && labels.some(label => {
+              const kind = label.startsWith('type:') && workKinds.has(label.slice(5))
+                ? label.slice(5) : Object.hasOwn(aliasKinds, label) ? aliasKinds[label] : null
+              return kind && kind !== workKind
+            })
+            const addedKind = workLabel && !conflictingKind && !labels.includes(workLabel)
+              ? workLabel : null
+            if (addedKind) labels.push(addedKind)
+            const isSecurity = workKind === 'security'
+              || labels.includes('security') || labels.includes('type:security')
+
             // Priority assignment — highest matching label wins
             let priority = 'P3'
-            if (labels.includes('security') || labels.includes('type:security')) priority = 'P1'
+            if (isSecurity) priority = 'P1'
             else if (labels.includes('bug') || labels.includes('type:bug')) priority = 'P2'
             else if (labels.includes('prompt-kit')) priority = 'P2'
 
@@ -29,13 +56,13 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue.number,
-              labels: [priority],
+              labels: addedKind ? [priority, addedKind] : [priority],
             })
 
             // Routing guidance based on label
             let routingNote = ''
-            if (labels.includes('security') || labels.includes('type:security')) {
-              routingNote = '\n\n> **Security:** If this involves a secret leak or vulnerability, close this issue and follow [SECURITY.md](../SECURITY.md) for private disclosure.'
+            if (isSecurity) {
+              routingNote = `\n\n> **Security:** Do not post vulnerability details or credentials here. Follow [SECURITY.md](https://github.com/${context.repo.owner}/${context.repo.repo}/security/policy) for private reporting.`
             } else if (labels.includes('prompt-kit') || labels.includes('llmops')) {
               routingNote = '\n\n> **Prompt Kit:** Follow the rollout protocol in `docs/governance/prompt-rollout.md` when implementing changes.'
             } else if (labels.includes('docs') || labels.includes('type:docs')) {
@@ -50,6 +77,7 @@ jobs:
               body: [
                 `Thanks for filing this. Priority assigned: **${priority}**.`,
                 routingNote,
+                conflictingKind ? 'Work classification pending: the form selection conflicts with an existing type label.' : '',
                 '',
                 '### Triage Checklist',
                 '',

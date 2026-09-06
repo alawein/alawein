@@ -30,7 +30,7 @@
 <!-- Complete only if this PR touches prompt-kits/ or docs/style/VOICE.md -->
 - [ ] Not applicable
 - [ ] Version bumped in frontmatter (`version:` field)
-- [ ] Entry added to `prompt-kits/CHANGELOG.md`
+- [ ] Entry added to `prompt-kits/KITS-CHANGELOG.md`
 - [ ] `prompt-kits/registry.yaml` `rollout-status` updated
 - [ ] Downstream repos identified: <!-- list them -->
 - [ ] Canary tested: alawein → [ ] meshal-web → [ ]
@@ -44,7 +44,7 @@
 ## Notes
 
 - If this PR changes workflow or governance, link the relevant guide under
-  [`docs/governance/`](../docs/governance/).
+  [`docs/governance/`](https://github.com/alawein/alawein/blob/main/docs/governance/).
 - Anything reviewers should know (workarounds, follow-ups, known gaps)
 
 ## Change evidence
@@ -63,5 +63,5 @@
 | Other audits / exceptions | Separate failures, missing results and acceptance decision |
 | Final approval | Meshal: revision, scope, timestamp and evidence; pending until recorded |
 
-Follow [work-record-taxonomy.md](../docs/governance/work-record-taxonomy.md)
-and [operating-model.md](../docs/governance/operating-model.md).
+Follow [work-record-taxonomy.md](https://github.com/alawein/alawein/blob/main/docs/governance/work-record-taxonomy.md)
+and [operating-model.md](https://github.com/alawein/alawein/blob/main/docs/governance/operating-model.md).

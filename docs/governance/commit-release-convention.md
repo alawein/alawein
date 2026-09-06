@@ -142,20 +142,17 @@ understood checks, a human decision when they touch governance truth, and
 cleanup after merge. After merge: delete the branch remotely and locally, update
 `CHANGELOG.md`, and prune stale branches.
 
-Solo rollout target for `alawein/alawein`: require PRs, the five current fast
-checks on an up-to-date branch, resolved review threads, signed commits and
-linear history; allow squash only and remove routine bypass. Use zero required
-human approvals and disable code-owner approval while Meshal is the sole human.
-Independent tool review and Meshal's recorded final acceptance remain procedural
-requirements. GitHub cannot enforce this as another human's approval.
+For `alawein/alawein`, retain required human and CODEOWNER approval, required
+checks, signed commits and linear history. An author cannot approve their own
+PR. Independent tool review supplements required review; it does not replace it.
+If no eligible reviewer can satisfy the current rules, keep the PR open and
+record the blocker. Do not lower approval requirements or use a bypass to merge.
 
 The five current contexts are `validate-contract`, `test-scripts`,
-`lint-managed-markdown`, `GitHub Baseline Audit` and `Gitleaks`. Verify the current
-required contexts, integration IDs, rulesets and classic protection before any
-configuration change. This target is not evidence that settings were applied.
-Other repositories retain their recorded profile, including stricter external
-review and approved release-branch merge strategies. The hub's squash-only target
-overrides its general merge-commit exception once applied.
+`lint-managed-markdown`, `GitHub Baseline Audit` and `Gitleaks`. Verify current
+required contexts, integration IDs, rulesets and classic protection before merge.
+Other repositories retain their recorded profiles, including stricter external
+review and approved release-branch merge strategies.
 
 ## 5. Releases and versioning (uniform semver)
 

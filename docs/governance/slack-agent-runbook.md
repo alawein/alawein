@@ -9,7 +9,7 @@ last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.3.1
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -24,8 +24,10 @@ and the Sept 5 keep-all-names lock.
 **Live Slack map (2026-09-06):**
 
 - Canvas: [Alawein Slack Map (v1.3)](https://alaweinworkspace.slack.com/docs/T0APHHXJV4J/F0BV7PDBJT0)
+- Routines canvas: [Alawein Routines (v1)](https://alaweinworkspace.slack.com/docs/T0APHHXJV4J/F0BV9MN4KR8)
 - Channel list: [Slack Channel Registry](https://alaweinworkspace.slack.com/lists/T0APHHXJV4J/F0BV9M3BEAW)
 - Integration list: [Slack Integration Registry](https://alaweinworkspace.slack.com/lists/T0APHHXJV4J/F0BUUASKHT9)
+- Notion (Operations Hub): [Alawein Slack Map (v1.3)](https://app.notion.com/p/3d36d8de221581ac90f5fb416e5c8e27)
 
 **Evidence baseline:**
 
@@ -141,15 +143,20 @@ Do not add agents to `#social` except Cursor (already there).
 | Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-08-31 | 0 replies | Keep |
 
 All five bots are technically healthy. Zero engagement is a usage problem, not a
-health problem.
+health problem. Notion already owns the morning brief and the content planner,
+so two Slack workflows are duplicates.
 
-### 2.2 Engagement policy (locked)
+### 2.2 Engagement and cut policy (locked 2026-09-06)
 
-- **Trial window:** 2026-09-05 through 2026-09-19 (14 days).
-- **Requirement:** reply to or react to at least one prompt per bot per week.
-- **Review gate (2026-09-19):** bots with zero engagement are disabled, not
-  deleted.
-- **No new workflow bots** until the existing five pass the trial.
+- **Disable now:** Daily Agenda (DM, zero replies, overlaps Notion Morning Brief).
+- **Disable after 2026-09-07 08:00 PT proof:** Daily Briefing, once Notion
+  Morning Brief produces exactly one page.
+- **Disable after Notion Content Planner smoke-test:** Weekly Content Planner.
+- **Keep through 2026-09-19:** Monday Weekly Kickoff and Friday Weekly Review.
+- **Review gate (2026-09-19):** remaining bots with zero engagement are
+  disabled, not deleted.
+- **No new Slack workflows** until the keepers pass the trial.
+- Slack → Tools → Workflow Builder → Disable. Do not delete history.
 
 ### 2.3 Output routing (locked)
 
@@ -188,8 +195,12 @@ browser check.
 | Non-`alawein` org (`menax-inc/menax`), review | 1 | Ownership context unclear |
 | UNVERIFIED (missing source metadata), inspect via browser | 8 | `web`, `sam-eval-roadmap`, `dist`, `guides-eval-loop-app`, `graphics-engine`, `kiosk-ipad-app`, `knowledge-base-wiki`, `tech-blog-frontend` |
 
-**Priority browser inspection:** `sam-eval-roadmap` and `guides-eval-loop-app`
-are name-suggestive of prior AGI Inc work. Delete if employer-affiliated.
+**Computer lock (2026-09-06):** `sam-eval-roadmap` and `guides-eval-loop-app`
+have no linked repo, sit on the `alawein` team, and last deployed 84-88 days
+ago. Verdict: **delete**. Evidence:
+[sam-eval-roadmap](https://vercel.com/alawein/sam-eval-roadmap),
+[guides-eval-loop-app](https://vercel.com/alawein/guides-eval-loop-app).
+Human or Computer must click Vercel Settings → Delete Project.
 
 ### 3.3 Google Drive external ownership (locked)
 
@@ -197,7 +208,7 @@ Nine `sharedWithMe` items enumerated. Only one AGI-affiliated file:
 
 | File | Owner | Domain | Modified | Action |
 | --- | --- | --- | --- | --- |
-| Superfine Kitchen Order | `chaitanya@theagi.company` | `theagi.company` | 2026-09-04 | Review or remove access |
+| Superfine Kitchen Order | `chaitanya@theagi.company` | `theagi.company` | 2026-09-04 | Remove Meshal access. Drive read 2026-09-06: owner is Chaitanya; `anyone` has writer. Cursor cannot unshare. |
 | Documents | `mario@kohyr.ai` | `kohyr.ai` | 2026-06-24 | Keep |
 | NDA Form (Meshal Alawein) | `adam@sycamore.so` | `sycamore.so` | 2026-05-07 | Keep |
 | Meshal.pdf, JD Jan 2026.pdf | `ashley.n@mobiusdtaas.ai` | `mobiusdtaas.ai` | 2026-01-29 | Keep |
@@ -276,6 +287,14 @@ inbox. Recheck 2026-09-06: label exists (`Label_367`); 22 threads.
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.1 (2026-09-06)
+
+- Published Routines canvas `F0BV9MN4KR8` and Notion Operations Hub page.
+- Locked workflow cuts: disable Daily Agenda now; Daily Briefing after Notion
+  Morning Brief proof; Content Planner after Notion planner smoke-test.
+- Computer lock: delete Vercel `sam-eval-roadmap` and `guides-eval-loop-app`.
+- Drive Superfine Kitchen Order: anyone-with-link writer confirmed.
 
 ### v1.3.0 (2026-09-06)
 

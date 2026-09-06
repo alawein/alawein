@@ -30,9 +30,11 @@ engagement.
 | Artifact | ID | URL |
 | --- | --- | --- |
 | Canvas: Alawein Slack Map (v1.3) | `F0BV7PDBJT0` | https://alaweinworkspace.slack.com/docs/T0APHHXJV4J/F0BV7PDBJT0 |
+| Canvas: Alawein Routines (v1) | `F0BV9MN4KR8` | https://alaweinworkspace.slack.com/docs/T0APHHXJV4J/F0BV9MN4KR8 |
 | List: Slack Channel Registry | `F0BV9M3BEAW` | https://alaweinworkspace.slack.com/lists/T0APHHXJV4J/F0BV9M3BEAW |
 | List: Slack Integration Registry | `F0BUUASKHT9` | https://alaweinworkspace.slack.com/lists/T0APHHXJV4J/F0BUUASKHT9 |
-| Notion draft (private) | `3d36d8de-2215-816e-9d36-dd4428a22246` | https://app.notion.com/p/3d36d8de2215816e9d36dd4428a22246 |
+| Notion Operations Hub page | `3d36d8de-2215-81ac-90f5-fb416e5c8e27` | https://app.notion.com/p/3d36d8de221581ac90f5fb416e5c8e27 |
+| Notion draft (private leftover) | `3d36d8de-2215-816e-9d36-dd4428a22246` | https://app.notion.com/p/3d36d8de2215816e9d36dd4428a22246 |
 | Setup Audit canvas | `F0BUXDR4J9L` | marked superseded, points at the new map |
 
 ## Rename map
@@ -73,5 +75,9 @@ engagement.
 | Notion | Meshal's Workspace / `contact@meshal.ai` |
 | Gmail labels | 6 user labels including `AGI (archive)` (22 threads) |
 | ChatGPT Slack user | not found |
+| Grok Slack user | not found |
 | Granola MCP | needsAuth |
 | Supermemory MCP | error |
+| Vercel `sam-eval-roadmap` | Computer: delete (no repo, 84d) |
+| Vercel `guides-eval-loop-app` | Computer: delete (no repo, 88d) |
+| Drive Superfine Kitchen Order | owner `chaitanya@theagi.company`; anyone writer |

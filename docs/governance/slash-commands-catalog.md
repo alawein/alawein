@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Slash Commands Catalog & Workflows
 description: Catalog of / slash commands from Cursor (and Claude Code) plugins, with run order and reusable workflows for any repo or directory.
-last_updated: 2026-07-06
+last_updated: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -15,7 +15,9 @@ status: active
 
 This document lists slash commands available from **Cursor plugins** (and, where noted, **Claude Code** plugins). It gives a **reliable order** for running them and **workflows** as series of slashes that work for any repo or directory (with minor differences for git repos vs non-repos).
 
-**Unified taxonomy:** For a single clear set that works for any repo, project, or website (not just governance), see [skills-agents-unification.md](./skills-agents-unification.md). Layers: **Universal** (any dir) | **Ecosystem** (kohyr) | **Org** (alawein).
+**Unified taxonomy:** [skills-agents-unification.md](./skills-agents-unification.md)
+(pointer) and [maintenance-skills-agents.md](./maintenance-skills-agents.md)
+(hub). Layers: **Universal** (any dir) | **Ecosystem** (kohyr) | **Org** (alawein).
 For the shortest daily command set, use [operator-command-cheatsheet.md](./operator-command-cheatsheet.md).
 
 **Machine setup (skills across IDEs):** Install the global `skills` CLI,

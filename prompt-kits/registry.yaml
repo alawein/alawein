@@ -2,12 +2,12 @@
 # Every prompt kit consumed by agents or tooling must be registered here.
 # rollout-status: draft | canary | staged | ga | deprecated
 version: 1
-last-updated: 2026-04-30
+last-updated: 2026-09-06
 
 prompts:
   - id: workspace-agent
     file: prompt-kits/AGENT.md
-    version: 1.3.0
+    version: 1.4.2
     type: system-prompt
     scope: workspace
     consumers:
@@ -34,7 +34,7 @@ prompts:
 
   - id: workspace-master
     file: docs/governance/workspace-master-prompt.md
-    version: 1.2.0
+    version: 1.3.0
     type: operating-contract
     scope: workspace
     consumers:

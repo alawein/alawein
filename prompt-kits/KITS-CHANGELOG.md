@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-05-23
+last_updated: 2026-09-06
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,11 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.4.2 - 2026-09-06
+
+- Point to `docs/governance/workspace-master-prompt.md` for R-1 through R-6
+- Keep portfolio inventory in `catalog/index.yaml`, not in prompt prose
 
 ### 1.4.0 - 2026-04-30
 
@@ -58,6 +63,12 @@ major for breaking behavioral changes.
 ---
 
 ## workspace-master-prompt.md
+
+### 1.3.0 - 2026-09-06
+
+- Keep R-1 through R-6 as the operating contract
+- Move portfolio inventory to `catalog/index.yaml`
+- Point session workflow and style rules at `prompt-kits/AGENT.md`
 
 ### 1.2.0 - 2026-03-20
 

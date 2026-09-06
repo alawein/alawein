@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.4.1
-parent-version: 1.4.0
-last-verified: 2026-09-04
-last_updated: 2026-09-05
-change-summary: "Correct bucketed workspace paths; resolve siblings via catalog local_path"
+version: 1.4.2
+parent-version: 1.4.1
+last-verified: 2026-09-06
+last_updated: 2026-09-06
+change-summary: "Point to the six-rule workspace contract; do not duplicate inventory"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -130,6 +130,14 @@ For research repos:
 - TypeScript: strict mode, no `any`, explicit public return types
 - Comments: explain invariants, failure modes, and tradeoffs
 - Commit messages: present tense, technical context
+
+## Workspace operating rules
+
+The six-rule contract lives in
+[`docs/governance/workspace-master-prompt.md`](../docs/governance/workspace-master-prompt.md)
+(R-1 through R-6). Portfolio rows live in `catalog/index.yaml`, not in prompt
+prose. Multi-repo work uses
+[`docs/governance/parallel-batch-execution.md`](../docs/governance/parallel-batch-execution.md).
 
 ## Operating mode
 

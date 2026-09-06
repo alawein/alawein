@@ -33,7 +33,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `github-baseline.md` | Active | GitHub repo baseline contract |
 | `github-metadata-rollout-policy.md` | Active | GitHub metadata sync policy |
 | `github-metadata-sync-runbook.md` | Active | Metadata sync runbook |
-| `maintenance-skills-agents.md` | Reference | Skills and agents maintenance guide |
+| `maintenance-skills-agents.md` | Active | Skills hub: artifact map, scope checklists, maintenance |
 | `merge-policy.md` | Frozen | Superseded by commit-release-convention.md |
 | `operating-model.md` | Active | Workspace operating model |
 | `operator-command-cheatsheet.md` | Reference | Common operator commands |
@@ -48,7 +48,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `repo-sweep-prompt.md` | Reference | Repo sweep operator prompt |
 | `repository-layout-standard.md` | Active | Directory layout standard |
 | `review-playbook.md` | Active | Code review process |
-| `skills-agents-unification.md` | Reference | Skills and agents unification notes |
+| `skills-agents-unification.md` | Reference | Pointer to the skills hub and three-layer taxonomy |
 | `skills-install-policy.md` | Active | Skill installation and naming policy |
 | `ide-integration-hardening-session.md` | Active | IDE copy-paste prompt for E2E integration hardening |
 | `cursor-mcp-repair.md` | Active | Repair steps for broken Cursor MCP integrations |
@@ -59,7 +59,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `version-history-audit.md` | Active | Repeatable protocol to take a repo from incoherent version history to a clean SemVer baseline by additive re-indexing |
 | `workflow.md` | Active | Primary development workflow |
 | `workspace-layout-audit.md` | Active | Workspace layout audit: per-repo layout status vs stack standards |
-| `workspace-master-prompt.md` | Active | Workspace master operator prompt |
+| `workspace-master-prompt.md` | Active | Six-rule operating contract; inventory lives in the catalog |
 | `workspace-resource-map.md` | Reference | Resource map across workspace |
 | `workspace-standardization.md` | Active | Workspace-wide standardization rules |
 | `governance-index.md` | Active | This file: status index for all governance docs |

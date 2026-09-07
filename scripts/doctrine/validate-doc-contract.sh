@@ -4,8 +4,8 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  ./scripts/validate-doc-contract.sh --full
-  ./scripts/validate-doc-contract.sh --changed-only <base_ref>
+  ./scripts/doctrine/validate-doc-contract.sh --full
+  ./scripts/doctrine/validate-doc-contract.sh --changed-only <base_ref>
 
 Environment:
   DOC_CONTRACT_BASE_REF   Optional base ref used by --full when a push workflow

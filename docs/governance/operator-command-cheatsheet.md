@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Operator Command Cheatsheet
 description: Preferred slash commands for daily operation across any repo or directory, with ecosystem and org-specific add-ons.
-last_updated: 2026-06-23
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -71,8 +71,8 @@ Cursor-local parity (if using Cursor plugin directly):
 
 Not slash commands. Run:
 
-- `python scripts/sync-readme.py --check`
-- `./scripts/validate-doc-contract.sh --full`
+- `python scripts/catalog/sync-readme.py --check`
+- `./scripts/doctrine/validate-doc-contract.sh --full`
 
 ## Deploy
 

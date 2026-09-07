@@ -457,6 +457,11 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
     if not repo_dir.exists():
         return [f"MISSING-REPO: {repo_dir}"]
 
+    try:
+        _repo_paths.require_repo_checkout(repo_dir, f"alawein/{entry['repo']}")
+    except ValueError as exc:
+        raise SystemExit(str(exc)) from None
+
     for relative_path, source in TEMPLATE_MAP.items():
         destination = repo_dir / relative_path
         issues.extend(ensure_text(destination, source.read_text(encoding="utf-8"), check=check))

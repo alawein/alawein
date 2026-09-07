@@ -30,6 +30,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Exclude Git worktree metadata and prompt-kit history from content validation while retaining checks for unmanaged files and invalid kits.
 - Resolve the Notion Projects manifest from the repository root and preserve credentials injected into the local runner.
 - Validate instantiated public README scaffolds and keep private README construction on the existing record-card path.
+- Record repo-drift's verified public visibility after its installation and
+  preview documentation repair; preserve the existing GitHub visibility and pins.
+- Point the workspace-batch canary to signed PR #27 and distinguish Python
+  token resolution from direct GitHub CLI token precedence.
 
 ### Added
 

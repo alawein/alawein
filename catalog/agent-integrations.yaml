@@ -6,8 +6,10 @@ note: >
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
-  probe 2026-09-07 06:56 UTC (run bc-2953ccca). Prior written rescans:
+  docs/governance/ide-integration-hardening-session.md.   Latest Cloud Agent MCP matrix: 2026-09-07 06:56 UTC (run bc-2953ccca).
+  Computer and Kilo rows use same-thread live replies after that scan, not
+  a second stacked snapshot. Closed #222 (bc-4534d6b1) is not authoritative.
+  Prior written rescans:
   docs/internal/audits/2026-09-06-slack-integrations-rescan.md and
   docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
   Agent MCP status can diverge; keep both. CI drift check:
@@ -135,13 +137,14 @@ agents:
     dispatch_roles: [cloud-agent-sessions]
     status: ready
     notes: >
+      status ready means Slack-responsive, not control-plane git access.
       Replied in #admin-ops inventory thread 2026-09-07
-      (ts 1788765571.809029). Launch: Slack. GitHub App sees
-      alawein/ops-control-plane-grok, alawein/ai-ops, and
-      alawein/workspace-brain only; no alawein/alawein visibility.
-      Slack reads proved on #admin-ops only (1/7). Lane: Cloud Agent
-      sessions on those three repos. Ask Meshal before expanding
-      GitHub App scope.
+      (ts 1788765571.809029); user ID from Meshal's ping mention.
+      Launch: Slack. GitHub App sees alawein/ops-control-plane-grok,
+      alawein/ai-ops, and alawein/workspace-brain only (alawein org,
+      not AGI-adjacent); no alawein/alawein visibility. Slack reads
+      proved on #admin-ops only (1/7). Lane: Cloud Agent sessions on
+      those three repos. Ask Meshal before expanding GitHub App scope.
     last_verified: 2026-09-07
 
 workflow_bots:

@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.4
+version: 1.4.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -23,7 +23,8 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 
 **Shared session prompt (paste this):**
 [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) section "Shared session
-prompt". Every Slack bot and coding agent uses that block. Do not fork it.
+prompt". Every Slack agent bot and coding agent uses that block. Do not
+fork it. Workflow bots are exempt from this prompt.
 
 **Evidence baseline:**
 
@@ -241,27 +242,14 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ## 6. Changelog
 
-### v1.3.4 (2026-09-07)
+### v1.4.0 (2026-09-07)
 
-- Point Slack agents at `prompt-kits/AGENT.md` 1.6.0 Shared session prompt.
-
-### v1.3.3 (2026-09-07)
-
-- `@Kilo` (`U0BV9U2GFED`) recorded in `#admin-ops`. GitHub App is scoped to
-  `ops-control-plane-grok`, `ai-ops`, and `workspace-brain`, not
-  `alawein/alawein`.
-- `@Computer` flipped to ready after 7/7 Slack reads including `#posts`.
-
-### v1.3.2 (2026-09-07)
-
-- Gmail user labels now Action/*, Project/Alawein, System/Linear,
-  System/GitHub, Subscriptions, DevOps, and AGI (archive).
-- GitHub Cursor MCP marked ready from the 2026-09-07 Cloud Agent probe.
-
-### v1.3.1 (2026-09-07)
-
-- Locked AGI / prior-employer isolation: work agents do not operate on AGI
-  accounts or AGI-named cloud workspaces. Local quarantine is `Desktop/AGI`.
+- Locked AGI / prior-employer isolation. Local quarantine is `Desktop/AGI`.
+- Gmail labels and GitHub Cursor MCP refreshed from the 2026-09-07 probe.
+- `@Computer` ready (7/7 including `#posts`). `@Kilo` recorded, three-repo
+  GitHub App only.
+- Shared session prompt in `prompt-kits/AGENT.md` 1.6.0. Agent bots only.
+  Workflow bots stay exempt.
 
 ### v1.3.0 (2026-09-06)
 

@@ -147,21 +147,23 @@ asymmetric agent fleet.
 
 | Product | Fit | Verdict for Alawein |
 | --- | --- | --- |
-| Supermemory | Hosted MCP already in Cloud discovery; engine not fully OSS | Catalog + [`cursor-mcp-repair.md`](cursor-mcp-repair.md) leave it dropped. Cloud discovery still errors. Re-auth only if Meshal wants preference/session recall. Never dump AGI, secrets, or inventory into it. |
+| Supermemory | Hosted MCP already in Cloud discovery; engine not fully OSS | Catalog + [`cursor-mcp-repair.md`](cursor-mcp-repair.md) leave it dropped. Cloud discovery still errors. Re-auth only if Meshal wants preference/session recall. If re-authenticated, it must not import, copy, commit, summarize, or operate on AGI Inc, `theagi.company` accounts, or AGI-named cloud workspaces. No secrets. No inventory. |
 | Mem0 | Drop-in vector memory API; OpenMemory MCP | Skip. Second SSOT. |
 | Letta (ex-MemGPT) | Self-managed memory OS; Slack/Telegram channels exist | Heavier than needed. Competes with git + Slack lanes. |
 | Zep / Graphiti | Temporal knowledge graph | Skip unless a future product needs point-in-time facts. |
 | Cognee | Graph/RAG memory | Skip. Same second-SSOT risk. |
 
 If a recall lane is added later: one vendor, scoped local vs org, Meshal
-allowlist, no AGI material, no secrets, no write-back that overrides git.
+allowlist. It must not import, copy, commit, summarize, or operate on AGI
+Inc, `theagi.company` accounts, or AGI-named cloud workspaces. No secrets.
+No write-back that overrides git.
 
 ### 8.2 Hermes and custom Slack bots
 
 | Option | What it is | Verdict |
 | --- | --- | --- |
-| Hermes Agent (Nous) | Self-hosted Slack gateway (Socket Mode), self-writing skills, persistent memory | Hold. Competes with `@Cursor` / `@Claude` if it becomes another chat bot. If ever: laptop or VPS after 2026-09-19, one home channel (`#me-agents-ops`), `SLACK_ALLOWED_USERS` = Meshal only, separate Slack app, no AGI material. |
-| OpenClaw | Local gateway across Slack and other messengers | Same hold. Better as a laptop daemon than a second Slack personality. |
+| Hermes Agent (Nous) | Self-hosted Slack gateway (Socket Mode), self-writing skills, persistent memory | Hold. If ever: after 2026-09-19, separate Slack app, laptop or VPS. Fail-closed ingress: `SLACK_ALLOWED_USERS` = Meshal only, `SLACK_ALLOWED_CHANNELS` = `#me-agents-ops` Slack ID once that channel exists, Messages Tab DMs off. Do not deploy until the channel ID exists and both gates are tested. No AGI material. |
+| OpenClaw | Local gateway across Slack and other messengers | Same hold. Fail-closed channel allowlist and DM deny-by-default must be documented and tested before deploy. Better as a laptop daemon than a second Slack personality. |
 | Custom Slack bot / agent | New app in this workspace | Do not deploy until the five workflow bots pass the 2026-09-19 trial. Existing bot noise is already the problem. |
 | `@Kilo` | Already installed; Cloud Agent sessions on three non-control-plane repos | Keep. Do not expand the GitHub App to `alawein/alawein` without a human ask. |
 

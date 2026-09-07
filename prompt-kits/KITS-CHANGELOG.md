@@ -22,6 +22,11 @@ major for breaking behavioral changes.
 - Keep attribution out of commit messages, code comments, and product prose
 - Keep this revision at canary under the existing rollout protocol
 
+### 1.4.1 - 2026-09-04
+
+- Correct bucketed workspace paths and resolve sibling repositories through catalog local_path
+- Record the revision introduced by commit `491eb119`
+
 ### 1.4.0 - 2026-04-30
 
 - Added sentence rhythm rule: medium sentences (12–20 words) carry claims; short sentences (5–8 words) close sequences

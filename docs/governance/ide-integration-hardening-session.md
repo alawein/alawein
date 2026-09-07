@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: IDE integration hardening session
 description: Copy-paste Cursor IDE session prompt for end-to-end Slack, MCP, and agent stack hardening after the 2026-09-05 unified agent audit.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active

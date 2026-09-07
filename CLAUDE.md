@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-09-06
-last_updated: 2026-09-06
+last-verified: 2026-09-07
+last_updated: 2026-09-07
 ---
 
 # CLAUDE.md: alawein workspace control plane

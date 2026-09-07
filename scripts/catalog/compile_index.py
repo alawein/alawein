@@ -98,6 +98,13 @@ SLUG_OVERRIDES: dict[str, dict[str, Any]] = {
         "domain": "governance",
         "stack": ["python", "markdown", "github-actions"],
     },
+    "android-coding-phone": {
+        "type": "tooling",
+        "surface": "cli",
+        "domain": "governance",
+        "version_source": "CHANGELOG.md",
+        "stack": ["powershell", "node", "android"],
+    },
     "design-system": {
         "type": "infra",
         "surface": "monorepo",

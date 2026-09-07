@@ -1513,6 +1513,65 @@
       }
     },
     {
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "CHANGELOG.md",
+      "stack": [
+        "powershell",
+        "node",
+        "android"
+      ],
+      "name": "Android Coding Phone",
+      "slug": "android-coding-phone",
+      "legacy_slugs": [],
+      "repo": "alawein/android-coding-phone",
+      "local_path": "core/android-coding-phone",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "status": "active",
+      "homepage": "https://github.com/alawein/android-coding-phone",
+      "canonical_description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+      "tags": [
+        "Powershell",
+        "Node",
+        "Android"
+      ],
+      "github_topics": [
+        "android-coding-phone",
+        "powershell",
+        "node",
+        "android"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "internal-only",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [
+        "android-coding-phone-kit"
+      ],
+      "last_verified": "2026-09-07",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": [
+        "infrastructure"
+      ]
+    },
+    {
       "name": "design-system",
       "slug": "design-system",
       "legacy_slugs": [

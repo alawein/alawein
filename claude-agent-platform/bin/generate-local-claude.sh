@@ -20,6 +20,7 @@ usage() {
 Usage: generate-local-claude.sh [--root DIR] [--dry-run|--approve|--rollback] [--force] [--brief]
 
 Creates or previews .claude/CLAUDE.md based on repository scan.
+Preserves local text appended after the generated Local Memory section.
 
 Modes:
   --dry-run / --propose  Show the proposal and diff without writing (default).
@@ -142,6 +143,45 @@ if [ -d "$CLAUDE_DIR/skills" ] && [ -d "${CLAUDE_HOME:-$HOME/.claude}/skills" ];
   [ -n "$conflicts" ] && CONFLICTS="$(printf "%s" "$conflicts" | sed 's/^ //')"
 fi
 
+# Older Extender files have no end marker. Their Local Memory footer is the
+# boundary before appended policy; retain that suffix without interpreting it.
+LOCAL_SUFFIX_START=""
+if [ -f "$TARGET_FILE" ]; then
+  LOCAL_SUFFIX_START="$(awk '
+    { sub(/\r$/, "") }
+    NR == 1 { if ($0 != "---") exit; header = 1; next }
+    header {
+      if ($0 == "---") { header = 0; next }
+      if ($0 == "type: local-claude-config") type_ok = 1
+      if ($0 == "generated: true") generated_ok = 1
+      if ($0 == "source: claude-agent-platform-extender") source_ok = 1
+      next
+    }
+    type_ok && generated_ok && source_ok {
+      line = $0
+      sub(/^[[:space:]]*/, "", line)
+      if (fence != "") {
+        if (substr(line, 1, 1) == fence && match(line, /^(```+|~~~+)/) &&
+            RLENGTH >= width && substr(line, RLENGTH + 1) ~ /^[[:space:]]*$/)
+          fence = ""
+        next
+      }
+      if (match(line, /^(```+|~~~+)/)) {
+        fence = substr(line, 1, 1); width = RLENGTH; next
+      }
+      if ($0 ~ /^## /) memory = ($0 == "## Local Memory")
+      if (memory && $0 == "- Keep session summaries to five lines max.") {
+        print NR + 1
+        exit
+      }
+    }
+  ' "$TARGET_FILE")"
+  if [ -z "$LOCAL_SUFFIX_START" ]; then
+    echo "Cannot preserve local policy in $TARGET_FILE: unrecognized Extender header or footer" >&2
+    exit 1
+  fi
+fi
+
 PROPOSAL="$PROPOSAL_DIR/CLAUDE.md.proposed"
 cat > "$PROPOSAL" <<EOF
 ---
@@ -260,6 +300,10 @@ $REGISTRY_MARKER
 - Store pitfalls as \`[GOTCHA]\`.
 - Keep session summaries to five lines max.
 EOF
+
+if [ -n "$LOCAL_SUFFIX_START" ]; then
+  tail -n +"$LOCAL_SUFFIX_START" "$TARGET_FILE" >> "$PROPOSAL"
+fi
 
 if [ "$BRIEF" = "true" ]; then
   echo "$PROPOSAL"

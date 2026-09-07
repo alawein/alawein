@@ -83,6 +83,11 @@ major for breaking behavioral changes.
 
 ## workspace-master-prompt.md
 
+### 1.3.1 - 2026-09-07
+
+- Retain the exact-file-and-line requirement for refusal evidence
+- Keep the existing canary and staged rollout gates
+
 ### 1.3.0 - 2026-09-06
 
 - Keep R-1 through R-6 as the operating contract

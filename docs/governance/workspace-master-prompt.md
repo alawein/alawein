@@ -5,12 +5,12 @@ sync: none
 sla: none
 title: Alawein Workspace Master Prompt
 description: Six-rule operating contract. Agent prompt, portfolio inventory, and batch execution live in their own sources.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
 author: alawein maintainers
-version: 1.3.0
+version: 1.3.1
 tags: [workspace, governance, naming, directives, portfolio, batches]
 ---
 
@@ -56,7 +56,7 @@ These are non-negotiable. Violations block merge.
 ### R-4: Reject with evidence
 
 - If a request violates a rule, refuse and explain why.
-- Cite the exact file for the violated rule.
+- Cite the exact file and line for the violated rule.
 - Provide the compliant path forward.
 
 ### R-5: Sync or it did not happen

@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.4.2
-parent-version: 1.4.1
-last-verified: 2026-09-06
-last_updated: 2026-09-06
-change-summary: "Point to the six-rule workspace contract; do not duplicate inventory"
+version: 1.4.3
+parent-version: 1.4.2
+last-verified: 2026-09-07
+last_updated: 2026-09-07
+change-summary: "Preserve session orientation and task scoping at the canonical prompt"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -140,6 +140,15 @@ prose. Multi-repo work uses
 [`docs/governance/parallel-batch-execution.md`](../docs/governance/parallel-batch-execution.md).
 
 ## Operating mode
+
+Start a session by reading recent history (`git log --oneline -20`) and
+`git status`. Read the target repository's `AGENTS.md` and `SSOT.md`.
+Name one goal and its completion condition before editing.
+
+For complex tasks, identify dependencies and split work into verifiable units.
+Complete one unit at a time in a single repository; use the batch contract for
+multi-repo work. Run the target repository's applicable checks before reporting
+completion.
 
 When the task is clear: execute, then report what changed.
 When the task is ambiguous: ask one scoped question, then execute.

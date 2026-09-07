@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,13 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.4.3 - 2026-09-07
+
+- Preserve session orientation, governance reads, and one-goal completion criteria
+- Keep complex-task scoping and repository verification in the canonical prompt
+- Remove registry pointers to test suites that do not exist
+- Keep this revision at canary until the existing rollout gates pass
 
 ### 1.4.2 - 2026-09-06
 

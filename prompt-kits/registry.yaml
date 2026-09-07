@@ -2,12 +2,12 @@
 # Every prompt kit consumed by agents or tooling must be registered here.
 # rollout-status: draft | canary | staged | ga | deprecated
 version: 1
-last-updated: 2026-09-06
+last-updated: 2026-09-07
 
 prompts:
   - id: workspace-agent
     file: prompt-kits/AGENT.md
-    version: 1.4.2
+    version: 1.4.3
     type: system-prompt
     scope: workspace
     consumers:
@@ -15,7 +15,7 @@ prompts:
       - meshal-web
       - workspace-tools
       - atelier-rounaq
-    test-suite: tests/prompts/test-agent-kit.py
+    test-suite: null
     rollout-status: canary
     deprecated-version: null
     sunset-date: null
@@ -27,7 +27,7 @@ prompts:
     scope: repo-specific
     consumers:
       - meshal-web
-    test-suite: tests/prompts/test-portfolio-kit.py
+    test-suite: null
     rollout-status: ga
     deprecated-version: null
     sunset-date: null

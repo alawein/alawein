@@ -446,6 +446,16 @@ def markdown_files_for_links() -> Iterable[Path]:
         rel = relative(path)
         if is_archive_doc(rel):
             continue
+        # README scaffolds contain destination-relative links. They are checked
+        # after instantiation as live README files in the target repository.
+        if rel in {
+            "templates/scaffolding/README.archive.md",
+            "templates/scaffolding/README.governance.md",
+            "templates/scaffolding/README.product.md",
+            "templates/scaffolding/README.research.md",
+            "templates/scaffolding/README.tooling.md",
+        }:
+            continue
         if skip_parts.intersection(path.parts):
             continue
         yield path

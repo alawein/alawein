@@ -1244,7 +1244,7 @@
         "release_automation": {}
       },
       {
-        "name": "knowledge-base",
+        "name": "Command Center",
         "slug": "knowledge-base",
         "repo": "alawein/knowledge-base",
         "type": "infra",
@@ -1262,8 +1262,8 @@
         "audience": [
           "internal"
         ],
-        "homepage": "https://knowledge-base-alawein.vercel.app",
-        "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+        "homepage": "https://github.com/alawein/knowledge-base",
+        "description": "Private local workspace records and operating tools.",
         "topics": [
           "knowledge-base",
           "nextjs",
@@ -2631,7 +2631,7 @@
       "release_automation": {}
     },
     {
-      "name": "knowledge-base",
+      "name": "Command Center",
       "slug": "knowledge-base",
       "repo": "alawein/knowledge-base",
       "type": "infra",
@@ -2649,8 +2649,8 @@
       "audience": [
         "internal"
       ],
-      "homepage": "https://knowledge-base-alawein.vercel.app",
-      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
+      "homepage": "https://github.com/alawein/knowledge-base",
+      "description": "Private local workspace records and operating tools.",
       "topics": [
         "knowledge-base",
         "nextjs",
@@ -4899,8 +4899,8 @@
     {
       "slug": "knowledge-base",
       "repo": "alawein/knowledge-base",
-      "description": "Searchable discovery surface for repositories, tools, assets, templates, and onboarding.",
-      "homepage": "https://knowledge-base-alawein.vercel.app",
+      "description": "Private local workspace records and operating tools.",
+      "homepage": "https://github.com/alawein/knowledge-base",
       "topics": [
         "knowledge-base",
         "nextjs",

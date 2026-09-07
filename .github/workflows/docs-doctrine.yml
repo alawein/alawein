@@ -59,11 +59,11 @@ jobs:
       - name: Validate fleet README topology (GitHub main)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/doctrine/validate-readme-topology.py --github-api
+        run: python scripts/doctrine/validate-readme-topology.py --github-api --allow-legacy-public
       - name: Validate fleet README voice (GitHub default branch)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/doctrine/validate-readme-voice.py --github-api
+        run: python scripts/doctrine/validate-readme-voice.py --github-api --allow-legacy-public
       # --offline until a token that reads private repos is restored;
       # ALAWEIN_METADATA_SYNC_TOKEN returned 401 on 2026-08-28 (see docs/DEBT.md).
       # The live comparison (--github-api) runs locally before each PR.

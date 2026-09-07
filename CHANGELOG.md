@@ -27,6 +27,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Record repo-drift's verified public visibility after its installation and
   preview documentation repair; preserve the existing GitHub visibility and pins.
+- Point the workspace-batch canary to signed PR #27 and distinguish Python
+  token resolution from direct GitHub CLI token precedence.
 
 ### Added
 

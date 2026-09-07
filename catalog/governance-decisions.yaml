@@ -101,14 +101,16 @@ workspace_batch:
   installation_and_auth:
     state: canary
     review_required: true
-    source: https://github.com/alawein/workspace-tools/pull/25
+    source: https://github.com/alawein/workspace-tools/pull/27
     python: '>=3.12'
     operator_install: python -m pip install -e .
     contributor_install: python -m pip install -e ".[dev]"
     github_auth_precedence: [GITHUB_TOKEN, GH_TOKEN, gh_cli]
     note: >-
-      The owning-repo canary defines and tests this contract. Keep review_required true until
-      workspace-tools PR #25 is reviewed and merged.
+      The precedence list describes the Python resolver with its default token variable;
+      a configured token variable is checked first. Direct gh commands prefer GH_TOKEN
+      over GITHUB_TOKEN. Signed PR #27 retains the reviewed tree from closed PRs #25/#26.
+      Keep review_required true until PR #27 is merged.
 
 design_system:
   reference_consumers:

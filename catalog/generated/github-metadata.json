@@ -932,6 +932,7 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "node-monorepo",
+        "readme_archetype": "catalog-collection",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -951,6 +952,7 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "docs-hub",
+        "readme_archetype": "catalog-collection",
         "docs_maturity": "managed",
         "brand_family": "legacy"
       },
@@ -972,6 +974,7 @@
         "lifecycle": "active",
         "compliance": "internal-only",
         "repo_archetype": "docs-hub",
+        "readme_archetype": "catalog-collection",
         "docs_maturity": "minimal",
         "brand_family": "midnight"
       },

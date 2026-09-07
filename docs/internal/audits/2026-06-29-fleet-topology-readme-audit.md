@@ -1,12 +1,15 @@
 ---
 type: internal
-status: draft
-last_updated: 2026-06-29
+status: superseded
+description: Phase 1 topology and README audit snapshot (37 repos, pre-bucket-rename paths). Superseded by the current topology canon.
+last_updated: 2026-09-06
 owner: meshal
 audience: [contributors, agents]
 ---
 
 # Fleet topology and README audit (2026-06-29)
+
+> **Superseded** by [`docs/governance/repo-topology-canon.md`](../../governance/repo-topology-canon.md) (Archetype map, updated 2026-09-06). This document is preserved as the Phase 1 (2026-06-29) audit snapshot: repo count (37), bucket names (`products/`, `ventures/`, etc.), and slugs (for example `handshake-hai`) reflect that point in time and are historical, not current. For current topology, archetype classification, and repo counts, use the canon doc.
 
 Phase 1 audit of all 37 catalogued repos against `origin/main`. Six parallel bucket agents plus one cross-fleet README template pass. Primary design input PDF (`repos-topology.pdf`) is image-only; findings reconcile with `catalog/repos.json`, the 2026-06-23 topology consolidation spec, and on-disk layout.
 

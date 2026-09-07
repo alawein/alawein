@@ -7,8 +7,9 @@ sla: manual
 
 # Templates
 
-Config file templates rendered by `scripts/ops/render-configs.sh` across
-workspace repos.
+Historical config templates. The former renderer is preserved at
+`scripts/ops/_retired/render-configs.sh` for reference; it is not a supported
+rendering command. See `SSOT.md` for the current config sources.
 
 ## Available Templates
 
@@ -18,30 +19,10 @@ workspace repos.
 
 ## Variables
 
-Templates support these substitution variables:
+The retired renderer used these substitution variables:
 
 | Variable | Value |
 |----------|-------|
 | `{{REPO_NAME}}` | Target repo directory name |
 | `{{DATE}}` | Current date (YYYY-MM-DD) |
 | `{{ORG}}` | Organization name (`alawein`) |
-
-## Usage
-
-```bash
-# Render all templates to all workspace repos
-./scripts/ops/render-configs.sh
-
-# List available templates
-./scripts/ops/render-configs.sh --list
-
-# Check for config drift
-./scripts/ops/render-configs.sh --check
-```
-
-## Adding a Template
-
-1. Create `<filename>.template` in this directory
-2. Use `{{VARIABLE}}` syntax for substitutions
-3. Run `render-configs.sh --list` to verify
-4. Run `render-configs.sh` to render across repos

@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.3
+version: 1.3.4
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -20,6 +20,10 @@ tags: [slack, agents, integrations, workflow-bots, governance]
 This document is the locked governance source for the Alawein Slack workspace.
 It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
+
+**Shared session prompt (paste this):**
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) section "Shared session
+prompt". Every Slack bot and coding agent uses that block. Do not fork it.
 
 **Evidence baseline:**
 
@@ -236,6 +240,10 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.4 (2026-09-07)
+
+- Point Slack agents at `prompt-kits/AGENT.md` 1.6.0 Shared session prompt.
 
 ### v1.3.3 (2026-09-07)
 

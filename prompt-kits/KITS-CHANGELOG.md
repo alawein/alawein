@@ -16,6 +16,13 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.6.0 - 2026-09-07
+
+- Added Shared session prompt: one paste block for Slack bots, Cloud
+  sessions, Claude Code, Codex, Computer, Kilo, and Notion AI
+- Agents read the same six files, stay in named lanes, and patch
+  existing canon instead of creating a second instruction surface
+
 ### 1.5.2 - 2026-09-07
 
 - Added employer isolation: do not import, copy, commit, summarize, or operate

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent voice
 description: Thread and Canvas formatting contract for agent status updates in the Alawein Slack workspace.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.0.0
+version: 1.0.1
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -220,7 +220,9 @@ per Canvas.
 
 ## Agent prompt snippet (Cursor)
 
-Adopt this block in Cloud Agent Slack turns:
+Canonical paste block: [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md)
+section "Shared session prompt". Adopt this shorter block in Cloud Agent
+Slack turns when the full kit is already loaded:
 
 ```text
 Slack thread voice: first line = ask or status. Bold field labels only.
@@ -238,8 +240,14 @@ when a reply is required, or on the first ping of an incident. Max 6 lines routi
 | [`slack-agent-runbook.md`](slack-agent-runbook.md) | Channels and bots |
 | [`slack-voice-exemptions.md`](slack-voice-exemptions.md) | Workflow-bot register |
 | [`VOICE.md`](../style/VOICE.md) | Governed markdown surfaces |
+| [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt |
 
 ## Changelog
+
+### v1.0.1 (2026-09-07)
+
+- Point agents at `prompt-kits/AGENT.md` Shared session prompt as the
+  full paste block.
 
 ### v1.0.0 (2026-09-06)
 

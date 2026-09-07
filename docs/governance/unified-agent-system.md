@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.4.2
+version: 1.4.3
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -39,6 +39,7 @@ flowchart TB
     CG[@Codex]
     N[@Notion AI]
     GH[@GitHub]
+    KI[@Kilo]
   end
 
   subgraph WorkflowBots["Workflow bots (5)"]
@@ -86,11 +87,12 @@ flowchart TB
 | **Cursor** | Slack, Cloud Agent, IDE | Composer 2.5 | Implement, commit, PR, MCP, governance docs | Ready |
 | **Claude** | Slack bot | Legacy Slack | Slack reads, audits, synthesis | Ready (Tag pending) |
 | **Claude Code** | IDE / terminal | Claude | Repo mutation, terminal, MCP | Ready |
-| **Computer** | Slack, Perplexity web | Perplexity | Browser audit, design docs, verification | Needs auth (Slack) |
+| **Computer** | Slack, Perplexity web | Perplexity | Browser audit, design docs, verification | Ready (2026-09-07) |
 | **Codex** | Slack | GPT Codex | Gap-fill after ChatGPT Codex connect | Needs auth |
 | **ChatGPT** | Slack | GPT | Replaced by Codex; never posted | Replaced |
 | **Notion AI** | Slack, Notion | Notion AI | Notion workspace reads | Ready |
 | **GitHub for Slack** | Slack | None | PR thread mirroring | Ready |
+| **Kilo** | Slack | UNVERIFIED | Cloud Agent sessions on three non-control-plane repos | Ready; no `alawein/alawein` |
 
 ### LLM backends in use (tracked)
 
@@ -228,15 +230,21 @@ Do not uninstall ChatGPT until Codex Reply OK.
 Apply in Slack and governance docs. Voice contract:
 [`docs/style/VOICE.md`](../style/VOICE.md).
 
-### 6.1 Structure template (every agent turn)
+### 6.1 Structure template
+
+**Slack threads** use [`slack-agent-voice.md`](slack-agent-voice.md): labeled
+fields, no pipe tables, Canvas for tables. Do not paste the repo template
+below into a Slack message.
+
+**Repo / Canvas** template:
 
 ```markdown
-## [Agent] — [one-line outcome]
+## [Agent] - [one-line outcome]
 
 ### Status
 | Item | State |
 | --- | --- |
-| ... | 🟢 / 🟡 / 🔴 |
+| ... | verified / partial / blocked / unverified |
 
 ### Findings (table)
 | ... | ... |
@@ -258,7 +266,7 @@ One sentence: what Meshal or the next tagged agent should do.
 | **Diagrams** | Mermaid in governance docs; ASCII in Slack if Mermaid unavailable |
 | **Highlights** | Slack: `*bold*` for decisions; avoid emoji spam |
 | **Evidence** | One column or footnote: tool name + date |
-| **Status icons** | 🟢 verified · 🟡 partial · 🔴 blocked · ⚪ unverified |
+| **Status words** | verified / partial / blocked / unverified. Slack threads: no emoji status rows |
 | **Banned** | Executive summary padding, duplicate audits, "handing off" without data |
 
 ### 6.3 Slack vs repo
@@ -290,7 +298,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] Fix Cloud Agent GitHub MCP (ready 2026-09-06 rescan)
 - [x] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
   — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1; registry §4.1
-- [ ] Authenticate Computer in Slack
+- [x] Authenticate Computer in Slack (ready 2026-09-07; 7/7 reads)
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
 - [ ] Enable Claude Tag — runbook: `docs/governance/claude-tag-migration.md`
 - [ ] Execute channel v2 migration — plan: `docs/governance/slack-channel-migration-plan.md` (gate 2026-09-19)
@@ -308,6 +316,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 | [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml) | Machine-readable inventory SSOT |
 | [`claude-tag-migration.md`](claude-tag-migration.md) | Legacy → Claude Tag admin steps |
 | [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md) | Proposed v2 channel topology |
+| [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt (paste for every agent) |
 
 ## 9. Claude handoff (remaining work)
 
@@ -329,6 +338,13 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.4.3 (2026-09-07)
+
+- Shared session prompt lives in `prompt-kits/AGENT.md` 1.6.0. Slack
+  threads follow `slack-agent-voice.md`; the §6.1 table template is
+  repo and Canvas only.
+- Computer marked ready. Kilo added (three-repo GitHub App).
 
 ### v1.4.2 (2026-09-06)
 

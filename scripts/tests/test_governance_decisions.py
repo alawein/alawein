@@ -30,7 +30,7 @@ class GovernanceDecisionValidationTests(unittest.TestCase):
     def test_issue_references_survive_yaml_parsing(self) -> None:
         self.assertIn("#20", self.decisions["acknowledgements"][0]["subject"])
         note = self.decisions["workspace_batch"]["installation_and_auth"]["note"]
-        self.assertIn("#25 is reviewed and merged", note)
+        self.assertIn("#27 is merged", note)
 
     def test_malformed_decision_entries_are_rejected(self) -> None:
         for section in ("roles", "fitness_products", "research_clusters"):

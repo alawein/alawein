@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills, Agents, and Commands Maintenance
 description: Operating guide for maintaining universal, ecosystem, and org layers across local Claude/Cursor plugins and alawein governance docs.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 last_verified: 2026-09-06
 category: governance
 audience: [ai-agents, contributors]
@@ -141,8 +141,8 @@ in sync with command additions/removals.
 
 Current pre-commit governance checks:
 
-- `python scripts/sync-readme.py --check`
-- `./scripts/validate-doc-contract.sh --full`
+- `python scripts/catalog/sync-readme.py --check`
+- `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 
 Sources of truth:
 
@@ -192,8 +192,8 @@ After any maintenance change:
 1. Verify links and consistency in alawein docs.
 2. Ensure catalog command names match plugin command frontmatter.
 3. For alawein repo changes, run:
-   - `python scripts/sync-readme.py --check`
-   - `./scripts/validate-doc-contract.sh --full`
+   - `python scripts/catalog/sync-readme.py --check`
+   - `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 4. For plugin changes, run smoke tests (Section 8).
 
 ---
@@ -221,8 +221,8 @@ Run these checks after plugin/doc updates:
    Run kohyr context/validate and verify repo detection aligns with `repo-detect.md` and `repos.yaml`.
 4. **Alawein repo check**  
    Verify alawein reminders include:
-   - `python scripts/sync-readme.py --check`
-   - `./scripts/validate-doc-contract.sh --full`
+   - `python scripts/catalog/sync-readme.py --check`
+   - `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 5. **Catalog integrity check**  
    Ensure `slash-commands-catalog.md` entries reflect actual available command names.
 

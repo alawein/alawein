@@ -27,7 +27,7 @@
 <!-- Complete only if this PR touches prompt-kits/ or docs/style/VOICE.md -->
 - [ ] Not applicable
 - [ ] Version bumped in frontmatter (`version:` field)
-- [ ] Entry added to `prompt-kits/CHANGELOG.md`
+- [ ] Entry added to `prompt-kits/KITS-CHANGELOG.md`
 - [ ] `prompt-kits/registry.yaml` `rollout-status` updated
 - [ ] Downstream repos identified: <!-- list them -->
 - [ ] Canary tested: alawein → [ ] meshal-web → [ ]

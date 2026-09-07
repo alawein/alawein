@@ -24,9 +24,20 @@ jobs:
         with:
           path: repo
 
+      - name: Verify called workflow revision context
+        env:
+          WORKFLOW_REPOSITORY: ${{ job.workflow_repository }}
+          WORKFLOW_SHA: ${{ job.workflow_sha }}
+        run: |
+          set -euo pipefail
+          test "$WORKFLOW_REPOSITORY" = "alawein/alawein"
+          test -n "$WORKFLOW_SHA"
+          printf '%s' "$WORKFLOW_SHA" | grep -Eq '^[0-9a-f]{40}$'
+
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          repository: alawein/alawein
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
           path: org
           sparse-checkout: |
             .vale.ini
@@ -36,6 +47,7 @@ jobs:
             scripts/doctrine/validate.py
             scripts/doctrine/validate-doctrine.py
             scripts/doctrine/validate-repo-framework.py
+            scripts/doctrine/readme_contract.py
             scripts/doctrine/validate-readme-topology.py
             scripts/doctrine/validate-readme-voice.py
             catalog/repos.json

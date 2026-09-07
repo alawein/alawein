@@ -1,47 +1,35 @@
 # {{name}}
 
-Status:      {{status}}
-Category:    {{bucket}}
-Owner:       alawein
-Visibility:  {{visibility}}
-Purpose:     {{purpose}}
-Next action: continue
+> {{value_proposition}}
 
-## Value proposition
+## The claim
 
-Describe the user-facing outcome in one paragraph.
+State the measured result or say that it is not yet measured.
 
-## Demo and status
+## Run it
 
-- Lifecycle: `{{lifecycle}}`
-- Visibility: `{{visibility}}`
-- Homepage: `{{homepage}}`
-
-## Quick start
-
-<!-- REQUIRED: fill before first PR -->
 ```bash
 {{install_command}}
 {{dev_command}}
 ```
 
-## Architecture
+## What it is
 
-<!-- REQUIRED: fill before first PR -->
+Describe the project and its audience in two to four sentences.
 
-<!-- BEGIN surface:web|service -- keep this section only for web or service surfaces; delete it for library, CLI, or research surfaces (mirror README.research.md, which omits Deployment and substitutes Reproducibility). -->
-## Deployment
+## What it is not
 
-<!-- REQUIRED: fill before first PR -->
-<!-- END surface:web|service -->
+State the main non-goal plainly.
 
 ## Docs map
 
-- `docs/README.md`
-- `SSOT.md`
-- `LESSONS.md`
+- [Documentation](docs/README.md)
+- [Changelog](CHANGELOG.md)
 
-## Ownership
+## Contributing
 
-- Maintainer: `{{maintainer}}`
-- Docs owner: `{{docs_owner}}`
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MIT. See [LICENSE](LICENSE).

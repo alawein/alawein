@@ -77,55 +77,15 @@ PROMOTION_TIERS = ("P0", "P1", "P2", "P3")
 PUBLIC_TIERS = {"P0", "P1"}
 PROMOTION_MAX_AGE_DAYS = 90
 
+# Public scaffolding template sections. Private repositories retain the legacy
+# record-card contract and are not generated from these reader-facing templates.
 README_SECTIONS = {
-    "product": [
-        "Value proposition",
-        "Demo and status",
-        "Quick start",
-        "Architecture",
-        "Deployment",
-        "Docs map",
-        "Ownership",
-    ],
-    "tooling": [
-        "Purpose",
-        "Install",
-        "Commands",
-        "Architecture",
-        "Docs map",
-        "Consumers",
-        "Release and versioning",
-    ],
-    "infra": [
-        "Purpose",
-        "Install",
-        "Commands",
-        "Architecture",
-        "Docs map",
-        "Consumers",
-        "Release and versioning",
-    ],
-    "governance": [
-        "Purpose",
-        "Catalog SSOT",
-        "Validators",
-        "Docs map",
-    ],
-    "research": [
-        "Abstract",
-        "Status",
-        "Runtime requirements",
-        "Reproducibility",
-        "Datasets",
-        "Docs map",
-    ],
-    "archive": [
-        "Status",
-        "Archive reason",
-        "Contents",
-        "Access rules",
-        "Docs map",
-    ],
+    "product": ["The claim", "Run it", "What it is", "What it is not", "Docs map", "Contributing", "License"],
+    "tooling": ["The claim", "Run it", "What it is", "What it is not", "Docs map", "License"],
+    "infra": ["The claim", "Run it", "What it is", "What it is not", "Docs map", "License"],
+    "governance": ["The claim", "Run it", "What it is", "What it is not", "Docs map", "License"],
+    "research": ["The claim", "Run it", "What it is", "What it is not", "Docs map", "Citation", "License"],
+    "archive": ["Run it", "What it is", "What it is not", "Docs map", "License"],
 }
 
 

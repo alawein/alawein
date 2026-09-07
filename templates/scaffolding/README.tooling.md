@@ -1,44 +1,31 @@
 # {{name}}
 
-Status:      {{status}}
-Category:    {{bucket}}
-Owner:       alawein
-Visibility:  {{visibility}}
-Purpose:     {{purpose}}
-Next action: continue
+> {{value_proposition}}
 
-## Purpose
+## The claim
 
-State what this repo provides and who consumes it.
+State the measured result or say that it is not yet measured.
 
-## Install
+## Run it
 
 ```bash
 {{install_command}}
-```
-
-## Commands
-
-```bash
 {{test_command}}
 ```
 
-## Architecture
+## What it is
 
-Describe packages, entry points, and integration boundaries.
+Describe the tool and its users in two to four sentences.
+
+## What it is not
+
+State the main non-goal plainly.
 
 ## Docs map
 
-- `docs/README.md`
-- `SSOT.md`
-- `LESSONS.md`
+- [Documentation](docs/README.md)
+- [Changelog](CHANGELOG.md)
 
-## Consumers
+## License
 
-- `{{consumer_one}}`
-- `{{consumer_two}}`
-
-## Release and versioning
-
-- Version source: `{{version_source}}`
-- Publish mode: `{{publish_mode}}`
+MIT. See [LICENSE](LICENSE).

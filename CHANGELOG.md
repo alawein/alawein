@@ -10,8 +10,8 @@ audience: all
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-09-07
 tags: [changelog, version-history, releases]
+last_updated: 2026-09-07
 ---
 
 # Changelog
@@ -28,6 +28,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Align agent settings guidance with secrets-manager injection and the existing document freshness contract.
 - Detect conflicting work labels and apply validated prompt-form work kinds with private security-reporting guidance.
 - Exclude Git worktree metadata and prompt-kit history from content validation while retaining checks for unmanaged files and invalid kits.
+- Validate instantiated public README scaffolds and keep private README construction on the existing record-card path.
 
 ### Added
 

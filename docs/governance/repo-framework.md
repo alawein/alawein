@@ -8,7 +8,7 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-09-05
+last_updated: 2026-09-06
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
@@ -45,18 +45,26 @@ Ownership determines the home org. Inside an org, content category determines th
 
 Six active buckets replace the prior eight (`products`, `personal`, `family`, `research`, `tools`, `ventures`, `jobs-projects`). Canonical map: `catalog/buckets.yaml`.
 
-## Per-repo README metadata header (mandatory)
+## Public README contract
 
-Every repo across all active orgs places a plain-markdown metadata block at the top of `README.md`, immediately after the `# <repo-name>` title. This metadata block is plain markdown, not YAML frontmatter; workspace policy forbids YAML frontmatter on public READMEs.
+Public repositories use the reader-facing canon in
+[`repo-topology-canon.md`](repo-topology-canon.md). Their first screen states
+what the project is, its evidence-backed claim, its audience and boundary, and
+a 60-second run path. Public READMEs do not expose internal inventory fields.
 
-    Status:      active | paused | experimental | deprecated | archived | frozen
-    Category:    core | apps | lab | sites | work | archive
-    Owner:       alawein | menax-inc | blackmalejournal | kohyr
-    Visibility:  public | private
-    Purpose:     <one or two sentences explaining why this repo exists>
-    Next action: <continue | refactor | merge | archive | delete>
+## Private repository record card
 
-Enforced by `scripts/doctrine/validate-repo-framework.py`, run in the doctrine CI step.
+Private repositories retain the six-field record card for internal operations:
+
+    Status: active | paused | experimental | deprecated | archived | frozen
+    Category: core | apps | lab | sites | work | archive
+    Owner: alawein | menax-inc | blackmalejournal | kohyr
+    Visibility: private
+    Purpose: <why this repo exists>
+    Next action: continue | refactor | merge | archive | delete
+
+`scripts/doctrine/validate-repo-framework.py` selects the contract from catalog
+visibility. This does not require a private fleet migration.
 
 ## Per-repo anti-rot artifacts (mandatory for code archetypes)
 
@@ -107,23 +115,30 @@ Sole-owned commercial products (the fitness cluster: bolts, gymboy, repz, scribd
 A repo archives when ANY are true:
 
 - No commits in 180 days AND no roadmap item.
-- Replaced by a successor (record successor in `projects.json`).
+- Replaced by a successor (record it in the existing archive decision).
 - Hypothesis disproved (ventures, research).
 - Explicitly marked done by the owner.
 
 Archive procedure (idempotent):
 
-1. GitHub: `gh repo archive <org>/<repo>` (read-only).
+1. GitHub: `gh repo archive <org>/<repo>` makes the repository read-only.
 2. Local: move to `alawein/_archive/<YYYY-MM>-<repo>/`.
-3. `projects.json`: set `status: archived`, `archivedDate`, optional `successor`.
-4. README header: `Status: archived`, `Next action: delete`.
+3. Set `status: archived` in `catalog/index.yaml` and run
+   `scripts/catalog/build-catalog.py`. Record the archive date and any successor
+   in the existing archive decision; do not hand-edit `projects.json`.
+4. Private README: retain the record card with `Status: archived` and
+   `Next action: delete`. Public README: follow the
+   [archive scaffold](../../templates/scaffolding/README.archive.md), explaining
+   what is preserved, that development has ended, and any successor. Keep the
+   run command, docs map, and license; omit internal record-card fields.
 
 ## Naming convention
 
 - `lowercase-kebab-case` for repo names.
 - Forbidden names: `test`, `demo`, `new-*`, `*-final`, generic categories (`app`, `tool`, `website`, `backend`, `frontend`).
 - Local directory name matches GitHub remote name.
-- Renames preserve `legacy_slugs[]` in `projects.json` and rely on GitHub 301 redirects.
+- Renames preserve `legacy_slugs[]` in `catalog/index.yaml`, regenerate the catalog
+  outputs, and rely on GitHub 301 redirects.
 
 ## Change log
 
@@ -132,3 +147,4 @@ Archive procedure (idempotent):
 | 2026-05-14 | Initial version. Supersedes `REPO_GOVERNANCE_INITIATIVE.md`. Spec source: `docs/superpowers/specs/2026-05-14-alawein-reorg-design.md`. |
 | 2026-05-15 | Quality-pass fixes: rename file to lowercase, clarify `_archive` vs `archive`, tighten archive Next action to `delete`. |
 | 2026-05-15 | Clarifier: visibility `match original` for `archive` is manual (not validator-enforced). |
+| 2026-09-05 | Replaced public record cards with the reader-facing README canon; retained private record cards. |

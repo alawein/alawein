@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub ↔ Notion sync glossary and guardrails
 description: Definitions for Sync [project] vs GitHub Sync, canonical data flow, and out-of-scope rules for agents and operators.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: operations
 audience: [ai-agents, contributors, notion]
 status: active
@@ -47,7 +47,7 @@ This page is the **GitHub-side** counterpart to the Operations Hub handoff in No
 ## Related docs
 
 - [Admin-ops integration checklist](./admin-ops-integration-checklist.md) (Slack bots, MCP auth, Vercel, pre-flight)
-- [Notion Projects (Canonical), sync and checklist](./notion-projects-database.md)
+- [Notion Projects sync](./notion-projects-database.md)
 - Per-repo operator docs: `docs/operations/SYNC.md` and `docs/operations/RUNBOOK.md` inside individual `alawein/*` repositories (pattern established for ops scans).
 
 ## Notion parity note

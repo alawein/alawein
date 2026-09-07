@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Documentation Contract
 description: Authoritative local rules for document classes, freshness metadata, naming, and CI truthfulness in the alawein repository
-last_updated: 2026-07-25
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active

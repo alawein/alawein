@@ -110,12 +110,16 @@ last_updated: 2026-09-07
 
 ## operations/
 
+- [access-coverage.md](operations/access-coverage.md)
 - [admin-ops-integration-checklist.md](operations/admin-ops-integration-checklist.md)
 - [github-notion-sync-glossary.md](operations/github-notion-sync-glossary.md)
 - [github-repo-canonical-verification.md](operations/github-repo-canonical-verification.md)
 - [notion-projects-database.md](operations/notion-projects-database.md)
 - [project-lifecycle-tiers.md](operations/project-lifecycle-tiers.md)
+- [repository-responsibilities.md](operations/repository-responsibilities.md)
 - [session-log.md](operations/session-log.md)
+- [system-inventory.md](operations/system-inventory.md)
+- [trigger-registry.md](operations/trigger-registry.md)
 
 ## style/
 

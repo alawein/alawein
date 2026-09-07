@@ -56,6 +56,14 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
     A separate tool reviews the revision when feasible. Record unavailable review
     and pending acceptance explicitly; a skill or commit mode does not grant access.
 
+## Never
+
+- Do not import, copy, commit, summarize, or operate on material from AGI Inc,
+  `theagi.company` accounts, or an AGI-named cloud workspace into Alawein or
+  Kohyr work. Prior-employer artifacts stay on Meshal's machine under
+  `Desktop/AGI`, outside `Desktop/GitHub/alawein`. Existing audit mentions stay
+  as evidence. Do not extend them.
+
 ## Ask first
 
 - Before changing governance template structure across the repo fleet
@@ -85,3 +93,8 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
   repo and should be treated like other maintained instruction surfaces.
 - For profile-sync or README About-block work, follow the dedicated governance
   runbooks instead of inventing ad hoc flows.
+- Shared session prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0.
+  Search open catalog-land PRs before editing that kit or
+  `catalog/agent-integrations.yaml`.
+- Windows workspace root is `Desktop/GitHub/alawein`. This checkout is
+  `core/alawein`.

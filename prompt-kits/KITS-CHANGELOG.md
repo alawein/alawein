@@ -16,6 +16,31 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.7.0 - 2026-09-07
+
+- One catalog land: search open PRs before editing `AGENT.md` or
+  `catalog/agent-integrations.yaml`; report Mismatch and stop if a land
+  PR is already open. Do not hardcode a PR number in the paste block.
+- Do not nominate a land PR unless you opened the files on that branch
+- Lane reply limits: Claude 4 lines; Computer ack then wait; Kilo 3
+  repos; Codex/ChatGPT/Notion/GitHub one line or silent
+- Meshal tags the next agent; agents do not @ each other to start work
+- One Windows path line in the shared prompt: `Desktop/GitHub/alawein`
+  workspace, `core/alawein` control plane
+
+### 1.6.0 - 2026-09-07
+
+- Added Shared session prompt: one paste block for Slack bots, Cloud
+  sessions, Claude Code, Codex, Computer, Kilo, and Notion AI
+- Agents read the same six files, stay in named lanes, and patch
+  existing canon instead of creating a second instruction surface
+
+### 1.5.2 - 2026-09-07
+
+- Added employer isolation: do not import, copy, commit, summarize, or operate
+  on AGI Inc, `theagi.company`, or AGI-named cloud workspaces. Local quarantine
+  is `Desktop/AGI` outside `Desktop/GitHub/alawein`.
+
 ### 1.5.1 - 2026-09-07
 
 - Preserve execution and review evidence from 1.5.0 with the session guidance from 1.4.3

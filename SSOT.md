@@ -5,14 +5,14 @@ sync: none
 sla: none
 authority: canonical
 last-verified: 2026-09-07
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
-**Version:** 1.6
-**Last Updated:** 2026-09-06
+**Version:** 1.7
+**Last Updated:** 2026-09-07
 **Status:** Active
 
 ---
@@ -45,7 +45,9 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Canonical voice contract:
   [`docs/style/VOICE.md`](docs/style/VOICE.md)
 - Canonical prompt kits:
-  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md),
+  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0 (one catalog land;
+  search open PRs before editing that kit or
+  `catalog/agent-integrations.yaml`),
   [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
 - GitHub baseline contract:
   [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)
@@ -70,6 +72,11 @@ governance contract for naming, portfolio truth, and migration sequencing.
   `scripts/github/validate-visibility.py` and the offline rules in
   `scripts/catalog/validate-catalog.py`. Design:
   `docs/internal/specs/2026-08-27-public-readiness-gate-design.md`
+- Employer isolation (locked 2026-09-07): do not import, copy, commit,
+  summarize, or operate on AGI Inc, `theagi.company`, or AGI-named cloud
+  workspaces from Alawein or Kohyr work. Local quarantine is `Desktop/AGI`
+  on Meshal's machine, outside `Desktop/GitHub/alawein`. Historical audit
+  mentions stay as evidence only.
 - Slack and Cursor MCP inventory SSOT:
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:

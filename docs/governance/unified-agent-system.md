@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.4.2
+version: 1.5.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -39,6 +39,7 @@ flowchart TB
     CG[@Codex]
     N[@Notion AI]
     GH[@GitHub]
+    KI[@Kilo]
   end
 
   subgraph WorkflowBots["Workflow bots (5)"]
@@ -86,11 +87,12 @@ flowchart TB
 | **Cursor** | Slack, Cloud Agent, IDE | Composer 2.5 | Implement, commit, PR, MCP, governance docs | Ready |
 | **Claude** | Slack bot | Legacy Slack | Slack reads, audits, synthesis | Ready (Tag pending) |
 | **Claude Code** | IDE / terminal | Claude | Repo mutation, terminal, MCP | Ready |
-| **Computer** | Slack, Perplexity web | Perplexity | Browser audit, design docs, verification | Needs auth (Slack) |
+| **Computer** | Slack, Perplexity web | Perplexity | Browser audit, design docs, verification | Ready (2026-09-07) |
 | **Codex** | Slack | GPT Codex | Gap-fill after ChatGPT Codex connect | Needs auth |
 | **ChatGPT** | Slack | GPT | Replaced by Codex; never posted | Replaced |
 | **Notion AI** | Slack, Notion | Notion AI | Notion workspace reads | Ready |
 | **GitHub for Slack** | Slack | None | PR thread mirroring | Ready |
+| **Kilo** | Slack | UNVERIFIED | Cloud Agent sessions on three non-control-plane repos | Ready; no `alawein/alawein` |
 
 ### LLM backends in use (tracked)
 
@@ -144,13 +146,15 @@ verification steps: [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1
 | Notion / Drive file ownership | **Computer** then Codex | Cursor MCP | Inherited claims |
 | Design doc lock (`.md`) | **Computer** | Cursor commit | Duplicate narratives |
 | Connector gap-fill (diff only) | **Codex** (after connect) | Computer | Full re-audit |
+| Kilo-lane git (`ops-control-plane-grok`, `ai-ops`, `workspace-brain`) | **Kilo** | None | `alawein/alawein` |
 
 ### 5.2 Multi-agent dispatch protocol
 
 Use this in `#admin-ops` threads:
 
 1. **Tag in priority order**, state who answers first.
-2. **Each agent posts once** with tables + evidence; no restating prior audits.
+2. **Each agent posts once**, voice-compliant. Canvas only if a table is
+   required. No restating prior audits.
 3. **Diff-only follow-ups**, later agents fill `UNVERIFIED` rows only.
 4. **Cursor lands artifacts**, commits to `alawein/docs/governance/`.
 5. **No fake handoffs**, agents cannot invoke each other; Meshal tags the next.
@@ -165,9 +169,9 @@ sequenceDiagram
 
   M->>C: Tag + scoped task
   C->>C: Live MCP / git work
-  C-->>M: Tables + PR link
+  C-->>M: Status, Lane, Proved or Mismatch, PR link
   M->>CL: Verify Slack-side rows
-  CL-->>M: Locked inventory tables
+  CL-->>M: 4-line voice ack
   M->>CP: Browser / connector gaps
   CP-->>M: Verified rows or UNVERIFIED
   M->>CG: Diff-only on UNVERIFIED
@@ -191,17 +195,22 @@ messages. Parallel repo work uses `workspace-tools` batch manifests.
 
 ### 5.4 Parallel lane template (`#admin-ops`)
 
-When closing integration gaps, run lanes **at the same time**. Do not serialize
-browser OAuth behind Cloud Agent probes.
+Run only **open** lanes. Do not re-open completed Computer or Cursor
+channel work. Browser OAuth is Meshal. Do not invent Sider/Claw as a
+required owner.
 
 | Lane | Owner | Work | Pass |
 | --- | --- | --- | --- |
-| A | Meshal or Sider/Claw (browser) | Connect `@Codex` to ChatGPT Codex; DM `Reply OK` | Codex replies |
-| B | Meshal or Sider/Claw (browser) | Re-auth `@Computer` | S3 evidence on `#posts` |
-| C | Meshal (Slack UI) | `/invite @Cursor` in `#posts` `#content-pipeline` `#job-search` `#social` | Cloud Agent reads 7/7 |
-| D | `@Cursor` Cloud Agent | Re-probe channel reads + Cloud MCP matrix | Table with evidence |
-| E | Desktop IDE Cursor | Merge PRs, update YAML/audit, local MCP repair | Canon on `main` |
-| F | `@Claude` / `@Notion AI` | Diff-only Slack / Notion rows | One table each |
+| A | Meshal (browser OAuth) | Connect `@Codex` to ChatGPT Codex; DM `Reply OK` | Codex replies |
+| B | Meshal (browser OAuth) | Drive kitchen leave/unshare; Claude Tag | Human decision |
+| C | Done | Cursor reads 7/7 including `#posts` | Cloud Agent reads 7/7 |
+| D | `@Cursor` | Live prove on the land branch only | `last_verified` on the land PR |
+| E | Desktop IDE Cursor | Local MCP, git author, Claude home sync | Windows evidence or UNVERIFIED |
+| F | `@Claude` / `@Notion AI` / `@Kilo` | Lane ack, voice-compliant, 4 lines | No table, no re-audit |
+
+Computer is `ready` (7/7 including `#posts`). Cursor is 7/7. Codex still
+needs ChatGPT connect. ChatGPT stays installed and `replaced` until Codex
+`Reply OK`; then uninstall ChatGPT.
 
 **Desktop vs Cloud MCP rule:** never collapse statuses. A desktop `ready` does
 not imply Cloud Agent can call the tool (and the reverse). Inventory rows keep
@@ -214,12 +223,12 @@ then uninstall ChatGPT.
 Sample dispatch (paste into `#admin-ops`):
 
 ```markdown
-Parallel finalize — run lanes A–F now (do not wait on each other).
-A/B: browser OAuth (Meshal or Sider/Claw)
-C: /invite @Cursor in #posts #content-pipeline #job-search #social
-D: @Cursor re-probe 7-channel reads
-E: IDE Cursor lands canon
-F: @Claude / @Notion AI diff-only
+Open lanes only. Computer ready. Cursor 7/7.
+A: Meshal connects Codex (browser OAuth). Do not invent Sider/Claw.
+B: Meshal Claude Tag and Drive kitchen leave/unshare.
+D: @Cursor prove on the land branch.
+E: desktop Cursor records Windows evidence or UNVERIFIED.
+F: @Claude @Notion AI @Kilo 4-line lane ack. No table. No re-audit.
 Do not uninstall ChatGPT until Codex Reply OK.
 ```
 
@@ -228,15 +237,21 @@ Do not uninstall ChatGPT until Codex Reply OK.
 Apply in Slack and governance docs. Voice contract:
 [`docs/style/VOICE.md`](../style/VOICE.md).
 
-### 6.1 Structure template (every agent turn)
+### 6.1 Structure template
+
+**Slack threads** use [`slack-agent-voice.md`](slack-agent-voice.md): labeled
+fields, no pipe tables, Canvas for tables. Do not paste the repo template
+below into a Slack message.
+
+**Repo / Canvas** template:
 
 ```markdown
-## [Agent] — [one-line outcome]
+## [Agent] - [one-line outcome]
 
 ### Status
 | Item | State |
 | --- | --- |
-| ... | 🟢 / 🟡 / 🔴 |
+| ... | verified / partial / blocked / unverified |
 
 ### Findings (table)
 | ... | ... |
@@ -253,12 +268,12 @@ One sentence: what Meshal or the next tagged agent should do.
 
 | Element | Rule |
 | --- | --- |
-| **Tables** | Default for inventories, integrations, comparisons |
+| **Tables** | Repo and Canvas default for inventories. Slack threads: never. Canvas only if a table is required. |
 | **Checklists** | Action items only; `- [ ]` / `- [x]` |
 | **Diagrams** | Mermaid in governance docs; ASCII in Slack if Mermaid unavailable |
 | **Highlights** | Slack: `*bold*` for decisions; avoid emoji spam |
 | **Evidence** | One column or footnote: tool name + date |
-| **Status icons** | 🟢 verified · 🟡 partial · 🔴 blocked · ⚪ unverified |
+| **Status words** | verified / partial / blocked / unverified. Slack threads: no emoji status rows |
 | **Banned** | Executive summary padding, duplicate audits, "handing off" without data |
 
 ### 6.3 Slack vs repo
@@ -290,7 +305,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] Fix Cloud Agent GitHub MCP (ready 2026-09-06 rescan)
 - [x] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
   — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1; registry §4.1
-- [ ] Authenticate Computer in Slack
+- [x] Authenticate Computer in Slack (ready 2026-09-07; 7/7 reads)
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
 - [ ] Enable Claude Tag — runbook: `docs/governance/claude-tag-migration.md`
 - [ ] Execute channel v2 migration — plan: `docs/governance/slack-channel-migration-plan.md` (gate 2026-09-19)
@@ -308,6 +323,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 | [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml) | Machine-readable inventory SSOT |
 | [`claude-tag-migration.md`](claude-tag-migration.md) | Legacy → Claude Tag admin steps |
 | [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md) | Proposed v2 channel topology |
+| [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt (paste for every agent) |
 
 ## 9. Claude handoff (remaining work)
 
@@ -326,9 +342,25 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > 3. **Optimized dispatch v2**, one mermaid diagram + 5-row routing table
 >    revising §5.1 if your live reads suggest changes.
 >
-> Rules: tables only, evidence column required, mark blockers `UNVERIFIED`.
+> Rules: voice-compliant, max 4 lines in Slack. Canvas only if a table
+> is required. Evidence required. Mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.5.0 (2026-09-07)
+
+- §5.1 adds Kilo (3 repos, never `alawein/alawein`).
+- §5.2: post once, voice-compliant; Canvas only if a table is required.
+- §5.4: Computer ready, Cursor 7/7, Codex still needs connect, ChatGPT
+  installed and replaced until Codex Reply OK. Browser OAuth is Meshal.
+- Shared session prompt is `prompt-kits/AGENT.md` 1.7.0.
+
+### v1.4.3 (2026-09-07)
+
+- Shared session prompt lives in `prompt-kits/AGENT.md` 1.6.0. Slack
+  threads follow `slack-agent-voice.md`; the §6.1 table template is
+  repo and Canvas only.
+- Computer marked ready. Kilo added (three-repo GitHub App).
 
 ### v1.4.2 (2026-09-06)
 

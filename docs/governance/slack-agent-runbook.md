@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.5.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -20,6 +20,12 @@ tags: [slack, agents, integrations, workflow-bots, governance]
 This document is the locked governance source for the Alawein Slack workspace.
 It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
+
+**Shared session prompt (paste this):**
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.0 section "Shared
+session prompt". Every Slack agent bot and coding agent uses that block. Do
+not fork it. Workflow bots are exempt from this prompt. Paste the full
+block only when the kit version changes. Later pings are scoped tasks.
 
 **Evidence baseline:**
 
@@ -78,6 +84,42 @@ Format: `#<tier-prefix>-<domain>`
 | `#all-alawein-workspace` | Keep | Slack default broadcast |
 | `#social` | Keep | Slack default; low overhead |
 
+### 1.4 How Meshal calls agents
+
+Command center: `#admin-ops` (`C0B9SRMDJFK`). One task = one thread. Tag
+only who must act.
+
+| Who | Slack ID | Call |
+| --- | --- | --- |
+| `@Cursor` | `U0APW2Z3GG2` | One scoped git task. Search open PRs first. |
+| `@Claude` | `U0AQQFJT8AC` | 4 lines. No inventory dump. No emoji status rows. Tag is Meshal-only. |
+| `@Computer` | `U0APW7F9S4A` | URL plus completion condition. Cloud-only. |
+| `@Notion AI` | `U0AQ8UNAKTK` | Operations Hub / Master Tasks (required Status) / Projects Canonical. |
+| `@Kilo` | `U0BV9U2GFED` | `ops-control-plane-grok`, `ai-ops`, `workspace-brain` only. |
+| `@Codex` | `U0BV7V8M3NW` | Only after ChatGPT Codex connect. Else skip. |
+
+Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,
+Monday Kickoff, Weekly Content Planner, `@ChatGPT` (`U0BUNH33CCA`,
+replaced).
+
+**Correction ping** (two Cursors split the land). Follow-up only. Do not
+re-audit. Do not paste a new kit.
+
+```
+*Land:* PR #N. Park duplicate PRs.
+*Once then stop:* per-lane one-liners.
+*Voice:* first line = status. No tables. No second inventory.
+```
+
+**4-line post-land ping** (after `#220` squash-merge):
+
+```
+@Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
+Follow-up only. Kit is AGENT.md 1.7.0 on main.
+*Land:* PR #220. Park #223 if it still duplicates.
+*Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
+```
+
 ## 2. Workflow bot policy
 
 ### 2.1 Bot inventory (locked)
@@ -114,13 +156,13 @@ health problem.
 | --- | --- | --- | --- |
 | Slack workspace | `contact@meshal.ai` (U0APM5W630C) | Ready | Claude live channel and DM reads |
 | Gmail account | `contact@meshal.ai` | Ready | Cursor `list_labels` MCP |
-| Gmail custom labels (6) | `✈️ Travel`, `📋 Docs`, `💳 Finance/Billing`, `Blocked`, `Notion`, `AGI (archive)` | Clean | Cursor `list_labels` MCP; `AGI (archive)` created 2026-09-05 |
+| Gmail custom labels | `Action/*`, `Project/Alawein`, `System/Linear`, `System/GitHub`, `Subscriptions`, `DevOps`, `AGI (archive)` | Ready | Cursor `list_labels` 2026-09-07; old six-label set gone |
 | Google Drive account | `contact@meshal.ai` | Ready | Cursor `list_recent_files` MCP |
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
-| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
-| GitHub (Cursor MCP) | None | Error (`gh` CLI works) | Cursor MCP discovery failure |
+| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Inventory thread 2026-09-07; Kilo `U0BV9U2GFED` |
+| GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent `get_me` 2026-09-07 (bc-2953ccca) |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
 
@@ -179,6 +221,11 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 - All active integrations authenticate against `contact@meshal.ai`.
 - No integration may remain on a prior-employer account.
 - New integrations require a governance row in §3.1 before install.
+- AGI Inc, `theagi.company`, and AGI-named cloud workspaces are out of
+  scope for Alawein and Kohyr work. Do not import, copy, commit, summarize,
+  or operate on that material from this workspace. Local copies stay on
+  Meshal's machine under `Desktop/AGI`, outside `Desktop/GitHub/alawein`.
+  Historical mentions in this runbook stay as evidence. Do not extend them.
 
 ## 4. Implementation plan
 
@@ -222,6 +269,7 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | Section | Status |
 | --- | --- |
 | §1 Channel structure and decisions | LOCKED |
+| §1.4 How Meshal calls agents | LOCKED |
 | §2 Workflow bot policy | LOCKED |
 | §3.1 Verified integrations (including Notion) | LOCKED |
 | §3.2 Vercel deployments | LOCKED (eight UNVERIFIED rows pending browser inspection) |
@@ -231,6 +279,21 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.5.0 (2026-09-07)
+
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.7.0.
+- Added §1.4 How Meshal calls agents: who to tag, correction ping, and
+  4-line post-land ping.
+
+### v1.4.0 (2026-09-07)
+
+- Locked AGI / prior-employer isolation. Local quarantine is `Desktop/AGI`.
+- Gmail labels and GitHub Cursor MCP refreshed from the 2026-09-07 probe.
+- `@Computer` ready (7/7 including `#posts`). `@Kilo` recorded, three-repo
+  GitHub App only.
+- Shared session prompt in `prompt-kits/AGENT.md` 1.6.0. Agent bots only.
+  Workflow bots stay exempt.
 
 ### v1.3.0 (2026-09-06)
 

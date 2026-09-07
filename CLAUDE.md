@@ -91,13 +91,19 @@ public portfolio. Do not collapse them.
     the default independent reviewer is Cursor; record any substitution. Review
     the exact revision, keep self-review separate, and leave acceptance pending
     until Meshal records a decision. Tool availability does not grant permissions.
+14. Never import, copy, commit, summarize, or operate on AGI Inc,
+    `theagi.company`, or AGI-named cloud workspaces from this workspace. Those
+    artifacts stay on the laptop under `Desktop/AGI`, outside
+    `Desktop/GitHub/alawein`.
 
 ## Style contract
 
 Canonical sources:
 
 - Voice: [`docs/style/VOICE.md`](docs/style/VOICE.md)
-- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md)
+- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0.
+  One catalog land. Search open PRs before editing that kit or
+  `catalog/agent-integrations.yaml`.
 - Portfolio prompt: [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
 - Terminology/lint source:
   [`docs/style/terminology-registry.yaml`](docs/style/terminology-registry.yaml)

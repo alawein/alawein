@@ -7,6 +7,7 @@ import importlib.util
 import sys
 import unittest
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[3]
 SCRIPT = ROOT / "tools" / "repo-audit" / "scan.py"
@@ -131,7 +132,8 @@ class TestPagination(unittest.TestCase):
         )
         result = client.paginate("/repos/o/r/pulls")
         self.assertEqual([item["id"] for item in result["items"]], [1])
-        self.assertTrue(all(not call.startswith("https://evil.test") for call in client.open.calls))
+        requested_hosts = {urlsplit(call).netloc for call in client.open.calls}
+        self.assertEqual(requested_hosts, {"api.github.test"})
 
     def test_next_page_url_parsing(self):
         header = '<https://api.github.test/x?page=2>; rel="next", <https://api.github.test/x?page=9>; rel="last"'

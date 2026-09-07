@@ -20,8 +20,11 @@ It is an extension of the `alawein/alawein` catalog SSOT, not a replacement
 for `catalog/index.yaml` or its generated outputs.
 
 Run `python scripts/catalog/validate-catalog.py --strict` after editing the
-record. Validation rejects malformed containers, evidence, and review flags,
-including invalid design-system consumer entries following a valid entry.
+record. Validation covers roles, fitness products, research clusters, the
+workspace-batch installation contract, and design-system reference consumers.
+Consumer records require valid evidence, review flags, and unique catalog slugs.
+Acknowledgements and removed-claim notes remain descriptive records that require
+manual review; the validator does not enforce their fields.
 
 The record deliberately distinguishes established evidence from proposed
 transitions and review-required claims. It makes no deployment, visibility,

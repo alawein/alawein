@@ -1,4 +1,4 @@
-"""Tests for audit-todo-fixme.py: executable-source-only TODO/FIXME auditing."""
+"""Tests for Python comment annotation auditing."""
 
 from audit_todo_fixme import is_excluded, run_audit
 from pathlib import Path
@@ -19,17 +19,50 @@ def test_includes_todo_in_python_source(tmp_path):
     assert rel == tmp_path / "src" / "app.py"
 
 
-def test_includes_fixme_in_shell_source(tmp_path):
+def test_other_languages_are_outside_python_comment_scope(tmp_path):
     _write(tmp_path, "scripts/deploy.sh", "#!/bin/bash\n# FIXME: harden this\n")
-    findings = run_audit(tmp_path)
-    assert len(findings) == 1
-
-
-def test_includes_todo_in_js_ts_family(tmp_path):
     _write(tmp_path, "app/index.ts", "// TODO: type this properly\n")
     _write(tmp_path, "app/legacy.js", "// FIXME: remove\n")
-    findings = run_audit(tmp_path)
-    assert len(findings) == 2
+    assert run_audit(tmp_path) == {}
+
+
+def test_ignores_python_literals_and_explanatory_comments(tmp_path):
+    _write(tmp_path, "src/data.py", '''"""TODO: documentation.
+# FIXME: still a docstring
+"""
+pattern = r"# TODO: a regex fixture"
+value = "TODO: placeholder"
+text = """multiline
+# TODO: data
+"""
+# The audit checks TODO annotations separately.
+''')
+    assert run_audit(tmp_path) == {}
+
+
+def test_reports_inline_and_test_comments_with_line_numbers(tmp_path):
+    path = _write(tmp_path, "tests/fixtures/code.py", 'value = "# data"  # TODO: replace\n# FIXME: repair\n')
+    assert run_audit(tmp_path) == {path: [(1, 'value = "# data"  # TODO: replace'), (2, '# FIXME: repair')]}
+
+
+def test_auditor_and_its_tests_have_no_self_findings():
+    from audit_todo_fixme import find_markers
+    assert find_markers(Path(__file__)) == []
+    assert find_markers(Path(__file__).parents[1] / "audit-todo-fixme.py") == []
+
+
+def test_incomplete_python_does_not_report_clean(tmp_path, capsys):
+    from audit_todo_fixme import main
+    _write(tmp_path, "broken.py", 'text = """unterminated\n')
+    assert main(["--check", "--root", str(tmp_path)]) == 2
+    assert "could not audit" in capsys.readouterr().err
+
+
+def test_invalid_root_does_not_report_clean(tmp_path, capsys):
+    from audit_todo_fixme import main
+    for root in (tmp_path / "missing", _write(tmp_path, "file.py", "x = 1\n")):
+        assert main(["--check", "--root", str(root)]) == 2
+        assert "not a directory" in capsys.readouterr().err
 
 
 def test_excludes_docs_surface(tmp_path):

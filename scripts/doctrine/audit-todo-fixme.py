@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Audit TODO/FIXME markers in executable source files only.
+"""Audit TODO/FIXME annotations in Python comments.
 
-Scope is deliberately narrow: this walks executable source extensions
-(Python, shell, JS/TS family, Go, Rust) and skips documentation, generated,
-vendor, build, cache, and archive surfaces so the count reflects real code
-debt rather than doc placeholders (see `validate-doctrine.py`'s separate
-`PLACEHOLDER_TODO_RE` check) or third-party/derived content.
+Uses Python's tokenizer to exclude strings and docstrings, including fixtures.
+Other languages are outside this audit's coverage. Documentation, generated,
+vendor, build, cache, and archive surfaces are skipped. Documentation
+placeholders are covered by `validate-doctrine.py` separately.
 
 Usage:
   python scripts/doctrine/audit-todo-fixme.py            # print findings
@@ -16,13 +15,13 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import tokenize
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
-# Executable source only. Markdown/docs are out of scope for this audit;
-# `validate-doctrine.py` already covers doc placeholder TODOs separately.
-INCLUDE_SUFFIXES = {".py", ".sh", ".js", ".jsx", ".ts", ".tsx", ".mjs", ".go", ".rs"}
+# Only advertise languages with comment parsing supplied by the standard library.
+INCLUDE_SUFFIXES = {".py"}
 
 # Directory *names*, matched anywhere in the relative path, that are excluded
 # regardless of file extension: docs, generated, vendor, build, cache, and
@@ -52,7 +51,7 @@ EXCLUDE_DIR_NAMES = {
     ".git",
 }
 
-MARKER_RE = re.compile(r"\b(TODO|FIXME)\b")
+MARKER_RE = re.compile(r"#\s*(TODO|FIXME)\b")
 
 
 def is_excluded(rel_path: Path) -> bool:
@@ -75,13 +74,12 @@ def iter_source_files(root: Path) -> list[Path]:
 
 def find_markers(path: Path) -> list[tuple[int, str]]:
     hits: list[tuple[int, str]] = []
-    try:
-        text = path.read_text(encoding="utf-8", errors="ignore")
-    except OSError:
-        return hits
-    for lineno, line in enumerate(text.splitlines(), start=1):
-        if MARKER_RE.search(line):
-            hits.append((lineno, line.strip()))
+    with tokenize.open(path) as source:
+        for token in tokenize.generate_tokens(source.readline):
+            if token.type == tokenize.ERRORTOKEN and not token.string.isspace():
+                raise SyntaxError(f"invalid token at line {token.start[0]}")
+            if token.type == tokenize.COMMENT and MARKER_RE.match(token.string):
+                hits.append((token.start[0], token.line.strip()))
     return hits
 
 
@@ -101,7 +99,14 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     root = Path(args.root).resolve()
-    findings = run_audit(root)
+    if not root.is_dir():
+        print(f"could not audit Python comments: root is not a directory: {root}", file=sys.stderr)
+        return 2
+    try:
+        findings = run_audit(root)
+    except (OSError, UnicodeError, SyntaxError, tokenize.TokenError) as exc:
+        print(f"could not audit Python comments: {exc}", file=sys.stderr)
+        return 2
 
     total = sum(len(hits) for hits in findings.values())
     for path, hits in findings.items():
@@ -109,7 +114,7 @@ def main(argv: list[str] | None = None) -> int:
         for lineno, line in hits:
             print(f"{rel}:{lineno}: {line}")
 
-    print(f"\nTODO/FIXME audit: {total} marker(s) in {len(findings)} executable source file(s)")
+    print(f"\nPython-comment TODO/FIXME audit: {total} marker(s) in {len(findings)} file(s); other languages excluded")
 
     if args.check and total:
         return 1

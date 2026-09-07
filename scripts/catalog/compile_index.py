@@ -251,6 +251,9 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     promotion = repo.get("promotion")
     if isinstance(promotion, dict) and promotion:
         slim["promotion"] = deepcopy(promotion)
+    readme_archetype = (repo.get("github_custom_properties") or {}).get("readme_archetype")
+    if readme_archetype:
+        slim["readme_archetype"] = readme_archetype
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -334,6 +337,12 @@ def compile_repo(
             "audience": repo.get("audience") or ["internal"],
         }
     )
+
+    readme_archetype = entry.get("readme_archetype")
+    if readme_archetype:
+        repo["github_custom_properties"]["readme_archetype"] = readme_archetype
+    else:
+        repo["github_custom_properties"].pop("readme_archetype", None)
 
     promotion = entry.get("promotion")
     if isinstance(promotion, dict) and promotion:

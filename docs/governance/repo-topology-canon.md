@@ -292,8 +292,9 @@ CLAUDE.md AGENTS.md
 
 The `mercor`, `turing`, and `handshake` rows use README section rules for the
 `catalog-collection` archetype rather than their catalog `type`. This scope
-exception is declared once, in `catalog/repos.json`
-(`github_custom_properties.readme_archetype: catalog-collection`), and
+exception is authored in `catalog/index.yaml` as
+`readme_archetype: catalog-collection`. The compiler writes it to
+`catalog/repos.json` under `github_custom_properties.readme_archetype`, and
 `scripts/doctrine/validate-readme-topology.py` reads that field directly;
 there is no separate hardcoded repo list in the validator to keep in sync.
 

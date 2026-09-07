@@ -14,12 +14,12 @@ Ordered by risk band: security first, low-risk cleanup last.
 
 ## P1 security or credential exposure
 
-- `alawein/alawein`: Secret scanning status is unavailable to the audit token; admin read is required. (field `secret_scanning_state`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:07:39+00:00`)
+- `alawein/alawein`: Secret scanning status is unavailable to the audit token; admin read is required. (field `secret_scanning_state`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:00:00+00:00`)
 
 ## P3 unsafe repository protections or merge controls
 
-- `alawein/alawein`: Branch protection is unavailable to the audit token; admin read is required. (field `branch_protection_state`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:07:39+00:00`)
+- `alawein/alawein`: Branch protection is unavailable to the audit token; admin read is required. (field `branch_protection_state`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:00:00+00:00`)
 
 ## P4 reliability and deployment risk
 
-- `alawein/alawein`: Webhook or GitHub App inventory is unavailable to the audit token. (field `integrations`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:07:39+00:00`)
+- `alawein/alawein`: Webhook or GitHub App inventory is unavailable to the audit token. (field `integrations`, evidence https://github.com/alawein/alawein, observed `2026-09-07T09:00:00+00:00`)

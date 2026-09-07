@@ -1,6 +1,6 @@
 {
   "schema": "tools/repo-audit/schema.json",
-  "generated_at": "2026-09-07T09:07:39+00:00",
+  "generated_at": "2026-09-07T09:00:00+00:00",
   "scope": "repos:alawein/alawein",
   "states": [
     "pass",
@@ -19,13 +19,14 @@
       "primary_language": "Python",
       "description": "Profile README \u2014 project catalog, career snapshot, and GitHub presence",
       "default_branch": "main",
-      "collected_at": "2026-09-07T09:07:39+00:00",
+      "collected_at": "2026-09-07T09:00:00+00:00",
       "last_commit_date": "2026-09-07T08:42:07Z",
       "contributors": [
         "alawein",
         "github-actions[bot]",
         "Copilot"
       ],
+      "contributors_state": "pass",
       "contributor_activity": [],
       "contributor_activity_state": "pending",
       "open_pull_requests": 1,
@@ -88,103 +89,103 @@
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/commits?sha=main&per_page=1",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/contributors?per_page=100",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/stats/contributors",
           "status": 202,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pending"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/branches/main/protection",
           "status": 403,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS",
           "status": 404,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "fail"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/contents/.github/CODEOWNERS",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/readme",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/contents/docs",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml",
           "status": 200,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/vulnerability-alerts",
           "status": 403,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/hooks?per_page=100",
           "status": 403,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/installation",
           "status": 403,
-          "collected_at": "2026-09-07T09:07:39+00:00",
+          "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
         }
       ],
@@ -217,7 +218,7 @@
       "field": "secret_scanning_state",
       "finding": "Secret scanning status is unavailable to the audit token; admin read is required.",
       "evidence": "https://github.com/alawein/alawein",
-      "collected_at": "2026-09-07T09:07:39+00:00"
+      "collected_at": "2026-09-07T09:00:00+00:00"
     },
     {
       "repo": "alawein/alawein",
@@ -226,7 +227,7 @@
       "field": "branch_protection_state",
       "finding": "Branch protection is unavailable to the audit token; admin read is required.",
       "evidence": "https://github.com/alawein/alawein",
-      "collected_at": "2026-09-07T09:07:39+00:00"
+      "collected_at": "2026-09-07T09:00:00+00:00"
     },
     {
       "repo": "alawein/alawein",
@@ -235,7 +236,7 @@
       "field": "integrations",
       "finding": "Webhook or GitHub App inventory is unavailable to the audit token.",
       "evidence": "https://github.com/alawein/alawein",
-      "collected_at": "2026-09-07T09:07:39+00:00"
+      "collected_at": "2026-09-07T09:00:00+00:00"
     }
   ]
 }

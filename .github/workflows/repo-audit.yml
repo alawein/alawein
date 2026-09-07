@@ -55,12 +55,17 @@ jobs:
         run: python tools/repo-audit/scan.py --check-outputs "$RUNNER_TEMP/repo-audit-output"
 
       - name: Check committed examples against the recorded fixture
+        env:
+          # Pins the scanner clock so a fixture replay reproduces the committed
+          # examples byte for byte; any other drift fails the diff below.
+          SOURCE_DATE_EPOCH: "1788771600"
         run: |
           python tools/repo-audit/scan.py \
             --repos alawein/alawein \
             --fixture tools/repo-audit/tests/fixtures/alawein-alawein.json \
             --output-dir "$RUNNER_TEMP/repo-audit-fixture"
           python tools/repo-audit/scan.py --check-outputs "$RUNNER_TEMP/repo-audit-fixture"
+          diff -r tools/repo-audit/examples "$RUNNER_TEMP/repo-audit-fixture"
 
       - name: Summarize the audit run
         if: always()

@@ -102,6 +102,7 @@ CSV_COLUMNS = [
     "default_branch",
     "last_commit_date",
     "contributors",
+    "contributors_state",
     "contributor_activity",
     "contributor_activity_state",
     "open_pull_requests",
@@ -131,11 +132,41 @@ CSV_COLUMNS = [
 
 
 def utc_now() -> str:
+    """Current UTC timestamp, or the pinned one when SOURCE_DATE_EPOCH is set.
+
+    Honouring SOURCE_DATE_EPOCH lets a fixture replay reproduce the committed
+    example outputs byte for byte, so CI can detect drift.
+    """
+    pinned = os.environ.get("SOURCE_DATE_EPOCH", "").strip()
+    if pinned:
+        try:
+            return datetime.fromtimestamp(int(pinned), tz=timezone.utc).replace(microsecond=0).isoformat()
+        except (ValueError, OverflowError, OSError):
+            pass
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
 class GitHubError(Exception):
     """Raised when a mandatory collection step cannot complete."""
+
+
+class SameHostRedirectHandler(urllib.request.HTTPRedirectHandler):
+    """Refuse redirects that leave the configured API host.
+
+    The stock handler copies every request header, including Authorization,
+    onto the redirect target. Blocking cross-host redirects keeps the audit
+    token from reaching any host other than the configured API.
+    """
+
+    def __init__(self, scheme: str, netloc: str) -> None:
+        self.scheme = scheme
+        self.netloc = netloc
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: D102 - stdlib signature
+        parts = urllib.parse.urlsplit(newurl)
+        if (parts.scheme, parts.netloc) != (self.scheme, self.netloc):
+            raise urllib.error.HTTPError(newurl, code, "cross-host redirect refused", headers, fp)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
 class FixtureTransport:
@@ -170,6 +201,10 @@ class GitHubClient:
         self._token = token
         self.timeout = timeout
         self.evidence: list[dict[str, Any]] = []
+        parts = urllib.parse.urlsplit(self.api_url)
+        self._opener = urllib.request.build_opener(
+            SameHostRedirectHandler(parts.scheme, parts.netloc)
+        )
 
     def _headers(self) -> dict[str, str]:
         headers = {
@@ -188,6 +223,24 @@ class GitHubClient:
             return path
         return f"{self.api_url}/{path.lstrip('/')}"
 
+    def _same_host(self, url: str | None) -> str | None:
+        """Drop a pagination URL that points off the configured API host.
+
+        The Authorization header travels with every request, so a Link header
+        naming another host must never be followed.
+        """
+        if not url:
+            return None
+        configured = urllib.parse.urlsplit(self.api_url)
+        candidate = urllib.parse.urlsplit(url)
+        if (candidate.scheme, candidate.netloc) != (configured.scheme, configured.netloc):
+            print(
+                f"warning: ignoring pagination link to unexpected host '{candidate.netloc}'",
+                file=sys.stderr,
+            )
+            return None
+        return url
+
     def open(self, url: str) -> tuple[int, Any, dict[str, str]]:
         """Perform one request and return (status, parsed_body, headers).
 
@@ -196,7 +249,7 @@ class GitHubClient:
         """
         request = urllib.request.Request(url, headers=self._headers(), method="GET")
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+            with self._opener.open(request, timeout=self.timeout) as response:
                 raw = response.read()
                 headers = {key.lower(): value for key, value in response.headers.items()}
                 status = response.status
@@ -240,27 +293,50 @@ class GitHubClient:
         query.setdefault("per_page", 100)
         url: str | None = f"{self._absolute(path)}?{urllib.parse.urlencode(query)}"
         items: list[Any] = []
-        first_status = 0
-        first_record: dict[str, Any] | None = None
-        pages = 0
+        records: list[dict[str, Any]] = []
+        status = 0
+        complete = False
 
-        while url and pages < max_pages:
+        while url and len(records) < max_pages:
             status, body, headers = self.open(url)
-            record = self._record(url, status)
-            if first_record is None:
-                first_record = record
-                first_status = status
+            records.append(self._record(url, status))
             if status != 200 or not isinstance(body, list):
+                # A page that fails mid-sequence makes the whole collection
+                # partial; the caller must not treat the items as complete.
                 break
             items.extend(body)
-            url = next_page_url(headers.get("link", ""))
-            pages += 1
+            url = self._same_host(next_page_url(headers.get("link", "")))
+            if not url:
+                complete = True
+                break
 
+        if url and len(records) >= max_pages:
+            print(
+                f"warning: stopped paginating {self._absolute(path)} after {max_pages} pages",
+                file=sys.stderr,
+            )
+
+        if not records:
+            records.append(
+                {
+                    "endpoint": self._absolute(path),
+                    "status": 0,
+                    "collected_at": utc_now(),
+                    "state": UNAVAILABLE,
+                }
+            )
+
+        last = records[-1]
         return {
-            "status": first_status,
+            # `status` and `state` describe the last page attempted, and
+            # `complete` is true only when every page was collected. Callers
+            # must gate on `complete`, never on the first page's status.
+            "status": last["status"],
+            "state": last["state"] if complete else UNAVAILABLE,
+            "complete": complete,
             "items": items,
-            "evidence": first_record
-            or {"endpoint": self._absolute(path), "status": 0, "collected_at": utc_now(), "state": UNAVAILABLE},
+            "evidence": records[0],
+            "evidence_pages": records,
         }
 
 
@@ -393,8 +469,13 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
         record["last_commit_date"] = UNKNOWN
 
     contributors = client.paginate(f"{base}/contributors", {"per_page": 100})
-    evidence.append(contributors["evidence"])
-    record["contributors"] = [str(item.get("login") or UNKNOWN) for item in contributors["items"]]
+    evidence.extend(contributors["evidence_pages"])
+    record["contributors"] = (
+        [str(item.get("login") or UNKNOWN) for item in contributors["items"]]
+        if contributors["complete"]
+        else []
+    )
+    record["contributors_state"] = PASS if contributors["complete"] else contributors["state"]
 
     stats = client.get(f"{base}/stats/contributors")
     evidence.append(stats["evidence"])
@@ -417,15 +498,19 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
         record["contributor_activity_state"] = stats["evidence"]["state"]
 
     pulls = client.paginate(f"{base}/pulls", {"state": "open", "per_page": 100})
-    evidence.append(pulls["evidence"])
-    record["open_pull_requests"] = len(pulls["items"]) if pulls["status"] == 200 else UNAVAILABLE
-    record["open_pull_request_urls"] = [str(item.get("html_url") or "") for item in pulls["items"]]
+    evidence.extend(pulls["evidence_pages"])
+    record["open_pull_requests"] = len(pulls["items"]) if pulls["complete"] else UNAVAILABLE
+    record["open_pull_request_urls"] = (
+        [str(item.get("html_url") or "") for item in pulls["items"]] if pulls["complete"] else []
+    )
 
     issues = client.paginate(f"{base}/issues", {"state": "open", "per_page": 100})
-    evidence.append(issues["evidence"])
+    evidence.extend(issues["evidence_pages"])
     only_issues = [item for item in issues["items"] if "pull_request" not in item]
-    record["open_issues"] = len(only_issues) if issues["status"] == 200 else UNAVAILABLE
-    record["open_issue_urls"] = [str(item.get("html_url") or "") for item in only_issues]
+    record["open_issues"] = len(only_issues) if issues["complete"] else UNAVAILABLE
+    record["open_issue_urls"] = (
+        [str(item.get("html_url") or "") for item in only_issues] if issues["complete"] else []
+    )
 
     if default_branch:
         protection = client.get(f"{base}/branches/{urllib.parse.quote(default_branch)}/protection")
@@ -514,14 +599,14 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
         record["secret_scanning_state"] = UNAVAILABLE
 
     hooks = client.paginate(f"{base}/hooks", {"per_page": 100})
-    evidence.append(hooks["evidence"])
-    if hooks["status"] == 200:
+    evidence.extend(hooks["evidence_pages"])
+    if hooks["complete"]:
         record["webhooks_state"] = PASS if hooks["items"] else FAIL
         record["webhooks"] = [
             str((item.get("config") or {}).get("url", "")).split("?", 1)[0] for item in hooks["items"]
         ]
     else:
-        record["webhooks_state"] = hooks["evidence"]["state"]
+        record["webhooks_state"] = hooks["state"]
         record["webhooks"] = []
 
     installation = client.get(f"{base}/installation")
@@ -542,9 +627,9 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
 def list_repositories(client: GitHubClient, account: str) -> list[str]:
     """List repositories for an organization, falling back to a user account."""
     response = client.paginate(f"/orgs/{account}/repos", {"per_page": 100, "type": "all"})
-    if response["status"] != 200:
+    if not response["complete"]:
         response = client.paginate(f"/users/{account}/repos", {"per_page": 100, "type": "all"})
-    if response["status"] != 200:
+    if not response["complete"]:
         raise GitHubError(
             f"cannot list repositories for '{account}' (HTTP {response['status']}); "
             "cross-repository reads need a token with repository read scope"
@@ -699,7 +784,7 @@ def build_mermaid(records: list[dict[str, Any]]) -> str:
 
 def doctrine_header(title: str) -> str:
     """Frontmatter required by the workspace docs doctrine for generated files."""
-    today = datetime.now(timezone.utc).date().isoformat()
+    today = utc_now()[:10]
     return (
         "---\n"
         "type: generated\n"

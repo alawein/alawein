@@ -42,3 +42,4 @@ last_updated: 2026-07-07
 | 2026-09-06 23:40 | dc97f21 | Harden github-metadata-sync.yml dispatch validation; add symlink-redirect regression tests | 3 files | ~356 lines |
 | 2026-09-06 23:45 | d051131 | Add executable-source TODO/FIXME audit; fix retired-script path drift; address review feedback | 8 files | ~258 lines |
 | 2026-09-06 23:36 | cf81cd9 | Validate and compile Phase 3 governance catalog | 7 files | ~32 lines |
+| 2026-09-07 09:18 | e2af8de | feat(repo-audit): add read-only repository audit scanner, tests, workflow, and examples | 12 files | ~2374 lines |

@@ -96,7 +96,13 @@ Generated Markdown carries the workspace doctrine frontmatter
 | `unknown` | The response was readable but carried no determinable value. |
 | `unavailable` | The endpoint could not be read with the supplied token, or the request never completed. |
 
-An unreadable endpoint is never reported as `pass`.
+An unreadable endpoint is never reported as `pass`. A paginated collection that
+fails part way through (or that hits the 20-page cap) is reported as
+`unavailable` with an empty list rather than a truncated count, and every page
+attempted is retained in the evidence list.
+
+The scanner sends the token only to the host named by `--api-url`: pagination
+links and HTTP redirects that point at another host are refused.
 
 ### Backlog priority bands
 
@@ -166,11 +172,15 @@ the recorded responses in `tests/fixtures/alawein-alawein.json`, which mirror
 what a workflow `GITHUB_TOKEN` can read. Regenerate them with:
 
 ```bash
-python tools/repo-audit/scan.py \
+SOURCE_DATE_EPOCH=1788771600 python tools/repo-audit/scan.py \
   --repos alawein/alawein \
   --fixture tools/repo-audit/tests/fixtures/alawein-alawein.json \
   --output-dir tools/repo-audit/examples
 ```
+
+`SOURCE_DATE_EPOCH` pins the scanner clock, so a fixture replay reproduces the
+committed examples byte for byte. CI regenerates them with the same value and
+fails on any diff.
 
 The live CI run publishes its own outputs as a workflow artifact, so the
 committed examples stay stable while the artifact reflects current state.

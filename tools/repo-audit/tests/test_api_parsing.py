@@ -27,10 +27,11 @@ class FakeTransport:
 
     def __call__(self, url):
         self.calls.append(url)
+        best = None
         for prefix, response in self.routes.items():
-            if url.startswith(prefix):
-                return response
-        return 404, None, {}
+            if url.startswith(prefix) and (best is None or len(prefix) > len(best[0])):
+                best = (prefix, response)
+        return best[1] if best else (404, None, {})
 
 
 def client_with(routes):
@@ -80,6 +81,57 @@ class TestPagination(unittest.TestCase):
         result = client.paginate("/repos/o/r/hooks")
         self.assertEqual(result["items"], [])
         self.assertEqual(result["evidence"]["state"], scan.UNAVAILABLE)
+
+    def test_mid_sequence_failure_is_not_reported_as_complete(self):
+        # Page 1 succeeds, page 2 is forbidden: the collection is partial and
+        # must never be presented as an authoritative count.
+        page_two = "https://api.github.test/repos/o/r/pulls?page=2"
+        client = client_with(
+            {
+                page_two: (403, {"message": "forbidden"}, {}),
+                "https://api.github.test/repos/o/r/pulls": (
+                    200,
+                    [{"id": 1}],
+                    {"link": f'<{page_two}>; rel="next"'},
+                ),
+            }
+        )
+        result = client.paginate("/repos/o/r/pulls")
+        self.assertFalse(result["complete"])
+        self.assertEqual(result["state"], scan.UNAVAILABLE)
+        # Every page attempted is retained as evidence, not just the first.
+        self.assertEqual(len(result["evidence_pages"]), 2)
+
+    def test_partial_pagination_marks_counts_unavailable(self):
+        routes = TestCollectRepository().base_routes()
+        page_two = "https://api.github.test/repos/o/r/pulls?page=2"
+        routes["https://api.github.test/repos/o/r/pulls?state=open&per_page=100"] = (
+            200,
+            [{"html_url": "https://github.test/o/r/pull/1"}],
+            {"link": f'<{page_two}>; rel="next"'},
+        )
+        routes[page_two] = (500, None, {})
+        record = scan.collect_repository(client_with(routes), "o/r")
+        self.assertEqual(record["open_pull_requests"], scan.UNAVAILABLE)
+        self.assertEqual(record["open_pull_request_urls"], [])
+
+    def test_pagination_ignores_link_to_other_host(self):
+        # The Authorization header travels with every request, so a Link header
+        # pointing at another host must not be followed.
+        evil = "https://evil.test/repos/o/r/pulls?page=2"
+        client = client_with(
+            {
+                "https://api.github.test/repos/o/r/pulls": (
+                    200,
+                    [{"id": 1}],
+                    {"link": f'<{evil}>; rel="next"'},
+                ),
+                evil: (200, [{"id": 99}], {}),
+            }
+        )
+        result = client.paginate("/repos/o/r/pulls")
+        self.assertEqual([item["id"] for item in result["items"]], [1])
+        self.assertTrue(all(not call.startswith("https://evil.test") for call in client.open.calls))
 
     def test_next_page_url_parsing(self):
         header = '<https://api.github.test/x?page=2>; rel="next", <https://api.github.test/x?page=9>; rel="last"'

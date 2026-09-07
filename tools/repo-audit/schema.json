@@ -49,6 +49,7 @@
         "default_branch": { "type": "string" },
         "last_commit_date": { "type": "string" },
         "contributors": { "type": "array", "items": { "type": "string" } },
+        "contributors_state": { "$ref": "#/$defs/state" },
         "contributor_activity": {
           "type": "array",
           "items": { "type": "string", "description": "login:last-contribution-date" }

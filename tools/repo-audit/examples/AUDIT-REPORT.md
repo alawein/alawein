@@ -11,7 +11,7 @@ last_updated: 2026-09-07
 # Repository audit report
 
 - Scope: `repos:alawein/alawein`
-- Generated at: `2026-09-07T09:07:39+00:00`
+- Generated at: `2026-09-07T09:00:00+00:00`
 - Repositories audited: 1
 - Findings: 3
 
@@ -32,23 +32,23 @@ States: `pass`, `fail`, `pending`, `unknown` (readable response with no determin
 
 ### alawein/alawein
 
-Collected at `2026-09-07T09:07:39+00:00`.
+Collected at `2026-09-07T09:00:00+00:00`.
 
-- `200` pass from `https://api.github.com/repos/alawein/alawein` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/commits?sha=main&per_page=1` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/contributors?per_page=100` at `2026-09-07T09:07:39+00:00`
-- `202` pending from `https://api.github.com/repos/alawein/alawein/stats/contributors` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100` at `2026-09-07T09:07:39+00:00`
-- `403` unavailable from `https://api.github.com/repos/alawein/alawein/branches/main/protection` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100` at `2026-09-07T09:07:39+00:00`
-- `404` fail from `https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/.github/CODEOWNERS` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/readme` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/docs` at `2026-09-07T09:07:39+00:00`
-- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml` at `2026-09-07T09:07:39+00:00`
-- `403` unavailable from `https://api.github.com/repos/alawein/alawein/vulnerability-alerts` at `2026-09-07T09:07:39+00:00`
-- `403` unavailable from `https://api.github.com/repos/alawein/alawein/hooks?per_page=100` at `2026-09-07T09:07:39+00:00`
-- `403` unavailable from `https://api.github.com/repos/alawein/alawein/installation` at `2026-09-07T09:07:39+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/commits?sha=main&per_page=1` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/contributors?per_page=100` at `2026-09-07T09:00:00+00:00`
+- `202` pending from `https://api.github.com/repos/alawein/alawein/stats/contributors` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100` at `2026-09-07T09:00:00+00:00`
+- `403` unavailable from `https://api.github.com/repos/alawein/alawein/branches/main/protection` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100` at `2026-09-07T09:00:00+00:00`
+- `404` fail from `https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/.github/CODEOWNERS` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/readme` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/docs` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml` at `2026-09-07T09:00:00+00:00`
+- `403` unavailable from `https://api.github.com/repos/alawein/alawein/vulnerability-alerts` at `2026-09-07T09:00:00+00:00`
+- `403` unavailable from `https://api.github.com/repos/alawein/alawein/hooks?per_page=100` at `2026-09-07T09:00:00+00:00`
+- `403` unavailable from `https://api.github.com/repos/alawein/alawein/installation` at `2026-09-07T09:00:00+00:00`
 

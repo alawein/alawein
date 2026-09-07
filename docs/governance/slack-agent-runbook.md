@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.1
+version: 1.3.2
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -114,13 +114,13 @@ health problem.
 | --- | --- | --- | --- |
 | Slack workspace | `contact@meshal.ai` (U0APM5W630C) | Ready | Claude live channel and DM reads |
 | Gmail account | `contact@meshal.ai` | Ready | Cursor `list_labels` MCP |
-| Gmail custom labels (6) | `✈️ Travel`, `📋 Docs`, `💳 Finance/Billing`, `Blocked`, `Notion`, `AGI (archive)` | Clean | Cursor `list_labels` MCP; `AGI (archive)` created 2026-09-05 |
+| Gmail custom labels | `Action/*`, `Project/Alawein`, `System/Linear`, `System/GitHub`, `Subscriptions`, `DevOps`, `AGI (archive)` | Ready | Cursor `list_labels` 2026-09-07; old six-label set gone |
 | Google Drive account | `contact@meshal.ai` | Ready | Cursor `list_recent_files` MCP |
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
 | Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
-| GitHub (Cursor MCP) | None | Error (`gh` CLI works) | Cursor MCP discovery failure |
+| GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent `get_me` 2026-09-07 (bc-2953ccca) |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
 
@@ -236,6 +236,12 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.2 (2026-09-07)
+
+- Gmail user labels now Action/*, Project/Alawein, System/Linear,
+  System/GitHub, Subscriptions, DevOps, and AGI (archive).
+- GitHub Cursor MCP marked ready from the 2026-09-07 Cloud Agent probe.
 
 ### v1.3.1 (2026-09-07)
 

@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-06T03:15:00Z'
+lastVerified: '2026-09-07T06:56:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -7,8 +7,8 @@ note: >
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
   docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
-  rescan 2026-09-06 03:15 UTC:
-  docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
+  probe 2026-09-07 06:56 UTC (run bc-2953ccca). Prior written rescans:
+  docs/internal/audits/2026-09-06-slack-integrations-rescan.md and
   docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
   Agent MCP status can diverge; keep both. CI drift check:
   python3 scripts/catalog/validate-agent-integrations.py --strict.
@@ -39,8 +39,8 @@ agents:
       Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
       job-search 1788621248.955629, social 1788621362.488249.
       Cursor Slack Tools is the canonical Slack surface for agents launched from
-      Slack. Re-proved 2026-09-06 03:15 UTC rescan (run bc-8ca615eb-…).
-    last_verified: 2026-09-06
+      Slack. Re-proved 2026-09-07 06:56 UTC (run bc-2953ccca): listed 7, read 7.
+    last_verified: 2026-09-07
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -134,6 +134,7 @@ workflow_bots:
     output: '#posts'
     status: working
     engagement_30d: 0
+    notes: Last fire 2026-09-04. Missed 2026-09-05 through 2026-09-07.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
@@ -144,11 +145,13 @@ workflow_bots:
     output: '#posts'
     status: working
     engagement_30d: 0
+    notes: Did not fire 2026-09-07 09:00 PT. Checked #posts after 16:00 UTC.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
     status: working
     engagement_30d: 0
+    notes: No 2026-09-07 fire in recent #content-pipeline history.
 
 integrations:
   - id: gmail
@@ -157,11 +160,13 @@ integrations:
     cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      Cloud Agent 14:32 UTC rescan: AGI (archive) Label_367; 22 threads;
-      0 from:theagi.company in:inbox. Inbox 268 threads / 83 unread.
-      User labels: Travel, Docs, Finance/Billing, Blocked, Notion, AGI (archive).
-      Desktop IDE: Gmail MCP absent from catalog (T1/T2 not re-run on desktop).
-    last_verified: 2026-09-05
+      Cloud Agent 2026-09-07: inbox 281 threads / 102 unread. User labels
+      Action/Blocked, Action/Review, Action/Waiting, Project/Alawein,
+      System/Linear, System/GitHub, Subscriptions, DevOps, AGI (archive).
+      Old six-label set is gone. AGI inbox count 0. AGI (archive) Label_384
+      has 22 threads, 0 unread. Do not fetch those threads. Desktop column
+      UNVERIFIED this run.
+    last_verified: 2026-09-07
   - id: google-calendar
     provider: Google
     account: contact@meshal.ai
@@ -177,27 +182,29 @@ integrations:
     cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      Cloud Agent: 50+ AGI-related files; sampled owners contact@meshal.ai.
-      Desktop IDE: Drive MCP absent (T3 not re-run).
-    last_verified: 2026-09-05
+      Do not fetch or copy AGI-owned Drive files. Leave or unshare of the
+      kitchen sheet is human-only. Desktop column UNVERIFIED this run.
+    last_verified: 2026-09-07
   - id: notion
     provider: Notion
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
-    cursor_mcp: absent
+    cursor_mcp: cloud_ready
     status: locked
-    notes: Notion MCP not present in desktop IDE catalog; Notion AI Slack remains surface.
-    last_verified: 2026-09-05
+    notes: >
+      Cloud Agent 2026-09-07: notion-search ready. Workspace UUID is not a
+      page id (fetch 404 expected). Operations Hub reachable. Desktop column
+      UNVERIFIED this run.
+    last_verified: 2026-09-07
   - id: railway
     provider: Railway
     account: contact@meshal.ai
     cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      Cloud Agent 14:32 UTC: whoami Meshal Alawein / contact@meshal.ai
-      (id 14cf9806-a434-4a81-a826-6147dd39b5a9). Desktop: Railway MCP
-      namespace not loaded; CLI whoami Unauthorized (T4 fail).
-    last_verified: 2026-09-05
+      Login identity is contact@meshal.ai. Do not list, copy, or operate on
+      AGI-named Railway workspaces from this repo. Desktop column UNVERIFIED.
+    last_verified: 2026-09-07
   - id: vercel
     provider: Vercel
     team: alawein
@@ -215,9 +222,10 @@ integrations:
     notes: >
       Desktop IDE 2026-09-05 (T5): ready. Cloud Agent 2026-09-05 14:32 UTC
       (bc-01698bb5): error. Cloud Agent 2026-09-06 03:15 UTC (bc-8ca615eb):
-      ready. Status is time-stamped; do not collapse runs.
+      ready. Cloud Agent 2026-09-07 (bc-2953ccca): get_me alawein ready.
+      Status is time-stamped; do not collapse runs.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
-    last_verified: 2026-09-06
+    last_verified: 2026-09-07
   - id: supermemory
     provider: Supermemory
     cursor_mcp: dropped
@@ -252,10 +260,10 @@ integrations:
     last_verified: 2026-09-05
   - id: treg
     provider: Treg
-    cursor_mcp: ready
+    cursor_mcp: error
     status: partial
-    notes: Namespace ready; my_tools failed (could not read teams for this token).
-    last_verified: 2026-09-05
+    notes: Token dead on 2026-09-07 Cloud probe. Leave until Meshal provides a fresh token.
+    last_verified: 2026-09-07
   - id: fireflies
     provider: Fireflies
     cursor_mcp: needs_auth
@@ -275,17 +283,17 @@ slack:
 
 slack_channel_reads:
   cloud_agent_current:
+    run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3
+    verified_at: '2026-09-07T06:56:00Z'
+    listed: 7
+    readable: 7
+    evidence: live Cursor Slack Tools list + read, 2026-09-07
+  cloud_agent_prior:
     run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
     verified_at: '2026-09-06T03:15:00Z'
     listed: 7
     readable: 7
     evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
-  cloud_agent_prior:
-    run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
-    verified_at: '2026-09-05T14:32:00Z'
-    listed: 7
-    readable: 3
-    evidence: docs/internal/audits/2026-09-05-slack-integrations-rescan.md
   ide_slack_mcp:
     verified_at: '2026-09-05'
     readable: 7
@@ -328,8 +336,8 @@ slack_channels:
     notes: Cursor joined 2026-09-05 15:16 UTC (join ts 1788621362.488249, lane C)
 
 cursor_mcp_cloud_agent:
-  scanned_at: '2026-09-06T03:15:00Z'
-  run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
+  scanned_at: '2026-09-07T06:56:00Z'
+  run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3
   ready:
     - Cursor Slack Tools
     - Slack
@@ -337,18 +345,19 @@ cursor_mcp_cloud_agent:
     - Gmail
     - Google-calendar
     - Google-drive
+    - Notion
     - Railway
     - Playwright
     - Cloudflare-docs
     - Godaddy
-    - Treg
     - cursor-cloud
     - cursor-subscriptions
   error:
     - Figma
     - Todoist
-  loading:
+    - Treg
     - Supermemory
+  loading:
     - 1password
   needs_auth:
     - Calendly

@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-06T03:15:00Z'
+lastVerified: '2026-09-07T08:25:14Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -8,7 +8,9 @@ note: >
   any auth change. Desktop IDE hardening: Part 4 of
   docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
   rescan 2026-09-06 03:15 UTC:
-  docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
+  docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Scoped Cursor
+  prove 2026-09-07 08:25 UTC:
+  docs/internal/audits/2026-09-07-cursor-shared-session-prove.md. Prior rescan:
   docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
   Agent MCP status can diverge; keep both. CI drift check:
   python3 scripts/catalog/validate-agent-integrations.py --strict.
@@ -31,8 +33,9 @@ agents:
       Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
       job-search 1788621248.955629, social 1788621362.488249.
       Cursor Slack Tools is the canonical Slack surface for agents launched from
-      Slack. Re-proved 2026-09-06 03:15 UTC rescan (run bc-8ca615eb-…).
-    last_verified: 2026-09-06
+      Slack. Re-proved 2026-09-07 08:25 UTC shared session (run
+      bc-b4b569f6-a6c0-5114-8ebc-ddfa7736b9eb): list 7/7, read 7/7.
+    last_verified: 2026-09-07
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -267,17 +270,17 @@ slack:
 
 slack_channel_reads:
   cloud_agent_current:
+    run: bc-b4b569f6-a6c0-5114-8ebc-ddfa7736b9eb
+    verified_at: '2026-09-07T08:25:14Z'
+    listed: 7
+    readable: 7
+    evidence: docs/internal/audits/2026-09-07-cursor-shared-session-prove.md
+  cloud_agent_prior:
     run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
     verified_at: '2026-09-06T03:15:00Z'
     listed: 7
     readable: 7
     evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
-  cloud_agent_prior:
-    run: bc-01698bb5-e10b-5968-8fb0-ced67462e4b7
-    verified_at: '2026-09-05T14:32:00Z'
-    listed: 7
-    readable: 3
-    evidence: docs/internal/audits/2026-09-05-slack-integrations-rescan.md
   ide_slack_mcp:
     verified_at: '2026-09-05'
     readable: 7

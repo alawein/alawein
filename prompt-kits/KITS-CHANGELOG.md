@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-05-23
+last_updated: 2026-09-07
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,12 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.5.0 - 2026-09-07
+
+- Record actual execution and review roles in task, PR, or batch evidence
+- Keep attribution out of commit messages, code comments, and product prose
+- Keep this revision at canary under the existing rollout protocol
 
 ### 1.4.0 - 2026-04-30
 

@@ -2,6 +2,8 @@
 
 import importlib.util
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -36,6 +38,26 @@ def test_conflicting_or_missing_evidence_stays_for_review(source):
 @pytest.mark.parametrize("changes", [{"state": "closed"}, {"archived": True}])
 def test_historical_records_are_preserved(changes):
     assert MODULE.plan([record(**changes)], VOCAB)[0]["action"] == "preserve"
+
+
+@pytest.mark.parametrize("state", [None, "", "unknown", "OPEN"])
+def test_incomplete_observations_are_not_preserved(state):
+    with pytest.raises(ValueError, match="state"):
+        MODULE.plan([record(state=state)], VOCAB)
+
+
+def test_cli_rejects_missing_state(tmp_path):
+    source = record()
+    del source["state"]
+    observations = tmp_path / "records.json"
+    observations.write_text(json.dumps([source]))
+    result = subprocess.run(
+        [sys.executable, str(SPEC.origin), str(observations), "--check"],
+        capture_output=True, text=True,
+    )
+    assert result.returncode != 0
+    assert "state" in result.stderr
+    assert '"action": "preserve"' not in result.stdout
 
 
 def test_repo_specific_namespace_is_preserved():

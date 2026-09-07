@@ -300,6 +300,7 @@ def compile_repo(
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
     status = str(entry.get("status") or repo.get("status") or defaults.get("lifecycle") or "active")
     visibility = str(entry.get("visibility") or "private")
+    owner = entry.get("owner") or repo.get("owner") or "alawein"
     homepage = str(entry.get("url") or entry.get("homepage") or repo.get("homepage") or "").strip()
 
     stack = entry.get("stack") or repo.get("stack") or defaults.get("stack") or ["typescript"]
@@ -311,16 +312,16 @@ def compile_repo(
             "name": name,
             "slug": slug,
             "legacy_slugs": entry.get("legacy_slugs") or repo.get("legacy_slugs") or [],
-            "repo": f"alawein/{slug}",
+            "repo": f"{owner}/{slug}",
             "local_path": normalize_local_path(bucket, slug, repo.get("local_path")),
             "bucket": bucket,
             "lane": lane,
             "visibility": visibility,
-            "owner": entry.get("owner") or repo.get("owner") or "alawein",
+            "owner": owner,
             "maintainer": entry.get("maintainer") or (ownership_defaults or {}).get("maintainer") or repo.get("maintainer") or "unassigned",
             "docs_owner": entry.get("docs_owner") or (ownership_defaults or {}).get("docs_owner") or repo.get("docs_owner") or "unassigned",
             "status": status,
-            "homepage": homepage or repo.get("homepage") or f"https://github.com/alawein/{slug}",
+            "homepage": homepage or repo.get("homepage") or f"https://github.com/{owner}/{slug}",
             "canonical_description": about,
             "tags": repo.get("tags") or stack_tags(stack),
             "github_topics": repo.get("github_topics") or github_topics_from_stack(stack, slug),

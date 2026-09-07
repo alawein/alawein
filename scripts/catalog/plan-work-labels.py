@@ -48,6 +48,8 @@ def plan(records, vocabulary):
         identity = (repo, number)
         if not repo or not number or identity in seen:
             raise ValueError(f"missing or duplicate record identity: {identity}")
+        if record.get("state") not in ("open", "closed"):
+            raise ValueError(f"missing or invalid record state: {identity}")
         seen.add(identity)
         labels = sorted(x["name"] if isinstance(x, dict) else x for x in record.get("labels", []))
         kind, reason = classify(record, vocabulary)

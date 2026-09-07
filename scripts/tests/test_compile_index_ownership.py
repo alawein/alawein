@@ -39,3 +39,20 @@ def test_legacy_index_keeps_prior_known_ownership():
     result = compile_index({"lanes": {"platform": [{"slug": "demo"}]}}, prior)
     assert result["repos"][0]["maintainer"] == "Known maintainer"
     assert result["repos"][0]["docs_owner"] == "Known editor"
+
+
+def test_namespace_override_keeps_repository_identity_consistent():
+    index = {"lanes": {"platform": [{"slug": "demo", "owner": "example-org"}]}}
+    compiled = compile_index(index, {"repos": []})
+    repo = compiled["repos"][0]
+    assert repo["owner"] == "example-org"
+    assert repo["repo"] == "example-org/demo"
+    assert repo["homepage"] == "https://github.com/example-org/demo"
+    assert compile_index(export_index(compiled), compiled)["repos"][0] == repo
+
+
+def test_namespace_override_preserves_explicit_product_homepage():
+    index = {"lanes": {"platform": [{"slug": "demo", "owner": "example-org", "url": "https://example.org"}]}}
+    repo = compile_index(index, {"repos": []})["repos"][0]
+    assert repo["repo"] == "example-org/demo"
+    assert repo["homepage"] == "https://example.org"

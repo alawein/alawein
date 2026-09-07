@@ -11,7 +11,6 @@ status: active
 author: Kohyr Inc.
 version: 1.0.0
 last_updated: 2026-09-07
-last_updated: 2026-09-06
 tags: [changelog, version-history, releases]
 ---
 

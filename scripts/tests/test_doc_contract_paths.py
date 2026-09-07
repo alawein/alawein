@@ -28,7 +28,8 @@ def _bash() -> str:
 
 def _run_gate(root: Path) -> subprocess.CompletedProcess[str]:
     env = dict(os.environ)
-    env.pop("DOC_CONTRACT_BASE_REF", None)
+    # These fixtures exercise paths, independently of the parent commit's dates.
+    env["DOC_CONTRACT_BASE_REF"] = "HEAD"
     return subprocess.run(
         [_bash(), (root / SCRIPT.relative_to(ROOT)).as_posix(), "--full"],
         cwd=root,

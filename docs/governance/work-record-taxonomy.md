@@ -8,7 +8,7 @@ description: Shared classification, field authority, migration and change eviden
 category: governance
 audience: [contributors, ai-agents]
 status: active
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 tags: [governance, catalog, taxonomy, workflow]
 ---
 
@@ -125,13 +125,17 @@ repository on PR, issue and main-branch events, or manual dispatch. It uses
 read permissions and makes no label, settings, comment or approval writes.
 
 The JSON artifact records the collection interval, per-record timestamps and
-planned actions. Exit 0 means the observed active records have one canonical kind;
-exit 1 reports missing or conflicting classification; exit 2 means coverage is
-unverified after an API, pagination or input failure. This audit does not verify
-review evidence, native settings, label colors, discussions or other systems.
-It is an additional audit, not a required merge check unless the effective
-ruleset is deliberately changed. Event coverage starts after the workflow is
-merged; one successful PR run does not establish fleet adoption.
+planned actions. Its `result_class` is `conformant`, `policy_drift`,
+`coverage_unverified` or `execution_error`. Exit 0 means the observed active
+records have one canonical kind. Exit 1 reports missing or conflicting
+classification. Exit 2 means source coverage is unverified after an API,
+pagination or provider-response failure. Exit 3 means a local dependency,
+taxonomy, planner, report or step-summary persistence failure prevented a valid
+result. This audit does not verify review evidence, native settings, label
+colors, discussions or other systems. It is an additional audit, not a required
+merge check unless the effective ruleset is deliberately changed. Event
+coverage starts after the workflow is merged; one successful PR run does not
+establish fleet adoption.
 
 For an authorized repository, run a read-only audit from this checkout:
 

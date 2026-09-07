@@ -32,6 +32,7 @@ def run_audit(monkeypatch, tmp_path, pages, metadata=None):
 def test_all_pages_and_prs_count(monkeypatch, tmp_path):
     code, report = run_audit(monkeypatch, tmp_path, [[issue()], [issue(2, pull_request={"url": "unused"})]])
     assert code == 0
+    assert report["result_class"] == "conformant"
     assert report["counts"] == {"unchanged": 2}
     assert [row["number"] for row in report["plan"]] == [1, 2]
 
@@ -40,6 +41,7 @@ def test_missing_and_conflicting_labels_report_drift(monkeypatch, tmp_path):
     source = [issue(labels=[]), issue(2, labels=[{"name": "type:docs"}, {"name": "type:bug"}])]
     code, report = run_audit(monkeypatch, tmp_path, [source])
     assert code == 1
+    assert report["result_class"] == "policy_drift"
     assert report["counts"] == {"add": 1, "review": 1}
     assert source[0]["labels"] == []
 
@@ -50,6 +52,7 @@ def test_incomplete_or_duplicate_observations_are_unverified(monkeypatch, tmp_pa
     assert code == 2
     assert report["coverage"] == "unverified"
     assert report["result"] == "unverified"
+    assert report["result_class"] == "coverage_unverified"
     assert report["plan"] == []
 
 
@@ -57,6 +60,7 @@ def test_empty_complete_collection_is_valid(monkeypatch, tmp_path):
     code, report = run_audit(monkeypatch, tmp_path, [[]])
     assert code == 0
     assert report["coverage"] == "observed"
+    assert report["result_class"] == "conformant"
     assert report["counts"] == {}
 
 
@@ -74,6 +78,74 @@ def test_permission_failure_is_not_empty_success(monkeypatch, tmp_path):
     assert MODULE.main(["--repo", "example/demo", "--output", str(path)]) == 2
     assert "private provider body" not in path.read_text()
     assert json.loads(path.read_text())["coverage"] == "unverified"
+    assert json.loads(path.read_text())["result_class"] == "coverage_unverified"
+
+
+def test_local_execution_failure_is_distinct_from_coverage(monkeypatch, tmp_path):
+    def unavailable_binary(*args):
+        raise OSError("local executable unavailable")
+    monkeypatch.setattr(MODULE, "github_get", unavailable_binary)
+    path = tmp_path / "report.json"
+    assert MODULE.main(["--repo", "example/demo", "--output", str(path)]) == 3
+    report = json.loads(path.read_text())
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert "local executable unavailable" not in path.read_text()
+
+
+@pytest.mark.parametrize("error_type", [ValueError, RuntimeError, AttributeError])
+def test_local_planner_failure_is_execution_error(monkeypatch, tmp_path, error_type):
+    class BrokenPlanner:
+        @staticmethod
+        def plan(*args):
+            raise error_type("invalid local taxonomy")
+
+    monkeypatch.setattr(
+        MODULE,
+        "load_planner",
+        lambda: BrokenPlanner(),
+    )
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 3
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert "invalid local taxonomy" not in json.dumps(report)
+
+
+def test_planner_load_failure_is_execution_error(monkeypatch, tmp_path):
+    monkeypatch.setattr(MODULE, "ROOT", tmp_path)
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 3
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert report["error"]["class"] == "FileNotFoundError"
+
+
+def test_github_step_summary_names_machine_result(monkeypatch, tmp_path):
+    summary = tmp_path / "summary.md"
+    summary.write_text("Existing job summary\n", encoding="utf-8")
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 0
+    assert report["result_class"] == "conformant"
+    text = summary.read_text()
+    assert text.startswith("Existing job summary\n")
+    assert "Result class: `conformant`" in text
+    assert "| `unchanged` | 1 |" in text
+
+
+def test_summary_runtime_failure_is_execution_error(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        MODULE,
+        "write_step_summary",
+        lambda *args: (_ for _ in ()).throw(RuntimeError("summary failure")),
+    )
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 3
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert report["plan"] == []
+    assert "summary failure" not in json.dumps(report)
 
 
 def test_api_calls_are_read_only_and_paginated(monkeypatch):

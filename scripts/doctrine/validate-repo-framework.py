@@ -36,7 +36,6 @@ from pathlib import Path
 from readme_contract import rendered_lines, sections
 
 PRIVATE_RECORD_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
-REQUIRED_FIELDS = ["title", "value proposition", "claim", "run path"]
 PUBLIC_CLAIM_HEADINGS = {"the claim", "what fallax measures", "status"}
 
 ALLOWED_STATUS = {"active", "paused", "experimental", "deprecated", "archived", "frozen"}

@@ -34,7 +34,6 @@ def rendered_lines(markdown: str) -> list[RenderedLine]:
     fence: str | None = None
     in_comment = False
     for number, raw in enumerate(markdown.splitlines(), 1):
-        stripped = raw.lstrip()
         if fence is not None:
             if re.match(rf"^\s*{re.escape(fence[0])}{{{len(fence)},}}\s*$", raw):
                 fence = None

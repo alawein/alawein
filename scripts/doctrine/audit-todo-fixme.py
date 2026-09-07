@@ -55,10 +55,6 @@ EXCLUDE_DIR_NAMES = {
 MARKER_RE = re.compile(r"#\s*(TODO|FIXME)\b")
 
 
-def is_excluded(rel_path: Path) -> bool:
-    return any(part in EXCLUDE_DIR_NAMES for part in rel_path.parts[:-1])
-
-
 def iter_source_files(root: Path) -> list[Path]:
     files: list[Path] = []
     def fail_scan(error: OSError) -> None:

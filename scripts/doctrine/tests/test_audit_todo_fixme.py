@@ -1,6 +1,6 @@
 """Tests for Python comment annotation auditing."""
 
-from audit_todo_fixme import is_excluded, run_audit
+from audit_todo_fixme import run_audit
 from pathlib import Path
 
 
@@ -118,14 +118,6 @@ def test_ignores_non_executable_extensions(tmp_path):
     _write(tmp_path, "docs/architecture.md", "TODO: markdown, not scanned here\n")
     findings = run_audit(tmp_path)
     assert findings == {}
-
-
-def test_is_excluded_matches_any_ancestor_dir():
-    assert is_excluded(Path("a/vendor/b.py"))
-    assert is_excluded(Path("docs/x.py"))
-    assert not is_excluded(Path("src/app.py"))
-
-
 def test_no_findings_when_no_markers(tmp_path):
     _write(tmp_path, "src/clean.py", "x = 1\n")
     findings = run_audit(tmp_path)

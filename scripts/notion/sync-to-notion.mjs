@@ -279,7 +279,7 @@ async function upsertProject(project, existingPages, dbProperties) {
 }
 
 async function main() {
-  const projectsPath = resolve(__dirname, '..', 'projects.json');
+  const projectsPath = resolve(__dirname, '..', '..', 'projects.json');
   const data = JSON.parse(readFileSync(projectsPath, 'utf-8'));
   const projects = mergeProjectLists(data);
 

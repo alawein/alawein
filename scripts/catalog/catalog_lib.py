@@ -968,9 +968,19 @@ def validate_governance_decisions(
     ):
         issues.append(ValidationIssue("error", "governance installation_and_auth requires state, source and boolean review_required"))
 
+    design = governance.get("design_system")
+    if not isinstance(design, dict):
+        issues.append(ValidationIssue("error", "governance design_system must be a mapping"))
+        return issues
+    consumers = design.get("reference_consumers")
+    if (
+        not isinstance(consumers, list) or not consumers
+        or any(not isinstance(entry, dict) or not entry for entry in consumers)
+    ):
+        issues.append(ValidationIssue("error", "governance reference_consumers must contain non-empty mappings"))
+        return issues
     repz = next(
-        (entry for entry in (governance.get("design_system") or {}).get("reference_consumers", [])
-         if isinstance(entry, dict) and entry.get("slug") == "repz"),
+        (entry for entry in consumers if entry.get("slug") == "repz"),
         None,
     )
     if not repz or repz.get("compatibility") != "unproven" or repz.get("review_required") is not True:

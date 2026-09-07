@@ -54,3 +54,24 @@ class GovernanceDecisionValidationTests(unittest.TestCase):
                     data = deepcopy(self.decisions)
                     data[section][0][field] = value
                     self.assertTrue(validate_governance_decisions(data, self.slugs))
+
+    def test_design_system_requires_a_mapping(self) -> None:
+        for value in (None, [], [1], "invalid", True):
+            with self.subTest(value=value):
+                data = deepcopy(self.decisions)
+                data["design_system"] = value
+                self.assertTrue(validate_governance_decisions(data, self.slugs))
+
+    def test_reference_consumers_requires_a_nonempty_list(self) -> None:
+        for value in (None, {}, [], 7, "invalid"):
+            with self.subTest(value=value):
+                data = deepcopy(self.decisions)
+                data["design_system"]["reference_consumers"] = value
+                self.assertTrue(validate_governance_decisions(data, self.slugs))
+
+    def test_reference_consumers_rejects_malformed_items_after_valid_repz(self) -> None:
+        for value in (None, {}, [], 7, "invalid"):
+            with self.subTest(value=value):
+                data = deepcopy(self.decisions)
+                data["design_system"]["reference_consumers"].append(value)
+                self.assertTrue(validate_governance_decisions(data, self.slugs))

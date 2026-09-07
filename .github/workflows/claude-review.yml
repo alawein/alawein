@@ -61,9 +61,5 @@ jobs:
           # is_error (seen live: an invalid token yields success + no comment).
           # Absent file means the action skipped before running Claude
           # (e.g. GitHub's workflow-change validation) - nothing to check.
-          out=/home/runner/work/_temp/claude-execution-output.json
-          [ -f "$out" ] || exit 0
-          if jq -e '[.[] | select(.is_error == true)] | length > 0' "$out" >/dev/null; then
-            echo "::error::Claude review recorded is_error; no review was produced."
-            exit 1
-          fi
+          python3 scripts/github/claude-execution-diagnostics.py \
+            "$RUNNER_TEMP/claude-execution-output.json" --allow-missing

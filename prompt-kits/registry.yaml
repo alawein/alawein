@@ -7,7 +7,7 @@ last-updated: 2026-09-07
 prompts:
   - id: workspace-agent
     file: prompt-kits/AGENT.md
-    version: 1.5.0
+    version: 1.5.1
     type: system-prompt
     scope: workspace
     consumers:
@@ -15,7 +15,7 @@ prompts:
       - meshal-web
       - workspace-tools
       - atelier-rounaq
-    test-suite: tests/prompts/test-agent-kit.py
+    test-suite: null
     rollout-status: canary
     deprecated-version: null
     sunset-date: null
@@ -27,19 +27,19 @@ prompts:
     scope: repo-specific
     consumers:
       - meshal-web
-    test-suite: tests/prompts/test-portfolio-kit.py
+    test-suite: null
     rollout-status: ga
     deprecated-version: null
     sunset-date: null
 
   - id: workspace-master
     file: docs/governance/workspace-master-prompt.md
-    version: 1.2.0
+    version: 1.3.1
     type: operating-contract
     scope: workspace
     consumers:
       - all
     test-suite: null
-    rollout-status: ga
+    rollout-status: canary
     deprecated-version: null
     sunset-date: null

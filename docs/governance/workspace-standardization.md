@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, control-plane ownership, shared resources, and phased workspace directives.
-last_updated: 2026-07-25
+last_updated: 2026-09-07
 category: governance
 audience: contributors
 status: active
@@ -106,6 +106,9 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 ## Directive Mapping (D-1 through D-5)
 
+Track each directive to completion. The portfolio README must reflect the
+delivered project state before a directive is complete.
+
 ### D-1: Design-System Consolidation
 
 - Consolidate `aw-devkit` into `design-system`.
@@ -116,12 +119,16 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 ### D-2: Gymboy Redesign
 
 - Implement Game Boy-inspired visual redesign.
+- Use Habitica-style character progression and a retro-modern Game Boy palette.
+- Keep the interface mobile-first and responsive.
 - Keep canonical naming as `gymboy`.
 - Ensure deploy metadata targets `gymboy.coach`.
 
 ### D-3: Repz Heal
 
 - Resolve build, test, lint, dependency, and architecture debt.
+- Audit those failures and incomplete migrations before making repairs.
+- Require end-to-end CI to pass before completion.
 - Standardize on `repzcoach.com` as canonical domain.
 
 ### D-4: Ninja Visual Token System
@@ -133,6 +140,7 @@ The sections below remain as migration-era detail; prefer the SSOT doc for new r
 
 - Execute content, design, performance, SEO, and accessibility upgrades.
 - Keep portfolio representation synchronized with `alawein/README.md`.
+- Align branding and messaging with the current active project portfolio.
 
 ## Execution Order
 

@@ -16,11 +16,30 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.5.1 - 2026-09-07
+
+- Preserve execution and review evidence from 1.5.0 with the session guidance from 1.4.3
+- Retain canonical rule pointers and remove nonexistent registry test pointers
+- Keep the combined revision at canary under the existing rollout protocol
+
 ### 1.5.0 - 2026-09-07
 
 - Record actual execution and review roles in task, PR, or batch evidence
 - Keep attribution out of commit messages, code comments, and product prose
 - Keep this revision at canary under the existing rollout protocol
+
+### 1.4.3 - 2026-09-07
+
+- Preserve session orientation, governance reads, and one-goal completion criteria
+- Keep complex-task scoping and repository verification in the canonical prompt
+- Remove registry pointers to test suites that do not exist
+- Keep this revision at canary until the existing rollout gates pass
+
+### 1.4.2 - 2026-09-06
+
+- Point to `docs/governance/workspace-master-prompt.md` for R-1 through R-6
+- Keep portfolio inventory in `catalog/index.yaml`, not in prompt prose
+- Keep this revision at canary until the existing rollout gates pass
 
 ### 1.4.1 - 2026-09-04
 
@@ -69,6 +88,20 @@ major for breaking behavioral changes.
 ---
 
 ## workspace-master-prompt.md
+
+### 1.3.1 - 2026-09-07
+
+- Retain the exact-file-and-line requirement for refusal evidence
+- Keep the existing canary and staged rollout gates
+
+### 1.3.0 - 2026-09-06
+
+- Keep R-1 through R-6 as the operating contract
+- Move portfolio inventory to `catalog/index.yaml`
+- Point session workflow and style rules at `prompt-kits/AGENT.md`
+- Preserve project requirements in the existing directive mapping
+- Name the separate catalog and public profile generation paths
+- Keep this revision at canary until the existing rollout gates pass
 
 ### 1.2.0 - 2026-03-20
 

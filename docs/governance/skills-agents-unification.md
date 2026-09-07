@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Skills, Agents and Commands Unification
 description: Pointer to the skills taxonomy and maintenance hub. Do not duplicate inventory here.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active

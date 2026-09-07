@@ -29,6 +29,11 @@ major for breaking behavioral changes.
 - Keep portfolio inventory in `catalog/index.yaml`, not in prompt prose
 - Keep this revision at canary until the existing rollout gates pass
 
+### 1.4.1 - 2026-09-04
+
+- Correct bucketed workspace paths and resolve sibling repositories through catalog local_path
+- Record the revision introduced by commit `491eb119`
+
 ### 1.4.0 - 2026-04-30
 
 - Added sentence rhythm rule: medium sentences (12–20 words) carry claims; short sentences (5–8 words) close sequences
@@ -71,6 +76,11 @@ major for breaking behavioral changes.
 ---
 
 ## workspace-master-prompt.md
+
+### 1.3.1 - 2026-09-07
+
+- Retain the exact-file-and-line requirement for refusal evidence
+- Keep the existing canary and staged rollout gates
 
 ### 1.3.0 - 2026-09-06
 

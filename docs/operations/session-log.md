@@ -43,3 +43,4 @@ last_updated: 2026-09-07
 | 2026-09-06 23:45 | d051131 | Add executable-source TODO/FIXME audit; fix retired-script path drift; address review feedback | 8 files | ~258 lines |
 | 2026-09-06 23:36 | cf81cd9 | Validate and compile Phase 3 governance catalog | 7 files | ~32 lines |
 | 2026-09-07 08:29 | 6169f479 | docs(catalog): record Cursor shared-session last_verified | 2 files | ~70 lines |
+| 2026-09-07 08:35 | 0864c962 | docs(catalog): add shared-session thread comparison | 2 files | ~67 lines |

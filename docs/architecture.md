@@ -97,14 +97,14 @@ graph TB
   end
   subgraph tooling["Tooling Repos"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
+    android_coding_phone["android-coding-phone\nPrivate Samsung Galaxy Z Flip resto"]
     dotclaude["dotclaude\nPrivate backup and version control "]
     incore["incore\nCLI and MCP tooling for workspace a"]
     kcompiler["kcompiler\nKnowledge compiler that turns evide"]
     outpost["outpost\nPersonal kit that installs prompts "]
     prompty["prompty\nTurbo monorepo for prompt design, e"]
     repo_drift["repo-drift\nConfigurable CLI and GitHub Action "]
-    workspace_control["workspace-control\nWorkspace control-plane inventory e"]
-    more_tooling["… 1 more"]
+    more_tooling["… 2 more"]
   end
 ```
 

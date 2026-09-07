@@ -2661,12 +2661,20 @@
         "contact-surface"
       ],
       "version_source": "package.json",
-      "last_verified": "2026-04-14",
+      "last_verified": "2026-09-07",
       "catalog_groups": [
         "featured"
       ],
       "portfolio_domain": "Personal",
-      "lane": "ship"
+      "lane": "ship",
+      "vercel": {
+        "team_slug": "alawein",
+        "project_slug": "meshal-web",
+        "production_url": null,
+        "custom_domain": null,
+        "state": "preview-only",
+        "last_synced_at": "2026-09-07T17:15:00Z"
+      }
     },
     {
       "name": "Roka: Oakland Hustle",

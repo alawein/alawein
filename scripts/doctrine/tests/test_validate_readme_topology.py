@@ -86,6 +86,15 @@ def test_research_readme_sections_pass():
     assert check_readme_sections(GOOD_README, _repo()) == []
 
 
+def test_private_governance_keeps_its_existing_exemption():
+    assert check_readme_sections("# Internal policy\n", _repo(type="governance", visibility="private")) == []
+
+
+def test_public_governance_still_requires_the_public_contract():
+    assert check_readme_sections("# Public policy\n", _repo(type="governance"))
+    assert check_readme_sections(GOOD_README, _repo(type="governance")) == []
+
+
 def test_fleet_transition_validates_legacy_without_relaxing_default():
     legacy = "\n".join(f"## {name}\nText.\n" for name in (
         "Abstract", "Status", "Runtime requirements", "Reproducibility",

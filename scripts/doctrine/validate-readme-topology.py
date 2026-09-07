@@ -168,6 +168,8 @@ def check_readme_sections(readme: str, repo: dict, *, allow_legacy_public: bool 
     if slug in HUB_SLUGS:
         return []
     is_public = uses_public_contract(readme, repo, allow_legacy_public=allow_legacy_public)
+    if rtype == "governance" and not is_public:
+        return []
     if is_public:
         required = list(PUBLIC_REQUIRED_SECTIONS)
         if repo.get("status") not in {"archived", "frozen", "deprecated"}:

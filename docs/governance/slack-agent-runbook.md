@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.3.1
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -28,6 +28,8 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 - Cursor MCP connector reads (2026-09-05)
 - External verification session (2026-09-05; Vercel CLI, Google Drive,
   Gmail search, Notion fetch)
+- Cloud Agent rescan 2026-09-07 07:34 UTC (run `bc-4534d6b1-…`):
+  `catalog/agent-integrations.yaml`
 - Cloud Agent rescan 2026-09-06 03:15 UTC (run `bc-8ca615eb-…`):
   `docs/internal/audits/2026-09-06-slack-integrations-rescan.md`
 - Cloud Agent rescan 2026-09-05 14:32 UTC (run `bc-01698bb5-…`):
@@ -114,13 +116,13 @@ health problem.
 | --- | --- | --- | --- |
 | Slack workspace | `contact@meshal.ai` (U0APM5W630C) | Ready | Claude live channel and DM reads |
 | Gmail account | `contact@meshal.ai` | Ready | Cursor `list_labels` MCP |
-| Gmail custom labels (6) | `✈️ Travel`, `📋 Docs`, `💳 Finance/Billing`, `Blocked`, `Notion`, `AGI (archive)` | Clean | Cursor `list_labels` MCP; `AGI (archive)` created 2026-09-05 |
+| Gmail custom labels | `Action/Blocked`, `Action/Review`, `Action/Waiting`, `Project/Alawein`, `System/Linear`, `System/GitHub`, `Subscriptions`, `DevOps`, `AGI (archive)` | Live 2026-09-07 | Cursor `list_labels` MCP; taxonomy changed since 2026-09-05 |
 | Google Drive account | `contact@meshal.ai` | Ready | Cursor `list_recent_files` MCP |
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
 | Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
-| GitHub (Cursor MCP) | None | Error (`gh` CLI works) | Cursor MCP discovery failure |
+| GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent 2026-09-07 `get_file_contents` on `alawein/alawein`; write via Cloud Agent git |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
 
@@ -231,6 +233,13 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.1 (2026-09-07)
+
+- Cloud Agent inventory ping (`bc-4534d6b1-…`): still 7/7 public channel reads.
+- §3.1 GitHub Cursor MCP row corrected from Error to Ready (stale vs YAML).
+- §3.1 Gmail label row updated to live `list_labels` taxonomy.
+- Notion Cloud MCP now ready; Desktop MCP remains UNVERIFIED this run.
 
 ### v1.3.0 (2026-09-06)
 

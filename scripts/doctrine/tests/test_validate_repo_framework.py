@@ -67,6 +67,23 @@ def test_public_repo_rejects_private_record_card():
     assert any("record-card" in finding for finding in findings)
 
 
+@pytest.mark.parametrize("example", [
+    "```yaml\nStatus: active\n```", "~~~yaml\nStatus: active\n~~~",
+    "<!--\nStatus: active\n-->",
+])
+def test_public_record_card_check_ignores_examples_and_comments(tmp_path, example):
+    (tmp_path / "README.md").write_text(
+        "# Demo\n\n> A tool.\n\n## The claim\n\nEvidence.\n\n"
+        "## Run it\n\n" + example + "\n", encoding="utf-8",
+    )
+    assert validate_repo(tmp_path, visibility="public") == []
+
+
+def test_public_record_card_check_rejects_visible_field(tmp_path):
+    (tmp_path / "README.md").write_text("# Demo\n\nStatus: active\n", encoding="utf-8")
+    assert any("record-card" in f for f in validate_repo(tmp_path, visibility="public"))
+
+
 def test_private_repo_still_requires_record_card(tmp_path):
     repo = tmp_path / "private-demo"
     repo.mkdir()

@@ -33,7 +33,7 @@ import re
 import sys
 from pathlib import Path
 
-from readme_contract import sections
+from readme_contract import rendered_lines, sections
 
 PRIVATE_RECORD_FIELDS = ["Status", "Category", "Owner", "Visibility", "Purpose", "Next action"]
 REQUIRED_FIELDS = ["title", "value proposition", "claim", "run path"]
@@ -150,7 +150,7 @@ def validate_repo(
     except OSError as e:
         return [f"{name}: README.md unreadable: {e}"]
     if visibility == "public":
-        if _FIELD_RE.search("\n".join(text.splitlines()[:60])):
+        if _FIELD_RE.search("\n".join(line.text for line in rendered_lines(text) if line.number <= 60)):
             return [f"{name}: public README contains a banned record-card field"]
         if name == "alawein/alawein":
             return []

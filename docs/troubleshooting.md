@@ -11,9 +11,9 @@ last_updated: 2026-07-06
 
 ### Validation script fails
 - Ensure all repos have required governance files
-- Run `python scripts/validate-doctrine.py` for details
+- Run `python scripts/doctrine/validate-doctrine.py .` for details
 
 ### projects.json out of sync
 - Compare physical dirs with registry entries
-- Run `bash scripts/sync-readme.py` to regenerate
+- Run `python scripts/catalog/sync-readme.py` to regenerate
 

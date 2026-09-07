@@ -71,8 +71,8 @@ Cursor-local parity (if using Cursor plugin directly):
 
 Not slash commands. Run:
 
-- `python scripts/sync-readme.py --check`
-- `./scripts/validate-doc-contract.sh --full`
+- `python scripts/catalog/sync-readme.py --check`
+- `./scripts/doctrine/validate-doc-contract.sh --full`
 
 ## Deploy
 

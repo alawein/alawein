@@ -40,7 +40,7 @@ self-consistent.
 
 ## Required Files
 
-The repository must contain these files (validated by `scripts/validate-doc-contract.sh`):
+The repository must contain these files (validated by `scripts/doctrine/validate-doc-contract.sh`):
 
 - `AGENTS.md`
 - `CLAUDE.md`
@@ -56,7 +56,7 @@ The repository must contain these files (validated by `scripts/validate-doc-cont
 - `docs/governance/documentation-contract.md`
 - `docs/governance/workspace-master-prompt.md`
 - `docs/governance/workflow.md`
-- `scripts/validate-doc-contract.sh`
+- `scripts/doctrine/validate-doc-contract.sh`
 
 The canonical portfolio and contributing content is synced into `README.md` and
 `docs/README.md`. Those entrypoint READMEs are validated by path-class rules,
@@ -81,8 +81,8 @@ test, accessibility, or policy checks unless they exist here.
 
 ## Local Validation
 
-- Full repository validation: `./scripts/validate-doc-contract.sh --full`
-- Diff-scoped validation: `./scripts/validate-doc-contract.sh --changed-only <base_ref>`
+- Full repository validation: `./scripts/doctrine/validate-doc-contract.sh --full`
+- Diff-scoped validation: `./scripts/doctrine/validate-doc-contract.sh --changed-only <base_ref>`
 
 The validator enforces:
 

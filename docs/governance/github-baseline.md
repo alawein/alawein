@@ -91,5 +91,5 @@ requires raw filenames or schema-specific content:
 - `.github/ISSUE_TEMPLATE/*.yml`
 
 Those files are still governed by this baseline and by
-`scripts/validate-doc-contract.sh`, but they should not be wrapped in YAML
+`scripts/doctrine/validate-doc-contract.sh`, but they should not be wrapped in YAML
 frontmatter.

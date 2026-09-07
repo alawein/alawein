@@ -2,7 +2,8 @@
 """Read open GitHub issues and PRs and report shared work-kind drift.
 
 Uses the existing taxonomy and migration planner. No service writes occur.
-Exit 0: observed records conform; 1: drift; 2: source coverage unverified.
+Exit 0: observed records conform; 1: policy drift;
+2: source coverage unverified; 3: local execution error.
 """
 
 from __future__ import annotations
@@ -10,8 +11,10 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import re
 import subprocess
+import sys
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -43,6 +46,7 @@ def normalize_records(repo: str, metadata: Any, pages: Any) -> list[dict[str, An
     if not isinstance(pages, list) or not pages or any(not isinstance(page, list) for page in pages):
         raise ValueError("expected all paginated issue arrays, including an empty page for no records")
     rows = []
+    seen: set[tuple[int, int]] = set()
     for page in pages:
         for item in page:
             if (not isinstance(item, dict)
@@ -55,6 +59,10 @@ def normalize_records(repo: str, metadata: Any, pages: Any) -> list[dict[str, An
                     or any(not isinstance(label, dict) or not isinstance(label.get("name"), str)
                            for label in item["labels"])):
                 raise ValueError("issue identity, state, timestamp or labels are missing")
+            identity = (item["id"], item["number"])
+            if identity in seen:
+                raise ValueError("duplicate issue observation across paginated results")
+            seen.add(identity)
             rows.append({
                 "repo": repo, "id": item["id"], "number": item["number"],
                 "title": item["title"], "state": item["state"],
@@ -63,6 +71,33 @@ def normalize_records(repo: str, metadata: Any, pages: Any) -> list[dict[str, An
                 "labels": [label["name"] for label in item["labels"]],
             })
     return rows
+
+
+def write_step_summary(report: dict[str, Any]) -> None:
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if not summary_path:
+        return
+    counts = report["counts"]
+    count_rows = "\n".join(
+        f"| `{action}` | {count} |" for action, count in sorted(counts.items())
+    )
+    if not count_rows:
+        count_rows = "| none | 0 |"
+    Path(summary_path).write_text(
+        "\n".join([
+            "## Work taxonomy audit",
+            "",
+            f"- Result class: `{report['result_class']}`",
+            f"- Coverage: `{report['coverage']}`",
+            f"- Repository: `{report['repo']}`",
+            "",
+            "| Planned action | Count |",
+            "|---|---:|",
+            count_rows,
+            "",
+        ]),
+        encoding="utf-8",
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -77,7 +112,8 @@ def main(argv: list[str] | None = None) -> int:
     report: dict[str, Any] = {
         "repo": args.repo, "started_at": datetime.now(timezone.utc).isoformat(),
         "scope": "open GitHub issues and pull requests in this repository",
-        "coverage": "unverified", "result": "unverified", "counts": {}, "plan": [],
+        "coverage": "unverified", "result": "unverified",
+        "result_class": "coverage_unverified", "counts": {}, "plan": [],
         "limitations": [
             "Pagination is a dated observation, not an atomic repository snapshot.",
             "Does not verify discussions, label definitions, repository settings, Linear, review or approval.",
@@ -88,19 +124,56 @@ def main(argv: list[str] | None = None) -> int:
         metadata = github_get(f"repos/{args.repo}", args.gh_bin)
         pages = github_get(f"repos/{args.repo}/issues?state=open&per_page=100", args.gh_bin, True)
         records = normalize_records(args.repo, metadata, pages)
-        vocabulary = json.loads((ROOT / "catalog/taxonomy.json").read_text())["workRecords"]
-        rows = PLANNER.plan(records, vocabulary)
-        drift = any(row["action"] in {"add", "review"} for row in rows)
-        report.update(coverage="observed", result="drift" if drift else "conformant",
-                      counts=dict(Counter(row["action"] for row in rows)), plan=rows)
-        code = int(drift)
-    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+    except (ValueError, subprocess.SubprocessError) as exc:
         # Keep raw provider output out of artifacts; it can contain private data.
         report["error"] = {"class": type(exc).__name__, "action": "Verify read access and response completeness; do not infer a pass."}
+    except OSError as exc:
+        report["result_class"] = "execution_error"
+        report["error"] = {"class": type(exc).__name__, "action": "Repair the local execution environment and rerun; do not infer a coverage result."}
+        code = 3
+    else:
+        try:
+            vocabulary = json.loads((ROOT / "catalog/taxonomy.json").read_text())["workRecords"]
+            rows = PLANNER.plan(records, vocabulary)
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            report["result_class"] = "execution_error"
+            report["error"] = {"class": type(exc).__name__, "action": "Repair the local taxonomy or planner and rerun; do not infer a coverage result."}
+            code = 3
+        else:
+            drift = any(row["action"] in {"add", "review"} for row in rows)
+            report.update(
+                coverage="observed",
+                result="drift" if drift else "conformant",
+                result_class="policy_drift" if drift else "conformant",
+                counts=dict(Counter(row["action"] for row in rows)),
+                plan=rows,
+            )
+            code = int(drift)
     report["completed_at"] = datetime.now(timezone.utc).isoformat()
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-    print(f"Work taxonomy: {report['result']}; coverage: {report['coverage']}; {report['counts']}")
+    try:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        write_step_summary(report)
+    except OSError as exc:
+        report.update(
+            result="unverified",
+            result_class="execution_error",
+            error={
+                "class": type(exc).__name__,
+                "action": "Repair report persistence and rerun; no complete audit artifact was produced.",
+            },
+        )
+        code = 3
+        try:
+            args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        except OSError:
+            pass
+        print("Work taxonomy: execution_error; report persistence failed.", file=sys.stderr)
+        return code
+    print(
+        f"Work taxonomy: {report['result_class']}; "
+        f"coverage: {report['coverage']}; {report['counts']}"
+    )
     return code
 
 

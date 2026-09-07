@@ -10,7 +10,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/scope-binding-check.sh --warn-only"
+            "command": "python .claude/hooks/scope-binding-check.py --warn-only"
           }
         ]
       }

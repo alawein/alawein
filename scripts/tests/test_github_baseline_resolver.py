@@ -10,6 +10,8 @@ test_sync_vercel.py).
 from __future__ import annotations
 
 import importlib.util
+import ast
+import subprocess
 import sys
 from pathlib import Path
 
@@ -172,6 +174,45 @@ def test_resolve_still_returns_normal_bucketed_path(tmp_path) -> None:
     assert resolved == workspace / "core" / "incore"
 
 
+def test_resolve_rejects_symlink_escaping_workspace(tmp_path) -> None:
+    # A symlink whose target lands outside the workspace must be rejected even
+    # though the *lexical* local_path never contains ".." or a leading "/".
+    workspace = tmp_path / "workspace"
+    (workspace / "core").mkdir(parents=True)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (workspace / "core" / "evilrepo").symlink_to(outside)
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "core/evilrepo"}, "evil")
+
+
+def test_resolve_rejects_symlink_redirecting_to_another_repo_within_workspace(tmp_path) -> None:
+    # Regression: a symlink planted *inside* the workspace that redirects one
+    # repo's bucketed directory onto another repo's checkout (e.g. this
+    # control-plane repo) never escapes the workspace boundary, so the plain
+    # relative_to(workspace) containment check alone does not catch it. A
+    # mutation caller (sync-github.sh's sync_repo) that trusted this path
+    # would silently write/delete files in the wrong checkout.
+    workspace = tmp_path / "workspace"
+    control_plane = workspace / "core" / "alawein"
+    control_plane.mkdir(parents=True)
+    (control_plane / "SENSITIVE.md").write_text("do not touch", encoding="utf-8")
+    (workspace / "apps").mkdir()
+    (workspace / "apps" / "evilrepo").symlink_to(control_plane)
+    with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
+        _repo_paths.resolve_repo_dir(workspace, {"evil": "apps/evilrepo"}, "evil")
+
+
+def test_resolve_accepts_real_bucketed_directory_with_no_symlinks(tmp_path) -> None:
+    # Sanity check: the new symlink-consistency guard must not reject a
+    # perfectly normal, symlink-free bucketed checkout.
+    workspace = tmp_path / "workspace"
+    real_dir = workspace / "core" / "incore"
+    real_dir.mkdir(parents=True)
+    resolved = _repo_paths.resolve_repo_dir(workspace, {"incore": "core/incore"}, "incore")
+    assert resolved == real_dir
+
+
 def test_load_local_path_map_preserves_absolute_paths_for_the_guard(tmp_path) -> None:
     # Regression: load_local_path_map used to strip() both leading and trailing
     # "/" off local_path, so a catalogued absolute path like "/etc/passwd" came
@@ -191,3 +232,63 @@ def test_load_local_path_map_preserves_absolute_paths_for_the_guard(tmp_path) ->
     workspace.mkdir()
     with pytest.raises(_repo_paths.PathEscapesWorkspaceError):
         _repo_paths.resolve_repo_dir(workspace, local_paths, "evil")
+
+
+def _checkout(path: Path, remote: str) -> Path:
+    subprocess.run(["git", "init", str(path)], check=True, capture_output=True)
+    subprocess.run(["git", "-C", str(path), "remote", "add", "origin", remote], check=True)
+    return path
+
+
+@pytest.mark.parametrize("remote", [
+    "https://github.com/alawein/demo.git", "git@github.com:alawein/demo.git",
+    "ssh://git@github.com/alawein/demo.git", "ssh://git@ssh.github.com:443/alawein/demo.git",
+])
+def test_expected_checkout_accepts_git_repository(tmp_path, remote):
+    repo = _checkout(tmp_path / "demo", remote)
+    _repo_paths.require_repo_checkout(repo, "alawein/demo")
+
+
+@pytest.mark.parametrize("remote", [
+    "ssh://git@ssh.github.com.evil.test:443/alawein/demo.git",
+    "https://ssh.github.com:443/alawein/demo.git",
+    "ssh://git@ssh.github.com:22/alawein/demo.git",
+    "ssh://git@ssh.github.com/alawein/demo.git",
+])
+def test_expected_checkout_rejects_unrecognized_host(tmp_path, remote):
+    repo = _checkout(tmp_path / "demo", remote)
+    with pytest.raises(ValueError, match="checkout origin"):
+        _repo_paths.require_repo_checkout(repo, "alawein/demo")
+
+
+@pytest.mark.parametrize("case", ["wrong-repo", "wrong-owner", "nested", "not-git"])
+def test_sync_refuses_unexpected_checkout_before_writing(tmp_path, case):
+    remote = "https://github.com/alawein/demo.git"
+    if case == "wrong-repo":
+        remote = "https://github.com/alawein/control-plane.git"
+    elif case == "wrong-owner":
+        remote = "https://github.com/other/demo.git"
+    repo = tmp_path / "demo"
+    if case == "not-git":
+        repo.mkdir()
+    else:
+        _checkout(repo, remote)
+    if case == "nested":
+        repo = repo / "nested"
+        repo.mkdir()
+    sentinel = repo / "sentinel.txt"
+    sentinel.write_text("preserve", encoding="utf-8")
+    shell = (ROOT / "scripts/github/sync-github.sh").read_text(encoding="utf-8")
+    body = shell.split("<<'PY'\n", 1)[1].rsplit("\nPY", 1)[0]
+    node = next(n for n in ast.parse(body).body if isinstance(n, ast.FunctionDef) and n.name == "sync_repo")
+    def reject_write(*args, **kwargs):
+        pytest.fail("sync attempted a write before checking repository identity")
+    namespace = {
+        "LOCAL_PATHS": {"demo": str(repo)}, "resolve_repo_dir": lambda _: repo,
+        "_repo_paths": _repo_paths, "TEMPLATE_MAP": {"sentinel.txt": sentinel},
+        "ensure_text": reject_write,
+    }
+    exec(compile(ast.Module(body=[node], type_ignores=[]), "sync_repo", "exec"), namespace)
+    with pytest.raises(SystemExit, match="checkout"):
+        namespace["sync_repo"]({"repo": "demo"}, check=False)
+    assert sentinel.read_text(encoding="utf-8") == "preserve"

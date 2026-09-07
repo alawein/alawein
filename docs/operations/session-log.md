@@ -39,3 +39,4 @@ last_updated: 2026-07-07
 | 2026-09-05 12:11 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~476 lines |
 | 2026-09-05 12:13 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~477 lines |
 | 2026-09-05 12:32 | aa91e1c1 | Add unified agent system governance and integration inventory | 7 files | ~478 lines |
+| 2026-09-06 23:40 | dc97f21 | Harden github-metadata-sync.yml dispatch validation; add symlink-redirect regression tests | 3 files | ~356 lines |

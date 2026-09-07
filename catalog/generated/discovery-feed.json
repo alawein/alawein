@@ -1078,7 +1078,7 @@
           "internal"
         ],
         "homepage": "https://github.com/alawein/android-coding-phone",
-        "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+        "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
         "topics": [
           "android-coding-phone",
           "powershell",
@@ -2461,7 +2461,7 @@
         "internal"
       ],
       "homepage": "https://github.com/alawein/android-coding-phone",
-      "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+      "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
       "topics": [
         "android-coding-phone",
         "powershell",
@@ -4848,7 +4848,7 @@
     {
       "slug": "android-coding-phone",
       "repo": "alawein/android-coding-phone",
-      "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+      "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
       "homepage": "https://github.com/alawein/android-coding-phone",
       "topics": [
         "android-coding-phone",

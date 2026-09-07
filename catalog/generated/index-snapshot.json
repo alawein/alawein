@@ -238,7 +238,7 @@
       "lane": "platform",
       "bucket": "core",
       "name": "Android Coding Phone",
-      "about": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+      "about": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
       "status": "active",
       "visibility": "private",
       "url": "https://github.com/alawein/android-coding-phone"

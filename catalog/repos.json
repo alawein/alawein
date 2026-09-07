@@ -1538,7 +1538,7 @@
       "docs_owner": "Meshal Alawein",
       "status": "active",
       "homepage": "https://github.com/alawein/android-coding-phone",
-      "canonical_description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows, profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
+      "canonical_description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
       "tags": [
         "Powershell",
         "Node",

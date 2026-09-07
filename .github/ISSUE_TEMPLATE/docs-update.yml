@@ -1,7 +1,7 @@
 name: Documentation Update
 description: Propose a change to governance docs, style rules, or prompt kits
 title: "docs: "
-labels: ["docs", "triage"]
+labels: ["docs", "triage", "type:docs"]
 body:
   - type: dropdown
     id: doc-class

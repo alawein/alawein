@@ -9,8 +9,8 @@ category: governance
 audience: contributors
 status: active
 author: Kohyr Inc.
-version: 1.1.0
-last_updated: 2026-06-29
+version: 1.2.0
+last_updated: 2026-09-06
 tags: [review, self-review, pull-requests, risk, validation]
 ---
 
@@ -30,7 +30,10 @@ Before asking anyone else to look at the branch, the author should confirm:
 - the local validation commands were run
 - the diff reads cleanly without extra archaeology
 
-Self-review is the default review mode for this repo.
+Self-review is the first pass. Use a different tool for independent review when
+feasible, following [operating-model.md](operating-model.md#people-and-agents).
+Meshal remains the final approver. Record the actual reviewer and exact revision;
+planned review and automated comments do not establish human GitHub approval.
 
 ## Collaborator Review
 
@@ -130,15 +133,19 @@ When a collaborator reviews:
   the PR text
 - prefer short follow-up commits over hidden local rewrites during active review
 
-## When to Request Additional Human Review
+## When to Require Explicit Risk Review
 
-Request a second human review when:
+Require independent tool review and Meshal's explicit acceptance, or a scoped
+exception from Meshal, when:
 
 - canonical truth is being changed
 - merge or release policy is being tightened or loosened
 - batch-blocking stop rules are being changed
 - the branch touches multiple governance entry points at once
 - the risk is high and the change will be used as a future template
+
+An external project can require another human reviewer; preserve that gate.
+Solo ownership does not make the PR author eligible to approve their own PR.
 
 ## Closing Stale or Superseded PRs
 

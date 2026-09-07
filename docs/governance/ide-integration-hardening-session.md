@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: IDE integration hardening session
 description: Copy-paste Cursor IDE session prompt for end-to-end Slack, MCP, and agent stack hardening after the 2026-09-05 unified agent audit.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.3.1
 tags: [cursor, ide, slack, mcp, integrations, hardening]
 ---
 
@@ -356,9 +356,19 @@ One-line next step for anything still blocked.
 | Cursor channel read | admin-ops only | Cloud reads 7/7 | lane C invites + 15:26 re-probe |
 | YAML | pre-hardening | refreshed 2026-09-05T15:26:00Z | `catalog/agent-integrations.yaml` |
 
-Thread: `#admin-ops` lane coordination (2026-09-05; Slack permalink auth-gated).
+Historical evidence: the September 5, 2026 coordination thread in
+`alaweinworkspace` / `#admin-ops`, thread ID `1788618711.648629`.
+The authenticated permalink is retained in the private workflow pilot brief.
+An authenticated read verified the thread. Public CI's 403 was an authentication
+boundary, not evidence of a dead link. Public governance records the reference
+without publishing an authentication-only URL; other link failures remain checked.
 
 ### Changelog
+
+#### v1.3.1 (2026-09-06)
+
+- Kept the authenticated thread reference in the private pilot brief and clarified
+  the public audit evidence. Historical integration test results are unchanged.
 
 #### v1.3.0 (2026-09-05)
 

@@ -9,8 +9,8 @@ category: governance
 audience: contributors
 status: active
 author: Kohyr Inc.
-version: 1.1.0
-last_updated: 2026-07-06
+version: 1.2.0
+last_updated: 2026-09-06
 tags: [governance, workflow, branching, deployment, git]
 ---
 
@@ -71,15 +71,23 @@ The enforced baseline in this repo is documentation-focused:
 - markdown lint for managed docs
 - link audit in the slower governance workflow
 
-There is no application build, package-install, or artifact pipeline in this
-repo.
+Fast CI runs for every pull request targeting `main` and every push to `main`,
+including documentation-only changes. Required checks must report a result for
+the reviewed revision; path filters must not leave them permanently pending.
+
+There is no application build or deployment pipeline in this repo. CI installs
+the dependencies needed for governance script tests and Markdown linting.
 
 ## Release Summary
 
-- tags are optional and milestone-driven
-- changelog and release guidance live in
-  [`release-playbook.md`](release-playbook.md)
-- draft changelog entries using [`changelog-entry.md`](changelog-entry.md)
+- Follow [`commit-release-convention.md`](commit-release-convention.md) for
+  the current version, changelog, tag, and release rules.
+- Keep explicit repository release profiles and independent package versions
+  scoped to their owning repositories.
+- Preserve historical milestone, research, and recovery refs. Do not rename or
+  recreate tags to make old history match a newer convention.
+- Release readiness requires the current revision's checks and the declared
+  artifact; a merged PR alone does not establish deployment or publication.
 
 ## Clean-Slate Rule
 

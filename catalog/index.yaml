@@ -1,6 +1,10 @@
 schemaVersion: 1.0.0
 lastVerified: '2026-08-27'
 note: Edit lanes below. build-catalog.py compiles to repos.json automatically.
+ownership_defaults:
+  maintainer: Meshal Alawein
+  docs_owner: Meshal Alawein
+  verified_at: '2026-09-06'
 lanes:
   platform:
   - slug: alawein

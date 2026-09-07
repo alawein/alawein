@@ -251,6 +251,10 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     promotion = repo.get("promotion")
     if isinstance(promotion, dict) and promotion:
         slim["promotion"] = deepcopy(promotion)
+    # Export must retain explicit ownership, including per-repository exceptions.
+    for key in ("owner", "maintainer", "docs_owner"):
+        if repo.get(key):
+            slim[key] = repo[key]
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -281,6 +285,7 @@ def compile_repo(
     bucket: str,
     entry: dict[str, Any],
     prior: dict[str, Any] | None,
+    ownership_defaults: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     slug = entry["slug"]
     defaults = deepcopy(BUCKET_DEFAULTS.get(bucket, BUCKET_DEFAULTS["core"]))
@@ -295,6 +300,7 @@ def compile_repo(
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
     status = str(entry.get("status") or repo.get("status") or defaults.get("lifecycle") or "active")
     visibility = str(entry.get("visibility") or "private")
+    owner = entry.get("owner") or repo.get("owner") or "alawein"
     homepage = str(entry.get("url") or entry.get("homepage") or repo.get("homepage") or "").strip()
 
     stack = entry.get("stack") or repo.get("stack") or defaults.get("stack") or ["typescript"]
@@ -306,16 +312,16 @@ def compile_repo(
             "name": name,
             "slug": slug,
             "legacy_slugs": entry.get("legacy_slugs") or repo.get("legacy_slugs") or [],
-            "repo": f"alawein/{slug}",
+            "repo": f"{owner}/{slug}",
             "local_path": normalize_local_path(bucket, slug, repo.get("local_path")),
             "bucket": bucket,
             "lane": lane,
             "visibility": visibility,
-            "owner": "alawein",
-            "maintainer": "alawein-core",
-            "docs_owner": "alawein-core",
+            "owner": owner,
+            "maintainer": entry.get("maintainer") or (ownership_defaults or {}).get("maintainer") or repo.get("maintainer") or "unassigned",
+            "docs_owner": entry.get("docs_owner") or (ownership_defaults or {}).get("docs_owner") or repo.get("docs_owner") or "unassigned",
             "status": status,
-            "homepage": homepage or repo.get("homepage") or f"https://github.com/alawein/{slug}",
+            "homepage": homepage or repo.get("homepage") or f"https://github.com/{owner}/{slug}",
             "canonical_description": about,
             "tags": repo.get("tags") or stack_tags(stack),
             "github_topics": repo.get("github_topics") or github_topics_from_stack(stack, slug),
@@ -371,7 +377,7 @@ def compile_index(index: dict[str, Any], repos_data: dict[str, Any]) -> dict[str
         if slug in seen:
             raise SystemExit(f"duplicate slug in index.yaml: {slug}")
         seen.add(slug)
-        compiled.append(compile_repo(lane, bucket, entry, prior_by_slug.get(slug)))
+        compiled.append(compile_repo(lane, bucket, entry, prior_by_slug.get(slug), index.get("ownership_defaults")))
 
     missing = set(prior_by_slug) - seen
     if missing:

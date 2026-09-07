@@ -8,7 +8,7 @@ description: Single source of truth for commit authority, commit messages, branc
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-06-09
+last_updated: 2026-09-06
 tags: [commits, branches, merge, releases, semver, agents, convention]
 ---
 
@@ -24,21 +24,26 @@ a messy worktree), `review-playbook.md` (author and reviewer checklist).
 
 ## 1. Commit authority and modes
 
-Agents may author commits. Authority is set per repo by a `commit_mode` field in
-`catalog/repos.json`; an absent field means `full`.
+Agents may author commits. A per-repo `commit_mode` in `catalog/repos.json`
+limits execution capability; it does not grant authority by itself. An absent
+field retains the legacy `full` capability ceiling. Current session instructions,
+assigned tool permissions and repository restrictions determine the allowed work.
 
 | Mode | The agent may | Gated to the maintainer |
 |------|---------------|-------------------------|
-| `full` (default) | commit, push, and merge to `main`, including releases and `.github/` | nothing beyond the invariants below |
+| `full` (default ceiling) | commit, push, and execute an authorized merge or release | Meshal's final decision and any unassigned action |
 | `guardrailed` | commit and push a branch, open a PR | merge to `main` |
 | `local` | commit on a branch | push and merge |
 
-Two invariants hold in every mode, including `full`:
+These invariants hold in every mode, including `full`:
 
 1. Never commit secrets, `.env` files, or credentials. A secret is flagged for
    rotation, never committed or reproduced.
 2. Force-push or history rewrite on a shared branch (`main` or any branch already
    pushed) requires explicit maintainer confirmation.
+3. Record author, executor, independent reviewer, checks and final approval as
+   defined in [work-record-taxonomy.md](work-record-taxonomy.md). Preserve current
+   protections until an authorized settings change is applied and verified.
 
 Attribution and identity: no AI attribution anywhere in the message (subject,
 body, or trailers). Agent commits are authored under the maintainer's canonical
@@ -48,6 +53,11 @@ a placeholder or divergent identity is corrected to `contact@meshal.ai` first.
 Quality bar before any commit, in every mode: the relevant checks pass (repo
 tests/lint, and the doctrine gate when governance docs change) and the author has
 self-reviewed the diff.
+
+Meshal is the sole maintainer for the current rollout. Claude Code, Cursor and
+ChatGPT alternate execution and independent review under the operating model.
+Keep actual tool attribution in the PR, task or batch ledger, not commit-message
+trailers. A commit author exception applies only to its recorded scope.
 
 ## 2. Commit messages
 
@@ -132,9 +142,17 @@ understood checks, a human decision when they touch governance truth, and
 cleanup after merge. After merge: delete the branch remotely and locally, update
 `CHANGELOG.md`, and prune stale branches.
 
-Recommended `main` protection: require pull requests, require the fast CI checks,
-allow squash merge, allow merge commits for the approved exception classes, and
-disable direct pushes except for explicit admin emergencies.
+For `alawein/alawein`, retain required human and CODEOWNER approval, required
+checks, signed commits and linear history. An author cannot approve their own
+PR. Independent tool review supplements required review; it does not replace it.
+If no eligible reviewer can satisfy the current rules, keep the PR open and
+record the blocker. Do not lower approval requirements or use a bypass to merge.
+
+The five current contexts are `validate-contract`, `test-scripts`,
+`lint-managed-markdown`, `GitHub Baseline Audit` and `Gitleaks`. Verify current
+required contexts, integration IDs, rulesets and classic protection before merge.
+Other repositories retain their recorded profiles, including stricter external
+review and approved release-branch merge strategies.
 
 ## 5. Releases and versioning (uniform semver)
 

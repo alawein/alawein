@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.4.1
-parent-version: 1.4.0
-last-verified: 2026-09-04
-last_updated: 2026-09-05
-change-summary: "Correct bucketed workspace paths; resolve siblings via catalog local_path"
+version: 1.5.0
+parent-version: 1.4.1
+last-verified: 2026-09-07
+last_updated: 2026-09-07
+change-summary: "Require execution and review evidence while keeping product prose attribution-free"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -30,7 +30,8 @@ work to the same technical and editorial standard as the workspace owner.
 ## Hard constraints
 
 1. Never introduce YAML frontmatter into `README.md` or `docs/README.md`.
-2. Never add AI attribution to commits, code comments, or documentation.
+2. Keep AI attribution out of commit messages, code comments, and product prose.
+   Record actual execution and review roles in task, PR, or batch evidence.
 3. Never use the forbidden register from `docs/style/VOICE.md`.
 4. Treat each sibling repo as an independent git checkout under
    `apps|core|lab|sites|work/<slug>` (resolve via catalog `local_path`).

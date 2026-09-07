@@ -5,8 +5,8 @@ sync: none
 sla: none
 title: Claude Code configuration reference (.claude/, CLAUDE.md)
 description: Canonical layout and practices for Claude Code, project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
-last_updated: 2026-09-06
-last-verified: 2026-09-06
+last_updated: 2026-09-07
+last-verified: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -112,7 +112,7 @@ Product note: **commands/** and **skills/** may converge over time; prefer **ski
 Pair:
 
 - **`.claude/settings.json`**: committed team defaults: `permissions.allow` / `permissions.deny`, `hooks`, shared config.
-- **`.claude/settings.local.json`**: personal; gitignore.
+- **`.claude/settings.local.json`**: nonsecret personal overrides; gitignore.
 
 **Hooks:** Keep them **fast (under ~2s)**; they run frequently. Common patterns:
 
@@ -120,7 +120,9 @@ Pair:
 - **PostToolUse** on `.ts` / `.tsx` → typecheck where appropriate.
 - **Deny** dangerous shell patterns where your environment requires it.
 
-Do not put secrets in committed `settings.json`; use `settings.local.json`.
+Keep secret values in the secrets manager and inject them into the process with
+`op run -- <command>`. Neither settings file may contain secret values; ignoring a
+file in Git does not make it a secret store.
 
 ---
 

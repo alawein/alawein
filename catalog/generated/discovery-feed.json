@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27",
+  "generatedAt": "2026-09-06",
   "summary": {
     "repoCount": 44,
     "typeCounts": {
@@ -160,8 +160,8 @@
           "typescript",
           "tailwindcss"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "sites/meshal-web",
         "catalog_groups": [
           "featured"
@@ -211,8 +211,8 @@
           "legal-ops",
           "automation"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/adil",
         "catalog_groups": [
           "notion_sync",
@@ -260,8 +260,8 @@
           "alignment",
           "training"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/alembiq",
         "catalog_groups": [
           "featured",
@@ -309,8 +309,8 @@
           "typescript",
           "security"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/attributa",
         "catalog_groups": [
           "featured"
@@ -358,8 +358,8 @@
           "fft",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/edfp",
         "catalog_groups": [
           "featured",
@@ -408,8 +408,8 @@
           "react",
           "supabase"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/llmworks",
         "catalog_groups": [
           "featured"
@@ -457,8 +457,8 @@
           "hpc",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/optiqap",
         "catalog_groups": [
           "featured",
@@ -506,8 +506,8 @@
           "python",
           "verification"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/provegate",
         "catalog_groups": [
           "research",
@@ -556,8 +556,8 @@
           "vite",
           "plotly"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/simcore",
         "catalog_groups": [
           "notion_sync",
@@ -606,8 +606,8 @@
           "legal-ops",
           "automation"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/adil",
         "catalog_groups": [
           "notion_sync",
@@ -655,8 +655,8 @@
           "alignment",
           "training"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/alembiq",
         "catalog_groups": [
           "featured",
@@ -704,8 +704,8 @@
           "typescript",
           "security"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/attributa",
         "catalog_groups": [
           "featured"
@@ -752,8 +752,8 @@
           "education",
           "javascript"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/chshlab",
         "catalog_groups": [
           "research"
@@ -798,8 +798,8 @@
           "jupyter-notebook",
           "html"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/chshlab-paper",
         "catalog_groups": [],
         "depends_on": [
@@ -841,8 +841,8 @@
           "fft",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/edfp",
         "catalog_groups": [
           "featured",
@@ -890,8 +890,8 @@
           "react",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/loopholelab",
         "catalog_groups": [
           "research"
@@ -935,8 +935,8 @@
           "logic-gates",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/maglogic",
         "catalog_groups": [
           "research"
@@ -983,8 +983,8 @@
           "reasoning",
           "python"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/fallax",
         "catalog_groups": [
           "infrastructure"
@@ -1031,8 +1031,8 @@
           "catalog",
           "automation"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/alawein",
         "catalog_groups": [
           "infrastructure"
@@ -1087,8 +1087,8 @@
           "tokens",
           "turborepo"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/design-system",
         "catalog_groups": [
           "infrastructure"
@@ -1142,8 +1142,8 @@
           "markdown",
           "powershell"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/dotclaude",
         "catalog_groups": [],
         "depends_on": [
@@ -1184,8 +1184,8 @@
           "mcp",
           "python"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/incore",
         "catalog_groups": [
           "infrastructure"
@@ -1229,8 +1229,8 @@
           "python",
           "sqlite"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/kcompiler",
         "catalog_groups": [],
         "depends_on": [
@@ -1270,8 +1270,8 @@
           "search",
           "documentation"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/knowledge-base",
         "catalog_groups": [
           "infrastructure"
@@ -1330,8 +1330,8 @@
           "prompts",
           "python"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "core/outpost",
         "catalog_groups": [
           "infrastructure"
@@ -1375,8 +1375,8 @@
         "archive",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "_archive/2026-06-helios",
       "catalog_groups": [
         "research"
@@ -1421,8 +1421,8 @@
         "legal-ops",
         "automation"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/adil",
       "catalog_groups": [
         "notion_sync",
@@ -1470,8 +1470,8 @@
         "alignment",
         "training"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/alembiq",
       "catalog_groups": [
         "featured",
@@ -1519,8 +1519,8 @@
         "typescript",
         "security"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/attributa",
       "catalog_groups": [
         "featured"
@@ -1567,8 +1567,8 @@
         "education",
         "javascript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/chshlab",
       "catalog_groups": [
         "research"
@@ -1613,8 +1613,8 @@
         "jupyter-notebook",
         "html"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/chshlab-paper",
       "catalog_groups": [],
       "depends_on": [
@@ -1656,8 +1656,8 @@
         "fft",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/edfp",
       "catalog_groups": [
         "featured",
@@ -1703,8 +1703,8 @@
         "reasoning",
         "python"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/fallax",
       "catalog_groups": [
         "infrastructure"
@@ -1754,8 +1754,8 @@
         "react",
         "supabase"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/llmworks",
       "catalog_groups": [
         "featured"
@@ -1804,8 +1804,8 @@
         "react",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/loopholelab",
       "catalog_groups": [
         "research"
@@ -1849,8 +1849,8 @@
         "logic-gates",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/maglogic",
       "catalog_groups": [
         "research"
@@ -1897,8 +1897,8 @@
         "simulation",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/meatheadphysicist",
       "catalog_groups": [
         "notion_sync",
@@ -1946,8 +1946,8 @@
         "hpc",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/optiqap",
       "catalog_groups": [
         "featured",
@@ -1995,8 +1995,8 @@
         "python",
         "verification"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/provegate",
       "catalog_groups": [
         "research",
@@ -2042,8 +2042,8 @@
         "materials",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/qmatsim",
       "catalog_groups": [
         "research"
@@ -2090,8 +2090,8 @@
         "typescript",
         "supabase"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/qmlab",
       "catalog_groups": [
         "notion_sync",
@@ -2139,8 +2139,8 @@
         "optimization",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/quantumalgo",
       "catalog_groups": [
         "research"
@@ -2183,8 +2183,8 @@
         "python",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/qubeml",
       "catalog_groups": [
         "research"
@@ -2227,8 +2227,8 @@
         "numerics",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/scicomp",
       "catalog_groups": [
         "research"
@@ -2275,8 +2275,8 @@
         "vite",
         "plotly"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/simcore",
       "catalog_groups": [
         "notion_sync",
@@ -2321,8 +2321,8 @@
         "simulation",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/spincirc",
       "catalog_groups": [
         "research"
@@ -2368,8 +2368,8 @@
         "turborepo",
         "typescript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/veyra",
       "catalog_groups": [
         "featured"
@@ -2418,8 +2418,8 @@
         "catalog",
         "automation"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/alawein",
       "catalog_groups": [
         "infrastructure"
@@ -2474,8 +2474,8 @@
         "tokens",
         "turborepo"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/design-system",
       "catalog_groups": [
         "infrastructure"
@@ -2529,8 +2529,8 @@
         "markdown",
         "powershell"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/dotclaude",
       "catalog_groups": [],
       "depends_on": [
@@ -2571,8 +2571,8 @@
         "mcp",
         "python"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/incore",
       "catalog_groups": [
         "infrastructure"
@@ -2616,8 +2616,8 @@
         "python",
         "sqlite"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/kcompiler",
       "catalog_groups": [],
       "depends_on": [
@@ -2657,8 +2657,8 @@
         "search",
         "documentation"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/knowledge-base",
       "catalog_groups": [
         "infrastructure"
@@ -2717,8 +2717,8 @@
         "prompts",
         "python"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/outpost",
       "catalog_groups": [
         "infrastructure"
@@ -2763,8 +2763,8 @@
         "turborepo",
         "typescript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/prompty",
       "catalog_groups": [
         "infrastructure"
@@ -2809,8 +2809,8 @@
         "cli",
         "github-actions"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/repo-drift",
       "catalog_groups": [],
       "depends_on": [
@@ -2850,8 +2850,8 @@
         "python",
         "workspace"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/workspace-control",
       "catalog_groups": [
         "infrastructure"
@@ -2897,8 +2897,8 @@
         "cli",
         "governance"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "core/workspace-tools",
       "catalog_groups": [
         "infrastructure"
@@ -2954,8 +2954,8 @@
         "luxury",
         "design"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/atelier-rounaq",
       "catalog_groups": [
         "featured"
@@ -3001,8 +3001,8 @@
         "nextjs",
         "typescript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/auditraise",
       "catalog_groups": [
         "featured"
@@ -3048,8 +3048,8 @@
         "stripe",
         "supabase"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/bolts",
       "catalog_groups": [
         "featured"
@@ -3098,8 +3098,8 @@
         "vite",
         "coaching"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/gymboy",
       "catalog_groups": [
         "featured"
@@ -3147,8 +3147,8 @@
         "supabase",
         "coaching"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/repz",
       "catalog_groups": [
         "featured"
@@ -3196,8 +3196,8 @@
         "typescript",
         "design-system"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/scribd",
       "catalog_groups": [
         "featured"
@@ -3247,8 +3247,8 @@
         "typescript",
         "tailwindcss"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "sites/meshal-web",
       "catalog_groups": [
         "featured"
@@ -3297,8 +3297,8 @@
         "narrative",
         "retro"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "sites/roka-oakland-hustle",
       "catalog_groups": [
         "notion_sync"
@@ -3342,8 +3342,8 @@
         "typescript",
         "monorepo"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "work/handshake",
       "catalog_groups": [
         "infrastructure"
@@ -3386,8 +3386,8 @@
         "llm",
         "python"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "work/mercor",
       "catalog_groups": [
         "research"
@@ -3434,8 +3434,8 @@
         "documentation",
         "private-workspace"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "work/turing",
       "catalog_groups": [
         "infrastructure"
@@ -3967,7 +3967,7 @@
   },
   "taxonomy": {
     "schemaVersion": "1.0.0",
-    "lastVerified": "2026-04-14",
+    "lastVerified": "2026-09-06",
     "axes": {
       "type": [
         "product",
@@ -4053,7 +4053,154 @@
       "Work",
       "Personal",
       "scientific-computing"
-    ]
+    ],
+    "workRecords": {
+      "version": "1.0.0",
+      "workKinds": [
+        {
+          "key": "bug",
+          "github": "type:bug",
+          "linear": "Bug",
+          "color": "d73a4a",
+          "description": "Incorrect behavior or a reproduced defect.",
+          "aliases": [
+            "bug"
+          ]
+        },
+        {
+          "key": "feature",
+          "github": "type:feature",
+          "linear": "Feature",
+          "color": "a2eeef",
+          "description": "New user-facing or platform capability.",
+          "aliases": [
+            "enhancement",
+            "type:feat"
+          ]
+        },
+        {
+          "key": "docs",
+          "github": "type:docs",
+          "linear": "Documentation",
+          "color": "0075ca",
+          "description": "Documentation, policy, examples or reference updates.",
+          "aliases": [
+            "docs",
+            "documentation"
+          ]
+        },
+        {
+          "key": "maintenance",
+          "github": "type:maintenance",
+          "linear": "Improvement",
+          "color": "cfd3d7",
+          "description": "Dependencies, configuration, refactoring or routine operations.",
+          "aliases": [
+            "dependencies",
+            "ci",
+            "chore"
+          ]
+        },
+        {
+          "key": "research",
+          "github": "type:research",
+          "linear": "Research",
+          "color": "d4c5f9",
+          "description": "Investigation or experiment with a recorded question and evidence.",
+          "aliases": [
+            "research"
+          ]
+        },
+        {
+          "key": "security",
+          "github": "type:security",
+          "linear": "Security",
+          "color": "b60205",
+          "description": "Security work; confidential findings stay in their authorized source.",
+          "aliases": [
+            "security"
+          ]
+        },
+        {
+          "key": "question",
+          "github": "type:question",
+          "linear": "Question",
+          "color": "d876e3",
+          "description": "A request for an answer without a committed implementation change.",
+          "aliases": [
+            "question"
+          ]
+        }
+      ],
+      "titlePrefixes": {
+        "fix": "bug",
+        "feat": "feature",
+        "docs": "docs",
+        "chore": "maintenance",
+        "build": "maintenance",
+        "ci": "maintenance",
+        "refactor": "maintenance",
+        "test": "maintenance",
+        "perf": "maintenance",
+        "style": "maintenance"
+      },
+      "priorityAuthority": "native priority in the current task authority; existing GitHub P1/P2/P3 labels remain until triage consumers migrate",
+      "stateAuthority": "native task state; repository lifecycle is separate",
+      "riskValues": [
+        "unassessed",
+        "low",
+        "medium",
+        "high"
+      ],
+      "requiredFields": [
+        "source_id",
+        "source_url",
+        "work_kind",
+        "maintainer",
+        "status",
+        "priority",
+        "risk",
+        "acceptance",
+        "dependencies",
+        "evidence"
+      ],
+      "changeEvidence": [
+        "author",
+        "executor",
+        "reviewer",
+        "reviewed_revision",
+        "checks",
+        "final_approval"
+      ],
+      "evidenceStates": [
+        "verified",
+        "reported",
+        "unverified",
+        "not_applicable"
+      ],
+      "protectedLegacyLabels": [
+        "auto-generated",
+        "automated",
+        "automation",
+        "prompt-kit",
+        "catalog",
+        "llmops",
+        "governance",
+        "governance-compliance",
+        "P1",
+        "P2",
+        "P3",
+        "status:planned",
+        "github_actions",
+        "python",
+        "javascript",
+        "proof:tests",
+        "risk:medium",
+        "scope:audit",
+        "type:gap"
+      ],
+      "historyPolicy": "Preserve original author, timestamps, tags, releases, comments and closed/archived state. Normalize historical aliases in views; apply additive labels to open records only when unambiguous."
+    }
   },
   "assetAssignments": {
     "fallax": {
@@ -5169,8 +5316,8 @@
           "alignment",
           "training"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/alembiq",
         "catalog_groups": [
           "featured",
@@ -5218,8 +5365,8 @@
           "typescript",
           "security"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/attributa",
         "catalog_groups": [
           "featured"
@@ -5267,8 +5414,8 @@
           "fft",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/edfp",
         "catalog_groups": [
           "featured",
@@ -5317,8 +5464,8 @@
           "react",
           "supabase"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/llmworks",
         "catalog_groups": [
           "featured"
@@ -5366,8 +5513,8 @@
           "hpc",
           "research"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/optiqap",
         "catalog_groups": [
           "featured",
@@ -5415,8 +5562,8 @@
           "turborepo",
           "typescript"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "lab/veyra",
         "catalog_groups": [
           "featured"
@@ -5466,8 +5613,8 @@
           "luxury",
           "design"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/atelier-rounaq",
         "catalog_groups": [
           "featured"
@@ -5513,8 +5660,8 @@
           "nextjs",
           "typescript"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/auditraise",
         "catalog_groups": [
           "featured"
@@ -5560,8 +5707,8 @@
           "stripe",
           "supabase"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/bolts",
         "catalog_groups": [
           "featured"
@@ -5610,8 +5757,8 @@
           "vite",
           "coaching"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/gymboy",
         "catalog_groups": [
           "featured"
@@ -5659,8 +5806,8 @@
           "supabase",
           "coaching"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/repz",
         "catalog_groups": [
           "featured"
@@ -5708,8 +5855,8 @@
           "typescript",
           "design-system"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "apps/scribd",
         "catalog_groups": [
           "featured"
@@ -5759,8 +5906,8 @@
           "typescript",
           "tailwindcss"
         ],
-        "maintainer": "alawein-core",
-        "docs_owner": "alawein-core",
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
         "local_path": "sites/meshal-web",
         "catalog_groups": [
           "featured"

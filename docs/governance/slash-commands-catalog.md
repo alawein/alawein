@@ -189,8 +189,8 @@ Available in **Claude Code** when the Morphism plugin is installed (e.g. `~/.cla
 **Alawein-specific (this org repo):**
 
 - In `alawein/alawein`, after edits run (shell, not slash):
-  - `python scripts/sync-readme.py --check`
-  - `./scripts/validate-doc-contract.sh --full`
+  - `python scripts/catalog/sync-readme.py --check`
+  - `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 - These are **not** slash commands; they are the quality gates referenced in [AGENTS.md](../../AGENTS.md) and [CLAUDE.md](../../CLAUDE.md).
 
 ---
@@ -292,8 +292,8 @@ Or use the single meta-command: `/compound-engineering:lfg` *&lt;feature descrip
 
 Not slash commands; run in shell:
 
-1. `python scripts/sync-readme.py --check`
-2. `./scripts/validate-doc-contract.sh --full`
+1. `python scripts/catalog/sync-readme.py --check`
+2. `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 
 ---
 

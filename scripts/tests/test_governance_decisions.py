@@ -75,3 +75,30 @@ class GovernanceDecisionValidationTests(unittest.TestCase):
                 data = deepcopy(self.decisions)
                 data["design_system"]["reference_consumers"].append(value)
                 self.assertTrue(validate_governance_decisions(data, self.slugs))
+
+    def test_each_reference_consumer_requires_catalog_identity_and_evidence(self) -> None:
+        for field, value in (
+            ("slug", "unknown-repo"), ("slug", None),
+            ("review_required", "false"), ("evidence", []),
+            ("evidence", [{"source": "", "claim": "unverified"}]),
+        ):
+            for position in (0, 1):
+                with self.subTest(field=field, value=value, position=position):
+                    data = deepcopy(self.decisions)
+                    consumers = data["design_system"]["reference_consumers"]
+                    if position:
+                        consumers.append({**deepcopy(consumers[0]), "slug": "scribd"})
+                    consumers[position][field] = value
+                    self.assertTrue(validate_governance_decisions(data, self.slugs))
+
+    def test_additional_evidenced_reference_consumer_is_valid(self) -> None:
+        data = deepcopy(self.decisions)
+        consumers = data["design_system"]["reference_consumers"]
+        consumers.append({**deepcopy(consumers[0]), "slug": "scribd"})
+        self.assertEqual(validate_governance_decisions(data, self.slugs), [])
+
+    def test_conflicting_duplicate_repz_consumer_is_rejected(self) -> None:
+        data = deepcopy(self.decisions)
+        consumers = data["design_system"]["reference_consumers"]
+        consumers.append({**deepcopy(consumers[0]), "compatibility": "proven", "review_required": False})
+        self.assertTrue(validate_governance_decisions(data, self.slugs))

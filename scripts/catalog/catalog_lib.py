@@ -979,6 +979,19 @@ def validate_governance_decisions(
     ):
         issues.append(ValidationIssue("error", "governance reference_consumers must contain non-empty mappings"))
         return issues
+    consumer_slugs: set[str] = set()
+    for entry in consumers:
+        slug = entry.get("slug")
+        if not isinstance(slug, str) or slug not in repo_slugs:
+            issues.append(ValidationIssue("error", f"governance reference consumer '{slug}' is not in catalog/repos.json"))
+        elif slug in consumer_slugs:
+            issues.append(ValidationIssue("error", f"governance reference consumer '{slug}' is duplicated"))
+        else:
+            consumer_slugs.add(slug)
+        if not has_evidence(entry) or not isinstance(entry.get("review_required"), bool):
+            issues.append(
+                ValidationIssue("error", f"governance reference consumer '{slug}' requires evidence and review_required")
+            )
     repz = next(
         (entry for entry in consumers if entry.get("slug") == "repz"),
         None,

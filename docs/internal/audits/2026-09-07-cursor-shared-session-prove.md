@@ -109,3 +109,186 @@ auto-bump.
    Claude audit, Computer and Kilo mentioned Meshal on non-incident status.
 7. Over-claim: Claude and Computer treated Computer 7/7 as independent proof
    that git should change. Cursor did not verify Computer membership.
+
+## Cross-surface inventory (2026-09-07 08:40 UTC)
+
+Asked in-thread: land an exhaustive matrix, drift root cause, voice
+divergence, and lane trade-offs in this file. Git still wins. No second
+inventory page. No YAML roster change (no kit bump, no Computer flip, no
+Kilo row). Snapshot not rewritten.
+
+This Cloud Agent run: `bc-b4b569f6-a6c0-5114-8ebc-ddfa7736b9eb`. Launch
+model `cursor-grok-4.6-high-fast` (YAML `llm_default` for Cursor is still
+`composer-2.5`). Owner `contact@meshal.ai`. Repo `alawein/alawein`. Slack
+team `T0APHHXJV4J`.
+
+### 1. Agent matrix
+
+Shared instruction surfaces (all code lanes that can read `alawein/alawein`):
+
+- Governed prose: `docs/style/VOICE.md`
+- Slack threads: `docs/governance/slack-agent-voice.md`
+- Workspace kit: `prompt-kits/AGENT.md` 1.5.1 (`prompt-kits/registry.yaml`)
+- Repo contract: `AGENTS.md`, `CLAUDE.md`, `SSOT.md`
+- Cursor rules: `.cursor/rules/alawein-governance.mdc`,
+  `.cursor/rules/slack-agent-voice.mdc`,
+  `.cursor/rules/claude-code-governance.mdc`
+- Claude Code home: `claude-agent-platform/` (`sync-to-home.sh` /
+  `sync-from-home.sh`)
+- Dispatch: `docs/governance/unified-agent-system.md` §5
+- Inventory SSOT: `catalog/agent-integrations.yaml`
+
+Credential boundary (all lanes): account canon is `contact@meshal.ai` only.
+Never commit secrets. Cloud Agent merge is 403. Desktop MCP and Cloud MCP
+statuses must not be collapsed. AGI-named cloud workspaces, `theagi.company`
+mail, and Railway AGI projects are out of scope and were not probed.
+
+| Agent | Slack ID | Git row | Default model (git) | Model this thread | Style / rules | Credential boundary |
+| --- | --- | --- | --- | --- | --- | --- |
+| Cursor | `U0APW2Z3GG2` | `cursor-cloud` `ready` | Composer 2.5 | `cursor-grok-4.6-high-fast` | AGENT 1.5.1, VOICE, slack-agent-voice, `.cursor/rules/` | `contact@meshal.ai`; Cloud Agent on `alawein/alawein` |
+| Claude (legacy) | `U0AQQFJT8AC` | `claude-slack` `ready` | `claude-legacy-slack` | Legacy Slack bot | slack-agent-voice; Tag runbook | Per-user Slack connect; Tag not enabled |
+| Claude Code | none in Slack | `claude-code` `ready` | `claude` | not in this thread | `claude-agent-platform/`, AGENT 1.5.1, VOICE | Laptop `contact@meshal.ai`; home sync |
+| Computer | `U0APW7F9S4A` | `computer-perplexity` `needs_auth` | Perplexity | Perplexity (self-claim) | slack-agent-voice; browser lane | Perplexity user session, not a Cursor MCP |
+| Kilo | `U0BV9U2GFED` | **missing** | [unknown] | Kilo Cloud Agent (self-claim) | cannot read alawein files | Kilo GitHub App; not on `alawein/alawein` |
+| Notion AI | `U0AQ8UNAKTK` | `notion-ai-slack` `ready` | Notion AI | silent this thread | Notion-only lane | `contact@meshal.ai` / workspace `8116d8de-2215-81ce-b71b-00031e833a2d` |
+| Codex | `U0BV7V8M3NW` | `codex-slack` `needs_auth` | `gpt-codex` | silent | slack-agent-voice after connect | ChatGPT Codex connect still required |
+
+Related, not in the asked six: ChatGPT `U0BUNH33CCA` git `replaced`; GitHub
+Slack `U0APESWEF2T` git `ready`, PR-mirror only.
+
+#### Access per surface
+
+| Agent | GitHub | Notion | Slack | Local / Cloud |
+| --- | --- | --- | --- | --- |
+| Cursor | `alawein/alawein` mutate via PR; `Github` MCP ready this run | `notion` MCP ready this run; lane is not Notion writes | Cursor Slack Tools; 7/7 list+read proved | This Cloud VM. Desktop MCP can differ (`cursor-mcp-repair.md`) |
+| Claude (legacy) | UNVERIFIED from Claude surface (Claude said no GitHub connector) | Workspace identity proved (`self`, `contact@meshal.ai`) | Member 7/7; content read `#posts` + `#admin-ops` | No laptop repo lane |
+| Claude Code | Laptop repo mutation (git row). UNVERIFIED this session | UNVERIFIED this session | not a Slack bot | `~/.claude/` via `claude-agent-platform/` |
+| Computer | no repo mutation | browser/Drive verification when tasked | Self-claim 7/7 including `#posts`. Git notes say not in `#posts` | Cloud-only. Perplexity OAuth is the git `needs_auth` reason |
+| Kilo | `ops-control-plane-grok`, `ai-ops`, `workspace-brain` only (self-claim). Those slugs are **not** in `catalog/index.yaml`. No `alawein/alawein` | UNVERIFIED | `#admin-ops` only (self-claim) | Kilo Cloud Agent sessions. Do not expand the Kilo GitHub App here |
+| Notion AI | no | Operations Hub, Master Tasks (Status required), Projects (Canonical) only | silent this thread | Notion workspace only |
+| Codex | diff-only after connect | UNVERIFIED | silent; installed `#admin-ops` only | Blocked on ChatGPT Codex connect |
+
+#### Cursor Cloud MCP this run vs YAML 2026-09-06
+
+Live `GetDynamicTools` catalog on this run. Did not call Gmail, Drive, or
+Railway tools (AGI hard-never).
+
+Ready: Cursor Slack Tools, Slack (third-party, redundant), Github, Gmail,
+Google-calendar, Google-drive, Railway, Cloudflare-docs, Godaddy, Treg,
+cursor-cloud, cursor-subscriptions, **notion** (YAML still says
+`cursor_mcp: absent`).
+
+Loading: 1password, Playwright (YAML listed Playwright ready on 2026-09-06).
+
+Error: Figma, Todoist, Supermemory (YAML listed Supermemory as loading).
+
+needsAuth: Calendly, Cloudflare-bindings, Cloudflare-builds,
+Cloudflare-observability, Context, Docusign, Fireflies, Granola,
+Huggingface-skills, Lovable, Mobbin, Neon, Onedrive, Posthog, Wonder, Zoom.
+
+Desktop (from YAML / repair runbook, not re-probed here): Gmail, Calendar,
+Drive, Railway absent or CLI unauthorized; Slack duplicate removed; GitHub
+ready; Notion absent; Supermemory dropped.
+
+### 2. Drift and consensus root cause
+
+Three mismatches share one pattern: Slack coordination advanced a label
+without a git row change. Git remains SSOT.
+
+#### Kit `AGENT.md` 1.5.1 vs Slack 1.6.0
+
+`prompt-kits/AGENT.md` is a registered workspace system prompt (identity,
+voice, code conventions). Frontmatter, `prompt-kits/registry.yaml`, and
+`prompt-kits/KITS-CHANGELOG.md` all say 1.5.1 (2026-09-07). There is no
+1.6.0 kit in git.
+
+The Slack ping is a different document: shared-session operating rules
+(HARD NEVER, lanes, dispatch, improve-in-place). Those rules already live
+in `slack-agent-runbook.md`, `slack-agent-voice.md`,
+`unified-agent-system.md` §5, and `catalog/agent-integrations.yaml`.
+
+Root cause: the ping reused the kit filename and incremented a version in
+Slack. That is a coordination label, not a landed kit bump. Kilo treated
+Slack as ahead of git. Cursor treated them as two files. Claude called it
+a human reconcile, not an auto-bump. Correct close: keep 1.5.1, or ask
+for a real 1.6.0 rewrite of `prompt-kits/AGENT.md` plus registry and
+changelog.
+
+#### Computer `ready` vs `needs_auth`
+
+Git `computer-perplexity` is `needs_auth` because Lane B (2026-09-05)
+failed Perplexity OAuth. Notes also say Computer DMs are welcome blurbs
+and Computer is not in `#posts`. Unified-agent-system still says
+"Needs auth (Slack)" for Computer.
+
+The Slack prompt and Computer's own posts use `ready` to mean Slack
+channel reads (claimed 7/7 including `#posts`). That is a different
+predicate from Perplexity auth.
+
+Root cause: one status enum is being used for two surfaces. Slack
+membership can be true while the browser connector is still
+`needs_auth`. Flipping git to `ready` on a Slack self-claim would hide
+the Lane B gap. Close: keep `needs_auth` until Perplexity OAuth is
+proved, or split Slack-read vs connector status if a schema change is
+asked.
+
+#### Missing Kilo row `U0BV9U2GFED`
+
+Kilo posted in this thread and stated a three-repo Cloud Agent lane. The
+2026-09-07 Slack prompt names that lane. `catalog/agent-integrations.yaml`
+has no `kilo` id. `catalog/index.yaml` does not list those three repos.
+HARD NEVER forbids expanding the Kilo GitHub App onto `alawein/alawein`
+without a human ask. Adding an agent id requires
+`validate-agent-integrations.py --write-snapshot --strict`.
+
+Root cause: Slack dispatch added an operating lane before a catalog row
+existed. Cursor did not invent the row in this PR. Close: scoped land of
+a `kilo` row (3 repos, `#admin-ops` only, no `alawein/alawein`) plus
+snapshot, after an explicit ask.
+
+### 3. Chat / voice divergence
+
+Contract: `docs/governance/slack-agent-voice.md` v1.0.0. First line is
+ask or status. Bold field labels only. No em dash. No pipe tables in
+threads (tables go on Canvas). No emoji status rows. Max 6 lines routine,
+3 FYI, 4 incident. Mention Meshal only for a decision, a required reply,
+or the first incident ping. Workflow bots are exempt; they did not post
+here.
+
+| Poster | First-line status | Length | Tables / emoji rows | Meshal mention | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| Cursor | yes | mostly 4 to 6 blocks | no thread tables; comparison stored in this file | omitted on prove and conclusion | closest to contract |
+| Claude | Tag upsell, then a long audit | far over 6 lines; duplicate post | green/yellow/red circle rows (banned in threads) | decision ask on topic tweaks and kit version | fails length, emoji-row, and duplicate-post rules |
+| Computer | yes | within 6 on conclusion | no | tagged Meshal for merge and OAuth gates | labeled fields ok; merge tag is a decision |
+| Kilo | yes | over 6 on consensus | no | implied "if you want" | over-length; asked for a kit bump git forbids |
+| Notion AI, GitHub, ChatGPT, Codex | no post | n/a | n/a | n/a | silent; no voice score |
+
+Other contract misses: Claude's first reply is a product CTA
+("enable Claude Tag"), not a labeled-fields status. Computer and Claude
+collapsed Slack-read proof into a git `ready` recommendation. Kilo
+treated Slack 1.6.0 as the kit SSOT.
+
+### 4. Pros and cons by lane
+
+| Lane | Pros | Cons |
+| --- | --- | --- |
+| Cursor Cloud Agent | Live MCP + git + PR on `alawein/alawein`. Cursor Slack Tools bound to the thread. Can land `last_verified`. | Merge is 403. This run's model (`cursor-grok-4.6-high-fast`) is not the YAML default. Desktop vs Cloud MCP diverge. Notion MCP ready here but Notion writes are out of lane. |
+| Cursor desktop IDE | Local MCP repair, merge clicks, laptop files. | Cloud-ready connectors (Gmail, Drive, Railway) can be absent. Not this session. |
+| Claude legacy Slack | Fast channel reads and Notion identity without repo risk. | Tag not enabled. No GitHub. Voice-contract failures. Cannot update git. Duplicate posts. |
+| Claude Code | Laptop mutation and `claude-agent-platform` skills. | Not present in this thread. Status `last_verified` 2026-09-05 is stale relative to this ping. |
+| Computer | Browser/GUI is the only allowed visual prove path. | Git `needs_auth` (Perplexity). Slack-ready claim does not clear OAuth. No repo mutation. |
+| Kilo | Isolated Cloud Agent lane keeps Kilo App off the control plane. | No catalog row. Cannot read SSOT files. Consensus asked for a kit bump Cursor must not do. Three named repos are outside this catalog. |
+| Notion AI | Correct narrow write surface (Hub, Master Tasks, Canonical Projects). | Silent this thread. Easy to invent a second Projects DB if the lane is ignored. |
+| Codex / ChatGPT | Clear replace rule: wait for Codex connect; do not dispatch ChatGPT. | Both silent. Codex `needs_auth` blocks the diff-only lane. ChatGPT still installed. |
+
+Tooling connections:
+
+- Keep Cursor Slack Tools as the Slack-launched canonical path. Third-party
+  `Slack` MCP is ready and redundant.
+- Keep Notion AI as the Notion write surface even though Cursor `notion`
+  MCP is ready on this Cloud run.
+- Keep Computer for browser proof. Do not treat Slack reads as connector
+  health.
+- Keep Codex parked until connect + Reply OK.
+- Do not add Mem0, Letta, Zep, Hermes, OpenClaw, or extra Slack bots
+  before 2026-09-19.

@@ -6,8 +6,6 @@ Summarize the repo documentation structure and where to start.
 
 ## Canonical files
 
-- `SSOT.md`
-- `LESSONS.md`
 - `README.md`
 
 ## Generated or derived files

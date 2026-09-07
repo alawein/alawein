@@ -43,7 +43,7 @@ describe("featured projects", () => {
       });
 
       it("has valid category", () => {
-        const valid = ["active", "maintained", "planned", "archived"];
+        const valid = ["active", "maintained", "planned", "archived", "frozen"];
         assert.ok(valid.includes(project.category), `category '${project.category}' not in ${valid}`);
       });
 

@@ -42,12 +42,12 @@ def render_link_row(profile: dict) -> str:
             display = url.replace("mailto:", "").removeprefix("https://").removeprefix("http://")
             display = display.removeprefix("www.")
         items.append(f"[{display}]({url})")
-    return " · ".join(items)
+    return " | ".join(items)
 
 
 def render_domains(profile: dict) -> str:
     domains = profile.get("domains") or []
-    return " · ".join(prettify_slug(d) for d in domains if d)
+    return " | ".join(prettify_slug(d) for d in domains if d)
 
 
 def render_research_table(profile: dict) -> list[str]:
@@ -57,14 +57,15 @@ def render_research_table(profile: dict) -> list[str]:
     lines = [
         "## Research & Scientific Computing",
         "",
-        "| Repo | What it is |",
-        "|------|-----------|",
+        "| Repo | Lifecycle | Claim |",
+        "|------|-----------|-------|",
     ]
     for row in rows:
         slug = row["slug"]
         url = row["url"]
         desc = row["description"]
-        lines.append(f"| [{slug}]({url}) | {desc} |")
+        lifecycle = row["lifecycle"]
+        lines.append(f"| [{slug}]({url}) | {lifecycle} | {desc} |")
     return lines
 
 
@@ -75,16 +76,19 @@ def render_products_table(profile: dict) -> list[str]:
     lines = [
         "## AI Systems & Products",
         "",
-        "| Project | What it is |",
-        "|---------|-----------|",
+        "| Project | Status | Claim |",
+        "|---------|-----------|-------|",
     ]
     for row in rows:
         name = row["name"]
+        url = row.get("url")
+        display = f"[{name}]({url})" if url else name
         desc = row["description"]
-        lines.append(f"| {name} | {desc} |")
+        lifecycle = row["lifecycle"]
+        lines.append(f"| {display} | {lifecycle} | {desc} |")
     lines += [
         "",
-        "*Most AI product repos are private. See [kohyr.com](https://kohyr.com) for product details.*",
+        "*Private product repositories are listed for context. See [kohyr.ai](https://kohyr.ai) for Kohyr.*",
     ]
     return lines
 
@@ -99,9 +103,13 @@ def render_stack(profile: dict) -> list[str]:
 def render_readme(profile: dict) -> str:
     name = profile.get("full_name") or profile.get("name") or "alawein"
     bio = str(profile.get("bio_short") or "").strip()
+    thesis = str(profile.get("thesis") or "").strip()
     quote = str(profile.get("tagline_quote") or "").strip().strip('"')
 
     lines: list[str] = [f"# {name}", ""]
+
+    if thesis:
+        lines += [thesis, ""]
 
     if bio:
         lines += [bio, ""]

@@ -22,6 +22,7 @@ last_updated: 2026-09-07
 ## adr/
 
 - [0001-adopt-anti-rot-primitives.md](adr/0001-adopt-anti-rot-primitives.md)
+- [0002-public-readme-contract.md](adr/0002-public-readme-contract.md)
 
 ## archive/
 

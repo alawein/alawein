@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-08-27
+last_updated: 2026-09-06
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -334,33 +334,56 @@ CLAUDE.md AGENTS.md
 
 ## C. README unification spec
 
-### Header block (do not break)
+### Public front door
 
-Every repo except hub profile and archive waivers MUST keep the Repo Framework header validated by `validate-repo-framework.py`:
+Public repositories start with the project name, a one-sentence value
+proposition, and no more than three badges. The first 40 lines answer what the
+project is, why it exists, who it serves and does not serve, and how to run it.
+Validators enforce non-empty sections and a runnable first-screen path. A
+reviewer confirms that the first-screen prose states the audience and boundary;
+the gate does not require exact audience or boundary keywords.
 
 ```markdown
-Status: <enum>
-Category: <bucket>
-Owner: <enum>
-Visibility: public|private
-Purpose: <one line>
-Next action: continue|refactor|merge|archive|delete
+# <Name>
+
+> <one-sentence value proposition with a measurable hook when one exists>
+
+## The claim
+## Run it
+## What it is
+## What it is not
+## Docs map
+## License
 ```
 
-The gate (`validate-visibility.py`) checks catalog visibility against live GitHub; the README `Visibility` header is fixed by hand in the redo wave and is validated only as an enum by `validate-repo-framework.py`.
+`The claim` is optional for archival repositories. `Why not <alternative>`,
+`Examples`, and `Contributing` are recommended when they help the reader.
+Research repositories with a paper add `Citation` before `License`.
+The profile repository follows its generator-owned two-table format.
 
-`Category` MUST match catalog `bucket` after Wave 0 truth-up.
+Private repositories retain the Repo Framework record card and legacy type
+sections until a separately approved private migration.
 
-### Section order by `type`
+### Private legacy section order by `type`
 
-| type | Order (H2 names) | Template |
-|------|------------------|----------|
-| product | Value proposition → Demo and status → Quick start → Architecture → Deploy (if web) → Docs map → Ownership | `README.product.md` |
-| research | Abstract → Status → Runtime requirements → Reproducibility → Datasets → Docs map | `README.research.md` |
-| tooling | Purpose → Install → Commands → Architecture → Docs map → Consumers → Release and versioning | `README.tooling.md` |
-| infra | Same as tooling | `README.tooling.md` |
-| governance | Purpose → Catalog SSOT → Validators → Docs map | New `README.governance.md` (Wave 0) |
-| archive | Status → Archive reason → Contents → Access rules → Docs map | New `README.archive.md` (Wave 0) |
+This table applies only to private repositories that retain the internal
+record-card system. Public repositories use the front-door sequence above.
+
+| type | Order (H2 names) |
+|------|------------------|
+| product | Value proposition → Demo and status → Quick start → Architecture → Deploy (if web) → Docs map → Ownership |
+| research | Abstract → Status → Runtime requirements → Reproducibility → Datasets → Docs map |
+| tooling | Purpose → Install → Commands → Architecture → Docs map → Consumers → Release and versioning |
+| infra | Same as tooling |
+| governance | Purpose → Catalog SSOT → Validators → Docs map |
+| archive | Status → Archive reason → Contents → Access rules → Docs map |
+
+For a private README, start with the metadata record card in
+[Repo Framework](repo-framework.md#private-repository-record-card), then add the type's
+sections above. Keep an existing valid private README when available. Fill its
+commands and links from the actual repository. The scaffolds in
+`templates/scaffolding/README.*.md` implement the public contract and must not
+replace a private README.
 
 ### Architecture section rules
 
@@ -373,7 +396,8 @@ The gate (`validate-visibility.py`) checks catalog visibility against live GitHu
 
 - Bullet links only to files that exist on `origin/main`.
 - README = front door. `docs/README.md` = index. No duplicated intro paragraphs.
-- Standard minimum: `docs/README.md`, `SSOT.md`, `LESSONS.md` where those files exist.
+- Link the useful public docs, decisions, architecture, and changelog that exist.
+- `SSOT.md` and `LESSONS.md` may remain, but are not required public links.
 
 ### Voice and presentation
 
@@ -382,6 +406,12 @@ Per [`docs/style/VOICE.md`](../style/VOICE.md): no em dashes, no banned register
 <!-- voice-check:ignore-end -->
 
 ### Tiered compliance (migration)
+
+This legacy table and the exemplars below describe private READMEs and public
+READMEs that have not adopted the public front door. Legacy public acceptance
+is limited to the explicit fleet-transition check. Adopted public READMEs and
+local public validation use the public contract above, without record-card
+fields.
 
 | Tier | Rule |
 |------|------|
@@ -428,6 +458,8 @@ Wave 1 targets Tier 1. Wave 2+ tightens to Tier 2.
 | `validate-visibility.py` | Shipped | Hub `docs-doctrine.yml`; catalog visibility vs live GitHub, empty or README-less public repos, pins require P0, LICENSE for public research and tooling |
 
 Fleet scan runs on hub schedule/PR via GitHub API (`main`). Local fleet scan: `python scripts/doctrine/validate-readme-topology.py --workspace-root <fleet-root>`.
+
+Decision record: [`ADR 0002`](../adr/0002-public-readme-contract.md).
 
 ---
 

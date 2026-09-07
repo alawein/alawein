@@ -25,7 +25,7 @@ States: `pass`, `fail`, `pending`, `unknown` (readable response with no determin
 
 ## Coverage limits
 
-- Fields recorded as `unavailable`: `branch_protection_state`, `dependency_alerts_state`, `github_apps_state`, `secret_scanning_state`, `webhooks_state`
+- Fields recorded as `unavailable`: `branch_protection_state`, `dependency_alerts_state`, `required_status_checks_state`, `secret_scanning_state`, `webhooks_state`
 - Fields recorded as `unknown`: none
 
 ## Evidence
@@ -41,6 +41,7 @@ Collected at `2026-09-07T09:00:00+00:00`.
 - `200` pass from `https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100` at `2026-09-07T09:00:00+00:00`
 - `200` pass from `https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100` at `2026-09-07T09:00:00+00:00`
 - `403` unavailable from `https://api.github.com/repos/alawein/alawein/branches/main/protection` at `2026-09-07T09:00:00+00:00`
+- `200` pass from `https://api.github.com/repos/alawein/alawein/rules/branches/main` at `2026-09-07T09:00:00+00:00`
 - `200` pass from `https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10` at `2026-09-07T09:00:00+00:00`
 - `200` pass from `https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100` at `2026-09-07T09:00:00+00:00`
 - `404` fail from `https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS` at `2026-09-07T09:00:00+00:00`
@@ -50,5 +51,3 @@ Collected at `2026-09-07T09:00:00+00:00`.
 - `200` pass from `https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml` at `2026-09-07T09:00:00+00:00`
 - `403` unavailable from `https://api.github.com/repos/alawein/alawein/vulnerability-alerts` at `2026-09-07T09:00:00+00:00`
 - `403` unavailable from `https://api.github.com/repos/alawein/alawein/hooks?per_page=100` at `2026-09-07T09:00:00+00:00`
-- `403` unavailable from `https://api.github.com/repos/alawein/alawein/installation` at `2026-09-07T09:00:00+00:00`
-

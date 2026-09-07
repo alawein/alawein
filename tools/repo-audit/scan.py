@@ -111,6 +111,7 @@ CSV_COLUMNS = [
     "open_issue_urls",
     "branch_protection_state",
     "required_status_checks",
+    "required_status_checks_state",
     "ci_state",
     "recent_workflow_runs",
     "workflows",
@@ -124,11 +125,48 @@ CSV_COLUMNS = [
     "dependency_alerts_state",
     "secret_scanning_state",
     "webhooks_state",
-    "github_apps_state",
     "external_services",
     "collected_at",
     "evidence_sources",
 ]
+
+JSON_ONLY_REPOSITORY_FIELDS = ("webhooks", "evidence")
+STATE_FIELDS = {
+    "contributors_state",
+    "contributor_activity_state",
+    "branch_protection_state",
+    "required_status_checks_state",
+    "ci_state",
+    "workflows_state",
+    "codeowners_state",
+    "readme_state",
+    "docs_state",
+    "dependabot_config_state",
+    "dependency_alerts_state",
+    "secret_scanning_state",
+    "webhooks_state",
+}
+LIST_FIELDS = {
+    "contributors",
+    "contributor_activity",
+    "open_pull_request_urls",
+    "open_issue_urls",
+    "required_status_checks",
+    "recent_workflow_runs",
+    "workflows",
+    "webhooks",
+    "external_services",
+    "evidence_sources",
+}
+FINDING_FIELDS = {
+    "repo",
+    "priority",
+    "category",
+    "field",
+    "finding",
+    "evidence",
+    "collected_at",
+}
 
 
 def utc_now() -> str:
@@ -305,9 +343,16 @@ class GitHubClient:
                 # partial; the caller must not treat the items as complete.
                 break
             items.extend(body)
-            url = self._same_host(next_page_url(headers.get("link", "")))
-            if not url:
+            next_url = next_page_url(headers.get("link", ""))
+            if not next_url:
                 complete = True
+                url = None
+                break
+            url = self._same_host(next_url)
+            if not url:
+                # A next page existed but was unsafe to request. Preserve the
+                # collected page as evidence while reporting the collection as
+                # incomplete, never as an authoritative truncated result.
                 break
 
         if url and len(records) >= max_pages:
@@ -423,6 +468,38 @@ def detect_services(workflow_paths: Iterable[str]) -> list[str]:
     return sorted(services)
 
 
+def redact_webhook_url(value: Any) -> str:
+    """Return a non-sensitive webhook origin without credentials or route data."""
+    try:
+        parts = urllib.parse.urlsplit(str(value or ""))
+        port = parts.port
+    except ValueError:
+        return UNKNOWN
+    if parts.scheme.lower() not in {"http", "https"} or not parts.hostname:
+        return UNKNOWN
+    hostname = parts.hostname
+    if ":" in hostname:
+        hostname = f"[{hostname}]"
+    netloc = f"{hostname}:{port}" if port is not None else hostname
+    return urllib.parse.urlunsplit((parts.scheme.lower(), netloc, "/[redacted]", "", ""))
+
+
+def required_checks_from_rules(rules: Iterable[dict[str, Any]]) -> list[str]:
+    """Collect required status-check names from effective branch rules."""
+    checks: list[str] = []
+    for rule in rules:
+        if not isinstance(rule, dict) or rule.get("type") != "required_status_checks":
+            continue
+        parameters = rule.get("parameters") or {}
+        for item in parameters.get("required_status_checks", []):
+            if not isinstance(item, dict):
+                continue
+            context = str(item.get("context") or "").strip()
+            if context and context not in checks:
+                checks.append(context)
+    return checks
+
+
 def split_repo(slug: str) -> tuple[str, str]:
     owner, _, name = slug.strip().partition("/")
     if not owner or not name or "/" in name:
@@ -513,23 +590,55 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
     )
 
     if default_branch:
-        protection = client.get(f"{base}/branches/{urllib.parse.quote(default_branch)}/protection")
+        encoded_branch = urllib.parse.quote(default_branch, safe="")
+        protection = client.get(f"{base}/branches/{encoded_branch}/protection")
         evidence.append(protection["evidence"])
-        if protection["status"] == 200 and isinstance(protection["body"], dict):
+        rules = client.get(f"{base}/rules/branches/{encoded_branch}")
+        evidence.append(rules["evidence"])
+
+        classic_protected = protection["status"] == 200 and isinstance(protection["body"], dict)
+        effective_rules = rules["body"] if rules["status"] == 200 and isinstance(rules["body"], list) else []
+        rules_protected = bool(effective_rules)
+        classic_resolved = protection["status"] in (200, 404)
+        rules_resolved = rules["status"] == 200
+        if classic_protected or rules_protected:
             record["branch_protection_state"] = PASS
-            checks = protection["body"].get("required_status_checks") or {}
-            record["required_status_checks"] = [str(item) for item in checks.get("contexts", [])]
-        elif protection["status"] == 404:
-            # For a readable repository a 404 here means "no protection
-            # configured", which is a finding rather than an access gap.
+            required_checks: list[str] = []
+            if classic_protected:
+                classic_checks = protection["body"].get("required_status_checks") or {}
+                for item in classic_checks.get("contexts", []):
+                    context = str(item).strip()
+                    if context and context not in required_checks:
+                        required_checks.append(context)
+                for item in classic_checks.get("checks", []):
+                    context = str((item or {}).get("context") or "").strip()
+                    if context and context not in required_checks:
+                        required_checks.append(context)
+            for context in required_checks_from_rules(effective_rules):
+                if context not in required_checks:
+                    required_checks.append(context)
+            record["required_status_checks"] = required_checks
+            if required_checks:
+                record["required_status_checks_state"] = PASS
+            elif classic_resolved and rules_resolved:
+                record["required_status_checks_state"] = FAIL
+            else:
+                record["required_status_checks_state"] = UNAVAILABLE
+        elif protection["status"] == 404 and rules["status"] == 200:
+            # A classic 404 proves only that no classic rule applies. The
+            # effective rules endpoint must also be readable and empty before
+            # the scanner can conclude that the branch is unprotected.
             record["branch_protection_state"] = FAIL
             record["required_status_checks"] = []
+            record["required_status_checks_state"] = FAIL
         else:
-            record["branch_protection_state"] = protection["evidence"]["state"]
+            record["branch_protection_state"] = UNAVAILABLE
             record["required_status_checks"] = []
+            record["required_status_checks_state"] = UNAVAILABLE
     else:
         record["branch_protection_state"] = UNKNOWN
         record["required_status_checks"] = []
+        record["required_status_checks_state"] = UNKNOWN
 
     runs = client.get(f"{base}/actions/runs", {"per_page": 10})
     evidence.append(runs["evidence"])
@@ -602,21 +711,10 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
     evidence.extend(hooks["evidence_pages"])
     if hooks["complete"]:
         record["webhooks_state"] = PASS if hooks["items"] else FAIL
-        record["webhooks"] = [
-            str((item.get("config") or {}).get("url", "")).split("?", 1)[0] for item in hooks["items"]
-        ]
+        record["webhooks"] = [redact_webhook_url((item.get("config") or {}).get("url")) for item in hooks["items"]]
     else:
         record["webhooks_state"] = hooks["state"]
         record["webhooks"] = []
-
-    installation = client.get(f"{base}/installation")
-    evidence.append(installation["evidence"])
-    if installation["status"] == 200 and isinstance(installation["body"], dict):
-        record["github_apps_state"] = PASS
-        record["github_apps"] = [str(installation["body"].get("app_slug") or UNKNOWN)]
-    else:
-        record["github_apps_state"] = installation["evidence"]["state"]
-        record["github_apps"] = []
 
     record["external_services"] = detect_services(record["workflows"])
     record["evidence"] = evidence
@@ -627,7 +725,8 @@ def collect_repository(client: GitHubClient, slug: str) -> dict[str, Any]:
 def list_repositories(client: GitHubClient, account: str) -> list[str]:
     """List repositories for an organization, falling back to a user account."""
     response = client.paginate(f"/orgs/{account}/repos", {"per_page": 100, "type": "all"})
-    if not response["complete"]:
+    first_status = response["evidence_pages"][0]["status"]
+    if not response["complete"] and first_status == 404 and not response["items"]:
         response = client.paginate(f"/users/{account}/repos", {"per_page": 100, "type": "all"})
     if not response["complete"]:
         raise GitHubError(
@@ -677,11 +776,17 @@ def build_findings(record: dict[str, Any]) -> list[dict[str, Any]]:
         add(PRIORITY_CI, "workflows_state", "No GitHub Actions workflow is configured.")
     if record.get("branch_protection_state") == FAIL:
         add(PRIORITY_PROTECTIONS, "branch_protection_state", "Default branch has no protection rule.")
-    elif record.get("branch_protection_state") == PASS and not record.get("required_status_checks"):
+    elif record.get("branch_protection_state") == PASS and record.get("required_status_checks_state") == FAIL:
         add(
             PRIORITY_PROTECTIONS,
             "required_status_checks",
             "Branch protection defines no required status checks.",
+        )
+    elif record.get("branch_protection_state") == PASS and record.get("required_status_checks_state") == UNAVAILABLE:
+        add(
+            PRIORITY_PROTECTIONS,
+            "required_status_checks",
+            "Required status-check coverage is unavailable to the audit token.",
         )
     elif record.get("branch_protection_state") == UNAVAILABLE:
         add(
@@ -689,22 +794,34 @@ def build_findings(record: dict[str, Any]) -> list[dict[str, Any]]:
             "branch_protection_state",
             "Branch protection is unavailable to the audit token; admin read is required.",
         )
-    if record.get("webhooks_state") == UNAVAILABLE or record.get("github_apps_state") == UNAVAILABLE:
+    if record.get("webhooks_state") == UNAVAILABLE:
         add(
             PRIORITY_RELIABILITY,
             "integrations",
-            "Webhook or GitHub App inventory is unavailable to the audit token.",
+            "Webhook inventory is unavailable to the audit token.",
         )
-    if record.get("codeowners_state") != PASS:
+    if record.get("codeowners_state") == FAIL:
         add(PRIORITY_OWNERSHIP, "codeowners_state", "No CODEOWNERS file was found.")
-    if record.get("dependabot_config_state") != PASS:
+    elif record.get("codeowners_state") != PASS:
+        add(PRIORITY_OWNERSHIP, "codeowners_state", "CODEOWNERS status could not be determined.")
+    if record.get("dependabot_config_state") == FAIL:
         add(PRIORITY_DEPENDENCIES, "dependabot_config_state", "No Dependabot configuration was found.")
+    elif record.get("dependabot_config_state") != PASS:
+        add(
+            PRIORITY_DEPENDENCIES,
+            "dependabot_config_state",
+            "Dependabot configuration status could not be determined.",
+        )
     if record.get("dependency_alerts_state") == FAIL:
         add(PRIORITY_DEPENDENCIES, "dependency_alerts_state", "Dependency alerts are disabled.")
-    if record.get("readme_state") != PASS:
+    if record.get("readme_state") == FAIL:
         add(PRIORITY_DOCUMENTATION, "readme_state", "No README was found.")
-    if record.get("docs_state") != PASS:
+    elif record.get("readme_state") != PASS:
+        add(PRIORITY_DOCUMENTATION, "readme_state", "README status could not be determined.")
+    if record.get("docs_state") == FAIL:
         add(PRIORITY_DOCUMENTATION, "docs_state", "No docs directory was found.")
+    elif record.get("docs_state") != PASS:
+        add(PRIORITY_DOCUMENTATION, "docs_state", "Docs directory status could not be determined.")
     if record.get("description") == UNKNOWN:
         add(PRIORITY_CLEANUP, "description", "Repository has no description.")
     return findings
@@ -850,7 +967,7 @@ def write_report(path: Path, records: list[dict[str, Any]], findings: list[dict[
             )
         lines.append("\n")
 
-    path.write_text("".join(lines), encoding="utf-8")
+    path.write_text("".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
 def write_backlog(path: Path, findings: list[dict[str, Any]]) -> None:
@@ -877,6 +994,131 @@ def write_backlog(path: Path, findings: list[dict[str, Any]]) -> None:
     path.write_text("".join(lines), encoding="utf-8")
 
 
+def validate_evidence_entry(entry: Any, location: str) -> list[str]:
+    errors: list[str] = []
+    expected = {"endpoint", "status", "collected_at", "state"}
+    if not isinstance(entry, dict):
+        return [f"{location} must be an object"]
+    missing = expected - set(entry)
+    extra = set(entry) - expected
+    if missing:
+        errors.append(f"{location} is missing fields: {', '.join(sorted(missing))}")
+    if extra:
+        errors.append(f"{location} has unexpected fields: {', '.join(sorted(extra))}")
+    for field in ("endpoint", "collected_at"):
+        if field in entry and not isinstance(entry[field], str):
+            errors.append(f"{location}.{field} must be a string")
+    if "status" in entry and (isinstance(entry["status"], bool) or not isinstance(entry["status"], int)):
+        errors.append(f"{location}.status must be an integer")
+    if "state" in entry and entry["state"] not in STATES:
+        errors.append(f"{location}.state must be one of {', '.join(STATES)}")
+    return errors
+
+
+def validate_repository_record(record: Any, index: int) -> list[str]:
+    errors: list[str] = []
+    location = f"repositories[{index}]"
+    expected = set(CSV_COLUMNS) | set(JSON_ONLY_REPOSITORY_FIELDS)
+    if not isinstance(record, dict):
+        return [f"{location} must be an object"]
+    missing = expected - set(record)
+    extra = set(record) - expected
+    if missing:
+        errors.append(f"{location} is missing fields: {', '.join(sorted(missing))}")
+    if extra:
+        errors.append(f"{location} has unexpected fields: {', '.join(sorted(extra))}")
+
+    if "archived" in record and not isinstance(record["archived"], bool):
+        errors.append(f"{location}.archived must be a boolean")
+    if "visibility" in record and record["visibility"] not in {"public", "private", "internal"}:
+        errors.append(f"{location}.visibility must be public, private, or internal")
+    for field in STATE_FIELDS:
+        if field in record and record[field] not in STATES:
+            errors.append(f"{location}.{field} must be one of {', '.join(STATES)}")
+    for field in LIST_FIELDS:
+        if field not in record:
+            continue
+        if not isinstance(record[field], list) or not all(isinstance(item, str) for item in record[field]):
+            errors.append(f"{location}.{field} must be an array of strings")
+    for field in ("open_pull_requests", "open_issues"):
+        if field not in record:
+            continue
+        value = record[field]
+        if not ((isinstance(value, int) and not isinstance(value, bool) and value >= 0) or value == UNAVAILABLE):
+            errors.append(f"{location}.{field} must be a non-negative integer or unavailable")
+    for field in expected - STATE_FIELDS - LIST_FIELDS - {"archived", "open_pull_requests", "open_issues", "evidence"}:
+        if field in record and not isinstance(record[field], str):
+            errors.append(f"{location}.{field} must be a string")
+    if "evidence" in record:
+        if not isinstance(record["evidence"], list):
+            errors.append(f"{location}.evidence must be an array")
+        else:
+            for evidence_index, entry in enumerate(record["evidence"]):
+                errors.extend(validate_evidence_entry(entry, f"{location}.evidence[{evidence_index}]"))
+    return errors
+
+
+def validate_finding(finding: Any, index: int) -> list[str]:
+    errors: list[str] = []
+    location = f"findings[{index}]"
+    if not isinstance(finding, dict):
+        return [f"{location} must be an object"]
+    missing = FINDING_FIELDS - set(finding)
+    extra = set(finding) - FINDING_FIELDS
+    if missing:
+        errors.append(f"{location} is missing fields: {', '.join(sorted(missing))}")
+    if extra:
+        errors.append(f"{location} has unexpected fields: {', '.join(sorted(extra))}")
+    for field in FINDING_FIELDS - {"priority"}:
+        if field in finding and not isinstance(finding[field], str):
+            errors.append(f"{location}.{field} must be a string")
+    priority = finding.get("priority")
+    if priority is not None and (
+        isinstance(priority, bool) or not isinstance(priority, int) or not PRIORITY_SECURITY <= priority <= PRIORITY_CLEANUP
+    ):
+        errors.append(f"{location}.priority must be an integer from 1 through 8")
+    return errors
+
+
+def validate_json_payload(payload: Any) -> list[str]:
+    """Validate the generated JSON shape without adding a runtime dependency."""
+    errors: list[str] = []
+    expected = {"schema", "generated_at", "scope", "states", "repository_count", "repositories", "findings"}
+    if not isinstance(payload, dict):
+        return ["repo-inventory.json must contain an object"]
+    missing = expected - set(payload)
+    extra = set(payload) - expected
+    if missing:
+        errors.append(f"JSON is missing top-level fields: {', '.join(sorted(missing))}")
+    if extra:
+        errors.append(f"JSON has unexpected top-level fields: {', '.join(sorted(extra))}")
+    for field in ("schema", "generated_at", "scope"):
+        if field in payload and not isinstance(payload[field], str):
+            errors.append(f"JSON field '{field}' must be a string")
+    if payload.get("schema") != "tools/repo-audit/schema.json":
+        errors.append("JSON schema field must point to tools/repo-audit/schema.json")
+    if payload.get("states") != list(STATES):
+        errors.append("JSON states must list every supported state in canonical order")
+    records = payload.get("repositories")
+    findings = payload.get("findings")
+    if not isinstance(records, list):
+        errors.append("JSON repositories must be an array")
+        records = []
+    if not isinstance(findings, list):
+        errors.append("JSON findings must be an array")
+        findings = []
+    count = payload.get("repository_count")
+    if isinstance(count, bool) or not isinstance(count, int) or count < 0:
+        errors.append("JSON repository_count must be a non-negative integer")
+    elif count != len(records):
+        errors.append("JSON repository_count does not match the number of repositories")
+    for index, record in enumerate(records):
+        errors.extend(validate_repository_record(record, index))
+    for index, finding in enumerate(findings):
+        errors.extend(validate_finding(finding, index))
+    return errors
+
+
 def validate_outputs(output_dir: Path) -> list[str]:
     """Check that the CSV and JSON inventories agree and the Mermaid file parses."""
     errors: list[str] = []
@@ -896,19 +1138,35 @@ def validate_outputs(output_dir: Path) -> list[str]:
     if errors:
         return errors
 
-    with csv_path.open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle))
-    payload = json.loads(json_path.read_text(encoding="utf-8"))
-    records = payload.get("repositories", [])
+    try:
+        with csv_path.open(encoding="utf-8", newline="") as handle:
+            reader = csv.DictReader(handle)
+            rows = list(reader)
+            if reader.fieldnames != CSV_COLUMNS:
+                errors.append("CSV columns do not match the canonical inventory columns")
+    except (OSError, csv.Error) as error:
+        errors.append(f"cannot read repo-inventory.csv: {error}")
+        return errors
+    try:
+        payload = json.loads(json_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        errors.append(f"cannot read repo-inventory.json: {error}")
+        return errors
+    errors.extend(validate_json_payload(payload))
+    records = payload.get("repositories", []) if isinstance(payload, dict) else []
+    if not isinstance(records, list):
+        return errors
 
     if len(rows) != len(records):
         errors.append(f"CSV has {len(rows)} records but JSON has {len(records)}")
-    if payload.get("repository_count") != len(records):
-        errors.append("JSON repository_count does not match the number of repositories")
-    if [row.get("repo") for row in rows] != [record.get("repo") for record in records]:
+    if [row.get("repo") for row in rows] != [
+        record.get("repo") if isinstance(record, dict) else None for record in records
+    ]:
         errors.append("CSV and JSON repository keys differ")
 
     for row, record in zip(rows, records):
+        if not isinstance(record, dict):
+            continue
         for column in CSV_COLUMNS:
             if column not in row:
                 errors.append(f"CSV is missing column '{column}'")
@@ -916,7 +1174,11 @@ def validate_outputs(output_dir: Path) -> list[str]:
             if row[column] != csv_cell(record.get(column)):
                 errors.append(f"CSV and JSON disagree for {row.get('repo')} field '{column}'")
 
-    mermaid = mermaid_path.read_text(encoding="utf-8").strip().splitlines()
+    try:
+        mermaid = mermaid_path.read_text(encoding="utf-8").strip().splitlines()
+    except OSError as error:
+        errors.append(f"cannot read integration-map.mmd: {error}")
+        return errors
     if not mermaid or not mermaid[0].strip().startswith("flowchart"):
         errors.append("integration-map.mmd must start with a `flowchart` declaration")
     for line_no, line in enumerate(mermaid[1:], start=2):

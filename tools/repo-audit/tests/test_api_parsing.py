@@ -132,6 +132,8 @@ class TestPagination(unittest.TestCase):
         )
         result = client.paginate("/repos/o/r/pulls")
         self.assertEqual([item["id"] for item in result["items"]], [1])
+        self.assertFalse(result["complete"])
+        self.assertEqual(result["state"], scan.UNAVAILABLE)
         requested_hosts = {urlsplit(call).netloc for call in client.open.calls}
         self.assertEqual(requested_hosts, {"api.github.test"})
 
@@ -190,6 +192,26 @@ class TestHelpers(unittest.TestCase):
     def test_mermaid_label_strips_diagram_syntax(self):
         self.assertEqual(scan.mermaid_label('a["b"]|c'), "a  b   c")
 
+    def test_webhook_url_redacts_every_sensitive_component(self):
+        value = "https://user:password@hooks.example.test:8443/services/account/credential?token=x#fragment"
+        self.assertEqual(scan.redact_webhook_url(value), "https://hooks.example.test:8443/[redacted]")
+        self.assertEqual(scan.redact_webhook_url("not-a-url"), scan.UNKNOWN)
+
+    def test_required_checks_are_extracted_from_effective_rules(self):
+        rules = [
+            {
+                "type": "required_status_checks",
+                "parameters": {
+                    "required_status_checks": [
+                        {"context": "test"},
+                        {"context": "lint", "integration_id": 1},
+                    ]
+                },
+            },
+            {"type": "pull_request", "parameters": {}},
+        ]
+        self.assertEqual(scan.required_checks_from_rules(rules), ["test", "lint"])
+
 
 class TestCollectRepository(unittest.TestCase):
     def base_routes(self, **overrides):
@@ -212,6 +234,7 @@ class TestCollectRepository(unittest.TestCase):
                 {},
             ),
             f"{api}/repos/o/r/branches/main/protection": (404, None, {}),
+            f"{api}/repos/o/r/rules/branches/main": (200, [], {}),
             f"{api}/repos/o/r/actions/runs": (
                 200,
                 {"workflow_runs": [{"name": "CI", "status": "completed", "conclusion": "success"}]},
@@ -232,7 +255,6 @@ class TestCollectRepository(unittest.TestCase):
             f"{api}/repos/o/r/readme": (200, {"name": "README.md"}, {}),
             f"{api}/repos/o/r/vulnerability-alerts": (204, None, {}),
             f"{api}/repos/o/r/hooks": (403, {"message": "forbidden"}, {}),
-            f"{api}/repos/o/r/installation": (404, None, {}),
             f"{api}/repos/o/r": (
                 200,
                 {
@@ -258,6 +280,7 @@ class TestCollectRepository(unittest.TestCase):
         self.assertEqual(record["open_issues"], 1)
         # 404 on a readable repository means "no protection configured".
         self.assertEqual(record["branch_protection_state"], scan.FAIL)
+        self.assertEqual(record["required_status_checks_state"], scan.FAIL)
         self.assertEqual(record["ci_state"], scan.PASS)
         # 202 from the statistics endpoint is still being computed.
         self.assertEqual(record["contributor_activity_state"], scan.PENDING)
@@ -269,6 +292,68 @@ class TestCollectRepository(unittest.TestCase):
         self.assertEqual(record["owner_dri"], "@alawein")
         self.assertTrue(record["evidence_sources"])
         self.assertTrue(all(item["endpoint"] for item in record["evidence"]))
+        self.assertTrue(all("/installation" not in item["endpoint"] for item in record["evidence"]))
+
+    def test_effective_rules_protect_branch_without_classic_rule(self):
+        routes = self.base_routes()
+        routes["https://api.github.test/repos/o/r/rules/branches/main"] = (
+            200,
+            [
+                {
+                    "type": "required_status_checks",
+                    "parameters": {"required_status_checks": [{"context": "CI"}]},
+                }
+            ],
+            {},
+        )
+        record = scan.collect_repository(client_with(routes), "o/r")
+        self.assertEqual(record["branch_protection_state"], scan.PASS)
+        self.assertEqual(record["required_status_checks"], ["CI"])
+        self.assertEqual(record["required_status_checks_state"], scan.PASS)
+
+    def test_unreadable_rules_prevent_false_unprotected_finding(self):
+        routes = self.base_routes()
+        routes["https://api.github.test/repos/o/r/rules/branches/main"] = (403, None, {})
+        record = scan.collect_repository(client_with(routes), "o/r")
+        self.assertEqual(record["branch_protection_state"], scan.UNAVAILABLE)
+        self.assertEqual(record["required_status_checks_state"], scan.UNAVAILABLE)
+
+    def test_unreadable_rules_do_not_create_false_missing_checks_finding(self):
+        routes = self.base_routes()
+        routes["https://api.github.test/repos/o/r/branches/main/protection"] = (
+            200,
+            {"required_status_checks": None},
+            {},
+        )
+        routes["https://api.github.test/repos/o/r/rules/branches/main"] = (403, None, {})
+        record = scan.collect_repository(client_with(routes), "o/r")
+        findings = scan.build_findings(record)
+        status_check_findings = [
+            finding for finding in findings if finding["field"] == "required_status_checks"
+        ]
+        self.assertEqual(record["branch_protection_state"], scan.PASS)
+        self.assertEqual(record["required_status_checks_state"], scan.UNAVAILABLE)
+        self.assertEqual(
+            [finding["finding"] for finding in status_check_findings],
+            ["Required status-check coverage is unavailable to the audit token."],
+        )
+
+    def test_webhook_destination_is_redacted_before_recording(self):
+        routes = self.base_routes()
+        routes["https://api.github.test/repos/o/r/hooks"] = (
+            200,
+            [
+                {
+                    "config": {
+                        "url": "https://user:password@hooks.example.test/services/account/credential?token=x#fragment"
+                    }
+                }
+            ],
+            {},
+        )
+        record = scan.collect_repository(client_with(routes), "o/r")
+        self.assertEqual(record["webhooks_state"], scan.PASS)
+        self.assertEqual(record["webhooks"], ["https://hooks.example.test/[redacted]"])
 
     def test_unreadable_repository_raises(self):
         routes = self.base_routes()
@@ -296,10 +381,58 @@ class TestCollectRepository(unittest.TestCase):
         self.assertEqual(by_field["branch_protection_state"], scan.PRIORITY_PROTECTIONS)
         self.assertEqual(by_field["dependabot_config_state"], scan.PRIORITY_DEPENDENCIES)
 
+    def test_unavailable_controls_do_not_claim_the_control_is_absent(self):
+        record = scan.collect_repository(client_with(self.base_routes()), "o/r")
+        for field in ("codeowners_state", "dependabot_config_state", "readme_state", "docs_state"):
+            record[field] = scan.UNAVAILABLE
+        findings = {finding["field"]: finding["finding"] for finding in scan.build_findings(record)}
+        self.assertEqual(findings["codeowners_state"], "CODEOWNERS status could not be determined.")
+        self.assertEqual(
+            findings["dependabot_config_state"],
+            "Dependabot configuration status could not be determined.",
+        )
+        self.assertEqual(findings["readme_state"], "README status could not be determined.")
+        self.assertEqual(findings["docs_state"], "Docs directory status could not be determined.")
+        self.assertTrue(all("No " not in findings[field] for field in findings if field.endswith("_state")))
+
     def test_listing_failure_raises(self):
         client = client_with({"https://api.github.test/orgs/none": (404, None, {})})
         with self.assertRaises(scan.GitHubError):
             scan.list_repositories(client, "none")
+
+    def test_user_fallback_occurs_only_after_initial_org_not_found(self):
+        client = client_with(
+            {
+                "https://api.github.test/orgs/person/repos": (404, None, {}),
+                "https://api.github.test/users/person/repos": (
+                    200,
+                    [{"full_name": "person/repo"}],
+                    {},
+                ),
+            }
+        )
+        self.assertEqual(scan.list_repositories(client, "person"), ["person/repo"])
+
+    def test_partial_org_pagination_never_falls_back_to_user_listing(self):
+        page_two = "https://api.github.test/orgs/acme/repos?page=2"
+        client = client_with(
+            {
+                page_two: (500, None, {}),
+                "https://api.github.test/orgs/acme/repos": (
+                    200,
+                    [{"full_name": "acme/first"}],
+                    {"link": f'<{page_two}>; rel="next"'},
+                ),
+                "https://api.github.test/users/acme/repos": (
+                    200,
+                    [{"full_name": "acme/public-only"}],
+                    {},
+                ),
+            }
+        )
+        with self.assertRaises(scan.GitHubError):
+            scan.list_repositories(client, "acme")
+        self.assertFalse(any("/users/acme/repos" in call for call in client.open.calls))
 
 
 if __name__ == "__main__":

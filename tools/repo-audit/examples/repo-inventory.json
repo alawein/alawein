@@ -39,6 +39,7 @@
       ],
       "branch_protection_state": "unavailable",
       "required_status_checks": [],
+      "required_status_checks_state": "unavailable",
       "ci_state": "pending",
       "recent_workflow_runs": [
         "CI - Documentation Contract:success",
@@ -78,8 +79,6 @@
       "secret_scanning_state": "unavailable",
       "webhooks_state": "unavailable",
       "webhooks": [],
-      "github_apps_state": "unavailable",
-      "github_apps": [],
       "external_services": [
         "Anthropic Claude",
         "GitHub code scanning",
@@ -127,6 +126,12 @@
           "status": 403,
           "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/rules/branches/main",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
         },
         {
           "endpoint": "https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10",
@@ -181,12 +186,6 @@
           "status": 403,
           "collected_at": "2026-09-07T09:00:00+00:00",
           "state": "unavailable"
-        },
-        {
-          "endpoint": "https://api.github.com/repos/alawein/alawein/installation",
-          "status": 403,
-          "collected_at": "2026-09-07T09:00:00+00:00",
-          "state": "unavailable"
         }
       ],
       "evidence_sources": [
@@ -197,6 +196,7 @@
         "https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100",
         "https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100",
         "https://api.github.com/repos/alawein/alawein/branches/main/protection",
+        "https://api.github.com/repos/alawein/alawein/rules/branches/main",
         "https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10",
         "https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100",
         "https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS",
@@ -205,8 +205,7 @@
         "https://api.github.com/repos/alawein/alawein/contents/docs",
         "https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml",
         "https://api.github.com/repos/alawein/alawein/vulnerability-alerts",
-        "https://api.github.com/repos/alawein/alawein/hooks?per_page=100",
-        "https://api.github.com/repos/alawein/alawein/installation"
+        "https://api.github.com/repos/alawein/alawein/hooks?per_page=100"
       ]
     }
   ],
@@ -234,7 +233,7 @@
       "priority": 4,
       "category": "P4 reliability and deployment risk",
       "field": "integrations",
-      "finding": "Webhook or GitHub App inventory is unavailable to the audit token.",
+      "finding": "Webhook inventory is unavailable to the audit token.",
       "evidence": "https://github.com/alawein/alawein",
       "collected_at": "2026-09-07T09:00:00+00:00"
     }

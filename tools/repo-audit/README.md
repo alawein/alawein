@@ -75,7 +75,9 @@ All outputs land in `--output-dir`:
 - `repo-inventory.csv`: one row per repository; list values joined with `;`.
 - `repo-inventory.json`: the same records plus per-field evidence and the
   derived findings. The shape is described in
-  [`schema.json`](schema.json).
+  [`schema.json`](schema.json). Webhook destinations retain only the scheme and
+  host plus a literal `[redacted]` path; user information, route data, query
+  parameters, and fragments are discarded.
 - `integration-map.mmd`: Mermaid flowchart of repository to CI checks to
   deployment and infrastructure to external services to notifications. It
   carries names only, never secrets or payloads.
@@ -97,7 +99,8 @@ Generated Markdown carries the workspace doctrine frontmatter
 | `unavailable` | The endpoint could not be read with the supplied token, or the request never completed. |
 
 An unreadable endpoint is never reported as `pass`. A paginated collection that
-fails part way through (or that hits the 20-page cap) is reported as
+fails part way through, receives an off-host next-page link, or hits the
+20-page cap is reported as
 `unavailable` with an empty list rather than a truncated count, and every page
 attempted is retained in the evidence list.
 
@@ -120,40 +123,50 @@ links and HTTP redirects that point at another host are refused.
 The scanner reads its token from `$GITHUB_TOKEN` by default and sends it only in
 the `Authorization` request header.
 
-In GitHub Actions the default `GITHUB_TOKEN` covers the current repository with
-`contents: read` and `actions: read`. That is enough for metadata, commits,
-contributors, pull requests, issues, workflows, workflow runs, CODEOWNERS,
-README, `docs/`, and the Dependabot configuration file.
+In GitHub Actions the live audit job grants the default `GITHUB_TOKEN`
+`contents: read`, `actions: read`, `issues: read`, and `pull-requests: read`.
+That is enough for metadata, commits, contributors, pull requests, issues,
+workflows, workflow runs, effective branch rules, CODEOWNERS, README, `docs/`,
+and the Dependabot configuration file. The pull-request test job receives only
+`contents: read` and does not perform a live scan.
 
 These endpoints need more than the default token and are reported as
 `unavailable` until it is supplied:
 
 | Field | Endpoint | Minimum additional permission |
 | --- | --- | --- |
-| `branch_protection_state`, `required_status_checks` | `/repos/{owner}/{repo}/branches/{branch}/protection` | Administration: read |
+| classic branch-protection details in `branch_protection_state`, `required_status_checks`, `required_status_checks_state` | `/repos/{owner}/{repo}/branches/{branch}/protection` | Administration: read |
 | `secret_scanning_state` | `security_and_analysis` on `/repos/{owner}/{repo}` | Administration: read |
 | `dependency_alerts_state` | `/repos/{owner}/{repo}/vulnerability-alerts` | Administration: read |
 | `webhooks_state` | `/repos/{owner}/{repo}/hooks` | Administration: read |
-| `github_apps_state` | `/repos/{owner}/{repo}/installation` | Administration: read |
 | cross-repository or organization scans | `/orgs/{org}/repos`, `/users/{user}/repos` | Contents: read on the target repositories; `read:org` for organization membership listings |
 
 To collect those fields, add a token as the repository secret
 `REPO_AUDIT_TOKEN` (Settings, Secrets and variables, Actions, New repository
 secret) and pass it with `--token-env REPO_AUDIT_TOKEN`. Use a fine-grained
 personal access token limited to the repositories in scope, with read-only
-Metadata, Contents, Actions, and Administration permissions. A classic token
-needs `repo` (read) and, only for organization-level reads, `read:org`. Never
+Metadata, Contents, Actions, Issues, Pull requests, and Administration
+permissions. A classic token needs `repo` (read) and, only for
+organization-level reads, `read:org`. Never
 paste a token into a pull request, an issue, or a workflow file; reference it as
 `${{ secrets.REPO_AUDIT_TOKEN }}` only.
+
+GitHub does not expose a complete repository GitHub App inventory through the
+authenticated-app installation endpoint used by the earlier implementation.
+That endpoint identifies only the calling app and requires app authentication,
+so the scanner does not call it or claim that it has enumerated installed apps.
 
 ## Continuous integration
 
 [`.github/workflows/repo-audit.yml`](../../.github/workflows/repo-audit.yml)
-runs the tests, scans `alawein/alawein` with the default `GITHUB_TOKEN`,
-validates CSV and JSON parity plus Mermaid syntax, and uploads the outputs as an
-artifact. It requests `contents: read` and `actions: read` only, and it uses no
-other secret. The workflow does not commit its outputs; the committed examples
-under `examples/` are the checked-in reference copy.
+runs the tests and deterministic fixture check on pushes and pull requests. On
+push or manual dispatch, a separate job scans `alawein/alawein` with the default
+`GITHUB_TOKEN`, validates the complete JSON structure plus CSV parity and
+Mermaid syntax, and uploads the outputs as an artifact. The test job requests
+`contents: read` only. The live job adds `actions: read`, `issues: read`, and
+`pull-requests: read`; it uses no other secret. The workflow does not commit its
+outputs; the committed examples under `examples/` are the checked-in reference
+copy.
 
 ## Tests
 
@@ -162,8 +175,9 @@ python -m pytest tools/repo-audit/tests -v
 ```
 
 The tests use scripted responses; they never reach the network. They cover
-pagination, HTTP status to state mapping, failure handling, output writers,
-CSV and JSON parity, and CLI exit codes.
+pagination, HTTP status to state mapping, failure handling, effective rules,
+webhook redaction, output writers, complete JSON structure, CSV and JSON
+parity, workflow permissions, and CLI exit codes.
 
 ## Example outputs
 

@@ -9,6 +9,10 @@ on:
     paths:
       - "tools/repo-audit/**"
       - ".github/workflows/repo-audit.yml"
+  pull_request:
+    paths:
+      - "tools/repo-audit/**"
+      - ".github/workflows/repo-audit.yml"
   workflow_dispatch:
     inputs:
       target:
@@ -18,14 +22,13 @@ on:
 
 permissions:
   contents: read
-  actions: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  audit:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -42,18 +45,6 @@ jobs:
           PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
         run: python -m pytest tools/repo-audit/tests -v --tb=short
 
-      - name: Run scanner against the representative repository
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          AUDIT_TARGET: ${{ github.event.inputs.target || 'alawein/alawein' }}
-        run: |
-          python tools/repo-audit/scan.py \
-            --repos "$AUDIT_TARGET" \
-            --output-dir "$RUNNER_TEMP/repo-audit-output"
-
-      - name: Validate CSV and JSON parity and Mermaid syntax
-        run: python tools/repo-audit/scan.py --check-outputs "$RUNNER_TEMP/repo-audit-output"
-
       - name: Check committed examples against the recorded fixture
         env:
           # Pins the scanner clock so a fixture replay reproduces the committed
@@ -66,6 +57,34 @@ jobs:
             --output-dir "$RUNNER_TEMP/repo-audit-fixture"
           python tools/repo-audit/scan.py --check-outputs "$RUNNER_TEMP/repo-audit-fixture"
           diff -r tools/repo-audit/examples "$RUNNER_TEMP/repo-audit-fixture"
+
+  audit:
+    if: github.event_name != 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Run scanner against the representative repository
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          AUDIT_TARGET: ${{ github.event.inputs.target || 'alawein/alawein' }}
+        run: |
+          python tools/repo-audit/scan.py \
+            --repos "$AUDIT_TARGET" \
+            --output-dir "$RUNNER_TEMP/repo-audit-output"
+
+      - name: Validate CSV and JSON parity and Mermaid syntax
+        run: python tools/repo-audit/scan.py --check-outputs "$RUNNER_TEMP/repo-audit-output"
 
       - name: Summarize the audit run
         if: always()

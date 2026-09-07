@@ -33,6 +33,7 @@ def sample_record(repo: str = "o/r") -> dict:
         "default_branch": "main",
         "last_commit_date": "2026-09-01T00:00:00Z",
         "contributors": ["alawein"],
+        "contributors_state": scan.PASS,
         "contributor_activity": ["alawein:2026-09-01"],
         "contributor_activity_state": scan.PASS,
         "open_pull_requests": 1,
@@ -41,6 +42,7 @@ def sample_record(repo: str = "o/r") -> dict:
         "open_issue_urls": [],
         "branch_protection_state": scan.FAIL,
         "required_status_checks": [],
+        "required_status_checks_state": scan.FAIL,
         "ci_state": scan.PASS,
         "recent_workflow_runs": ["CI:success"],
         "workflows": [".github/workflows/ci.yml"],
@@ -55,8 +57,6 @@ def sample_record(repo: str = "o/r") -> dict:
         "secret_scanning_state": scan.UNAVAILABLE,
         "webhooks_state": scan.UNAVAILABLE,
         "webhooks": [],
-        "github_apps_state": scan.FAIL,
-        "github_apps": [],
         "external_services": [],
         "collected_at": "2026-09-01T00:00:00+00:00",
         "evidence": [
@@ -83,6 +83,13 @@ def write_outputs(directory: Path, records: list[dict]) -> None:
 
 
 class TestOutputWriters(unittest.TestCase):
+    def test_schema_and_generated_record_fields_stay_aligned(self):
+        schema = json.loads((ROOT / "tools" / "repo-audit" / "schema.json").read_text(encoding="utf-8"))
+        repository_schema = schema["$defs"]["repository"]
+        expected = set(scan.CSV_COLUMNS) | set(scan.JSON_ONLY_REPOSITORY_FIELDS)
+        self.assertEqual(set(repository_schema["required"]), expected)
+        self.assertEqual(set(repository_schema["properties"]), expected)
+
     def test_outputs_are_written_and_validate(self):
         with tempfile.TemporaryDirectory() as tmp:
             directory = Path(tmp)
@@ -119,6 +126,39 @@ class TestOutputWriters(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             errors = scan.validate_outputs(Path(tmp))
             self.assertEqual(len(errors), 5)
+
+    def test_validation_rejects_schema_invalid_json_only_fields(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            write_outputs(directory, [sample_record()])
+            json_path = directory / "repo-inventory.json"
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+            del payload["findings"]
+            payload["repositories"][0]["webhooks"] = "not-an-array"
+            json_path.write_text(json.dumps(payload), encoding="utf-8")
+            errors = scan.validate_outputs(directory)
+            self.assertTrue(any("missing top-level fields: findings" in error for error in errors))
+            self.assertTrue(any("webhooks must be an array of strings" in error for error in errors))
+
+    def test_validation_reports_malformed_json_instead_of_raising(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            write_outputs(directory, [sample_record()])
+            (directory / "repo-inventory.json").write_text("{", encoding="utf-8")
+            errors = scan.validate_outputs(directory)
+            self.assertTrue(any("cannot read repo-inventory.json" in error for error in errors))
+
+    def test_workflow_runs_pr_tests_with_least_privilege(self):
+        workflow = (ROOT / ".github" / "workflows" / "repo-audit.yml").read_text(encoding="utf-8")
+        self.assertIn("  pull_request:\n", workflow)
+        top_permissions = workflow.split("permissions:\n", 1)[1].split("\nconcurrency:", 1)[0]
+        self.assertEqual(top_permissions.strip(), "contents: read")
+        test_job, audit_job = workflow.split("\n  audit:\n", 1)
+        self.assertNotIn("Run scanner against the representative repository", test_job)
+        self.assertIn("if: github.event_name != 'pull_request'", audit_job)
+        self.assertIn("actions: read", audit_job)
+        self.assertIn("issues: read", audit_job)
+        self.assertIn("pull-requests: read", audit_job)
 
 
 class TestCli(unittest.TestCase):

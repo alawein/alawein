@@ -68,6 +68,10 @@
       "message": "Resource not accessible by integration"
     }
   },
+  "/repos/alawein/alawein/rules/branches/main": {
+    "status": 200,
+    "body": []
+  },
   "/repos/alawein/alawein/actions/runs?per_page=10": {
     "status": 200,
     "body": {
@@ -198,12 +202,6 @@
     }
   },
   "/repos/alawein/alawein/hooks?per_page=100": {
-    "status": 403,
-    "body": {
-      "message": "Resource not accessible by integration"
-    }
-  },
-  "/repos/alawein/alawein/installation": {
     "status": 403,
     "body": {
       "message": "Resource not accessible by integration"

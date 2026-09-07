@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Slash Commands Catalog & Workflows
 description: Catalog of / slash commands from Cursor (and Claude Code) plugins, with run order and reusable workflows for any repo or directory.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -230,7 +230,7 @@ Use this first when opening a new folder or repo; then follow scenario-specific 
 ### 3.4 Before commit (repo)
 
 - **Morphism repos:** `/morphism:validate --quick` (or full `/morphism:validate`).
-- **Alawein repo:** Run `python scripts/sync-readme.py --check` and `./scripts/validate-doc-contract.sh --full` (see [AGENTS.md](../../AGENTS.md)).
+- **Alawein repo:** Run `python scripts/catalog/sync-readme.py --check` and `bash scripts/doctrine/validate-doc-contract.sh --full` (see [AGENTS.md](../../AGENTS.md)).
 
 ### 3.5 Deploy
 
@@ -249,9 +249,9 @@ Use these in order in a single session when applicable.
 2. (If repo) `/workspace:context` or invoke codebase-audit skill for full audit
 3. Plan → work → review → project's own validate → deploy as needed
 
-See [skills-agents-unification.md](./skills-agents-unification.md) §4 for the
-full table and [maintenance-skills-agents.md](./maintenance-skills-agents.md)
-for scope/tailoring changes.
+Use [AGENT.md](../../prompt-kits/AGENT.md#operating-mode) for session orientation
+and scoping. See [maintenance-skills-agents.md](./maintenance-skills-agents.md)
+for scope and tailoring changes.
 
 ### 4.1 Full feature flow (LFG-style)
 

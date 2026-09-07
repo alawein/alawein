@@ -118,6 +118,8 @@ def test_ignores_non_executable_extensions(tmp_path):
     _write(tmp_path, "docs/architecture.md", "TODO: markdown, not scanned here\n")
     findings = run_audit(tmp_path)
     assert findings == {}
+
+
 def test_no_findings_when_no_markers(tmp_path):
     _write(tmp_path, "src/clean.py", "x = 1\n")
     findings = run_audit(tmp_path)

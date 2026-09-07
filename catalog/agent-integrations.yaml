@@ -72,8 +72,9 @@ agents:
     notes: >
       Lane B fail (Sider/Claw 2026-09-05 15:52). Computer DMs are welcome
       blurbs only (2026-03-30 / 2026-04-01). No Reconnect/Sign-in surface in
-      Slack app UI. Perplexity OAuth still required (Meshal). Not in #posts.
-    last_verified: 2026-09-05
+      Slack app UI. Perplexity OAuth still required (Meshal). U0APW7F9S4A
+      still not in #posts as of 2026-09-07.
+    last_verified: 2026-09-07
   - id: chatgpt-slack
     display_name: ChatGPT
     surfaces: [slack]
@@ -83,9 +84,10 @@ agents:
     dispatch_roles: []
     status: replaced
     notes: >
-      Joined #admin-ops 11:28; never posted. Keep installed until Codex S4
-      Reply OK. Do not dispatch. Not the Cursor MCP.
-    last_verified: 2026-09-05
+      U0BUNH33CCA is not in the #admin-ops member list as of 2026-09-07.
+      Keep installed until Codex S4 Reply OK. Do not dispatch. Not the
+      Cursor MCP.
+    last_verified: 2026-09-07
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -95,11 +97,12 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Installed in #admin-ops (C0B9SRMDJFK) only. Lane A fail (Sider/Claw
-      15:52): Reply OK probe got connect prompt ts 1788622796.091419, not OK.
-      Connect button clicks (DOM + native x4) launched no OAuth popup.
-      Manual Connect click still required (Meshal browser).
-    last_verified: 2026-09-05
+      In #admin-ops (C0B9SRMDJFK) and #kohyr-dev (C0B9JJZSVQT) as of
+      2026-09-07. Lane A fail (Sider/Claw 15:52): Reply OK probe got connect
+      prompt ts 1788622796.091419, not OK. Connect button clicks (DOM +
+      native x4) launched no OAuth popup. Manual Connect click still
+      required (Meshal browser).
+    last_verified: 2026-09-07
   - id: notion-ai-slack
     display_name: Notion AI
     surfaces: [slack, notion]
@@ -132,26 +135,31 @@ workflow_bots:
   - id: daily-briefing
     schedule: 'daily 09:00'
     output: '#posts'
-    status: working
+    status: partial
     engagement_30d: 0
-    notes: Last fire 2026-09-04. Missed 2026-09-05 through 2026-09-07.
+    last_fire: '2026-09-04T09:00:00-07:00'
+    notes: Last fire 2026-09-04 09:00 PT. Missed 2026-09-05 through 2026-09-07.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
     status: working
     engagement_30d: 0
+    last_fire: '2026-09-04T16:00:00-07:00'
+    notes: Last fire 2026-09-04 16:00 PT.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
     status: working
     engagement_30d: 0
-    notes: Did not fire 2026-09-07 09:00 PT. Checked #posts after 16:00 UTC.
+    last_fire: '2026-08-31T09:00:00-07:00'
+    notes: Last fire 2026-08-31. Did not fire 2026-09-07 09:00 PT.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
     status: working
     engagement_30d: 0
-    notes: No 2026-09-07 fire in recent #content-pipeline history.
+    last_fire: '2026-08-31T09:00:00-07:00'
+    notes: Last fire 2026-08-31. No 2026-09-07 fire in #content-pipeline.
 
 integrations:
   - id: gmail
@@ -190,11 +198,12 @@ integrations:
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
     cursor_mcp: cloud_ready
+    cursor_mcp_desktop: absent
     status: locked
     notes: >
       Cloud Agent 2026-09-07: notion-search ready. Workspace UUID is not a
-      page id (fetch 404 expected). Operations Hub reachable. Desktop column
-      UNVERIFIED this run.
+      page id (fetch 404 expected). Operations Hub reachable. Desktop MCP
+      remains absent. Do not create a Notion living SSOT from this row.
     last_verified: 2026-09-07
   - id: railway
     provider: Railway
@@ -303,17 +312,20 @@ slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex]
+    agents_present: [cursor, claude, computer, notion-ai, github, codex]
     cursor_can_read: true
+    notes: ChatGPT U0BUNH33CCA not in member list as of 2026-09-07.
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
     cursor_can_read: true
-    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C)
+    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C). Computer still not in #posts.
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
+    agents_present: [codex]
     cursor_can_read: true
+    notes: Codex U0BV7V8M3NW confirmed in channel 2026-09-07.
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
     tier: domain

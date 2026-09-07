@@ -45,7 +45,9 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Canonical voice contract:
   [`docs/style/VOICE.md`](docs/style/VOICE.md)
 - Canonical prompt kits:
-  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md),
+  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0 (one catalog land;
+  search open PRs before editing that kit or
+  `catalog/agent-integrations.yaml`),
   [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
 - GitHub baseline contract:
   [`docs/governance/github-baseline.md`](docs/governance/github-baseline.md)

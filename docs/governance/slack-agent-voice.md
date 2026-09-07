@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.0.1
+version: 1.1.0
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -66,7 +66,7 @@ In **Canvas**, use fenced code blocks for multi-line commands or config snippets
 - Links use Slack mrkdwn link syntax (URL plus display label in angle brackets).
 - Mention `<@U0APM5W630C>` only when a decision or reply is required, or on the
   first ping of an incident.
-- On handoff, tag the receiving agent, not Meshal.
+- Meshal tags the next agent. Agents do not @ each other to start work.
 - Flag unknowns as `[unknown]` or `[confirming]`. Do not guess or omit silently.
 - Omit fields that do not apply. Do not write "none".
 
@@ -86,6 +86,8 @@ In **Canvas**, use fenced code blocks for multi-line commands or config snippets
 | FYI | 3 |
 | Handoff | 5 |
 | Incident (first ping) | 4 |
+| Inventory / shared-session (non-Cursor) | 4 |
+| Inventory / shared-session (Cursor, PR outcome) | 6 |
 
 ## Decision matrix
 
@@ -94,7 +96,8 @@ In **Canvas**, use fenced code blocks for multi-line commands or config snippets
 | Routine PR or status | Thread | Default |
 | Decision gates progress | Thread | Approval needed |
 | Visibility, no action | Thread | FYI |
-| Pass task to another agent | Thread | Handoff |
+| Pass task to another agent | Thread | Handoff (Meshal tags) |
+| Inventory or shared-session ping | Thread | Inventory reply |
 | Four or more rows of tabular data | Canvas plus thread ping | Canvas-first |
 | Active incident | Thread (updates in thread) | Incident |
 | Post-incident detail | Canvas | Canvas-first |
@@ -186,6 +189,40 @@ Run `validate-agent-integrations.py --strict` on `main` after merge.
 *Next update:* [time] <@U0APM5W630C>
 ```
 
+### 6. Inventory / shared-session reply
+
+**When:** tagged on an inventory or shared-session ping.
+
+Non-Cursor agents: max 4 lines. Cursor: max 6 lines when the outcome is a
+PR link.
+
+```
+[status: proved / mismatch / unverified]
+*Lane:* [your lane]
+*Proved:* [one fact]
+```
+
+Use `*Mismatch:*` instead of `*Proved:*` when git and the claim disagree.
+Use `*Need:*` instead of a fourth status line when Meshal must decide.
+
+**Example (non-Cursor):**
+
+```
+Proved - Slack reads on #admin-ops
+*Lane:* Claude
+*Proved:* 4-line ack; no catalog edit
+*Next:* waiting for Meshal tag
+```
+
+**Example (Cursor with PR):**
+
+```
+*PR #220* - kit 1.7.0 on the land branch
+*Lane:* Cursor
+*Proved:* AGENT.md 1.7.0; validators listed in the PR
+*Next:* squash-merge #220; park #223
+```
+
 ## Canvas layout
 
 Use Canvas for rolling status docs and native tables.
@@ -243,6 +280,13 @@ when a reply is required, or on the first ping of an incident. Max 6 lines routi
 | [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt |
 
 ## Changelog
+
+### v1.1.0 (2026-09-07)
+
+- Inventory / shared-session reply: status, Lane, Proved or Mismatch,
+  Next or Need. Max 4 lines for non-Cursor agents. Cursor may use 6
+  lines when a PR link is the outcome.
+- Meshal tags the next agent. Agents do not @ each other to start work.
 
 ### v1.0.1 (2026-09-07)
 

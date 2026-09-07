@@ -16,6 +16,18 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.7.0 - 2026-09-07
+
+- One catalog land: search open PRs before editing `AGENT.md` or
+  `catalog/agent-integrations.yaml`; report Mismatch and stop if a land
+  PR is already open
+- Do not nominate a land PR unless you opened the files on that branch
+- Lane reply limits: Claude 4 lines; Computer ack then wait; Kilo 3
+  repos; Codex/ChatGPT/Notion/GitHub one line or silent
+- Meshal tags the next agent; agents do not @ each other to start work
+- One Windows path line in the shared prompt: `Desktop/GitHub/alawein`
+  workspace, `core/alawein` control plane
+
 ### 1.6.0 - 2026-09-07
 
 - Added Shared session prompt: one paste block for Slack bots, Cloud

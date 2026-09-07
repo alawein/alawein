@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.4.0
+version: 1.5.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -22,9 +22,10 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
 
 **Shared session prompt (paste this):**
-[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) section "Shared session
-prompt". Every Slack agent bot and coding agent uses that block. Do not
-fork it. Workflow bots are exempt from this prompt.
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.0 section "Shared
+session prompt". Every Slack agent bot and coding agent uses that block. Do
+not fork it. Workflow bots are exempt from this prompt. Paste the full
+block only when the kit version changes. Later pings are scoped tasks.
 
 **Evidence baseline:**
 
@@ -82,6 +83,42 @@ Format: `#<tier-prefix>-<domain>`
 | `#job-search` | Keep; review in 30 days | Intended-use; unused |
 | `#all-alawein-workspace` | Keep | Slack default broadcast |
 | `#social` | Keep | Slack default; low overhead |
+
+### 1.4 How Meshal calls agents
+
+Command center: `#admin-ops` (`C0B9SRMDJFK`). One task = one thread. Tag
+only who must act.
+
+| Who | Slack ID | Call |
+| --- | --- | --- |
+| `@Cursor` | `U0APW2Z3GG2` | One scoped git task. Search open PRs first. |
+| `@Claude` | `U0AQQFJT8AC` | 4 lines. No inventory dump. No emoji status rows. Tag is Meshal-only. |
+| `@Computer` | `U0APW7F9S4A` | URL plus completion condition. Cloud-only. |
+| `@Notion AI` | `U0AQ8UNAKTK` | Operations Hub / Master Tasks (required Status) / Projects Canonical. |
+| `@Kilo` | `U0BV9U2GFED` | `ops-control-plane-grok`, `ai-ops`, `workspace-brain` only. |
+| `@Codex` | `U0BV7V8M3NW` | Only after ChatGPT Codex connect. Else skip. |
+
+Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,
+Monday Kickoff, Weekly Content Planner, `@ChatGPT` (`U0BUNH33CCA`,
+replaced).
+
+**Correction ping** (two Cursors split the land). Follow-up only. Do not
+re-audit. Do not paste a new kit.
+
+```
+*Land:* PR #N. Park duplicate PRs.
+*Once then stop:* per-lane one-liners.
+*Voice:* first line = status. No tables. No second inventory.
+```
+
+**4-line post-land ping** (after `#220` squash-merge):
+
+```
+@Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
+Follow-up only. Kit is AGENT.md 1.7.0 on main.
+*Land:* PR #220. Park #223 if it still duplicates.
+*Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
+```
 
 ## 2. Workflow bot policy
 
@@ -232,6 +269,7 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | Section | Status |
 | --- | --- |
 | §1 Channel structure and decisions | LOCKED |
+| §1.4 How Meshal calls agents | LOCKED |
 | §2 Workflow bot policy | LOCKED |
 | §3.1 Verified integrations (including Notion) | LOCKED |
 | §3.2 Vercel deployments | LOCKED (eight UNVERIFIED rows pending browser inspection) |
@@ -241,6 +279,12 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.5.0 (2026-09-07)
+
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.7.0.
+- Added §1.4 How Meshal calls agents: who to tag, correction ping, and
+  4-line post-land ping.
 
 ### v1.4.0 (2026-09-07)
 

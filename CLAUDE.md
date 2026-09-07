@@ -101,7 +101,9 @@ public portfolio. Do not collapse them.
 Canonical sources:
 
 - Voice: [`docs/style/VOICE.md`](docs/style/VOICE.md)
-- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md)
+- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0.
+  One catalog land. Search open PRs before editing that kit or
+  `catalog/agent-integrations.yaml`.
 - Portfolio prompt: [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
 - Terminology/lint source:
   [`docs/style/terminology-registry.yaml`](docs/style/terminology-registry.yaml)

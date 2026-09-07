@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 status: draft
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 owner: meshal
 ---
 
@@ -91,4 +91,4 @@ engagement.
 | Supermemory MCP | error |
 | Vercel `sam-eval-roadmap` | Prior deletion suggestion (84d); current state and approval unverified |
 | Vercel `guides-eval-loop-app` | Prior deletion suggestion (88d); current state and approval unverified |
-| Drive Superfine Kitchen Order | owner `chaitanya@theagi.company`; anyone writer |
+| Drive connection | Third-party ownership and sharing details omitted from this public record; verify in Drive before acting |

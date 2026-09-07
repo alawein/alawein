@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Slash Commands Catalog & Workflows
 description: Catalog of / slash commands from Cursor (and Claude Code) plugins, with run order and reusable workflows for any repo or directory.
-last_updated: 2026-07-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -15,7 +15,9 @@ status: active
 
 This document lists slash commands available from **Cursor plugins** (and, where noted, **Claude Code** plugins). It gives a **reliable order** for running them and **workflows** as series of slashes that work for any repo or directory (with minor differences for git repos vs non-repos).
 
-**Unified taxonomy:** For a single clear set that works for any repo, project, or website (not just governance), see [skills-agents-unification.md](./skills-agents-unification.md). Layers: **Universal** (any dir) | **Ecosystem** (kohyr) | **Org** (alawein).
+**Unified taxonomy:** [skills-agents-unification.md](./skills-agents-unification.md)
+(pointer) and [maintenance-skills-agents.md](./maintenance-skills-agents.md)
+(hub). Layers: **Universal** (any dir) | **Ecosystem** (kohyr) | **Org** (alawein).
 For the shortest daily command set, use [operator-command-cheatsheet.md](./operator-command-cheatsheet.md).
 
 **Machine setup (skills across IDEs):** Install the global `skills` CLI,
@@ -187,8 +189,8 @@ Available in **Claude Code** when the Morphism plugin is installed (e.g. `~/.cla
 **Alawein-specific (this org repo):**
 
 - In `alawein/alawein`, after edits run (shell, not slash):
-  - `python scripts/sync-readme.py --check`
-  - `./scripts/validate-doc-contract.sh --full`
+  - `python scripts/catalog/sync-readme.py --check`
+  - `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 - These are **not** slash commands; they are the quality gates referenced in [AGENTS.md](../../AGENTS.md) and [CLAUDE.md](../../CLAUDE.md).
 
 ---
@@ -228,7 +230,7 @@ Use this first when opening a new folder or repo; then follow scenario-specific 
 ### 3.4 Before commit (repo)
 
 - **Morphism repos:** `/morphism:validate --quick` (or full `/morphism:validate`).
-- **Alawein repo:** Run `python scripts/sync-readme.py --check` and `./scripts/validate-doc-contract.sh --full` (see [AGENTS.md](../../AGENTS.md)).
+- **Alawein repo:** Run `python scripts/catalog/sync-readme.py --check` and `bash scripts/doctrine/validate-doc-contract.sh --full` (see [AGENTS.md](../../AGENTS.md)).
 
 ### 3.5 Deploy
 
@@ -247,9 +249,9 @@ Use these in order in a single session when applicable.
 2. (If repo) `/workspace:context` or invoke codebase-audit skill for full audit
 3. Plan → work → review → project's own validate → deploy as needed
 
-See [skills-agents-unification.md](./skills-agents-unification.md) §4 for the
-full table and [maintenance-skills-agents.md](./maintenance-skills-agents.md)
-for scope/tailoring changes.
+Use [AGENT.md](../../prompt-kits/AGENT.md#operating-mode) for session orientation
+and scoping. See [maintenance-skills-agents.md](./maintenance-skills-agents.md)
+for scope and tailoring changes.
 
 ### 4.1 Full feature flow (LFG-style)
 
@@ -290,8 +292,8 @@ Or use the single meta-command: `/compound-engineering:lfg` *&lt;feature descrip
 
 Not slash commands; run in shell:
 
-1. `python scripts/sync-readme.py --check`
-2. `./scripts/validate-doc-contract.sh --full`
+1. `python scripts/catalog/sync-readme.py --check`
+2. `bash ./scripts/doctrine/validate-doc-contract.sh --full`
 
 ---
 

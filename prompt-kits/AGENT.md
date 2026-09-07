@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.5.0
-parent-version: 1.4.1
+version: 1.5.1
+parent-version: 1.5.0
 last-verified: 2026-09-07
 last_updated: 2026-09-07
-change-summary: "Require execution and review evidence while keeping product prose attribution-free"
+change-summary: "Reconcile execution evidence with canonical session orientation and task scoping"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -132,7 +132,24 @@ For research repos:
 - Comments: explain invariants, failure modes, and tradeoffs
 - Commit messages: present tense, technical context
 
+## Workspace operating rules
+
+The six-rule contract lives in
+[`docs/governance/workspace-master-prompt.md`](../docs/governance/workspace-master-prompt.md)
+(R-1 through R-6). Portfolio rows live in `catalog/index.yaml`, not in prompt
+prose. Multi-repo work uses
+[`docs/governance/parallel-batch-execution.md`](../docs/governance/parallel-batch-execution.md).
+
 ## Operating mode
+
+Start a session by reading recent history (`git log --oneline -20`) and
+`git status`. Read the target repository's `AGENTS.md` and `SSOT.md`.
+Name one goal and its completion condition before editing.
+
+For complex tasks, identify dependencies and split work into verifiable units.
+Complete one unit at a time in a single repository; use the batch contract for
+multi-repo work. Run the target repository's applicable checks before reporting
+completion.
 
 When the task is clear: execute, then report what changed.
 When the task is ambiguous: ask one scoped question, then execute.

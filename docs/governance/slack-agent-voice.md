@@ -4,12 +4,12 @@ source: none
 sync: none
 sla: on-change
 title: Slack agent voice
-description: Thread and Canvas formatting contract for agent status updates in the Alawein Slack workspace.
+description: Thread and Canvas formatting contract for agent and human Slack messages, including draft-to-prompt packing.
 last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.0
+version: 1.1.1
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -88,6 +88,21 @@ In **Canvas**, use fenced code blocks for multi-line commands or config snippets
 | Incident (first ping) | 4 |
 | Inventory / shared-session (non-Cursor) | 4 |
 | Inventory / shared-session (Cursor, PR outcome) | 6 |
+| Draft-to-prompt pack | 8 (Canvas if longer) |
+
+## Human writing (Meshal drafts)
+
+Same contract as agents when the message starts work. Rough notes stay in
+a DM to self or `#me-inbox` (after 2026-09-19). Before tagging an agent,
+run the draft-to-prompt pack below or the
+`slack-draft-to-prompt` skill.
+
+- One ask on line 1.
+- One agent, one thread, one done-when.
+- Do not paste the full shared kit on every ping. Paste it only when the
+  kit version changes.
+- Do not @-all. Tag only who must act.
+- Do not ask every agent for consensus. Git wins.
 
 ## Decision matrix
 
@@ -223,6 +238,40 @@ Proved - Slack reads on #admin-ops
 *Next:* squash-merge #220; park #223
 ```
 
+### 7. Draft-to-prompt pack
+
+**When:** Meshal has rough text and needs a Cursor or Slack agent prompt.
+
+```
+*Goal:* [one sentence]
+*Context:* [repo / channel / PR / URL]
+*Constraints:* [hard nevers that apply]
+*Done when:* [observable result]
+*Tag:* [one agent]
+```
+
+Preserve intent. Fix English. Do not add scope. If a field is unknown,
+write `[unknown]` and ask one question.
+
+**Example (before):**
+
+```
+can you look at slack its a mess too many bots talking and i want
+something that cleans my drafts into prompts
+```
+
+**Example (after):**
+
+```
+*Goal:* Add a draft-to-prompt pack so rough Slack text becomes one agent ping.
+*Context:* `alawein/alawein` `docs/governance/slack-agent-voice.md`
+*Constraints:* no new bots; no channel archive before 2026-09-19
+*Done when:* template plus skill merged; Meshal can paste one packed ping
+*Tag:* <@U0APW2Z3GG2>
+```
+
+Skill: [`.claude/skills/slack-draft-to-prompt/SKILL.md`](../../.claude/skills/slack-draft-to-prompt/SKILL.md)
+
 ## Canvas layout
 
 Use Canvas for rolling status docs and native tables.
@@ -278,8 +327,14 @@ when a reply is required, or on the first ping of an incident. Max 6 lines routi
 | [`slack-voice-exemptions.md`](slack-voice-exemptions.md) | Workflow-bot register |
 | [`VOICE.md`](../style/VOICE.md) | Governed markdown surfaces |
 | [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt |
+| [`.claude/skills/slack-draft-to-prompt`](../../.claude/skills/slack-draft-to-prompt/SKILL.md) | Draft-to-prompt packer |
 
 ## Changelog
+
+### v1.1.1 (2026-09-07)
+
+- Rebased onto kit 1.7.0 land (#220); merged signal protocol draft-to-prompt
+  pack with inventory limits unchanged.
 
 ### v1.1.0 (2026-09-07)
 
@@ -287,6 +342,8 @@ when a reply is required, or on the first ping of an incident. Max 6 lines routi
   Next or Need. Max 4 lines for non-Cursor agents. Cursor may use 6
   lines when a PR link is the outcome.
 - Meshal tags the next agent. Agents do not @ each other to start work.
+- Human writing rules: one ask, one agent, one thread.
+- Draft-to-prompt pack and skill pointer.
 
 ### v1.0.1 (2026-09-07)
 

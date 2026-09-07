@@ -69,7 +69,13 @@ lanes:
   - slug: repo-drift
     about: Configurable CLI and GitHub Action that validates repository claims
       and configuration against declared rules.
+    visibility: public
     url: https://github.com/alawein/repo-drift
+    promotion:
+      tier: P1
+      scanned: '2026-09-06'
+      notes: README and history verified at ee5aae71f78fc1849fb724fac24a74c183751e26
+        on 2026-09-07 UTC (September 6 Pacific); preview-only, not pinned.
     stack:
     - python
     - cli
@@ -123,7 +129,7 @@ lanes:
     url: https://github.com/alawein/roka-oakland-hustle
     site: true
   - slug: scribd
-    about: Fitness publishing and content surface aligned with the shared design system.
+    about: Fitness publishing and content surface.
     url: https://scribd.fit
     featured: true
   lab:

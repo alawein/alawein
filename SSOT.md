@@ -4,14 +4,14 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-06
+last-verified: 2026-09-07
 last_updated: 2026-09-06
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
-**Version:** 1.5
+**Version:** 1.6
 **Last Updated:** 2026-09-06
 **Status:** Active
 
@@ -100,6 +100,9 @@ governance contract for naming, portfolio truth, and migration sequencing.
   legacy `aw-devkit` physical retirement cutover completed on 2026-03-11
 - Branch and deployment convention (feat/*, Vercel, multi-repo):
   [`docs/governance/branch-and-deployment-convention.md`](docs/governance/branch-and-deployment-convention.md)
+- Phase 3 workstream E decision record:
+  [`catalog/governance-decisions.yaml`](catalog/governance-decisions.yaml), explained in
+  [`docs/governance/phase3-workstream-e.md`](docs/governance/phase3-workstream-e.md)
 
 ## Structure
 

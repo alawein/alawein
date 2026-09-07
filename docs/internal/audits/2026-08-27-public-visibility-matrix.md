@@ -1,7 +1,7 @@
 ---
 type: audit
 status: draft
-last_updated: 2026-08-29
+last_updated: 2026-09-07
 owner: meshal
 ---
 
@@ -199,3 +199,43 @@ way until the checks pass.
   2026-08-27 (size 219, `README.md`, `LICENSE`, `ci` green on HEAD), its README
   claims resolve against the tree, and its stated count of 28 prompts matches 28
   files under `prompts/core/`. It passes every blocker.
+
+## Repo-drift follow-up, September 7, 2026 UTC
+
+This row records a new scan; the August matrix above remains historical.
+Observed September 7 at 05:20-05:23 UTC (September 6 Pacific), after
+[repo-drift #3](https://github.com/alawein/repo-drift/pull/3) merged. Default branch
+`main` is `ee5aae71f78fc1849fb724fac24a74c183751e26`, full tree
+`66f9fb572562ee88739a771dc3bc9961335951e4`, with canonical commit author
+`contact@meshal.ai`. The source branch and its history are preserved.
+
+| Repository | B1 | B2 | B3 | B4 | B5 | B6 | B7 | B8 | B9 | Tier |
+|---|---|---|---|---|---|---|---|---|---|---|
+| repo-drift | pass in candidate catalog; main correction pending | pass | pass | pass | pass | pass | pass via preview Status | pass | not pinned | P1 |
+
+- Live GitHub already reports public, nonempty, unarchived, default branch main.
+  The authored catalog omitted visibility and therefore compiled to private.
+  This correction records the existing visibility; no visibility or pin changes
+  are part of it. The scan date uses the observer's Pacific calendar date.
+- The merged README has one working source-install command pinned to the tested
+  implementation `d0ba158fa9188298f57e81c2a2260398a50d5b40`. The former PyPI
+  command installed another project. Clean Python 3.12 installation and
+  direct-url metadata verified this source, and the actual installed CLI ran
+  outside the checkout. A missing required file returns exit 1; adding it
+  returns 0. All 12 tests, Ruff, source distribution and wheel builds pass.
+- Pinned hub preview `d7562dda15d536bd7e2779d1170920a88dd1a1ee` applies the
+  strict public README topology and voice contract: eight baseline findings,
+  zero on the merged tree. Existing documentation links resolve.
+- Independent source review checked capability claims. JSON Schema remote
+  reference retrieval was reproduced with a mocked response, and the README
+  now states it. The composite Action itself was not executed in Actions.
+- Gitleaks scanned all seven reachable commits in the non-shallow local clone,
+  approximately 66,260 bytes, with no findings after merge. A current-tree path
+  scan found no committed .env, PEM/key files, id_rsa or secrets.json. No secret
+  contents were copied to this record.
+- No build/test CI is configured; the README explicitly says preview-only and
+  directs users to the local development checks. CodeRabbit completed on the
+  reviewed head. This is the B7 Status exception, not a claim of automated CI.
+- GitHub identifies the existing license as MIT, blob
+  `a3d3f67cacb7e49f7eb7c2490695a002f1138dae`. The live six profile pins exclude
+  repo-drift. No P0 claim, grace period, release or profile promotion is added.

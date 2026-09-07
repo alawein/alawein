@@ -1,0 +1,126 @@
+schema_version: 1
+last_verified: '2026-09-06'
+canonical_ssot:
+  repository: alawein/alawein
+  catalog_path: catalog/
+  source: AGENTS.md
+  review_required: false
+
+roles:
+  - id: knowledge-base
+    role: human_retrieval_and_records
+    state: established
+    review_required: false
+    evidence:
+      - source: docs/governance/workspace-resource-map.md
+        claim: Profile copy and structured records are maintained in knowledge-base.
+      - source: docs/governance/profile-sync-from-guides.md
+        claim: knowledge-base is the canonical source for profile copy and structured records.
+  - id: workspace-tools
+    role: workspace_execution
+    state: established
+    review_required: false
+    evidence:
+      - source: docs/governance/parallel-batch-execution.md
+        claim: workspace-batch is the active control plane for multi-repo execution.
+      - source: docs/governance/workspace-resource-map.md
+        claim: Batch manifests, registry, and runtime state are canonical in workspace-tools.
+  - id: incore
+    role: ingestion_only
+    state: proposed
+    review_required: true
+    transition: Confirm current ingestion implementation before assigning completed ownership; retain
+      querying and inventory boundaries until that review is complete.
+    evidence:
+      - source: catalog/index.yaml
+        claim: incore is described as tooling for asset inventory, ingest, dedupe, and querying.
+
+acknowledgements:
+  - id: workspace-control-issue-20
+    subject: "workspace-control issue #20"
+    state: acknowledged
+    review_required: true
+    source: https://github.com/alawein/workspace-control/issues/20
+    note: This record acknowledges the issue without changing workspace-control or claiming resolution.
+
+fitness_products:
+  - slug: repz
+    lifecycle: provisional_canonical
+    domain: fitness
+    review_required: false
+    deployment_or_visibility_change: false
+    evidence:
+      - source: catalog/index.yaml
+        claim: repz is the active fitness coaching product entry.
+  - slug: bolts
+    lifecycle: predecessor
+    domain: fitness
+    review_required: true
+    deployment_or_visibility_change: false
+    evidence:
+      - source: catalog/index.yaml
+        claim: bolts is an existing fitness product entry.
+  - slug: gymboy
+    lifecycle: predecessor
+    domain: fitness
+    review_required: true
+    deployment_or_visibility_change: false
+    evidence:
+      - source: catalog/index.yaml
+        claim: gymboy is an existing fitness coaching product entry.
+  - slug: scribd
+    lifecycle: predecessor
+    domain: fitness
+    review_required: true
+    deployment_or_visibility_change: false
+    evidence:
+      - source: catalog/index.yaml
+        claim: scribd is an existing fitness publishing entry.
+
+research_clusters:
+  - id: quantum-and-simulation
+    members: [qmatsim, qmlab, qubeml, scicomp, simcore, spincirc]
+    archive_candidates: true
+    preservation_guarantees:
+      - Preserve citations and bibliographic references.
+      - Preserve notebooks, reproducibility materials, and datasets.
+      - Preserve releases and unique research assets.
+    review_required: true
+  - id: physics-and-adversarial-research
+    members: [edfp, loopholelab, maglogic]
+    archive_candidates: true
+    preservation_guarantees:
+      - Preserve citations and bibliographic references.
+      - Preserve notebooks, reproducibility materials, and datasets.
+      - Preserve releases and unique research assets.
+    review_required: true
+
+workspace_batch:
+  owning_repository: workspace-tools
+  package: workspace-batch
+  installation_and_auth:
+    state: canary
+    review_required: true
+    source: https://github.com/alawein/workspace-tools/pull/27
+    python: '>=3.12'
+    operator_install: python -m pip install -e .
+    contributor_install: python -m pip install -e ".[dev]"
+    github_auth_precedence: [GITHUB_TOKEN, GH_TOKEN, gh_cli]
+    note: >-
+      The precedence list describes the Python resolver with its default token variable;
+      a configured token variable is checked first. Direct gh commands prefer GH_TOKEN
+      over GITHUB_TOKEN. Signed PR #27 retains the reviewed tree from closed PRs #25/#26.
+      Keep review_required true until PR #27 is merged.
+
+design_system:
+  reference_consumers:
+    - slug: repz
+      compatibility: unproven
+      review_required: true
+      evidence:
+        - source: https://github.com/alawein/repz/blob/main/tsconfig.app.json
+          claim: A tsconfig alias to ./design-system/src does not prove published package compatibility.
+  unsupported_claims_removed:
+    - slug: scribd
+      claim: shared design-system alignment
+      review_required: true

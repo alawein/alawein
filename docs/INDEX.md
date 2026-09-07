@@ -109,6 +109,7 @@ last_updated: 2026-09-07
 
 ## operations/
 
+- [admin-ops-integration-checklist.md](operations/admin-ops-integration-checklist.md)
 - [github-notion-sync-glossary.md](operations/github-notion-sync-glossary.md)
 - [github-repo-canonical-verification.md](operations/github-repo-canonical-verification.md)
 - [notion-projects-database.md](operations/notion-projects-database.md)

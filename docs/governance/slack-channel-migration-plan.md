@@ -8,8 +8,8 @@ description: Proposed v2 channel topology for team collaboration and personal ag
 last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
-status: draft
-version: 1.1.0
+status: active
+version: 1.2.0
 tags: [slack, channels, agents, migration]
 ---
 
@@ -17,19 +17,18 @@ tags: [slack, channels, agents, migration]
 
 **Owner:** Meshal M. Alawein (`contact@meshal.ai`)
 
-**Status:** DRAFT. Does not supersede locked channel decisions in
-[`slack-agent-runbook.md`](slack-agent-runbook.md) until Phase 1 completes and
-the runbook is bumped.
+**Status:** ACTIVE. Date hold lifted 2026-09-07. The runbook is the lock.
+This file is the remaining Slack UI sequence.
 
-**Goal:** Separate team coordination from personal agent lanes, reduce naming
-ambiguity, and route bot noise away from human/agent threads.
+**Goal:** Separate Cursor code work from Claude analysis, kill unused bot
+digests, and only rename when a name still confuses. Do not grow an empty
+10-channel sidebar.
 
 ## 1. Executive summary
 
-Keep seven current channels through the workflow-bot trial (ends 2026-09-19).
-Then execute a phased rename and merge into **10 channels** (6 team + 4 personal)
-using `team-` and `me-` prefixes. No new broadcast channels. Agent work moves
-to dedicated `#me-agents-*` lanes.
+Create two agent lanes now. Disable the five zero-engagement workflow bots.
+Skip `#me-inbox` (Notion Master Tasks) and `#team-eng-alerts` (no GitHub
+subscribe yet). Rename the rest only when useful. No new broadcast channels.
 
 ## 2. Naming convention (proposed)
 
@@ -58,8 +57,9 @@ to dedicated `#me-agents-*` lanes.
 | --- | --- | --- | --- |
 | `#me-agents-eng` | `@Cursor` code tasks | Owner + Cursor | One task = one thread; repo + goal in first message |
 | `#me-agents-ops` | `@Claude` analysis, audits, planning | Owner + Claude Tag | One task = one thread; no canvas dumps |
-| `#me-inbox` | Quick captures, links to triage | Owner only | No discussion; weekly sweep to Notion/GitHub |
 | `#me-job-search` | Job search | Owner only | Applications, interviews, leads |
+
+Do not create `#me-inbox`. Captures go to Notion Master Tasks.
 
 ## 4. Channel-by-channel actions
 
@@ -72,56 +72,57 @@ to dedicated `#me-agents-*` lanes.
 | `posts` | `C0APWF615H7` | Archive after bot reroute | n/a |
 | `social` | `C0AP24SRVQF` | Rename | `team-social` |
 | `job-search` | `C0B9NTUUGR4` | Rename | `me-job-search` |
-| n/a | n/a | Create | `team-eng-alerts`, `me-agents-eng`, `me-agents-ops`, `me-inbox` |
+| n/a | `C0BVDBHLXQB` | Created 2026-09-07 | `me-agents-eng` |
+| n/a | `C0BVDBHPB99` | Created 2026-09-07 | `me-agents-ops` |
+| n/a | n/a | Skip | `me-inbox`, `team-eng-alerts` |
 
-## 5. Workflow bot rerouting
+## 5. Workflow bot disable
 
-Before archiving `#posts`, repoint bot outputs:
+Do not reroute. Disable in Slack Workflow Builder (Computer or Meshal):
 
-| Bot | Current output | Target output |
-| --- | --- | --- |
-| Daily Briefing | `#posts` | `#team-content` (or DM if trial fails) |
-| Friday Weekly Review | `#posts` | `#team-content` |
-| Monday Weekly Kickoff | `#posts` | `#team-content` |
-| Weekly Content Planner | `#content-pipeline` | `#team-content` |
-| Daily Agenda | DM | unchanged |
+- Daily Agenda
+- Daily Briefing (Notion already owns the morning brief)
+- Friday Weekly Review
+- Monday Weekly Kickoff
+- Weekly Content Planner
 
-Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
+Keep the workflow records for one week, then delete if nothing else called
+them. Update `workflow_bots` rows to `disable` after the UI click.
 
 ## 6. Implementation phases
 
-### Phase 0: Gate (2026-09-19)
+### Phase 0: Gate, lifted 2026-09-07
 
-- [ ] Workflow-bot engagement trial complete
-- [ ] Claude Tag migration complete ([`claude-tag-migration.md`](claude-tag-migration.md))
-- [ ] `@Codex` connected or marked dropped in inventory
+- [x] Calendar hold removed
+- [x] Bot trial closed (0 engagement)
+- [ ] Claude Tag pairing (human admin; not a date gate)
+- [ ] `@Codex` connected or marked dropped
 
-### Phase 1: Agent lanes (week 1)
+### Phase 1: Agent lanes, in progress
 
-1. Create `#me-agents-eng`, `#me-agents-ops`, `#me-inbox`
-2. Pin posting guide in each (5 lines max)
-3. `/invite @Cursor` to `#me-agents-eng` and `#team-eng` (after rename)
-4. Route all agent tasks to thread-per-task pattern
+1. [x] Create `#me-agents-eng` (`C0BVDBHLXQB`) and `#me-agents-ops` (`C0BVDBHPB99`)
+2. [ ] `/invite @Cursor` in `#me-agents-eng`
+3. [ ] `/invite @Claude` and `@Computer` in `#me-agents-ops`
+4. Route new agent tasks to those channels. One task = one thread.
 
-### Phase 2: Team renames (week 2)
+### Phase 2: Slack UI cleanup (Computer)
 
-1. Rename `admin-ops` → `team-ops`
-2. Rename `all-alawein-workspace` → `team-general`
-3. Rename `kohyr-dev` → `team-eng`
-4. Create `#team-eng-alerts`; point GitHub/CI bots there
+1. Disable the five workflow bots
+2. Mute `#social`; set `#posts` to mentions until archive
+3. Archive `#posts` after one quiet day
+4. Optional renames only if a name still confuses. Do not rename
+   `#admin-ops` while it is the live hub.
 
-### Phase 3: Content merge (week 3)
+### Phase 3: Optional later
 
-1. Reroute workflow bots off `#posts`
-2. Rename `content-pipeline` → `team-content`
-3. Archive `#posts`
-4. Rename `social` → `team-social`; `job-search` → `me-job-search`
+1. Rename `kohyr-dev` → `team-eng` when that channel has real traffic
+2. Create `#team-eng-alerts` only when `/github subscribe` is configured
+3. Rename `job-search` → `me-job-search` if you start using it
 
-### Phase 4: Inventory lock (week 4)
+### Phase 4: Inventory lock
 
-1. Update `catalog/agent-integrations.yaml` `slack_channels` + snapshot
-2. Bump `slack-agent-runbook.md` to v2 channel lock
-3. `validate-agent-integrations.py --write-snapshot --strict`
+1. After invites, set `cursor_can_read: true` on the new rows
+2. `python3 scripts/catalog/validate-agent-integrations.py --write-snapshot --strict`
 
 ## 7. Open assumptions
 
@@ -133,13 +134,12 @@ Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
 4. **Memory:** one recall lane later, not a second inventory. Git stays
    policy SSOT. Notion stays non-code tasks. Slack stays coordination.
 5. **Laptop Slack gateways:** Hermes Agent and OpenClaw stay off Slack until
-   after 2026-09-19, and only if Cursor plus Claude Tag still leave a
-   laptop-daemon gap. Do not install another chat bot without a new human
-   decision.
+   a new human decision, and only if Cursor plus Claude Tag still leave a
+   laptop-daemon gap. Do not install another chat bot without that ask.
 
 ## 8. Memory, custom bots, and AI-OS field notes (2026-09-07)
 
-Research input for Phase 0, not an install list. Do not create a second
+Research input, not an install list. Do not create a second
 control plane. This workspace already has git SSOT, validators, and an
 asymmetric agent fleet.
 
@@ -162,9 +162,9 @@ No write-back that overrides git.
 
 | Option | What it is | Verdict |
 | --- | --- | --- |
-| Hermes Agent (Nous) | Self-hosted Slack gateway (Socket Mode), self-writing skills, persistent memory | Hold. If ever: after 2026-09-19, separate Slack app, laptop or VPS. Fail-closed ingress: `SLACK_ALLOWED_USERS` = Meshal only, `SLACK_ALLOWED_CHANNELS` = `#me-agents-ops` Slack ID once that channel exists, Messages Tab DMs off. Do not deploy until the channel ID exists and both gates are tested. No AGI material. |
+| Hermes Agent (Nous) | Self-hosted Slack gateway (Socket Mode), self-writing skills, persistent memory | Hold. If ever: separate Slack app, laptop or VPS. Fail-closed ingress: `SLACK_ALLOWED_USERS` = Meshal only, `SLACK_ALLOWED_CHANNELS` = `C0BVDBHPB99` (`#me-agents-ops`), Messages Tab DMs off. Do not deploy until both gates are tested. No AGI material. |
 | OpenClaw | Local gateway across Slack and other messengers | Same hold. Fail-closed channel allowlist and DM deny-by-default must be documented and tested before deploy. Better as a laptop daemon than a second Slack personality. |
-| Custom Slack bot / agent | New app in this workspace | Do not deploy until the five workflow bots pass the 2026-09-19 trial. Existing bot noise is already the problem. |
+| Custom Slack bot / agent | New app in this workspace | Do not deploy. Existing bot noise is already the problem. |
 | `@Kilo` | Already installed; Cloud Agent sessions on three non-control-plane repos | Keep. Do not expand the GitHub App to `alawein/alawein` without a human ask. |
 
 Standing rule remains: do not install Grok or another chat bot in Slack
@@ -178,15 +178,15 @@ connect). Do not replace them with a marketed "AI OS."
 | Cluster | Examples | Use here |
 | --- | --- | --- |
 | Coding agents | Cursor, Claude Code, Codex, OpenHands, Devin, SWE-agent | Keep current trio. OpenHands/Devin are extra coding runtimes, not a Slack OS. |
-| Self-hosted gateways | Hermes Agent, OpenClaw, Agent Zero, CoWork-OS | Evaluate after 2026-09-19 only if a laptop-always-on gap remains. |
+| Self-hosted gateways | Hermes Agent, OpenClaw, Agent Zero, CoWork-OS | Evaluate only if a laptop-always-on gap remains. New human decision required. |
 | Managed work agents | Lindy, Manus (now Meta), ChatGPT Agent, Claude Cowork/Tag, Genspark, Dust | Claude Tag is the open human admin step. Do not add a parallel work-agent SaaS. |
 | Memory layers | Supermemory, Mem0, Letta, Zep/Graphiti, Cognee | See §8.1. One lane or none. |
 | Governance overlays | PlantoOS/Medhara, Apotheon AIOS | Marketing control planes. This repo already owns policy, inventory, and validators. Do not adopt a second control plane. |
 
-Practical sequence after the Sept 19 gate: execute this v2 channel map;
-fix Claude Tag and Codex connect; keep `@Kilo` scoped; leave Hermes and
-OpenClaw uninstalled unless Cursor plus Claude still cannot cover a
-laptop daemon.
+Practical sequence: disable the five bots; invite Cursor and Claude into
+the new lanes; fix Claude Tag and Codex connect; keep `@Kilo` scoped;
+leave Hermes and OpenClaw uninstalled unless Cursor plus Claude still
+cannot cover a laptop daemon.
 
 ## 9. Related canon
 

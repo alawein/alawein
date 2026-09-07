@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-07T06:56:00Z'
+lastVerified: '2026-09-07T21:50:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -152,36 +152,37 @@ workflow_bots:
   - id: daily-agenda
     schedule: 'daily 08:00'
     output: dm
-    status: working
+    status: disable
     engagement_30d: 0
+    notes: Trial closed 2026-09-07. Disable in Slack Workflow Builder.
   - id: daily-briefing
     schedule: 'daily 09:00'
     output: '#posts'
-    status: partial
+    status: disable
     engagement_30d: 0
-    last_fire: '2026-09-04T09:00:00-07:00'
-    notes: Last fire 2026-09-04 09:00 PT. Missed 2026-09-05 through 2026-09-07.
+    last_fire: '2026-09-07T16:00:00Z'
+    notes: Trial closed 2026-09-07. Notion owns the morning brief. Disable in Slack.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
-    status: working
+    status: disable
     engagement_30d: 0
     last_fire: '2026-09-04T16:00:00-07:00'
-    notes: Last fire 2026-09-04 16:00 PT.
+    notes: Trial closed 2026-09-07. Disable in Slack Workflow Builder.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
-    status: working
+    status: disable
     engagement_30d: 0
-    last_fire: '2026-08-31T09:00:00-07:00'
-    notes: Last fire 2026-08-31. Did not fire 2026-09-07 09:00 PT.
+    last_fire: '2026-09-07T16:00:00Z'
+    notes: Trial closed 2026-09-07. Disable in Slack Workflow Builder.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
-    status: working
+    status: disable
     engagement_30d: 0
-    last_fire: '2026-08-31T09:00:00-07:00'
-    notes: Last fire 2026-08-31. No 2026-09-07 fire in #content-pipeline.
+    last_fire: '2026-09-07T16:00:00Z'
+    notes: Trial closed 2026-09-07. Disable in Slack Workflow Builder.
 
 integrations:
   - id: gmail
@@ -368,6 +369,20 @@ slack_channels:
     tier: default
     cursor_can_read: true
     notes: Cursor joined 2026-09-05 15:16 UTC (join ts 1788621362.488249, lane C)
+  - id: me-agents-eng
+    slack_id: C0BVDBHLXQB
+    tier: agent
+    agents_present: [cursor]
+    cursor_can_read: false
+    notes: >
+      Created 2026-09-07. Invite @Cursor. Cursor code tasks only.
+  - id: me-agents-ops
+    slack_id: C0BVDBHPB99
+    tier: agent
+    agents_present: [claude, computer]
+    cursor_can_read: false
+    notes: >
+      Created 2026-09-07. Invite @Claude and @Computer. Analysis only.
 
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-07T06:56:00Z'

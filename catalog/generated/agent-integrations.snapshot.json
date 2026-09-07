@@ -1,6 +1,6 @@
 {
   "generated_from": "catalog/agent-integrations.yaml",
-  "lastVerified": "2026-09-07T06:56:00Z",
+  "lastVerified": "2026-09-07T21:50:00Z",
   "slack_channels": [
     {
       "id": "admin-ops",
@@ -36,6 +36,16 @@
       "id": "social",
       "slack_id": "C0AP24SRVQF",
       "cursor_can_read": true
+    },
+    {
+      "id": "me-agents-eng",
+      "slack_id": "C0BVDBHLXQB",
+      "cursor_can_read": false
+    },
+    {
+      "id": "me-agents-ops",
+      "slack_id": "C0BVDBHPB99",
+      "cursor_can_read": false
     }
   ],
   "agents": [

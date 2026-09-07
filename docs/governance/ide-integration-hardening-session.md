@@ -180,7 +180,7 @@ Layer 3 — Memory (optional convenience)
 
 ### Workflow bots
 
-5 bots working, 0 engagement. Trial through **2026-09-19**; disable if still zero.
+5 bots, 0 engagement. Trial closed 2026-09-07. Disable in Slack Workflow Builder.
 
 ---
 

@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.0
+version: 1.6.0
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -293,7 +293,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [ ] Monthly re-verify all `integrations` rows (live MCP or CLI)
 - [ ] After any OAuth change, update account column same day
 - [ ] Keep Slack `cursor_can_read` accurate per channel invite
-- [ ] Log workflow bot engagement at Sept 19 review gate
+- [x] Bot trial closed 2026-09-07 (0 engagement); disable the five bots
 - [ ] Inventory workflow-bot LLM backends (currently unknown)
 
 ### 7.2 Open unification gaps
@@ -304,11 +304,11 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 - [x] `/invite @Cursor` in `#posts`, `#content-pipeline`, `#job-search`, `#social` (7/7 reads)
 - [x] Fix Cloud Agent GitHub MCP (ready 2026-09-06 rescan)
 - [x] Document redundant third-party Slack MCP; keep Cursor Slack Tools canonical
-  — see [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1; registry §4.1
+  (see [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1; registry §4.1)
 - [x] Authenticate Computer in Slack (ready 2026-09-07; 7/7 reads)
 - [ ] Connect `@Codex` to ChatGPT Codex account; do not dispatch `@ChatGPT`
-- [ ] Enable Claude Tag — runbook: `docs/governance/claude-tag-migration.md`
-- [ ] Execute channel v2 migration — plan: `docs/governance/slack-channel-migration-plan.md` (gate 2026-09-19)
+- [ ] Enable Claude Tag. Runbook: `docs/governance/claude-tag-migration.md`
+- [ ] Slack UI leftover: invite Cursor/Claude to agent lanes; disable bots (plan: `docs/governance/slack-channel-migration-plan.md`)
 - [ ] Vercel browser inspect: `sam-eval-roadmap`, `guides-eval-loop-app`
 - [x] Add `validate-agent-integrations.py`: YAML schema + drift check in CI
 
@@ -346,6 +346,11 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > is required. Evidence required. Mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.6.0 (2026-09-07)
+
+- Date hold lifted. Agent lanes created. Workflow bots marked disable.
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.0.
 
 ### v1.5.0 (2026-09-07)
 

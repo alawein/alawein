@@ -45,7 +45,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Canonical voice contract:
   [`docs/style/VOICE.md`](docs/style/VOICE.md)
 - Canonical prompt kits:
-  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0 (one catalog land;
+  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.8.0 (one catalog land;
   search open PRs before editing that kit or
   `catalog/agent-integrations.yaml`),
   [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)
@@ -83,6 +83,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`docs/internal/audits/2026-09-06-slack-integrations-rescan.md`](docs/internal/audits/2026-09-06-slack-integrations-rescan.md).
   Drift check: `python3 scripts/catalog/validate-agent-integrations.py --strict`.
   Channel policy: [`docs/governance/slack-agent-runbook.md`](docs/governance/slack-agent-runbook.md).
+  Slack date hold lifted 2026-09-07: bot trial closed (disable the five
+  workflow bots); agent lanes `#me-agents-eng` and `#me-agents-ops` exist.
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and
   remain render-first GitHub artifacts
 - Hybrid corpus refinement is active under `docs/style/`; canonical prompt

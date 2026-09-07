@@ -157,7 +157,7 @@ FYI - [one line]
 
 ```
 FYI - Notion Master Tasks: 46 rows, 0 null `Status`.
-Tracking against Sept 19 workflow-bot review.
+Workflow bots: disable in Slack UI.
 ```
 
 ### 4. Handoff

@@ -16,6 +16,13 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.8.0 - 2026-09-07
+
+- Lift Slack calendar holds. Meshal closed the bot trial on 2026-09-07
+- Agent lanes: `#me-agents-eng` (Cursor), `#me-agents-ops` (Claude)
+- Disable the five zero-engagement workflow bots. Do not add bots
+- Hermes, OpenClaw, and custom bots still need a new human decision
+
 ### 1.7.0 - 2026-09-07
 
 - One catalog land: search open PRs before editing `AGENT.md` or

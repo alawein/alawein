@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.0
+version: 1.6.0
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -22,7 +22,7 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
 
 **Shared session prompt (paste this):**
-[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.0 section "Shared
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.0 section "Shared
 session prompt". Every Slack agent bot and coding agent uses that block. Do
 not fork it. Workflow bots are exempt from this prompt. Paste the full
 block only when the kit version changes. Later pings are scoped tasks.
@@ -51,11 +51,14 @@ block only when the kit version changes. Later pings are scoped tasks.
 | `#kohyr-dev` | `C0B9JJZSVQT` | Kohyr engineering (renamed from morphism-dev) | yes | Domain | Dormant since 2026-06-11 |
 | `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
-| `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
+| `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty; mute then archive |
+| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite pending) | Agent | Created 2026-09-07 |
+| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite pending) | Agent | Created 2026-09-07 |
 
-**Planned v2 topology (draft):** see
-[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not
-rename channels until Phase 0 gate (2026-09-19) passes.
+**Executable topology:** see
+[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Date
+hold lifted 2026-09-07. Slack UI remaining: invite bots, disable workflow
+bots, mute `#social`, archive `#posts` after bots stop.
 
 **Voice exemptions:** workflow bots and system messages are exempt from
 [`VOICE.md`](../style/VOICE.md); see
@@ -77,17 +80,18 @@ Format: `#<tier-prefix>-<domain>`
 | Channel | Decision | Rationale |
 | --- | --- | --- |
 | `#admin-ops` | Keep as primary agent command center | Only channel with live human and agent traffic |
-| `#posts` | Keep as bot digest hub | Working output target for four of five workflow bots |
+| `#posts` | Archive after workflow bots are disabled | Digest hub with 0 engagement |
 | `#content-pipeline` | Keep | Weekly Content Planner fires here |
 | `#kohyr-dev` | Keep; review in 30 days | Intended-use channel; dormant, not dead |
 | `#job-search` | Keep; review in 30 days | Intended-use; unused |
 | `#all-alawein-workspace` | Keep | Slack default broadcast |
-| `#social` | Keep | Slack default; low overhead |
+| `#social` | Mute now; archive when empty | No posts |
 
 ### 1.4 How Meshal calls agents
 
-Command center: `#admin-ops` (`C0B9SRMDJFK`). One task = one thread. Tag
-only who must act.
+Command center: `#admin-ops` (`C0B9SRMDJFK`) for ops. Code tasks go to
+`#me-agents-eng` (`C0BVDBHLXQB`). Analysis goes to `#me-agents-ops`
+(`C0BVDBHPB99`). One task = one thread. Tag only who must act.
 
 | Who | Slack ID | Call |
 | --- | --- | --- |
@@ -115,7 +119,7 @@ re-audit. Do not paste a new kit.
 
 ```
 @Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
-Follow-up only. Kit is AGENT.md 1.7.0 on main.
+Follow-up only. Kit is AGENT.md 1.8.0 on main.
 *Land:* PR #220. Park #223 if it still duplicates.
 *Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
 ```
@@ -126,27 +130,28 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-04 | 0 replies | Keep; 14-day trial |
-| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-04 | 0 replies | Keep (primary digest) |
-| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-04 | 0 replies | Keep |
-| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-08-31 | 0 replies | Keep |
-| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-08-31 | 0 replies | Keep |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-04 | 0 replies | Disable |
+| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-07 | 0 replies | Disable |
+| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-04 | 0 replies | Disable |
+| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-07 | 0 replies | Disable |
+| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-07 | 0 replies | Disable |
 
 All five bots are technically healthy. Zero engagement is a usage problem, not a
 health problem.
 
 ### 2.2 Engagement policy (locked)
 
-- **Trial window:** 2026-09-05 through 2026-09-19 (14 days).
-- **Requirement:** reply to or react to at least one prompt per bot per week.
-- **Review gate (2026-09-19):** bots with zero engagement are disabled, not
-  deleted.
-- **No new workflow bots** until the existing five pass the trial.
+- **Trial closed:** 2026-09-07. Meshal lifted the calendar hold. Engagement
+  stayed at 0.
+- **Decision:** disable all five workflow bots in Slack Workflow Builder.
+  Do not delete the workflow definitions until a week of quiet confirms
+  nothing else depended on them.
+- **No new workflow bots** without a new human decision.
 
 ### 2.3 Output routing (locked)
 
-- `#posts` is the single digest hub.
-- Bot DMs are install sockets, not output channels.
+- `#posts` is retired after the five bots are disabled.
+- Morning brief lives in Notion. Slack is not a digest.
 
 ## 3. Integration governance map
 
@@ -253,16 +258,19 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
    (lane C invites 2026-09-05 14:59 through 15:16 UTC; verified 2026-09-06
    rescan).
 
-### Phase 3, Trial (2026-09-05 through 2026-09-19)
+### Phase 3, Trial (2026-09-05 through 2026-09-07), closed
 
-1. Bot engagement trial per §2.2.
-2. Channel usage trial: post at least once in `#kohyr-dev`, `#content-pipeline`,
-   and `#job-search`.
+1. Bot engagement stayed at 0. Trial closed early by Meshal.
+2. Domain channels stayed unused except joins and templates.
 
-### Phase 4, Review (2026-09-19)
+### Phase 4, Execute (from 2026-09-07)
 
-1. Bot review gate; disable zero-engagement bots.
-2. Channel review gate; archive persistently empty channels.
+1. Disable the five workflow bots in Slack UI (Computer or Meshal).
+2. `#me-agents-eng` and `#me-agents-ops` created. Invite `@Cursor` and
+   `@Claude`.
+3. Mute `#social`. Archive `#posts` after the bots stop.
+4. Optional later: rename map in `slack-channel-migration-plan.md`. No
+   calendar gate.
 
 ## 5. Locked vs draft status
 
@@ -279,6 +287,14 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.6.0 (2026-09-07)
+
+- Date hold lifted. Bot trial closed (0 engagement). Disable the five
+  workflow bots.
+- Added `#me-agents-eng` (`C0BVDBHLXQB`) and `#me-agents-ops`
+  (`C0BVDBHPB99`).
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.8.0.
 
 ### v1.5.0 (2026-09-07)
 

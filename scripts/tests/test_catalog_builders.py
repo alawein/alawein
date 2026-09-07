@@ -20,7 +20,9 @@ for d in (str(SCRIPTS_DIR), str(CATALOG_DIR)):
         sys.path.insert(0, d)
 
 from catalog_lib import (  # noqa: E402
+    build_featured_collections,
     infrastructure_entry_from_repo,
+    prefer_public_repos,
     project_entry_from_repo,
     research_entry_from_repo,
 )
@@ -160,6 +162,69 @@ class InfrastructureEntryStatusVisibilityDescriptionTests(unittest.TestCase):
         repo = {k: v for k, v in SAMPLE_REPO.items() if k != "visibility"}
         entry = infrastructure_entry_from_repo(repo)
         self.assertNotIn("visibility", entry)
+
+
+def _ops_repo(slug: str, *, visibility: str, type_: str = "tooling") -> dict[str, Any]:
+    return {
+        "name": slug,
+        "slug": slug,
+        "repo": f"alawein/{slug}",
+        "type": type_,
+        "surface": "cli",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": visibility,
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": ["python"],
+        "audience": ["internal"],
+        "homepage": f"https://github.com/alawein/{slug}",
+        "canonical_description": f"{slug} purpose.",
+        "github_topics": [slug],
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
+        "local_path": f"core/{slug}",
+        "catalog_groups": ["infrastructure"],
+        "depends_on": [],
+        "provides": [],
+        "version_source": "CHANGELOG.md",
+        "github_custom_properties": {},
+    }
+
+
+class PreferPublicReposTests(unittest.TestCase):
+    def test_public_repos_precede_private(self) -> None:
+        ordered = prefer_public_repos(
+            [
+                _ops_repo("private-a", visibility="private"),
+                _ops_repo("public-b", visibility="public"),
+                _ops_repo("private-c", visibility="private"),
+                _ops_repo("public-a", visibility="public"),
+            ]
+        )
+        self.assertEqual([repo["slug"] for repo in ordered], ["public-b", "public-a", "private-a", "private-c"])
+
+
+class FeaturedInternalOpsTests(unittest.TestCase):
+    def test_private_insert_does_not_evict_public_outpost(self) -> None:
+        # Nine tooling repos: eight private earlier in list order, one public later.
+        # Without prefer-public, a [:8] cap would drop the public repo.
+        repos = [
+            _ops_repo("alpha-private", visibility="private"),
+            _ops_repo("android-coding-phone", visibility="private"),
+            _ops_repo("bravo-private", visibility="private"),
+            _ops_repo("charlie-private", visibility="private"),
+            _ops_repo("delta-private", visibility="private"),
+            _ops_repo("echo-private", visibility="private"),
+            _ops_repo("foxtrot-private", visibility="private"),
+            _ops_repo("golf-private", visibility="private"),
+            _ops_repo("outpost", visibility="public"),
+        ]
+        featured = build_featured_collections(repos)["internal_ops"]
+        slugs = [entry["slug"] for entry in featured]
+        self.assertIn("outpost", slugs)
+        self.assertEqual(slugs[0], "outpost")
+        self.assertEqual(len(featured), 8)
 
 
 if __name__ == "__main__":

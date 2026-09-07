@@ -1059,6 +1059,96 @@
         }
       },
       {
+        "name": "Outpost",
+        "slug": "outpost",
+        "repo": "alawein/outpost",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "python",
+          "prompts",
+          "cli"
+        ],
+        "audience": [
+          "internal",
+          "public"
+        ],
+        "homepage": "https://github.com/alawein/outpost",
+        "description": "Personal kit that installs prompts for coding agents.",
+        "topics": [
+          "ai-tools",
+          "claude-code",
+          "cli",
+          "coding-agents",
+          "developer-tools",
+          "prompts",
+          "python"
+        ],
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
+        "local_path": "core/outpost",
+        "catalog_groups": [
+          "infrastructure"
+        ],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [
+          "agent-prompt-kit"
+        ],
+        "version_source": "package.json",
+        "repo_archetype": "python-platform-cli",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
+        "name": "Repo Drift",
+        "slug": "repo-drift",
+        "repo": "alawein/repo-drift",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "public",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "python",
+          "cli",
+          "github-actions"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/repo-drift",
+        "description": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
+        "topics": [
+          "repo-drift",
+          "python",
+          "cli",
+          "github-actions"
+        ],
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
+        "local_path": "core/repo-drift",
+        "catalog_groups": [],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [],
+        "version_source": "package.json",
+        "repo_archetype": "monorepo",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
         "name": "Android Coding Phone",
         "slug": "android-coding-phone",
         "repo": "alawein/android-coding-phone",
@@ -1249,101 +1339,6 @@
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
-      },
-      {
-        "name": "Kcompiler",
-        "slug": "kcompiler",
-        "repo": "alawein/kcompiler",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "python",
-          "sqlite"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/kcompiler",
-        "description": "Knowledge compiler that turns evidence into claims and a compiled wiki, with a curated personal knowledge base.",
-        "topics": [
-          "kcompiler",
-          "python",
-          "sqlite"
-        ],
-        "maintainer": "Meshal Alawein",
-        "docs_owner": "Meshal Alawein",
-        "local_path": "core/kcompiler",
-        "catalog_groups": [],
-        "depends_on": [
-          "alawein"
-        ],
-        "provides": [],
-        "version_source": "package.json",
-        "repo_archetype": "monorepo",
-        "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "Command Center",
-        "slug": "knowledge-base",
-        "repo": "alawein/knowledge-base",
-        "type": "infra",
-        "surface": "docs-hub",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "nextjs",
-          "typescript",
-          "python"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/knowledge-base",
-        "description": "Private local workspace records and operating tools.",
-        "topics": [
-          "knowledge-base",
-          "nextjs",
-          "search",
-          "documentation"
-        ],
-        "maintainer": "Meshal Alawein",
-        "docs_owner": "Meshal Alawein",
-        "local_path": "core/knowledge-base",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "alawein",
-          "workspace-tools"
-        ],
-        "provides": [
-          "catalog-ui",
-          "inventory-search",
-          "onboarding-docs"
-        ],
-        "version_source": "package.json",
-        "repo_archetype": "next-app-router",
-        "compliance": "internal-only",
-        "github_actions_settings": {
-          "default_workflow_permissions": "read",
-          "can_approve_pull_request_reviews": false
-        },
-        "release_automation": {
-          "mode": "none",
-          "supports_release_prs": false,
-          "publishes_packages": false,
-          "requires_npm_token": false
-        }
       }
     ]
   },

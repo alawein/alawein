@@ -390,18 +390,24 @@ def repo_summary(repo: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def prefer_public_repos(repos: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Stable order with public repos first so private adds cannot evict them from caps."""
+    public = [repo for repo in repos if repo.get("visibility") == "public"]
+    other = [repo for repo in repos if repo.get("visibility") != "public"]
+    return public + other
+
+
 def build_featured_collections(repos: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     featured = [repo for repo in repos if "featured" in (repo.get("catalog_groups") or [])]
+    internal_ops = prefer_public_repos(
+        [repo for repo in repos if repo["type"] in {"tooling", "infra", "governance"}]
+    )
     return {
         "hiring": [repo_summary(repo) for repo in repos if "hiring" in (repo.get("audience") or [])][:8]
         or [repo_summary(repo) for repo in featured[:8]],
         "clients": [repo_summary(repo) for repo in repos if "client" in (repo.get("audience") or [])][:8],
         "research": [repo_summary(repo) for repo in repos if repo["type"] == "research"][:8],
-        "internal_ops": [
-            repo_summary(repo)
-            for repo in repos
-            if repo["type"] in {"tooling", "infra", "governance"}
-        ][:8],
+        "internal_ops": [repo_summary(repo) for repo in internal_ops][:8],
     }
 
 

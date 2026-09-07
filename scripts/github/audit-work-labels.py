@@ -21,11 +21,16 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-SPEC = importlib.util.spec_from_file_location(
-    "plan_work_labels", ROOT / "scripts/catalog/plan-work-labels.py"
-)
-PLANNER = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(PLANNER)
+
+
+def load_planner() -> Any:
+    planner_path = ROOT / "scripts/catalog/plan-work-labels.py"
+    spec = importlib.util.spec_from_file_location("plan_work_labels", planner_path)
+    if spec is None or spec.loader is None:
+        raise ImportError("could not load the local work-label planner")
+    planner = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(planner)
+    return planner
 
 
 def github_get(endpoint: str, gh_bin: str, paginate: bool = False) -> Any:
@@ -83,20 +88,33 @@ def write_step_summary(report: dict[str, Any]) -> None:
     )
     if not count_rows:
         count_rows = "| none | 0 |"
-    Path(summary_path).write_text(
-        "\n".join([
-            "## Work taxonomy audit",
-            "",
-            f"- Result class: `{report['result_class']}`",
-            f"- Coverage: `{report['coverage']}`",
-            f"- Repository: `{report['repo']}`",
-            "",
-            "| Planned action | Count |",
-            "|---|---:|",
-            count_rows,
-            "",
-        ]),
-        encoding="utf-8",
+    with Path(summary_path).open("a", encoding="utf-8") as summary:
+        summary.write(
+            "\n".join([
+                "## Work taxonomy audit",
+                "",
+                f"- Result class: `{report['result_class']}`",
+                f"- Coverage: `{report['coverage']}`",
+                f"- Repository: `{report['repo']}`",
+                "",
+                "| Planned action | Count |",
+                "|---|---:|",
+                count_rows,
+                "",
+            ])
+        )
+
+
+def mark_execution_error(
+    report: dict[str, Any], exc: Exception, action: str
+) -> None:
+    report.update(
+        coverage="unverified",
+        result="unverified",
+        result_class="execution_error",
+        counts={},
+        plan=[],
+        error={"class": type(exc).__name__, "action": action},
     )
 
 
@@ -127,25 +145,33 @@ def main(argv: list[str] | None = None) -> int:
     except (ValueError, subprocess.SubprocessError) as exc:
         # Keep raw provider output out of artifacts; it can contain private data.
         report["error"] = {"class": type(exc).__name__, "action": "Verify read access and response completeness; do not infer a pass."}
-    except OSError as exc:
-        report["result_class"] = "execution_error"
-        report["error"] = {"class": type(exc).__name__, "action": "Repair the local execution environment and rerun; do not infer a coverage result."}
+    except Exception as exc:
+        mark_execution_error(
+            report,
+            exc,
+            "Repair the local execution environment and rerun; do not infer a coverage result.",
+        )
         code = 3
     else:
         try:
+            planner = load_planner()
             vocabulary = json.loads((ROOT / "catalog/taxonomy.json").read_text())["workRecords"]
-            rows = PLANNER.plan(records, vocabulary)
-        except (OSError, ValueError, KeyError, TypeError) as exc:
-            report["result_class"] = "execution_error"
-            report["error"] = {"class": type(exc).__name__, "action": "Repair the local taxonomy or planner and rerun; do not infer a coverage result."}
+            rows = planner.plan(records, vocabulary)
+            drift = any(row["action"] in {"add", "review"} for row in rows)
+            counts = dict(Counter(row["action"] for row in rows))
+        except Exception as exc:
+            mark_execution_error(
+                report,
+                exc,
+                "Repair the local taxonomy or planner and rerun; do not infer a coverage result.",
+            )
             code = 3
         else:
-            drift = any(row["action"] in {"add", "review"} for row in rows)
             report.update(
                 coverage="observed",
                 result="drift" if drift else "conformant",
                 result_class="policy_drift" if drift else "conformant",
-                counts=dict(Counter(row["action"] for row in rows)),
+                counts=counts,
                 plan=rows,
             )
             code = int(drift)
@@ -154,19 +180,17 @@ def main(argv: list[str] | None = None) -> int:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
         write_step_summary(report)
-    except OSError as exc:
-        report.update(
-            result="unverified",
-            result_class="execution_error",
-            error={
-                "class": type(exc).__name__,
-                "action": "Repair report persistence and rerun; no complete audit artifact was produced.",
-            },
+    except Exception as exc:
+        mark_execution_error(
+            report,
+            exc,
+            "Repair report persistence and rerun; do not infer a completed audit.",
         )
         code = 3
         try:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
-        except OSError:
+        except Exception:
             pass
         print("Work taxonomy: execution_error; report persistence failed.", file=sys.stderr)
         return code

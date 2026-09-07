@@ -93,27 +93,59 @@ def test_local_execution_failure_is_distinct_from_coverage(monkeypatch, tmp_path
     assert "local executable unavailable" not in path.read_text()
 
 
-def test_local_planner_failure_is_execution_error(monkeypatch, tmp_path):
+@pytest.mark.parametrize("error_type", [ValueError, RuntimeError, AttributeError])
+def test_local_planner_failure_is_execution_error(monkeypatch, tmp_path, error_type):
+    class BrokenPlanner:
+        @staticmethod
+        def plan(*args):
+            raise error_type("invalid local taxonomy")
+
     monkeypatch.setattr(
-        MODULE.PLANNER,
-        "plan",
-        lambda *args: (_ for _ in ()).throw(ValueError("invalid local taxonomy")),
+        MODULE,
+        "load_planner",
+        lambda: BrokenPlanner(),
     )
     code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
     assert code == 3
     assert report["coverage"] == "unverified"
     assert report["result_class"] == "execution_error"
+    assert "invalid local taxonomy" not in json.dumps(report)
+
+
+def test_planner_load_failure_is_execution_error(monkeypatch, tmp_path):
+    monkeypatch.setattr(MODULE, "ROOT", tmp_path)
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 3
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert report["error"]["class"] == "FileNotFoundError"
 
 
 def test_github_step_summary_names_machine_result(monkeypatch, tmp_path):
     summary = tmp_path / "summary.md"
+    summary.write_text("Existing job summary\n", encoding="utf-8")
     monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
     code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
     assert code == 0
     assert report["result_class"] == "conformant"
     text = summary.read_text()
+    assert text.startswith("Existing job summary\n")
     assert "Result class: `conformant`" in text
     assert "| `unchanged` | 1 |" in text
+
+
+def test_summary_runtime_failure_is_execution_error(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        MODULE,
+        "write_step_summary",
+        lambda *args: (_ for _ in ()).throw(RuntimeError("summary failure")),
+    )
+    code, report = run_audit(monkeypatch, tmp_path, [[issue()]])
+    assert code == 3
+    assert report["coverage"] == "unverified"
+    assert report["result_class"] == "execution_error"
+    assert report["plan"] == []
+    assert "summary failure" not in json.dumps(report)
 
 
 def test_api_calls_are_read_only_and_paginated(monkeypatch):

@@ -14,6 +14,14 @@ note: >
   python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
+employer_isolation:
+  prior_employer: AGI
+  local_quarantine: Desktop/AGI
+  policy: >
+    Do not import, copy, commit, summarize, or operate on AGI Inc,
+    theagi.company, or AGI-named cloud workspaces from Alawein or Kohyr
+    work. Local copies stay on Meshal's machine under Desktop/AGI, outside
+    Desktop/GitHub/alawein. Historical audit mentions stay as evidence only.
 
 agents:
   - id: cursor-cloud

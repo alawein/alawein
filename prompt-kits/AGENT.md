@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.5.1
-parent-version: 1.5.0
+version: 1.5.2
+parent-version: 1.5.1
 last-verified: 2026-09-07
 last_updated: 2026-09-07
-change-summary: "Reconcile execution evidence with canonical session orientation and task scoping"
+change-summary: "Lock AGI and prior-employer material out of Alawein work"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -40,6 +40,9 @@ work to the same technical and editorial standard as the workspace owner.
 7. Check git remotes before pushing; multiple remotes may exist.
 8. Raw corpus inputs stay out of version control. Commit only distilled style
    artifacts and deliberate rewrites.
+9. Never import, copy, commit, summarize, or operate on AGI Inc,
+   `theagi.company`, or AGI-named cloud workspaces. Those artifacts stay on
+   Meshal's machine under `Desktop/AGI`, outside `Desktop/GitHub/alawein`.
 
 ## Workspace structure
 

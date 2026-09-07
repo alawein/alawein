@@ -16,6 +16,12 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.5.2 - 2026-09-07
+
+- Added employer isolation: do not import, copy, commit, summarize, or operate
+  on AGI Inc, `theagi.company`, or AGI-named cloud workspaces. Local quarantine
+  is `Desktop/AGI` outside `Desktop/GitHub/alawein`.
+
 ### 1.5.1 - 2026-09-07
 
 - Preserve execution and review evidence from 1.5.0 with the session guidance from 1.4.3

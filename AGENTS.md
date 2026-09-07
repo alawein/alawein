@@ -56,6 +56,14 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
     A separate tool reviews the revision when feasible. Record unavailable review
     and pending acceptance explicitly; a skill or commit mode does not grant access.
 
+## Never
+
+- Do not import, copy, commit, summarize, or operate on material from AGI Inc,
+  `theagi.company` accounts, or an AGI-named cloud workspace into Alawein or
+  Kohyr work. Prior-employer artifacts stay on Meshal's machine under
+  `Desktop/AGI`, outside `Desktop/GitHub/alawein`. Existing audit mentions stay
+  as evidence. Do not extend them.
+
 ## Ask first
 
 - Before changing governance template structure across the repo fleet

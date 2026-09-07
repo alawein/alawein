@@ -91,6 +91,10 @@ public portfolio. Do not collapse them.
     the default independent reviewer is Cursor; record any substitution. Review
     the exact revision, keep self-review separate, and leave acceptance pending
     until Meshal records a decision. Tool availability does not grant permissions.
+14. Never import, copy, commit, summarize, or operate on AGI Inc,
+    `theagi.company`, or AGI-named cloud workspaces from this workspace. Those
+    artifacts stay on the laptop under `Desktop/AGI`, outside
+    `Desktop/GitHub/alawein`.
 
 ## Style contract
 

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.0
+version: 1.3.1
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -179,6 +179,11 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 - All active integrations authenticate against `contact@meshal.ai`.
 - No integration may remain on a prior-employer account.
 - New integrations require a governance row in §3.1 before install.
+- AGI Inc, `theagi.company`, and AGI-named cloud workspaces are out of
+  scope for Alawein and Kohyr work. Do not import, copy, commit, summarize,
+  or operate on that material from this workspace. Local copies stay on
+  Meshal's machine under `Desktop/AGI`, outside `Desktop/GitHub/alawein`.
+  Historical mentions in this runbook stay as evidence. Do not extend them.
 
 ## 4. Implementation plan
 
@@ -231,6 +236,11 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.1 (2026-09-07)
+
+- Locked AGI / prior-employer isolation: work agents do not operate on AGI
+  accounts or AGI-named cloud workspaces. Local quarantine is `Desktop/AGI`.
 
 ### v1.3.0 (2026-09-06)
 

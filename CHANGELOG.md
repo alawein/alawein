@@ -34,6 +34,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   preview documentation repair; preserve the existing GitHub visibility and pins.
 - Point the workspace-batch canary to signed PR #27 and distinguish Python
   token resolution from direct GitHub CLI token precedence.
+- Preserve appended local policy when the Extender refreshes project instructions.
+  Leave unrecognized instruction files unchanged instead of replacing their policy.
 
 ### Added
 

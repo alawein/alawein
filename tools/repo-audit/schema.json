@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/alawein/alawein/tools/repo-audit/schema.json",
+  "title": "Repository audit inventory",
+  "description": "Shape of repo-inventory.json. Every column in repo-inventory.csv is the same key on a repository object, with list values joined by ';' and booleans rendered as 'true'/'false'.",
+  "type": "object",
+  "required": ["schema", "generated_at", "scope", "states", "repository_count", "repositories", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "type": "string" },
+    "generated_at": { "type": "string", "description": "UTC ISO-8601 timestamp of the run." },
+    "scope": { "type": "string", "description": "org:<account> or repos:<comma-separated owner/repo list>." },
+    "states": {
+      "type": "array",
+      "items": { "enum": ["pass", "fail", "pending", "unknown", "unavailable"] }
+    },
+    "repository_count": { "type": "integer", "minimum": 0 },
+    "repositories": { "type": "array", "items": { "$ref": "#/$defs/repository" } },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } }
+  },
+  "$defs": {
+    "state": {
+      "description": "pass: control observed as configured. fail: control readable and absent or failing. pending: the API is still computing the answer (HTTP 202) or a run is queued. unknown: readable response with no determinable value. unavailable: endpoint not readable with the audit token.",
+      "enum": ["pass", "fail", "pending", "unknown", "unavailable"]
+    },
+    "countOrUnavailable": {
+      "oneOf": [{ "type": "integer", "minimum": 0 }, { "const": "unavailable" }]
+    },
+    "evidenceEntry": {
+      "type": "object",
+      "required": ["endpoint", "status", "collected_at", "state"],
+      "properties": {
+        "endpoint": { "type": "string", "description": "Absolute API URL that produced the value." },
+        "status": { "type": "integer", "description": "HTTP status code; 0 means the request never completed." },
+        "collected_at": { "type": "string" },
+        "state": { "$ref": "#/$defs/state" }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["repo", "url", "visibility", "archived", "collected_at", "evidence_sources"],
+      "properties": {
+        "repo": { "type": "string", "description": "owner/repo slug; the join key between CSV and JSON." },
+        "url": { "type": "string" },
+        "visibility": { "type": "string", "enum": ["public", "private", "internal"] },
+        "archived": { "type": "boolean" },
+        "primary_language": { "type": "string" },
+        "description": { "type": "string" },
+        "default_branch": { "type": "string" },
+        "last_commit_date": { "type": "string" },
+        "contributors": { "type": "array", "items": { "type": "string" } },
+        "contributor_activity": {
+          "type": "array",
+          "items": { "type": "string", "description": "login:last-contribution-date" }
+        },
+        "contributor_activity_state": { "$ref": "#/$defs/state" },
+        "open_pull_requests": { "$ref": "#/$defs/countOrUnavailable" },
+        "open_pull_request_urls": { "type": "array", "items": { "type": "string" } },
+        "open_issues": { "$ref": "#/$defs/countOrUnavailable" },
+        "open_issue_urls": { "type": "array", "items": { "type": "string" } },
+        "branch_protection_state": { "$ref": "#/$defs/state" },
+        "required_status_checks": { "type": "array", "items": { "type": "string" } },
+        "ci_state": { "$ref": "#/$defs/state" },
+        "recent_workflow_runs": { "type": "array", "items": { "type": "string" } },
+        "workflows": { "type": "array", "items": { "type": "string" } },
+        "workflows_state": { "$ref": "#/$defs/state" },
+        "codeowners_state": { "$ref": "#/$defs/state" },
+        "codeowners_path": { "type": "string" },
+        "owner_dri": { "type": "string" },
+        "readme_state": { "$ref": "#/$defs/state" },
+        "docs_state": { "$ref": "#/$defs/state" },
+        "dependabot_config_state": { "$ref": "#/$defs/state" },
+        "dependency_alerts_state": { "$ref": "#/$defs/state" },
+        "secret_scanning_state": { "$ref": "#/$defs/state" },
+        "webhooks_state": { "$ref": "#/$defs/state" },
+        "webhooks": { "type": "array", "items": { "type": "string" } },
+        "github_apps_state": { "$ref": "#/$defs/state" },
+        "github_apps": { "type": "array", "items": { "type": "string" } },
+        "external_services": { "type": "array", "items": { "type": "string" } },
+        "collected_at": { "type": "string" },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceEntry" } },
+        "evidence_sources": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "required": ["repo", "priority", "category", "field", "finding", "evidence", "collected_at"],
+      "properties": {
+        "repo": { "type": "string" },
+        "priority": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "category": { "type": "string" },
+        "field": { "type": "string" },
+        "finding": { "type": "string" },
+        "evidence": { "type": "string" },
+        "collected_at": { "type": "string" }
+      }
+    }
+  }
+}

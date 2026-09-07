@@ -175,10 +175,10 @@ inventory page, Canvas SSOT, APPROVAL_POLICY.md, or extra dashboard.
 
 ONE CATALOG LAND
 Search open PRs before editing AGENT.md or agent-integrations.yaml.
-If a land PR is open (today: #220), report Mismatch and stop. Do not
-open a third catalog PR. Do not nominate a land PR unless you opened
-the files on that branch. After a live prove, Cursor updates
-last_verified on the land branch. Other agents report Mismatch vs git.
+If a land PR is already open, report Mismatch and stop. Do not open a
+third catalog PR. Do not nominate a land PR unless you opened the
+files on that branch. After a live prove, Cursor updates last_verified
+on the land branch. Other agents report Mismatch vs git.
 
 HARD NEVER
 - Do not import, copy, commit, summarize, or operate on AGI Inc,

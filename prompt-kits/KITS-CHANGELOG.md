@@ -20,7 +20,7 @@ major for breaking behavioral changes.
 
 - One catalog land: search open PRs before editing `AGENT.md` or
   `catalog/agent-integrations.yaml`; report Mismatch and stop if a land
-  PR is already open
+  PR is already open. Do not hardcode a PR number in the paste block.
 - Do not nominate a land PR unless you opened the files on that branch
 - Lane reply limits: Claude 4 lines; Computer ack then wait; Kilo 3
   repos; Codex/ChatGPT/Notion/GitHub one line or silent

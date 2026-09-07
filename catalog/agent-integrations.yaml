@@ -74,8 +74,9 @@ agents:
     notes: >
       Live-proved 2026-09-07 in #admin-ops inventory thread
       (ts 1788765655.778849): 7/7 Slack reads including #posts
-      C0APWF615H7; account contact@meshal.ai; GitHub write on
-      alawein/alawein via gh. Cloud-only surface. Stale 2026-09-05
+      C0APWF615H7; account contact@meshal.ai. Cloud-only browser and
+      GUI. No catalog edits. No git write. The earlier "GitHub write
+      via gh" note was Cursor evidence, not Computer. Stale 2026-09-05
       needs_auth / not-in-#posts notes dropped.
     last_verified: 2026-09-07
   - id: chatgpt-slack

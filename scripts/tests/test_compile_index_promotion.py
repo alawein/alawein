@@ -77,5 +77,21 @@ class SnapshotStabilityTests(unittest.TestCase):
         self.assertEqual(snapshot["count"], 0)
 
 
+class ReadmeArchetypeTests(unittest.TestCase):
+    def test_source_classification_compiles_without_prior_generated_value(self):
+        repo = compile_repo("work", "work", _entry(readme_archetype="catalog-collection"), None)
+        self.assertEqual(repo["github_custom_properties"]["readme_archetype"], "catalog-collection")
+        self.assertEqual(slim_entry(repo, bucket="work")["readme_archetype"], "catalog-collection")
+
+    def test_source_classification_replaces_and_removes_prior_value(self):
+        prior = compile_repo("work", "work", _entry(), None)
+        prior["github_custom_properties"]["readme_archetype"] = "stale"
+        changed = compile_repo("work", "work", _entry(readme_archetype="catalog-collection"), prior)
+        self.assertEqual(changed["github_custom_properties"]["readme_archetype"], "catalog-collection")
+        removed = compile_repo("work", "work", _entry(), prior)
+        self.assertNotIn("readme_archetype", removed["github_custom_properties"])
+        self.assertNotIn("readme_archetype", slim_entry(removed, bucket="work"))
+
+
 if __name__ == "__main__":
     sys.exit(unittest.main(verbosity=2))

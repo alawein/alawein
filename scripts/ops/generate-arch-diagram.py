@@ -3,7 +3,7 @@
 generate-arch-diagram.py: Regenerate the repo-topology section of docs/architecture.md
 from catalog/repos.json.
 
-The script patches only the AUTO-GENERATED block between sentinel comments,
+The script patches the AUTO-GENERATED block and its document freshness date,
 preserving hand-maintained prose sections above and below it.
 
 Usage:
@@ -14,8 +14,9 @@ Usage:
 from __future__ import annotations
 
 import json
+import re
 import sys
-from datetime import date
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -79,16 +80,31 @@ def patch_arch_md(current: str, new_block: str, today: str) -> str:
     )
 
     if start_idx != -1 and end_idx != -1:
-        return current[:start_idx] + replacement + current[end_idx + len(SENTINEL_END):]
+        existing = current[start_idx:end_idx + len(SENTINEL_END)]
+        timestamp = re.compile(r"(?m)(^<!-- last updated: )\d{4}-\d{2}-\d{2}(;)")
+        if timestamp.sub(r"\1DATE\2", existing, count=1) == timestamp.sub(
+            r"\1DATE\2", replacement, count=1
+        ):
+            return current
+        patched = current[:start_idx] + replacement + current[end_idx + len(SENTINEL_END):]
+    else:
+        # Sentinels not present; append after the first h2 section.
+        insert_after = current.find("\n## ")
+        next_h2 = current.find("\n## ", insert_after + 1) if insert_after != -1 else -1
+        if next_h2 == -1:
+            patched = current + "\n\n" + replacement + "\n"
+        else:
+            patched = current[:next_h2] + "\n\n" + replacement + current[next_h2:]
 
-    # Sentinels not present; append after the first h2 section
-    insert_after = current.find("\n## ")
-    if insert_after == -1:
-        return current + "\n\n" + replacement + "\n"
-    next_h2 = current.find("\n## ", insert_after + 1)
-    if next_h2 == -1:
-        return current + "\n\n" + replacement + "\n"
-    return current[:next_h2] + "\n\n" + replacement + current[next_h2:]
+    frontmatter = re.match(r"\A---\n(.*?)\n---(?=\n|$)", patched, re.DOTALL)
+    if frontmatter:
+        header, count = re.subn(
+            r"(?m)^last_updated:[^\n]*$", f"last_updated: {today}", frontmatter[1], count=1
+        )
+        if not count:
+            header += f"\nlast_updated: {today}"
+        patched = f"---\n{header}\n---" + patched[frontmatter.end():]
+    return patched
 
 
 def main() -> None:
@@ -99,16 +115,18 @@ def main() -> None:
         print(f"No repos found in {REPOS_JSON}", file=sys.stderr)
         sys.exit(1)
 
-    today = date.today().isoformat()
+    today = datetime.now(timezone.utc).date().isoformat()
     topology = generate_topology_mermaid(repos)
     current = ARCH_MD.read_text(encoding="utf-8") if ARCH_MD.exists() else ""
     patched = patch_arch_md(current, topology, today)
 
     if dry_run:
         print(patched)
-    else:
-        ARCH_MD.write_text(patched, encoding="utf-8")
+    elif patched != current:
+        ARCH_MD.write_text(patched, encoding="utf-8", newline="\n")
         print(f"Updated: {ARCH_MD} ({len(repos)} repos in topology)")
+    else:
+        print(f"Unchanged: {ARCH_MD}")
 
 
 if __name__ == "__main__":

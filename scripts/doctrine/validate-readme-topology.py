@@ -33,8 +33,6 @@ REPOS_JSON = Path(__file__).resolve().parents[2] / "catalog" / "repos.json"
 HUB_SLUGS = {"alawein"}
 TOPOLOGY_REL = Path("docs/architecture/topology.md")
 
-CATALOG_COLLECTION_SLUGS = frozenset({"mercor", "handshake", "turing"})
-
 SECTIONS_BY_TYPE: dict[str, list[str]] = {
     "product": [
         "Value proposition",
@@ -153,8 +151,8 @@ def topology_has_tree(content: str) -> bool:
 
 
 def sections_for_repo(repo: dict) -> list[str]:
-    slug = repo.get("slug") or ""
-    if slug in CATALOG_COLLECTION_SLUGS:
+    custom = repo.get("github_custom_properties") or {}
+    if custom.get("readme_archetype") == "catalog-collection":
         return SECTIONS_CATALOG_COLLECTION
     rtype = repo.get("type")
     if rtype in SECTIONS_BY_TYPE:

@@ -44,8 +44,16 @@ def cached_file_count(repo_root: Path) -> int:
     return len(lines)
 
 
+DEFAULT_SCOPE_THRESHOLD = 10
+
+
 def load_threshold(repo_root: Path) -> int:
-    threshold = 3
+    # Match scope-binding-check.sh: env wins, then config.env, then default 10.
+    env_raw = os.environ.get("SCOPE_THRESHOLD", "").strip()
+    if env_raw.isdigit():
+        return int(env_raw)
+
+    threshold = DEFAULT_SCOPE_THRESHOLD
     config_path = repo_root / ".claude" / "hooks" / "config.env"
     if not config_path.is_file():
         return threshold

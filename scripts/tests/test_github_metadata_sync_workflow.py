@@ -25,7 +25,9 @@ test_sync_github_metadata.py).
 from __future__ import annotations
 
 import re
+import shutil
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -61,8 +63,17 @@ def _stubbed(run_script: str) -> str:
 
 
 def _run(script: str, env: dict[str, str]) -> subprocess.CompletedProcess:
+    bash = shutil.which("bash") or "bash"
+    if sys.platform.startswith("win"):
+        for candidate in (
+            Path("C:/Program Files/Git/bin/bash.exe"),
+            Path("C:/Program Files/Git/usr/bin/bash.exe"),
+        ):
+            if candidate.is_file():
+                bash = str(candidate)
+                break
     return subprocess.run(
-        ["bash", "-c", script],
+        [bash, "-c", script],
         env=env,
         capture_output=True,
         text=True,
@@ -79,6 +90,8 @@ class GenerateSyncPlanTest(unittest.TestCase):
     def _env(self, target: str, repo: str = "", include_custom_properties: str = "true") -> dict[str, str]:
         return {
             "PATH": "/usr/bin:/bin",
+            "EVENT_NAME": "workflow_dispatch",
+            "APPLY_INPUT": "false",
             "TARGET_INPUT": target,
             "REPO_INPUT": repo,
             "INCLUDE_CUSTOM_PROPERTIES_INPUT": include_custom_properties,
@@ -142,6 +155,21 @@ class GenerateSyncPlanTest(unittest.TestCase):
         result = _run(self.script, self._env("all", include_custom_properties="maybe"))
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("must resolve to true or false", result.stdout)
+
+    def test_non_boolean_apply_value_is_rejected(self) -> None:
+        env = self._env("canary")
+        env["APPLY_INPUT"] = "maybe"
+        result = _run(self.script, env)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("apply must resolve to true or false", result.stdout)
+
+    def test_non_dispatch_event_uses_advisory_defaults(self) -> None:
+        env = self._env("", include_custom_properties="")
+        env.update(EVENT_NAME="pull_request", APPLY_INPUT="")
+        result = _run(self.script, env)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("--all", result.stdout)
+        self.assertNotIn("--no-custom-properties", result.stdout)
 
 
 class ApplyMetadataTest(unittest.TestCase):
@@ -221,6 +249,12 @@ class DispatchInputsNeverInterpolatedDirectlyTest(unittest.TestCase):
                 if re.search(r"\$\{\{\s*(github\.event\.)?inputs\.", run):
                     offenders.append(f"{job_name}/{step.get('name')}")
         self.assertEqual(offenders, [], f"raw dispatch-input interpolation found in: {offenders}")
+
+    def test_validation_receives_uncoerced_dispatch_inputs(self) -> None:
+        plan = next(step for step in _load_workflow()["jobs"]["plan"]["steps"]
+                    if step.get("name") == "Generate sync plan artifact")
+        for field in ("TARGET_INPUT", "APPLY_INPUT", "INCLUDE_CUSTOM_PROPERTIES_INPUT"):
+            self.assertIsNotNone(re.fullmatch(r"\$\{\{\s*github\.event\.inputs\.[a-z_]+\s*\}\}", plan["env"].get(field, "")))
 
 
 if __name__ == "__main__":

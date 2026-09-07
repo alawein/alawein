@@ -76,15 +76,25 @@ jobs:
 
       - name: Generate sync plan artifact
         env:
-          TARGET_INPUT: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.target || 'all' }}
+          EVENT_NAME: ${{ github.event_name }}
+          TARGET_INPUT: ${{ github.event.inputs.target }}
           REPO_INPUT: ${{ github.event.inputs.repo }}
-          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
+          APPLY_INPUT: ${{ github.event.inputs.apply }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties }}
         run: |
           set -euo pipefail
           args=()
           target="$TARGET_INPUT"
           repo_input="$REPO_INPUT"
           include_custom_properties="$INCLUDE_CUSTOM_PROPERTIES_INPUT"
+
+          if [ "$EVENT_NAME" != "workflow_dispatch" ]; then
+            target="all"
+            include_custom_properties="true"
+          elif [ "$APPLY_INPUT" != "true" ] && [ "$APPLY_INPUT" != "false" ]; then
+            echo "apply must resolve to true or false"
+            exit 1
+          fi
 
           # Strict allowlist: reject anything that isn't one of the known
           # target values instead of silently falling through to --all.
@@ -202,7 +212,7 @@ jobs:
         env:
           TARGET_INPUT: ${{ github.event.inputs.target }}
           REPO_INPUT: ${{ github.event.inputs.repo }}
-          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties != 'false' }}
+          INCLUDE_CUSTOM_PROPERTIES_INPUT: ${{ github.event.inputs.include_custom_properties }}
         run: |
           set -euo pipefail
           args=(--apply)

@@ -16,7 +16,9 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 def load_local_path_map(org_repo: Path, catalog_path: Path | None = None) -> dict[str, str]:
@@ -46,6 +48,35 @@ def load_local_path_map(org_repo: Path, catalog_path: Path | None = None) -> dic
 
 class PathEscapesWorkspaceError(ValueError):
     """Raised when a catalog `local_path` would resolve outside the workspace."""
+
+
+def require_repo_checkout(repo_dir: Path, expected_repo: str) -> None:
+    """Reject nested paths and unrelated checkouts before sync mutates files."""
+    try:
+        top = subprocess.run(
+            ["git", "-C", str(repo_dir), "rev-parse", "--show-toplevel"],
+            check=True, capture_output=True, text=True, timeout=10,
+        ).stdout.strip()
+        origin = subprocess.run(
+            ["git", "-C", str(repo_dir), "remote", "get-url", "origin"],
+            check=True, capture_output=True, text=True, timeout=10,
+        ).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        raise ValueError(f"{expected_repo}: checkout identity could not be verified") from None
+    if Path(top).resolve() != repo_dir.resolve():
+        raise ValueError(f"{expected_repo}: target must be the checkout root")
+    if origin.startswith("git@github.com:"):
+        identity = origin.removeprefix("git@github.com:")
+    else:
+        remote = urlsplit(origin)
+        github_host = remote.hostname == "github.com" and remote.scheme in {"https", "ssh"}
+        ssh_over_https = (
+            remote.scheme == "ssh" and remote.hostname == "ssh.github.com" and remote.port == 443
+        )
+        identity = remote.path.lstrip("/") if github_host or ssh_over_https else ""
+    identity = identity.rstrip("/").removesuffix(".git")
+    if identity.casefold() != expected_repo.casefold():
+        raise ValueError(f"{expected_repo}: checkout origin does not match the expected repository")
 
 
 def resolve_repo_dir(workspace: Path, local_paths: dict[str, str], repo: str) -> Path:

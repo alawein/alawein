@@ -1,13 +1,14 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-06T03:15:00Z'
+lastVerified: '2026-09-07T06:45:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent
-  rescan 2026-09-06 03:15 UTC:
+  docs/governance/ide-integration-hardening-session.md. Latest live check
+  2026-09-07 06:45 UTC (membership, Gmail labels, Notion Cloud MCP, workflow
+  last-fire). Latest full Cloud Agent rescan 2026-09-06 03:15 UTC:
   docs/internal/audits/2026-09-06-slack-integrations-rescan.md. Prior rescan:
   docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
   Agent MCP status can diverge; keep both. CI drift check:
@@ -32,7 +33,8 @@ agents:
       job-search 1788621248.955629, social 1788621362.488249.
       Cursor Slack Tools is the canonical Slack surface for agents launched from
       Slack. Re-proved 2026-09-06 03:15 UTC rescan (run bc-8ca615eb-…).
-    last_verified: 2026-09-06
+      7/7 reads reconfirmed 2026-09-07 live check. Channel IDs unchanged.
+    last_verified: 2026-09-07
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -64,8 +66,9 @@ agents:
     notes: >
       Lane B fail (Sider/Claw 2026-09-05 15:52). Computer DMs are welcome
       blurbs only (2026-03-30 / 2026-04-01). No Reconnect/Sign-in surface in
-      Slack app UI. Perplexity OAuth still required (Meshal). Not in #posts.
-    last_verified: 2026-09-05
+      Slack app UI. Perplexity OAuth still required (Meshal). U0APW7F9S4A
+      still not in #posts as of 2026-09-07.
+    last_verified: 2026-09-07
   - id: chatgpt-slack
     display_name: ChatGPT
     surfaces: [slack]
@@ -75,9 +78,10 @@ agents:
     dispatch_roles: []
     status: replaced
     notes: >
-      Joined #admin-ops 11:28; never posted. Keep installed until Codex S4
-      Reply OK. Do not dispatch. Not the Cursor MCP.
-    last_verified: 2026-09-05
+      U0BUNH33CCA is not in the #admin-ops member list as of 2026-09-07.
+      Keep installed until Codex S4 Reply OK. Do not dispatch. Not the
+      Cursor MCP.
+    last_verified: 2026-09-07
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -87,11 +91,12 @@ agents:
     dispatch_roles: [connector-gap-fill, diff-only-verification]
     status: needs_auth
     notes: >
-      Installed in #admin-ops (C0B9SRMDJFK) only. Lane A fail (Sider/Claw
-      15:52): Reply OK probe got connect prompt ts 1788622796.091419, not OK.
-      Connect button clicks (DOM + native x4) launched no OAuth popup.
-      Manual Connect click still required (Meshal browser).
-    last_verified: 2026-09-05
+      In #admin-ops (C0B9SRMDJFK) and #kohyr-dev (C0B9JJZSVQT) as of
+      2026-09-07. Lane A fail (Sider/Claw 15:52): Reply OK probe got connect
+      prompt ts 1788622796.091419, not OK. Connect button clicks (DOM +
+      native x4) launched no OAuth popup. Manual Connect click still
+      required (Meshal browser).
+    last_verified: 2026-09-07
   - id: notion-ai-slack
     display_name: Notion AI
     surfaces: [slack, notion]
@@ -124,23 +129,37 @@ workflow_bots:
   - id: daily-briefing
     schedule: 'daily 09:00'
     output: '#posts'
-    status: working
+    status: partial
     engagement_30d: 0
+    last_fire: '2026-09-04T09:00:00-07:00'
+    notes: >
+      Last fire 2026-09-04 09:00 PT. Missed 2026-09-05. Observed
+      2026-09-07 06:45 UTC.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
     status: working
     engagement_30d: 0
+    last_fire: '2026-09-04T16:00:00-07:00'
+    notes: Last fire 2026-09-04 16:00 PT.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
     status: working
     engagement_30d: 0
+    last_fire: '2026-08-31T09:00:00-07:00'
+    notes: >
+      Last fire 2026-08-31. As of 2026-09-07 06:45 UTC (before 09:00 PT)
+      the Sep 7 Monday Kickoff had not fired yet.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
     status: working
     engagement_30d: 0
+    last_fire: '2026-08-31T09:00:00-07:00'
+    notes: >
+      Last fire 2026-08-31. As of 2026-09-07 06:45 UTC (before 09:00 PT)
+      the Sep 7 Weekly Content Planner had not fired yet.
 
 integrations:
   - id: gmail
@@ -149,11 +168,14 @@ integrations:
     cursor_mcp: cloud_ready_desktop_absent
     status: locked
     notes: >
-      Cloud Agent 14:32 UTC rescan: AGI (archive) Label_367; 22 threads;
-      0 from:theagi.company in:inbox. Inbox 268 threads / 83 unread.
-      User labels: Travel, Docs, Finance/Billing, Blocked, Notion, AGI (archive).
-      Desktop IDE: Gmail MCP absent from catalog (T1/T2 not re-run on desktop).
-    last_verified: 2026-09-05
+      2026-09-07 live check for contact@meshal.ai. User labels redesigned:
+      Action/Blocked, Action/Review, Action/Waiting, Project/Alawein,
+      System/Linear, System/GitHub, Subscriptions, DevOps. Old six-label
+      set (Travel, Docs, Finance/Billing, Blocked, Notion, AGI archive) is
+      gone. AGI (archive) was recreated tonight as Label_384; 0
+      from:theagi.company in:inbox after archive. Desktop IDE: Gmail MCP
+      absent from catalog (T1/T2 not re-run on desktop).
+    last_verified: 2026-09-07
   - id: google-calendar
     provider: Google
     account: contact@meshal.ai
@@ -176,10 +198,16 @@ integrations:
     provider: Notion
     account: contact@meshal.ai
     workspace_id: 8116d8de-2215-81ce-b71b-00031e833a2d
-    cursor_mcp: absent
+    cursor_mcp: cloud_ready
+    cursor_mcp_desktop: absent
     status: locked
-    notes: Notion MCP not present in desktop IDE catalog; Notion AI Slack remains surface.
-    last_verified: 2026-09-05
+    notes: >
+      Cloud MCP ready 2026-09-07 for workspace
+      8116d8de-2215-81ce-b71b-00031e833a2d / contact@meshal.ai. Desktop MCP
+      remains absent. Account and workspace stay locked. Notion AI Slack is
+      a separate ready surface. Do not create a Notion living SSOT from this
+      row.
+    last_verified: 2026-09-07
   - id: railway
     provider: Railway
     account: contact@meshal.ai
@@ -282,22 +310,35 @@ slack_channel_reads:
     verified_at: '2026-09-05'
     readable: 7
     notes: Meshal desktop IDE Slack MCP; not re-probed on 2026-09-06 Cloud run.
+  live_check:
+    verified_at: '2026-09-07T06:45:00Z'
+    listed: 7
+    readable: 7
+    notes: >
+      Channel IDs unchanged. ChatGPT U0BUNH33CCA not in #admin-ops.
+      Codex U0BV7V8M3NW in #admin-ops and #kohyr-dev. Computer
+      U0APW7F9S4A still not in #posts.
 
 slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex]
+    agents_present: [cursor, claude, computer, notion-ai, github, codex]
     cursor_can_read: true
+    notes: ChatGPT U0BUNH33CCA not in member list as of 2026-09-07.
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
     cursor_can_read: true
-    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C)
+    notes: >
+      Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C).
+      Computer U0APW7F9S4A still not a member as of 2026-09-07.
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
+    agents_present: [codex]
     cursor_can_read: true
+    notes: Codex U0BV7V8M3NW confirmed in channel 2026-09-07.
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
     tier: domain

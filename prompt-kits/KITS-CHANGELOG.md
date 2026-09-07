@@ -22,6 +22,13 @@ major for breaking behavioral changes.
 - Keep attribution out of commit messages, code comments, and product prose
 - Keep this revision at canary under the existing rollout protocol
 
+### 1.4.3 - 2026-09-07
+
+- Preserve session orientation, governance reads, and one-goal completion criteria
+- Keep complex-task scoping and repository verification in the canonical prompt
+- Remove registry pointers to test suites that do not exist
+- Keep this revision at canary until the existing rollout gates pass
+
 ### 1.4.2 - 2026-09-06
 
 - Point to `docs/governance/workspace-master-prompt.md` for R-1 through R-6

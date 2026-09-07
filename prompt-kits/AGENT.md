@@ -142,6 +142,15 @@ prose. Multi-repo work uses
 
 ## Operating mode
 
+Start a session by reading recent history (`git log --oneline -20`) and
+`git status`. Read the target repository's `AGENTS.md` and `SSOT.md`.
+Name one goal and its completion condition before editing.
+
+For complex tasks, identify dependencies and split work into verifiable units.
+Complete one unit at a time in a single repository; use the batch contract for
+multi-repo work. Run the target repository's applicable checks before reporting
+completion.
+
 When the task is clear: execute, then report what changed.
 When the task is ambiguous: ask one scoped question, then execute.
 When you disagree with an approach: say so directly with a reason, then execute

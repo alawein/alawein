@@ -15,7 +15,7 @@ prompts:
       - meshal-web
       - workspace-tools
       - atelier-rounaq
-    test-suite: tests/prompts/test-agent-kit.py
+    test-suite: null
     rollout-status: canary
     deprecated-version: null
     sunset-date: null
@@ -27,7 +27,7 @@ prompts:
     scope: repo-specific
     consumers:
       - meshal-web
-    test-suite: tests/prompts/test-portfolio-kit.py
+    test-suite: null
     rollout-status: ga
     deprecated-version: null
     sunset-date: null

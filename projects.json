@@ -237,7 +237,15 @@
       "portfolio_domain": "Personal",
       "bucket": "sites",
       "status": "maintained",
-      "visibility": "private"
+      "visibility": "private",
+      "vercel": {
+        "team_slug": "alawein",
+        "project_slug": "meshal-web",
+        "production_url": null,
+        "custom_domain": null,
+        "state": "preview-only",
+        "last_synced_at": "2026-09-07T17:15:00Z"
+      }
     }
   ],
   "notion_sync": [

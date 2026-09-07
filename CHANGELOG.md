@@ -39,6 +39,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Public-safe provider review, access coverage, repository responsibility, and
+  trigger review documentation under [`docs/operations/`](docs/operations/).
 - [`docs/internal/audits/2026-08-28-public-benchmark-patterns.md`](docs/internal/audits/2026-08-28-public-benchmark-patterns.md): benchmark study behind the P0 README checklist.
 - [`docs/batches/public-credibility-1/manifest.yaml`](docs/batches/public-credibility-1/manifest.yaml): record of the README redo wave (six PRs, merge SHAs, decisions).
 - [`docs/internal/audits/2026-08-28-public-portfolio-report.md`](docs/internal/audits/2026-08-28-public-portfolio-report.md): final report of the private-by-default work.

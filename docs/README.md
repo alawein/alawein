@@ -37,6 +37,14 @@ workspace governance for the `alawein` GitHub organization.
 
 ## Workflow operations
 
+- Review provider inventory without creating another source of truth:
+  [`system-inventory.md`](./operations/system-inventory.md)
+- Separate connector capability, demonstrated access, and authorization:
+  [`access-coverage.md`](./operations/access-coverage.md)
+- Find the owning record before changing repository responsibility:
+  [`repository-responsibilities.md`](./operations/repository-responsibilities.md)
+- Review trigger evidence without publishing private automation state:
+  [`trigger-registry.md`](./operations/trigger-registry.md)
 - [`documentation-contract.md`](./governance/documentation-contract.md)
 - [`github-baseline.md`](./governance/github-baseline.md)
 - [`operating-model.md`](./governance/operating-model.md)

@@ -1,7 +1,7 @@
 ---
 type: generated
 source: session-notes
-last_updated: 2026-07-07
+last_updated: 2026-09-07
 ---
 
 | 2026-05-03 17:22 | 69799637 | chore(docs): retire stale 2026-03 audit reports (PR 2 of cleanup series) (#99) | 20 files | ~87 lines |
@@ -42,3 +42,4 @@ last_updated: 2026-07-07
 | 2026-09-06 23:40 | dc97f21 | Harden github-metadata-sync.yml dispatch validation; add symlink-redirect regression tests | 3 files | ~356 lines |
 | 2026-09-06 23:45 | d051131 | Add executable-source TODO/FIXME audit; fix retired-script path drift; address review feedback | 8 files | ~258 lines |
 | 2026-09-06 23:36 | cf81cd9 | Validate and compile Phase 3 governance catalog | 7 files | ~32 lines |
+| 2026-09-07 08:29 | 6169f479 | docs(catalog): record Cursor shared-session last_verified | 2 files | ~70 lines |

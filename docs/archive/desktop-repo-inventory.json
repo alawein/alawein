@@ -233,6 +233,13 @@
       "stack": "python, markdown, github-actions"
     },
     {
+      "folder": "core/android-coding-phone",
+      "remote_slug": "alawein/android-coding-phone",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "powershell, node, android"
+    },
+    {
       "folder": "core/design-system",
       "remote_slug": "alawein/design-system",
       "archetype": "node-monorepo",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-04-14",
+  "lastVerified": "2026-09-06",
   "axes": {
     "type": [
       "product",
@@ -86,5 +86,152 @@
     "Work",
     "Personal",
     "scientific-computing"
-  ]
+  ],
+  "workRecords": {
+    "version": "1.0.0",
+    "workKinds": [
+      {
+        "key": "bug",
+        "github": "type:bug",
+        "linear": "Bug",
+        "color": "d73a4a",
+        "description": "Incorrect behavior or a reproduced defect.",
+        "aliases": [
+          "bug"
+        ]
+      },
+      {
+        "key": "feature",
+        "github": "type:feature",
+        "linear": "Feature",
+        "color": "a2eeef",
+        "description": "New user-facing or platform capability.",
+        "aliases": [
+          "enhancement",
+          "type:feat"
+        ]
+      },
+      {
+        "key": "docs",
+        "github": "type:docs",
+        "linear": "Documentation",
+        "color": "0075ca",
+        "description": "Documentation, policy, examples or reference updates.",
+        "aliases": [
+          "docs",
+          "documentation"
+        ]
+      },
+      {
+        "key": "maintenance",
+        "github": "type:maintenance",
+        "linear": "Improvement",
+        "color": "cfd3d7",
+        "description": "Dependencies, configuration, refactoring or routine operations.",
+        "aliases": [
+          "dependencies",
+          "ci",
+          "chore"
+        ]
+      },
+      {
+        "key": "research",
+        "github": "type:research",
+        "linear": "Research",
+        "color": "d4c5f9",
+        "description": "Investigation or experiment with a recorded question and evidence.",
+        "aliases": [
+          "research"
+        ]
+      },
+      {
+        "key": "security",
+        "github": "type:security",
+        "linear": "Security",
+        "color": "b60205",
+        "description": "Security work; confidential findings stay in their authorized source.",
+        "aliases": [
+          "security"
+        ]
+      },
+      {
+        "key": "question",
+        "github": "type:question",
+        "linear": "Question",
+        "color": "d876e3",
+        "description": "A request for an answer without a committed implementation change.",
+        "aliases": [
+          "question"
+        ]
+      }
+    ],
+    "titlePrefixes": {
+      "fix": "bug",
+      "feat": "feature",
+      "docs": "docs",
+      "chore": "maintenance",
+      "build": "maintenance",
+      "ci": "maintenance",
+      "refactor": "maintenance",
+      "test": "maintenance",
+      "perf": "maintenance",
+      "style": "maintenance"
+    },
+    "priorityAuthority": "native priority in the current task authority; existing GitHub P1/P2/P3 labels remain until triage consumers migrate",
+    "stateAuthority": "native task state; repository lifecycle is separate",
+    "riskValues": [
+      "unassessed",
+      "low",
+      "medium",
+      "high"
+    ],
+    "requiredFields": [
+      "source_id",
+      "source_url",
+      "work_kind",
+      "maintainer",
+      "status",
+      "priority",
+      "risk",
+      "acceptance",
+      "dependencies",
+      "evidence"
+    ],
+    "changeEvidence": [
+      "author",
+      "executor",
+      "reviewer",
+      "reviewed_revision",
+      "checks",
+      "final_approval"
+    ],
+    "evidenceStates": [
+      "verified",
+      "reported",
+      "unverified",
+      "not_applicable"
+    ],
+    "protectedLegacyLabels": [
+      "auto-generated",
+      "automated",
+      "automation",
+      "prompt-kit",
+      "catalog",
+      "llmops",
+      "governance",
+      "governance-compliance",
+      "P1",
+      "P2",
+      "P3",
+      "status:planned",
+      "github_actions",
+      "python",
+      "javascript",
+      "proof:tests",
+      "risk:medium",
+      "scope:audit",
+      "type:gap"
+    ],
+    "historyPolicy": "Preserve original author, timestamps, tags, releases, comments and closed/archived state. Normalize historical aliases in views; apply additive labels to open records only when unambiguous."
+  }
 }

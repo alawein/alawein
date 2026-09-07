@@ -1,7 +1,7 @@
 name: Bug Report
 description: Report a reproducible bug in the profile repo, governance docs, or automation.
 title: "[Bug]: "
-labels: ["bug", "triage"]
+labels: ["bug", "triage", "type:bug"]
 body:
   - type: textarea
     id: summary

@@ -1,7 +1,7 @@
 name: Security Hardening
 description: Report a non-sensitive security gap or hardening opportunity (use SECURITY.md for vulnerabilities)
 title: "security: "
-labels: ["security", "triage"]
+labels: ["security", "triage", "type:security"]
 body:
   - type: markdown
     attributes:

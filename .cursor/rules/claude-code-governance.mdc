@@ -16,7 +16,7 @@ When creating or changing **project-level** Claude Code configuration:
 
 3. **Prefer `skills/`** over new `commands/`** when workflows need bundled scripts, auto-invocation, or tight `allowed-tools`.
 
-4. **No secrets** in committed `.claude/settings.json`; use `settings.local.json` (gitignored).
+4. **Keep secrets in the secrets manager.** Inject them into the process with `op run -- <command>`. Reserve gitignored `settings.local.json` for nonsecret personal overrides; neither settings file may contain secret values.
 
 5. **Security**: treat `.claude/` like CI — review hooks and skills in PRs; inspect before running untrusted repos.
 

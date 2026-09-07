@@ -29,8 +29,8 @@
         "alignment",
         "training"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/alembiq",
       "catalog_groups": [
         "featured",
@@ -78,8 +78,8 @@
         "typescript",
         "security"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/attributa",
       "catalog_groups": [
         "featured"
@@ -127,8 +127,8 @@
         "fft",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/edfp",
       "catalog_groups": [
         "featured",
@@ -177,8 +177,8 @@
         "react",
         "supabase"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/llmworks",
       "catalog_groups": [
         "featured"
@@ -226,8 +226,8 @@
         "hpc",
         "research"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/optiqap",
       "catalog_groups": [
         "featured",
@@ -275,8 +275,8 @@
         "turborepo",
         "typescript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "lab/veyra",
       "catalog_groups": [
         "featured"
@@ -326,8 +326,8 @@
         "luxury",
         "design"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/atelier-rounaq",
       "catalog_groups": [
         "featured"
@@ -373,8 +373,8 @@
         "nextjs",
         "typescript"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/auditraise",
       "catalog_groups": [
         "featured"
@@ -420,8 +420,8 @@
         "stripe",
         "supabase"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/bolts",
       "catalog_groups": [
         "featured"
@@ -470,8 +470,8 @@
         "vite",
         "coaching"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/gymboy",
       "catalog_groups": [
         "featured"
@@ -519,8 +519,8 @@
         "supabase",
         "coaching"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/repz",
       "catalog_groups": [
         "featured"
@@ -568,8 +568,8 @@
         "typescript",
         "design-system"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "apps/scribd",
       "catalog_groups": [
         "featured"
@@ -619,8 +619,8 @@
         "typescript",
         "tailwindcss"
       ],
-      "maintainer": "alawein-core",
-      "docs_owner": "alawein-core",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
       "local_path": "sites/meshal-web",
       "catalog_groups": [
         "featured"

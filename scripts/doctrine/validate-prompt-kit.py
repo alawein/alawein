@@ -10,7 +10,7 @@ import yaml
 
 PROMPT_KITS_DIR = Path(__file__).resolve().parent.parent.parent / "prompt-kits"
 
-EXEMPT_FILES = {"CHANGELOG.md"}
+EXEMPT_FILES = {"CHANGELOG.md", "KITS-CHANGELOG.md"}
 
 REQUIRED_FRONTMATTER = [
     "type",

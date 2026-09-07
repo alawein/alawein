@@ -72,7 +72,7 @@ jobs:
 
             const checklist = [
               '- [ ] Version bumped in frontmatter',
-              '- [ ] `prompt-kits/CHANGELOG.md` entry added',
+              '- [ ] `prompt-kits/KITS-CHANGELOG.md` entry added',
               '- [ ] `prompt-kits/registry.yaml` rollout-status set to `canary`',
               '- [ ] Downstream consumers identified and notified',
               '- [ ] Canary soak planned (48 h minimum before `staged`)',

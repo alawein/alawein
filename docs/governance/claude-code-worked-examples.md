@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Claude Code worked examples (copy-paste)
 description: Concrete snippets for CLAUDE.md, rules/, commands/, skills/, agents/, and settings, extracted from the internal reference UI for use in product repos.
-last_updated: 2026-07-06
+last_updated: 2026-09-07
 last_verified: 2026-03-25
 category: governance
 audience: [ai-agents, contributors]
@@ -217,7 +217,9 @@ You can invoke explicitly ("use the code-reviewer agent") or reference from a sk
 
 ## Example `.claude/settings.json`
 
-Committed team defaults; secrets and personal overrides → `settings.local.json` (gitignored).
+Commit nonsecret team defaults. Keep nonsecret personal overrides in gitignored
+`settings.local.json`. Store secret values in the secrets manager and inject them
+into the process with `op run -- <command>`; do not write them to either settings file.
 
 ```json
 {

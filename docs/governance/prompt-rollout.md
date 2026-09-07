@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-07-06
+last_updated: 2026-09-07
 audience: [agents, contributors]
 ---
 
@@ -34,8 +34,8 @@ Rollout state is tracked in `prompt-kits/registry.yaml` → `rollout-status` fie
 
 1. Create a `feat/prompt-<kit>-v<version>` branch.
 2. Edit the prompt kit file and bump `version` in frontmatter.
-3. Add `CHANGELOG.md` entry.
-4. Run `python scripts/validate-prompt-kit.py`, must exit 0.
+3. Add a `prompt-kits/KITS-CHANGELOG.md` entry.
+4. Run `python scripts/doctrine/validate-prompt-kit.py`, must exit 0.
 5. Update `prompt-kits/registry.yaml` → `rollout-status: canary`.
 
 ### 2. Canary
@@ -61,7 +61,7 @@ Rollout state is tracked in `prompt-kits/registry.yaml` → `rollout-status` fie
 ### 5. Deprecation
 
 1. Set `rollout-status: deprecated`, `deprecated-version: <current>`, `sunset-date: <YYYY-MM-DD>`.
-2. Write migration guide in `prompt-kits/CHANGELOG.md`.
+2. Write migration guide in `prompt-kits/KITS-CHANGELOG.md`.
 3. At sunset date, remove or archive the kit.
 
 ---

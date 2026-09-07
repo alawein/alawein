@@ -1,0 +1,47 @@
+name: Work Taxonomy Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, reopened, edited, synchronize, labeled, unlabeled]
+  issues:
+    types: [opened, reopened, edited, labeled, unlabeled, closed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+concurrency:
+  group: work-taxonomy-${{ github.event_name }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  work-taxonomy:
+    name: Work taxonomy audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: '3.12'
+      - name: Audit observed open records
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          python scripts/github/audit-work-labels.py
+          --repo "$GITHUB_REPOSITORY"
+          --output "$RUNNER_TEMP/work-taxonomy-report.json"
+      - name: Retain observation and drift evidence
+        if: always()
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        with:
+          name: work-taxonomy-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/work-taxonomy-report.json
+          if-no-files-found: warn
+          retention-days: 14

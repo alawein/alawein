@@ -1,0 +1,36 @@
+batch_id: 2026-09-06-solo-taxonomy
+date: 2026-09-06
+maintainer: Meshal Alawein
+executor: ChatGPT
+reviewer: unassigned-independent-tool
+authorization: current-user-request
+source: catalog/taxonomy.json
+repository_catalog: catalog/index.yaml
+phases: [discover, preflight, mutate, validate, package, publish, summarize]
+scope:
+  repositories: all-accessible-meshal-maintained
+  linear: all-existing-issues
+  github_retroactive_writes: open-records-with-unambiguous-classification
+  linear_retroactive_writes: owner-and-type-on-all-existing-issues-preserving-state
+  history: preserve-identities-tags-releases-and-automation-labels
+  ongoing_audit: read-only-own-repository-issues-and-prs
+  instruction_adapters: alawein-only-AGENTS-CLAUDE-and-Cursor
+canary:
+  repository: alawein/alawein
+  record: pull/211
+  action: additive-type-label
+rollout:
+  mode: manual-approved
+  dependencies: [canary-readback, duplicate-plan-check]
+  topic_sync: existing-github-metadata-rollout-policy
+boundaries:
+  - Never overwrite concurrent content or replace an entire label set.
+  - Do not retag commits, rewrite authors, or reopen historical work.
+  - Keep private source details in their authorized repository.
+  - Missing evidence is unknown, not a pass.
+  - Do not expand tool permissions or bypass a failing control.
+  - Record independently reviewed only when another tool actually reviewed the revision.
+rollback:
+  labels: remove-only-additions-recorded-by-this-batch
+  metadata: restore-recorded-values-if-no-concurrent-change
+  code: revert-the-scoped-commit-through-normal-review

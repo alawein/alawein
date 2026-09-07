@@ -68,12 +68,13 @@ agents:
     llm_default: perplexity
     dispatch_roles: [browser-audit, design-docs, cross-service-verification]
     slack_user_id: U0APW7F9S4A
-    status: needs_auth
+    status: ready
     notes: >
-      Lane B fail (Sider/Claw 2026-09-05 15:52). Computer DMs are welcome
-      blurbs only (2026-03-30 / 2026-04-01). No Reconnect/Sign-in surface in
-      Slack app UI. Perplexity OAuth still required (Meshal). U0APW7F9S4A
-      still not in #posts as of 2026-09-07.
+      Live-proved 2026-09-07 in #admin-ops inventory thread
+      (ts 1788765655.778849): 7/7 Slack reads including #posts
+      C0APWF615H7; account contact@meshal.ai; GitHub write on
+      alawein/alawein via gh. Cloud-only surface. Stale 2026-09-05
+      needs_auth / not-in-#posts notes dropped.
     last_verified: 2026-09-07
   - id: chatgpt-slack
     display_name: ChatGPT
@@ -125,6 +126,23 @@ agents:
     dispatch_roles: [pr-thread-mirror]
     status: ready
     last_verified: 2026-09-05
+  - id: kilo-slack
+    display_name: Kilo
+    surfaces: [slack]
+    slack_handle: '@Kilo'
+    slack_user_id: U0BV9U2GFED
+    llm_default: unverified
+    dispatch_roles: [cloud-agent-sessions]
+    status: ready
+    notes: >
+      Replied in #admin-ops inventory thread 2026-09-07
+      (ts 1788765571.809029). Launch: Slack. GitHub App sees
+      alawein/ops-control-plane-grok, alawein/ai-ops, and
+      alawein/workspace-brain only; no alawein/alawein visibility.
+      Slack reads proved on #admin-ops only (1/7). Lane: Cloud Agent
+      sessions on those three repos. Ask Meshal before expanding
+      GitHub App scope.
+    last_verified: 2026-09-07
 
 workflow_bots:
   - id: daily-agenda
@@ -312,14 +330,14 @@ slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, codex]
+    agents_present: [cursor, claude, computer, notion-ai, github, codex, kilo]
     cursor_can_read: true
     notes: ChatGPT U0BUNH33CCA not in member list as of 2026-09-07.
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
     cursor_can_read: true
-    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C). Computer still not in #posts.
+    notes: Cursor joined 2026-09-05 14:59 UTC (join ts 1788620374.004189, lane C). Computer read #posts live on 2026-09-07.
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain

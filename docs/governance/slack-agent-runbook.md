@@ -9,7 +9,7 @@ last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.3.2
+version: 1.3.3
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -119,7 +119,7 @@ health problem.
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
-| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex (ChatGPT silent) | Present | Cloud Agent membership 2026-09-05 14:32 |
+| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Inventory thread 2026-09-07; Kilo `U0BV9U2GFED` |
 | GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent `get_me` 2026-09-07 (bc-2953ccca) |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
@@ -236,6 +236,13 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §4 Implementation plan | LOCKED |
 
 ## 6. Changelog
+
+### v1.3.3 (2026-09-07)
+
+- `@Kilo` (`U0BV9U2GFED`) recorded in `#admin-ops`. GitHub App is scoped to
+  `ops-control-plane-grok`, `ai-ops`, and `workspace-brain`, not
+  `alawein/alawein`.
+- `@Computer` flipped to ready after 7/7 Slack reads including `#posts`.
 
 ### v1.3.2 (2026-09-07)
 

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack channel migration plan
 description: Proposed v2 channel topology for team collaboration and personal agentic workflows; execution plan with rename map and posting guidelines.
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
 status: draft
-version: 1.0.0
+version: 1.1.0
 tags: [slack, channels, agents, migration]
 ---
 
@@ -130,11 +130,67 @@ Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
 2. **Slack rename limits:** renames preserve history; pinned messages and bot
    configs must be re-checked after each rename.
 3. **Fireflies:** stays on broadcast channel (`team-general` after rename).
+4. **Memory:** one recall lane later, not a second inventory. Git stays
+   policy SSOT. Notion stays non-code tasks. Slack stays coordination.
+5. **Laptop Slack gateways:** Hermes Agent and OpenClaw stay off Slack until
+   after 2026-09-19, and only if Cursor plus Claude Tag still leave a
+   laptop-daemon gap. Do not install another chat bot without a new human
+   decision.
 
-## 8. Related canon
+## 8. Memory, custom bots, and AI-OS field notes (2026-09-07)
+
+Research input for Phase 0, not an install list. Do not create a second
+control plane. This workspace already has git SSOT, validators, and an
+asymmetric agent fleet.
+
+### 8.1 Shared memory
+
+| Product | Fit | Verdict for Alawein |
+| --- | --- | --- |
+| Supermemory | Hosted MCP already in Cloud discovery; engine not fully OSS | Catalog + [`cursor-mcp-repair.md`](cursor-mcp-repair.md) leave it dropped. Cloud discovery still errors. Re-auth only if Meshal wants preference/session recall. Never dump AGI, secrets, or inventory into it. |
+| Mem0 | Drop-in vector memory API; OpenMemory MCP | Skip. Second SSOT. |
+| Letta (ex-MemGPT) | Self-managed memory OS; Slack/Telegram channels exist | Heavier than needed. Competes with git + Slack lanes. |
+| Zep / Graphiti | Temporal knowledge graph | Skip unless a future product needs point-in-time facts. |
+| Cognee | Graph/RAG memory | Skip. Same second-SSOT risk. |
+
+If a recall lane is added later: one vendor, scoped local vs org, Meshal
+allowlist, no AGI material, no secrets, no write-back that overrides git.
+
+### 8.2 Hermes and custom Slack bots
+
+| Option | What it is | Verdict |
+| --- | --- | --- |
+| Hermes Agent (Nous) | Self-hosted Slack gateway (Socket Mode), self-writing skills, persistent memory | Hold. Competes with `@Cursor` / `@Claude` if it becomes another chat bot. If ever: laptop or VPS after 2026-09-19, one home channel (`#me-agents-ops`), `SLACK_ALLOWED_USERS` = Meshal only, separate Slack app, no AGI material. |
+| OpenClaw | Local gateway across Slack and other messengers | Same hold. Better as a laptop daemon than a second Slack personality. |
+| Custom Slack bot / agent | New app in this workspace | Do not deploy until the five workflow bots pass the 2026-09-19 trial. Existing bot noise is already the problem. |
+| `@Kilo` | Already installed; Cloud Agent sessions on three non-control-plane repos | Keep. Do not expand the GitHub App to `alawein/alawein` without a human ask. |
+
+Standing rule remains: do not install Grok or another chat bot in Slack
+without a new human decision.
+
+### 8.3 AI-OS / self-improving field (critique)
+
+Coding agents already in use: Cursor, Claude Code, Codex (needs ChatGPT
+connect). Do not replace them with a marketed "AI OS."
+
+| Cluster | Examples | Use here |
+| --- | --- | --- |
+| Coding agents | Cursor, Claude Code, Codex, OpenHands, Devin, SWE-agent | Keep current trio. OpenHands/Devin are extra coding runtimes, not a Slack OS. |
+| Self-hosted gateways | Hermes Agent, OpenClaw, Agent Zero, CoWork-OS | Evaluate after 2026-09-19 only if a laptop-always-on gap remains. |
+| Managed work agents | Lindy, Manus (now Meta), ChatGPT Agent, Claude Cowork/Tag, Genspark, Dust | Claude Tag is the open human admin step. Do not add a parallel work-agent SaaS. |
+| Memory layers | Supermemory, Mem0, Letta, Zep/Graphiti, Cognee | See §8.1. One lane or none. |
+| Governance overlays | PlantoOS/Medhara, Apotheon AIOS | Marketing control planes. This repo already owns policy, inventory, and validators. Do not adopt a second control plane. |
+
+Practical sequence after the Sept 19 gate: execute this v2 channel map;
+fix Claude Tag and Codex connect; keep `@Kilo` scoped; leave Hermes and
+OpenClaw uninstalled unless Cursor plus Claude still cannot cover a
+laptop daemon.
+
+## 9. Related canon
 
 | Doc | Role |
 | --- | --- |
 | [`slack-agent-runbook.md`](slack-agent-runbook.md) | Current locked policy |
 | [`claude-tag-migration.md`](claude-tag-migration.md) | Claude Tag setup |
 | [`unified-agent-system.md`](unified-agent-system.md) | Dispatch routing |
+| [`cursor-mcp-repair.md`](cursor-mcp-repair.md) | Supermemory left dropped |

@@ -1,6 +1,6 @@
 {
   "generated_from": "catalog/agent-integrations.yaml",
-  "lastVerified": "2026-09-06T03:15:00Z",
+  "lastVerified": "2026-09-07T06:56:00Z",
   "slack_channels": [
     {
       "id": "admin-ops",
@@ -62,6 +62,9 @@
     },
     {
       "id": "github-slack"
+    },
+    {
+      "id": "kilo-slack"
     }
   ],
   "integrations": [

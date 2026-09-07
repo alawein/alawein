@@ -1,30 +1,16 @@
 #Requires -Version 5.1
 <#
-  Local Notion sync + canonical verify with the same property mapping as
-  .github/workflows/notion-sync.yml
+  Local Notion sync + canonical verification.
 
-  Prerequisites: set NOTION_TOKEN and NOTION_DB_ID in .env.local (see ..\..\.env.example)
+  Prerequisites: inject NOTION_TOKEN and NOTION_DB_ID with 1Password op run.
 
   Usage (from repo root alawein/):
-    pwsh -File scripts/notion/run-notion-local.ps1
+    op run -- pwsh -NoProfile -File scripts/notion/run-notion-local.ps1
 #>
 $ErrorActionPreference = 'Stop'
 # scripts/notion/ -> repo root (alawein/) where projects.json lives
 $root = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Set-Location $root
-
-foreach ($name in @('.env.local', '.env')) {
-  $envFile = Join-Path $root $name
-  if (-not (Test-Path $envFile)) { continue }
-  Get-Content $envFile | ForEach-Object {
-    if ($_ -match '^\s*([^#=]+)=(.*)$') {
-      $n = $matches[1].Trim()
-      $v = $matches[2].Trim().Trim('"')
-      if ($v.Length -gt 0) { Set-Item -Path "Env:$n" -Value $v }
-    }
-  }
-  break
-}
 
 # Match the canonical Notion database schema.
 $env:NOTION_DOMAIN_PROPERTY = 'Domain'
@@ -35,11 +21,11 @@ $env:NOTION_REPO_PROPERTY = 'Repo'
 $env:NOTION_STATUS_PROPERTY = 'Category'
 $env:NOTION_EXPECTED_LEGACY_COUNT = '1'
 
-node scripts/validate-projects-json.mjs
+python scripts/catalog/validate-projects-json.py
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 if (-not $env:NOTION_TOKEN -or -not $env:NOTION_DB_ID) {
-  Write-Error 'projects.json OK. Set NOTION_TOKEN and NOTION_DB_ID in .env.local (see .env.example), then re-run for Notion sync + verify.'
+  Write-Error 'projects.json OK. Inject NOTION_TOKEN and NOTION_DB_ID with op run, then re-run for Notion sync + verify.'
   exit 1
 }
 

@@ -105,7 +105,7 @@ async function main() {
     throw new Error(`DB is missing '${REPO_PROP}' (rich_text or url) column. Add it in Notion first.`);
   }
 
-  const projectsPath = resolve(__dirname, '..', 'projects.json');
+  const projectsPath = resolve(__dirname, '..', '..', 'projects.json');
   const data = JSON.parse(readFileSync(projectsPath, 'utf-8'));
   const projects = [...(data.featured || []), ...(data.notion_sync || [])];
 

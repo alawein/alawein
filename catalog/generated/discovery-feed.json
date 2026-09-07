@@ -2790,7 +2790,7 @@
       "surface": "monorepo",
       "domain": "governance",
       "lifecycle": "active",
-      "visibility": "private",
+      "visibility": "public",
       "theme_family": "midnight",
       "brand_family": "midnight",
       "stack": [

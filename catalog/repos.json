@@ -1980,7 +1980,7 @@
       "local_path": "core/repo-drift",
       "bucket": "core",
       "lane": "platform",
-      "visibility": "private",
+      "visibility": "public",
       "owner": "alawein",
       "maintainer": "alawein-core",
       "docs_owner": "alawein-core",
@@ -2018,7 +2018,12 @@
       "audience": [
         "internal"
       ],
-      "catalog_groups": []
+      "catalog_groups": [],
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-09-06",
+        "notes": "README and history verified at ee5aae71f78fc1849fb724fac24a74c183751e26 on 2026-09-07 UTC (September 6 Pacific); preview-only, not pinned."
+      }
     },
     {
       "name": "Workspace Control",

@@ -310,7 +310,7 @@
       "name": "Repo Drift",
       "about": "Configurable CLI and GitHub Action that validates repository claims and configuration against declared rules.",
       "status": "active",
-      "visibility": "private",
+      "visibility": "public",
       "url": "https://github.com/alawein/repo-drift"
     },
     {

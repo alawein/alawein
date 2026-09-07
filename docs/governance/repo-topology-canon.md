@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-09-06
+last_updated: 2026-09-07
 owner: meshal
 audience: [contributors, agents]
 authority: canonical

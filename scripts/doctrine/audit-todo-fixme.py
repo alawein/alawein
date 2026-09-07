@@ -13,6 +13,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 import tokenize
@@ -60,15 +61,14 @@ def is_excluded(rel_path: Path) -> bool:
 
 def iter_source_files(root: Path) -> list[Path]:
     files: list[Path] = []
-    for path in root.rglob("*"):
-        if not path.is_file():
-            continue
-        if path.suffix not in INCLUDE_SUFFIXES:
-            continue
-        rel = path.relative_to(root)
-        if is_excluded(rel):
-            continue
-        files.append(path)
+    def fail_scan(error: OSError) -> None:
+        raise error
+    for directory, dirs, names in os.walk(root, onerror=fail_scan):
+        dirs[:] = [name for name in dirs if name not in EXCLUDE_DIR_NAMES]
+        for name in names:
+            path = Path(directory) / name
+            if path.suffix in INCLUDE_SUFFIXES and path.is_file():
+                files.append(path)
     return sorted(files)
 
 

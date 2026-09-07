@@ -83,6 +83,18 @@ def test_excludes_vendor_surface(tmp_path):
     assert findings == {}
 
 
+def test_does_not_traverse_excluded_directories(tmp_path, monkeypatch):
+    import os
+    _write(tmp_path, "node_modules/nested/fixture.py", "# TODO: vendor\n")
+    _write(tmp_path, "src/clean.py", "x = 1\n")
+    scandir = os.scandir
+    def guarded_scandir(path):
+        assert "node_modules" not in Path(path).parts
+        return scandir(path)
+    monkeypatch.setattr(os, "scandir", guarded_scandir)
+    assert run_audit(tmp_path) == {}
+
+
 def test_excludes_build_surface(tmp_path):
     _write(tmp_path, "build/bundle.js", "// TODO: build artifact\n")
     findings = run_audit(tmp_path)

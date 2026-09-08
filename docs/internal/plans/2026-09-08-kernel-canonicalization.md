@@ -1,3 +1,11 @@
+---
+type: internal
+source: writing-plans session 2026-09-08
+sla: on-change
+last_updated: 2026-09-08
+audience: [ai-agents, contributors]
+---
+
 # Plan: alawein kernelization and canonicalization
 
 Scope: 46 git repos under `C:\Users\mesha\Desktop\GitHub\alawein` (apps 6, core 11, lab 21, sites 2, work 3, loose 1, _archive 2).

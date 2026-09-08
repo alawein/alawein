@@ -133,6 +133,10 @@ last_updated: 2026-09-08
 - [system-inventory.md](operations/system-inventory.md)
 - [trigger-registry.md](operations/trigger-registry.md)
 
+## research/
+
+- [README.md](research/README.md)
+
 ## style/
 
 - [VOICE.md](style/VOICE.md)

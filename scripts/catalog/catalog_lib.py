@@ -748,6 +748,13 @@ def validate_catalogs(catalogs: dict[str, Any]) -> list[ValidationIssue]:
                     "error", f"Repo '{repo['slug']}' uses unknown domain '{repo.get('domain')}'"
                 )
             )
+        compliance_value = compliance_for_repo(repo)
+        if compliance_value and compliance_value not in set(taxonomy.get("compliance", [])):
+            issues.append(
+                ValidationIssue(
+                    "error", f"Repo '{repo['slug']}' uses unknown compliance '{compliance_value}'"
+                )
+            )
         if "commit_mode" in repo:
             from commit_mode import VALID_MODES
 

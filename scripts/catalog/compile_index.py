@@ -265,6 +265,9 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     readme_archetype = (repo.get("github_custom_properties") or {}).get("readme_archetype")
     if readme_archetype:
         slim["readme_archetype"] = readme_archetype
+    compliance = (repo.get("github_custom_properties") or {}).get("compliance")
+    if compliance:
+        slim["compliance"] = compliance
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -382,6 +385,8 @@ def compile_repo(
     if entry.get("compliance"):
         repo.setdefault("github_custom_properties", {})
         repo["github_custom_properties"]["compliance"] = entry["compliance"]
+    elif "github_custom_properties" in repo:
+        repo["github_custom_properties"].pop("compliance", None)
 
     if repo.get("type") == "archive" and repo.get("status") not in {
         "archived",

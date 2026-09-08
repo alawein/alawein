@@ -1,0 +1,40 @@
+# Reference draft only (Phase 6, step 26). Not yet deployed to any repo and
+# not wired into scripts/kernel/render.py. Depends on catalog/kernel.yaml's
+# workflow_pin_sha, which is still unset -- see kernel-spec.md open items.
+# This is a required check on every `kernel-sync`-labelled PR per ADR 0005:
+# it fails the PR if the diff touches anything outside the path allowlist,
+# or touches src/, tests/, or a dependency manifest, regardless of what the
+# allowlist says.
+name: kernel-sync-guard
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+jobs:
+  guard:
+    if: contains(github.event.pull_request.labels.*.name, 'kernel-sync')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Enforce kernel-sync path allowlist and no-source-change rule
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+          CHANGED=$(git diff --name-only "$BASE" "$HEAD")
+          echo "$CHANGED"
+
+          # Dependency manifests and source/test trees are never allowed in a
+          # kernel-sync diff, regardless of the allowlist.
+          if echo "$CHANGED" | grep -Eq '^(src/|tests/|e2e/|package(-lock)?\.json$|pyproject\.toml$|poetry\.lock$|requirements.*\.txt$)'; then
+            echo "::error::kernel-sync diff touches source, tests, or a dependency manifest"
+            exit 1
+          fi
+
+          # Everything else must match catalog/kernel.yaml's
+          # kernel_sync_path_allowlist (fetched from the hub at pin
+          # ${workflow_pin_sha}; the exact fetch mechanism is decided when
+          # this template moves out of draft).
+          echo "path allowlist check: not yet wired to catalog/kernel.yaml (draft)"

@@ -1,0 +1,49 @@
+# Reference draft only (Phase 6, step 25). Lives in core/alawein (the hub),
+# not in a target repo -- unlike every other file under templates/kernel/,
+# this one is not rendered per-repo. Not deployed. Depends on:
+#   - catalog/kernel.yaml workflow_pin_sha (unset; see kernel-spec.md open
+#     items) -- shipping this with no pin would push an unpinned reference
+#     into every target repo's PR.
+#   - Wave 0 human review of the dry-run diff before the first PR opens
+#     (plan step 28), which this workflow does not automate away.
+#   - A real GitHub App or PAT with contents:write + pull-requests:write on
+#     every target repo; scoping that credential is a decision for whoever
+#     turns this on, not something to default here.
+name: kernel-sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      wave:
+        description: "Wave name from the plan's step 28 order (wave-0, wave-1, ...)"
+        required: true
+      dry_run:
+        description: "true = render and diff only, open no PRs"
+        type: boolean
+        default: true
+
+jobs:
+  render-and-sync:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repo: []  # populated from catalog/repos.json filtered by inputs.wave;
+                  # left empty in this draft since no wave has run yet.
+    steps:
+      - name: Checkout hub
+        uses: actions/checkout@v4
+
+      - name: Render kernel-managed files for ${{ matrix.repo }}
+        run: |
+          cd scripts
+          python -m kernel render --repo "${{ matrix.repo }}" --out "../../${{ matrix.repo }}" --check
+
+      - name: Open or update the kernel-sync PR (skipped while dry_run=true)
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          echo "Not implemented in this draft: checkout the target repo with"
+          echo "write credentials, apply the render (drop --check), commit on"
+          echo "branch chore/kernel-sync-v\${KERNEL_VERSION}, push, and"
+          echo "open/update a PR labelled kernel-sync via gh pr create/edit."
+          exit 1

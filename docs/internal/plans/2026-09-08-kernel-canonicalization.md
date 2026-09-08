@@ -243,3 +243,62 @@ No force-push, no history rewrite, no monorepo consolidation, no deletion of `_a
 
 Retiring the `workspace-batch` drift path (step 15) requires the Phase 3 parity
 evidence to land first. This is sequencing, not an open question.
+
+## Status, 2026-09-08 (implementation session)
+
+Phases 0-5 are implemented, tested, and committed locally (not pushed, no
+PRs opened, nothing merged):
+
+- Phase 0-1 (`core/alawein`, branch `feat/kernel-spec`): kernel-spec.md,
+  ADRs 0003-0007, extended schema + backfilled `profile` on all 47 catalog
+  entries, `catalog/kernel.yaml`, the renderer (`scripts/kernel/`) with 12
+  passing unit tests.
+- Phase 2 (`core/repo-drift`, branch `feat/kernel-detectors`): 5 new
+  opt-in detectors, 31 passing tests, lint clean.
+- Phase 3: parity report at `docs/internal/kernel-parity-2026-09-08.md` --
+  42/43 reachable repos identical between `repo-drift` and `workspace-batch
+  drift`; the 1 gap is `repo-drift` finding *more* (zero regressions).
+- Phase 4 (`core/alawein`): `.kernel/hooks/{pre-commit,commit-msg,pre-push}`
+  templates, root-cause-fixed (no absolute paths), tested against a real
+  Git-for-Windows shell.
+- Phase 5 (`core/workspace-tools`, branch `feat/kernel-worktree-runner`):
+  `workspace-batch worktree {create,list,gc,doctor}` and
+  `workspace-batch hooks install`, 14 new passing tests, full existing suite
+  (260 tests) still green.
+
+Phase 5's `doctor` run against this machine's real `~/worktrees` and
+`~/.codex/worktrees` (read-only; no `--reconcile`) surfaced two corrections
+to this plan's assumptions, now reflected in the code:
+
+- Codex worktrees are flat (`<root>/<slug>`), not nested
+  (`<root>/<repo>/<slug>`) like Kilo's -- confirmed via `git worktree list`
+  against `core/alawein`, which showed two Codex worktrees directly under
+  `~/.codex/worktrees/<slug>`, zero under `~/worktrees/alawein`.
+- Several of the "17 managed worktrees" from the 2026-09-08 occupancy
+  snapshot are not git worktrees at all: `~/worktrees/alawein/*` holds 5
+  directories with `app/`/`node_modules/` content and no `.git`; `git
+  worktree list` in `core/alawein`, `apps/bolts`, and
+  `core/workspace-tools` shows zero linked worktrees for any of them. The
+  worktree registry now distinguishes `unregistered` (real worktrees) from
+  `non_worktree_directories` (everything else) instead of reconciling both
+  the same way.
+
+Phase 6 (`.github/workflows/kernel-sync.yml`,
+`kernel-sync-guard.yml`) exist only as draft reference templates
+(`templates/kernel/_common/kernel-sync.yml.tmpl`,
+`kernel-sync-guard.yml.tmpl` in `core/alawein`), not wired into the
+renderer and not deployed anywhere. This is a deliberate stop, not an
+oversight: turning Phase 6 on means pushing branches and opening PRs across
+up to 46 repos, which needs (a) the `workflow_pin_sha` decision this plan
+already flags as unresolved, and (b) the human review of Wave 0's dry-run
+diff that step 28 itself requires before the first PR. Neither happened in
+this session.
+
+Phase 7 (skills/agent alignment) and Phase 8 (research lane) are not
+started. Phase 7's step 33 (drift report against
+`Desktop\ops-shared-inventory\{agents,workflows,routines}.yaml`) needs a
+real schema comparison between that taxonomy and `catalog/skills.yaml`'s
+domain/role structure -- they are not directly comparable by name, and a
+shallow diff would misreport. Phase 8 needs externally verifiable citations
+per entry (step 37); doing that without live verification would violate
+its own no-forward-dated-citations rule.

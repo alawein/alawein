@@ -379,6 +379,9 @@ def compile_repo(
         repo["domain"] = entry["domain"]
     if entry.get("type"):
         repo["type"] = entry["type"]
+    if entry.get("compliance"):
+        repo.setdefault("github_custom_properties", {})
+        repo["github_custom_properties"]["compliance"] = entry["compliance"]
 
     if repo.get("type") == "archive" and repo.get("status") not in {
         "archived",

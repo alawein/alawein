@@ -1,0 +1,210 @@
+{
+  "/repos/alawein/alawein": {
+    "status": 200,
+    "body": {
+      "full_name": "alawein/alawein",
+      "html_url": "https://github.com/alawein/alawein",
+      "visibility": "public",
+      "private": false,
+      "archived": false,
+      "language": "Python",
+      "description": "Profile README — project catalog, career snapshot, and GitHub presence",
+      "default_branch": "main"
+    }
+  },
+  "/repos/alawein/alawein/commits?sha=main&per_page=1": {
+    "status": 200,
+    "body": [
+      {
+        "commit": {
+          "committer": {
+            "date": "2026-09-07T08:42:07Z"
+          }
+        }
+      }
+    ]
+  },
+  "/repos/alawein/alawein/contributors?per_page=100": {
+    "status": 200,
+    "body": [
+      {
+        "login": "alawein"
+      },
+      {
+        "login": "github-actions[bot]"
+      },
+      {
+        "login": "Copilot"
+      }
+    ]
+  },
+  "/repos/alawein/alawein/stats/contributors": {
+    "status": 202,
+    "body": null
+  },
+  "/repos/alawein/alawein/pulls?state=open&per_page=100": {
+    "status": 200,
+    "body": [
+      {
+        "html_url": "https://github.com/alawein/alawein/pull/311"
+      }
+    ]
+  },
+  "/repos/alawein/alawein/issues?state=open&per_page=100": {
+    "status": 200,
+    "body": [
+      {
+        "html_url": "https://github.com/alawein/alawein/issues/305"
+      },
+      {
+        "html_url": "https://github.com/alawein/alawein/pull/311",
+        "pull_request": {}
+      }
+    ]
+  },
+  "/repos/alawein/alawein/branches/main/protection": {
+    "status": 403,
+    "body": {
+      "message": "Resource not accessible by integration"
+    }
+  },
+  "/repos/alawein/alawein/rules/branches/main": {
+    "status": 200,
+    "body": []
+  },
+  "/repos/alawein/alawein/actions/runs?per_page=10": {
+    "status": 200,
+    "body": {
+      "workflow_runs": [
+        {
+          "name": "CI - Documentation Contract",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Docs Doctrine",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "CodeQL",
+          "status": "in_progress",
+          "conclusion": null
+        }
+      ]
+    }
+  },
+  "/repos/alawein/alawein/actions/workflows?per_page=100": {
+    "status": 200,
+    "body": {
+      "workflows": [
+        {
+          "path": ".github/workflows/ai-review.yml"
+        },
+        {
+          "path": ".github/workflows/ci-node.yml"
+        },
+        {
+          "path": ".github/workflows/ci-python.yml"
+        },
+        {
+          "path": ".github/workflows/ci.yml"
+        },
+        {
+          "path": ".github/workflows/claude-review-backstop.yml"
+        },
+        {
+          "path": ".github/workflows/claude-review.yml"
+        },
+        {
+          "path": ".github/workflows/claude-token-liveness.yml"
+        },
+        {
+          "path": ".github/workflows/codeql.yml"
+        },
+        {
+          "path": ".github/workflows/docs-auto-gen.yml"
+        },
+        {
+          "path": ".github/workflows/docs-doctrine.yml"
+        },
+        {
+          "path": ".github/workflows/docs-validation-managed.yml"
+        },
+        {
+          "path": ".github/workflows/docs-validation.yml"
+        },
+        {
+          "path": ".github/workflows/doctrine-reusable.yml"
+        },
+        {
+          "path": ".github/workflows/github-metadata-sync.yml"
+        },
+        {
+          "path": ".github/workflows/issue-triage.yml"
+        },
+        {
+          "path": ".github/workflows/readme-sync.yml"
+        },
+        {
+          "path": ".github/workflows/secrets-scan.yml"
+        },
+        {
+          "path": ".github/workflows/sync-vercel.yml"
+        },
+        {
+          "path": ".github/workflows/work-taxonomy-audit.yml"
+        },
+        {
+          "path": ".github/workflows/workspace-audit.yml"
+        }
+      ]
+    }
+  },
+  "/repos/alawein/alawein/contents/CODEOWNERS": {
+    "status": 404,
+    "body": {
+      "message": "Not Found"
+    }
+  },
+  "/repos/alawein/alawein/contents/.github/CODEOWNERS": {
+    "status": 200,
+    "body": {
+      "encoding": "base64",
+      "content": "KiBAYWxhd2VpbgoKIyBIaWdoLXNlbnNpdGl2aXR5IHBhdGhzIOKAlCBvd25lciByZXZpZXcgYWx3YXlzIHJlcXVpcmVkCnByb21wdC1raXRzLyAgICAgICAgICAgICAgICAgICBAYWxhd2Vpbgpkb2NzL2dvdmVybmFuY2UvICAgICAgICAgICAgICAgQGFsYXdlaW4KY2xhdWRlLWFnZW50LXBsYXRmb3JtLyAgICAgICAgIEBhbGF3ZWluCmNhdGFsb2cvcmVwb3MuanNvbiAgICAgICAgICAgICBAYWxhd2VpbgouZ2l0aHViL3dvcmtmbG93cy8gICAgICAgICAgICAgQGFsYXdlaW4Kc2NyaXB0cy92YWxpZGF0ZS1kb2N0cmluZS5weSAgIEBhbGF3ZWluCnNjcmlwdHMvZ2l0aHViLWJhc2VsaW5lLWF1ZGl0LnB5IEBhbGF3ZWluCg=="
+    }
+  },
+  "/repos/alawein/alawein/readme": {
+    "status": 200,
+    "body": {
+      "name": "README.md"
+    }
+  },
+  "/repos/alawein/alawein/contents/docs": {
+    "status": 200,
+    "body": [
+      {
+        "name": "README.md"
+      }
+    ]
+  },
+  "/repos/alawein/alawein/contents/.github/dependabot.yml": {
+    "status": 200,
+    "body": {
+      "encoding": "base64",
+      "content": "dmVyc2lvbjogMgo="
+    }
+  },
+  "/repos/alawein/alawein/vulnerability-alerts": {
+    "status": 403,
+    "body": {
+      "message": "Resource not accessible by integration"
+    }
+  },
+  "/repos/alawein/alawein/hooks?per_page=100": {
+    "status": 403,
+    "body": {
+      "message": "Resource not accessible by integration"
+    }
+  }
+}

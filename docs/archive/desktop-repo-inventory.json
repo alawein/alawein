@@ -149,6 +149,13 @@
       "stack": "python, magnetics"
     },
     {
+      "folder": "lab/maios-dashboard",
+      "remote_slug": "alawein/maios-dashboard",
+      "archetype": "monorepo",
+      "tier": "research",
+      "stack": "typescript, nextjs"
+    },
+    {
       "folder": "lab/meatheadphysicist",
       "remote_slug": "alawein/meatheadphysicist",
       "archetype": "research-archive",
@@ -224,6 +231,13 @@
       "archetype": "node-monorepo",
       "tier": "research",
       "stack": "typescript, turborepo, node"
+    },
+    {
+      "folder": "core/ai-ops",
+      "remote_slug": "alawein/ai-ops",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "python, postgresql"
     },
     {
       "folder": "core/alawein",

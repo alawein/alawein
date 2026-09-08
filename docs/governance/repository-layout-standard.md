@@ -17,6 +17,10 @@ related:
 
 # Repository layout standard
 
+> Superseded by [`kernel-spec.md`](./kernel-spec.md) (2026-09-08) as the
+> enforced canonical tree. Retained here as historical archetype detail and
+> background for the profiles the kernel spec now enumerates.
+
 This document defines **layout archetypes**, not a single folder shape for every repository. Pick the archetype that matches the primary deliverable.
 
 ## Shared rules (all archetypes)

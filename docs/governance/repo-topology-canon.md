@@ -9,6 +9,11 @@ authority: canonical
 
 # Repository topology canon
 
+> Structural-layout overlap with this document is superseded by
+> [`kernel-spec.md`](./kernel-spec.md) (2026-09-08). The fleet axes below
+> (`bucket`, `type`, `surface`, `stack`) remain canonical and are the inputs
+> the kernel spec uses to derive each repo's `profile`.
+
 Single readable reference for where repos live on disk, what role they play in the fleet, which code layout fits each shape, and how READMEs should read. Clean Architecture is a mental model, not a folder structure (Paul Iusztin). Boundaries follow what code does: workflows, tools, state, I/O adapters. Layers are optional modules inside a package, not mandatory top-level siblings.
 
 Historical Phase 1 snapshot (superseded, evidence preserved): [`docs/internal/audits/2026-06-29-fleet-topology-readme-audit.md`](../internal/audits/2026-06-29-fleet-topology-readme-audit.md).

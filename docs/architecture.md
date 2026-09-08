@@ -3,7 +3,7 @@ type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
 last-verified: 2026-09-06
-last_updated: 2026-09-07
+last_updated: 2026-09-08
 ---
 
 # Alawein Workspace Architecture
@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-09-07; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-08; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -93,18 +93,18 @@ graph TB
     edfp["edfp\nPhysics-inspired video event detect"]
     loopholelab["loopholelab\nResearch validation surface for adv"]
     maglogic["maglogic\nMagnetic logic gates and device sim"]
-    more_research["… 11 more"]
+    more_research["… 12 more"]
   end
   subgraph tooling["Tooling Repos"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
+    ai_ops["ai-ops\nImplementation repo for the AI Oper"]
     android_coding_phone["android-coding-phone\nPrivate Samsung Galaxy Z Flip resto"]
     dotclaude["dotclaude\nPrivate backup and version control "]
     incore["incore\nCLI and MCP tooling for workspace a"]
     kcompiler["kcompiler\nKnowledge compiler that turns evide"]
     outpost["outpost\nPersonal kit that installs prompts "]
     prompty["prompty\nTurbo monorepo for prompt design, e"]
-    repo_drift["repo-drift\nConfigurable CLI and GitHub Action "]
-    more_tooling["… 2 more"]
+    more_tooling["… 3 more"]
   end
 ```
 

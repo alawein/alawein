@@ -8,11 +8,16 @@ description: Universal policy for how repositories are organized, named, owned, 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-09-06
+last_updated: 2026-09-08
 tags: [repos, governance, naming, ownership, archive, buckets, orgs]
 ---
 
 # Repo Framework
+
+> Structural-layout guidance in this document is superseded by
+> [`kernel-spec.md`](./kernel-spec.md) (2026-09-08). Ownership map, bucket
+> decision tree, archive/promotion procedure, and naming rules below remain
+> canonical and are not superseded.
 
 Status: canonical
 Owner: alawein

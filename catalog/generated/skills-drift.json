@@ -1,0 +1,193 @@
+{
+  "alawein_catalog": {
+    "agent_surface": [
+      "chatgpt-slack",
+      "claude-code",
+      "claude-slack",
+      "codex-slack",
+      "computer-perplexity",
+      "cursor-cloud",
+      "github-slack",
+      "kilo-slack",
+      "notion-ai-slack"
+    ],
+    "external_integration": [
+      "fireflies",
+      "github-mcp",
+      "gmail",
+      "godaddy",
+      "google-calendar",
+      "google-drive",
+      "granola",
+      "notion",
+      "playwright",
+      "railway",
+      "slack-mcp-duplicate",
+      "supermemory",
+      "treg",
+      "vercel"
+    ],
+    "repo_domain": [
+      "backend-api",
+      "data-knowledge",
+      "design-system",
+      "devops-platform",
+      "frontend",
+      "llmops",
+      "ml-research",
+      "mobile-fitness"
+    ],
+    "workflow_bot": [
+      "daily-agenda",
+      "daily-briefing",
+      "friday-weekly-review",
+      "monday-weekly-kickoff",
+      "weekly-content-planner"
+    ]
+  },
+  "diff": {
+    "alawein_only_kinds": [
+      "external_integration",
+      "repo_domain"
+    ],
+    "by_kind": {
+      "agent_surface": {
+        "alawein_only": [
+          "chatgpt-slack",
+          "claude-code",
+          "claude-slack",
+          "codex-slack",
+          "computer-perplexity",
+          "cursor-cloud",
+          "github-slack",
+          "kilo-slack",
+          "notion-ai-slack"
+        ],
+        "grok_only": [
+          "Cleanup",
+          "Clip Bot",
+          "Fleet Ops Auditor",
+          "Handoff Integrator",
+          "Intake",
+          "Policy",
+          "Product Idea Stress Test",
+          "Site Audit",
+          "Video Edit Desk"
+        ],
+        "overlap": []
+      },
+      "workflow_bot": {
+        "alawein_only": [
+          "daily-agenda",
+          "daily-briefing",
+          "friday-weekly-review",
+          "monday-weekly-kickoff",
+          "weekly-content-planner"
+        ],
+        "grok_only": [
+          "agent-os-control-plane",
+          "alfred-monthly-portfolio",
+          "alfred-quarterly",
+          "alfred-weekly-review",
+          "friday-pr-hygiene",
+          "integrator-hide",
+          "integrator-sunset-hide-reminder",
+          "midweek-temp-and-scratch-sweep",
+          "mon-sole-writer-proof",
+          "monday-sole-writer-proof",
+          "morning-brief-auditor",
+          "observation-sep-8-19",
+          "private-pack-publish",
+          "weekday-brief-observation",
+          "weekday-morning-brief",
+          "weekly-desktop-downloads-declutter"
+        ],
+        "overlap": []
+      }
+    },
+    "grok_only_kinds": [
+      "bot_skill"
+    ],
+    "shared_kinds": [
+      "agent_surface",
+      "workflow_bot"
+    ]
+  },
+  "grok_bot_taxonomy": {
+    "agent_surface": [
+      "Cleanup",
+      "Clip Bot",
+      "Fleet Ops Auditor",
+      "Handoff Integrator",
+      "Intake",
+      "Policy",
+      "Product Idea Stress Test",
+      "Site Audit",
+      "Video Edit Desk"
+    ],
+    "bot_skill": [
+      "agent-handoff-status-discipline",
+      "anti-slop-pass",
+      "audit-repair-govern",
+      "build-the-voice-profile",
+      "captions-and-transcript",
+      "clip-captions-and-post-copy",
+      "clip-pack-from-one-recording",
+      "cut-a-clip",
+      "declutter-housekeeping",
+      "draft-for-a-channel",
+      "edit-a-draft",
+      "find-the-clippable-moments",
+      "footage-intake",
+      "forge-ephemeral-worker-plan",
+      "getting-started",
+      "grok-cli-research-pass",
+      "openrouter-expert-panel",
+      "opportunity-screen",
+      "ops-dual-writer-check",
+      "permission-delta-approval",
+      "pist-evidence-investigator",
+      "pist-experiment-designer",
+      "pist-method-codifier",
+      "pist-methodology",
+      "pr-hygiene-digest",
+      "public-share-security-audit",
+      "rewrite-a-draft",
+      "short-clips-from-a-long-video",
+      "site-audit",
+      "transcribe-a-recording"
+    ],
+    "workflow_bot": [
+      "agent-os-control-plane",
+      "alfred-monthly-portfolio",
+      "alfred-quarterly",
+      "alfred-weekly-review",
+      "friday-pr-hygiene",
+      "integrator-hide",
+      "integrator-sunset-hide-reminder",
+      "midweek-temp-and-scratch-sweep",
+      "mon-sole-writer-proof",
+      "monday-sole-writer-proof",
+      "morning-brief-auditor",
+      "observation-sep-8-19",
+      "private-pack-publish",
+      "weekday-brief-observation",
+      "weekday-morning-brief",
+      "weekly-desktop-downloads-declutter"
+    ]
+  },
+  "report_only": true,
+  "schema_version": 1,
+  "sources": {
+    "alawein_catalog": [
+      "C:\\Users\\mesha\\Desktop\\GitHub\\alawein\\core\\alawein\\catalog\\skills.yaml",
+      "C:\\Users\\mesha\\Desktop\\GitHub\\alawein\\core\\alawein\\catalog\\agent-integrations.yaml"
+    ],
+    "grok_bot_taxonomy": [
+      "C:\\Users\\mesha\\Desktop\\ops-shared-inventory\\agents.yaml",
+      "C:\\Users\\mesha\\Desktop\\ops-shared-inventory\\workflows.yaml",
+      "C:\\Users\\mesha\\Desktop\\ops-shared-inventory\\routines.yaml"
+    ]
+  },
+  "writer_boundary": "Report only. Never writes to any Grok Bot profile path (Name, Label, Description, routines, memory)."
+}

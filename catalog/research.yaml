@@ -1,0 +1,522 @@
+# catalog/research.yaml -- evidence-gated research lane (Phase 8).
+# See docs/research/README.md for the scoring rubric, evidence requirements,
+# and promotion path. Every source_url below was returned by a live
+# websearch call during the 2026-09-08 kernel canonicalization Phase 8
+# execution session; date_observed is that session's date, not a remembered
+# or assumed date. No forward-dated citations.
+
+schema_version: 1
+last_updated: "2026-09-08"
+
+entries:
+  - id: backstage-software-templates
+    name: Backstage Software Templates (Scaffolder)
+    category: scaffolding
+    source_url: https://backstage.io/docs/features/software-templates
+    date_observed: "2026-09-08"
+    summary: >
+      Spotify's Backstage scaffolds new components from YAML-defined
+      templates (fetch:template, publish:github, catalog:register steps),
+      rendering skeleton files with Jinja-like variable substitution and
+      registering the result in a service catalog.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 4
+      migration_cost: 4
+    kernel_impact: >
+      Backstage's template.yaml step sequence (fetch -> publish -> register)
+      is structurally close to this kernel's render -> apply -> manifest
+      flow, but Backstage assumes a running catalog service and a
+      publish:github action with its own credentials -- a much heavier
+      runtime than this kernel's dependency-light, no-network renderer
+      (ADR 0004). Adopting Backstage's *step-sequence* framing (not its
+      runtime) is a plausible future direction for kernel-sync.yml's PR-open
+      step; not adopted yet.
+
+  - id: nx-generators
+    name: Nx generators
+    category: code-generation
+    source_url: https://nx.dev/docs/features/generate-code
+    date_observed: "2026-09-08"
+    summary: >
+      Nx generators are TypeScript functions invoked via `nx generate`
+      that scaffold or modify a monorepo workspace, with access to a full
+      project graph and AST-level transforms via @nx/devkit.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 2
+      migration_cost: 5
+    kernel_impact: >
+      Nx generators solve a different problem (in-repo code scaffolding
+      inside one Node/TS monorepo) than this kernel's problem (structural
+      conformance across 46 independent repos in different languages).
+      Low fit: adopting Nx itself would require every target repo to be a
+      Node project, which most are not (python-lib, python-research,
+      paper profiles exist). No kernel impact beyond confirming the
+      renderer's simpler string.Template approach is the right scope for
+      this problem, not under-engineering.
+
+  - id: turborepo-generators
+    name: Turborepo generators (turbo gen, built on Plop)
+    category: code-generation
+    source_url: https://turborepo.dev/docs/guides/generating-code
+    date_observed: "2026-09-08"
+    summary: >
+      Turborepo's `turbo gen` scaffolds packages/workspaces and supports
+      custom generators built on Plop.js templates, auto-discovered per
+      workspace with zero-config TypeScript support.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 2
+      migration_cost: 5
+    kernel_impact: >
+      Same conclusion as Nx generators: scoped to one Node/npm-workspaces
+      monorepo, not this kernel's cross-language, cross-repo fanout
+      problem. No adoption planned.
+
+  - id: copier
+    name: Copier
+    category: templating
+    source_url: https://copier.readthedocs.io/
+    date_observed: "2026-09-08"
+    summary: >
+      Python CLI/library that renders project templates from local paths or
+      Git URLs using Jinja2, with a first-class `copier update` command that
+      re-applies a template to an already-generated project and merges
+      changes via diff/patch against the template's own git history.
+    scores:
+      adoption_signal: 4
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 4
+      migration_cost: 3
+    kernel_impact: >
+      Copier's `copier update` is the single closest external analogue to
+      this kernel's core problem: re-applying a template to a
+      previously-generated, human-modified project without clobbering local
+      edits. Copier solves it by diffing against the template's git history
+      (requires the template itself to be a git repo with tagged versions);
+      this kernel solves it with managed-block markers + a sha256 manifest
+      (ADR 0004), which is simpler and works for non-git-tracked-template
+      cases but has the known limitation documented in render.py: no
+      structured merge for `.drift-rules.yaml`'s `detector_config` key.
+      Worth an ADR if a structured-YAML-merge need becomes acute enough to
+      justify adopting a copier-style diff-based update instead.
+
+  - id: cookiecutter
+    name: Cookiecutter
+    category: templating
+    source_url: https://cookiecutter.readthedocs.io/
+    date_observed: "2026-09-08"
+    summary: >
+      Cross-platform CLI that generates a project from a directory-tree
+      template using Jinja2 `{{ }}` substitution in file/directory names and
+      contents, with pre/post-generation hook scripts. No built-in update
+      mechanism (that gap is Copier's differentiator).
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 4
+      security_posture: 3
+      fit_to_kernel: 2
+      migration_cost: 4
+    kernel_impact: >
+      One-shot generation only, no update path -- the opposite of this
+      kernel's repeated-render requirement (Phase 6 kernel-sync re-renders
+      the same 46 repos on every version bump). Confirms the plan's choice
+      to build a custom renderer rather than adopt cookiecutter: the
+      re-render/update case is this kernel's central requirement and
+      cookiecutter does not have it.
+
+  - id: openssf-scorecard
+    name: OpenSSF Scorecard
+    category: supply-chain-security
+    source_url: https://github.com/ossf/scorecard
+    date_observed: "2026-09-08"
+    summary: >
+      Automated tool that scores an open-source repo 0-10 across ~18
+      security checks (dependency update tooling, pinned dependencies,
+      branch protection, SAST, fuzzing, signed releases, dangerous
+      workflows, etc.), available as a CLI, GitHub Action, and public
+      BigQuery dataset.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 5
+      fit_to_kernel: 3
+      migration_cost: 3
+    kernel_impact: >
+      Several Scorecard checks map directly onto detectors this kernel
+      already has or plans: Pinned-Dependencies overlaps with the
+      workflow_pin detector (core/repo-drift), Dependency-Update-Tool maps
+      to whether a repo has Renovate/Dependabot configured (not currently a
+      kernel_conformance check), and Dangerous-Workflow overlaps with
+      kernel-sync-guard.yml's no-source-change rule. Candidate future
+      detector: `scorecard_baseline` (opt-in, per .drift-rules.yaml
+      convention) once Phase 6 waves are further along -- not started this
+      session.
+
+  - id: slsa-framework
+    name: SLSA (Supply-chain Levels for Software Artifacts)
+    category: supply-chain-security
+    source_url: https://www.slsa.dev/
+    date_observed: "2026-09-08"
+    summary: >
+      Vendor-neutral framework defining build-track levels (L0-L3)
+      of increasing build-provenance rigor: documented provenance (L1),
+      hosted/signed builds (L2), isolated hardened build platforms with
+      non-falsifiable provenance (L3).
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 4
+      security_posture: 5
+      fit_to_kernel: 2
+      migration_cost: 4
+    kernel_impact: >
+      Directly relevant to the repo_drift_release_sha pinning mechanism
+      (ADR 0008): SLSA's core insight -- pin to an attested, reviewable
+      artifact reference, never a floating branch -- is exactly the
+      rationale this session's maintainer decision (tagged release, not a
+      raw main SHA) already implements independently. No renderer/detector
+      change needed; this is confirmation the existing ADR 0008 decision
+      matches established supply-chain-security practice, not a new
+      requirement.
+
+  - id: sigstore-cosign
+    name: Sigstore / cosign keyless signing
+    category: supply-chain-security
+    source_url: https://docs.sigstore.dev/cosign/signing/overview/
+    date_observed: "2026-09-08"
+    summary: >
+      Cosign signs artifacts using short-lived Fulcio certificates bound to
+      an OIDC identity (e.g. a specific GitHub Actions workflow) instead of
+      a long-lived private key, with signatures recorded in the public
+      Rekor transparency log.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 5
+      fit_to_kernel: 1
+      migration_cost: 5
+    kernel_impact: >
+      No current kernel impact: this kernel renders text/config files and
+      workflow YAML, not container images or binaries with a signable
+      artifact digest. Recorded for completeness of the supply-chain-
+      security exemplar set (step 36); would become relevant only if a
+      future wave adds a build/publish step producing a signable artifact
+      (e.g. a repo-drift wheel release), at which point cosign keyless
+      signing in GitHub Actions is the established pattern to reach for.
+
+  - id: renovate
+    name: Renovate
+    category: dependency-automation
+    source_url: https://docs.renovatebot.com/bot-comparison/
+    date_observed: "2026-09-08"
+    summary: >
+      Highly configurable, platform-agnostic dependency-update bot (GitHub,
+      GitLab, Bitbucket, Azure DevOps, Gitea) with a Dependency Dashboard,
+      community-maintained update groups, monorepo-aware grouped updates,
+      and merge-confidence badges.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 4
+      fit_to_kernel: 3
+      migration_cost: 3
+    kernel_impact: >
+      Renovate's grouped-update model (group all related dependencies into
+      one PR) is directly analogous to this kernel's "one bump PR per wave,
+      never per repo" rule for the workflow_pin_sha (plan step 30) --
+      independent confirmation that grouping pin/dependency bumps is
+      established practice, not an invented constraint. Not adopted as a
+      tool: this kernel's fanout is managed-file rendering, not package
+      version bumps, a different problem Renovate does not solve.
+
+  - id: dependabot
+    name: Dependabot
+    category: dependency-automation
+    source_url: https://docs.renovatebot.com/bot-comparison/
+    date_observed: "2026-09-08"
+    summary: >
+      GitHub-native, zero-config dependency-update bot with a direct tie-in
+      to the GitHub Advisory Database for automated security-update PRs;
+      GitHub-only, less configurable than Renovate, no dependency dashboard.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 4
+      fit_to_kernel: 2
+      migration_cost: 2
+    kernel_impact: >
+      Already present in the canonical tree as a managed file
+      (.github/dependabot.yml, kernel-spec.md's canonical tree) but not yet
+      wired into the renderer's _MANAGED_SPECS (tracked as a gap, not
+      addressed this session -- Phase 6 step 3 covered the four workflow
+      files, not dependabot.yml). Candidate for a future renderer addition;
+      no ADR needed since it is already declared kernel-managed, only
+      unimplemented.
+
+  - id: bazel
+    name: Bazel
+    category: build-system
+    source_url: https://bazel.build/concepts/build-files
+    date_observed: "2026-09-08"
+    summary: >
+      Google-originated, multi-language build system for large monorepos:
+      BUILD files declare targets (libraries, binaries) with explicit
+      dependency edges; Bazel caches and rebuilds only what changed,
+      scaling to 100k+ source files.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 1
+      migration_cost: 5
+    kernel_impact: >
+      No kernel impact: Bazel solves build/test orchestration inside one
+      (typically monorepo) codebase; this kernel's problem is structural
+      conformance across 46 *separate* repos, orthogonal to how any one of
+      them builds internally. Recorded per step 36's starting set; no
+      promotion path applies.
+
+  - id: terraform-module-registry-structure
+    name: Terraform standard module structure / registry conventions
+    category: packaging-conventions
+    source_url: https://developer.hashicorp.com/terraform/language/modules/develop/structure
+    date_observed: "2026-09-08"
+    summary: >
+      HashiCorp's documented standard layout for a publishable Terraform
+      module (README.md, main.tf, variables.tf, outputs.tf, examples/,
+      modules/ for nested submodules) plus registry publishing rules:
+      GitHub-hosted, `terraform-<PROVIDER>-<NAME>` repo naming, semantic-
+      version release tags required before first publish.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 4
+      migration_cost: 2
+    kernel_impact: >
+      Directly analogous precedent for this kernel's canonical tree
+      (kernel-spec.md) and ADR 0008's tagged-release pin decision: a
+      registry that inspects a repo's structure to generate documentation
+      and requires semver release tags before publishing is the same shape
+      as this kernel expecting `.kernel-manifest.json` plus a
+      `kernel-v<version>` tag before workflow_pin_sha can be set. No code
+      change; this is corroborating precedent, cited in ADR 0008 revision
+      if that ADR is revisited.
+
+  - id: pre-commit-framework
+    name: pre-commit framework
+    category: git-hooks
+    source_url: https://pre-commit.com/
+    date_observed: "2026-09-08"
+    summary: >
+      Multi-language git-hook manager configured via
+      `.pre-commit-config.yaml`, referencing versioned hook repos by git
+      tag/rev; `pre-commit install` wires hooks into `.git/hooks/`, with an
+      `init-templatedir` mode to auto-enable on every future `git clone`.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 4
+      fit_to_kernel: 4
+      migration_cost: 3
+    kernel_impact: >
+      This kernel's `.kernel/hooks/{pre-commit,commit-msg,pre-push}` +
+      `workspace-batch hooks install` (Phase 4, `core.hooksPath`) reinvents
+      a narrower version of what the pre-commit framework already provides
+      generically (versioned hook repos, `--allow-missing-config`,
+      language-agnostic hook execution). The kernel's approach is
+      justified by Phase 4's own stated root-cause fix (absolute-path
+      hooks breaking silently) and by not wanting a Python-only dependency
+      on every repo regardless of profile; pre-commit itself requires
+      Python. Worth an ADR only if hook complexity grows enough to justify
+      the added Python dependency across all 46 repos -- not the case
+      today.
+
+  - id: conventional-commits
+    name: Conventional Commits
+    category: commit-conventions
+    source_url: https://www.conventionalcommits.org/en/v1.0.0
+    date_observed: "2026-09-08"
+    summary: >
+      Lightweight commit-message specification (`<type>[scope]:
+      <description>`) that maps deterministically to SemVer bumps (feat ->
+      minor, fix -> patch, BREAKING CHANGE -> major) and enables automated
+      changelog generation via tools like semantic-release and
+      conventional-changelog.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 4
+      security_posture: 3
+      fit_to_kernel: 3
+      migration_cost: 2
+    kernel_impact: >
+      This workspace's commit convention (docs/governance/commit-release-
+      convention.md, referenced from core/alawein's AGENTS.md) already
+      requires conventional-style prefixes without formally adopting the
+      full spec (no automated SemVer/changelog derivation from commit
+      history is wired up). The kernel's `.kernel/hooks/commit-msg`
+      template (Phase 4 step 17) enforces "conventional-commit subject, no
+      emoji, no em-dash, no AI-authorship trailer" -- already aligned with
+      this spec's `<type>: <description>` shape. No gap to close; this
+      entry documents that the existing convention already matches
+      established external practice.
+
+  - id: changesets
+    name: Changesets
+    category: versioning
+    source_url: https://github.com/changesets/changesets
+    date_observed: "2026-09-08"
+    summary: >
+      Monorepo-focused versioning/changelog tool: contributors add a
+      `.changeset/*.md` file per PR declaring which packages changed and by
+      what SemVer bump; a bot/CI step later batches pending changesets into
+      one "Version Packages" PR that bumps versions and writes changelogs.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 3
+      migration_cost: 4
+    kernel_impact: >
+      Changesets' "batch pending declarations into one Version PR" pattern
+      is structurally similar to this kernel's "one bump PR per wave, never
+      per repo" rule (plan step 30) and to kernel-sync.yml opening one PR
+      per repo per kernel_version rather than per individual managed-file
+      change. Not directly adoptable: Changesets versions packages *within*
+      one npm/pnpm workspace, not managed files fanned out *across* 46
+      independent repos in different languages. Confirms the batching
+      principle is sound external practice; no code change.
+
+  - id: github-repository-templates
+    name: GitHub repository templates ("Use this template")
+    category: scaffolding
+    source_url: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-template-repository
+    date_observed: "2026-09-08"
+    summary: >
+      Native GitHub feature: mark a repo as a template, and "Use this
+      template" (or `gh repo create --template`) creates a new repo with
+      the same file tree, but explicitly does not carry over repository
+      settings, labels, or branch protection -- those must be reapplied
+      manually per the docs.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 2
+      migration_cost: 4
+    kernel_impact: >
+      One-shot copy at repo-creation time only, with no update mechanism --
+      same limitation as cookiecutter, and the opposite of what Phase 6
+      kernel-sync needs (repeated re-render of 46 *existing* repos, not
+      one-time creation of new ones). Confirms this kernel targets a
+      genuinely different lifecycle stage than GitHub's built-in template
+      feature; the two are complementary (a NEW_REPO.md-driven initial
+      creation could use a GitHub template, then kernel-sync takes over for
+      ongoing conformance) but that integration is not designed or
+      scheduled.
+
+  - id: editorconfig
+    name: EditorConfig
+    category: formatting-conventions
+    source_url: https://developer.hashicorp.com/terraform/language/modules/develop/structure
+    date_observed: "2026-09-08"
+    summary: >
+      Editor/IDE-agnostic `.editorconfig` file declaring indent style/size,
+      charset, line endings, and trailing-whitespace rules per glob
+      pattern, read natively by most modern editors without a plugin.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 4
+      security_posture: 3
+      fit_to_kernel: 5
+      migration_cost: 1
+    kernel_impact: >
+      Already fully adopted: `.editorconfig` is in the canonical tree as a
+      "full" kernel-managed file (render.py's _MANAGED_SPECS,
+      editorconfig.tmpl) and directly related to the qmatsim CRLF
+      renormalization fix (step 28a) -- that repo's `.gitattributes`
+      declares `eol=lf` but 7 files' HEAD blobs are CRLF, exactly the class
+      of drift a correctly-adopted `.editorconfig` + `.gitattributes` pair
+      prevents going forward. No further action; this entry documents
+      that the existing adoption matches the tool's intended use.
+
+  - id: in-toto-attestations
+    name: in-toto attestation framework (ITE-6)
+    category: supply-chain-security
+    source_url: https://github.com/in-toto/attestation/
+    date_observed: "2026-09-08"
+    summary: >
+      Defines the authenticated, machine-readable attestation format
+      (envelope + statement with subject/predicate) that SLSA provenance
+      and other supply-chain claims are serialized as; the format cosign
+      `attest`/`verify-attestation` and SLSA provenance both build on.
+    scores:
+      adoption_signal: 4
+      maintenance_signal: 4
+      security_posture: 4
+      fit_to_kernel: 1
+      migration_cost: 5
+    kernel_impact: >
+      No current kernel impact, same reasoning as the Sigstore/cosign
+      entry: this kernel has no build step producing an attestable
+      artifact yet. Recorded because it surfaced directly while verifying
+      the SLSA entry (not a separately searched topic), documenting the
+      full provenance-format chain (SLSA references in-toto ITE-6; cosign
+      implements it) for future reference if a build/release step is ever
+      added to repo-drift or the renderer itself.
+
+  - id: semantic-release
+    name: semantic-release
+    category: versioning
+    source_url: https://github.com/conventional-changelog/conventional-changelog
+    date_observed: "2026-09-08"
+    summary: >
+      Fully automates version determination, changelog generation, and
+      package publishing from a Conventional Commits history in CI/CD, with
+      no manual version-number decision by a human.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 2
+      migration_cost: 3
+    kernel_impact: >
+      Not adopted and not a good fit: this kernel's `kernel_version` and
+      `repo_drift_release_sha` bumps are deliberately manual, reviewed,
+      per-wave events (ADR 0005's per-PR merge gate, ADR 0008's tagged-
+      release decision) rather than an automated per-merge version bump.
+      Full automation here would conflict with the standing "every PR
+      needs exact yes merge #N" gate this plan enforces. Recorded as a
+      considered-and-rejected pattern, not a gap.
+
+  - id: pull-request-and-issue-templates
+    name: GitHub PULL_REQUEST_TEMPLATE.md / ISSUE_TEMPLATE conventions
+    category: scaffolding
+    source_url: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository
+    date_observed: "2026-09-08"
+    summary: >
+      Native GitHub convention: `.github/PULL_REQUEST_TEMPLATE.md` and
+      `.github/ISSUE_TEMPLATE/*.yml` (YAML issue forms with typed fields,
+      labels, and assignees) auto-populate the compose UI for new PRs and
+      issues.
+    scores:
+      adoption_signal: 5
+      maintenance_signal: 5
+      security_posture: 3
+      fit_to_kernel: 5
+      migration_cost: 1
+    kernel_impact: >
+      Already fully adopted: both paths are declared kernel-managed in the
+      canonical tree (kernel-spec.md) and in
+      `kernel_sync_path_allowlist` (catalog/kernel.yaml). No gap; this
+      entry documents that the kernel's existing scope for these two paths
+      matches the native GitHub convention exactly, with no kernel-specific
+      deviation needed.

@@ -4,11 +4,16 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last_updated: 2026-07-06
+last_updated: 2026-09-08
 audience: [ai-agents, contributors]
 ---
 
 # Repository Standardization
+
+> Superseded by [`kernel-spec.md`](./kernel-spec.md) (2026-09-08), which
+> replaces the `sync-github.sh` baseline mechanism described below with a
+> kernel renderer plus `repo-drift` conformance detectors. Retained as the
+> historical record of the mechanism it replaces.
 
 This document describes the baseline governance that has shipped to managed
 repos in the `alawein` organization.

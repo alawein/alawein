@@ -1,0 +1,34 @@
+flowchart LR
+    alawein_alawein["alawein/alawein"]
+    alawein_alawein_ci["CI checks: pending"]
+    alawein_alawein --> alawein_alawein_ci
+    alawein_alawein_wf__github_workflows_ai_review_yml["ai-review.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_ai_review_yml
+    alawein_alawein_wf__github_workflows_ci_node_yml["ci-node.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_ci_node_yml
+    alawein_alawein_wf__github_workflows_ci_python_yml["ci-python.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_ci_python_yml
+    alawein_alawein_wf__github_workflows_ci_yml["ci.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_ci_yml
+    alawein_alawein_wf__github_workflows_claude_review_backstop_yml["claude-review-backstop.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_claude_review_backstop_yml
+    alawein_alawein_wf__github_workflows_claude_review_yml["claude-review.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_claude_review_yml
+    alawein_alawein_wf__github_workflows_claude_token_liveness_yml["claude-token-liveness.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_claude_token_liveness_yml
+    alawein_alawein_wf__github_workflows_codeql_yml["codeql.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_codeql_yml
+    alawein_alawein_wf__github_workflows_docs_auto_gen_yml["docs-auto-gen.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_docs_auto_gen_yml
+    alawein_alawein_wf__github_workflows_docs_doctrine_yml["docs-doctrine.yml"]
+    alawein_alawein_ci --> alawein_alawein_wf__github_workflows_docs_doctrine_yml
+    alawein_alawein_deploy["Deployment and infrastructure: github-metadata-sync.yml, readme-sync.yml, sync-vercel.yml"]
+    alawein_alawein_ci --> alawein_alawein_deploy
+    svc_Anthropic_Claude(["Anthropic Claude"])
+    alawein_alawein_deploy --> svc_Anthropic_Claude
+    svc_GitHub_code_scanning(["GitHub code scanning"])
+    alawein_alawein_deploy --> svc_GitHub_code_scanning
+    svc_Vercel(["Vercel"])
+    alawein_alawein_deploy --> svc_Vercel
+    alawein_alawein_notify["Notifications: GitHub email"]
+    alawein_alawein_ci --> alawein_alawein_notify

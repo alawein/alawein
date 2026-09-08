@@ -1,0 +1,241 @@
+{
+  "schema": "tools/repo-audit/schema.json",
+  "generated_at": "2026-09-07T09:00:00+00:00",
+  "scope": "repos:alawein/alawein",
+  "states": [
+    "pass",
+    "fail",
+    "pending",
+    "unknown",
+    "unavailable"
+  ],
+  "repository_count": 1,
+  "repositories": [
+    {
+      "repo": "alawein/alawein",
+      "url": "https://github.com/alawein/alawein",
+      "visibility": "public",
+      "archived": false,
+      "primary_language": "Python",
+      "description": "Profile README \u2014 project catalog, career snapshot, and GitHub presence",
+      "default_branch": "main",
+      "collected_at": "2026-09-07T09:00:00+00:00",
+      "last_commit_date": "2026-09-07T08:42:07Z",
+      "contributors": [
+        "alawein",
+        "github-actions[bot]",
+        "Copilot"
+      ],
+      "contributors_state": "pass",
+      "contributor_activity": [],
+      "contributor_activity_state": "pending",
+      "open_pull_requests": 1,
+      "open_pull_request_urls": [
+        "https://github.com/alawein/alawein/pull/311"
+      ],
+      "open_issues": 1,
+      "open_issue_urls": [
+        "https://github.com/alawein/alawein/issues/305"
+      ],
+      "branch_protection_state": "unavailable",
+      "required_status_checks": [],
+      "required_status_checks_state": "unavailable",
+      "ci_state": "pending",
+      "recent_workflow_runs": [
+        "CI - Documentation Contract:success",
+        "Docs Doctrine:success",
+        "CodeQL:in_progress"
+      ],
+      "workflows": [
+        ".github/workflows/ai-review.yml",
+        ".github/workflows/ci-node.yml",
+        ".github/workflows/ci-python.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/claude-review-backstop.yml",
+        ".github/workflows/claude-review.yml",
+        ".github/workflows/claude-token-liveness.yml",
+        ".github/workflows/codeql.yml",
+        ".github/workflows/docs-auto-gen.yml",
+        ".github/workflows/docs-doctrine.yml",
+        ".github/workflows/docs-validation-managed.yml",
+        ".github/workflows/docs-validation.yml",
+        ".github/workflows/doctrine-reusable.yml",
+        ".github/workflows/github-metadata-sync.yml",
+        ".github/workflows/issue-triage.yml",
+        ".github/workflows/readme-sync.yml",
+        ".github/workflows/secrets-scan.yml",
+        ".github/workflows/sync-vercel.yml",
+        ".github/workflows/work-taxonomy-audit.yml",
+        ".github/workflows/workspace-audit.yml"
+      ],
+      "workflows_state": "pass",
+      "codeowners_state": "pass",
+      "codeowners_path": ".github/CODEOWNERS",
+      "owner_dri": "@alawein",
+      "readme_state": "pass",
+      "docs_state": "pass",
+      "dependabot_config_state": "pass",
+      "dependency_alerts_state": "unavailable",
+      "secret_scanning_state": "unavailable",
+      "webhooks_state": "unavailable",
+      "webhooks": [],
+      "external_services": [
+        "Anthropic Claude",
+        "GitHub code scanning",
+        "Vercel"
+      ],
+      "evidence": [
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/commits?sha=main&per_page=1",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/contributors?per_page=100",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/stats/contributors",
+          "status": 202,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pending"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/branches/main/protection",
+          "status": 403,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "unavailable"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/rules/branches/main",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS",
+          "status": 404,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "fail"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/contents/.github/CODEOWNERS",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/readme",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/contents/docs",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml",
+          "status": 200,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "pass"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/vulnerability-alerts",
+          "status": 403,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "unavailable"
+        },
+        {
+          "endpoint": "https://api.github.com/repos/alawein/alawein/hooks?per_page=100",
+          "status": 403,
+          "collected_at": "2026-09-07T09:00:00+00:00",
+          "state": "unavailable"
+        }
+      ],
+      "evidence_sources": [
+        "https://api.github.com/repos/alawein/alawein",
+        "https://api.github.com/repos/alawein/alawein/commits?sha=main&per_page=1",
+        "https://api.github.com/repos/alawein/alawein/contributors?per_page=100",
+        "https://api.github.com/repos/alawein/alawein/stats/contributors",
+        "https://api.github.com/repos/alawein/alawein/pulls?state=open&per_page=100",
+        "https://api.github.com/repos/alawein/alawein/issues?state=open&per_page=100",
+        "https://api.github.com/repos/alawein/alawein/branches/main/protection",
+        "https://api.github.com/repos/alawein/alawein/rules/branches/main",
+        "https://api.github.com/repos/alawein/alawein/actions/runs?per_page=10",
+        "https://api.github.com/repos/alawein/alawein/actions/workflows?per_page=100",
+        "https://api.github.com/repos/alawein/alawein/contents/CODEOWNERS",
+        "https://api.github.com/repos/alawein/alawein/contents/.github/CODEOWNERS",
+        "https://api.github.com/repos/alawein/alawein/readme",
+        "https://api.github.com/repos/alawein/alawein/contents/docs",
+        "https://api.github.com/repos/alawein/alawein/contents/.github/dependabot.yml",
+        "https://api.github.com/repos/alawein/alawein/vulnerability-alerts",
+        "https://api.github.com/repos/alawein/alawein/hooks?per_page=100"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "repo": "alawein/alawein",
+      "priority": 1,
+      "category": "P1 security or credential exposure",
+      "field": "secret_scanning_state",
+      "finding": "Secret scanning status is unavailable to the audit token; admin read is required.",
+      "evidence": "https://github.com/alawein/alawein",
+      "collected_at": "2026-09-07T09:00:00+00:00"
+    },
+    {
+      "repo": "alawein/alawein",
+      "priority": 3,
+      "category": "P3 unsafe repository protections or merge controls",
+      "field": "branch_protection_state",
+      "finding": "Branch protection is unavailable to the audit token; admin read is required.",
+      "evidence": "https://github.com/alawein/alawein",
+      "collected_at": "2026-09-07T09:00:00+00:00"
+    },
+    {
+      "repo": "alawein/alawein",
+      "priority": 4,
+      "category": "P4 reliability and deployment risk",
+      "field": "integrations",
+      "finding": "Webhook inventory is unavailable to the audit token.",
+      "evidence": "https://github.com/alawein/alawein",
+      "collected_at": "2026-09-07T09:00:00+00:00"
+    }
+  ]
+}

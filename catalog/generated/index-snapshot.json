@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-27",
-  "count": 45,
+  "count": 47,
   "repos": [
     {
       "slug": "helios",
@@ -114,6 +114,16 @@
       "url": "https://github.com/alawein/maglogic"
     },
     {
+      "slug": "maios-dashboard",
+      "lane": "lab",
+      "bucket": "lab",
+      "name": "maios-dashboard",
+      "about": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://maios-dashboard.vercel.app"
+    },
+    {
       "slug": "meatheadphysicist",
       "lane": "lab",
       "bucket": "lab",
@@ -222,6 +232,16 @@
       "status": "active",
       "visibility": "private",
       "url": "https://github.com/alawein/veyra"
+    },
+    {
+      "slug": "ai-ops",
+      "lane": "platform",
+      "bucket": "core",
+      "name": "ai-ops",
+      "about": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/ai-ops"
     },
     {
       "slug": "alawein",

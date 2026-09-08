@@ -408,3 +408,88 @@ maintainer's explicit confirmation, or that auto-merge gets enabled by
 default. Those are standing repository and workspace policy
 (`docs/governance/merge-policy.md`, this workspace's `AGENTS.md`), not
 plan-specific caution this document can waive.
+
+## Status, 2026-09-08 (Phase 6-8 execution session)
+
+Steps 1-3 and 9-10 of the Phase 6-8 runbook are complete. Steps 4-8 landed
+partially: real work exists and is either merged, open for review, or
+explicitly blocked on a maintainer action this session cannot take on its
+own authority. No PR was merged without the maintainer's explicit
+`yes merge #N`; no PR was self-approved past the code-owner review gate.
+
+**Done and merged:**
+
+- Step 1 (occupancy re-check): confirmed `feat/kernel-spec`,
+  `feat/kernel-detectors`, `feat/kernel-worktree-runner` all intact with
+  their prior-session commits; `core/alawein` still has 2 active Codex
+  worktrees (self-sync correctly deferred).
+- Checkpoint 1 / step 2 (`workflow_pin_sha` decision): resolved by the
+  maintainer -- targets a tagged hub release, not a raw `main` SHA. Recorded
+  in ADR 0008 and `catalog/kernel.yaml`.
+- Step 4 (repo-drift release): `alawein/repo-drift` PR #5
+  (`feat/kernel-detectors`) and PR #6 (`chore/release-0.2.0`) both merged
+  to `main` with the maintainer's explicit `yes merge #5` / `yes merge #6`.
+  Tag `v0.2.0` cut and pushed at `229a31b7cd8d501f270e5f8793270ee9ffb0f04b`;
+  `catalog/kernel.yaml.repo_drift_release_sha` set to that commit.
+
+**Done, PR open, awaiting maintainer review approval (not blocked on any
+checkpoint -- blocked on `core/alawein` branch protection's code-owner
+review requirement, which this session cannot satisfy on its own):**
+
+- Step 3 (workflow templates wired into the renderer): `ci.yml`,
+  `codeql.yml`, `docs-doctrine.yml`, `drift.yml`, `kernel-sync-guard.yml`
+  templates promoted out of draft and wired into `render.py`'s managed set,
+  gated on `workflow_pin_ready` / `drift_pin_ready` so nothing renders an
+  unpinned reference. 12 new unit tests (idempotency, marker preservation,
+  manifest stability, pin-gating).
+- Step 5 (kernel-sync fanout, for real): `.github/workflows/kernel-sync.yml`
+  added to the hub (workflow_dispatch, manual occupancy-checked repo list
+  per checkpoint 4, `dry_run: true` default); `kernel-sync-guard.yml`
+  promoted to real path-allowlist enforcement, fetched live from the hub at
+  the pinned ref.
+- Step 9 / Phase 7 (skills/agent-integrations drift): real comparison built
+  (`scripts/kernel/skills_drift.py`), reviewed mapping table
+  (`docs/internal/kernel-skills-drift-mapping-2026-09-08.md`), report
+  written to `catalog/generated/skills-drift.json`. Result: zero overlap in
+  either shared kind (`agent_surface`, `workflow_bot`) between this
+  catalog and Grok Bot's taxonomy -- expected given the mapping, not a
+  defect. Report-only; no write to any Grok Bot profile path.
+- Step 10 / Phase 8 (research lane): `catalog/research.yaml` (20 entries)
+  and `docs/research/README.md` created. Every entry's `source_url` and
+  `date_observed` reflect a live `websearch` fetch performed during this
+  session (2026-09-08); no forward-dated or remembered citations.
+
+All of the above (steps 2-3, 5, 9-10) are one PR: `alawein/alawein` #240
+(`feat/kernel-spec` -> `main`). Every required status check passes
+(`validate-contract`, `test-scripts`, `lint-managed-markdown`,
+`GitHub Baseline Audit`, `Gitleaks`). `reviewDecision` is
+`REVIEW_REQUIRED` -- the repo's branch protection requires one approving
+code-owner review before merge, which is a separate gate from the
+maintainer's verbal per-PR "yes merge #N" and needs the maintainer to
+approve on `github.com/alawein/alawein/pull/240` directly. Not merged
+pending that approval.
+
+**Intentionally not started -- blocked on checkpoint 2 and on
+`core/alawein` PR #240 merging first (Wave 0's dry-run needs the merged
+renderer/workflow code to exist on `main` before it can run for real):**
+
+- Checkpoint 2 (Wave 0 dry-run review) and step 7 (waves 1-4, including
+  28a's `lab/qmatsim` CRLF fix): not started. Sequencing dependency, not a
+  decision left unmade.
+- Step 8 (flip `repo-drift` to blocking, drop the `workspace-batch` drift
+  step): depends on "Wave 1 reports green on `main`," which cannot happen
+  before Wave 1 runs. Not started.
+
+**Additional gap surfaced this session, not silently glossed over:**
+`kernel-sync.yml`'s real PR-opening path needs a `KERNEL_SYNC_TOKEN`
+repository secret (fine-grained PAT or GitHub App token) with
+`contents:write` + `pull-requests:write` on every target repo. That secret
+does not exist yet; creating and scoping it is a maintainer decision this
+session did not make on its own. Until it exists, only `dry_run: true`
+runs of `kernel-sync.yml` will succeed.
+
+**Non-goals maintained:** no force-push, no history rewrite, no commits to
+`main` in any repo, no changes to Grok Bot profiles, no destructive git
+operation run without a prior explicit confirmation (occupancy checks,
+branch pushes, tag pushes, and PR merges were each confirmed before
+execution).

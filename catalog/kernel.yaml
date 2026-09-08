@@ -55,6 +55,7 @@ kernel_sync_path_allowlist:
 # Phase 6 auto-merge is exercised on the Wave 0 pilots.
 auto_merge_enabled: false
 
-# repo-drift release SHA pinned by catalog/kernel.yaml once Phase 2 step 11
-# cuts a release. Not yet set.
-repo_drift_release_sha: null
+# repo-drift release SHA pinned by catalog/kernel.yaml (Phase 2 step 11 /
+# Phase 6-8 execution plan step 4). alawein/repo-drift tag v0.2.0, merged via
+# PR #5 (feat/kernel-detectors) and PR #6 (chore/release-0.2.0), 2026-09-08.
+repo_drift_release_sha: "229a31b7cd8d501f270e5f8793270ee9ffb0f04b"

@@ -1,0 +1,58 @@
+schemaVersion: "1.0.0"
+lastVerified: "2026-09-08"
+
+# Kernel canonicalization state. See docs/governance/kernel-spec.md and
+# docs/internal/plans/2026-09-08-kernel-canonicalization.md.
+
+kernel_version: "0.1.0"
+
+# Single pin SHA for every reusable workflow `uses:` reference across the
+# fleet (drift currently spans at least 6 SHAs: ed5ed61, 6cddc4b, 9779fa3,
+# 1256254, 430c345, 67c8b3e -- see kernel-spec.md "Current-state facts").
+# Not yet set: choosing the canonical SHA requires deciding whether the pin
+# targets a tagged hub release or a specific main commit, which is a
+# fleet-wide CI-breaking choice if wrong. Do not fill this in by guessing;
+# resolve via Phase 2 step 11 (repo-drift release) and an explicit decision,
+# then flip kernel-sync and workflow_pin enforcement on.
+workflow_pin_sha: null
+
+# Path allowlist for the kernel-sync PR class (ADR 0005). A kernel-sync PR
+# whose diff stays entirely within these paths, and does not touch src/,
+# tests/, or dependency manifests, is eligible for auto-merge once the guard
+# and required checks pass.
+kernel_sync_path_allowlist:
+  - "README.md"
+  - "AGENTS.md"
+  - "SECURITY.md"
+  - "LICENSE"
+  - "CHANGELOG.md"
+  - "service-metadata.yaml"
+  - ".drift-rules.yaml"
+  - ".editorconfig"
+  - ".gitattributes"
+  - ".gitignore"
+  - ".kernel/"
+  - ".kernel-manifest.json"
+  - ".github/workflows/ci.yml"
+  - ".github/workflows/codeql.yml"
+  - ".github/workflows/docs-doctrine.yml"
+  - ".github/workflows/drift.yml"
+  - ".github/CODEOWNERS"
+  - ".github/dependabot.yml"
+  - ".github/PULL_REQUEST_TEMPLATE.md"
+  - ".github/ISSUE_TEMPLATE/"
+  - ".kilo/"
+  - "docs/README.md"
+  - "docs/architecture/"
+  - "docs/adr/"
+  - "docs/operations/"
+  - "docs/internal/"
+
+# Kill switch: when true, kernel-sync auto-merge is disabled fleet-wide
+# regardless of guard/check results. Defaults to disabled (safe) until
+# Phase 6 auto-merge is exercised on the Wave 0 pilots.
+auto_merge_enabled: false
+
+# repo-drift release SHA pinned by catalog/kernel.yaml once Phase 2 step 11
+# cuts a release. Not yet set.
+repo_drift_release_sha: null

@@ -8,7 +8,7 @@ description: Repeatable protocol to take a repo from incoherent version history 
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-06-09
+last_updated: 2026-09-08
 tags: [versioning, semver, audit, changelog, history, convention]
 ---
 

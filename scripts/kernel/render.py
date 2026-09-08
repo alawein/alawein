@@ -69,6 +69,21 @@ _MANAGED_SPECS: list[tuple[str, str, Literal["full", "block"], MarkerStyle]] = [
     (".kernel/hooks/pre-push", "hooks-pre-push.tmpl", "full", "hash"),
 ]
 
+# Profile -> ci.yml template filename, keyed by RepoContext.ci_kind.
+_CI_TEMPLATE_BY_KIND = {
+    "node": "ci-node.yml.tmpl",
+    "python": "ci-python.yml.tmpl",
+    "none": "ci-none.yml.tmpl",
+}
+
+# .github/workflows/{ci,codeql,docs-doctrine,drift}.yml (relpath, template
+# filename). Gated behind ctx.workflow_pin_ready / ctx.drift_pin_ready in
+# render_repo below -- rendering these before a real kernel release tag
+# exists would ship an unpinned reusable-workflow reference fleet-wide
+# (ADR 0008, Phase 6-8 execution plan step 3).
+_WORKFLOW_KIND = "full"
+_WORKFLOW_MARKER_STYLE: MarkerStyle = "hash"
+
 # Relative paths (from _MANAGED_SPECS above) that need the executable bit
 # once written to disk. Windows/NTFS has no real POSIX exec bit; git tracks
 # mode via its index instead, and git for Windows commonly runs with
@@ -113,6 +128,48 @@ def render_repo(
                 content=rendered,
             )
         )
+
+    # .github/workflows/{ci,codeql,docs-doctrine,drift}.yml: gated on a real
+    # kernel release tag existing (ctx.workflow_pin_ready). Until then these
+    # stay absent from the managed set rather than rendering with an empty
+    # or guessed pin.
+    if ctx.workflow_pin_ready:
+        ci_template = _CI_TEMPLATE_BY_KIND[ctx.ci_kind]
+        out.append(
+            ManagedFile(
+                relpath=".github/workflows/ci.yml",
+                kind=_WORKFLOW_KIND,
+                marker_style=_WORKFLOW_MARKER_STYLE,
+                content=_render_template(templates_dir / ci_template, variables),
+            )
+        )
+        out.append(
+            ManagedFile(
+                relpath=".github/workflows/docs-doctrine.yml",
+                kind=_WORKFLOW_KIND,
+                marker_style=_WORKFLOW_MARKER_STYLE,
+                content=_render_template(templates_dir / "docs-doctrine.yml.tmpl", variables),
+            )
+        )
+        if ctx.codeql_languages:
+            out.append(
+                ManagedFile(
+                    relpath=".github/workflows/codeql.yml",
+                    kind=_WORKFLOW_KIND,
+                    marker_style=_WORKFLOW_MARKER_STYLE,
+                    content=_render_template(templates_dir / "codeql.yml.tmpl", variables),
+                )
+            )
+        if ctx.drift_pin_ready:
+            out.append(
+                ManagedFile(
+                    relpath=".github/workflows/drift.yml",
+                    kind=_WORKFLOW_KIND,
+                    marker_style=_WORKFLOW_MARKER_STYLE,
+                    content=_render_template(templates_dir / "drift.yml.tmpl", variables),
+                )
+            )
+
     return out
 
 

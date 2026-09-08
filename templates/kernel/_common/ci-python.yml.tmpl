@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: alawein-org/alawein/.github/workflows/ci-python.yml@${workflow_pin_sha}
+    with:
+      install-command: "pip install -e .[dev]"
+      test-command: "pytest"

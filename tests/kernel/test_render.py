@@ -155,3 +155,87 @@ def test_compare_manifests_flags_kernel_version_mismatch():
     comparison = compare_manifests(expected, actual)
     assert not is_conformant(comparison)
     assert "kernel_version_mismatch" in comparison
+
+
+# --- Workflow files (.github/workflows/{ci,codeql,docs-doctrine,drift}.yml) ---
+#
+# Gated on ctx.workflow_pin_ready / ctx.drift_pin_ready (ADR 0008, Phase 6-8
+# execution plan step 3): absent from the managed set until a real kernel
+# release tag / repo-drift release SHA exists, so a repo never gets an
+# unpinned reusable-workflow reference.
+
+
+def test_workflow_files_absent_when_pin_not_set():
+    ctx = _ctx()  # workflow_pin_sha=None by default
+    relpaths = {mf.relpath for mf in render_repo(ctx)}
+    assert ".github/workflows/ci.yml" not in relpaths
+    assert ".github/workflows/codeql.yml" not in relpaths
+    assert ".github/workflows/docs-doctrine.yml" not in relpaths
+    assert ".github/workflows/drift.yml" not in relpaths
+
+
+def test_ci_and_docs_doctrine_appear_once_workflow_pin_is_set():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0")
+    relpaths = {mf.relpath for mf in render_repo(ctx)}
+    assert ".github/workflows/ci.yml" in relpaths
+    assert ".github/workflows/docs-doctrine.yml" in relpaths
+    # codeql.yml requires a codeql_languages mapping for the profile
+    # (python-lib has one); drift.yml additionally requires
+    # repo_drift_release_sha, which is still unset here.
+    assert ".github/workflows/codeql.yml" in relpaths
+    assert ".github/workflows/drift.yml" not in relpaths
+
+
+def test_drift_yml_requires_both_pins_set():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0", repo_drift_release_sha="abc123deadbeef")
+    relpaths = {mf.relpath for mf in render_repo(ctx)}
+    assert ".github/workflows/drift.yml" in relpaths
+
+
+def test_codeql_absent_for_profile_with_no_codeql_languages_mapping():
+    ctx = _ctx(profile="docs-hub", workflow_pin_sha="kernel-v0.1.0")
+    relpaths = {mf.relpath for mf in render_repo(ctx)}
+    assert ".github/workflows/codeql.yml" not in relpaths
+    assert ".github/workflows/ci.yml" in relpaths  # docs-hub still gets a no-op ci.yml
+
+
+def test_ci_yml_picks_template_by_profile_ci_kind():
+    node_ctx = _ctx(profile="node-lib", workflow_pin_sha="kernel-v0.1.0")
+    python_ctx = _ctx(profile="python-lib", workflow_pin_sha="kernel-v0.1.0")
+    none_ctx = _ctx(profile="paper", workflow_pin_sha="kernel-v0.1.0")
+
+    node_ci = next(mf for mf in render_repo(node_ctx) if mf.relpath == ".github/workflows/ci.yml")
+    python_ci = next(mf for mf in render_repo(python_ctx) if mf.relpath == ".github/workflows/ci.yml")
+    none_ci = next(mf for mf in render_repo(none_ctx) if mf.relpath == ".github/workflows/ci.yml")
+
+    assert "ci-node.yml" in node_ci.content
+    assert "ci-python.yml" in python_ci.content
+    assert "No build runtime for this profile" in none_ci.content
+
+
+def test_workflow_pin_sha_is_substituted_into_uses_line():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0")
+    ci = next(mf for mf in render_repo(ctx) if mf.relpath == ".github/workflows/ci.yml")
+    assert "@kernel-v0.1.0" in ci.content
+    # GitHub Actions expression syntax must survive safe_substitute untouched.
+    assert "${{ github.workflow }}" in ci.content
+
+
+def test_workflow_files_are_idempotent_across_two_runs():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0", repo_drift_release_sha="abc123deadbeef")
+    managed_files = [mf for mf in render_repo(ctx) if mf.relpath.startswith(".github/workflows/")]
+    assert managed_files, "expected at least one rendered workflow file"
+
+    first_pass = {mf.relpath: render_file(None, mf, ctx.kernel_version) for mf in managed_files}
+    second_pass = {
+        mf.relpath: render_file(first_pass[mf.relpath], mf, ctx.kernel_version) for mf in managed_files
+    }
+    assert first_pass == second_pass
+
+
+def test_workflow_files_included_in_manifest_once_pin_ready():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0", repo_drift_release_sha="abc123deadbeef")
+    managed_files = render_repo(ctx)
+    manifest = build_manifest(managed_files, ctx.kernel_version)
+    assert ".github/workflows/ci.yml" in manifest["files"]
+    assert ".github/workflows/drift.yml" in manifest["files"]

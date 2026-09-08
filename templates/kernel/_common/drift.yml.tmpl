@@ -1,14 +1,9 @@
-# Reference draft only (Phase 3, step 14). Not yet wired into
-# scripts/kernel/render.py's _MANAGED_SPECS: catalog/kernel.yaml's
-# workflow_pin_sha is still unset, and rendering this with no canonical pin
-# would ship an unpinned reusable-workflow reference fleet-wide. See
-# docs/internal/kernel-parity-2026-09-08.md "Step 14" and kernel-spec.md
-# open items.
-#
-# Intent once the pin lands: run both engines side by side, repo-drift
-# warn-only, until one clean wave (step 15) justifies flipping repo-drift to
-# blocking and dropping the workspace-batch step.
 name: drift
+
+# Phase 3 step 14: both engines run side by side, repo-drift warn-only, until
+# one clean wave (step 15) justifies flipping repo-drift to blocking and
+# dropping the workspace-batch step. That flip is a separate template change
+# (Phase 6-8 execution plan step 8), not a silent flag here.
 
 on:
   pull_request:
@@ -23,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run workspace-batch drift check
         run: |
-          python -m pip install workspace-batch==${workspace_batch_pin}
+          python -m pip install workspace-batch==0.1.2
           workspace-batch drift check --target . --reporter github
 
   repo-drift-warn-only:

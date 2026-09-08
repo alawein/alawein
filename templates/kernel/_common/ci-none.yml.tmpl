@@ -1,0 +1,23 @@
+name: CI
+
+# This profile has no source language to build or test (docs-hub, paper).
+# The canonical tree (docs/governance/kernel-spec.md) still requires
+# .github/workflows/ci.yml to exist for every non-archive profile, so this
+# renders a deliberate no-op job rather than omitting the file or inventing
+# a build step nobody asked for.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: No build runtime for this profile
+        run: echo "profile ${profile} has no CI build step; docs-doctrine.yml covers this repo's checks"

@@ -1,0 +1,150 @@
+name: kernel-sync
+
+# Phase 6 fanout (docs/internal/plans/2026-09-08-kernel-canonicalization.md,
+# steps 25 and 28). Renders kernel-managed files for the repos listed in the
+# `repos` input and opens or updates one PR per repo on branch
+# `chore/kernel-sync-v<kernel_version>`, labelled `kernel-sync`.
+#
+# Deliberately manual, not automatic, on the repo list: occupancy (whether a
+# repo has an active worktree/session) is a fact about this machine's local
+# `~/worktrees` and `~/.codex/worktrees` registries, which a hosted GitHub
+# Actions runner cannot see. Per the plan's checkpoint 4, occupancy is
+# re-checked locally immediately before each wave, and only the repos that
+# pass that check are listed in `repos` when this workflow is dispatched.
+# This workflow does not derive its own repo list from catalog/repos.json
+# for that reason.
+#
+# Operational prerequisite not created by this workflow: a
+# `KERNEL_SYNC_TOKEN` repository secret (fine-grained PAT or GitHub App
+# installation token) with `contents:write` and `pull-requests:write` on
+# every target repo. Configuring that credential is a maintainer decision
+# (scope, rotation, which repos) outside this workflow's authorship -- see
+# the "Remaining dependency" note in kernel-spec.md. Until it exists,
+# `dry_run: true` is the only mode that will succeed.
+
+on:
+  workflow_dispatch:
+    inputs:
+      repos:
+        description: >-
+          Comma-separated repo slugs to sync (must already be occupancy-
+          checked locally for this wave -- see checkpoint 4). Slugs must
+          match catalog/repos.json entries.
+        required: true
+      dry_run:
+        description: "true = render and diff only, open no PRs (default)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  compute-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      repos: ${{ steps.split.outputs.repos }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: split
+        env:
+          REPOS_INPUT: ${{ inputs.repos }}
+        run: |
+          set -euo pipefail
+          python - <<'PYEOF' >> "$GITHUB_OUTPUT"
+          import json
+          import os
+
+          raw = os.environ["REPOS_INPUT"]
+          slugs = [s.strip() for s in raw.split(",") if s.strip()]
+          print(f"repos={json.dumps(slugs)}")
+          PYEOF
+
+  render-and-sync:
+    needs: compute-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repo: ${{ fromJSON(needs.compute-matrix.outputs.repos) }}
+    steps:
+      - name: Checkout hub
+        uses: actions/checkout@v4
+        with:
+          path: hub
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install renderer dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml "jsonschema>=4.18"
+
+      - name: Resolve target repo remote from catalog
+        id: target
+        working-directory: hub
+        run: |
+          set -euo pipefail
+          python - "${{ matrix.repo }}" <<'PYEOF' >> "$GITHUB_OUTPUT"
+          import json
+          import sys
+
+          slug = sys.argv[1]
+          with open("catalog/repos.json", encoding="utf-8") as f:
+              repos = json.load(f)["repos"]
+          entry = next((r for r in repos if r.get("slug") == slug), None)
+          if entry is None:
+              raise SystemExit(f"No catalog entry for slug={slug!r}")
+          repo_full_name = entry.get("repo", "")
+          if not repo_full_name:
+              raise SystemExit(f"catalog entry for slug={slug!r} has no 'repo' (org/name) field")
+          print(f"repo_full_name={repo_full_name}")
+          PYEOF
+
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.target.outputs.repo_full_name }}
+          token: ${{ secrets.KERNEL_SYNC_TOKEN }}
+          path: target
+          fetch-depth: 0
+
+      - name: Render kernel-managed files for ${{ matrix.repo }}
+        working-directory: hub/scripts
+        run: |
+          python -m kernel render --repo "${{ matrix.repo }}" --out "../../target" --check
+
+      - name: Open or update the kernel-sync PR
+        if: ${{ inputs.dry_run == false }}
+        working-directory: target
+        env:
+          GH_TOKEN: ${{ secrets.KERNEL_SYNC_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GH_TOKEN}" ]; then
+            echo "::error::KERNEL_SYNC_TOKEN is not configured; cannot open a real PR. Re-run with dry_run: true, or configure the token first."
+            exit 1
+          fi
+          KERNEL_VERSION=$(python -c "import yaml; print(yaml.safe_load(open('../hub/catalog/kernel.yaml'))['kernel_version'])")
+          BRANCH="chore/kernel-sync-v${KERNEL_VERSION}"
+          git checkout -B "$BRANCH"
+          ( cd ../hub/scripts && python -m kernel render --repo "${{ matrix.repo }}" --out "../../target" )
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No changes for ${{ matrix.repo }}; nothing to sync."
+            exit 0
+          fi
+          git add -A -- $(python -c "
+          import yaml
+          cfg = yaml.safe_load(open('../hub/catalog/kernel.yaml'))
+          print(' '.join(cfg['kernel_sync_path_allowlist']))
+          ")
+          git -c user.name="kernel-sync" -c user.email="contact@meshal.ai" \
+            commit -m "chore: kernel-sync v${KERNEL_VERSION}"
+          git push origin "$BRANCH" --force-with-lease
+          gh pr create \
+            --title "chore: kernel-sync v${KERNEL_VERSION}" \
+            --body "Automated kernel-sync render for ${{ matrix.repo }}. See docs/internal/plans/2026-09-08-kernel-canonicalization.md. Guarded by kernel-sync-guard.yml; needs the maintainer's explicit merge approval unless auto_merge_enabled is flipped for this guard-passed, no-source-change class." \
+            --label kernel-sync \
+            --head "$BRANCH" \
+            --base main \
+            || gh pr edit "$BRANCH" --add-label kernel-sync

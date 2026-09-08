@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   ci:
-    uses: alawein-org/alawein/.github/workflows/ci-python.yml@${workflow_pin_sha}
+    uses: alawein/alawein/.github/workflows/ci-python.yml@${workflow_pin_sha}
     with:
       install-command: "pip install -e .[dev]"
       test-command: "pytest"

@@ -239,3 +239,22 @@ def test_workflow_files_included_in_manifest_once_pin_ready():
     manifest = build_manifest(managed_files, ctx.kernel_version)
     assert ".github/workflows/ci.yml" in manifest["files"]
     assert ".github/workflows/drift.yml" in manifest["files"]
+
+
+def test_kernel_sync_guard_appears_once_workflow_pin_is_set_only():
+    unset_ctx = _ctx()
+    set_ctx = _ctx(workflow_pin_sha="kernel-v0.1.0")
+
+    unset_relpaths = {mf.relpath for mf in render_repo(unset_ctx)}
+    set_relpaths = {mf.relpath for mf in render_repo(set_ctx)}
+
+    assert ".github/workflows/kernel-sync-guard.yml" not in unset_relpaths
+    # Unlike drift.yml, the guard does not need repo_drift_release_sha.
+    assert ".github/workflows/kernel-sync-guard.yml" in set_relpaths
+
+
+def test_kernel_sync_guard_references_pinned_hub_ref():
+    ctx = _ctx(workflow_pin_sha="kernel-v0.1.0")
+    guard = next(mf for mf in render_repo(ctx) if mf.relpath == ".github/workflows/kernel-sync-guard.yml")
+    assert "ref: kernel-v0.1.0" in guard.content
+    assert "repository: alawein/alawein" in guard.content

@@ -169,6 +169,14 @@ def render_repo(
                     content=_render_template(templates_dir / "drift.yml.tmpl", variables),
                 )
             )
+        out.append(
+            ManagedFile(
+                relpath=".github/workflows/kernel-sync-guard.yml",
+                kind=_WORKFLOW_KIND,
+                marker_style=_WORKFLOW_MARKER_STYLE,
+                content=_render_template(templates_dir / "kernel-sync-guard.yml.tmpl", variables),
+            )
+        )
 
     return out
 

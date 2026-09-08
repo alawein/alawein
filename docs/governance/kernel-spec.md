@@ -119,3 +119,9 @@ never re-renders on its own, keeping the detector dependency-free.
   scope of 46 repos; this discrepancy is noted here as a fact to resolve
   before treating `catalog/repos.json` as the authoritative 1:1 map of the
   46 on-disk checkouts, not resolved unilaterally by this document.
+  Confirmed via `scripts/kernel/report.py` (Phase 1, step 8): 3 catalog
+  entries have no matching on-disk checkout at their `local_path` --
+  `chshlab-paper` (`lab/chshlab-paper`), `dotclaude` (`core/dotclaude`),
+  `kcompiler` (`core/kcompiler`). 47 catalog entries minus these 3
+  unreachable plus the 1 archived (`helios`) accounts for the reported 46
+  reachable, non-archived repos in scope.

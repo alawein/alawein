@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "scripts" / "catalog"))
 
+import probe_integrations  # noqa: E402
 from probe_integrations import main  # noqa: E402
 
 
@@ -42,6 +43,17 @@ def test_report_mentions_catalog_and_no_second_ssot(capsys) -> None:
     text = capsys.readouterr().out
     assert "codex-slack" in text
     assert "Do not create a second inventory file." in text
+
+
+def test_report_json_returns_failure_for_invalid_inventory(
+    monkeypatch, capsys
+) -> None:
+    monkeypatch.setattr(probe_integrations, "load_inventory", lambda _path: {})
+
+    assert main(["report", "--json"]) == 1
+    payload = json.loads(capsys.readouterr().out)
+    assert payload["static"]["ok"] is False
+    assert payload["static"]["errors"]
 
 
 def test_evidence_merge_redacts_secrets(tmp_path: Path, capsys) -> None:

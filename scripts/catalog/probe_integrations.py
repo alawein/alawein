@@ -236,6 +236,8 @@ def main(argv: list[str] | None = None) -> int:
     print(json.dumps(payload, indent=2) if args.json or args.command != "report" else "")
     if args.command == "static":
         return 0 if payload["ok"] else 1
+    if args.command == "report":
+        return 0 if payload["static"]["ok"] else 1
     return 0
 
 

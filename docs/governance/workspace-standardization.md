@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, control-plane ownership, shared resources, and phased workspace directives.
-last_updated: 2026-09-07
+last_updated: 2026-09-08
 category: governance
 audience: contributors
 status: active

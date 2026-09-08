@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Repository layout standard
 description: Canonical top-level layout by stack archetype; aligns apps with AWS-style separation of code, infra, docs, and automation.
-last_updated: 2026-07-06
+last_updated: 2026-09-08
 category: governance
 audience: [ai-agents, contributors]
 status: active

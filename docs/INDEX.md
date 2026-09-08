@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-07
+last_updated: 2026-09-08
 ---
 
 # Index: alawein
@@ -23,6 +23,12 @@ last_updated: 2026-09-07
 
 - [0001-adopt-anti-rot-primitives.md](adr/0001-adopt-anti-rot-primitives.md)
 - [0002-public-readme-contract.md](adr/0002-public-readme-contract.md)
+- [0003-kernel-conformance-engine.md](adr/0003-kernel-conformance-engine.md)
+- [0004-kernel-renderer-and-distribution.md](adr/0004-kernel-renderer-and-distribution.md)
+- [0005-kernel-sync-merge-policy.md](adr/0005-kernel-sync-merge-policy.md)
+- [0006-worktree-fanout-substrate.md](adr/0006-worktree-fanout-substrate.md)
+- [0007-research-lane-evidence-gate.md](adr/0007-research-lane-evidence-gate.md)
+- [0008-workflow-pin-targets-tagged-release.md](adr/0008-workflow-pin-targets-tagged-release.md)
 
 ## archive/
 
@@ -71,6 +77,7 @@ last_updated: 2026-09-07
 - [github-metadata-sync-runbook.md](governance/github-metadata-sync-runbook.md)
 - [governance-index.md](governance/governance-index.md)
 - [ide-integration-hardening-session.md](governance/ide-integration-hardening-session.md)
+- [kernel-spec.md](governance/kernel-spec.md)
 - [maintenance-skills-agents.md](governance/maintenance-skills-agents.md)
 - [merge-policy.md](governance/merge-policy.md)
 - [operating-model.md](governance/operating-model.md)
@@ -107,6 +114,10 @@ last_updated: 2026-09-07
 - [workspace-master-prompt.md](governance/workspace-master-prompt.md)
 - [workspace-resource-map.md](governance/workspace-resource-map.md)
 - [workspace-standardization.md](governance/workspace-standardization.md)
+
+## internal/
+
+- [kernel-parity-2026-09-08.md](internal/kernel-parity-2026-09-08.md)
 
 ## operations/
 

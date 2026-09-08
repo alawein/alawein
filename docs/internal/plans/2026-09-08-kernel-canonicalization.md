@@ -302,3 +302,101 @@ domain/role structure -- they are not directly comparable by name, and a
 shallow diff would misreport. Phase 8 needs externally verifiable citations
 per entry (step 37); doing that without live verification would violate
 its own no-forward-dated-citations rule.
+
+## Execution plan for Phase 6-8 (finalized 2026-09-08, for the next session)
+
+This section is the actionable runbook the next implementation session
+follows. It does not relax any standing gate: mandatory human checkpoints
+below are not authorization for an agent to self-approve through them, no
+matter how the session is framed ("end to end", "no omissions"). A session
+that reaches one of these checkpoints stops and asks, using the `question`
+tool, rather than guessing or proceeding.
+
+### Mandatory checkpoints (cannot be automated away)
+
+1. **`workflow_pin_sha` decision.** Before any Phase 6 workflow is rendered
+   live: decide whether the fleet-wide reusable-workflow pin targets a
+   tagged hub release or a specific `main` commit SHA, then set
+   `catalog/kernel.yaml`'s `workflow_pin_sha`. Wrong answer breaks CI
+   fleet-wide. Ask; do not guess.
+2. **Wave 0 dry-run review.** Per step 28, a human reviews the dry-run diff
+   for `apps/bolts`, `core/repo-drift`, `lab/qubeml` *before* the first
+   real kernel-sync PR opens on any of them.
+3. **Per-PR merge gate.** Every PR this plan produces, including every
+   kernel-sync PR, needs the maintainer's explicit `exact yes merge #N`
+   before merge -- *unless* `catalog/kernel.yaml.auto_merge_enabled` is
+   explicitly flipped to `true` by the maintainer for the narrow
+   `kernel-sync`-labelled, guard-passed, no-source-change class (ADR 0005).
+   Default is `false`; leave it there unless told otherwise.
+4. **Occupancy re-check before every wave.** Re-run `git worktree list` (or
+   `workspace-batch worktree doctor`) per repo immediately before that
+   repo's wave, not from a stale earlier snapshot -- state changes between
+   sessions.
+
+### Step-by-step order
+
+1. Re-verify occupancy and branch state for all three implementation repos
+   (`core/alawein`, `core/repo-drift`, `core/workspace-tools`) and confirm
+   the three local branches from the prior session
+   (`feat/kernel-spec`, `feat/kernel-detectors`,
+   `feat/kernel-worktree-runner`) still exist with their commits intact.
+2. Resolve checkpoint 1 (`workflow_pin_sha`). Record the decision as an ADR
+   addendum or a new ADR if the rationale is non-trivial.
+3. Wire `scripts/kernel/render.py`'s `_MANAGED_SPECS` to include the
+   `.github/workflows/{ci,codeql,docs-doctrine,drift}.yml` set now that a
+   pin exists. Promote `templates/kernel/_common/drift.yml.tmpl`,
+   `kernel-sync.yml.tmpl`, and `kernel-sync-guard.yml.tmpl` out of draft:
+   fill in the real fetch/apply mechanism for the pinned SHA, add unit
+   tests for the newly-templated workflow files (idempotency, marker
+   preservation, manifest stability -- same bar as the existing managed
+   files).
+4. Cut a `repo-drift` release (Phase 2 step 11) and record its immutable
+   SHA in `catalog/kernel.yaml.repo_drift_release_sha`. This requires
+   pushing `core/repo-drift`'s `feat/kernel-detectors` branch and opening
+   that PR -- ordinary PR flow, ordinary merge gate, not a fanout PR.
+5. Add the kernel-sync fanout workflow for real (`.github/workflows/
+   kernel-sync.yml` in the hub, matrix over `catalog/repos.json`) and
+   `kernel-sync-guard.yml` in the kernel template set. Push and PR these to
+   `core/alawein` on `main`'s normal review path, not auto-merge.
+6. Checkpoint 2: dry-run Wave 0 (`apps/bolts`, `core/repo-drift`,
+   `lab/qubeml`), present the diff, wait for explicit approval before
+   opening the first kernel-sync PR.
+7. Execute waves 1-4 in the plan's step 28 order, skipping any repo
+   occupancy flags as occupied (checkpoint 4). Land 28a
+   (`lab/qmatsim` CRLF renormalization) before that repo's kernel-sync PR,
+   per the existing approval already on record for that specific action.
+   Every PR still needs checkpoint 3 unless auto-merge is explicitly
+   enabled for the guard-passed subset.
+8. After Wave 1 reports green on `main` for every repo in it, flip
+   `repo-drift` to blocking and drop the `workspace-batch` drift step
+   (Phase 3 step 15). This is a template change, PR'd and merged like any
+   other -- not a silent flag flip.
+9. Phase 7: build the actual comparison. `catalog/skills.yaml` is
+   domain/role-keyed; `Desktop\ops-shared-inventory\{agents,workflows,
+   routines}.yaml` is Grok Bot's own taxonomy. Do not diff by name across
+   the two directly. Instead: extract a flat skill/capability identifier
+   list from each side first (a short mapping table, reviewed once, not
+   regenerated per run), then diff the flattened lists. Emit the report to
+   `catalog/generated/skills-drift.json`. Report only -- no write to any
+   Grok Bot profile path, per the standing writer boundary. Render
+   `.kilo/kilo.json`, `.kilo/agent/`, `.kilo/command/` from
+   `catalog/skills.yaml` + `catalog/agent-integrations.yaml` (step 31) only
+   after the comparison exists, so the renderer isn't generating from a
+   catalog nobody has checked against reality.
+10. Phase 8: create `catalog/research.yaml` and
+    `docs/research/README.md` with the scoring rubric. Seed entries using
+    live `websearch`/`webfetch` at seeding time -- every entry's source URL
+    and "date observed" must reflect a real fetch performed during that
+    session, not a remembered or assumed URL. Entries that cannot be
+    verified live stay out, per step 37's own rule. Target 20-50 entries
+    from the starting set named in step 36, expand only from what live
+    search actually turns up.
+
+### What "no omissions" means here, in practice
+
+Every numbered step in Phases 6-8 gets attempted. It does not mean the
+mandatory checkpoints above are skipped, that PRs get merged without the
+maintainer's explicit confirmation, or that auto-merge gets enabled by
+default. Those are standing repository and workspace policy
+(`docs/governance/merge-policy.md`, this workspace's `AGENTS.md`), not
+plan-specific caution this document can waive.

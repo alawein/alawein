@@ -64,12 +64,33 @@ _MANAGED_SPECS: list[tuple[str, str, Literal["full", "block"], MarkerStyle]] = [
     (".drift-rules.yaml", "drift-rules.yaml.tmpl", "full", "hash"),
     (".editorconfig", "editorconfig.tmpl", "full", "hash"),
     (".gitattributes", "gitattributes.tmpl", "block", "hash"),
+    (".kernel/hooks/pre-commit", "hooks-pre-commit.tmpl", "full", "hash"),
+    (".kernel/hooks/commit-msg", "hooks-commit-msg.tmpl", "full", "hash"),
+    (".kernel/hooks/pre-push", "hooks-pre-push.tmpl", "full", "hash"),
 ]
+
+# Relative paths (from _MANAGED_SPECS above) that need the executable bit
+# once written to disk. Windows/NTFS has no real POSIX exec bit; git tracks
+# mode via its index instead, and git for Windows commonly runs with
+# core.fileMode=false, so writing chmod 0o755 here is best-effort only. A
+# repo adopting these hooks for the first time on Windows still needs one
+# explicit `git update-index --chmod=+x .kernel/hooks/pre-commit` (etc.) as
+# part of that repo's Phase 6 wave -- the renderer does not run that command
+# itself, since it is a one-time index-mode change, not a file write.
+EXECUTABLE_PATHS = frozenset(
+    {".kernel/hooks/pre-commit", ".kernel/hooks/commit-msg", ".kernel/hooks/pre-push"}
+)
 
 
 def _render_template(template_path: Path, variables: dict[str, str]) -> str:
     text = template_path.read_text(encoding="utf-8")
-    return string.Template(text).substitute(variables)
+    # safe_substitute (not substitute): the .kernel/hooks/* shell templates
+    # are full of literal `$1`, `$(...)`, `$SUBJECT` shell syntax that is not
+    # a kernel template placeholder. `substitute()` raises on any bare `$`
+    # it can't resolve as an identifier; `safe_substitute()` only replaces
+    # placeholders that match a known variable and leaves everything else
+    # (including shell `$` syntax) untouched.
+    return string.Template(text).safe_substitute(variables)
 
 
 def render_repo(
@@ -122,9 +143,19 @@ def render_full_file(existing_text: str | None, managed_content: str, version: s
     Any content outside the markers in a pre-existing full-managed file is
     dropped intentionally -- these paths are declared fully kernel-owned in
     docs/governance/kernel-spec.md's canonical tree.
+
+    A leading shebang line (``#!...``) is kept outside the markers, on line
+    one, since a shebang only works there -- this matters for the
+    ``.kernel/hooks/*`` scripts, which git invokes directly.
     """
     start, end = markers_for(style, version)
-    return f"{start}\n{managed_content.rstrip()}\n{end}\n"
+    content = managed_content.rstrip()
+    shebang = ""
+    if content.startswith("#!"):
+        first_line, _, content = content.partition("\n")
+        shebang = f"{first_line}\n"
+        content = content.rstrip()
+    return f"{shebang}{start}\n{content}\n{end}\n"
 
 
 def render_file(existing_text: str | None, managed_file: ManagedFile, version: str) -> str:

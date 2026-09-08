@@ -44,6 +44,30 @@ def test_render_repo_produces_expected_relpaths():
         ".drift-rules.yaml",
         ".editorconfig",
         ".gitattributes",
+        ".kernel/hooks/pre-commit",
+        ".kernel/hooks/commit-msg",
+        ".kernel/hooks/pre-push",
+    }
+
+
+def test_hook_files_keep_shebang_as_first_line():
+    ctx = _ctx()
+    managed_files = render_repo(ctx)
+    for relpath in (".kernel/hooks/pre-commit", ".kernel/hooks/commit-msg", ".kernel/hooks/pre-push"):
+        mf = next(m for m in managed_files if m.relpath == relpath)
+        rendered = render_file(None, mf, ctx.kernel_version)
+        first_line = rendered.splitlines()[0]
+        assert first_line == "#!/bin/sh", f"{relpath}: shebang not on line 1: {first_line!r}"
+        assert rendered.splitlines()[1].startswith("# kernel:managed:start")
+
+
+def test_hook_files_are_in_executable_paths():
+    from kernel.render import EXECUTABLE_PATHS
+
+    assert EXECUTABLE_PATHS == {
+        ".kernel/hooks/pre-commit",
+        ".kernel/hooks/commit-msg",
+        ".kernel/hooks/pre-push",
     }
 
 

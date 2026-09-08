@@ -10,13 +10,14 @@ Run from ``core/alawein/scripts`` (or with ``PYTHONPATH=scripts``) so the
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
 from .config import load_kernel_config, load_repo_context
 from .diff import diff_repo, format_report
 from .manifest import build_manifest, manifest_json
-from .render import render_file, render_repo
+from .render import EXECUTABLE_PATHS, render_file, render_repo
 
 
 def _cmd_render(args: argparse.Namespace) -> int:
@@ -41,6 +42,10 @@ def _cmd_render(args: argparse.Namespace) -> int:
         rendered = render_file(existing, mf, kernel_cfg.kernel_version)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(rendered, encoding="utf-8", newline="\n")
+        if mf.relpath in EXECUTABLE_PATHS:
+            # Best-effort; see render.py's EXECUTABLE_PATHS comment for why
+            # this alone is not sufficient on Windows/core.fileMode=false.
+            os.chmod(target, 0o755)
 
     manifest = build_manifest(managed_files, kernel_cfg.kernel_version)
     (out_dir / ".kernel-manifest.json").write_text(

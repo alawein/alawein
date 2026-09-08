@@ -48,6 +48,15 @@ class ManagedFile:
 
 
 # (relpath, template filename, kind, marker style)
+#
+# Known Phase 1 simplification: kernel-spec.md's canonical tree describes
+# .drift-rules.yaml as "managed block + local overrides", but YAML has no
+# generic block-splice merge for a structured key like `detector_config:`.
+# Until a real YAML-aware merge exists, .drift-rules.yaml renders as "full"
+# (kernel-owned baseline only). A repo needing local detector_config entries
+# beyond the kernel baseline has to add them by hand outside this renderer
+# for now; re-rendering will overwrite them. Tracked as an open item, not
+# silently glossed over.
 _MANAGED_SPECS: list[tuple[str, str, Literal["full", "block"], MarkerStyle]] = [
     ("README.md", "README.header.md.tmpl", "block", "markdown"),
     ("AGENTS.md", "AGENTS.section.md.tmpl", "block", "markdown"),

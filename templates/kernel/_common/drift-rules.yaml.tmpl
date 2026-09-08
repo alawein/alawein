@@ -1,8 +1,11 @@
-schemaVersion: "1.0.0"
-kernel_version: ${kernel_version}
-detectors:
-  kernel_conformance: false
-  workflow_pin: false
-  agent_contract: false
-  metadata_schema: false
-  worktree_registry: false
+# kernel version ${kernel_version} baseline.
+#
+# repo-drift's schema (core/repo-drift src/repo_drift/rules.py) allows only
+# `opt_out` and `detector_config` as top-level keys; anything else raises.
+# The kernel_conformance, workflow_pin, agent_contract, metadata_schema, and
+# worktree_registry detectors are opt-in by convention: they no-op until
+# this file's detector_config supplies their required keys, so leaving
+# detector_config empty here means none of them run yet. Populate the
+# relevant detector_config entry as this repo's kernel-sync wave lands.
+opt_out: []
+detector_config: {}

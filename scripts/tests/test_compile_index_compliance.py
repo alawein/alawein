@@ -41,6 +41,13 @@ class ComplianceOverrideTests(unittest.TestCase):
         slim = slim_entry(repo, bucket="core")
         self.assertEqual(slim.get("compliance"), "pii")
 
+    def test_new_entry_with_no_compliance_gets_no_default(self) -> None:
+        # Documents intended behavior, not a RED-then-GREEN case: a brand-new
+        # entry (no prior) that never sets compliance should compile with no
+        # compliance key at all, not the old hardcoded "public-data" default.
+        repo = compile_repo("platform", "core", _entry(), None)
+        self.assertNotIn("compliance", repo["github_custom_properties"])
+
     def test_invalid_compliance_value_rejected(self) -> None:
         repo = compile_repo("platform", "core", _entry(compliance="not-a-real-value"), None)
         # validate_catalogs() is where this should be caught; compile_repo itself

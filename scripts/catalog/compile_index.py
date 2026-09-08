@@ -341,7 +341,10 @@ def compile_repo(
             "github_custom_properties": repo.get("github_custom_properties")
             or {
                 "lifecycle": status if status in {"active", "maintained", "archived"} else "active",
-                "compliance": "public-data",
+                # No baked-in compliance default: the entry-level override below
+                # always wins (set-if-present / pop-if-absent), so a value here
+                # would never survive this same compile_repo call. Matches
+                # readme_archetype, which is override-only with no default.
                 "repo_archetype": "vite-react-spa" if defaults.get("surface") == "web" else "monorepo",
                 "docs_maturity": "managed",
                 "brand_family": defaults.get("brand_family", "midnight"),

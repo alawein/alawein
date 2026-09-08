@@ -132,8 +132,7 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 | Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-08-31 | 0 replies | Keep |
 | Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-08-31 | 0 replies | Keep |
 
-All five bots are technically healthy. Zero engagement is a usage problem, not a
-health problem.
+Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (missed 2026-09-05 through 2026-09-07). Zero engagement remains a usage problem for the trial.
 
 ### 2.2 Engagement policy (locked)
 
@@ -277,14 +276,59 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | §3.4 Gmail AGI thread drift | LOCKED |
 | §3.5 Account discipline | LOCKED |
 | §4 Implementation plan | LOCKED |
+| §6 Signal protocol (clutter) | ACTIVE |
 
-## 6. Changelog
+## 6. Signal protocol (clutter)
+
+Does not change locked channel names, bot installs, or the 2026-09-19
+gate. Full diagnosis:
+[`docs/internal/plans/2026-09-07-slack-signal-workflow.md`](../internal/plans/2026-09-07-slack-signal-workflow.md).
+
+### 6.1 Do now (no admin, no new apps)
+
+1. **One task, one thread.** New work is a thread under `#admin-ops`, not a
+   new top-level paste of the shared kit.
+2. **Tag only who acts.** Meshal tags the next agent. Agents do not @ each
+   other to start work. Do not tag workflow bots or `@ChatGPT`.
+3. **Later + Activity.** Save actionable messages to Later. Use Activity
+   filters (Mentions, Threads, Apps). Mute `#social` and other empty
+   channels (notifications: nothing). Set `#posts` to mentions only.
+4. **Do not delete history.** Do not `chat.delete` agent threads. Do not
+   archive or rename channels before 2026-09-19.
+5. **Do not add bots.** Five workflow bots are on trial. Slack AI recap,
+   Hermes, OpenClaw, and extra chat apps stay off until a new human
+   decision after the gate.
+6. **Pack before send.** Rough text goes through the draft-to-prompt pack
+   in [`slack-agent-voice.md`](slack-agent-voice.md) before an agent tag.
+
+### 6.2 After 2026-09-19 (human clicks)
+
+1. Disable zero-engagement workflow bots. Do not delete their history.
+2. Execute
+   [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md)
+   Phase 1 only if the gate passes: `#me-agents-eng`, `#me-agents-ops`,
+   `#me-inbox`. Then renames.
+3. Move GitHub/CI noise toward `#team-eng-alerts` after that channel
+   exists. Keep `#admin-ops` / `#team-ops` for human + agent tasks.
+4. Optional: Slack AI thread summaries on paid plans. Not a second SSOT.
+
+### 6.3 Cleanup that is unsafe
+
+- Bulk-delete messages via API (loses evidence, looks like tampering).
+- A summarizer bot that posts into `#admin-ops` (more clutter).
+- A second inventory Canvas or Notion database of Slack state.
+- Memory products (Mem0, Letta, Zep) as a Slack archive.
+- Expanding Kilo onto `alawein/alawein`.
+
+## 7. Changelog
 
 ### v1.5.0 (2026-09-07)
 
 - Shared session prompt points at `prompt-kits/AGENT.md` 1.7.0.
 - Added §1.4 How Meshal calls agents: who to tag, correction ping, and
   4-line post-land ping.
+- Added §6 signal protocol: Later/Activity hygiene, no deletes, no new
+  bots, draft-to-prompt before agent tags.
 
 ### v1.4.0 (2026-09-07)
 

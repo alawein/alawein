@@ -324,6 +324,7 @@ Update `catalog/agent-integrations.yaml` when any row changes.
 | [`claude-tag-migration.md`](claude-tag-migration.md) | Legacy → Claude Tag admin steps |
 | [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md) | Proposed v2 channel topology |
 | [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) | Shared session prompt (paste for every agent) |
+| [`slack-agent-voice.md`](slack-agent-voice.md) | Thread voice, human drafts, draft-to-prompt pack |
 
 ## 9. Claude handoff (remaining work)
 
@@ -354,6 +355,8 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 - §5.4: Computer ready, Cursor 7/7, Codex still needs connect, ChatGPT
   installed and replaced until Codex Reply OK. Browser OAuth is Meshal.
 - Shared session prompt is `prompt-kits/AGENT.md` 1.7.0.
+- Related canon: `slack-agent-voice.md` now covers human drafts and the
+  draft-to-prompt pack.
 
 ### v1.4.3 (2026-09-07)
 

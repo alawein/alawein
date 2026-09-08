@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Admin-ops integration checklist
 description: Pointers to the integration inventory, Slack policy, and Projects sync runbook.
-last_updated: 2026-09-06
+last_updated: 2026-09-08
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -16,6 +16,8 @@ status: active
 Use the existing sources for each concern:
 
 - Integration inventory: [catalog/agent-integrations.yaml](../../catalog/agent-integrations.yaml).
+- Static dump (no second SSOT): `python3 scripts/catalog/probe_integrations.py report`
+- Latest live probe: [2026-09-08 integration probe](../internal/audits/2026-09-08-integration-probe.md)
 - Slack behavior, ownership, and approval gates: [Slack agent runbook](../governance/slack-agent-runbook.md).
 - Projects synchronization: [Notion Projects runbook](notion-projects-database.md).
 - Project sync versus activity reporting: [sync glossary](github-notion-sync-glossary.md).

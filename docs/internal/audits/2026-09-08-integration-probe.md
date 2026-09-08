@@ -200,3 +200,40 @@ Five workflow-bot reacts remain open (ACCEPT 6). Park draft PR #232.
 - Landing PR #232 (lifts 2026-09-19 gate, marks bots `disable`)
 - Calling Treg or fetching `AGI (archive)` mail
 - A new Slack chat bot or second inventory YAML
+
+## 13. Re-verify 2026-09-08 13:00 UTC
+
+Same Cloud Agent thread. Live Slack and MCP only. No catalog YAML edit.
+No public send. No second inventory.
+
+| Check | Result | Label |
+| --- | --- | --- |
+| `#admin-ops` members | Same 9 IDs, including ChatGPT `U0BUNH33CCA` | PROVED |
+| Profiles | `codex`, `chatgpt`, `notion_ai` in Alawein Workspace | PROVED |
+| Codex posts after 2026-09-07 | 0 | PROVED |
+| Last Codex post | Connect prompt in thread `1788769288.678259` at `1788774366.593039` (2026-09-07 02:46 PT). Text: connect ChatGPT Codex account | PROVED |
+| Reply OK `1788871213.084829` | Still 0 Codex replies. One Cursor note only | PROVED |
+| ChatGPT / Notion AI Slack posts | 0 | PROVED |
+| GitHub MCP `get_me` | `alawein` / Meshal Alawein | PROVED |
+| Notion MCP user search | Meshal Alawein `contact@meshal.ai` | PROVED |
+| `probe_integrations.py static` | 0 errors, `ok: true` | PROVED |
+| Live CLI (`e2e`, `codex`, …) | exit 2 BLOCKED (session-only) | PROVED |
+
+Cloud MCP this re-verify (namespaceStatus):
+
+- ready: Cursor Slack Tools, Slack, Github, Gmail, Google-calendar,
+  Google-drive, notion, Railway, Cloudflare-docs, Godaddy, cursor-cloud,
+  cursor-subscriptions, Treg, Onedrive, Outlook
+- needsAuth: Calendly, Cloudflare-bindings/builds/observability, Context,
+  Docusign, Figma, Fireflies, Granola, Huggingface-skills, Lovable, Mobbin,
+  Neon, Posthog, Wonder, Zoom
+- error: Supermemory, Todoist
+- loading: 1password, Playwright
+
+Drift vs the earlier same-day probe (do not collapse): Figma moved from
+`error` to `needsAuth`. Treg and Onedrive/Outlook are ready here; catalog
+rows still say Treg token dead / Onedrive needs_auth. Playwright is
+`loading` here (catalog historically `ready`). Do not call Treg.
+
+Diagnosis unchanged: Codex Slack is silent after Connect claim; ChatGPT
+Slack stays `replaced`; Notion AI Slack is not Notion MCP.

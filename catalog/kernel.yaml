@@ -6,14 +6,16 @@ lastVerified: "2026-09-08"
 
 kernel_version: "0.1.0"
 
-# Single pin SHA for every reusable workflow `uses:` reference across the
+# Single pin ref for every reusable workflow `uses:` reference across the
 # fleet (drift currently spans at least 6 SHAs: ed5ed61, 6cddc4b, 9779fa3,
 # 1256254, 430c345, 67c8b3e -- see kernel-spec.md "Current-state facts").
-# Not yet set: choosing the canonical SHA requires deciding whether the pin
-# targets a tagged hub release or a specific main commit, which is a
-# fleet-wide CI-breaking choice if wrong. Do not fill this in by guessing;
-# resolve via Phase 2 step 11 (repo-drift release) and an explicit decision,
-# then flip kernel-sync and workflow_pin enforcement on.
+# Decision (maintainer, 2026-09-08, checkpoint 1): the pin targets a tagged
+# hub release, not a raw main SHA -- see docs/adr/0008-workflow-pin-targets-
+# tagged-release.md. Despite the field name, the value is a git tag (e.g.
+# "kernel-v0.1.0"), scoped to kernel releases, distinct from this repo's
+# product tags (v1.0.0, v2.1.0). Still null: no kernel release tag has been
+# cut yet. Set once the Phase 6 step 5 workflow PR merges to main and that
+# commit is tagged -- do not guess a value in the meantime.
 workflow_pin_sha: null
 
 # Path allowlist for the kernel-sync PR class (ADR 0005). A kernel-sync PR

@@ -7,6 +7,14 @@ ownership_defaults:
   verified_at: '2026-09-06'
 lanes:
   platform:
+  - slug: ai-ops
+    about: Implementation repo for the AI Operations System, schema, ingestion
+      pipeline, agents, and workflows (spec lives in docs/research).
+    name: ai-ops
+    url: https://github.com/alawein/ai-ops
+    stack:
+    - python
+    - postgresql
   - slug: alawein
     about: Governance control plane, catalog SSOT, profile generation, and documentation
       enforcement.
@@ -212,6 +220,19 @@ lanes:
       tier: P0
       scanned: '2026-08-29'
       notes: P0 via README redo PR #94, merged 2c237bfd; see docs/internal/audits/2026-08-28-public-benchmark-patterns.md
+  - slug: maios-dashboard
+    about: Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup)
+      synced from agents.yaml.
+    name: maios-dashboard
+    visibility: public
+    url: https://maios-dashboard.vercel.app
+    promotion:
+      tier: P1
+      scanned: '2026-09-07'
+      notes: catalog gap fix; live dashboard verified 2026-09-07; not pinned.
+    stack:
+    - typescript
+    - nextjs
   - slug: meatheadphysicist
     about: Computational physics research platform for Bell inequality analysis, CHSH
       simulation, and claim verification.

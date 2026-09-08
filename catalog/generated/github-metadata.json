@@ -236,6 +236,26 @@
       "release_automation": {}
     },
     {
+      "slug": "maios-dashboard",
+      "repo": "alawein/maios-dashboard",
+      "description": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
+      "homepage": "https://maios-dashboard.vercel.app",
+      "topics": [
+        "maios-dashboard",
+        "typescript",
+        "nextjs"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
       "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
@@ -470,6 +490,26 @@
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "ai-ops",
+      "repo": "alawein/ai-ops",
+      "description": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+      "homepage": "https://github.com/alawein/ai-ops",
+      "topics": [
+        "ai-ops",
+        "python",
+        "postgresql"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}

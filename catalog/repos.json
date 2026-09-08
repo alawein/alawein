@@ -716,6 +716,63 @@
       }
     },
     {
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "version_source": "package.json",
+      "name": "maios-dashboard",
+      "slug": "maios-dashboard",
+      "legacy_slugs": [],
+      "repo": "alawein/maios-dashboard",
+      "local_path": "lab/maios-dashboard",
+      "bucket": "lab",
+      "lane": "lab",
+      "visibility": "public",
+      "owner": "alawein",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "status": "active",
+      "homepage": "https://maios-dashboard.vercel.app",
+      "canonical_description": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
+      "tags": [
+        "Typescript",
+        "Nextjs"
+      ],
+      "github_topics": [
+        "maios-dashboard",
+        "typescript",
+        "nextjs"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "typescript",
+        "nextjs"
+      ],
+      "last_verified": "2026-09-07",
+      "audience": [
+        "internal"
+      ],
+      "promotion": {
+        "tier": "P1",
+        "scanned": "2026-09-07",
+        "notes": "catalog gap fix; live dashboard verified 2026-09-07; not pinned."
+      },
+      "catalog_groups": []
+    },
+    {
       "name": "meatheadphysicist",
       "slug": "meatheadphysicist",
       "legacy_slugs": [
@@ -1435,6 +1492,58 @@
         "featured"
       ],
       "lane": "lab"
+    },
+    {
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "version_source": "package.json",
+      "name": "ai-ops",
+      "slug": "ai-ops",
+      "legacy_slugs": [],
+      "repo": "alawein/ai-ops",
+      "local_path": "core/ai-ops",
+      "bucket": "core",
+      "lane": "platform",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "status": "active",
+      "homepage": "https://github.com/alawein/ai-ops",
+      "canonical_description": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+      "tags": [
+        "Python",
+        "Postgresql"
+      ],
+      "github_topics": [
+        "ai-ops",
+        "python",
+        "postgresql"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python",
+        "postgresql"
+      ],
+      "last_verified": "2026-09-07",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
     },
     {
       "name": "alawein",

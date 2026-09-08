@@ -1,18 +1,18 @@
 {
   "generatedAt": "2026-09-06",
   "summary": {
-    "repoCount": 45,
+    "repoCount": 47,
     "typeCounts": {
       "archive": 1,
-      "research": 19,
-      "tooling": 10,
+      "research": 20,
+      "tooling": 11,
       "product": 12,
       "governance": 1,
       "infra": 2
     },
     "lifecycleCounts": {
       "archived": 1,
-      "active": 34,
+      "active": 36,
       "frozen": 8,
       "maintained": 2
     }
@@ -100,6 +100,7 @@
       "pennylane",
       "physics",
       "plotly",
+      "postgresql",
       "powershell",
       "prompts",
       "python",
@@ -1149,6 +1150,45 @@
         "release_automation": {}
       },
       {
+        "name": "ai-ops",
+        "slug": "ai-ops",
+        "repo": "alawein/ai-ops",
+        "type": "tooling",
+        "surface": "monorepo",
+        "domain": "governance",
+        "lifecycle": "active",
+        "visibility": "private",
+        "theme_family": "midnight",
+        "brand_family": "midnight",
+        "stack": [
+          "python",
+          "postgresql"
+        ],
+        "audience": [
+          "internal"
+        ],
+        "homepage": "https://github.com/alawein/ai-ops",
+        "description": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+        "topics": [
+          "ai-ops",
+          "python",
+          "postgresql"
+        ],
+        "maintainer": "Meshal Alawein",
+        "docs_owner": "Meshal Alawein",
+        "local_path": "core/ai-ops",
+        "catalog_groups": [],
+        "depends_on": [
+          "alawein"
+        ],
+        "provides": [],
+        "version_source": "package.json",
+        "repo_archetype": "monorepo",
+        "compliance": "public-data",
+        "github_actions_settings": {},
+        "release_automation": {}
+      },
+      {
         "name": "Android Coding Phone",
         "slug": "android-coding-phone",
         "repo": "alawein/android-coding-phone",
@@ -1289,54 +1329,6 @@
         "version_source": "package.json",
         "repo_archetype": "monorepo",
         "compliance": "public-data",
-        "github_actions_settings": {},
-        "release_automation": {}
-      },
-      {
-        "name": "incore",
-        "slug": "incore",
-        "repo": "alawein/incore",
-        "type": "tooling",
-        "surface": "monorepo",
-        "domain": "governance",
-        "lifecycle": "active",
-        "visibility": "private",
-        "theme_family": "midnight",
-        "brand_family": "midnight",
-        "stack": [
-          "python",
-          "sqlite",
-          "mcp"
-        ],
-        "audience": [
-          "internal"
-        ],
-        "homepage": "https://github.com/alawein/incore",
-        "description": "CLI and MCP tooling for workspace asset inventory, ingest, dedupe, and querying across agent-oriented repos.",
-        "topics": [
-          "automation",
-          "cli",
-          "inventory",
-          "mcp",
-          "python"
-        ],
-        "maintainer": "Meshal Alawein",
-        "docs_owner": "Meshal Alawein",
-        "local_path": "core/incore",
-        "catalog_groups": [
-          "infrastructure"
-        ],
-        "depends_on": [
-          "workspace-tools",
-          "alawein"
-        ],
-        "provides": [
-          "inventory-core",
-          "asset-ingest-query"
-        ],
-        "version_source": "pyproject.toml",
-        "repo_archetype": "python-library",
-        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       }
@@ -1855,6 +1847,45 @@
       ],
       "version_source": "pyproject.toml",
       "repo_archetype": "python-library",
+      "compliance": "public-data",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "maios-dashboard",
+      "slug": "maios-dashboard",
+      "repo": "alawein/maios-dashboard",
+      "type": "research",
+      "surface": "monorepo",
+      "domain": "scientific-computing",
+      "lifecycle": "active",
+      "visibility": "public",
+      "theme_family": "wisdom",
+      "brand_family": "wisdom",
+      "stack": [
+        "typescript",
+        "nextjs"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://maios-dashboard.vercel.app",
+      "description": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
+      "topics": [
+        "maios-dashboard",
+        "typescript",
+        "nextjs"
+      ],
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "local_path": "lab/maios-dashboard",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
       "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2379,6 +2410,45 @@
       "version_source": "package.json",
       "repo_archetype": "node-monorepo",
       "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "name": "ai-ops",
+      "slug": "ai-ops",
+      "repo": "alawein/ai-ops",
+      "type": "tooling",
+      "surface": "monorepo",
+      "domain": "governance",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "midnight",
+      "brand_family": "midnight",
+      "stack": [
+        "python",
+        "postgresql"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/ai-ops",
+      "description": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+      "topics": [
+        "ai-ops",
+        "python",
+        "postgresql"
+      ],
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "local_path": "core/ai-ops",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "monorepo",
+      "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -4573,6 +4643,26 @@
       "release_automation": {}
     },
     {
+      "slug": "maios-dashboard",
+      "repo": "alawein/maios-dashboard",
+      "description": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
+      "homepage": "https://maios-dashboard.vercel.app",
+      "topics": [
+        "maios-dashboard",
+        "typescript",
+        "nextjs"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "meatheadphysicist",
       "repo": "alawein/meatheadphysicist",
       "description": "Computational physics research platform for Bell inequality analysis, CHSH simulation, and claim verification.",
@@ -4807,6 +4897,26 @@
         "repo_archetype": "node-monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "ai-ops",
+      "repo": "alawein/ai-ops",
+      "description": "Implementation repo for the AI Operations System, schema, ingestion pipeline, agents, and workflows (spec lives in docs/research).",
+      "homepage": "https://github.com/alawein/ai-ops",
+      "topics": [
+        "ai-ops",
+        "python",
+        "postgresql"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "compliance": "public-data",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "midnight"
       },
       "actions_settings": {},
       "release_automation": {}

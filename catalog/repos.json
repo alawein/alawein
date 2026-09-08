@@ -730,7 +730,7 @@
       "local_path": "lab/maios-dashboard",
       "bucket": "lab",
       "lane": "lab",
-      "visibility": "public",
+      "visibility": "private",
       "owner": "alawein",
       "maintainer": "Meshal Alawein",
       "docs_owner": "Meshal Alawein",
@@ -765,11 +765,6 @@
       "audience": [
         "internal"
       ],
-      "promotion": {
-        "tier": "P1",
-        "scanned": "2026-09-07",
-        "notes": "catalog gap fix; live dashboard verified 2026-09-07; not pinned."
-      },
       "catalog_groups": []
     },
     {
@@ -1526,7 +1521,7 @@
       ],
       "github_custom_properties": {
         "lifecycle": "active",
-        "compliance": "public-data",
+        "compliance": "internal-only",
         "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"

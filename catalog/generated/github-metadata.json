@@ -506,7 +506,7 @@
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "public-data",
+        "compliance": "internal-only",
         "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"

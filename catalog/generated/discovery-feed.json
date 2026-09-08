@@ -1184,7 +1184,7 @@
         "provides": [],
         "version_source": "package.json",
         "repo_archetype": "monorepo",
-        "compliance": "public-data",
+        "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
       },
@@ -1859,7 +1859,7 @@
       "surface": "monorepo",
       "domain": "scientific-computing",
       "lifecycle": "active",
-      "visibility": "public",
+      "visibility": "private",
       "theme_family": "wisdom",
       "brand_family": "wisdom",
       "stack": [
@@ -2448,7 +2448,7 @@
       "provides": [],
       "version_source": "package.json",
       "repo_archetype": "monorepo",
-      "compliance": "public-data",
+      "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
     },
@@ -4913,7 +4913,7 @@
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "public-data",
+        "compliance": "internal-only",
         "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"

@@ -120,7 +120,7 @@
       "name": "maios-dashboard",
       "about": "Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup) synced from agents.yaml.",
       "status": "active",
-      "visibility": "public",
+      "visibility": "private",
       "url": "https://maios-dashboard.vercel.app"
     },
     {

@@ -12,6 +12,7 @@ lanes:
       pipeline, agents, and workflows (spec lives in docs/research).
     name: ai-ops
     url: https://github.com/alawein/ai-ops
+    compliance: internal-only
     stack:
     - python
     - postgresql
@@ -224,12 +225,7 @@ lanes:
     about: Next.js dashboard surfacing the MAIOS agent fleet (Scheme A Intake/Policy/Cleanup)
       synced from agents.yaml.
     name: maios-dashboard
-    visibility: public
     url: https://maios-dashboard.vercel.app
-    promotion:
-      tier: P1
-      scanned: '2026-09-07'
-      notes: catalog gap fix; live dashboard verified 2026-09-07; not pinned.
     stack:
     - typescript
     - nextjs

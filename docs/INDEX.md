@@ -118,6 +118,7 @@ last_updated: 2026-09-08
 ## internal/
 
 - [kernel-parity-2026-09-08.md](internal/kernel-parity-2026-09-08.md)
+- [kernel-skills-drift-mapping-2026-09-08.md](internal/kernel-skills-drift-mapping-2026-09-08.md)
 
 ## operations/
 

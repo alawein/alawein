@@ -22,6 +22,7 @@ lanes:
     name: alawein
     visibility: public
     url: https://github.com/alawein/alawein
+    compliance: public-data
     promotion:
       tier: P2
       scanned: '2026-08-27'
@@ -31,6 +32,7 @@ lanes:
     about: "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals."
     name: Android Coding Phone
     url: https://github.com/alawein/android-coding-phone
+    compliance: internal-only
     stack:
     - powershell
     - node
@@ -40,6 +42,7 @@ lanes:
       packs.
     name: design-system
     url: https://github.com/alawein/design-system
+    compliance: internal-only
     legacy_slugs:
     - aw-devkit
     - devkit
@@ -47,6 +50,7 @@ lanes:
     about: Private backup and version control for the personal Claude Code / cross-tool
       agent platform configuration (agents, skills, hooks, doctrine, prompt kits).
     url: https://github.com/alawein/dotclaude
+    compliance: public-data
     stack:
     - python
     - markdown
@@ -56,10 +60,12 @@ lanes:
       querying across agent-oriented repos.
     name: incore
     url: https://github.com/alawein/incore
+    compliance: internal-only
   - slug: kcompiler
     about: Knowledge compiler that turns evidence into claims and a compiled wiki,
       with a curated personal knowledge base.
     url: https://github.com/alawein/kcompiler
+    compliance: public-data
     stack:
     - python
     - sqlite
@@ -67,12 +73,14 @@ lanes:
     about: Private local workspace records and operating tools.
     name: Command Center
     url: https://github.com/alawein/knowledge-base
+    compliance: internal-only
     legacy_slugs:
     - pkos
   - slug: outpost
     about: Personal kit that installs prompts for coding agents.
     visibility: public
     url: https://github.com/alawein/outpost
+    compliance: public-data
     promotion:
       tier: P1
       scanned: '2026-08-27'
@@ -83,11 +91,13 @@ lanes:
       tooling packages.
     name: prompty
     url: https://github.com/alawein/prompty
+    compliance: internal-only
   - slug: repo-drift
     about: Configurable CLI and GitHub Action that validates repository claims
       and configuration against declared rules.
     visibility: public
     url: https://github.com/alawein/repo-drift
+    compliance: public-data
     promotion:
       tier: P1
       scanned: '2026-09-06'
@@ -100,15 +110,18 @@ lanes:
   - slug: workspace-control
     about: Workspace control-plane inventory engine, registry, and operational tooling.
     url: https://github.com/alawein/workspace-control
+    compliance: internal-only
   - slug: workspace-tools
     about: Workspace execution layer for scaffolding, audits, sync, drift detection,
       and rollout automation.
     name: workspace-tools
     url: https://github.com/alawein/workspace-tools
+    compliance: internal-only
   ship:
   - slug: atelier-rounaq
     about: Studio and portfolio site for a luxury atelier.
     url: https://atelier-rounaq.com
+    compliance: public-data
     featured: true
     legacy_slugs:
     - rounaq-atelier
@@ -116,15 +129,18 @@ lanes:
     about: AI-assisted local marketing audits with operator dashboard and follow-up
       content workflows.
     url: https://github.com/alawein/auditraise
+    compliance: internal-only
     featured: true
   - slug: bolts
     about: Fitness transformation plans with Next.js, Stripe, Supabase, and Python
       tooling.
     url: https://bolts.fit
+    compliance: pii
     featured: true
   - slug: gymboy
     about: Fitness coaching platform with a retro progression-first training interface.
     url: https://gymboy.coach
+    compliance: pii
     featured: true
     legacy_slugs:
     - gainboy
@@ -133,29 +149,35 @@ lanes:
       contact.
     status: maintained
     url: https://www.meshal.ai
+    compliance: public-data
     featured: true
     site: true
   - slug: repz
     about: AI-powered coaching platform for fitness professionals and clients.
     name: REPZ
     url: https://repzcoach.com
+    compliance: pii
     featured: true
   - slug: roka-oakland-hustle
     about: Retro narrative RPG set in Oakland with a 7-day arc and 32 quests.
     name: 'Roka: Oakland Hustle'
     url: https://github.com/alawein/roka-oakland-hustle
+    compliance: public-data
     site: true
   - slug: scribd
     about: Fitness publishing and content surface.
     url: https://scribd.fit
+    compliance: public-data
     featured: true
   lab:
   - slug: adil
     about: Legal-ops CLI for assembling, validating, and submitting evidence packets.
     url: https://github.com/alawein/adil
+    compliance: regulated
   - slug: alembiq
     about: LLM training, alignment, evaluation, and synthetic data platform.
     url: https://alembiq.online
+    compliance: internal-only
     featured: true
     legacy_slugs:
     - neper
@@ -163,12 +185,14 @@ lanes:
     about: Privacy-first attribution intelligence with AI detection, citation checks,
       and CWE scans.
     url: https://attributa.dev
+    compliance: internal-only
     featured: true
   - slug: chshlab
     about: Quantum foundations education site for CHSH and Bell inequality experiments.
     name: CHSH Lab
     visibility: public
     url: https://chshlab.online
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -177,6 +201,7 @@ lanes:
     about: Citable paper artifact (arXiv source, notebooks, rendered paper) for
       CHSH Lab, kept independently accessible if chshlab goes private.
     url: https://github.com/alawein/chshlab-paper
+    compliance: public-data
     stack:
     - latex
     - jupyter-notebook
@@ -187,6 +212,7 @@ lanes:
     name: Event Discovery Framework
     status: frozen
     url: https://edfp.online
+    compliance: public-data
     featured: true
     legacy_slugs:
     - event-discovery-framework
@@ -194,6 +220,7 @@ lanes:
     about: LLM adversarial reasoning evaluation system and benchmarking surface.
     visibility: public
     url: https://fallax.online
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -204,6 +231,7 @@ lanes:
     about: LLM evaluation, benchmarking, and security testing playground.
     name: LLMWorks
     url: https://llmworks.dev
+    compliance: public-data
     featured: true
   - slug: loopholelab
     about: Research validation surface for adversarial claim stress-testing and loophole
@@ -211,12 +239,14 @@ lanes:
     name: Loophole Lab
     status: frozen
     url: https://loopholelab.online
+    compliance: public-data
   - slug: maglogic
     about: Magnetic logic gates and device simulation research.
     name: MagLogic
     status: frozen
     visibility: public
     url: https://github.com/alawein/maglogic
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -226,6 +256,7 @@ lanes:
       synced from agents.yaml.
     name: maios-dashboard
     url: https://maios-dashboard.vercel.app
+    compliance: public-data
     stack:
     - typescript
     - nextjs
@@ -234,6 +265,7 @@ lanes:
       simulation, and claim verification.
     name: meatheadphysicist
     url: https://mhphys.online
+    compliance: public-data
     legacy_slugs:
     - MeatheadPhysicist
   - slug: optiqap
@@ -242,12 +274,14 @@ lanes:
     name: OptiQAP
     status: maintained
     url: https://optiqap.online
+    compliance: public-data
     featured: true
     legacy_slugs:
     - qaplibria
   - slug: provegate
     about: Agent MCP tooling for drift control, memory, and proof-oriented orchestration.
     url: https://provegate.online
+    compliance: internal-only
     legacy_slugs:
     - epistemic-stack
   - slug: qmatsim
@@ -256,6 +290,7 @@ lanes:
     status: frozen
     visibility: public
     url: https://github.com/alawein/qmatsim
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -265,17 +300,20 @@ lanes:
     name: qmlab.online
     status: frozen
     url: https://qmlab.online
+    compliance: internal-only
   - slug: quantumalgo
     about: Python library and experiments for quantum algorithms applied to combinatorial
       optimization.
     name: quantumalgo
     url: https://github.com/alawein/quantumalgo
+    compliance: internal-only
   - slug: qubeml
     about: Quantum machine learning experiments and research.
     name: qubeml
     status: frozen
     visibility: public
     url: https://github.com/alawein/qubeml
+    compliance: public-data
     promotion:
       tier: P1
       scanned: '2026-08-27'
@@ -286,6 +324,7 @@ lanes:
     status: frozen
     visibility: public
     url: https://github.com/alawein/scicomp
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -294,12 +333,14 @@ lanes:
     about: Scientific simulation core for interactive modeling and numerical exploration.
     name: simcore.dev
     url: https://simcore.dev
+    compliance: internal-only
   - slug: spincirc
     about: Spintronics circuit simulation and modeling research workspace.
     name: spincirc
     status: frozen
     visibility: public
     url: https://github.com/alawein/spincirc
+    compliance: public-data
     promotion:
       tier: P0
       scanned: '2026-08-29'
@@ -309,6 +350,7 @@ lanes:
       voice consistency enforcement, web UI, CLI, and shared core logic (Turborepo
       monorepo).'
     url: https://github.com/alawein/veyra
+    compliance: internal-only
     featured: true
   work:
   - slug: handshake
@@ -316,6 +358,7 @@ lanes:
     about: LLM evaluation monorepo with shared core and project validators.
     name: Handshake AI Eval
     url: https://github.com/alawein/handshake
+    compliance: internal-only
     legacy_slugs:
     - eval
     - handshake-hai
@@ -326,15 +369,18 @@ lanes:
       solving, and executive deck production.'
     name: Mercor AI/ML Experts Catalog
     url: https://github.com/alawein/mercor
+    compliance: internal-only
   - slug: turing
     readme_archetype: catalog-collection
     about: Private catalog-collection workspace for Turing interview and engagement
       artifacts (benchmarks, evaluations, specs).
     name: Turing engagements
     url: https://github.com/alawein/turing
+    compliance: internal-only
   archive:
   - slug: helios
     about: Proprietary research archive for computational astrophysics and astronomy
       work.
     status: archived
     url: https://github.com/alawein/helios
+    compliance: internal-only

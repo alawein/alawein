@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Workspace Standardization Guide
 description: Canonical migration contract for naming, control-plane ownership, shared resources, and phased workspace directives.
-last_updated: 2026-09-07
+last_updated: 2026-09-08
 category: governance
 audience: contributors
 status: active
@@ -15,6 +15,11 @@ tags: [workspace, migration, naming, layout, governance]
 ---
 
 # Workspace Standardization Guide
+
+> Stack-aware layout sections below are superseded by
+> [`kernel-spec.md`](./kernel-spec.md) (2026-09-08). Canonical naming policy
+> and directive tracking (D-1 through D-5) remain in force and are not
+> superseded.
 
 This document defines how workspace standardization is executed under the
 canonical contract in

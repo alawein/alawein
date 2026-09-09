@@ -114,3 +114,35 @@ def test_snapshot_drift_detected(tmp_path: Path, inventory_payload: dict) -> Non
     finally:
         lib.SNAPSHOT_PATH = original
     assert any("topology drifted" in issue.message for issue in issues)
+
+def test_duplicate_agent_ids_are_rejected(inventory_payload: dict) -> None:
+    from agent_integrations_lib import unique_field_values
+
+    rows = [
+        {"id": "dup.agent", "name": "A"},
+        {"id": "dup.agent", "name": "B"},
+    ]
+    issues = unique_field_values(rows, "id", "agent id")
+    assert any("duplicate agent id" in i.message for i in issues)
+
+
+def test_duplicate_integration_ids_are_rejected() -> None:
+    from agent_integrations_lib import unique_field_values
+
+    rows = [
+        {"id": "dup.int", "kind": "x"},
+        {"id": "dup.int", "kind": "y"},
+    ]
+    issues = unique_field_values(rows, "id", "integration id")
+    assert any("duplicate integration id" in i.message for i in issues)
+
+
+def test_cross_row_duplicate_slack_user_still_flagged() -> None:
+    from agent_integrations_lib import unique_field_values
+
+    rows = [
+        {"id": "a1", "slack_user_id": "U111"},
+        {"id": "a2", "slack_user_id": "U111"},
+    ]
+    issues = unique_field_values(rows, "slack_user_id", "slack user id")
+    assert any("duplicate slack user id" in i.message for i in issues)

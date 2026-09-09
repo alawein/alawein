@@ -1,0 +1,17 @@
+#!/bin/sh
+# Kernel-managed fast drift check (docs/governance/kernel-spec.md, Phase 4).
+#
+# Root-cause fix: no absolute paths. Runs `repo-drift check` against the
+# repo root if `repo-drift` is importable; when absent it warns and exits 0
+# so a missing local install never blocks a push -- CI still runs the full
+# check. This is deliberately not scoped to only changed paths (repo-drift
+# has no "changed paths only" mode yet); it runs the full check, which is
+# fast enough in practice for the detector set as of kernel_version ${kernel_version}.
+if python3 -c "import repo_drift" >/dev/null 2>&1; then
+  exec python3 -m repo_drift.cli check --target .
+fi
+if python -c "import repo_drift" >/dev/null 2>&1; then
+  exec python -m repo_drift.cli check --target .
+fi
+echo "pre-push: repo-drift not installed; skipping local drift check (CI still runs it)." >&2
+exit 0

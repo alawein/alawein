@@ -1,0 +1,13 @@
+#!/bin/sh
+# Kernel-managed secret-scan guard (docs/governance/kernel-spec.md, Phase 4).
+#
+# Root-cause fix: this hook never references an absolute path into a
+# machine-specific scratch directory (the prior failure mode across the
+# fleet). It only checks PATH for `gitleaks`; when absent it warns and
+# exits 0 so a missing local scanner never blocks a commit -- CI Gitleaks
+# still runs regardless.
+if command -v gitleaks >/dev/null 2>&1; then
+  exec gitleaks protect --staged --redact
+fi
+echo "pre-commit: gitleaks not found on PATH; skipping local secret scan (CI Gitleaks still runs)." >&2
+exit 0

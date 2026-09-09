@@ -174,7 +174,33 @@
           "items": { "type": "string" }
         },
         "portfolio_domain": { "type": "string" },
-        "research_domain": { "type": "string" }
+        "research_domain": { "type": "string" },
+        "profile": {
+          "type": "string",
+          "description": "Kernel structural profile (docs/governance/kernel-spec.md). Extended 2026-09-08 beyond the plan's original 7-value illustrative list to cover observed stacks.",
+          "enum": [
+            "web-app-next",
+            "web-app-vite",
+            "web-app-static",
+            "node-monorepo",
+            "full-stack-monorepo",
+            "python-lib",
+            "python-service",
+            "python-research",
+            "cli-tool",
+            "docs-hub",
+            "game",
+            "paper",
+            "archive"
+          ]
+        },
+        "tier": {
+          "type": "string",
+          "description": "Kernel-sync rollout tier, distinct from promotion.tier (public-readiness tier).",
+          "enum": ["tier-1", "tier-2", "tier-3"]
+        },
+        "kernel_version": { "type": "string", "minLength": 1 },
+        "archived": { "type": "boolean" }
       }
     }
   }

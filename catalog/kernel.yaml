@@ -1,0 +1,61 @@
+schemaVersion: "1.0.0"
+lastVerified: "2026-09-08"
+
+# Kernel canonicalization state. See docs/governance/kernel-spec.md and
+# docs/internal/plans/2026-09-08-kernel-canonicalization.md.
+
+kernel_version: "0.1.0"
+
+# Single pin ref for every reusable workflow `uses:` reference across the
+# fleet (drift currently spans at least 6 SHAs: ed5ed61, 6cddc4b, 9779fa3,
+# 1256254, 430c345, 67c8b3e -- see kernel-spec.md "Current-state facts").
+# Decision (maintainer, 2026-09-08, checkpoint 1): the pin targets a tagged
+# hub release, not a raw main SHA -- see docs/adr/0008-workflow-pin-targets-
+# tagged-release.md. Despite the field name, the value is a git tag (e.g.
+# "kernel-v0.1.0"), scoped to kernel releases, distinct from this repo's
+# product tags (v1.0.0, v2.1.0). Still null: no kernel release tag has been
+# cut yet. Set once the Phase 6 step 5 workflow PR merges to main and that
+# commit is tagged -- do not guess a value in the meantime.
+workflow_pin_sha: null
+
+# Path allowlist for the kernel-sync PR class (ADR 0005). A kernel-sync PR
+# whose diff stays entirely within these paths, and does not touch src/,
+# tests/, or dependency manifests, is eligible for auto-merge once the guard
+# and required checks pass.
+kernel_sync_path_allowlist:
+  - "README.md"
+  - "AGENTS.md"
+  - "SECURITY.md"
+  - "LICENSE"
+  - "CHANGELOG.md"
+  - "service-metadata.yaml"
+  - ".drift-rules.yaml"
+  - ".editorconfig"
+  - ".gitattributes"
+  - ".gitignore"
+  - ".kernel/"
+  - ".kernel-manifest.json"
+  - ".github/workflows/ci.yml"
+  - ".github/workflows/codeql.yml"
+  - ".github/workflows/docs-doctrine.yml"
+  - ".github/workflows/drift.yml"
+  - ".github/CODEOWNERS"
+  - ".github/dependabot.yml"
+  - ".github/PULL_REQUEST_TEMPLATE.md"
+  - ".github/ISSUE_TEMPLATE/"
+  - ".kilo/"
+  - "docs/README.md"
+  - "docs/architecture/"
+  - "docs/adr/"
+  - "docs/operations/"
+  - "docs/internal/"
+
+# Kill switch: when true, kernel-sync auto-merge is disabled fleet-wide
+# regardless of guard/check results. Defaults to disabled (safe) until
+# Phase 6 auto-merge is exercised on the Wave 0 pilots.
+auto_merge_enabled: false
+
+# repo-drift release SHA pinned by catalog/kernel.yaml (Phase 2 step 11 /
+# Phase 6-8 execution plan step 4). alawein/repo-drift tag v0.2.0, merged via
+# PR #5 (feat/kernel-detectors) and PR #6 (chore/release-0.2.0), 2026-09-08.
+repo_drift_release_sha: "229a31b7cd8d501f270e5f8793270ee9ffb0f04b"

@@ -36,6 +36,16 @@
       "id": "social",
       "slack_id": "C0AP24SRVQF",
       "cursor_can_read": true
+    },
+    {
+      "id": "me-agents-eng",
+      "slack_id": "C0BVDBHLXQB",
+      "cursor_can_read": false
+    },
+    {
+      "id": "me-agents-ops",
+      "slack_id": "C0BVDBHPB99",
+      "cursor_can_read": false
     }
   ],
   "agents": [

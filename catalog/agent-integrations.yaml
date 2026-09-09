@@ -369,6 +369,20 @@ slack_channels:
     cursor_can_read: true
     notes: Cursor joined 2026-09-05 15:16 UTC (join ts 1788621362.488249, lane C)
 
+  - id: me-agents-eng
+    slack_id: C0BVDBHLXQB
+    tier: agent
+    agents_present: [cursor]
+    cursor_can_read: false
+    notes: >
+      Created 2026-09-07. Invite @Cursor. Cursor code tasks only.
+  - id: me-agents-ops
+    slack_id: C0BVDBHPB99
+    tier: agent
+    agents_present: [claude, computer]
+    cursor_can_read: false
+    notes: >
+      Created 2026-09-07. Invite @Claude and @Computer. Analysis only.
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-07T06:56:00Z'
   run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3

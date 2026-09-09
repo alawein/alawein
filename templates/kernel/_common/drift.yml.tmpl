@@ -1,0 +1,33 @@
+name: drift
+
+# Phase 3 step 14: both engines run side by side, repo-drift warn-only, until
+# one clean wave (step 15) justifies flipping repo-drift to blocking and
+# dropping the workspace-batch step. That flip is a separate template change
+# (Phase 6-8 execution plan step 8), not a silent flag here.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  workspace-batch-drift:
+    name: drift (workspace-batch, blocking)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run workspace-batch drift check
+        run: |
+          python -m pip install workspace-batch==0.1.2
+          workspace-batch drift check --target . --reporter github
+
+  repo-drift-warn-only:
+    name: drift (repo-drift, warn-only)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run repo-drift check
+        run: |
+          python -m pip install "repo-drift @ git+https://github.com/alawein/repo-drift@${repo_drift_release_sha}"
+          repo-drift check --target . --reporter github

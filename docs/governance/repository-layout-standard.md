@@ -5,7 +5,7 @@ sync: on-change
 sla: none
 title: Repository layout standard
 description: Canonical top-level layout by stack archetype; aligns apps with AWS-style separation of code, infra, docs, and automation.
-last_updated: 2026-07-06
+last_updated: 2026-09-08
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -16,6 +16,10 @@ related:
 ---
 
 # Repository layout standard
+
+> Superseded by [`kernel-spec.md`](./kernel-spec.md) (2026-09-08) as the
+> enforced canonical tree. Retained here as historical archetype detail and
+> background for the profiles the kernel spec now enumerates.
 
 This document defines **layout archetypes**, not a single folder shape for every repository. Pick the archetype that matches the primary deliverable.
 

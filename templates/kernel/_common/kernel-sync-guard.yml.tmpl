@@ -1,0 +1,80 @@
+name: kernel-sync-guard
+
+# Required check on every `kernel-sync`-labelled PR (ADR 0005). Fails the PR
+# if its diff touches anything outside catalog/kernel.yaml's
+# kernel_sync_path_allowlist, fetched live from the hub at the pinned
+# release tag, or if it touches src/, tests/, e2e/, or a dependency
+# manifest regardless of what the allowlist says. This is a guard, not an
+# auto-merge decision: auto-merge is a separate step gated on
+# catalog/kernel.yaml.auto_merge_enabled (default false, ADR 0005).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  guard:
+    if: contains(github.event.pull_request.labels.*.name, 'kernel-sync')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo (full history for base..head diff)
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Checkout hub allowlist at pinned release
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          repository: alawein/alawein
+          ref: ${workflow_pin_sha}
+          path: _kernel-hub
+          sparse-checkout: |
+            catalog/kernel.yaml
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: python -m pip install --disable-pip-version-check pyyaml
+
+      - name: Enforce no-source-change rule and path allowlist
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          CHANGED=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+          echo "Changed paths:"
+          echo "$CHANGED"
+
+          # Dependency manifests and source/test trees are never allowed in
+          # a kernel-sync diff, regardless of the allowlist.
+          if echo "$CHANGED" | grep -Eq '^(src/|tests/|e2e/|package(-lock)?\.json$|pyproject\.toml$|poetry\.lock$|requirements.*\.txt$)'; then
+            echo "::error::kernel-sync diff touches source, tests, or a dependency manifest"
+            exit 1
+          fi
+
+          python - "$CHANGED" <<'PYEOF'
+          import sys
+          import yaml
+
+          changed = [line for line in sys.argv[1].splitlines() if line.strip()]
+          with open("_kernel-hub/catalog/kernel.yaml", encoding="utf-8") as f:
+              allowlist = yaml.safe_load(f).get("kernel_sync_path_allowlist", [])
+
+          def allowed(path: str) -> bool:
+              return any(path == entry or path.startswith(entry) for entry in allowlist)
+
+          violations = [p for p in changed if not allowed(p)]
+          if violations:
+              print("::error::kernel-sync diff touches paths outside the allowlist:")
+              for v in violations:
+                  print(f"::error::  {v}")
+              sys.exit(1)
+          print(f"All {len(changed)} changed path(s) within the kernel_sync_path_allowlist.")
+          PYEOF

@@ -1,0 +1,33 @@
+#!/bin/sh
+# Kernel-managed commit-msg guard (docs/governance/kernel-spec.md, Phase 4).
+#
+# Enforces: a conventional-commit-shaped subject line, no em-dash, no
+# AI-authorship trailer, and (best-effort) no leading emoji. Root-cause fix:
+# no absolute paths, pure POSIX-ish sh + GNU grep (matches the Git-for-
+# Windows environment this fleet runs on).
+MSG_FILE="$1"
+SUBJECT=$(head -n 1 "$MSG_FILE")
+
+if ! printf '%s' "$SUBJECT" | grep -Eq '^(feat|fix|docs|chore|refactor|test|perf|build|ci|revert)(\([a-zA-Z0-9_.-]+\))?!?: .+'; then
+  echo "commit-msg: subject line is not conventional-commit-shaped: $SUBJECT" >&2
+  echo "commit-msg: expected '<type>(<scope>)?: <description>', e.g. 'fix: correct off-by-one'" >&2
+  exit 1
+fi
+
+if printf '%s' "$SUBJECT" | grep -q '—'; then
+  echo "commit-msg: subject line contains an em-dash; use a colon or split the sentence" >&2
+  exit 1
+fi
+
+if printf '%s' "$SUBJECT" | grep -Pq '[\x{1F300}-\x{1FAFF}\x{2600}-\x{27BF}\x{2190}-\x{21FF}]' 2>/dev/null; then
+  echo "commit-msg: subject line appears to contain an emoji" >&2
+  exit 1
+fi
+
+if grep -Eqi '^Co-Authored-By:.*(claude|copilot|codex|chatgpt|gpt|anthropic|openai)' "$MSG_FILE" \
+  || grep -Eqi '^(Generated (with|by)|Co-authored by an AI|AI-generated)' "$MSG_FILE"; then
+  echo "commit-msg: AI-authorship trailer is not allowed" >&2
+  exit 1
+fi
+
+exit 0

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-07
+last_updated: 2026-09-09
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.0
+version: 1.5.1
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -97,7 +97,7 @@ only who must act.
 | `@Claude` | `U0AQQFJT8AC` | 4 lines. No inventory dump. No emoji status rows. Tag is Meshal-only. |
 | `@Computer` | `U0APW7F9S4A` | URL plus completion condition. Cloud-only. |
 | `@Notion AI` | `U0AQ8UNAKTK` | Operations Hub / Master Tasks (required Status) / Projects Canonical. |
-| `@Kilo` | `U0BV9U2GFED` | `ops-control-plane-grok`, `ai-ops`, `workspace-brain` only. |
+| `@Kilo` | `U0BV9U2GFED` | `ops-control-plane-grok` (freeze candidate), `ai-ops`, `workspace-brain` (Linux mirror/backup) only. Not Windows MAIOS SoR. |
 | `@Codex` | `U0BV7V8M3NW` | Only after ChatGPT Codex connect. Else skip. |
 
 Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,

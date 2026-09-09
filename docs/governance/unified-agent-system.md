@@ -146,7 +146,7 @@ verification steps: [`cursor-mcp-repair.md`](cursor-mcp-repair.md) §4 and §4.1
 | Notion / Drive file ownership | **Computer** then Codex | Cursor MCP | Inherited claims |
 | Design doc lock (`.md`) | **Computer** | Cursor commit | Duplicate narratives |
 | Connector gap-fill (diff only) | **Codex** (after connect) | Computer | Full re-audit |
-| Kilo-lane git (`ops-control-plane-grok`, `ai-ops`, `workspace-brain`) | **Kilo** | None | `alawein/alawein` |
+| Kilo-lane git (`ops-control-plane-grok` freeze candidate, `ai-ops`, `workspace-brain` Linux mirror) | **Kilo** | None | `alawein/alawein`; treat grok/brain as non-SoR |
 
 ### 5.2 Multi-agent dispatch protocol
 

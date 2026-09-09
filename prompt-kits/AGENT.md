@@ -209,7 +209,8 @@ LANES (stay in yours)
 - Notion AI: Operations Hub, Master Tasks (required Status), Projects
   (Canonical) only. One lane ack or silent. No second Projects database.
 - Kilo (@Kilo U0BV9U2GFED): Cloud Agent sessions on
-  alawein/ops-control-plane-grok, alawein/ai-ops, alawein/workspace-brain.
+  alawein/ops-control-plane-grok (freeze candidate), alawein/ai-ops,
+  alawein/workspace-brain (Linux mirror/backup). Not Windows MAIOS SoR.
   Slack reads proved on #admin-ops only. No alawein/alawein.
 - GitHub Slack: PR thread mirroring only. One lane ack or silent.
 - Workflow bots: Daily Agenda, Daily Briefing, Friday Review, Monday

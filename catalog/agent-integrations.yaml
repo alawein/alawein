@@ -145,7 +145,10 @@ agents:
       alawein/ai-ops, and alawein/workspace-brain only (alawein org,
       not AGI-adjacent); no alawein/alawein visibility. Slack reads
       proved on #admin-ops only (1/7). Lane: Cloud Agent sessions on
-      those three repos. Ask Meshal before expanding GitHub App scope.
+      those three repos. Freeze note (2026-09-09): treat
+      ops-control-plane-grok as freeze candidate and workspace-brain as
+      Linux mirror/backup only; do not expand scope or treat either as
+      Windows MAIOS SoR. Ask Meshal before expanding GitHub App scope.
     last_verified: 2026-09-07
 
 workflow_bots:

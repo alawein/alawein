@@ -107,13 +107,14 @@ def unique_field_values(
             continue
         text = str(value)
         prior = seen.get(text)
-        if prior and prior != row.get("id", "<unknown>"):
+        if prior:
             issues.append(
                 ValidationIssue(
                     "error",
                     f"duplicate {label} '{text}' on '{prior}' and '{row.get('id')}'",
                 )
             )
+            continue
         seen[text] = str(row.get("id", "<unknown>"))
     return issues
 

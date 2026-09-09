@@ -8,7 +8,7 @@ description: Lightweight outcome-to-version bridge mapping product milestones to
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-06-09
+last_updated: 2026-09-08
 tags: [releases, semver, roadmap, outcomes, milestones, changelog, convention]
 ---
 

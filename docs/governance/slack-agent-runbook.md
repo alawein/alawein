@@ -52,6 +52,8 @@ block only when the kit version changes. Later pings are scoped tasks.
 | `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
 | `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
+| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite pending) | Agent | Created 2026-09-07 |
+| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite pending) | Agent | Created 2026-09-07 |
 
 **Planned v2 topology (draft):** see
 [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not

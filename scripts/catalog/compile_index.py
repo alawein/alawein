@@ -265,6 +265,9 @@ def slim_entry(repo: dict[str, Any], *, bucket: str) -> dict[str, Any]:
     readme_archetype = (repo.get("github_custom_properties") or {}).get("readme_archetype")
     if readme_archetype:
         slim["readme_archetype"] = readme_archetype
+    compliance = (repo.get("github_custom_properties") or {}).get("compliance")
+    if compliance:
+        slim["compliance"] = compliance
     if bucket == "sites":
         slim["site"] = True
     return slim
@@ -338,7 +341,10 @@ def compile_repo(
             "github_custom_properties": repo.get("github_custom_properties")
             or {
                 "lifecycle": status if status in {"active", "maintained", "archived"} else "active",
-                "compliance": "public-data",
+                # No baked-in compliance default: the entry-level override below
+                # always wins (set-if-present / pop-if-absent), so a value here
+                # would never survive this same compile_repo call. Matches
+                # readme_archetype, which is override-only with no default.
                 "repo_archetype": "vite-react-spa" if defaults.get("surface") == "web" else "monorepo",
                 "docs_maturity": "managed",
                 "brand_family": defaults.get("brand_family", "midnight"),
@@ -382,6 +388,8 @@ def compile_repo(
     if entry.get("compliance"):
         repo.setdefault("github_custom_properties", {})
         repo["github_custom_properties"]["compliance"] = entry["compliance"]
+    elif "github_custom_properties" in repo:
+        repo["github_custom_properties"].pop("compliance", None)
 
     if repo.get("type") == "archive" and repo.get("status") not in {
         "archived",

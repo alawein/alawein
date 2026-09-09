@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-07
+last_updated: 2026-09-09
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.0
+version: 1.5.1
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 

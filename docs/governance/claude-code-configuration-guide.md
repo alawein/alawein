@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: Claude Code configuration reference (.claude/, CLAUDE.md)
 description: Canonical layout and practices for Claude Code, project vs global scope, CLAUDE.md, rules, skills, agents, settings, and memory. Extracted from internal reference material for reuse across repos.
-last_updated: 2026-09-07
+last_updated: 2026-09-08
 last-verified: 2026-09-07
 category: governance
 audience: [ai-agents, contributors]
@@ -25,7 +25,19 @@ Use this in **product repositories** that ship a `.claude/` directory. This **or
 
 **Copy-paste prompts and checklists:** [claude-code-migration-prompts.md](./claude-code-migration-prompts.md).
 
-**Cursor:** This org hub commits `.cursor/rules.md` and `.cursor/rules/*.mdc` as governance reminders. Product repos mirror durable constraints in `.cursor/rules` and keep long-form rationale in `CLAUDE.md` or governance docs.
+**Cursor instruction surfaces (keep separate):** This org hub commits
+`.cursor/rules.md` and `.cursor/rules/*.mdc` as project reminders. Product
+repos put durable constraints in `.cursor/rules` and keep long-form rationale
+in `CLAUDE.md` or governance docs. Cursor Cloud loads those repo files.
+Meshal's Windows home naming mirror (`~/AGENTS.md` linked to
+`~/.codex/AGENTS.md` and `~/.cursor/rules/agents-md-global.mdc`) is a local
+Cursor surface only. `~/.cursor/prompts/global-standards.md` is not that
+mirror. Human brand is MAIOS; wire IDs stay `mai.*`; UI names are Scheme A
+(Intake, Policy, Cleanup, Editorial). Atlas, Alfred, and Housekeeper are
+aliases only. A Cloud session that cannot read the Windows home paths must
+record local instruction-loading as unverified. That gap is not MES-12
+organizational acceptance, and it is not local system-map acceptance. See
+[`docs/internal/audits/2026-09-08-mes-12-instruction-loading.md`](../internal/audits/2026-09-08-mes-12-instruction-loading.md).
 
 ---
 

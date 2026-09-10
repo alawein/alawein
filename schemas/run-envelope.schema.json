@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "./run-envelope.schema.json",
+  "title": "Control-plane run envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "run_id",
+    "phase",
+    "control_level",
+    "write_set",
+    "target_ids",
+    "base_revisions",
+    "adapter",
+    "environment",
+    "executor"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "1.0.0" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "phase": {
+      "type": "string",
+      "enum": ["proposed", "authorized", "executed", "verified", "accepted"]
+    },
+    "control_level": {
+      "type": "string",
+      "enum": ["observed", "managed", "enforced"]
+    },
+    "write_set": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Overlapping files or objects this run may write, or none."
+    },
+    "target_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/native_ref" }
+    },
+    "base_revisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/revision_ref" }
+    },
+    "policy_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/loaded_ref" }
+    },
+    "prompt_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/loaded_ref" }
+    },
+    "adapter": { "type": "string", "minLength": 1 },
+    "environment": { "type": "string", "minLength": 1 },
+    "model_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product"],
+      "properties": {
+        "product": { "type": "string", "minLength": 1 },
+        "model": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "authorization": { "$ref": "#/$defs/authorization" },
+    "budget": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "executor": { "$ref": "#/$defs/actor" },
+    "reviewer": { "$ref": "#/$defs/reviewer" },
+    "inputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/native_ref" }
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/native_ref" }
+    },
+    "receipt": { "$ref": "#/$defs/receipt" },
+    "native_gate": { "$ref": "#/$defs/native_gate" },
+    "acceptance": { "$ref": "#/$defs/acceptance" },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "native_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string" },
+        "kind": { "type": "string" }
+      }
+    },
+    "revision_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "ref"],
+      "properties": {
+        "surface": { "type": "string", "minLength": 1 },
+        "ref": { "type": "string", "minLength": 1 },
+        "sha": { "type": "string" }
+      }
+    },
+    "loaded_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "version": { "type": "string" },
+        "committed_revision": { "type": "string" },
+        "loaded_revision": { "type": "string" }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "grantor", "scope", "expires_at", "one_attempt"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "grantor": { "type": "string", "minLength": 1 },
+        "scope": { "type": "string", "minLength": 1 },
+        "expires_at": { "type": "string", "minLength": 1 },
+        "one_attempt": { "type": "boolean" }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool"],
+      "properties": {
+        "tool": { "type": "string", "minLength": 1 },
+        "session": { "type": "string" },
+        "independently_credentialed": { "type": "boolean" }
+      }
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_performed", "performed", "substituted"]
+        },
+        "tool": { "type": "string" },
+        "revision": { "type": "string" },
+        "result": { "type": "string" }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "execute_count": { "type": "integer", "minimum": 0 },
+        "executed_at": { "type": "string" },
+        "readback": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["native_id", "result"],
+            "properties": {
+              "native_id": { "type": "string", "minLength": 1 },
+              "result": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "recovery_status": {
+          "type": "string",
+          "enum": ["not_required", "planned", "tested", "failed", "unverified"]
+        },
+        "digest_sha256": { "type": "string" },
+        "summary": { "type": "string" }
+      }
+    },
+    "native_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "minLength": 1 },
+        "agent_can_bypass": { "type": "boolean" }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["pending", "accepted", "rejected"]
+        },
+        "by": { "type": "string" },
+        "at": { "type": "string" },
+        "revision": { "type": "string" }
+      }
+    }
+  }
+}

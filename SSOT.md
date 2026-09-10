@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-07
-last_updated: 2026-09-07
+last-verified: 2026-09-10
+last_updated: 2026-09-10
 audience: [ai-agents, contributors]
 ---
 
@@ -77,6 +77,9 @@ governance contract for naming, portfolio truth, and migration sequencing.
   workspaces from Alawein or Kohyr work. Local quarantine is `Desktop/AGI`
   on Meshal's machine, outside `Desktop/GitHub/alawein`. Historical audit
   mentions stay as evidence only.
+- Control-plane admission, run envelopes, receipts, and recovery:
+  [`docs/governance/control-plane.md`](docs/governance/control-plane.md).
+  Envelope check: `python scripts/catalog/validate_run_envelope.py --check`.
 - Slack and Cursor MCP inventory SSOT:
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:

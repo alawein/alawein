@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-09
+last_updated: 2026-09-10
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -17,10 +17,11 @@ tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 
 **Owner:** Meshal M. Alawein (`contact@meshal.ai`)
 
-This document is the control-plane SSOT for how agents, LLMs, integrations, and
-Slack surfaces fit together. It extends
+This document is the inventory and Slack-dispatch SSOT. Admission, run
+envelopes, receipts, and recovery live in
+[`control-plane.md`](control-plane.md). This page extends
 [`slack-agent-runbook.md`](slack-agent-runbook.md) (channel and bot policy) with
-orchestration, inventory tracking, and output conventions.
+routing, inventory tracking, and output conventions.
 
 **Machine-readable inventory:** [`catalog/agent-integrations.yaml`](../../catalog/agent-integrations.yaml)
 

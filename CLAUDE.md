@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-09-07
-last_updated: 2026-09-07
+last-verified: 2026-09-10
+last_updated: 2026-09-10
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -85,8 +85,9 @@ public portfolio. Do not collapse them.
     then run `build-catalog.py` and `validate-catalog.py --strict`; never hand-edit
     generated outputs.
 13. Meshal is the sole maintainer and final approver. Read the
-    [role contract](docs/governance/operating-model.md#people-and-agents) and
-    [change evidence contract](docs/governance/work-record-taxonomy.md#change-evidence).
+    [role contract](docs/governance/operating-model.md#people-and-agents),
+    [change evidence contract](docs/governance/work-record-taxonomy.md#change-evidence),
+    and [control-plane contract](docs/governance/control-plane.md).
     Record the assigned scope before execution. When executing in Claude Code,
     the default independent reviewer is Cursor; record any substitution. Review
     the exact revision, keep self-review separate, and leave acceptance pending
@@ -164,6 +165,7 @@ python scripts/doctrine/style-advisory-audit.py --repo-root .
 python scripts/doctrine/audit-todo-fixme.py
 python scripts/catalog/sync-readme.py --check
 python scripts/catalog/build-catalog.py --check
+python scripts/catalog/validate_run_envelope.py --check
 python scripts/github/verify-profile-pins.py --skip-live --check
 python scripts/github/validate-visibility.py --offline
 ./scripts/github/sync-github.sh --check --all

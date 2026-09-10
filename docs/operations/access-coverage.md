@@ -5,7 +5,7 @@ sync: manual
 sla: on-change
 title: Access Coverage Review
 description: Public-safe method for recording demonstrated integration coverage
-last_updated: 2026-09-07
+last_updated: 2026-09-10
 category: operations
 audience: [ai-agents, contributors]
 status: active
@@ -15,6 +15,8 @@ status: active
 
 This review distinguishes connector capability, demonstrated access, and user
 authorization. It is not an access registry and does not grant permission.
+Control levels (`observed`, `managed`, `enforced`) are defined in
+[control-plane.md](../governance/control-plane.md).
 
 ## Coverage states
 

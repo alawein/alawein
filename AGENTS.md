@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last_updated: 2026-09-07
-last-verified: 2026-09-07
+last_updated: 2026-09-10
+last-verified: 2026-09-10
 ---
 
 # AGENTS: alawein
@@ -26,6 +26,7 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
 - `docs/governance/workspace-master-prompt.md`
 - `docs/governance/parallel-batch-execution.md`
 - `docs/governance/documentation-contract.md`
+- `docs/governance/control-plane.md`
 - `docs/style/VOICE.md`
 - `prompt-kits/AGENT.md`
 - `prompt-kits/PORTFOLIO.md`
@@ -85,6 +86,7 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
 | Audit TODO/FIXME in Python comments | `python scripts/doctrine/audit-todo-fixme.py` |
 | Run governance validation | `bash ./scripts/doctrine/validate-doc-contract.sh --full` |
 | Validate agent/integration inventory | `python scripts/catalog/validate-agent-integrations.py --strict` |
+| Validate a run envelope | `python scripts/catalog/validate_run_envelope.py --check` |
 
 ## Notes
 

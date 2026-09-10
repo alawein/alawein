@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-09-07
+last_updated: 2026-09-10
 audience: [ai-agents, contributors]
 ---
 
@@ -23,6 +23,7 @@ Status key: **Active** (maintained and enforced) | **Reference** (stable, rarely
 | `slack-agent-voice.md` | Active | Thread and Canvas formatting for agent status updates |
 | `clean-slate-workflow.md` | Reference | Session reset procedure |
 | `commit-release-convention.md` | Active | Commit authority, messages, branches, merge, releases (SSOT) |
+| `control-plane.md` | Active | Thin admission, run envelopes, receipts, and recovery contract |
 | `credential-hygiene.md` | Active | Secret and token management |
 | `design-branding-summary.md` | Reference | Brand design summary |
 | `docs-doctrine.md` | Active | Documentation standards and enforcement |

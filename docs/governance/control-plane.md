@@ -145,9 +145,32 @@ python scripts/catalog/validate_run_envelope.py --check
 python scripts/catalog/validate_run_envelope.py path/to/envelope.yaml
 ```
 
-The checker reports missing fields, illegal `enforced` claims, expired
-authorization, second executes under the same grant, and hash-only
-verification. A passing schema check is not acceptance.
+The checker validates each supplied envelope offline. It reports invalid
+structure, missing completed-run evidence, malformed or timezone-less timestamps,
+recorded execution after expiry, self-reported repeat execution under
+`one_attempt`, illegal `enforced` declarations, and insufficient readback.
+It fails closed when schema validation is unavailable. Schema errors are
+returned before semantic checks.
+
+Executed and later phases require execution time, recovery status, policy and
+prompt identities with loaded revisions, observed model product, and native-ID
+inputs and outputs. Verified and accepted readback rows must each have a native
+ID and a result of `readable`, `matched`, `verified`, `succeeded`, `passed`, or
+`ok` (case-insensitive). Other results cannot establish verified status.
+Accepted records also require the existing `by`, `at`, and `revision` fields;
+acceptance time cannot precede execution.
+
+This is not a pre-write admission hook, a durable replay store, or an
+identity authenticator. It does not compare an unexecuted grant to the current
+clock, spend credentials, read native systems, authenticate Meshal, or establish
+that a declared native gate is actually unavoidable. Historical receipts can
+remain valid after their authorization expires if their recorded execution was
+within its scope. Independently credentialed or unknown executors cannot be
+labeled `enforced`, even if a payload claims an unbypassable gate.
+
+Passing validation establishes only the checked properties of the supplied
+envelope. Native approval, current revisions, runtime isolation, and live
+admission must be verified separately. A passing check is not acceptance.
 
 ## Related canon
 

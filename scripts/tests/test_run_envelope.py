@@ -45,6 +45,7 @@ class SemanticRuleTests(unittest.TestCase):
 
     def test_enforced_with_unbypassable_gate_passes(self) -> None:
         payload = _base()
+        payload["executor"]["independently_credentialed"] = False
         payload["control_level"] = "enforced"
         payload["write_set"] = "docs/governance/control-plane.md"
         payload["native_gate"] = {

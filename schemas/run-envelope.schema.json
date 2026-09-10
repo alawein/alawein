@@ -44,10 +44,12 @@
     },
     "policy_refs": {
       "type": "array",
+      "minItems": 1,
       "items": { "$ref": "#/$defs/loaded_ref" }
     },
     "prompt_refs": {
       "type": "array",
+      "minItems": 1,
       "items": { "$ref": "#/$defs/loaded_ref" }
     },
     "adapter": { "type": "string", "minLength": 1 },
@@ -71,10 +73,12 @@
     "reviewer": { "$ref": "#/$defs/reviewer" },
     "inputs": {
       "type": "array",
+      "minItems": 1,
       "items": { "$ref": "#/$defs/native_ref" }
     },
     "outputs": {
       "type": "array",
+      "minItems": 1,
       "items": { "$ref": "#/$defs/native_ref" }
     },
     "receipt": { "$ref": "#/$defs/receipt" },
@@ -123,7 +127,7 @@
         "id": { "type": "string", "minLength": 1 },
         "grantor": { "type": "string", "minLength": 1 },
         "scope": { "type": "string", "minLength": 1 },
-        "expires_at": { "type": "string", "minLength": 1 },
+        "expires_at": { "type": "string", "minLength": 1, "format": "date-time" },
         "one_attempt": { "type": "boolean" }
       }
     },
@@ -156,7 +160,7 @@
       "additionalProperties": false,
       "properties": {
         "execute_count": { "type": "integer", "minimum": 0 },
-        "executed_at": { "type": "string" },
+        "executed_at": { "type": "string", "format": "date-time" },
         "readback": {
           "type": "array",
           "items": {
@@ -197,9 +201,198 @@
           "enum": ["pending", "accepted", "rejected"]
         },
         "by": { "type": "string" },
-        "at": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
         "revision": { "type": "string" }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "authorized",
+              "executed",
+              "verified",
+              "accepted"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "required": [
+          "authorization"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "executed",
+              "verified",
+              "accepted"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "required": [
+          "receipt",
+          "policy_refs",
+          "prompt_refs",
+          "model_identity",
+          "inputs",
+          "outputs"
+        ],
+        "properties": {
+          "receipt": {
+            "required": [
+              "execute_count",
+              "executed_at",
+              "recovery_status"
+            ]
+          },
+          "policy_refs": {
+            "items": {
+              "required": [
+                "loaded_revision"
+              ],
+              "properties": {
+                "loaded_revision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          },
+          "prompt_refs": {
+            "items": {
+              "required": [
+                "loaded_revision"
+              ],
+              "properties": {
+                "loaded_revision": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "enum": [
+              "verified",
+              "accepted"
+            ]
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "properties": {
+          "receipt": {
+            "required": [
+              "readback"
+            ],
+            "properties": {
+              "readback": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "phase": {
+            "const": "accepted"
+          }
+        },
+        "required": [
+          "phase"
+        ]
+      },
+      "then": {
+        "required": [
+          "acceptance"
+        ],
+        "properties": {
+          "acceptance": {
+            "required": [
+              "by",
+              "at",
+              "revision"
+            ],
+            "properties": {
+              "by": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "control_level": {
+            "const": "enforced"
+          }
+        },
+        "required": [
+          "control_level"
+        ]
+      },
+      "then": {
+        "required": [
+          "native_gate"
+        ],
+        "properties": {
+          "native_gate": {
+            "required": [
+              "agent_can_bypass"
+            ],
+            "properties": {
+              "agent_can_bypass": {
+                "const": false
+              }
+            }
+          },
+          "executor": {
+            "required": [
+              "independently_credentialed"
+            ],
+            "properties": {
+              "independently_credentialed": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

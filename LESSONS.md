@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: observed
-last-updated: 2026-07-06
+last-updated: 2026-09-10
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -14,6 +14,7 @@ audience: [ai-agents, contributors, future-self]
 
 ## Patterns That Work
 
+- **Living practices stay in one handbook, not a second catalog**: Longer best/worst rows for coding, docs, prompting, harness, and IDE/model notes live in [`docs/internal/practices-handbook.md`](docs/internal/practices-handbook.md). Keep this file as short observed bullets. Slack canvases stay pointers.
 - **One canonical prompt prevents policy drift**: Anchoring org governance to `docs/governance/workspace-master-prompt.md` keeps workspace naming and migration rules stable.
 - **Frontmatter for all governance docs**: Using YAML frontmatter with `type`, `authority`, and `audience` fields makes doc classification unambiguous across 20+ repos.
 - **Documented GitHub-file exceptions**: Calling out `README.md` and `.github` templates as explicit contract exemptions prevents fake compliance work that would damage GitHub rendering or template behavior.

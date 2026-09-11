@@ -3,7 +3,7 @@ type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
 last-verified: 2026-09-06
-last_updated: 2026-09-07
+last_updated: 2026-09-10
 ---
 
 # Alawein Workspace Architecture
@@ -227,4 +227,4 @@ graph TB
 | `scripts/doctrine/validate-prompt-kit.py` | Prompt kit structure + frontmatter validator |
 | `scripts/github/github-baseline-audit.py` | Action pinning + CI coverage auditor |
 | `scripts/ops/generate-arch-diagram.py` | This diagram's source generator |
-| `.github/rulesets/main-protection.json` | Branch ruleset definition (apply via GitHub UI) |
+| `.github/rulesets/main-protection.json` | Recorded configuration of existing ruleset 10399573; verify native controls and obtain authorization before updating that rule, never import a competing ruleset |

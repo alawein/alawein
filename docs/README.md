@@ -24,6 +24,7 @@ workspace governance for the `alawein` GitHub organization.
 | --- | --- |
 | understand the overall flow | [`workflow.md`](./governance/workflow.md) |
 | classify work and record author, executor, reviewer and approval | [`work-record-taxonomy.md`](./governance/work-record-taxonomy.md) |
+| admit a run, record an envelope, verify readback | [`control-plane.md`](./governance/control-plane.md) |
 | choose the right branch and path to merge | [`feature-lifecycle.md`](./governance/feature-lifecycle.md) |
 | branch naming, workflow, and Vercel deployment | [`branch-and-deployment-convention.md`](./governance/branch-and-deployment-convention.md) |
 | branch, sync, push, stash, or recover work | [`git-operations.md`](./governance/git-operations.md) |

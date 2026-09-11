@@ -15,6 +15,10 @@ audience: [ai-agents, contributors, future-self]
 ## Patterns That Work
 
 - **Living practices stay in one handbook, not a second catalog**: Longer best/worst rows for coding, docs, prompting, harness, and IDE/model notes live in [`docs/internal/practices-handbook.md`](docs/internal/practices-handbook.md). Keep this file as short observed bullets. Slack canvases stay pointers.
+- **Control gap is not a tools gap**: policies, prompts, permissions, deployed
+  versions, and real executions can disagree. Use one admission path, a run
+  envelope, and native-ID readback. Do not add another manager or inventory.
+  See [`docs/governance/control-plane.md`](docs/governance/control-plane.md).
 - **One canonical prompt prevents policy drift**: Anchoring org governance to `docs/governance/workspace-master-prompt.md` keeps workspace naming and migration rules stable.
 - **Frontmatter for all governance docs**: Using YAML frontmatter with `type`, `authority`, and `audience` fields makes doc classification unambiguous across 20+ repos.
 - **Documented GitHub-file exceptions**: Calling out `README.md` and `.github` templates as explicit contract exemptions prevents fake compliance work that would damage GitHub rendering or template behavior.
@@ -36,6 +40,12 @@ audience: [ai-agents, contributors, future-self]
 
 ## Anti-Patterns
 
+- **Calling an independently credentialed agent enforced**: `enforced` needs a
+  native gate the agent cannot bypass. A Cloud or Slack token is `managed` at
+  most.
+- **Treating a hash or generated summary as acceptance**: native IDs on the
+  owning system are the readback. Digests may accompany evidence; they do not
+  replace it.
 - **Treating this repo as a code repo**: It is a documentation and governance repo; applying build/test tooling expectations here causes confusion.
 - **Unscoped legacy-name usage**: Legacy names outside explicit alias contexts create ambiguity and break canonical-name audits.
 - **Assuming build artifacts exist**: CI contracts should never require `npm ci`, `npm run build`, or `dist/` unless the repo actually contains a package manifest and build surface.

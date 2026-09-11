@@ -162,8 +162,11 @@ linear history, and squash-only merging. Keep bypass actors empty. Direct
 pushes to `main`, administrator bypass and force-merge are not permitted.
 
 The preserved `require_extra_approval_for_unattributed_changes` flag remains
-enabled. The zero baseline is not a claim that every PR is exempt from additional
-native approval conditions; verify every applicable gate before merging.
+enabled in the recorded native configuration. GitHub documents that this flag
+has no effect when the required approval count is zero. It is not an additional
+enforced approval gate under this repository's current baseline.
+See [GitHub's ruleset reference](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#additional-approval-for-unattributed-copilot-pull-requests).
+Verify all other applicable native and process requirements before merging.
 
 Meshal remains the accountable maintainer and final approver. Independent tool
 review follows [operating-model.md](operating-model.md#people-and-agents);

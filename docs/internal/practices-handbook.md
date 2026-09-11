@@ -34,37 +34,26 @@ Last folded: 2026-09-10. Surfaces: Cursor Cloud Grok 4.6 (`bc-5432d661`),
 
 ## Rules that live elsewhere
 
-Each rule below has one canonical home. Read it there; this file does not
-restate it.
+Each rule has one canonical home. This file points at the home and does
+not restate the rule.
 
-- [`CLAUDE.md`](../../CLAUDE.md): smallest change that solves the task;
-  edit the generator, not the synced output; present-tense commits, no AI
-  attribution, `contact@meshal.ai` identity; pin Actions to full SHAs, LF
-  only; PEP 8 and strict TypeScript; update `last_updated` on the same
-  edit; `Desktop/AGI` and `theagi.company` exclusion; scope, author,
-  executor, reviewer separation; tool availability is not permission.
-- [`AGENTS.md`](../../AGENTS.md): edit the generator, not the synced
-  output; present tense, no AI attribution, identity; `Desktop/AGI`
-  exclusion; no force-push or history rewrite.
-- [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md): `Desktop/AGI`
-  exclusion; no Grok, Hermes, or OpenClaw bot; no Mem0, Letta, or Zep; git
-  wins, Slack coordinates, Notion holds non-code tasks; no channel archive
-  before 2026-09-19; no `APPROVAL_POLICY.md` or second inventory;
-  `@ChatGPT` replaced; workflow bots trial to 2026-09-19; Kilo stays on
-  its three repos, never `alawein/alawein`.
+- [`CLAUDE.md`](../../CLAUDE.md): change size, generated files, commit
+  identity and tense, Actions pins, line endings, `last_updated`,
+  excluded estates, role separation, tool availability.
+- [`AGENTS.md`](../../AGENTS.md): generated files, commit voice, excluded
+  estates, history rewriting.
+- [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md): excluded estates,
+  bot and memory-product bans, system of record per surface, the
+  2026-09-19 gate, inventory rules, replaced Slack apps, Kilo scope.
 - [`docs/governance/slack-agent-voice.md`](../governance/slack-agent-voice.md):
-  no em dash, no bold labels, tables on a Canvas; no full-kit paste, no
-  `@`-all; first line is the ask or status; Meshal tags the next agent;
-  packed prompt (Goal, Context, Constraints, Done when, Tag); 4-line ack.
-- [`docs/style/VOICE.md`](../style/VOICE.md): no em dash, no bold labels.
+  Slack thread formatting, field labels, first-line rule, tagging, packed
+  prompt shape, ack shape.
+- [`docs/style/VOICE.md`](../style/VOICE.md): prose voice and punctuation.
 - [`docs/governance/unified-agent-system.md`](../governance/unified-agent-system.md):
-  per-agent scope (Claude Code: repo mutation, terminal, MCP; default
-  independent reviewer); `@ChatGPT` replaced.
+  per-agent scope and the default independent reviewer.
 - [`docs/governance/operating-model.md`](../governance/operating-model.md),
   [`docs/governance/work-record-taxonomy.md`](../governance/work-record-taxonomy.md):
-  scope, author, executor, reviewer separation; tool availability is not
-  permission; executor and independent reviewer are different tools;
-  missing review stays pending.
+  roles, evidence, and review status.
 
 ## Inventory
 

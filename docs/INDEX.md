@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-08
+last_updated: 2026-09-10
 ---
 
 # Index: alawein
@@ -64,6 +64,7 @@ last_updated: 2026-09-08
 - [claude-tag-migration.md](governance/claude-tag-migration.md)
 - [clean-slate-workflow.md](governance/clean-slate-workflow.md)
 - [commit-release-convention.md](governance/commit-release-convention.md)
+- [control-plane.md](governance/control-plane.md)
 - [credential-hygiene.md](governance/credential-hygiene.md)
 - [cursor-mcp-repair.md](governance/cursor-mcp-repair.md)
 - [design-branding-summary.md](governance/design-branding-summary.md)

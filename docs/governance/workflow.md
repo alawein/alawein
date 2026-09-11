@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.2.0
-last_updated: 2026-09-06
+last_updated: 2026-09-10
 tags: [governance, workflow, branching, deployment, git]
 ---
 
@@ -39,6 +39,12 @@ release, clean-slate, or batch-execution handling.
 - stay within the documented taxonomy above
 
 ## Merge Model
+
+For `alawein/alawein`, the
+[repository-specific solo policy](commit-release-convention.md#4-merge-policy)
+requires protected squash-only merging and prohibits direct pushes, force merge,
+and administrator bypass. The generic exceptions below apply only to other
+repositories whose recorded profiles and native controls permit them.
 
 - default strategy: squash merge
 - merge commits: allowed for `hotfix/*` and `release/*` when chronology matters

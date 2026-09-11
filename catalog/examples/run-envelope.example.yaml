@@ -1,0 +1,66 @@
+# Example observed read. Not a grant. Not acceptance.
+schemaVersion: "1.0.0"
+run_id: example-observed-read-2026-09-10
+phase: verified
+control_level: observed
+write_set: none
+target_ids:
+  - type: github_repo
+    id: alawein/alawein
+    revision: 9287a0ca
+  - type: slack_canvas
+    id: F0C0A1H7258
+base_revisions:
+  - surface: git
+    ref: main
+    sha: 9287a0ca
+policy_refs:
+  - path: docs/governance/control-plane.md
+    committed_revision: 9287a0ca
+    loaded_revision: working-tree
+prompt_refs:
+  - path: prompt-kits/AGENT.md
+    version: "1.7.0"
+    committed_revision: 9287a0ca
+    loaded_revision: "1.7.0"
+adapter: cursor-cloud
+environment: personal-alawein-only
+model_identity:
+  product: Cursor Cloud
+  model: grok-4.6
+  note: Observed on one run. Not a capability grant.
+authorization:
+  id: meshal-control-plane-spec-2026-09-10
+  grantor: meshal
+  scope: read-only-report
+  expires_at: "2026-09-10T23:59:59Z"
+  one_attempt: true
+budget:
+  public_posts: 0
+  mutations: 0
+executor:
+  tool: Cursor
+  session: slack-dm
+  independently_credentialed: true
+reviewer:
+  status: not_performed
+inputs:
+  - type: slack_message
+    id: slack-dm
+outputs:
+  - type: slack_message
+    id: slack-dm
+receipt:
+  execute_count: 1
+  executed_at: "2026-09-10T10:05:00Z"
+  readback:
+    - native_id: F0C0A1H7258
+      result: readable
+    - native_id: alawein/alawein@9287a0ca
+      result: readable
+  recovery_status: not_required
+acceptance:
+  status: pending
+notes: >-
+  Loaded policy may differ from committed SHA. Record both. A digest of this
+  file would not be enough to mark accepted.

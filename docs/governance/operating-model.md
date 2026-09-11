@@ -10,13 +10,15 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.3.0
-last_updated: 2026-09-06
+last_updated: 2026-09-10
 tags: [governance, operating-model, workflow, navigation]
 ---
 
 # Operating Model
 
-Keep one authoritative home for each kind of work. This repository owns shared
+Keep one authoritative home for each kind of work. Admission, run envelopes,
+receipts, and recovery status are defined in
+[control-plane.md](control-plane.md). This repository owns shared
 policy and public portfolio metadata. Product repositories own code, technical
 decisions, checks, and releases. Meshal-maintained projects may adopt Linear for delivery
 through the pilot below; existing task ownership remains until their recorded
@@ -156,6 +158,7 @@ authorized tool. Do not invent backup personnel or copy credentials between tool
 | --- | --- |
 | High-level workflow | [workflow.md](workflow.md) |
 | Shared taxonomy and change evidence | [work-record-taxonomy.md](work-record-taxonomy.md) |
+| Admission, envelopes, receipts | [control-plane.md](control-plane.md) |
 | Commit, branch, merge and release convention | [commit-release-convention.md](commit-release-convention.md) |
 | Git mechanics and recovery | [git-operations.md](git-operations.md) |
 | Focused branches and worktree hygiene | [clean-slate-workflow.md](clean-slate-workflow.md) |

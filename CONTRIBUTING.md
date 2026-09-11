@@ -32,10 +32,12 @@ the actual operating details.
 
 ## Branching
 
-- `main`: protected and PR-first. For `alawein/alawein`, use the
-  [repository-specific solo merge policy](docs/governance/commit-release-convention.md#4-merge-policy):
-  squash only after scoped authorization and all required controls pass.
-  Direct pushes, force merge and administrator bypass are prohibited.
+- `main`: protected and PR-first. Use a scoped branch and pull request; follow
+  the owning repository's recorded merge profile and effective native controls.
+  This guide grants no direct-push, force-merge or administrator-bypass
+  exception. For `alawein/alawein`, see its
+  [solo policy](https://github.com/alawein/alawein/blob/main/docs/governance/commit-release-convention.md#4-merge-policy).
+  Other repositories retain their own recorded profiles.
 - `fast/*`: spikes or prototypes
 - `feat/*`, `fix/*`: scoped reviewable work
 - `hotfix/*`: urgent fixes

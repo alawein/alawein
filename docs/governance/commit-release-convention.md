@@ -154,12 +154,16 @@ cleanup after merge. After merge: delete the branch remotely and locally, update
 
 For `alawein/alawein`, apply the solo-maintainer policy authorized on
 2026-09-10 and implemented in [ruleset 10399573](https://github.com/alawein/alawein/rules/10399573):
-require a pull request with zero ruleset-required approving reviews and no
+require a pull request with a baseline of zero required approving reviews and no
 ruleset-required CODEOWNER approval. Preserve process-level owner review,
 including CI workflow review by `@alawein` in [onboarding.md](../onboarding.md).
 Require resolved review conversations, strict required checks, signed commits,
 linear history, and squash-only merging. Keep bypass actors empty. Direct
 pushes to `main`, administrator bypass and force-merge are not permitted.
+
+The preserved `require_extra_approval_for_unattributed_changes` flag remains
+enabled. The zero baseline is not a claim that every PR is exempt from additional
+native approval conditions; verify every applicable gate before merging.
 
 Meshal remains the accountable maintainer and final approver. Independent tool
 review follows [operating-model.md](operating-model.md#people-and-agents);

@@ -96,6 +96,13 @@ def test_generation_uses_utc_and_writes_lf(generator, monkeypatch, tmp_path):
     assert b"\r\n" not in output
 
 
+def test_overflow_label_is_plain_ascii(generator):
+    repos = [{"slug": f"repo{i}", "type": "tooling"} for i in range(generator.MAX_PER_GROUP + 3)]
+    topology = generator.generate_topology_mermaid(repos)
+    assert 'more_tooling["... 3 more"]' in topology
+    assert topology.isascii()
+
+
 def test_unchanged_generation_does_not_write(generator, monkeypatch, tmp_path):
     topology = generator.generate_topology_mermaid([{"slug": "example", "type": "app"}])
     original = document(topology)

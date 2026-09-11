@@ -4,7 +4,7 @@ source: none
 sync: none
 sla: none
 authority: observed
-last-updated: 2026-09-10
+last-updated: 2026-09-11
 audience: [ai-agents, contributors, future-self]
 ---
 
@@ -14,6 +14,7 @@ audience: [ai-agents, contributors, future-self]
 
 ## Patterns That Work
 
+- **Living practices stay in one handbook, not a second catalog**: Longer best/worst rows for coding, docs, prompting, harness, and IDE/model notes live in [`docs/internal/practices-handbook.md`](docs/internal/practices-handbook.md). Keep this file as short observed bullets. Slack canvases stay pointers.
 - **Control gap is not a tools gap**: policies, prompts, permissions, deployed
   versions, and real executions can disagree. Use one admission path, a run
   envelope, and native-ID readback. Do not add another manager or inventory.
@@ -50,6 +51,7 @@ audience: [ai-agents, contributors, future-self]
 - **Assuming build artifacts exist**: CI contracts should never require `npm ci`, `npm run build`, or `dist/` unless the repo actually contains a package manifest and build surface.
 - **Using `_token` as markdown emphasis**: Tokens like `_pkos` parse as italics and break MD037/MD049; use backticks.
 - **Assuming old local branches mean unmerged work**: Empty `main..branch` means nothing to merge from that tip; a large diff where `main` has additions and the branch “removes” current files usually means the branch is **stale**: do not squash-merge without comparing to `main` first.
+- **Tagging an agent on a Slack Canvas** (2026-09-10): one canvas `@Cursor` mention spawned nine idle Cloud Agents and nine duplicate acks, so tag agents in threads only and archive the leftover agents instead of reusing them.
 
 ## Pitfalls
 

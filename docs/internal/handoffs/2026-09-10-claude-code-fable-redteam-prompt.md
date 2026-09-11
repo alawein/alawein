@@ -1,10 +1,15 @@
 ---
-type: internal
-source: slack cursor dm 2026-09-10
-sla: none
-last_updated: 2026-09-10
-audience: [ai-agents]
+type: audit
+status: superseded-in-part
+last_updated: 2026-09-11
+owner: meshal
 ---
+
+**Status as of 2026-09-11.** PR #252 merged to `main` as `a7562deb` on
+2026-09-10. G1, G2, G3, G4, G13, G14, and G22 are on `main`. PR #254
+merged as `3b597f14` on 2026-09-11 with the solo-maintainer merge policy.
+J17 and J18 are closed. The rest of this file is a dated read from
+2026-09-10, kept as a record, not live status.
 
 # Claude Code Fable 5.1 ultracode: control-gap red-team
 
@@ -45,12 +50,16 @@ write the synthesis (W7).
 
 ## HARD NEVER
 
+Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
+`docs/governance/work-record-taxonomy.md` govern; where they differ, they
+win.
+
 1. No writes to GitHub `main`, no merge, no force-push, no history rewrite.
 2. No Slack posts, no canvas edits, no @-all, no new Slack bot.
 3. No Gmail send, no Notion write, no Drive write, no credential rotation.
 4. No B1/B2 or any hash-packet apply. Those stay owner-gated.
 5. No AGI Inc / `theagi.company` / `Desktop/AGI` import or summary.
-6. No commit of career, immigration, or inbox bodies.
+6. No commit of personal or inbox bodies.
 7. No second inventory YAML, `TASKS.md`, or Canvas SSOT.
 8. No labeling an independently credentialed agent `enforced`.
 9. No treating a digest, summary, or canvas fold as acceptance.
@@ -67,11 +76,9 @@ Account: `contact@meshal.ai` only.
    `docs/internal/audits/2026-09-10-control-gap-source-index.md`
 2. Cursor judgement (clauses J01-J24):
    `docs/internal/audits/2026-09-10-control-gap-judgement.md`
-3. Control plane (PR #252 if missing on your `main`):
+3. Control plane, on `main`:
    `docs/governance/control-plane.md`
-   `https://github.com/alawein/alawein/pull/252`
-   Fetch the PR if G1 is *GAP* on your tip. Confirm head `bfb49cbf` or
-   record the actual SHA.
+   Read it on `main` and record the `main` SHA at read time.
 4. `docs/governance/operating-model.md`
 5. `docs/governance/work-record-taxonomy.md` (field authority table)
 6. `docs/governance/unified-agent-system.md`
@@ -87,9 +94,9 @@ Account: `contact@meshal.ai` only.
     `F0C0A1H7258`, `F0C0KEF150C`, `F0C1PDU320G`
     If Slack is absent, mark C1-C3 *BLOCKED* and use the index summaries.
 
-A1 (ChatGPT career export): if Meshal attached it anyway, use it only to
-confirm the drift *pattern* (dashboard to MAIOS to hash packet). Do not
-quote personal names, employers, or immigration facts in your output.
+A1 (the excluded ChatGPT export): if Meshal attached it anyway, use it
+only to confirm the drift *pattern* (dashboard to MAIOS to hash packet).
+Do not quote personal names, employers, or personal facts in your output.
 
 ## NAMING LOCK
 
@@ -136,15 +143,15 @@ If Slack readable, pull C1-C3. Diff:
 - C1: ACCEPT 1,2,4,5,6 vs stale #232/#239 open rows
 - C2: empty Codex / Notion AI Slack / GitHub Slack / Kilo / Grok lanes
 - C3: session-log dirt, leftover probe branch, "only #249", main 19
-  behind vs actual `main` SHA and open PRs #250/#251/#252
+  behind vs the actual `main` SHA and the open PRs at read time
 
 If Slack *BLOCKED*, say so and use the index. Do not retag empty lanes.
 Do not edit the canvases.
 
 ### Workflow 4: Envelope and evidence
 
-Read the #252 schema, validator, and tests (fetch the PR if not in
-tree). Attack:
+Read the schema, validator, and tests on `main` (G2, G3, G22) and record
+the `main` SHA at read time. Attack:
 
 - Can A3's `policy_hash` / `prompt_hash` become the only verify signal?
   (Must lose against J08.)
@@ -157,7 +164,8 @@ tree). Attack:
   Slack Cloud Agents.)
 - Can an independently credentialed agent be `enforced` under G1?
   (Must lose against J09.)
-- Is G1 already law on `main`? (Must lose against J17 if still *GAP*.)
+- Is G1 law on `main`? Read `docs/governance/control-plane.md` on `main`
+  and record the `main` SHA at read time. Confirm; do not assume (J17).
 
 ### Workflow 5: OpenRouter grill panel (top 10)
 
@@ -174,17 +182,13 @@ Then list models if you have a safe wrapper. Prefer ids that exist on
 `https://openrouter.ai/api/v1/models` **today**. Candidate panel, in
 order; **replace any 404**. Do not invent slugs.
 
-1. `anthropic/claude-opus-5` (independent of you, the Fable host)
-2. `openai/gpt-5.6` or `openai/gpt-5.6-sol` (whichever exists)
-3. `google/gemini-3.7-flash` (already in `config/model-routing.yaml`)
-4. `moonshotai/kimi-k3` (routing `code`)
-5. `z-ai/glm-5.3` (routing `reason`)
-6. `qwen/qwen3.8-max` (routing `heavy`)
-7. `x-ai/grok-4.6` or `x-ai/grok-4.5`
-8. `deepseek/deepseek-v4` or current DeepSeek chat id
-9. `google/gemini-3.1-pro` or current Gemini pro id
-10. `anthropic/claude-sonnet-5` or `qwen/qwen3.8-flash` as the tenth
-    cheap adversary
+1. `google/gemini-3.7-flash` (routing `docs`)
+2. `moonshotai/kimi-k3` (routing `code`)
+3. `z-ai/glm-5.3` (routing `reason`)
+4. `qwen/qwen3.8-max` (routing `heavy`)
+
+Six more, resolved from `GET /api/v1/models` at run time, one per vendor;
+never commit guessed slugs.
 
 If a slug named `astra`, `gpt-6`, or `gpt-6-astra` exists on the live
 list, add it as an extra and record the exact id. Do not invent it. The
@@ -222,13 +226,13 @@ EOF
 
 Pipe a **redacted** 2-4k char extract of the judgement: the Verdict
 section plus the clause list J01-J24 titles and one-line summaries, plus
-the authority map. Do not pipe A1. Do not pipe immigration or employer
+the authority map. Do not pipe A1. Do not pipe personal or employer
 strings.
 
 Assign each model a distinct attack angle:
 
 1. Field-authority contradiction (G6 vs Sider / Notion / canvas)
-2. Loaded vs committed / PR #252 not on main (J17)
+2. Loaded vs committed on `main` (J17)
 3. Sider SoR swap (J04)
 4. Cloud Agent already live vs "do not turn on" (J06)
 5. A3 as hidden second canon (J13)
@@ -268,8 +272,8 @@ report.
 
 Title: `CONTROL-GAP RED-TEAM - YYYY-MM-DD - Fable 5.1`
 
-1. **Access envelope:** what you could and could not read (Slack, #252
-   SHA, Windows, OpenRouter key present yes/no).
+1. **Access envelope:** what you could and could not read (Slack, `main`
+   SHA at read time, Windows, OpenRouter key present yes/no).
 2. **Librarian table:** G/C/A/scatter existence.
 3. **Panel scoreboard:** model id used (the live id, not the candidate
    slug), HTTP result, verdict, one-line attack. *BLOCKED* rows stay
@@ -281,7 +285,7 @@ Title: `CONTROL-GAP RED-TEAM - YYYY-MM-DD - Fable 5.1`
    drift.
 7. **Canvas vs git findings.**
 8. **Strongest remaining risk** (one paragraph).
-9. **What Meshal should do next** (at most five bullets). Merge #252
+9. **What Meshal should do next** (at most five bullets). Any merge
    stays Meshal exact yes. You do not merge.
 10. **Non-authorization list** (copy HARD NEVER).
 11. Close with:
@@ -294,10 +298,10 @@ Title: `CONTROL-GAP RED-TEAM - YYYY-MM-DD - Fable 5.1`
 - You are about to write a new workflow SSOT: stop. Review G1 instead.
 - You disagree with kit 1.7.0 or the 2026-09-19 gate: record *Need:*
   Meshal, do not "fix" it.
-- You are about to commit A1 or quote immigration facts: stop.
+- You are about to commit A1 or quote personal facts: stop.
 
 ## DONE WHEN
 
 Meshal has one red-team report he can compare to
-`2026-09-10-control-gap-judgement.md` and decide merge #252 vs revise.
+`2026-09-10-control-gap-judgement.md` and decide affirm vs revise.
 You have not merged, posted to Slack, or applied a packet.

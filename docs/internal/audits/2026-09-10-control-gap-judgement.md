@@ -1,10 +1,15 @@
 ---
-type: internal
-source: slack cursor dm 2026-09-10
-sla: none
-last_updated: 2026-09-10
-audience: [ai-agents, contributors]
+type: audit
+status: superseded-in-part
+last_updated: 2026-09-11
+owner: meshal
 ---
+
+**Status as of 2026-09-11.** PR #252 merged to `main` as `a7562deb` on
+2026-09-10. G1, G2, G3, G4, G13, G14, and G22 are on `main`. PR #254
+merged as `3b597f14` on 2026-09-11 with the solo-maintainer merge policy.
+J17 and J18 are closed. The rest of this file is a dated read from
+2026-09-10, kept as a record, not live status.
 
 # Control-gap judgement (Cursor Cloud, 2026-09-10)
 
@@ -120,11 +125,12 @@ land A3 as a parallel file.
 
 ### J14. A1 is analyst-only and stays out of git
 
-Chat `6aa1d277` started as a career dashboard, failed to retrieve its own
-last 10-20 career chats (*BLOCK*), built state from Gmail fragments, asked
-to hand work to Claude Code then did the critique itself, then became a
-workspace inventory, then a MAIOS harness audit, then hash packets aimed
-at `AGENTS.md`. Close it for control-plane work. Do not rerun the packets.
+The excluded ChatGPT export started as a career dashboard, failed to
+retrieve its own last 10-20 career chats (*BLOCK*), built state from Gmail
+fragments, asked to hand work to Claude Code then did the critique itself,
+then became a workspace inventory, then a MAIOS harness audit, then hash
+packets aimed at `AGENTS.md`. Close it for control-plane work. Do not
+rerun the packets.
 
 ### J15. Naming lock
 
@@ -158,7 +164,8 @@ On this Cloud checkout, G1 exists on PR #252, not on branch tip `main`
 
 CI green at `bfb49cbf` does not accept the contract. Independent review
 (ChatGPT or Codex) was *GAP* at judgement time. Do not merge from this
-verdict.
+verdict. [Closed 2026-09-10: #252 merged as a7562deb under the
+solo-maintainer policy.]
 
 ### J19. OpenRouter is a grill tool, not a voter
 
@@ -182,11 +189,11 @@ Sider reported GitHub `alawein`+`kohyr`, Linear connected, Sentry
 connected, Slack Cloud Agents present, getting-started 3/4. Those rows
 are *UNVERIFIED* from this VM. Do not promote them to inventory.
 
-### J23. Career and immigration stay off git
+### J23. Personal matters stay off git
 
 A1 contains PII. Analyst-only. If a reviewer sees it, use it only to
 confirm the drift pattern. Do not quote personal names, employers, or
-immigration facts.
+personal facts.
 
 ### J24. Non-authorization
 
@@ -196,21 +203,23 @@ environment expansion to the fleet, or canvas edits.
 
 ## Authority map (resolved)
 
+Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
+`docs/governance/work-record-taxonomy.md` govern; where they differ, they
+win.
+
 | Field | Winner | Loser |
 | --- | --- | --- |
 | Code, CI, PR, merge | GitHub | Chat, canvas, Desktop inventory |
 | Control-plane policy | `docs/governance/control-plane.md` after #252 | A3 unified draft, A4 fifth workflow, C1 as living law |
 | Agent inventory | `catalog/agent-integrations.yaml` | Lane canvas tables, Sider dashboard notes |
 | Work state | GitHub Issues until recorded Linear cutover | Notion Master Tasks, ChatGPT dashboards |
-| Career / Gmail commitments | Gmail and Calendar | ChatGPT career dashboard (A1) |
 | Secrets | 1Password / GitHub secrets | `mcp.json`, envelopes, Slack |
 | Windows Desktop adapter | `ops-shared-inventory` as inbox only | Using it as git SSOT (Sider) |
-| Kilo Linux notes | `workspace-brain` repo-local | Alawein canon |
-| Slack coordination | `#admin-ops` or this DM | `#me-agents-*` before 2026-09-19 |
+| Personal commitments, Kilo Linux notes, Slack channel routing | Out of scope for this repository | Not tracked here |
 
 ## Packet-by-packet
 
-### A1 ChatGPT `6aa1d277`
+### A1 the excluded ChatGPT export
 
 Started as a career dashboard. Could not retrieve its own last 10-20
 career chats (*BLOCK*). Built state from Gmail fragments. Asked to hand
@@ -275,7 +284,8 @@ from this VM (J22).
 
 ## Sequenced next actions (Meshal)
 
-1. Review and exact-yes merge #252, or name the reject (J18).
+1. Review and exact-yes merge #252, or name the reject (J18). [Closed
+   2026-09-10: #252 merged as a7562deb under the solo-maintainer policy.]
 2. Accept Sider folder/chat hygiene on Windows. Do not change git SoR
    (J11, J04).
 3. Paste the red-team prompt into Claude Code Fable 5.1 ultracode. Attach

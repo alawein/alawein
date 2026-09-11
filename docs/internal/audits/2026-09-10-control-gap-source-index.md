@@ -1,17 +1,21 @@
 ---
-type: internal
-source: slack cursor dm 2026-09-10
-sla: none
-last_updated: 2026-09-10
-audience: [ai-agents, contributors]
+type: audit
+status: superseded-in-part
+last_updated: 2026-09-11
+owner: meshal
 ---
+
+**Status as of 2026-09-11.** PR #252 merged to `main` as `a7562deb` on
+2026-09-10. G1, G2, G3, G4, G13, G14, and G22 are on `main`. PR #254
+merged as `3b597f14` on 2026-09-11 with the solo-maintainer merge policy.
+J17 and J18 are closed. The rest of this file is a dated read from
+2026-09-10, kept as a record, not live status.
 
 # Control-gap source index (2026-09-10)
 
 Working packet list for the Claude Code red-team. This file is a pointer
 index. It is not a catalog, not Slack SSOT, and not a career dashboard.
-Do not commit the ChatGPT career export. It contains personal and
-immigration material.
+Do not commit the ChatGPT career export. It contains personal material.
 
 Label every later claim `PROVED`, `OBSERVED`, `INFERRED`, `UNVERIFIED`,
 `BLOCKED`, or `GAP`.
@@ -62,7 +66,7 @@ front ends produced. They are not git.
 
 | ID | File | Origin | Commit? |
 | --- | --- | --- | --- |
-| A1 | `ChatGPT-Career_status_dashboard-20260910-0345_*.md` | ChatGPT `6aa1d277` 2026-09-09 14:41 to 2026-09-10 03:45. Two uploads (`_260e`, `_678a`), same chat | **No.** PII. Career, Gmail, immigration |
+| A1 | The excluded ChatGPT export | ChatGPT, 2026-09-09 14:41 to 2026-09-10 03:45. Two uploads, same chat | **No.** PII. Personal and Gmail material |
 | A2 | `Gemini-Report_7ea7.md` | Gemini deep-research, 4-tier practice library. No repo access | Quote structure only |
 | A3 | `MAIOS_Unified_Operating_Model_8fe1.md` | Draft merge of control plane + 4-tier, 2026-09-10. Calls itself Tier 4 | Quote structure only |
 | A4 | `Claude_Code___Finalized_Workflow_Synthesis_Prompt_6fcb.md` | Prompt asking Claude Code for a fifth workflow SSOT | May be cited. Replaced by the red-team prompt |
@@ -87,11 +91,15 @@ front ends produced. They are not git.
 
 ## 5. Naming canon (use these strings)
 
+Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
+`docs/governance/work-record-taxonomy.md` govern; where they differ, they
+win.
+
 | Use | Do not use |
 | --- | --- |
 | `MAIOS` for the operating idea | `MAI` unless a named exception is proved in git |
 | `Kohyr` (Cache Me Outside LLC) for the company | Treating Kohyr as the control-plane repo |
-| `alawein/alawein` / `core/alawein` for this control plane | `alawein-hub` (retired). Historical clone path in `docs/internal/plans/2026-06-20-portfolio-conformance-execution.md` is archive, not a revival |
+| `alawein/alawein` for this control plane | `alawein-hub` (retired). Historical clone path in `docs/internal/plans/2026-06-20-portfolio-conformance-execution.md` is archive, not a revival |
 | `workspace-brain` as Kilo Linux mirror / backup | Windows MAIOS SoR |
 | `ops-shared-inventory` as Desktop operator inbox | Git or dispatch SSOT |
 | Kit `prompt-kits/AGENT.md` 1.7.0 | Treating changelog 1.6.0 rows as current kit |
@@ -107,7 +115,7 @@ OpenRouter model id until `GET https://openrouter.ai/api/v1/models` lists it.
 
 | PR | Topic | Note |
 | --- | --- | --- |
-| #252 | Control-plane contract | Draft. CI green at `bfb49cbf`. Merge is Meshal exact yes |
+| #252 | Control-plane contract | Merged `a7562deb` 2026-09-10 |
 | #251 | Practices handbook | Draft. *GAP* on `main` |
 | #250 | Auto architecture diagram | Ready. Same class as old #236 |
 
@@ -115,6 +123,10 @@ Leftover remote: `cursor/integration-probe-1170` (closed #239). Delete after
 Meshal confirms.
 
 ## 7. What this index forbids
+
+Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
+`docs/governance/work-record-taxonomy.md` govern; where they differ, they
+win.
 
 - Copying A1 into git
 - Promoting C1, C2, or C3 to SSOT

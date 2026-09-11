@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.0.0
-last_updated: 2026-09-04
+last_updated: 2026-09-10
 tags: [governance, contributing, workflow, development]
 ---
 
@@ -32,7 +32,10 @@ the actual operating details.
 
 ## Branching
 
-- `main`: **branch protection** (required status checks). Prefer **`feat/*` or `fix/*` + pull request** so CI runs on the PR and reviewers see a single diff. Direct push to `main` is for emergencies or org admins only and still must pass checks when enforced.
+- `main`: protected and PR-first. For `alawein/alawein`, use the
+  [repository-specific solo merge policy](docs/governance/commit-release-convention.md#4-merge-policy):
+  squash only after scoped authorization and all required controls pass.
+  Direct pushes, force merge and administrator bypass are prohibited.
 - `fast/*`: spikes or prototypes
 - `feat/*`, `fix/*`: scoped reviewable work
 - `hotfix/*`: urgent fixes
@@ -88,11 +91,12 @@ for the full author and reviewer checklist.
 - Audit workflow: `.github/workflows/docs-validation.yml` runs the full contract
   check, markdown lint, legacy-domain enforcement, and external link checks for
   governance docs.
-- For this repo, "relevant checks" means documentation checks only. There is no
-  application build, package install, or artifact pipeline to run locally.
+- Relevant checks include documentation validation and governance-script tests.
+  CI installs their dependencies; this repository has no application build or
+  deployment pipeline. Follow the existing checks without inventing new ones.
 - Run these before opening a PR:
   - `./scripts/doctrine/validate-doc-contract.sh --full`
-  - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md docs/README.md docs/governance/*.md`
+  - `npx --yes markdownlint-cli@0.39.0 --config .markdownlint.jsonc AGENTS.md CLAUDE.md CODE_OF_CONDUCT.md SECURITY.md CHANGELOG.md SSOT.md LESSONS.md LESSONS.md docs/README.md docs/governance/*.md`
 - Run Python script tests from PowerShell with third-party pytest plugins
   disabled:
   - `$env:PYTEST_DISABLE_PLUGIN_AUTOLOAD = "1"`

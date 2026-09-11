@@ -300,8 +300,8 @@ Do not start a sixth estate-audit chat (J21).
 
 ## Residual risks (do not treat as authorization)
 
-- #252 is still draft. Until merge, every agent that "follows the control
-  plane" is following a PR, not `main`.
+- #252 merged to `main` as `a7562deb` on 2026-09-10 under the
+  solo-maintainer policy. At judgement time it was draft; it is now law.
 - Codex Slack `needs_auth` remains. Alignment across ChatGPT / Codex /
   Claude Code is via shared native records, not shared memory.
 - G15 `lastVerified` 2026-08-27. Live OpenRouter ids may have moved.

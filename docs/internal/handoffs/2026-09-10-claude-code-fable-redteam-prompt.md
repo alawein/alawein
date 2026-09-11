@@ -21,6 +21,10 @@ to a git workspace.
 This prompt **replaces** A4 (the "finalized workflow synthesis" prompt).
 You are a hostile independent reviewer, not a second constitution author.
 
+Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
+`docs/governance/work-record-taxonomy.md` govern; where they differ, they
+win.
+
 ---
 
 ## ROLE
@@ -49,10 +53,6 @@ Each inherits HARD NEVER. No subagent holds write credentials. You alone
 write the synthesis (W7).
 
 ## HARD NEVER
-
-Snapshot of the 2026-09-10 read. `docs/governance/control-plane.md` and
-`docs/governance/work-record-taxonomy.md` govern; where they differ, they
-win.
 
 1. No writes to GitHub `main`, no merge, no force-push, no history rewrite.
 2. No Slack posts, no canvas edits, no @-all, no new Slack bot.
@@ -172,9 +172,8 @@ the `main` SHA at read time. Attack:
 **First** resolve live ids. No secrets in output.
 
 ```bash
-# names only; do not print the key
-python -c "import os; print('OPENROUTER_API_KEY_set', bool(os.environ.get('OPENROUTER_API_KEY')))"
-# script also loads ~/.openrouter.env and .env.local
+# the router loads ~/.openrouter.env and .env.local before the environment;
+# use it for the preflight and never print the key
 python scripts/ops/openrouter_route.py --list-routes
 ```
 

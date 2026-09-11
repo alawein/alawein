@@ -116,8 +116,8 @@ OpenRouter model id until `GET https://openrouter.ai/api/v1/models` lists it.
 | PR | Topic | Note |
 | --- | --- | --- |
 | #252 | Control-plane contract | Merged `a7562deb` 2026-09-10 |
-| #251 | Practices handbook | Draft. *GAP* on `main` |
-| #250 | Auto architecture diagram | Ready. Same class as old #236 |
+| #251 | Practices handbook | Open. Cut to canon pointers and marked ready 2026-09-11 |
+| #250 | Auto architecture diagram | Merged `2cc35e2e` 2026-09-11 |
 
 Leftover remote: `cursor/integration-probe-1170` (closed #239). Delete after
 Meshal confirms.

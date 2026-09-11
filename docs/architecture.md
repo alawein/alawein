@@ -3,7 +3,7 @@ type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
 last-verified: 2026-09-06
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 ---
 
 # Alawein Workspace Architecture

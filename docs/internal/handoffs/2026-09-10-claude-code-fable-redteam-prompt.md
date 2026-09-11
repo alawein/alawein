@@ -198,10 +198,16 @@ missing handoff filename is not a model.
 *BLOCKED* and continue. Do not retry with a broader key. If spend or
 rate-limit hits, stop the panel and finish locally.
 
-Call with the real CLI (`--stdin` is a flag; the heredoc is stdin):
+First write the redacted judgement extract (2-4k chars: the Verdict
+section, the J01-J24 titles with one-line summaries, and the authority
+map; no A1, no personal or employer strings) to `redacted-extract.txt`.
+Then call the real CLI with the extract prepended to the heredoc on stdin
+(`--stdin` is a flag):
 
 ```bash
-python scripts/ops/openrouter_route.py --model MODEL_ID --stdin <<'EOF'
+{ cat redacted-extract.txt; cat <<'EOF'; } | python scripts/ops/openrouter_route.py --model MODEL_ID --stdin
+
+The text above this line is the redacted Cursor judgement extract.
 You are a hostile reviewer. Do not be polite. The only allowed verdicts
 are AFFIRM, REVISE, or REJECT against the Cursor judgement clauses
 J01-J24.
@@ -223,9 +229,8 @@ Return exactly:
 EOF
 ```
 
-Pipe a **redacted** 2-4k char extract of the judgement: the Verdict
-section plus the clause list J01-J24 titles and one-line summaries, plus
-the authority map. Do not pipe A1. Do not pipe personal or employer
+The same `redacted-extract.txt` goes to every model; only `ANGLE_HERE`
+changes per call. Do not pipe A1. Do not pipe personal or employer
 strings.
 
 Assign each model a distinct attack angle:

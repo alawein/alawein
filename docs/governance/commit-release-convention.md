@@ -154,8 +154,10 @@ cleanup after merge. After merge: delete the branch remotely and locally, update
 
 For `alawein/alawein`, apply the solo-maintainer policy authorized on
 2026-09-10 and implemented in [ruleset 10399573](https://github.com/alawein/alawein/rules/10399573):
-require a pull request, zero required approving reviews, no required CODEOWNER
-review, resolved review conversations, strict required checks, signed commits,
+require a pull request with zero ruleset-required approving reviews and no
+ruleset-required CODEOWNER approval. Preserve process-level owner review,
+including CI workflow review by `@alawein` in [onboarding.md](../onboarding.md).
+Require resolved review conversations, strict required checks, signed commits,
 linear history, and squash-only merging. Keep bypass actors empty. Direct
 pushes to `main`, administrator bypass and force-merge are not permitted.
 
@@ -225,7 +227,7 @@ absent means fixed.
 
 "Breaking" is meaningful only against a declared, closed-world surface list,
 published where consumers see it (repo README or `CONTRACT.md`): anything not
-listed carries no stability promise. Review the list whenever a new external
+listed carries a stability promise. Review the list whenever a new external
 consumer appears. A `BREAKING CHANGE` footer is warranted only when a declared
 surface breaks.
 

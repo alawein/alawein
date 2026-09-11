@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 ---
 
 # Index: alawein
@@ -120,6 +120,7 @@ last_updated: 2026-09-10
 
 - [kernel-parity-2026-09-08.md](internal/kernel-parity-2026-09-08.md)
 - [kernel-skills-drift-mapping-2026-09-08.md](internal/kernel-skills-drift-mapping-2026-09-08.md)
+- [practices-handbook.md](internal/practices-handbook.md)
 
 ## operations/
 

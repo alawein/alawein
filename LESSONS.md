@@ -51,6 +51,7 @@ audience: [ai-agents, contributors, future-self]
 - **Assuming build artifacts exist**: CI contracts should never require `npm ci`, `npm run build`, or `dist/` unless the repo actually contains a package manifest and build surface.
 - **Using `_token` as markdown emphasis**: Tokens like `_pkos` parse as italics and break MD037/MD049; use backticks.
 - **Assuming old local branches mean unmerged work**: Empty `main..branch` means nothing to merge from that tip; a large diff where `main` has additions and the branch “removes” current files usually means the branch is **stale**: do not squash-merge without comparing to `main` first.
+- **Tagging an agent on a Slack Canvas** (2026-09-10): one canvas `@Cursor` mention spawned nine idle Cloud Agents and nine duplicate acks, so tag agents in threads only and archive the leftover agents instead of reusing them.
 
 ## Pitfalls
 

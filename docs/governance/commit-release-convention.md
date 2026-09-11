@@ -227,7 +227,7 @@ absent means fixed.
 
 "Breaking" is meaningful only against a declared, closed-world surface list,
 published where consumers see it (repo README or `CONTRACT.md`): anything not
-listed carries a stability promise. Review the list whenever a new external
+listed carries no stability promise. Review the list whenever a new external
 consumer appears. A `BREAKING CHANGE` footer is warranted only when a declared
 surface breaks.
 

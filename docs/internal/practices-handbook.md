@@ -2,7 +2,7 @@
 type: internal
 source: slack cursor thread 2026-09-10
 sla: none
-last_updated: 2026-09-10
+last_updated: 2026-09-11
 audience: [ai-agents, contributors]
 ---
 

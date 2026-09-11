@@ -120,7 +120,8 @@ remotes; prefer short-lived branches. Day-to-day mechanics: `git-operations.md`.
 ## 4. Merge policy
 
 For `alawein/alawein`, the repository-specific solo policy below overrides
-this document's generic emergency, force-merge and merge-strategy exceptions.
+this document's generic emergency, force-merge, merge-strategy and
+`full`-mode automated direct-push exceptions.
 Branch cleanup remains subject to Meshal's scoped authorization. Other
 repositories retain their own recorded profiles and stricter native controls.
 

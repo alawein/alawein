@@ -41,6 +41,12 @@ jobs:
         if: steps.diff.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
+          # The default GITHUB_TOKEN cannot trigger pull_request workflows, so
+          # required checks never run on the bot PR. Set AUTO_PR_TOKEN (a
+          # fine-grained PAT with contents and pull-requests write) to fix that;
+          # until then the default token is used and the PR needs a manual
+          # update-branch to start checks.
+          token: ${{ secrets.AUTO_PR_TOKEN || secrets.GITHUB_TOKEN }}
           commit-message: "docs(arch): auto-update repo topology from catalog/repos.json"
           title: "[Auto] Architecture diagram refresh"
           body: |

@@ -8,7 +8,7 @@ description: Single source of truth for commit authority, commit messages, branc
 category: governance
 audience: [ai-agents, contributors]
 status: active
-last_updated: 2026-09-07
+last_updated: 2026-09-10
 tags: [commits, branches, merge, releases, semver, agents, convention]
 ---
 
@@ -119,6 +119,12 @@ remotes; prefer short-lived branches. Day-to-day mechanics: `git-operations.md`.
 
 ## 4. Merge policy
 
+For `alawein/alawein`, the repository-specific solo policy below overrides
+this document's generic emergency, force-merge, merge-strategy and
+`full`-mode automated direct-push exceptions.
+Branch cleanup remains subject to Meshal's scoped authorization. Other
+repositories retain their own recorded profiles and stricter native controls.
+
 Approved strategies: squash is the default for `feat/*`, `fix/*`, `chore/*`, and
 `fast/*`; a merge commit is allowed for `hotfix/*` and `release/*` when
 chronology matters; rebase merge is not the documented default.
@@ -146,11 +152,34 @@ understood checks, a human decision when they touch governance truth, and
 cleanup after merge. After merge: delete the branch remotely and locally, update
 `CHANGELOG.md`, and prune stale branches.
 
-For `alawein/alawein`, retain required human and CODEOWNER approval, required
-checks, signed commits and linear history. An author cannot approve their own
-PR. Independent tool review supplements required review; it does not replace it.
-If no eligible reviewer can satisfy the current rules, keep the PR open and
-record the blocker. Do not lower approval requirements or use a bypass to merge.
+For `alawein/alawein`, apply the solo-maintainer policy authorized on
+2026-09-10 and implemented in [ruleset 10399573](https://github.com/alawein/alawein/rules/10399573):
+require a pull request with a baseline of zero required approving reviews and no
+ruleset-required CODEOWNER approval. Preserve process-level owner review,
+including CI workflow review by `@alawein` in [onboarding.md](../onboarding.md).
+Require resolved review conversations, strict required checks, signed commits,
+linear history, and squash-only merging. Keep bypass actors empty. Direct
+pushes to `main`, administrator bypass and force-merge are not permitted.
+
+The preserved `require_extra_approval_for_unattributed_changes` flag remains
+enabled in the recorded native configuration. GitHub documents that this flag
+has no effect when the required approval count is zero. It is not an additional
+enforced approval gate under this repository's current baseline.
+See [GitHub's ruleset reference](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets#additional-approval-for-unattributed-copilot-pull-requests).
+Verify all other applicable native and process requirements before merging.
+
+Meshal remains the accountable maintainer and final approver. Independent tool
+review follows [operating-model.md](operating-model.md#people-and-agents);
+automated review is not a human GitHub approval. Do not invent a second
+maintainer. A tool may execute a merge only under Meshal's explicit scoped
+authorization; an implementation instruction does not approve an unseen revision.
+
+Bind a merge grant to the reviewed full head SHA and use an expected-head guard.
+A changed head needs review of the changes and appropriate authorization. After
+merge, verify the native merge record, resulting commit and main ancestry,
+signature, content, and required checks on the resulting commit. Record receipt
+and acceptance separately. Readiness, a passing check or a digest is not
+Meshal's acceptance. See [control-plane.md](control-plane.md).
 
 The five current contexts are `validate-contract`, `test-scripts`,
 `lint-managed-markdown`, `GitHub Baseline Audit` and `Gitleaks`. Verify current

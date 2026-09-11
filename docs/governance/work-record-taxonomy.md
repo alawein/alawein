@@ -8,7 +8,7 @@ description: Shared classification, field authority, migration and change eviden
 category: governance
 audience: [contributors, ai-agents]
 status: active
-last_updated: 2026-09-07
+last_updated: 2026-09-10
 tags: [governance, catalog, taxonomy, workflow]
 ---
 
@@ -87,6 +87,11 @@ Keep execution attribution in the evidence record. Preserve the canonical Git
 identity and commit-message convention. A bot's COMMENTED or APPROVED review is
 automated review, not a second human approval. Missing checks, inaccessible
 settings and pending reviews are unverified, never passing by default.
+
+Mutation sequencing (`proposed` through `accepted`), control levels, and run
+envelopes are defined in [control-plane.md](control-plane.md). This page owns
+field writers and the change-evidence table. A content hash or generated
+summary is not acceptance.
 
 Authorization to implement is recorded separately from final acceptance of the
 result. A delegated metadata batch may cite Meshal's authorization and its exact

@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-09-10; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-11; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -82,7 +82,7 @@ graph TB
     repz["repz\nAI-powered coaching platform for fi"]
     scribd["scribd\nFitness publishing and content surf"]
     meshal_web["meshal-web\nPersonal site and portfolio with pr"]
-    more_product["… 4 more"]
+    more_product["... 4 more"]
   end
   subgraph research["Research Repos"]
     adil["adil\nLegal-ops CLI for assembling, valid"]
@@ -93,7 +93,7 @@ graph TB
     edfp["edfp\nPhysics-inspired video event detect"]
     loopholelab["loopholelab\nResearch validation surface for adv"]
     maglogic["maglogic\nMagnetic logic gates and device sim"]
-    more_research["… 12 more"]
+    more_research["... 12 more"]
   end
   subgraph tooling["Tooling Repos"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
@@ -104,7 +104,7 @@ graph TB
     kcompiler["kcompiler\nKnowledge compiler that turns evide"]
     outpost["outpost\nPersonal kit that installs prompts "]
     prompty["prompty\nTurbo monorepo for prompt design, e"]
-    more_tooling["… 3 more"]
+    more_tooling["... 3 more"]
   end
 ```
 

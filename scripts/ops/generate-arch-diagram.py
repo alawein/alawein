@@ -60,7 +60,7 @@ def generate_topology_mermaid(repos: list[dict]) -> str:
             slug = (r.get("slug") or r.get("name", "?")).replace("-", "_")
             lines.append(f"    {slug}[{repo_label(r)}]")
         if len(group) > MAX_PER_GROUP:
-            lines.append(f'    more_{safe_id}["… {len(group) - MAX_PER_GROUP} more"]')
+            lines.append(f'    more_{safe_id}["... {len(group) - MAX_PER_GROUP} more"]')
         lines.append("  end")
     lines.append("```")
     return "\n".join(lines)

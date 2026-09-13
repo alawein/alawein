@@ -171,6 +171,12 @@ lanes:
     url: https://scribd.fit
     compliance: public-data
     featured: true
+  - slug: spotify-control
+    about: Local Spotify control layer with shared core, CLI, and MCP server for AI clients.
+    url: https://github.com/alawein/spotify-control
+    compliance: internal-only
+    stack:
+    - python
   lab:
   - slug: adil
     about: Legal-ops CLI for assembling, validating, and submitting evidence packets.

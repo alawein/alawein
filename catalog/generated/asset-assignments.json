@@ -79,6 +79,14 @@
     "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
     "favicon_status": "generated"
   },
+  "spotify-control": {
+    "logo_source": "design-system/packages/icons/dist/brand/spotify-control/logo-light.svg",
+    "banner_source": "design-system/packages/icons/dist/brand/spotify-control/repo-banner.svg",
+    "screenshot_folder": "apps/spotify-control/docs/screenshots",
+    "theme_family": "forge",
+    "social_preview_image": "design-system/packages/icons/dist/brand/spotify-control/social-card.svg",
+    "favicon_status": "generated"
+  },
   "meshal-web": {
     "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
     "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",

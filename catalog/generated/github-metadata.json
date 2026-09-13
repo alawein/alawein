@@ -935,6 +935,25 @@
       "release_automation": {}
     },
     {
+      "slug": "spotify-control",
+      "repo": "alawein/spotify-control",
+      "description": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "homepage": "https://github.com/alawein/spotify-control",
+      "topics": [
+        "spotify-control",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge",
+        "compliance": "internal-only"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "slug": "meshal-web",
       "repo": "alawein/meshal-web",
       "description": "Personal site and portfolio with project deep-dives, case studies, and contact.",

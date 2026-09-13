@@ -366,6 +366,13 @@
       "stack": "nextjs, react, typescript"
     },
     {
+      "folder": "apps/spotify-control",
+      "remote_slug": "alawein/spotify-control",
+      "archetype": "vite-react-spa",
+      "tier": "product",
+      "stack": "python"
+    },
+    {
       "folder": "sites/meshal-web",
       "remote_slug": "alawein/meshal-web",
       "archetype": "vite-react-spa",

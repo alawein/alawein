@@ -81,8 +81,8 @@ graph TB
     gymboy["gymboy\nFitness coaching platform with a re"]
     repz["repz\nAI-powered coaching platform for fi"]
     scribd["scribd\nFitness publishing and content surf"]
-    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
-    more_product["... 4 more"]
+    spotify_control["spotify-control\nLocal Spotify control layer with sh"]
+    more_product["... 5 more"]
   end
   subgraph research["Research Repos"]
     adil["adil\nLegal-ops CLI for assembling, valid"]

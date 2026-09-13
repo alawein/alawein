@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "generatedAt": "2026-08-27",
-  "count": 47,
+  "count": 48,
   "repos": [
     {
       "slug": "helios",
@@ -422,6 +422,16 @@
       "status": "active",
       "visibility": "private",
       "url": "https://scribd.fit"
+    },
+    {
+      "slug": "spotify-control",
+      "lane": "ship",
+      "bucket": "apps",
+      "name": "Spotify Control",
+      "about": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "status": "active",
+      "visibility": "private",
+      "url": "https://github.com/alawein/spotify-control"
     },
     {
       "slug": "meshal-web",

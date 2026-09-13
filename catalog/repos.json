@@ -2745,6 +2745,55 @@
       "profile": "web-app-next"
     },
     {
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "version_source": "package.json",
+      "name": "Spotify Control",
+      "slug": "spotify-control",
+      "legacy_slugs": [],
+      "repo": "alawein/spotify-control",
+      "local_path": "apps/spotify-control",
+      "bucket": "apps",
+      "lane": "ship",
+      "visibility": "private",
+      "owner": "alawein",
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "status": "active",
+      "homepage": "https://github.com/alawein/spotify-control",
+      "canonical_description": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "tags": [
+        "Python"
+      ],
+      "github_topics": [
+        "spotify-control",
+        "python"
+      ],
+      "github_custom_properties": {
+        "lifecycle": "active",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge",
+        "compliance": "internal-only"
+      },
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "stack": [
+        "python"
+      ],
+      "last_verified": "2026-09-13",
+      "audience": [
+        "internal"
+      ],
+      "catalog_groups": []
+    },
+    {
       "name": "meshal.ai",
       "slug": "meshal-web",
       "legacy_slugs": [],

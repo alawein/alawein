@@ -25,11 +25,14 @@ Design: `docs/superpowers/specs/2026-09-13-workspace-cleanup-design.md`
 | DOCS | `docs/internal` (~82) | KEEP | leave (no blind purge) |
 | CAT | `android-coding-phone` → live `coding-phone` @ `core/coding-phone` | CATALOG-FIX | slug+url+rebuild |
 | CAT | missing `dotclaude`, `kcompiler` | CATALOG-FIX | cloned into `core/` |
-| CAT | other `local_path` rows | OK | — |
+| CAT | `apps/spotify-control` uncatalogued | CATALOG-FIX | intake follow-up PR |
+| ORPHAN | empty `.worktrees/` | PARK-MOVE | removed |
+| ORPHAN | workspace-root `docs/superpowers/` (2 plans) | PARK-MOVE | archived |
+| DOCS | gated-leftovers (scout KEEP vs aggressive DELETE) | GIT-DELETE | already deleted; no restore |
 
-## Manifest
+## Late scout reconcile
 
-`solo/alawein/_archive/cleanup-2026-09-13/MANIFEST.md`
+Scouts ([WT worktree scout](6db6f4c5-7c0f-4466-842f-be4135212887), [ORPHAN folder scout](3bb393d9-a2da-4523-ad3b-bb0e2c078d47), [DOCS stale scout](0ebf4872-6c00-441c-991b-2d0718be8ec5), [CAT catalog drift scout](248cd92e-aa34-439a-8508-40a36c25e513)) returned after apply. Material leftover: spotify-control intake + empty `.worktrees` + workspace-root docs. Control-gap 2026-09-10 PARK trio left in `docs/internal` (no blind purge).
 
 ## Post-apply verify
 
@@ -37,3 +40,4 @@ Design: `docs/superpowers/specs/2026-09-13-workspace-cleanup-design.md`
 - [x] `~/.codex/worktrees` empty
 - [x] catalog `validate-catalog.py --strict` pass; missing local_path count 0
 - [x] Doc GIT-DELETE PR opened (closed leftovers removed in this change)
+- [x] Late scout follow-up: spotify-control + empty `.worktrees` + root docs

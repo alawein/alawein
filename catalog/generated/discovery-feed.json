@@ -1,18 +1,18 @@
 {
   "generatedAt": "2026-09-12",
   "summary": {
-    "repoCount": 47,
+    "repoCount": 48,
     "typeCounts": {
       "archive": 1,
       "research": 20,
       "tooling": 11,
-      "product": 12,
+      "product": 13,
       "governance": 1,
       "infra": 2
     },
     "lifecycleCounts": {
       "archived": 1,
-      "active": 36,
+      "active": 37,
       "frozen": 8,
       "maintained": 2
     }
@@ -3316,6 +3316,43 @@
       "release_automation": {}
     },
     {
+      "name": "Spotify Control",
+      "slug": "spotify-control",
+      "repo": "alawein/spotify-control",
+      "type": "product",
+      "surface": "web",
+      "domain": "fitness",
+      "lifecycle": "active",
+      "visibility": "private",
+      "theme_family": "forge",
+      "brand_family": "forge",
+      "stack": [
+        "python"
+      ],
+      "audience": [
+        "internal"
+      ],
+      "homepage": "https://github.com/alawein/spotify-control",
+      "description": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "topics": [
+        "spotify-control",
+        "python"
+      ],
+      "maintainer": "Meshal Alawein",
+      "docs_owner": "Meshal Alawein",
+      "local_path": "apps/spotify-control",
+      "catalog_groups": [],
+      "depends_on": [
+        "alawein"
+      ],
+      "provides": [],
+      "version_source": "package.json",
+      "repo_archetype": "vite-react-spa",
+      "compliance": "internal-only",
+      "github_actions_settings": {},
+      "release_automation": {}
+    },
+    {
       "name": "meshal.ai",
       "slug": "meshal-web",
       "repo": "alawein/meshal-web",
@@ -4564,6 +4601,14 @@
       "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
       "favicon_status": "generated"
     },
+    "spotify-control": {
+      "logo_source": "design-system/packages/icons/dist/brand/spotify-control/logo-light.svg",
+      "banner_source": "design-system/packages/icons/dist/brand/spotify-control/repo-banner.svg",
+      "screenshot_folder": "apps/spotify-control/docs/screenshots",
+      "theme_family": "forge",
+      "social_preview_image": "design-system/packages/icons/dist/brand/spotify-control/social-card.svg",
+      "favicon_status": "generated"
+    },
     "meshal-web": {
       "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
@@ -5511,6 +5556,25 @@
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
         "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "spotify-control",
+      "repo": "alawein/spotify-control",
+      "description": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "homepage": "https://github.com/alawein/spotify-control",
+      "topics": [
+        "spotify-control",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "repo_archetype": "vite-react-spa",
+        "docs_maturity": "managed",
+        "brand_family": "forge",
+        "compliance": "internal-only"
       },
       "actions_settings": {},
       "release_automation": {}

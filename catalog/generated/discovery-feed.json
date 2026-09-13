@@ -1189,11 +1189,11 @@
         "release_automation": {}
       },
       {
-        "name": "Android Coding Phone",
-        "slug": "android-coding-phone",
-        "repo": "alawein/android-coding-phone",
+        "name": "Coding Phone",
+        "slug": "coding-phone",
+        "repo": "alawein/coding-phone",
         "type": "tooling",
-        "surface": "cli",
+        "surface": "monorepo",
         "domain": "governance",
         "lifecycle": "active",
         "visibility": "private",
@@ -1207,27 +1207,23 @@
         "audience": [
           "internal"
         ],
-        "homepage": "https://github.com/alawein/android-coding-phone",
+        "homepage": "https://github.com/alawein/coding-phone",
         "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
         "topics": [
-          "android-coding-phone",
+          "coding-phone",
           "powershell",
           "node",
           "android"
         ],
         "maintainer": "Meshal Alawein",
         "docs_owner": "Meshal Alawein",
-        "local_path": "core/android-coding-phone",
-        "catalog_groups": [
-          "infrastructure"
-        ],
+        "local_path": "core/coding-phone",
+        "catalog_groups": [],
         "depends_on": [
           "alawein"
         ],
-        "provides": [
-          "android-coding-phone-kit"
-        ],
-        "version_source": "CHANGELOG.md",
+        "provides": [],
+        "version_source": "package.json",
         "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -2507,11 +2503,11 @@
       }
     },
     {
-      "name": "Android Coding Phone",
-      "slug": "android-coding-phone",
-      "repo": "alawein/android-coding-phone",
+      "name": "Coding Phone",
+      "slug": "coding-phone",
+      "repo": "alawein/coding-phone",
       "type": "tooling",
-      "surface": "cli",
+      "surface": "monorepo",
       "domain": "governance",
       "lifecycle": "active",
       "visibility": "private",
@@ -2525,27 +2521,23 @@
       "audience": [
         "internal"
       ],
-      "homepage": "https://github.com/alawein/android-coding-phone",
+      "homepage": "https://github.com/alawein/coding-phone",
       "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
       "topics": [
-        "android-coding-phone",
+        "coding-phone",
         "powershell",
         "node",
         "android"
       ],
       "maintainer": "Meshal Alawein",
       "docs_owner": "Meshal Alawein",
-      "local_path": "core/android-coding-phone",
-      "catalog_groups": [
-        "infrastructure"
-      ],
+      "local_path": "core/coding-phone",
+      "catalog_groups": [],
       "depends_on": [
         "alawein"
       ],
-      "provides": [
-        "android-coding-phone-kit"
-      ],
-      "version_source": "CHANGELOG.md",
+      "provides": [],
+      "version_source": "package.json",
       "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -5133,22 +5125,22 @@
       }
     },
     {
-      "slug": "android-coding-phone",
-      "repo": "alawein/android-coding-phone",
+      "slug": "coding-phone",
+      "repo": "alawein/coding-phone",
       "description": "Private Samsung Galaxy Z Flip restore kit for coding-phone workflows: profile, kit files, Capture/Verify/Replay, and Batch A/B proposals.",
-      "homepage": "https://github.com/alawein/android-coding-phone",
+      "homepage": "https://github.com/alawein/coding-phone",
       "topics": [
-        "android-coding-phone",
+        "coding-phone",
         "powershell",
         "node",
         "android"
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "compliance": "internal-only",
         "repo_archetype": "monorepo",
         "docs_maturity": "managed",
-        "brand_family": "midnight"
+        "brand_family": "midnight",
+        "compliance": "internal-only"
       },
       "actions_settings": {},
       "release_automation": {}
@@ -5635,7 +5627,9 @@
   "inventoryReconciliation": {
     "catalog_only": [],
     "workspace_only": [],
-    "stale_inventory_entries": [],
+    "stale_inventory_entries": [
+      "alawein/android-coding-phone"
+    ],
     "path_mismatches": []
   },
   "projectSwitcher": {

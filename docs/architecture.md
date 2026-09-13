@@ -3,7 +3,7 @@ type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
 last-verified: 2026-09-06
-last_updated: 2026-09-11
+last_updated: 2026-09-13
 ---
 
 # Alawein Workspace Architecture
@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-09-11; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-13; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -98,7 +98,7 @@ graph TB
   subgraph tooling["Tooling Repos"]
     fallax["fallax\nLLM adversarial reasoning evaluatio"]
     ai_ops["ai-ops\nImplementation repo for the AI Oper"]
-    android_coding_phone["android-coding-phone\nPrivate Samsung Galaxy Z Flip resto"]
+    coding_phone["coding-phone\nPrivate Samsung Galaxy Z Flip resto"]
     dotclaude["dotclaude\nPrivate backup and version control "]
     incore["incore\nCLI and MCP tooling for workspace a"]
     kcompiler["kcompiler\nKnowledge compiler that turns evide"]

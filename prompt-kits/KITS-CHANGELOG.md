@@ -16,6 +16,16 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.8.2 - 2026-09-13
+
+- RICH travel paste mirrors Desktop RESPONSE-STYLE rev e: INFO status, PR
+  create/close + secret rotation gates, Notion Morning Brief ownership,
+  Desktop/Notion ownership split, Grok write boundary, AGENTS.md load-check
+  non-claim rule, scope clause, fuller self-check.
+- ChatGPT short paste stays lite for the 1500-character account cap; names the
+  same gates. Full replacement for long Project / Claude fields is the RICH block.
+- Live pointers: `.cursor/rules/maios-reply-style.mdc`, slack-agent-voice kit line.
+
 ### 1.8.1 - 2026-09-13
 
 - Cite laptop SoR as Desktop `RESPONSE-STYLE.md` **rev e** (was rev d).

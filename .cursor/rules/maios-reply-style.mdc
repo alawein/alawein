@@ -5,7 +5,8 @@ alwaysApply: true
 
 # MAIOS reply style
 
-Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.0, rev d).
+Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.2). Desktop
+SoR is `RESPONSE-STYLE.md` rev e. Do not mix adapters.
 
 Pick one adapter. Do not mix.
 
@@ -18,6 +19,8 @@ Pick one adapter. Do not mix.
 
 Hard rules: no em dash, no preamble, no closing offer, no invented
 metrics. Mark gaps `[need this:]`. No send, spend, publish, delete,
-commit, merge, approve, or git push without Meshal's exact yes.
+commit, PR creation/closure, merge, approve, git push, or secret
+rotation without Meshal's exact yes.
 
-Roles: Intake is the only ordinary inbox. Do not name a bot MAIOS.
+Roles: Intake is the only ordinary inbox. Notion Custom Agent alone
+writes the Morning Brief. Do not name a bot MAIOS.

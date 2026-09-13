@@ -351,7 +351,7 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 
 ### v1.5.2 (2026-09-13)
 
-- Shared session prompt is `prompt-kits/AGENT.md` 1.8.0.
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.2.
 - Reply style adapters: RICH for Cursor / ChatGPT / Claude / Grok Bot
   chat, CLI for Codex CLI, SLACK for threads.
 

@@ -18,7 +18,7 @@ compatibility entrypoint for older references that still point at
 ## Use these sources
 
 - Canonical voice contract: [`VOICE.md`](VOICE.md)
-- Canonical workspace prompt: [`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.0
+- Canonical workspace prompt: [`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.2
 - Reply adapters: [`prompt-kit-chatgpt.md`](prompt-kit-chatgpt.md),
   [`prompt-kit-claude.md`](prompt-kit-claude.md),
   [`prompt-kit-codex.md`](prompt-kit-codex.md)

@@ -59,7 +59,7 @@ profile_pins:
   - fallax
   - alawein
   - maglogic
-  - repo-drift
+  - scicomp
 account_map:
   - 'This account is personal research + OSS tools; company product lives under kohyr (private).'
   - 'Start here: chshlab (live lab), outpost (agent prompt kit), fallax (reasoning eval).'

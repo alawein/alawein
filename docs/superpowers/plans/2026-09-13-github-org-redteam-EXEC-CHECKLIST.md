@@ -63,7 +63,7 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 
 1. [x] `kohyr` org description → `Local job-completion loop for coding agents (pre-alpha).`
 2. [x] `kohyr/.github` profile: removed "over any agent runtime" (PR #2 MERGED)
-3. [x] Declared pins in `profile-from-guides.yaml`: chshlab, outpost, fallax, alawein, maglogic, repo-drift. **HOLD** live profile UI pin reorder still required.
+3. [x] Declared pins in `profile-from-guides.yaml`: chshlab, outpost, fallax, alawein, maglogic, scicomp. **HOLD** live profile UI pin reorder still required.
 4. [x] 10-line account map in generated README via `account_map` + `sync-readme.py`
 5. [x] Topics+descriptions batch A
 6. [x] Topics+descriptions batch B
@@ -80,5 +80,5 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 
 ## Single next
 
-1. Reorder live GitHub profile pins to: chshlab, outpost, fallax, alawein, maglogic, repo-drift.
+1. Reorder live GitHub profile pins to: chshlab, outpost, fallax, alawein, maglogic, scicomp.
 2. Exact-yes for kohyr.ai holding-page cutover (Wave C item 9) when ready.

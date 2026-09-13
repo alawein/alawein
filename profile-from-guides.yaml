@@ -54,12 +54,12 @@ bio_bullets: 'UC Berkeley PhD EECS
 linkedin_headline: Computational Scientist & AI Systems Engineer | Founder, Kohyr
   | PhD EECS, UC Berkeley
 profile_pins:
-  - chshlab
-  - outpost
-  - fallax
-  - alawein
   - maglogic
   - scicomp
+  - fallax
+  - chshlab
+  - alawein
+  - outpost
 account_map:
   - 'This account is personal research + OSS tools; company product lives under kohyr (private).'
   - 'Start here: chshlab (live lab), outpost (agent prompt kit), fallax (reasoning eval).'

@@ -22,11 +22,11 @@ pending.
 | --- | --- | --- | --- | --- | --- | --- |
 | R01 | `docs/maios/` is the absorb home | Folder did not exist. `docs/internal/` is the derived-evidence convention. Vale would scan a new `docs/maios/` class | Documentation contract; CLAUDE.md exemption list | medium | Use `docs/internal/maios/...`. Record the path decision | Do not add a new managed-doc class without Meshal yes |
 | R02 | Desktop pack was read | Path absent on this VM | Mission: mark UNVERIFIED | high | Keep Desktop claims UNVERIFIED | Do not treat reconstruction as file proof |
-| R03 | knowledge-base CV bugs can be patched now | GitHub 404; catalog path absent | Live repo wins; employer isolation | high | HOLD. Need token or clone. Do not invent KAUST or AGI dates | No CV commit until files are read |
+| R03 | knowledge-base CV bugs can be patched now | Sider quoted `cv_body.tex`. No CV-date test. Cloud token still 404 | Live repo wins; employer isolation | high | HOLD patch. Do not invent a correct KAUST range | No CV commit until a test exists |
 | R04 | Patching AGI overlays in alawein is allowed | Mission names knowledge-base only. `AGENTS.md` forbids AGI import into Alawein | Employer isolation | high | Patch only inside knowledge-base if Meshal opens it. Never copy overlays into this repo | BLOCK any AGI file in `alawein/alawein` |
 | R05 | "82 integrations" is live truth | Catalog sum this checkout = 75 named rows (9+5+17+9+35) | `catalog/agent-integrations.yaml` | medium | Keep 82 as UNVERIFIED handoff count | Do not edit catalog from a handoff number |
 | R06 | Kit is 1.8.2 / rev e | Live pointers updated to 1.8.3 / rev f after #265 | Live `AGENT.md` | low | Historical changelog rows may still cite 1.8.2 | Do not thrash RESPONSE-STYLE drafts |
-| R07 | Cloudflare rotate is in scope | Official EOL 2026-09-30. Account unread | Exact-yes secret rotate | high | HOLD note only. Meshal console | No rotate, no token create from Cloud |
+| R07 | Cloudflare rotate is in scope | Sider: Service Key not found on account `24d1389a57066cdc1fcb2f41ce2af61a` | Exact-yes secret rotate | high | Nothing to rotate. Leave Global API Key untouched | No rotate, no R2 enable from Cloud |
 | R08 | Handoffs can overwrite git | Ranked SoR puts handoffs last | J04; field authority | high | Filter handoffs through live git | Stop if a packet asks to swap SoR |
 | R09 | Dual SoR B lets Desktop overwrite kits | Mission patches are ops / KEEP / Grok-local only | J04; Dual SoR B WITH PATCHES | medium | Keep the patch list narrow | BLOCK Desktop writes into `catalog/` or kits |
 | R10 | This run may post Slack or write Brief | Mission lists those as exact-yes / hard BLOCK | AGENT.md; slack-agent-voice | high | Do not post. Do not write Brief | Slack / Notion Brief stay closed |

@@ -65,39 +65,38 @@ Failed: stop. Do not push.
 
 **Verify:** `origin/main` is `43d58f1a`. Failed: stop.
 
-## Phase 3. CV (BLOCKED this VM)
+## Phase 3. CV (quoted; no patch)
 
-- [ ] [need this: knowledge-base read token or clone]
-- [ ] Open `cv_body.tex` and record the KAUST date range as it is
+- [x] Sider opened `career/resume/master/_shared/cv_body.tex` as `@alawein`
+- [x] Quote KAUST as written (M.S. Aug 2014 -- May 2016; Fellow Aug 2014 -- Jun 2019; fellowship 2014--2018)
+- [ ] [need this: Cloud token or Cursor App `89025369` after GitHub sudo]
 - [ ] Open `career-main-overlays.json` (AGI import stays BLOCK; do not copy into alawein)
-- [ ] Write failing tests for the KAUST date-range bug only
-- [ ] Patch KAUST only after the file is read
+- [ ] Write failing tests only after Meshal names a correct range
+- [ ] Patch KAUST only after a failing test exists
 - [ ] Re-run tests (red then green)
 - [ ] Draft PR on knowledge-base
-- [ ] Link from ABSORB-SYNTHESIS
+- [x] Record the quote in ABSORB-SYNTHESIS
 
-**Verify:** tests fail on the old dates and pass on the new dates. Failed:
-stop. Do not invent dates.
+**Verify:** no invented dates. Failed if a patch lands without a test.
 
-**Stop reason now:** `gh repo view alawein/knowledge-base` cannot resolve
-the repository.
+**Stop reason now:** no CV-date test. Cloud token still 404. Grant BLOCK
+at GitHub sudo.
 
-## Phase 4. Cloudflare (Meshal console)
+## Phase 4. Cloudflare (Sider console)
 
-- [ ] Meshal opens Cloudflare dashboard
-- [ ] Search for Service Keys / `X-Auth-User-Service-Key`
-- [ ] If present, create scoped API Tokens
-- [ ] Swap callers (`cloudflared` November 2022 or later)
-- [ ] Exact yes before any rotate
-- [ ] Deadline: 2026-09-30
+- [x] Sider opened Cloudflare dashboard
+- [x] Search for Service Keys / `X-Auth-User-Service-Key` (not found)
+- [x] Record account `Contact@meshal.ai's Account` ID `24d1389a57066cdc1fcb2f41ce2af61a`
+- [x] Legacy Global API Key left untouched
+- [x] R2 not enabled; no spend
+- [x] Deadline 2026-09-30: no Service Key to replace
 
-**Verify:** Meshal records which accounts were checked. This Cloud run
-does not perform the check.
+**Verify:** named account recorded. Rotate none.
 
 ## Phase 5. Style (no draft thrash)
 
 - [x] ACK live Desktop rev f (done in ABSORB-SYNTHESIS)
-- [ ] Meshal pastes Intake memory line on Grok Bot (Grok-local)
+- [ ] Meshal pastes Intake memory line on Windows Grok Bot (not grok.com)
 - [x] Pointer-sync land for 1.8.2 / rev e leftovers
 - [x] Do not rewrite RESPONSE-STYLE drafts
 
@@ -126,7 +125,7 @@ Failed: stop.
 | Failed verify | Action |
 | --- | --- |
 | Doctrine / README check | Fix or stop. Do not push |
-| knowledge-base 404 | HOLD CV. Do not invent dates |
-| Cloudflare account unread | HOLD. Meshal console |
+| knowledge-base 404 | HOLD Cloud clone. Sider quote recorded. No patch |
+| Cloudflare account unread | Closed. Named account. Service Key not found |
 | Desktop pack unread | Keep UNVERIFIED. Do not invent folders beyond declared names |
 | Merge requested | Done: #265 -> `43d58f1a` |

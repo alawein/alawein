@@ -247,8 +247,8 @@
       "stack": "python, markdown, github-actions"
     },
     {
-      "folder": "core/android-coding-phone",
-      "remote_slug": "alawein/android-coding-phone",
+      "folder": "core/coding-phone",
+      "remote_slug": "alawein/coding-phone",
       "archetype": "monorepo",
       "tier": "tooling",
       "stack": "powershell, node, android"

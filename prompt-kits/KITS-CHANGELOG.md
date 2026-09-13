@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-09-07
+last_updated: 2026-09-12
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,14 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.7.1 - 2026-09-12
+
+- Slack voice: write like a teammate. Short complete sentences. No
+  status-dump walls. Labeled fields only when they help scan.
+- Repeat the em dash ban in the shared paste (U+2014). Use a hyphen,
+  colon, or line break. Paste this block once when the kit version
+  changes. Do not @-all.
 
 ### 1.7.0 - 2026-09-07
 

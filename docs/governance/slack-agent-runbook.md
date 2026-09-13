@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-09
+last_updated: 2026-09-12
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.1
+version: 1.5.2
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -22,7 +22,7 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
 
 **Shared session prompt (paste this):**
-[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.0 section "Shared
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.1 section "Shared
 session prompt". Every Slack agent bot and coding agent uses that block. Do
 not fork it. Workflow bots are exempt from this prompt. Paste the full
 block only when the kit version changes. Later pings are scoped tasks.
@@ -323,6 +323,12 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.2 (2026-09-12)
+
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.7.1 (teammate
+  Slack voice: plain English, no em dash, no status-dump walls). Paste
+  the block once when the kit version changes. Do not @-all.
 
 ### v1.5.0 (2026-09-07)
 

@@ -1,83 +1,279 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-04-14",
+  "lastVerified": "2026-09-12",
   "automations": [
     {
-      "slug": "daily-digest",
-      "name": "Daily digest",
+      "slug": "ai-review",
+      "name": "AI Agent Review",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "alawein/.github/workflows/daily-digest.yml",
-      "schedule": "0 16 * * 1-5",
-      "outputs": ["digest summary"],
-      "description": "Builds and posts the daily summary."
+      "path": "alawein/.github/workflows/ai-review.yml",
+      "schedule": "pull_request",
+      "outputs": [
+        "PR review comments"
+      ],
+      "description": "Runs AI agent review on pull requests."
     },
     {
-      "slug": "job-tracker",
-      "name": "Job tracker summary",
+      "slug": "ci",
+      "name": "CI - Documentation Contract",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "alawein/.github/workflows/job-tracker.yml",
-      "schedule": "0 16 * * 1-5",
-      "outputs": ["job tracker summary"],
-      "description": "Fetches and summarizes job tracker activity."
+      "path": "alawein/.github/workflows/ci.yml",
+      "schedule": "push+pull_request",
+      "outputs": [
+        "CI status"
+      ],
+      "description": "Validates documentation contract and core CI gates."
     },
     {
-      "slug": "task-sync",
-      "name": "Task sync",
+      "slug": "claude-review",
+      "name": "Claude Review",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "alawein/.github/workflows/task-sync.yml",
-      "schedule": "0 */6 * * *",
-      "outputs": ["Notion and GitHub issue sync"],
-      "description": "Keeps tasks synchronized between Notion and GitHub."
+      "path": "alawein/.github/workflows/claude-review.yml",
+      "schedule": "pull_request",
+      "outputs": [
+        "review comments"
+      ],
+      "description": "Claude-powered PR review."
     },
     {
-      "slug": "github-dashboard-sync",
-      "name": "GitHub dashboard sync",
+      "slug": "claude-review-backstop",
+      "name": "Claude Review Backstop",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "alawein/.github/workflows/github-dashboard-sync.yml",
-      "schedule": "0 6 * * *",
-      "outputs": ["dashboard snapshots"],
-      "description": "Refreshes GitHub dashboard snapshots from API data."
+      "path": "alawein/.github/workflows/claude-review-backstop.yml",
+      "schedule": "0 7 * * 1-5",
+      "outputs": [
+        "backstop review"
+      ],
+      "description": "Weekday backstop Claude review sweep."
     },
     {
-      "slug": "readme-sync",
-      "name": "Profile README sync",
+      "slug": "claude-token-liveness",
+      "name": "Claude Token Liveness",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "alawein/.github/workflows/readme-sync.yml",
-      "schedule": "push-triggered",
-      "outputs": ["README.md"],
-      "description": "Regenerates the profile README when canonical data changes."
+      "path": "alawein/.github/workflows/claude-token-liveness.yml",
+      "schedule": "0 7 * * 1",
+      "outputs": [
+        "liveness check"
+      ],
+      "description": "Weekly Claude token liveness probe."
     },
     {
-      "slug": "docs-doctrine-monthly",
-      "name": "Docs doctrine monthly audit",
+      "slug": "docs-auto-gen",
+      "name": "Auto-Generate Architecture Docs",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/docs-auto-gen.yml",
+      "schedule": "push+workflow_dispatch",
+      "outputs": [
+        "architecture docs"
+      ],
+      "description": "Auto-generates architecture documentation."
+    },
+    {
+      "slug": "docs-doctrine",
+      "name": "Docs Doctrine",
       "owner": "alawein",
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
       "path": "alawein/.github/workflows/docs-doctrine.yml",
       "schedule": "0 6 1 * *",
-      "outputs": ["doctrine audit"],
-      "description": "Runs monthly documentation doctrine and drift checks."
+      "outputs": [
+        "doctrine audit"
+      ],
+      "description": "Monthly documentation doctrine and drift checks."
     },
     {
-      "slug": "knowledge-base-smoke",
-      "name": "Knowledge base smoke production",
+      "slug": "docs-validation",
+      "name": "Documentation Audit",
       "owner": "alawein",
-      "source_repo": "alawein/knowledge-base",
+      "source_repo": "alawein/alawein",
       "runner": "github-actions",
-      "path": "knowledge-base/.github/workflows/smoke-production.yml",
-      "schedule": "manual + weekly",
-      "outputs": ["production smoke report"],
-      "description": "Runs smoke tests against the deployed knowledge-base surface."
+      "path": "alawein/.github/workflows/docs-validation.yml",
+      "schedule": "0 6 * * 1",
+      "outputs": [
+        "docs audit"
+      ],
+      "description": "Weekly documentation audit."
+    },
+    {
+      "slug": "github-metadata-sync",
+      "name": "GitHub Metadata Sync",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/github-metadata-sync.yml",
+      "schedule": "push+pull_request+workflow_dispatch",
+      "outputs": [
+        "GitHub metadata"
+      ],
+      "description": "Syncs GitHub metadata from catalog."
+    },
+    {
+      "slug": "issue-triage",
+      "name": "Issue Auto-Triage",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/issue-triage.yml",
+      "schedule": "issues:opened",
+      "outputs": [
+        "issue labels"
+      ],
+      "description": "Auto-triages newly opened issues."
+    },
+    {
+      "slug": "kernel-sync",
+      "name": "kernel-sync",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/kernel-sync.yml",
+      "schedule": "workflow_dispatch",
+      "outputs": [
+        "kernel-sync PRs"
+      ],
+      "description": "Manual kernel render fanout to occupancy-checked repos."
+    },
+    {
+      "slug": "readme-sync",
+      "name": "Sync Catalog",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/readme-sync.yml",
+      "schedule": "0 7 * * 1",
+      "outputs": [
+        "README.md"
+      ],
+      "description": "Weekly catalog/README sync (also push/PR/dispatch)."
+    },
+    {
+      "slug": "repo-audit",
+      "name": "Repository Audit",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/repo-audit.yml",
+      "schedule": "push+pull_request+workflow_dispatch",
+      "outputs": [
+        "repo audit report"
+      ],
+      "description": "Repository audit checks."
+    },
+    {
+      "slug": "secrets-scan",
+      "name": "Secrets Scan",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/secrets-scan.yml",
+      "schedule": "0 8 * * 1",
+      "outputs": [
+        "gitleaks SARIF"
+      ],
+      "description": "Gitleaks secrets scan (push/PR/weekly/dispatch)."
+    },
+    {
+      "slug": "sync-vercel",
+      "name": "sync-vercel",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/sync-vercel.yml",
+      "schedule": "0 9 * * 1",
+      "outputs": [
+        "vercel project sync"
+      ],
+      "description": "Weekly Vercel project sync from catalog."
+    },
+    {
+      "slug": "work-taxonomy-audit",
+      "name": "Work Taxonomy Audit",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/work-taxonomy-audit.yml",
+      "schedule": "push+pull_request+issues+workflow_dispatch",
+      "outputs": [
+        "work-taxonomy report"
+      ],
+      "description": "Audits work-record taxonomy labels on issues/PRs."
+    },
+    {
+      "slug": "workspace-audit",
+      "name": "Workspace Audit",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/workspace-audit.yml",
+      "schedule": "0 6 * * 1",
+      "outputs": [
+        "workspace audit"
+      ],
+      "description": "Weekly workspace audit."
+    },
+    {
+      "slug": "ci-node",
+      "name": "Reusable Node CI",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/ci-node.yml",
+      "schedule": "reusable",
+      "outputs": [
+        "node CI"
+      ],
+      "description": "Reusable Node CI workflow."
+    },
+    {
+      "slug": "ci-python",
+      "name": "Reusable Python CI",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/ci-python.yml",
+      "schedule": "reusable",
+      "outputs": [
+        "python CI"
+      ],
+      "description": "Reusable Python CI workflow."
+    },
+    {
+      "slug": "codeql",
+      "name": "Reusable CodeQL",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/codeql.yml",
+      "schedule": "reusable",
+      "outputs": [
+        "codeql"
+      ],
+      "description": "Reusable CodeQL workflow."
+    },
+    {
+      "slug": "doctrine-reusable",
+      "name": "Doctrine Validation (Reusable)",
+      "owner": "alawein",
+      "source_repo": "alawein/alawein",
+      "runner": "github-actions",
+      "path": "alawein/.github/workflows/doctrine-reusable.yml",
+      "schedule": "reusable",
+      "outputs": [
+        "doctrine"
+      ],
+      "description": "Reusable doctrine validation workflow."
     }
   ]
 }

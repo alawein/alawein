@@ -103,7 +103,7 @@ python scripts/doctrine/validate.py --ci
 
 Expected: pass. Stop if any fail.
 
-- [ ] **Step 7: Commit and draft PR**
+- [x] **Step 7: Commit and draft PR**
 
 ```bash
 git add docs/internal/maios/cursor-first-absorb-2026-09-13/

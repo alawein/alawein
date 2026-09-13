@@ -57,11 +57,11 @@ Failed: stop. Do not push.
 
 ## Phase 2. Draft PR (this run)
 
-- [ ] Commit absorb files as `contact@meshal.ai`
-- [ ] Push `cursor/cursor-first-absorb-295b`
-- [ ] Open draft PR
-- [ ] Record change evidence in the PR body
-- [ ] Do not merge
+- [x] Commit absorb files as `contact@meshal.ai`
+- [x] Push `cursor/cursor-first-absorb-295b`
+- [x] Open draft PR (#265)
+- [x] Record change evidence in the PR body
+- [x] Do not merge
 
 **Verify:** PR exists, `draft=true`, base `main`. Failed: stop.
 

@@ -465,9 +465,11 @@ Cloud SSOT stays git (catalog/agent-integrations.yaml + prompt-kits/AGENT.md
    handshake: alawein-cloud-v1
    surface: grok-bot
    kind: audit-pack
-   pack.path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
-   pack.file_count and pack.manifest_ok from the folder.
-   Do not emit top-level pack_path.
+   pack:
+     path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
+     file_count: <count from the folder>
+     manifest_ok: Y
+   Do not emit top-level pack_path or a dotted key named pack.path.
    Limits: 12 readable, 8 agents, 20 skills, 10 chats/agent, 12 routines.
 
 4. List every bot/agent you can prove. Say grant paths. Do not grant them.

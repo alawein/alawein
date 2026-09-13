@@ -148,10 +148,15 @@ guessed. Meshal pastes both fences back into the Slack Cloud thread.
 ```yaml
 handshake: alawein-cloud-v1
 surface: cursor-ide   # or grok-bot
+kind: handshake       # handshake | rules | audit-pack
 when: 2026-09-12T00:00:00Z
 account: contact@meshal.ai
 host: UNVERIFIED
 status: proved        # proved | partial | blocked
+pack:                 # required when kind is audit-pack; omit otherwise
+  path: UNVERIFIED
+  file_count: UNVERIFIED
+  manifest_ok: UNVERIFIED
 
 identity:
   product: Cursor IDE
@@ -456,13 +461,14 @@ Cloud SSOT stays git (catalog/agent-integrations.yaml + prompt-kits/AGENT.md
    - improve-plan.md
 
 3. Also reply in chat with ONE yaml fence only after the folder is written.
+   Same keys as the Shared handshake schema. Set:
    handshake: alawein-cloud-v1
    surface: grok-bot
    kind: audit-pack
-   pack_path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
-   Same keys as the Shared handshake schema. Add pack.path, pack.file_count,
-   pack.manifest_ok. Limits: 12 readable, 8 agents, 20 skills, 10 chats/agent,
-   12 routines.
+   pack.path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
+   pack.file_count and pack.manifest_ok from the folder.
+   Do not emit top-level pack_path.
+   Limits: 12 readable, 8 agents, 20 skills, 10 chats/agent, 12 routines.
 
 4. List every bot/agent you can prove. Say grant paths. Do not grant them.
 

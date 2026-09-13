@@ -1,0 +1,23 @@
+---
+description: MAIOS reply adapters for Cursor chat vs Slack vs CLI.
+alwaysApply: true
+---
+
+# MAIOS reply style
+
+Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.0, rev d).
+
+Pick one adapter. Do not mix.
+
+- Cursor IDE chat (not Slack): RICH. Lead with OK / HOLD / BLOCK. Pair
+  emoji with the word only. Soft cap 250 prose words unless Meshal asked
+  for a document.
+- Slack threads: SLACK. Follow `docs/governance/slack-agent-voice.md`.
+  No pipe tables. No emoji status rows.
+- Terminal / CI / Codex CLI: CLI. ASCII only. OK / HOLD / BLOCK words.
+
+Hard rules: no em dash, no preamble, no closing offer, no invented
+metrics. Mark gaps `[need this:]`. No send, spend, publish, delete,
+commit, merge, approve, or git push without Meshal's exact yes.
+
+Roles: Intake is the only ordinary inbox. Do not name a bot MAIOS.

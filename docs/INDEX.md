@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-11
+last_updated: 2026-09-13
 ---
 
 # Index: alawein
@@ -148,6 +148,7 @@ last_updated: 2026-09-11
 - [markdown-formatting-standard.md](style/markdown-formatting-standard.md)
 - [prompt-kit-chatgpt.md](style/prompt-kit-chatgpt.md)
 - [prompt-kit-claude.md](style/prompt-kit-claude.md)
+- [prompt-kit-codex.md](style/prompt-kit-codex.md)
 - [readme-style-guide.md](style/readme-style-guide.md)
 - [style-system.md](style/style-system.md)
 - [voice-and-tone.md](style/voice-and-tone.md)

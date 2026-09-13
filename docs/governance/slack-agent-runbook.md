@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.2
+version: 1.5.3
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -22,10 +22,11 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
 
 **Shared session prompt (paste this):**
-[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.7.1 section "Shared
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.0 section "Shared
 session prompt". Every Slack agent bot and coding agent uses that block. Do
 not fork it. Workflow bots are exempt from this prompt. Paste the full
 block only when the kit version changes. Later pings are scoped tasks.
+ChatGPT / Claude / Codex chat pastes live in the same kit under Reply style.
 
 **Evidence baseline:**
 
@@ -323,6 +324,12 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.3 (2026-09-13)
+
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.8.0.
+  Reply style adapters cover ChatGPT, Claude, and Codex chat pastes.
+  Paste the block once when the kit version changes. Do not @-all.
 
 ### v1.5.2 (2026-09-12)
 

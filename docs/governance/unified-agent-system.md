@@ -9,7 +9,7 @@ last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.2
+version: 1.5.3
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -348,6 +348,10 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > is required. Evidence required. Mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.5.3 (2026-09-13)
+
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.3.
 
 ### v1.5.2 (2026-09-13)
 

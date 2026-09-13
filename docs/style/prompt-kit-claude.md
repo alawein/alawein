@@ -12,7 +12,7 @@ last-verified: 2026-09-13
 # Prompt kit for Claude
 
 Canonical workspace prompt text now lives in
-[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.2. Use the
+[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.3. Use the
 prompts below when you need Claude-specific corpus distillation or rewrite
 tasks around that canonical contract.
 
@@ -24,7 +24,7 @@ and Claude Code use RICH.
 Claude.ai Project instructions or Claude Code user memory:
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.2. Adapter: RICH.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.3. Adapter: RICH.
 
 Lead with OK / HOLD / BLOCK. Pair emoji with the word only:
 OK :large_green_circle: HOLD :large_yellow_circle: BLOCK :red_circle:

@@ -25,7 +25,7 @@ pending.
 | R03 | knowledge-base CV bugs can be patched now | GitHub 404; catalog path absent | Live repo wins; employer isolation | high | HOLD. Need token or clone. Do not invent KAUST or AGI dates | No CV commit until files are read |
 | R04 | Patching AGI overlays in alawein is allowed | Mission names knowledge-base only. `AGENTS.md` forbids AGI import into Alawein | Employer isolation | high | Patch only inside knowledge-base if Meshal opens it. Never copy overlays into this repo | BLOCK any AGI file in `alawein/alawein` |
 | R05 | "82 integrations" is live truth | Catalog sum this checkout = 75 named rows (9+5+17+9+35) | `catalog/agent-integrations.yaml` | medium | Keep 82 as UNVERIFIED handoff count | Do not edit catalog from a handoff number |
-| R06 | Kit is 1.8.2 / rev e | #264 merged 1.8.3 / rev f. Pointers in `AGENTS.md`, `CLAUDE.md`, `SSOT.md`, `maios-reply-style.mdc` still stale | Live `AGENT.md` | medium | Separate pointer-sync land | Do not thrash RESPONSE-STYLE drafts |
+| R06 | Kit is 1.8.2 / rev e | Live pointers updated to 1.8.3 / rev f after #265 | Live `AGENT.md` | low | Historical changelog rows may still cite 1.8.2 | Do not thrash RESPONSE-STYLE drafts |
 | R07 | Cloudflare rotate is in scope | Official EOL 2026-09-30. Account unread | Exact-yes secret rotate | high | HOLD note only. Meshal console | No rotate, no token create from Cloud |
 | R08 | Handoffs can overwrite git | Ranked SoR puts handoffs last | J04; field authority | high | Filter handoffs through live git | Stop if a packet asks to swap SoR |
 | R09 | Dual SoR B lets Desktop overwrite kits | Mission patches are ops / KEEP / Grok-local only | J04; Dual SoR B WITH PATCHES | medium | Keep the patch list narrow | BLOCK Desktop writes into `catalog/` or kits |

@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last-verified: 2026-09-10
-last_updated: 2026-09-10
+last-verified: 2026-09-12
+last_updated: 2026-09-12
 ---
 
 # CLAUDE.md: alawein workspace control plane
@@ -102,7 +102,7 @@ public portfolio. Do not collapse them.
 Canonical sources:
 
 - Voice: [`docs/style/VOICE.md`](docs/style/VOICE.md)
-- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0.
+- Workspace prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.1.
   One catalog land. Search open PRs before editing that kit or
   `catalog/agent-integrations.yaml`.
 - Portfolio prompt: [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent voice
 description: Thread and Canvas formatting contract for agent and human Slack messages, including draft-to-prompt packing.
-last_updated: 2026-09-07
+last_updated: 2026-09-12
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.1
+version: 1.1.2
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -44,6 +44,9 @@ Tables belong in **Canvas** or Block Kit, not in thread bodies.
 
 ### Typography
 
+- **Write like a teammate.** Short complete sentences. No status-dump walls.
+  Labeled fields only when they help scan. Prefer one plain sentence when a
+  label is not needed.
 - **No em dash.** Use a hyphen, colon, or line break instead.
 - **Bold** field labels only (`*Next:*`, `*Need:*`). Do not bold whole sentences
   or the first line.
@@ -311,11 +314,14 @@ section "Shared session prompt". Adopt this shorter block in Cloud Agent
 Slack turns when the full kit is already loaded:
 
 ```text
-Slack thread voice: first line = ask or status. Bold field labels only.
-Backtick technical names (`PR #209`, paths, commands). No em dash. No pipe
-tables in threads; link Canvas for tables. Line breaks between blocks. Emoji
-sparse (max one if it helps scan). Mention Meshal when a decision is needed,
-when a reply is required, or on the first ping of an incident. Max 6 lines routine, 3 FYI, 4 incident. Omit empty fields.
+Slack thread voice: write like a teammate. First line = ask or status.
+Bold field labels only when they help scan. Prefer one plain sentence
+when a label is not needed. Backtick technical names (`PR #209`, paths,
+commands). No em dash. No pipe tables in threads; link Canvas for tables.
+Line breaks between blocks. Emoji sparse (max one if it helps scan).
+Mention Meshal when a decision is needed, when a reply is required, or
+on the first ping of an incident. Max 6 lines routine, 3 FYI, 4 incident.
+Omit empty fields.
 ```
 
 ## Related canon
@@ -330,6 +336,12 @@ when a reply is required, or on the first ping of an incident. Max 6 lines routi
 | [`.claude/skills/slack-draft-to-prompt`](../../.claude/skills/slack-draft-to-prompt/SKILL.md) | Draft-to-prompt packer |
 
 ## Changelog
+
+### v1.1.2 (2026-09-12)
+
+- Teammate register: plain English, no status-dump walls, no em dash.
+- Kit pointer moves to AGENT.md 1.7.1. Paste the shared block once when
+  the kit version changes. Do not @-all.
 
 ### v1.1.1 (2026-09-07)
 

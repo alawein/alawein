@@ -5,8 +5,8 @@ sync: none
 sla: none
 authority: canonical
 audience: [ai-agents, contributors]
-last_updated: 2026-09-10
-last-verified: 2026-09-10
+last_updated: 2026-09-12
+last-verified: 2026-09-12
 ---
 
 # AGENTS: alawein
@@ -95,7 +95,7 @@ under the bucketed workspace root (`apps|core|lab|sites|work/<slug>`).
   repo and should be treated like other maintained instruction surfaces.
 - For profile-sync or README About-block work, follow the dedicated governance
   runbooks instead of inventing ad hoc flows.
-- Shared session prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.0.
+- Shared session prompt: [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.7.1.
   Search open catalog-land PRs before editing that kit or
   `catalog/agent-integrations.yaml`.
 - Windows workspace root is `Desktop/GitHub/alawein`. This checkout is

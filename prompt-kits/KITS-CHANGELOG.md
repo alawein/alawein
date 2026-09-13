@@ -16,6 +16,11 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.8.3 - 2026-09-13
+
+- Rev pointer Desktop `RESPONSE-STYLE.md` **rev e** -> **rev f** (Desktop SoR sync).
+- Patch only: reply adapter labels and Git canon version bump to 1.8.3.
+- No behavior change to RICH / CLI / SLACK adapters beyond the SoR rev pointer.
 ### 1.8.2 - 2026-09-13
 
 - RICH travel paste mirrors Desktop RESPONSE-STYLE rev e: INFO status, PR

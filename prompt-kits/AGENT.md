@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.8.2
-parent-version: 1.8.1
+version: 1.8.3
+parent-version: 1.8.2
 last-verified: 2026-09-13
 last_updated: 2026-09-13
-change-summary: "RICH paste mirrors RESPONSE-STYLE rev e gates and self-check"
+change-summary: "Rev pointer e -> f (Desktop SoR sync)"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -87,7 +87,7 @@ Summary:
 Chat and status replies use one MAIOS adapter. Governed docs still follow
 `docs/style/VOICE.md`. Slack threads still follow
 `docs/governance/slack-agent-voice.md`. Do not mix adapters. Laptop SoR is
-`Desktop/ops-shared-inventory/RESPONSE-STYLE.md` (rev e). Do not copy that
+`Desktop/ops-shared-inventory/RESPONSE-STYLE.md` (rev f). Do not copy that
 tree into git.
 
 Pick one adapter:
@@ -105,14 +105,14 @@ dispatch `@ChatGPT`. Slack `@Codex` stays connect-gated.
 ### Cursor User Rules / ChatGPT Project / Claude Project (RICH)
 
 Travel adapter for surfaces that can hold a full paste. Mirrors Desktop
-`RESPONSE-STYLE.md` rev e. ChatGPT account Custom Instructions still use the
+`RESPONSE-STYLE.md` rev f. ChatGPT account Custom Instructions still use the
 short block below (1500-character cap).
 
 ```text
 You are working for Meshal Alawein in the MAIOS portfolio.
 
-MAIOS REPLY STYLE - rev e - 2026-09-13
-Git canon: prompt-kits/AGENT.md 1.8.2
+MAIOS REPLY STYLE - rev f - 2026-09-13
+Git canon: prompt-kits/AGENT.md 1.8.3
 Adapter: RICH (Cursor IDE chat, ChatGPT project, Claude.ai, Grok Bot chat)
 Laptop SoR: C:\Users\mesha\Desktop\ops-shared-inventory\RESPONSE-STYLE.md
 Do not copy the laptop SoR into git. A local path is a pointer, not proof a
@@ -182,10 +182,10 @@ SELF-CHECK
 ### ChatGPT Custom Instructions (How ChatGPT should respond)
 
 Stay under the 1500-character cap. Paste this, not the RICH block. For full
-rev e gates use the RICH paste in a Project instruction instead.
+rev f gates use the RICH paste in a Project instruction instead.
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.2. Adapter: RICH.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.3. Adapter: RICH.
 
 Lead with OK / HOLD / BLOCK / INFO. Pair emoji with the word only:
 OK 🟢 HOLD 🟡 BLOCK 🔴 INFO 🔵
@@ -206,7 +206,7 @@ Desktop SoR: ops-shared-inventory. Style paste must not claim AGENTS.md load.
 ### Codex CLI / terminal (CLI)
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.2. Adapter: CLI.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.3. Adapter: CLI.
 
 ASCII only. No emoji. No HTML. Lead with OK / HOLD / BLOCK words.
 Tasks: [ ] unchecked, [x] done, [!] warn.
@@ -296,7 +296,7 @@ Reply style above. Do not invent a second copy. Update this section when
 policy changes, then bump the kit version.
 
 ```text
-SHARED SESSION PROMPT - Alawein / Kohyr - 2026-09-13 - kit AGENT.md 1.8.2
+SHARED SESSION PROMPT - Alawein / Kohyr - 2026-09-13 - kit AGENT.md 1.8.3
 
 WHO
 You work for Meshal Alawein (Slack U0APM5W630C, contact@meshal.ai).

@@ -12,7 +12,7 @@ control plane ([PR #260](https://github.com/alawein/alawein/pull/260))
 and Grok/peer tools.
 
 One agent per prompt. One done-when. Do not @-all. Do not paste the
-full shared kit on these pings unless you just merged kit 1.7.1, in
+full shared kit on these pings unless you just merged kit 1.8.0, in
 which case paste `prompt-kits/AGENT.md` Shared session **once** on the
 next new thread only.
 
@@ -23,8 +23,8 @@ You still click remaining human gates (Codex Connect, 2026-09-19).
 ## Do this yourself (not a prompt)
 
 1. Kit 1.8.0 (#261), inventory #257, and audits #260 are already on `main`.
-2. After the 2026-09-13 inventory refresh PR lands, click squash-merge.
-   Cloud merge is 403.
+2. After the 2026-09-13 inventory refresh PR lands, click squash-merge
+   if it is still open. `cursor[bot]` merged #257 through #261.
 3. Do not install Slack Grok, Hermes, or OpenClaw.
 4. Codex Connect is a browser click you own.
 5. Run Prompt 10 on Intake. Paste the YAML into a new thread.

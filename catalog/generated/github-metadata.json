@@ -79,7 +79,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -207,7 +207,7 @@
       "custom_properties": {
         "lifecycle": "frozen",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
@@ -358,7 +358,7 @@
       "custom_properties": {
         "lifecycle": "frozen",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -444,7 +444,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
@@ -528,7 +528,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "docs-hub",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -579,7 +579,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -671,7 +671,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -788,7 +788,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-service",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -930,6 +930,25 @@
         "repo_archetype": "next-app-router",
         "docs_maturity": "managed",
         "brand_family": "forge"
+      },
+      "actions_settings": {},
+      "release_automation": {}
+    },
+    {
+      "slug": "spotify-control",
+      "repo": "alawein/spotify-control",
+      "description": "Local Spotify control layer with shared core, CLI, and MCP server for AI clients.",
+      "homepage": "https://github.com/alawein/spotify-control",
+      "topics": [
+        "spotify-control",
+        "python"
+      ],
+      "custom_properties": {
+        "lifecycle": "active",
+        "repo_archetype": "monorepo",
+        "docs_maturity": "managed",
+        "brand_family": "forge",
+        "compliance": "internal-only"
       },
       "actions_settings": {},
       "release_automation": {}

@@ -22,7 +22,7 @@
       "local_folder": "lab/alembiq",
       "notes": "Derived from catalog entry alembiq"
     },
-    "vite-react-spa": {
+    "monorepo": {
       "repo": "alawein/attributa",
       "local_folder": "lab/attributa",
       "notes": "Derived from catalog entry attributa"
@@ -32,35 +32,35 @@
       "local_folder": "lab/chshlab",
       "notes": "Derived from catalog entry chshlab"
     },
-    "monorepo": {
-      "repo": "alawein/chshlab-paper",
-      "local_folder": "lab/chshlab-paper",
-      "notes": "Derived from catalog entry chshlab-paper"
+    "vite-react-spa": {
+      "repo": "alawein/llmworks",
+      "local_folder": "lab/llmworks",
+      "notes": "Derived from catalog entry llmworks"
     },
     "node-monorepo": {
       "repo": "alawein/veyra",
       "local_folder": "lab/veyra",
       "notes": "Derived from catalog entry veyra"
     },
-    "docs-hub": {
-      "repo": "alawein/alawein",
-      "local_folder": "core/alawein",
-      "notes": "Derived from catalog entry alawein"
-    },
-    "next-app-router": {
-      "repo": "alawein/knowledge-base",
-      "local_folder": "core/knowledge-base",
-      "notes": "Derived from catalog entry knowledge-base"
-    },
     "python-platform-cli": {
       "repo": "alawein/outpost",
       "local_folder": "core/outpost",
       "notes": "Derived from catalog entry outpost"
     },
+    "next-app-router": {
+      "repo": "alawein/auditraise",
+      "local_folder": "apps/auditraise",
+      "notes": "Derived from catalog entry auditraise"
+    },
     "game-project": {
       "repo": "alawein/roka-oakland-hustle",
       "local_folder": "sites/roka-oakland-hustle",
       "notes": "Derived from catalog entry roka-oakland-hustle"
+    },
+    "docs-hub": {
+      "repo": "alawein/mercor",
+      "local_folder": "work/mercor",
+      "notes": "Derived from catalog entry mercor"
     }
   },
   "excluded_paths": [
@@ -95,7 +95,7 @@
     {
       "folder": "lab/attributa",
       "remote_slug": "alawein/attributa",
-      "archetype": "vite-react-spa",
+      "archetype": "monorepo",
       "tier": "research",
       "stack": "typescript, react, vite"
     },
@@ -137,7 +137,7 @@
     {
       "folder": "lab/loopholelab",
       "remote_slug": "alawein/loopholelab",
-      "archetype": "vite-react-spa",
+      "archetype": "monorepo",
       "tier": "research",
       "stack": "python, fastapi, typescript, react, vite"
     },
@@ -186,7 +186,7 @@
     {
       "folder": "lab/qmlab",
       "remote_slug": "alawein/qmlab",
-      "archetype": "vite-react-spa",
+      "archetype": "monorepo",
       "tier": "research",
       "stack": "typescript, react, vite, supabase"
     },
@@ -214,7 +214,7 @@
     {
       "folder": "lab/simcore",
       "remote_slug": "alawein/simcore",
-      "archetype": "vite-react-spa",
+      "archetype": "monorepo",
       "tier": "research",
       "stack": "typescript, react, vite, plotly"
     },
@@ -242,7 +242,7 @@
     {
       "folder": "core/alawein",
       "remote_slug": "alawein/alawein",
-      "archetype": "docs-hub",
+      "archetype": "monorepo",
       "tier": "governance",
       "stack": "python, markdown, github-actions"
     },
@@ -256,7 +256,7 @@
     {
       "folder": "core/design-system",
       "remote_slug": "alawein/design-system",
-      "archetype": "node-monorepo",
+      "archetype": "monorepo",
       "tier": "infra",
       "stack": "typescript, react, turborepo, storybook"
     },
@@ -284,7 +284,7 @@
     {
       "folder": "core/knowledge-base",
       "remote_slug": "alawein/knowledge-base",
-      "archetype": "next-app-router",
+      "archetype": "monorepo",
       "tier": "infra",
       "stack": "nextjs, typescript, python"
     },
@@ -319,7 +319,7 @@
     {
       "folder": "core/workspace-tools",
       "remote_slug": "alawein/workspace-tools",
-      "archetype": "python-service",
+      "archetype": "monorepo",
       "tier": "tooling",
       "stack": "python, yaml, automation"
     },
@@ -364,6 +364,13 @@
       "archetype": "next-app-router",
       "tier": "product",
       "stack": "nextjs, react, typescript"
+    },
+    {
+      "folder": "apps/spotify-control",
+      "remote_slug": "alawein/spotify-control",
+      "archetype": "monorepo",
+      "tier": "tooling",
+      "stack": "python"
     },
     {
       "folder": "sites/meshal-web",

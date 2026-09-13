@@ -93,7 +93,7 @@
         "citation-checks"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}

@@ -98,7 +98,7 @@ SLUG_OVERRIDES: dict[str, dict[str, Any]] = {
         "domain": "governance",
         "stack": ["python", "markdown", "github-actions"],
     },
-    "android-coding-phone": {
+    "coding-phone": {
         "type": "tooling",
         "surface": "cli",
         "domain": "governance",
@@ -112,6 +112,13 @@ SLUG_OVERRIDES: dict[str, dict[str, Any]] = {
         "stack": ["typescript", "react", "turborepo", "storybook"],
     },
     "knowledge-base": {"type": "infra", "surface": "docs-hub", "domain": "governance"},
+    "spotify-control": {
+        "type": "tooling",
+        "surface": "cli",
+        "domain": "portfolio",
+        "version_source": "pyproject.toml",
+        "stack": ["python"],
+    },
     "workspace-tools": {"type": "tooling", "surface": "cli", "domain": "governance"},
 }
 
@@ -302,12 +309,16 @@ def compile_repo(
 ) -> dict[str, Any]:
     slug = entry["slug"]
     defaults = deepcopy(BUCKET_DEFAULTS.get(bucket, BUCKET_DEFAULTS["core"]))
-    defaults.update(SLUG_OVERRIDES.get(slug, {}))
+    slug_overrides = SLUG_OVERRIDES.get(slug, {})
+    defaults.update(slug_overrides)
 
     repo: dict[str, Any] = deepcopy(prior) if prior else {}
     for key, value in defaults.items():
         if key not in repo:
             repo[key] = deepcopy(value)
+    # Slug overrides always win over prior/bucket defaults (rename + archetype fixes).
+    for key, value in slug_overrides.items():
+        repo[key] = deepcopy(value)
 
     name = str(entry.get("name") or repo.get("name") or slug_to_name(slug))
     about = str(entry.get("about") or entry.get("description") or repo.get("canonical_description") or name)
@@ -356,6 +367,15 @@ def compile_repo(
             "audience": repo.get("audience") or ["internal"],
         }
     )
+
+    # Keep custom-property archetype aligned when slug overrides change surface,
+    # or when a non-web surface still carries the apps-default SPA archetype.
+    gcp = repo.setdefault("github_custom_properties", {})
+    surface = str(repo.get("surface") or defaults.get("surface") or "")
+    if "surface" in slug_overrides or not gcp.get("repo_archetype"):
+        gcp["repo_archetype"] = "vite-react-spa" if surface == "web" else "monorepo"
+    elif surface != "web" and gcp.get("repo_archetype") == "vite-react-spa":
+        gcp["repo_archetype"] = "monorepo"
 
     readme_archetype = entry.get("readme_archetype")
     if readme_archetype:

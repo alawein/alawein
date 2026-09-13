@@ -1,3 +1,11 @@
+---
+type: plan
+status: ready
+source: writing-plans 2026-09-13 gated leftovers apply
+last_updated: 2026-09-13
+owner: meshal
+---
+
 # Gated leftovers apply Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax.

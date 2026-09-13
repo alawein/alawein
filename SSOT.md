@@ -4,15 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-12
-last_updated: 2026-09-12
+last-verified: 2026-09-13
+last_updated: 2026-09-13
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
 **Version:** 1.7
-**Last Updated:** 2026-09-07
+**Last Updated:** 2026-09-13
 **Status:** Active
 
 ---
@@ -83,7 +83,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Slack and Cursor MCP inventory SSOT:
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:
-  [`docs/internal/audits/2026-09-06-slack-integrations-rescan.md`](docs/internal/audits/2026-09-06-slack-integrations-rescan.md).
+  [`docs/internal/audits/2026-09-12-integrations-rescan.md`](docs/internal/audits/2026-09-12-integrations-rescan.md).
   Drift check: `python3 scripts/catalog/validate-agent-integrations.py --strict`.
   Channel policy: [`docs/governance/slack-agent-runbook.md`](docs/governance/slack-agent-runbook.md).
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and

@@ -1,18 +1,17 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-07T06:56:00Z'
+lastVerified: '2026-09-12T03:30:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md.   Latest Cloud Agent MCP matrix: 2026-09-07 06:56 UTC (run bc-2953ccca).
-  Computer and Kilo rows use same-thread live replies after that scan, not
-  a second stacked snapshot. Closed #222 (bc-4534d6b1) is not authoritative.
-  Prior written rescans:
-  docs/internal/audits/2026-09-06-slack-integrations-rescan.md and
-  docs/internal/audits/2026-09-05-slack-integrations-rescan.md. Desktop and Cloud
-  Agent MCP status can diverge; keep both. CI drift check:
+  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent MCP
+  matrix: 2026-09-12 03:30 UTC (run bc-e551b6c1). Desktop column still
+  UNVERIFIED. Slack working pointers: lane inventory F0C0KEF150C, chat scan
+  F0C16U6USJ0, Cloud cleanup F0C1PDU320G. Written rescan:
+  docs/internal/audits/2026-09-12-integrations-rescan.md. Prior rescans:
+  2026-09-06 and 2026-09-05. CI drift check:
   python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
@@ -41,8 +40,11 @@ agents:
       Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
       job-search 1788621248.955629, social 1788621362.488249.
       Cursor Slack Tools is the canonical Slack surface for agents launched from
-      Slack. Re-proved 2026-09-07 06:56 UTC (run bc-2953ccca): listed 7, read 7.
-    last_verified: 2026-09-07
+      Slack. Re-proved 2026-09-12 (run bc-e551b6c1): listed 9, catalog 7/7
+      reads. `#me-agents-eng` and `#me-agents-ops` listed; read BLOCKED (bot
+      not a member). Model this run: cursor-grok-4.6-high-fast (LLM, not a
+      Slack Grok bot).
+    last_verified: 2026-09-12
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -90,8 +92,8 @@ agents:
     notes: >
       U0BUNH33CCA is not in the #admin-ops member list as of 2026-09-07.
       Keep installed until Codex S4 Reply OK. Do not dispatch. Not the
-      Cursor MCP.
-    last_verified: 2026-09-07
+      Cursor MCP. Slack search 2026-09-12: 0 posts after 2026-09-08.
+    last_verified: 2026-09-12
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -105,8 +107,9 @@ agents:
       2026-09-07. Lane A fail (Sider/Claw 15:52): Reply OK probe got connect
       prompt ts 1788622796.091419, not OK. Connect button clicks (DOM +
       native x4) launched no OAuth popup. Manual Connect click still
-      required (Meshal browser).
-    last_verified: 2026-09-07
+      required (Meshal browser). Slack search 2026-09-12: 0 posts after
+      2026-09-08. Still `needs_auth`.
+    last_verified: 2026-09-12
   - id: notion-ai-slack
     display_name: Notion AI
     surfaces: [slack, notion]
@@ -148,8 +151,10 @@ agents:
       those three repos. Freeze note (2026-09-09): treat
       ops-control-plane-grok as freeze candidate and workspace-brain as
       Linux mirror/backup only; do not expand scope or treat either as
-      Windows MAIOS SoR. Ask Meshal before expanding GitHub App scope.
-    last_verified: 2026-09-07
+      Windows MAIOS SoR.       Ask Meshal before expanding GitHub App scope. Slack search
+      2026-09-12: 0 posts after 2026-09-08. GitHub App repos are not
+      readable from this Cloud GitHub token (404 / search 422).
+    last_verified: 2026-09-12
 
 workflow_bots:
   - id: daily-agenda
@@ -162,15 +167,18 @@ workflow_bots:
     output: '#posts'
     status: partial
     engagement_30d: 0
-    last_fire: '2026-09-04T09:00:00-07:00'
-    notes: Last fire 2026-09-04 09:00 PT. Missed 2026-09-05 through 2026-09-07.
+    last_fire: '2026-09-11T09:00:00-07:00'
+    notes: >
+      Last fire 2026-09-11 09:00 PT as a Notion pointer reminder, not the
+      old in-Slack briefing body. 0 replies. Missed 2026-09-05 through
+      2026-09-07; pointer form resumed 2026-09-08.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
     status: working
     engagement_30d: 0
-    last_fire: '2026-09-04T16:00:00-07:00'
-    notes: Last fire 2026-09-04 16:00 PT.
+    last_fire: '2026-09-11T16:00:00-07:00'
+    notes: Last fire 2026-09-11 16:00 PT. Template body. 0 replies.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
@@ -257,18 +265,19 @@ integrations:
       Desktop IDE 2026-09-05 (T5): ready. Cloud Agent 2026-09-05 14:32 UTC
       (bc-01698bb5): error. Cloud Agent 2026-09-06 03:15 UTC (bc-8ca615eb):
       ready. Cloud Agent 2026-09-07 (bc-2953ccca): get_me alawein ready.
+      Cloud Agent 2026-09-12 (bc-e551b6c1): get_me alawein ready.
       Status is time-stamped; do not collapse runs.
     repair_doc: docs/governance/cursor-mcp-repair.md#2-github-mcp
-    last_verified: 2026-09-07
+    last_verified: 2026-09-12
   - id: supermemory
     provider: Supermemory
     cursor_mcp: dropped
     status: dropped
     notes: >
-      Phase F Drop on desktop (not installed). Cloud Agent 14:32 UTC still
-      errors on discovery. Not inventory SSOT.
+      Phase F Drop on desktop (not installed). Cloud Agent 2026-09-12
+      still errors on discovery. Not inventory SSOT.
     repair_doc: docs/governance/cursor-mcp-repair.md#3-supermemory-mcp
-    last_verified: 2026-09-05
+    last_verified: 2026-09-12
   - id: slack-mcp-duplicate
     provider: Slack
     cursor_mcp_desktop: ready
@@ -290,14 +299,16 @@ integrations:
     provider: Playwright
     cursor_mcp: ready
     status: available
-    notes: Loaded during 14:32 UTC Cloud Agent rescan.
-    last_verified: 2026-09-05
+    notes: Discovery loading on 2026-09-12 Cloud rescan (was ready 2026-09-05).
+    last_verified: 2026-09-12
   - id: treg
     provider: Treg
-    cursor_mcp: error
+    cursor_mcp: ready
     status: partial
-    notes: Token dead on 2026-09-07 Cloud probe. Leave until Meshal provides a fresh token.
-    last_verified: 2026-09-07
+    notes: >
+      Discovery ready on 2026-09-12 Cloud rescan (was error 2026-09-07).
+      Token not re-probed this run. Do not treat ready as token-proved.
+    last_verified: 2026-09-12
   - id: fireflies
     provider: Fireflies
     cursor_mcp: needs_auth
@@ -309,7 +320,25 @@ integrations:
     cursor_mcp: ready
     status: available
     notes: Discovery ready; not probed this rescan.
-    last_verified: 2026-09-05
+    last_verified: 2026-09-12
+  - id: huggingface
+    provider: Hugging Face
+    cursor_mcp: ready
+    status: available
+    notes: Discovery ready on 2026-09-12 Cloud rescan (was needs_auth 2026-09-07).
+    last_verified: 2026-09-12
+  - id: onedrive
+    provider: Microsoft
+    cursor_mcp: ready
+    status: available
+    notes: Discovery ready on 2026-09-12 Cloud rescan (was needs_auth 2026-09-07).
+    last_verified: 2026-09-12
+  - id: outlook
+    provider: Microsoft
+    cursor_mcp: ready
+    status: available
+    notes: Discovery ready on 2026-09-12 Cloud rescan. Absent from the 2026-09-07 ready list.
+    last_verified: 2026-09-12
 
 slack:
   team_id: T0APHHXJV4J
@@ -317,17 +346,19 @@ slack:
 
 slack_channel_reads:
   cloud_agent_current:
+    run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3
+    verified_at: '2026-09-12T03:30:00Z'
+    listed: 9
+    readable: 7
+    evidence: >
+      live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-12.
+      me-agents-eng and me-agents-ops listed, read BLOCKED.
+  cloud_agent_prior:
     run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3
     verified_at: '2026-09-07T06:56:00Z'
     listed: 7
     readable: 7
     evidence: live Cursor Slack Tools list + read, 2026-09-07
-  cloud_agent_prior:
-    run: bc-8ca615eb-dda8-581b-9a4d-af93e03239f9
-    verified_at: '2026-09-06T03:15:00Z'
-    listed: 7
-    readable: 7
-    evidence: docs/internal/audits/2026-09-06-slack-integrations-rescan.md
   ide_slack_mcp:
     verified_at: '2026-09-05'
     readable: 7
@@ -379,6 +410,7 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Invite @Cursor. Cursor code tasks only.
+      Re-proved 2026-09-12: listed in Cursor Slack Tools; read BLOCKED.
   - id: me-agents-ops
     slack_id: C0BVDBHPB99
     tier: agent
@@ -386,9 +418,10 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Invite @Claude and @Computer. Analysis only.
+      Re-proved 2026-09-12: listed in Cursor Slack Tools; read BLOCKED.
 cursor_mcp_cloud_agent:
-  scanned_at: '2026-09-07T06:56:00Z'
-  run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3
+  scanned_at: '2026-09-12T03:30:00Z'
+  run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3
   ready:
     - Cursor Slack Tools
     - Slack
@@ -398,18 +431,20 @@ cursor_mcp_cloud_agent:
     - Google-drive
     - Notion
     - Railway
-    - Playwright
     - Cloudflare-docs
     - Godaddy
     - cursor-cloud
     - cursor-subscriptions
-  error:
-    - Figma
-    - Todoist
+    - Huggingface-skills
+    - Onedrive
+    - Outlook
     - Treg
+  error:
+    - Todoist
     - Supermemory
   loading:
     - 1password
+    - Playwright
   needs_auth:
     - Calendly
     - Cloudflare-bindings
@@ -417,13 +452,12 @@ cursor_mcp_cloud_agent:
     - Cloudflare-observability
     - Context
     - Docusign
+    - Figma
     - Fireflies
     - Granola
-    - Huggingface-skills
     - Lovable
     - Mobbin
     - Neon
-    - Onedrive
     - Posthog
     - Wonder
     - Zoom

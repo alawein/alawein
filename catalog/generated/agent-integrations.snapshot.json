@@ -1,6 +1,6 @@
 {
   "generated_from": "catalog/agent-integrations.yaml",
-  "lastVerified": "2026-09-12T03:30:00Z",
+  "lastVerified": "2026-09-13T01:20:00Z",
   "slack_channels": [
     {
       "id": "admin-ops",

@@ -1,17 +1,18 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-12T03:30:00Z'
+lastVerified: '2026-09-13T01:20:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
   Cross-check against docs/governance/unified-agent-system.md and
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
-  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent MCP
-  matrix: 2026-09-12 03:30 UTC (run bc-e551b6c1). Desktop column still
+  docs/governance/ide-integration-hardening-session.md. Latest Cloud Agent Slack
+  re-read: 2026-09-13 (run bc-467116d0). MCP matrix still 2026-09-12
+  (run bc-e551b6c1) unless a row says otherwise. Desktop column still
   UNVERIFIED. Slack working pointers: lane inventory F0C0KEF150C, chat scan
   F0C16U6USJ0, Cloud cleanup F0C1PDU320G. Written rescan:
-  docs/internal/audits/2026-09-12-integrations-rescan.md. Prior rescans:
-  2026-09-06 and 2026-09-05. CI drift check:
+  docs/internal/audits/2026-09-13-live-slack-refresh.md. Prior:
+  2026-09-12, 2026-09-06, 2026-09-05. CI drift check:
   python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
@@ -40,11 +41,11 @@ agents:
       Join evidence: posts 1788620374.004189, content-pipeline 1788621136.545159,
       job-search 1788621248.955629, social 1788621362.488249.
       Cursor Slack Tools is the canonical Slack surface for agents launched from
-      Slack. Re-proved 2026-09-12 (run bc-e551b6c1): listed 9, catalog 7/7
-      reads. `#me-agents-eng` and `#me-agents-ops` listed; read BLOCKED (bot
+      Slack. Re-proved 2026-09-13 (run bc-467116d0): listed 9, readable 7.
+      `#me-agents-eng` and `#me-agents-ops` listed; read BLOCKED (bot
       not a member). Model this run: cursor-grok-4.6-high-fast (LLM, not a
-      Slack Grok bot).
-    last_verified: 2026-09-12
+      Slack Grok bot). Slack user search: Grok 0, Hermes 0.
+    last_verified: 2026-09-13
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -90,10 +91,11 @@ agents:
     dispatch_roles: []
     status: replaced
     notes: >
-      U0BUNH33CCA is not in the #admin-ops member list as of 2026-09-07.
-      Keep installed until Codex S4 Reply OK. Do not dispatch. Not the
-      Cursor MCP. Slack search 2026-09-12: 0 posts after 2026-09-08.
-    last_verified: 2026-09-12
+      Joined #admin-ops 2026-09-07 08:22 UTC (ts 1788769355.243859).
+      Still in the member list 2026-09-13. Status remains replaced.
+      Do not dispatch. Not the Cursor MCP. Keep installed until Codex
+      Reply OK. Slack search 2026-09-12: 0 posts after 2026-09-08.
+    last_verified: 2026-09-13
   - id: codex-slack
     display_name: Codex
     surfaces: [slack]
@@ -170,8 +172,9 @@ workflow_bots:
     last_fire: '2026-09-11T09:00:00-07:00'
     notes: >
       Last fire 2026-09-11 09:00 PT as a Notion pointer reminder, not the
-      old in-Slack briefing body. 0 replies. Missed 2026-09-05 through
-      2026-09-07; pointer form resumed 2026-09-08.
+      old in-Slack briefing body. Pointer form also fired 2026-09-07
+      09:00 PT (ts 1788796805.803739). 0 replies. Old briefing body last
+      seen 2026-09-04.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
@@ -184,15 +187,19 @@ workflow_bots:
     output: '#posts'
     status: working
     engagement_30d: 0
-    last_fire: '2026-08-31T09:00:00-07:00'
-    notes: Last fire 2026-08-31. Did not fire 2026-09-07 09:00 PT.
+    last_fire: '2026-09-07T09:00:00-07:00'
+    notes: >
+      Last fire 2026-09-07 09:00 PT (ts 1788796812.105459). Template body.
+      Prior note that it missed 2026-09-07 was wrong.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
     status: working
     engagement_30d: 0
-    last_fire: '2026-08-31T09:00:00-07:00'
-    notes: Last fire 2026-08-31. No 2026-09-07 fire in #content-pipeline.
+    last_fire: '2026-09-07T09:00:00-07:00'
+    notes: >
+      Last fire 2026-09-07 09:00 PT in #content-pipeline
+      (ts 1788796812.956499). Template body. 0 replies.
 
 integrations:
   - id: gmail
@@ -237,7 +244,12 @@ integrations:
       Cloud Agent 2026-09-07: notion-search ready. Workspace UUID is not a
       page id (fetch 404 expected). Operations Hub reachable. Desktop MCP
       remains absent. Do not create a Notion living SSOT from this row.
-    last_verified: 2026-09-07
+      Custom agents proved 2026-09-13 via notion-search-agents: Morning
+      Brief (sole Brief writer), Inbox Organizer, Task Triager, Calendar
+      Optimizer, Content Planner, Weekly Review Assistant, Draft Polish,
+      Project Pulse, Ops Copilot. Retired/inert: Meeting Synthesizer,
+      Morning Brief Archived. download_skill is not_enabled.
+    last_verified: 2026-09-13
   - id: railway
     provider: Railway
     account: contact@meshal.ai
@@ -346,19 +358,19 @@ slack:
 
 slack_channel_reads:
   cloud_agent_current:
+    run: bc-467116d0-d9c4-51a8-844f-c05d9426f700
+    verified_at: '2026-09-13T01:20:00Z'
+    listed: 9
+    readable: 7
+    evidence: >
+      live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-13.
+      me-agents-eng and me-agents-ops listed, read BLOCKED.
+  cloud_agent_prior:
     run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3
     verified_at: '2026-09-12T03:30:00Z'
     listed: 9
     readable: 7
-    evidence: >
-      live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-12.
-      me-agents-eng and me-agents-ops listed, read BLOCKED.
-  cloud_agent_prior:
-    run: bc-2953ccca-66f4-5945-8f8e-fc9cc37154a3
-    verified_at: '2026-09-07T06:56:00Z'
-    listed: 7
-    readable: 7
-    evidence: live Cursor Slack Tools list + read, 2026-09-07
+    evidence: live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-12.
   ide_slack_mcp:
     verified_at: '2026-09-05'
     readable: 7
@@ -368,9 +380,11 @@ slack_channels:
   - id: admin-ops
     slack_id: C0B9SRMDJFK
     tier: hub
-    agents_present: [cursor, claude, computer, notion-ai, github, codex, kilo]
+    agents_present: [cursor, claude, computer, notion-ai, github, chatgpt, codex, kilo]
     cursor_can_read: true
-    notes: ChatGPT U0BUNH33CCA not in member list as of 2026-09-07.
+    notes: >
+      ChatGPT U0BUNH33CCA is in the member list (joined 2026-09-07).
+      Replaced. Do not dispatch.
   - id: posts
     slack_id: C0APWF615H7
     tier: hub-bot
@@ -410,7 +424,7 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Invite @Cursor. Cursor code tasks only.
-      Re-proved 2026-09-12: listed in Cursor Slack Tools; read BLOCKED.
+      Re-proved 2026-09-13: listed in Cursor Slack Tools; read BLOCKED.
   - id: me-agents-ops
     slack_id: C0BVDBHPB99
     tier: agent
@@ -418,7 +432,7 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Invite @Claude and @Computer. Analysis only.
-      Re-proved 2026-09-12: listed in Cursor Slack Tools; read BLOCKED.
+      Re-proved 2026-09-13: listed in Cursor Slack Tools; read BLOCKED.
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-12T03:30:00Z'
   run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3

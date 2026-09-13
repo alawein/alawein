@@ -1,7 +1,7 @@
 ---
 type: audit
 status: draft
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 owner: meshal
 ---
 
@@ -12,20 +12,22 @@ control plane ([PR #260](https://github.com/alawein/alawein/pull/260))
 and Grok/peer tools.
 
 One agent per prompt. One done-when. Do not @-all. Do not paste the
-full shared kit on these pings unless you just merged kit 1.7.1, in
+full shared kit on these pings unless you just merged kit 1.8.0, in
 which case paste `prompt-kits/AGENT.md` Shared session **once** on the
 next new thread only.
 
-You do the human clicks first. Agents do not squash-merge. Cloud merge
-is 403.
+Kit 1.8.0 and inventory #257 are on `main`. Paste the Shared session
+prompt from `prompt-kits/AGENT.md` 1.8.0 once on the next new thread.
+You still click remaining human gates (Codex Connect, 2026-09-19).
 
 ## Do this yourself (not a prompt)
 
-1. Squash-merge [PR #259](https://github.com/alawein/alawein/pull/259).
-2. Then #257, then #260, if you want git current.
+1. Kit 1.8.0 (#261), inventory #257, and audits #260 are already on `main`.
+2. After the 2026-09-13 inventory refresh PR lands, click squash-merge
+   if it is still open. `cursor[bot]` merged #257 through #261.
 3. Do not install Slack Grok, Hermes, or OpenClaw.
 4. Codex Connect is a browser click you own.
-5. Stop this DM. New work gets a new thread.
+5. Run Prompt 10 on Intake. Paste the YAML into a new thread.
 
 ## Do not send
 
@@ -37,12 +39,12 @@ is 403.
 - Computer without a URL.
 - Any prompt that asks for a second inventory YAML or Canvas SSOT.
 
-## Prompt 0. Kit paste (once, after #259 lands)
+## Prompt 0. Kit paste (once, after 1.8.0 is on main)
 
 *Send:* new thread, first ping of that thread only.
 
 ```text
-Paste the Shared session prompt from prompt-kits/AGENT.md 1.7.1, then
+Paste the Shared session prompt from prompt-kits/AGENT.md 1.8.0, then
 your scoped ask. Do not paste the kit again on later pings.
 ```
 
@@ -146,10 +148,15 @@ guessed. Meshal pastes both fences back into the Slack Cloud thread.
 ```yaml
 handshake: alawein-cloud-v1
 surface: cursor-ide   # or grok-bot
-when: 2026-09-12T00:00:00Z
+kind: handshake       # handshake | rules | audit-pack
+when: 2026-09-12T00:00:00Z   # example only; set to current UTC at execution
 account: contact@meshal.ai
 host: UNVERIFIED
 status: proved        # proved | partial | blocked
+pack:                 # required when kind is audit-pack; omit otherwise
+  path: UNVERIFIED
+  file_count: UNVERIFIED
+  manifest_ok: UNVERIFIED
 
 identity:
   product: Cursor IDE
@@ -407,15 +414,92 @@ routines, or memory.
 *Tag:* Grok Bot Intake
 ```
 
+## Prompt 10. Intake Downloads pack (2026-09-13)
+
+*Send:* Intake on Grok Bot desktop. Meshal exact-yes 2026-09-13.
+Report only. Writes to Downloads only.
+
+```text
+*Goal:* Cross-workspace audit pack for Slack Cloud Cursor. One Downloads
+folder. One alawein-cloud-v1 YAML. Report only.
+
+*Who you are:* Intake on Grok Bot desktop. Speak for the fleet. Account
+contact@meshal.ai. Laptop SoR: C:\Users\mesha\Desktop\ops-shared-inventory\
+Cloud SSOT stays git (catalog/agent-integrations.yaml + prompt-kits/AGENT.md
+1.8.0). Slack and Notion are not SoR.
+
+*Cloud already knows (diff against this, do not repeat as new truth):*
+- Scheme A: Intake, Policy, Cleanup, Editorial. Do not name a bot MAIOS.
+- New Bot a6456c7d: exact no. Ephemeral. Not in agents.yaml.
+- Slack: no Grok / Hermes / OpenClaw user. Do not install Slack Grok.
+- Slack ChatGPT U0BUNH33CCA is in #admin-ops and replaced. Do not dispatch.
+- Notion Custom Agent Morning Brief is the sole Brief writer.
+- OpenRouter spend is HOLD until Meshal sets a USD cap and exact yes.
+- Writer boundary: do not write Name, Label, Description, routines, memory.
+- AGI / theagi.company / Desktop/AGI: skip. Do not copy or summarize.
+
+*Do:*
+
+1. Create exactly one folder, no nested twin:
+   C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13\
+
+2. Write these files only (no secrets, no .env, no memory dumps):
+   - MANIFEST.md
+   - README-FOR-CLOUD.md
+   - handshake.yaml
+   - agents.yaml
+   - skills.md
+   - mcp-connectors.md
+   - routines.md
+   - chats-index.md
+   - access-matrix.md
+   - slack-overlap.md
+   - notion-overlap.md
+   - linear-gap.md
+   - rules.yaml
+   - drift.md
+   - improve-plan.md
+
+3. Also reply in chat with ONE yaml fence only after the folder is written.
+   Same keys as the Shared handshake schema. Set:
+   handshake: alawein-cloud-v1
+   surface: grok-bot
+   kind: audit-pack
+   when: <current UTC, not the schema example date>
+   pack:
+     path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
+     file_count: <count from the folder>
+     manifest_ok: Y
+   Do not emit top-level pack_path or a dotted key named pack.path.
+   Limits: 12 readable, 8 agents, 20 skills, 10 chats/agent, 12 routines.
+
+4. List every bot/agent you can prove. Say grant paths. Do not grant them.
+
+*Constraints:*
+- Report only. No profile writes. No new bot. No Slack Grok / Hermes /
+  OpenClaw. No Mem0 / Letta / Zep.
+- Do not MOVE or rewrite Desktop/ops-shared-inventory. Copies into
+  Downloads are fine. Redact secrets.
+- Do not unzip into a nested twin folder.
+- Do not start extra Cloud Agents unless Meshal already asked.
+- No second inventory YAML in git. No Canvas SSOT.
+- UNVERIFIED if unknown. Do not invent counts.
+- American spelling. No em dash. Short sentences.
+
+*Done when:* the Downloads folder exists with MANIFEST.md, and Meshal
+can paste one valid alawein-cloud-v1 YAML into Slack Cloud Cursor.
+
+*Tag:* Grok Bot Intake
+```
+
 ## Order I would use
 
-1. Prompt 9 (Intake rules dump). Paste the YAML here.
-2. Human: merge #259 when at git.
+1. Prompt 10 (Intake Downloads pack). Paste the YAML here.
+2. Prompt 9 only if rules are missing from the pack.
 3. Prompt 7 and 8 are done. Do not rerun.
-4. Prompt 1 only if SoR paths go UNVERIFIED again.
-5. Park Prompts 2 to 6 unless that gap returns.
+4. Park Prompts 2 to 6 unless that gap returns.
 
-*Rec:* run Prompt 9 on Intake, paste the rules YAML here.
+*Rec:* run Prompt 10 on Intake, paste the YAML here.
 
 ## Change evidence
 
@@ -424,6 +508,6 @@ routines, or memory.
 | Work item | Slack DM: handshake prompts for Cursor IDE and Grok Bots |
 | Work kind | docs |
 | Accountable maintainer | Meshal Alawein |
-| Executor | Cursor Cloud `bc-e551b6c1` |
+| Executor | Cursor Cloud `bc-e551b6c1`; Prompt 10 add `bc-467116d0` |
 | Independent reviewer | not performed this turn |
 | Final approval | pending Meshal |

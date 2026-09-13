@@ -9,7 +9,7 @@ last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.3
+version: 1.5.4
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -129,13 +129,13 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-04 | 0 replies | Keep; 14-day trial |
-| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-04 | 0 replies | Keep (primary digest) |
-| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-04 | 0 replies | Keep |
-| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-08-31 | 0 replies | Keep |
-| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-08-31 | 0 replies | Keep |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-04 (DM unread here) | 0 replies | Keep; 14-day trial |
+| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-11 (pointer) | 0 replies | Keep (primary digest) |
+| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Keep |
+| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-07 | 0 replies | Keep |
+| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-07 | 0 replies | Keep |
 
-Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (missed 2026-09-05 through 2026-09-07). Zero engagement remains a usage problem for the trial.
+Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-07. Zero engagement remains a usage problem for the trial.
 
 ### 2.2 Engagement policy (locked)
 
@@ -324,6 +324,13 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.4 (2026-09-13)
+
+- Workflow last-fire dates aligned to the 2026-09-13 catalog refresh
+  (`catalog/agent-integrations.yaml`). Daily Briefing pointer last fire
+  is 2026-09-11. Monday Kickoff and Weekly Content Planner last fire is
+  2026-09-07. The earlier "missed 2026-09-07" note was wrong.
 
 ### v1.5.3 (2026-09-13)
 

@@ -63,7 +63,7 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 
 1. [x] `kohyr` org description → `Local job-completion loop for coding agents (pre-alpha).`
 2. [x] `kohyr/.github` profile: removed "over any agent runtime" (PR #2 MERGED)
-3. [x] Declared pins in `profile-from-guides.yaml`: chshlab, outpost, fallax, alawein, maglogic, scicomp. **HOLD** live profile UI pin reorder still required.
+3. [x] Declared pins in `profile-from-guides.yaml`: chshlab, outpost, fallax, alawein, maglogic, scicomp. Live pins verified 2026-09-13: maglogic, scicomp, fallax, chshlab, alawein, outpost.
 4. [x] 10-line account map in generated README via `account_map` + `sync-readme.py`
 5. [x] Topics+descriptions batch A
 6. [x] Topics+descriptions batch B
@@ -71,14 +71,16 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 8. [x] `workspace-brain` archived + `maios-superseded` to match DECISIONS R2
 9. [x] kohyr.ai holding-page cutover - claim-ladder-clean deployed via kohyr/holding#1 + kohyr-wip prod (2026-09-13)
 
-## Wave D - SoR conflicts (applied 2026-09-13 under exact yes)
+## Wave D - SoR conflicts (closed 2026-09-13)
 
-- [x] Align Desktop SoR canon site HEAD (`ops-shared-inventory/DECISIONS.md`; tip lives there, not `MAIOS.md`) to live `alawein/meshal-web` `main` @ `212cdc3` (`212cdc3608e07b8d2c3121c3644b440ad3845b6f`). Prior tip `chore/vitest-4.1.11` @ `0dd2a1f` is historical only. Branch delete not in this yes.
+- [x] Align Desktop SoR canon site HEAD (`ops-shared-inventory/DECISIONS.md`; tip lives there, not `MAIOS.md`) to live `alawein/meshal-web` `main` @ `212cdc3` (`212cdc3608e07b8d2c3121c3644b440ad3845b6f`).
 - [x] Align DECISIONS R2 vs live `workspace-brain` archive bit (archived 2026-09-13)
+- [x] Delete leftover remote `chore/vitest-4.1.11` (ahead 0 / behind 1); local `sites/meshal-web` on `main` @ `212cdc3`. alawein#273 MERGED.
+
+**Out of scope (intentional leave):** frozen-lab Dependabot; `design-system#66–77`; `meshal-web#72–74`.
 
 ---
 
 ## Single next
 
-1. Optional named exact-yes: delete leftover `meshal-web` branch `chore/vitest-4.1.11` (tip already moved).
-2. Leave frozen-lab Dependabot / `design-system#66–77` / `meshal-web#72–74` unless newly authorized.
+None. Waves A–D for this checklist are closed.

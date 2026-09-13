@@ -277,7 +277,7 @@ README 3-line banners: propose only for **frozen/superseded** public repos after
 17. exact-yes: **design-system security consolidation** plan (close #66–#77 after one green PR) — requires separate named yes per close or one batch ≤5 closes at a time
 18. exact-yes: **delete leftover branches** on `alawein/meshal-web` with ahead=0 (named list required; max 5 per yes)
 19. exact-yes: **delete** `kohyr/kohyr` branch `copilot/research-audit-kohyr-org` (identical)
-20. exact-yes: **resolve** SoR tip (`DECISIONS.md`, not `MAIOS.md`) vs `meshal-web` main before deleting `chore/vitest-4.1.11` — **done Wave D 2026-09-13**; delete remains separate
+20. exact-yes: **resolve** SoR tip (`DECISIONS.md`, not `MAIOS.md`) vs `meshal-web` main before deleting `chore/vitest-4.1.11` — **done Wave D 2026-09-13**; branch **deleted** same day under closeout yes
 
 ### Phase 2 metadata (nothing written until yes)
 

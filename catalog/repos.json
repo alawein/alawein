@@ -243,7 +243,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -642,7 +642,7 @@
       "github_custom_properties": {
         "lifecycle": "frozen",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
@@ -1097,7 +1097,7 @@
       "github_custom_properties": {
         "lifecycle": "frozen",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -1358,7 +1358,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
@@ -1608,7 +1608,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "docs-hub",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -1644,12 +1644,12 @@
     },
     {
       "type": "tooling",
-      "surface": "monorepo",
+      "surface": "cli",
       "domain": "governance",
       "lifecycle": "active",
       "theme_family": "midnight",
       "brand_family": "midnight",
-      "version_source": "package.json",
+      "version_source": "CHANGELOG.md",
       "name": "Coding Phone",
       "slug": "coding-phone",
       "legacy_slugs": [
@@ -1748,7 +1748,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -1995,7 +1995,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -2324,7 +2324,7 @@
       "github_custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-service",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -2745,13 +2745,13 @@
       "profile": "web-app-next"
     },
     {
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "portfolio",
       "lifecycle": "active",
       "theme_family": "forge",
       "brand_family": "forge",
-      "version_source": "package.json",
+      "version_source": "pyproject.toml",
       "name": "Spotify Control",
       "slug": "spotify-control",
       "legacy_slugs": [],
@@ -2775,7 +2775,7 @@
       ],
       "github_custom_properties": {
         "lifecycle": "active",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "forge",
         "compliance": "internal-only"

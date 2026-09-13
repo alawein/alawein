@@ -5,8 +5,8 @@
     "typeCounts": {
       "archive": 1,
       "research": 20,
-      "tooling": 11,
-      "product": 13,
+      "tooling": 12,
+      "product": 12,
       "governance": 1,
       "infra": 2
     },
@@ -326,7 +326,7 @@
           "citation-checks"
         ],
         "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -573,7 +573,7 @@
           "simulation-ui"
         ],
         "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -721,7 +721,7 @@
           "citation-checks"
         ],
         "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}
@@ -906,7 +906,7 @@
           "claim-stress-testing"
         ],
         "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "compliance": "public-data",
         "github_actions_settings": {},
         "release_automation": {}
@@ -1046,7 +1046,7 @@
           "profile-generation"
         ],
         "version_source": "CHANGELOG.md",
-        "repo_archetype": "docs-hub",
+        "repo_archetype": "monorepo",
         "compliance": "public-data",
         "github_actions_settings": {
           "default_workflow_permissions": "write",
@@ -1193,7 +1193,7 @@
         "slug": "coding-phone",
         "repo": "alawein/coding-phone",
         "type": "tooling",
-        "surface": "monorepo",
+        "surface": "cli",
         "domain": "governance",
         "lifecycle": "active",
         "visibility": "private",
@@ -1223,7 +1223,7 @@
           "alawein"
         ],
         "provides": [],
-        "version_source": "package.json",
+        "version_source": "CHANGELOG.md",
         "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
@@ -1274,7 +1274,7 @@
           "brand-assets"
         ],
         "version_source": "package.json",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {
           "default_workflow_permissions": "read",
@@ -1514,7 +1514,7 @@
         "citation-checks"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -1798,7 +1798,7 @@
         "claim-stress-testing"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "monorepo",
       "compliance": "public-data",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2124,7 +2124,7 @@
         "quantum-lab"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2309,7 +2309,7 @@
         "simulation-ui"
       ],
       "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -2489,7 +2489,7 @@
         "profile-generation"
       ],
       "version_source": "CHANGELOG.md",
-      "repo_archetype": "docs-hub",
+      "repo_archetype": "monorepo",
       "compliance": "public-data",
       "github_actions_settings": {
         "default_workflow_permissions": "write",
@@ -2507,7 +2507,7 @@
       "slug": "coding-phone",
       "repo": "alawein/coding-phone",
       "type": "tooling",
-      "surface": "monorepo",
+      "surface": "cli",
       "domain": "governance",
       "lifecycle": "active",
       "visibility": "private",
@@ -2537,7 +2537,7 @@
         "alawein"
       ],
       "provides": [],
-      "version_source": "package.json",
+      "version_source": "CHANGELOG.md",
       "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
@@ -2588,7 +2588,7 @@
         "brand-assets"
       ],
       "version_source": "package.json",
-      "repo_archetype": "node-monorepo",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {
         "default_workflow_permissions": "read",
@@ -2772,7 +2772,7 @@
         "onboarding-docs"
       ],
       "version_source": "package.json",
-      "repo_archetype": "next-app-router",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {
         "default_workflow_permissions": "read",
@@ -3011,7 +3011,7 @@
         "drift-audits"
       ],
       "version_source": "package.json",
-      "repo_archetype": "python-service",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {
         "default_workflow_permissions": "read",
@@ -3319,9 +3319,9 @@
       "name": "Spotify Control",
       "slug": "spotify-control",
       "repo": "alawein/spotify-control",
-      "type": "product",
-      "surface": "web",
-      "domain": "fitness",
+      "type": "tooling",
+      "surface": "cli",
+      "domain": "portfolio",
       "lifecycle": "active",
       "visibility": "private",
       "theme_family": "forge",
@@ -3346,8 +3346,8 @@
         "alawein"
       ],
       "provides": [],
-      "version_source": "package.json",
-      "repo_archetype": "vite-react-spa",
+      "version_source": "pyproject.toml",
+      "repo_archetype": "monorepo",
       "compliance": "internal-only",
       "github_actions_settings": {},
       "release_automation": {}
@@ -4601,14 +4601,6 @@
       "social_preview_image": "design-system/packages/icons/dist/brand/scribd/social-card.svg",
       "favicon_status": "generated"
     },
-    "spotify-control": {
-      "logo_source": "design-system/packages/icons/dist/brand/spotify-control/logo-light.svg",
-      "banner_source": "design-system/packages/icons/dist/brand/spotify-control/repo-banner.svg",
-      "screenshot_folder": "apps/spotify-control/docs/screenshots",
-      "theme_family": "forge",
-      "social_preview_image": "design-system/packages/icons/dist/brand/spotify-control/social-card.svg",
-      "favicon_status": "generated"
-    },
     "meshal-web": {
       "logo_source": "design-system/packages/icons/dist/brand/meshal-web/logo-light.svg",
       "banner_source": "design-system/packages/icons/dist/brand/meshal-web/repo-banner.svg",
@@ -4705,7 +4697,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -4833,7 +4825,7 @@
       "custom_properties": {
         "lifecycle": "frozen",
         "compliance": "public-data",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "forge"
       },
@@ -4984,7 +4976,7 @@
       "custom_properties": {
         "lifecycle": "frozen",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "dawn"
       },
@@ -5070,7 +5062,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "wisdom"
       },
@@ -5154,7 +5146,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "public-data",
-        "repo_archetype": "docs-hub",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -5205,7 +5197,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "node-monorepo",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -5297,7 +5289,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "next-app-router",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -5414,7 +5406,7 @@
       "custom_properties": {
         "lifecycle": "active",
         "compliance": "internal-only",
-        "repo_archetype": "python-service",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "midnight"
       },
@@ -5571,7 +5563,7 @@
       ],
       "custom_properties": {
         "lifecycle": "active",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "docs_maturity": "managed",
         "brand_family": "forge",
         "compliance": "internal-only"
@@ -5789,7 +5781,7 @@
           "citation-checks"
         ],
         "version_source": "package.json",
-        "repo_archetype": "vite-react-spa",
+        "repo_archetype": "monorepo",
         "compliance": "internal-only",
         "github_actions_settings": {},
         "release_automation": {}

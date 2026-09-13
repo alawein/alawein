@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,15 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.8.0 - 2026-09-13
+
+- Reply style adapters: RICH (Cursor / ChatGPT / Claude / Grok Bot chat),
+  CLI (Codex CLI / terminal), SLACK (existing thread voice)
+- ChatGPT Custom Instructions short paste (1500-character cap)
+- Exact-yes mutate gate and Scheme A role boundary in the shared paste
+- Keeps 1.7.1 teammate Slack voice: plain English, no status-dump walls,
+  no em dash. Paste once per surface. Do not @-all.
 
 ### 1.7.1 - 2026-09-12
 

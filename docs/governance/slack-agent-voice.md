@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent voice
 description: Thread and Canvas formatting contract for agent and human Slack messages, including draft-to-prompt packing.
-last_updated: 2026-09-12
+last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.1.2
+version: 1.2.0
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -321,8 +321,12 @@ commands). No em dash. No pipe tables in threads; link Canvas for tables.
 Line breaks between blocks. Emoji sparse (max one if it helps scan).
 Mention Meshal when a decision is needed, when a reply is required, or
 on the first ping of an incident. Max 6 lines routine, 3 FYI, 4 incident.
-Omit empty fields.
+Omit empty fields. Cursor IDE chat uses RICH from AGENT.md 1.8.0.
 ```
+
+Chat replies outside Slack use the RICH or CLI adapter in
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) section Reply style.
+Do not apply RICH tables or emoji status rows inside Slack threads.
 
 ## Related canon
 
@@ -336,6 +340,13 @@ Omit empty fields.
 | [`.claude/skills/slack-draft-to-prompt`](../../.claude/skills/slack-draft-to-prompt/SKILL.md) | Draft-to-prompt packer |
 
 ## Changelog
+
+### v1.2.0 (2026-09-13)
+
+- Teammate register: plain English, no status-dump walls, no em dash.
+- Kit pointer moves to AGENT.md 1.8.0. Slack stays the SLACK adapter.
+  Cursor / ChatGPT / Claude chat use RICH. Codex CLI uses CLI.
+- Paste the shared block once when the kit version changes. Do not @-all.
 
 ### v1.1.2 (2026-09-12)
 

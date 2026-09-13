@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-10
+last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.1
+version: 1.5.2
 tags: [agents, orchestration, integrations, slack, mcp, llm, inventory]
 ---
 
@@ -348,6 +348,12 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > is required. Evidence required. Mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.5.2 (2026-09-13)
+
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.0.
+- Reply style adapters: RICH for Cursor / ChatGPT / Claude / Grok Bot
+  chat, CLI for Codex CLI, SLACK for threads.
 
 ### v1.5.0 (2026-09-07)
 

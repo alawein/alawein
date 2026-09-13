@@ -100,6 +100,16 @@ def render_stack(profile: dict) -> list[str]:
     return [f"**Stack:** {stack}"]
 
 
+def render_account_map(profile: dict) -> list[str]:
+    rows = profile.get("account_map") or []
+    if not rows:
+        return []
+    lines = ["## Account map", ""]
+    for i, row in enumerate(rows, start=1):
+        lines.append(f"{i}. {row}")
+    return lines
+
+
 def render_readme(profile: dict) -> str:
     name = profile.get("full_name") or profile.get("name") or "alawein"
     bio = str(profile.get("bio_short") or "").strip()
@@ -120,6 +130,10 @@ def render_readme(profile: dict) -> str:
     link_row = render_link_row(profile)
     if link_row:
         lines += [link_row, ""]
+
+    map_lines = render_account_map(profile)
+    if map_lines:
+        lines += map_lines + [""]
 
     lines += ["---", ""]
 

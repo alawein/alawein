@@ -22,7 +22,7 @@ tags:
 - ai
 - systems
 - governance
-updated: 2026-08-29
+updated: 2026-09-13
 variant_default: balanced
 urls:
   website: https://meshal.ai
@@ -54,12 +54,24 @@ bio_bullets: 'UC Berkeley PhD EECS
 linkedin_headline: Computational Scientist & AI Systems Engineer | Founder, Kohyr
   | PhD EECS, UC Berkeley
 profile_pins:
-  - qmatsim
-  - spincirc
+  - chshlab
+  - outpost
+  - fallax
+  - alawein
   - maglogic
   - scicomp
-  - fallax
-  - chshlab
+account_map:
+  - 'This account is personal research + OSS tools; company product lives under kohyr (private).'
+  - 'Start here: chshlab (live lab), outpost (agent prompt kit), fallax (reasoning eval).'
+  - 'Frozen research record: maglogic, scicomp, qmatsim, spincirc, qubeml - valid artifacts, not seeking issues.'
+  - 'Meta: this repo (alawein/alawein) is portfolio + light governance pointer; Desktop MAIOS is operator SoR.'
+  - 'Private product candidates exist; they are intentionally not public.'
+  - 'Topics use maios-active / maios-frozen / maios-superseded / maios-demo / maios-meta.'
+  - 'Do not confuse PyPI names with GitHub names (trace-eval, outpost).'
+  - 'Kohyr public shell: kohyr/.github + kohyr.ai holding page - not the product monorepo.'
+  - 'Issues on frozen repos may stay unanswered; prefer active flagships.'
+  - 'Exact-yes required before archive, visibility, or pin changes.'
+
 research_rows:
   - slug: qmatsim
     lifecycle: Maintenance
@@ -91,10 +103,18 @@ research_rows:
     description: "Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane"
 
 product_rows:
+  - name: alawein
+    url: https://github.com/alawein/alawein
+    lifecycle: Meta
+    description: "Portfolio README and shared governance surfaces for this account"
   - name: outpost
     url: https://github.com/alawein/outpost
     lifecycle: Active
     description: "Prompt kit and installers for coding-agent workflows, with drift checks"
+  - name: repo-drift
+    url: https://github.com/alawein/repo-drift
+    lifecycle: Preview
+    description: "Docs/config drift detector (preview; no automated CI yet)"
   - name: alembiq
     lifecycle: Private
     description: "LLM training, alignment, evaluation, and synthetic data platform"

@@ -9,6 +9,19 @@ I build at the intersection of physics, machine learning, and auditable software
 
 [meshal.ai](https://meshal.ai) | [kohyr.ai](https://kohyr.ai) | [Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ&hl=en) | [contact@meshal.ai](mailto:contact@meshal.ai)
 
+## Account map
+
+1. This account is personal research + OSS tools; company product lives under kohyr (private).
+2. Start here: chshlab (live lab), outpost (agent prompt kit), fallax (reasoning eval).
+3. Frozen research record: maglogic, scicomp, qmatsim, spincirc, qubeml - valid artifacts, not seeking issues.
+4. Meta: this repo (alawein/alawein) is portfolio + light governance pointer; Desktop MAIOS is operator SoR.
+5. Private product candidates exist; they are intentionally not public.
+6. Topics use maios-active / maios-frozen / maios-superseded / maios-demo / maios-meta.
+7. Do not confuse PyPI names with GitHub names (trace-eval, outpost).
+8. Kohyr public shell: kohyr/.github + kohyr.ai holding page - not the product monorepo.
+9. Issues on frozen repos may stay unanswered; prefer active flagships.
+10. Exact-yes required before archive, visibility, or pin changes.
+
 ---
 
 ## Research & Scientific Computing
@@ -27,7 +40,9 @@ I build at the intersection of physics, machine learning, and auditable software
 
 | Project | Status | Claim |
 |---------|-----------|-------|
+| [alawein](https://github.com/alawein/alawein) | Meta | Portfolio README and shared governance surfaces for this account |
 | [outpost](https://github.com/alawein/outpost) | Active | Prompt kit and installers for coding-agent workflows, with drift checks |
+| [repo-drift](https://github.com/alawein/repo-drift) | Preview | Docs/config drift detector (preview; no automated CI yet) |
 | alembiq | Private | LLM training, alignment, evaluation, and synthetic data platform |
 | attributa | Private | Privacy-first attribution intelligence with AI detection and CWE scans |
 | llmworks | Private | LLM evaluation, benchmarking, and security testing |

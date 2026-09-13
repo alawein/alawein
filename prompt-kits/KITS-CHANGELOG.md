@@ -16,6 +16,12 @@ major for breaking behavioral changes.
 
 ## AGENT.md
 
+### 1.8.1 - 2026-09-13
+
+- Cite laptop SoR as Desktop `RESPONSE-STYLE.md` **rev e** (was rev d).
+- Patch only: reply adapter labels and Git canon version bump to 1.8.1.
+- No behavior change to RICH / CLI / SLACK adapters beyond the SoR rev pointer.
+
 ### 1.8.0 - 2026-09-13
 
 - Reply style adapters: RICH (Cursor / ChatGPT / Claude / Grok Bot chat),

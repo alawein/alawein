@@ -22,7 +22,7 @@ It supersedes audit narratives posted in `#admin-ops` (2026-09-04 through
 2026-09-05).
 
 **Shared session prompt (paste this):**
-[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.0 section "Shared
+[`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.2 section "Shared
 session prompt". Every Slack agent bot and coding agent uses that block. Do
 not fork it. Workflow bots are exempt from this prompt. Paste the full
 block only when the kit version changes. Later pings are scoped tasks.
@@ -334,7 +334,7 @@ gate. Full diagnosis:
 
 ### v1.5.3 (2026-09-13)
 
-- Shared session prompt points at `prompt-kits/AGENT.md` 1.8.0.
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.8.2.
   Reply style adapters cover ChatGPT, Claude, and Codex chat pastes.
   Paste the block once when the kit version changes. Do not @-all.
 

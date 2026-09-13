@@ -69,7 +69,7 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 6. [x] Topics+descriptions batch B
 7. [x] Topics+descriptions batch C (unarchive-edit-rearchive)
 8. [x] `workspace-brain` archived + `maios-superseded` to match DECISIONS R2
-9. [ ] kohyr.ai holding-page cutover (site; separate) - not applied
+9. [x] kohyr.ai holding-page cutover - claim-ladder-clean deployed via kohyr/holding#1 + kohyr-wip prod (2026-09-13)
 
 ## Wave D - SoR conflicts (docs only until yes)
 
@@ -80,5 +80,5 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 
 ## Single next
 
-1. Reorder live GitHub profile pins to: chshlab, outpost, fallax, alawein, maglogic, scicomp.
-2. Exact-yes for kohyr.ai holding-page cutover (Wave C item 9) when ready.
+1. promote it for alawein#271 (pin-order + checklist sync) if still open.
+2. Optional: Wave D MAIOS.md meshal-web tip alignment.

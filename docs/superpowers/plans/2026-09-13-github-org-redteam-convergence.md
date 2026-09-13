@@ -1,6 +1,6 @@
 ---
 type: plan
-status: ready
+status: done
 source: writing-plans 2026-09-13 github org redteam
 last_updated: 2026-09-13
 owner: meshal
@@ -8,7 +8,7 @@ owner: meshal
 
 # GitHub Org Red-Team Audit and Minimal-Architecture Convergence
 
-> **For agentic workers:** This is the Phase 0–4 **read-only audit deliverable**. Do not merge, rebase, close, edit topics/descriptions, or change visibility until Meshal names an exact-yes line from §6. Taxonomy is already decided in `Downloads/MAIOS-Local-Operator-and-Coding-System-2026-09-13/03-CODING-SYSTEM-GITHUB-STRATEGY.md` — apply labels only after approval; do not redesign.
+> **For agentic workers:** Phase 0–4 audit is historical. Session 0 apply is closed via `2026-09-13-github-org-redteam-EXEC-CHECKLIST.md` (Waves A–D done). Do not reopen §6 lines without a new Meshal exact-yes.
 
 **Goal:** Independently verify the prior Copilot portfolio audit for `alawein` and `kohyr`, triage open PRs/branches, propose Session 0–1 taxonomy metadata (nothing applied), and produce a single approval checklist.
 
@@ -277,7 +277,7 @@ README 3-line banners: propose only for **frozen/superseded** public repos after
 17. exact-yes: **design-system security consolidation** plan (close #66–#77 after one green PR) — requires separate named yes per close or one batch ≤5 closes at a time
 18. exact-yes: **delete leftover branches** on `alawein/meshal-web` with ahead=0 (named list required; max 5 per yes)
 19. exact-yes: **delete** `kohyr/kohyr` branch `copilot/research-audit-kohyr-org` (identical)
-20. exact-yes: **resolve** SoR tip (`DECISIONS.md`, not `MAIOS.md`) vs `meshal-web` main before deleting `chore/vitest-4.1.11` — **done Wave D 2026-09-13**; branch **deleted** same day under closeout yes
+20. exact-yes: **resolve** SoR tip (`DECISIONS.md`, not `MAIOS.md`) vs `meshal-web` main before deleting `chore/vitest-4.1.11`. Done Wave D 2026-09-13; branch deleted same day under closeout yes.
 
 ### Phase 2 metadata (nothing written until yes)
 
@@ -297,7 +297,7 @@ README 3-line banners: propose only for **frozen/superseded** public repos after
 
 ## 7. Single next action
 
-**Say exact-yes for checklist item 1** (`close kohyr/.github#1`) **or item 21** (org description string), then stop for the next named line.
+None. Waves A–D applied via companion checklist; §6 exact-yes lines for this Session 0 are closed. Out of scope remains frozen-lab Dependabot, `design-system#66–77`, and `meshal-web#72–74` until newly authorized.
 
 ---
 

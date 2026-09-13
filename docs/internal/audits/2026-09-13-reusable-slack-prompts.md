@@ -19,32 +19,6 @@ Working pointer. Not SoR. Not a second inventory. Git wins.
 Paste one pack per thread. Tag one agent. Do not @-all. Paste the
 Shared session block only when the kit version changes.
 
-## Scan envelope (this Cloud run)
-
-Reached:
-
-- Public channels Cursor can read: `#admin-ops`, `#all-alawein-workspace`,
-  `#content-pipeline`, `#job-search`, `#kohyr-dev`, `#posts`, `#social`.
-- `#me-agents-eng` and `#me-agents-ops`: Meshal Slack MCP only. Cursor
-  bot is not a member.
-- Cursor DM `D0APU0YF71U` (this thread).
-- Existing canvases: handshake `F0C0Y0FGQ9M`, chat scan `F0C16U6USJ0`,
-  lane inventory `F0C0KEF150C`, lane start `F0C103K0FHN`, superseded
-  kit `F0BVD6RBGNA`, three dated Cursor IDE prompt canvases.
-- Cloud Agents in this env: 50+ listed this run. This session is
-  `bc-5ebd0559` (Slack). Live leftovers include `#267` / `#268` docs
-  runs. Nine-plus archived `Canvas user mention` clones stay parked.
-- `main` tip at branch time: `61690116` (#266). Open control-plane PRs:
-  [#267](https://github.com/alawein/alawein/pull/267),
-  [#268](https://github.com/alawein/alawein/pull/268).
-
-Not reached:
-
-- Windows Downloads live tree. Desktop Cursor Composer titles.
-- ChatGPT / Claude Code / Codex private history.
-- Daily Agenda DMs. Linear issues.
-- Grok Bot chats (laptop only). `#me-inbox` absent.
-
 ## How to use
 
 1. Copy one block below.
@@ -54,16 +28,9 @@ Not reached:
 
 ## Daily shell (every ping)
 
-```text
-*Goal:* [one sentence]
-*Context:* [repo / channel / PR / URL]
-*Constraints:* no AGI / Desktop/AGI; no Slack Grok; no second inventory;
-  account contact@meshal.ai; Cloud merge is 403
-*Done when:* [observable result]
-*Tag:* [one agent]
-```
-
-Skill: `.claude/skills/slack-draft-to-prompt/SKILL.md`.
+Use `docs/governance/slack-agent-voice.md` section Draft-to-prompt pack
+(v1.2.2 section 7) and `.claude/skills/slack-draft-to-prompt/SKILL.md`.
+Do not keep a third copy of the template here.
 
 ## Shared session (once per kit bump)
 
@@ -118,7 +85,7 @@ Do not send: `/invite @Grok`, `/invite @ChatGPT`, `/invite @Hermes`.
 ```text
 *Goal:* [one sentence of repo work]
 *Context:* alawein/alawein. Kit AGENT.md 1.8.3. Search open PRs first
-  (#267 and #268 are docs, not a catalog land).
+  (#268 and #269 are docs, not a catalog land; #267 merged).
 *Constraints:* no AGI; no second inventory; no Slack Grok; no catalog
   or kit edit if a land PR is already open (report Mismatch); Cloud
   merge is 403
@@ -170,18 +137,11 @@ Do not send: `/invite @Grok`, `/invite @ChatGPT`, `/invite @Hermes`.
 
 ## R5. Intake (Grok Bot desktop)
 
-*Send:* Intake, new Grok Bot chat. Prefer Prompt 10 from
-`docs/internal/audits/2026-09-12-coverage-prompt-pack.md` when the
-ask is the Downloads pack. For a later fleet question use this shell.
+*Send:* Intake, new Grok Bot chat.
 
-```text
-*Goal:* [one fleet prove]
-*Context:* Desktop/ops-shared-inventory. Cloud SSOT is git.
-*Constraints:* report only; New Bot stays ephemeral; no profile
-  writes; no Slack Grok; no AGI; reply with one alawein-cloud-v1 YAML
-*Done when:* one valid YAML fence Meshal can paste into Slack
-*Tag:* Grok Bot Intake
-```
+Copy Prompt 10 from
+`docs/internal/audits/2026-09-12-coverage-prompt-pack.md`.
+Do not duplicate the prompt body here.
 
 ## R6. Notion AI Slack
 
@@ -198,10 +158,10 @@ ask is the Downloads pack. For a later fleet question use this shell.
 
 ## R7. Handshake pair (already proved 2026-09-12)
 
-Do not rerun unless a surface changed. Copy from the
+Do not rerun unless a surface changed. Copy Prompts 7 to 9 from the
 [handshake canvas](https://alaweinworkspace.slack.com/docs/T0APHHXJV4J/F0C0Y0FGQ9M)
-or the coverage pack: Prompt 7 Cursor IDE, Prompt 8 Grok Bot, Prompt 9
-Intake rules.
+or `docs/internal/audits/2026-09-12-coverage-prompt-pack.md`.
+Do not duplicate those bodies here.
 
 ## Canvas index (keep, do not clone)
 
@@ -226,35 +186,16 @@ Intake rules.
 - Computer without a URL.
 - Another Cloud inventory of this repo.
 
-## Claude Code opinion prompt
-
-*Send:* new Claude Code session on the laptop. Opinion only.
-
-```text
-*Goal:* Review the reusable Slack prompt pack and say what to keep,
-  cut, or merge.
-*Context:* alawein/alawein file
-  docs/internal/audits/2026-09-13-reusable-slack-prompts.md
-  plus the Slack canvas linked from that PR. Kit AGENT.md 1.8.3.
-  Existing: coverage-prompt-pack.md, handshake canvas F0C0Y0FGQ9M,
-  slack-agent-voice.md draft-to-prompt. Open PRs #267 and #268 are
-  unrelated docs.
-*Constraints:* opinion only; do not open a second inventory; do not
-  @-all; no Slack Grok; no AGI / Desktop/AGI; do not write Grok
-  profiles; do not merge; account contact@meshal.ai
-*Done when:* keep / cut / merge table plus one recommended next edit
-*Tag:* Claude Code (laptop)
-```
-
 ## Change evidence
 
 | Field | Recorded value |
 | --- | --- |
-| Work item | Slack: curate reusable prompts from live channel and session scan |
+| Work item | Slack: curate reusable prompts; apply Claude Code keep/cut/merge |
 | Work kind | docs |
 | Accountable maintainer | Meshal Alawein |
 | Actual commit author | Meshal Alawein `<contact@meshal.ai>` |
 | Executor | Cursor Cloud `bc-5ebd0559` |
-| Independent reviewer | pending Claude Code opinion (prompt above) |
+| Independent reviewer | Claude Code laptop 2026-09-13; keep/cut/merge accepted |
 | Checks | listed on the PR |
+| Open control-plane PRs | #268, #269. #267 merged 2026-09-13 |
 | Final approval | pending Meshal |

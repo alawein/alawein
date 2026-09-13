@@ -71,14 +71,14 @@ Comment on each close cites this checklist. Applied 2026-09-13 under Meshal expl
 8. [x] `workspace-brain` archived + `maios-superseded` to match DECISIONS R2
 9. [x] kohyr.ai holding-page cutover - claim-ladder-clean deployed via kohyr/holding#1 + kohyr-wip prod (2026-09-13)
 
-## Wave D - SoR conflicts (docs only until yes)
+## Wave D - SoR conflicts (applied 2026-09-13 under exact yes)
 
-- [ ] Align `MAIOS.md` meshal-web tip with live `main` (branch `chore/vitest-4.1.11` is behind)
+- [x] Align Desktop SoR canon site HEAD (`ops-shared-inventory/DECISIONS.md`; tip lives there, not `MAIOS.md`) to live `alawein/meshal-web` `main` @ `212cdc3` (`212cdc3608e07b8d2c3121c3644b440ad3845b6f`). Prior tip `chore/vitest-4.1.11` @ `0dd2a1f` is historical only. Branch delete not in this yes.
 - [x] Align DECISIONS R2 vs live `workspace-brain` archive bit (archived 2026-09-13)
 
 ---
 
 ## Single next
 
-1. promote it for alawein#271 (pin-order + checklist sync) if still open.
-2. Optional: Wave D MAIOS.md meshal-web tip alignment.
+1. Optional named exact-yes: delete leftover `meshal-web` branch `chore/vitest-4.1.11` (tip already moved).
+2. Leave frozen-lab Dependabot / `design-system#66–77` / `meshal-web#72–74` unless newly authorized.

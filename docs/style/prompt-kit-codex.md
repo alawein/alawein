@@ -12,7 +12,7 @@ last-verified: 2026-09-13
 # Prompt kit for Codex
 
 Canonical workspace prompt text now lives in
-[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.2.
+[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.3.
 
 Slack `@Codex` stays connect-gated. Do not dispatch `@ChatGPT`. Paste
 the CLI block into `~/.codex/AGENTS.md` or the Codex CLI project
@@ -21,7 +21,7 @@ instructions. Slack replies use the SLACK adapter.
 ## Reply style paste
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.2. Adapter: CLI.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.3. Adapter: CLI.
 
 ASCII only. No emoji. No HTML. Lead with OK / HOLD / BLOCK words.
 Tasks: [ ] unchecked, [x] done, [!] warn.

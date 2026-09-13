@@ -11,7 +11,7 @@ status: active
 author: Kohyr Inc.
 version: 1.0.0
 tags: [changelog, version-history, releases]
-last_updated: 2026-09-07
+last_updated: 2026-09-13
 ---
 
 # Changelog
@@ -22,6 +22,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Changed
+
+- Point remaining kit citations from AGENT.md 1.8.2 to 1.8.3 after #264
+  and the Cursor-first absorb land (#265).
 
 ### Fixed
 

@@ -12,7 +12,7 @@ last-verified: 2026-09-13
 # Prompt kit for ChatGPT
 
 Canonical workspace prompt text now lives in
-[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.2. Use the
+[`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.3. Use the
 prompts below when you need ChatGPT-specific distillation or
 compliance-audit runs around that canonical contract.
 
@@ -25,7 +25,7 @@ Custom Instructions, "How would you like ChatGPT to respond?" (stay
 under 1500 characters):
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.2. Adapter: RICH.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.3. Adapter: RICH.
 
 Lead with OK / HOLD / BLOCK. Pair emoji with the word only:
 OK :large_green_circle: HOLD :large_yellow_circle: BLOCK :red_circle:

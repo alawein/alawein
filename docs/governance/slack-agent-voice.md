@@ -9,7 +9,7 @@ last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.2.1
+version: 1.2.2
 tags: [slack, voice, agents, formatting, async]
 ---
 
@@ -321,7 +321,7 @@ commands). No em dash. No pipe tables in threads; link Canvas for tables.
 Line breaks between blocks. Emoji sparse (max one if it helps scan).
 Mention Meshal when a decision is needed, when a reply is required, or
 on the first ping of an incident. Max 6 lines routine, 3 FYI, 4 incident.
-Omit empty fields. Cursor IDE chat uses RICH from AGENT.md 1.8.2.
+Omit empty fields. Cursor IDE chat uses RICH from AGENT.md 1.8.3.
 ```
 
 Chat replies outside Slack use the RICH or CLI adapter in
@@ -340,6 +340,10 @@ Do not apply RICH tables or emoji status rows inside Slack threads.
 | [`.claude/skills/slack-draft-to-prompt`](../../.claude/skills/slack-draft-to-prompt/SKILL.md) | Draft-to-prompt packer |
 
 ## Changelog
+
+### v1.2.2 (2026-09-13)
+
+- Live Cursor RICH pointer moves to AGENT.md 1.8.3 / Desktop rev f.
 
 ### v1.2.1 (2026-09-13)
 

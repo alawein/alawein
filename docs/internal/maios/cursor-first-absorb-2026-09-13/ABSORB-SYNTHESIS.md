@@ -72,7 +72,7 @@ Dual SoR B WITH PATCHES (LOCKED from this mission, Desktop files UNVERIFIED):
 | L05 | Git travel style is AGENT.md 1.8.3 / rev f | LOCKED | #264 merged `c9eb9aa2` | Do not revert to rev e |
 | L06 | Cursor-first this cycle | LOCKED | Meshal chose align and execute here before Sider | Other surfaces wait |
 | L07 | Employer isolation | LOCKED | `AGENTS.md` Never; catalog `employer_isolation` | No AGI import into alawein |
-| C01 | Kit pointer drift after #264 | CONFLICT | `AGENT.md` 1.8.3 / rev f. `AGENTS.md`, `CLAUDE.md`, `SSOT.md` still say 1.8.2. `.cursor/rules/maios-reply-style.mdc` still says 1.8.2 and rev e | Meshal: pointer-sync land or leave |
+| C01 | Kit pointer drift after #264 | LOCKED | Live pointers moved to AGENT.md 1.8.3 / rev f on `cursor/kit-pointer-sync-295b` after #265 | Historical changelog rows may still cite 1.8.2 |
 | C02 | Dual SoR vs J04 | CONFLICT if misread | J04 rejects Desktop winning over git for repo fields. Dual SoR B is ops/Grok/KEEP only | Keep the patch list above |
 | C03 | "82 integrations" | CONFLICT with live catalog | This checkout: 9 agents, 5 workflow bots, 17 integrations, 9 Slack channels, 35 MCP names (16 ready, 2 error, 2 loading, 15 needs_auth). Sum of named rows = 75, not 82 | Treat 82 as UNVERIFIED handoff count |
 | U01 | Desktop pack contents | UNVERIFIED | Path absent | [need this: pack on a mounted Desktop or paste] |
@@ -148,7 +148,7 @@ Reject:
 1. Accept this draft absorb PR (merge gated).
 2. Grant knowledge-base read so CV bugs can be verified and patched.
 3. Cloudflare console Service Key check before 2026-09-30.
-4. Pointer-sync land for 1.8.2 / rev e leftovers (C01) vs leave.
+4. Pointer-sync land is in progress on `cursor/kit-pointer-sync-295b`.
 5. Apply the Intake memory line on Grok Bot (Grok-local).
 6. Cleanup MOVE + manifest after this pack is accepted (Desktop only).
 7. Whether 82 is a Desktop IDE count that should replace the catalog sum.

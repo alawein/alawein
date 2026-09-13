@@ -61,17 +61,17 @@ Failed: stop. Do not push.
 - [x] Push `cursor/cursor-first-absorb-295b`
 - [x] Open draft PR (#265)
 - [x] Record change evidence in the PR body
-- [x] Do not merge
+- [x] Squash-merged to `main` as `43d58f1a`
 
-**Verify:** PR exists, `draft=true`, base `main`. Failed: stop.
+**Verify:** `origin/main` is `43d58f1a`. Failed: stop.
 
 ## Phase 3. CV (BLOCKED this VM)
 
 - [ ] [need this: knowledge-base read token or clone]
 - [ ] Open `cv_body.tex` and record the KAUST date range as it is
-- [ ] Open `career-main-overlays.json` and record the AGI overlay date
-- [ ] Write failing tests for the named bugs
-- [ ] Patch only those fields
+- [ ] Open `career-main-overlays.json` (AGI import stays BLOCK; do not copy into alawein)
+- [ ] Write failing tests for the KAUST date-range bug only
+- [ ] Patch KAUST only after the file is read
 - [ ] Re-run tests (red then green)
 - [ ] Draft PR on knowledge-base
 - [ ] Link from ABSORB-SYNTHESIS
@@ -96,10 +96,10 @@ does not perform the check.
 
 ## Phase 5. Style (no draft thrash)
 
-- [ ] ACK live Desktop rev f (done in ABSORB-SYNTHESIS)
+- [x] ACK live Desktop rev f (done in ABSORB-SYNTHESIS)
 - [ ] Meshal pastes Intake memory line on Grok Bot (Grok-local)
-- [ ] Decision: pointer-sync land for 1.8.2 / rev e leftovers, or leave
-- [ ] Do not rewrite RESPONSE-STYLE drafts
+- [x] Pointer-sync land for 1.8.2 / rev e leftovers
+- [x] Do not rewrite RESPONSE-STYLE drafts
 
 **Verify:** `prompt-kits/AGENT.md` still reads version 1.8.3 and rev f.
 Failed: stop and report drift.
@@ -117,9 +117,9 @@ Failed: stop.
 
 ## Phase 7. Other surfaces
 
-- [ ] Sider and other surfaces wait until Meshal tags them
-- [ ] No Slack post of this pack unless Meshal exact yes
-- [ ] No Notion Brief body write
+- [x] Sider and other surfaces wait until Meshal tags them
+- [x] Slack posted to `#admin-ops` after exact yes
+- [x] Notion ops page written; Custom Agent Morning Brief body not replaced
 
 ## Stop table
 
@@ -129,4 +129,4 @@ Failed: stop.
 | knowledge-base 404 | HOLD CV. Do not invent dates |
 | Cloudflare account unread | HOLD. Meshal console |
 | Desktop pack unread | Keep UNVERIFIED. Do not invent folders beyond declared names |
-| Merge requested | BLOCK until Meshal exact yes |
+| Merge requested | Done: #265 -> `43d58f1a` |

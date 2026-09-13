@@ -5,8 +5,8 @@ alwaysApply: true
 
 # MAIOS reply style
 
-Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.2). Desktop
-SoR is `RESPONSE-STYLE.md` rev e. Do not mix adapters.
+Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.3). Desktop
+SoR is `RESPONSE-STYLE.md` rev f. Do not mix adapters.
 
 Pick one adapter. Do not mix.
 

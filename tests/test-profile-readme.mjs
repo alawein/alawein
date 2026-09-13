@@ -41,19 +41,28 @@ function parseResearchRows(readmeText) {
 
 describe("profile README research rows", () => {
   const profilePins = parseProfilePins(readFileSync(profilePath, "utf8"));
-  const researchRows = parseResearchRows(readFileSync(readmePath, "utf8"));
-  const pinnedRows = researchRows.slice(0, profilePins.length);
+  const readme = readFileSync(readmePath, "utf8");
+  const researchRows = parseResearchRows(readme);
+  const researchSlugs = new Set(researchRows.map((row) => row.slug));
+  const researchPins = profilePins.filter((slug) => researchSlugs.has(slug));
+  const pinnedResearchRows = researchRows.filter((row) => researchPins.includes(row.slug));
 
-  it("starts with profile-from-guides.yaml pin ordering", () => {
+  it("links every profile pin somewhere in README.md", () => {
+    for (const slug of profilePins) {
+      assert.ok(readme.includes(`[${slug}](`), `README must contain a link for pin '${slug}'`);
+    }
+  });
+
+  it("orders research-table pins to match profile_pins research subset", () => {
     assert.deepEqual(
-      pinnedRows.map((row) => row.slug),
-      profilePins,
-      "first README research rows must match profile-from-guides.yaml pins"
+      pinnedResearchRows.map((row) => row.slug),
+      researchPins,
+      "README research rows that are pins must follow profile_pins order"
     );
   });
 
   it("renders non-empty descriptions for pinned research rows", () => {
-    for (const row of pinnedRows) {
+    for (const row of pinnedResearchRows) {
       assert.ok(row.description.length > 0, `README research row '${row.slug}' must have a description`);
     }
   });

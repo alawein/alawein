@@ -73,14 +73,6 @@ account_map:
   - 'Exact-yes required before archive, visibility, or pin changes.'
 
 research_rows:
-  - slug: qmatsim
-    lifecycle: Maintenance
-    url: https://github.com/alawein/qmatsim
-    description: "Multiscale DFT+MD toolkit for strain engineering in 2D materials (*Phys. Rev. Materials 2025*)"
-  - slug: spincirc
-    lifecycle: Maintenance
-    url: https://github.com/alawein/spincirc
-    description: "Spintronic device modeling via spin-circuit methods (*IEEE J-XCDC 2018*)"
   - slug: maglogic
     lifecycle: Maintenance
     url: https://github.com/alawein/maglogic
@@ -97,6 +89,14 @@ research_rows:
     lifecycle: Active
     url: https://chshlab.online
     description: "Quantum foundations education site for CHSH and Bell inequality experiments."
+  - slug: qmatsim
+    lifecycle: Maintenance
+    url: https://github.com/alawein/qmatsim
+    description: "Multiscale DFT+MD toolkit for strain engineering in 2D materials (*Phys. Rev. Materials 2025*)"
+  - slug: spincirc
+    lifecycle: Maintenance
+    url: https://github.com/alawein/spincirc
+    description: "Spintronic device modeling via spin-circuit methods (*IEEE J-XCDC 2018*)"
   - slug: qubeml
     lifecycle: Maintenance
     url: https://github.com/alawein/qubeml

@@ -28,12 +28,12 @@ I build at the intersection of physics, machine learning, and auditable software
 
 | Repo | Lifecycle | Claim |
 |------|-----------|-------|
-| [qmatsim](https://github.com/alawein/qmatsim) | Maintenance | Multiscale DFT+MD toolkit for strain engineering in 2D materials (*Phys. Rev. Materials 2025*) |
-| [spincirc](https://github.com/alawein/spincirc) | Maintenance | Spintronic device modeling via spin-circuit methods (*IEEE J-XCDC 2018*) |
 | [maglogic](https://github.com/alawein/maglogic) | Maintenance | Nanomagnetic logic simulation with OOMMF/MuMax3 (*IEEE Magnetics Letters 2019*) |
 | [scicomp](https://github.com/alawein/scicomp) | Maintenance | Scientific computing library: PDE solvers, PINNs, and HPC in Python, MATLAB, and Mathematica |
 | [fallax](https://github.com/alawein/fallax) | Active | Multi-step LLM reasoning evaluation: step-level correctness across logic, math, and causal inference |
 | [chshlab](https://chshlab.online) | Active | Quantum foundations education site for CHSH and Bell inequality experiments. |
+| [qmatsim](https://github.com/alawein/qmatsim) | Maintenance | Multiscale DFT+MD toolkit for strain engineering in 2D materials (*Phys. Rev. Materials 2025*) |
+| [spincirc](https://github.com/alawein/spincirc) | Maintenance | Spintronic device modeling via spin-circuit methods (*IEEE J-XCDC 2018*) |
 | [qubeml](https://github.com/alawein/qubeml) | Maintenance | Quantum-classical ML interface: VQE, materials informatics, Qiskit/PennyLane |
 
 ## AI Systems & Products

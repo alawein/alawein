@@ -5627,9 +5627,7 @@
   "inventoryReconciliation": {
     "catalog_only": [],
     "workspace_only": [],
-    "stale_inventory_entries": [
-      "alawein/android-coding-phone"
-    ],
+    "stale_inventory_entries": [],
     "path_mismatches": []
   },
   "projectSwitcher": {

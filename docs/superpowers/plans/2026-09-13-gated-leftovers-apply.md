@@ -179,7 +179,7 @@ Advisory-only failures from `style-advisory-audit.py` are notes, not blockers, u
 ```text
 (1) rev f keep vs merge
 (2) operating-map header
-(3) MOVE
+(3) MOVE + manifest
 (4) KAUST/AGI/knowledge-base grant+test
 (5) Cloudflare: nothing to rotate unless a Service Key appears
 (6) alawein vs workspace-control owners

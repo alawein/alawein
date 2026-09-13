@@ -149,7 +149,7 @@ guessed. Meshal pastes both fences back into the Slack Cloud thread.
 handshake: alawein-cloud-v1
 surface: cursor-ide   # or grok-bot
 kind: handshake       # handshake | rules | audit-pack
-when: 2026-09-12T00:00:00Z
+when: 2026-09-12T00:00:00Z   # example only; set to current UTC at execution
 account: contact@meshal.ai
 host: UNVERIFIED
 status: proved        # proved | partial | blocked
@@ -465,6 +465,7 @@ Cloud SSOT stays git (catalog/agent-integrations.yaml + prompt-kits/AGENT.md
    handshake: alawein-cloud-v1
    surface: grok-bot
    kind: audit-pack
+   when: <current UTC, not the schema example date>
    pack:
      path: C:\Users\mesha\Downloads\alawein-cloud-v1-2026-09-13
      file_count: <count from the folder>

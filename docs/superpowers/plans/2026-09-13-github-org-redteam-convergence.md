@@ -115,7 +115,7 @@ Keep the smallest set a solo maintainer can run: (1) **alawein public flagships*
 | `alawein/alawein` | many `cursor/*`, `docs/*`, `fix/catalog*` | diverged; behind main tens–hundreds | **Leave** (do not mass-delete). Flag as leftover WIP; delete only with named exact-yes after “already merged?” check per branch | Branch list |
 | `alawein/knowledge-base` | `fix/cv-locked-employment-fields` (v1) | ahead 1; superseded by v2 PR | **Close/delete branch after #49 lands** (exact-yes) | Compare vs `…-v2` |
 | `alawein/knowledge-base` | `ship/command-center-consolidation-signed` | ahead 0 / behind 8 | **Leftover merged tip** — safe delete candidate after confirm | Compare status behind |
-| `alawein/meshal-web` | `chore/vitest-4.1.11` @ `0dd2a1f` | ahead 0 / behind 1 | **HOLD conflict:** `MAIOS.md` still cites this as canon tip; main moved. Do not delete until SoR tip updated | MAIOS.md vs compare |
+| `alawein/meshal-web` | `chore/vitest-4.1.11` @ `0dd2a1f` | ahead 0 / behind 1 at audit; tip resolved Wave D | **Resolved 2026-09-13 Wave D:** SoR tip is `DECISIONS.md` → `main` @ `212cdc3`. Branch delete still needs named exact-yes (item 18/20) | DECISIONS.md Wave D + `commits/main` |
 | `alawein/meshal-web` | many `feat/*` redesign branches | behind only (0 ahead) | **Leftover** — already landed or abandoned tips; delete candidates with named yes after merge check | Compare ahead=0 |
 | `alawein/coding-phone` | (default only in sample) | — | No extra branches in first 100 | Branch list empty beyond default |
 | `alawein/outpost` | (default only in sample) | — | Clean tip | Branch list |
@@ -277,7 +277,7 @@ README 3-line banners: propose only for **frozen/superseded** public repos after
 17. exact-yes: **design-system security consolidation** plan (close #66–#77 after one green PR) — requires separate named yes per close or one batch ≤5 closes at a time
 18. exact-yes: **delete leftover branches** on `alawein/meshal-web` with ahead=0 (named list required; max 5 per yes)
 19. exact-yes: **delete** `kohyr/kohyr` branch `copilot/research-audit-kohyr-org` (identical)
-20. exact-yes: **resolve** `MAIOS.md` tip vs `meshal-web` main before deleting `chore/vitest-4.1.11`
+20. exact-yes: **resolve** SoR tip (`DECISIONS.md`, not `MAIOS.md`) vs `meshal-web` main before deleting `chore/vitest-4.1.11` — **done Wave D 2026-09-13**; delete remains separate
 
 ### Phase 2 metadata (nothing written until yes)
 
@@ -322,7 +322,7 @@ gh api orgs/kohyr --jq .description
 ## Appendix B — Locked-decision conflicts (do not silent-fix)
 
 1. **DECISIONS R2** claims `workspace-brain` archived; live API `archived:false` and recent push.
-2. **MAIOS.md** cites `meshal-web` tip `chore/vitest-4.1.11` @ `0dd2a1f`; compare shows that branch behind `main` by 1.
+2. **SoR tip** (live in `ops-shared-inventory/DECISIONS.md`, not `MAIOS.md`) cited `meshal-web` @ `chore/vitest-4.1.11` / `0dd2a1f` while that branch was behind `main`. **Resolved Wave D 2026-09-13:** tip → `main` @ `212cdc3`.
 
 ## Appendix C — Self-review
 

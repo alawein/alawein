@@ -32,7 +32,7 @@ Design: `docs/superpowers/specs/2026-09-13-workspace-cleanup-design.md`
 
 ## Late scout reconcile
 
-Scouts ([WT worktree scout](6db6f4c5-7c0f-4466-842f-be4135212887), [ORPHAN folder scout](3bb393d9-a2da-4523-ad3b-bb0e2c078d47), [DOCS stale scout](0ebf4872-6c00-441c-991b-2d0718be8ec5), [CAT catalog drift scout](248cd92e-aa34-439a-8508-40a36c25e513)) returned after apply. Material leftover: spotify-control intake + empty `.worktrees` + workspace-root docs. Control-gap 2026-09-10 PARK trio left in `docs/internal` (no blind purge).
+Scouts WT / ORPHAN / DOCS / CAT returned after apply. Material leftover: spotify-control intake + empty `.worktrees` + workspace-root docs. Control-gap 2026-09-10 PARK trio left in `docs/internal` (no blind purge).
 
 ## Post-apply verify
 

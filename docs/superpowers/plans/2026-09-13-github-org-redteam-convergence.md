@@ -1,3 +1,11 @@
+---
+type: plan
+status: ready
+source: writing-plans 2026-09-13 github org redteam
+last_updated: 2026-09-13
+owner: meshal
+---
+
 # GitHub Org Red-Team Audit and Minimal-Architecture Convergence
 
 > **For agentic workers:** This is the Phase 0–4 **read-only audit deliverable**. Do not merge, rebase, close, edit topics/descriptions, or change visibility until Meshal names an exact-yes line from §6. Taxonomy is already decided in `Downloads/MAIOS-Local-Operator-and-Coding-System-2026-09-13/03-CODING-SYSTEM-GITHUB-STRATEGY.md` — apply labels only after approval; do not redesign.

@@ -1,3 +1,11 @@
+---
+type: plan
+status: active
+source: writing-plans 2026-09-13 github org redteam exec checklist
+last_updated: 2026-09-13
+owner: meshal
+---
+
 # GitHub org red-team — execution checklist
 
 **Parent audit:** `docs/superpowers/plans/2026-09-13-github-org-redteam-convergence.md`  

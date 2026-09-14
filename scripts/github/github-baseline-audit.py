@@ -121,6 +121,108 @@ def check_control_plane_workflows(errors: list[str]) -> None:
                     errors,
                     f"{path.relative_to(ROOT).as_posix()}:{line_number}: action ref must be SHA pinned, found '{target}'",
                 )
+    check_hub_workflow_permissions(errors)
+
+
+_WRITE_ACTION_RE = re.compile(
+    r"createComment|create-pull-request|peter-evans/|"
+    r"upload-sarif|softprops/action-gh-release",
+    re.IGNORECASE,
+)
+_GH_CLI_WRITE_RE = re.compile(r"\bgh\s+(pr|issue)\b", re.IGNORECASE)
+_ALT_TOKEN_SECRET_RE = re.compile(
+    r"secrets\.(?!GITHUB_TOKEN\b)[A-Z0-9_]+",
+)
+_WRITE_PERMISSION_KEYS = frozenset(
+    {
+        "contents",
+        "pull-requests",
+        "issues",
+        "security-events",
+        "actions",
+        "id-token",
+        "packages",
+        "deployments",
+    }
+)
+
+
+def _job_body_text(job: dict) -> str:
+    chunks: list[str] = []
+    for step in job.get("steps") or []:
+        if not isinstance(step, dict):
+            continue
+        for key in ("run", "uses"):
+            value = step.get(key)
+            if isinstance(value, str):
+                chunks.append(value)
+        with_block = step.get("with")
+        if isinstance(with_block, dict):
+            for value in with_block.values():
+                if isinstance(value, str):
+                    chunks.append(value)
+    env = job.get("env")
+    if isinstance(env, dict):
+        for value in env.values():
+            if isinstance(value, str):
+                chunks.append(value)
+    for step in job.get("steps") or []:
+        if isinstance(step, dict) and isinstance(step.get("env"), dict):
+            for value in step["env"].values():
+                if isinstance(value, str):
+                    chunks.append(value)
+    return "\n".join(chunks)
+
+
+def _permissions_grant_write(permissions: object) -> bool:
+    if not isinstance(permissions, dict):
+        return False
+    for key, value in permissions.items():
+        if key in _WRITE_PERMISSION_KEYS and str(value).lower() == "write":
+            return True
+    return False
+
+
+def _job_writes_via_github_token(job: dict) -> bool:
+    """True when the job appears to mutate GitHub state using GITHUB_TOKEN."""
+    body = _job_body_text(job)
+    if _WRITE_ACTION_RE.search(body):
+        return True
+    if _GH_CLI_WRITE_RE.search(body):
+        # PAT-backed jobs (KERNEL_SYNC_TOKEN, AUTO_PR_TOKEN, ...) are outside
+        # GITHUB_TOKEN permission hygiene; Task 2.x covers those references.
+        if _ALT_TOKEN_SECRET_RE.search(body):
+            return False
+        return True
+    return False
+
+
+def check_hub_workflow_permissions(errors: list[str]) -> None:
+    """Require top-level permissions on every hub workflow; writers declare job-level."""
+    if yaml is None:
+        add_error(errors, "PyYAML is required to audit hub workflow permissions")
+        return
+    for path in sorted(WORKFLOW_DIR.glob("*.yml")):
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        rel = path.relative_to(ROOT).as_posix()
+        if "permissions" not in data:
+            add_error(errors, f"{rel}: missing top-level permissions block")
+            continue
+        jobs = data.get("jobs") or {}
+        for job_name, job in jobs.items():
+            if not isinstance(job, dict):
+                continue
+            if not _job_writes_via_github_token(job):
+                continue
+            job_perms = job.get("permissions")
+            if _permissions_grant_write(job_perms):
+                continue
+            if job_perms is None and _permissions_grant_write(data.get("permissions")):
+                continue
+            add_error(
+                errors,
+                f"{rel}: job '{job_name}' performs a write but lacks job-level write permissions",
+            )
 
 
 def internal_workflow_refs(text: str) -> list[str]:

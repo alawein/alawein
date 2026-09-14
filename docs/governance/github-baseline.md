@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub Baseline
 description: Canonical GitHub profile, repository metadata, workflow, and community-health baseline for the alawein workspace.
-last_updated: 2026-09-07
+last_updated: 2026-09-13
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -31,7 +31,7 @@ active repo cohort it manages.
   used as the canonical profile pin lookup source.
 - `profile-from-guides.yaml` remains the canonical source for the public-facing
   profile copy and the pinned repo list.
-- Live profile pin drift is verified read-only by `scripts/verify-profile-pins.py`;
+- Live profile pin drift is verified read-only by `scripts/github/verify-profile-pins.py`;
   pin updates remain a manual GitHub UI operation.
 
 ## Repository metadata policy
@@ -46,7 +46,7 @@ active repo cohort it manages.
 ## Workflow baseline
 
 - Shared GitHub workflow policy lives in this repo and is propagated from
-  `scripts/sync-github.sh`.
+  `scripts/github/sync-github.sh`.
 - Reusable workflows under `.github/workflows/` are the canonical source for:
   - Node CI
   - Python CI
@@ -79,7 +79,7 @@ active repo cohort it manages.
   - rulesets requiring status checks, signed commits, and linear history
   - SSH commit signing
 - Profile pin updates are manual and should end with a read-only rerun of
-  `python scripts/verify-profile-pins.py --check`.
+  `python scripts/github/verify-profile-pins.py --check`.
 
 ## Docs-doctrine exception
 

@@ -19,15 +19,15 @@ audience: [ai-agents, contributors]
 
 ## Purpose
 
-Organization profile and portfolio governance source for the `@alawein` GitHub
-organization. This repository is docs-only and owns the canonical workspace
+Profile and portfolio governance source for the `@alawein` GitHub
+user account. This repository is docs-only and owns the canonical workspace
 governance contract for naming, portfolio truth, and migration sequencing.
 
 ---
 
 ## Current State
 
-- Organization profile and documentation: Active
+- Profile and documentation: Active
 - Workspace root on disk: `Desktop/GitHub/alawein` (not a git root). Sibling
   repos live under buckets `apps/`, `core/`, `lab/`, `sites/`, `work/`, and
   `_archive/`. This control plane is `core/alawein`. Disk SSOT:

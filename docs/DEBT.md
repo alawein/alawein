@@ -2,7 +2,7 @@
 type: canonical
 source: none
 sla: on-change
-last_updated: 2026-09-04
+last_updated: 2026-09-13
 audience: [ai-agents, contributors]
 ---
 
@@ -91,4 +91,31 @@ in the PR).
 - **What:** The first CI run of `validate-visibility.py --github-api` got `401 Bad credentials` from the secret, so the step now runs `--offline` (catalog rules V4 and V5 only). The metadata sync workflow uses the same secret and will fail the same way.
 - **Risk if left:** Catalog-vs-GitHub drift (V1, V2, V3, V6, V7, V8) is caught only when someone runs the gate locally before a PR.
 - **Suggested fix:** Issue a fine-grained PAT with metadata read on all repos, store it as `ALAWEIN_METADATA_SYNC_TOKEN`, and switch the step back to `--github-api` with that secret in `env`.
+- **Owner:** alawein
+
+### Hub secret VERCEL_TOKEN unconfigured
+- **Date:** 2026-09-13
+- **Expires:** 2026-10-13
+- **Where:** repo secret name `VERCEL_TOKEN`; `.github/workflows/sync-vercel.yml`
+- **What:** The Vercel catalog sync workflow references `secrets.VERCEL_TOKEN`, but the secret is not configured for reliable scheduled use. The weekly cron is commented out; only `workflow_dispatch` remains until the credential is issued and the schedule is re-enabled.
+- **Risk if left:** Catalog `vercel:` blocks drift from live Vercel state with no automatic catch-up.
+- **Suggested fix:** Create a Vercel token with read access to declared projects, store it as `VERCEL_TOKEN`, smoke-test via `workflow_dispatch`, then restore the Monday cron.
+- **Owner:** alawein
+
+### Hub secret KERNEL_SYNC_TOKEN unconfigured
+- **Date:** 2026-09-13
+- **Expires:** 2026-10-13
+- **Where:** repo secret name `KERNEL_SYNC_TOKEN`; `.github/workflows/kernel-sync.yml`
+- **What:** Kernel fanout is parked on `workflow_dispatch` with `dry_run: true` as the only safe mode because `KERNEL_SYNC_TOKEN` is not configured. Non-dry runs that open PRs across target repos will fail until the credential exists.
+- **Risk if left:** Kernel-managed surfaces cannot be synced from the hub without a local workaround.
+- **Suggested fix:** Issue a fine-grained PAT or GitHub App installation token with `contents:write` and `pull-requests:write` on target repos, store it as `KERNEL_SYNC_TOKEN`, then re-evaluate enabling real sync waves.
+- **Owner:** alawein
+
+### Hub secret AUTO_PR_TOKEN unconfigured
+- **Date:** 2026-09-13
+- **Expires:** 2026-10-13
+- **Where:** repo secret name `AUTO_PR_TOKEN`; `.github/workflows/docs-auto-gen.yml`
+- **What:** Auto-generated architecture PRs fall back to `secrets.GITHUB_TOKEN` when `AUTO_PR_TOKEN` is unset. The default token cannot trigger `pull_request` workflows, so required checks do not run on those bot PRs until someone manually updates the branch.
+- **Risk if left:** Docs auto-gen PRs stay check-less and need a manual nudge before merge gates appear.
+- **Suggested fix:** Create a fine-grained PAT with contents and pull-requests write, store it as `AUTO_PR_TOKEN`, and confirm a bot PR runs required checks without a manual update-branch.
 - **Owner:** alawein

@@ -34,7 +34,7 @@ def test_fetch_repo_enforcement_fixture_shape(monkeypatch: pytest.MonkeyPatch) -
     fixture = _load("alawein_alawein.json")
     calls: list[str] = []
 
-    def fake_gh_api(endpoint: str) -> tuple[object, dict]:
+    def fake_gh_api(endpoint: str, **_kwargs: object) -> tuple[object, dict]:
         calls.append(endpoint)
         if endpoint == "repos/alawein/alawein/rulesets":
             return fixture["rulesets"], {"rc": 0, "http_status": None, "error": None}
@@ -81,7 +81,7 @@ def test_ruleset_list_without_details_is_not_false_unprotected(
         }
     ]
 
-    def fake_gh_api(endpoint: str) -> tuple[object, dict]:
+    def fake_gh_api(endpoint: str, **_kwargs: object) -> tuple[object, dict]:
         if endpoint == "repos/alawein/alawein/rulesets":
             return list_payload, {"rc": 0, "http_status": None, "error": None}
         if endpoint.startswith("repos/alawein/alawein/rulesets/"):
@@ -120,7 +120,7 @@ def test_ruleset_list_without_details_is_not_false_unprotected(
     monkeypatch.setattr(audit, "_gh_api", fake_gh_api)
     fixture = audit.fetch_repo_enforcement("alawein/alawein")
     assert fixture["ruleset_details"] == []
-    assert fixture["meta"]["rulesets"].get("error")
+    assert fixture["meta"]["rulesets"].get("incomplete") is True
     assert "incomplete" in str(fixture["meta"]["rulesets"]["error"]).lower()
 
     result = audit.compare_repo_enforcement(
@@ -137,6 +137,61 @@ def test_ruleset_list_without_details_is_not_false_unprotected(
     assert result["classification"]["deletion"] != "mismatch"
     assert result["classification"]["deletion"] == "unknown"
     assert not audit._observation_succeeded(fixture, result)
+
+
+def test_partial_ruleset_details_marked_incomplete(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """One of two detail fetches failing must incomplete the whole rulesets channel."""
+    detail_ok = _load("alawein_alawein.json")["ruleset_details"][0]
+
+    def fake_gh_api(endpoint: str, **_kwargs: object) -> tuple[object, dict]:
+        if endpoint == "repos/alawein/alawein/rulesets":
+            return (
+                [{"id": 1}, {"id": 2}],
+                {"rc": 0, "http_status": None, "error": None},
+            )
+        if endpoint.endswith("/rulesets/1"):
+            return detail_ok, {"rc": 0, "http_status": None, "error": None}
+        if endpoint.endswith("/rulesets/2"):
+            return None, {"rc": 1, "http_status": 500, "error": "boom"}
+        if endpoint == "repos/alawein/alawein":
+            return {"default_branch": "main"}, {"rc": 0, "http_status": None, "error": None}
+        if "protection" in endpoint:
+            return {"status": "404"}, {"rc": 1, "http_status": 404, "error": "404"}
+        if "actions/permissions" in endpoint:
+            return None, {"rc": 1, "http_status": 404, "error": "404"}
+        raise AssertionError(endpoint)
+
+    monkeypatch.setattr(audit, "_gh_api", fake_gh_api)
+    fixture = audit.fetch_repo_enforcement("alawein/alawein")
+    assert fixture["meta"]["rulesets"].get("incomplete") is True
+    assert fixture["ruleset_details"] == []
+    assert fixture["rulesets"] is None
+
+
+def test_repo_meta_failure_does_not_invent_main(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[str] = []
+
+    def fake_gh_api(endpoint: str, **_kwargs: object) -> tuple[object, dict]:
+        calls.append(endpoint)
+        if endpoint.endswith("/rulesets"):
+            return [], {"rc": 0, "http_status": None, "error": None}
+        if endpoint == "repos/alawein/chshlab":
+            return None, {"rc": 1, "http_status": 403, "error": "forbidden"}
+        if "actions/permissions" in endpoint:
+            return None, {"rc": 1, "http_status": 404, "error": "404"}
+        raise AssertionError(f"unexpected endpoint: {endpoint}")
+
+    monkeypatch.setattr(audit, "_gh_api", fake_gh_api)
+    fixture = audit.fetch_repo_enforcement("alawein/chshlab")
+    assert not any("/branches/main/protection" in c for c in calls)
+    assert fixture["protection"] is None
+    assert "default branch unknown" in str(fixture["meta"]["protection"].get("error") or "").lower() or fixture[
+        "meta"
+    ]["protection"].get("http_status") == 403
 
 
 def test_run_live_snapshot_writes_non_null_classification(
@@ -165,6 +220,15 @@ def test_run_live_snapshot_writes_non_null_classification(
     assert written["repos"][0]["classification"] is not None
     assert written["repos"][0]["floor"] == "hub"
     assert snapshot["repos"][0]["classification"]["deletion"] == "match"
+    assert set(written["repos"][0]) == {
+        "slug",
+        "repo",
+        "floor",
+        "classification",
+        "redundancy",
+        "source",
+        "unknown_reason",
+    }
 
 
 def test_run_live_snapshot_fail_closed_on_zero_success(
@@ -180,7 +244,8 @@ def test_run_live_snapshot_fail_closed_on_zero_success(
             [{"slug": "alawein", "repo": "alawein/alawein", "type": "governance", "lifecycle": "active"}],
             out,
         )
-    assert caught.value.code != 0 or "zero" in str(caught.value).lower()
+    assert "zero" in str(caught.value).lower()
+    assert not out.exists()
 
 
 def test_live_stub_no_longer_writes_null_classification(

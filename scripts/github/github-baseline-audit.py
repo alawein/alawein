@@ -682,12 +682,18 @@ def _parse_gh_http_status(stderr: str, stdout: str) -> int | None:
     return None
 
 
-def _gh_api(endpoint: str, *, gh_bin: str = "gh") -> tuple[Any, dict[str, Any]]:
+def _gh_api(
+    endpoint: str, *, gh_bin: str = "gh", paginate: bool = False
+) -> tuple[Any, dict[str, Any]]:
     """Run ``gh api <endpoint>`` and return ``(payload, meta_channel)``.
 
     Network stays out of pytest: tests monkeypatch this helper.
+    Pass ``paginate=True`` for list endpoints that may span pages.
     """
-    argv = [gh_bin, "api", endpoint]
+    argv = [gh_bin, "api"]
+    if paginate:
+        argv.append("--paginate")
+    argv.append(endpoint)
     try:
         completed = subprocess.run(
             argv,
@@ -774,7 +780,9 @@ def fetch_repo_enforcement(owner_repo: str) -> dict:
     if not owner_repo or "/" not in owner_repo:
         raise ValueError(f"owner_repo must be 'owner/name', got {owner_repo!r}")
 
-    rulesets_payload, rulesets_meta = _gh_api(f"repos/{owner_repo}/rulesets")
+    rulesets_payload, rulesets_meta = _gh_api(
+        f"repos/{owner_repo}/rulesets", paginate=True
+    )
     details: list[dict] = []
     listed_ids: list[object] = []
     detail_errors: list[str] = []
@@ -790,27 +798,39 @@ def fetch_repo_enforcement(owner_repo: str) -> dict:
                 detail_errors.append(
                     str(detail_meta.get("error") or f"ruleset {item['id']} detail failed")
                 )
-        # Bare list without details is not a successful observation: normalize_observed
-        # would treat nonempty list + empty details + protection 404 as unprotected.
-        if listed_ids and not details:
+        # Any failed detail fetch is incomplete: partial rule bodies misclassify.
+        if listed_ids and len(details) < len(listed_ids):
             rulesets_payload = None
             rulesets_meta = {
                 "rc": 1,
                 "http_status": None,
+                "incomplete": True,
                 "error": (
-                    f"ruleset details incomplete: 0/{len(listed_ids)} fetched"
+                    f"ruleset details incomplete: {len(details)}/{len(listed_ids)} fetched"
                     + (f" ({detail_errors[0]})" if detail_errors else "")
                 ),
             }
+            details = []
 
-    repo_payload, _repo_meta = _gh_api(f"repos/{owner_repo}")
-    branch = "main"
-    if isinstance(repo_payload, dict) and repo_payload.get("default_branch"):
+    repo_payload, repo_meta = _gh_api(f"repos/{owner_repo}")
+    if (
+        repo_meta.get("rc") == 0
+        and isinstance(repo_payload, dict)
+        and repo_payload.get("default_branch")
+    ):
         branch = str(repo_payload["default_branch"])
-
-    protection_payload, protection_meta = _gh_api(
-        f"repos/{owner_repo}/branches/{branch}/protection"
-    )
+        protection_payload, protection_meta = _gh_api(
+            f"repos/{owner_repo}/branches/{branch}/protection"
+        )
+    else:
+        # Do not invent "main": unknown default branch means protection is inaccessible.
+        protection_payload = None
+        protection_meta = {
+            "rc": repo_meta.get("rc") if repo_meta.get("rc") not in (None, 0) else 1,
+            "http_status": repo_meta.get("http_status"),
+            "error": repo_meta.get("error")
+            or "repository metadata unavailable; default branch unknown",
+        }
 
     perms_payload, perms_meta = _gh_api(f"repos/{owner_repo}/actions/permissions")
     workflow_payload, workflow_meta = _gh_api(
@@ -851,9 +871,8 @@ def _observation_succeeded(fixture: dict, result: dict) -> bool:
         return False
     meta = fixture.get("meta") or {}
     rulesets_meta = meta.get("rulesets") or {}
-    rulesets_error = str(rulesets_meta.get("error") or "")
     # Incomplete detail fetch is not a successful observation (avoids false negatives).
-    if "ruleset details incomplete" in rulesets_error.lower():
+    if rulesets_meta.get("incomplete"):
         return False
     for kind in ("rulesets", "protection", "actions_permissions"):
         channel = meta.get(kind) or {}
@@ -866,6 +885,28 @@ def _observation_succeeded(fixture: dict, result: dict) -> bool:
         if _is_http_error_payload(payload):
             return True
     return False
+
+
+def _snapshot_row(
+    *,
+    slug: object,
+    repo: object | None,
+    floor: object,
+    classification: object,
+    redundancy: object,
+    source: object = None,
+    unknown_reason: object = None,
+) -> dict[str, Any]:
+    """Uniform per-repo snapshot row (same keys on every branch)."""
+    return {
+        "slug": slug,
+        "repo": repo,
+        "floor": floor,
+        "classification": classification,
+        "redundancy": redundancy,
+        "source": source,
+        "unknown_reason": unknown_reason,
+    }
 
 
 def run_live_snapshot(repos: list[dict], out: Path) -> dict:
@@ -888,40 +929,41 @@ def run_live_snapshot(repos: list[dict], out: Path) -> dict:
             owner_repo = _owner_repo_for(item)
         except ValueError as exc:
             snapshot["repos"].append(
-                {
-                    "slug": item.get("slug"),
-                    "floor": derive_floor(item),
-                    "classification": None,
-                    "redundancy": None,
-                    "unknown_reason": str(exc),
-                }
+                _snapshot_row(
+                    slug=item.get("slug"),
+                    repo=None,
+                    floor=derive_floor(item),
+                    classification=None,
+                    redundancy=None,
+                    unknown_reason=str(exc),
+                )
             )
             continue
         try:
             fixture = fetch_repo_enforcement(owner_repo)
             result = compare_repo_enforcement(item, fixture)
-            row = {
-                "slug": item.get("slug"),
-                "repo": owner_repo,
-                "floor": result["floor"],
-                "classification": result["classification"],
-                "redundancy": result["redundancy"],
-                "source": result.get("source"),
-                "unknown_reason": result.get("unknown_reason"),
-            }
+            row = _snapshot_row(
+                slug=item.get("slug"),
+                repo=owner_repo,
+                floor=result["floor"],
+                classification=result["classification"],
+                redundancy=result["redundancy"],
+                source=result.get("source"),
+                unknown_reason=result.get("unknown_reason"),
+            )
             snapshot["repos"].append(row)
             if _observation_succeeded(fixture, result):
                 success_count += 1
         except (OSError, ValueError, subprocess.SubprocessError, RuntimeError) as exc:
             snapshot["repos"].append(
-                {
-                    "slug": item.get("slug"),
-                    "repo": owner_repo,
-                    "floor": derive_floor(item),
-                    "classification": None,
-                    "redundancy": None,
-                    "unknown_reason": f"live fetch failed: {exc}",
-                }
+                _snapshot_row(
+                    slug=item.get("slug"),
+                    repo=owner_repo,
+                    floor=derive_floor(item),
+                    classification=None,
+                    redundancy=None,
+                    unknown_reason=f"live fetch failed: {exc}",
+                )
             )
 
     if success_count == 0:

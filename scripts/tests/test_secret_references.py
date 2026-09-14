@@ -33,6 +33,13 @@ def test_parse_or_expression_collects_alt_token() -> None:
     assert bad == []
 
 
+def test_parse_fromjson_secrets_name() -> None:
+    text = "env: ${{ fromJSON(secrets.FOO_JSON) }}\n"
+    names, bad = audit.parse_workflow_secret_references(text)
+    assert names == ["FOO_JSON"]
+    assert bad == []
+
+
 def test_parse_rejects_unparseable_expressions() -> None:
     text = "\n".join(
         [

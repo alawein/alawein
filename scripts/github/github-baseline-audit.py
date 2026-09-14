@@ -141,7 +141,9 @@ _ALT_TOKEN_SECRET_RE = re.compile(
 )
 # Wider scan for secrets.NAME candidates; validate the name separately.
 # Capture may be empty (secrets. followed by delimiter) so we can fail it.
-_SECRET_REF_SCAN_RE = re.compile(r"secrets\.([^\s}'\"`]*)")
+# Stop at whitespace, quotes, braces, parens, brackets, and commas so
+# expressions like fromJSON(secrets.NAME) still yield a clean NAME token.
+_SECRET_REF_SCAN_RE = re.compile(r"secrets\.([^\s}'\"`()\[\],]*)")
 _VALID_SECRET_NAME_RE = re.compile(r"^[A-Z0-9_]+$")
 _DEBT_HUB_SECRET_HEADING_RE = re.compile(r"^### Hub secret ([A-Z0-9_]+)\b", re.MULTILINE)
 _DEBT_EXPIRES_RE = re.compile(r"^\s*-\s*\*\*Expires:\*\*\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)

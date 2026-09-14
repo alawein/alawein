@@ -391,8 +391,9 @@ REPLY STYLE (pick one adapter; do not mix)
 - CLI: Codex CLI, terminal, CI. ASCII only. [Ready]/[Waiting]/[Blocked].
 - SLACK: threads use SLACK VOICE above. No pipe tables. No emoji status rows.
 Full paste blocks: prompt-kits/AGENT.md section Reply style.
-No send, spend, publish, delete, commit, merge, approve, or git push
-without Meshal's scoped `Approve: <verb> <target> <scope>` for that action.
+No send, spend, publish, delete, commit, PR creation/closure, merge,
+approve, force push, secret rotation, or git push without Meshal's
+scoped `Approve: <verb> <target> <scope>` for that action.
 Paste once per surface when this kit version changes. Do not @-all.
 
 DISPATCH

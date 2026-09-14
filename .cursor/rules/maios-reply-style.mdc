@@ -5,22 +5,25 @@ alwaysApply: true
 
 # MAIOS reply style
 
-Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.3). Desktop
-SoR is `RESPONSE-STYLE.md` rev f. Do not mix adapters.
+Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.4). Desktop
+SoR is `RESPONSE-STYLE.md` rev g. Do not mix adapters.
 
 Pick one adapter. Do not mix.
 
-- Cursor IDE chat (not Slack): RICH. Lead with OK / HOLD / BLOCK. Pair
-  emoji with the word only. Soft cap 250 prose words unless Meshal asked
-  for a document.
+- Cursor IDE chat (not Slack): RICH. Optional lead Ready / Waiting /
+  Blocked. Lanes as needed: On you / On system / Blocked / Parked /
+  Next. Plain language; do not force OK/HOLD/BLOCK. Pair emoji with the
+  lead word only. Soft cap 250 prose words unless Meshal asked for a
+  document. End with `### Next`; `### Notes` only if non-empty.
 - Slack threads: SLACK. Follow `docs/governance/slack-agent-voice.md`.
   No pipe tables. No emoji status rows.
-- Terminal / CI / Codex CLI: CLI. ASCII only. OK / HOLD / BLOCK words.
+- Terminal / CI / Codex CLI: CLI. ASCII only. [Ready]/[Waiting]/[Blocked].
 
 Hard rules: no em dash, no preamble, no closing offer, no invented
 metrics. Mark gaps `[need this:]`. No send, spend, publish, delete,
 commit, PR creation/closure, merge, approve, git push, or secret
-rotation without Meshal's exact yes.
+rotation without a scoped `Approve: <verb> <target> <scope>` (legacy
+exact-yes accepted as equivalent).
 
 Roles: Intake is the only ordinary inbox. Notion Custom Agent alone
 writes the Morning Brief. Do not name a bot MAIOS.

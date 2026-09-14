@@ -2,7 +2,7 @@
 type: canonical
 source: alawein
 sla: on-change
-last_updated: 2026-09-13
+last_updated: 2026-09-14
 audience: [agents, contributors]
 ---
 
@@ -15,6 +15,22 @@ major for breaking behavioral changes.
 ---
 
 ## AGENT.md
+
+### 1.8.4 - 2026-09-14
+
+- Rev pointer Desktop `RESPONSE-STYLE.md` **rev f** -> **rev g** (Desktop SoR sync).
+- Behavior change: posture vocabulary moves from OK/HOLD/BLOCK/INFO to
+  Ready/Waiting/Blocked with open-vocabulary lanes (On you / On system /
+  Blocked / Parked / Next); plain language is not forced into the old
+  four-word set.
+- Behavior change: the outbound-mutation gate moves from "Meshal's exact
+  scoped yes" to a literal `Approve: <verb> <target> <scope>` phrase;
+  legacy exact-yes is still accepted as an equivalent gate.
+- Behavior change: every reply now ends with `### Next` (required) and
+  an optional `### Notes`, replacing the old bare self-check list.
+- Synced RICH, ChatGPT Custom Instructions, and CLI paste blocks, the
+  shared session prompt's reply-style recap, `.cursor/rules/maios-reply-style.mdc`,
+  and the three derived `docs/style/prompt-kit-{chatgpt,claude,codex}.md` docs.
 
 ### 1.8.3 - 2026-09-13
 

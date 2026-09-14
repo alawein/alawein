@@ -14,9 +14,9 @@ I build at the intersection of physics, machine learning, and auditable software
 1. This account is personal research + OSS tools; company product lives under kohyr (private).
 2. Start here: chshlab (live lab), outpost (agent prompt kit), fallax (reasoning eval).
 3. Frozen research record: maglogic, scicomp, qmatsim, spincirc, qubeml - valid artifacts, not seeking issues.
-4. Meta: this repo (alawein/alawein) is portfolio + light governance pointer; Desktop MAIOS is operator SoR.
+4. Meta: this repo (alawein/alawein) is portfolio + light governance pointer. Operator coordination is private, not a public SoR.
 5. Private product candidates exist; they are intentionally not public.
-6. Topics use maios-active / maios-frozen / maios-superseded / maios-demo / maios-meta.
+6. Public topics describe domain/stack only (no private ops brand tags).
 7. Do not confuse PyPI names with GitHub names (trace-eval, outpost).
 8. Kohyr public shell: kohyr/.github + kohyr.ai holding page - not the product monorepo.
 9. Issues on frozen repos may stay unanswered; prefer active flagships.

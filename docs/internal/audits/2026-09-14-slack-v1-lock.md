@@ -52,7 +52,7 @@ rename before 2026-09-19.
 
 ## Human clicks still required
 
-1. Squash-merge this catalog PR.
+1. Squash-merge [PR #292](https://github.com/alawein/alawein/pull/292).
 2. Squash-merge [PR #269](https://github.com/alawein/alawein/pull/269).
 3. `/invite @Cursor` in `#me-agents-eng`.
 4. `/invite @Claude` then `/invite @Computer` in `#me-agents-ops`.
@@ -64,7 +64,7 @@ rename before 2026-09-19.
 
 | Field | Recorded value |
 | --- | --- |
-| Source | Slack DM: finalize canvas, channels, bots, complete system; base `02241388` |
+| Source | Slack DM: finalize canvas, channels, bots, complete system; base `02241388`; [PR #292](https://github.com/alawein/alawein/pull/292) |
 | Author | Meshal Alawein `<contact@meshal.ai>` |
 | Work kind | docs |
 | Accountable maintainer | Meshal Alawein |

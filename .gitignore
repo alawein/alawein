@@ -218,3 +218,8 @@ coverage/
 htmlcov/
 .coverage
 *.log
+
+# Local SDD ledger/briefs
+.superpowers/
+.worktrees/
+

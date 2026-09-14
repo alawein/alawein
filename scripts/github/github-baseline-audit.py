@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 try:
     import yaml
@@ -660,6 +663,318 @@ def compare_repo_enforcement(record: dict, fixture: dict) -> dict:
     }
 
 
+def _parse_gh_http_status(stderr: str, stdout: str) -> int | None:
+    match = re.search(r"\(HTTP (\d{3})\)", stderr or "")
+    if match:
+        return int(match.group(1))
+    text = (stdout or "").strip()
+    if not text:
+        return None
+    try:
+        body = json.loads(text)
+    except json.JSONDecodeError:
+        return None
+    if isinstance(body, dict) and body.get("status") is not None:
+        try:
+            return int(body["status"])
+        except (TypeError, ValueError):
+            return None
+    return None
+
+
+def _gh_api(
+    endpoint: str, *, gh_bin: str = "gh", paginate: bool = False
+) -> tuple[Any, dict[str, Any]]:
+    """Run ``gh api <endpoint>`` and return ``(payload, meta_channel)``.
+
+    Network stays out of pytest: tests monkeypatch this helper.
+    Pass ``paginate=True`` for list endpoints that may span pages.
+    """
+    argv = [gh_bin, "api"]
+    if paginate:
+        argv.append("--paginate")
+    argv.append(endpoint)
+    try:
+        completed = subprocess.run(
+            argv,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=120,
+        )
+    except FileNotFoundError:
+        return None, {
+            "rc": None,
+            "http_status": None,
+            "error": f"{gh_bin} executable not found",
+        }
+    except subprocess.TimeoutExpired:
+        return None, {
+            "rc": None,
+            "http_status": None,
+            "error": f"gh api timed out: {endpoint}",
+        }
+
+    stdout = completed.stdout or ""
+    stderr = completed.stderr or ""
+    http_status = _parse_gh_http_status(stderr, stdout)
+    payload: Any = None
+    if stdout.strip():
+        try:
+            payload = json.loads(stdout)
+        except json.JSONDecodeError:
+            payload = None
+
+    if completed.returncode == 0:
+        return payload, {"rc": 0, "http_status": None, "error": None}
+
+    error = stderr.strip() or stdout.strip() or f"gh api failed rc={completed.returncode}"
+    if http_status is None and isinstance(payload, dict) and payload.get("status") is not None:
+        try:
+            http_status = int(payload["status"])
+        except (TypeError, ValueError):
+            pass
+    return payload, {
+        "rc": completed.returncode,
+        "http_status": http_status,
+        "error": error,
+    }
+
+
+def _merge_actions_permissions(
+    perms_payload: Any,
+    perms_meta: dict[str, Any],
+    workflow_payload: Any,
+    workflow_meta: dict[str, Any],
+) -> tuple[Any, dict[str, Any]]:
+    """Combine actions/permissions + workflow endpoints into one fixture field."""
+    merged: dict[str, Any] = {}
+    if perms_meta.get("rc") == 0 and isinstance(perms_payload, dict):
+        merged.update(perms_payload)
+    if workflow_meta.get("rc") == 0 and isinstance(workflow_payload, dict):
+        merged.update(workflow_payload)
+    if merged:
+        return merged, {"rc": 0, "http_status": None, "error": None}
+
+    # Prefer an HTTP error body when present (403/404 fixtures).
+    for payload, meta in ((perms_payload, perms_meta), (workflow_payload, workflow_meta)):
+        if meta.get("error") or meta.get("rc") not in (None, 0):
+            return payload, {
+                "rc": meta.get("rc"),
+                "http_status": meta.get("http_status"),
+                "error": meta.get("error"),
+            }
+    return None, {
+        "rc": None,
+        "http_status": None,
+        "error": "actions_permissions not fetched",
+    }
+
+
+def fetch_repo_enforcement(owner_repo: str) -> dict:
+    """Fetch live rulesets, protection, and actions permissions for one repo.
+
+    Returns a fixture-shaped payload consumed by ``compare_repo_enforcement``.
+    """
+    owner_repo = str(owner_repo or "").strip()
+    if not owner_repo or "/" not in owner_repo:
+        raise ValueError(f"owner_repo must be 'owner/name', got {owner_repo!r}")
+
+    rulesets_payload, rulesets_meta = _gh_api(
+        f"repos/{owner_repo}/rulesets", paginate=True
+    )
+    details: list[dict] = []
+    listed_ids: list[object] = []
+    detail_errors: list[str] = []
+    if isinstance(rulesets_payload, list):
+        for item in rulesets_payload:
+            if not isinstance(item, dict) or item.get("id") is None:
+                continue
+            listed_ids.append(item["id"])
+            detail, detail_meta = _gh_api(f"repos/{owner_repo}/rulesets/{item['id']}")
+            if detail_meta.get("rc") == 0 and isinstance(detail, dict):
+                details.append(detail)
+            else:
+                detail_errors.append(
+                    str(detail_meta.get("error") or f"ruleset {item['id']} detail failed")
+                )
+        # Any failed detail fetch is incomplete: partial rule bodies misclassify.
+        if listed_ids and len(details) < len(listed_ids):
+            rulesets_payload = None
+            rulesets_meta = {
+                "rc": 1,
+                "http_status": None,
+                "incomplete": True,
+                "error": (
+                    f"ruleset details incomplete: {len(details)}/{len(listed_ids)} fetched"
+                    + (f" ({detail_errors[0]})" if detail_errors else "")
+                ),
+            }
+            details = []
+
+    repo_payload, repo_meta = _gh_api(f"repos/{owner_repo}")
+    if (
+        repo_meta.get("rc") == 0
+        and isinstance(repo_payload, dict)
+        and repo_payload.get("default_branch")
+    ):
+        branch = str(repo_payload["default_branch"])
+        protection_payload, protection_meta = _gh_api(
+            f"repos/{owner_repo}/branches/{branch}/protection"
+        )
+    else:
+        # Do not invent "main": unknown default branch means protection is inaccessible.
+        protection_payload = None
+        protection_meta = {
+            "rc": repo_meta.get("rc") if repo_meta.get("rc") not in (None, 0) else 1,
+            "http_status": repo_meta.get("http_status"),
+            "error": repo_meta.get("error")
+            or "repository metadata unavailable; default branch unknown",
+        }
+
+    perms_payload, perms_meta = _gh_api(f"repos/{owner_repo}/actions/permissions")
+    workflow_payload, workflow_meta = _gh_api(
+        f"repos/{owner_repo}/actions/permissions/workflow"
+    )
+    actions_permissions, actions_meta = _merge_actions_permissions(
+        perms_payload, perms_meta, workflow_payload, workflow_meta
+    )
+
+    return {
+        "repo": owner_repo,
+        "rulesets": rulesets_payload,
+        "ruleset_details": details,
+        "protection": protection_payload,
+        "actions_permissions": actions_permissions,
+        "meta": {
+            "rulesets": rulesets_meta,
+            "protection": protection_meta,
+            "actions_permissions": actions_meta,
+        },
+    }
+
+
+def _owner_repo_for(record: dict) -> str:
+    explicit = str(record.get("repo") or "").strip()
+    if explicit and "/" in explicit:
+        return explicit
+    owner = str(record.get("owner") or "alawein").strip() or "alawein"
+    slug = str(record.get("slug") or "").strip()
+    if not slug:
+        raise ValueError(f"catalog record missing repo/slug: {record!r}")
+    return f"{owner}/{slug}"
+
+
+def _observation_succeeded(fixture: dict, result: dict) -> bool:
+    """True when at least one enforcement channel was contacted successfully."""
+    if result.get("classification") is None:
+        return False
+    meta = fixture.get("meta") or {}
+    rulesets_meta = meta.get("rulesets") or {}
+    # Incomplete detail fetch is not a successful observation (avoids false negatives).
+    if rulesets_meta.get("incomplete"):
+        return False
+    for kind in ("rulesets", "protection", "actions_permissions"):
+        channel = meta.get(kind) or {}
+        if channel.get("rc") == 0:
+            return True
+        # 403/404 still counts as a successful observation of inaccessibility.
+        if channel.get("http_status") in {403, 404}:
+            return True
+        payload = fixture.get(kind)
+        if _is_http_error_payload(payload):
+            return True
+    return False
+
+
+def _snapshot_row(
+    *,
+    slug: object,
+    repo: object | None,
+    floor: object,
+    classification: object,
+    redundancy: object,
+    source: object = None,
+    unknown_reason: object = None,
+) -> dict[str, Any]:
+    """Uniform per-repo snapshot row (same keys on every branch)."""
+    return {
+        "slug": slug,
+        "repo": repo,
+        "floor": floor,
+        "classification": classification,
+        "redundancy": redundancy,
+        "source": source,
+        "unknown_reason": unknown_reason,
+    }
+
+
+def run_live_snapshot(repos: list[dict], out: Path) -> dict:
+    """Fetch live enforcement, classify, and write snapshot JSON.
+
+    Fails closed with ``SystemExit`` when zero repos are observed successfully.
+    Writes ``out`` only after at least one successful observation.
+    """
+    snapshot: dict[str, Any] = {
+        "observed_at": datetime.now(timezone.utc).isoformat(),
+        "scope": "catalog/repos.json",
+        "repos": [],
+        "note": "--live writes derived evidence only; it is not a required check.",
+    }
+    success_count = 0
+    for item in repos:
+        if not isinstance(item, dict):
+            continue
+        try:
+            owner_repo = _owner_repo_for(item)
+        except ValueError as exc:
+            snapshot["repos"].append(
+                _snapshot_row(
+                    slug=item.get("slug"),
+                    repo=None,
+                    floor=derive_floor(item),
+                    classification=None,
+                    redundancy=None,
+                    unknown_reason=str(exc),
+                )
+            )
+            continue
+        try:
+            fixture = fetch_repo_enforcement(owner_repo)
+            result = compare_repo_enforcement(item, fixture)
+            row = _snapshot_row(
+                slug=item.get("slug"),
+                repo=owner_repo,
+                floor=result["floor"],
+                classification=result["classification"],
+                redundancy=result["redundancy"],
+                source=result.get("source"),
+                unknown_reason=result.get("unknown_reason"),
+            )
+            snapshot["repos"].append(row)
+            if _observation_succeeded(fixture, result):
+                success_count += 1
+        except (OSError, ValueError, subprocess.SubprocessError, RuntimeError) as exc:
+            snapshot["repos"].append(
+                _snapshot_row(
+                    slug=item.get("slug"),
+                    repo=owner_repo,
+                    floor=derive_floor(item),
+                    classification=None,
+                    redundancy=None,
+                    unknown_reason=f"live fetch failed: {exc}",
+                )
+            )
+
+    if success_count == 0:
+        raise SystemExit(
+            "ERROR: --live observed zero repos successfully; fail closed"
+        )
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
+    return snapshot
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Audit GitHub baseline coverage.")
     parser.add_argument(
@@ -682,37 +997,22 @@ def main() -> int:
 
     if args.live:
         # Live network path is intentionally separate from required CI checks.
-        from datetime import datetime, timezone
-
         catalog_path = ROOT / "catalog" / "repos.json"
         catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
         repos = catalog.get("repos") or []
-        snapshot = {
-            "observed_at": datetime.now(timezone.utc).isoformat(),
-            "scope": "catalog/repos.json",
-            "repos": [],
-            "note": "--live writes derived evidence only; it is not a required check.",
-        }
+        try:
+            snapshot = run_live_snapshot(repos, args.out)
+        except SystemExit as exc:
+            message = str(exc) if exc.code is None or isinstance(exc.code, str) else None
+            if message:
+                print(message, file=sys.stderr)
+            code = exc.code if isinstance(exc.code, int) else 1
+            if code == 0:
+                code = 1
+            return code
         print(
-            "ERROR: --live network fetch is implemented in phase 2; "
-            "pass fixture-backed compare_repo_enforcement from tests, or extend this path.",
-            file=sys.stderr,
+            f"Wrote enforcement snapshot ({len(snapshot.get('repos') or [])} repos) to {args.out}"
         )
-        # Still write a stub so callers can see the schema without mutating platform state.
-        args.out.parent.mkdir(parents=True, exist_ok=True)
-        snapshot["repos"] = [
-            {
-                "slug": item.get("slug"),
-                "floor": derive_floor(item),
-                "classification": None,
-                "redundancy": None,
-                "unknown_reason": "live fetch not run in this build",
-            }
-            for item in repos
-            if isinstance(item, dict)
-        ]
-        args.out.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
-        print(f"Wrote stub enforcement snapshot to {args.out}")
         return 0
 
     errors: list[str] = []

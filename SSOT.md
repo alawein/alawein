@@ -4,15 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-13
-last_updated: 2026-09-13
+last-verified: 2026-09-14
+last_updated: 2026-09-14
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
 **Version:** 1.7
-**Last Updated:** 2026-09-13
+**Last Updated:** 2026-09-14
 **Status:** Active
 
 ---

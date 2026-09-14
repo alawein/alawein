@@ -6,7 +6,7 @@ sla: on-change
 authority: derived
 audience: [contributors, agents]
 last_updated: 2026-09-14
-last-verified: 2026-09-13
+last-verified: 2026-09-14
 ---
 
 # Prompt kit for Codex

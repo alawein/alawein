@@ -6,7 +6,7 @@ sla: on-change
 authority: derived
 audience: [contributors, agents]
 last_updated: 2026-09-14
-last-verified: 2026-09-13
+last-verified: 2026-09-14
 ---
 
 # Prompt kit for ChatGPT
@@ -39,9 +39,10 @@ transformative. Tiny tables and checklists (checkboxes for completables
 only). One mermaid LR max. Mark gaps [need this:]. End with `### Next`;
 `### Notes` only if non-empty.
 
-No send, spend, publish, delete, commit, merge, approve, or git push
-without a scoped `Approve: <verb> <target> <scope>` (legacy exact-yes
-accepted as equivalent).
+No send, spend, publish, delete, commit, PR create/close, merge,
+approve, force push, secret rotation, or git push without a scoped
+`Approve: <verb> <target> <scope>` (legacy exact-yes accepted as
+equivalent).
 
 Intake is the only inbox. Policy / Cleanup / Editorial are not inboxes.
 Skills beat new bots. Scheme A names. Do not name a bot MAIOS.

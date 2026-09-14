@@ -325,9 +325,13 @@ gate. Full diagnosis:
 
 ## 7. Changelog
 
-### v1.5.5 (2026-09-13)
+### v1.5.6 (2026-09-14)
 
 - Shared session prompt points at `prompt-kits/AGENT.md` 1.8.4.
+
+### v1.5.5 (2026-09-13)
+
+- Shared session prompt points at `prompt-kits/AGENT.md` 1.8.3.
 
 ### v1.5.4 (2026-09-13)
 

@@ -64,9 +64,7 @@
         ".github/workflows/issue-triage.yml",
         ".github/workflows/readme-sync.yml",
         ".github/workflows/secrets-scan.yml",
-        ".github/workflows/sync-vercel.yml",
-        ".github/workflows/work-taxonomy-audit.yml",
-        ".github/workflows/workspace-audit.yml"
+        ".github/workflows/sync-vercel.yml"
       ],
       "workflows_state": "pass",
       "codeowners_state": "pass",

@@ -33,6 +33,7 @@ WORKFLOW_DIR = ROOT / ".github" / "workflows"
 # makes the import work both as a script and when loaded by file path in tests.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import _repo_paths  # noqa: E402
+import _sync_manual  # noqa: E402
 
 LOCAL_PATHS = _repo_paths.load_local_path_map(ROOT)
 
@@ -81,6 +82,35 @@ def add_error(errors: list[str], message: str) -> None:
 def check_manifest(errors: list[str]) -> None:
     if not PINNED_REF_RE.fullmatch(WORKFLOW_REF):
         add_error(errors, "github-baseline.yaml workflow_ref must be a 40-character SHA")
+
+
+def check_sync_manual_entries(
+    errors: list[str],
+    *,
+    entries: list[dict] | None = None,
+    today: date | None = None,
+    debt_text: str | None = None,
+    debt_path: Path | None = None,
+) -> None:
+    """Validate C6 sync:manual schema; expiry never auto-enrolls.
+
+    Legacy bare ``sync: manual`` rows stay non-blocking until an explicit
+    migration PR adds ``manual_reason`` / ``manual_until``. Malformed and
+    expired schema rows fail the audit. Write eligibility is unchanged.
+    """
+    rows = entries if entries is not None else REPOS
+    if debt_text is None:
+        path = debt_path or (ROOT / "docs" / "DEBT.md")
+        try:
+            debt_text = path.read_text(encoding="utf-8") if path.is_file() else ""
+        except OSError:
+            debt_text = ""
+    for message in _sync_manual.validate_manifest_sync_manual(
+        rows,
+        today=today,
+        debt_text=debt_text or "",
+    ):
+        add_error(errors, message)
 
 
 def check_readme(errors: list[str]) -> None:
@@ -935,10 +965,11 @@ def fetch_repo_enforcement(owner_repo: str) -> dict:
         )
     else:
         # Do not invent "main": unknown default branch means protection is inaccessible.
+        # Keep http_status unset so a repo 403/404 is not counted as observed protection.
         protection_payload = None
         protection_meta = {
-            "rc": repo_meta.get("rc") if repo_meta.get("rc") not in (None, 0) else 1,
-            "http_status": repo_meta.get("http_status"),
+            "rc": 1,
+            "http_status": None,
             "error": repo_meta.get("error")
             or "repository metadata unavailable; default branch unknown",
         }
@@ -1128,6 +1159,7 @@ def main() -> int:
 
     errors: list[str] = []
     check_manifest(errors)
+    check_sync_manual_entries(errors)
     check_control_plane_workflows(errors)
     if not args.local:
         # check_readme audits ROOT/README.md (the control-plane org profile page).
@@ -1146,7 +1178,9 @@ def main() -> int:
     if args.local:
         print("GitHub baseline audit passed (control-plane only; --local skips repo checks).")
     else:
-        managed = [entry["repo"] for entry in REPOS if entry.get("sync") == "auto"]
+        managed = [
+            entry["repo"] for entry in REPOS if _sync_manual.is_write_eligible(entry)
+        ]
         print(f"GitHub baseline audit passed for {len(managed)} managed repos.")
     return 0
 

@@ -151,12 +151,6 @@
         },
         {
           "path": ".github/workflows/sync-vercel.yml"
-        },
-        {
-          "path": ".github/workflows/work-taxonomy-audit.yml"
-        },
-        {
-          "path": ".github/workflows/workspace-audit.yml"
         }
       ]
     }

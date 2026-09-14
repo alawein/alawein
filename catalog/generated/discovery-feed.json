@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-12",
+  "generatedAt": "2026-09-14",
   "summary": {
     "repoCount": 48,
     "typeCounts": {
@@ -4107,19 +4107,6 @@
           "vercel project sync"
         ],
         "description": "Manual Vercel project sync from catalog; weekly schedule parked (DEBT)."
-      },
-      {
-        "slug": "workspace-audit",
-        "name": "Workspace Audit",
-        "owner": "alawein",
-        "source_repo": "alawein/alawein",
-        "runner": "github-actions",
-        "path": "alawein/.github/workflows/workspace-audit.yml",
-        "schedule": "0 6 * * 1",
-        "outputs": [
-          "workspace audit"
-        ],
-        "description": "Weekly workspace audit."
       },
       {
         "slug": "ci-node",

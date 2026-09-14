@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "lastVerified": "2026-09-12",
+  "lastVerified": "2026-09-14",
   "automations": [
     {
       "slug": "ai-review",
@@ -196,19 +196,6 @@
         "vercel project sync"
       ],
       "description": "Manual Vercel project sync from catalog; weekly schedule parked (DEBT)."
-    },
-    {
-      "slug": "workspace-audit",
-      "name": "Workspace Audit",
-      "owner": "alawein",
-      "source_repo": "alawein/alawein",
-      "runner": "github-actions",
-      "path": "alawein/.github/workflows/workspace-audit.yml",
-      "schedule": "0 6 * * 1",
-      "outputs": [
-        "workspace audit"
-      ],
-      "description": "Weekly workspace audit."
     },
     {
       "slug": "ci-node",

@@ -965,10 +965,11 @@ def fetch_repo_enforcement(owner_repo: str) -> dict:
         )
     else:
         # Do not invent "main": unknown default branch means protection is inaccessible.
+        # Keep http_status unset so a repo 403/404 is not counted as observed protection.
         protection_payload = None
         protection_meta = {
-            "rc": repo_meta.get("rc") if repo_meta.get("rc") not in (None, 0) else 1,
-            "http_status": repo_meta.get("http_status"),
+            "rc": 1,
+            "http_status": None,
             "error": repo_meta.get("error")
             or "repository metadata unavailable; default branch unknown",
         }

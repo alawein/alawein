@@ -33,9 +33,11 @@ def test_fetch_repo_enforcement_helper_exists() -> None:
 def test_fetch_repo_enforcement_fixture_shape(monkeypatch: pytest.MonkeyPatch) -> None:
     fixture = _load("alawein_alawein.json")
     calls: list[str] = []
+    paginate_flags: list[bool] = []
 
-    def fake_gh_api(endpoint: str, **_kwargs: object) -> tuple[object, dict]:
+    def fake_gh_api(endpoint: str, **kwargs: object) -> tuple[object, dict]:
         calls.append(endpoint)
+        paginate_flags.append(bool(kwargs.get("paginate")))
         if endpoint == "repos/alawein/alawein/rulesets":
             return fixture["rulesets"], {"rc": 0, "http_status": None, "error": None}
         if endpoint.startswith("repos/alawein/alawein/rulesets/"):
@@ -67,6 +69,8 @@ def test_fetch_repo_enforcement_fixture_shape(monkeypatch: pytest.MonkeyPatch) -
     assert "protection" in payload["meta"]
     assert "actions_permissions" in payload["meta"]
     assert any(c.endswith("/rulesets") for c in calls)
+    assert paginate_flags[0] is True
+    assert all(not f for f in paginate_flags[1:])
 
 
 def test_ruleset_list_without_details_is_not_false_unprotected(
@@ -187,11 +191,12 @@ def test_repo_meta_failure_does_not_invent_main(
 
     monkeypatch.setattr(audit, "_gh_api", fake_gh_api)
     fixture = audit.fetch_repo_enforcement("alawein/chshlab")
-    assert not any("/branches/main/protection" in c for c in calls)
+    assert not any("/branches/" in c for c in calls)
     assert fixture["protection"] is None
-    assert "default branch unknown" in str(fixture["meta"]["protection"].get("error") or "").lower() or fixture[
-        "meta"
-    ]["protection"].get("http_status") == 403
+    assert fixture["meta"]["protection"].get("http_status") is None
+    assert fixture["meta"]["protection"].get("rc") == 1
+    err = str(fixture["meta"]["protection"].get("error") or "").lower()
+    assert "forbidden" in err or "default branch unknown" in err
 
 
 def test_run_live_snapshot_writes_non_null_classification(

@@ -100,12 +100,18 @@ def resolve_repo_dir(repo: str) -> Path:
     return _repo_paths.resolve_repo_dir(WORKSPACE, LOCAL_PATHS, repo)
 
 TEMPLATE_MAP = {
-    ".github/CODEOWNERS": ORG_REPO / ".github" / "CODEOWNERS",
-    ".github/PULL_REQUEST_TEMPLATE.md": ORG_REPO / ".github" / "PULL_REQUEST_TEMPLATE.md",
-    ".github/ISSUE_TEMPLATE/bug_report.yml": ORG_REPO / ".github" / "ISSUE_TEMPLATE" / "bug_report.yml",
-    ".github/ISSUE_TEMPLATE/feature_request.yml": ORG_REPO / ".github" / "ISSUE_TEMPLATE" / "feature_request.yml",
-    ".github/ISSUE_TEMPLATE/config.yml": ORG_REPO / ".github" / "ISSUE_TEMPLATE" / "config.yml",
+    relative: ORG_REPO.joinpath(*relative.split("/"))
+    for relative in _repo_paths.TEMPLATE_COPY_RELATIVE_PATHS
 }
+# Keep the sync write set identical to MANAGED_PATHS (ownership SoT).
+assert set(TEMPLATE_MAP) | {
+    ".gitignore",
+    ".github/dependabot.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/codeql.yml",
+    ".github/workflows/docs-validation-managed.yml",
+    ".github/workflows/claude-review.yml",
+} == set(_repo_paths.MANAGED_PATHS)
 
 LEGACY_DELETE = [
     ".github/pull_request_template.md",

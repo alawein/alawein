@@ -20,6 +20,29 @@ import subprocess
 from pathlib import Path
 from urllib.parse import urlsplit
 
+# Every relative path `scripts/github/sync-github.sh` may write or refresh in a
+# target checkout. Ownership tests import this set; the sync script imports it
+# so the write set cannot drift from the declared constant.
+TEMPLATE_COPY_RELATIVE_PATHS: tuple[str, ...] = (
+    ".github/CODEOWNERS",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+)
+
+MANAGED_PATHS: frozenset[str] = frozenset(
+    {
+        *TEMPLATE_COPY_RELATIVE_PATHS,
+        ".gitignore",
+        ".github/dependabot.yml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/codeql.yml",
+        ".github/workflows/docs-validation-managed.yml",
+        ".github/workflows/claude-review.yml",
+    }
+)
+
 
 def load_local_path_map(org_repo: Path, catalog_path: Path | None = None) -> dict[str, str]:
     """Map repo slug to its bucketed local_path from `<org_repo>/catalog/repos.json`.

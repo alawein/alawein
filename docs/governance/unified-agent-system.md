@@ -351,7 +351,7 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 
 ### v1.5.3 (2026-09-13)
 
-- Shared session prompt is `prompt-kits/AGENT.md` 1.8.3.
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.4.
 
 ### v1.5.2 (2026-09-13)
 

@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-14
-last_updated: 2026-09-14
+last-verified: 2026-09-13
+last_updated: 2026-09-13
 audience: [ai-agents, contributors]
 ---
 
@@ -45,7 +45,7 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Canonical voice contract:
   [`docs/style/VOICE.md`](docs/style/VOICE.md)
 - Canonical prompt kits:
-  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.8.3 (one catalog land;
+  [`prompt-kits/AGENT.md`](prompt-kits/AGENT.md) 1.8.4 (one catalog land;
   search open PRs before editing that kit or
   `catalog/agent-integrations.yaml`),
   [`prompt-kits/PORTFOLIO.md`](prompt-kits/PORTFOLIO.md)

@@ -64,6 +64,9 @@ MANIFEST_PATH = ORG_REPO / "github-baseline.yaml"
 sys.path.insert(0, str(ORG_REPO / "scripts"))
 from workspace_paths import workspace_root_for
 
+sys.path.insert(0, str(ORG_REPO / "scripts" / "github"))
+import _sync_manual  # noqa: E402
+
 WORKSPACE = workspace_root_for(ORG_REPO)
 
 data = yaml.safe_load(MANIFEST_PATH.read_text(encoding="utf-8")) or {}
@@ -72,6 +75,19 @@ WORKFLOW_REF = str(data.get("workflow_ref") or "").strip()
 
 if not re.fullmatch(r"[0-9a-f]{40}", WORKFLOW_REF):
     raise SystemExit("github-baseline.yaml missing a valid 40-character workflow_ref")
+
+# C6: load-time sync:manual validation. Expired/malformed fail closed;
+# legacy bare sync:manual stays skipped (never auto-enrolled by --all).
+_debt_path = ORG_REPO / "docs" / "DEBT.md"
+_debt_text = _debt_path.read_text(encoding="utf-8") if _debt_path.is_file() else ""
+_sync_manual_errors = _sync_manual.validate_manifest_sync_manual(
+    entries, debt_text=_debt_text
+)
+if _sync_manual_errors:
+    raise SystemExit(
+        "github-baseline.yaml sync:manual validation failed:\n- "
+        + "\n- ".join(_sync_manual_errors)
+    )
 
 # The claude_review flag must be a real boolean (a quoted "false" is truthy),
 # and flagging any repo without the canonical hub copy is invalid config.
@@ -524,10 +540,18 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
 
 def selected_entries() -> list[dict]:
     if TARGET == "--all":
+        # C6 no-auto-enrollment: only explicit sync:auto is write-eligible.
+        # Expired / legacy / open-ended manual entries stay skipped.
+        selected = [
+            entry for entry in entries if _sync_manual.is_write_eligible(entry)
+        ]
         for entry in entries:
-            if entry.get("sync") != "auto":
-                print(f"SKIPPED (manual): {entry.get('repo')}")
-        return [entry for entry in entries if entry.get("sync") == "auto"]
+            if not _sync_manual.is_write_eligible(entry):
+                kind = _sync_manual.classify_sync_entry(
+                    entry, debt_text=_debt_text
+                ).kind
+                print(f"SKIPPED (manual/{kind}): {entry.get('repo')}")
+        return selected
 
     target_path = Path(TARGET)
     repo_name = target_path.resolve().name if target_path.exists() else TARGET

@@ -8,7 +8,8 @@ import json
 import re
 import subprocess
 import sys
-from datetime import datetime, timezone
+from dataclasses import dataclass
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -126,6 +127,7 @@ def check_control_plane_workflows(errors: list[str]) -> None:
                     f"{path.relative_to(ROOT).as_posix()}:{line_number}: action ref must be SHA pinned, found '{target}'",
                 )
     check_hub_workflow_permissions(errors)
+    check_hub_secret_references(errors)
 
 
 _WRITE_ACTION_RE = re.compile(
@@ -137,6 +139,113 @@ _GH_CLI_WRITE_RE = re.compile(r"\bgh\s+(pr|issue)\b", re.IGNORECASE)
 _ALT_TOKEN_SECRET_RE = re.compile(
     r"secrets\.(?!GITHUB_TOKEN\b)[A-Z0-9_]+",
 )
+# Wider scan for secrets.NAME candidates; validate the name separately.
+# Capture may be empty (secrets. followed by delimiter) so we can fail it.
+_SECRET_REF_SCAN_RE = re.compile(r"secrets\.([^\s}'\"`]*)")
+_VALID_SECRET_NAME_RE = re.compile(r"^[A-Z0-9_]+$")
+_DEBT_HUB_SECRET_HEADING_RE = re.compile(r"^### Hub secret ([A-Z0-9_]+)\b", re.MULTILINE)
+_DEBT_EXPIRES_RE = re.compile(r"^\s*-\s*\*\*Expires:\*\*\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
+_DEBT_RETIRED_RE = re.compile(
+    r"^\s*-\s*\*\*(?:Status|Retired):\*\*\s*(retired|true)\s*$",
+    re.MULTILINE | re.IGNORECASE,
+)
+
+
+@dataclass(frozen=True)
+class DebtSecretEntry:
+    """Named hub credential tracked in docs/DEBT.md."""
+
+    name: str
+    expires: date | None = None
+    retired: bool = False
+
+
+def parse_workflow_secret_references(text: str) -> tuple[list[str], list[str]]:
+    """Return (valid_alt_names, unparseable_snippets) for secrets.* expressions.
+
+    `secrets.GITHUB_TOKEN` is ignored. Valid names match `[A-Z0-9_]+`.
+    """
+    names: list[str] = []
+    bad: list[str] = []
+    seen: set[str] = set()
+    for match in _SECRET_REF_SCAN_RE.finditer(text):
+        raw = match.group(1)
+        snippet = match.group(0)
+        if raw == "GITHUB_TOKEN":
+            continue
+        if _VALID_SECRET_NAME_RE.fullmatch(raw):
+            if raw not in seen:
+                seen.add(raw)
+                names.append(raw)
+            continue
+        bad.append(snippet)
+    return names, bad
+
+
+def parse_debt_secret_entries(debt_text: str) -> list[DebtSecretEntry]:
+    """Parse `### Hub secret NAME ...` sections from DEBT.md."""
+    entries: list[DebtSecretEntry] = []
+    headings = list(_DEBT_HUB_SECRET_HEADING_RE.finditer(debt_text))
+    for index, heading in enumerate(headings):
+        name = heading.group(1)
+        start = heading.end()
+        end = headings[index + 1].start() if index + 1 < len(headings) else len(debt_text)
+        body = debt_text[start:end]
+        expires: date | None = None
+        expires_match = _DEBT_EXPIRES_RE.search(body)
+        if expires_match:
+            expires = date.fromisoformat(expires_match.group(1))
+        retired = _DEBT_RETIRED_RE.search(body) is not None
+        entries.append(DebtSecretEntry(name=name, expires=expires, retired=retired))
+    return entries
+
+
+def check_hub_secret_references(
+    errors: list[str],
+    *,
+    today: date | None = None,
+    workflow_dir: Path | None = None,
+    debt_path: Path | None = None,
+) -> None:
+    """Fail Baseline Audit on unparseable secrets.* and retired/expired DEBT names.
+
+    Future `Expires:` dates are inventory only; they do not fail until `today`
+    is on or after the expires date. `Status: retired` / `Retired: true` fail
+    immediately when still referenced.
+    """
+    workflows = workflow_dir if workflow_dir is not None else WORKFLOW_DIR
+    debt_file = debt_path if debt_path is not None else (ROOT / "docs" / "DEBT.md")
+    as_of = today if today is not None else datetime.now(timezone.utc).date()
+
+    debt_entries: list[DebtSecretEntry] = []
+    if debt_file.is_file():
+        debt_entries = parse_debt_secret_entries(debt_file.read_text(encoding="utf-8"))
+    retired_names = {entry.name for entry in debt_entries if entry.retired}
+    expired_names = {
+        entry.name
+        for entry in debt_entries
+        if entry.expires is not None and as_of >= entry.expires and not entry.retired
+    }
+
+    for path in sorted(workflows.glob("*.yml")):
+        rel = path.as_posix() if workflow_dir is not None else path.relative_to(ROOT).as_posix()
+        text = path.read_text(encoding="utf-8")
+        names, bad = parse_workflow_secret_references(text)
+        for snippet in bad:
+            add_error(errors, f"{rel}: unparseable secret expression '{snippet}'")
+        for name in names:
+            if name in retired_names:
+                add_error(
+                    errors,
+                    f"{rel}: references retired DEBT secret name '{name}'",
+                )
+            elif name in expired_names:
+                add_error(
+                    errors,
+                    f"{rel}: references expired DEBT secret name '{name}'",
+                )
+
+
 _WRITE_PERMISSION_KEYS = frozenset(
     {
         "contents",

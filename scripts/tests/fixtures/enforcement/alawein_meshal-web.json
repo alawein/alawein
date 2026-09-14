@@ -1,0 +1,28 @@
+{
+  "repo": "alawein/meshal-web",
+  "rulesets": [],
+  "ruleset_details": [],
+  "protection": {
+    "message": "Branch not protected",
+    "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+    "status": "404"
+  },
+  "actions_permissions": null,
+  "meta": {
+    "rulesets": {
+      "rc": 0,
+      "http_status": null,
+      "error": null
+    },
+    "protection": {
+      "rc": 1,
+      "http_status": 404,
+      "error": "gh: Branch not protected (HTTP 404)"
+    },
+    "actions_permissions": {
+      "rc": null,
+      "http_status": null,
+      "error": "not captured in panel snapshot"
+    }
+  }
+}

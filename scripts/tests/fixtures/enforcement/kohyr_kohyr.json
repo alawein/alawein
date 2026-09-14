@@ -1,0 +1,32 @@
+{
+  "repo": "kohyr/kohyr",
+  "rulesets": {
+    "message": "Upgrade to GitHub Pro or make this repository public to enable this feature.",
+    "documentation_url": "https://docs.github.com/rest/repos/rules#get-all-repository-rulesets",
+    "status": "403"
+  },
+  "ruleset_details": [],
+  "protection": {
+    "message": "Upgrade to GitHub Pro or make this repository public to enable this feature.",
+    "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+    "status": "403"
+  },
+  "actions_permissions": null,
+  "meta": {
+    "rulesets": {
+      "rc": 1,
+      "http_status": 403,
+      "error": "gh: Upgrade to GitHub Pro or make this repository public to enable this feature. (HTTP 403)"
+    },
+    "protection": {
+      "rc": 1,
+      "http_status": 403,
+      "error": "gh: Upgrade to GitHub Pro or make this repository public to enable this feature. (HTTP 403)"
+    },
+    "actions_permissions": {
+      "rc": null,
+      "http_status": null,
+      "error": "not captured in panel snapshot"
+    }
+  }
+}

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -121,6 +122,108 @@ def check_control_plane_workflows(errors: list[str]) -> None:
                     errors,
                     f"{path.relative_to(ROOT).as_posix()}:{line_number}: action ref must be SHA pinned, found '{target}'",
                 )
+    check_hub_workflow_permissions(errors)
+
+
+_WRITE_ACTION_RE = re.compile(
+    r"createComment|create-pull-request|peter-evans/|"
+    r"upload-sarif|softprops/action-gh-release",
+    re.IGNORECASE,
+)
+_GH_CLI_WRITE_RE = re.compile(r"\bgh\s+(pr|issue)\b", re.IGNORECASE)
+_ALT_TOKEN_SECRET_RE = re.compile(
+    r"secrets\.(?!GITHUB_TOKEN\b)[A-Z0-9_]+",
+)
+_WRITE_PERMISSION_KEYS = frozenset(
+    {
+        "contents",
+        "pull-requests",
+        "issues",
+        "security-events",
+        "actions",
+        "id-token",
+        "packages",
+        "deployments",
+    }
+)
+
+
+def _job_body_text(job: dict) -> str:
+    chunks: list[str] = []
+    for step in job.get("steps") or []:
+        if not isinstance(step, dict):
+            continue
+        for key in ("run", "uses"):
+            value = step.get(key)
+            if isinstance(value, str):
+                chunks.append(value)
+        with_block = step.get("with")
+        if isinstance(with_block, dict):
+            for value in with_block.values():
+                if isinstance(value, str):
+                    chunks.append(value)
+    env = job.get("env")
+    if isinstance(env, dict):
+        for value in env.values():
+            if isinstance(value, str):
+                chunks.append(value)
+    for step in job.get("steps") or []:
+        if isinstance(step, dict) and isinstance(step.get("env"), dict):
+            for value in step["env"].values():
+                if isinstance(value, str):
+                    chunks.append(value)
+    return "\n".join(chunks)
+
+
+def _permissions_grant_write(permissions: object) -> bool:
+    if not isinstance(permissions, dict):
+        return False
+    for key, value in permissions.items():
+        if key in _WRITE_PERMISSION_KEYS and str(value).lower() == "write":
+            return True
+    return False
+
+
+def _job_writes_via_github_token(job: dict) -> bool:
+    """True when the job appears to mutate GitHub state using GITHUB_TOKEN."""
+    body = _job_body_text(job)
+    if _WRITE_ACTION_RE.search(body):
+        return True
+    if _GH_CLI_WRITE_RE.search(body):
+        # PAT-backed jobs (KERNEL_SYNC_TOKEN, AUTO_PR_TOKEN, ...) are outside
+        # GITHUB_TOKEN permission hygiene; Task 2.x covers those references.
+        if _ALT_TOKEN_SECRET_RE.search(body):
+            return False
+        return True
+    return False
+
+
+def check_hub_workflow_permissions(errors: list[str]) -> None:
+    """Require top-level permissions on every hub workflow; writers declare job-level."""
+    if yaml is None:
+        add_error(errors, "PyYAML is required to audit hub workflow permissions")
+        return
+    for path in sorted(WORKFLOW_DIR.glob("*.yml")):
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        rel = path.relative_to(ROOT).as_posix()
+        if "permissions" not in data:
+            add_error(errors, f"{rel}: missing top-level permissions block")
+            continue
+        jobs = data.get("jobs") or {}
+        for job_name, job in jobs.items():
+            if not isinstance(job, dict):
+                continue
+            if not _job_writes_via_github_token(job):
+                continue
+            job_perms = job.get("permissions")
+            if _permissions_grant_write(job_perms):
+                continue
+            if job_perms is None and _permissions_grant_write(data.get("permissions")):
+                continue
+            add_error(
+                errors,
+                f"{rel}: job '{job_name}' performs a write but lacks job-level write permissions",
+            )
 
 
 def internal_workflow_refs(text: str) -> list[str]:
@@ -218,6 +321,345 @@ def check_repo(entry: dict, errors: list[str]) -> None:
         add_error(errors, f"{entry['repo']}: unexpected claude-review.yml for repo without claude_review flag")
 
 
+ENFORCEMENT_CONTROLS = (
+    "deletion",
+    "non_fast_forward",
+    "linear_history",
+    "signatures",
+    "required_contexts",
+    "approvals",
+    "code_owner_review",
+    "merge_methods",
+    "bypass",
+    "token_default",
+    "allowed_actions",
+)
+
+
+def derive_floor(record: dict) -> str:
+    """Derive enforcement floor from catalog fields only.
+
+    Returns one of: hub | minimum | frozen | none | out_of_scope | unknown
+    """
+    if not isinstance(record, dict):
+        return "unknown"
+    owner = str(record.get("owner") or "").strip().lower()
+    if owner == "kohyr" or owner.startswith("kohyr/"):
+        return "out_of_scope"
+    if "type" not in record or "lifecycle" not in record:
+        return "unknown"
+    if record.get("type") in (None, "") or record.get("lifecycle") in (None, ""):
+        return "unknown"
+    if record.get("archived") is True:
+        return "none"
+    if record.get("type") == "governance":
+        return "hub"
+    lifecycle = record.get("lifecycle")
+    if lifecycle == "frozen":
+        return "frozen"
+    if lifecycle in {"active", "maintained"} and owner in {"", "alawein"}:
+        # Catalog entries often omit owner; alawein is the default user account.
+        return "minimum"
+    if lifecycle in {"active", "maintained"}:
+        return "minimum"
+    return "unknown"
+
+
+def _is_http_error_payload(value: object) -> bool:
+    return isinstance(value, dict) and str(value.get("status")) in {"403", "404"}
+
+
+def normalize_observed(
+    rulesets: object,
+    protection: object,
+    actions_permissions: object,
+    *,
+    meta: dict | None = None,
+) -> dict:
+    """Normalize raw API payloads into comparable control observations."""
+    meta = meta or {}
+    reasons: list[str] = []
+
+    def _blocked(kind: str, payload: object) -> bool:
+        info = meta.get(kind) or {}
+        status = info.get("http_status")
+        if status in {403, 404} or _is_http_error_payload(payload):
+            reason = info.get("error") or (
+                payload.get("message") if isinstance(payload, dict) else None
+            ) or f"{kind} inaccessible"
+            reasons.append(str(reason))
+            return True
+        if payload is None:
+            reasons.append(info.get("error") or f"{kind} missing")
+            return True
+        return False
+
+    rulesets_blocked = _blocked("rulesets", rulesets)
+    protection_blocked = _blocked("protection", protection)
+    actions_blocked = _blocked("actions_permissions", actions_permissions)
+
+    if rulesets_blocked and protection_blocked:
+        return {
+            "unknown": True,
+            "reason": "; ".join(dict.fromkeys(reasons)) or "rulesets and protection inaccessible",
+            "redundancy": False,
+            "controls": {name: None for name in ENFORCEMENT_CONTROLS},
+            "source": "unknown",
+        }
+
+    details: list[dict] = []
+    if isinstance(rulesets, list):
+        # Callers may pass detailed ruleset bodies via meta['ruleset_details'].
+        details = [d for d in (meta.get("ruleset_details") or []) if isinstance(d, dict)]
+        if not details:
+            details = [r for r in rulesets if isinstance(r, dict) and "rules" in r]
+
+    has_ruleset = bool(details) or (isinstance(rulesets, list) and len(rulesets) > 0 and not rulesets_blocked)
+    has_legacy = (
+        isinstance(protection, dict)
+        and not protection_blocked
+        and not _is_http_error_payload(protection)
+        and "url" in protection
+    )
+
+    observed: dict[str, object] = {name: None for name in ENFORCEMENT_CONTROLS}
+    source = "none"
+
+    if has_ruleset and details:
+        source = "ruleset"
+        rule_types: set[str] = set()
+        contexts: list[str] = []
+        approvals = None
+        codeowners = None
+        merge_methods = None
+        for detail in details:
+            for rule in detail.get("rules") or []:
+                if not isinstance(rule, dict):
+                    continue
+                rtype = rule.get("type")
+                params = rule.get("parameters") or {}
+                rule_types.add(str(rtype))
+                if rtype == "required_status_checks":
+                    checks = params.get("required_status_checks") or params.get("contexts") or []
+                    for item in checks:
+                        if isinstance(item, dict) and item.get("context"):
+                            contexts.append(str(item["context"]))
+                        elif isinstance(item, str):
+                            contexts.append(item)
+                if rtype == "pull_request":
+                    approvals = params.get("required_approving_review_count")
+                    codeowners = params.get("require_code_owner_review")
+                    merge_methods = params.get("allowed_merge_methods")
+        observed["deletion"] = "deletion" in rule_types
+        observed["non_fast_forward"] = "non_fast_forward" in rule_types
+        observed["linear_history"] = "required_linear_history" in rule_types
+        observed["signatures"] = {
+            "enabled": "required_signatures" in rule_types,
+            "bypassable": False,  # hub ruleset has no bypass actors in fixtures
+        }
+        observed["required_contexts"] = contexts
+        observed["approvals"] = approvals
+        observed["code_owner_review"] = codeowners
+        observed["merge_methods"] = merge_methods
+        observed["bypass"] = False
+
+    if has_legacy and isinstance(protection, dict):
+        source = "legacy" if source == "none" else "ruleset+legacy"
+        allow_deletions = (protection.get("allow_deletions") or {}).get("enabled")
+        allow_force = (protection.get("allow_force_pushes") or {}).get("enabled")
+        linear = (protection.get("required_linear_history") or {}).get("enabled")
+        sig = protection.get("required_signatures") or {}
+        sig_enabled = bool(sig.get("enabled"))
+        enforce_admins = (protection.get("enforce_admins") or {}).get("enabled")
+        contexts = (protection.get("required_status_checks") or {}).get("contexts") or []
+        reviews = protection.get("required_pull_request_reviews") or {}
+        if observed["deletion"] is None:
+            observed["deletion"] = allow_deletions is False
+        if observed["non_fast_forward"] is None:
+            observed["non_fast_forward"] = allow_force is False
+        if observed["linear_history"] is None:
+            observed["linear_history"] = bool(linear)
+        if observed["signatures"] is None:
+            observed["signatures"] = {
+                "enabled": sig_enabled,
+                "bypassable": sig_enabled and enforce_admins is False,
+            }
+        elif isinstance(observed["signatures"], dict) and sig_enabled:
+            # Prefer the more cautionary bypassable signal when both exist.
+            observed["signatures"] = {
+                "enabled": True,
+                "bypassable": bool(observed["signatures"].get("bypassable"))
+                or (enforce_admins is False),
+            }
+        if observed["required_contexts"] is None:
+            observed["required_contexts"] = list(contexts)
+        if observed["approvals"] is None and isinstance(reviews, dict):
+            observed["approvals"] = reviews.get("required_approving_review_count")
+            observed["code_owner_review"] = reviews.get("require_code_owner_reviews")
+        if observed["bypass"] is None:
+            observed["bypass"] = enforce_admins is False
+
+    if source == "none" and not (rulesets_blocked and protection_blocked):
+        # Successfully observed that neither rulesets nor legacy protection enforce.
+        if observed["deletion"] is None:
+            observed["deletion"] = False
+        if observed["non_fast_forward"] is None:
+            observed["non_fast_forward"] = False
+
+    if not actions_blocked and isinstance(actions_permissions, dict):
+        observed["token_default"] = actions_permissions.get("default_workflow_permissions")
+        observed["allowed_actions"] = actions_permissions.get("allowed_actions")
+    else:
+        observed["token_default"] = None
+        observed["allowed_actions"] = None
+        if actions_blocked or actions_permissions is None:
+            reasons.append(
+                (meta.get("actions_permissions") or {}).get("error")
+                or "actions_permissions missing"
+            )
+
+    return {
+        "unknown": False,
+        "reason": "; ".join(dict.fromkeys(reasons)) if reasons else None,
+        "redundancy": bool(has_ruleset and has_legacy),
+        "controls": observed,
+        "source": source,
+    }
+
+
+def _desired_for_floor(floor: str) -> dict[str, object]:
+    if floor == "hub":
+        return {
+            "deletion": True,
+            "non_fast_forward": True,
+            "linear_history": True,
+            "signatures": {"enabled": True, "bypassable": False},
+            "required_contexts": "nonempty",
+            "approvals": 0,
+            "code_owner_review": False,
+            "merge_methods": ["squash"],
+            "bypass": False,
+            "token_default": "read",
+            "allowed_actions": "not_all",
+        }
+    if floor == "minimum":
+        return {
+            "deletion": True,
+            "non_fast_forward": True,
+            "linear_history": None,  # optional
+            "signatures": None,  # Q4: not required
+            "required_contexts": None,
+            "approvals": None,
+            "code_owner_review": None,
+            "merge_methods": None,
+            "bypass": None,
+            "token_default": "read",
+            "allowed_actions": "not_all",
+        }
+    if floor == "frozen":
+        return {
+            "deletion": True,
+            "non_fast_forward": True,
+            "linear_history": None,
+            "signatures": None,
+            "required_contexts": [],  # no required checks
+            "approvals": None,
+            "code_owner_review": None,
+            "merge_methods": None,
+            "bypass": None,
+            "token_default": None,
+            "allowed_actions": None,
+        }
+    return {name: None for name in ENFORCEMENT_CONTROLS}
+
+
+def classify_enforcement(desired: dict, observed: dict) -> dict[str, str]:
+    """Classify each control as match | mismatch | exception | unknown.
+
+    A sync exemption never yields ``exception`` on a platform control.
+    """
+    if observed.get("unknown"):
+        reason = observed.get("reason") or "observation unknown"
+        return {name: "unknown" for name in ENFORCEMENT_CONTROLS} | {"_reason": reason}
+
+    controls = observed.get("controls") or {}
+    result: dict[str, str] = {}
+    for name in ENFORCEMENT_CONTROLS:
+        want = desired.get(name)
+        got = controls.get(name)
+        if want is None:
+            result[name] = "match"  # no floor obligation
+            continue
+        if got is None:
+            result[name] = "unknown"
+            continue
+        if name == "required_contexts":
+            if want == "nonempty":
+                result[name] = "match" if isinstance(got, list) and len(got) > 0 else "mismatch"
+            elif want == []:
+                # frozen: no required checks obligation -> match when empty or absent obligation
+                result[name] = "match" if got == [] or got is None else "match"
+            else:
+                result[name] = "match" if got == want else "mismatch"
+            continue
+        if name == "signatures":
+            if not isinstance(want, dict) or not isinstance(got, dict):
+                result[name] = "unknown"
+                continue
+            if want.get("enabled") and not got.get("enabled"):
+                result[name] = "mismatch"
+            elif want.get("enabled") and got.get("bypassable") and want.get("bypassable") is False:
+                result[name] = "mismatch"
+            else:
+                result[name] = "match"
+            continue
+        if name == "allowed_actions":
+            if want == "not_all":
+                result[name] = "match" if got not in {None, "all"} else (
+                    "unknown" if got is None else "mismatch"
+                )
+            else:
+                result[name] = "match" if got == want else "mismatch"
+            continue
+        if name == "merge_methods":
+            result[name] = "match" if got == want else "mismatch"
+            continue
+        result[name] = "match" if got == want else "mismatch"
+    return result
+
+
+def compare_repo_enforcement(record: dict, fixture: dict) -> dict:
+    """Full per-repo comparison used by tests and ``--live``."""
+    floor = derive_floor(record)
+    observed = normalize_observed(
+        fixture.get("rulesets"),
+        fixture.get("protection"),
+        fixture.get("actions_permissions"),
+        meta={
+            **(fixture.get("meta") or {}),
+            "ruleset_details": fixture.get("ruleset_details") or [],
+        },
+    )
+    if floor in {"out_of_scope", "unknown"}:
+        classification = {name: "unknown" for name in ENFORCEMENT_CONTROLS}
+        if floor == "out_of_scope":
+            classification["_reason"] = "owner out of scope"
+        else:
+            classification["_reason"] = "desired floor unknown"
+    elif floor == "none":
+        classification = {name: "match" for name in ENFORCEMENT_CONTROLS}
+        classification["_reason"] = "archived: observed only"
+    else:
+        classification = classify_enforcement(_desired_for_floor(floor), observed)
+    return {
+        "floor": floor,
+        "classification": classification,
+        "redundancy": observed.get("redundancy"),
+        "source": observed.get("source"),
+        "unknown_reason": observed.get("reason") or classification.get("_reason"),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Audit GitHub baseline coverage.")
     parser.add_argument(
@@ -225,7 +667,53 @@ def main() -> int:
         action="store_true",
         help="Skip per-repo checks that require sibling repos on disk (for CI use).",
     )
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Fetch live enforcement observations and write a derived snapshot (never a required check).",
+    )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=ROOT / "catalog" / "generated" / "enforcement-snapshot.json",
+        help="Output path for --live snapshot JSON.",
+    )
     args = parser.parse_args()
+
+    if args.live:
+        # Live network path is intentionally separate from required CI checks.
+        from datetime import datetime, timezone
+
+        catalog_path = ROOT / "catalog" / "repos.json"
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        repos = catalog.get("repos") or []
+        snapshot = {
+            "observed_at": datetime.now(timezone.utc).isoformat(),
+            "scope": "catalog/repos.json",
+            "repos": [],
+            "note": "--live writes derived evidence only; it is not a required check.",
+        }
+        print(
+            "ERROR: --live network fetch is implemented in phase 2; "
+            "pass fixture-backed compare_repo_enforcement from tests, or extend this path.",
+            file=sys.stderr,
+        )
+        # Still write a stub so callers can see the schema without mutating platform state.
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        snapshot["repos"] = [
+            {
+                "slug": item.get("slug"),
+                "floor": derive_floor(item),
+                "classification": None,
+                "redundancy": None,
+                "unknown_reason": "live fetch not run in this build",
+            }
+            for item in repos
+            if isinstance(item, dict)
+        ]
+        args.out.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote stub enforcement snapshot to {args.out}")
+        return 0
 
     errors: list[str] = []
     check_manifest(errors)

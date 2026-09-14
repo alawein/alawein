@@ -1,0 +1,152 @@
+{
+  "repo": "alawein/chshlab",
+  "rulesets": [
+    {
+      "id": 15136230,
+      "name": "protect-main",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "alawein/chshlab",
+      "enforcement": "active",
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5Gf_QvzgDm9eY",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/alawein/chshlab/rulesets/15136230"
+        },
+        "html": {
+          "href": "https://github.com/alawein/chshlab/rules/15136230"
+        }
+      },
+      "created_at": "2026-04-15T19:38:02.843-07:00",
+      "updated_at": "2026-04-15T19:38:02.869-07:00"
+    }
+  ],
+  "ruleset_details": [
+    {
+      "id": 15136230,
+      "name": "protect-main",
+      "target": "branch",
+      "source_type": "Repository",
+      "source": "alawein/chshlab",
+      "enforcement": "active",
+      "conditions": {
+        "ref_name": {
+          "exclude": [],
+          "include": [
+            "~DEFAULT_BRANCH"
+          ]
+        }
+      },
+      "rules": [
+        {
+          "type": "deletion"
+        },
+        {
+          "type": "non_fast_forward"
+        },
+        {
+          "type": "required_linear_history"
+        }
+      ],
+      "node_id": "RRS_lACqUmVwb3NpdG9yec5Gf_QvzgDm9eY",
+      "created_at": "2026-04-15T19:38:02.843-07:00",
+      "updated_at": "2026-04-15T19:38:02.869-07:00",
+      "bypass_actors": [],
+      "current_user_can_bypass": "never",
+      "_links": {
+        "self": {
+          "href": "https://api.github.com/repos/alawein/chshlab/rulesets/15136230"
+        },
+        "html": {
+          "href": "https://github.com/alawein/chshlab/rules/15136230"
+        }
+      }
+    }
+  ],
+  "protection": {
+    "url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection",
+    "required_status_checks": {
+      "url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection/required_status_checks",
+      "strict": true,
+      "contexts": [
+        "build + vitest",
+        "Analyze (javascript-typescript)",
+        "drift",
+        "doctrine / Doctrine Validation"
+      ],
+      "contexts_url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection/required_status_checks/contexts",
+      "checks": [
+        {
+          "context": "build + vitest",
+          "app_id": 15368
+        },
+        {
+          "context": "Analyze (javascript-typescript)",
+          "app_id": 15368
+        },
+        {
+          "context": "drift",
+          "app_id": 15368
+        },
+        {
+          "context": "doctrine / Doctrine Validation",
+          "app_id": 15368
+        }
+      ]
+    },
+    "required_pull_request_reviews": {
+      "url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection/required_pull_request_reviews",
+      "dismiss_stale_reviews": false,
+      "require_code_owner_reviews": false,
+      "require_last_push_approval": false,
+      "required_approving_review_count": 0
+    },
+    "required_signatures": {
+      "url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection/required_signatures",
+      "enabled": false
+    },
+    "enforce_admins": {
+      "url": "https://api.github.com/repos/alawein/chshlab/branches/main/protection/enforce_admins",
+      "enabled": false
+    },
+    "required_linear_history": {
+      "enabled": true
+    },
+    "allow_force_pushes": {
+      "enabled": false
+    },
+    "allow_deletions": {
+      "enabled": false
+    },
+    "block_creations": {
+      "enabled": false
+    },
+    "required_conversation_resolution": {
+      "enabled": true
+    },
+    "lock_branch": {
+      "enabled": false
+    },
+    "allow_fork_syncing": {
+      "enabled": false
+    }
+  },
+  "actions_permissions": null,
+  "meta": {
+    "rulesets": {
+      "rc": 0,
+      "http_status": null,
+      "error": null
+    },
+    "protection": {
+      "rc": 0,
+      "http_status": null,
+      "error": null
+    },
+    "actions_permissions": {
+      "rc": null,
+      "http_status": null,
+      "error": "not captured in panel snapshot"
+    }
+  }
+}

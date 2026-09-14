@@ -9,7 +9,7 @@ last_updated: 2026-09-14
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.5
+version: 1.5.7
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -103,7 +103,30 @@ only who must act.
 
 Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,
 Monday Kickoff, Weekly Content Planner, `@ChatGPT` (`U0BUNH33CCA`,
-replaced).
+replaced). Do not tag `@Linear`, `@GitHub`, or other notify apps for
+tasks.
+
+### 1.5 Installed Slack apps (locked v1)
+
+Workspace-granted OAuth strings are UNVERIFIED. Report as-is. Do not
+change scopes. Do not install `@Grok`. No Gmail Slack app.
+
+Agent bots: `@Cursor` `U0APW2Z3GG2`, `@Claude` `U0AQQFJT8AC`,
+`@Computer` `U0APW7F9S4A`, `@Notion AI` `U0AQ8UNAKTK`, `@GitHub`
+`U0APESWEF2T`, `@ChatGPT` `U0BUNH33CCA` (replaced), `@Codex`
+`U0BV7V8M3NW` (`needs_auth`), `@Kilo` `U0BV9U2GFED`.
+
+Workflow bots: Daily Agenda `U0B9RSFC8K0`, Daily Briefing
+`U0B97MGH74J`, Friday Review `U0B99JAG2HF`, Monday Kickoff
+`U0B9HDMBT4H`, Weekly Content Planner `U0B9RPWA18W`.
+
+Notify apps (DM-proved 2026-09-14): Linear `U0C0NB35XGQ` (FLAG Linear
+write via `/linear`), Google Calendar `U0APPR5F0LT`, Google Drive
+`U0AQ949HSDP`, Fireflies `U0BA7DDAG1K` / `B0BA8NTJAR4`, Graphite,
+Langfuse, Vercel, Figma, Docusign, Dropbox, Zoom, Slackbot.
+
+Working pointers: chat scan `F0C16U6USJ0`, lane inventory
+`F0C0KEF150C`, scopes `F0C15AVM0FR`. Git wins.
 
 **Correction ping** (two Cursors split the land). Follow-up only. Do not
 re-audit. Do not paste a new kit.
@@ -129,7 +152,7 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-04 (DM unread here) | 0 replies | Keep; 14-day trial |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-13 | 0 replies | Keep; 14-day trial |
 | Daily Briefing | Daily 09:00 | `#posts` | 2026-09-11 (pointer) | 0 replies | Keep (primary digest) |
 | Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Keep |
 | Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-07 | 0 replies | Keep |
@@ -163,7 +186,8 @@ Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
-| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Inventory thread 2026-09-07; Kilo `U0BV9U2GFED` |
+| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Member list 2026-09-14 |
+| Slack Linear app | `@linear` `U0C0NB35XGQ` | Installed; can create issues | Welcome DM 2026-09-05; `/linear` |
 | GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent `get_me` 2026-09-07 (bc-2953ccca) |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
@@ -272,6 +296,7 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | --- | --- |
 | §1 Channel structure and decisions | LOCKED |
 | §1.4 How Meshal calls agents | LOCKED |
+| §1.5 Installed Slack apps | LOCKED |
 | §2 Workflow bot policy | LOCKED |
 | §3.1 Verified integrations (including Notion) | LOCKED |
 | §3.2 Vercel deployments | LOCKED (eight UNVERIFIED rows pending browser inspection) |
@@ -324,6 +349,13 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.7 (2026-09-14)
+
+- Locked Slack v1 roster from live DMs and channel members. Added §1.5.
+  Linear Slack app recorded. No Gmail Slack app. `#me-agents-*` members
+  are Meshal plus Notion AI; Cursor/Claude/Computer invites still pending.
+  OAuth grant strings stay UNVERIFIED. No rename before 2026-09-19.
 
 ### v1.5.6 (2026-09-14)
 

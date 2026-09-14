@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Unified agent system
 description: Master orchestration, inventory SSOT, dispatch routing, and chat output standards for the Alawein agentic workspace.
-last_updated: 2026-09-13
+last_updated: 2026-09-14
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -348,6 +348,10 @@ Tag `@Claude` with this scoped prompt for items Cursor cannot close alone:
 > is required. Evidence required. Mark blockers `UNVERIFIED`.
 
 ## 10. Changelog
+
+### v1.5.4 (2026-09-14)
+
+- Shared session prompt is `prompt-kits/AGENT.md` 1.8.4.
 
 ### v1.5.3 (2026-09-13)
 

@@ -5,8 +5,8 @@ sync: manual
 sla: on-change
 authority: derived
 audience: [contributors, agents]
-last_updated: 2026-09-13
-last-verified: 2026-09-13
+last_updated: 2026-09-14
+last-verified: 2026-09-14
 ---
 
 # Style system
@@ -18,7 +18,7 @@ compatibility entrypoint for older references that still point at
 ## Use these sources
 
 - Canonical voice contract: [`VOICE.md`](VOICE.md)
-- Canonical workspace prompt: [`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.3
+- Canonical workspace prompt: [`../../prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md) 1.8.4
 - Reply adapters: [`prompt-kit-chatgpt.md`](prompt-kit-chatgpt.md),
   [`prompt-kit-claude.md`](prompt-kit-claude.md),
   [`prompt-kit-codex.md`](prompt-kit-codex.md)

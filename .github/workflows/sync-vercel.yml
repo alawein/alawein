@@ -1,8 +1,10 @@
 name: sync-vercel
 
 on:
-  schedule:
-    - cron: '0 9 * * 1'
+  # Weekly cron parked until VERCEL_TOKEN is configured and reviewed.
+  # See docs/DEBT.md: "Hub secret VERCEL_TOKEN unconfigured".
+  # schedule:
+  #   - cron: '0 9 * * 1'
   workflow_dispatch:
 
 permissions:

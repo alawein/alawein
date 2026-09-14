@@ -21,6 +21,9 @@ name: kernel-sync
 # (scope, rotation, which repos) outside this workflow's authorship -- see
 # the "Remaining dependency" note in kernel-spec.md. Until it exists,
 # `dry_run: true` is the only mode that will succeed.
+#
+# Parked on workflow_dispatch only: KERNEL_SYNC_TOKEN remains unconfigured.
+# See docs/DEBT.md: "Hub secret KERNEL_SYNC_TOKEN unconfigured".
 
 on:
   workflow_dispatch:

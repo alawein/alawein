@@ -191,24 +191,11 @@
       "source_repo": "alawein/alawein",
       "runner": "github-actions",
       "path": "alawein/.github/workflows/sync-vercel.yml",
-      "schedule": "0 9 * * 1",
+      "schedule": "workflow_dispatch",
       "outputs": [
         "vercel project sync"
       ],
-      "description": "Weekly Vercel project sync from catalog."
-    },
-    {
-      "slug": "work-taxonomy-audit",
-      "name": "Work Taxonomy Audit",
-      "owner": "alawein",
-      "source_repo": "alawein/alawein",
-      "runner": "github-actions",
-      "path": "alawein/.github/workflows/work-taxonomy-audit.yml",
-      "schedule": "push+pull_request+issues+workflow_dispatch",
-      "outputs": [
-        "work-taxonomy report"
-      ],
-      "description": "Audits work-record taxonomy labels on issues/PRs."
+      "description": "Manual Vercel project sync from catalog; weekly schedule parked (DEBT)."
     },
     {
       "slug": "workspace-audit",

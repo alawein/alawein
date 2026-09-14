@@ -4,8 +4,8 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-13
-last_updated: 2026-09-13
+last-verified: 2026-09-14
+last_updated: 2026-09-14
 audience: [ai-agents, contributors]
 ---
 

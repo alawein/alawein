@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-13
+last_updated: 2026-09-14
 category: governance
 audience: [ai-agents, contributors]
 status: active

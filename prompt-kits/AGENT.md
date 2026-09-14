@@ -7,8 +7,8 @@ audience: [agents, contributors]
 kit-type: system-prompt
 version: 1.8.4
 parent-version: 1.8.3
-last-verified: 2026-09-13
-last_updated: 2026-09-13
+last-verified: 2026-09-14
+last_updated: 2026-09-14
 change-summary: "Rev pointer f -> g (Desktop SoR sync)"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---

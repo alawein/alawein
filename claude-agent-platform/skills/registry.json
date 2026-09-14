@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-06T07:04:57Z",
+  "generated_at": "2026-09-14T05:14:46Z",
   "path_convention": "repo-relative",
   "skills": [
     {
@@ -199,6 +199,12 @@
       "version": "1.0.0",
       "path": "claude-agent-platform/skills/security-scan/SKILL.md",
       "description": "Run focused security checks on files, directories, or current diff. Use for security workflows. Routes to Reviewer agent."
+    },
+    {
+      "name": "slack-draft-to-prompt",
+      "version": "1.0.0",
+      "path": "claude-agent-platform/skills/slack-draft-to-prompt/SKILL.md",
+      "description": "Turn rough Slack or chat text into a voice-compliant agent prompt. Use when Meshal pastes informal notes, asks to clean English, or wants a Cursor/Claude/Computer ping packed before send."
     },
     {
       "name": "test-fix",

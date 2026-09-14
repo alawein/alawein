@@ -488,14 +488,17 @@ def sync_repo(entry: dict, *, check: bool) -> list[str]:
         issues.extend(remove_legacy(codeql_path, check=check))
 
     docs_managed_src = ORG_REPO / ".github" / "workflows" / "docs-validation-managed.yml"
+    docs_managed_dst = repo_dir / ".github" / "workflows" / "docs-validation-managed.yml"
     if docs_managed_src.exists():
         issues.extend(
             ensure_text(
-                repo_dir / ".github" / "workflows" / "docs-validation-managed.yml",
+                docs_managed_dst,
                 docs_managed_src.read_text(encoding="utf-8"),
                 check=check,
             )
         )
+    else:
+        issues.append(f"MISSING: {docs_managed_src}")
 
     # Claude review gate: distributed to repos flagged claude_review: true in
     # github-baseline.yaml; the flag is the source of truth for who gets it.

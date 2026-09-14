@@ -4,30 +4,30 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-13
-last_updated: 2026-09-13
+last-verified: 2026-09-14
+last_updated: 2026-09-14
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
 **Version:** 1.7
-**Last Updated:** 2026-09-13
+**Last Updated:** 2026-09-14
 **Status:** Active
 
 ---
 
 ## Purpose
 
-Organization profile and portfolio governance source for the `@alawein` GitHub
-organization. This repository is docs-only and owns the canonical workspace
+Profile and portfolio governance source for the `@alawein` GitHub
+user account. This repository is docs-only and owns the canonical workspace
 governance contract for naming, portfolio truth, and migration sequencing.
 
 ---
 
 ## Current State
 
-- Organization profile and documentation: Active
+- Profile and documentation: Active
 - Workspace root on disk: `Desktop/GitHub/alawein` (not a git root). Sibling
   repos live under buckets `apps/`, `core/`, `lab/`, `sites/`, `work/`, and
   `_archive/`. This control plane is `core/alawein`. Disk SSOT:

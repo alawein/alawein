@@ -8,7 +8,7 @@ kernel_version: "0.1.0"
 
 # Single pin ref for every reusable workflow `uses:` reference across the
 # fleet (drift currently spans at least 6 SHAs: ed5ed61, 6cddc4b, 9779fa3,
-# 1256254, 430c345, 67c8b3e -- see kernel-spec.md "Current-state facts").
+# 1256254, 430c345, 67c8b3e -- see docs/internal/plans/2026-09-08-kernel-canonicalization.md).
 # Decision (maintainer, 2026-09-08, checkpoint 1): the pin targets a tagged
 # hub release, not a raw main SHA -- see docs/adr/0008-workflow-pin-targets-
 # tagged-release.md. Despite the field name, the value is a git tag (e.g.

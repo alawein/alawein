@@ -1,7 +1,7 @@
 ---
 type: canonical
 status: active
-last_updated: 2026-09-08
+last_updated: 2026-09-13
 owner: meshal
 audience: [contributors, agents]
 authority: canonical
@@ -39,9 +39,11 @@ the implementation plan at
 
 ## Scope
 
-Applies to all 46 repos under `C:\Users\mesha\Desktop\GitHub\alawein`
-(`apps`, `core`, `lab`, `sites`, `work`, one loose repo, `_archive`).
-`_archive/*` repos are `archived: true`, renderer-exempt, checks warn-only.
+Applies to all repos under the workspace root as counted by
+`catalog/repos.json` (48 entries today: 47 active plus `helios` archived).
+Disk layout uses buckets `apps`, `core`, `lab`, `sites`, `work`, and
+`_archive`. `_archive/*` repos are `archived: true`, renderer-exempt, checks
+warn-only.
 
 ## Profiles
 
@@ -49,9 +51,9 @@ Every repo is assigned exactly one `profile`, recorded in `catalog/repos.json`
 and validated by `schemas/repo.schema.json`. A profile is derived from the
 repo's `service-metadata.yaml` `type` + `runtime` when present, falling back
 to the existing catalog `surface` + `stack` fields when
-`service-metadata.yaml` is absent (33/46 repos have it as of 2026-09-08; the
-gap closes per-repo during that repo's Phase 6 wave, not as a separate
-sweep).
+`service-metadata.yaml` is absent (coverage as counted by `catalog/repos.json`
+on 2026-09-08; the gap closes per-repo during that repo's Phase 6 wave, not as
+a separate sweep).
 
 The profile enum in `schemas/repo.schema.json` must cover the stacks actually
 observed in `catalog/repos.json`. As of 2026-09-08 the observed surface/stack
@@ -115,13 +117,11 @@ never re-renders on its own, keeping the detector dependency-free.
 
 - Profile enum extension (see Profiles section above) needs explicit
   sign-off before Phase 0 step 3 (schema extension + backfill) proceeds.
-- `catalog/repos.json` currently holds 47 entries against the plan's stated
-  scope of 46 repos; this discrepancy is noted here as a fact to resolve
-  before treating `catalog/repos.json` as the authoritative 1:1 map of the
-  46 on-disk checkouts, not resolved unilaterally by this document.
-  Confirmed via `scripts/kernel/report.py` (Phase 1, step 8): 3 catalog
-  entries have no matching on-disk checkout at their `local_path` --
-  `chshlab-paper` (`lab/chshlab-paper`), `dotclaude` (`core/dotclaude`),
-  `kcompiler` (`core/kcompiler`). 47 catalog entries minus these 3
-  unreachable plus the 1 archived (`helios`) accounts for the reported 46
-  reachable, non-archived repos in scope.
+- Repo counts belong to `catalog/repos.json` (as counted by that file), not to
+  fixed numbers in this spec. Treat catalog length and `archived` flags as the
+  authoritative map of checkouts; do not resolve count discrepancies by editing
+  this document unilaterally. Confirmed via `scripts/kernel/report.py`
+  (Phase 1, step 8): some catalog entries may have no matching on-disk
+  checkout at their `local_path` (historically `chshlab-paper`, `dotclaude`,
+  `kcompiler`). Re-count from the catalog before treating any fixed total as
+  current.

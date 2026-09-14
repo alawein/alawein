@@ -50,6 +50,53 @@ kernel_sync_path_allowlist:
   - "docs/operations/"
   - "docs/internal/"
 
+# Baseline owns these overlapping paths until an authorized, proven transfer.
+# Design: 2026-09-13-github-assurance-program-design.md. Kernel parked;
+# review 2026-10-13 triggers a decision, not deletion.
+baseline_owned_until_transfer:
+  ".github/CODEOWNERS":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".github/PULL_REQUEST_TEMPLATE.md":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".github/ISSUE_TEMPLATE/":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".gitignore":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".github/dependabot.yml":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".github/workflows/ci.yml":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+  ".github/workflows/codeql.yml":
+    owner: baseline-sync
+    decided: "2026-09-13"
+    review: "2026-10-13"
+    decision_owner: Meshal
+    transfer_requires: [pin, parity, accepted_canary, explicit_transfer]
+
 # Kill switch: when true, kernel-sync auto-merge is disabled fleet-wide
 # regardless of guard/check results. Defaults to disabled (safe) until
 # Phase 6 auto-merge is exercised on the Wave 0 pilots.

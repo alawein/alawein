@@ -64,6 +64,7 @@ not retry. Smoke ping stays at `max_tokens` 64.
 
 ## Caps
 
-Lite max 3/day. Fleet 7 max 1/day. Alert at 70%. Smoke script no-ops when
-`MAIOS_PANEL_KILL=1`; `openrouter_route.py` does not honor it yet. If
+Lite max 3/day. Fleet 7 max 1/day. Alert at 70%. Smoke and
+`openrouter_route.py` execution paths no-op when `MAIOS_PANEL_KILL=1`.
+`--list-routes` and workflow plan-only still run. If
 `google/gemini-3.8-flash` 404s, see spend investigation 404 note.

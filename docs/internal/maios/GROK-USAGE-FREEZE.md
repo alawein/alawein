@@ -66,9 +66,9 @@ Standing yes is unlimited until revoke. Still:
 - Lite panel max 3 per calendar day
 - Fleet 7 max 1 per calendar day
 - Alert at 70% of those caps
-- Kill-switch: `MAIOS_PANEL_KILL=1` (`scripts/smoke-openrouter-one.sh`
-  must no-op). `scripts/ops/openrouter_route.py` does not honor this
-  switch yet.
+- Kill-switch: `MAIOS_PANEL_KILL=1`. Smoke and
+  `scripts/ops/openrouter_route.py` execution paths no-op before they
+  load a key. `--list-routes` and workflow plan-only still run.
 
 ## Scheme A
 

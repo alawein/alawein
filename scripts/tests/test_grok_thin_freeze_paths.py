@@ -53,11 +53,14 @@ def classify_offload_target(task_kind: str) -> str:
         "pr": "CursorCloud",
         "tests": "CursorCloud",
         "docs-git": "CursorCloud",
+        "docs-in-git": "CursorCloud",
         "large doc packs": "CursorCloud",
         "grill": "OpenRouterPanel",
         "panel": "OpenRouterPanel",
         "architecture": "OpenRouterPanel",
         "fleet-job-b": "InlineGrok",
+        "fleet-job-b-short": "InlineGrok",
+        "fleet-job-b-long": "CursorCloud",
         "fleet-job-a-short": "InlineGrok",
         "fleet-job-a-long": "CursorCloud",
     }
@@ -99,6 +102,7 @@ def test_classify_code_is_cursor_cloud() -> None:
     assert classify_offload_target("pr") == "CursorCloud"
     assert classify_offload_target("tests") == "CursorCloud"
     assert classify_offload_target("docs-git") == "CursorCloud"
+    assert classify_offload_target("docs-in-git") == "CursorCloud"
     assert classify_offload_target("large doc packs") == "CursorCloud"
 
 
@@ -109,6 +113,8 @@ def test_classify_grill_is_openrouter_panel() -> None:
 
 def test_classify_fleet_jobs_prefer_job_b() -> None:
     assert classify_offload_target("fleet-job-b") == "InlineGrok"
+    assert classify_offload_target("fleet-job-b-short") == "InlineGrok"
+    assert classify_offload_target("fleet-job-b-long") == "CursorCloud"
     assert classify_offload_target("fleet-job-a-short") == "InlineGrok"
     assert classify_offload_target("fleet-job-a-long") == "CursorCloud"
 
@@ -272,3 +278,37 @@ def test_smoke_honors_panel_kill() -> None:
     )
     assert result.returncode == 1
     assert "MAIOS_PANEL_KILL=1" in result.stderr
+
+
+def test_openrouter_route_honors_panel_kill() -> None:
+    script = ROOT / "scripts/ops/openrouter_route.py"
+    env = os.environ.copy()
+    env["MAIOS_PANEL_KILL"] = "1"
+    env.pop("OPENROUTER_API_KEY", None)
+    blocked = subprocess.run(
+        [sys.executable, str(script), "--route", "fast", "--prompt", "ping"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert blocked.returncode == 1
+    assert "MAIOS_PANEL_KILL=1" in (blocked.stderr + blocked.stdout)
+    listed = subprocess.run(
+        [sys.executable, str(script), "--list-routes"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert listed.returncode == 0, listed.stderr
+    assert "routes:" in listed.stdout
+    planned = subprocess.run(
+        [sys.executable, str(script), "--workflow", "pr-ready"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert planned.returncode == 0, planned.stderr
+    assert "workflow pr-ready:" in planned.stdout

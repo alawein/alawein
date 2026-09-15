@@ -119,6 +119,17 @@ def chat_complete(
     return str(content)
 
 
+def panel_kill_active() -> bool:
+    """Return True when the OpenRouter execution kill switch is set."""
+    return os.environ.get("MAIOS_PANEL_KILL", "").strip() == "1"
+
+
+def exit_if_panel_killed() -> None:
+    """Stop execution paths before they load a key or call OpenRouter."""
+    if panel_kill_active():
+        raise SystemExit("BLOCK: MAIOS_PANEL_KILL=1")
+
+
 def list_routes(routing: dict[str, Any]) -> None:
     routes = routing.get("routes") or {}
     workflows = routing.get("workflows") or {}
@@ -186,6 +197,7 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"  {i}. [{route}] {model} — {task}")
             print("\nRe-run with --execute-all to call OpenRouter for each step.")
             return 0
+        exit_if_panel_killed()
         api_key = load_api_key(routing)
         out_parts: list[str] = []
         current = prompt or ""
@@ -211,6 +223,7 @@ def main(argv: list[str] | None = None) -> int:
 
     route = args.route or "fast"
     model = args.model or resolve_model(routing, route)
+    exit_if_panel_killed()
     api_key = load_api_key(routing)
     assert prompt is not None
     text = chat_complete(

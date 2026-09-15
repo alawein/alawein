@@ -3,7 +3,7 @@ type: generated
 source: scripts/ops/generate-arch-diagram.py
 sla: on-change
 last-verified: 2026-09-06
-last_updated: 2026-09-13
+last_updated: 2026-09-15
 ---
 
 # Alawein Workspace Architecture
@@ -57,7 +57,7 @@ archive. The two axes are deliberately distinct, so a repo's bucket and type oft
 [`docs/governance/repo-topology-canon.md`](governance/repo-topology-canon.md).
 
 <!-- AUTO-GENERATED REPO TOPOLOGY START -->
-<!-- last updated: 2026-09-13; do not edit; run scripts/ops/generate-arch-diagram.py -->
+<!-- last updated: 2026-09-15; do not edit; run scripts/ops/generate-arch-diagram.py -->
 
 ### Repo Topology (auto-generated from catalog/repos.json)
 
@@ -81,8 +81,8 @@ graph TB
     gymboy["gymboy\nFitness coaching platform with a re"]
     repz["repz\nAI-powered coaching platform for fi"]
     scribd["scribd\nFitness publishing and content surf"]
-    spotify_control["spotify-control\nLocal Spotify control layer with sh"]
-    more_product["... 5 more"]
+    meshal_web["meshal-web\nPersonal site and portfolio with pr"]
+    more_product["... 4 more"]
   end
   subgraph research["Research Repos"]
     adil["adil\nLegal-ops CLI for assembling, valid"]
@@ -104,7 +104,7 @@ graph TB
     kcompiler["kcompiler\nKnowledge compiler that turns evide"]
     outpost["outpost\nPersonal kit that installs prompts "]
     prompty["prompty\nTurbo monorepo for prompt design, e"]
-    more_tooling["... 3 more"]
+    more_tooling["... 4 more"]
   end
 ```
 

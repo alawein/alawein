@@ -160,7 +160,7 @@ def test_model_routing_lists_verified_ids() -> None:
     )
     for model_id in VERIFIED_OPENROUTER_IDS:
         assert model_id in text, model_id
-    assert "cannot change Grok" in text.lower() or "cannot change Grok" in text
+    assert "cannot change grok" in text.lower()
     assert FLASH_ID in text
     assert "max_tokens" in text
     assert "24000" in text

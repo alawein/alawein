@@ -11,7 +11,7 @@ owner: meshal
 | taskKind | target |
 |---|---|
 | triage / Orient / Continue / Approve / nudge | InlineGrok |
-| coding / repo / PR / tests / docs-in-git | CursorCloud |
+| coding / repo / PR / tests / docs-git | CursorCloud |
 | multi-model grill / architecture | OpenRouterPanel |
 | fleet Job A/B short | InlineGrok |
 | fleet Job A/B >15 min | CursorCloud |

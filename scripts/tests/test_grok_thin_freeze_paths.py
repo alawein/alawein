@@ -1,0 +1,314 @@
+"""Path and content contract for Grok-thin freeze + model routing."""
+
+from __future__ import annotations
+
+import os
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+
+REQUIRED_AFTER_MERGE = (
+    ROOT / "docs/internal/maios/USAGE-FREEZE-TEST-MATRIX-2026-09-14.md",
+    ROOT / "docs/internal/maios/scripts/smoke-offload-classifier.md",
+    ROOT / "scripts/smoke-openrouter-one.sh",
+)
+
+REQUIRED_ENFORCE = (
+    ROOT / "docs/internal/maios/GROK-USAGE-FREEZE.md",
+    ROOT / "docs/internal/maios/GROK-THIN-OFFLOAD.md",
+    ROOT / "docs/internal/maios/GROK-SPEND-INVESTIGATION-2026-09-14.md",
+    ROOT / "docs/internal/maios/MODEL-ROUTING-BY-PURPOSE.md",
+    ROOT / "docs/internal/maios/LANGFUSE-PANEL-TAGS.md",
+    ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md",
+    ROOT / "docs/internal/maios/ADAPTERS.md",
+)
+
+FLASH_ID = "google/gemini-3.8-flash"
+VERIFIED_OPENROUTER_IDS = (
+    "openai/gpt-6-astra-pro",
+    "anthropic/claude-opus-5",
+    "qwen/qwen3.8-max-0902",
+    "z-ai/glm-5.3",
+    "deepseek/deepseek-v4-pro-0813",
+    "moonshotai/kimi-k3",
+    "google/gemini-3.8-flash",
+)
+
+
+def classify_offload_target(task_kind: str) -> str:
+    """Return the freeze-pack route for a known task-kind token."""
+    mapping = {
+        "orient": "InlineGrok",
+        "continue": "InlineGrok",
+        "approve": "InlineGrok",
+        "nudge": "InlineGrok",
+        "triage": "InlineGrok",
+        "code": "CursorCloud",
+        "coding": "CursorCloud",
+        "repo": "CursorCloud",
+        "repo edit": "CursorCloud",
+        "pr": "CursorCloud",
+        "tests": "CursorCloud",
+        "docs-git": "CursorCloud",
+        "docs-in-git": "CursorCloud",
+        "large doc packs": "CursorCloud",
+        "grill": "OpenRouterPanel",
+        "panel": "OpenRouterPanel",
+        "architecture": "OpenRouterPanel",
+        "fleet-job-b": "InlineGrok",
+        "fleet-job-b-short": "InlineGrok",
+        "fleet-job-b-long": "CursorCloud",
+        "fleet-job-a-short": "InlineGrok",
+        "fleet-job-a-long": "CursorCloud",
+    }
+    if task_kind not in mapping:
+        raise ValueError(f"unknown task kind: {task_kind}")
+    return mapping[task_kind]
+
+
+def grok_usage_freeze(weekly_pct: float, ondemand_pct: float) -> str:
+    """Return FREEZE when weekly >= 80 or on-demand >= 70, else OPEN."""
+    if weekly_pct >= 80.0 or ondemand_pct >= 70.0:
+        return "FREEZE"
+    return "OPEN"
+
+
+def _bash() -> str:
+    """Return a bash executable path for syntax and smoke checks."""
+    if sys.platform.startswith("win"):
+        for candidate in (
+            r"C:\Program Files\Git\bin\bash.exe",
+            r"C:\Program Files\Git\usr\bin\bash.exe",
+        ):
+            if os.path.exists(candidate):
+                return candidate
+    return shutil.which("bash") or "bash"
+
+
+def test_classify_orient_is_inline_grok() -> None:
+    assert classify_offload_target("orient") == "InlineGrok"
+    assert classify_offload_target("continue") == "InlineGrok"
+    assert classify_offload_target("approve") == "InlineGrok"
+    assert classify_offload_target("nudge") == "InlineGrok"
+    assert classify_offload_target("triage") == "InlineGrok"
+
+
+def test_classify_code_is_cursor_cloud() -> None:
+    assert classify_offload_target("code") == "CursorCloud"
+    assert classify_offload_target("coding") == "CursorCloud"
+    assert classify_offload_target("pr") == "CursorCloud"
+    assert classify_offload_target("tests") == "CursorCloud"
+    assert classify_offload_target("docs-git") == "CursorCloud"
+    assert classify_offload_target("docs-in-git") == "CursorCloud"
+    assert classify_offload_target("large doc packs") == "CursorCloud"
+
+
+def test_classify_grill_is_openrouter_panel() -> None:
+    assert classify_offload_target("grill") == "OpenRouterPanel"
+    assert classify_offload_target("architecture") == "OpenRouterPanel"
+
+
+def test_classify_fleet_jobs_prefer_job_b() -> None:
+    assert classify_offload_target("fleet-job-b") == "InlineGrok"
+    assert classify_offload_target("fleet-job-b-short") == "InlineGrok"
+    assert classify_offload_target("fleet-job-b-long") == "CursorCloud"
+    assert classify_offload_target("fleet-job-a-short") == "InlineGrok"
+    assert classify_offload_target("fleet-job-a-long") == "CursorCloud"
+
+
+def test_classify_unknown_kind_raises() -> None:
+    try:
+        classify_offload_target("unknown-kind")
+    except ValueError as exc:
+        assert "unknown task kind" in str(exc)
+    else:
+        raise AssertionError("expected ValueError for unknown task kind")
+
+
+def test_freeze_thresholds() -> None:
+    assert grok_usage_freeze(80.0, 0.0) == "FREEZE"
+    assert grok_usage_freeze(100.0, 10.0) == "FREEZE"
+    assert grok_usage_freeze(10.0, 70.0) == "FREEZE"
+    assert grok_usage_freeze(79.9, 69.9) == "OPEN"
+
+
+def test_merged_smoke_paths_exist() -> None:
+    missing = [str(p) for p in REQUIRED_AFTER_MERGE if not p.is_file()]
+    assert missing == [], missing
+
+
+def test_enforce_docs_exist() -> None:
+    missing = [str(p) for p in REQUIRED_ENFORCE if not p.is_file()]
+    assert missing == [], missing
+
+
+def test_freeze_doc_has_rule_and_verbs() -> None:
+    text = (ROOT / "docs/internal/maios/GROK-USAGE-FREEZE.md").read_text(
+        encoding="utf-8"
+    )
+    assert "80" in text
+    assert "70" in text
+    assert "FREEZE" in text
+    assert "Force Grok:" in text
+    assert "Offload:" in text
+    assert "Cursor:" in text
+    assert "Panel:" in text
+    assert "Panel fleet:" in text
+    assert "poll-as-daemon" in text or "poll as daemon" in text
+    assert "MAIOS_PANEL_KILL=1" in text
+    assert "fifth keeper" in text.lower() or "BLOCK fifth keeper" in text
+    assert "Job B > Job A" in text
+    assert "spend-optimizer bot" in text.lower()
+
+
+def test_offload_doc_has_matrix_targets() -> None:
+    text = (ROOT / "docs/internal/maios/GROK-THIN-OFFLOAD.md").read_text(
+        encoding="utf-8"
+    )
+    assert "InlineGrok" in text
+    assert "CursorCloud" in text
+    assert "OpenRouterPanel" in text
+    assert "Offload:" in text
+    assert "Force Grok:" in text
+    assert "Job B > Job A" in text
+    assert "LANGFUSE-PANEL-TAGS.md" in text
+
+
+def test_spend_investigation_separates_meters() -> None:
+    text = (
+        ROOT / "docs/internal/maios/GROK-SPEND-INVESTIGATION-2026-09-14.md"
+    ).read_text(encoding="utf-8")
+    assert "Grok Bot weekly" in text
+    assert "Cursor Cloud" in text
+    assert "OpenRouter" in text
+    assert "Orchestration tax" in text
+    assert "Cursor-first" in text
+
+
+def test_model_routing_lists_verified_ids() -> None:
+    text = (ROOT / "docs/internal/maios/MODEL-ROUTING-BY-PURPOSE.md").read_text(
+        encoding="utf-8"
+    )
+    for model_id in VERIFIED_OPENROUTER_IDS:
+        assert model_id in text, model_id
+    assert "cannot change grok" in text.lower()
+    assert "not sor-controlled" in text.lower()
+    assert FLASH_ID in text
+    assert "max_tokens" in text
+    assert "24000" in text
+    assert "Cost ladder" in text
+    assert "Mechanical" in text
+    assert "Grok cheap" in text
+    assert "CURSOR-FIRST-OPS.md" in text
+
+
+def test_langfuse_panel_tags_required() -> None:
+    text = (ROOT / "docs/internal/maios/LANGFUSE-PANEL-TAGS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "maios.skill" in text
+    assert "openrouter-expert-panel" in text
+    assert "orch.mode" in text
+    assert "lite" in text
+    assert "fleet" in text
+    assert "models" in text
+    assert "offload" in text
+    assert "true" in text
+    assert "spend-optimizer bot" in text.lower()
+
+
+def test_cursor_first_ops_is_default_plane() -> None:
+    text = (ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Default plane" in text
+    assert "Cursor" in text
+    assert "Offload:" in text
+    assert "Force Grok:" in text
+    assert "poll-as-daemon" in text
+    assert "fifth keeper" in text.lower()
+    assert "Desktop leftovers" in text
+
+
+def test_adapters_map_surfaces() -> None:
+    text = (ROOT / "docs/internal/maios/ADAPTERS.md").read_text(encoding="utf-8")
+    assert "ops-shared-inventory" in text
+    assert "Langfuse" in text
+    assert "FLEET-BOARD.md" in text
+    assert "RICH" in text
+    assert "SLACK" in text
+    assert "CLI" in text
+    assert "sync daemon" in text.lower()
+    assert "LANGFUSE-PANEL-TAGS.md" in text
+
+
+def test_smoke_script_flash_id_and_no_key_echo() -> None:
+    script = ROOT / "scripts/smoke-openrouter-one.sh"
+    text = script.read_text(encoding="utf-8")
+    assert FLASH_ID in text
+    assert '"max_tokens": 64' in text
+    assert "MAIOS_PANEL_KILL" in text
+    assert "Authorization: Bearer ${OPENROUTER_API_KEY}" not in text
+    assert "echo \"$OPENROUTER_API_KEY\"" not in text
+    assert "echo $OPENROUTER_API_KEY" not in text
+    assert "print(os.environ[\"OPENROUTER_API_KEY\"])" not in text
+    result = subprocess.run(
+        [_bash(), "-n", str(script)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+    )
+    assert result.returncode == 0, result.stderr
+
+
+def test_smoke_honors_panel_kill() -> None:
+    script = ROOT / "scripts/smoke-openrouter-one.sh"
+    env = os.environ.copy()
+    env["MAIOS_PANEL_KILL"] = "1"
+    env.pop("OPENROUTER_API_KEY", None)
+    result = subprocess.run(
+        [_bash(), str(script)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert result.returncode == 1
+    assert "MAIOS_PANEL_KILL=1" in result.stderr
+
+
+def test_openrouter_route_honors_panel_kill() -> None:
+    script = ROOT / "scripts/ops/openrouter_route.py"
+    env = os.environ.copy()
+    env["MAIOS_PANEL_KILL"] = "1"
+    env.pop("OPENROUTER_API_KEY", None)
+    blocked = subprocess.run(
+        [sys.executable, str(script), "--route", "fast", "--prompt", "ping"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert blocked.returncode == 1
+    assert "MAIOS_PANEL_KILL=1" in (blocked.stderr + blocked.stdout)
+    listed = subprocess.run(
+        [sys.executable, str(script), "--list-routes"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert listed.returncode == 0, listed.stderr
+    assert "routes:" in listed.stdout
+    planned = subprocess.run(
+        [sys.executable, str(script), "--workflow", "pr-ready"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert planned.returncode == 0, planned.stderr
+    assert "workflow pr-ready:" in planned.stdout

@@ -2,7 +2,7 @@
 type: note
 status: active
 source: usage-freeze smoke 2026-09-14
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 owner: meshal
 ---
 

@@ -59,15 +59,22 @@ def _load_json(raw):
         return {}
 
 
+def _read_body(reader):
+    try:
+        return reader.read()
+    except http.client.HTTPException:
+        return b""
+
+
 status = 0
 payload = {}
 try:
     with urllib.request.urlopen(req, timeout=60) as resp:
         status = int(resp.status)
-        payload = _load_json(resp.read())
+        payload = _load_json(_read_body(resp))
 except urllib.error.HTTPError as exc:
     status = int(exc.code)
-    payload = _load_json(exc.read())
+    payload = _load_json(_read_body(exc))
 except (
     OSError,
     TimeoutError,

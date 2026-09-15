@@ -21,6 +21,9 @@ REQUIRED_ENFORCE = (
     ROOT / "docs/internal/maios/GROK-THIN-OFFLOAD.md",
     ROOT / "docs/internal/maios/GROK-SPEND-INVESTIGATION-2026-09-14.md",
     ROOT / "docs/internal/maios/MODEL-ROUTING-BY-PURPOSE.md",
+    ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md",
+    ROOT / "docs/internal/maios/ADAPTERS.md",
+    ROOT / "docs/internal/maios/LANGFUSE-PANEL-TAGS.md",
 )
 
 FLASH_ID = "google/gemini-3.8-flash"
@@ -173,6 +176,41 @@ def test_model_routing_lists_verified_ids() -> None:
     assert FLASH_ID in text
     assert "max_tokens" in text
     assert "24000" in text
+    assert "cost ladder" in text.lower() or "If mechanical" in text
+    assert "Never use fleet" in text or "never use fleet" in text.lower()
+
+
+def test_cursor_first_ops_rule() -> None:
+    text = (ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "two tool rounds" in text
+    assert "Cursor" in text
+    assert "poll-as-daemon" in text or "poll as daemon" in text
+    assert "Force Grok:" in text
+    assert "Offload:" in text
+
+
+def test_adapters_inventory_and_checklists() -> None:
+    text = (ROOT / "docs/internal/maios/ADAPTERS.md").read_text(encoding="utf-8")
+    assert "docs/internal/maios" in text
+    assert "ops-shared-inventory" in text
+    assert "Langfuse" in text
+    assert "Cursor sync checklist" in text
+    assert "Intake mirror checklist" in text
+    assert "test_grok_thin_freeze_paths.py" in text
+
+
+def test_langfuse_panel_tags_contract() -> None:
+    text = (ROOT / "docs/internal/maios/LANGFUSE-PANEL-TAGS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "maios.skill" in text
+    assert "openrouter-expert-panel" in text
+    assert "orch.mode" in text
+    assert "maios.offload" in text
+    assert "lite" in text
+    assert "fleet" in text
 
 
 def test_smoke_script_flash_id_and_no_key_echo() -> None:

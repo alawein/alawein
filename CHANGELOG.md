@@ -46,6 +46,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Document Grok usage freeze, spend investigation, and OpenRouter model
   routing by purpose for MAIOS Intake (`docs/internal/maios/`).
+- Cursor-first ops, adapter sync checklists, and Langfuse panel tag contract
+  under `docs/internal/maios/`.
 - Public-safe provider review, access coverage, repository responsibility, and
   trigger review documentation under [`docs/operations/`](docs/operations/).
 - [`docs/internal/audits/2026-08-28-public-benchmark-patterns.md`](docs/internal/audits/2026-08-28-public-benchmark-patterns.md): benchmark study behind the P0 README checklist.

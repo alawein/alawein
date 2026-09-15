@@ -130,7 +130,6 @@ bash -n scripts/smoke-openrouter-one.sh
 if [ -n "${OPENROUTER_API_KEY:-}" ]; then
   bash scripts/smoke-openrouter-one.sh
 else
-  echo 'BLOCK: OPENROUTER_API_KEY missing in cloud VM (expected)' >&2
-  exit 1
+  echo 'BLOCK: OPENROUTER_API_KEY missing in cloud VM (expected)'
 fi
 ```

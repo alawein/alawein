@@ -41,7 +41,20 @@ call 404s. Do not invent ids.
 
 **Ping/smoke:** `google/gemini-3.8-flash` only
 
-**Fleet 7:** all seven ids above
+**Fleet 7:** lite + `deepseek/deepseek-v4-pro-0813` + `google/gemini-3.8-flash`
+
+## Cost ladder
+
+**Ping / mechanical OpenRouter:** `google/gemini-3.8-flash`
+**Lite panel (5):** Kimi K3 · Claude Opus 5 · GPT-6 Astra Pro · GLM 5.3 · Qwen3.8 Max
+**Fleet (7):** lite + `deepseek/deepseek-v4-pro-0813` + flash
+**Grok Bot:** underlying chat model is not SoR-controlled. Cheap Grok means
+behavioral: short turns, no executors, no panel dumps, mechanical work
+offloaded to Cursor.
+
+Explicit rule: **If mechanical → Cursor (or flash ping). If
+judgment/architecture → lite panel or Grok triage. Never use fleet/Opus for
+renames, INDEX regen, smoke syntax, or receipt stamps.**
 
 **Reasoning models (panel callers):** `max_tokens >= 24000`; retry once on
 empty content. Manual / `openrouter-expert-panel` only.

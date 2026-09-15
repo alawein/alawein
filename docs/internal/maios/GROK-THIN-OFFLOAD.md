@@ -33,8 +33,9 @@ keeper.
 
 ## Freeze
 
-See `GROK-USAGE-FREEZE.md`. During FREEZE, Intake triages and dispatches.
-Do not poll-as-daemon.
+See `GROK-USAGE-FREEZE.md` and `CURSOR-FIRST-OPS.md`. During FREEZE, Intake
+triages and dispatches. Do not poll-as-daemon. Multi-step work defaults to
+Cursor.
 
 ## Guardrails
 

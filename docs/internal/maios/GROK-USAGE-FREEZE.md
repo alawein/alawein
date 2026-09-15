@@ -36,6 +36,8 @@ Keep:
 - Intake Orient / Continue / Approve-gate triage (soft, short)
 - Dispatch via operator verbs to Cursor or OpenRouter
 - One Job B short fleet triage unless Meshal says `Force Grok:`
+- Cursor-first for any task needing more than two tool rounds (`CURSOR-FIRST-OPS.md`)
+- OpenRouter panels return synthesis-only (<=20 lines) to Grok. Never dump raw 5x replies.
 
 Job A full desktop inventory: max 1x per calendar day unless `Force Grok:`.
 If the scan would take more than 15 minutes of Grok tools, send `Cursor:`

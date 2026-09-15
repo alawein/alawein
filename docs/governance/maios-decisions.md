@@ -11,7 +11,15 @@ last_updated: 2026-09-15
 tags: [maios, grok-bot, personal-ops]
 ---
 # DECISIONS — do not re-litigate
-**Updated:** 2026-09-15 PT (consolidation human-call bundle; #302/#303 on main) - Append-only.
+**Updated:** 2026-09-15 PT (F001 rotation accepted; consolidation human-call bundle; #302/#303 on main) - Append-only.
+
+## 2026-09-15 - F001 Supabase credential rotation (LOCKED)
+
+- **DECISION/APPLY:** Meshal `Approve: rotate supabase credentials F001` plus standing Accept-all for remaining audit-cleanup gates in the same Cursor session.
+- **DONE:** menax + kohyr restored ACTIVE; standby ECC created; JWT-based legacy API keys disabled; Legacy HS256 revoked on both; leaked PATs deleted by name; GitHub secret-scanning alerts #1 and #2 `state=resolved` `resolution=revoked`.
+- **ADR:** `docs/governance/adr/ADR-20260915-08-secret-exposure-rotation.md` (accepted; supersedes ADR-20260915-07).
+- **BOUND:** History purge NOT DONE (separate approval). No visibility flip. No secret values in git/chat. Kept account tokens by name only: vscode-mcp-maios-2026-09-07, kohyr-wip, supabase-github.
+- **EVIDENCE:** `docs/superpowers/plans/2026-09-15-audit-batch-e-evidence.md` §F001.
 
 ## 2026-09-15 - Consolidation human-call bundle (LOCKED)
 

@@ -12,7 +12,8 @@ owner: meshal
 The chat and status reply contract was labeled by an ad hoc letter sequence,
 rev a through rev g. The label appears in `prompt-kits/AGENT.md`, in
 `.cursor/rules/maios-reply-style.mdc`, in `docs/governance/slack-agent-voice.md`,
-and on the laptop mirror `Desktop/ops-shared-inventory/RESPONSE-STYLE.md`.
+in `docs/style/maios-reply-style-portable.md`, and on the laptop mirror
+`Desktop/ops-shared-inventory/RESPONSE-STYLE.md`.
 
 Letters do not sort, do not diff, and carry no surface or owner information.
 On 2026-09-14 a full contract body labeled "rev g, Slack edition" was pasted
@@ -54,7 +55,8 @@ receipts.
 2. Update `.cursor/rules/maios-reply-style.mdc` to cite the kit version and the
    contract identifier, and to state that git canon wins over the laptop mirror.
 3. Update the live pointer line in `docs/governance/slack-agent-voice.md`.
-4. Re-header the laptop mirror to match. Operator action, outside git.
+4. Align `docs/style/maios-reply-style-portable.md` with the contract identifier.
+5. Re-header the laptop mirror to match. Operator action, outside git.
 
 ## Acceptance
 

@@ -1,0 +1,17 @@
+name: alawein-station-control-plane
+
+paths:
+  - scripts
+  - tools
+  - catalog
+  - config
+  - schemas
+  - tests
+
+paths-ignore:
+  - docs
+  - prompt-kits
+  - templates
+  - platforms
+  - organizations
+  - packages

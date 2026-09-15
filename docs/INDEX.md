@@ -29,6 +29,7 @@ last_updated: 2026-09-15
 - [0006-worktree-fanout-substrate.md](adr/0006-worktree-fanout-substrate.md)
 - [0007-research-lane-evidence-gate.md](adr/0007-research-lane-evidence-gate.md)
 - [0008-workflow-pin-targets-tagged-release.md](adr/0008-workflow-pin-targets-tagged-release.md)
+- [0009-reply-format-semantic-naming.md](adr/0009-reply-format-semantic-naming.md)
 
 ## archive/
 

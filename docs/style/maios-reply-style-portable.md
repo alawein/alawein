@@ -12,9 +12,9 @@ last_updated: 2026-09-15
 last-verified: 2026-09-15
 ---
 
-# MAIOS Reply Contract (portable, rev g)
+# MAIOS Reply Contract (portable, maios-reply-format@1.0.0)
 
-Self-sufficient. No Desktop file lookup required for cloud assistants.
+Git canon: `prompt-kits/AGENT.md` 1.9.0. Self-sufficient for cloud assistants without a Desktop mirror lookup.
 
 ## Lead
 One line: Ready | Waiting | Blocked.

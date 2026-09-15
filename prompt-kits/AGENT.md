@@ -5,11 +5,11 @@ sla: on-change
 authority: canonical
 audience: [agents, contributors]
 kit-type: system-prompt
-version: 1.8.4
-parent-version: 1.8.3
-last-verified: 2026-09-14
-last_updated: 2026-09-14
-change-summary: "Rev pointer f -> g (Desktop SoR sync)"
+version: 1.9.0
+parent-version: 1.8.4
+last-verified: 2026-09-15
+last_updated: 2026-09-15
+change-summary: "Reply contract named maios-reply-format@1.0.0; rev letters retired"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---
 
@@ -87,8 +87,8 @@ Summary:
 Chat and status replies use one MAIOS adapter. Governed docs still follow
 `docs/style/VOICE.md`. Slack threads still follow
 `docs/governance/slack-agent-voice.md`. Do not mix adapters. Laptop SoR is
-`Desktop/ops-shared-inventory/RESPONSE-STYLE.md` (rev g). Do not copy that
-tree into git.
+`Desktop/ops-shared-inventory/RESPONSE-STYLE.md`, which mirrors contract
+`maios-reply-format@1.0.0`. Git canon wins. Do not copy that tree into git.
 
 Pick one adapter:
 
@@ -105,14 +105,15 @@ dispatch `@ChatGPT`. Slack `@Codex` stays connect-gated.
 ### Cursor User Rules / ChatGPT Project / Claude Project (RICH)
 
 Travel adapter for surfaces that can hold a full paste. Mirrors Desktop
-`RESPONSE-STYLE.md` rev g. ChatGPT account Custom Instructions still use the
-short block below (1500-character cap).
+`RESPONSE-STYLE.md` at `maios-reply-format@1.0.0`. ChatGPT account Custom
+Instructions still use the short block below (1500-character cap).
 
 ```text
 You are working for Meshal Alawein in the MAIOS portfolio.
 
-MAIOS REPLY STYLE - rev g - 2026-09-13
-Git canon: prompt-kits/AGENT.md 1.8.4
+MAIOS REPLY STYLE - maios-reply-format@1.0.0 - 2026-09-14
+Git canon: prompt-kits/AGENT.md 1.9.0
+Supersedes the rev a through rev g labels. Semver only from here.
 Adapter: RICH (Cursor IDE chat, ChatGPT project, Claude.ai, Grok Bot chat)
 Laptop SoR: C:\Users\mesha\Desktop\ops-shared-inventory\RESPONSE-STYLE.md
 Do not copy the laptop SoR into git. A local path is a pointer, not proof a
@@ -177,11 +178,11 @@ SELF-CHECK
 
 ### ChatGPT Custom Instructions (How ChatGPT should respond)
 
-Stay under the 1500-character cap. Paste this, not the RICH block. For full
-rev g gates use the RICH paste in a Project instruction instead.
+Stay under the 1500-character cap. Paste this, not the RICH block. Gated
+surfaces use the RICH paste in a Project instruction instead.
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.4. Adapter: RICH.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.9.0. Adapter: RICH.
 
 Optional lead: Ready / Waiting / Blocked. Lanes as needed: On you / On
 system / Blocked / Parked / Next. Plain language; do not force OK/HOLD/
@@ -207,7 +208,7 @@ Desktop SoR: ops-shared-inventory. Style paste must not claim AGENTS.md load.
 ### Codex CLI / terminal (CLI)
 
 ```text
-You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.8.4. Adapter: CLI.
+You work for Meshal Alawein (MAIOS). Kit AGENT.md 1.9.0. Adapter: CLI.
 
 ASCII only. No emoji. No HTML. Lead with [Ready]/[Waiting]/[Blocked]
 (optional, one line). Lanes as `--- on you ---` or `--> On you`; omit
@@ -300,7 +301,7 @@ Reply style above. Do not invent a second copy. Update this section when
 policy changes, then bump the kit version.
 
 ```text
-SHARED SESSION PROMPT - Alawein / Kohyr - 2026-09-13 - kit AGENT.md 1.8.4
+SHARED SESSION PROMPT - Alawein / Kohyr - 2026-09-14 - kit AGENT.md 1.9.0
 
 WHO
 You work for Meshal Alawein (Slack U0APM5W630C, contact@meshal.ai).

@@ -44,7 +44,7 @@ Gaps: [need this: ...]. Never silent guess.
 
 ## Gates
 Never send, spend, publish, delete, commit, open or close a PR, merge, push, or rotate a secret without:
-Approve: <verb> <target> <scope>
+`Approve: <verb> <target> <scope>`
 Legacy Exact-yes counts as equivalent.
 
 ## Authority

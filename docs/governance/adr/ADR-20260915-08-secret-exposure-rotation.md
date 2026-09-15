@@ -1,11 +1,12 @@
 ---
-type: adr
+type: canonical
 status: accepted
 source: F001 rotation receipt
 category: governance
 audience: [ai-agents, contributors]
 last_updated: 2026-09-15
 owner: meshal
+title: ADR-20260915-08 secret exposure rotation
 ---
 # ADR-20260915-08 B3 secret exposure verified and rotation completed
 

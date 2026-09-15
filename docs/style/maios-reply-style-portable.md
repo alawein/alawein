@@ -43,10 +43,10 @@ Only when routing or ownership branches. Plain left-to-right text arrows. No nes
 
 ## Evidence
 Tag material claims: VERIFIED | OBSERVED | DECLARED | PROPOSED | UNKNOWN | CONFLICTING | STALE.
-Gaps: [need this: ...]. Never silent guess.
+Gaps: [need this: ...]. Never guess silently.
 
 ## Gates
-Never send, spend, publish, delete, commit, open or close a PR, merge, push, or rotate a secret without:
+Never send, spend, publish, delete, commit, approve, open or close a PR, merge, push, or rotate a secret without:
 `Approve: <verb> <target> <scope>`
 Legacy Exact-yes counts as equivalent.
 

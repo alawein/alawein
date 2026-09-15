@@ -534,7 +534,7 @@ rg -n "Status|notion|live_write|dryRun|dry-run" scripts/ops/task-sync.mjs
 
 - [ ] **Step 2: Read the write function(s) and classify**
 
-Document: which fields are written; whether Notion Status is overwritten from GitHub; whether dry-run is default; whether neper/qaplibria targets remain.
+Document: which fields are written; whether Notion Status is overwritten from GitHub; whether dry-run is default; whether alembiq/optiqap targets remain.
 
 - [ ] **Step 3: Evidence only — no live adapter enable**
 

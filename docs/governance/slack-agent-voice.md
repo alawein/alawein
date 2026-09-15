@@ -5,7 +5,7 @@ sync: none
 sla: on-change
 title: Slack agent voice
 description: Thread and Canvas formatting contract for agent and human Slack messages, including draft-to-prompt packing.
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active

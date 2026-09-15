@@ -7,8 +7,8 @@ audience: [agents, contributors]
 kit-type: system-prompt
 version: 1.9.0
 parent-version: 1.8.4
-last-verified: 2026-09-14
-last_updated: 2026-09-14
+last-verified: 2026-09-15
+last_updated: 2026-09-15
 change-summary: "Reply contract named maios-reply-format@1.0.0; rev letters retired"
 downstream-consumers: [all-repos, meshal-web, workspace-tools, atelier-rounaq]
 ---

@@ -75,6 +75,9 @@
     },
     {
       "id": "kilo-slack"
+    },
+    {
+      "id": "slackbot-ai"
     }
   ],
   "integrations": [

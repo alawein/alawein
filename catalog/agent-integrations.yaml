@@ -162,6 +162,30 @@ agents:
       2026-09-12: 0 posts after 2026-09-08. GitHub App repos are not
       readable from this Cloud GitHub token (404 / search 422).
     last_verified: 2026-09-12
+  - id: slackbot-ai
+    display_name: Slackbot
+    surfaces: [slack]
+    slack_handle: Slackbot
+    slack_user_id: USLACKBOT
+    llm_default: slack-native
+    dispatch_roles: [slack-dm-companion]
+    status: ready
+    notes: >
+      Slack 1:1 AI companion for Meshal only. Cannot join channels or
+      group DMs. Not a notify app. Not Cursor Slack Tools. Not the five
+      workflow bots. Meshal DM 2026-09-15: memory empty; five skills
+      configured and not run that chat (MAIOS Agent Inventory Audit,
+      MAIOS Weekly Ops Sweep, MAIOS Status Digest, MAIOS Control Tower,
+      GitHub PR Review Digest). MAIOS skill names are naming drift
+      versus "do not name a bot MAIOS"; they are skills, not a bot.
+      Slackbot MCP Linear, Vercel, and Figma DECLARED inactive. Do not
+      collapse with Slack apps or Cursor MCP. Search IDs proved for
+      #all-alawein-workspace, #social, #posts only; other public
+      channels seen in message text. Morning Brief: Notion sole writer;
+      #posts pointer-only. Talk in plain DMs. Do not send role-override
+      packs. Do not let Slackbot write a second inventory canvas.
+      Web search off. Do not dispatch from #admin-ops.
+    last_verified: 2026-09-15
 
 workflow_bots:
   - id: daily-agenda

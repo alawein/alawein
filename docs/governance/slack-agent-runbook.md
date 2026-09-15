@@ -9,7 +9,7 @@ last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.8
+version: 1.5.9
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -103,8 +103,9 @@ only who must act.
 
 Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,
 Monday Kickoff, Weekly Content Planner, `@ChatGPT` (`U0BUNH33CCA`,
-replaced). Do not tag `@Linear`, `@GitHub`, or other notify apps for
-tasks.
+replaced), Slackbot (`USLACKBOT`). Do not tag `@Linear`, `@GitHub`, or
+other notify apps for tasks. Slackbot is a 1:1 DM companion. See
+catalog `slackbot-ai`.
 
 ### 1.5 Installed Slack apps (locked v1)
 
@@ -123,7 +124,12 @@ Workflow bots: Daily Agenda `U0B9RSFC8K0`, Daily Briefing
 Notify apps (DM-proved 2026-09-14): Linear `U0C0NB35XGQ` (FLAG Linear
 write via `/linear`), Google Calendar `U0APPR5F0LT`, Google Drive
 `U0AQ949HSDP`, Fireflies `U0BA7DDAG1K` / `B0BA8NTJAR4`, Graphite,
-Langfuse, Vercel, Figma, Docusign, Dropbox, Zoom, Slackbot.
+Langfuse, Vercel, Figma, Docusign, Dropbox, Zoom.
+
+Slackbot AI (`USLACKBOT`, catalog `slackbot-ai`): 1:1 DM companion.
+Cannot join channels. Not a notify app. Slackbot MCP Linear, Vercel,
+and Figma were inactive on 2026-09-15. Do not collapse with Cursor
+MCP or the Slack apps of the same names.
 
 Working pointers: chat scan `F0C16U6USJ0`, lane inventory
 `F0C0KEF150C`, scopes `F0C15AVM0FR`. Git wins.
@@ -349,6 +355,12 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.9 (2026-09-15)
+
+- Recorded Slackbot AI (`USLACKBOT`) as catalog `slackbot-ai`. 1:1 DM
+  companion. Five configured skills. Slackbot MCP Linear, Vercel, and
+  Figma inactive. Split from notify-app Slackbot mentions.
 
 ### v1.5.8 (2026-09-15)
 

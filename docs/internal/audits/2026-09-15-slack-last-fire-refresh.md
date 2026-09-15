@@ -40,6 +40,14 @@ invite. Desktop Slack MCP stays UNVERIFIED.
 | Cloud third-party Slack | ready, redundant. Used for members and search |
 | Desktop Slack MCP | UNVERIFIED. Last DECLARED 7/7 on 2026-09-05 |
 
+## Slackbot AI (added 2026-09-15)
+
+Meshal exact yes: `Approve: add slackbot-ai row to catalog`. Row lives
+in `catalog/agent-integrations.yaml`. Slackbot DECLARED: 1:1 only,
+memory empty, five skills, Linear/Vercel/Figma MCP inactive, Notion
+Morning Brief, search IDs for three channels. Cloud listed 9 public
+channels. Do not collapse Slackbot MCP with Cursor MCP.
+
 ## Still GAP
 
 - Desktop Slack MCP cannot be probed from Cloud.

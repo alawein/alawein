@@ -78,6 +78,13 @@ Do **not** dismiss alerts under current-tree prefixes:
 
 Open total fell faster than dismiss-only math (1541 − 1409 ≈ 132 expected vs 51 observed). Likely concurrent auto-close / other dismissals; no secrets inspected or recorded.
 
+## Final verify (same day, follow-on)
+
+| Metric | Count |
+|--------|------:|
+| Remaining open | **0** |
+| Method | Additional missing-on-disk dismiss (all remaining paths absent from live tree, including historic `scripts/testing/*`) |
+
 ## F003 Actions snapshot (verify after parent may have changed settings)
 
 **Before (declared for F003):**
@@ -86,7 +93,7 @@ Open total fell faster than dismiss-only math (1541 − 1409 ≈ 132 expected vs
 |---------|-------|
 | allowed_actions | all |
 | sha_pinning_required | false |
-| default_workflow_permissions | read |
+| default_workflow_permissions | write |
 | can_approve_pull_request_reviews | true |
 
 **After (verified this session via `gh api`):**
@@ -98,6 +105,6 @@ Open total fell faster than dismiss-only math (1541 − 1409 ≈ 132 expected vs
 | sha_pinning_required | true |
 | default_workflow_permissions | read |
 | can_approve_pull_request_reviews | true |
-| selected patterns | `actions/*`, `github/*`, `aquasecurity/*`, `gitleaks/*`, `trufflesecurity/*`, `hashicorp/*` + github_owned + verified |
+| selected patterns | `actions/*`, `github/*`, `aquasecurity/*`, `gitleaks/*`, `trufflesecurity/*`, `hashicorp/*`, `peter-evans/*`, `anthropics/*`, `pnpm/*` + github_owned + verified |
 
 Canonical F003 write-up: `docs/superpowers/plans/2026-09-15-audit-f003-actions.md`

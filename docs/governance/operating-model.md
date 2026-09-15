@@ -10,7 +10,7 @@ audience: contributors
 status: active
 author: Kohyr Inc.
 version: 1.3.0
-last_updated: 2026-09-10
+last_updated: 2026-09-15
 tags: [governance, operating-model, workflow, navigation]
 ---
 
@@ -139,6 +139,20 @@ does not extend its own authority.
 Use the existing batch manifest for multi-repo work. Preserve repository-specific
 exceptions and current communication rules. Handoffs give changes, evidence,
 blockers, and one next action, with the revision and assigned paths.
+
+### Personal MAIOS surfaces (Grok Bot)
+
+The alawein delivery model above is separate from the personal MAIOS / Grok Bot
+control plane documented under [maios-charter.md](maios-charter.md). Scheme A
+roles there: Intake (sole ordinary inbox), Policy (governance), Cleanup (local
+hygiene), Editorial (nonblocking QC). Only the Notion Custom Agent writes the
+Morning Brief. Live Grok Bot profiles, routines, and memory stay Grok-owned;
+coding tools may prepare changes but must not edit Grok-native writer state.
+
+Hand-maintained mirrors (documents, not live tool config):
+[maios-agents.yaml](maios-agents.yaml), [maios-connectors.yaml](maios-connectors.yaml),
+[maios-routines.yaml](maios-routines.yaml), [maios-workflows.yaml](maios-workflows.yaml).
+Role boundaries: [maios-role-card.md](maios-role-card.md).
 
 ## Maintenance
 

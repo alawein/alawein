@@ -1,0 +1,73 @@
+schema_version: 1
+verified_at: "2026-09-09 ~14:40 PT"
+maios_surface_boundaries: >
+  Notion Custom Agent = sole Morning Brief writer under MAIOS; Intake RO auditor only.
+  Slack #posts = pointer-only (SLACK-POINTER-CHECK-2026-09-06.md). Media deferred.
+  No current live result is recorded; require live readback before PASS/FAIL.
+workflows:
+  - id: weekday-morning-brief
+    name: Weekday Morning Brief sole-writer path
+    status: UNKNOWN
+    runtime_result: UNKNOWN
+    evidence_basis: "September 6 Desktop records; no new live verification"
+    maios: "Notion Custom Agent sole writer; Intake RO auditor only"
+    steps:
+      - "08:00 PT Notion Custom Agent writes Ops Run Morning Brief"
+      - "08:05 PT Intake auditor READ-ONLY"
+      - "08:15 PT weekday-brief-observation (Intake) — quiet unless anomaly"
+      - "09:00 PT Slack #posts pointer-only"
+    proof_scheduled_for: "2026-09-07"
+    proof_result: UNKNOWN
+    do_not: "Invent results early; dual Brief writer; Grok Brief writes; second Brief body in Slack"
+  - id: mon-sole-writer-proof
+    status: UNKNOWN
+    owner_card: post-stabilization-2026-09-05/observation/MONDAY-OPERATOR-CARD.md
+    owner_agent: Intake
+  - id: observation-sep-8-19
+    status: ACTIVE
+    scheduled_from: "2026-09-08"
+    through: "2026-09-19"
+    notes: "Current observation window is active; a September 6 record said it started early. Quiet unless anomaly. Monday proof remains independent."
+  - id: integrator-hide
+    status: UNKNOWN
+    historical_hide_reported: "2026-09-06"
+    earliest_sunset: "2026-10-03"
+    notes: "Conflicting records: September 6 says hidden; supplied AGENTS says handoffs until September 19; September 12 quiet/park says do not hide/delete early and sunset no earlier than October 3. Native owner readback is required. No hide/delete action is authorized; Q-INT exact yes remains required."
+  - id: private-pack-publish
+    name: Private control-plane pattern pack (historical)
+    status: HISTORICAL
+    classification: SUPERSEDED
+    url: https://github.com/alawein/ops-control-plane-grok
+    owner: none (repo ARCHIVED 2026-09-09)
+    write_target: tombstone link only; Desktop SSOT + gh/Github MCP for GitHub
+    notes: "Target repo archived. Was private pack PR #1 on main. Do NOT reactivate. Do NOT nag Meshal for PAT/OpenRouter keys — use existing GitHub connector/MCP or other already-auth paths."
+  - id: agent-os-control-plane
+    name: Agent OS / control plane runtime (historical)
+    status: HISTORICAL
+    classification: SUPERSEDED
+    owner: Desktop ops-shared-inventory (replaces box pack SoR)
+    superseded_path: ops-control-plane-grok-private/control-plane/
+    pack_path: control-plane/
+    notes: "Box path disposable; Desktop SSOT wins per Task 7 map. Intake sole front door; Policy governance. Friday PR OFF per September 6 record; Alfred schedules remain ON."
+  - id: prompt-adaptation
+    name: Raw request to target-specific prompt
+    status: UNKNOWN
+    owner: Intake
+    engine: prompty
+    entry: scripts/prompts/optimize.ps1
+    output:
+      - optimized_prompt
+      - transformation_explanation
+    clarification_exit_code: 2
+    activation: HOLD_PENDING_PROMPTY_BRANCH_INTEGRATION
+    test_basis: feature_worktree_validate_only
+    do_not: "Add assumptions, credentials, MCPs, provider defaults, or a durable router"
+exact_yes_queue:
+  - "Naming finalize (Name+Description): APPLIED in Grok Bot 2026-09-06 night PT; Windows SSOT synced same night and attested 2026-09-07. Do not re-apply blindly."
+  - "Permanent sidebar Deletes: Meshal only + GROK-DELETE-PROOF; TEMP 2afea7ed…, 0a1d0735…, d5fb3dcc… (9f620b76… GONE)."
+  - "Friday PR activation: exact yes required; keep OFF."
+  - "Any new durable bot or Grok group chat: exact yes required; none recommended. Stage 1 teams = logical lanes + skills."
+  - "Mon 2026-09-07 sole-writer proof: result UNKNOWN; no current live result is recorded."
+skill_embed_note: >
+  Deprecated shells map to shared skills run via Intake (see BOTS-SKILLS-TEAMS-CANON §3–4 and agents.yaml skill_ids).
+  Do not resurrect bots for Fleet Ops, Site Audit, PIST, Clip, or Video.

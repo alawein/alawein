@@ -1,0 +1,56 @@
+schema_version: 1
+verified_at: "2026-09-09T20:30:00Z"
+timezone: America/Los_Angeles
+source_of_truth: disk automations
+# Phase B 2026-09-09: declare sticky + research to match live Intake automations; owner labels Intake (Scheme A).
+# Live Atlas read-back GROK-DELETE-PROOF 2026-09-07T03:01:43 PDT: MATCH for three Brief routines (historical note).
+routines:
+  - id: monday-sole-writer-proof
+    owner: Intake
+    schedule: "5 8 * * 1"
+    enabled: true
+    notes: "Staggered 2026-09-07: sole-writer stays :05; auditor moved to :10 to avoid Monday race. Owner label Intake (historical Atlas)."
+  - id: weekday-brief-observation
+    owner: Intake
+    schedule: "15 8 * * 1-5"
+    enabled: true
+    notes: "Owner label Intake (historical Atlas)."
+  - id: morning-brief-auditor
+    owner: Intake
+    schedule: "10 8 * * 1-5"
+    enabled: true
+    class: READ_ONLY
+    notes: "Rehomed from Integrator 2026-09-06. Schedule :10 (was :05) so Monday does not collide with monday-sole-writer-proof. Owner label Intake (historical Atlas)."
+  - id: sticky-board-weekly-prune
+    owner: Intake
+    schedule: "0 9 * * 5"
+    enabled: true
+    notes: "HOLD never-run until first success. Live automation enabled true (Fri 09:00 PT); do not clear HOLD; do not change live enable flag."
+  - id: research-stack-health
+    owner: Intake
+    schedule: "0 10 * * 1"
+    enabled: true
+    notes: "HOLD never-run until first success. Live automation enabled true (Mon 10:00 PT); do not clear HOLD; do not change live enable flag."
+  - id: friday-pr-hygiene
+    owner: Integrator
+    schedule: "0 9 * * 5"
+    enabled: false
+  - id: integrator-sunset-hide-reminder
+    owner: Integrator
+    enabled: false
+    notes: "Disabled - Integrator already hidden"
+  - id: alfred-weekly-review
+    owner: Alfred
+    enabled: false
+  - id: alfred-monthly-portfolio
+    owner: Alfred
+    enabled: false
+  - id: alfred-quarterly
+    owner: Alfred
+    enabled: false
+  - id: weekly-desktop-downloads-declutter
+    owner: Housekeeper
+    enabled: true
+  - id: midweek-temp-and-scratch-sweep
+    owner: Housekeeper
+    enabled: true

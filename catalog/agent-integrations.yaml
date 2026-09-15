@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-15T03:20:00Z'
+lastVerified: '2026-09-15T04:30:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -15,6 +15,34 @@ note: >
   row says otherwise. Desktop column still UNVERIFIED. Prior rescans:
   2026-09-14, 2026-09-13, 2026-09-12, 2026-09-06, 2026-09-05. CI drift
   check: python3 scripts/catalog/validate-agent-integrations.py --strict.
+  2026-09-19 gate: authorized 2026-09-15 in Slackbot DM; not executed.
+  Kit SoR is prompt-kits/AGENT.md 1.8.4. Slackbot canvas 1.9.0 is STALE.
+  No inventory canvas. No #admin-ops post. No Claude ping.
+
+gate_2026_09_19:
+  lifecycle: authorized
+  authorized_at: '2026-09-15'
+  authorized_by: Meshal Alawein
+  execute_on: '2026-09-19'
+  owner: Meshal Alawein
+  executor: Meshal Slack UI
+  evidence: Slackbot DM authorization forwarded to Cursor Cloud bc-28323697
+  kit_sor: prompt-kits/AGENT.md 1.8.4
+  slackbot_canvas_190: stale
+  inventory_canvas: none
+  admin_ops_post: none
+  claude_ping: none
+  actions:
+    - disable five workflow bots; do not delete
+    - invite Cursor to me-agents-eng C0BVDBHLXQB
+    - invite Claude then Computer to me-agents-ops C0BVDBHPB99
+    - create me-inbox
+  parked:
+    - no rename
+    - posts C0APWF615H7 stays
+    - content-pipeline C0B9R0NS4QJ stays
+    - kohyr-dev C0B9JJZSVQT unchanged pending Meshal
+    - job-search C0B9NTUUGR4 unchanged pending Meshal
 
 account_canon: contact@meshal.ai
 employer_isolation:
@@ -45,7 +73,8 @@ agents:
       Slack. Re-proved 2026-09-13 (run bc-467116d0): listed 9, readable 7.
       `#me-agents-eng` and `#me-agents-ops` listed; read BLOCKED (bot
       not a member). Live members 2026-09-14: those two channels are
-      Meshal plus `@Notion AI` only. Invite `@Cursor` still pending.
+      Meshal plus `@Notion AI` only. Invite `@Cursor` authorized
+      2026-09-15; execute 2026-09-19.
       Slack user search: Grok 0, Hermes 0. No Gmail Slack app.
       Re-proved 2026-09-15 (run bc-28323697): listed 9, readable 7.
       `#me-agents-*` still read BLOCKED. 7/7 vs 3/7 is dated: 3/7 was
@@ -61,8 +90,10 @@ agents:
     slack_user_id: U0AQQFJT8AC
     notes: >
       Legacy Slack bot; Claude Tag not enabled. Migration runbook:
-      docs/governance/claude-tag-migration.md. Target lane after migration:
+      docs/governance/claude-tag-migration.md.       Target lane after migration:
       #me-agents-ops (see slack-channel-migration-plan.md).
+      Invite to #me-agents-ops authorized 2026-09-15; execute
+      2026-09-19, before Computer.
     last_verified: 2026-09-06
   - id: claude-code
     display_name: Claude Code
@@ -85,7 +116,9 @@ agents:
       C0APWF615H7; account contact@meshal.ai. Cloud-only browser and
       GUI. No catalog edits. No git write. The earlier "GitHub write
       via gh" note was Cursor evidence, not Computer. Stale 2026-09-05
-      needs_auth / not-in-#posts notes dropped.
+      needs_auth / not-in-#posts notes dropped. Invite to
+      #me-agents-ops authorized 2026-09-15; execute 2026-09-19,
+      after Claude.
     last_verified: 2026-09-07
   - id: chatgpt-slack
     display_name: ChatGPT
@@ -182,9 +215,11 @@ agents:
       collapse with Slack apps or Cursor MCP. Search IDs proved for
       #all-alawein-workspace, #social, #posts only; other public
       channels seen in message text. Morning Brief: Notion sole writer;
-      #posts pointer-only. Talk in plain DMs. Do not send role-override
+      #posts pointer-only.       Talk in plain DMs. Do not send role-override
       packs. Do not let Slackbot write a second inventory canvas.
       Web search off. Do not dispatch from #admin-ops.
+      2026-09-15: Meshal authorized the 09-19 four-click set in this
+      DM. Plan stays in Slackbot DM. No #admin-ops post. No Claude ping.
     last_verified: 2026-09-15
 
 workflow_bots:
@@ -200,6 +235,8 @@ workflow_bots:
       DM D0B9MHR3CBV still firing 2026-09-14 08:00 PT (ts
       1789398006.922469). Mentions Calendar digest. Does not send Gmail.
       0 Meshal replies in the 30-day window.
+      Disable authorized 2026-09-15; execute 2026-09-19. Do not disable
+      early. Do not delete.
   - id: daily-briefing
     schedule: 'daily 09:00'
     output: '#posts'
@@ -213,7 +250,8 @@ workflow_bots:
       1789401609.141879), not the old in-Slack briefing body. Pointer
       form also fired weekdays 2026-09-07 through 2026-09-11. 0 replies.
       Slack post only. No Notion write proved. Old body last seen
-      2026-09-04.
+      2026-09-04. Disable authorized 2026-09-15; execute 2026-09-19.
+      Do not disable early. Do not delete.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
@@ -224,7 +262,9 @@ workflow_bots:
     last_fire: '2026-09-11T16:00:05-07:00'
     notes: >
       Last fire 2026-09-11 16:00 PT (ts 1789167605.922879). Template
-      body. 0 replies. Next scheduled fire 2026-09-18.
+      body. 0 replies. Next scheduled fire 2026-09-18. Disable
+      authorized 2026-09-15; execute 2026-09-19. Do not disable
+      early. Do not delete.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
@@ -236,7 +276,8 @@ workflow_bots:
     notes: >
       Last fire 2026-09-14 09:00 PT (ts 1789401607.500849). Template
       body. Also fired 2026-08-17, 2026-08-24, 2026-08-31, 2026-09-07.
-      0 replies.
+      0 replies. Disable authorized 2026-09-15; execute 2026-09-19.
+      Do not disable early. Do not delete.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
@@ -248,7 +289,9 @@ workflow_bots:
     notes: >
       Last fire 2026-09-14 09:00 PT in #content-pipeline
       (ts 1789401607.614049). Also fired 2026-08-17, 2026-08-24,
-      2026-08-31, 2026-09-07. Template body. 0 replies.
+      2026-08-31, 2026-09-07. Template body. 0 replies. Disable
+      authorized 2026-09-15; execute 2026-09-19. Do not disable
+      early. Do not delete.
 
 integrations:
   - id: gmail
@@ -506,13 +549,17 @@ slack_channels:
       Cursor joined 2026-09-05 14:59 UTC. Workflow bots present:
       Daily Briefing U0B97MGH74J, Friday Review U0B99JAG2HF, Monday
       Kickoff U0B9HDMBT4H. Also Cursor, Notion AI, Claude.
+      Authorized 2026-09-15: stay, not archived. No rename.
     agents_present: [cursor, notion-ai, claude]
   - id: kohyr-dev
     slack_id: C0B9JJZSVQT
     tier: domain
     agents_present: [cursor, computer, notion-ai, claude, codex]
     cursor_can_read: true
-    notes: Live members 2026-09-14 include Codex U0BV7V8M3NW plus four agent bots.
+    notes: >
+      Live members 2026-09-14 include Codex U0BV7V8M3NW plus four
+      agent bots. Status unchanged pending Meshal. No archive or
+      rename on 2026-09-19.
   - id: content-pipeline
     slack_id: C0B9R0NS4QJ
     tier: domain
@@ -520,13 +567,17 @@ slack_channels:
     cursor_can_read: true
     notes: >
       Cursor joined 2026-09-05 15:12 UTC. Weekly Content Planner
-      U0B9RPWA18W is a member.
+      U0B9RPWA18W is a member. Authorized 2026-09-15: stay, not
+      archived. No rename.
   - id: job-search
     slack_id: C0B9NTUUGR4
     tier: domain
     agents_present: [cursor, notion-ai, claude]
     cursor_can_read: true
-    notes: Cursor joined 2026-09-05 15:14 UTC (join ts 1788621248.955629, lane C)
+    notes: >
+      Cursor joined 2026-09-05 15:14 UTC (join ts 1788621248.955629,
+      lane C). Status unchanged pending Meshal. No archive or rename
+      on 2026-09-19.
   - id: all-alawein-workspace
     slack_id: C0APE5RSWAZ
     tier: broadcast
@@ -549,8 +600,8 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Live members 2026-09-14: Meshal and Notion AI
-      only. Invite @Cursor still pending. Do not route here before
-      2026-09-19.
+      only. Invite @Cursor authorized 2026-09-15; execute 2026-09-19.
+      Do not route here before that invite.
   - id: me-agents-ops
     slack_id: C0BVDBHPB99
     tier: agent
@@ -558,8 +609,8 @@ slack_channels:
     cursor_can_read: false
     notes: >
       Created 2026-09-07. Live members 2026-09-14: Meshal and Notion AI
-      only. Invite @Claude and @Computer still pending. Do not route
-      here before 2026-09-19.
+      only. Invite @Claude then @Computer authorized 2026-09-15;
+      execute 2026-09-19. Do not route here before those invites.
 cursor_mcp_cloud_agent:
   scanned_at: '2026-09-12T03:30:00Z'
   run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3

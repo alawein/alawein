@@ -48,6 +48,23 @@ memory empty, five skills, Linear/Vercel/Figma MCP inactive, Notion
 Morning Brief, search IDs for three channels. Cloud listed 9 public
 channels. Do not collapse Slackbot MCP with Cursor MCP.
 
+## Authorized 09-19 set (2026-09-15)
+
+Meshal forwarded Slackbot's lock. Lifecycle: authorized, not executed.
+Owner: Meshal. Slack UI clicks on 2026-09-19. Cursor and Slackbot do
+not execute Slack mutations.
+
+- Disable Daily Agenda, Daily Briefing, Friday Review, Monday Kickoff,
+  Weekly Content Planner. Do not delete.
+- Invite Cursor to `#me-agents-eng` `C0BVDBHLXQB`.
+- Invite Claude, then Computer, to `#me-agents-ops` `C0BVDBHPB99`.
+- Create `#me-inbox`.
+- Parked: no rename. `#posts` `C0APWF615H7` and `#content-pipeline`
+  `C0B9R0NS4QJ` stay. `#kohyr-dev` `C0B9JJZSVQT` and `#job-search`
+  `C0B9NTUUGR4` unchanged pending Meshal.
+- Kit SoR: `prompt-kits/AGENT.md` 1.8.4. Slackbot canvas 1.9.0 is
+  STALE. No inventory canvas. No `#admin-ops` post. No Claude ping.
+
 ## Still GAP
 
 - Desktop Slack MCP cannot be probed from Cloud.
@@ -56,8 +73,11 @@ channels. Do not collapse Slackbot MCP with Cursor MCP.
 - Fireflies `B0BA8NTJAR4` remains installed historically. Not a channel
   member. MCP still `needs_auth`.
 - Codex Slack still `needs_auth`.
-- 2026-09-19 review: disable zero-engagement workflow bots, do not
-  delete. Do not disable early.
+- 2026-09-19 review: Meshal authorized the four-click set on
+  2026-09-15. Disable the five workflow bots. Invite Cursor to
+  `#me-agents-eng`. Invite Claude, then Computer, to `#me-agents-ops`.
+  Create `#me-inbox`. Do not disable early. No rename. `#posts` and
+  `#content-pipeline` stay. `#kohyr-dev` and `#job-search` wait.
 
 ## Change evidence
 

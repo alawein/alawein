@@ -9,7 +9,7 @@ last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.9
+version: 1.5.10
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -53,12 +53,16 @@ ChatGPT / Claude / Codex chat pastes live in the same kit under Reply style.
 | `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
 | `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
-| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite pending) | Agent | Created 2026-09-07 |
-| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite pending) | Agent | Created 2026-09-07 |
+| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite 2026-09-19) | Agent | Created 2026-09-07 |
+| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite 2026-09-19) | Agent | Created 2026-09-07 |
 
 **Planned v2 topology (draft):** see
-[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not
-rename channels until Phase 0 gate (2026-09-19) passes.
+[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md).
+Meshal authorized 2026-09-15: no rename on 2026-09-19. `#posts` and
+`#content-pipeline` stay. `#kohyr-dev` and `#job-search` wait on a later
+call. Kit SoR is [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md)
+1.8.4. Slackbot canvas 1.9.0 is STALE. Do not create an inventory
+canvas.
 
 **Voice exemptions:** workflow bots and system messages are exempt from
 [`VOICE.md`](../style/VOICE.md); see
@@ -158,13 +162,13 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-14 | 0 replies | Keep; 14-day trial |
-| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-14 (pointer) | 0 replies | Keep (primary digest) |
-| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Keep |
-| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-14 | 0 replies | Keep |
-| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-14 | 0 replies | Keep |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
+| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-14 (pointer) | 0 replies | Disable 2026-09-19 (authorized) |
+| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Disable 2026-09-19 (authorized) |
+| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
+| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
 
-Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-14. Zero engagement remains a usage problem for the 2026-09-19 trial gate.
+Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-14. Zero engagement stands. Meshal authorized disable (not delete) on 2026-09-19. Do not disable early.
 
 ### 2.2 Engagement policy (locked)
 
@@ -293,8 +297,16 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ### Phase 4, Review (2026-09-19)
 
-1. Bot review gate; disable zero-engagement bots.
-2. Channel review gate; archive persistently empty channels.
+Authorized 2026-09-15 in Slackbot DM. Owner: Meshal. Slack UI clicks
+only. Agents do not execute these.
+
+1. Disable the five workflow bots. Do not delete.
+2. Invite `@Cursor` to `#me-agents-eng` (`C0BVDBHLXQB`).
+3. Invite `@Claude`, then `@Computer`, to `#me-agents-ops` (`C0BVDBHPB99`).
+4. Create `#me-inbox`.
+
+Parked on this date: no rename. `#posts` and `#content-pipeline` stay.
+`#kohyr-dev` and `#job-search` unchanged pending Meshal.
 
 ## 5. Locked vs draft status
 
@@ -337,14 +349,15 @@ gate. Full diagnosis:
 
 ### 6.2 After 2026-09-19 (human clicks)
 
-1. Disable zero-engagement workflow bots. Do not delete their history.
-2. Execute
-   [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md)
-   Phase 1 only if the gate passes: `#me-agents-eng`, `#me-agents-ops`,
-   `#me-inbox`. Then renames.
-3. Move GitHub/CI noise toward `#team-eng-alerts` after that channel
-   exists. Keep `#admin-ops` / `#team-ops` for human + agent tasks.
-4. Optional: Slack AI thread summaries on paid plans. Not a second SSOT.
+Authorized set only. Do not run the draft v2 rename pass.
+
+1. Disable the five workflow bots. Do not delete their history.
+2. Invite `@Cursor` to `#me-agents-eng`. Invite `@Claude`, then
+   `@Computer`, to `#me-agents-ops`. Create `#me-inbox`.
+3. Keep `#posts` and `#content-pipeline`. Leave `#kohyr-dev` and
+   `#job-search` until Meshal calls them.
+4. Optional later: Slack AI thread summaries on paid plans. Not a
+   second SSOT. Not an inventory canvas.
 
 ### 6.3 Cleanup that is unsafe
 
@@ -355,6 +368,16 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.10 (2026-09-15)
+
+- Recorded Meshal's 2026-09-15 authorization of the 2026-09-19
+  four-click set. Disable the five workflow bots. Invite Cursor to
+  `#me-agents-eng`. Invite Claude, then Computer, to `#me-agents-ops`.
+  Create `#me-inbox`. No rename. `#posts` and `#content-pipeline` stay.
+  `#kohyr-dev` and `#job-search` wait. Kit SoR stays `AGENT.md` 1.8.4.
+  Slackbot canvas 1.9.0 is STALE. No inventory canvas. No `#admin-ops`
+  post. No Claude ping. Lifecycle: authorized, not executed.
 
 ### v1.5.9 (2026-09-15)
 

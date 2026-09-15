@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack channel migration plan
 description: Proposed v2 channel topology for team collaboration and personal agentic workflows; execution plan with rename map and posting guidelines.
-last_updated: 2026-09-07
+last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: draft
-version: 1.1.0
+version: 1.1.1
 tags: [slack, channels, agents, migration]
 ---
 
@@ -20,6 +20,13 @@ tags: [slack, channels, agents, migration]
 **Status:** DRAFT. Does not supersede locked channel decisions in
 [`slack-agent-runbook.md`](slack-agent-runbook.md) until Phase 1 completes and
 the runbook is bumped.
+
+**2026-09-15 lock:** Meshal authorized four Slack UI clicks for
+2026-09-19 only. Disable the five workflow bots. Invite `@Cursor` to
+`#me-agents-eng`. Invite `@Claude`, then `@Computer`, to
+`#me-agents-ops`. Create `#me-inbox`. Do not run Phase 2 through 4 on
+that date. No rename. `#posts` and `#content-pipeline` stay.
+`#kohyr-dev` and `#job-search` wait on a later call.
 
 **Goal:** Separate team coordination from personal agent lanes, reduce naming
 ambiguity, and route bot noise away from human/agent threads.
@@ -92,9 +99,16 @@ Update `workflow_bots` rows in `catalog/agent-integrations.yaml` after reroute.
 
 ### Phase 0: Gate (2026-09-19)
 
-- [ ] Workflow-bot engagement trial complete
-- [ ] Claude Tag migration complete ([`claude-tag-migration.md`](claude-tag-migration.md))
-- [ ] `@Codex` connected or marked dropped in inventory
+Authorized clicks (Meshal, Slack UI):
+
+- [ ] Disable the five workflow bots. Do not delete.
+- [ ] Invite `@Cursor` to `#me-agents-eng` (`C0BVDBHLXQB`)
+- [ ] Invite `@Claude`, then `@Computer`, to `#me-agents-ops` (`C0BVDBHPB99`)
+- [ ] Create `#me-inbox`
+
+Parked on this date: no rename. `#posts` and `#content-pipeline` stay.
+`#kohyr-dev` and `#job-search` unchanged. Claude Tag and Codex Connect
+are not part of this click set.
 
 ### Phase 1: Agent lanes (week 1)
 

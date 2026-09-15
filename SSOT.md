@@ -84,6 +84,8 @@ governance contract for naming, portfolio truth, and migration sequencing.
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:
   [`docs/internal/audits/2026-09-15-slack-last-fire-refresh.md`](docs/internal/audits/2026-09-15-slack-last-fire-refresh.md).
+  2026-09-19 four-click set is authorized (2026-09-15 Slackbot DM), not
+  executed. Owner: Meshal.
   Prior:
   [`docs/internal/audits/2026-09-14-slack-v1-lock.md`](docs/internal/audits/2026-09-14-slack-v1-lock.md),
   [`docs/internal/audits/2026-09-13-live-slack-refresh.md`](docs/internal/audits/2026-09-13-live-slack-refresh.md).

@@ -1,3 +1,10 @@
+---
+type: evidence
+status: active
+source: alawein audit cleanup 2026-09-15
+last_updated: 2026-09-15
+owner: meshal
+---
 # Batch E evidence — Tasks 8–10 (read-only)
 
 **Date:** 2026-09-15 PT  

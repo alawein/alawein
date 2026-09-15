@@ -1,3 +1,10 @@
+---
+type: evidence
+status: active
+source: alawein audit cleanup 2026-09-15
+last_updated: 2026-09-15
+owner: meshal
+---
 # Batch B evidence — F002 / F003 (read-only snapshot)
 
 **Date:** 2026-09-15 PT  

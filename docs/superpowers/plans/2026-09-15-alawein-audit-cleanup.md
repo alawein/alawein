@@ -1,3 +1,10 @@
+---
+type: plan
+status: active
+source: alawein audit cleanup 2026-09-15
+last_updated: 2026-09-15
+owner: meshal
+---
 # alawein/alawein Audit Cleanup Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.

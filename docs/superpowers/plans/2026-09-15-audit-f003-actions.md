@@ -1,3 +1,10 @@
+---
+type: evidence
+status: active
+source: alawein audit cleanup 2026-09-15
+last_updated: 2026-09-15
+owner: meshal
+---
 # F003 Actions least-privilege — 2026-09-15
 
 **Repo:** `alawein/alawein`  

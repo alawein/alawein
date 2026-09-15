@@ -2,8 +2,11 @@
 id: maios-reply-style-portable
 version: 1.0.0
 supersedes_label: "RESPONSE-STYLE rev a..g letter product label"
-type: derived
-authority: derived
+type: canonical
+source: none
+sync: none
+sla: none
+authority: canonical
 audience: [contributors, agents]
 last_updated: 2026-09-15
 last-verified: 2026-09-15

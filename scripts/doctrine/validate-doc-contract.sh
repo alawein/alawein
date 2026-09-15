@@ -441,7 +441,7 @@ def check_root_whitelist(errors: List[str]) -> None:
 
 def markdown_files_for_links() -> Iterable[Path]:
     skip_parts = {"node_modules", ".venv", "venv", "dist", "build", "__pycache__",
-                  "claude-agent-platform"}  # external platform tooling — its own link scope
+                  "claude-agent-platform", ".worktrees"}  # external tooling; local git worktrees
     for path in sorted(ROOT.rglob("*.md")):
         rel = relative(path)
         if is_archive_doc(rel):

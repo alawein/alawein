@@ -100,8 +100,9 @@ Observed and set on the station repo (Settings → Actions):
 open PRs with `pull-requests: write` (prefer `AUTO_PR_TOKEN` when set). Keep the
 repo setting enabled until those jobs use a non-`GITHUB_TOKEN` identity only.
 
-**Selected-action patterns:** `aquasecurity/*`, `peter-evans/*`, `anthropics/*`,
-`gitleaks/*`, `pnpm/*` (plus GitHub-owned and verified creators).
+**Selected-action patterns:** `actions/*`, `github/*`, `aquasecurity/*`,
+`gitleaks/*`, `trufflesecurity/*`, `hashicorp/*`, `peter-evans/*`,
+`anthropics/*`, `pnpm/*` (plus GitHub-owned and verified creators).
 
 ## Docs-doctrine exception
 

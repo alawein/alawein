@@ -10,17 +10,17 @@ owner: meshal
 **Repo:** `alawein/alawein`  
 **Evidence:** `gh api repos/alawein/alawein/actions/permissions*`
 
-## Before
+## Before (verified this session)
 
 | Setting | Value |
 |---------|-------|
 | enabled | true |
 | allowed_actions | all |
 | sha_pinning_required | false |
-| default_workflow_permissions | read |
+| default_workflow_permissions | write |
 | can_approve_pull_request_reviews | true |
 
-## After (applied this session)
+## After (live API)
 
 | Setting | Value |
 |---------|-------|
@@ -28,10 +28,12 @@ owner: meshal
 | allowed_actions | selected |
 | sha_pinning_required | true |
 | default_workflow_permissions | read |
-| can_approve_pull_request_reviews | true (exception for Sync Catalog / docs-auto-gen / sync-vercel) |
-| selected patterns | `actions/*`, `github/*`, `aquasecurity/*`, `gitleaks/*`, `trufflesecurity/*`, `hashicorp/*` + github_owned + verified |
+| can_approve_pull_request_reviews | true (exception: Sync Catalog / docs-auto-gen / sync-vercel still create PRs) |
+| selected patterns | `actions/*`, `github/*`, `aquasecurity/*`, `gitleaks/*`, `trufflesecurity/*`, `hashicorp/*`, `peter-evans/*`, `anthropics/*`, `pnpm/*` + github_owned + verified |
 
 ## Notes
 
-- Required workflow green check deferred to PR CI on `fix/audit-cleanup-2026-09-15`.
+- Required workflow green check deferred until branch is pushed and PR checks run (no push in this agent pass).
+- `can_approve_pull_request_reviews` left ON intentionally for named bot PR-create workflows.
+- Cross-link: `docs/governance/github-baseline.md` §Actions least-privilege; `docs/superpowers/plans/2026-09-15-audit-f002-dismiss.md`.
 - If a required third-party action is blocked, extend `patterns_allowed` with the exact owner org, not `*`.

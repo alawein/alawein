@@ -19,6 +19,7 @@ MODEL="${OPENROUTER_MODEL:-google/gemini-3.8-flash}"
 BASE="${OPENROUTER_BASE_URL:-https://openrouter.ai/api/v1}"
 
 OPENROUTER_MODEL="$MODEL" OPENROUTER_BASE_URL="$BASE" python3 -c '
+import http.client
 import json
 import os
 import sys
@@ -49,26 +50,41 @@ req = urllib.request.Request(
     },
     method="POST",
 )
+
+
+def _load_json(raw):
+    try:
+        return json.loads(raw.decode("utf-8", errors="replace"))
+    except (json.JSONDecodeError, UnicodeDecodeError, AttributeError, TypeError):
+        return {}
+
+
 status = 0
 payload = {}
 try:
     with urllib.request.urlopen(req, timeout=60) as resp:
         status = int(resp.status)
-        payload = json.loads(resp.read().decode("utf-8"))
+        payload = _load_json(resp.read())
 except urllib.error.HTTPError as exc:
     status = int(exc.code)
-    try:
-        payload = json.loads(exc.read().decode("utf-8", errors="replace"))
-    except json.JSONDecodeError:
-        payload = {}
-except (OSError, TimeoutError, ValueError, urllib.error.URLError):
+    payload = _load_json(exc.read())
+except (
+    OSError,
+    TimeoutError,
+    ValueError,
+    urllib.error.URLError,
+    http.client.HTTPException,
+):
     status = 0
     payload = {}
 
 content = ""
-choices = payload.get("choices") or []
-if choices:
-    content = str((choices[0].get("message") or {}).get("content") or "")
+if isinstance(payload, dict):
+    choices = payload.get("choices") or []
+    first = choices[0] if isinstance(choices, list) and choices else None
+    message = first.get("message") if isinstance(first, dict) else None
+    if isinstance(message, dict):
+        content = str(message.get("content") or "")
 print("status=%s" % status)
 print("content_len=%s" % len(content[:256]))
 sys.exit(0 if status == 200 else 1)

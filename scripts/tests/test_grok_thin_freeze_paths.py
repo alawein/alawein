@@ -41,10 +41,15 @@ def classify_offload_target(task_kind: str) -> str:
         "continue": "InlineGrok",
         "approve": "InlineGrok",
         "nudge": "InlineGrok",
+        "triage": "InlineGrok",
         "code": "CursorCloud",
+        "coding": "CursorCloud",
         "repo": "CursorCloud",
+        "repo edit": "CursorCloud",
         "pr": "CursorCloud",
+        "tests": "CursorCloud",
         "docs-git": "CursorCloud",
+        "large doc packs": "CursorCloud",
         "grill": "OpenRouterPanel",
         "panel": "OpenRouterPanel",
         "architecture": "OpenRouterPanel",
@@ -76,12 +81,16 @@ def test_classify_orient_is_inline_grok() -> None:
     assert classify_offload_target("continue") == "InlineGrok"
     assert classify_offload_target("approve") == "InlineGrok"
     assert classify_offload_target("nudge") == "InlineGrok"
+    assert classify_offload_target("triage") == "InlineGrok"
 
 
 def test_classify_code_is_cursor_cloud() -> None:
     assert classify_offload_target("code") == "CursorCloud"
+    assert classify_offload_target("coding") == "CursorCloud"
     assert classify_offload_target("pr") == "CursorCloud"
+    assert classify_offload_target("tests") == "CursorCloud"
     assert classify_offload_target("docs-git") == "CursorCloud"
+    assert classify_offload_target("large doc packs") == "CursorCloud"
 
 
 def test_classify_grill_is_openrouter_panel() -> None:

@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.5
+version: 1.5.11
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -53,12 +53,16 @@ ChatGPT / Claude / Codex chat pastes live in the same kit under Reply style.
 | `#job-search` | `C0B9NTUUGR4` | Job and career tracking | yes | Domain | Setup-only |
 | `#all-alawein-workspace` | `C0APE5RSWAZ` | Workspace announcements; Fireflies installed | yes | Broadcast | Setup-only |
 | `#social` | `C0AP24SRVQF` | Non-work | yes | Default | Empty |
-| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite pending) | Agent | Created 2026-09-07 |
-| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite pending) | Agent | Created 2026-09-07 |
+| `#me-agents-eng` | `C0BVDBHLXQB` | Cursor code tasks; one task one thread | no (invite 2026-09-19) | Agent | Created 2026-09-07 |
+| `#me-agents-ops` | `C0BVDBHPB99` | Claude analysis and planning | no (invite 2026-09-19) | Agent | Created 2026-09-07 |
 
 **Planned v2 topology (draft):** see
-[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md). Do not
-rename channels until Phase 0 gate (2026-09-19) passes.
+[`slack-channel-migration-plan.md`](slack-channel-migration-plan.md).
+Meshal authorized 2026-09-15: no rename on 2026-09-19. `#posts` and
+`#content-pipeline` stay. `#kohyr-dev` and `#job-search` wait on a later
+call. Kit SoR is [`prompt-kits/AGENT.md`](../../prompt-kits/AGENT.md)
+1.8.4. Slackbot canvas 1.9.0 is STALE. Do not create an inventory
+canvas.
 
 **Voice exemptions:** workflow bots and system messages are exempt from
 [`VOICE.md`](../style/VOICE.md); see
@@ -103,7 +107,9 @@ only who must act.
 
 Never tag on inventory: Daily Agenda, Daily Briefing, Friday Review,
 Monday Kickoff, Weekly Content Planner, `@ChatGPT` (`U0BUNH33CCA`,
-replaced).
+replaced), Slackbot (`USLACKBOT`). Do not tag `@Linear`, `@GitHub`, or
+other notify apps for tasks. Slackbot is a 1:1 DM companion. See
+catalog `slackbot-ai`.
 
 **Correction ping** (two Cursors split the land). Follow-up only. Do not
 re-audit. Do not paste a new kit.
@@ -114,14 +120,41 @@ re-audit. Do not paste a new kit.
 *Voice:* first line = status. No tables. No second inventory.
 ```
 
-**4-line post-land ping** (after `#220` squash-merge):
+**4-line post-land ping** (template; `#220` used kit 1.7.0):
 
 ```
 @Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
-Follow-up only. Kit is AGENT.md 1.7.0 on main.
-*Land:* PR #220. Park #223 if it still duplicates.
+Follow-up only. Kit is AGENT.md 1.8.4 on main.
+*Land:* PR #N. Park duplicate PRs.
 *Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
 ```
+
+### 1.5 Installed Slack apps (locked v1)
+
+Workspace-granted OAuth strings are UNVERIFIED. Report as-is. Do not
+change scopes. Do not install `@Grok`. No Gmail Slack app.
+
+Agent bots: `@Cursor` `U0APW2Z3GG2`, `@Claude` `U0AQQFJT8AC`,
+`@Computer` `U0APW7F9S4A`, `@Notion AI` `U0AQ8UNAKTK`, `@GitHub`
+`U0APESWEF2T`, `@ChatGPT` `U0BUNH33CCA` (replaced), `@Codex`
+`U0BV7V8M3NW` (`needs_auth`), `@Kilo` `U0BV9U2GFED`.
+
+Workflow bots: Daily Agenda `U0B9RSFC8K0`, Daily Briefing
+`U0B97MGH74J`, Friday Review `U0B99JAG2HF`, Monday Kickoff
+`U0B9HDMBT4H`, Weekly Content Planner `U0B9RPWA18W`.
+
+Notify apps (DM-proved 2026-09-14): Linear `U0C0NB35XGQ` (FLAG Linear
+write via `/linear`), Google Calendar `U0APPR5F0LT`, Google Drive
+`U0AQ949HSDP`, Fireflies `U0BA7DDAG1K` / `B0BA8NTJAR4`, Graphite,
+Langfuse, Vercel, Figma, Docusign, Dropbox, Zoom.
+
+Slackbot AI (`USLACKBOT`, catalog `slackbot-ai`): 1:1 DM companion.
+Cannot join channels. Not a notify app. Slackbot MCP Linear, Vercel,
+and Figma were inactive on 2026-09-15. Do not collapse with Cursor
+MCP or the Slack apps of the same names.
+
+Working pointers: chat scan `F0C16U6USJ0`, lane inventory
+`F0C0KEF150C`, scopes `F0C15AVM0FR`. Git wins.
 
 ## 2. Workflow bot policy
 
@@ -129,13 +162,13 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-04 (DM unread here) | 0 replies | Keep; 14-day trial |
-| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-11 (pointer) | 0 replies | Keep (primary digest) |
-| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Keep |
-| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-07 | 0 replies | Keep |
-| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-07 | 0 replies | Keep |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
+| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-14 (pointer) | 0 replies | Disable 2026-09-19 (authorized) |
+| Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Disable 2026-09-19 (authorized) |
+| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
+| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-14 | 0 replies | Disable 2026-09-19 (authorized) |
 
-Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-07. Zero engagement remains a usage problem for the trial.
+Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-14. Zero engagement stands. Meshal authorized disable (not delete) on 2026-09-19. Do not disable early.
 
 ### 2.2 Engagement policy (locked)
 
@@ -163,7 +196,8 @@ Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent
 | Google Calendar | `contact@meshal.ai` | Ready | Cursor `list_calendars` MCP |
 | Railway | `contact@meshal.ai` | Ready | Cursor `whoami` MCP |
 | Notion workspace | `contact@meshal.ai` / Meshal's Workspace (`8116d8de-2215-81ce-b71b-00031e833a2d`) | Ready; no prior-employer workspace | `notion-fetch({"id":"self"})` |
-| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Inventory thread 2026-09-07; Kilo `U0BV9U2GFED` |
+| Slack bots in `#admin-ops` | Claude, Cursor, Computer, Notion AI, GitHub, Codex, Kilo (ChatGPT silent) | Present | Member list 2026-09-14 |
+| Slack Linear app | `@linear` `U0C0NB35XGQ` | Installed; can create issues | Welcome DM 2026-09-05; `/linear` |
 | GitHub (Cursor MCP) | `alawein` | Ready | Cloud Agent `get_me` 2026-09-07 (bc-2953ccca) |
 
 ### 3.2 Vercel `alawein` team deployments (locked)
@@ -263,8 +297,16 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 
 ### Phase 4, Review (2026-09-19)
 
-1. Bot review gate; disable zero-engagement bots.
-2. Channel review gate; archive persistently empty channels.
+Authorized 2026-09-15 in Slackbot DM. Owner: Meshal. Slack UI clicks
+only. Agents do not execute these.
+
+1. Disable the five workflow bots. Do not delete.
+2. Invite `@Cursor` to `#me-agents-eng` (`C0BVDBHLXQB`).
+3. Invite `@Claude`, then `@Computer`, to `#me-agents-ops` (`C0BVDBHPB99`).
+4. Create `#me-inbox`.
+
+Parked on this date: no rename. `#posts` and `#content-pipeline` stay.
+`#kohyr-dev` and `#job-search` unchanged pending Meshal.
 
 ## 5. Locked vs draft status
 
@@ -272,6 +314,7 @@ These are legitimate post-employment threads, not label drift. **Done (2026-09-0
 | --- | --- |
 | §1 Channel structure and decisions | LOCKED |
 | §1.4 How Meshal calls agents | LOCKED |
+| §1.5 Installed Slack apps | LOCKED |
 | §2 Workflow bot policy | LOCKED |
 | §3.1 Verified integrations (including Notion) | LOCKED |
 | §3.2 Vercel deployments | LOCKED (eight UNVERIFIED rows pending browser inspection) |
@@ -306,14 +349,15 @@ gate. Full diagnosis:
 
 ### 6.2 After 2026-09-19 (human clicks)
 
-1. Disable zero-engagement workflow bots. Do not delete their history.
-2. Execute
-   [`slack-channel-migration-plan.md`](slack-channel-migration-plan.md)
-   Phase 1 only if the gate passes: `#me-agents-eng`, `#me-agents-ops`,
-   `#me-inbox`. Then renames.
-3. Move GitHub/CI noise toward `#team-eng-alerts` after that channel
-   exists. Keep `#admin-ops` / `#team-ops` for human + agent tasks.
-4. Optional: Slack AI thread summaries on paid plans. Not a second SSOT.
+Authorized set only. Do not run the draft v2 rename pass.
+
+1. Disable the five workflow bots. Do not delete their history.
+2. Invite `@Cursor` to `#me-agents-eng`. Invite `@Claude`, then
+   `@Computer`, to `#me-agents-ops`. Create `#me-inbox`.
+3. Keep `#posts` and `#content-pipeline`. Leave `#kohyr-dev` and
+   `#job-search` until Meshal calls them.
+4. Optional later: Slack AI thread summaries on paid plans. Not a
+   second SSOT. Not an inventory canvas.
 
 ### 6.3 Cleanup that is unsafe
 
@@ -324,6 +368,43 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.11 (2026-09-15)
+
+- Review fixes: ping templates stay under §1.4. Current kit in the
+  post-land template is 1.8.4. Catalog note whitespace and Slackbot
+  skill wording cleaned. Phase 1 now verifies existing agent lanes.
+
+### v1.5.10 (2026-09-15)
+
+- Recorded Meshal's 2026-09-15 authorization of the 2026-09-19
+  four-click set. Disable the five workflow bots. Invite Cursor to
+  `#me-agents-eng`. Invite Claude, then Computer, to `#me-agents-ops`.
+  Create `#me-inbox`. No rename. `#posts` and `#content-pipeline` stay.
+  `#kohyr-dev` and `#job-search` wait. Kit SoR stays `AGENT.md` 1.8.4.
+  Slackbot canvas 1.9.0 is STALE. No inventory canvas. No `#admin-ops`
+  post. No Claude ping. Lifecycle: authorized, not executed.
+
+### v1.5.9 (2026-09-15)
+
+- Recorded Slackbot AI (`USLACKBOT`) as catalog `slackbot-ai`. 1:1 DM
+  companion. Five configured skills. Slackbot MCP Linear, Vercel, and
+  Figma inactive. Split from notify-app Slackbot mentions.
+
+### v1.5.8 (2026-09-15)
+
+- Workflow last-fire dates aligned to the 2026-09-15 Cloud prove
+  (`bc-28323697`). Daily Agenda, Daily Briefing, Monday Kickoff, and
+  Weekly Content Planner last fire is 2026-09-14. Friday Review last
+  fire is 2026-09-11. Engagement stays 0. Desktop Slack MCP still
+  UNVERIFIED. No rename and no new chat bots before 2026-09-19.
+
+### v1.5.7 (2026-09-14)
+
+- Locked Slack v1 roster from live DMs and channel members. Added §1.5.
+  Linear Slack app recorded. No Gmail Slack app. `#me-agents-*` members
+  are Meshal plus Notion AI; Cursor/Claude/Computer invites still pending.
+  OAuth grant strings stay UNVERIFIED. No rename before 2026-09-19.
 
 ### v1.5.6 (2026-09-14)
 

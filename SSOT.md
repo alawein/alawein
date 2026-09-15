@@ -4,15 +4,15 @@ source: none
 sync: none
 sla: none
 authority: canonical
-last-verified: 2026-09-14
-last_updated: 2026-09-14
+last-verified: 2026-09-15
+last_updated: 2026-09-15
 audience: [ai-agents, contributors]
 ---
 
 # SSOT: alawein
 
 **Version:** 1.7
-**Last Updated:** 2026-09-14
+**Last Updated:** 2026-09-15
 **Status:** Active
 
 ---
@@ -83,9 +83,12 @@ governance contract for naming, portfolio truth, and migration sequencing.
 - Slack and Cursor MCP inventory SSOT:
   [`catalog/agent-integrations.yaml`](catalog/agent-integrations.yaml).
   Latest live rescan:
-  [`docs/internal/audits/2026-09-13-live-slack-refresh.md`](docs/internal/audits/2026-09-13-live-slack-refresh.md).
+  [`docs/internal/audits/2026-09-15-slack-last-fire-refresh.md`](docs/internal/audits/2026-09-15-slack-last-fire-refresh.md).
+  2026-09-19 four-click set is authorized (2026-09-15 Slackbot DM), not
+  executed. Owner: Meshal.
   Prior:
-  [`docs/internal/audits/2026-09-12-integrations-rescan.md`](docs/internal/audits/2026-09-12-integrations-rescan.md).
+  [`docs/internal/audits/2026-09-14-slack-v1-lock.md`](docs/internal/audits/2026-09-14-slack-v1-lock.md),
+  [`docs/internal/audits/2026-09-13-live-slack-refresh.md`](docs/internal/audits/2026-09-13-live-slack-refresh.md).
   Drift check: `python3 scripts/catalog/validate-agent-integrations.py --strict`.
   Channel policy: [`docs/governance/slack-agent-runbook.md`](docs/governance/slack-agent-runbook.md).
 - README entrypoint surfaces are contract-exempt from doctrine frontmatter and

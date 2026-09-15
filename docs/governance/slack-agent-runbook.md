@@ -9,7 +9,7 @@ last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.10
+version: 1.5.11
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -111,6 +111,24 @@ replaced), Slackbot (`USLACKBOT`). Do not tag `@Linear`, `@GitHub`, or
 other notify apps for tasks. Slackbot is a 1:1 DM companion. See
 catalog `slackbot-ai`.
 
+**Correction ping** (two Cursors split the land). Follow-up only. Do not
+re-audit. Do not paste a new kit.
+
+```
+*Land:* PR #N. Park duplicate PRs.
+*Once then stop:* per-lane one-liners.
+*Voice:* first line = status. No tables. No second inventory.
+```
+
+**4-line post-land ping** (template; `#220` used kit 1.7.0):
+
+```
+@Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
+Follow-up only. Kit is AGENT.md 1.8.4 on main.
+*Land:* PR #N. Park duplicate PRs.
+*Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
+```
+
 ### 1.5 Installed Slack apps (locked v1)
 
 Workspace-granted OAuth strings are UNVERIFIED. Report as-is. Do not
@@ -137,24 +155,6 @@ MCP or the Slack apps of the same names.
 
 Working pointers: chat scan `F0C16U6USJ0`, lane inventory
 `F0C0KEF150C`, scopes `F0C15AVM0FR`. Git wins.
-
-**Correction ping** (two Cursors split the land). Follow-up only. Do not
-re-audit. Do not paste a new kit.
-
-```
-*Land:* PR #N. Park duplicate PRs.
-*Once then stop:* per-lane one-liners.
-*Voice:* first line = status. No tables. No second inventory.
-```
-
-**4-line post-land ping** (after `#220` squash-merge):
-
-```
-@Cursor @Claude @Computer @Kilo @Notion AI @Codex @GitHub
-Follow-up only. Kit is AGENT.md 1.7.0 on main.
-*Land:* PR #220. Park #223 if it still duplicates.
-*Once then stop:* stay in your lane; 4 lines; no re-audit; no new kit paste.
-```
 
 ## 2. Workflow bot policy
 
@@ -368,6 +368,12 @@ Authorized set only. Do not run the draft v2 rename pass.
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.11 (2026-09-15)
+
+- Review fixes: ping templates stay under §1.4. Current kit in the
+  post-land template is 1.8.4. Catalog note whitespace and Slackbot
+  skill wording cleaned. Phase 1 now verifies existing agent lanes.
 
 ### v1.5.10 (2026-09-15)
 

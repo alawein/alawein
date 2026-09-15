@@ -90,7 +90,7 @@ agents:
     slack_user_id: U0AQQFJT8AC
     notes: >
       Legacy Slack bot; Claude Tag not enabled. Migration runbook:
-      docs/governance/claude-tag-migration.md.       Target lane after migration:
+      docs/governance/claude-tag-migration.md. Target lane after migration:
       #me-agents-ops (see slack-channel-migration-plan.md).
       Invite to #me-agents-ops authorized 2026-09-15; execute
       2026-09-19, before Computer.
@@ -207,7 +207,7 @@ agents:
       Slack 1:1 AI companion for Meshal only. Cannot join channels or
       group DMs. Not a notify app. Not Cursor Slack Tools. Not the five
       workflow bots. Meshal DM 2026-09-15: memory empty; five skills
-      configured and not run that chat (MAIOS Agent Inventory Audit,
+      configured and not run in that chat (MAIOS Agent Inventory Audit,
       MAIOS Weekly Ops Sweep, MAIOS Status Digest, MAIOS Control Tower,
       GitHub PR Review Digest). MAIOS skill names are naming drift
       versus "do not name a bot MAIOS"; they are skills, not a bot.
@@ -215,7 +215,7 @@ agents:
       collapse with Slack apps or Cursor MCP. Search IDs proved for
       #all-alawein-workspace, #social, #posts only; other public
       channels seen in message text. Morning Brief: Notion sole writer;
-      #posts pointer-only.       Talk in plain DMs. Do not send role-override
+      #posts pointer-only. Talk in plain DMs. Do not send role-override
       packs. Do not let Slackbot write a second inventory canvas.
       Web search off. Do not dispatch from #admin-ops.
       2026-09-15: Meshal authorized the 09-19 four-click set in this

@@ -110,12 +110,15 @@ Parked on this date: no rename. `#posts` and `#content-pipeline` stay.
 `#kohyr-dev` and `#job-search` unchanged. Claude Tag and Codex Connect
 are not part of this click set.
 
-### Phase 1: Agent lanes (week 1)
+### Phase 1: Agent lanes (after Phase 0 clicks)
 
-1. Create `#me-agents-eng`, `#me-agents-ops`, `#me-inbox`
+`#me-agents-eng` and `#me-agents-ops` already exist. `#me-inbox` is
+created in Phase 0. Do not recreate them.
+
+1. Verify the three channels exist and the authorized members joined
 2. Pin posting guide in each (5 lines max)
-3. `/invite @Cursor` to `#me-agents-eng` and `#team-eng` (after rename)
-4. Route all agent tasks to thread-per-task pattern
+3. Leave `#team-eng` invite until a later rename call
+4. Route agent tasks to thread-per-task after those invites land
 
 ### Phase 2: Team renames (week 2)
 

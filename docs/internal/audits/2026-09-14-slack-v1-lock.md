@@ -9,7 +9,8 @@ owner: meshal
 
 Run `bc-498f4ccf`. Working pointer, not a second inventory. Git SSOT stays
 `catalog/agent-integrations.yaml`. Kit `prompt-kits/AGENT.md` 1.8.4 is on
-`main`. No scopes changed. No app installed. No `@Grok`.
+`main`. No scopes changed. No Slack app was installed during that
+run. Existing apps stay as recorded below. No `@Grok`.
 
 ## Locked topology
 

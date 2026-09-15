@@ -43,8 +43,10 @@ The paste claims cutover B (2026-09-14): doctrine SoR is
 `Desktop\GitHub\solo\alawein\maios`, and ops-shared-inventory is
 bridge only. Grok tagged that PROVED on the laptop.
 
-This repo has zero hits for cutover B or that maios path. Treat the
-cutover as Grok-reported, not disk-proved here. Do not rewrite
+A path search of this checkout finds those strings only in this
+audit and the 2026-09-14 Slack v1 lock note. There is no
+`Desktop/GitHub/solo/alawein/maios` tree here. Treat the cutover as
+Grok-reported, not disk-proved in this repo. Do not rewrite
 `AGENT.md` or the catalog until Meshal confirms.
 
 ## Proved from the paste (Grok-reported)

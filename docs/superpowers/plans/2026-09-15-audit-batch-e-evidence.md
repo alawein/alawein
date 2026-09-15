@@ -182,8 +182,8 @@ Related live index: `docs/governance/maios-canonical-set.md`, `maios-charter.md`
 
 ### Targets
 
-`TARGET_REPOS`: `meshal-web`, `neper`, `qaplibria`, `edfp` (owner `alawein`).  
-`neper` / `qaplibria` called out in delta blocking item **B2** as possibly stale names.
+`TARGET_REPOS`: `meshal-web`, `alembiq`, `optiqap`, `edfp` (owner `alawein`; live script may still list retired aliases).  
+Legacy aliases called out in delta blocking item **B2** as possibly stale names.
 
 ### Verdict
 

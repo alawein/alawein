@@ -1,6 +1,6 @@
 ---
 type: internal
-status: proposed
+status: export-started
 last_updated: 2026-09-15
 owner: meshal
 ---
@@ -143,10 +143,14 @@ Prefer Slack built-in export JSON. Availability is plan-gated:
   messages. Confirm on the plan page.
 - Business+ / Enterprise: Compliance / full export. Owner only.
 
-If export is missing, a `conversations.history` dump can wait until
-Meshal confirms plan, Owner role, and a user token with
-`channels:history`. Output target: Google Drive `slack-backup`.
-No token in git. No script in this file yet.
+Partial Cloud export started 2026-09-15 without waiting for plan tier.
+Drive folder (opens; MANIFEST downloaded and read):
+https://drive.google.com/drive/folders/1JYODoi1g-Uo63Z8mHGaHrjJGlLrE8JyF
+Dated dump:
+https://drive.google.com/drive/folders/1oIWn9uLX3msa6xJAqNnot9b-yweE9Ryf
+Coverage is one page per channel, not a Slack Compliance export.
+`#admin-ops` and `#posts` need Owner export for full history.
+No token in git. No `chat.delete` script.
 
 ## 6. Permissions you may not have
 

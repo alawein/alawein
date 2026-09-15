@@ -105,6 +105,7 @@ Do not:
 ## Enforce pointer (2026-09-14)
 
 Canonical freeze: `GROK-USAGE-FREEZE.md` (weekly >= 80 or on-demand >= 70).
-Canonical matrix: `GROK-THIN-OFFLOAD.md`. Verbs: `Offload:` `Cursor:` `Panel:`
+Canonical matrix: `GROK-THIN-OFFLOAD.md`. Default plane: `CURSOR-FIRST-OPS.md`.
+Adapter map: `ADAPTERS.md`. Verbs: `Offload:` `Cursor:` `Panel:`
 `Panel fleet:` `Force Grok:`. Panel tags: `LANGFUSE-PANEL-TAGS.md`.
 Job B > Job A under freeze.

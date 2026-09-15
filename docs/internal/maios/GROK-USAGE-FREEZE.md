@@ -74,3 +74,4 @@ Standing yes is unlimited until revoke. Still:
 
 Keepers: Intake, Policy, Cleanup, Editorial. BLOCK fifth keeper. No bot named
 MAIOS. Skills beat new durable bots. Do not invent a spend-optimizer bot.
+Default plane: `CURSOR-FIRST-OPS.md`. Adapter map: `ADAPTERS.md`.

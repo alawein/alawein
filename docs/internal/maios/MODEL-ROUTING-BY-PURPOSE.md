@@ -15,6 +15,19 @@ Route behavior only: triage in Grok, execution in Cursor or OpenRouter.
 Refresh OpenRouter ids via `GET https://openrouter.ai/api/v1/models` if a
 call 404s. Do not invent ids.
 
+## Cost ladder
+
+Cheapest adequate model wins.
+
+| Rung | Use | Plane / ids |
+|---|---|---|
+| Mechanical | Code, PR, tests, docs-in-git, pings | Cursor default, or `google/gemini-3.8-flash` |
+| Grill | Architecture / keeper design when asked | OpenRouter lite 5 |
+| Fleet | Rare board / seven-way opinion | OpenRouter fleet 7; max 1/day |
+| Grok cheap | Behavioral short triage only | No executors, no panels, no long folds |
+
+Default plane is Cursor. See `CURSOR-FIRST-OPS.md`.
+
 ## Purpose table
 
 | Purpose | Prefer | Avoid | Why |

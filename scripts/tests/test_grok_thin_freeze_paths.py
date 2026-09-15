@@ -22,6 +22,8 @@ REQUIRED_ENFORCE = (
     ROOT / "docs/internal/maios/GROK-SPEND-INVESTIGATION-2026-09-14.md",
     ROOT / "docs/internal/maios/MODEL-ROUTING-BY-PURPOSE.md",
     ROOT / "docs/internal/maios/LANGFUSE-PANEL-TAGS.md",
+    ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md",
+    ROOT / "docs/internal/maios/ADAPTERS.md",
 )
 
 FLASH_ID = "google/gemini-3.8-flash"
@@ -191,6 +193,10 @@ def test_model_routing_lists_verified_ids() -> None:
     assert FLASH_ID in text
     assert "max_tokens" in text
     assert "24000" in text
+    assert "Cost ladder" in text
+    assert "Mechanical" in text
+    assert "Grok cheap" in text
+    assert "CURSOR-FIRST-OPS.md" in text
 
 
 def test_langfuse_panel_tags_required() -> None:
@@ -206,6 +212,31 @@ def test_langfuse_panel_tags_required() -> None:
     assert "offload" in text
     assert "true" in text
     assert "spend-optimizer bot" in text.lower()
+
+
+def test_cursor_first_ops_is_default_plane() -> None:
+    text = (ROOT / "docs/internal/maios/CURSOR-FIRST-OPS.md").read_text(
+        encoding="utf-8"
+    )
+    assert "Default plane" in text
+    assert "Cursor" in text
+    assert "Offload:" in text
+    assert "Force Grok:" in text
+    assert "poll-as-daemon" in text
+    assert "fifth keeper" in text.lower()
+    assert "Desktop leftovers" in text
+
+
+def test_adapters_map_surfaces() -> None:
+    text = (ROOT / "docs/internal/maios/ADAPTERS.md").read_text(encoding="utf-8")
+    assert "ops-shared-inventory" in text
+    assert "Langfuse" in text
+    assert "FLEET-BOARD.md" in text
+    assert "RICH" in text
+    assert "SLACK" in text
+    assert "CLI" in text
+    assert "sync daemon" in text.lower()
+    assert "LANGFUSE-PANEL-TAGS.md" in text
 
 
 def test_smoke_script_flash_id_and_no_key_echo() -> None:

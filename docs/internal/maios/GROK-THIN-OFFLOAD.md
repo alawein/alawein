@@ -35,9 +35,9 @@ keeper. Grok chat underlying model is not SoR-controlled.
 
 ## Freeze
 
-See `GROK-USAGE-FREEZE.md`. During FREEZE, Intake triages and dispatches.
-Job B > Job A. Do not poll-as-daemon. Panel runs tag
-`LANGFUSE-PANEL-TAGS.md`.
+See `GROK-USAGE-FREEZE.md` and `CURSOR-FIRST-OPS.md`. During FREEZE,
+Intake triages and dispatches. Job B > Job A. Do not poll-as-daemon.
+Panel runs tag `LANGFUSE-PANEL-TAGS.md`. Adapter map: `ADAPTERS.md`.
 
 ## Guardrails
 

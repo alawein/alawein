@@ -15,7 +15,8 @@ tags: [maios, grok-bot, personal-ops]
 **Name:** MAIOS  
 **Expansion:** Meshal AI Operating System  
 **Class:** personal control plane  
-**Canonical home (cutover B, on disk 2026-09-14):** `C:\Users\mesha\Desktop\GitHub\solo\alawein\maios`  
+**Canonical home (git, 2026-09-15):** `docs/governance/maios-*` in `alawein/alawein`  
+**Archived cutover-B pack:** `Desktop\GitHub\_archive\maios-untracked-2026-09-15\`  
 **Bridge (pointer + archive + Cursor lint/hooks receipts):** `C:\Users\mesha\Desktop\ops-shared-inventory`
 
 **Related:** `START_HERE.md` · [CANONICAL-SET.md](./maios-canonical-set.md) · `LANGUAGE-BIBLE.md` · `MAIOS-OPERATING-MAP.md` · `RESPONSE-STYLE.md` · `docs/superpowers/AGENT-OS.md` · `docs/superpowers/CURRENT-STATE-2026-09-14.md` · `docs/superpowers/specs/2026-09-14-action-protocol-v0.md` · [BOTS-SKILLS-TEAMS-CANON.md](./maios-bots-skills-teams-canon.md) · [agents.yaml](./maios-agents.yaml) · [DECISIONS.md](./maios-decisions.md)

@@ -43,7 +43,10 @@ call 404s. Do not invent ids.
 
 **Fleet 7:** all seven ids above
 
-**Reasoning models:** `max_tokens >= 24000`; retry once on empty content
+**Reasoning models (panel callers):** `max_tokens >= 24000`; retry once on
+empty content. Manual / `openrouter-expert-panel` only.
+`scripts/ops/openrouter_route.py` keeps its config default (8192) and does
+not retry. Smoke ping stays at `max_tokens` 64.
 
 ## Caps
 

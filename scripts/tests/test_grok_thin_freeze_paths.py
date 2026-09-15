@@ -49,7 +49,9 @@ def classify_offload_target(task_kind: str) -> str:
         "panel": "OpenRouterPanel",
         "architecture": "OpenRouterPanel",
     }
-    return mapping.get(task_kind, "InlineGrok")
+    if task_kind not in mapping:
+        raise ValueError(f"unknown task kind: {task_kind}")
+    return mapping[task_kind]
 
 
 def grok_usage_freeze(weekly_pct: float, ondemand_pct: float) -> str:
@@ -85,6 +87,15 @@ def test_classify_code_is_cursor_cloud() -> None:
 def test_classify_grill_is_openrouter_panel() -> None:
     assert classify_offload_target("grill") == "OpenRouterPanel"
     assert classify_offload_target("architecture") == "OpenRouterPanel"
+
+
+def test_classify_unknown_kind_raises() -> None:
+    try:
+        classify_offload_target("unknown-kind")
+    except ValueError as exc:
+        assert "unknown task kind" in str(exc)
+    else:
+        raise AssertionError("expected ValueError for unknown task kind")
 
 
 def test_freeze_thresholds() -> None:
@@ -159,6 +170,9 @@ def test_smoke_script_flash_id_and_no_key_echo() -> None:
     script = ROOT / "scripts/smoke-openrouter-one.sh"
     text = script.read_text(encoding="utf-8")
     assert FLASH_ID in text
+    assert '"max_tokens": 64' in text
+    assert "MAIOS_PANEL_KILL" in text
+    assert "Authorization: Bearer ${OPENROUTER_API_KEY}" not in text
     assert "echo \"$OPENROUTER_API_KEY\"" not in text
     assert "echo $OPENROUTER_API_KEY" not in text
     assert "print(os.environ[\"OPENROUTER_API_KEY\"])" not in text
@@ -169,3 +183,19 @@ def test_smoke_script_flash_id_and_no_key_echo() -> None:
         capture_output=True,
     )
     assert result.returncode == 0, result.stderr
+
+
+def test_smoke_honors_panel_kill() -> None:
+    script = ROOT / "scripts/smoke-openrouter-one.sh"
+    env = os.environ.copy()
+    env["MAIOS_PANEL_KILL"] = "1"
+    env.pop("OPENROUTER_API_KEY", None)
+    result = subprocess.run(
+        [_bash(), str(script)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        env=env,
+    )
+    assert result.returncode == 1
+    assert "MAIOS_PANEL_KILL=1" in result.stderr

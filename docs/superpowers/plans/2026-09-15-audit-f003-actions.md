@@ -21,7 +21,7 @@
 | allowed_actions | selected |
 | sha_pinning_required | true |
 | default_workflow_permissions | read |
-| can_approve_pull_request_reviews | false |
+| can_approve_pull_request_reviews | true (exception for Sync Catalog / docs-auto-gen / sync-vercel) |
 | selected patterns | `actions/*`, `github/*`, `aquasecurity/*`, `gitleaks/*`, `trufflesecurity/*`, `hashicorp/*` + github_owned + verified |
 
 ## Notes

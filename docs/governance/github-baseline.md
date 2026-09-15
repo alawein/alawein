@@ -5,7 +5,7 @@ sync: none
 sla: none
 title: GitHub Baseline
 description: Canonical GitHub profile, repository metadata, workflow, and community-health baseline for the alawein workspace.
-last_updated: 2026-09-13
+last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
@@ -72,6 +72,9 @@ active repo cohort it manages.
 
 - Active supported repos should receive CodeQL coverage through the reusable
   workflow path.
+- Station control-plane scanning for this repo uses
+  `.github/workflows/station-security.yml` (CodeQL + Trivy scoped to the live
+  tree). Do not reintroduce monorepo-era `security.yml` path scans.
 - Planned, dormant, unsupported-language, or externally owned repos may be
   tracked in `github-baseline.yaml` with `sync: manual`.
 - Manual GitHub settings remain out-of-repo work:
@@ -80,6 +83,25 @@ active repo cohort it manages.
   - SSH commit signing
 - Profile pin updates are manual and should end with a read-only rerun of
   `python scripts/github/verify-profile-pins.py --check`.
+
+## Actions least-privilege defaults (alawein/alawein, F003 2026-09-15)
+
+Observed and set on the station repo (Settings → Actions):
+
+| Setting | Target |
+|---|---|
+| Default `GITHUB_TOKEN` permissions | `read` (contents + packages) |
+| Allow Actions to create and approve PRs | **ON** (exception) |
+| Allowed actions | Selected: GitHub-owned + verified creators + patterns below |
+| Require SHA-pinned actions | **ON** |
+
+**PR create/approve exception (named workflows):** `readme-sync.yml` (Sync Catalog),
+`docs-auto-gen.yml` (Auto-Generate Architecture Docs), and `sync-vercel.yml` still
+open PRs with `pull-requests: write` (prefer `AUTO_PR_TOKEN` when set). Keep the
+repo setting enabled until those jobs use a non-`GITHUB_TOKEN` identity only.
+
+**Selected-action patterns:** `aquasecurity/*`, `peter-evans/*`, `anthropics/*`,
+`gitleaks/*`, `pnpm/*` (plus GitHub-owned and verified creators).
 
 ## Docs-doctrine exception
 

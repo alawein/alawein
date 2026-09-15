@@ -73,7 +73,8 @@ governance/maios-north-star-2026-09-13
 **Parked pending separate keep/delete call:**  
 `feat/grok-thin-enforce-spend`, `feat/enforcement-live-fetch`, `copilot/research-repo-exploration`
 
-**Not deleted this session** — waiting on `Approve: delete stale branches F006` with exact names.
+**Deleted this session (standing Accept-all → F006):** all names in the proposed delete batch above.  
+**Still parked:** `feat/grok-thin-enforce-spend`, `feat/enforcement-live-fetch`, `copilot/research-repo-exploration`.
 
 ---
 

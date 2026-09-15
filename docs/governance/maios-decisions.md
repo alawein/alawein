@@ -143,7 +143,7 @@ tags: [maios, grok-bot, personal-ops]
 - **BOUND:** Run B human/UI outside; P9+ parked; no `~/.cursor` hook edit; no OpenRouter spend; no meshal `promote it`; no Grok profile writes.
 - **EVIDENCE:** this entry; `.superpowers/sdd/2026-09-12-maios-minimal-operating-layer/progress.md`.
 
-## 2026-09-12 — MAIOS ID residual scrub (mai.* → maios.*)
+## 2026-09-12 — MAIOS ID residual scrub (`mai.*` → `maios.*`)
 - **DECISION/APPLY:** Meshal “MAIOS all the way, cleanup MAI. everywhere.” Live Desktop SoR uses `maios.*` IDs, `maios_id`, and `MAIOS-HANDOFF` only. Completes residual drift left after `MAIOS-ID-RENAME-RECEIPT-2026-09-12.md`.
 - **MAP:** `MAI-HANDOFF` → `MAIOS-HANDOFF`; bare `mai.` machine-ID prefix → `maios.`; `mai_id` → `maios_id`.
 - **BOUND:** `archive/` untouched (historical evidence). CSV move manifests that quote on-disk historical filenames left as path literals. Rename-receipt map file kept as evidence of the first pass.

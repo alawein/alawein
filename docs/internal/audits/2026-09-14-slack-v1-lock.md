@@ -1,7 +1,7 @@
 ---
 type: audit
 status: draft
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 owner: meshal
 ---
 
@@ -36,9 +36,8 @@ rename before 2026-09-19.
 - Linear Slack `U0C0NB35XGQ` FLAG write via `/linear` (companion Linear OAuth).
 - Notion AI FLAG companion write possible. Silent. No write proved this run.
 - OAuth grant strings UNVERIFIED. Scopes canvas: `F0C15AVM0FR`.
-- Workflow last fires unchanged: Daily Agenda DM 2026-09-13; Daily Briefing
-  and Friday Review 2026-09-11; Monday Kickoff and Weekly Content Planner
-  2026-09-07. Today 10:00 UTC is before the 09:00 PT Monday fires.
+- Workflow last fires were later refreshed on 2026-09-15. See
+  `docs/internal/audits/2026-09-15-slack-last-fire-refresh.md`.
 
 ## Canvases (reuse, do not clone)
 

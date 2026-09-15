@@ -1,5 +1,5 @@
 schemaVersion: 1.0.0
-lastVerified: '2026-09-14T10:00:00Z'
+lastVerified: '2026-09-15T03:20:00Z'
 owner: contact@meshal.ai
 note: >
   Human-edited SSOT for agent surfaces, LLM backends, and external integrations.
@@ -7,14 +7,14 @@ note: >
   docs/governance/slack-agent-runbook.md. Re-verify live status monthly or after
   any auth change. Desktop IDE hardening: Part 4 of
   docs/governance/ide-integration-hardening-session.md. Slack v1 lock:
-  2026-09-14 (this file). Public channels listed 9, Cursor reads 7.
-  `#me-agents-*` listed; Cursor is not a member. Slack OAuth grant strings
-  remain UNVERIFIED (no Manage apps API). Working pointers: chat scan
-  F0C16U6USJ0, lane inventory F0C0KEF150C, scopes F0C15AVM0FR. MCP matrix
-  still 2026-09-12 (run bc-e551b6c1) unless a row says otherwise. Desktop
-  column still UNVERIFIED. Prior rescans: 2026-09-13, 2026-09-12,
-  2026-09-06, 2026-09-05. CI drift check:
-  python3 scripts/catalog/validate-agent-integrations.py --strict.
+  2026-09-14. Last-fire refresh: 2026-09-15 (run bc-28323697). Public
+  channels listed 9, Cursor reads 7. `#me-agents-*` listed; Cursor is
+  not a member. Slack OAuth grant strings remain UNVERIFIED. Working
+  pointers: chat scan F0C16U6USJ0, lane inventory F0C0KEF150C, scopes
+  F0C15AVM0FR. MCP matrix still 2026-09-12 (run bc-e551b6c1) unless a
+  row says otherwise. Desktop column still UNVERIFIED. Prior rescans:
+  2026-09-14, 2026-09-13, 2026-09-12, 2026-09-06, 2026-09-05. CI drift
+  check: python3 scripts/catalog/validate-agent-integrations.py --strict.
 
 account_canon: contact@meshal.ai
 employer_isolation:
@@ -47,7 +47,10 @@ agents:
       not a member). Live members 2026-09-14: those two channels are
       Meshal plus `@Notion AI` only. Invite `@Cursor` still pending.
       Slack user search: Grok 0, Hermes 0. No Gmail Slack app.
-    last_verified: 2026-09-14
+      Re-proved 2026-09-15 (run bc-28323697): listed 9, readable 7.
+      `#me-agents-*` still read BLOCKED. 7/7 vs 3/7 is dated: 3/7 was
+      2026-09-05 14:32 UTC before the invite sweep.
+    last_verified: 2026-09-15
   - id: claude-slack
     display_name: Claude
     surfaces: [slack]
@@ -168,10 +171,11 @@ workflow_bots:
     slack_user_id: U0B9RSFC8K0
     slack_username: wf_bot_a0b9mhav7c3
     engagement_30d: 0
-    last_fire: '2026-09-13T08:00:04-07:00'
+    last_fire: '2026-09-14T08:00:06-07:00'
     notes: >
-      DM D0B9MHR3CBV still firing 2026-09-13 08:00 PT. Mentions Calendar
-      digest. Does not send Gmail. 0 replies.
+      DM D0B9MHR3CBV still firing 2026-09-14 08:00 PT (ts
+      1789398006.922469). Mentions Calendar digest. Does not send Gmail.
+      0 Meshal replies in the 30-day window.
   - id: daily-briefing
     schedule: 'daily 09:00'
     output: '#posts'
@@ -179,12 +183,13 @@ workflow_bots:
     slack_user_id: U0B97MGH74J
     slack_username: wf_bot_a0b8s6b6g4x
     engagement_30d: 0
-    last_fire: '2026-09-11T09:00:00-07:00'
+    last_fire: '2026-09-14T09:00:09-07:00'
     notes: >
-      Last fire 2026-09-11 09:00 PT as a Notion pointer reminder, not the
-      old in-Slack briefing body. Pointer form also fired 2026-09-07
-      09:00 PT (ts 1788796805.803739). 0 replies. Slack post only. No
-      Notion write proved.
+      Last fire 2026-09-14 09:00 PT as a Notion pointer reminder (ts
+      1789401609.141879), not the old in-Slack briefing body. Pointer
+      form also fired weekdays 2026-09-07 through 2026-09-11. 0 replies.
+      Slack post only. No Notion write proved. Old body last seen
+      2026-09-04.
   - id: friday-weekly-review
     schedule: 'fri 16:00'
     output: '#posts'
@@ -192,8 +197,10 @@ workflow_bots:
     slack_user_id: U0B99JAG2HF
     slack_username: wf_bot_a0b99h0mccr
     engagement_30d: 0
-    last_fire: '2026-09-11T16:00:00-07:00'
-    notes: Last fire 2026-09-11 16:00 PT. Template body. 0 replies.
+    last_fire: '2026-09-11T16:00:05-07:00'
+    notes: >
+      Last fire 2026-09-11 16:00 PT (ts 1789167605.922879). Template
+      body. 0 replies. Next scheduled fire 2026-09-18.
   - id: monday-weekly-kickoff
     schedule: 'mon 09:00'
     output: '#posts'
@@ -201,10 +208,11 @@ workflow_bots:
     slack_user_id: U0B9HDMBT4H
     slack_username: wf_bot_a0b9btu482g
     engagement_30d: 0
-    last_fire: '2026-09-07T09:00:00-07:00'
+    last_fire: '2026-09-14T09:00:07-07:00'
     notes: >
-      Last fire 2026-09-07 09:00 PT (ts 1788796812.105459). Template body.
-      Prior note that it missed 2026-09-07 was wrong.
+      Last fire 2026-09-14 09:00 PT (ts 1789401607.500849). Template
+      body. Also fired 2026-08-17, 2026-08-24, 2026-08-31, 2026-09-07.
+      0 replies.
   - id: weekly-content-planner
     schedule: 'weekly 09:00'
     output: '#content-pipeline'
@@ -212,10 +220,11 @@ workflow_bots:
     slack_user_id: U0B9RPWA18W
     slack_username: wf_bot_a0b9mekucg3
     engagement_30d: 0
-    last_fire: '2026-09-07T09:00:00-07:00'
+    last_fire: '2026-09-14T09:00:07-07:00'
     notes: >
-      Last fire 2026-09-07 09:00 PT in #content-pipeline
-      (ts 1788796812.956499). Template body. 0 replies.
+      Last fire 2026-09-14 09:00 PT in #content-pipeline
+      (ts 1789401607.614049). Also fired 2026-08-17, 2026-08-24,
+      2026-08-31, 2026-09-07. Template body. 0 replies.
 
 integrations:
   - id: gmail
@@ -320,9 +329,11 @@ integrations:
     notes: >
       Third-party Slack MCP: Cloud Agent error 2026-09-05 14:32 UTC
       (bc-01698bb5), ready 2026-09-06 03:15 UTC (bc-8ca615eb) but redundant.
-      Canonical surface for Slack-launched agents is Cursor Slack Tools.
+      Re-proved ready 2026-09-15 (run bc-28323697): member lists and
+      search. Canonical surface for Slack-launched agents is Cursor
+      Slack Tools. Desktop column still UNVERIFIED.
     repair_doc: docs/governance/cursor-mcp-repair.md#4-slack-mcp-duplicate--remove
-    last_verified: 2026-09-06
+    last_verified: 2026-09-15
   - id: granola
     provider: Granola
     cursor_mcp: needs_auth
@@ -349,8 +360,8 @@ integrations:
     notes: >
       Slack integration B0BA8NTJAR4 added to #all-alawein-workspace 2026-06-13.
       Bot user `@firefliesai` U0BA7DDAG1K (DM D0BAEDSA90U). Not a channel
-      member on 2026-09-14. Cursor Fireflies MCP still needs_auth.
-    last_verified: 2026-09-14
+      member on 2026-09-15. Cursor Fireflies MCP still needs_auth.
+    last_verified: 2026-09-15
   - id: godaddy
     provider: Godaddy
     cursor_mcp: ready
@@ -431,24 +442,28 @@ slack:
 
 slack_channel_reads:
   cloud_agent_current:
+    run: bc-28323697-5620-5f36-9937-29d639f0a1c5
+    verified_at: '2026-09-15T03:20:00Z'
+    listed: 9
+    readable: 7
+    evidence: >
+      live Cursor Slack Tools list 9 + read 7, 2026-09-15. me-agents-eng
+      and me-agents-ops listed, read BLOCKED. 7/7 is current. 3/7 was
+      the 2026-09-05 14:32 UTC audit before the invite sweep.
+  cloud_agent_prior:
     run: bc-498f4ccf-bb8a-5d9a-8cf9-c88047c121ed
     verified_at: '2026-09-14T10:00:00Z'
     listed: 9
     readable: 7
     evidence: >
       live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-14.
-      me-agents-eng and me-agents-ops listed, read BLOCKED. Members
-      there are Meshal plus Notion AI only.
-  cloud_agent_prior:
-    run: bc-e551b6c1-7140-5978-98bb-cc95f9f8c8c3
-    verified_at: '2026-09-12T03:30:00Z'
-    listed: 9
-    readable: 7
-    evidence: live Cursor Slack Tools list 9 + catalog 7/7 reads, 2026-09-12.
+      me-agents-eng and me-agents-ops listed, read BLOCKED.
   ide_slack_mcp:
     verified_at: '2026-09-05'
     readable: 7
-    notes: Meshal desktop IDE Slack MCP; not re-probed on 2026-09-06 Cloud run.
+    notes: >
+      Meshal desktop IDE Slack MCP. Not re-probed on the 2026-09-15
+      Cloud run. Keep Desktop and Cloud Agent columns separate.
 
 slack_channels:
   - id: admin-ops

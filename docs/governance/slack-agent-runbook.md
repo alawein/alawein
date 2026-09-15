@@ -5,11 +5,11 @@ sync: none
 sla: on-change
 title: Slack agent runbook
 description: Locked channel, workflow-bot, and integration governance for the Alawein Slack workspace; source of truth for agent routing and cleanup phases.
-last_updated: 2026-09-14
+last_updated: 2026-09-15
 category: governance
 audience: [ai-agents, contributors]
 status: active
-version: 1.5.7
+version: 1.5.8
 tags: [slack, agents, integrations, workflow-bots, governance]
 ---
 
@@ -152,13 +152,13 @@ Follow-up only. Kit is AGENT.md 1.7.0 on main.
 
 | Bot | Schedule | Output | Last fire | Engagement 30d | Decision |
 | --- | --- | --- | --- | --- | --- |
-| Daily Agenda | Daily 08:00 | DM | 2026-09-13 | 0 replies | Keep; 14-day trial |
-| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-11 (pointer) | 0 replies | Keep (primary digest) |
+| Daily Agenda | Daily 08:00 | DM | 2026-09-14 | 0 replies | Keep; 14-day trial |
+| Daily Briefing | Daily 09:00 | `#posts` | 2026-09-14 (pointer) | 0 replies | Keep (primary digest) |
 | Friday Weekly Review | Fri 16:00 | `#posts` | 2026-09-11 | 0 replies | Keep |
-| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-07 | 0 replies | Keep |
-| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-07 | 0 replies | Keep |
+| Monday Weekly Kickoff | Mon 09:00 | `#posts` | 2026-09-14 | 0 replies | Keep |
+| Weekly Content Planner | Weekly 09:00 | `#content-pipeline` | 2026-09-14 | 0 replies | Keep |
 
-Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-07. Zero engagement remains a usage problem for the trial.
+Four bots are technically healthy. Daily Briefing is `partial` in `catalog/agent-integrations.yaml` (pointer form, not the old briefing body). Monday Kickoff and Weekly Content Planner last fired 2026-09-14. Zero engagement remains a usage problem for the 2026-09-19 trial gate.
 
 ### 2.2 Engagement policy (locked)
 
@@ -349,6 +349,14 @@ gate. Full diagnosis:
 - Expanding Kilo onto `alawein/alawein`.
 
 ## 7. Changelog
+
+### v1.5.8 (2026-09-15)
+
+- Workflow last-fire dates aligned to the 2026-09-15 Cloud prove
+  (`bc-28323697`). Daily Agenda, Daily Briefing, Monday Kickoff, and
+  Weekly Content Planner last fire is 2026-09-14. Friday Review last
+  fire is 2026-09-11. Engagement stays 0. Desktop Slack MCP still
+  UNVERIFIED. No rename and no new chat bots before 2026-09-19.
 
 ### v1.5.7 (2026-09-14)
 

@@ -1,0 +1,197 @@
+schema_version: 1
+verified_at: 2026-09-14T18:22:00-07:00
+desc_refresh_at: "2026-09-14T06:15:00-07:00"
+style_desc_paste_at: "2026-09-14T03:05:00-07:00"
+style_desc_paste_source: "Scheme A Autonomy AUTO/AUTO+LOG rail apply 2026-09-14 (AUTOLOG-KEEPER-DESC-RAIL-APPLY); mirrored ui_description for Intake/Policy/Cleanup/Editorial; RESPONSE-STYLE rev g retained"
+fleet_pass_at: "2026-09-07T03:15:28-07:00"
+delete_pack_closed_at: "2026-09-07T03:40:22-07:00"
+fleet_pass_source: "GROK-FLEET-PASS-2026-09-07.txt / GROK-DELETE-AFTER-PROOF-*.txt (Atlas)"
+naming_canon: Scheme_A_2026-09-07
+rename_proof_at: "2026-09-07T08:52:00-07:00"
+rename_proof_source: "GROK-RENAME-PROOF-2026-09-07.txt (Meshal attestation)"
+front_door: Intake
+ui_name_field: profile.json name
+ui_hide_fields: "settings.json hidden_from_sidebar + hiddenFromSidebar (keep equal; UI Hide if they disagree)"
+notes: >
+  Windows SSOT only; does not rename live bots by itself.
+  Scheme A keepers: Intake/Policy/Cleanup/Editorial (live descs + ui_description include Autonomy AUTO/AUTO+LOG rail; RESPONSE-STYLE rev g; cite AUTOLOG-KEEPER-DESC-RAIL-APPLY-2026-09-14).
+  Intake owns fleet-scan-orchestrate skill + weekday-fleet-scan 08:25 + weekday-fleet-triage 12:25 (new).
+  FoldKeeper 960ff09a and Local Operator 9e2d0a13: ABSENT 2026-09-13; profile removed; do not resurrect; not live KEEP.
+  Blank New Agents 78b7ea0b/d3f5c47b/ff12b236 and New Bot f2816dc9: ABSENT 2026-09-13.
+  5 deprecated shells (Fleet Ops Auditor / Site Audit / PIST / Clip Bot / Video Edit Desk): ABSENT; FLEET-DELETE-PACK 5/5 delete-now DONE.
+  Handoff Integrator 44a4c45b: ABSENT 2026-09-14 early Delete (folder gone); was HIDDEN transitional HOLD until ~2026-10-03; do not resurrect.
+  Optional PRESENT stubs: TEMP - Lessons Collector ba79a549 (HIDDEN live; h1=h2=true; sunset ~2026-09-28 then DELETE -; do not promote). DELETE - New Bot stub d6bdede7: ABSENT 2026-09-14 (folder gone).
+  DELETE - New Bot 9cbcbf40: ABSENT 2026-09-14 (folder gone). DELETE - New Bot stub e87d90b8: ABSENT 2026-09-14 (folder gone). DELETE - TEMP cleaner 923cf465: ABSENT 2026-09-14 (profile gone). c644ced2 ABSENT. BLOCK fifth keeper. Prefer DROP/KEEP wording (no KILL). No product ACK.
+agents:
+  # --- Scheme A visible keepers ---
+  - id: 022c46fa-8324-48bf-99ee-33cfaa2e437b
+    ui_name: Intake
+    historical_ui_name: Atlas
+    maios_id: maios.command.intake
+    maios_id_alias: maios.command.atlas
+    role: sole_front_door
+    status: ACTIVE
+    hidden_from_sidebar: false
+    plane: command
+    routines_on:
+      - monday-sole-writer-proof
+      - weekday-brief-observation  # PAUSED quiet week 2026-09-14; enabled=false; auditor stays ON
+      - morning-brief-auditor
+      - grok-realign-outer-loop
+      - sticky-board-weekly-prune  # commissioned Fri 09:00 PT; last ok 2026-09-11 09:20 PT
+      - research-stack-health      # commissioned Mon 10:00 PT; last ok 2026-09-13 21:03 PT
+      - weekday-fleet-scan         # Mon-Fri 08:25 PT; fleet-scan-orchestrate Jobs A/B/C
+      - weekday-fleet-triage       # Mon-Fri 12:25 PT (new); midday fleet triage
+    ui_label: "Front door · triage · research"
+    ui_description: >
+      MAIOS front door (maios.command.intake). Sole ordinary inbox: triage, draft, research,
+      and route via skills; Morning Brief auditor is read-only; owns fleet-scan-orchestrate
+      skill + weekday fleet scan / midday fleet triage routines. Rails: Dual SoR B WITH PATCHES;
+      RESPONSE-STYLE rev g; Cursor-first on coding-phone + meshal-web; Approve: gates; skills
+      beat new durable bots; Notion Custom Agent is the sole Brief writer; BLOCK fifth keeper.
+      Autonomy: Owner executes reversible internal AUTO/AUTO+LOG work without re-asking Meshal;
+      ask `Approve:` only for hard gates or missing standing authority (SA-01..08). Remaining
+      work: propose board diffs to Policy (FLEET-BOARD sole writer); run fleet triage jobs; keep
+      DELETE - stubs queued for Meshal UI Delete. Must not: invent a second inbox; write Notion
+      Morning Brief body; Edit Policy FLEET-BOARD as sole writer; Cleanup MOVE/Delete; ambient
+      send, spend, publish, delete, commit, merge, approve, push, or secret rotate without
+      Meshal Approve:; spawn a new durable bot when a skill fits; treat sync daemon or Grok
+      memory as doctrine SoR.
+    run_skills_via: Intake
+    skills:
+      - agent-handoff-status-discipline
+      - permission-delta-approval
+      - opportunity-screen
+      - forge-ephemeral-worker-plan
+      - ops-dual-writer-check
+      - pr-hygiene-digest
+      - getting-started
+      - prompt-adapter-optimizer
+      - fleet-scan-orchestrate
+
+  - id: 06c419c1-bc8f-4e47-84d9-30bc76bbda0d
+    ui_name: Policy
+    historical_ui_name: Alfred
+    maios_id: maios.command.policy
+    maios_id_alias: maios.command.alfred
+    role: governance
+    status: ACTIVE
+    hidden_from_sidebar: false
+    plane: command
+    # Disk truth 2026-09-14: three review routines PRESENT but enabled=false — do not list under routines_on; do not flip enabled=true without Meshal Approve:
+    routines_on: []
+    routines_disk_enabled_false:
+      - weekly-company-grok-bot-improvement-review
+      - monthly-bot-portfolio-strategy-review
+      - quarterly-company-ai-operating-model-review
+    ui_label: "Governance · portfolio · reviews"
+    ui_description: >
+      MAIOS governance (maios.command.policy). Governance, inventory, evaluations, routine
+      health, and FLEET-BOARD sole writer (Intake proposes; Policy alone commits board
+      mutations). Policy confirm is governance review, not execution authorization. Rails: Dual
+      SoR B WITH PATCHES; RESPONSE-STYLE rev g; Cursor-first on coding-phone + meshal-web;
+      Approve: gates; skills beat new durable bots; Notion Custom Agent is the sole Brief
+      writer. Autonomy: Owner executes reversible internal AUTO/AUTO+LOG work without re-asking
+      Meshal; ask `Approve:` only for hard gates or missing standing authority (SA-01..08).
+      Remaining work: Desktop ops-shared-inventory\FLEET-BOARD.md (sole board writer;
+      refuse incomplete rows; ROT when last_verified older than 14 days; liveness:
+      enabled+null lastRunAt = Blocked). Must not: act as ordinary inbox; write Notion Morning
+      Brief body; invent GO or wave-close from ROT without re-verify; Cleanup MOVE/Delete;
+      ambient send/spend/publish/delete/commit/merge/approve/push/secret rotate without Meshal
+      Approve:; create a fifth durable board/task bot; treat sync daemon as SoR.
+    skills:
+      - audit-repair-govern
+      - public-share-security-audit
+
+  - id: d8951031-3172-429c-8c4c-61995de564fd
+    ui_name: Cleanup
+    historical_ui_name: Housekeeper
+    maios_id: maios.control.cleanup
+    maios_id_alias: maios.control.housekeeper
+    role: local_utility
+    status: ACTIVE
+    hidden_from_sidebar: false
+    plane: control
+    routines_on: [weekly-desktop-downloads-declutter, midweek-temp-and-scratch-sweep]
+    ui_label: "Local hygiene · desktop · downloads"
+    ui_description: >
+      MAIOS local control (maios.control.cleanup). Desktop/Downloads inventory first;
+      MOVE+MANIFEST hygiene only in approved scope. Protect SSOT (ops-shared-inventory),
+      repos, and active handoffs. Rails: Dual SoR B WITH PATCHES; RESPONSE-STYLE rev g;
+      Cursor-first on coding-phone + meshal-web; Approve: gates; skills beat new durable
+      bots; Notion Custom Agent is the sole Brief writer. Autonomy: Owner executes reversible
+      internal AUTO/AUTO+LOG work without re-asking Meshal; ask `Approve:` only for hard gates
+      or missing standing authority (SA-01..08). Remaining work: Desktop
+      ops-shared-inventory\FLEET-BOARD.md (propose hygiene rows; Policy commits board writes).
+      Must not: act as ordinary inbox; permanent delete without Meshal Approve:; MOVE without
+      manifest; write Notion Morning Brief body; mutate FLEET-BOARD as sole writer; ambient
+      send/spend/publish/commit/merge/approve/push/secret rotate without Meshal Approve:;
+      invent a durable bot for one-off tidy work.
+    skills:
+      - declutter-housekeeping
+
+  - id: 2b5c2ff8-66c7-43b1-b93e-9c141c772b89
+    ui_name: Editorial
+    maios_id: maios.quality.editorial
+    role: writing_qc
+    status: ACTIVE
+    hidden_from_sidebar: false
+    plane: quality
+    routines_on: []
+    ui_label: "Writing QC · PRs · docs · prompts"
+    ui_description: >
+      MAIOS editorial QC (maios.quality.editorial). Non-blocking Must/Should/Nice writing QC
+      for PRs, issues, docs, skills, hooks, agent/bot configs, and prompts. Maintains
+      editorial/ guide + templates. Kept as Scheme A durable keeper. Rails: Dual SoR B WITH
+      PATCHES; RESPONSE-STYLE rev g; Cursor-first on coding-phone + meshal-web; Approve:
+      gates; skills beat new durable bots; Notion Custom Agent is the sole Brief writer.
+      Autonomy: Owner executes reversible internal AUTO/AUTO+LOG work without re-asking Meshal;
+      ask `Approve:` only for hard gates or missing standing authority (SA-01..08). Remaining
+      work: Desktop ops-shared-inventory\FLEET-BOARD.md (propose QC-related rows; Policy commits
+      board writes). Must not: act as ordinary inbox; invent policy or a second response-style
+      SoR; write Notion Morning Brief body; gate merge or publish; Cleanup MOVE/Delete; mutate
+      FLEET-BOARD as sole writer; ambient send/spend/publish/delete/commit/merge/approve/push/
+      secret rotate without Meshal Approve:.
+    skills:
+      - editorial-curation
+      - edit-a-draft
+      - anti-slop-pass
+
+  # --- Optional PRESENT stubs (not Scheme A) ---
+
+  - id: ba79a549-76ae-4a69-99e5-f4c1a840767e
+    ui_name: "TEMP - Lessons Collector"
+    role: optional_stub
+    status: OPTIONAL/PRESENT/TEMP
+    hidden_from_sidebar: true
+    hiddenFromSidebar: true
+    hide_verified_at: 2026-09-14T07:09:00-07:00
+    plane: quality
+    notes: "TEMP Quality/observer still active; sunset ~2026-09-28 then DELETE -; proposal-only; not Scheme A; do not promote; HIDDEN live h1=h2=true"
+    hide_mirror_note: "OBSERVED 2026-09-14T06:23:00-07:00: live settings h1=h2=true (HIDDEN); KEEP until sunset; no unhide without Meshal exact yes"
+
+# Gone from box (do not re-add):
+#   09793d6d. DELETED / NOT_FOUND (GROK-DELETE-AFTER-PROOF-09793d6d 03:40:22 PDT)
+#   d5fb3dcc. Delete CLOSED (NOT_FOUND)
+#   9f620b76. NOT_FOUND
+#   2afea7ed. NOT_FOUND
+#   0a1d0735. NOT_FOUND
+#   d6bdede7 DELETE - New Bot stub - ABSENT 2026-09-14; folder gone; was DELETE-ready HIDDEN; do not resurrect
+# ABSENT 2026-09-13/14 delete-now DONE (do not list as live):
+#   027264b0 Fleet Ops Auditor - ABSENT; skill ops-dual-writer-check
+#   648b29ed Site Audit - ABSENT; Lab skill gap until site_url
+#   889ba701 Product Idea Stress Test - ABSENT; pist-* skills
+#   90b95597 Clip Bot - ABSENT; Studio clip skills
+#   f826e37f Video Edit Desk - ABSENT; Studio media skills
+# ABSENT 2026-09-13 (do not resurrect; not live KEEP):
+#   960ff09a FoldKeeper - ABSENT 2026-09-13; profile removed; do not resurrect
+#   9e2d0a13 Local Operator - ABSENT 2026-09-13; profile removed; do not resurrect
+#   78b7ea0b / d3f5c47b / ff12b236 blank New Agent stubs ABSENT
+#   f2816dc9 blank New Bot ABSENT
+#   c644ced2 blank New Bot ABSENT 2026-09-14 (superseded by ba79a549)
+# ABSENT 2026-09-14:
+#   44a4c45b HOLD - Handoff Integrator - ABSENT early Delete (folder gone); was HIDDEN transitional HOLD until ~2026-10-03; do not resurrect
+#   9cbcbf40 DELETE - New Bot - ABSENT; folder gone; do not resurrect; not Scheme A
+#   e87d90b8 DELETE - New Bot stub - ABSENT; folder gone; do not resurrect; not Scheme A
+#   923cf465 DELETE - TEMP cleaner - ABSENT; profile removed; do not resurrect; not Scheme A
+

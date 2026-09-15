@@ -1,0 +1,111 @@
+schema_version: 1
+verified_at: "2026-09-09T23:55:00Z"
+source: "GROK-FLEET-INTEGRATION-MATRIX-2026-09-09.md + parent GetMcpServerStatus + GitHub MCP RO smoke 2026-09-09 ~16:55 PT (list open PRs alawein/alawein = [])"
+summary:
+  connected: 14
+  needsAuth: 15
+  error: 3
+  total_installed: 32
+  note: "Status names only; no tokens. Github MCP connected/HEALTHY after RO smoke 2026-09-09 (open PRs []). HF Desktop needsAuth; Grok 1password/Supermemory error vs Desktop plugin present; Treg Desktop token invalid."
+connected:
+  - Google-drive
+  - Gmail
+  - Google-calendar
+  - Slack
+  - Godaddy
+  - Railway
+  - Cloudflare-docs
+  - Huggingface-skills
+  - Playwright
+  - Onedrive
+  - Treg
+  - notion
+  - Outlook
+  - Github  # MCP connected/HEALTHY; RO smoke 2026-09-09 open PRs alawein/alawein = []
+needsAuth:
+  - Granola
+  - Neon
+  - Cloudflare-bindings
+  - Cloudflare-builds
+  - Cloudflare-observability
+  - Fireflies
+  - Figma
+  - Calendly
+  - Zoom
+  - Docusign
+  - Wonder
+  - Mobbin
+  - Lovable
+  - Posthog
+  - Context
+error:
+  - Todoist: failed_to_load
+  - Supermemory: module path
+  - 1password: spawn ENOENT  # MCP BROKEN; CLI may still exist separately
+ops_critical:
+  - name: notion
+    state: connected
+    class: CORE
+    policy: "READ-ONLY on Morning Brief; Custom Agent is sole writer"
+  - name: Slack
+    state: connected
+    class: CORE
+    option_c_class: ACTIVE
+    policy: "09:00 pointer-only to Notion Brief; Swarm coord; not delivery SoR"
+    channel: "#posts (C0APWF615H7)"
+  - name: Github
+    state: connected
+    class: CORE
+    option_c_class: ACTIVE
+    policy: "MCP connected/HEALTHY (RO smoke 2026-09-09). Windows gh still available. No approve/merge without exact yes. Never nag for PAT keys."
+    class_status: HEALTHY
+  - name: 1password
+    state: error
+    class: CORE_STORE
+    policy: "MCP error ENOENT; secrets SoR remains 1Password human; repair PARKED"
+    class_status: BROKEN
+coding_plane_windows:
+  vscode_mcp: "github + context7 + playwright + supabase; secrets via User env only"
+  cursor_mcp_json: "filesystem + Cursor plugins (github connected 2026-09-09 probe; context7-plugin; slack/notion/playwright ready)"
+  claude_plugins: "github, context7, supabase, playwright enabled"
+  codex_mcp: "lean - HOLD parity decision"
+  kilo_mcp: "context7-lean - HOLD parity decision"
+optional_already_on:
+  - Railway
+  - Playwright
+  - Cloudflare-docs
+  - Godaddy
+  - Treg
+  - Huggingface-skills
+  - Onedrive
+  - Outlook
+defer:
+  - 1password  # MCP error; CLI separate
+  - Supermemory
+  - Todoist
+  - Linear / Vercel / Sentry / Prisma / Stripe / BrowserStack
+  - most needsAuth connectors until a real workflow needs them
+do_not_this_phase:
+  - add MCPs
+  - authenticate needsAuth for curiosity
+  - repair broken Grok connectors unless gated workflow requires
+  - expand Codex/Kilo to full quartet without written SoR
+# Swarm v1 Option C; Github MCP reauth complete 2026-09-09 (RO smoke OK).
+swarm_v1_option_c:
+  note: "Github MCP connected/HEALTHY; other auth snapshot unchanged; no tokens"
+  surfaces:
+    - name: Slack
+      option_c_class: ACTIVE
+      swarm_note: "Coord; pointer-style; not delivery SoR"
+    - name: Github
+      option_c_class: ACTIVE
+      swarm_note: "ACTIVE; MCP connected/HEALTHY (RO smoke 2026-09-09); Windows gh still available"
+    - name: Gmail
+      option_c_class: RO_STUB
+      swarm_note: "Read awareness only; no send"
+    - name: Linear
+      option_c_class: ELSEWHERE_STUB
+      swarm_note: "Not installed; no curiosity-install"
+    - name: Webhooks_EventSub
+      option_c_class: DEFERRED
+      swarm_note: "Do not install"

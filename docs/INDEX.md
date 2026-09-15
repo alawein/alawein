@@ -3,7 +3,7 @@ type: derived
 source: directory-structure
 sync: script
 sla: on-change
-last_updated: 2026-09-13
+last_updated: 2026-09-15
 ---
 
 # Index: alawein
@@ -145,6 +145,7 @@ last_updated: 2026-09-13
 - [brand-copy-guidelines.md](style/brand-copy-guidelines.md)
 - [brand-system.md](style/brand-system.md)
 - [hybrid-corpus-workflow.md](style/hybrid-corpus-workflow.md)
+- [maios-reply-style-portable.md](style/maios-reply-style-portable.md)
 - [markdown-formatting-standard.md](style/markdown-formatting-standard.md)
 - [prompt-kit-chatgpt.md](style/prompt-kit-chatgpt.md)
 - [prompt-kit-claude.md](style/prompt-kit-claude.md)

@@ -44,3 +44,4 @@ last_updated: 2026-07-07
 | 2026-09-06 23:36 | cf81cd9 | Validate and compile Phase 3 governance catalog | 7 files | ~32 lines |
 | 2026-09-07 09:18 | e2af8de | feat(repo-audit): add read-only repository audit scanner, tests, workflow, and examples | 12 files | ~2374 lines |
 | 2026-09-07 09:23 | 9f33451 | test(repo-audit): assert the pagination host by parsed netloc | 1 files | ~4 lines |
+| 2026-09-15 03:08 | 2dc708c | docs: grok-thin Cursor/OpenRouter offload pointer (#295) | 2 files | ~43 lines |

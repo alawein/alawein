@@ -11,7 +11,7 @@ status: active
 author: Kohyr Inc.
 version: 1.0.0
 tags: [changelog, version-history, releases]
-last_updated: 2026-09-13
+last_updated: 2026-09-15
 ---
 
 # Changelog
@@ -44,6 +44,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Document Grok usage freeze, spend investigation, OpenRouter model
+  routing by purpose, and Langfuse panel tags for MAIOS Intake
+  (`docs/internal/maios/`).
 - Public-safe provider review, access coverage, repository responsibility, and
   trigger review documentation under [`docs/operations/`](docs/operations/).
 - [`docs/internal/audits/2026-08-28-public-benchmark-patterns.md`](docs/internal/audits/2026-08-28-public-benchmark-patterns.md): benchmark study behind the P0 README checklist.

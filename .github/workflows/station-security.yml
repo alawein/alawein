@@ -1,0 +1,94 @@
+name: Station Security Scanning
+
+# Replaces removed security.yml / unified-security.yml (monorepo era).
+# Uploads fresh CodeQL + Trivy SARIF for the current control-plane tree only.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/station-security.yml"
+      - ".github/codeql/**"
+      - "scripts/**"
+      - "tools/**"
+      - "catalog/**"
+      - "config/**"
+      - "schemas/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/station-security.yml"
+      - ".github/codeql/**"
+      - "scripts/**"
+      - "tools/**"
+      - "catalog/**"
+      - "config/**"
+      - "schemas/**"
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+concurrency:
+  group: station-security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  codeql:
+    name: CodeQL (control plane)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies for CodeQL extraction
+        run: pip install pyyaml 'jsonschema>=4.18' pytest requests
+
+      - uses: github/codeql-action/init@c10b8064de6f491fea524254123dbe5e09572f13 # v4.35.1
+        with:
+          languages: python
+          queries: security-extended,security-and-quality
+          config-file: .github/codeql/codeql-config.yml
+
+      - uses: github/codeql-action/analyze@c10b8064de6f491fea524254123dbe5e09572f13 # v4.35.1
+        with:
+          category: "/language:python"
+
+  trivy:
+    name: Trivy (${{ matrix.scan_ref }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        scan_ref:
+          - scripts
+          - tools
+          - catalog
+          - config
+          - schemas
+          - .github/workflows
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Run Trivy filesystem scan
+        uses: aquasecurity/trivy-action@d2a0b60797ff03db6132bd4e2b293f9b37081297 # v0.33.1
+        with:
+          scan-type: fs
+          scan-ref: ${{ matrix.scan_ref }}
+          severity: CRITICAL,HIGH
+          format: sarif
+          output: trivy-results.sarif
+          exit-code: "0"
+
+      - name: Upload Trivy results
+        uses: github/codeql-action/upload-sarif@c10b8064de6f491fea524254123dbe5e09572f13 # v4.35.1
+        with:
+          sarif_file: trivy-results.sarif
+          category: "/trivy:${{ matrix.scan_ref }}"

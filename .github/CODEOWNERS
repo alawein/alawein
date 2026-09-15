@@ -6,5 +6,5 @@ docs/governance/               @alawein
 claude-agent-platform/         @alawein
 catalog/repos.json             @alawein
 .github/workflows/             @alawein
-scripts/validate-doctrine.py   @alawein
-scripts/github-baseline-audit.py @alawein
+scripts/doctrine/validate-doctrine.py   @alawein
+scripts/github/github-baseline-audit.py @alawein

@@ -1,5 +1,5 @@
 schemaVersion: "1.0.0"
-lastVerified: "2026-09-08"
+lastVerified: "2026-09-15"
 
 # Kernel canonicalization state. See docs/governance/kernel-spec.md and
 # docs/internal/plans/2026-09-08-kernel-canonicalization.md.
@@ -13,9 +13,9 @@ kernel_version: "0.1.0"
 # hub release, not a raw main SHA -- see docs/adr/0008-workflow-pin-targets-
 # tagged-release.md. Despite the field name, the value is a git tag (e.g.
 # "kernel-v0.1.0"), scoped to kernel releases, distinct from this repo's
-# product tags (v1.0.0, v2.1.0). Still null: no kernel release tag has been
-# cut yet. Set once the Phase 6 step 5 workflow PR merges to main and that
-# commit is tagged -- do not guess a value in the meantime.
+# product tags (v1.0.0, v2.1.0). Tag kernel-v0.1.0 exists (2026-09-10).
+# workflow_pin_sha stays null until Phase 6 fleet pin lands; do not guess a
+# value before that decision is recorded.
 workflow_pin_sha: null
 
 # Path allowlist for the kernel-sync PR class (ADR 0005). A kernel-sync PR

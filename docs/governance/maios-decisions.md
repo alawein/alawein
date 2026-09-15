@@ -11,7 +11,17 @@ last_updated: 2026-09-15
 tags: [maios, grok-bot, personal-ops]
 ---
 # DECISIONS — do not re-litigate
-**Updated:** 2026-09-15 PT (action protocol terminal fold; #299 Cursor-first on alawein main) - Append-only.
+**Updated:** 2026-09-15 PT (consolidation human-call bundle; #302/#303 on main) - Append-only.
+
+## 2026-09-15 - Consolidation human-call bundle (LOCKED)
+
+- **DECISION/APPLY:** Meshal `ready; go and promote it` (Exact-yes equivalent for bundle defaults).
+- **FLEET:** Bridge-only Kanban at `ops-shared-inventory/control/FLEET-BOARD.md`; git `control-plane.md` stays no second backlog; personal board is an explicit bridge exception.
+- **STYLE:** Dual SoR — rich chat/status `Desktop/ops-shared-inventory/RESPONSE-STYLE.md` rev g; cloud portable `docs/style/maios-reply-style-portable.md` @ `maios-reply-format@1.0.0`; policy `~/AGENTS.md`.
+- **AGI:** Canonical tree `Desktop/Dropbox/AGI` only; no Desktop-root `AGI` folder.
+- **DOTFOLDERS:** Removed Kiro profile hooks; archived `.kiro` and `.lmstudio` under `~/_archive/dotfolders-2026-09-15/`.
+- **AGENTIC-ENG:** Full 101-file pack not recovered on disk; `knowledge-inventory/agentic-eng-env/STATUS.md` stub + organized-ops provenance until a backup path appears.
+- **EVIDENCE:** bridge `control/handoff/desktop-github-consolidation-2026-09-15/DECISIONS-APPLIED-2026-09-15.md`.
 
 ## 2026-09-15 - Action protocol terminal CLI folded (OBSERVED)
 

@@ -9,7 +9,7 @@ category: governance
 audience: [ai-agents, contributors]
 status: active
 version: 1.0.0
-last_updated: 2026-09-10
+last_updated: 2026-09-15
 tags: [governance, control-plane, evidence, admission]
 ---
 
@@ -30,6 +30,9 @@ detect or recover.
   and [`unified-agent-system.md`](unified-agent-system.md).
 - A second task backlog. Work state stays on GitHub Issues until a recorded
   Linear cutover ([`work-record-taxonomy.md`](work-record-taxonomy.md)).
+  Personal Grok ops Kanban stays on the Desktop bridge
+  (`ops-shared-inventory/control/FLEET-BOARD.md`, Policy sole writer), not in
+  this repository.
 - An orchestration platform. Add one only after measured coordination friction
   justifies it.
 - A grant of access. Tool availability, MCP readiness, and a pasted prompt do

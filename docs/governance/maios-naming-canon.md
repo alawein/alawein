@@ -12,11 +12,11 @@ tags: [maios, grok-bot, personal-ops]
 ---
 # NAMING-CANON — Scheme A
 **Status:** ACTIVE-SSOT (Windows)  
-**Promoted from:** [NAMING-CANON-PROPOSAL.md](./NAMING-CANON-PROPOSAL.md) (SUPERSEDED)  
-**Unison:** [UNISON-a8a70f08-NAMING-2026-09-07.md](./UNISON-a8a70f08-NAMING-2026-09-07.md)  
-**Locked architecture:** [MAIOS.md](./MAIOS.md) Approach A  
+**Promoted from:** `NAMING-CANON-PROPOSAL.md` (SUPERSEDED)  
+**Unison:** `UNISON-a8a70f08-NAMING-2026-09-07.md`  
+**Locked architecture:** [MAIOS.md](./maios-charter.md) Approach A  
 **Date:** 2026-09-07  
-**Live Grok:** Meshal attested rename 2026-09-07 ~08:52 PT → Intake / Policy / Cleanup ([GROK-RENAME-PROOF-2026-09-07.txt](./GROK-RENAME-PROOF-2026-09-07.txt)). Historical Names Atlas / Alfred / Housekeeper are aliases for maios_id only.
+**Live Grok:** Meshal attested rename 2026-09-07 ~08:52 PT → Intake / Policy / Cleanup (`GROK-RENAME-PROOF-2026-09-07.txt`). Historical Names Atlas / Alfred / Housekeeper are aliases for maios_id only.
 
 ---
 
@@ -84,11 +84,11 @@ Atlas / Alfred read as two inboxes. Housekeeper tone clashes. Planes sound like 
 
 ## Brand lane (not a keeper)
 
-**Brand** is a workflow **LANE**, not a bot and not a Scheme A keeper. Public-surface inventory lives in [BRAND-MATRIX-2026-09-09.md](./BRAND-MATRIX-2026-09-09.md). Do not name any bot Brand, Marketing, Social, or MAIOS. Keepers stay Intake / Policy / Cleanup (+ Editorial QC). X handle split: [X-HANDLE-MATRIX-2026-09-09.md](./X-HANDLE-MATRIX-2026-09-09.md).
+**Brand** is a workflow **LANE**, not a bot and not a Scheme A keeper. Public-surface inventory lives in `BRAND-MATRIX-2026-09-09.md`. Do not name any bot Brand, Marketing, Social, or MAIOS. Keepers stay Intake / Policy / Cleanup (+ Editorial QC). X handle split: `X-HANDLE-MATRIX-2026-09-09.md`.
 
 ## Career lane (not a keeper)
 
-**Career** is a workflow **LANE under Intake**, not a bot and not a Scheme A keeper. Pipeline doctrine lives in [CAREER-PIPELINE-2026-09-09.md](./CAREER-PIPELINE-2026-09-09.md). Do not name any bot Career, Recruiter, Jobs, or MAIOS. Gmail stays RO classify (Swarm 4.4 stub). Outbound/apply need Meshal exact yes. Keepers stay Intake / Policy / Cleanup (+ Editorial QC).
+**Career** is a workflow **LANE under Intake**, not a bot and not a Scheme A keeper. Pipeline doctrine lives in `CAREER-PIPELINE-2026-09-09.md`. Do not name any bot Career, Recruiter, Jobs, or MAIOS. Gmail stays RO classify (Swarm 4.4 stub). Outbound/apply need Meshal exact yes. Keepers stay Intake / Policy / Cleanup (+ Editorial QC).
 
 ## Apply order
 

@@ -19,14 +19,14 @@ See full table: bridge pack `00-CANONICAL-SET.md` (authoritative listing for thi
 
 ## Quick open order (cold agent)
 
-1. [START_HERE.md](./START_HERE.md)  
-2. [MAIOS.md](./MAIOS.md)  
-3. [LANGUAGE-BIBLE.md](./LANGUAGE-BIBLE.md) (DRAFT until promote)  
-4. [NAMING-CANON.md](./NAMING-CANON.md)  
-5. [BOTS-SKILLS-TEAMS-CANON.md](./BOTS-SKILLS-TEAMS-CANON.md)  
-6. [RESPONSE-STYLE.md](./RESPONSE-STYLE.md)  
-7. [agents.yaml](./agents.yaml) + [BOTS-AND-TEAMS.md](./BOTS-AND-TEAMS.md)  
-8. [DECISIONS.md](./DECISIONS.md) · [FLEET-BOARD.md](./FLEET-BOARD.md)
+1. `START_HERE.md`  
+2. [MAIOS.md](./maios-charter.md)  
+3. `LANGUAGE-BIBLE.md` (DRAFT until promote)  
+4. [NAMING-CANON.md](./maios-naming-canon.md)  
+5. [BOTS-SKILLS-TEAMS-CANON.md](./maios-bots-skills-teams-canon.md)  
+6. `RESPONSE-STYLE.md`  
+7. [agents.yaml](./maios-agents.yaml) + [BOTS-AND-TEAMS.md](./maios-bots-and-teams.md)  
+8. [DECISIONS.md](./maios-decisions.md) · `FLEET-BOARD.md`
 
 Bridge transport: `Desktop/ops-shared-inventory/HANDOFF-TEMPLATE.md` + `control/handoff/inbox/`.
 

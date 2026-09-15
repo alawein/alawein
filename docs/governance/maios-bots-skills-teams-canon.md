@@ -12,10 +12,10 @@ tags: [maios, grok-bot, personal-ops]
 ---
 # BOTS · SKILLS · TEAMS — FINAL CANON (for Claude Code)
 
-> **Scheme A keepers:** Intake / Policy / Cleanup / Editorial. See [NAMING-CANON.md](./NAMING-CANON.md).
+> **Scheme A keepers:** Intake / Policy / Cleanup / Editorial. See [NAMING-CANON.md](./maios-naming-canon.md).
 
 **SoR:** this file · grounded in `NAMING-CANON.md`, `RENAME-PROPOSALS.md`, `ops-shared-inventory/agents.yaml`, Master Handoff migration  
-**OS:** [MAIOS.md](./MAIOS.md) — Meshal AI Operating System (control plane). This CANON details bots/skills/teams inside MAIOS.
+**OS:** [MAIOS.md](./maios-charter.md) — Meshal AI Operating System (control plane). This CANON details bots/skills/teams inside MAIOS.
 **verified_at:** 2026-09-07 (Scheme A Windows SSOT flip; live Grok aliases until GROK-RENAME-PROOF)
 **LIVE status/UI sync:** `BOTS-AND-TEAMS.md` + `agents.yaml` (wins on current hide/routines/display names — night sync 2026-09-06)
 **Rule:** Prefer skills over personas. Logical teams ≠ sidebar bots. Durable renames / deletes = Meshal exact yes.
@@ -36,7 +36,7 @@ tags: [maios, grok-bot, personal-ops]
 | Temps | `Temp <Job>` or session New Bot — never promote | Temp Naming Canon |
 | Legacy shells | Keep historical name + `[HIDDEN/DEPRECATED]` | Clip Bot → Studio skills |
 
-**Chat/status wording:** [RESPONSE-STYLE.md](./RESPONSE-STYLE.md) (rev c portable markers + dual-env adapters).
+**Chat/status wording:** `RESPONSE-STYLE.md` (rev c portable markers + dual-env adapters; Desktop bridge SoR).
 
 **Do not:** Bot 2 / Integrator 2 / Atlas Router / mega-router / per-capability durable bots / dual front door / dual Brief writer.
 
@@ -148,7 +148,7 @@ Relay remains connector capabilities, not a bot. Notion Brief access from Grok i
 
 ## 6. UX INFORMATION ARCHITECTURE (names Claude/Cursor must use)
 
-**OS context:** [MAIOS.md](./MAIOS.md) — IA naming map for bots/skills/teams inside MAIOS.
+**OS context:** [MAIOS.md](./maios-charter.md) — IA naming map for bots/skills/teams inside MAIOS.
 
 ```
 COMMAND
@@ -174,7 +174,7 @@ ACTIVE WORK / RECENT
 
 ## 7. Approved profile patches - Grok writer only
 
-**Superseded for Description text:** use [MAIOS-DESCRIPTION-PACK.md](./MAIOS-DESCRIPTION-PACK.md) Set A (personal) / Set B (share). Apply in Grok UI only; return NAMING-PROOF. Historical §7 blocks below kept for audit trail only.
+**Superseded for Description text:** use `MAIOS-DESCRIPTION-PACK.md` Set A (personal) / Set B (share). Apply in Grok UI only; return NAMING-PROOF. Historical §7 blocks below kept for audit trail only.
 
 Approved by Meshal in this Codex task on 2026-09-06. Application grade: implemented (descriptions applied+read back 2026-09-06 ~17:40 PT). Skill MERGE NOW: implemented+draft-tested 2026-09-06 ~17:45 PT (aliases retained; media/deferred untouched). Keep all three names unchanged. Apply through Grok Settings or UpdateAgent, never through Windows file edits or browser agents. Read back exact descriptions before marking implemented/verified. Skill lists live in section 4, not descriptions.
 
@@ -254,7 +254,7 @@ Applied:
 1. Friday PR hygiene → enabled on Integrator (`0 9 * * 5`)
 2. Alfred weekly/monthly/quarterly → enabled
 3. Hidden from sidebar: Temp Continuator, Finalize (temp), New Bot leftover, Fleet Ops Auditor, Site Audit, PIST, Clip Bot, Video Edit Desk
-4. Deleted skills `getting-started-2` and `getting-started-3` (kept [getting-started](sand-workflow:getting-started))
+4. Deleted skills `getting-started-2` and `getting-started-3` (kept `getting-started`)
 5. Standing rule: never nag for PATs/API keys; use existing connectors/auth only
 6. `site-audit` skill still blocked (no `site_url`); Integrator hide remains 2026-09-19
 

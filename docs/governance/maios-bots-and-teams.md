@@ -112,7 +112,7 @@ Do **not** create sidebar bots named Forge, Gatekeeper, Fleet Ops, Relay, Studio
 
 ## Swarm v1 (keepers only)
 
-These four Scheme A visibles **are** Swarm v1 keepers. Coordination contract: [SWARM-V1-CONTRACT.md](./SWARM-V1-CONTRACT.md). Do **not** create a Swarm-named bot, Relay, Studio, Lab, Forge, Gatekeeper, Fleet Ops, or MAIOS-as-bot. Execute remains **HOLD** until Meshal exact yes (docs/propose-only pack may land first).
+These four Scheme A visibles **are** Swarm v1 keepers. Coordination contract: `SWARM-V1-CONTRACT.md`. Do **not** create a Swarm-named bot, Relay, Studio, Lab, Forge, Gatekeeper, Fleet Ops, or MAIOS-as-bot. Execute remains **HOLD** until Meshal exact yes (docs/propose-only pack may land first).
 
 
 ## Sync checklist (run after any bot change)

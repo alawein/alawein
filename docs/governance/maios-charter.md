@@ -18,7 +18,7 @@ tags: [maios, grok-bot, personal-ops]
 **Canonical home (cutover B, on disk 2026-09-14):** `C:\Users\mesha\Desktop\GitHub\solo\alawein\maios`  
 **Bridge (pointer + archive + Cursor lint/hooks receipts):** `C:\Users\mesha\Desktop\ops-shared-inventory`
 
-**Related:** [START_HERE.md](./START_HERE.md) · [CANONICAL-SET.md](./CANONICAL-SET.md) · [LANGUAGE-BIBLE.md](./LANGUAGE-BIBLE.md) · [MAIOS-OPERATING-MAP.md](./MAIOS-OPERATING-MAP.md) · [RESPONSE-STYLE.md](./RESPONSE-STYLE.md) · [docs/superpowers/AGENT-OS.md](./docs/superpowers/AGENT-OS.md) · [docs/superpowers/CURRENT-STATE-2026-09-14.md](./docs/superpowers/CURRENT-STATE-2026-09-14.md) · [docs/superpowers/specs/2026-09-14-action-protocol-v0.md](./docs/superpowers/specs/2026-09-14-action-protocol-v0.md) · [BOTS-SKILLS-TEAMS-CANON.md](./BOTS-SKILLS-TEAMS-CANON.md) · [agents.yaml](./agents.yaml) · [DECISIONS.md](./DECISIONS.md)
+**Related:** `START_HERE.md` · [CANONICAL-SET.md](./maios-canonical-set.md) · `LANGUAGE-BIBLE.md` · `MAIOS-OPERATING-MAP.md` · `RESPONSE-STYLE.md` · `docs/superpowers/AGENT-OS.md` · `docs/superpowers/CURRENT-STATE-2026-09-14.md` · `docs/superpowers/specs/2026-09-14-action-protocol-v0.md` · [BOTS-SKILLS-TEAMS-CANON.md](./maios-bots-skills-teams-canon.md) · [agents.yaml](./maios-agents.yaml) · [DECISIONS.md](./maios-decisions.md)
 
 ## Authority
 
@@ -41,10 +41,10 @@ Intake (sole ordinary inbox) · Policy · Cleanup · Editorial.
 
 ## Agent OS
 
-Continue, job DAG (parallel vs serial), model-by-difficulty, and chat self-check: [docs/superpowers/AGENT-OS.md](./docs/superpowers/AGENT-OS.md).  
-Voice: [RESPONSE-STYLE.md](./RESPONSE-STYLE.md) rev g.  
-Operator commands: [docs/superpowers/INTAKE-OPERATOR-COMMANDS.md](./docs/superpowers/INTAKE-OPERATOR-COMMANDS.md).  
-Action protocol (native CLI on the bridge): [docs/superpowers/specs/2026-09-14-action-protocol-v0.md](./docs/superpowers/specs/2026-09-14-action-protocol-v0.md).
+Continue, job DAG (parallel vs serial), model-by-difficulty, and chat self-check: `docs/superpowers/AGENT-OS.md` (bridge).  
+Voice: `RESPONSE-STYLE.md` rev g (Desktop bridge SoR).  
+Operator commands: `docs/superpowers/INTAKE-OPERATOR-COMMANDS.md` (bridge).  
+Action protocol (native CLI on the bridge): `docs/superpowers/specs/2026-09-14-action-protocol-v0.md`.
 
 ## Firewalls
 
@@ -55,5 +55,5 @@ Action protocol (native CLI on the bridge): [docs/superpowers/specs/2026-09-14-a
 
 ## Decisions
 
-Append-only log: [DECISIONS.md](./DECISIONS.md).
+Append-only log: [DECISIONS.md](./maios-decisions.md).
 

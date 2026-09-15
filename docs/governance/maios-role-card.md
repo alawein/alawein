@@ -13,12 +13,12 @@ tags: [maios, grok-bot, personal-ops]
 # MAIOS role card (all surfaces)
 
 **Revision:** 2026-09-07b (post-rename attestation)  
-**SoR:** [MAIOS.md](./MAIOS.md) · [NAMING-CANON.md](./NAMING-CANON.md) · [RESPONSE-STYLE.md](./RESPONSE-STYLE.md) · [MESHAL-UI-APPLY-KIT.md](./MESHAL-UI-APPLY-KIT.md)
+**SoR:** [MAIOS.md](./maios-charter.md) · [NAMING-CANON.md](./maios-naming-canon.md) · `RESPONSE-STYLE.md` · `MESHAL-UI-APPLY-KIT.md`
 
 Paste or point every coding/chat surface at this card.
 
 **Live + SSOT names:** Intake · Policy · Cleanup.  
-**Proof:** [GROK-RENAME-PROOF-2026-09-07.txt](./GROK-RENAME-PROOF-2026-09-07.txt). Old Names Atlas / Alfred / Housekeeper are historical aliases only (maios_id_alias still accepted in handoffs).
+**Proof:** `GROK-RENAME-PROOF-2026-09-07.txt`. Old Names Atlas / Alfred / Housekeeper are historical aliases only (maios_id_alias still accepted in handoffs).
 
 ## Roles
 

@@ -1,0 +1,51 @@
+---
+type: note
+status: active
+source: grok-thin enforce 2026-09-14
+last_updated: 2026-09-14
+owner: meshal
+---
+
+# Model routing by purpose
+
+Grok Bot chat model is chosen in the Grok product UI. **This repo cannot change Grok's underlying chat model.** Route **behavior** only: triage in
+Grok, execution in Cursor or OpenRouter.
+
+Refresh OpenRouter ids via `GET https://openrouter.ai/api/v1/models` if a
+call 404s. Do not invent ids.
+
+## Purpose table
+
+| Purpose | Prefer | Avoid | Why |
+|---|---|---|---|
+| Grok Intake triage / Orient / Approve gates | Grok chat, short | Grok executors, panels | Protect weekly meter |
+| Repo coding / tests / PR | Cursor Cloud default model | Grok executors writing files | Cursor-first |
+| Smoke ping / connectivity | `google/gemini-3.8-flash` (or current flash) 1 call | 5-model panel | Cheap proof |
+| Architecture / keeper design grill | OpenRouter lite 5 only when asked; fleet 7 rare | Grok synthesizing huge dumps | Cost + quality |
+| Fleet board opinion | OpenRouter fleet preset (7 verified) only on demand | Daily automatic fleet panels | Expensive |
+| Classifier shadow / telemetry | Local PS1 + flash | Opus | <10% misroute target without spend |
+| Editorial QC | Editorial keeper short or Cursor | Multi-model | QC is narrow |
+
+## Verified OpenRouter IDs (Sep 2026 fleet list)
+
+1. `openai/gpt-6-astra-pro`
+2. `anthropic/claude-opus-5`
+3. `qwen/qwen3.8-max-0902`
+4. `z-ai/glm-5.3`
+5. `deepseek/deepseek-v4-pro-0813`
+6. `moonshotai/kimi-k3`
+7. `google/gemini-3.8-flash`
+
+**Lite 5:** `moonshotai/kimi-k3`, `anthropic/claude-opus-5`,
+`openai/gpt-6-astra-pro`, `z-ai/glm-5.3`, `qwen/qwen3.8-max-0902`
+
+**Ping/smoke:** `google/gemini-3.8-flash` only
+
+**Fleet 7:** all seven ids above
+
+**Reasoning models:** `max_tokens >= 24000`; retry once on empty content
+
+## Caps
+
+Lite max 3/day. Fleet 7 max 1/day. Alert at 70%. `MAIOS_PANEL_KILL=1` no-ops
+callers. If `google/gemini-3.8-flash` 404s, see spend investigation 404 note.

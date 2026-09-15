@@ -1,15 +1,17 @@
 ---
 type: note
 status: pointer
-source: grok-thin Cursor/OpenRouter offload 2026-09-14
-last_updated: 2026-09-15
+source: grok-thin enforce 2026-09-14
+last_updated: 2026-09-14
 owner: meshal
 ---
 
-# Grok-thin offload routing matrix
+# Grok-thin routing snippet
 
 | taskKind | target |
 |---|---|
-| triage / Orient / Approve / nudge | Inline Grok Intake |
-| coding / repo / PR / docs-in-git | Cursor CloudAgent |
-| multi-model grill / architecture opinion | OpenRouter expert-panel (lite default) |
+| triage / Orient / Continue / Approve / nudge | InlineGrok |
+| coding / repo / PR / tests / docs-in-git | CursorCloud |
+| multi-model grill / architecture | OpenRouterPanel |
+| fleet Job A/B short | InlineGrok |
+| fleet Job A/B >15 min | CursorCloud |

@@ -101,3 +101,9 @@ Do not:
 | Independent reviewer | not performed this turn |
 | Checks | `bash -n scripts/smoke-openrouter-one.sh`; OpenRouter ping only if key present |
 | Final approval | pending Meshal |
+
+## Enforce pointer (2026-09-14)
+
+Canonical freeze: `GROK-USAGE-FREEZE.md` (weekly >= 80 or on-demand >= 70).
+Canonical matrix: `GROK-THIN-OFFLOAD.md`. Verbs: `Offload:` `Cursor:` `Panel:`
+`Panel fleet:` `Force Grok:`.

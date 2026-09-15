@@ -14,6 +14,13 @@ major for breaking behavioral changes.
 
 ---
 
+## 1.9.0 - 2026-09-14
+
+- Reply contract named `maios-reply-format@1.0.0`. Rev letter labels a through g retired.
+- Adapters updated: `.cursor/rules/maios-reply-style.mdc`, `docs/governance/slack-agent-voice.md` pointer line.
+- Desktop `RESPONSE-STYLE.md` demoted in wording from SoR to laptop mirror. Git canon wins.
+- Decision: `docs/adr/0009-reply-format-semantic-naming.md`. No change to the 2026-09-19 channel and bot gate.
+
 ## AGENT.md
 
 ### 1.8.4 - 2026-09-14

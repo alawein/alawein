@@ -5,8 +5,9 @@ alwaysApply: true
 
 # MAIOS reply style
 
-Follow `prompt-kits/AGENT.md` section Reply style (kit 1.8.4). Desktop
-SoR is `RESPONSE-STYLE.md` rev g. Do not mix adapters.
+Follow `prompt-kits/AGENT.md` section Reply style (kit 1.9.0), contract
+`maios-reply-format@1.0.0`. Laptop mirror is `RESPONSE-STYLE.md`. Git
+canon wins. Do not mix adapters.
 
 Pick one adapter. Do not mix.
 

@@ -343,7 +343,7 @@ Do not apply RICH tables or emoji status rows inside Slack threads.
 
 ### v1.2.3 (2026-09-14)
 
-- Live Cursor RICH pointer moves to AGENT.md 1.8.4 / Desktop rev g.
+- Live Cursor RICH pointer moves to AGENT.md 1.9.0 / `maios-reply-format@1.0.0`.
 
 ### v1.2.2 (2026-09-13)
 

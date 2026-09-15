@@ -322,7 +322,7 @@ tags: [maios, grok-bot, personal-ops]
 - **P1:** `alawein/workspace-brain` push LIVE. Remote HEAD `bb7edbb7ee82c85c8c32b766870e1292e4183729` on `master`. Deploy key authorized 04:17 PT. Weekly cron `workspace-brain-weekly-backup` Sun 04:30 PT enabled (next 2026-09-13).
 - **Langfuse:** healthy Linux-only sink; 33 traces at 04:13 PT. Windows stays plugin-only (D9).
 - **Inventory:** Linux = 71/16/12 exact; `ops-control-plane-grok` PRIVATE visible. Docs mirror committed on Linux (`bb7edbb`).
-- **Windows deep dive:** already produced at `Desktop/ops-shared-inventory/archive/status/2026-09/MAIOS-REPO-DEEP-DIVE-2026-09-07.md` (Sider note that it was outstanding is stale).
+- **Windows repo review:** already produced at `Desktop/ops-shared-inventory/archive/status/2026-09/MAIOS-REPO-DEEP-DIVE-2026-09-07.md` (Sider note that it was outstanding is stale).
 - **HOLD (Meshal/Windows):** six VS Code MCP User env vars; Mon sole-writer evidence ~08:00–09:15 PT; `alawein-hub` retire decision; Grok connectors DEFER.
 - **IMPACT:** P1 single-point-of-failure gap closed. Twin sync complete on Linux side.
 

@@ -1,7 +1,10 @@
 ---
-type: adr
-status: proposed
-last_updated: 2026-09-14
+type: canonical
+source: none
+sync: none
+sla: none
+status: accepted
+last_updated: 2026-09-15
 owner: meshal
 ---
 

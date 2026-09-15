@@ -9,7 +9,7 @@ category: governance
 audience: contributors
 status: active
 author: Kohyr Inc.
-version: 1.3.0
+version: 1.4.0
 last_updated: 2026-09-15
 tags: [governance, operating-model, workflow, navigation]
 ---
@@ -34,6 +34,29 @@ instructions. Existing stricter gates remain in force.
 Read `commit-release-convention.md` for this repository's commit and release
 rules. Other repositories may have explicit profiles. Do not copy a personal
 agent identity or a solo-maintainer exception onto a team contributor.
+
+## MAIOS north star
+
+Use these ownership boundaries for new work and migrations:
+
+- Git owns accepted code, shared policy, machine-readable configuration,
+  schemas, templates, accepted ADRs, and reusable engineering artifacts.
+- Linear owns execution state, native priority, assignee, dependencies,
+  acceptance, and delivery history after recorded project cutover.
+- Notion owns intake, working context, briefs, operational evidence,
+  human-maintained registers, and pre-acceptance drafts.
+- Slack owns conversation, notification, and coordination only. A Slack
+  discussion is not a durable decision until it is promoted to the owning
+  system.
+- AI platforms may execute, analyze, review, and propose changes within verified
+  capability. They do not become a source of truth and do not expand their own
+  authority.
+- Runtime evidence keeps declared configuration, effective access, observed
+  behavior, and current proved health separate.
+
+Do not create a parallel editable backlog, integration registry, architecture
+specification, or agent inventory when an existing canonical owner exists.
+Projections link to their owner; they do not become a second authority.
 
 ## Source ownership
 
@@ -153,6 +176,21 @@ Hand-maintained mirrors (documents, not live tool config):
 [maios-agents.yaml](maios-agents.yaml), [maios-connectors.yaml](maios-connectors.yaml),
 [maios-routines.yaml](maios-routines.yaml), [maios-workflows.yaml](maios-workflows.yaml).
 Role boundaries: [maios-role-card.md](maios-role-card.md).
+
+## Evidence states
+
+Do not collapse configuration and behavior into one status. Record the strongest
+state actually proved:
+
+1. `declared`: source or provider configuration says the capability exists.
+2. `connected`: the integration or tool is installed or connected.
+3. `effective`: authentication and permissions allow the intended resource.
+4. `observed`: a bounded runtime action produced the expected behavior.
+5. `proved`: current dated evidence confirms the intended behavior at the named
+   revision or run.
+
+A later authentication, permission, model, trigger, or source change invalidates
+older behavioral proof until it is rechecked. Unknown stays unknown.
 
 ## Maintenance
 

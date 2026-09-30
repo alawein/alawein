@@ -1,0 +1,4 @@
+# Publisher pages answer bots with 403 after doi.org redirects, and the social sites block bots.
+^https://doi\.org/
+^https://scholar\.google\.com/
+^https://(www\.)?linkedin\.com/

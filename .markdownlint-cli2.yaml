@@ -1,0 +1,6 @@
+# Kept small on purpose. The README opens with a picture element and has long link lines.
+config:
+  MD013: false
+  MD033:
+    allowed_elements: [picture, source, img]
+  MD041: false

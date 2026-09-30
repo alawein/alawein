@@ -1,0 +1,21 @@
+# Documentation of record for this repo's labels. GitHub does not read this file.
+# Apply one entry: gh label create NAME --color HEX --description "TEXT" --force
+# aliases names GitHub default labels renamed in place (gh label edit OLD --name NEW); other defaults are deleted.
+- name: feat
+  color: "a2eeef"
+  description: "New feature or capability"
+  aliases: ["enhancement"]
+- name: fix
+  color: "d73a4a"
+  description: "Bug fix or correction"
+  aliases: ["bug"]
+- name: docs
+  color: "0075ca"
+  description: "Documentation only change"
+  aliases: ["documentation"]
+- name: chore
+  color: "cfd3d7"
+  description: "Maintenance, tooling, or cleanup with no behavior change"
+- name: blocked
+  color: "b60205"
+  description: "Cannot proceed until an external dependency or decision is resolved"

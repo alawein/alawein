@@ -1,0 +1,20 @@
+name: Weekly hygiene
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  hygiene:
+    uses: alawein/.github/.github/workflows/hygiene.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    with:
+      expected-required-checks: markdown-lint,link-check,actionlint,pr-title,pr-policy

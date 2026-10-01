@@ -8,3 +8,6 @@ Thumbs.db
 # Local secrets, never commit
 .env
 .env.*
+
+# Local task tools and caches
+.superpowers/

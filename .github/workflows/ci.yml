@@ -2,7 +2,7 @@ name: CI
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    types: [opened, edited, synchronize, reopened, ready_for_review, converted_to_draft]
   push:
     branches: [main]
 
@@ -14,8 +14,25 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  run-pr-policy:
+    uses: alawein/.github/.github/workflows/pr-policy.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    with:
+      kit-ref: b5f8bc3a916b41e22e5e09ec72f34c01428c2933
+
+  pr-policy:
+    needs: [run-pr-policy]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Require policy success
+        env:
+          RESULT: ${{ needs.run-pr-policy.result }}
+        run: test "$RESULT" = "success"
+
   markdown-lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -26,7 +43,7 @@ jobs:
           globs: "**/*.md"
 
   link-check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -37,7 +54,7 @@ jobs:
           args: --offline --no-progress --verbose --accept '200..=299' './**/*.md'
 
   actionlint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -61,7 +78,7 @@ jobs:
 
   pr-title:
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
       pull-requests: read

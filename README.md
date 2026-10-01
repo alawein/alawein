@@ -3,7 +3,15 @@
   <img src="assets/banner-name-night.png" alt="Meshal Alawein, on a red ribbon over a pixel-art street with lit shop windows and paper lanterns" width="760">
 </picture>
 
-AI systems engineer and computational scientist with a Ph.D. in EECS from UC Berkeley. Works on LLM and mobile-agent evaluation, LLM-as-judge design, failure analysis, and benchmark pipelines, with a background in distributed materials simulation on HPC clusters. First-author research in Physical Review Materials.
+I build scientific and AI systems around explicit evaluation criteria and reviewable evidence.
+
+AI systems engineer and computational scientist with a Ph.D. in EECS from UC Berkeley. I work on LLM and mobile-agent evaluation, LLM-as-judge design, failure analysis, and benchmark pipelines, with a background in distributed materials simulation on HPC clusters. First-author research in Physical Review Materials.
+
+## Selected systems
+
+- [Repository setup](https://github.com/alawein/.github/tree/main/scripts): Preview proposed settings before applying them, then compare expected policy with observed state.
+- [Shared CI](https://github.com/alawein/.github/blob/main/docs/ci.md): Pinned workflow references, stable check names, frozen Node installs, local PR link checks and separate external scans.
+- [Agent delivery rules](https://github.com/alawein/.github/blob/main/docs/system/agents.md): Scoped task briefs, evidence tied to reviewed content, fresh-context review and owner-controlled promotion.
 
 ## Selected research
 

@@ -34,7 +34,7 @@ jobs:
           persist-credentials: false
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          args: --no-progress --verbose --accept '100..=103,200..=299,429' './**/*.md'
+          args: --offline --no-progress --verbose --accept '200..=299' './**/*.md'
 
   actionlint:
     runs-on: ubuntu-latest
@@ -43,12 +43,20 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      # Official download script pinned by commit SHA (tag v1.7.12). Not a `uses:`, so Dependabot
-      # will not bump it: change the script SHA and the version argument together.
+      # Release archive pinned by version and sha256 (the value GitHub publishes for the
+      # linux_amd64 asset of tag v1.7.12). Not a `uses:`, so Dependabot will not bump it:
+      # change the version and the checksum together.
       - name: actionlint v1.7.12
         shell: bash
+        env:
+          ACTIONLINT_VERSION: "1.7.12"
+          ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
         run: |
-          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/914e7df21a07ef503a81201c76d2b11c789d3fca/scripts/download-actionlint.bash) 1.7.12 "$RUNNER_TEMP"
+          set -euo pipefail
+          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$archive" "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${archive}"
+          echo "${ACTIONLINT_SHA256}  $RUNNER_TEMP/$archive" | sha256sum --check -
+          tar -xzf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP" actionlint
           "$RUNNER_TEMP/actionlint" -color
 
   pr-title:

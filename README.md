@@ -25,3 +25,20 @@ AI systems engineer and computational scientist with a Ph.D. in EECS from UC Ber
 - [meshal.ai](https://meshal.ai)
 - [Google Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
 - [LinkedIn](https://linkedin.com/in/alawein)
+
+## Maintaining this profile
+
+GitHub displays this README on the `alawein` profile. Edit the introduction,
+research links, and contact links here; keep profile images in [assets](assets)
+and repository configuration in [.github](.github). There is no application
+to install or build.
+
+Check Markdown before publishing:
+
+```sh
+npx markdownlint-cli2 "**/*.md"
+```
+
+CI also checks links, workflows, and pull request titles using the
+[shared repository kit](https://github.com/alawein/.github). Keep reusable
+workflow pins and required check names together when updating CI.

@@ -1,3 +1,13 @@
+# Class: profile or docs (text only, no code).
+# Copy to .github/workflows/ci.yml in the repo.
+#
+# The pin after "@" must be a full 40-character commit SHA of alawein/.github.
+# To update it: find the new SHA (gh api repos/alawein/.github/commits/main --jq .sha),
+# replace all pins in this file at once, and open a PR. Steps are in docs/ci.md, "Bump a pin".
+# Once alawein/.github has release tags, the github-actions Dependabot entry can also propose this bump.
+#
+# Required checks for the ruleset: pr-policy, markdown-lint, link-check, actionlint, pr-title
+
 name: CI
 
 on:
@@ -31,58 +41,69 @@ jobs:
           RESULT: ${{ needs.run-pr-policy.result }}
         run: test "$RESULT" = "success"
 
-  markdown-lint:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: DavidAnson/markdownlint-cli2-action@21c1be1b93ad9ed58fa840aacc3f279cde2a72ff # v24.2.0
-        with:
-          globs: "**/*.md"
+  run-markdown-lint:
+    uses: alawein/.github/.github/workflows/lint-markdown.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
 
-  link-check:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
-        with:
-          args: --offline --no-progress --verbose --accept '200..=299' './**/*.md'
+  run-link-check:
+    uses: alawein/.github/.github/workflows/check-links.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    with:
+      offline: true
 
-  actionlint:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-      # Release archive pinned by version and sha256 (the value GitHub publishes for the
-      # linux_amd64 asset of tag v1.7.12). Not a `uses:`, so Dependabot will not bump it:
-      # change the version and the checksum together.
-      - name: actionlint v1.7.12
-        shell: bash
-        env:
-          ACTIONLINT_VERSION: "1.7.12"
-          ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
-        run: |
-          set -euo pipefail
-          archive="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
-          curl -fsSL --retry 3 -o "$RUNNER_TEMP/$archive" "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/${archive}"
-          echo "${ACTIONLINT_SHA256}  $RUNNER_TEMP/$archive" | sha256sum --check -
-          tar -xzf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP" actionlint
-          "$RUNNER_TEMP/actionlint" -color
+  run-actionlint:
+    uses: alawein/.github/.github/workflows/lint-actions.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
 
-  pr-title:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
+  run-pr-title:
     permissions:
       pull-requests: read
+    uses: alawein/.github/.github/workflows/pr-title.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+
+  # Gate jobs: a called job reports as "<caller job> / <called job>", so these carry the exact
+  # check names the ruleset requires.
+  markdown-lint:
+    needs: [run-markdown-lint]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
     steps:
-      - uses: amannn/action-semantic-pull-request@48f256284bd46cdaab1048c3721360e808335d50 # v6.1.1
+      - name: Require success
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ needs.run-markdown-lint.result }}
+        run: test "$RESULT" = "success"
+
+  link-check:
+    needs: [run-link-check]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Require success
+        env:
+          RESULT: ${{ needs.run-link-check.result }}
+        run: test "$RESULT" = "success"
+
+  actionlint:
+    needs: [run-actionlint]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Require success
+        env:
+          RESULT: ${{ needs.run-actionlint.result }}
+        run: test "$RESULT" = "success"
+
+  pr-title:
+    needs: [run-pr-title]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      # The title check is skipped on push to main, so skipped counts as a pass here.
+      - name: Require success or skipped
+        env:
+          RESULT: ${{ needs.run-pr-title.result }}
+        run: '[ "$RESULT" = "success" ] || [ "$RESULT" = "skipped" ]'

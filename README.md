@@ -3,15 +3,17 @@
   <img src="assets/banner-name-night.png" alt="Meshal Alawein, on a red ribbon over a pixel-art street with lit shop windows and paper lanterns" width="760">
 </picture>
 
+# Meshal Alawein
+
 I build scientific and AI systems around explicit evaluation criteria and reviewable evidence.
 
-AI systems engineer and computational scientist with a Ph.D. in EECS from UC Berkeley. I work on LLM and mobile-agent evaluation, LLM-as-judge design, failure analysis, and benchmark pipelines, with a background in distributed materials simulation on HPC clusters. First-author research in Physical Review Materials.
+I'm an AI systems engineer and computational scientist with a Ph.D. in EECS from UC Berkeley. I work on LLM and mobile-agent evaluation, LLM-as-judge design, failure analysis, and benchmark pipelines. My research background includes distributed materials simulation on HPC clusters and first-author work in Physical Review Materials.
 
-## Selected systems
+## Selected tools
 
-- [Repository setup](https://github.com/alawein/.github/tree/main/scripts): Preview proposed settings before applying them, then compare expected policy with observed state.
-- [Shared CI](https://github.com/alawein/.github/blob/main/docs/ci.md): Pinned workflow references, stable check names, frozen Node installs, local PR link checks and separate external scans.
-- [Agent delivery rules](https://github.com/alawein/.github/blob/main/docs/system/agents.md): Scoped task briefs, evidence tied to reviewed content, fresh-context review and owner-controlled promotion.
+- [Claim review](https://github.com/alawein/claim-review): browser-based citation review with exact evidence spans, human judgments, and portable review history.
+- [Eval audit](https://github.com/alawein/eval-audit): offline evaluation coverage checks against an explicit expected population, including missing and unexpected records.
+- [Outcome check](https://github.com/alawein/outcome-check): read-only checks of explicit requirements against supplied observations, separating action status from observed outcomes.
 
 ## Selected research
 
@@ -20,25 +22,8 @@ AI systems engineer and computational scientist with a Ph.D. in EECS from UC Ber
 - [Time-energy quantum uncertainty: Quantifying the effectiveness of surface defect passivation protocols for low-dimensional semiconductors](https://doi.org/10.1021/acsaelm.9b00578), ACS Applied Electronic Materials, 2020
 - Multistate nanomagnetic logic using equilateral permalloy triangles, IEEE Magnetics Letters, 2019
 
-## Elsewhere
+## Connect
 
 - [meshal.ai](https://meshal.ai)
 - [Google Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
 - [LinkedIn](https://linkedin.com/in/alawein)
-
-## Maintaining this profile
-
-GitHub displays this README on the `alawein` profile. Edit the introduction,
-research links, and contact links here; keep profile images in [assets](assets)
-and repository configuration in [.github](.github). There is no application
-to install or build.
-
-Check Markdown before publishing:
-
-```sh
-npx markdownlint-cli2 "**/*.md"
-```
-
-CI also checks links, workflows, and pull request titles using the
-[shared repository kit](https://github.com/alawein/.github). Keep reusable
-workflow pins and required check names together when updating CI.

@@ -102,8 +102,13 @@ jobs:
     timeout-minutes: 1
     permissions: {}
     steps:
-      # The title check is skipped on push to main, so skipped counts as a pass here.
-      - name: Require success or skipped
+      # Only the actual main-push event may omit PR-title evaluation.
+      - name: Require success or eligible main-push skip
         env:
           RESULT: ${{ needs.run-pr-title.result }}
-        run: '[ "$RESULT" = "success" ] || [ "$RESULT" = "skipped" ]'
+          EVENT: ${{ github.event_name }}
+          REF: ${{ github.ref }}
+        run: |
+          [ "$RESULT" = "success" ] || {
+            [ "$RESULT" = "skipped" ] && [ "$EVENT" = "push" ] && [ "$REF" = "refs/heads/main" ]
+          }

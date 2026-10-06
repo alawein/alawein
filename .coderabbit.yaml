@@ -16,6 +16,8 @@ reviews:
   collapse_walkthrough: true
   sequence_diagrams: false
   poem: false
+  estimate_code_review_effort: false
+  related_issues: false
   in_progress_fortune: false
   suggested_labels: false
   auto_apply_labels: false
@@ -68,10 +70,14 @@ reviews:
     enabled: true
     drafts: false
     auto_incremental_review: true
-    auto_pause_after_reviewed_commits: 5
+    auto_pause_after_reviewed_commits: 3
     ignore_title_keywords:
       - 'WIP'
       - 'DO NOT REVIEW'
+      - 'DO NOT MERGE'
+    ignore_usernames:
+      - 'dependabot[bot]'
+      - 'renovate[bot]'
   tools:
     actionlint:
       enabled: false

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" viewBox="0 0 24 16" role="img" aria-label="A gold pixel spark between violet code brackets" shape-rendering="crispEdges">
+  <rect width="24" height="16" rx="2" fill="#16121f"/>
+  <path d="M5 4h3v2H5v4h3v2H3V4zm11 0h5v8h-5v-2h3V6h-3z" fill="#aa93cb"/>
+  <path d="M11 5h2v2h2v2h-2v2h-2V9H9V7h2z" fill="#f2cd88"/>
+</svg>

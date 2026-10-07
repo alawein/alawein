@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="58" height="24" viewBox="0 0 58 24" role="img" aria-label="CUDA">
-  <rect x="0.5" y="0.5" width="57" height="23" rx="5" fill="#1b1924" stroke="#51465f"/>
-  <text x="29" y="16" text-anchor="middle" fill="#e8e2ef" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11">CUDA</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="26" viewBox="0 0 66 26" role="img" aria-label="CUDA">
+  <rect x="0.5" y="0.5" width="65" height="25" rx="5" fill="#1b1924" stroke="#51465f"/>
+  <circle cx="12" cy="13" r="2.5" fill="#83c6cf"/>
+  <text x="39" y="17" text-anchor="middle" fill="#e8e2ef" font-family="Verdana,Arial,sans-serif" font-size="11">CUDA</text>
 </svg>

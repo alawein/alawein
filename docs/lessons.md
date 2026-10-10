@@ -13,3 +13,4 @@ One line per lesson, newest at the bottom. Format: `YYYY-MM-DD | area | what hap
 - 2026-10-09 | brand ownership | Career sources moved to meshal-site | Reuse the selected pixel M bytes and concise professional positioning; defer project demonstrations to their own review.
 
 - 2026-10-10 | profile delivery | Final profile uses the approved production M and selected code links | Verify artwork bytes against the personal kit and qualify the final PR head.
+- 2026-10-10 | dual identity | The owner approved AI research and computational physics as equal fields | Align the positioning line with the maintained career record while preserving the reviewed mark, icons and evidence links.

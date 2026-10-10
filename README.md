@@ -1,6 +1,6 @@
 <img src="assets/meshal-mark.svg" alt="Meshal's gold pixel M" width="48" height="48">
 
-AI Evaluation Engineer and Computational Scientist.
+AI Researcher and Computational Physicist.
 
 ![AI systems](assets/label-ai-systems.svg)
 ![Scientific computing](assets/label-scientific-computing.svg)

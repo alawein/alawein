@@ -1,6 +1,6 @@
-<img src="assets/pixel-signal.svg" alt="A gold pixel spark between violet code brackets" width="48" height="32">
+<img src="assets/meshal-mark.svg" alt="Meshal's gold pixel M" width="48" height="48">
 
-AI systems. Scientific computing. A background in computational quantum physics.
+AI Evaluation Engineer and Computational Scientist.
 
 ![AI systems](assets/label-ai-systems.svg)
 ![Scientific computing](assets/label-scientific-computing.svg)
@@ -11,3 +11,7 @@ AI systems. Scientific computing. A background in computational quantum physics.
 ![CUDA](assets/stack-cuda.svg)
 ![SLURM](assets/stack-slurm.svg)
 ![Docker](assets/stack-docker.svg)
+
+[Claim Review](https://github.com/alawein/claim-review) · [Eval Audit](https://github.com/alawein/eval-audit) · [Outcome Check](https://github.com/alawein/outcome-check)
+
+[Work and contact](https://meshal.ai) · [Research](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)

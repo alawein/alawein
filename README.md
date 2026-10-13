@@ -12,6 +12,6 @@ AI Researcher and Computational Physicist.
 ![SLURM](assets/stack-slurm.svg)
 ![Docker](assets/stack-docker.svg)
 
-[Claim Review](https://github.com/alawein/claim-review) · [Eval Audit](https://github.com/alawein/eval-audit) · [Outcome Check](https://github.com/alawein/outcome-check)
+Siftgrain suite: [Siftgrain Cite](https://github.com/alawein/siftgrain-cite) · [Siftgrain Audit](https://github.com/alawein/siftgrain-audit) · [Siftgrain State](https://github.com/alawein/siftgrain-state)
 
 [Work and contact](https://meshal.ai) · [Research](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)

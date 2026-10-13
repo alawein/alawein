@@ -14,3 +14,4 @@ One line per lesson, newest at the bottom. Format: `YYYY-MM-DD | area | what hap
 
 - 2026-10-10 | profile delivery | Final profile uses the approved production M and selected code links | Verify artwork bytes against the personal kit and qualify the final PR head.
 - 2026-10-10 | dual identity | The owner approved AI research and computational physics as equal fields | Align the positioning line with the maintained career record while preserving the reviewed mark, icons and evidence links.
+- 2026-10-13 | profile links | Public profile README links are suite rename consumers | Update old project links when the suite's canonical repository names change.

@@ -56,6 +56,32 @@ class TestMissing(unittest.TestCase):
         self.assertEqual(missing_local(refs, Path(tempfile.mkdtemp())), [])
 
 
+class TestAlt(unittest.TestCase):
+    def test_empty_alt_is_reported(self):
+        refs = readme_refs(
+            '![](mark.svg)\n![ \t](label.svg)\n<img src="icon.svg">'
+            '\n[](page.md)'
+        )
+        self.assertEqual(check_profile.empty_alt(refs), [
+            "README.md:1 mark.svg empty alt",
+            "README.md:2 label.svg empty alt",
+            "README.md:3 icon.svg empty alt",
+        ])
+
+    def test_nonempty_alt_passes(self):
+        refs = readme_refs(
+            '![A mark](mark.svg)\n<img src="icon.svg" alt=" Icon ">'
+        )
+        self.assertEqual(check_profile.empty_alt(refs), [])
+
+
+class TestVoice(unittest.TestCase):
+    def test_em_dash_lines_reports_line_numbers(self):
+        dash = chr(0x2014)
+        text = f"Profile\nOne {dash} two {dash} three\nPlain - text\n{dash}\n"
+        self.assertEqual(check_profile.em_dash_lines(text), [2, 4])
+
+
 class TestInventory(unittest.TestCase):
     def test_readme_link_inventory_is_pinned(self):
         refs = readme_refs((ROOT / "README.md").read_text(encoding="utf-8"))
@@ -213,6 +239,31 @@ class TestMain(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 1, result.stderr)
         self.assertEqual(result.stdout, "README.md:1 missing.md\n")
+
+    def test_cli_reports_empty_alt(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "mark.svg").touch()
+        (root / "README.md").write_text("\n![](mark.svg)", encoding="utf-8")
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "check_profile.py"),
+             "--root", str(root)],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(result.stdout, "README.md:2 mark.svg empty alt\n")
+
+    def test_cli_reports_em_dash(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text(
+            f"Profile\nOne {chr(0x2014)} two\n", encoding="utf-8",
+        )
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "check_profile.py"),
+             "--root", str(root)],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(result.stdout, "README.md:2 em dash\n")
 
 
 class TestJustfile(unittest.TestCase):

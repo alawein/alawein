@@ -80,13 +80,31 @@ def orphan_assets(refs: list[Ref], root: Path) -> list[str]:
     })
 
 
+def empty_alt(refs: list[Ref]) -> list[str]:
+    return [
+        f"README.md:{ref.line} {ref.target} empty alt"
+        for ref in refs if ref.kind == "image" and not ref.alt.strip()
+    ]
+
+
+def em_dash_lines(text: str) -> list[int]:
+    return [
+        line for line, value in enumerate(text.splitlines(), 1)
+        if chr(0x2014) in value
+    ]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent)
     root = parser.parse_args(argv).root
     try:
-        refs = readme_refs((root / "README.md").read_text(encoding="utf-8"))
-        findings = missing_local(refs, root) + orphan_assets(refs, root)
+        text = (root / "README.md").read_text(encoding="utf-8")
+        refs = readme_refs(text)
+        findings = (
+            missing_local(refs, root) + orphan_assets(refs, root) + empty_alt(refs)
+            + [f"README.md:{line} em dash" for line in em_dash_lines(text)]
+        )
     except (OSError, UnicodeError, subprocess.CalledProcessError) as error:
         print(f"README.md:0 {error}")
         return 1

@@ -21,7 +21,9 @@ REFERENCE = re.compile(
     r"|(?P<html><img\b[^>]*>)",
     re.IGNORECASE,
 )
-ATTRIBUTE = re.compile(r"""\s+([^\s=/>]+)\s*=\s*(["'])(.*?)\2""", re.DOTALL)
+ATTRIBUTE = re.compile(
+    r"""\s+([^\s=/>]+)\s*=\s*(?:(["'])(.*?)\2|([^\s"'=<>`]+))""", re.DOTALL,
+)
 
 
 def readme_refs(text: str) -> list[Ref]:
@@ -32,8 +34,8 @@ def readme_refs(text: str) -> list[Ref]:
         line = text.count("\n", 0, match.start()) + 1
         if match["html"]:
             attrs = {
-                name.lower(): value
-                for name, _, value in ATTRIBUTE.findall(match["html"])
+                name.lower(): quoted or unquoted
+                for name, _, quoted, unquoted in ATTRIBUTE.findall(match["html"])
             }
             if "src" in attrs:
                 refs.append(Ref("image", attrs["src"], attrs.get("alt", ""), line))

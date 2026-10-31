@@ -42,6 +42,20 @@ class TestParse(unittest.TestCase):
             [Ref("link", "here.md", "Visible", 3)],
         )
 
+    def test_checks_unquoted_html_image_sources_in_order(self):
+        refs = readme_refs(
+            "[Before](#before)\n<img src=missing.svg> <img alt=Icon src='mark.svg'>"
+        )
+        self.assertEqual(refs, [
+            Ref("link", "#before", "Before", 1),
+            Ref("image", "missing.svg", "", 2),
+            Ref("image", "mark.svg", "Icon", 2),
+        ])
+        root = Path(tempfile.mkdtemp())
+        (root / "mark.svg").touch()
+        self.assertEqual(missing_local(refs, root), ["README.md:2 missing.svg"])
+        self.assertEqual(check_profile.empty_alt(refs), ["README.md:2 missing.svg empty alt"])
+
     def test_parses_links_with_line_numbers(self):
         self.assertEqual(
             readme_refs("[One](one.md) and [Two](two.md)\n\n[Three](three.md)"),

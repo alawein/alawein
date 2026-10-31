@@ -73,7 +73,10 @@ def orphan_assets(refs: list[Ref], root: Path) -> list[str]:
         directories = [assets] if assets.exists() else []
         paths = []
         while directories:
-            for path in directories.pop().iterdir():
+            directory = directories.pop()
+            if directory.is_symlink() or directory.is_junction():
+                continue
+            for path in directory.iterdir():
                 if path.name.startswith(".env"):
                     continue
                 if path.is_dir():

@@ -235,6 +235,33 @@ class TestAssets(unittest.TestCase):
             with self.assertRaises(subprocess.CalledProcessError):
                 check_profile.orphan_assets([], root)
 
+    def test_filesystem_inventory_does_not_descend_directory_links(self):
+        scratch = Path(tempfile.mkdtemp())
+        outside = scratch / "outside"
+        outside.mkdir()
+        (outside / "external.svg").touch()
+        linked_root = scratch / "linked-root"
+        linked_root.mkdir()
+        nested_root = scratch / "nested"
+        assets = nested_root / "assets"
+        assets.mkdir(parents=True)
+        (assets / "inside.svg").touch()
+
+        for link in [linked_root / "assets", assets / "link"]:
+            if sys.platform == "win32":
+                subprocess.run(
+                    ["cmd", "/d", "/c", "mklink", "/J", link.name,
+                     str(outside.relative_to(link.parent, walk_up=True))],
+                    cwd=link.parent, check=True, capture_output=True,
+                )
+            else:
+                link.symlink_to(outside, target_is_directory=True)
+        self.assertEqual(
+            (check_profile.orphan_assets([], linked_root),
+             check_profile.orphan_assets([], nested_root)),
+            ([], ["assets/inside.svg unreferenced"]),
+        )
+
     def test_filesystem_inventory_errors_propagate(self):
         root = Path(tempfile.mkdtemp())
         (root / "assets").mkdir()

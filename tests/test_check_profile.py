@@ -9,6 +9,7 @@ from contextlib import redirect_stdout
 from glob import has_magic
 from pathlib import Path
 from unittest.mock import patch
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -83,6 +84,27 @@ class TestVoice(unittest.TestCase):
 
 
 class TestInventory(unittest.TestCase):
+    def test_each_suite_link_has_a_description(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        suite_paths = {
+            "/alawein/siftgrain-cite",
+            "/alawein/siftgrain-audit",
+            "/alawein/siftgrain-state",
+        }
+        refs = [
+            ref for ref in readme_refs(text)
+            if ref.kind == "link" and urlsplit(ref.target).path in suite_paths
+        ]
+        self.assertCountEqual([urlsplit(ref.target).path for ref in refs], suite_paths)
+        lines = text.splitlines()
+        for ref in refs:
+            _, separator, description = lines[ref.line - 1].partition(
+                f"]({ref.target}): "
+            )
+            self.assertTrue(separator, f"{ref.alt} line has no description")
+            self.assertGreaterEqual(len(description.split()), 6, ref.alt)
+            self.assertTrue(description.endswith("."), ref.alt)
+
     def test_readme_link_inventory_is_pinned(self):
         refs = readme_refs((ROOT / "README.md").read_text(encoding="utf-8"))
         images = [ref.target for ref in refs if ref.kind == "image"]

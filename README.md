@@ -4,7 +4,11 @@ Meshal is an AI researcher and computational physicist. This profile page links 
 
 [Work and contact](https://meshal.ai) · [Research](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
 
-Siftgrain suite: [Siftgrain Cite](https://github.com/alawein/siftgrain-cite) · [Siftgrain Audit](https://github.com/alawein/siftgrain-audit) · [Siftgrain State](https://github.com/alawein/siftgrain-state)
+Siftgrain suite, three offline tools for checking AI work:
+
+- [Siftgrain Cite](https://github.com/alawein/siftgrain-cite): a browser tool for checking claims against exact source passages.
+- [Siftgrain Audit](https://github.com/alawein/siftgrain-audit): a command line tool that shows which expected evaluation results are missing.
+- [Siftgrain State](https://github.com/alawein/siftgrain-state): a Python tool that checks whether supplied evidence supports an agent's requested outcome.
 
 ![AI systems](assets/label-ai-systems.svg)
 ![Scientific computing](assets/label-scientific-computing.svg)

@@ -31,6 +31,17 @@ class TestParse(unittest.TestCase):
             [Ref("image", "assets/mark.svg", "A mark", 2)],
         )
 
+    def test_ignores_commented_profile_links_and_preserves_line_numbers(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        links = next(line for line in text.splitlines() if "[Work and contact]" in line)
+        self.assertEqual(
+            [ref.alt for ref in readme_refs(links)], ["Work and contact", "Research"],
+        )
+        self.assertEqual(
+            readme_refs(f"<!--\n{links}\n--> [Visible](here.md)"),
+            [Ref("link", "here.md", "Visible", 3)],
+        )
+
     def test_parses_links_with_line_numbers(self):
         self.assertEqual(
             readme_refs("[One](one.md) and [Two](two.md)\n\n[Three](three.md)"),

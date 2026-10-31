@@ -16,6 +16,7 @@ class Ref(NamedTuple):
 
 
 REFERENCE = re.compile(
+    r"(?P<comment><!--(?s:.*?)(?:-->|\Z))|"
     r"(?P<image>!)?\[(?P<label>[^\]\n]*)\]\((?P<target>[^)\n]*)\)"
     r"|(?P<html><img\b[^>]*>)",
     re.IGNORECASE,
@@ -26,6 +27,8 @@ ATTRIBUTE = re.compile(r"""\s+([^\s=/>]+)\s*=\s*(["'])(.*?)\2""", re.DOTALL)
 def readme_refs(text: str) -> list[Ref]:
     refs = []
     for match in REFERENCE.finditer(text):
+        if match["comment"]:
+            continue
         line = text.count("\n", 0, match.start()) + 1
         if match["html"]:
             attrs = {

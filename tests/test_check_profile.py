@@ -1,16 +1,20 @@
 import hashlib
+import io
 import shlex
 import subprocess
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from glob import has_magic
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from check_profile import Ref, missing_local, readme_refs
+import check_profile
 
 
 class TestParse(unittest.TestCase):
@@ -75,6 +79,140 @@ class TestInventory(unittest.TestCase):
             "ea783ea0aa5265d021fbfe65cb4d0f94c211af3fb56585dc6e545e0abcba57b8",
             inventory,
         )
+
+
+class TestAssets(unittest.TestCase):
+    def test_unreferenced_asset_is_reported(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "assets" / "nested").mkdir(parents=True)
+        (root / "assets" / "nested" / "unused.svg").touch()
+        self.assertEqual(
+            check_profile.orphan_assets([], root),
+            ["assets/nested/unused.svg unreferenced"],
+        )
+
+    def test_referenced_asset_is_not_reported(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "assets").mkdir()
+        (root / "assets" / "mark.svg").touch()
+        refs = readme_refs("[Mark](./assets/mark.svg#shape)")
+        self.assertEqual(check_profile.orphan_assets(refs, root), [])
+
+    def test_git_inventory_keeps_tracked_and_new_but_excludes_ignored(self):
+        root = Path(tempfile.mkdtemp())
+        subprocess.run(["git", "init", "--quiet", str(root)], check=True)
+        (root / "assets").mkdir()
+        (root / "assets" / "tracked.svg").touch()
+        subprocess.run(
+            ["git", "add", "assets/tracked.svg"], cwd=root, check=True,
+        )
+        (root / ".gitignore").write_text(
+            "assets/tracked.svg\nassets/retained.svg\n", encoding="utf-8",
+        )
+        (root / "assets" / "retained.svg").touch()
+        (root / "assets" / "new asset.svg").touch()
+        self.assertEqual(check_profile.orphan_assets([], root), [
+            "assets/new asset.svg unreferenced",
+            "assets/tracked.svg unreferenced",
+        ])
+
+    def test_git_file_uses_nul_delimited_inventory(self):
+        root = Path(tempfile.mkdtemp())
+        (root / ".git").touch()
+        (root / "assets").mkdir()
+        (root / "assets" / "new asset.svg").touch()
+        result = subprocess.CompletedProcess([], 0, b"assets/new asset.svg\0")
+        with patch("check_profile.subprocess.run", return_value=result) as run:
+            self.assertEqual(
+                check_profile.orphan_assets([], root),
+                ["assets/new asset.svg unreferenced"],
+            )
+        run.assert_called_once_with(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard",
+             "-z", "--", "assets"],
+            cwd=root, check=True, capture_output=True,
+        )
+
+    def test_git_inventory_failure_does_not_use_filesystem_fallback(self):
+        root = Path(tempfile.mkdtemp())
+        (root / ".git").touch()
+        failure = subprocess.CalledProcessError(128, ["git", "ls-files"])
+        with patch("check_profile.subprocess.run", side_effect=failure):
+            with self.assertRaises(subprocess.CalledProcessError):
+                check_profile.orphan_assets([], root)
+
+    def test_filesystem_inventory_errors_propagate(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "assets").mkdir()
+        with patch.object(Path, "iterdir", side_effect=PermissionError("denied")):
+            with self.assertRaises(PermissionError):
+                check_profile.orphan_assets([], root)
+
+
+class TestMain(unittest.TestCase):
+    def test_main_returns_1_on_orphan(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text("Profile\n", encoding="utf-8")
+        (root / "assets").mkdir()
+        (root / "assets" / "unused.svg").touch()
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(check_profile.main(["--root", str(root)]), 1)
+        self.assertEqual(output.getvalue(), "assets/unused.svg unreferenced\n")
+
+    def test_main_reports_missing_local_reference(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text("\n[Missing](missing.md)", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(check_profile.main(["--root", str(root)]), 1)
+        self.assertEqual(output.getvalue(), "README.md:2 missing.md\n")
+
+    def test_main_returns_0_when_clean(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text("Profile\n", encoding="utf-8")
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(check_profile.main(["--root", str(root)]), 0)
+        self.assertEqual(output.getvalue(), "")
+
+    def test_main_reports_read_error(self):
+        root = Path(tempfile.mkdtemp())
+        output = io.StringIO()
+        with redirect_stdout(output):
+            self.assertEqual(check_profile.main(["--root", str(root)]), 1)
+        self.assertIn("README.md:0", output.getvalue())
+        self.assertIn("No such file", output.getvalue())
+
+    def test_main_reports_inventory_error(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text("Profile\n", encoding="utf-8")
+        output = io.StringIO()
+        with patch("check_profile.subprocess.run", side_effect=OSError("git unavailable")):
+            (root / ".git").touch()
+            with redirect_stdout(output):
+                self.assertEqual(check_profile.main(["--root", str(root)]), 1)
+        self.assertIn("README.md:0", output.getvalue())
+        self.assertIn("git unavailable", output.getvalue())
+
+    def test_cli_default_root_is_independent_of_working_directory(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "check_profile.py")],
+            cwd=tempfile.mkdtemp(), capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout, "")
+
+    def test_cli_root_option_and_exit_status(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "README.md").write_text("[Missing](missing.md)", encoding="utf-8")
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "check_profile.py"),
+             "--root", str(root)],
+            capture_output=True, text=True,
+        )
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(result.stdout, "README.md:1 missing.md\n")
 
 
 class TestJustfile(unittest.TestCase):

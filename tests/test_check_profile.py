@@ -299,6 +299,14 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result.stdout, "README.md:2 em dash\n")
 
 
+class TestBrand(unittest.TestCase):
+    def test_mark_bytes_are_approved(self):
+        self.assertEqual(
+            hashlib.sha256((ROOT / "assets" / "meshal-mark.svg").read_bytes()).hexdigest(),
+            "799809a07d734a54c04aa0b7b6b9bfba59d934553d68270395135ad566c29b5d",
+        )
+
+
 class TestCi(unittest.TestCase):
     def test_ci_runs_the_profile_guard(self):
         text = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")

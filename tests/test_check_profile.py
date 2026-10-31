@@ -299,6 +299,20 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result.stdout, "README.md:2 em dash\n")
 
 
+class TestCi(unittest.TestCase):
+    def test_ci_runs_the_profile_guard(self):
+        text = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
+        self.assertIn("run: python3 scripts/check_profile.py", text)
+        self.assertIn("run: python3 -m unittest discover -s tests -q", text)
+        uses = [
+            line.strip().removeprefix("- ") for line in text.splitlines()
+            if line.strip().removeprefix("- ").startswith("uses:")
+        ]
+        self.assertTrue(uses)
+        for line in uses:
+            self.assertRegex(line, r"^uses: \S+@[0-9a-f]{40}(?:\s|$)")
+
+
 class TestJustfile(unittest.TestCase):
     def test_check_recipe_runs_the_profile_guard(self):
         text = (ROOT / "justfile").read_text(encoding="utf-8")

@@ -267,6 +267,12 @@ class TestMain(unittest.TestCase):
 
 
 class TestJustfile(unittest.TestCase):
+    def test_check_recipe_runs_the_profile_guard(self):
+        text = (ROOT / "justfile").read_text(encoding="utf-8")
+        self.assertIn("scripts/check_profile.py", text)
+        self.assertIn("-m unittest discover -s tests -q", text)
+        self.assertIn("check: lint test guard build", text)
+
     def test_justfile_names_only_existing_files(self):
         text = (ROOT / "justfile").read_text(encoding="utf-8")
         targets = {

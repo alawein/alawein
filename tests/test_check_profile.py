@@ -84,6 +84,17 @@ class TestVoice(unittest.TestCase):
 
 
 class TestInventory(unittest.TestCase):
+    def test_tools_line_names_all_five_tools(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertEqual(
+            [line for line in text.splitlines() if line.startswith("Tools:")],
+            ["Tools: Python, PyTorch, CUDA, SLURM and Docker."],
+        )
+        self.assertFalse(any(
+            "stack-" in ref.target for ref in readme_refs(text)
+            if ref.kind == "image"
+        ))
+
     def test_each_suite_link_has_a_description(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         suite_paths = {
@@ -113,18 +124,18 @@ class TestInventory(unittest.TestCase):
             "assets/label-ai-systems.svg",
             "assets/label-scientific-computing.svg",
             "assets/label-research-software.svg",
-            "assets/stack-python.svg",
-            "assets/stack-pytorch.svg",
-            "assets/stack-cuda.svg",
-            "assets/stack-slurm.svg",
-            "assets/stack-docker.svg",
         ])
+        self.assertEqual(
+            [ref.alt for ref in refs if ref.target.startswith("assets/label-")],
+            ["Focus area: AI systems", "Focus area: scientific computing",
+             "Focus area: research software"],
+        )
         self.assertEqual(sum(ref.kind == "link" for ref in refs), 5)
         pairs = sorted((ref.kind, ref.target) for ref in refs)
         inventory = "\n".join(f"{kind}\t{target}" for kind, target in pairs)
         self.assertEqual(
             hashlib.sha256(inventory.encode("utf-8")).hexdigest(),
-            "ea783ea0aa5265d021fbfe65cb4d0f94c211af3fb56585dc6e545e0abcba57b8",
+            "64e221db6115d04f8a5576d40ead482830b4383ce063d3415525e464c444e7d4",
             inventory,
         )
 

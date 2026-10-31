@@ -10,12 +10,8 @@ Siftgrain suite, three offline tools for checking AI work:
 - [Siftgrain Audit](https://github.com/alawein/siftgrain-audit): a command line tool that shows which expected evaluation results are missing.
 - [Siftgrain State](https://github.com/alawein/siftgrain-state): a Python tool that checks whether supplied evidence supports an agent's requested outcome.
 
-![AI systems](assets/label-ai-systems.svg)
-![Scientific computing](assets/label-scientific-computing.svg)
-![Research software](assets/label-research-software.svg)
+![Focus area: AI systems](assets/label-ai-systems.svg)
+![Focus area: scientific computing](assets/label-scientific-computing.svg)
+![Focus area: research software](assets/label-research-software.svg)
 
-![Python](assets/stack-python.svg)
-![PyTorch](assets/stack-pytorch.svg)
-![CUDA](assets/stack-cuda.svg)
-![SLURM](assets/stack-slurm.svg)
-![Docker](assets/stack-docker.svg)
+Tools: Python, PyTorch, CUDA, SLURM and Docker.

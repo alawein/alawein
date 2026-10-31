@@ -74,6 +74,16 @@ class TestMissing(unittest.TestCase):
         refs = readme_refs("[Present](present.md)\n\n![Absent](missing.svg)")
         self.assertEqual(missing_local(refs, root), ["README.md:3 missing.svg"])
 
+    def test_local_images_require_files_but_links_may_point_to_directories(self):
+        root = Path(tempfile.mkdtemp())
+        (root / "assets").mkdir()
+        refs = readme_refs("![x]()\n![x](assets)\n![x](#icon)\n[Assets](assets)")
+        self.assertEqual(missing_local(refs, root), [
+            "README.md:1 empty image source",
+            "README.md:2 assets",
+            "README.md:3 #icon",
+        ])
+
     def test_missing_local_ignores_external_and_anchors(self):
         refs = readme_refs((ROOT / "README.md").read_text(encoding="utf-8"))
         secure = next(ref.target for ref in refs if ref.target.startswith("https://"))

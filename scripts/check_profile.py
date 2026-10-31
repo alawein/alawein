@@ -48,11 +48,14 @@ def readme_refs(text: str) -> list[Ref]:
 def missing_local(refs: list[Ref], root: Path) -> list[str]:
     missing = []
     for ref in refs:
-        if ref.target.lower().startswith(("http://", "https://", "mailto:", "#")):
+        if ref.target.lower().startswith(("http://", "https://", "mailto:")):
             continue
-        path = ref.target.partition("#")[0]
-        if not (root / path).exists():
-            missing.append(f"README.md:{ref.line} {ref.target}")
+        if ref.kind == "link" and ref.target.startswith("#"):
+            continue
+        path = root / ref.target.partition("#")[0]
+        exists = path.is_file() if ref.kind == "image" else path.exists()
+        if not exists:
+            missing.append(f"README.md:{ref.line} {ref.target or 'empty image source'}")
     return missing
 
 

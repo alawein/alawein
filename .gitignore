@@ -11,3 +11,12 @@ Thumbs.db
 
 # Local task tools and caches
 .superpowers/
+/scripts/__pycache__/
+/tests/__pycache__/
+
+# Local agent and process files
+AGENTS.md
+CLAUDE.md
+docs/lessons.md
+.cursor/
+.coderabbit.yaml

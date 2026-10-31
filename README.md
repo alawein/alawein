@@ -1,8 +1,10 @@
 <img src="assets/meshal-mark.svg" alt="Meshal's gold pixel M" width="48" height="48">
 
-Meshal is an AI researcher and computational physicist. This profile page links his research, open-source projects and contact details for researchers, collaborators and developers.
+# AI Researcher | Computational Physicist
 
-[Work and contact](https://meshal.ai) · [Research](https://scholar.google.com/citations?user=IB_E6GQAAAAJ)
+This profile page links Meshal's research, open-source projects and contact details for researchers, collaborators and developers.
+
+[Work and contact](https://meshal.ai)
 
 Siftgrain suite, three offline tools for checking AI work:
 

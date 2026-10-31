@@ -32,8 +32,7 @@ class TestParse(unittest.TestCase):
         )
 
     def test_ignores_commented_profile_links_and_preserves_line_numbers(self):
-        text = (ROOT / "README.md").read_text(encoding="utf-8")
-        links = next(line for line in text.splitlines() if "[Work and contact]" in line)
+        links = "[Work and contact](contact.md) [Research](research.md)"
         self.assertEqual(
             [ref.alt for ref in readme_refs(links)], ["Work and contact", "Research"],
         )
@@ -119,6 +118,19 @@ class TestVoice(unittest.TestCase):
 
 
 class TestInventory(unittest.TestCase):
+    def test_current_readme_identity_and_contact_links(self):
+        text = (ROOT / "README.md").read_text(encoding="utf-8")
+        with self.subTest("headline"):
+            self.assertEqual(
+                [line for line in text.splitlines() if line.startswith("# ")],
+                ["# AI Researcher | Computational Physicist"],
+            )
+        with self.subTest("profile links"):
+            self.assertEqual(
+                [ref.alt for ref in readme_refs(text) if ref.kind == "link"],
+                ["Work and contact", "Siftgrain Cite", "Siftgrain Audit", "Siftgrain State"],
+            )
+
     def test_tools_line_names_all_five_tools(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertEqual(
@@ -165,12 +177,12 @@ class TestInventory(unittest.TestCase):
             ["Focus area: AI systems", "Focus area: scientific computing",
              "Focus area: research software"],
         )
-        self.assertEqual(sum(ref.kind == "link" for ref in refs), 5)
+        self.assertEqual(sum(ref.kind == "link" for ref in refs), 4)
         pairs = sorted((ref.kind, ref.target) for ref in refs)
         inventory = "\n".join(f"{kind}\t{target}" for kind, target in pairs)
         self.assertEqual(
             hashlib.sha256(inventory.encode("utf-8")).hexdigest(),
-            "64e221db6115d04f8a5576d40ead482830b4383ce063d3415525e464c444e7d4",
+            "d320621f2f3fa1746d0194e2255df742d56b607a2e2bc00f4fa0afb3f105e4f3",
             inventory,
         )
 

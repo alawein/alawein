@@ -1,7 +1,10 @@
 import hashlib
+import shlex
+import subprocess
 import sys
 import tempfile
 import unittest
+from glob import has_magic
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -72,3 +75,26 @@ class TestInventory(unittest.TestCase):
             "ea783ea0aa5265d021fbfe65cb4d0f94c211af3fb56585dc6e545e0abcba57b8",
             inventory,
         )
+
+
+class TestJustfile(unittest.TestCase):
+    def test_justfile_names_only_existing_files(self):
+        text = (ROOT / "justfile").read_text(encoding="utf-8")
+        targets = {
+            token for line in text.splitlines() for token in shlex.split(line)
+            if token.endswith((".md", ".yaml"))
+        }
+        self.assertTrue(targets)
+        tracked = set(subprocess.run(
+            ["git", "ls-files", "-z"], cwd=ROOT, check=True,
+            capture_output=True, text=True, encoding="utf-8",
+        ).stdout.split("\0"))
+        for target in sorted(targets):
+            with self.subTest(target=target):
+                paths = list(ROOT.glob(target)) if has_magic(target) else [ROOT / target]
+                self.assertTrue(paths, f"No files match {target}")
+                for path in paths:
+                    self.assertTrue(path.is_file(), str(path))
+                    self.assertIn(path.relative_to(ROOT).as_posix(), tracked)
+        self.assertNotIn("AGENTS.md", text)
+        self.assertNotIn("CLAUDE.md", text)

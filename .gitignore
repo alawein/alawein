@@ -13,3 +13,8 @@ Thumbs.db
 .superpowers/
 /scripts/__pycache__/
 /tests/__pycache__/
+
+# Local agent and process files
+AGENTS.md
+CLAUDE.md
+docs/lessons.md

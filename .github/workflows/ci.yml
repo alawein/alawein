@@ -1,11 +1,4 @@
-# Class: profile or docs (text only, no code).
-# Copy to .github/workflows/ci.yml in the repo.
-#
-# The pin after "@" must be a full 40-character commit SHA of alawein/.github.
-# To update it: find the new SHA (gh api repos/alawein/.github/commits/main --jq .sha),
-# replace all pins in this file at once, and open a PR. Steps are in docs/ci.md, "Bump a pin".
-# Once alawein/.github has release tags, the github-actions Dependabot entry can also propose this bump.
-#
+# Profile repo checks. Pins are full commit SHAs of the owner's shared workflows.
 # Required checks for the ruleset: pr-policy, markdown-lint, link-check, actionlint, pr-title
 
 name: CI

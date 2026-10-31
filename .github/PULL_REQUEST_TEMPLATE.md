@@ -26,5 +26,4 @@ Closes #
 - [ ] Checks pass, or n/a is explained above
 - [ ] Docs updated, or not needed
 - [ ] No secrets, tokens, or personal data added
-- [ ] A fresh agent session reviewed the diff, or n/a because no agent wrote it
 - [ ] Over 300 changed lines, or a risky change? Add the [long checklist](https://github.com/alawein/.github/blob/main/templates/pull-request-checklist.md)

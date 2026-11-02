@@ -100,7 +100,7 @@ def empty_alt(refs: list[Ref]) -> list[str]:
 
 def em_dash_lines(text: str) -> list[int]:
     return [
-        line for line, value in enumerate(text.splitlines(), 1)
+        line for line, value in enumerate(text.split("\n"), 1)
         if chr(0x2014) in value
     ]
 

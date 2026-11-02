@@ -1,6 +1,6 @@
 set windows-shell := ["powershell.exe", "-NoLogo", "-NoProfile", "-Command"]
 
-py := if os() == "windows" { "py -3.12" } else { "python3" }
+py := if os() == "windows" { "py -3.12" } else { "python3.12" }
 
 default:
     @just --list

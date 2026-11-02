@@ -1,11 +1,4 @@
-# Class: profile or docs (text only, no code).
-# Copy to .github/workflows/ci.yml in the repo.
-#
-# The pin after "@" must be a full 40-character commit SHA of alawein/.github.
-# To update it: find the new SHA (gh api repos/alawein/.github/commits/main --jq .sha),
-# replace all pins in this file at once, and open a PR. Steps are in docs/ci.md, "Bump a pin".
-# Once alawein/.github has release tags, the github-actions Dependabot entry can also propose this bump.
-#
+# Profile repo checks. Pins are full commit SHAs of the owner's shared workflows.
 # Required checks for the ruleset: pr-policy, markdown-lint, link-check, actionlint, pr-title
 
 name: CI
@@ -24,6 +17,18 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  profile-guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: python3 scripts/check_profile.py
+      - run: python3 -m unittest discover -s tests -q
+
   run-pr-policy:
     uses: alawein/.github/.github/workflows/pr-policy.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
     with:

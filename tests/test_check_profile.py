@@ -18,6 +18,12 @@ from check_profile import Ref, missing_local, readme_refs
 import check_profile
 
 
+def make_root(test):
+    temporary = tempfile.TemporaryDirectory(prefix="profile-guard-")
+    test.addCleanup(temporary.cleanup)
+    return Path(temporary.name)
+
+
 class TestParse(unittest.TestCase):
     def test_parses_markdown_image(self):
         self.assertEqual(
@@ -50,7 +56,7 @@ class TestParse(unittest.TestCase):
             Ref("image", "missing.svg", "", 2),
             Ref("image", "mark.svg", "Icon", 2),
         ])
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "mark.svg").touch()
         self.assertEqual(missing_local(refs, root), ["README.md:2 missing.svg"])
         self.assertEqual(check_profile.empty_alt(refs), ["README.md:2 missing.svg empty alt"])
@@ -68,13 +74,13 @@ class TestParse(unittest.TestCase):
 
 class TestMissing(unittest.TestCase):
     def test_missing_local_reports_absent_file(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "present.md").touch()
         refs = readme_refs("[Present](present.md)\n\n![Absent](missing.svg)")
         self.assertEqual(missing_local(refs, root), ["README.md:3 missing.svg"])
 
     def test_local_images_require_files_but_links_may_point_to_directories(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "assets").mkdir()
         refs = readme_refs("![x]()\n![x](assets)\n![x](#icon)\n[Assets](assets)")
         self.assertEqual(missing_local(refs, root), [
@@ -88,7 +94,7 @@ class TestMissing(unittest.TestCase):
         secure = next(ref.target for ref in refs if ref.target.startswith("https://"))
         targets = [secure, secure.replace("https:", "http:", 1), "#section", "mailto:me"]
         refs = [Ref("link", target, "Link", 1) for target in targets]
-        self.assertEqual(missing_local(refs, Path(tempfile.mkdtemp())), [])
+        self.assertEqual(missing_local(refs, make_root(self)), [])
 
 
 class TestAlt(unittest.TestCase):
@@ -111,6 +117,13 @@ class TestAlt(unittest.TestCase):
 
 
 class TestVoice(unittest.TestCase):
+    def test_em_dash_line_numbers_use_lf_like_reference_findings(self):
+        for separator in ("\r", "\v", "\f", "\x1c", "\x1d", "\x1e", "\x85", "\u2028", "\u2029"):
+            with self.subTest(separator=repr(separator)):
+                text = f"Profile\nBefore{separator}{chr(0x2014)} [Missing](missing.md)"
+                self.assertEqual(check_profile.em_dash_lines(text), [2])
+                self.assertEqual(readme_refs(text)[0].line, 2)
+
     def test_em_dash_lines_reports_line_numbers(self):
         dash = chr(0x2014)
         text = f"Profile\nOne {dash} two {dash} three\nPlain - text\n{dash}\n"
@@ -189,7 +202,7 @@ class TestInventory(unittest.TestCase):
 
 class TestAssets(unittest.TestCase):
     def test_unreferenced_asset_is_reported(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "assets" / "nested").mkdir(parents=True)
         (root / "assets" / "nested" / "unused.svg").touch()
         self.assertEqual(
@@ -198,14 +211,14 @@ class TestAssets(unittest.TestCase):
         )
 
     def test_referenced_asset_is_not_reported(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "assets").mkdir()
         (root / "assets" / "mark.svg").touch()
         refs = readme_refs("[Mark](./assets/mark.svg#shape)")
         self.assertEqual(check_profile.orphan_assets(refs, root), [])
 
     def test_git_inventory_keeps_tracked_and_new_but_excludes_ignored(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         subprocess.run(["git", "init", "--quiet", str(root)], check=True)
         (root / "assets").mkdir()
         (root / "assets" / "tracked.svg").touch()
@@ -223,7 +236,7 @@ class TestAssets(unittest.TestCase):
         ])
 
     def test_git_file_uses_nul_delimited_inventory(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / ".git").touch()
         (root / "assets").mkdir()
         (root / "assets" / "new asset.svg").touch()
@@ -240,7 +253,7 @@ class TestAssets(unittest.TestCase):
         )
 
     def test_git_inventory_failure_does_not_use_filesystem_fallback(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / ".git").touch()
         failure = subprocess.CalledProcessError(128, ["git", "ls-files"])
         with patch("check_profile.subprocess.run", side_effect=failure):
@@ -248,7 +261,7 @@ class TestAssets(unittest.TestCase):
                 check_profile.orphan_assets([], root)
 
     def test_filesystem_inventory_does_not_descend_directory_links(self):
-        scratch = Path(tempfile.mkdtemp())
+        scratch = make_root(self)
         outside = scratch / "outside"
         outside.mkdir()
         (outside / "external.svg").touch()
@@ -275,7 +288,7 @@ class TestAssets(unittest.TestCase):
         )
 
     def test_filesystem_inventory_errors_propagate(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "assets").mkdir()
         with patch.object(Path, "iterdir", side_effect=PermissionError("denied")):
             with self.assertRaises(PermissionError):
@@ -284,7 +297,7 @@ class TestAssets(unittest.TestCase):
 
 class TestMain(unittest.TestCase):
     def test_main_returns_1_on_orphan(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text("Profile\n", encoding="utf-8")
         (root / "assets").mkdir()
         (root / "assets" / "unused.svg").touch()
@@ -294,7 +307,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(output.getvalue(), "assets/unused.svg unreferenced\n")
 
     def test_main_reports_missing_local_reference(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text("\n[Missing](missing.md)", encoding="utf-8")
         output = io.StringIO()
         with redirect_stdout(output):
@@ -302,7 +315,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(output.getvalue(), "README.md:2 missing.md\n")
 
     def test_main_returns_0_when_clean(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text("Profile\n", encoding="utf-8")
         output = io.StringIO()
         with redirect_stdout(output):
@@ -310,7 +323,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(output.getvalue(), "")
 
     def test_main_reports_read_error(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         output = io.StringIO()
         with redirect_stdout(output):
             self.assertEqual(check_profile.main(["--root", str(root)]), 1)
@@ -318,7 +331,7 @@ class TestMain(unittest.TestCase):
         self.assertIn("No such file", output.getvalue())
 
     def test_main_reports_inventory_error(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text("Profile\n", encoding="utf-8")
         output = io.StringIO()
         with patch("check_profile.subprocess.run", side_effect=OSError("git unavailable")):
@@ -331,13 +344,13 @@ class TestMain(unittest.TestCase):
     def test_cli_default_root_is_independent_of_working_directory(self):
         result = subprocess.run(
             [sys.executable, str(ROOT / "scripts" / "check_profile.py")],
-            cwd=tempfile.mkdtemp(), capture_output=True, text=True,
+            cwd=make_root(self), capture_output=True, text=True,
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(result.stdout, "")
 
     def test_cli_root_option_and_exit_status(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text("[Missing](missing.md)", encoding="utf-8")
         result = subprocess.run(
             [sys.executable, str(ROOT / "scripts" / "check_profile.py"),
@@ -348,7 +361,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result.stdout, "README.md:1 missing.md\n")
 
     def test_cli_reports_empty_alt(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "mark.svg").touch()
         (root / "README.md").write_text("\n![](mark.svg)", encoding="utf-8")
         result = subprocess.run(
@@ -360,7 +373,7 @@ class TestMain(unittest.TestCase):
         self.assertEqual(result.stdout, "README.md:2 mark.svg empty alt\n")
 
     def test_cli_reports_em_dash(self):
-        root = Path(tempfile.mkdtemp())
+        root = make_root(self)
         (root / "README.md").write_text(
             f"Profile\nOne {chr(0x2014)} two\n", encoding="utf-8",
         )
@@ -371,6 +384,32 @@ class TestMain(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 1, result.stderr)
         self.assertEqual(result.stdout, "README.md:2 em dash\n")
+
+
+class TestTemporaryRoots(unittest.TestCase):
+    def test_fixture_directories_are_removed_after_success_and_failure(self):
+        original_mkdtemp = tempfile.mkdtemp
+        for fail in (False, True):
+            with self.subTest(fail=fail), tempfile.TemporaryDirectory() as scratch:
+                created = []
+
+                def record_directory(suffix=None, prefix=None, dir=None):
+                    path = original_mkdtemp(suffix=suffix, prefix=prefix, dir=scratch)
+                    created.append(Path(path))
+                    return path
+
+                case = TestMain("test_main_returns_0_when_clean")
+                outcome = unittest.TestResult()
+                with patch("tempfile.mkdtemp", side_effect=record_directory):
+                    if fail:
+                        with patch("check_profile.main", side_effect=AssertionError("fixture failure")):
+                            case.run(outcome)
+                    else:
+                        case.run(outcome)
+                self.assertEqual(len(outcome.failures), int(fail))
+                self.assertEqual(outcome.errors, [])
+                self.assertTrue(created)
+                self.assertTrue(all(not path.exists() for path in created), created)
 
 
 class TestBrand(unittest.TestCase):

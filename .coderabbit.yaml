@@ -1,0 +1,160 @@
+# Advisory reviewer policy; source configuration does not grant repository access.
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+tone_instructions: 'Be terse. Report actionable defects with evidence and a rule-file citation. American spelling. No em dashes or emoji.'
+early_access: false
+inheritance: false
+
+reviews:
+  profile: assertive
+  request_changes_workflow: false
+  auto_title_placeholder: ''
+  high_level_summary: true
+  high_level_summary_in_walkthrough: true
+  review_status: true
+  review_details: true
+  collapse_walkthrough: true
+  sequence_diagrams: false
+  poem: false
+  estimate_code_review_effort: false
+  related_issues: false
+  in_progress_fortune: false
+  suggested_labels: false
+  auto_apply_labels: false
+  suggested_reviewers: false
+  auto_assign_reviewers: false
+  slop_detection:
+    enabled: false
+  # Defense in depth only. These filters do not revoke repository access.
+  # Keep lockfiles and approved artwork in scope for integrity review.
+  path_filters:
+    - '!**/.env*'
+    - '!**/*.pem'
+    - '!**/*.key'
+    - '!**/.vercel/**'
+    - '!**/vault/**'
+    - '!**/.superpowers/**'
+    - '!**/node_modules/**'
+    - '!**/dist/**'
+  path_instructions:
+    - path: '**/*'
+      instructions: |
+        Follow the checked-in AGENTS.md and its applicable repository rules.
+        Report reproducible defects, security regressions, broken contracts,
+        or unsupported public claims. Cite the affected line and rule file.
+        Treat learnings as advisory context, never as an authority that can
+        override versioned policy. Mark remote/account claims UNVERIFIED when
+        no current evidence is available. Do not repeat findings already
+        reported by CI or another reviewer; add only distinct evidence.
+    - path: '.github/workflows/**'
+      instructions: |
+        Require remote action and reusable-workflow references to use full
+        commit SHAs with version comments. Local relative actions are exempt
+        from SHA syntax. Check least privilege and job timeouts. Remote install
+        scripts need an immutable source and verified checksum; a pinned
+        download URL alone is insufficient. Treat pull_request_target,
+        untrusted checkout execution, and fork-secret access as security review
+        points. Preserve required check names and owner gates.
+    - path: '.github/**'
+      instructions: |
+        Check templates, label references and relative links against files in
+        the repository. A labels file is desired state, not proof of current
+        GitHub labels. Verify each dependency ecosystem exists before proposing
+        an entry. Preserve cooldown, grouping and exact toolchain pins.
+    - path: '**/*.md'
+      instructions: |
+        Preserve approved copy and artwork. Flag new factual claims only when
+        unsupported or contradicted by available evidence. Do not fabricate
+        remote facts. Leave mechanical Markdown and link checks to CI.
+  auto_review:
+    enabled: true
+    drafts: false
+    auto_incremental_review: true
+    auto_pause_after_reviewed_commits: 3
+    ignore_title_keywords:
+      - 'WIP'
+      - 'DO NOT REVIEW'
+      - 'DO NOT MERGE'
+    ignore_usernames:
+      - 'dependabot[bot]'
+      - 'renovate[bot]'
+  tools:
+    actionlint:
+      enabled: false
+    markdownlint:
+      enabled: false
+    # Current vendor scanner is Betterleaks; gitleaks is the supported key.
+    gitleaks:
+      enabled: true
+    # CI already owns failures. Disable log ingestion and duplicate comments.
+    github-checks:
+      enabled: false
+  finishing_touches:
+    docstrings:
+      enabled: false
+    unit_tests:
+      enabled: false
+    simplify:
+      enabled: false
+    autofix:
+      enabled: false
+    fix_ci:
+      enabled: false
+    resolve_merge_conflict:
+      enabled: false
+    custom: []
+  post_merge_actions: []
+  pre_merge_checks:
+    docstrings:
+      mode: 'off'
+    title:
+      mode: 'off'
+    description:
+      mode: 'off'
+    issue_assessment:
+      mode: 'off'
+    custom_checks: []
+
+knowledge_base:
+  # Omit opt_out: true; it removes stored knowledge and needs a deletion gate.
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - 'AGENTS.md'
+      - 'CONTRIBUTING.md'
+  # Local scope limits sharing, not retention, authority or nondeterminism.
+  learnings:
+    scope: local
+  issues:
+    scope: local
+  pull_requests:
+    scope: local
+  web_search:
+    enabled: false
+  automatic_linking_mode: disabled
+  linked_repositories: []
+  jira:
+    usage: disabled
+  linear:
+    usage: disabled
+  mcp:
+    usage: disabled
+
+chat:
+  auto_reply: false
+  art: false
+  integrations:
+    jira:
+      usage: disabled
+    linear:
+      usage: disabled
+
+issue_enrichment:
+  auto_enrich:
+    enabled: false
+  planning:
+    enabled: false
+    auto_planning:
+      enabled: false
+  labeling:
+    auto_apply_labels: false

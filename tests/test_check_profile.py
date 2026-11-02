@@ -420,5 +420,5 @@ class TestJustfile(unittest.TestCase):
                 for path in paths:
                     self.assertTrue(path.is_file(), str(path))
                     self.assertIn(path.relative_to(ROOT).as_posix(), tracked)
-        self.assertNotIn("AGENTS.md", text)
-        self.assertNotIn("CLAUDE.md", text)
+        self.assertIn("AGENTS.md", text)
+        self.assertIn("CLAUDE.md", text)

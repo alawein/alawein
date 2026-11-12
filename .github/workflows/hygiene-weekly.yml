@@ -15,6 +15,6 @@ concurrency:
 
 jobs:
   hygiene:
-    uses: alawein/.github/.github/workflows/hygiene.yml@98c7496007ae504a3509be1c29d02afa87640aca # main (untagged), token-limited hygiene
+    uses: alawein/.github/.github/workflows/hygiene.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
     with:
       expected-required-checks: markdown-lint,link-check,actionlint,pr-title,pr-policy

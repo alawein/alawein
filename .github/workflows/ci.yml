@@ -30,10 +30,9 @@ jobs:
       - run: python3 -m unittest discover -s tests -q
 
   run-pr-policy:
-    uses: alawein/.github/.github/workflows/pr-policy.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    uses: alawein/.github/.github/workflows/pr-policy.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
     with:
-      kit-ref: b5f8bc3a916b41e22e5e09ec72f34c01428c2933
-
+      kit-ref: f5dbd4d7656e286e20d2aa24463253c32a56521b
   pr-policy:
     needs: [run-pr-policy]
     if: ${{ always() }}
@@ -47,20 +46,20 @@ jobs:
         run: test "$RESULT" = "success"
 
   run-markdown-lint:
-    uses: alawein/.github/.github/workflows/lint-markdown.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    uses: alawein/.github/.github/workflows/lint-markdown.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
 
   run-link-check:
-    uses: alawein/.github/.github/workflows/check-links.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    uses: alawein/.github/.github/workflows/check-links.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
     with:
       offline: true
 
   run-actionlint:
-    uses: alawein/.github/.github/workflows/lint-actions.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    uses: alawein/.github/.github/workflows/lint-actions.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
 
   run-pr-title:
     permissions:
       pull-requests: read
-    uses: alawein/.github/.github/workflows/pr-title.yml@b5f8bc3a916b41e22e5e09ec72f34c01428c2933 # v1.3.0
+    uses: alawein/.github/.github/workflows/pr-title.yml@f5dbd4d7656e286e20d2aa24463253c32a56521b # v1.4.0
 
   # Gate jobs: a called job reports as "<caller job> / <called job>", so these carry the exact
   # check names the ruleset requires.

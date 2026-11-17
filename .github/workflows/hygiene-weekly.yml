@@ -15,6 +15,6 @@ concurrency:
 
 jobs:
   hygiene:
-    uses: alawein/.github/.github/workflows/hygiene.yml@c12a7427d24940f9da589b34a7eb59a7de552d00 # quality gates
+    uses: alawein/.github/.github/workflows/hygiene.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
     with:
       expected-required-checks: markdown-lint,link-check,actionlint,pr-title,pr-policy

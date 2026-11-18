@@ -16,7 +16,7 @@ Siftgrain suite, three offline tools for checking AI work:
 - [Siftgrain Audit](https://github.com/alawein/siftgrain-audit): a command line tool that shows which expected evaluation results are missing.
 - [Siftgrain State](https://github.com/alawein/siftgrain-state): a Python tool that checks whether supplied evidence supports an agent's requested outcome.
 
-Also: [Refup](https://refup.app/), for finding AI job openings, and [CHSH Lab](https://chshlab.online/), an independent, reproducible study of post-selection in Bell–CHSH tests (not peer reviewed).
+Also: [CHSH Lab](https://chshlab.online/), an independent, reproducible study of post-selection in Bell–CHSH tests (not peer reviewed).
 
 ## Research
 

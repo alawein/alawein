@@ -141,7 +141,7 @@ class TestInventory(unittest.TestCase):
         with self.subTest("profile links"):
             self.assertEqual(
                 [ref.alt for ref in readme_refs(text) if ref.kind == "link"],
-                ["Siftgrain Cite", "Siftgrain Audit", "Siftgrain State", "Refup", "CHSH Lab", "Google Scholar", "Work and contact"],
+                ["Siftgrain Cite", "Siftgrain Audit", "Siftgrain State", "CHSH Lab", "Google Scholar", "Work and contact"],
             )
 
     def test_tools_line_names_all_five_tools(self):
@@ -190,12 +190,12 @@ class TestInventory(unittest.TestCase):
             ["Focus area: AI systems", "Focus area: scientific computing",
              "Focus area: research software"],
         )
-        self.assertEqual(sum(ref.kind == "link" for ref in refs), 7)
+        self.assertEqual(sum(ref.kind == "link" for ref in refs), 6)
         pairs = sorted((ref.kind, ref.target) for ref in refs)
         inventory = "\n".join(f"{kind}\t{target}" for kind, target in pairs)
         self.assertEqual(
             hashlib.sha256(inventory.encode("utf-8")).hexdigest(),
-            "6a00847c5d9cfa0002f72c5ae96c862e1eef67106a04c73d93137e9c58af2cef",
+            "c16f0f6c9ec3bbb6c32e809cbdea10f5a9a631fcc91ca1ae400d7b9f999d9ae1",
             inventory,
         )
 

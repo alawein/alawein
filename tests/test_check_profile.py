@@ -148,7 +148,7 @@ class TestInventory(unittest.TestCase):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertEqual(
             [line for line in text.splitlines() if line.startswith("Tools:")],
-            ["Tools: Python, PyTorch, CUDA, SLURM and Docker."],
+            ["Tools: Python, PyTorch, GPU workflows (CUDA/CuPy), Slurm, and Docker."],
         )
         self.assertFalse(any(
             "stack-" in ref.target for ref in readme_refs(text)

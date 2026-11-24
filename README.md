@@ -22,6 +22,6 @@ Also: [CHSH Lab](https://chshlab.online/), an independent, reproducible study of
 
 Peer-reviewed publications in computational physics, spintronics, and 2D materials, including first-author work in Physical Review Materials (2025), IEEE Magnetics Letters (2019), and the IEEE Journal on Exploratory Solid-State Computational Devices and Circuits (2018). Full list on [Google Scholar](https://scholar.google.com/citations?user=IB_E6GQAAAAJ).
 
-Tools: Python, PyTorch, CUDA, SLURM and Docker.
+Tools: Python, PyTorch, GPU workflows (CUDA/CuPy), Slurm, and Docker.
 
 [Work and contact](https://meshal.ai)

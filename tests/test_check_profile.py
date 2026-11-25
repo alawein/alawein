@@ -180,7 +180,7 @@ class TestInventory(unittest.TestCase):
         refs = readme_refs((ROOT / "README.md").read_text(encoding="utf-8"))
         images = [ref.target for ref in refs if ref.kind == "image"]
         self.assertCountEqual(images, [
-            "assets/meshal-mark.svg",
+            "assets/director-banner.svg",
             "assets/label-ai-systems.svg",
             "assets/label-scientific-computing.svg",
             "assets/label-research-software.svg",
@@ -195,7 +195,7 @@ class TestInventory(unittest.TestCase):
         inventory = "\n".join(f"{kind}\t{target}" for kind, target in pairs)
         self.assertEqual(
             hashlib.sha256(inventory.encode("utf-8")).hexdigest(),
-            "c16f0f6c9ec3bbb6c32e809cbdea10f5a9a631fcc91ca1ae400d7b9f999d9ae1",
+            "304338e9e59df51a3f2b7c291086cde0491d5830c39d5e3ca4ad6a26b546fc4e",
             inventory,
         )
 
@@ -413,10 +413,10 @@ class TestTemporaryRoots(unittest.TestCase):
 
 
 class TestBrand(unittest.TestCase):
-    def test_mark_bytes_are_approved(self):
+    def test_banner_bytes_are_approved(self):
         self.assertEqual(
-            hashlib.sha256((ROOT / "assets" / "meshal-mark.svg").read_bytes()).hexdigest(),
-            "799809a07d734a54c04aa0b7b6b9bfba59d934553d68270395135ad566c29b5d",
+            hashlib.sha256((ROOT / "assets" / "director-banner.svg").read_bytes()).hexdigest(),
+            "1feca5e698573a84db021f6af1531a194885ca219b342be29ba87e3e84540070",
         )
 
 

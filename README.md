@@ -1,4 +1,4 @@
-<img src="assets/meshal-mark.svg" alt="Meshal's gold pixel M" width="48" height="48">
+<img src="assets/director-banner.svg" alt="Meshal Alawein, AI Researcher and Computational Scientist. A pixel-art Director in a black hoodie walks along a Riyadh street and gives a check." width="100%">
 
 # AI Researcher | Computational Scientist
 

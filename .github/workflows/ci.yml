@@ -1,11 +1,17 @@
-# Profile repo checks. Pins are full commit SHAs of the owner's shared workflows.
-# Required checks for the ruleset: pr-policy, markdown-lint, link-check, actionlint, pr-title
+# Profile repo SHA/profile gates. Pins are full commit SHAs of the owner's shared workflows.
+# Required bare check names for the live ruleset (keep until a coordinated cutover):
+#   markdown-lint, link-check, actionlint, pr-title, pr-policy
+# pr-title and pr-policy live in policy.yml (owns `edited`). This file omits `edited`
+# so a body edit cannot cancel lint/profile work on the same SHA.
+# Canary: ci-required aggregates deterministic SHA/profile producers. Do not require
+# that context in the ruleset until the owner promotes it; bare wrappers stay.
+# Hold: no node-ci job (GIT-32).
 
 name: CI
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened, ready_for_review, converted_to_draft]
+    types: [opened, synchronize, reopened, ready_for_review, converted_to_draft]
   push:
     branches: [main]
 
@@ -29,22 +35,6 @@ jobs:
       - run: python3 scripts/check_profile.py
       - run: python3 -m unittest discover -s tests -q
 
-  run-pr-policy:
-    uses: alawein/.github/.github/workflows/pr-policy.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
-    with:
-      kit-ref: cc3b595f8e9e92a9ed6fc63b3be177cc8a571965
-  pr-policy:
-    needs: [run-pr-policy]
-    if: ${{ always() }}
-    runs-on: ubuntu-24.04
-    timeout-minutes: 1
-    permissions: {}
-    steps:
-      - name: Require policy success
-        env:
-          RESULT: ${{ needs.run-pr-policy.result }}
-        run: test "$RESULT" = "success"
-
   run-markdown-lint:
     uses: alawein/.github/.github/workflows/lint-markdown.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
 
@@ -56,13 +46,29 @@ jobs:
   run-actionlint:
     uses: alawein/.github/.github/workflows/lint-actions.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
 
-  run-pr-title:
-    permissions:
-      pull-requests: read
-    uses: alawein/.github/.github/workflows/pr-title.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
+  # Canary aggregator for shared SHA/profile producers. Advisory until ruleset cutover.
+  # Bare fleet_base wrappers below remain the required contexts.
+  ci-required:
+    needs: [profile-guard, run-markdown-lint, run-link-check, run-actionlint]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Require SHA and profile producers
+        env:
+          PROFILE: ${{ needs.profile-guard.result }}
+          MARKDOWN: ${{ needs.run-markdown-lint.result }}
+          LINKS: ${{ needs.run-link-check.result }}
+          ACTIONS: ${{ needs.run-actionlint.result }}
+        run: |
+          test "$PROFILE" = "success"
+          test "$MARKDOWN" = "success"
+          test "$LINKS" = "success"
+          test "$ACTIONS" = "success"
 
   # Gate jobs: a called job reports as "<caller job> / <called job>", so these carry the exact
-  # check names the ruleset requires.
+  # check names the ruleset requires. Keep until live protection cutover to ci-required.
   markdown-lint:
     needs: [run-markdown-lint]
     if: ${{ always() }}
@@ -98,21 +104,3 @@ jobs:
         env:
           RESULT: ${{ needs.run-actionlint.result }}
         run: test "$RESULT" = "success"
-
-  pr-title:
-    needs: [run-pr-title]
-    if: ${{ always() }}
-    runs-on: ubuntu-24.04
-    timeout-minutes: 1
-    permissions: {}
-    steps:
-      # Only the actual main-push event may omit PR-title evaluation.
-      - name: Require success or eligible main-push skip
-        env:
-          RESULT: ${{ needs.run-pr-title.result }}
-          EVENT: ${{ github.event_name }}
-          REF: ${{ github.ref }}
-        run: |
-          [ "$RESULT" = "success" ] || {
-            [ "$RESULT" = "skipped" ] && [ "$EVENT" = "push" ] && [ "$REF" = "refs/heads/main" ]
-          }

@@ -17,3 +17,4 @@ One line per lesson, newest at the bottom. Format: `YYYY-MM-DD | area | what hap
 - 2026-10-13 | profile links | Public profile README links are suite rename consumers | Update old project links when the suite's canonical repository names change.
 - 2026-11-02 | profile guard | Local Python selection, diagnostic line numbers and fixture cleanup diverged | Select Python 3.12, count LF consistently and register temporary-directory cleanup before assertions.
 - 2026-11-24 | tools line | Bare CUDA in the profile README read as custom kernel work, against the career record's wording | Name GPU workflows (CUDA/CuPy) and Slurm exactly as the career record does.
+- 2026-11-25 | Director banner | The profile opening picture moved from the gold M to the Director banner drawn from the hub export | Generate the banner from the export so its headline matches the career record; keep one animated SVG with its own light theme and reduced-motion still.

@@ -1,0 +1,65 @@
+# PR-metadata gates. They read the PR title and body, so they rerun on `edited`.
+# ci.yml omits `edited`, so a body edit never cancels SHA/profile CI on the same SHA.
+# Required check names from this file: pr-title, pr-policy
+# Pin: freeze cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 (# quality gates). Keep uses:/kit-ref lockstep.
+
+name: Policy
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review, converted_to_draft]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# Every metadata event completes independently. Never cancel a prior policy run
+# so an always-report wrapper cannot become a skipped success.
+concurrency:
+  group: policy-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  run-pr-policy:
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: alawein/.github/.github/workflows/pr-policy.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
+    with:
+      kit-ref: cc3b595f8e9e92a9ed6fc63b3be177cc8a571965
+
+  pr-policy:
+    needs: [run-pr-policy]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Require policy success
+        env:
+          RESULT: ${{ needs.run-pr-policy.result }}
+        run: test "$RESULT" = "success"
+
+  run-pr-title:
+    permissions:
+      pull-requests: read
+    uses: alawein/.github/.github/workflows/pr-title.yml@cc3b595f8e9e92a9ed6fc63b3be177cc8a571965 # quality gates
+
+  pr-title:
+    needs: [run-pr-title]
+    if: ${{ always() }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      # Only the actual main-push event may omit PR-title evaluation.
+      - name: Require success or eligible main-push skip
+        env:
+          RESULT: ${{ needs.run-pr-title.result }}
+          EVENT: ${{ github.event_name }}
+          REF: ${{ github.ref }}
+        run: |
+          [ "$RESULT" = "success" ] || {
+            [ "$RESULT" = "skipped" ] && [ "$EVENT" = "push" ] && [ "$REF" = "refs/heads/main" ]
+          }

@@ -1,3 +1,4 @@
+# Fleet Phase 2: auto_review off (not on CodeRabbit allow-list).
 # Advisory reviewer policy; source configuration does not grant repository access.
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
 language: en-US
@@ -67,7 +68,7 @@ reviews:
         unsupported or contradicted by available evidence. Do not fabricate
         remote facts. Leave mechanical Markdown and link checks to CI.
   auto_review:
-    enabled: true
+    enabled: false
     drafts: false
     auto_incremental_review: true
     auto_pause_after_reviewed_commits: 3

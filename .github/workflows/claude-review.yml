@@ -22,7 +22,7 @@ jobs:
       contents: read
       pull-requests: write
       issues: write
-    uses: alawein/.github/.github/workflows/claude-review.yml@2d9587d3d00293e06f89681c8ad2b0fb3e17f9e2 # v1.5.6
+    uses: alawein/.github/.github/workflows/claude-review.yml@659e41da34df2ab853ab279408804d8e94d05af9 # v1.5.7
     with:
       pr-number: ${{ inputs.pr_number }}
     secrets:

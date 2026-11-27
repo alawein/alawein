@@ -1,0 +1,29 @@
+name: Claude review
+
+on:
+  # Safe here: the callee runs only for the owner, refuses fork PRs, reads policy from the default branch and has read-only tools.
+  issue_comment: # zizmor: ignore[dangerous-triggers]
+    types: [created]
+  pull_request:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Pull request number to review
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  claude-review:
+    if: github.event_name != 'issue_comment' || contains(github.event.comment.body, '@claude review')
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+    uses: alawein/.github/.github/workflows/claude-review.yml@4b86da1b0c9d7b0333646279117755da800dff73 # v1.5.1
+    with:
+      pr-number: ${{ inputs.pr_number }}
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}

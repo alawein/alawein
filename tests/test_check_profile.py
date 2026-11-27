@@ -1,5 +1,6 @@
 import hashlib
 import io
+import re
 import shlex
 import subprocess
 import sys
@@ -136,8 +137,13 @@ class TestInventory(unittest.TestCase):
         with self.subTest("headline"):
             self.assertEqual(
                 [line for line in text.splitlines() if line.startswith("# ")],
-                ["# AI Researcher | Computational Scientist"],
+                ["# AI Researcher and Computational Scientist"],
             )
+        with self.subTest("no journal names"):
+            for journal in ("Physical Review", "IEEE"):
+                self.assertNotIn(journal, text)
+        with self.subTest("no en dash between words"):
+            self.assertIsNone(re.search(r"\D–\D", text))
         with self.subTest("profile links"):
             self.assertEqual(
                 [ref.alt for ref in readme_refs(text) if ref.kind == "link"],

@@ -49,7 +49,7 @@ Run `just check` and validate workflow syntax before reporting completion. Open 
 
 Follow the shared [review policy](https://github.com/alawein/.github/blob/main/docs/system/reviewers.md).
 
-- CodeRabbit becomes the sole automatic reviewer only after named owner approval for this repository's activation and review comments. Keep code-writing features disabled.
+- Kilo Code is the primary free automatic reviewer. CodeRabbit stays off unless the owner names this repository on the allow-list. Keep code-writing features disabled.
 - Other reviewers require a named owner-approved request specifying the risk, paths, revision and any spend.
 - Preserve required CI checks, exact toolchain pins, frozen inputs, and approved copy and artwork.
 - Report actionable defects with affected lines, impact, evidence and a rule-file citation. Deduplicate existing findings and CI failures.
